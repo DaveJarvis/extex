@@ -79,6 +79,7 @@ public class GetIntegerCompiler implements Compiler {
             Evaluator evaluator, LinkContainer linkData) {
 
         state.push(new GetInteger(name));
+        state.getVarInfo(name).reading();
     }
 
 }

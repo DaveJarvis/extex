@@ -1,4 +1,4 @@
-// % BibTeX standard bibliography style `alpha'
+// BibTeX standard bibliography style `alpha'
 // version 0.99a for BibTeX versions 0.99a or later, LaTeX version 2.09.
 // Copyright (C) 1985, all rights reserved.
 // Copying of this file is authorized only if either
@@ -22,6 +22,7 @@ import org.extex.exbib.core.db.Entry
 import org.extex.exbib.core.io.Writer
 
 class Style {
+
   DB bibDB
   Writer bibWriter
   Processor bibProcessor
@@ -40,11 +41,11 @@ class Style {
   int longestLabelWidth = 0
   int lastExtraNum = 0
 
-  String s = ""
-  String t = ""
-  String longestLabel = ""
-  String lastSortLabel = ""
-  String nextExtra = ""
+  String s = ''
+  String t = ''
+  String longestLabel = ''
+  String lastSortLabel = ''
+  String nextExtra = ''
 
   Map types = [
     article : { entry -> article(entry, '') },
@@ -112,28 +113,29 @@ class Style {
     }
   }
 
-  void callType(Entry entry) {
-    def typeFunction = types[entry.getType()]
-    if (typeFunction == null) {
-      typeFunction = types['default.type']
-    }
-    if (typeFunction == null) {
-      bstProcessor.warning('missing default.type')
-    } else {
-      typeFunction(entry)
-    }
-  }
-
   private static final int GLOBAL_MAX = 65535
 
   private static final int ENTRY_MAX = 65535
 
   boolean isEmpty(String s) {
-    return s == null || s.trim().equals('')
+    return s == null || s.trim() == ''
+  }
+
+  void callType(Entry entry) {
+    def typeFunction = types[entry.getType()]
+    if (typeFunction == null) {
+      typeFunction = types['default.type']
+      if (typeFunction == null) {
+        bstProcessor.warning('missing default.type')
+        return
+      }
+    }
+    typeFunction(entry)
+    }
   }
 
   String addPeriod(String s) {
-    return s == null ? "" : s.matches(".*[.!?]") ? s : s + "."
+    return s == null || s == '' ? '' : s.matches(".*[.!?]") ? s : s + "."
   }
 
   void initStateConsts() {
@@ -143,162 +145,116 @@ class Style {
     afterBlock = 3
   }
 
-  String outputNonnull(v1, v8) {
+  String outputNonnull(v1, v2) {
     s = v1
-    if (outputState == midSentence ? 1 : 0) {
-      bibWriter.print(v8 + ", ")
+    if (outputState == midSentence) {
+      bibWriter.print(v2 + ", ")
     } else {
-      if (outputState == afterBlock ? 1 : 0) {
-        bibWriter.print(addPeriod(v8))
-        bibWriter.println()
+      if (outputState == afterBlock) {
+        bibWriter.println(addPeriod(v2))
         bibWriter.print("\\newblock ")
-      } else if (outputState == beforeAll ? 1 : 0) {
-        bibWriter.print(v8)
+      } else if (outputState == beforeAll) {
+        bibWriter.print(v2)
       } else {
-        bibWriter.print(addPeriod(v8) + " ")
+        bibWriter.print(addPeriod(v2) + " ")
       }
       outputState = midSentence
     }
     return s
   }
 
-  String output(v3, v6) {
-    String v8
-    if (isEmpty(v3) ? 1 : 0) {
-      v8 = v6
-    } else {
-      v8 = outputNonnull(v3,
-                         v6)
-    }
-    return v8
+  String output(v2, v4) {
+    return ( isEmpty(v2) ? v4 : outputNonnull(v4,
+                                              v2) )
   }
 
-  String outputCheck(entry, v1, v4, v7) {
+  String outputCheck(entry, v1, v3, v5) {
     t = v1
     String v9
-    if (isEmpty(v4) ? 1 : 0) {
+    if (isEmpty(v3)) {
       bibProcessor.warning("empty " + t + " in " + entry.getKey())
-      v9 = v7
+      v9 = v5
     } else {
-      v9 = outputNonnull(v4,
-                         v7)
+      v9 = outputNonnull(v5,
+                         v3)
     }
     return v9
   }
 
   String outputBibitem(entry) {
     bibWriter.println()
-    bibWriter.print("\\bibitem[")
-    bibWriter.print(entry.getLocalString("label"))
-    bibWriter.print("]{")
-    bibWriter.print(entry.getKey())
-    bibWriter.print("}")
-    bibWriter.println()
+    bibWriter.println("\\bibitem[",
+                      entry.getLocalString("label"),
+                      "]{",
+                      entry.getKey(),
+                      "}")
     outputState = beforeAll
     return ""
   }
 
   void finEntry(v1) {
-    bibWriter.print(addPeriod(v1))
-    bibWriter.println()
+    bibWriter.println(addPeriod(v1))
   }
 
   void newBlock() {
-    if (outputState == beforeAll ? 1 : 0) {
-    } else {
+    if (outputState != beforeAll) {
       outputState = afterBlock
     }
   }
 
   void newSentence() {
-    if (outputState == afterBlock ? 1 : 0) {
-    } else if (outputState == beforeAll ? 1 : 0) {
-    } else {
+    if (outputState != afterBlock && outputState != beforeAll) {
       outputState = afterSentence
     }
   }
 
   int not(v1) {
-    int v2
-    if (v1) {
-      v2 = 0
-    } else {
-      v2 = 1
-    }
-    return v2
+    return ( v1 ? 0 : 1 )
   }
 
-  int and(v1, v4) {
-    int v5
-    if (v1) {
-      v5 = v4
-    } else {
-      v5 = 0
-    }
-    return v5
+  int and(v1, v2) {
+    return ( v1 ? v2 : 0 )
   }
 
-  int or(v1, v4) {
-    int v5
-    if (v1) {
-      v5 = 1
-    } else {
-      v5 = v4
-    }
-    return v5
+  int or(v1, v2) {
+    return ( v1 ? 1 : v2 )
   }
 
   void newBlockChecka(v1) {
-    if (isEmpty(v1) ? 1 : 0) {
-    } else {
+    if (! isEmpty(v1)) {
       newBlock()
     }
   }
 
   void newBlockCheckb(v1, v2) {
-    if (and(isEmpty(v2) ? 1 : 0,
-            isEmpty(v1) ? 1 : 0)) {
-    } else {
+    if (! and(isEmpty(v1) ? 1 : 0,
+              isEmpty(v2) ? 1 : 0)) {
       newBlock()
     }
   }
 
   void newSentenceChecka(v1) {
-    if (isEmpty(v1) ? 1 : 0) {
-    } else {
+    if (! isEmpty(v1)) {
       newSentence()
     }
   }
 
   void newSentenceCheckb(v1, v2) {
-    if (and(isEmpty(v2) ? 1 : 0,
-            isEmpty(v1) ? 1 : 0)) {
-    } else {
+    if (! and(isEmpty(v1) ? 1 : 0,
+              isEmpty(v2) ? 1 : 0)) {
       newSentence()
     }
   }
 
-  String fieldOrNull(v3) {
-    String v4
-    if (isEmpty(v3) ? 1 : 0) {
-      v4 = ""
-    } else {
-      v4 = v3
-    }
-    return v4
+  String fieldOrNull(v2) {
+    return ( isEmpty(v2) ? "" : v2 )
   }
 
-  String emphasize(v3) {
-    String v5
-    if (isEmpty(v3) ? 1 : 0) {
-      v5 = ""
-    } else {
-      v5 = "{\\em " + v3 + "}"
-    }
-    return v5
+  String emphasize(v2) {
+    return ( isEmpty(v2) ? "" : "{\\em " + v2 + "}" )
   }
 
-  String formatNames(v1, v5) {
+  String formatNames(v1, v2) {
     s = v1
     nameptr = 1
     numnames = NumNames.numNames(s)
@@ -308,24 +264,13 @@ class Style {
                                 nameptr,
                                 "{ff~}{vv~}{ll}{, jj}")
       String v18
-      if (nameptr > 1 ? 1 : 0) {
+      if (nameptr > 1) {
         String v15
-        if (namesleft > 1 ? 1 : 0) {
-          v15 = v5 + ", " + t
+        if (namesleft > 1) {
+          v15 = v2 + ", " + t
         } else {
-          String v9
-          if (numnames > 2 ? 1 : 0) {
-            v9 = v5 + ","
-          } else {
-            v9 = v5
-          }
-          String v12
-          if (t == "others" ? 1 : 0) {
-            v12 = v9 + " et~al."
-          } else {
-            v12 = v9 + " and " + t
-          }
-          v15 = v12
+          String v8 = ( numnames > 2 ? v2 + "," : v2 )
+          v15 = ( t == "others" ? v8 + " et~al." : v8 + " and " + t )
         }
         v18 = v15
       } else {
@@ -333,71 +278,59 @@ class Style {
       }
       nameptr = nameptr + 1
       namesleft = namesleft - 1
-      v5 = v18
+      v2 = v18
     }
-    return v5
+    return v2
   }
 
-  String formatAuthors(entry, v2) {
-    String v4
-    if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
-      v4 = ""
-    } else {
-      v4 = formatNames(entry.getExpanded("author",
-                                         bibDB),
-                       v2)
-    }
-    return v4
+  String formatAuthors(entry, v1) {
+    return ( isEmpty(entry.getExpanded("author",
+                                       bibDB))
+             ? ""
+             : formatNames(v1,
+                           entry.getExpanded("author",
+                                             bibDB)) )
   }
 
-  String formatEditors(entry, v7) {
+  String formatEditors(entry, v1) {
     String v8
     if (isEmpty(entry.getExpanded("editor",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       v8 = ""
     } else {
-      String v3 = formatNames(entry.getExpanded("editor",
-                                                bibDB),
-                              v7)
-      String v6
-      if (NumNames.numNames(entry.getExpanded("editor",
-                                              bibDB)) > 1 ? 1 : 0) {
-        v6 = v3 + ", editors"
-      } else {
-        v6 = v3 + ", editor"
-      }
-      v8 = v6
+      String v2 = formatNames(v1,
+                              entry.getExpanded("editor",
+                                                bibDB))
+      v8 = ( NumNames.numNames(entry.getExpanded("editor",
+                                                 bibDB)) > 1
+             ? v2 + ", editors"
+             : v2 + ", editor" )
     }
     return v8
   }
 
   String formatTitle(entry) {
-    String v2
-    if (isEmpty(entry.getExpanded("title",
-                                  bibDB)) ? 1 : 0) {
-      v2 = ""
-    } else {
-      v2 = ChangeCase.changeCase("t",
-                                 entry.getExpanded("title",
-                                                   bibDB))
-    }
-    return v2
+    return ( isEmpty(entry.getExpanded("title",
+                                       bibDB))
+             ? ""
+             : ChangeCase.changeCase("t",
+                                     entry.getExpanded("title",
+                                                       bibDB)) )
   }
 
   String nDashify(v1) {
     t = v1
-    String v9 = ""
+    String v2 = ""
     while (not(isEmpty(t) ? 1 : 0)) {
       String v12
       if (Substring.substring(t,
                               1,
-                              1) == "-" ? 1 : 0) {
+                              1) == "-") {
         String v8
         if (not(Substring.substring(t,
                                     1,
                                     2) == "--" ? 1 : 0)) {
-          String v3 = v9 + "--"
+          String v3 = v2 + "--"
           t = Substring.substring(t,
                                   2,
                                   GLOBAL_MAX)
@@ -406,17 +339,17 @@ class Style {
           while (Substring.substring(t,
                                      1,
                                      1) == "-") {
-            String v5 = v9 + "-"
+            String v5 = v2 + "-"
             t = Substring.substring(t,
                                     2,
                                     GLOBAL_MAX)
-            v9 = v5
+            v2 = v5
           }
-          v8 = v9
+          v8 = v2
         }
         v12 = v8
       } else {
-        String v10 = v9 + Substring.substring(t,
+        String v10 = v2 + Substring.substring(t,
                                               1,
                                               1)
         t = Substring.substring(t,
@@ -424,38 +357,33 @@ class Style {
                                 GLOBAL_MAX)
         v12 = v10
       }
-      v9 = v12
+      v2 = v12
     }
-    return v9
+    return v2
   }
 
   String formatDate(entry) {
     String v6
     if (isEmpty(entry.getExpanded("year",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v2
       if (isEmpty(entry.getExpanded("month",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         v2 = ""
       } else {
         bibProcessor.warning("there's a month but no year in " + entry.getKey())
-        String v1 = entry.getExpanded("month",
-                                      bibDB)
-        v2 = v1
+        v2 = entry.getExpanded("month",
+                               bibDB)
       }
       v6 = v2
     } else {
-      String v5
-      if (isEmpty(entry.getExpanded("month",
-                                    bibDB)) ? 1 : 0) {
-        v5 = entry.getExpanded("year",
-                               bibDB)
-      } else {
-        v5 = entry.getExpanded("month",
-                               bibDB) + " " + entry.getExpanded("year",
-                                                                bibDB)
-      }
-      v6 = v5
+      v6 = ( isEmpty(entry.getExpanded("month",
+                                       bibDB))
+             ? entry.getExpanded("year",
+                                 bibDB)
+             : entry.getExpanded("month",
+                                 bibDB) + " " + entry.getExpanded("year",
+                                                                  bibDB) )
     }
     return v6
   }
@@ -466,43 +394,36 @@ class Style {
   }
 
   String tieOrSpaceConnect(v1, v3) {
-    String v2
-    if (TextLength.textLength(v1) < 3 ? 1 : 0) {
-      v2 = "~"
-    } else {
-      v2 = " "
-    }
+    String v2 = ( TextLength.textLength(v1) < 3
+                  ? "~"
+                  : " " )
     return v3 + v2 + v1
   }
 
-  void eitherOrCheck(entry, v1, v4) {
-    if (isEmpty(v1) ? 1 : 0) {
-    } else {
-      bibProcessor.warning("can't use both " + v4 + " fields in " + entry.getKey())
+  void eitherOrCheck(entry, v1, v2) {
+    if (! isEmpty(v1)) {
+      bibProcessor.warning("can't use both " + v2 + " fields in " + entry.getKey())
     }
   }
 
   String formatBvolume(entry) {
     String v5
     if (isEmpty(entry.getExpanded("volume",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       v5 = ""
     } else {
-      String v2 = tieOrSpaceConnect(entry.getExpanded("volume",
-                                                      bibDB),
-                                    "volume")
-      String v4
-      if (isEmpty(entry.getExpanded("series",
-                                    bibDB)) ? 1 : 0) {
-        v4 = v2
-      } else {
-        v4 = v2 + " of " + emphasize(entry.getExpanded("series",
-                                                       bibDB))
-      }
+      String v1 = tieOrSpaceConnect("volume",
+                                    entry.getExpanded("volume",
+                                                      bibDB))
+      String v4 = ( isEmpty(entry.getExpanded("series",
+                                              bibDB))
+                    ? v1
+                    : v1 + " of " + emphasize(entry.getExpanded("series",
+                                                                bibDB)) )
       eitherOrCheck(entry,
+                    "volume and number",
                     entry.getExpanded("number",
-                                      bibDB),
-                    "volume and number")
+                                      bibDB))
       v5 = v4
     }
     return v5
@@ -511,29 +432,26 @@ class Style {
   String formatNumberSeries(entry) {
     String v8
     if (isEmpty(entry.getExpanded("volume",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v7
       if (isEmpty(entry.getExpanded("number",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         v7 = fieldOrNull(entry.getExpanded("series",
                                            bibDB))
       } else {
-        String v1
-        if (outputState == midSentence ? 1 : 0) {
-          v1 = "number"
-        } else {
-          v1 = "Number"
-        }
-        String v3 = tieOrSpaceConnect(entry.getExpanded("number",
-                                                        bibDB),
-                                      v1)
+        String v1 = ( outputState == midSentence
+                      ? "number"
+                      : "Number" )
+        String v2 = tieOrSpaceConnect(v1,
+                                      entry.getExpanded("number",
+                                                        bibDB))
         String v5
         if (isEmpty(entry.getExpanded("series",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("there's a number but no series in " + entry.getKey())
-          v5 = v3
+          v5 = v2
         } else {
-          v5 = v3 + " in " + entry.getExpanded("series",
+          v5 = v2 + " in " + entry.getExpanded("series",
                                                bibDB)
         }
         v7 = v5
@@ -546,40 +464,32 @@ class Style {
   }
 
   String formatEdition(entry) {
-    String v4
-    if (isEmpty(entry.getExpanded("edition",
-                                  bibDB)) ? 1 : 0) {
-      v4 = ""
-    } else {
-      String v3
-      if (outputState == midSentence ? 1 : 0) {
-        v3 = ChangeCase.changeCase("l",
-                                   entry.getExpanded("edition",
-                                                     bibDB)) + " edition"
-      } else {
-        v3 = ChangeCase.changeCase("t",
-                                   entry.getExpanded("edition",
-                                                     bibDB)) + " edition"
-      }
-      v4 = v3
-    }
-    return v4
+    return ( isEmpty(entry.getExpanded("edition",
+                                       bibDB))
+             ? ""
+             : ( outputState == midSentence
+                 ? ChangeCase.changeCase("l",
+                                         entry.getExpanded("edition",
+                                                           bibDB)) + " edition"
+                 : ChangeCase.changeCase("t",
+                                         entry.getExpanded("edition",
+                                                           bibDB)) + " edition" ) )
   }
 
   int multiPageCheck(v1) {
     t = v1
     multiresult = 0
-    while (and(not(isEmpty(t) ? 1 : 0),
-               not(multiresult))) {
-      if (or(or(Substring.substring(t,
+    while (and(not(multiresult),
+               not(isEmpty(t) ? 1 : 0))) {
+      if (or(Substring.substring(t,
+                                 1,
+                                 1) == "-" ? 1 : 0,
+             or(Substring.substring(t,
                                     1,
-                                    1) == "+" ? 1 : 0,
+                                    1) == "," ? 1 : 0,
                 Substring.substring(t,
                                     1,
-                                    1) == "," ? 1 : 0),
-             Substring.substring(t,
-                                 1,
-                                 1) == "-" ? 1 : 0)) {
+                                    1) == "+" ? 1 : 0))) {
         multiresult = 1
       } else {
         t = Substring.substring(t,
@@ -591,172 +501,128 @@ class Style {
   }
 
   String formatPages(entry) {
-    String v4
-    if (isEmpty(entry.getExpanded("pages",
-                                  bibDB)) ? 1 : 0) {
-      v4 = ""
-    } else {
-      String v3
-      if (multiPageCheck(entry.getExpanded("pages",
-                                           bibDB))) {
-        v3 = tieOrSpaceConnect(nDashify(entry.getExpanded("pages",
-                                                          bibDB)),
-                               "pages")
-      } else {
-        v3 = tieOrSpaceConnect(entry.getExpanded("pages",
-                                                 bibDB),
-                               "page")
-      }
-      v4 = v3
-    }
-    return v4
+    return ( isEmpty(entry.getExpanded("pages",
+                                       bibDB))
+             ? ""
+             : ( multiPageCheck(entry.getExpanded("pages",
+                                                  bibDB))
+                 ? tieOrSpaceConnect("pages",
+                                     nDashify(entry.getExpanded("pages",
+                                                                bibDB)))
+                 : tieOrSpaceConnect("page",
+                                     entry.getExpanded("pages",
+                                                       bibDB)) ) )
   }
 
   String formatVolNumPages(entry) {
-    String v3 = fieldOrNull(entry.getExpanded("volume",
+    String v1 = fieldOrNull(entry.getExpanded("volume",
                                               bibDB))
-    String v7
+    String v6
     if (isEmpty(entry.getExpanded("number",
-                                  bibDB)) ? 1 : 0) {
-      v7 = v3
+                                  bibDB))) {
+      v6 = v1
     } else {
-      String v2 = v3 + "(" + entry.getExpanded("number",
+      String v2 = v1 + "(" + entry.getExpanded("number",
                                                bibDB) + ")"
       if (isEmpty(entry.getExpanded("volume",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         bibProcessor.warning("there's a number but no volume in " + entry.getKey())
       }
-      v7 = v2
+      v6 = v2
     }
-    String v12
-    if (isEmpty(entry.getExpanded("pages",
-                                  bibDB)) ? 1 : 0) {
-      v12 = v7
-    } else {
-      String v10
-      if (isEmpty(v7) ? 1 : 0) {
-        v10 = formatPages(entry)
-      } else {
-        v10 = v7 + ":" + nDashify(entry.getExpanded("pages",
-                                                    bibDB))
-      }
-      v12 = v10
-    }
-    return v12
+    return ( isEmpty(entry.getExpanded("pages",
+                                       bibDB))
+             ? v6
+             : ( isEmpty(v6) ? formatPages(entry) : v6 + ":" + nDashify(entry.getExpanded("pages",
+                                                                                          bibDB)) ) )
   }
 
   String formatChapterPages(entry) {
     String v8
     if (isEmpty(entry.getExpanded("chapter",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       v8 = formatPages(entry)
     } else {
-      String v2
-      if (isEmpty(entry.getExpanded("type",
-                                    bibDB)) ? 1 : 0) {
-        v2 = "chapter"
-      } else {
-        v2 = ChangeCase.changeCase("l",
-                                   entry.getExpanded("type",
-                                                     bibDB))
-      }
-      String v4 = tieOrSpaceConnect(entry.getExpanded("chapter",
-                                                      bibDB),
-                                    v2)
-      String v6
-      if (isEmpty(entry.getExpanded("pages",
-                                    bibDB)) ? 1 : 0) {
-        v6 = v4
-      } else {
-        v6 = v4 + ", " + formatPages(entry)
-      }
-      v8 = v6
+      String v2 = ( isEmpty(entry.getExpanded("type",
+                                              bibDB))
+                    ? "chapter"
+                    : ChangeCase.changeCase("l",
+                                            entry.getExpanded("type",
+                                                              bibDB)) )
+      String v3 = tieOrSpaceConnect(v2,
+                                    entry.getExpanded("chapter",
+                                                      bibDB))
+      v8 = ( isEmpty(entry.getExpanded("pages",
+                                       bibDB))
+             ? v3
+             : v3 + ", " + formatPages(entry) )
     }
     return v8
   }
 
-  String formatInEdBooktitle(entry, v6) {
-    String v7
-    if (isEmpty(entry.getExpanded("booktitle",
-                                  bibDB)) ? 1 : 0) {
-      v7 = ""
-    } else {
-      String v5
-      if (isEmpty(entry.getExpanded("editor",
-                                    bibDB)) ? 1 : 0) {
-        v5 = "In " + emphasize(entry.getExpanded("booktitle",
-                                                 bibDB))
-      } else {
-        v5 = v6 + formatEditors(entry,
-                                "In ") + ", " + emphasize(entry.getExpanded("booktitle",
-                                                                            bibDB))
-      }
-      v7 = v5
-    }
-    return v7
+  String formatInEdBooktitle(entry, v1) {
+    return ( isEmpty(entry.getExpanded("booktitle",
+                                       bibDB))
+             ? ""
+             : ( isEmpty(entry.getExpanded("editor",
+                                           bibDB))
+                 ? "In " + emphasize(entry.getExpanded("booktitle",
+                                                       bibDB))
+                 : v1 + formatEditors(entry,
+                                      "In ") + ", " + emphasize(entry.getExpanded("booktitle",
+                                                                                  bibDB)) ) )
   }
 
   void emptyMiscCheck(entry) {
-    if (and(not(isEmpty(entry.getExpanded("key",
-                                          bibDB)) ? 1 : 0),
-            and(and(and(and(and(isEmpty(entry.getExpanded("note",
+    if (and(and(isEmpty(entry.getExpanded("author",
+                                          bibDB)) ? 1 : 0,
+                and(isEmpty(entry.getExpanded("title",
+                                              bibDB)) ? 1 : 0,
+                    and(isEmpty(entry.getExpanded("howpublished",
+                                                  bibDB)) ? 1 : 0,
+                        and(isEmpty(entry.getExpanded("month",
+                                                      bibDB)) ? 1 : 0,
+                            and(isEmpty(entry.getExpanded("year",
                                                           bibDB)) ? 1 : 0,
-                                isEmpty(entry.getExpanded("year",
-                                                          bibDB)) ? 1 : 0),
-                            isEmpty(entry.getExpanded("month",
-                                                      bibDB)) ? 1 : 0),
-                        isEmpty(entry.getExpanded("howpublished",
-                                                  bibDB)) ? 1 : 0),
-                    isEmpty(entry.getExpanded("title",
-                                              bibDB)) ? 1 : 0),
-                isEmpty(entry.getExpanded("author",
+                                isEmpty(entry.getExpanded("note",
+                                                          bibDB)) ? 1 : 0))))),
+            not(isEmpty(entry.getExpanded("key",
                                           bibDB)) ? 1 : 0))) {
       bibProcessor.warning("all relevant fields are empty in " + entry.getKey())
     }
   }
 
-  String formatThesisType(entry, v3) {
-    String v5
-    if (isEmpty(entry.getExpanded("type",
-                                  bibDB)) ? 1 : 0) {
-      v5 = v3
-    } else {
-      v5 = ChangeCase.changeCase("t",
-                                 entry.getExpanded("type",
-                                                   bibDB))
-    }
-    return v5
+  String formatThesisType(entry, v1) {
+    return ( isEmpty(entry.getExpanded("type",
+                                       bibDB))
+             ? v1
+             : ChangeCase.changeCase("t",
+                                     entry.getExpanded("type",
+                                                       bibDB)) )
   }
 
   String formatTrNumber(entry) {
-    String v4
-    if (isEmpty(entry.getExpanded("type",
-                                  bibDB)) ? 1 : 0) {
-      v4 = "Technical Report"
-    } else {
-      v4 = entry.getExpanded("type",
-                             bibDB)
-    }
-    String v7
-    if (isEmpty(entry.getExpanded("number",
-                                  bibDB)) ? 1 : 0) {
-      v7 = ChangeCase.changeCase("t",
-                                 v4)
-    } else {
-      v7 = tieOrSpaceConnect(entry.getExpanded("number",
-                                               bibDB),
-                             v4)
-    }
-    return v7
+    String v3 = ( isEmpty(entry.getExpanded("type",
+                                            bibDB))
+                  ? "Technical Report"
+                  : entry.getExpanded("type",
+                                      bibDB) )
+    return ( isEmpty(entry.getExpanded("number",
+                                       bibDB))
+             ? ChangeCase.changeCase("t",
+                                     v3)
+             : tieOrSpaceConnect(v3,
+                                 entry.getExpanded("number",
+                                                   bibDB)) )
   }
 
   String formatArticleCrossref(entry) {
     String v4
     if (isEmpty(entry.getExpanded("key",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v2
       if (isEmpty(entry.getExpanded("journal",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         bibProcessor.warning("need key or journal for " + entry.getKey() + " to crossref " + entry.getExpanded("crossref",
                                                                                                                bibDB))
         v2 = ""
@@ -774,80 +640,65 @@ class Style {
   }
 
   String formatCrossrefEditor(entry) {
-    String v6 = FormatName.formatName(entry.getExpanded("editor",
+    String v2 = FormatName.formatName(entry.getExpanded("editor",
                                                         bibDB),
                                       1,
                                       "{vv~}{ll}")
-    String v3 = NumNames.numNames(entry.getExpanded("editor",
+    String v1 = NumNames.numNames(entry.getExpanded("editor",
                                                     bibDB))
-    String v15
-    if (NumNames.numNames(entry.getExpanded("editor",
-                                            bibDB)) > 2 ? 1 : 0) {
-      v15 = v6 + " et~al."
-    } else {
-      String v12
-      if (v3 < 2 ? 1 : 0) {
-        v12 = v6
-      } else {
-        String v9
-        if (FormatName.formatName(entry.getExpanded("editor",
-                                                    bibDB),
-                                  2,
-                                  "{ff }{vv }{ll}{ jj}") == "others" ? 1 : 0) {
-          v9 = v6 + " et~al."
-        } else {
-          v9 = v6 + " and " + FormatName.formatName(entry.getExpanded("editor",
-                                                                      bibDB),
-                                                    2,
-                                                    "{vv~}{ll}")
-        }
-        v12 = v9
-      }
-      v15 = v12
-    }
-    return v15
+    return ( NumNames.numNames(entry.getExpanded("editor",
+                                                 bibDB)) > 2
+             ? v2 + " et~al."
+             : ( v1 < 2 ? v2 : ( FormatName.formatName(entry.getExpanded("editor",
+                                                                         bibDB),
+                                                       2,
+                                                       "{ff }{vv }{ll}{ jj}") == "others"
+                                 ? v2 + " et~al."
+                                 : v2 + " and " + FormatName.formatName(entry.getExpanded("editor",
+                                                                                          bibDB),
+                                                                        2,
+                                                                        "{vv~}{ll}") ) ) )
   }
 
   String formatBookCrossref(entry) {
-    String v9
+    String v3
     if (isEmpty(entry.getExpanded("volume",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       bibProcessor.warning("empty volume in " + entry.getKey() + "'s crossref of " + entry.getExpanded("crossref",
                                                                                                        bibDB))
-      v9 = "In "
+      v3 = "In "
     } else {
-      v9 = tieOrSpaceConnect(entry.getExpanded("volume",
-                                               bibDB),
-                             "Volume") + " of "
+      v3 = tieOrSpaceConnect("Volume",
+                             entry.getExpanded("volume",
+                                               bibDB)) + " of "
     }
     String v15
-    if (or(fieldOrNull(entry.getExpanded("editor",
+    if (or(isEmpty(entry.getExpanded("editor",
+                                     bibDB)) ? 1 : 0,
+           fieldOrNull(entry.getExpanded("editor",
                                          bibDB)) == fieldOrNull(entry.getExpanded("author",
-                                                                                  bibDB)) ? 1 : 0,
-           isEmpty(entry.getExpanded("editor",
-                                     bibDB)) ? 1 : 0)) {
+                                                                                  bibDB)) ? 1 : 0)) {
       String v12
       if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         String v8
         if (isEmpty(entry.getExpanded("series",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("need editor, key, or series for " + entry.getKey() + " to crossref " + entry.getExpanded("crossref",
                                                                                                                          bibDB))
-          String v6 = v9 + ""
-          v8 = v6
+          v8 = v3 + ""
         } else {
-          v8 = v9 + "{\\em " + entry.getExpanded("series",
+          v8 = v3 + "{\\em " + entry.getExpanded("series",
                                                  bibDB) + "\\/}"
         }
         v12 = v8
       } else {
-        v12 = v9 + entry.getExpanded("key",
+        v12 = v3 + entry.getExpanded("key",
                                      bibDB)
       }
       v15 = v12
     } else {
-      v15 = v9 + formatCrossrefEditor(entry)
+      v15 = v3 + formatCrossrefEditor(entry)
     }
     return v15 + " \\cite{" + entry.getExpanded("crossref",
                                                 bibDB) + "}"
@@ -855,17 +706,17 @@ class Style {
 
   String formatIncollInprocCrossref(entry) {
     String v6
-    if (or(fieldOrNull(entry.getExpanded("editor",
+    if (or(isEmpty(entry.getExpanded("editor",
+                                     bibDB)) ? 1 : 0,
+           fieldOrNull(entry.getExpanded("editor",
                                          bibDB)) == fieldOrNull(entry.getExpanded("author",
-                                                                                  bibDB)) ? 1 : 0,
-           isEmpty(entry.getExpanded("editor",
-                                     bibDB)) ? 1 : 0)) {
+                                                                                  bibDB)) ? 1 : 0)) {
       String v4
       if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         String v2
         if (isEmpty(entry.getExpanded("booktitle",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("need editor, key, or booktitle for " + entry.getKey() + " to crossref " + entry.getExpanded("crossref",
                                                                                                                             bibDB))
           v2 = ""
@@ -888,582 +739,554 @@ class Style {
 
   void article(entry, v1) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
-    String v5 = outputCheck(entry,
-                            "title",
+    String v4 = outputCheck(entry,
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
-    String v8
-    if (entry.getExpanded("crossref",
-                          bibDB) == null) {
-      v8 = outputCheck(entry,
-                       "year",
-                       formatDate(entry),
-                       output(formatVolNumPages(entry),
-                              outputCheck(entry,
-                                          "journal",
-                                          emphasize(entry.getExpanded("journal",
-                                                                      bibDB)),
-                                          v5)))
-    } else {
-      v8 = output(formatPages(entry),
-                  outputNonnull(formatArticleCrossref(entry),
-                                v5))
-    }
+    String v8 = ( entry.getExpanded("crossref",
+                                    bibDB) == null
+                  ? outputCheck(entry,
+                                output(outputCheck(entry,
+                                                   v4,
+                                                   emphasize(entry.getExpanded("journal",
+                                                                               bibDB)),
+                                                   "journal"),
+                                       formatVolNumPages(entry)),
+                                formatDate(entry),
+                                "year")
+                  : output(outputNonnull(v4,
+                                         formatArticleCrossref(entry)),
+                           formatPages(entry)) )
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v8))
+    finEntry(output(v8,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
-  void book(entry, v6) {
-    String v3 = outputBibitem(entry)
+  void book(entry, v2) {
+    String v1 = outputBibitem(entry)
     String v8
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       v8 = outputCheck(entry,
-                       "author and editor",
+                       v2,
                        formatEditors(entry,
-                                     v3),
-                       v6)
+                                     v1),
+                       "author and editor")
     } else {
-      String v5 = outputNonnull(formatAuthors(entry,
-                                              v3),
-                                v6)
+      String v5 = outputNonnull(v2,
+                                formatAuthors(entry,
+                                              v1))
       if (entry.getExpanded("crossref",
                             bibDB) == null) {
         eitherOrCheck(entry,
+                      "author and editor",
                       entry.getExpanded("editor",
-                                        bibDB),
-                      "author and editor")
+                                        bibDB))
       }
       v8 = v5
     }
     newBlock()
     String v9 = outputCheck(entry,
-                            "title",
+                            v8,
                             formatBtitle(entry),
-                            v8)
+                            "title")
     String v15
     if (entry.getExpanded("crossref",
                           bibDB) == null) {
-      String v10 = output(formatBvolume(entry),
-                          v9)
+      String v10 = output(v9,
+                          formatBvolume(entry))
       newBlock()
-      String v11 = output(formatNumberSeries(entry),
-                          v10)
+      String v11 = output(v10,
+                          formatNumberSeries(entry))
       newSentence()
-      String v13 = output(entry.getExpanded("address",
-                                            bibDB),
-                          outputCheck(entry,
-                                      "publisher",
-                                      entry.getExpanded("publisher",
-                                                        bibDB),
-                                      v11))
-      v15 = v13
+      v15 = output(outputCheck(entry,
+                               v11,
+                               entry.getExpanded("publisher",
+                                                 bibDB),
+                               "publisher"),
+                   entry.getExpanded("address",
+                                     bibDB))
     } else {
       newBlock()
-      String v14 = outputNonnull(formatBookCrossref(entry),
-                                 v9)
-      v15 = v14
+      v15 = outputNonnull(v9,
+                          formatBookCrossref(entry))
     }
     String v16 = outputCheck(entry,
-                             "year",
+                             output(v15,
+                                    formatEdition(entry)),
                              formatDate(entry),
-                             output(formatEdition(entry),
-                                    v15))
+                             "year")
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v16))
+    finEntry(output(v16,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void booklet(entry, v1) {
-    String v2 = output(formatAuthors(entry,
-                                     outputBibitem(entry)),
-                       v1)
+    String v2 = output(v1,
+                       formatAuthors(entry,
+                                     outputBibitem(entry)))
     newBlock()
     String v3 = outputCheck(entry,
-                            "title",
+                            v2,
                             formatTitle(entry),
-                            v2)
-    newBlockCheckb(entry.getExpanded("address",
+                            "title")
+    newBlockCheckb(entry.getExpanded("howpublished",
                                      bibDB),
-                   entry.getExpanded("howpublished",
+                   entry.getExpanded("address",
                                      bibDB))
-    String v4 = output(formatDate(entry),
-                       output(entry.getExpanded("address",
-                                                bibDB),
-                              output(entry.getExpanded("howpublished",
-                                                       bibDB),
-                                     v3)))
+    String v4 = output(output(output(v3,
+                                     entry.getExpanded("howpublished",
+                                                       bibDB)),
+                              entry.getExpanded("address",
+                                                bibDB)),
+                       formatDate(entry))
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v4))
+    finEntry(output(v4,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
-  void inbook(entry, v6) {
-    String v3 = outputBibitem(entry)
+  void inbook(entry, v2) {
+    String v1 = outputBibitem(entry)
     String v8
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       v8 = outputCheck(entry,
-                       "author and editor",
+                       v2,
                        formatEditors(entry,
-                                     v3),
-                       v6)
+                                     v1),
+                       "author and editor")
     } else {
-      String v5 = outputNonnull(formatAuthors(entry,
-                                              v3),
-                                v6)
+      String v5 = outputNonnull(v2,
+                                formatAuthors(entry,
+                                              v1))
       if (entry.getExpanded("crossref",
                             bibDB) == null) {
         eitherOrCheck(entry,
+                      "author and editor",
                       entry.getExpanded("editor",
-                                        bibDB),
-                      "author and editor")
+                                        bibDB))
       }
       v8 = v5
     }
     newBlock()
     String v9 = outputCheck(entry,
-                            "title",
+                            v8,
                             formatBtitle(entry),
-                            v8)
+                            "title")
     String v16
     if (entry.getExpanded("crossref",
                           bibDB) == null) {
       String v10 = outputCheck(entry,
-                               "chapter and pages",
+                               output(v9,
+                                      formatBvolume(entry)),
                                formatChapterPages(entry),
-                               output(formatBvolume(entry),
-                                      v9))
+                               "chapter and pages")
       newBlock()
-      String v11 = output(formatNumberSeries(entry),
-                          v10)
+      String v11 = output(v10,
+                          formatNumberSeries(entry))
       newSentence()
-      String v14 = output(entry.getExpanded("address",
-                                            bibDB),
-                          outputCheck(entry,
-                                      "publisher",
-                                      entry.getExpanded("publisher",
-                                                        bibDB),
-                                      v11))
-      v16 = v14
+      v16 = output(outputCheck(entry,
+                               v11,
+                               entry.getExpanded("publisher",
+                                                 bibDB),
+                               "publisher"),
+                   entry.getExpanded("address",
+                                     bibDB))
     } else {
       String v13 = outputCheck(entry,
-                               "chapter and pages",
+                               v9,
                                formatChapterPages(entry),
-                               v9)
+                               "chapter and pages")
       newBlock()
-      String v15 = outputNonnull(formatBookCrossref(entry),
-                                 v13)
-      v16 = v15
+      v16 = outputNonnull(v13,
+                          formatBookCrossref(entry))
     }
     String v17 = outputCheck(entry,
-                             "year",
+                             output(v16,
+                                    formatEdition(entry)),
                              formatDate(entry),
-                             output(formatEdition(entry),
-                                    v16))
+                             "year")
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v17))
+    finEntry(output(v17,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
-  void incollection(entry, v1, v8) {
+  void incollection(entry, v1, v5) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
-    String v7 = outputCheck(entry,
-                            "title",
+    String v3 = outputCheck(entry,
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
     String v11
     if (entry.getExpanded("crossref",
                           bibDB) == null) {
-      String v6 = output(formatChapterPages(entry),
-                         output(formatNumberSeries(entry),
-                                output(formatBvolume(entry),
-                                       outputCheck(entry,
-                                                   "booktitle",
+      String v6 = output(output(output(outputCheck(entry,
+                                                   v5,
                                                    formatInEdBooktitle(entry,
-                                                                       v7),
-                                                   v8))))
+                                                                       v3),
+                                                   "booktitle"),
+                                       formatBvolume(entry)),
+                                formatNumberSeries(entry)),
+                         formatChapterPages(entry))
       newSentence()
-      String v9 = outputCheck(entry,
-                              "year",
-                              formatDate(entry),
-                              output(formatEdition(entry),
-                                     output(entry.getExpanded("address",
-                                                              bibDB),
-                                            outputCheck(entry,
-                                                        "publisher",
-                                                        entry.getExpanded("publisher",
-                                                                          bibDB),
-                                                        v6))))
-      v11 = v9
+      v11 = outputCheck(entry,
+                        output(output(outputCheck(entry,
+                                                  v6,
+                                                  entry.getExpanded("publisher",
+                                                                    bibDB),
+                                                  "publisher"),
+                                      entry.getExpanded("address",
+                                                        bibDB)),
+                               formatEdition(entry)),
+                        formatDate(entry),
+                        "year")
     } else {
-      v11 = output(formatChapterPages(entry),
-                   outputNonnull(formatIncollInprocCrossref(entry),
-                                 v7))
+      v11 = output(outputNonnull(v3,
+                                 formatIncollInprocCrossref(entry)),
+                   formatChapterPages(entry))
     }
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v11))
+    finEntry(output(v11,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void inproceedings(entry, v1, v5) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
-    String v4 = outputCheck(entry,
-                            "title",
+    String v3 = outputCheck(entry,
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
     String v15
     if (entry.getExpanded("crossref",
                           bibDB) == null) {
-      String v7 = output(formatPages(entry),
-                         output(formatNumberSeries(entry),
-                                output(formatBvolume(entry),
-                                       outputCheck(entry,
-                                                   "booktitle",
+      String v6 = output(output(output(outputCheck(entry,
+                                                   v5,
                                                    formatInEdBooktitle(entry,
-                                                                       v4),
-                                                   v5))))
+                                                                       v3),
+                                                   "booktitle"),
+                                       formatBvolume(entry)),
+                                formatNumberSeries(entry)),
+                         formatPages(entry))
       String v11
       if (isEmpty(entry.getExpanded("address",
-                                    bibDB)) ? 1 : 0) {
-        newSentenceCheckb(entry.getExpanded("publisher",
+                                    bibDB))) {
+        newSentenceCheckb(entry.getExpanded("organization",
                                             bibDB),
-                          entry.getExpanded("organization",
+                          entry.getExpanded("publisher",
                                             bibDB))
-        String v9 = outputCheck(entry,
-                                "year",
-                                formatDate(entry),
-                                output(entry.getExpanded("publisher",
-                                                         bibDB),
-                                       output(entry.getExpanded("organization",
-                                                                bibDB),
-                                              v7)))
-        v11 = v9
+        v11 = outputCheck(entry,
+                          output(output(v6,
+                                        entry.getExpanded("organization",
+                                                          bibDB)),
+                                 entry.getExpanded("publisher",
+                                                   bibDB)),
+                          formatDate(entry),
+                          "year")
       } else {
         String v8 = outputCheck(entry,
-                                "year",
+                                outputNonnull(v6,
+                                              entry.getExpanded("address",
+                                                                bibDB)),
                                 formatDate(entry),
-                                outputNonnull(entry.getExpanded("address",
-                                                                bibDB),
-                                              v7))
+                                "year")
         newSentence()
-        String v10 = output(entry.getExpanded("publisher",
-                                              bibDB),
-                            output(entry.getExpanded("organization",
-                                                     bibDB),
-                                   v8))
-        v11 = v10
+        v11 = output(output(v8,
+                            entry.getExpanded("organization",
+                                              bibDB)),
+                     entry.getExpanded("publisher",
+                                       bibDB))
       }
       v15 = v11
     } else {
-      v15 = output(formatPages(entry),
-                   outputNonnull(formatIncollInprocCrossref(entry),
-                                 v4))
+      v15 = output(outputNonnull(v3,
+                                 formatIncollInprocCrossref(entry)),
+                   formatPages(entry))
     }
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v15))
+    finEntry(output(v15,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void conference(entry, v1, v2) {
     inproceedings(entry,
-                  v1,
-                  v2)
+                  v2,
+                  v1)
   }
 
-  void manual(entry, v8) {
-    String v6 = outputBibitem(entry)
-    String v10
-    if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
-      String v5
-      if (isEmpty(entry.getExpanded("organization",
-                                    bibDB)) ? 1 : 0) {
-        v5 = v6
-      } else {
-        v5 = output(entry.getExpanded("address",
-                                      bibDB),
-                    outputNonnull(entry.getExpanded("organization",
-                                                    bibDB),
-                                  v6))
-      }
-      v10 = v5
-    } else {
-      v10 = outputNonnull(formatAuthors(entry,
-                                        v6),
-                          v8)
-    }
+  void manual(entry, v7) {
+    String v1 = outputBibitem(entry)
+    String v10 = ( isEmpty(entry.getExpanded("author",
+                                             bibDB))
+                   ? ( isEmpty(entry.getExpanded("organization",
+                                                 bibDB))
+                       ? v1
+                       : output(outputNonnull(v1,
+                                              entry.getExpanded("organization",
+                                                                bibDB)),
+                                entry.getExpanded("address",
+                                                  bibDB)) )
+                   : outputNonnull(v7,
+                                   formatAuthors(entry,
+                                                 v1)) )
     newBlock()
-    String v16 = outputCheck(entry,
-                             "title",
+    String v11 = outputCheck(entry,
+                             v10,
                              formatBtitle(entry),
-                             v10)
+                             "title")
     String v18
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v15
       if (isEmpty(entry.getExpanded("organization",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         newBlockChecka(entry.getExpanded("address",
                                          bibDB))
-        String v14 = output(entry.getExpanded("address",
-                                              bibDB),
-                            v16)
-        v15 = v14
+        v15 = output(v11,
+                     entry.getExpanded("address",
+                                       bibDB))
       } else {
-        v15 = v16
+        v15 = v11
       }
       v18 = v15
     } else {
-      newBlockCheckb(entry.getExpanded("address",
+      newBlockCheckb(entry.getExpanded("organization",
                                        bibDB),
-                     entry.getExpanded("organization",
+                     entry.getExpanded("address",
                                        bibDB))
-      String v17 = output(entry.getExpanded("address",
-                                            bibDB),
-                          output(entry.getExpanded("organization",
-                                                   bibDB),
-                                 v16))
-      v18 = v17
+      v18 = output(output(v11,
+                          entry.getExpanded("organization",
+                                            bibDB)),
+                   entry.getExpanded("address",
+                                     bibDB))
     }
-    String v19 = output(formatDate(entry),
-                        output(formatEdition(entry),
-                               v18))
+    String v19 = output(output(v18,
+                               formatEdition(entry)),
+                        formatDate(entry))
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v19))
+    finEntry(output(v19,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void mastersthesis(entry, v1) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
     String v3 = outputCheck(entry,
-                            "title",
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
     String v4 = outputCheck(entry,
-                            "year",
-                            formatDate(entry),
-                            output(entry.getExpanded("address",
-                                                     bibDB),
-                                   outputCheck(entry,
-                                               "school",
+                            output(outputCheck(entry,
+                                               outputNonnull(v3,
+                                                             formatThesisType(entry,
+                                                                              "Master's thesis")),
                                                entry.getExpanded("school",
                                                                  bibDB),
-                                               outputNonnull(formatThesisType(entry,
-                                                                              "Master's thesis"),
-                                                             v3))))
+                                               "school"),
+                                   entry.getExpanded("address",
+                                                     bibDB)),
+                            formatDate(entry),
+                            "year")
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v4))
+    finEntry(output(v4,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void misc(entry, v1) {
-    String v2 = output(formatAuthors(entry,
-                                     outputBibitem(entry)),
-                       v1)
-    newBlockCheckb(entry.getExpanded("howpublished",
+    String v2 = output(v1,
+                       formatAuthors(entry,
+                                     outputBibitem(entry)))
+    newBlockCheckb(entry.getExpanded("title",
                                      bibDB),
-                   entry.getExpanded("title",
+                   entry.getExpanded("howpublished",
                                      bibDB))
-    String v3 = output(formatTitle(entry),
-                       v2)
+    String v3 = output(v2,
+                       formatTitle(entry))
     newBlockChecka(entry.getExpanded("howpublished",
                                      bibDB))
-    String v4 = output(formatDate(entry),
-                       output(entry.getExpanded("howpublished",
-                                                bibDB),
-                              v3))
+    String v4 = output(output(v3,
+                              entry.getExpanded("howpublished",
+                                                bibDB)),
+                       formatDate(entry))
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v4))
+    finEntry(output(v4,
+                    entry.getExpanded("note",
+                                      bibDB)))
     emptyMiscCheck(entry)
   }
 
   void phdthesis(entry, v1) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
     String v3 = outputCheck(entry,
-                            "title",
+                            v2,
                             formatBtitle(entry),
-                            v2)
+                            "title")
     newBlock()
     String v4 = outputCheck(entry,
-                            "year",
-                            formatDate(entry),
-                            output(entry.getExpanded("address",
-                                                     bibDB),
-                                   outputCheck(entry,
-                                               "school",
+                            output(outputCheck(entry,
+                                               outputNonnull(v3,
+                                                             formatThesisType(entry,
+                                                                              "PhD thesis")),
                                                entry.getExpanded("school",
                                                                  bibDB),
-                                               outputNonnull(formatThesisType(entry,
-                                                                              "PhD thesis"),
-                                                             v3))))
+                                               "school"),
+                                   entry.getExpanded("address",
+                                                     bibDB)),
+                            formatDate(entry),
+                            "year")
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v4))
+    finEntry(output(v4,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
-  void proceedings(entry, v4) {
-    String v2 = outputBibitem(entry)
-    String v7
-    if (isEmpty(entry.getExpanded("editor",
-                                  bibDB)) ? 1 : 0) {
-      v7 = output(entry.getExpanded("organization",
-                                    bibDB),
-                  v2)
-    } else {
-      v7 = outputNonnull(formatEditors(entry,
-                                       v2),
-                         v4)
-    }
+  void proceedings(entry, v3) {
+    String v1 = outputBibitem(entry)
+    String v7 = ( isEmpty(entry.getExpanded("editor",
+                                            bibDB))
+                  ? output(v1,
+                           entry.getExpanded("organization",
+                                             bibDB))
+                  : outputNonnull(v3,
+                                  formatEditors(entry,
+                                                v1)) )
     newBlock()
-    String v9 = output(formatNumberSeries(entry),
-                       output(formatBvolume(entry),
-                              outputCheck(entry,
-                                          "title",
+    String v8 = output(output(outputCheck(entry,
+                                          v7,
                                           formatBtitle(entry),
-                                          v7)))
+                                          "title"),
+                              formatBvolume(entry)),
+                       formatNumberSeries(entry))
     String v21
     if (isEmpty(entry.getExpanded("address",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v12
       if (isEmpty(entry.getExpanded("editor",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         newSentenceChecka(entry.getExpanded("publisher",
                                             bibDB))
-        v12 = v9
+        v12 = v8
       } else {
-        newSentenceCheckb(entry.getExpanded("publisher",
+        newSentenceCheckb(entry.getExpanded("organization",
                                             bibDB),
-                          entry.getExpanded("organization",
+                          entry.getExpanded("publisher",
                                             bibDB))
-        String v11 = output(entry.getExpanded("organization",
-                                              bibDB),
-                            v9)
-        v12 = v11
+        v12 = output(v8,
+                     entry.getExpanded("organization",
+                                       bibDB))
       }
-      String v19 = outputCheck(entry,
-                               "year",
-                               formatDate(entry),
-                               output(entry.getExpanded("publisher",
-                                                        bibDB),
-                                      v12))
-      v21 = v19
+      v21 = outputCheck(entry,
+                        output(v12,
+                               entry.getExpanded("publisher",
+                                                 bibDB)),
+                        formatDate(entry),
+                        "year")
     } else {
-      String v16 = outputCheck(entry,
-                               "year",
+      String v14 = outputCheck(entry,
+                               outputNonnull(v8,
+                                             entry.getExpanded("address",
+                                                               bibDB)),
                                formatDate(entry),
-                               outputNonnull(entry.getExpanded("address",
-                                                               bibDB),
-                                             v9))
+                               "year")
       newSentence()
-      String v18
-      if (isEmpty(entry.getExpanded("editor",
-                                    bibDB)) ? 1 : 0) {
-        v18 = v16
-      } else {
-        v18 = output(entry.getExpanded("organization",
-                                       bibDB),
-                     v16)
-      }
-      String v20 = output(entry.getExpanded("publisher",
-                                            bibDB),
-                          v18)
-      v21 = v20
+      String v18 = ( isEmpty(entry.getExpanded("editor",
+                                               bibDB))
+                     ? v14
+                     : output(v14,
+                              entry.getExpanded("organization",
+                                                bibDB)) )
+      v21 = output(v18,
+                   entry.getExpanded("publisher",
+                                     bibDB))
     }
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v21))
+    finEntry(output(v21,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void techreport(entry, v1) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
     String v3 = outputCheck(entry,
-                            "title",
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
     String v4 = outputCheck(entry,
-                            "year",
-                            formatDate(entry),
-                            output(entry.getExpanded("address",
-                                                     bibDB),
-                                   outputCheck(entry,
-                                               "institution",
+                            output(outputCheck(entry,
+                                               outputNonnull(v3,
+                                                             formatTrNumber(entry)),
                                                entry.getExpanded("institution",
                                                                  bibDB),
-                                               outputNonnull(formatTrNumber(entry),
-                                                             v3))))
+                                               "institution"),
+                                   entry.getExpanded("address",
+                                                     bibDB)),
+                            formatDate(entry),
+                            "year")
     newBlock()
-    finEntry(output(entry.getExpanded("note",
-                                      bibDB),
-                    v4))
+    finEntry(output(v4,
+                    entry.getExpanded("note",
+                                      bibDB)))
   }
 
   void unpublished(entry, v1) {
     String v2 = outputCheck(entry,
-                            "author",
+                            v1,
                             formatAuthors(entry,
                                           outputBibitem(entry)),
-                            v1)
+                            "author")
     newBlock()
     String v3 = outputCheck(entry,
-                            "title",
+                            v2,
                             formatTitle(entry),
-                            v2)
+                            "title")
     newBlock()
-    finEntry(output(formatDate(entry),
-                    outputCheck(entry,
-                                "note",
+    finEntry(output(outputCheck(entry,
+                                v3,
                                 entry.getExpanded("note",
                                                   bibDB),
-                                v3)))
+                                "note"),
+                    formatDate(entry)))
   }
 
   void defaultType(entry, v1) {
@@ -1479,17 +1302,13 @@ class Style {
   String chopWord(v1, v2, v3) {
     s = v1
     len = v2
-    String v6
-    if (v3 == Substring.substring(s,
-                                  1,
-                                  len) ? 1 : 0) {
-      v6 = Substring.substring(s,
-                               len + 1,
-                               GLOBAL_MAX)
-    } else {
-      v6 = s
-    }
-    return v6
+    return ( v3 == Substring.substring(s,
+                                       1,
+                                       len)
+             ? Substring.substring(s,
+                                   len + 1,
+                                   GLOBAL_MAX)
+             : s )
   }
 
   void initializeEtAlCharUsed() {
@@ -1500,218 +1319,161 @@ class Style {
     s = v1
     numnames = NumNames.numNames(s)
     String v20
-    if (numnames > 1 ? 1 : 0) {
-      if (numnames > 4 ? 1 : 0) {
+    if (numnames > 1) {
+      if (numnames > 4) {
         namesleft = 3
       } else {
         namesleft = numnames
       }
       nameptr = 1
-      String v9 = ""
+      String v12 = ""
       while (namesleft > 0) {
         String v11
-        if (nameptr == numnames ? 1 : 0) {
+        if (nameptr == numnames) {
           String v7
           if (FormatName.formatName(s,
                                     nameptr,
-                                    "{ff }{vv }{ll}{ jj}") == "others" ? 1 : 0) {
-            String v3 = v9 + "{\\etalchar{+}}"
+                                    "{ff }{vv }{ll}{ jj}") == "others") {
+            String v3 = v12 + "{\\etalchar{+}}"
             etAlCharUsed = 1
             v7 = v3
           } else {
-            v7 = v9 + FormatName.formatName(s,
-                                            nameptr,
-                                            "{v{}}{l{}}")
+            v7 = v12 + FormatName.formatName(s,
+                                             nameptr,
+                                             "{v{}}{l{}}")
           }
           v11 = v7
         } else {
-          v11 = v9 + FormatName.formatName(s,
-                                           nameptr,
-                                           "{v{}}{l{}}")
+          v11 = v12 + FormatName.formatName(s,
+                                            nameptr,
+                                            "{v{}}{l{}}")
         }
         nameptr = nameptr + 1
         namesleft = namesleft - 1
-        v9 = v11
+        v12 = v11
       }
       String v15
-      if (numnames > 4 ? 1 : 0) {
-        String v13 = v9 + "{\\etalchar{+}}"
+      if (numnames > 4) {
+        String v13 = v12 + "{\\etalchar{+}}"
         etAlCharUsed = 1
         v15 = v13
       } else {
-        v15 = v9
+        v15 = v12
       }
       v20 = v15
     } else {
-      String v17 = FormatName.formatName(s,
+      String v16 = FormatName.formatName(s,
                                          1,
                                          "{v{}}{l{}}")
-      String v19
-      if (TextLength.textLength(FormatName.formatName(s,
-                                                      1,
-                                                      "{v{}}{l{}}")) < 2 ? 1 : 0) {
-        v19 = TextPrefix.textPrefix(FormatName.formatName(s,
+      v20 = ( TextLength.textLength(FormatName.formatName(s,
                                                           1,
-                                                          "{ll}"),
-                                    3)
-      } else {
-        v19 = v17
-      }
-      v20 = v19
+                                                          "{v{}}{l{}}")) < 2
+              ? TextPrefix.textPrefix(FormatName.formatName(s,
+                                                            1,
+                                                            "{ll}"),
+                                      3)
+              : v16 )
     }
     return v20
   }
 
   String authorKeyLabel(entry) {
-    String v5
-    if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
-      String v3
-      if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
-        v3 = Substring.substring(entry.getKey(),
-                                 1,
-                                 3)
-      } else {
-        v3 = TextPrefix.textPrefix(entry.getExpanded("key",
-                                                     bibDB),
-                                   3)
-      }
-      v5 = v3
-    } else {
-      v5 = formatLabNames(entry.getExpanded("author",
-                                            bibDB))
-    }
-    return v5
+    return ( isEmpty(entry.getExpanded("author",
+                                       bibDB))
+             ? ( isEmpty(entry.getExpanded("key",
+                                           bibDB))
+                 ? Substring.substring(entry.getKey(),
+                                       1,
+                                       3)
+                 : TextPrefix.textPrefix(entry.getExpanded("key",
+                                                           bibDB),
+                                         3) )
+             : formatLabNames(entry.getExpanded("author",
+                                                bibDB)) )
   }
 
   String authorEditorKeyLabel(entry) {
-    String v7
-    if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
-      String v5
-      if (isEmpty(entry.getExpanded("editor",
-                                    bibDB)) ? 1 : 0) {
-        String v3
-        if (isEmpty(entry.getExpanded("key",
-                                      bibDB)) ? 1 : 0) {
-          v3 = Substring.substring(entry.getKey(),
-                                   1,
-                                   3)
-        } else {
-          v3 = TextPrefix.textPrefix(entry.getExpanded("key",
-                                                       bibDB),
-                                     3)
-        }
-        v5 = v3
-      } else {
-        v5 = formatLabNames(entry.getExpanded("editor",
-                                              bibDB))
-      }
-      v7 = v5
-    } else {
-      v7 = formatLabNames(entry.getExpanded("author",
-                                            bibDB))
-    }
-    return v7
+    return ( isEmpty(entry.getExpanded("author",
+                                       bibDB))
+             ? ( isEmpty(entry.getExpanded("editor",
+                                           bibDB))
+                 ? ( isEmpty(entry.getExpanded("key",
+                                               bibDB))
+                     ? Substring.substring(entry.getKey(),
+                                           1,
+                                           3)
+                     : TextPrefix.textPrefix(entry.getExpanded("key",
+                                                               bibDB),
+                                             3) )
+                 : formatLabNames(entry.getExpanded("editor",
+                                                    bibDB)) )
+             : formatLabNames(entry.getExpanded("author",
+                                                bibDB)) )
   }
 
   String authorKeyOrganizationLabel(entry) {
-    String v7
-    if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
-      String v5
-      if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
-        String v3
-        if (isEmpty(entry.getExpanded("organization",
-                                      bibDB)) ? 1 : 0) {
-          v3 = Substring.substring(entry.getKey(),
-                                   1,
-                                   3)
-        } else {
-          v3 = TextPrefix.textPrefix(chopWord(entry.getExpanded("organization",
-                                                                bibDB),
-                                              4,
-                                              "The "),
-                                     3)
-        }
-        v5 = v3
-      } else {
-        v5 = TextPrefix.textPrefix(entry.getExpanded("key",
-                                                     bibDB),
-                                   3)
-      }
-      v7 = v5
-    } else {
-      v7 = formatLabNames(entry.getExpanded("author",
-                                            bibDB))
-    }
-    return v7
+    return ( isEmpty(entry.getExpanded("author",
+                                       bibDB))
+             ? ( isEmpty(entry.getExpanded("key",
+                                           bibDB))
+                 ? ( isEmpty(entry.getExpanded("organization",
+                                               bibDB))
+                     ? Substring.substring(entry.getKey(),
+                                           1,
+                                           3)
+                     : TextPrefix.textPrefix(chopWord("The ",
+                                                      4,
+                                                      entry.getExpanded("organization",
+                                                                        bibDB)),
+                                             3) )
+                 : TextPrefix.textPrefix(entry.getExpanded("key",
+                                                           bibDB),
+                                         3) )
+             : formatLabNames(entry.getExpanded("author",
+                                                bibDB)) )
   }
 
   String editorKeyOrganizationLabel(entry) {
-    String v7
-    if (isEmpty(entry.getExpanded("editor",
-                                  bibDB)) ? 1 : 0) {
-      String v5
-      if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
-        String v3
-        if (isEmpty(entry.getExpanded("organization",
-                                      bibDB)) ? 1 : 0) {
-          v3 = Substring.substring(entry.getKey(),
-                                   1,
-                                   3)
-        } else {
-          v3 = TextPrefix.textPrefix(chopWord(entry.getExpanded("organization",
-                                                                bibDB),
-                                              4,
-                                              "The "),
-                                     3)
-        }
-        v5 = v3
-      } else {
-        v5 = TextPrefix.textPrefix(entry.getExpanded("key",
-                                                     bibDB),
-                                   3)
-      }
-      v7 = v5
-    } else {
-      v7 = formatLabNames(entry.getExpanded("editor",
-                                            bibDB))
-    }
-    return v7
+    return ( isEmpty(entry.getExpanded("editor",
+                                       bibDB))
+             ? ( isEmpty(entry.getExpanded("key",
+                                           bibDB))
+                 ? ( isEmpty(entry.getExpanded("organization",
+                                               bibDB))
+                     ? Substring.substring(entry.getKey(),
+                                           1,
+                                           3)
+                     : TextPrefix.textPrefix(chopWord("The ",
+                                                      4,
+                                                      entry.getExpanded("organization",
+                                                                        bibDB)),
+                                             3) )
+                 : TextPrefix.textPrefix(entry.getExpanded("key",
+                                                           bibDB),
+                                         3) )
+             : formatLabNames(entry.getExpanded("editor",
+                                                bibDB)) )
   }
 
   void calcLabel(entry) {
-    String v7
-    if (or(entry.getType() == "inbook" ? 1 : 0,
-           entry.getType() == "book" ? 1 : 0)) {
-      v7 = authorEditorKeyLabel(entry)
-    } else {
-      String v5
-      if (entry.getType() == "proceedings" ? 1 : 0) {
-        v5 = editorKeyOrganizationLabel(entry)
-      } else {
-        String v3
-        if (entry.getType() == "manual" ? 1 : 0) {
-          v3 = authorKeyOrganizationLabel(entry)
-        } else {
-          v3 = authorKeyLabel(entry)
-        }
-        v5 = v3
-      }
-      v7 = v5
-    }
-    entry.setLocal("label", v7 + Substring.substring(Purify.purify(fieldOrNull(entry.getExpanded("year",
-                                                                                                 bibDB))),
-                                                     -1,
-                                                     2))
-    entry.setLocal("sort.label", sortify(v7 + Substring.substring(Purify.purify(fieldOrNull(entry.getExpanded("year",
-                                                                                                              bibDB))),
-                                                                  -1,
-                                                                  4)))
+    String v7 = ( or(entry.getType() == "book" ? 1 : 0,
+                     entry.getType() == "inbook" ? 1 : 0)
+                  ? authorEditorKeyLabel(entry)
+                  : ( entry.getType() == "proceedings"
+                      ? editorKeyOrganizationLabel(entry)
+                      : ( entry.getType() == "manual"
+                          ? authorKeyOrganizationLabel(entry)
+                          : authorKeyLabel(entry) ) ) )
+    entry.setLocal("label",
+                   v7 + Substring.substring(Purify.purify(fieldOrNull(entry.getExpanded("year",
+                                                                                        bibDB))),
+                                            -1,
+                                            2))
+    entry.setLocal("sort.label",
+                   sortify(v7 + Substring.substring(Purify.purify(fieldOrNull(entry.getExpanded("year",
+                                                                                                bibDB))),
+                                                    -1,
+                                                    4)))
   }
 
   String sortFormatNames(v1) {
@@ -1719,40 +1481,32 @@ class Style {
     nameptr = 1
     numnames = NumNames.numNames(s)
     namesleft = numnames
-    String v4 = ""
+    String v2 = ""
     while (namesleft > 0) {
-      String v8
-      if (nameptr > 1 ? 1 : 0) {
-        v8 = v4 + "   "
-      } else {
-        v8 = v4
-      }
+      String v7 = ( nameptr > 1 ? v2 + "   " : v2 )
       t = FormatName.formatName(s,
                                 nameptr,
                                 "{vv{ } }{ll{ }}{  ff{ }}{  jj{ }}")
-      String v11
-      if (and(t == "others" ? 1 : 0,
-              nameptr == numnames ? 1 : 0)) {
-        v11 = v8 + "et al"
-      } else {
-        v11 = v8 + sortify(t)
-      }
+      String v11 = ( and(nameptr == numnames ? 1 : 0,
+                         t == "others" ? 1 : 0)
+                     ? v7 + "et al"
+                     : v7 + sortify(t) )
       nameptr = nameptr + 1
       namesleft = namesleft - 1
-      v4 = v11
+      v2 = v11
     }
-    return v4
+    return v2
   }
 
   String sortFormatTitle(v1) {
     t = v1
-    return Substring.substring(sortify(chopWord(chopWord(chopWord(t,
-                                                                  4,
-                                                                  "The "),
-                                                         3,
-                                                         "An "),
+    return Substring.substring(sortify(chopWord("A ",
                                                 2,
-                                                "A ")),
+                                                chopWord("An ",
+                                                         3,
+                                                         chopWord("The ",
+                                                                  4,
+                                                                  t)))),
                                1,
                                GLOBAL_MAX)
   }
@@ -1760,10 +1514,10 @@ class Style {
   String authorSort(entry) {
     String v4
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v2
       if (isEmpty(entry.getExpanded("key",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         bibProcessor.warning("to sort, need author or key in " + entry.getKey())
         v2 = ""
       } else {
@@ -1781,13 +1535,13 @@ class Style {
   String authorEditorSort(entry) {
     String v6
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v4
       if (isEmpty(entry.getExpanded("editor",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         String v2
         if (isEmpty(entry.getExpanded("key",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("to sort, need author, editor, or key in " + entry.getKey())
           v2 = ""
         } else {
@@ -1810,13 +1564,13 @@ class Style {
   String authorOrganizationSort(entry) {
     String v6
     if (isEmpty(entry.getExpanded("author",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v4
       if (isEmpty(entry.getExpanded("organization",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         String v2
         if (isEmpty(entry.getExpanded("key",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("to sort, need author, organization, or key in " + entry.getKey())
           v2 = ""
         } else {
@@ -1825,10 +1579,10 @@ class Style {
         }
         v4 = v2
       } else {
-        v4 = sortify(chopWord(entry.getExpanded("organization",
-                                                bibDB),
+        v4 = sortify(chopWord("The ",
                               4,
-                              "The "))
+                              entry.getExpanded("organization",
+                                                bibDB)))
       }
       v6 = v4
     } else {
@@ -1841,13 +1595,13 @@ class Style {
   String editorOrganizationSort(entry) {
     String v6
     if (isEmpty(entry.getExpanded("editor",
-                                  bibDB)) ? 1 : 0) {
+                                  bibDB))) {
       String v4
       if (isEmpty(entry.getExpanded("organization",
-                                    bibDB)) ? 1 : 0) {
+                                    bibDB))) {
         String v2
         if (isEmpty(entry.getExpanded("key",
-                                      bibDB)) ? 1 : 0) {
+                                      bibDB))) {
           bibProcessor.warning("to sort, need editor, organization, or key in " + entry.getKey())
           v2 = ""
         } else {
@@ -1856,10 +1610,10 @@ class Style {
         }
         v4 = v2
       } else {
-        v4 = sortify(chopWord(entry.getExpanded("organization",
-                                                bibDB),
+        v4 = sortify(chopWord("The ",
                               4,
-                              "The "))
+                              entry.getExpanded("organization",
+                                                bibDB)))
       }
       v6 = v4
     } else {
@@ -1872,30 +1626,20 @@ class Style {
   void presort(entry) {
     calcLabel(entry)
     String v8 = entry.getLocalString("sort.label") + "    "
-    String v7
-    if (or(entry.getType() == "inbook" ? 1 : 0,
-           entry.getType() == "book" ? 1 : 0)) {
-      v7 = authorEditorSort(entry)
-    } else {
-      String v5
-      if (entry.getType() == "proceedings" ? 1 : 0) {
-        v5 = editorOrganizationSort(entry)
-      } else {
-        String v3
-        if (entry.getType() == "manual" ? 1 : 0) {
-          v3 = authorOrganizationSort(entry)
-        } else {
-          v3 = authorSort(entry)
-        }
-        v5 = v3
-      }
-      v7 = v5
-    }
-    entry.setLocal("sort.key\$", Substring.substring(v8 + v7 + "    " + sortify(fieldOrNull(entry.getExpanded("year",
-                                                                                                              bibDB))) + "    " + sortFormatTitle(fieldOrNull(entry.getExpanded("title",
-                                                                                                                                                                                bibDB))),
-                                                     1,
-                                                     ENTRY_MAX))
+    String v7 = ( or(entry.getType() == "book" ? 1 : 0,
+                     entry.getType() == "inbook" ? 1 : 0)
+                  ? authorEditorSort(entry)
+                  : ( entry.getType() == "proceedings"
+                      ? editorOrganizationSort(entry)
+                      : ( entry.getType() == "manual"
+                          ? authorOrganizationSort(entry)
+                          : authorSort(entry) ) ) )
+    entry.setLocal("sort.key\$",
+                   Substring.substring(v8 + v7 + "    " + sortify(fieldOrNull(entry.getExpanded("year",
+                                                                                                bibDB))) + "    " + sortFormatTitle(fieldOrNull(entry.getExpanded("title",
+                                                                                                                                                                  bibDB))),
+                                       1,
+                                       ENTRY_MAX))
   }
 
   void initializeLongestLabel() {
@@ -1907,22 +1651,26 @@ class Style {
   }
 
   void forwardPass(entry) {
-    if (lastSortLabel == entry.getLocalString("sort.label") ? 1 : 0) {
+    if (lastSortLabel == entry.getLocalString("sort.label")) {
       lastExtraNum = lastExtraNum + 1
-      entry.setLocal("extra.label", Character.toString((char)(lastExtraNum)))
+      entry.setLocal("extra.label",
+                     Character.toString((char)(lastExtraNum)))
     } else {
       lastExtraNum = 97
-      entry.setLocal("extra.label", "")
+      entry.setLocal("extra.label",
+                     "")
       lastSortLabel = entry.getLocalString("sort.label")
     }
   }
 
   void reversePass(entry) {
-    if (nextExtra == "b" ? 1 : 0) {
-      entry.setLocal("extra.label", "a")
+    if (nextExtra == "b") {
+      entry.setLocal("extra.label",
+                     "a")
     }
-    entry.setLocal("label", entry.getLocalString("label") + entry.getLocalString("extra.label"))
-    if (Width.width(entry.getLocalString("label")) > longestLabelWidth ? 1 : 0) {
+    entry.setLocal("label",
+                   entry.getLocalString("label") + entry.getLocalString("extra.label"))
+    if (Width.width(entry.getLocalString("label")) > longestLabelWidth) {
       longestLabel = entry.getLocalString("label")
       longestLabelWidth = Width.width(entry.getLocalString("label"))
     }
@@ -1931,22 +1679,17 @@ class Style {
 
   void beginBib() {
     if (etAlCharUsed) {
-      bibWriter.print("\\newcommand{\\etalchar}[1]{\$^{#1}\$}")
-      bibWriter.println()
+      bibWriter.println("\\newcommand{\\etalchar}[1]{\$^{#1}\$}")
     }
-    if (isEmpty(bibDB.getPreambleExpanded()) ? 1 : 0) {
-    } else {
-      bibWriter.print(bibDB.getPreambleExpanded())
-      bibWriter.println()
+    if (! isEmpty(bibDB.getPreambleExpanded())) {
+      bibWriter.println(bibDB.getPreambleExpanded())
     }
-    bibWriter.print("\\begin{thebibliography}{" + longestLabel + "}")
-    bibWriter.println()
+    bibWriter.println("\\begin{thebibliography}{" + longestLabel + "}")
   }
 
   void endBib() {
     bibWriter.println()
-    bibWriter.print("\\end{thebibliography}")
-    bibWriter.println()
+    bibWriter.println("\\end{thebibliography}")
   }
 
   void run() {

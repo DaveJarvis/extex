@@ -44,12 +44,12 @@ public class ChangeCaseCompiler implements Compiler {
         /**
          * Creates a new object.
          * 
-         * @param a the first argument
-         * @param b the second argument
+         * @param format the format argument
+         * @param string the string argument
          */
-        public ChangeCase(GCode a, GCode b) {
+        public ChangeCase(GCode format, GCode string) {
 
-            super(ReturnType.STRING, "ChangeCase.changeCase", a, b);
+            super(ReturnType.STRING, "ChangeCase.changeCase", format, string);
         }
 
     }
@@ -65,9 +65,9 @@ public class ChangeCaseCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState stack,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode a = stack.pop();
-        GCode b = stack.pop();
-        stack.push(new ChangeCase(a, b));
+        GCode format = stack.pop();
+        GCode string = stack.pop();
+        stack.push(new ChangeCase(format, string));
         linkData.addImports("org.extex.exbib.core.bst.code.impl.ChangeCase");
     }
 

@@ -65,10 +65,10 @@ public class SubstringCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode a = state.pop();
-        GCode b = state.pop();
-        GCode c = state.pop();
-        state.push(new Substring(c, b, a));
+        GCode length = state.pop();
+        GCode start = state.pop();
+        GCode string = state.pop();
+        state.push(new Substring(string, start, length));
         linkData.addImports("org.extex.exbib.core.bst.code.impl.Substring");
     }
 

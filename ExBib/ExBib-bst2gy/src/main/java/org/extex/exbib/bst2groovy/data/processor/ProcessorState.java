@@ -20,7 +20,9 @@ package org.extex.exbib.bst2groovy.data.processor;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
@@ -40,19 +42,25 @@ import org.extex.exbib.bst2groovy.data.var.Var;
 public class ProcessorState {
 
     /**
+     * The field <tt>code</tt> contains the finished code.
+     */
+    private GCodeContainer code = new GCodeContainer();
+
+    /**
+     * The field <tt>locals</tt> contains the list of future items. They will be
+     * translated into local variables later on.
+     */
+    private List<Var> locals = new ArrayList<Var>();
+
+    /**
      * The field <tt>stack</tt> contains the current stack.
      */
     private List<GCode> stack = new ArrayList<GCode>();
 
     /**
-     * The field <tt>locals</tt> contains the list of future items.
+     * The field <tt>varInfo</tt> contains the variable information.
      */
-    private List<Var> locals = new ArrayList<Var>();
-
-    /**
-     * The field <tt>code</tt> contains the finished code.
-     */
-    private GCodeContainer code = new GCodeContainer();
+    private Map<String, VarInfo> varInfo = new HashMap<String, VarInfo>();
 
     /**
      * Add an element to the code list.
@@ -133,6 +141,33 @@ public class ProcessorState {
     public List<GCode> getStack() {
 
         return stack;
+    }
+
+    /**
+     * Getter for the variable information.
+     * 
+     * @return the info map
+     */
+    public Map<String, VarInfo> getVarInfo() {
+
+        return varInfo;
+    }
+
+    /**
+     * Getter for the variable information.
+     * 
+     * @param name the name of the variable
+     * 
+     * @return the info &ndash; either an existing or a new one
+     */
+    public VarInfo getVarInfo(String name) {
+
+        VarInfo info = varInfo.get(name);
+        if (info == null) {
+            info = new VarInfo(name);
+            varInfo.put(name, info);
+        }
+        return info;
     }
 
     /**

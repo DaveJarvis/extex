@@ -149,7 +149,7 @@ public class ChangeCase extends AbstractCode {
         int level = 0;
 
         if (fmt == null || fmt.length() != 1) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("change.case$");
         }
 
         switch (fmt.charAt(0)) {

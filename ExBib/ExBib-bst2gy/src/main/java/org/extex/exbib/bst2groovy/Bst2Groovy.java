@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -688,8 +689,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throw new ComplexFunctionException(name, stack.toString());
         }
 
+        List<Var> locals = state.getLocals();
+        Collections.reverse(locals);
         GFunction function = new GFunction(returnValue, name, //
-            state.getLocals(), state.getCode(), entry);
+            locals, state.getCode(), entry);
 
         if (optimizing) {
             function.optimize();

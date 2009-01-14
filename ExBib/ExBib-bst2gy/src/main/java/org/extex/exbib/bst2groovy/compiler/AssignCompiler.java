@@ -281,7 +281,9 @@ public final class AssignCompiler implements Compiler {
         public void visitInteger(TInteger integer, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            state.add(new SetInteger(((String) args[2]), ((GCode) args[3])));
+            String name = (String) args[2];
+            state.add(new SetInteger(name, ((GCode) args[3])));
+            state.getVarInfo(name).writing();
         }
 
         /**
@@ -367,7 +369,9 @@ public final class AssignCompiler implements Compiler {
         public void visitString(TString string, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            state.add(new SetString(((String) args[2]), ((GCode) args[3])));
+            String name = (String) args[2];
+            state.add(new SetString(name, ((GCode) args[3])));
+            state.getVarInfo(name).writing();
         }
 
         /**

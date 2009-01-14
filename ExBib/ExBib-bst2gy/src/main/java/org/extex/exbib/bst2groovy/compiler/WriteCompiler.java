@@ -19,6 +19,7 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.Compiler;
@@ -86,6 +87,7 @@ public class WriteCompiler implements Compiler {
                 next = list.get(index);
                 if (next instanceof Newline) {
                     list.remove(index);
+                    Collections.reverse(a);
                     list.add(index, new Writeln(a.toArray(new GCode[]{})));
                     return index + 1;
                 }
@@ -96,6 +98,7 @@ public class WriteCompiler implements Compiler {
                     break;
                 }
             }
+            Collections.reverse(a);
             list.add(index, new Write(a.toArray(new GCode[]{})));
             return index + 1;
         }

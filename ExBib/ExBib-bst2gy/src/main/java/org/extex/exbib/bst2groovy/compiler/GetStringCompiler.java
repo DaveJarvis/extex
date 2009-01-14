@@ -78,6 +78,7 @@ public class GetStringCompiler implements Compiler {
             Evaluator evaluator, LinkContainer linkData) {
 
         state.push(new GetString(name));
+        state.getVarInfo(name).reading();
     }
 
 }

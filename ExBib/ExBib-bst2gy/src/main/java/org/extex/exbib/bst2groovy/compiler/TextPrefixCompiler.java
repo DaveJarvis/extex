@@ -64,8 +64,8 @@ public class TextPrefixCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        GCode length = state.pop();
         GCode text = state.pop();
+        GCode length = state.pop();
         state.push(new TextPrefix(text, length));
         linkData.addImports("org.extex.exbib.core.bst.code.impl.TextPrefix");
     }
