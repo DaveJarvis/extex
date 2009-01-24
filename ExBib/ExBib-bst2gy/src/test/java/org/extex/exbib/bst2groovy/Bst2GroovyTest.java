@@ -984,13 +984,13 @@ public class Bst2GroovyTest {
             PREFIX + "\n\n  String s = ''" + "\n  String t = ''" + HEAD
                     + "  }\n" //
                     + "\n" //
-                    + "  void f(v1, v2) {\n" //
+                    + "  void f(v2, v1) {\n" //
                     + "    if (1 == 2) {\n" //
-                    + "      t = v2\n" //
-                    + "      s = v1\n" //
+                    + "      t = v1\n" //
+                    + "      s = v2\n" //
                     + "    } else {\n" //
-                    + "      t = v2\n" //
-                    + "      s = v1\n" //
+                    + "      t = v1\n" //
+                    + "      s = v2\n" //
                     + "    }\n" //
                     + "  }\n" //
                     + "\n" //
