@@ -1,0 +1,142 @@
+%
+% Copyright (C) 2009 The ExTeX Group and individual authors listed below
+%
+% This library is free software; you can redistribute it and/or modify it
+% under the terms of the GNU Lesser General Public License as published by the
+% Free Software Foundation; either version 2.1 of the License, or (at your
+% option) any later version.
+%
+% This library is distributed in the hope that it will be useful, but WITHOUT
+% ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+% FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+% for more details.
+%
+% You should have received a copy of the GNU Lesser General Public License
+% along with this library; if not, write to the Free Software Foundation,
+% Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+%
+\ProvidePackage{exbib}
+\providecommand*{\ExBib}{\ifx\texorpdfstring\undefined
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.1em Bib}%
+  \else\texorpdfstring{%
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.1em Bib%
+  }}{ExBib}%
+  \fi
+}
+\def\exbib@ignore@arg#1{%
+  \ifx#1[
+    \expandafter\exbib@ignore@arg@
+  \fi
+}
+\def\exbib@ignore@arg@#1]#2{}
+\let\citation\exbib@ignore@arg
+\let\bibdata\exbib@ignore@arg
+\let\bibstyle\exbib@ignore@arg
+\let\biboptions\exbib@ignore@arg
+%
+%
+%
+\let\cite\@undefined
+\DeclareRobustCommand\cite{%
+  \@ifnextchar <%
+  {\exbib@cite}%
+  {\@ifnextchar [{\@tempswatrue\@citex}{\@tempswafalse\exbib@@citex[]}}%
+}
+\def\exbib@cite<#1>{\leavevmode
+  \@ifnextchar [%
+  {\@tempswatrue\exbib@citex<#1>}%
+  {\@tempswafalse\exbib@@citex[]}%
+}
+\def\exbib@citex<#1>[#2]#3{\leavevmode
+  \let\@citea\@empty
+  \@cite{\@for\@citeb:=#3\do
+    {\@citea\def\@citea{,\penalty\@m\ }%
+     \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+     \if@filesw\immediate\write\@auxout{\string\citation[#1]{\@citeb}}\fi
+     \@ifundefined{b@\@citeb}{\hbox{\reset@font\bfseries ?}%
+       \G@refundefinedtrue
+       \@latex@warning
+         {Citation `\@citeb' on page \thepage \space undefined}}%
+       {\@cite@ofmt{\csname b@\@citeb\endcsname}}}}{#2}}
+\def\exbib@@citex[#1]#2{\leavevmode
+  \let\@citea\@empty
+  \@cite{\@for\@citeb:=#2\do
+    {\@citea\def\@citea{,\penalty\@m\ }%
+     \edef\@citeb{\expandafter\@firstofone\@citeb\@empty}%
+     \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+     \@ifundefined{b@\@citeb}{\hbox{\reset@font\bfseries ?}%
+       \G@refundefinedtrue
+       \@latex@warning
+         {Citation `\@citeb' on page \thepage \space undefined}}%
+       {\@cite@ofmt{\csname b@\@citeb\endcsname}}}}{#1}}
+%
+%
+\def\bibliography{%
+  \@ifnextchar <%
+  {\@tempswatrue\exbib@bibliography}%
+  {\@tempswafalse\exbib@@bibliography}}
+\def\exbib@bibliography<#1>#2{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata[#1]{#2}}%
+  \fi
+  \@input@{\jobname.#1}}
+\def\exbib@bibliography#1{%
+  \if@filesw
+    \immediate\write\@auxout{\string\bibdata{#1}}%
+  \fi
+  \@input@{\jobname.bbl}}
+
+\def\bibliographystyle{%
+  \@ifnextchar <%
+  {\@tempswatrue\exbib@bibliographystyle}%
+  {\@tempswafalse\exbib@@bibliographystyle}}
+\def\exbib@bibliographystyle<#1>#2{%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle[#1]{#2}}%
+     \fi}}
+\def\exbib@@bibliographystyle#1{%
+  \ifx\@begindocumenthook\@undefined\else
+    \expandafter\AtBeginDocument
+  \fi
+    {\if@filesw
+       \immediate\write\@auxout{\string\bibstyle{#1}}%
+     \fi}}
+%
+%
+\def\nocite{%
+  \@ifnextchar <%
+  {\@tempswatrue\exbib@nocite}%
+  {\@tempswafalse\exbib@@nocite}}
+\def\exbib@nocite<#1>#2{\@bsphack
+  \ifx\@onlypreamble\document
+    \@for\@citeb:=#2\do{%
+      \edef\@citeb{\expandafter\@firstofone\@citeb}%
+      \if@filesw\immediate\write\@auxout{\string\citation[#1]{\@citeb}}\fi
+      \@ifundefined{b@\@citeb}{\G@refundefinedtrue
+          \@latex@warning{Citation `\@citeb' undefined}}{}}%
+  \else
+    \@latex@error{Cannot be used in preamble}\@eha
+    % \AtBeginDocument{\nocite{#1}}
+  \fi
+  \@esphack}
+\def\exbib@@nocite#1{\@bsphack
+  \ifx\@onlypreamble\document
+    \@for\@citeb:=#1\do{%
+      \edef\@citeb{\expandafter\@firstofone\@citeb}%
+      \if@filesw\immediate\write\@auxout{\string\citation{\@citeb}}\fi
+      \@ifundefined{b@\@citeb}{\G@refundefinedtrue
+          \@latex@warning{Citation `\@citeb' undefined}}{}}%
+  \else
+    \@latex@error{Cannot be used in preamble}\@eha
+    % \AtBeginDocument{\nocite{#1}}
+  \fi
+  \@esphack}
+%
+%
