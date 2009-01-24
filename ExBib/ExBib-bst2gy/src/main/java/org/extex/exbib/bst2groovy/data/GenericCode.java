@@ -187,7 +187,7 @@ public class GenericCode implements GCode {
         if (!showArgs) {
             return;
         }
-        writer.write("(");
+        printOpenArg(writer);
         int col = writer.getColumn();
         boolean first = true;
         if (entry != null) {
@@ -204,7 +204,31 @@ public class GenericCode implements GCode {
             }
             arg.print(writer, prefix);
         }
+        printCloseArg(writer);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void printCloseArg(CodeWriter writer) throws IOException {
+
         writer.write(")");
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer the writer
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    protected void printOpenArg(CodeWriter writer) throws IOException {
+
+        writer.write("(");
     }
 
     /**
