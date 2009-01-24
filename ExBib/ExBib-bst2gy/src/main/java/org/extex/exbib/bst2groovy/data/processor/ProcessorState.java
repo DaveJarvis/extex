@@ -19,7 +19,6 @@
 package org.extex.exbib.bst2groovy.data.processor;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,6 +29,7 @@ import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.var.DeclareVar;
 import org.extex.exbib.bst2groovy.data.var.Var;
+import org.extex.exbib.bst2groovy.data.var.VarManager;
 
 /**
  * This class implements a stack of GCode which returns new instances of Var
@@ -63,6 +63,22 @@ public class ProcessorState {
     private Map<String, VarInfo> varInfo = new HashMap<String, VarInfo>();
 
     /**
+     * The field <tt>varManager</tt> contains the variable manager.
+     */
+    private VarManager varManager;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param varManager the variable manager
+     */
+    public ProcessorState(VarManager varManager) {
+
+        super();
+        this.varManager = varManager;
+    }
+
+    /**
      * Add an element to the code list.
      * 
      * @param element the element to add
@@ -85,7 +101,7 @@ public class ProcessorState {
             GCode si = stack.get(i);
             if (!(si instanceof Var) && !(si instanceof GIntegerConstant)
                     && !(si instanceof GStringConstant)) {
-                Var v = Var.makeVar();
+                Var v = varManager.makeVar();
                 code.add(new DeclareVar(v, si));
                 stack.remove(i);
                 stack.add(i, v);
@@ -95,14 +111,13 @@ public class ProcessorState {
 
     /**
      * For a list of variables get the corresponding element from the stack.
-     * This element is unified with the variable it it is a variable or a
+     * This element is unified with the variable if it is a variable or a
      * declaration is added to the code.
      * 
      * @param list the list of variables to fix
      */
     public void fix(List<Var> list) {
 
-        Collections.reverse(list);
         for (Var x : list) {
             GCode v = pop();
             if (v instanceof Var) {
@@ -171,6 +186,19 @@ public class ProcessorState {
     }
 
     /**
+     * Merge the variable infos.
+     * 
+     * @param state the processor state to get the variable informations to be
+     *        merged in
+     */
+    public void mergeVarInfos(ProcessorState state) {
+
+        for (VarInfo v : state.varInfo.values()) {
+            getVarInfo(v.getName()).merge(v);
+        }
+    }
+
+    /**
      * Optimize the code contained herein.
      * 
      */
@@ -192,7 +220,7 @@ public class ProcessorState {
         if (!stack.isEmpty()) {
             return stack.remove(stack.size() - 1);
         }
-        Var ret = Var.makeVar();
+        Var ret = varManager.makeVar();
         locals.add(ret);
         return ret;
     }

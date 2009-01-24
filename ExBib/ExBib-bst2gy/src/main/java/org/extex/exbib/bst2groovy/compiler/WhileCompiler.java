@@ -132,7 +132,7 @@ public class WhileCompiler implements Compiler {
         GCode body = state.pop();
         GCode cond = state.pop();
 
-        ProcessorState condState = new ProcessorState();
+        ProcessorState condState = evaluator.makeState();
         if (cond instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) cond).getToken(), entryRefernce,
                 condState);
@@ -146,8 +146,9 @@ public class WhileCompiler implements Compiler {
         if (condState.size() - condState.getLocals().size() != 1) {
             throw new WhileComplexException(true, condState.toString());
         }
+        state.mergeVarInfos(condState);
         cond = condState.pop();
-        ProcessorState bodyState = new ProcessorState();
+        ProcessorState bodyState = evaluator.makeState();
         if (body instanceof CodeBlock) {
             evaluator.evaluate(((CodeBlock) body).getToken(), entryRefernce,
                 bodyState);
@@ -173,6 +174,7 @@ public class WhileCompiler implements Compiler {
             cond = ((GBoolean) cond).getCode();
         }
 
+        state.mergeVarInfos(bodyState);
         state.add(new While(cond, bodyState.getCode()));
         for (int i = bodyLocals.size() - 1; i >= 0; i--) {
             state.push(bodyLocals.get(i));

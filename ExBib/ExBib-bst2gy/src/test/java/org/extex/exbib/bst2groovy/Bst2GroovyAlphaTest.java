@@ -60,10 +60,13 @@ public class Bst2GroovyAlphaTest {
             // finder.enableTracing(true);
 
             Bst2Groovy bst2Groovy = new Bst2Groovy();
+            // bst2Groovy.setOptimizing(false);
             bst2Groovy.setResourceFinder(finder);
-            FileWriter w = new FileWriter("target/" + name + ".gy");
+            bst2Groovy.setStyleName(name);
+            FileWriter w =
+                    new FileWriter("target/" + name.toLowerCase() + ".groovy");
             try {
-                bst2Groovy.run(w, name + ".bst");
+                bst2Groovy.run(w, name.toLowerCase() + ".bst");
             } finally {
                 w.close();
             }
@@ -81,7 +84,7 @@ public class Bst2GroovyAlphaTest {
     @Test
     public void testAbbrv() throws Exception {
 
-        run("abbrv");
+        run("Abbrv");
     }
 
     /**
@@ -93,7 +96,7 @@ public class Bst2GroovyAlphaTest {
     @Test
     public void testAlpha() throws Exception {
 
-        run("alpha");
+        run("Alpha");
     }
 
     /**
@@ -105,7 +108,7 @@ public class Bst2GroovyAlphaTest {
     @Test
     public void testPlain() throws Exception {
 
-        run("plain");
+        run("Plain");
     }
 
     /**
@@ -117,7 +120,7 @@ public class Bst2GroovyAlphaTest {
     @Test
     public void testUnsrt() throws Exception {
 
-        run("unsrt");
+        run("Unsrt");
     }
 
 }

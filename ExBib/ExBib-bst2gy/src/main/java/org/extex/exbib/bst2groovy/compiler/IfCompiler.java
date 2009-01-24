@@ -316,7 +316,7 @@ public class IfCompiler implements Compiler {
         if (!(code instanceof CodeBlock)) {
             throw new IfSyntaxException(then);
         }
-        ProcessorState state = new ProcessorState();
+        ProcessorState state = evaluator.makeState();
         evaluator.evaluate(((CodeBlock) code).getToken(), entry, state);
         return state;
     }
@@ -336,8 +336,8 @@ public class IfCompiler implements Compiler {
         GCode t = state.pop();
         GCode cond = state.pop();
 
-        ProcessorState condState = new ProcessorState();
         if (cond instanceof CodeBlock) {
+            ProcessorState condState = evaluator.makeState();
             evaluator.evaluate(((CodeBlock) cond).getToken(), entry, condState);
             if (condState.size() != 1) {
                 throw new IfComplexException(true, "");
@@ -355,6 +355,7 @@ public class IfCompiler implements Compiler {
                     state.add(new DeclareVar(x, v));
                 }
             }
+            state.mergeVarInfos(condState);
         }
 
         ProcessorState thenState = compileBlock(evaluator, entry, t, true);
@@ -362,7 +363,7 @@ public class IfCompiler implements Compiler {
         int size = adjustStackSize(thenState, elseState);
         state.fix(Var.unify(elseState.getLocals(), thenState.getLocals()));
 
-        ProcessorState os = new ProcessorState();
+        ProcessorState os = evaluator.makeState();
 
         if (size > 0) {
             thenState.eliminateSideEffects();
@@ -393,6 +394,9 @@ public class IfCompiler implements Compiler {
                 // }
             }
         }
+
+        state.mergeVarInfos(thenState);
+        state.mergeVarInfos(elseState);
 
         state.add(new If(cond, optimize(thenState), optimize(elseState)));
 

@@ -75,6 +75,7 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
+import org.extex.exbib.bst2groovy.data.processor.VarInfo;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
@@ -82,6 +83,7 @@ import org.extex.exbib.bst2groovy.data.types.GQuote;
 import org.extex.exbib.bst2groovy.data.types.GStringConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.Var;
+import org.extex.exbib.bst2groovy.data.var.VarManager;
 import org.extex.exbib.bst2groovy.exception.ComplexFunctionException;
 import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
@@ -512,6 +514,11 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private LinkContainer linkData;
 
     /**
+     * The field <tt>styleName</tt> contains the name of the style assembled.
+     */
+    private String styleName = "Style";
+
+    /**
      * The field <tt>types</tt> contains the supported types.
      */
     private Map<String, GFunction> types = new HashMap<String, GFunction>();
@@ -521,6 +528,11 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * optimizations.
      */
     private boolean optimizing = true;
+
+    /**
+     * The field <tt>varManager</tt> contains the variable manager.
+     */
+    private VarManager varManager = new VarManager("v");
 
     {
         if (compilers == null) {
@@ -670,8 +682,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void analyzeFunction(String name, TokenList body)
             throws ExBibException {
 
-        Var.reset();
-        ProcessorState state = new ProcessorState();
+        varManager.reset();
+        ProcessorState state = new ProcessorState(varManager);
         EntryRefernce entry = new EntryRefernce("entry");
         evaluatePartially(body, entry, state);
 
@@ -703,6 +715,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         if (function.needsEntry() && function.getType() == ReturnType.VOID) {
             types.put(name, function);
         }
+        saveVarInfo(state.getVarInfo(), function);
     }
 
     /**
@@ -763,6 +776,16 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#makeState()
+     */
+    public ProcessorState makeState() {
+
+        return new ProcessorState(varManager);
+    }
+
+    /**
      * Load BST styles and write a Groovy program for them.
      * 
      * @param writer the writer for the program
@@ -783,6 +806,22 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param varInfos
+     * @param function the function
+     */
+    private void saveVarInfo(Map<String, VarInfo> varInfos, GFunction function) {
+
+        // System.err.println(function.getName());
+        //
+        // for (VarInfo v : varInfos.values()) {
+        // System.err.println(v.toString());
+        // }
+        // System.err.println();
+    }
+
+    /**
      * Setter for the optimizing flag.
      * 
      * @param optimizing the new value of the optimizing flag
@@ -790,6 +829,16 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     public void setOptimizing(boolean optimizing) {
 
         this.optimizing = optimizing;
+    }
+
+    /**
+     * Setter for the styleName.
+     * 
+     * @param styleName the styleName to set
+     */
+    public void setStyleName(String styleName) {
+
+        this.styleName = styleName;
     }
 
     /**
@@ -845,7 +894,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             fct.print(w, NL_INDENT);
         }
 
-        w.write("\n}\n\nnew Style(bibDB, bibWriter, bibProcessor).", //
+        w.write("\n}\n\nnew ", styleName, "(bibDB, bibWriter, bibProcessor).", //
             run.getName(), "()\n");
         w.flush();
     }
@@ -877,7 +926,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void writeConstructor(CodeWriter writer) throws IOException {
 
         writer.write("\n\n", //
-            "  Style(bibDB, bibWriter, bibProcessor) {\n", //
+            "  ", styleName, "(bibDB, bibWriter, bibProcessor) {\n", //
             "    this.bibDB = bibDB\n", //
             "    this.bibWriter = bibWriter\n", //
             "    this.bibProcessor = bibProcessor\n");
@@ -933,7 +982,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void writeHead(CodeWriter writer) throws IOException {
 
-        writer.write("class Style {\n\n", //
+        writer.write("class ", styleName, " {\n\n", //
             "  DB bibDB\n", //
             "  Writer bibWriter\n", //
             "  Processor bibProcessor\n", //

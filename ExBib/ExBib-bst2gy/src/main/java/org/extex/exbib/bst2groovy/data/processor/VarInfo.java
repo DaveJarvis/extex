@@ -27,9 +27,9 @@ package org.extex.exbib.bst2groovy.data.processor;
 public class VarInfo {
 
     /**
-     * The field <tt>noRead</tt> contains the ...
+     * The field <tt>readBeforeWrite</tt> contains the ...
      */
-    private int noRead = 0;
+    private boolean readBeforeWrite = false;
 
     /**
      * The field <tt>noWrite</tt> contains the ...
@@ -37,7 +37,7 @@ public class VarInfo {
     private int noWrite = 0;
 
     /**
-     * The field <tt>name</tt> contains the ...
+     * The field <tt>name</tt> contains the name of the variable.
      */
     private String name;
 
@@ -63,16 +63,6 @@ public class VarInfo {
     }
 
     /**
-     * Getter for the noRead.
-     * 
-     * @return the noRead
-     */
-    public int getNoRead() {
-
-        return noRead;
-    }
-
-    /**
      * Getter for the noWrite.
      * 
      * @return the noWrite
@@ -83,19 +73,52 @@ public class VarInfo {
     }
 
     /**
+     * Getter for the noRead.
+     * 
+     * @return the noRead
+     */
+    public boolean getReadBeforeWrite() {
+
+        return readBeforeWrite;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param v
+     */
+    public void merge(VarInfo v) {
+
+        if (noWrite <= 0) {
+            readBeforeWrite |= v.readBeforeWrite;
+        }
+        noWrite += v.noWrite;
+    }
+
+    /**
      * TODO gene: missing JavaDoc
      * 
      */
     public void reading() {
 
         if (noWrite <= 0) {
-            noRead++;
+            readBeforeWrite = true;
         }
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * {@inheritDoc}
      * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return name + " " + noWrite + " " + readBeforeWrite;
+    }
+
+    /**
+     * Recognize that the variable has been used in writing.
      */
     public void writing() {
 

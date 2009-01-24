@@ -104,7 +104,6 @@ public class BblWriter implements Writer, Configurable {
      */
     public BblWriter(Writer writer) {
 
-        super();
         if (writer == null) {
             throw new IllegalArgumentException(getClass().getName() + "(null)");
         }
@@ -233,6 +232,18 @@ public class BblWriter implements Writer, Configurable {
     }
 
     /**
+     * Print a newline.
+     * 
+     * @throws IOException in case of an I/O error
+     * 
+     * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
+     */
+    public void newline() throws IOException {
+
+        foldAt(buffer.length());
+    }
+
+    /**
      * Write some strings to the output buffer and keep track of lines. Long
      * lines are broken at whitespace. Complete lines are shipped to the output
      * writer.
@@ -247,6 +258,23 @@ public class BblWriter implements Writer, Configurable {
             buffer.append(s);
             linebreaking();
         }
+    }
+
+    /**
+     * Write a string to the output writer.
+     * <p>
+     * Note, that this is a work-around for a problem with the Groovy extension
+     * language.
+     * </p>
+     * 
+     * @param arg the argument to print
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void print(String arg) throws IOException {
+
+        buffer.append(arg);
+        linebreaking();
     }
 
     /**
@@ -272,10 +300,24 @@ public class BblWriter implements Writer, Configurable {
      */
     public void println(String... args) throws IOException {
 
-        for (String s : args) {
-            buffer.append(s);
-            linebreaking();
-        }
+        print(args);
+        println();
+    }
+
+    /**
+     * Write a string followed by a newline to the output writer.
+     * <p>
+     * Note, that this is a work-around for a problem with the Groovy extension
+     * language.
+     * </p>
+     * 
+     * @param arg the argument to print
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void println(String arg) throws IOException {
+
+        print(arg);
         println();
     }
 

@@ -44,46 +44,6 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
 public final class Var implements GCode {
 
     /**
-     * The field <tt>no</tt> contains the counter for next items.
-     */
-    private static int no = 1;
-
-    /**
-     * The field <tt>localPrefix</tt> contains the prefix for the name of new
-     * instances of Var.
-     */
-    private static String localPrefix = "v";
-
-    /**
-     * Create a new local variable.
-     * 
-     * @return a new local variable
-     */
-    public static Var makeVar() {
-
-        String name = Integer.toString(no);
-        return new Var(localPrefix + name, no++);
-    }
-
-    /**
-     * Reset the internal numbering for generated locals.
-     */
-    public static void reset() {
-
-        no = 1;
-    }
-
-    /**
-     * Setter for the localPrefix.
-     * 
-     * @param prefix the localPrefix to set
-     */
-    public static void setLocalPrefix(String prefix) {
-
-        localPrefix = prefix;
-    }
-
-    /**
      * Unify two lists of variables.
      * 
      * @param l1 the first list
@@ -135,7 +95,7 @@ public final class Var implements GCode {
      * @param name the name
      * @param age the age
      */
-    private Var(String name, int age) {
+    protected Var(String name, int age) {
 
         this.name = name;
         this.age = age;

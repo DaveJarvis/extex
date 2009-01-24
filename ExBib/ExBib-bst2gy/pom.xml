@@ -33,6 +33,13 @@
       <artifactId>CLI</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExBib-GROOVY</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>

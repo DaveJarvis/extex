@@ -53,4 +53,11 @@ public interface Evaluator {
     void evaluatePartially(Token token, EntryRefernce entryRefernce,
             ProcessorState state) throws ExBibException;
 
+    /**
+     * Create a new processor state.
+     * 
+     * @return a new processor state
+     */
+    ProcessorState makeState();
+
 }

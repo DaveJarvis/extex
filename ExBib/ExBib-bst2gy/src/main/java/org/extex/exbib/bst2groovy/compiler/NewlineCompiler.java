@@ -45,7 +45,7 @@ public class NewlineCompiler implements Compiler {
          */
         public Newline() {
 
-            super(ReturnType.VOID, "bibWriter.println");
+            super(ReturnType.VOID, "bibWriter.newline");
         }
 
     }

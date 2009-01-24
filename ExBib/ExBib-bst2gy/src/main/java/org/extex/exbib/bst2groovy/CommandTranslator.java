@@ -181,7 +181,7 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = new ProcessorState();
+            ProcessorState state = evaluator.makeState();
             EntryRefernce entryRefernce = new EntryRefernce("it");
             try {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
@@ -209,7 +209,7 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = new ProcessorState();
+            ProcessorState state = evaluator.makeState();
             EntryRefernce entryRefernce = new EntryRefernce("it");
             evaluator.evaluate(literal, entryRefernce, state);
             if (state.size() != 0) {
@@ -292,7 +292,7 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = new ProcessorState();
+            ProcessorState state = evaluator.makeState();
             EntryRefernce entryRefernce = new EntryRefernce("it");
             try {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
@@ -301,11 +301,11 @@ public class CommandTranslator {
                 throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new CommandWithReturnException("ITERATE", command
-                    .toString());
+                throw new CommandWithReturnException("ITERATE", //
+                    command.toString());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("ITERATE", command
-                    .toString());
+                throw new CommandWithArgumentsException("ITERATE", //
+                    command.toString());
             }
             code.add(new GLoop("bibDB.getEntries().reverse().each", state
                 .getCode()));

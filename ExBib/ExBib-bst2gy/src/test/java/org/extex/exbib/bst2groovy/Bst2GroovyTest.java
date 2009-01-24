@@ -106,7 +106,7 @@ public class Bst2GroovyTest {
      * The field <tt>POST_RUN</tt> contains the piece of code after the run
      * function.
      */
-    private static final String POST_RUN =
+    public static final String POST_RUN =
             "  }\n" + "\n" + "}\n" + "\n"
                     + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
 
@@ -114,12 +114,12 @@ public class Bst2GroovyTest {
      * The field <tt>RUN</tt> contains the piece of code starting the run
      * function.
      */
-    private static final String RUN = "\n" + "  void run() {\n";
+    public static final String RUN = "\n" + "  void run() {\n";
 
     /**
      * The field <tt>HEAD</tt> contains the head of the style definition.
      */
-    private static final String HEAD =
+    public static final String HEAD =
             "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n"
                     + "    this.bibDB = bibDB\n"
                     + "    this.bibWriter = bibWriter\n"
@@ -128,12 +128,12 @@ public class Bst2GroovyTest {
     /**
      * The field <tt>POSTFIX</tt> contains the ...
      */
-    private static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
+    public static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
 
     /**
      * The field <tt>CLASS_PREFIX</tt> contains the prefix code for the class.
      */
-    private static final String CLASS_PREFIX = "\n" //
+    public static final String CLASS_PREFIX = "\n" //
             + "class Style {\n\n" //
             + "  DB bibDB\n" //
             + "  Writer bibWriter\n" //
@@ -142,7 +142,7 @@ public class Bst2GroovyTest {
     /**
      * The field <tt>PREFIX</tt> contains the prefix code.
      */
-    private static final String PREFIX =
+    public static final String PREFIX =
             "import org.extex.exbib.core.Processor\n"
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
@@ -159,14 +159,14 @@ public class Bst2GroovyTest {
      * @throws ExBibException in case of an error
      * @throws IOException in case of an error
      */
-    private void run(String input, String output)
+    protected static void run(String input, String output)
             throws ExBibImpossibleException,
                 ExBibBstNotFoundException,
                 ExBibException,
                 IOException {
 
         Bst2Groovy bst2Groovy = new Bst2Groovy();
-        Logger logger = Logger.getLogger(getClass().getName());
+        Logger logger = Logger.getLogger(Bst2GroovyTest.class.getName());
         logger.setLevel(Level.SEVERE);
         ConsoleHandler handler = new ConsoleHandler();
         handler.setLevel(Level.ALL);
@@ -228,8 +228,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
                     + "  String abc(v2, v1) {\n"
-                    + "    return ChangeCase.changeCase(v2,\n"
-                    + "                                 v1)\n" + "  }\n" + RUN
+                    + "    return ChangeCase.changeCase(v1,\n"
+                    + "                                 v2)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -631,9 +631,9 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
                     + "  String abc(v3, v2, v1) {\n"
-                    + "    return FormatName.formatName(v1,\n"
+                    + "    return FormatName.formatName(v3,\n"
                     + "                                 v2,\n"
-                    + "                                 v3)\n" + "  }\n" + RUN
+                    + "                                 v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -984,13 +984,13 @@ public class Bst2GroovyTest {
             PREFIX + "\n\n  String s = ''" + "\n  String t = ''" + HEAD
                     + "  }\n" //
                     + "\n" //
-                    + "  void f(v2, v1) {\n" //
+                    + "  void f(v1, v2) {\n" //
                     + "    if (1 == 2) {\n" //
-                    + "      t = v1\n" //
-                    + "      s = v2\n" //
+                    + "      t = v2\n" //
+                    + "      s = v1\n" //
                     + "    } else {\n" //
-                    + "      t = v1\n" //
-                    + "      s = v2\n" //
+                    + "      t = v2\n" //
+                    + "      s = v1\n" //
                     + "    }\n" //
                     + "  }\n" //
                     + "\n" //
@@ -1108,7 +1108,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 {newline$} 'skip$ if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (1) {\n" + "      bibWriter.println()\n"
+                    + "    if (1) {\n" + "      bibWriter.newline()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1122,7 +1122,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ {newline$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (0) {\n" + "      bibWriter.println()\n"
+                    + "    if (0) {\n" + "      bibWriter.newline()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1136,8 +1136,8 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 {newline$} {newline$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (1) {\n" + "      bibWriter.println()\n"
-                    + "    } else {\n" + "      bibWriter.println()\n"
+                    + "    if (1) {\n" + "      bibWriter.newline()\n"
+                    + "    } else {\n" + "      bibWriter.newline()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1253,7 +1253,7 @@ public class Bst2GroovyTest {
         run("function{a}{#1}function{abc}{{a} {} {newline$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n"
                     + "  int a() {\n    return 1\n  }\n\n" + "  void abc() {\n"
-                    + "    if (! a()) {\n" + "      bibWriter.println()\n"
+                    + "    if (! a()) {\n" + "      bibWriter.newline()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1610,7 +1610,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{newline$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    bibWriter.println()\n" + "  }\n" + RUN + POST_RUN);
+                    + "    bibWriter.newline()\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2041,9 +2041,9 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
                     + "  String abc(v3, v2, v1) {\n"
-                    + "    return Substring.substring(v1,\n"
+                    + "    return Substring.substring(v3,\n"
                     + "                               v2,\n"
-                    + "                               v3)\n" + "  }\n" + RUN
+                    + "                               v1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -2112,8 +2112,8 @@ public class Bst2GroovyTest {
                     + HEAD
                     + "  }\n\n" //
                     + "  String abc(v2, v1) {\n"
-                    + "    return TextPrefix.textPrefix(v1,\n"
-                    + "                                 v2)\n" //
+                    + "    return TextPrefix.textPrefix(v2,\n"
+                    + "                                 v1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
