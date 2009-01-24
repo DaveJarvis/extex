@@ -141,10 +141,9 @@ public class AlphaTest {
         File bib =
                 makeFile("test1", ".bib",
                     "@book{abc,author={Donald E. Knuth}, title={The {\\TeX}book}}\n");
-        run(bib,
-            makeFile("test1", ".aux", "\\citation{*}\n\\bibstyle{"
-                    + "src/test/resources/alpha.gy" + "}\n\\bibdata{" + bib
-                    + "}\n"), //
+        run(bib, makeFile("test1", ".aux", "\\citation{*}\n\\bibstyle{"
+                + "src/test/resources/alpha.groovy" + "}\n\\bibdata{" + bib
+                + "}\n"), //
             "empty publisher in abc\n" //
                     + "empty year in abc\n", //
             "\\begin{thebibliography}{Knu}\n" //
