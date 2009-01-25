@@ -21,7 +21,6 @@ package org.extex.exbib.bst2groovy.compiler;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
@@ -92,26 +91,17 @@ public class ChrToIntCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-         *      java.lang.String, java.lang.String)
+         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in)
-                throws IOException {
+        public void print(CodeWriter writer) throws IOException {
 
             writer
                 .write(
-                    prefix,
-                    "int chrToInt(String s) {",
-                    prefix,
-                    Bst2Groovy.INDENT,
-                    "if (s.length() != 1) {",
-                    prefix,
-                    Bst2Groovy.INDENT,
-                    Bst2Groovy.INDENT,
-                    "bstProcessor.warning(\"argument to chrToInt has wrong length\")",
-                    prefix, Bst2Groovy.INDENT, "}", prefix, Bst2Groovy.INDENT,
-                    "return s.charAt(0)", prefix, "}\n");
+                    "\n\tint chrToInt(String s) {",
+                    "\n\t\tif (s.length() != 1) {",
+                    "\n\t\t\tbstProcessor.warning(\"argument to chrToInt has wrong length\")",
+                    "\n\t\t}", "\n\t\treturn s.charAt(0)", "\n\t}\n");
         }
     };
 

@@ -63,27 +63,22 @@ public class CallTypeCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
-         *      java.lang.String, java.lang.String)
+         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in)
-                throws IOException {
+        public void print(CodeWriter writer) throws IOException {
 
-            String in1 = prefix + in;
-            String in2 = in1 + in;
-            String in3 = in2 + in;
-            writer.write(prefix, "void callType(Entry entry) {", //
-                in1, "def typeFunction = types[entry.getType()]", //
-                in1, "if (typeFunction == null) {", //
-                in2, "typeFunction = types['default.type']", //
-                in2, "if (typeFunction == null) {", //
-                in3, "bstProcessor.warning('missing default.type')", //
-                in3, "return", //
-                in2, "}", //
-                in1, "}", //
-                in1, "typeFunction(entry)", //
-                prefix, "}\n");
+            writer.write("\n\tvoid callType(Entry entry) {", //
+                "\n\t\tdef typeFunction = types[entry.getType()]", //
+                "\n\t\tif (typeFunction == null) {", //
+                "\n\t\t\ttypeFunction = types['default.type']", //
+                "\n\t\t\tif (typeFunction == null) {", //
+                "\n\t\t\t\tbstProcessor.warning('missing default.type')", //
+                "\n\t\t\t\treturn", //
+                "\n\t\t\t}", //
+                "\n\t\t}", //
+                "\n\t\ttypeFunction(entry)", //
+                "\n\t}\n");
         }
     };
 

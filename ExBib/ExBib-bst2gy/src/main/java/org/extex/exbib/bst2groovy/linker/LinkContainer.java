@@ -85,16 +85,13 @@ public class LinkContainer {
      * Write the linked code
      * 
      * @param writer the writer
-     * @param prefix the newline and prefix for any line
-     * @param in the indentation amount
-     * 
      * @throws IOException in case of an I/O error
      */
-    public void writeMethods(CodeWriter writer, String prefix, String in)
+    public void writeMethods(CodeWriter writer)
             throws IOException {
 
         for (LinkingCode fct : linked) {
-            fct.print(writer, prefix, in);
+            fct.print(writer);
         }
     }
 

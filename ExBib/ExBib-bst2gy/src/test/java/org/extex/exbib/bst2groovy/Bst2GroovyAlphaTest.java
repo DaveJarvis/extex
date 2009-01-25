@@ -24,6 +24,8 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.exbib.bst2groovy.parameters.Parameter;
+import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
@@ -62,7 +64,8 @@ public class Bst2GroovyAlphaTest {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             // bst2Groovy.setOptimizing(false);
             bst2Groovy.setResourceFinder(finder);
-            bst2Groovy.setStyleName(name);
+            bst2Groovy.setParameter(ParameterType.STYLE_NAME, //
+                new Parameter(name));
             FileWriter w =
                     new FileWriter("target/" + name.toLowerCase() + ".groovy");
             try {

@@ -20,7 +20,6 @@ package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
@@ -71,14 +70,11 @@ public class EmptyCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in)
-                throws IOException {
+        public void print(CodeWriter writer) throws IOException {
 
-            writer.write(prefix,
-                "boolean isEmpty(String s) {", //
-                prefix, Bst2Groovy.INDENT,
-                "return s == null || s.trim() == ''", //
-                prefix, "}\n");
+            writer.write("\n\tboolean isEmpty(String s) {", //
+                "\n\t\treturn s == null || s.trim() == ''", //
+                "\n\t}\n");
         }
     };
 

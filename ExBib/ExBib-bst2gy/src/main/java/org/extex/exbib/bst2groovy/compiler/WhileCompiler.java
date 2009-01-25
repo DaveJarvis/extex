@@ -21,7 +21,6 @@ package org.extex.exbib.bst2groovy.compiler;
 import java.io.IOException;
 import java.util.List;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
@@ -108,7 +107,7 @@ public class WhileCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer, String prefix) throws IOException {
 
-            String prefix2 = prefix + Bst2Groovy.INDENT;
+            String prefix2 = prefix + "\t";
             writer.write(prefix, "while (");
             cond.print(writer, prefix2);
             writer.write(") {");

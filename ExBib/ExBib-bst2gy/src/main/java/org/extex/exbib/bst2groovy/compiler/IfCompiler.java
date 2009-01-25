@@ -22,7 +22,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
@@ -166,7 +165,7 @@ public class IfCompiler implements Compiler {
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix);
-            print(writer, prefix, prefix + Bst2Groovy.INDENT);
+            print(writer, prefix, prefix + "\t");
         }
 
         /**

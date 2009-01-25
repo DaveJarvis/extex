@@ -23,7 +23,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
@@ -336,7 +335,7 @@ public class GFunction extends GCodeContainer implements Compiler {
             arg.print(writer, prefix);
         }
         writer.write(") {");
-        super.print(writer, prefix + Bst2Groovy.INDENT);
+        super.print(writer, prefix + "\t");
         writer.write(prefix, "}\n");
     }
 

@@ -22,7 +22,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * This is a writer which keeps track of the current column.
+ * This is a writer which keeps track of the current column. Tab characters are
+ * replaced by an appropriate number of spaces on the fly.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -33,6 +34,11 @@ public class CodeWriter extends Writer {
      * The field <tt>writer</tt> contains the wrapped writer.
      */
     private Writer writer;
+
+    /**
+     * The field <tt>tabSize</tt> contains the indentation.
+     */
+    private int tabSize = 2;
 
     /**
      * The field <tt>col</tt> contains the counter for the current column.
@@ -91,6 +97,18 @@ public class CodeWriter extends Writer {
     }
 
     /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param oldIn the old indentation
+     * 
+     * @return the new indentation
+     */
+    public String moreIn(String oldIn) {
+
+        return oldIn + "  ";
+    }
+
+    /**
      * Write a newline and indent to a certain column.
      * 
      * @param n the target column
@@ -107,6 +125,16 @@ public class CodeWriter extends Writer {
         }
         column = n;
         inLine = 0;
+    }
+
+    /**
+     * Setter for the tab size.
+     * 
+     * @param tabSize the tab size to set
+     */
+    public void setTabSize(int tabSize) {
+
+        this.tabSize = tabSize;
     }
 
     /**
@@ -136,7 +164,19 @@ public class CodeWriter extends Writer {
                     inLine++;
                     break;
                 case '\t':
-                    column = ((column + 8) / 8) * 8;
+                    if (tabSize > 0) {
+                        int n = i - off - 1;
+                        if (n > 0) {
+                            writer.write(cbuf, off, n);
+                        }
+                        off = i;
+                        len -= n + 1;
+                        int x = ((column + tabSize) / tabSize) * tabSize;
+                        while (column < x) {
+                            writer.write(' ');
+                            column++;
+                        }
+                    }
                     inLine = 0;
                     break;
                 case '\r':

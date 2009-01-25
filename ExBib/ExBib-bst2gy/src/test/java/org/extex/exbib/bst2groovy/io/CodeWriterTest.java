@@ -116,4 +116,15 @@ public class CodeWriterTest {
         run("ab\n\n\ncd", "ab\n\ncd");
     }
 
+    /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test07() throws IOException {
+
+        run("\n\tcd", "  cd");
+    }
+
 }

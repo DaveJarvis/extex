@@ -39,16 +39,18 @@ import java.util.logging.StreamHandler;
 
 import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bsf.LogFormatter;
+import org.extex.exbib.bst2groovy.parameters.Parameter;
+import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.exbib.core.ExBib;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * This is a test suite for the {@link BsfProcessor} with a Groovy
- * configuration.
+ * configuration. It compiles a bst into a groovy program and uses this groovy
+ * program on xampl.bib.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -205,7 +207,8 @@ public class XamplTest {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             // bst2Groovy.setParameter(ParameterType.OPTIMIZE, Parameter.FALSE);
             bst2Groovy.setResourceFinder(finder);
-            bst2Groovy.setStyleName(name);
+            bst2Groovy.setParameter(ParameterType.STYLE_NAME, //
+                new Parameter(name));
             FileWriter w = new FileWriter(fileName);
             try {
                 bst2Groovy.run(w, name.toLowerCase() + ".bst");
@@ -227,7 +230,7 @@ public class XamplTest {
     }
 
     /**
-     * <test> Apply abbrv.groovyy on xampl.bib </test>
+     * <test> Apply abbrv.groovy on xampl.bib </test>
      * 
      * @throws Exception in case of an error
      */
@@ -238,7 +241,7 @@ public class XamplTest {
     }
 
     /**
-     * <test> Apply alpha.groovyy on xampl.bib </test>
+     * <test> Apply alpha.groovy on xampl.bib </test>
      * 
      * @throws Exception in case of an error
      */
@@ -249,7 +252,7 @@ public class XamplTest {
     }
 
     /**
-     * <test> Apply plain.groovyy on xampl.bib </test>
+     * <test> Apply plain.groovy on xampl.bib </test>
      * 
      * @throws Exception in case of an error
      */
@@ -260,12 +263,11 @@ public class XamplTest {
     }
 
     /**
-     * <test> Apply unsrt.groovyy on xampl.bib </test>
+     * <test> Apply unsrt.groovy on xampl.bib </test>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testUnsrt() throws Exception {
 
         run("Unsrt");

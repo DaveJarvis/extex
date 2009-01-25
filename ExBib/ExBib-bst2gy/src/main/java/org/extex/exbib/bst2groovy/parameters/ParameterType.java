@@ -29,6 +29,16 @@ public enum ParameterType {
     /**
      * The field <tt>OPTIMIZE</tt> contains the ...
      */
-    OPTIMIZE
+    OPTIMIZE,
+
+    /**
+     * The field <tt>STYLE_NAME</tt> contains the ...
+     */
+    STYLE_NAME,
+
+    /**
+     * The field <tt>TAB_SIZE</tt> contains the ...
+     */
+    TAB_SIZE
 
 }

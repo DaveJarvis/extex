@@ -127,17 +127,6 @@ import org.extex.framework.configuration.ConfigurationFactory;
 public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
     /**
-     * The field <tt>INDENT</tt> contains the String used for indentation.
-     */
-    public static final String INDENT = "  ";
-
-    /**
-     * The field <tt>NL_INDENT</tt> contains the newline character followed by a
-     * single indentation.
-     */
-    public static final String NL_INDENT = "\n" + INDENT;
-
-    /**
      * The field <tt>comments</tt> contains the comments.
      */
     private StringBuilder comments = new StringBuilder();
@@ -516,11 +505,6 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private LinkContainer linkData;
 
     /**
-     * The field <tt>styleName</tt> contains the name of the style assembled.
-     */
-    private String styleName = "Style";
-
-    /**
      * The field <tt>types</tt> contains the supported types.
      */
     private Map<String, GFunction> types = new HashMap<String, GFunction>();
@@ -724,11 +708,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
     /**
      * Initialize the parameters.
-     * 
      */
     private void defaultParameters() {
 
         parameters.put(ParameterType.OPTIMIZE, new Parameter(true));
+        parameters.put(ParameterType.STYLE_NAME, new Parameter("Style"));
+        parameters.put(ParameterType.TAB_SIZE, new Parameter(2));
     }
 
     /**
@@ -768,7 +753,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * 
      * @return the value
      */
-    public Parameter getParameter(String name) {
+    public Parameter getParameter(ParameterType name) {
 
         return parameters.get(name);
     }
@@ -848,16 +833,6 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * Setter for the styleName.
-     * 
-     * @param styleName the styleName to set
-     */
-    public void setStyleName(String styleName) {
-
-        this.styleName = styleName;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -889,28 +864,31 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         writeComments(writer);
 
         CodeWriter w = new CodeWriter(writer);
+        w.setTabSize(getParameter(ParameterType.TAB_SIZE).toInteger());
 
         writeImports(w);
         writeHead(w);
 
         for (String name : getIntegers()) {
-            w.write("  int ", GFunction.translate(name), " = 0\n");
+            w.write("\tint ", GFunction.translate(name), " = 0\n");
         }
-        w.write("\n");
         for (String name : getStrings()) {
-            w.write("  String ", GFunction.translate(name), " = ''\n");
+            w.write("\n\tString ", GFunction.translate(name), " = ''");
         }
-        w.write("\n");
+        w.write("\n\n");
         writeTypes(w);
         writeConstructor(w);
 
-        linkData.writeMethods(w, "\n" + INDENT, INDENT);
+        linkData.writeMethods(w);
 
         for (GFunction fct : functionList) {
-            fct.print(w, NL_INDENT);
+            fct.print(w, "\n\t");
         }
 
-        w.write("\n}\n\nnew ", styleName, "(bibDB, bibWriter, bibProcessor).", //
+        w.write(
+            "\n}\n\nnew ", //
+            getParameter(ParameterType.STYLE_NAME).toString(),
+            "(bibDB, bibWriter, bibProcessor).", //
             run.getName(), "()\n");
         w.flush();
     }
@@ -941,49 +919,43 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void writeConstructor(CodeWriter writer) throws IOException {
 
-        writer.write("\n\n", //
-            "  ", styleName, "(bibDB, bibWriter, bibProcessor) {\n", //
+        writer.write(
+            "\n\n", //
+            "  ", getParameter(ParameterType.STYLE_NAME).toString(),
+            "(bibDB, bibWriter, bibProcessor) {\n", //
             "    this.bibDB = bibDB\n", //
             "    this.bibWriter = bibWriter\n", //
             "    this.bibProcessor = bibProcessor\n");
 
         List<String> strings = this.getMacroNames();
         if (!strings.isEmpty()) {
-            writer.write(INDENT, INDENT, "[\n");
+            writer.write("\t\t[\n");
             for (String s : strings) {
-                writer.write(INDENT, INDENT, INDENT);
+                writer.write("\t\t\t");
                 writeMapKey(writer, s);
                 writer.write(": ", GStringConstant.translate(getMacro(s)),
                     ",\n");
             }
-            writer.write(INDENT, INDENT, //
-                "].each { name, value ->\n", //
-                INDENT, INDENT, //
-                INDENT, //
+            writer.write("\t\t].each { name, value ->\n", //
+                "\t\t\t", //
                 "bibDB.storeString(name, value)\n", //
-                INDENT, INDENT, //
-                "}\n");
+                "\t\t}\n");
         }
 
         Map<String, Token> options = this.getOptions();
         if (!options.isEmpty()) {
-            writer.write(INDENT, INDENT, "[\n");
+            writer.write("\t\t[\n");
             for (String s : options.keySet()) {
-                writer.write(INDENT, INDENT, INDENT);
+                writer.write("\t\t\t");
                 writeMapKey(writer, s);
                 writer.write(": ", GStringConstant.translate(getOption(s)
                     .getValue()), ",\n");
             }
-            writer.write(INDENT,
-                INDENT, //
-                "].each { name, value ->\n", INDENT, INDENT,
-                INDENT, //
-                "if (bibProcessor.getOption(name) == null) {\n", INDENT,
-                INDENT, INDENT, INDENT,//
+            writer.write("\t\t].each { name, value ->\n",
+                "\t\t\t", //
+                "if (bibProcessor.getOption(name) == null) {\n\t\t\t\t",
                 "bibProcessor.setOption(name, value)\n", //
-                INDENT, INDENT, INDENT,//
-                "}\n", INDENT, INDENT, //
-                "}\n");
+                "\t\t\t}\n\t\t", "}\n");
         }
 
         writer.write("  }\n");
@@ -998,7 +970,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void writeHead(CodeWriter writer) throws IOException {
 
-        writer.write("class ", styleName, " {\n\n", //
+        writer.write("class ", getParameter(ParameterType.STYLE_NAME)
+            .toString(), " {\n\n", //
             "  DB bibDB\n", //
             "  Writer bibWriter\n", //
             "  Processor bibProcessor\n", //
@@ -1049,12 +1022,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         Set<String> keySet = types.keySet();
         if (keySet.size() != 0) {
-            writer.write(NL_INDENT, "Map types = [");
+            writer.write("\tMap types = [");
             String[] keys = keySet.toArray(new String[0]);
             Arrays.sort(keys);
             for (String key : keys) {
                 GFunction function = types.get(key);
-                writer.write(NL_INDENT, INDENT);
+                writer.write("\n\t\t");
                 writeMapKey(writer, key);
                 writer.write(" : { entry -> ");
                 writer.write(function.getName(), "(entry");
@@ -1063,8 +1036,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 }
                 writer.write(")", " },");
             }
-            writer.write(NL_INDENT, "]\n" //
-            );
+            writer.write("\n\t]\n");
         }
     }
 

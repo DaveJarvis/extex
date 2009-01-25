@@ -54,10 +54,9 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in)
-                throws IOException {
+        public void print(CodeWriter writer) throws IOException {
 
-            writer.write(prefix, "private static final int ", init, "\n");
+            writer.write("\n\tprivate static final int ", init, "\n");
         }
 
     };

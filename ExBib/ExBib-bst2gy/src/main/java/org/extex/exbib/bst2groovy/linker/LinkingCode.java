@@ -34,12 +34,9 @@ public abstract class LinkingCode {
      * Print the linking code.
      * 
      * @param writer the writer
-     * @param prefix the prefix
-     * @param in the indentation
-     * 
      * @throws IOException in case of an I/O error
      */
-    public abstract void print(CodeWriter writer, String prefix, String in)
+    public abstract void print(CodeWriter writer)
             throws IOException;
 
 }

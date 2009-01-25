@@ -86,7 +86,7 @@ public class CommandTranslator {
         public void print(CodeWriter writer, String prefix) throws IOException {
 
             writer.write(prefix, getName(), " {");
-            getArg(0).print(writer, prefix + Bst2Groovy.INDENT);
+            getArg(0).print(writer, prefix + "\t");
             writer.write(prefix, "}");
         }
     }

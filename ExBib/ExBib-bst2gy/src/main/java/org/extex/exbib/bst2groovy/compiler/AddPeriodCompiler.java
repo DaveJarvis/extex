@@ -20,7 +20,6 @@ package org.extex.exbib.bst2groovy.compiler;
 
 import java.io.IOException;
 
-import org.extex.exbib.bst2groovy.Bst2Groovy;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
@@ -70,13 +69,12 @@ public class AddPeriodCompiler implements Compiler {
          *      java.lang.String)
          */
         @Override
-        public void print(CodeWriter writer, String prefix, String in)
-                throws IOException {
+        public void print(CodeWriter writer) throws IOException {
 
-            writer.write(prefix, "String addPeriod(String s) {", //
-                prefix, Bst2Groovy.INDENT, "return s == null || s == '' ? '' "
+            writer.write("\n\tString addPeriod(String s) {", //
+                "\n\t\treturn s == null || s == '' ? '' "
                         + ": s.matches(\".*[.!?]\") ? s : s + \".\"", //
-                prefix, "}\n");
+                "\n\t}\n");
         }
 
     };
