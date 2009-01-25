@@ -221,17 +221,22 @@ public final class Var implements GCode {
      */
     public boolean unify(GCode other) {
 
-        if (reference != null) {
+        if (other == this) {
+            // nothing to do
+        } else if (reference != null) {
             return reference.unify(other);
-        } else if (other == this) {
-            return true;
-        } else if (other instanceof Var //
-                && ((Var) other).reference == null //
-                && ((Var) other).age > age) {
-            ((Var) other).reference = this;
-            return true;
+        } else if (other instanceof Var) {
+            Var vo = (Var) other;
+            if (vo.reference != null) {
+                return unify(vo.reference);
+            } else if (vo.age > age) {
+                vo.reference = this;
+            } else {
+                reference = vo;
+            }
+        } else {
+            reference = other;
         }
-        reference = other;
         return true;
     }
 

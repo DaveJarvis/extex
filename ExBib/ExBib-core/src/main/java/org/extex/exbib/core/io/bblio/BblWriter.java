@@ -379,4 +379,36 @@ public class BblWriter implements Writer, Configurable {
         linebreaking();
     }
 
+    /**
+     * Write some strings to the output writer.
+     * <p>
+     * Note, that this is a work-around for a problem with the Groovy extension
+     * language.
+     * </p>
+     * 
+     * @param arg the arguments to print
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void write(String[] arg) throws IOException {
+
+        print(arg);
+    }
+
+    /**
+     * Write some strings followed by a newline to the output writer.
+     * <p>
+     * Note, that this is a work-around for a problem with the Groovy extension
+     * language.
+     * </p>
+     * 
+     * @param arg the arguments to print
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void writeln(String[] arg) throws IOException {
+
+        println(arg);
+    }
+
 }

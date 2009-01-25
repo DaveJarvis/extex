@@ -122,7 +122,6 @@ public class XamplTest {
         prop.put(ExBib.PROP_FILE, aux.toString());
         prop.put(ExBib.PROP_OUTFILE, "target/xampl.out");
 
-        // ByteArrayOutputStream outStream = new ByteArrayOutputStream();
         ByteArrayOutputStream errStream = new ByteArrayOutputStream();
 
         Logger logger = Logger.getLogger("test");
@@ -132,10 +131,8 @@ public class XamplTest {
         handler.setLevel(Level.INFO);
         logger.addHandler(handler);
 
-        // PrintStream out = System.out;
         PrintStream err = System.err;
         try {
-            // System.setOut(new PrintStream(outStream));
             System.setErr(new PrintStream(errStream));
             ExBib exBib = new ExBib(prop);
             exBib.setLogger(logger);
@@ -149,7 +146,6 @@ public class XamplTest {
                 getFileContents(prop.get(ExBib.PROP_OUTFILE).toString()));
         } finally {
             logger.removeHandler(handler);
-            // System.setOut(out);
             System.setErr(err);
             aux.delete();
             new File(aux.toString().replaceAll(".aux$", ".bbl")).delete();
@@ -207,7 +203,7 @@ public class XamplTest {
             // finder.enableTracing(true);
 
             Bst2Groovy bst2Groovy = new Bst2Groovy();
-            bst2Groovy.setOptimizing(false);
+            // bst2Groovy.setParameter(ParameterType.OPTIMIZE, Parameter.FALSE);
             bst2Groovy.setResourceFinder(finder);
             bst2Groovy.setStyleName(name);
             FileWriter w = new FileWriter(fileName);
@@ -236,7 +232,6 @@ public class XamplTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testAbbrv() throws Exception {
 
         run("Abbrv");
@@ -259,7 +254,6 @@ public class XamplTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testPlain() throws Exception {
 
         run("Plain");

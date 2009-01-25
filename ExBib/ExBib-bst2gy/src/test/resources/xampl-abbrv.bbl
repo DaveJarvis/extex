@@ -16,12 +16,12 @@ L.~A. Aamport.
 \bibitem{article-crossref}
 L.~A. Aamport.
 \newblock The gnats and gnus document preparation system.
-\newblock In {\em \mbox{G-Animal's} Journal\/} \cite{whole-journal}, pages 73+.
+\newblock In {\em \mbox{G-Animal's} Journal\/} \cite{WHOLE-JOURNAL}, pages 73+.
 \newblock This is a cross-referencing ARTICLE entry.
 
 \bibitem{whole-journal}
 {\em \mbox{G-Animal's} Journal}, 41(7), July 1986.
-\newblock The entire issue is devoted to gnats and gnus (this entry is a
+\newblock The entire issue is devoted to gnats and gnus  (this entry is a
   cross-referenced ARTICLE (journal)).
 
 \bibitem{whole-set}

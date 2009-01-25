@@ -18,8 +18,10 @@
 
 package org.extex.exbib.bst2groovy.data.var;
 
+import java.util.List;
+
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a manager for variables. New variables can be acquired from it.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -29,7 +31,12 @@ public class VarManager {
     /**
      * The field <tt>no</tt> contains the counter for next items.
      */
-    private int no = 1;
+    private int no;
+
+    /**
+     * The field <tt>noMin</tt> contains the minimum unused variable index.
+     */
+    private int noMin;
 
     /**
      * The field <tt>localPrefix</tt> contains the prefix for the name of new
@@ -39,10 +46,13 @@ public class VarManager {
 
     /**
      * Creates a new object.
+     * 
+     * @param prefix the variable name prefix
      */
     public VarManager(String prefix) {
 
         localPrefix = prefix;
+        reset();
     }
 
     /**
@@ -52,8 +62,22 @@ public class VarManager {
      */
     public Var makeVar() {
 
-        String name = Integer.toString(no);
-        return new Var(localPrefix + name, no++);
+        String name = localPrefix + Integer.toString(no);
+        return new Var(name, no++);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param varList the variable list
+     * @param prefix the variable name prefix
+     */
+    public void reassign(List<Var> varList, String prefix) {
+
+        for (int i = varList.size() - 1; i >= 0; i--) {
+            String name = prefix + Integer.toString(-noMin);
+            new Var(name, noMin--).unify(varList.get(i));
+        }
     }
 
     /**
@@ -62,6 +86,7 @@ public class VarManager {
     public void reset() {
 
         no = 1;
+        noMin = -1;
     }
 
     /**

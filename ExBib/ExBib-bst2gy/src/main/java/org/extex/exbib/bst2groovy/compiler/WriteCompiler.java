@@ -18,7 +18,6 @@
 
 package org.extex.exbib.bst2groovy.compiler;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -31,7 +30,6 @@ import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
-import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
@@ -49,20 +47,13 @@ public class WriteCompiler implements Compiler {
     private static final class Write extends GenericCode {
 
         /**
-         * The field <tt>addList</tt> contains the indicator for long argument
-         * lists.
-         */
-        private boolean addList;
-
-        /**
          * Creates a new object.
          * 
          * @param arg the arguments
          */
         private Write(GCode... arg) {
 
-            super(ReturnType.VOID, "bibWriter.print", arg);
-            addList = false; // arg.length > 1;
+            super(ReturnType.VOID, "bibWriter.write", arg);
         }
 
         /**
@@ -96,7 +87,7 @@ public class WriteCompiler implements Compiler {
                 next = list.get(index);
                 if (next instanceof Newline) {
                     list.remove(index);
-                    Collections.reverse(a);
+                    // Collections.reverse(a);
                     list.add(index, new Writeln(a.toArray(new GCode[]{})));
                     return index + 1;
                 }
@@ -112,34 +103,6 @@ public class WriteCompiler implements Compiler {
             return index + 1;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#printCloseArg(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
-        protected void printCloseArg(CodeWriter writer) throws IOException {
-
-            if (addList) {
-                writer.write(']');
-            }
-            super.printCloseArg(writer);
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#printOpenArg(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
-        protected void printOpenArg(CodeWriter writer) throws IOException {
-
-            super.printOpenArg(writer);
-            if (addList) {
-                writer.write('[');
-            }
-        }
-
     }
 
     /**
@@ -149,48 +112,13 @@ public class WriteCompiler implements Compiler {
     private static final class Writeln extends GenericCode {
 
         /**
-         * The field <tt>addList</tt> contains the indicator for long argument
-         * lists.
-         */
-        private boolean addList;
-
-        /**
          * Creates a new object.
          * 
          * @param arg the arguments
          */
         private Writeln(GCode... arg) {
 
-            super(ReturnType.VOID, "bibWriter.println", arg);
-            addList = false; // arg.length > 1;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#printCloseArg(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
-        protected void printCloseArg(CodeWriter writer) throws IOException {
-
-            if (addList) {
-                writer.write(']');
-            }
-            super.printCloseArg(writer);
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GenericCode#printOpenArg(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
-        protected void printOpenArg(CodeWriter writer) throws IOException {
-
-            super.printOpenArg(writer);
-            if (addList) {
-                writer.write('[');
-            }
+            super(ReturnType.VOID, "bibWriter.writeln", arg);
         }
 
     }

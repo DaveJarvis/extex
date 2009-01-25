@@ -207,8 +207,8 @@ public class Bst2GroovyTest {
                     + "  }\n\n"
                     + "  String addPeriod(String s) {\n"
                     + "    return s == null || s == '' ? '' : s.matches(\".*[.!?]\") ? s : s + \".\"\n"
-                    + "  }\n" + "\n" + "  String abc(v1) {\n"
-                    + "    return addPeriod(v1)\n" + "  }\n" + RUN + POST_RUN);
+                    + "  }\n" + "\n" + "  String abc(p1) {\n"
+                    + "    return addPeriod(p1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -227,9 +227,9 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
-                    + "  String abc(v2, v1) {\n"
-                    + "    return ChangeCase.changeCase(v1,\n"
-                    + "                                 v2)\n" + "  }\n" + RUN
+                    + "  String abc(p1, p2) {\n"
+                    + "    return ChangeCase.changeCase(p2,\n"
+                    + "                                 p1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -252,7 +252,7 @@ public class Bst2GroovyTest {
                     + "    if (s.length() != 1) {\n"
                     + "      bstProcessor.warning(\"argument to chrToInt has wrong length\")\n"
                     + "    }\n" + "    return s.charAt(0)\n" + "  }\n" + "\n"
-                    + "  int abc(v1) {\n" + "    return chrToInt(v1)\n"
+                    + "  int abc(p1) {\n" + "    return chrToInt(p1)\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -353,8 +353,8 @@ public class Bst2GroovyTest {
     public void testConcat1() throws Exception {
 
         run("function{abc}{\"x\" *}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(v1) {\n"
-                    + "    return v1 + \"x\"\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(p1) {\n"
+                    + "    return p1 + \"x\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -450,8 +450,8 @@ public class Bst2GroovyTest {
         run("function{abc}{empty$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  boolean isEmpty(String s) {\n"
                     + "    return s == null || s.trim() == ''\n" + "  }\n"
-                    + "\n" + "  int abc(v1) {\n"
-                    + "    return isEmpty(v1) ? 1 : 0\n" + "  }\n" + RUN
+                    + "\n" + "  int abc(p1) {\n"
+                    + "    return isEmpty(p1) ? 1 : 0\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -491,8 +491,8 @@ public class Bst2GroovyTest {
     public void testEntry3() throws Exception {
 
         run("entry{a}{b}{c}function{abc}{'a := #0}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.set(\"a\",\n              v1)\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, p1) {\n"
+                    + "    entry.set(\"a\",\n              p1)\n"
                     + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -521,8 +521,8 @@ public class Bst2GroovyTest {
     public void testEntry5() throws Exception {
 
         run("entry{a}{b}{c}function{abc}{'b := #0}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.setLocal(\"b\",\n                   v1)\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, p1) {\n"
+                    + "    entry.setLocal(\"b\",\n                   p1)\n"
                     + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -551,8 +551,8 @@ public class Bst2GroovyTest {
     public void testEntry7() throws Exception {
 
         run("entry{a}{b}{c}function{abc}{'c := #0}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, v1) {\n"
-                    + "    entry.setLocal(\"c\",\n                   v1)\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(entry, p1) {\n"
+                    + "    entry.setLocal(\"c\",\n                   p1)\n"
                     + "    return 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -565,8 +565,8 @@ public class Bst2GroovyTest {
     public void testEq1() throws Exception {
 
         run("function{abc}{#1 =}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return v1 == 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return p1 == 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -630,10 +630,10 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
-                    + "  String abc(v3, v2, v1) {\n"
-                    + "    return FormatName.formatName(v3,\n"
-                    + "                                 v2,\n"
-                    + "                                 v1)\n" + "  }\n" + RUN
+                    + "  String abc(p1, p2, p3) {\n"
+                    + "    return FormatName.formatName(p1,\n"
+                    + "                                 p2,\n"
+                    + "                                 p3)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -671,7 +671,7 @@ public class Bst2GroovyTest {
     public void testFunction02() throws Exception {
 
         run("function{abc}{pop$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n" + "  }\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -727,11 +727,11 @@ public class Bst2GroovyTest {
 
         run("function{a}{pop$}function{abc}{a a}", //
             PREFIX + HEAD + "  }\n\n" //
-                    + "  void a(v1) {\n" //
+                    + "  void a(p1) {\n" //
                     + "  }\n\n" //
-                    + "  void abc(v2, v1) {\n" //
-                    + "    a(v1)\n" //
-                    + "    a(v2)\n" //
+                    + "  void abc(p1, p2) {\n" //
+                    + "    a(p2)\n" //
+                    + "    a(p1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -746,13 +746,13 @@ public class Bst2GroovyTest {
         run(
             "function{a.123}{pop$}function{v123}{pop$}function{aB_C}{a.123 v123}", //
             PREFIX + HEAD + "  }\n\n" //
-                    + "  void a123(v1) {\n" //
+                    + "  void a123(p1) {\n" //
                     + "  }\n\n" //
-                    + "  void v123_(v1) {\n" //
+                    + "  void v123_(p1) {\n" //
                     + "  }\n\n" //
-                    + "  void abC(v2, v1) {\n" //
-                    + "    a123(v1)\n" //
-                    + "    v123_(v2)\n" //
+                    + "  void abC(p1, p2) {\n" //
+                    + "    a123(p2)\n" //
+                    + "    v123_(p1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -766,7 +766,7 @@ public class Bst2GroovyTest {
 
         run("function{public}{pop$}", //
             PREFIX + HEAD + "  }\n\n" //
-                    + "  void public1(v1) {\n" //
+                    + "  void public1(p1) {\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -837,9 +837,9 @@ public class Bst2GroovyTest {
                     + "    f : { entry -> f(entry, '') },\n"
                     + "    g : { entry -> g(entry, '', '') },\n" + "  ]" + HEAD
                     + "  }\n\n" //
-                    + "  void f(entry, v1) {\n" //
+                    + "  void f(entry, p1) {\n" //
                     + "  }\n\n" //
-                    + "  void g(entry, v2, v1) {\n" //
+                    + "  void g(entry, p1, p2) {\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -857,14 +857,14 @@ public class Bst2GroovyTest {
                 + "function{c}{\"A\" \"B\" a}" //
                 + "function{d}{\"A\" \"B\" b}", //
             PREFIX + HEAD + "  }\n\n" //
-                    + "  void a(v2, v1) {\n" //
-                    + "    bibWriter.print(v2,\n" //
-                    + "                    v1)\n" //
+                    + "  void a(p1, p2) {\n" //
+                    + "    bibWriter.write(p1,\n" //
+                    + "                    p2)\n" //
                     + "  }\n" //
                     + "\n" //
-                    + "  void b(v2, v1) {\n" //
-                    + "    a(v2,\n" //
-                    + "      v1)\n" //
+                    + "  void b(p1, p2) {\n" //
+                    + "    a(p1,\n" //
+                    + "      p2)\n" //
                     + "  }\n" //
                     + "\n" //
                     + "  void c() {\n" //
@@ -984,19 +984,19 @@ public class Bst2GroovyTest {
             PREFIX + "\n\n  String s = ''" + "\n  String t = ''" + HEAD
                     + "  }\n" //
                     + "\n" //
-                    + "  void f(v2, v1) {\n" //
+                    + "  void f(p1, p2) {\n" //
                     + "    if (1 == 2) {\n" //
-                    + "      t = v1\n" //
-                    + "      s = v2\n" //
+                    + "      t = p2\n" //
+                    + "      s = p1\n" //
                     + "    } else {\n" //
-                    + "      t = v1\n" //
-                    + "      s = v2\n" //
+                    + "      t = p2\n" //
+                    + "      s = p1\n" //
                     + "    }\n" //
                     + "  }\n" //
                     + "\n" //
-                    + "  void g(v2, v1) {\n" //
-                    + "    t = v1\n" //
-                    + "    s = v2\n" //
+                    + "  void g(p1, p2) {\n" //
+                    + "    t = p2\n" //
+                    + "    s = p1\n" //
                     + "  }\n" //
                     + "\n" //
                     + "  void h() {\n" //
@@ -1029,8 +1029,8 @@ public class Bst2GroovyTest {
     public void testGt1() throws Exception {
 
         run("function{abc}{>}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2, v1) {\n"
-                    + "    return v2 > v1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
+                    + "    return p1 > p2 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1081,8 +1081,8 @@ public class Bst2GroovyTest {
     public void testIf03() throws Exception {
 
         run("function{abc}{#1 {pop$ #2} {} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return ( 1 ? 2 : v1 )\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return ( 1 ? 2 : p1 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1094,8 +1094,8 @@ public class Bst2GroovyTest {
     public void testIf04() throws Exception {
 
         run("function{abc}{#1 {#2} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return ( 1 ? 2 : v1 )\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return ( 1 ? 2 : p1 )\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1198,8 +1198,8 @@ public class Bst2GroovyTest {
     public void testIf12() throws Exception {
 
         run("function{abc}{{>} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2, v1) {\n"
-                    + "    return ( v2 > v1 ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
+                    + "    return ( p1 > p2 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1212,8 +1212,8 @@ public class Bst2GroovyTest {
     public void testIf13() throws Exception {
 
         run("function{abc}{#1 {>} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
-                    + "    return ( v2 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return ( p1 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1226,8 +1226,8 @@ public class Bst2GroovyTest {
     public void testIf14() throws Exception {
 
         run("function{abc}{\"\" {=} {#3} {#2} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2) {\n"
-                    + "    return ( v2 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return ( p1 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1266,9 +1266,9 @@ public class Bst2GroovyTest {
     public void testIf17() throws Exception {
 
         run("function{abc}{{#2} {write$ #3} {pop$ #4} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
                     + "    int v4\n" + "    if (2) {\n"
-                    + "      bibWriter.print(v1)\n" + "      v4 = 3\n"
+                    + "      bibWriter.write(p1)\n" + "      v4 = 3\n"
                     + "    } else {\n" + "      v4 = 4\n" + "    }\n"
                     + "    return v4\n" + "  }\n" + RUN + POST_RUN);
     }
@@ -1282,10 +1282,10 @@ public class Bst2GroovyTest {
     public void testIf18() throws Exception {
 
         run("function{abc}{{#1} {write$} {{#2} {write$} {write$} if$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
-                    + "    if (1) {\n" + "      bibWriter.print(v1)\n"
-                    + "    } else if (2) {\n" + "      bibWriter.print(v1)\n"
-                    + "    } else {\n" + "      bibWriter.print(v1)\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    if (1) {\n" + "      bibWriter.write(p1)\n"
+                    + "    } else if (2) {\n" + "      bibWriter.write(p1)\n"
+                    + "    } else {\n" + "      bibWriter.write(p1)\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1299,9 +1299,9 @@ public class Bst2GroovyTest {
 
         String s = "....,....,....,....,....,....";
         run("function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v3) {\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
                     + "    return ( \"" + s
-                    + "\" == \"\"\n             ? 2\n             : v3 )\n"
+                    + "\" == \"\"\n             ? 2\n             : p1 )\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1353,8 +1353,9 @@ public class Bst2GroovyTest {
 
         run("integers{a} function{abc}{'a :=}", //
             PREFIX + "\n\n  int a = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v1) {\n" + "    a = v1\n" + "  }\n" + RUN
-                    + POST_RUN);
+                    + "  void abc(p1) {\n" //
+                    + "    a = p1\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1367,8 +1368,8 @@ public class Bst2GroovyTest {
     public void testIntToChr1() throws Exception {
 
         run("function{abc}{int.to.chr$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(v1) {\n"
-                    + "    return Character.toString((char)(v1))\n" + "  }\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(p1) {\n"
+                    + "    return Character.toString((char)(p1))\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -1382,9 +1383,9 @@ public class Bst2GroovyTest {
     public void testIntToStr1() throws Exception {
 
         run("function{abc}{int.to.str$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(v1) {\n"
-                    + "    return Integer.toString(v1)\n" + "  }\n" + RUN
-                    + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc(p1) {\n"
+                    + "    return Integer.toString(p1)\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1446,7 +1447,7 @@ public class Bst2GroovyTest {
             PREFIX + "\n\n  Map types = [\n"
                     + "    abc : { entry -> abc(entry) },\n" + "  ]" + HEAD
                     + "  }\n" + "\n" + "  void abc(entry) {\n"
-                    + "    bibWriter.print(entry.getLocator().getLine())\n"
+                    + "    bibWriter.write(entry.getLocator().getLine())\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1489,7 +1490,7 @@ public class Bst2GroovyTest {
             PREFIX + "\n\n  Map types = [\n"
                     + "    abc : { entry -> abc(entry) },\n" + "  ]" + HEAD
                     + "  }\n" + "\n" + "  void abc(entry) {\n"
-                    + "    bibWriter.print(entry.getLocator().getResource())\n"
+                    + "    bibWriter.write(entry.getLocator().getResource())\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1514,8 +1515,9 @@ public class Bst2GroovyTest {
     public void testLt1() throws Exception {
 
         run("function{abc}{<}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2, v1) {\n"
-                    + "    return v2 < v1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
+                    + "    return p1 < p2 ? 1 : 0\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1570,8 +1572,9 @@ public class Bst2GroovyTest {
     public void testMinus1() throws Exception {
 
         run("function{abc}{-}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2, v1) {\n"
-                    + "    return v2 - v1\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
+                    + "    return p1 - p2\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1596,8 +1599,9 @@ public class Bst2GroovyTest {
     public void testMissing1() throws Exception {
 
         run("function{abc}{missing$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    return v1 == null\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    return p1 == null\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1623,9 +1627,10 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{>} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v2, v1) {\n"
-                    + "    if (v2 >= v1) {\n      x = 2\n    }\n" + "  }\n"
-                    + RUN + POST_RUN);
+                    + "  void abc(p1, p2) {\n"
+                    + "    if (p1 >= p2) {\n      x = 2\n" //
+                    + "    }\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1638,9 +1643,10 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{<} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v2, v1) {\n"
-                    + "    if (v2 <= v1) {\n      x = 2\n    }\n" + "  }\n"
-                    + RUN + POST_RUN);
+                    + "  void abc(p1, p2) {\n" + "    if (p1 <= p2) {\n" //
+                    + "      x = 2\n" //
+                    + "    }\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1653,8 +1659,8 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v2, v1) {\n"
-                    + "    if (v2 != v1) {\n      x = 2\n    }\n" + "  }\n"
+                    + "  void abc(p1, p2) {\n"
+                    + "    if (p1 != p2) {\n      x = 2\n    }\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
@@ -1673,8 +1679,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
-                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
-                    + "    return NumNames.numNames(v1)\n" + "  }\n" + RUN
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(p1) {\n"
+                    + "    return NumNames.numNames(p1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1700,7 +1706,7 @@ public class Bst2GroovyTest {
                     + "  }\n"
                     + "\n"
                     + "  void abc() {\n"
-                    + "    bibWriter.print(bibProcessor.getOption(\"xxx\").getInt())\n"
+                    + "    bibWriter.write(bibProcessor.getOption(\"xxx\").getInt())\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1745,7 +1751,7 @@ public class Bst2GroovyTest {
                     + "        bibProcessor.setOption(name, value)\n"
                     + "      }\n" + "    }\n" + "  }\n" + "\n"
                     + "  void abc() {\n"
-                    + "    bibWriter.print(bibProcessor.getOption(\"xxx\"))\n"
+                    + "    bibWriter.write(bibProcessor.getOption(\"xxx\"))\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1791,8 +1797,8 @@ public class Bst2GroovyTest {
     public void testPlus1() throws Exception {
 
         run("function{abc}{+}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v2, v1) {\n"
-                    + "    return v2 + v1\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
+                    + "    return p1 + p2\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1837,8 +1843,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
-                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(v1) {\n"
-                    + "    return Purify.purify(v1)\n" + "  }\n" + RUN
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  String abc(p1) {\n"
+                    + "    return Purify.purify(p1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -2020,8 +2026,9 @@ public class Bst2GroovyTest {
 
         run("strings{a} function{abc}{'a :=}", //
             PREFIX + "\n\n  String a = ''" + HEAD + "  }\n" + "\n"
-                    + "  void abc(v1) {\n" + "    a = v1\n" + "  }\n" + RUN
-                    + POST_RUN);
+                    + "  void abc(p1) {\n" //
+                    + "    a = p1\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2040,10 +2047,10 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
                     + CLASS_PREFIX + HEAD + "  }\n\n"
-                    + "  String abc(v3, v2, v1) {\n"
-                    + "    return Substring.substring(v3,\n"
-                    + "                               v2,\n"
-                    + "                               v1)\n" + "  }\n" + RUN
+                    + "  String abc(p1, p2, p3) {\n"
+                    + "    return Substring.substring(p1,\n"
+                    + "                               p2,\n"
+                    + "                               p3)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -2088,8 +2095,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
-                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(v1) {\n"
-                    + "    return TextLength.textLength(v1)\n" + "  }\n" + RUN
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(p1) {\n"
+                    + "    return TextLength.textLength(p1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -2111,9 +2118,9 @@ public class Bst2GroovyTest {
                     + CLASS_PREFIX
                     + HEAD
                     + "  }\n\n" //
-                    + "  String abc(v2, v1) {\n"
-                    + "    return TextPrefix.textPrefix(v2,\n"
-                    + "                                 v1)\n" //
+                    + "  String abc(p1, p2) {\n"
+                    + "    return TextPrefix.textPrefix(p1,\n"
+                    + "                                 p2)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2139,8 +2146,8 @@ public class Bst2GroovyTest {
     public void testWarning1() throws Exception {
 
         run("function{abc}{warning$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
-                    + "    bibProcessor.warning(v1)\n" + "  }\n" + RUN
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    bibProcessor.warning(p1)\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -2251,9 +2258,9 @@ public class Bst2GroovyTest {
     public void testWhile8() throws Exception {
 
         run("function{abc}{{#1} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    while (1) {\n" + "      v1 = 12\n" + "    }\n"
-                    + "    return v1\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
+                    + "    while (1) {\n" + "      p1 = 12\n" + "    }\n"
+                    + "    return p1\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2285,8 +2292,8 @@ public class Bst2GroovyTest {
                     + "import org.extex.exbib.core.db.DB\n"
                     + "import org.extex.exbib.core.db.Entry\n"
                     + "import org.extex.exbib.core.io.Writer\n" //
-                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(v1) {\n"
-                    + "    return Width.width(v1)\n" + "  }\n" + RUN + POST_RUN);
+                    + CLASS_PREFIX + HEAD + "  }\n\n" + "  int abc(p1) {\n"
+                    + "    return Width.width(p1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2298,8 +2305,8 @@ public class Bst2GroovyTest {
     public void testWrite1() throws Exception {
 
         run("function{abc}{write$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
-                    + "    bibWriter.print(v1)\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    bibWriter.write(p1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2311,8 +2318,9 @@ public class Bst2GroovyTest {
     public void testWrite2() throws Exception {
 
         run("function{abc}{write$ write$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v2, v1) {\n"
-                    + "    bibWriter.print(v2,\n                    v1)\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
+                    + "    bibWriter.write(p1,\n" //
+                    + "                    p2)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2325,10 +2333,10 @@ public class Bst2GroovyTest {
     public void testWrite3() throws Exception {
 
         run("function{abc}{write$ write$ write$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v3, v2, v1) {\n"
-                    + "    bibWriter.print(v3,\n" //
-                    + "                    v2,\n" //
-                    + "                    v1)\n" //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2, p3) {\n"
+                    + "    bibWriter.write(p1,\n" //
+                    + "                    p2,\n" //
+                    + "                    p3)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2341,8 +2349,9 @@ public class Bst2GroovyTest {
     public void testWrite4() throws Exception {
 
         run("function{abc}{write$ #42}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(v1) {\n"
-                    + "    bibWriter.print(v1)\n" //
+            PREFIX + HEAD + "  }\n" + "\n" //
+                    + "  int abc(p1) {\n" //
+                    + "    bibWriter.write(p1)\n" //
                     + "    return 42\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
@@ -2356,8 +2365,8 @@ public class Bst2GroovyTest {
     public void testWriteNewline1() throws Exception {
 
         run("function{abc}{write$ newline$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v1) {\n"
-                    + "    bibWriter.println(v1)\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    bibWriter.writeln(p1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -2369,9 +2378,9 @@ public class Bst2GroovyTest {
     public void testWriteNewline2() throws Exception {
 
         run("function{abc}{write$ write$ newline$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(v2, v1) {\n"
-                    + "    bibWriter.println(v2,\n" //
-                    + "                      v1)\n" //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
+                    + "    bibWriter.writeln(p2,\n" //
+                    + "                      p1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 

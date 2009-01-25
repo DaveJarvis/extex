@@ -89,6 +89,8 @@ import org.extex.exbib.bst2groovy.exception.ImpossibleException;
 import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
+import org.extex.exbib.bst2groovy.parameters.Parameter;
+import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.exbib.core.bst.BstInterpreterCore;
 import org.extex.exbib.core.bst.code.Code;
 import org.extex.exbib.core.bst.code.MacroCode;
@@ -524,10 +526,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private Map<String, GFunction> types = new HashMap<String, GFunction>();
 
     /**
-     * The field <tt>optimizeFlag</tt> contains the indicator to perform
-     * optimizations.
+     * The field <tt>parameters</tt> contains the parameters.
      */
-    private boolean optimizing = true;
+    private Map<ParameterType, Parameter> parameters =
+            new HashMap<ParameterType, Parameter>();
 
     /**
      * The field <tt>varManager</tt> contains the variable manager.
@@ -609,6 +611,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         this.linkData = new LinkContainer();
         setDB(new DBImpl());
+        defaultParameters();
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/')
                 + ".config"));
@@ -702,11 +705,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         List<Var> locals = state.getLocals();
+        varManager.reassign(locals, "p");
         Collections.reverse(locals);
         GFunction function = new GFunction(returnValue, name, //
             locals, state.getCode(), entry);
 
-        if (optimizing) {
+        if (parameters.get(ParameterType.OPTIMIZE).toBoolean()) {
             function.optimize();
         }
 
@@ -716,6 +720,15 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             types.put(name, function);
         }
         saveVarInfo(state.getVarInfo(), function);
+    }
+
+    /**
+     * Initialize the parameters.
+     * 
+     */
+    private void defaultParameters() {
+
+        parameters.put(ParameterType.OPTIMIZE, new Parameter(true));
     }
 
     /**
@@ -749,13 +762,15 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * Getter for the optimizing flag.
+     * Getter for a parameter.
      * 
-     * @return the optimizing flag
+     * @param name the name of the parameter
+     * 
+     * @return the value
      */
-    public boolean isOptimizing() {
+    public Parameter getParameter(String name) {
 
-        return optimizing;
+        return parameters.get(name);
     }
 
     /**
@@ -822,13 +837,14 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     }
 
     /**
-     * Setter for the optimizing flag.
+     * Setter for a parameter.
      * 
-     * @param optimizing the new value of the optimizing flag
+     * @param type the name
+     * @param value the value
      */
-    public void setOptimizing(boolean optimizing) {
+    public void setParameter(ParameterType type, Parameter value) {
 
-        this.optimizing = optimizing;
+        parameters.put(type, value);
     }
 
     /**

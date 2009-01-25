@@ -41,6 +41,8 @@ import org.extex.cli.exception.MissingArgumentCliException;
 import org.extex.cli.exception.NonNumericArgumentCliException;
 import org.extex.cli.exception.UnknownOptionCliException;
 import org.extex.cli.exception.UnusedArgumentCliException;
+import org.extex.exbib.bst2groovy.parameters.Parameter;
+import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
@@ -365,7 +367,8 @@ public class Main extends CLI {
         }
         try {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
-            bst2Groovy.setOptimizing(optimizing);
+            bst2Groovy.setParameter(ParameterType.OPTIMIZE, new Parameter(
+                optimizing));
             ResourceFinder finder =
                     new ResourceFinderFactory().createResourceFinder(
                         ConfigurationFactory.newInstance(config), logger, //
@@ -379,7 +382,6 @@ public class Main extends CLI {
                             ? System.out
                             : new FileOutputStream(out));
             bst2Groovy.write(w);
-            w.flush();
             w.close();
         } catch (Exception e) {
             logger.severe(e.getLocalizedMessage() + "\n");
