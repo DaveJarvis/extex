@@ -150,7 +150,10 @@
    <module>ExTeX-Backend-dump</module>
    <module>ExTeX-Backend-dvi</module>
    <module>ExTeX-Backend-dvix</module>
+<!--
    <module>ExTeX-Backend-pdfbox</module>
+   <module>ExTeX-Backend-iText</module>
+-->
    <module>ExTeX-Backend-ps</module>
    <module>ExTeX-Backend-rtf</module>
    <module>ExTeX-Backend-svg</module>
