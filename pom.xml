@@ -186,6 +186,7 @@
    <module>ExTeX-Unit-omega</module>
    <module>ExTeX-Unit-pdftex</module>
    <module>ExTeX-Unit-tex</module>
+   <module>CLI</module>
    <!-- <module>library</module> -->
    <module>texmf</module>
    <!-- <module>util</module> -->
