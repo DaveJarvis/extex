@@ -21,6 +21,15 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <dependencies>
+    <dependency>
+      <groupId>izpack</groupId>
+      <artifactId>standalone-compiler</artifactId>
+      <version>3.8.0</version>
+      <scope>package</scope>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
       <plugin>
