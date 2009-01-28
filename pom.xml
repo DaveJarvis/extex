@@ -119,6 +119,14 @@
   </ciManagement>
 -->
 
+  <repositories>
+    <repository>
+      <id>extex.org</id>
+      <name>extex.org Maven Repository</name>
+      <url>http://www.extex.org/maven2/</url>
+    </repository>
+  </repositories> 
+
   <distributionManagement>
     <site>
       <id>www.extex.org</id>
