@@ -25,9 +25,17 @@
 \ProvidesPackage{menu}[2009/02/08 Menu Path]
 
 \def\Menu{%
-  \@ifnextchar[{\Menu@I}{}}
+  \@ifnextchar[{\Menu@I}{\Menu@end}}
 \def\Menu@I[#1]{\textsf{#1}%
-  \@ifnextchar[{\Menu@II}{}}
+  \@ifnextchar[{\Menu@II}{\Menu@end}}
 \def\Menu@II[#1]{ \(\rightarrow\) \textsf{#1}%
-  \@ifnextchar[{\Menu@II}{}}
+  \@ifnextchar[{\Menu@II}{\Menu@end}}
+\def\Menu@end{%
+  \@ifnextchar.{}%
+  {\@ifnextchar,{}%
+  {\@ifnextchar;{}%
+  {\@ifnextchar:{}%
+  {\@ifnextchar!{}%
+  {\@ifnextchar?{}%
+  { }}}}}}}
 \endinput

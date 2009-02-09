@@ -31,21 +31,22 @@
 
 \newcommand\Rule@label[1]{\smallskip\par
   \@tempdima=\textwidth
-  \advance\@tempdima 56pt
-  \parshape 2 -56pt \@tempdima 0pt \textwidth
-  \parbox{56pt}{\textsf{\tiny #1}}\rule{0pt}{2ex}\ignorespaces}
+  \advance\@tempdima 60pt
+  \parshape 2 -60pt \@tempdima 0pt \textwidth
+  \parbox{60pt}{\textsf{\tiny #1}}\rule{0pt}{2ex}\ignorespaces}
 
 \newenvironment{Rule}[1]{\medskip\parindent=0pt
   \par\nopagebreak
-  \parskip=2pt
+  \parskip=.5ex
   \rule{\textwidth}{.1pt}\par\nopagebreak
-  \advance\leftskip56pt\advance\linewidth-56pt
-  \advance\@totalleftmargin 56pt
-  \Rule@label{\normalsize R-\arabic{Rule@counter}}%
+  \advance\leftskip60pt\advance\linewidth-60pt
+  \advance\@totalleftmargin 60pt
+  \edef\@currentlabel{R-\arabic{Rule@counter}}%
+  \Rule@label{\normalsize \@currentlabel}%
   \addtocounter{Rule@counter}1%
   \textbf{\large #1}%
   \par
-  }{\par\nopagebreak\advance\leftskip-56pt\advance\linewidth56pt
+  }{\par\nopagebreak\advance\leftskip-60pt\advance\linewidth60pt
   \rule{\textwidth}{.1pt}\smallskip\par}
 \newenvironment{Description}%
   {\Rule@label{Description}}%
