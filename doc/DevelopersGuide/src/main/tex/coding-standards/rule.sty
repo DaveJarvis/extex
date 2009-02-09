@@ -30,36 +30,40 @@
 \setcounter{Rule@counter}1
 
 \newcommand\Rule@label[1]{\smallskip\par
-  \parbox{50pt}{\textsf{\tiny #1}}\rule{0pt}{2ex}}
+  \parbox{50pt}{\textsf{\tiny #1}}\rule{0pt}{2ex}\hfill }
 
 \newenvironment{Rule}[1]{\medskip\par\parindent=0pt\parskip=2pt
+  \rule{\textwidth}{.1pt}\par
   \Rule@label{\normalsize R-\arabic{Rule@counter}}%
   \addtocounter{Rule@counter}1%
-  \textbf{\large #1}\par
-  }{\smallskip\par}
+  \begin{minipage}[t]{.85\textwidth}\raggedright
+    \textbf{\large #1}
+  \end{minipage}\par
+  }{\par
+  \rule{\textwidth}{.1pt}\smallskip\par}
 \newenvironment{Description}%
-  {\Rule@label{Description}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Description}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{Motivation}%
-  {\Rule@label{Motivation}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Motivation}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{Exceptions}%
-  {\Rule@label{Exceptions}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Exceptions}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{Example}%
-  {\Rule@label{Example}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Example}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{CounterExample}%
-  {\Rule@label{Counter Example}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Counter Example}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{Note}%
-  {\Rule@label{Note}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Note}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{ToolSupport}%
-  {\Rule@label{Tool Support}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{Tool Support}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 \newenvironment{References}%
-  {\Rule@label{References}\begin{minipage}[t]{.8\textwidth}}%
+  {\Rule@label{References}\begin{minipage}[t]{.85\textwidth}}%
   {\end{minipage}\par}
 
 \endinput
