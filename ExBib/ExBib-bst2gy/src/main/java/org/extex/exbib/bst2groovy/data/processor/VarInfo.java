@@ -19,7 +19,7 @@
 package org.extex.exbib.bst2groovy.data.processor;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class contains informations for variables for optimizations.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,7 +32,7 @@ public class VarInfo {
     private boolean readBeforeWrite = false;
 
     /**
-     * The field <tt>noWrite</tt> contains the ...
+     * The field <tt>noWrite</tt> contains the number of write operations.
      */
     private int noWrite = 0;
 
@@ -44,7 +44,7 @@ public class VarInfo {
     /**
      * Creates a new object.
      * 
-     * @param name
+     * @param name the name
      */
     public VarInfo(String name) {
 
@@ -83,9 +83,9 @@ public class VarInfo {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Merge in another variable info.
      * 
-     * @param v
+     * @param v the other variable
      */
     public void merge(VarInfo v) {
 
@@ -119,10 +119,12 @@ public class VarInfo {
 
     /**
      * Recognize that the variable has been used in writing.
+     * 
+     * @return <code>true</code> iff this is the first writing in this context
      */
-    public void writing() {
+    public boolean writing() {
 
-        noWrite++;
+        return noWrite++ == 0;
     }
 
 }

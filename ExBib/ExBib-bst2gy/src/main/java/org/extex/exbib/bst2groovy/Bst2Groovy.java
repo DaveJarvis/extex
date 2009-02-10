@@ -813,12 +813,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     private void saveVarInfo(Map<String, VarInfo> varInfos, GFunction function) {
 
-        // System.err.println(function.getName());
-        //
-        // for (VarInfo v : varInfos.values()) {
-        // System.err.println(v.toString());
-        // }
-        // System.err.println();
+        System.err.println("--- In function " + function.getName());
+
+        for (VarInfo v : varInfos.values()) {
+            System.err.println(v.toString());
+        }
+        System.err.println();
     }
 
     /**
@@ -868,14 +868,6 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         writeImports(w);
         writeHead(w);
-
-        for (String name : getIntegers()) {
-            w.write("\tint ", GFunction.translate(name), " = 0\n");
-        }
-        for (String name : getStrings()) {
-            w.write("\n\tString ", GFunction.translate(name), " = ''");
-        }
-        w.write("\n\n");
         writeTypes(w);
         writeConstructor(w);
 
@@ -976,6 +968,14 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             "  Writer bibWriter\n", //
             "  Processor bibProcessor\n", //
             "\n");
+
+        for (String name : getIntegers()) {
+            writer.write("\tint ", GFunction.translate(name), " = 0\n");
+        }
+        for (String name : getStrings()) {
+            writer.write("\n\tString ", GFunction.translate(name), " = ''");
+        }
+        writer.write("\n\n");
     }
 
     /**
