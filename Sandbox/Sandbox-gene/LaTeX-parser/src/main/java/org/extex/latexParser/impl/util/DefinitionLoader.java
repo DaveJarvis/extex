@@ -26,7 +26,7 @@ import java.io.LineNumberReader;
 import java.lang.reflect.InvocationTargetException;
 
 import org.extex.latexParser.impl.Macro;
-import org.extex.latexParser.impl.Parser;
+import org.extex.latexParser.impl.Memory;
 import org.extex.latexParser.impl.exception.SystemException;
 import org.extex.latexParser.impl.macro.GenericMacro;
 import org.extex.scanner.api.exception.ScannerException;
@@ -49,7 +49,7 @@ public final class DefinitionLoader {
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error
      */
-    public static void load(InputStream stream, Parser parser)
+    public static void load(InputStream stream, Memory parser)
             throws IOException,
                 ScannerException {
 
@@ -77,7 +77,7 @@ public final class DefinitionLoader {
      * @param s
      * @param parser the parser
      */
-    private static void loadActive(String s, Parser parser) {
+    private static void loadActive(String s, Memory parser) {
 
         char c = s.charAt(0);
         if (s.length() == 1) {
@@ -96,7 +96,7 @@ public final class DefinitionLoader {
      * 
      * @throws SystemException in case of an error
      */
-    private static void loadMacro(String s, Parser parser)
+    private static void loadMacro(String s, Memory parser)
             throws SystemException {
 
         int i = s.indexOf('[', 2);

@@ -18,9 +18,11 @@
 
 package org.extex.latexParser.impl;
 
+import java.io.IOException;
 import java.util.Map;
 
 import org.extex.latexParser.api.Node;
+import org.extex.latexParser.api.NodeList;
 import org.extex.latexParser.impl.node.GroupNode;
 import org.extex.scanner.api.Tokenizer;
 import org.extex.scanner.api.exception.ScannerException;
@@ -71,6 +73,18 @@ public interface Parser extends Locator, Memory {
      * @param args the arguments
      */
     void log(String format, Object... args);
+
+    /**
+     * Parse a resource and return the nodes found.
+     * 
+     * @param name the name of the resource
+     * 
+     * @return the nodes
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws ScannerException in case of an error
+     */
+    NodeList parse(String name) throws IOException, ScannerException;
 
     /**
      * Parse a group enclosed in braces.

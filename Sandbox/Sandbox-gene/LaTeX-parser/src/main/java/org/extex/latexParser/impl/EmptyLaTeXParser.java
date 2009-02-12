@@ -1,20 +1,19 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * Copyright (C) 2007-2009 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.latexParser.impl;
@@ -85,8 +84,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-         *      org.extex.scanner.type.token.ActiveCharacterToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
         public Node visitActive(ActiveCharacterToken token, TokenStream stream)
@@ -94,8 +92,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
             Macro m = macros.get(token.getChar());
             if (m == null) {
-                throw new SyntaxError(parser, "undefined active character ",
-                    token.toText());
+                return undefinedActive(token);
             }
             return m.parse(token, parser);
         }
@@ -103,8 +100,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-         *      org.extex.scanner.type.token.CrToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
+         *      java.lang.Object)
          */
         public Node visitCr(CrToken token, TokenStream stream) throws Exception {
 
@@ -114,8 +111,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
-         *      org.extex.scanner.type.token.ControlSequenceToken,
+         * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
         public Node visitEscape(ControlSequenceToken token, TokenStream stream)
@@ -123,8 +119,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
 
             Macro m = macros.get(token.getName());
             if (m == null) {
-                throw new SyntaxError(parser, "undefined control sequence {0}",
-                    token.toText());
+                return undefinedMacro(token);
             }
 
             return m.parse(token, parser);
@@ -133,8 +128,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-         *      org.extex.scanner.type.token.LeftBraceToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
+         *      java.lang.Object)
          */
         public Node visitLeftBrace(LeftBraceToken token, TokenStream stream)
                 throws Exception {
@@ -145,8 +140,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-         *      org.extex.scanner.type.token.LetterToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
+         *      java.lang.Object)
          */
         public Node visitLetter(LetterToken token, TokenStream stream)
                 throws Exception {
@@ -157,8 +152,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-         *      org.extex.scanner.type.token.MacroParamToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
+         *      java.lang.Object)
          */
         public Node visitMacroParam(MacroParamToken token, TokenStream stream)
                 throws Exception {
@@ -169,8 +164,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-         *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
+         *      java.lang.Object)
          */
         public Node visitMathShift(MathShiftToken start, TokenStream stream)
                 throws Exception {
@@ -218,8 +213,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-         *      org.extex.scanner.type.token.OtherToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
+         *      java.lang.Object)
          */
         public Node visitOther(OtherToken token, TokenStream stream)
                 throws Exception {
@@ -230,8 +225,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-         *      org.extex.scanner.type.token.RightBraceToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
+         *      java.lang.Object)
          */
         public Node visitRightBrace(RightBraceToken token, TokenStream stream)
                 throws Exception {
@@ -243,8 +238,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
-         *      org.extex.scanner.type.token.SpaceToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
+         *      java.lang.Object)
          */
         public Node visitSpace(SpaceToken token, TokenStream stream)
                 throws Exception {
@@ -255,8 +250,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
-         *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
+         *      java.lang.Object)
          */
         public Node visitSubMark(SubMarkToken token, TokenStream stream)
                 throws SyntaxError {
@@ -272,8 +267,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
-         *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
+         *      java.lang.Object)
          */
         public Node visitSupMark(SupMarkToken token, TokenStream stream)
                 throws SyntaxError {
@@ -289,8 +284,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
-         *      org.extex.scanner.type.token.TabMarkToken, java.lang.Object)
+         * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
+         *      java.lang.Object)
          */
         public Node visitTabMark(TabMarkToken token, TokenStream stream) {
 
@@ -316,8 +311,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          * 
          * @return the category code of a character
          * 
-         * @see org.extex.scanner.api.Tokenizer#getCatcode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(UnicodeChar c) {
 
@@ -388,8 +382,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
          * 
          * @return the category code of a character
          * 
-         * @see org.extex.scanner.api.Tokenizer#getCatcode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
          */
         public Catcode getCatcode(UnicodeChar c) {
 
@@ -455,8 +448,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private Map<UnicodeChar, Macro> active = new HashMap<UnicodeChar, Macro>();
 
     /**
-     * The field <tt>context</tt> contains the context. The context can be
-     * used to store arbitrary data
+     * The field <tt>context</tt> contains the context. The context can be used
+     * to store arbitrary data
      */
     private Map<String, Object> context = new HashMap<String, Object>();
 
@@ -471,8 +464,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
     /**
-     * The field <tt>parser</tt> contains the reference to the parser used;
-     * i.e. it is a self reference.
+     * The field <tt>parser</tt> contains the reference to the parser used; i.e.
+     * it is a self reference.
      */
     private Parser parser;
 
@@ -525,8 +518,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitOther(
-         *      org.extex.scanner.type.token.OtherToken,
+         * @see org.extex.latexParser.impl.EmptyLaTeXParser.ToVi#visitOther(org.extex.scanner.type.token.OtherToken,
          *      org.extex.scanner.api.TokenStream)
          */
         @Override
@@ -568,7 +560,6 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     public EmptyLaTeXParser() {
 
-        super();
         parser = this;
     }
 
@@ -587,6 +578,9 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @param c the character
      * @param code the code
+     * 
+     * @see org.extex.latexParser.impl.Memory#def(char,
+     *      org.extex.latexParser.impl.Macro)
      */
     public void def(char c, Macro code) {
 
@@ -598,6 +592,9 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * 
      * @param name the name of the macro
      * @param code the code
+     * 
+     * @see org.extex.latexParser.impl.Memory#def(java.lang.String,
+     *      org.extex.latexParser.impl.Macro)
      */
     public void def(String name, Macro code) {
 
@@ -658,6 +655,8 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      * Getter for the source.
      * 
      * @return the name of the source
+     * 
+     * @see org.extex.latexParser.impl.Locator#getSource()
      */
     public String getSource() {
 
@@ -884,8 +883,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Parser#parseOptionalArgument(
-     *      org.extex.scanner.type.token.Token,
+     * @see org.extex.latexParser.impl.Parser#parseOptionalArgument(org.extex.scanner.type.token.Token,
      *      org.extex.scanner.type.token.OtherToken)
      */
     public Node parseOptionalArgument(Token cs, OtherToken token)
@@ -989,8 +987,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Parser#push(
-     *      org.extex.latexParser.impl.node.GroupNode)
+     * @see org.extex.latexParser.impl.Parser#push(org.extex.latexParser.impl.node.GroupNode)
      */
     public void push(GroupNode content) {
 
@@ -1000,8 +997,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Parser#put(
-     *      org.extex.scanner.type.token.Token)
+     * @see org.extex.latexParser.impl.Parser#put(org.extex.scanner.type.token.Token)
      */
     public void put(Token t) {
 
@@ -1021,8 +1017,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 
@@ -1032,14 +1027,45 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.latexParser.impl.Parser#setTokenizer(
-     *      org.extex.scanner.api.Tokenizer)
+     * @see org.extex.latexParser.impl.Parser#setTokenizer(org.extex.scanner.api.Tokenizer)
      */
     public Tokenizer setTokenizer(Tokenizer tokenizer) {
 
         Tokenizer t = this.tokenizer;
         this.tokenizer = tokenizer;
         return t;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param token the token
+     * 
+     * @return the node to store
+     * 
+     * @throws SyntaxError in case of an error
+     */
+    protected Node undefinedActive(ActiveCharacterToken token)
+            throws SyntaxError {
+
+        throw new SyntaxError(parser, "undefined active character {0}", //
+            token.toText());
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param token the token
+     * 
+     * @return the node to store
+     * 
+     * @throws SyntaxError in case of an error
+     */
+    protected Node undefinedMacro(ControlSequenceToken token)
+            throws SyntaxError {
+
+        throw new SyntaxError(parser, "undefined control sequence {0}", //
+            token.toText());
     }
 
 }
