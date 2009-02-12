@@ -1,0 +1,7 @@
+%
+% Definitions for ifthen.sty
+%
+\ifthenelse[3]
+\newboolean[1]
+\provideboolean[1]
+%

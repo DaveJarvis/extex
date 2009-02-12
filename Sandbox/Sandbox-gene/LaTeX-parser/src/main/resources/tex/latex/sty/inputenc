@@ -1,0 +1,8 @@
+%
+% Definitions for inputenc.sty
+%
+\DeclareInputMath[1]
+\DeclareInputtext[1]
+\IeC
+\inputencoding[1]
+%

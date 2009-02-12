@@ -23,6 +23,14 @@
 \NeedsTeXFormat[1]
 \ProvidesClass[][1]
 \ProvidesPackage[][1]
+\DeclareOption[2]
+\PassOptionsToClass[2]
+\ProcessOptions
+\ExecuteOptions
+\LoadClass[1]
+\LoadPackage[1]
+\ClassError[3]
+%
 \[=org.extex.latexParser.impl.macro.latex.Math
 \\
 \`
@@ -59,7 +67,7 @@
 \begin{thebibliography}
 \begin{theorem}
 \begin{titlepage}
-\begin{verbatim}
+\begin{verbatim}=org.extex.latexParser.impl.macro.latex.Verbatim
 \begin{verse}
 \bf
 \bffam
@@ -110,10 +118,10 @@
 \hspace[1]
 \huge
 \hyphenation
-\include
+\include=org.extex.latexParser.impl.macro.latex.Include
 \includeonly[1]
 \indent
-\input 
+\input=org.extex.latexParser.impl.macro.latex.Input
 \it
 \item[][0]
 \itfam

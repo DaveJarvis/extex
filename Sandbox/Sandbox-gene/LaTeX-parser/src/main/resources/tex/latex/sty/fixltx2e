@@ -1,0 +1,8 @@
+%
+% Definitions for fixltx2e.sty
+%
+\addpenalty
+\TextOrMath[2]
+\textsubscript
+\MakeRobust[1]
+%

@@ -1,0 +1,15 @@
+%
+% Definitions for latxsym.sty
+%
+\mho
+\sqsupset
+\Join
+\lhd
+\Box
+\unlhd
+\Diamond
+\rhd
+\leadsto
+\unrhd
+\sqsubset
+%
