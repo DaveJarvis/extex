@@ -80,12 +80,17 @@ public class Net {
     public Net(File file) throws IOException {
 
         this();
-        master = getLatexArtifact(file);
+        if (file == null) {
+            throw new IllegalArgumentException("Net(null)");
+        }
+        String name = file.getAbsoluteFile().toString();
+        master = new LatexArtifact(file);
+        map.put(name, master);
         master.analyze(this);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Build a target.
      * 
      * @param name the name of the target to build
      * @param simulate the indicator whether the commands should really be
@@ -97,8 +102,7 @@ public class Net {
 
         Artifact a = map.get(name);
         if (a == null) {
-            // TODO gene: build unimplemented
-            throw new RuntimeException("unimplemented");
+            throw new MakeException(name + ": unknown target");
         }
         List<PlanItem> plan = new ArrayList<PlanItem>();
         a.plan(plan, context);
@@ -135,7 +139,8 @@ public class Net {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Set the fallback for a context item. This means the value is assigned if
+     * the key does not have an associated value already.
      * 
      * @param key the key
      * @param value the fallback value for the item
@@ -178,24 +183,6 @@ public class Net {
     }
 
     /**
-     * Getter for an artifact.
-     * 
-     * @param file the file
-     * 
-     * @return the artifact or <code>null</code> if none is defined
-     */
-    public Artifact getLatexArtifact(File file) {
-
-        String name = file.getAbsoluteFile().toString();
-        Artifact a = map.get(name);
-        if (a == null) {
-            a = new LatexArtifact(file);
-            map.put(name, a);
-        }
-        return a;
-    }
-
-    /**
      * Getter for the logger.
      * 
      * @return the logger
@@ -223,7 +210,9 @@ public class Net {
      */
     public void print(PrintWriter w, String prefix) {
 
-        for (Artifact a : map.values()) {
+        Artifact[] al = map.values().toArray(new Artifact[0]);
+        // Arrays.sort(al);
+        for (Artifact a : al) {
             a.print(w, prefix);
         }
     }
