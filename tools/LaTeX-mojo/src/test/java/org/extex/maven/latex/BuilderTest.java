@@ -84,7 +84,8 @@ public class BuilderTest {
             new ArtifactDependency(builder.getArtifact(new File("abc"))));
 
         builder.print(w, "");
-        assertEquals("abc\n\t-> abc\n", out.toString().replaceAll("\r", ""));
+        assertEquals("abc\nabc\n\t-> abc\n", out.toString()
+            .replaceAll("\r", ""));
     }
 
     /**
@@ -102,7 +103,7 @@ public class BuilderTest {
             new ArtifactDependency(builder.getArtifact(new File("def"))));
 
         builder.print(w, "");
-        assertEquals("abc\n\t-> def\ndef\n", //
+        assertEquals("def\nabc\nabc\n\t-> def\n", //
             out.toString().replaceAll("\r", ""));
     }
 
@@ -124,7 +125,9 @@ public class BuilderTest {
             new ArtifactDependency(builder.getArtifact(new File("def"))));
 
         builder.print(w, "");
-        assertEquals("abc\n\t-> def\n\t-> xyz\n" + "def\n" + "xyz\n\t-> def\n", //
+        assertEquals("def\n" //
+                + "xyz\n\t-> def\n" //
+                + "abc\n\t-> def\n\t-> xyz\n", //
             out.toString().replaceAll("\r", ""));
     }
 
@@ -148,7 +151,7 @@ public class BuilderTest {
         abc.addDependencies(new ArtifactDependency(xyz));
         xyz.addDependencies(new ArtifactDependency(def));
 
-        builder.build("abc", true);
+        builder.build(new File("abc").getAbsolutePath(), true);
     }
 
 }
