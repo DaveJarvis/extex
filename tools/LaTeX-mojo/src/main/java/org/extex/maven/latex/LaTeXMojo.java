@@ -20,17 +20,16 @@ package org.extex.maven.latex;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.LineNumberReader;
 import java.io.PrintWriter;
-import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.extex.maven.latex.make.BuildAction;
+import org.apache.maven.plugin.logging.Log;
 import org.extex.maven.latex.make.Net;
 
 /**
@@ -43,6 +42,358 @@ import org.extex.maven.latex.make.Net;
  * @version $Revision$
  */
 public class LaTeXMojo extends AbstractMojo {
+
+    /**
+     * This class is an adaptor of a Logger to a Log.
+     */
+    private class LogAdaptor extends Logger {
+
+        /**
+         * The field <tt>log</tt> contains the log.
+         */
+        private final Log log;
+
+        /**
+         * Creates a new object.
+         * 
+         * @param log the log
+         */
+        protected LogAdaptor(Log log) {
+
+            super(LaTeXMojo.class.getName(), LaTeXMojo.class.getName());
+            this.log = log;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#entering(java.lang.String,
+         *      java.lang.String)
+         */
+        @Override
+        public void entering(String sourceClass, String sourceMethod) {
+
+            // TODO gene: entering unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#entering(java.lang.String,
+         *      java.lang.String, java.lang.Object)
+         */
+        @Override
+        public void entering(String sourceClass, String sourceMethod,
+                Object param1) {
+
+            // TODO gene: entering unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#entering(java.lang.String,
+         *      java.lang.String, java.lang.Object[])
+         */
+        @Override
+        public void entering(String sourceClass, String sourceMethod,
+                Object[] params) {
+
+            // TODO gene: entering unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#exiting(java.lang.String,
+         *      java.lang.String)
+         */
+        @Override
+        public void exiting(String sourceClass, String sourceMethod) {
+
+            // TODO gene: exiting unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#exiting(java.lang.String,
+         *      java.lang.String, java.lang.Object)
+         */
+        @Override
+        public void exiting(String sourceClass, String sourceMethod,
+                Object result) {
+
+            // TODO gene: exiting unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#fine(java.lang.String)
+         */
+        @Override
+        public void fine(String msg) {
+
+            log.debug(msg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#finer(java.lang.String)
+         */
+        @Override
+        public void finer(String msg) {
+
+            log.debug(msg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#finest(java.lang.String)
+         */
+        @Override
+        public void finest(String msg) {
+
+            log.debug(msg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#info(java.lang.String)
+         */
+        @Override
+        public void info(String msg) {
+
+            log.info(msg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#log(java.util.logging.Level,
+         *      java.lang.String)
+         */
+        @Override
+        public void log(Level level, String msg) {
+
+            // TODO gene: log unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#log(java.util.logging.Level,
+         *      java.lang.String, java.lang.Object)
+         */
+        @Override
+        public void log(Level level, String msg, Object param1) {
+
+            // TODO gene: log unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#log(java.util.logging.Level,
+         *      java.lang.String, java.lang.Object[])
+         */
+        @Override
+        public void log(Level level, String msg, Object[] params) {
+
+            // TODO gene: log unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#log(java.util.logging.Level,
+         *      java.lang.String, java.lang.Throwable)
+         */
+        @Override
+        public void log(Level level, String msg, Throwable thrown) {
+
+            // TODO gene: log unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#log(java.util.logging.LogRecord)
+         */
+        @Override
+        public void log(LogRecord record) {
+
+            // TODO gene: log unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logp(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String)
+         */
+        @Override
+        public void logp(Level level, String sourceClass, String sourceMethod,
+                String msg) {
+
+            // TODO gene: logp unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logp(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.Object)
+         */
+        @Override
+        public void logp(Level level, String sourceClass, String sourceMethod,
+                String msg, Object param1) {
+
+            // TODO gene: logp unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logp(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.Object[])
+         */
+        @Override
+        public void logp(Level level, String sourceClass, String sourceMethod,
+                String msg, Object[] params) {
+
+            // TODO gene: logp unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logp(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.Throwable)
+         */
+        @Override
+        public void logp(Level level, String sourceClass, String sourceMethod,
+                String msg, Throwable thrown) {
+
+            // TODO gene: logp unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logrb(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.String)
+         */
+        @Override
+        public void logrb(Level level, String sourceClass, String sourceMethod,
+                String bundleName, String msg) {
+
+            // TODO gene: logrb unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logrb(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.String, java.lang.Object)
+         */
+        @Override
+        public void logrb(Level level, String sourceClass, String sourceMethod,
+                String bundleName, String msg, Object param1) {
+
+            // TODO gene: logrb unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logrb(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.String, java.lang.Object[])
+         */
+        @Override
+        public void logrb(Level level, String sourceClass, String sourceMethod,
+                String bundleName, String msg, Object[] params) {
+
+            // TODO gene: logrb unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#logrb(java.util.logging.Level,
+         *      java.lang.String, java.lang.String, java.lang.String,
+         *      java.lang.String, java.lang.Throwable)
+         */
+        @Override
+        public void logrb(Level level, String sourceClass, String sourceMethod,
+                String bundleName, String msg, Throwable thrown) {
+
+            // TODO gene: logrb unimplemented
+            throw new RuntimeException("unimplemented");
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#severe(java.lang.String)
+         */
+        @Override
+        public void severe(String msg) {
+
+            log.error(msg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#throwing(java.lang.String,
+         *      java.lang.String, java.lang.Throwable)
+         */
+        @Override
+        public void throwing(String sourceClass, String sourceMethod,
+                Throwable error) {
+
+            log.info(sourceClass + "#" + sourceMethod + "()", error);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Logger#warning(java.lang.String)
+         */
+        @Override
+        public void warning(String msg) {
+
+            log.warn(msg);
+        }
+    }
 
     /**
      * The field <tt>workingDirectory</tt> contains the working directory. This
@@ -112,30 +463,6 @@ public class LaTeXMojo extends AbstractMojo {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param aux
-     * @return
-     * @throws IOException
-     */
-    private List<BuildAction> analyzeAux(File aux) throws IOException {
-
-        StringBuilder buffer = new StringBuilder();
-        LineNumberReader r = new LineNumberReader(new FileReader(aux));
-
-        try {
-            for (int c = r.read(); c >= 0; c = r.read()) {
-                buffer.append((char) c);
-            }
-        } finally {
-            r.close();
-        }
-
-        // TODO gene: analyzeAux unimplemented
-        return null;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.apache.maven.plugin.Mojo#execute()
@@ -150,6 +477,9 @@ public class LaTeXMojo extends AbstractMojo {
         } catch (IOException e) {
             throw new MojoFailureException(e.getMessage() + ": I/O error");
         }
+
+        net.setLogger(new LogAdaptor(getLog()));
+
         net.context("working.directory", workingDirectory.getAbsolutePath());
         net.context("output.directory", output.getAbsolutePath());
         net.context("latex.command", latexCommand);
@@ -170,116 +500,6 @@ public class LaTeXMojo extends AbstractMojo {
          * LaTeX } catch (IOException e) { throw new MojoExecutionException("",
          * e); }
          */
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @throws MojoExecutionException in case of an error
-     * @throws IOException in case of an I/O error
-     */
-    private void generateFromTeX() throws IOException, MojoExecutionException {
-
-        if (!file.exists()) {
-            throw new MojoExecutionException(file.toString()
-                    + ": file not found");
-        }
-        File aux =
-                new File(output, file.getName().replaceAll("\\.[a-zA-Z0-9_]*$",
-                    ".aux"));
-        if (!aux.exists()) {
-            latex();
-            if (!aux.exists()) {
-                throw new MojoExecutionException(latexCommand
-                        + "  does not create the aux file");
-            }
-        } else if (file.lastModified() >= aux.lastModified()) {
-            latex();
-        }
-
-        for (;;) {
-            List<BuildAction> actions = analyzeAux(aux);
-
-            if (actions == null) {
-                return;
-            }
-
-            for (BuildAction a : actions) {
-                // a.execute(artifact, context, logger, simulate);
-            }
-        }
-
-        // TODO gene: generateFromTeX unimplemented
-    }
-
-    /**
-     * Run the LaTeX command on some input file.
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private void latex() throws IOException {
-
-        String base = file.toString().replace('\\', '/');
-        getLog().info(latexCommand + " " + base);
-
-        ProcessBuilder latex = new ProcessBuilder(latexCommand, //
-            "-output-directory=" + output, //
-            base);
-        latex.directory(workingDirectory);
-        latex.redirectErrorStream(true);
-        Process p = latex.start();
-        try {
-            p.getOutputStream().close();
-            StringBuilder buffer = new StringBuilder();
-            InputStream in = p.getInputStream();
-            for (int c = in.read(); c >= 0; c = in.read()) {
-                buffer.append((char) c);
-            }
-            if (p.exitValue() != 0) {
-                getLog().error(buffer);
-            }
-        } finally {
-            p.destroy();
-        }
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param args the command and its arguments
-     * 
-     * @return <code>true</code> iff the command succeeded and returned an exit
-     *         code of 0
-     */
-    private boolean probe(String... args) {
-
-        StringBuilder buffer = new StringBuilder();
-        for (String s : args) {
-            buffer.append(s);
-            buffer.append(' ');
-        }
-
-        getLog().info(buffer);
-
-        ProcessBuilder latex = new ProcessBuilder(args);
-        latex.redirectErrorStream(true);
-        try {
-            Process p = latex.start();
-            try {
-                InputStream s = p.getInputStream();
-                for (int c = s.read(); c >= 0; c = s.read()) {
-                    // System.err.print((char) c);
-                }
-                p.waitFor();
-                return p.exitValue() == 0;
-            } catch (InterruptedException e) {
-                return false;
-            } finally {
-                p.destroy();
-            }
-        } catch (IOException e) {
-            return false;
-        }
     }
 
     /**
