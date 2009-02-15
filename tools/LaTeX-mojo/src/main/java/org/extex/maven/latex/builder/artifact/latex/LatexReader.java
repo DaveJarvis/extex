@@ -23,7 +23,7 @@ import java.io.PushbackReader;
 import java.io.Reader;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a reader enhanced by some methods to read (La)TeX files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

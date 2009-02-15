@@ -8,7 +8,8 @@ import java.util.logging.LogRecord;
 import org.apache.maven.plugin.logging.Log;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a handler which passes the log requests to an underlying Maven
+ * Log.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

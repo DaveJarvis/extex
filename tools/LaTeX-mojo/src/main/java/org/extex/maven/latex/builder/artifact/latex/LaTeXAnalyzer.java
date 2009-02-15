@@ -24,7 +24,7 @@ import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This interface describes an analyzer for LaTeX files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
