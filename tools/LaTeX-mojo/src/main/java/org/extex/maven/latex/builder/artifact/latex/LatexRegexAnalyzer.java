@@ -19,7 +19,6 @@
 package org.extex.maven.latex.builder.artifact.latex;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
@@ -108,6 +107,8 @@ public class LatexRegexAnalyzer implements LaTeXAnalyzer {
                 line.replaceAll("[^\\\\]%.*", "");
                 line.replaceAll("\t", " ");
 
+                // The inner assignments make this method rather short and
+                // readable. Thus it is better to use them then to omit them.
                 if ((m = INPUT_PATTERN_1.matcher(line)).matches()
                         || (m = INPUT_PATTERN_2.matcher(line)).matches()) {
                     onInput(net, file, m.group(1));
@@ -160,13 +161,12 @@ public class LatexRegexAnalyzer implements LaTeXAnalyzer {
      * @param base the base file
      * @param args the arguments
      * 
-     * @throws IOException in case of an I/O error
-     * @throws FileNotFoundException in case that the resource could not be
+     * @throws IOException in case of an I/O error <br/>
+     *         FileNotFoundException in case that the resource could not be
      *         found
      */
     private void onBibliography(DependencyNet net, File base, String[] args)
-            throws IOException,
-                FileNotFoundException {
+            throws IOException {
 
         StringBuilder buffer =
                 new StringBuilder(base.getName() + ": \\bibliography");
@@ -209,13 +209,12 @@ public class LatexRegexAnalyzer implements LaTeXAnalyzer {
      * @param arg the argument
      * @param base the base file
      * 
-     * @throws IOException in case of an I/O error
-     * @throws FileNotFoundException in case that the resource could not be
+     * @throws IOException in case of an I/O error <br/>
+     *         FileNotFoundException in case that the resource could not be
      *         found
      */
     private void onInclude(DependencyNet net, File base, String arg)
-            throws IOException,
-                FileNotFoundException {
+            throws IOException {
 
         net.getLogger().fine(base.getName() + ": \\include " + arg);
 
@@ -239,13 +238,12 @@ public class LatexRegexAnalyzer implements LaTeXAnalyzer {
      * @param arg the argument
      * @param base the base file
      * 
-     * @throws IOException in case of an I/O error
-     * @throws FileNotFoundException in case that the resource could not be
+     * @throws IOException in case of an I/O error <br/>
+     *         FileNotFoundException in case that the resource could not be
      *         found
      */
     private void onIncludegraphics(DependencyNet net, File base, String arg)
-            throws FileNotFoundException,
-                IOException {
+            throws IOException {
 
         net.getLogger().fine(base.getName() + ": \\includegraphics " + arg);
 
@@ -262,13 +260,12 @@ public class LatexRegexAnalyzer implements LaTeXAnalyzer {
      * @param arg the argument
      * @param base the base file
      * 
-     * @throws IOException in case of an I/O error
-     * @throws FileNotFoundException in case that the resource could not be
+     * @throws IOException in case of an I/O error <br/>
+     *         FileNotFoundException in case that the resource could not be
      *         found
      */
     private void onInput(DependencyNet net, File base, String arg)
-            throws IOException,
-                FileNotFoundException {
+            throws IOException {
 
         net.getLogger().fine(base.getName() + ": \\input " + arg);
         File file =
