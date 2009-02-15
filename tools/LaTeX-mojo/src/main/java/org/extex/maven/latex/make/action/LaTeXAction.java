@@ -23,14 +23,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.make.Artifact;
-import org.extex.maven.latex.make.BuildAction;
+import org.extex.maven.latex.make.artifact.Artifact;
 import org.extex.maven.latex.make.exception.MakeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This action runs LaTeX in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,26 +38,41 @@ import org.extex.maven.latex.make.exception.MakeException;
 public class LaTeXAction implements BuildAction {
 
     /**
+     * The field <tt>artifact</tt> contains the artifact to run LaTeX on.
+     */
+    private final Artifact artifact;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param artifact the artifact to run LaTeX on
+     */
+    public LaTeXAction(Artifact artifact) {
+
+        this.artifact = artifact;
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.BuildAction#execute(org.extex.maven.latex.make.Artifact,
+     * @see org.extex.maven.latex.make.action.BuildAction#execute(org.extex.maven.latex.make.artifact.Artifact,
      *      java.util.Map, Logger, boolean)
      */
-    public void execute(Artifact artifact, Map<String, String> context,
+    public void execute(Artifact target, Map<String, String> context,
             Logger logger, boolean simulate) throws MakeException {
 
         String output = get(context, "latex.output.directory", ".");
         String latexCommand = get(context, "latex.command", "latex");
         String workingDirectory = get(context, "latex.working.directory", ".");
+        String base = artifact.getFile().toString().replace('\\', '/');
 
         if (logger != null) {
-            logger.info(latexCommand + " " + artifact.getFile().toString());
+            logger.log(simulate ? Level.INFO : Level.FINE, //
+                "--> " + latexCommand + " " + base);
         }
         if (simulate) {
             return;
         }
-
-        String base = artifact.getFile().toString().replace('\\', '/');
 
         ProcessBuilder latex = new ProcessBuilder(latexCommand, //
             "-output-directory=" + output, //
@@ -86,26 +101,25 @@ public class LaTeXAction implements BuildAction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get some value from a context map with a fallback value in case that the
+     * value is not found in the context.
      * 
-     * @param context
-     * @param key
-     * @param fallback
-     * @return
+     * @param context the context map
+     * @param key the key
+     * @param fallback the fallback value
+     * 
+     * @return the value for the key of the fallback value
      */
     private String get(Map<String, String> context, String key, String fallback) {
 
         String result = context.get(key);
-        if (result == null) {
-            result = fallback;
-        }
-        return result;
+        return result != null ? result : fallback;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.BuildAction#print(java.io.PrintWriter,
+     * @see org.extex.maven.latex.make.action.BuildAction#print(java.io.PrintWriter,
      *      java.lang.String)
      */
     public void print(PrintWriter w, String pre) {

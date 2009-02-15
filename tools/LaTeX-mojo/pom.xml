@@ -7,11 +7,38 @@
   <version>0.1</version>
   <name>LaTeX mojo</name>
   <description>
-    LaTeX adapter for typesetting documentation.
+    LaTeX adapter for typesetting documentation. It uses an installed
+    TeX system to compile the source files. The mojo tries to analyze
+    the input file to find the required programs and a minimal
+    sequence of commands to produce the desired output format.
   </description>
   <packaging>maven-plugin</packaging>
-  <inceptionYear>2003</inceptionYear>
+  <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
+
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  </organization>
+
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
   <dependencies>
     <dependency>
@@ -23,7 +50,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.4</version>
+      <version>4.5</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -54,9 +81,47 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>...</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>checkstyle.xml</configLocation>
+          <configLocation>../../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
     </plugins>

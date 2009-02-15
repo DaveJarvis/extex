@@ -19,23 +19,25 @@
 package org.extex.maven.latex.make.artifact;
 
 import java.io.File;
+import java.io.IOException;
 
-import org.extex.maven.latex.make.Artifact;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This artifact represents a raw index file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MakeindexArtifact extends Artifact {
+public class RawIndexArtifact extends Artifact {
 
     /**
      * Creates a new object.
      * 
      * @param file the file
+     * 
+     * @throws IOException in case of an I/O error
      */
-    public MakeindexArtifact(File file) {
+    public RawIndexArtifact(File file) throws IOException {
 
         super(file);
     }

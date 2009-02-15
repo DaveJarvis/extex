@@ -21,14 +21,13 @@ package org.extex.maven.latex.make.artifact;
 import java.io.File;
 import java.io.IOException;
 
-
 /**
- * This artifact represents a BibTeX file.
+ * This artifact represents an index file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BibtexArtifact extends Artifact {
+public class IndexArtifact extends Artifact {
 
     /**
      * Creates a new object.
@@ -37,7 +36,7 @@ public class BibtexArtifact extends Artifact {
      * 
      * @throws IOException in case of an I/O error
      */
-    public BibtexArtifact(File file) throws IOException {
+    public IndexArtifact(File file) throws IOException {
 
         super(file);
     }

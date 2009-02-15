@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,42 +16,31 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make;
+package org.extex.maven.latex.make.artifact.latex;
 
-import java.io.PrintWriter;
-import java.util.Map;
-import java.util.logging.Logger;
+import java.io.IOException;
 
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.make.DependencyNet;
+import org.extex.maven.latex.make.artifact.Artifact;
 
-/**
+/*
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision$
  */
-public interface BuildAction {
+public interface LaTeXAnalyzer {
 
     /**
-     * Run or simulate the commands to be executed.
+     * Analyze a LaTeX file and update the dependency net accordingly.
      * 
-     * @param artifact
-     * @param context the environment
-     * @param logger the logger
-     * @param simulate the indicator whether or not to really execute the
-     *        commands
+     * @param artifact the artifact to analyze
+     * @param net the dependency net
      * 
-     * @throws MakeException in case of an error
+     * @throws IOException in case of an I/O error
      */
-    void execute(Artifact artifact, Map<String, String> context, Logger logger,
-            boolean simulate) throws MakeException;
-
-    /**
-     * Print the action to a writer.
-     * 
-     * @param w the writer
-     * @param pre the prefix inserted at the beginning of each line
-     */
-    void print(PrintWriter w, String pre);
+    public abstract void analyze(Artifact artifact, DependencyNet net)
+            throws IOException;
 
 }

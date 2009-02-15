@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -35,7 +35,7 @@ import org.extex.maven.latex.make.exception.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BibTeXAction implements BuildAction {
+public class MakeindexAction implements BuildAction {
 
     /**
      * The field <tt>artifact</tt> contains the artifact to run LaTeX on.
@@ -47,7 +47,7 @@ public class BibTeXAction implements BuildAction {
      * 
      * @param artifact the artifact to run LaTeX on
      */
-    public BibTeXAction(Artifact artifact) {
+    public MakeindexAction(Artifact artifact) {
 
         this.artifact = artifact;
     }
@@ -61,20 +61,22 @@ public class BibTeXAction implements BuildAction {
     public void execute(Artifact target, Map<String, String> context,
             Logger logger, boolean simulate) throws MakeException {
 
-        String output = get(context, "bibtex.output.directory", ".");
-        String bibtexCommand = get(context, "bibtex.command", "bibtex");
-        String workingDirectory = get(context, "bibtex.working.directory", ".");
+        String output = get(context, "makeindex.output.directory", ".");
+        String makeindexCommand =
+                get(context, "makeindex.command", "makeindex");
+        String workingDirectory =
+                get(context, "makeindex.working.directory", ".");
         String base = artifact.getFile().toString().replace('\\', '/');
 
         if (logger != null) {
             logger.log(simulate ? Level.INFO : Level.FINE, //
-                "--> " + bibtexCommand + " " + base);
+                "--> " + makeindexCommand + " " + base);
         }
         if (simulate) {
             return;
         }
 
-        ProcessBuilder bibtex = new ProcessBuilder(bibtexCommand, //
+        ProcessBuilder bibtex = new ProcessBuilder(makeindexCommand, //
             base);
         bibtex.directory(new File(workingDirectory));
         bibtex.redirectErrorStream(true);
@@ -136,7 +138,7 @@ public class BibTeXAction implements BuildAction {
     @Override
     public String toString() {
 
-        return "bibtex $*";
+        return "makeindex $*";
     }
 
 }
