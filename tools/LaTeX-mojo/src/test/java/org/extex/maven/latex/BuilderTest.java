@@ -24,9 +24,9 @@ import java.io.File;
 import java.io.PrintWriter;
 import java.io.StringWriter;
 
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.action.LaTeXAction;
-import org.extex.maven.latex.make.artifact.Artifact;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.action.LaTeXAction;
+import org.extex.maven.latex.builder.artifact.Artifact;
 import org.junit.Test;
 
 /**

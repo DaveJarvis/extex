@@ -16,19 +16,18 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact;
+package org.extex.maven.latex.builder.artifact;
 
 import java.io.File;
 import java.io.IOException;
 
-
 /**
- * This artifact represents a raw index file.
+ * This artifact represents a bbl file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class RawIndexArtifact extends Artifact {
+public class BblArtifact extends Artifact {
 
     /**
      * Creates a new object.
@@ -37,7 +36,7 @@ public class RawIndexArtifact extends Artifact {
      * 
      * @throws IOException in case of an I/O error
      */
-    public RawIndexArtifact(File file) throws IOException {
+    public BblArtifact(File file) throws IOException {
 
         super(file);
     }

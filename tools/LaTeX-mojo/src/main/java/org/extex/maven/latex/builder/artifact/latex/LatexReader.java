@@ -1,4 +1,22 @@
-package org.extex.maven.latex.make.artifact.latex;
+/*
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+
+package org.extex.maven.latex.builder.artifact.latex;
 
 import java.io.IOException;
 import java.io.PushbackReader;
@@ -13,30 +31,9 @@ import java.io.Reader;
 public class LatexReader extends PushbackReader {
 
     /**
-     * The field <tt>atLetter</tt> contains the indicator to treat @ as
-     * letter.
+     * The field <tt>atLetter</tt> contains the indicator to treat @ as letter.
      */
     private boolean atLetter = false;
-
-    /**
-     * Getter for the atLetter.
-     * 
-     * @return the atLetter
-     */
-    public boolean isAtLetter() {
-
-        return atLetter;
-    }
-
-    /**
-     * Setter for the atLetter.
-     * 
-     * @param atLetter the atLetter to set
-     */
-    public void setAtLetter(boolean atLetter) {
-
-        this.atLetter = atLetter;
-    }
 
     /**
      * Creates a new object.
@@ -49,8 +46,18 @@ public class LatexReader extends PushbackReader {
     }
 
     /**
-     * Scan a block with matching braces or a single character if the
-     * opening brace is not found.
+     * Getter for the atLetter.
+     * 
+     * @return the atLetter
+     */
+    public boolean isAtLetter() {
+
+        return atLetter;
+    }
+
+    /**
+     * Scan a block with matching braces or a single character if the opening
+     * brace is not found.
      * 
      * @return the value of the block
      * 
@@ -120,8 +127,8 @@ public class LatexReader extends PushbackReader {
 
         if (Character.isLetter(c) || (c == '@' && atLetter)) {
 
-            for (c = read(); Character.isLetter(c)
-                    || (c == '@' && atLetter); c = read()) {
+            for (c = read(); Character.isLetter(c) || (c == '@' && atLetter); c =
+                    read()) {
                 buffer.append((char) c);
             }
 
@@ -134,8 +141,8 @@ public class LatexReader extends PushbackReader {
     }
 
     /**
-     * Scan to the next non-space character. On the tour comments are
-     * consumed as well.
+     * Scan to the next non-space character. On the tour comments are consumed
+     * as well.
      * 
      * @return the next non-space character
      * 
@@ -197,8 +204,8 @@ public class LatexReader extends PushbackReader {
     /**
      * Consume all characters until the end text is found.
      * 
-     * @param text the end text. It should not be empty since the behavior
-     *        of the method is undefined in this case
+     * @param text the end text. It should not be empty since the behavior of
+     *        the method is undefined in this case
      * 
      * @throws IOException in case of an I/O error
      */
@@ -219,6 +226,16 @@ public class LatexReader extends PushbackReader {
                 i = 0;
             }
         }
+    }
+
+    /**
+     * Setter for the atLetter.
+     * 
+     * @param atLetter the atLetter to set
+     */
+    public void setAtLetter(boolean atLetter) {
+
+        this.atLetter = atLetter;
     }
 
 }

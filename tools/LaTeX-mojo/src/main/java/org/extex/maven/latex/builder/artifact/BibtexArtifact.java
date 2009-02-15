@@ -16,19 +16,19 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact;
+package org.extex.maven.latex.builder.artifact;
 
 import java.io.File;
 import java.io.IOException;
 
 
 /**
- * This artifact represents a bbl file.
+ * This artifact represents a BibTeX file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BblArtifact extends Artifact {
+public class BibtexArtifact extends Artifact {
 
     /**
      * Creates a new object.
@@ -37,7 +37,7 @@ public class BblArtifact extends Artifact {
      * 
      * @throws IOException in case of an I/O error
      */
-    public BblArtifact(File file) throws IOException {
+    public BibtexArtifact(File file) throws IOException {
 
         super(file);
     }

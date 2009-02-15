@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make;
+package org.extex.maven.latex.builder;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -27,9 +27,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.make.artifact.Artifact;
-import org.extex.maven.latex.make.artifact.LatexArtifact;
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.artifact.LatexArtifact;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This class represents a net of artifacts and dependencies. The characteristic

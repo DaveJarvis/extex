@@ -16,18 +16,18 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact;
+package org.extex.maven.latex.builder.artifact;
 
 import java.io.File;
 import java.io.IOException;
 
 /**
- * This artifact represents an index file.
+ * This artifact represents a raw index file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class IndexArtifact extends Artifact {
+public class RawIndexArtifact extends Artifact {
 
     /**
      * Creates a new object.
@@ -36,7 +36,7 @@ public class IndexArtifact extends Artifact {
      * 
      * @throws IOException in case of an I/O error
      */
-    public IndexArtifact(File file) throws IOException {
+    public RawIndexArtifact(File file) throws IOException {
 
         super(file);
     }

@@ -16,60 +16,43 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.exception;
+package org.extex.maven.latex.builder.action;
+
+import java.io.PrintWriter;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
- * This is a base exception for the make.
+ * This interface describes an action participating to the build.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MakeException extends Exception {
+public interface BuildAction {
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the version number for
-     * serialization.
-     */
-    private static final long serialVersionUID = 2008L;
-
-    /**
-     * Creates a new object.
+     * Run or simulate the commands to be executed.
      * 
+     * @param artifact
+     * @param context the environment
+     * @param logger the logger
+     * @param simulate the indicator whether or not to really execute the
+     *        commands
+     * 
+     * @throws MakeException in case of an error
      */
-    public MakeException() {
-
-        super();
-    }
+    void execute(Artifact artifact, Map<String, String> context, Logger logger,
+            boolean simulate) throws MakeException;
 
     /**
-     * Creates a new object.
+     * Print the action to a writer.
      * 
-     * @param message the message
+     * @param w the writer
+     * @param pre the prefix inserted at the beginning of each line
      */
-    public MakeException(String message) {
-
-        super(message);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     * @param cause the cause
-     */
-    public MakeException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    public MakeException(Throwable cause) {
-
-        super(cause);
-    }
+    void print(PrintWriter w, String pre);
 
 }

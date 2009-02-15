@@ -31,8 +31,8 @@ import java.util.logging.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This mojo can act as a compiler for LaTeX documents.

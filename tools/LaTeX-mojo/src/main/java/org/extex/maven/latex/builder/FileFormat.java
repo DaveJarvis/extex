@@ -16,13 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make;
+package org.extex.maven.latex.builder;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.extex.maven.latex.make.action.LaTeXAction;
-import org.extex.maven.latex.make.artifact.Artifact;
+import org.extex.maven.latex.builder.action.LaTeXAction;
+import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
  * This enumeration lists all supported file formats.
@@ -40,7 +40,7 @@ public enum FileFormat {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.maven.latex.make.FileFormat#makeTarget(java.io.File,
+         * @see org.extex.maven.latex.builder.FileFormat#makeTarget(java.io.File,
          *      java.lang.String, DependencyNet)
          */
         @Override
@@ -65,7 +65,7 @@ public enum FileFormat {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.maven.latex.make.FileFormat#makeTarget(java.io.File,
+         * @see org.extex.maven.latex.builder.FileFormat#makeTarget(java.io.File,
          *      java.lang.String, DependencyNet)
          */
         @Override

@@ -16,14 +16,14 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact;
+package org.extex.maven.latex.builder.artifact;
 
 import java.io.File;
 import java.io.IOException;
 
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.artifact.latex.LaTeXAnalyzer;
-import org.extex.maven.latex.make.artifact.latex.LatexTokenizerAnalyzer;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.latex.LaTeXAnalyzer;
+import org.extex.maven.latex.builder.artifact.latex.LatexTokenizerAnalyzer;
 
 /**
  * This class represents a LaTeX artifact.
@@ -36,8 +36,7 @@ public class LatexArtifact extends Artifact {
     /**
      * The field <tt>ANALYZER</tt> contains the analyzer.
      */
-    private static final LaTeXAnalyzer ANALYZER =
-            new LatexTokenizerAnalyzer();
+    private static final LaTeXAnalyzer ANALYZER = new LatexTokenizerAnalyzer();
 
     /**
      * The field <tt>BIBTEX_EXTENSIONS</tt> contains the context name for the
@@ -92,7 +91,7 @@ public class LatexArtifact extends Artifact {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.artifact.Artifact#analyze(DependencyNet)
+     * @see org.extex.maven.latex.builder.artifact.Artifact#analyze(DependencyNet)
      */
     @Override
     public void analyze(DependencyNet net) throws IOException {

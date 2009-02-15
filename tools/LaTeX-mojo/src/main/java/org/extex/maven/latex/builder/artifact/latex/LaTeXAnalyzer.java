@@ -16,14 +16,14 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact.latex;
+package org.extex.maven.latex.builder.artifact.latex;
 
 import java.io.IOException;
 
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.artifact.Artifact;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.Artifact;
 
-/*
+/**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

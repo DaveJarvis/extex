@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.action;
+package org.extex.maven.latex.builder.action;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,8 +26,8 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.make.artifact.Artifact;
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This action runs LaTeX in one of its variants on the artifact.
@@ -55,7 +55,7 @@ public class LaTeXAction implements BuildAction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.action.BuildAction#execute(org.extex.maven.latex.make.artifact.Artifact,
+     * @see org.extex.maven.latex.builder.action.BuildAction#execute(org.extex.maven.latex.builder.artifact.Artifact,
      *      java.util.Map, Logger, boolean)
      */
     public void execute(Artifact target, Map<String, String> context,
@@ -119,7 +119,7 @@ public class LaTeXAction implements BuildAction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.action.BuildAction#print(java.io.PrintWriter,
+     * @see org.extex.maven.latex.builder.action.BuildAction#print(java.io.PrintWriter,
      *      java.lang.String)
      */
     public void print(PrintWriter w, String pre) {

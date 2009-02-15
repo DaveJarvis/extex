@@ -16,43 +16,60 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.action;
-
-import java.io.PrintWriter;
-import java.util.Map;
-import java.util.logging.Logger;
-
-import org.extex.maven.latex.make.artifact.Artifact;
-import org.extex.maven.latex.make.exception.MakeException;
+package org.extex.maven.latex.builder.exception;
 
 /**
- * This interface describes an action participating to the build.
+ * This is a base exception for the make.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface BuildAction {
+public class MakeException extends Exception {
 
     /**
-     * Run or simulate the commands to be executed.
-     * 
-     * @param artifact
-     * @param context the environment
-     * @param logger the logger
-     * @param simulate the indicator whether or not to really execute the
-     *        commands
-     * 
-     * @throws MakeException in case of an error
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    void execute(Artifact artifact, Map<String, String> context, Logger logger,
-            boolean simulate) throws MakeException;
+    private static final long serialVersionUID = 2008L;
 
     /**
-     * Print the action to a writer.
+     * Creates a new object.
      * 
-     * @param w the writer
-     * @param pre the prefix inserted at the beginning of each line
      */
-    void print(PrintWriter w, String pre);
+    public MakeException() {
+
+        super();
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message the message
+     */
+    public MakeException(String message) {
+
+        super(message);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param message the message
+     * @param cause the cause
+     */
+    public MakeException(String message, Throwable cause) {
+
+        super(message, cause);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param cause the cause
+     */
+    public MakeException(Throwable cause) {
+
+        super(cause);
+    }
 
 }

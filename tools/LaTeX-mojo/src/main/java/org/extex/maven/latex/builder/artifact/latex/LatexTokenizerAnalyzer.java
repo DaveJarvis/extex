@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact.latex;
+package org.extex.maven.latex.builder.artifact.latex;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -25,14 +25,14 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.action.BibTeXAction;
-import org.extex.maven.latex.make.action.LaTeXAction;
-import org.extex.maven.latex.make.action.MakeindexAction;
-import org.extex.maven.latex.make.artifact.Artifact;
-import org.extex.maven.latex.make.artifact.BblArtifact;
-import org.extex.maven.latex.make.artifact.BibtexArtifact;
-import org.extex.maven.latex.make.artifact.LatexArtifact;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.action.BibTeXAction;
+import org.extex.maven.latex.builder.action.LaTeXAction;
+import org.extex.maven.latex.builder.action.MakeindexAction;
+import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.artifact.BblArtifact;
+import org.extex.maven.latex.builder.artifact.BibtexArtifact;
+import org.extex.maven.latex.builder.artifact.LatexArtifact;
 
 /**
  * This class represents a LaTeX analyzer.
@@ -47,13 +47,16 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
      */
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
+    /**
+     * The field <tt>BEGIN</tt> contains the ...
+     */
     private final Macro BEGIN = new Macro() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.maven.latex.make.artifact.latex.Macro#expand(LatexReader,
-         *      org.extex.maven.latex.make.DependencyNet, java.io.File)
+         * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
+         *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
          */
         @Override
         public void expand(LatexReader reader, DependencyNet net, File base)
@@ -81,8 +84,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File)
+             * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
              */
             @Override
             public void expand(LatexReader reader, DependencyNet net, File base)
@@ -100,8 +103,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File,
+             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
              *      java.lang.String, java.lang.String)
              */
             @Override
@@ -210,8 +213,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File,
+             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
              *      java.lang.String, java.lang.String)
              */
             @Override
@@ -319,8 +322,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File,
+             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
              *      java.lang.String, java.lang.String)
              */
             @Override
@@ -350,8 +353,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File)
+             * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
              */
             @Override
             public void expand(LatexReader reader, DependencyNet net, File base)
@@ -369,8 +372,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.maven.latex.make.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.make.DependencyNet, java.io.File)
+             * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
+             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
              */
             @Override
             public void expand(LatexReader reader, DependencyNet net, File base)
@@ -384,8 +387,8 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.artifact.latex.LaTeXAnalyzer#analyze(org.extex.maven.latex.make.artifact.Artifact,
-     *      org.extex.maven.latex.make.DependencyNet)
+     * @see org.extex.maven.latex.builder.artifact.latex.LaTeXAnalyzer#analyze(org.extex.maven.latex.builder.artifact.Artifact,
+     *      org.extex.maven.latex.builder.DependencyNet)
      */
     public void analyze(Artifact artifact, DependencyNet net)
             throws IOException {

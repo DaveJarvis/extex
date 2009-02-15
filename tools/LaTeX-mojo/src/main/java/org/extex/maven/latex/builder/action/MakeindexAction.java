@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.action;
+package org.extex.maven.latex.builder.action;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,11 +26,11 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.make.artifact.Artifact;
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This action runs makeindex in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -55,7 +55,7 @@ public class MakeindexAction implements BuildAction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.action.BuildAction#execute(org.extex.maven.latex.make.artifact.Artifact,
+     * @see org.extex.maven.latex.builder.action.BuildAction#execute(org.extex.maven.latex.builder.artifact.Artifact,
      *      java.util.Map, Logger, boolean)
      */
     public void execute(Artifact target, Map<String, String> context,
@@ -101,13 +101,14 @@ public class MakeindexAction implements BuildAction {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get some value from a context map with a fallback value in case that the
+     * value is not found in the context.
      * 
-     * @param context
-     * @param key
-     * @param fallback
+     * @param context the context map
+     * @param key the key
+     * @param fallback the fallback value
      * 
-     * @return
+     * @return the value for the key of the fallback value
      */
     private String get(Map<String, String> context, String key, String fallback) {
 
@@ -121,7 +122,7 @@ public class MakeindexAction implements BuildAction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.make.action.BuildAction#print(java.io.PrintWriter,
+     * @see org.extex.maven.latex.builder.action.BuildAction#print(java.io.PrintWriter,
      *      java.lang.String)
      */
     public void print(PrintWriter w, String pre) {

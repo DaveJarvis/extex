@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.make.artifact;
+package org.extex.maven.latex.builder.artifact;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -29,9 +29,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.make.DependencyNet;
-import org.extex.maven.latex.make.action.BuildAction;
-import org.extex.maven.latex.make.exception.MakeException;
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.action.BuildAction;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This class represents a simple artifact. It also can act as base class to
