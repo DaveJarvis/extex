@@ -30,7 +30,7 @@ import org.extex.maven.latex.builder.artifact.Artifact;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the dependency net.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,8 +38,7 @@ import org.junit.Test;
 public class BuilderTest {
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> The empty net prints nothing. </testcase>
      */
     @Test
     public void test1() {
@@ -51,8 +50,7 @@ public class BuilderTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> A net with just one artifact prints this artifact. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -69,8 +67,8 @@ public class BuilderTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> A net with an artifact with a cyclic dependency prints the
+     * artifact and the dependency. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -80,13 +78,12 @@ public class BuilderTest {
         StringWriter out = new StringWriter();
         PrintWriter w = new PrintWriter(out);
         DependencyNet builder = new DependencyNet();
-        builder.addArtifact(new Artifact(new File("abc")));
-        builder.getArtifact(new File("abc")).dependsOn(
-            builder.getArtifact(new File("abc")));
+        Artifact abc = builder.getArtifact(new File("abc"));
+        builder.addArtifact(abc);
+        abc.dependsOn(abc);
 
         builder.print(w, "");
-        assertEquals("abc\nabc\n\t-> abc\n", out.toString()
-            .replaceAll("\r", ""));
+        assertEquals("abc\n\t-> abc\n", out.toString().replaceAll("\r", ""));
     }
 
     /**
@@ -106,7 +103,7 @@ public class BuilderTest {
             builder.getArtifact(new File("def")));
 
         builder.print(w, "");
-        assertEquals("def\nabc\nabc\n\t-> def\n", //
+        assertEquals("abc\n\t-> def\ndef\n", //
             out.toString().replaceAll("\r", ""));
     }
 
@@ -129,9 +126,9 @@ public class BuilderTest {
         builder.getArtifact(new File("xyz")).dependsOn(
             builder.getArtifact(new File("def")));
         builder.print(w, "");
-        assertEquals("def\n" //
-                + "xyz\n\t-> def\n" //
-                + "abc\n\t-> def\n\t-> xyz\n", //
+        assertEquals("abc\n\t-> def\n\t-> xyz\n" //
+                + "def\n" //
+                + "xyz\n\t-> def\n", //
             out.toString().replaceAll("\r", ""));
     }
 
