@@ -86,11 +86,11 @@ public class DependencyNet {
      */
     public Artifact addArtifact(Artifact a) {
 
-        return map.put(a.getFile().toString(), a);
+        return map.put(a.getFile().getAbsoluteFile().toString(), a);
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Build the default target of the net.
      * 
      * @param simulate the indicator whether the commands should really be
      *        executed
