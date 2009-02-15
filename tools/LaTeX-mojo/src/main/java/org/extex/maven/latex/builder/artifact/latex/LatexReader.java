@@ -38,7 +38,7 @@ public class LatexReader extends PushbackReader {
     /**
      * Creates a new object.
      * 
-     * @param in
+     * @param in the source to get characters from
      */
     public LatexReader(Reader in) {
 
