@@ -36,7 +36,8 @@ public interface BuildAction {
     /**
      * Run or simulate the commands to be executed.
      * 
-     * @param artifact
+     * @param artifact the artifact requesting the build; note: this is in
+     *        general <i>not</i> the artifact to be build by this action
      * @param context the environment
      * @param logger the logger
      * @param simulate the indicator whether or not to really execute the
