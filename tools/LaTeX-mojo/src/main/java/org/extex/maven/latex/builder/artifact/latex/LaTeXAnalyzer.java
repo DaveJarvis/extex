@@ -40,7 +40,6 @@ public interface LaTeXAnalyzer {
      * 
      * @throws IOException in case of an I/O error
      */
-    public abstract void analyze(Artifact artifact, DependencyNet net)
-            throws IOException;
+    void analyze(Artifact artifact, DependencyNet net) throws IOException;
 
 }
