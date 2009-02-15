@@ -332,7 +332,7 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
 
                 net.getLogger().fine(base.getName() + ": \\usepackage " + arg);
 
-                // TODO
+                // TODO usepackage unimplemented
 
                 // File file =
                 // net.findFile(arg, net

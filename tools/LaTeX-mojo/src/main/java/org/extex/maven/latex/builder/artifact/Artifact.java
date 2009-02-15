@@ -210,11 +210,11 @@ public class Artifact {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Compare the age against a reference artifact.
      * 
-     * @param artifact the other artifact
+     * @param artifact the reference artifact
      * 
-     * @return TODO
+     * @return <code>true</code> iff the artifact is newer than the reference
      */
     private boolean isNewer(Artifact artifact) {
 
