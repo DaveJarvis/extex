@@ -25,7 +25,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
-import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.apache.maven.plugin.AbstractMojo;
@@ -63,40 +62,10 @@ public class LaTeXMojo extends AbstractMojo {
     private String format = "pdf";
 
     /**
-     * The field <tt>handler</tt> contains the ...
+     * The field <tt>handler</tt> contains the handler which acts as adaptor
+     * from the Java Logger to the maven Log.
      */
-    private Handler handler = new Handler() {
-
-        @Override
-        public void close() throws SecurityException {
-
-            // nothing to do
-        }
-
-        @Override
-        public void flush() {
-
-            // nothing to do
-        }
-
-        @Override
-        public void publish(LogRecord record) {
-
-            Level level = record.getLevel();
-            int levelValue = level.intValue();
-
-            if (levelValue >= Level.SEVERE.intValue()) {
-                getLog().error(record.getMessage());
-            } else if (levelValue >= Level.WARNING.intValue()) {
-                getLog().warn(record.getMessage());
-            } else if (levelValue >= Level.INFO.intValue()) {
-                getLog().info(record.getMessage());
-            } else {
-                getLog().debug(record.getMessage());
-            }
-        }
-
-    };
+    private Handler handler;
 
     /**
      * The field <tt>latexCommand</tt> contains the command to be used for
@@ -129,6 +98,14 @@ public class LaTeXMojo extends AbstractMojo {
      * @parameter expression="${basedir}"
      */
     private File workingDirectory = new File(".");
+
+    /**
+     * Creates a new object.
+     */
+    public LaTeXMojo() {
+
+        handler = new LogAdaptorHandler(this.getLog());
+    }
 
     /**
      * Setter for the texinputs.
@@ -191,9 +168,9 @@ public class LaTeXMojo extends AbstractMojo {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Print the net to the log.
      * 
-     * @param net
+     * @param net the dependency net
      */
     private void logNet(DependencyNet net) {
 
