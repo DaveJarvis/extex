@@ -148,7 +148,7 @@ public class LatexReader extends PushbackReader {
      * 
      * @throws IOException in case of an I/O error
      */
-    int scanNext() throws IOException {
+    public int scanNext() throws IOException {
 
         int c = read();
 

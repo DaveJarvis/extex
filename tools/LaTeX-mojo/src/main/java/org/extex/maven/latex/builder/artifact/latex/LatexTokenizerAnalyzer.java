@@ -26,16 +26,27 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.extex.maven.latex.builder.DependencyNet;
-import org.extex.maven.latex.builder.action.BibTeXAction;
-import org.extex.maven.latex.builder.action.LaTeXAction;
-import org.extex.maven.latex.builder.action.MakeindexAction;
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.artifact.BblArtifact;
-import org.extex.maven.latex.builder.artifact.BibtexArtifact;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
+import org.extex.maven.latex.builder.artifact.latex.macro.BeginDocument;
+import org.extex.maven.latex.builder.artifact.latex.macro.BeginVerbatim;
+import org.extex.maven.latex.builder.artifact.latex.macro.Bibliography;
+import org.extex.maven.latex.builder.artifact.latex.macro.Include;
+import org.extex.maven.latex.builder.artifact.latex.macro.IncludeGraphics;
+import org.extex.maven.latex.builder.artifact.latex.macro.Input;
+import org.extex.maven.latex.builder.artifact.latex.macro.InputIfFileExists;
+import org.extex.maven.latex.builder.artifact.latex.macro.MakeAtLetter;
+import org.extex.maven.latex.builder.artifact.latex.macro.MakeAtOther;
+import org.extex.maven.latex.builder.artifact.latex.macro.PrintGlossary;
+import org.extex.maven.latex.builder.artifact.latex.macro.PrintIndex;
+import org.extex.maven.latex.builder.artifact.latex.macro.TableOfContents;
+import org.extex.maven.latex.builder.artifact.latex.macro.UsePackage;
+import org.extex.maven.latex.builder.artifact.latex.macro.Verb;
 
 /**
- * This class represents a LaTeX analyzer.
+ * This class represents a LaTeX analyzer. It is based on a map of macros. The
+ * source files are scanned and the handlers found in the map are invoked to
+ * react on the input. This means the sate may be changed or the dependency net
+ * can be constructed.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -48,38 +59,11 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
     /**
-     * The field <tt>BEGIN</tt> contains the ...
-     */
-    private final Macro BEGIN = new Macro() {
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-         *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
-         */
-        @Override
-        public void expand(LatexReader reader, DependencyNet net, File base)
-                throws IOException {
-
-            String arg = reader.scanBlock();
-            if (arg != null) {
-                Macro macro = macros.get("\\begin{" + arg + "}");
-                if (macro != null) {
-                    macro.expand(reader, net, base);
-                }
-            }
-        }
-    };
-
-    /**
      * Creates a new object.
-     * 
      */
     public LatexTokenizerAnalyzer() {
 
-        macros.put("\\begin", BEGIN);
-        macros.put("\\begin{document}", new Macro() {
+        macros.put("\\begin", new Macro() {
 
             /**
              * {@inheritDoc}
@@ -91,297 +75,29 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
             public void expand(LatexReader reader, DependencyNet net, File base)
                     throws IOException {
 
-                net.getLogger().fine(base.getName() + ": \\begin{document}");
-
-                Artifact aux = net.getDerivedTargetArtifact("aux");
-                aux.provideActions(new LaTeXAction(net.getMaster()));
-                net.getTarget().dependsOn(aux);
-            }
-        });
-        macros.put("\\bibliography", new MacroWithArgs() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-             *      java.lang.String, java.lang.String)
-             */
-            @Override
-            protected void expand(LatexReader reader, DependencyNet net,
-                    File base, String opt, String block) throws IOException {
-
-                String[] args = block.split(",");
-                StringBuilder buffer =
-                        new StringBuilder(base.getName() + ": \\bibliography");
-                for (String arg : args) {
-                    buffer.append(' ');
-                    buffer.append(arg);
-                }
-                net.getLogger().fine(buffer.toString());
-
-                Artifact target = net.getTarget();
-                File bblFile = target.derivedFile("bbl");
-                Artifact bbl = net.findArtifact(bblFile);
-                if (bbl == null) {
-                    bbl = new BblArtifact(bblFile);
-                    net.addArtifact(bbl);
-                    bbl.provideActions(new BibTeXAction(net.getMaster()));
-                }
-                target.dependsOn(bbl);
-
-                for (String arg : args) {
-                    File file =
-                            net
-                                .findFile(arg, net
-                                    .context(LatexArtifact.BIBTEX_EXTENSIONS),
-                                    base);
-                    Artifact a = net.findArtifact(file);
-                    if (a == null) {
-                        a = new BibtexArtifact(file);
-                        net.addArtifact(a);
+                String arg = reader.scanBlock();
+                if (arg != null) {
+                    Macro macro = macros.get("\\begin{" + arg + "}");
+                    if (macro != null) {
+                        macro.expand(reader, net, base);
                     }
-                    bbl.dependsOn(a);
                 }
-                Artifact aux = net.getDerivedTargetArtifact("aux");
-                aux.provideActions(new LaTeXAction(net.getMaster()));
-                bbl.dependsOn(aux);
             }
         });
-        macros.put("\\input", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                String arg;
-                int c = reader.scanNext();
-                if (c == '{') {
-                    reader.unread(c);
-                    arg = reader.scanBlock();
-                } else if (c < 0) {
-                    return;
-                } else {
-                    StringBuilder buffer = new StringBuilder();
-                    do {
-                        buffer.append((char) c);
-                        c = reader.read();
-                    } while (c >= 0 && !Character.isWhitespace(c));
-
-                    arg = buffer.toString();
-                }
-
-                net.getLogger().fine(base.getName() + ": \\input " + arg);
-                File file =
-                        net.findFile(arg, net
-                            .context(LatexArtifact.LATEX_EXTENSIONS), base);
-                Artifact a = net.findArtifact(file);
-                if (a == null) {
-                    a = new LatexArtifact(file);
-                    net.addArtifact(a);
-                }
-                Artifact target = net.getTarget();
-                target.dependsOn(a);
-                // TODO
-            }
-        });
-        macros.put("\\InputIfFileExists", new MacroWithArgs() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net,
-                    File base, String opt, String arg) throws IOException {
-
-                net.getLogger().fine(
-                    base.getName() + ": \\InputIfFileExists " + arg);
-                File file =
-                        net.searchFile(arg, net
-                            .context(LatexArtifact.LATEX_EXTENSIONS), base);
-                if (file == null) {
-                    return;
-                }
-                Artifact a = net.findArtifact(file);
-                if (a == null) {
-                    a = new LatexArtifact(file);
-                    net.addArtifact(a);
-                }
-                Artifact target = net.getTarget();
-                target.dependsOn(a);
-            }
-        });
-        macros.put("\\include", new MacroWithArgs() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-             *      java.lang.String, java.lang.String)
-             */
-            @Override
-            public void expand(LatexReader reader, DependencyNet net,
-                    File base, String opt, String arg) throws IOException {
-
-                net.getLogger().fine(base.getName() + ": \\include " + arg);
-
-                File file =
-                        net.findFile(arg, net
-                            .context(LatexArtifact.LATEX_EXTENSIONS), base);
-                Artifact a = net.findArtifact(file);
-                if (a == null) {
-                    a = new LatexArtifact(file);
-                    net.addArtifact(a);
-                }
-
-                Artifact target = net.getTarget();
-                target.dependsOn(a);
-            }
-        });
-        macros.put("\\includegraphics", new MacroWithArgs() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net,
-                    File base, String opt, String arg) throws IOException {
-
-                net.getLogger().fine(
-                    base.getName() + ": \\includegraphics " + arg);
-
-                File file =
-                        net.findFile(arg, net
-                            .context(LatexArtifact.GRAPHICS_EXTENSIONS), base);
-                net.getTarget().dependsOn(net.getArtifact(file));
-            }
-        });
-        macros.put("\\makeatletter", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                reader.setAtLetter(true);
-            }
-
-        });
-        macros.put("\\makeatother", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                reader.setAtLetter(false);
-            }
-
-        });
-        macros.put("\\printglossary", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                net.getLogger().fine(base.getName() + ": \\printglossary");
-
-                Artifact target = net.getTarget();
-                Artifact glx = net.getDerivedTargetArtifact("glx");
-                Artifact glo = net.getDerivedTargetArtifact("glo");
-                target.dependsOn(glo);
-                glo.dependsOn(glx);
-            }
-        });
-        macros.put("\\printindex", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                net.getLogger().fine(base.getName() + ": \\printindex");
-
-                Artifact target = net.getTarget();
-                Artifact idx = net.getDerivedTargetArtifact("idx");
-                idx.provideActions(new LaTeXAction(net.getMaster()));
-                Artifact ind = net.getDerivedTargetArtifact("ind");
-                idx.provideActions(new MakeindexAction(net.getMaster()));
-                target.dependsOn(ind);
-                ind.dependsOn(idx);
-                // TODO idx.dependsOn(*tex);
-            }
-        });
-        macros.put("\\tableofcontents", new Macro() {
-
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                net.getLogger().fine(base.getName() + ": \\tableofcontents");
-
-                Artifact toc = net.getDerivedTargetArtifact("toc");
-                toc.provideActions(new LaTeXAction(net.getMaster()));
-                net.getTarget().dependsOn(toc);
-            }
-        });
-        macros.put("\\usepackage", new MacroWithArgs() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(java.io.PushbackReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-             *      java.lang.String, java.lang.String)
-             */
-            @Override
-            public void expand(LatexReader reader, DependencyNet net,
-                    File base, String opt, String arg) throws IOException {
-
-                net.getLogger().fine(base.getName() + ": \\usepackage " + arg);
-
-                // TODO usepackage unimplemented
-
-                // File file =
-                // net.findFile(arg, net
-                // .context(LatexArtifact.LATEX_EXTENSIONS), base);
-
-                // Artifact a = net.findArtifact(file);
-                // if (a == null) {
-                // a = new LatexArtifact(file);
-                // net.addArtifact(a);
-                // }
-                //
-                // Artifact target = net.getTarget();
-                // target.dependsOn(a);
-            }
-        });
-        macros.put("\\verb", new Macro() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
-             */
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                int del = reader.scanNext();
-                int c;
-                do {
-                    c = reader.scanNext();
-                } while (c >= 0 && c != del);
-            }
-        });
-        macros.put("\\begin{verbatim}", new Macro() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
-             */
-            @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
-
-                reader.scanTo("\\end{verbatim}");
-            }
-        });
+        macros.put("\\begin{document}", new BeginDocument());
+        macros.put("\\bibliography", new Bibliography());
+        macros.put("\\input", new Input());
+        macros.put("\\InputIfFileExists", new InputIfFileExists());
+        macros.put("\\include", new Include());
+        macros.put("\\includegraphics", new IncludeGraphics());
+        macros.put("\\makeatletter", new MakeAtLetter());
+        macros.put("\\makeatother", new MakeAtOther());
+        macros.put("\\printglossary", new PrintGlossary());
+        macros.put("\\printindex", new PrintIndex());
+        macros.put("\\tableofcontents", new TableOfContents());
+        macros.put("\\usepackage", new UsePackage());
+        macros.put("\\verb", new Verb());
+        macros.put("\\begin{verbatim}", new BeginVerbatim());
     }
 
     /**

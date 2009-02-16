@@ -16,27 +16,33 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.builder.artifact.latex;
+package org.extex.maven.latex.builder.artifact.latex.macro;
 
 import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.latex.LatexReader;
+import org.extex.maven.latex.builder.artifact.latex.Macro;
 
 /**
- * This is a function object. It is necessary in absence of closures.
+ * This class implements a handler for <code>\makeatother</code>.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision$
  */
-public abstract class Macro {
+public final class MakeAtOther extends Macro {
 
     /**
-     * Process the macro.
+     * {@inheritDoc}
      * 
-     * @param reader the reader
-     * @param net the dependency net
-     * @param base the base file being processed
-     * 
-     * @throws IOException in case of an I/O error
+     * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
+     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
      */
-    public abstract void expand(LatexReader reader, DependencyNet net, File base)
-            throws IOException;
+    @Override
+    public void expand(LatexReader reader, DependencyNet net, File base)
+            throws IOException {
+
+        reader.setAtLetter(false);
+    }
 }
