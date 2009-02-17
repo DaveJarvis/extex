@@ -51,7 +51,7 @@ import org.extex.maven.latex.builder.artifact.latex.macro.Verb;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
+public class LaTeXStringAnalyzer implements LaTeXAnalyzer {
 
     /**
      * The field <tt>macros</tt> contains the macros.
@@ -61,7 +61,7 @@ public class LatexTokenizerAnalyzer implements LaTeXAnalyzer {
     /**
      * Creates a new object.
      */
-    public LatexTokenizerAnalyzer() {
+    public LaTeXStringAnalyzer() {
 
         macros.put("\\begin", new Macro() {
 
