@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faqs title="Frequently Asked Questions" toplink="false">
+
+  <part id="general">
+    <title>General</title>
+
+    <faq id="prerequisites">
+      <question>
+        Which prerequisites are assumed by the latex plugin?
+      </question>
+      <answer>
+        <p>The latex plugin needs an installed T<span class="e">e</span>X system:</p>
+	<ul>
+	<li>The executables have to be found on the path for executables.</li>
+	</ul>
+      </answer>
+    </faq>
+  </part>
+
+</faqs>

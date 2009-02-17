@@ -43,10 +43,10 @@ import org.extex.maven.latex.builder.artifact.latex.macro.UsePackage;
 import org.extex.maven.latex.builder.artifact.latex.macro.Verb;
 
 /**
- * This class represents a LaTeX analyzer. It is based on a map of macros. The
- * source files are scanned and the handlers found in the map are invoked to
- * react on the input. This means the sate may be changed or the dependency net
- * can be constructed.
+ * This class represents a L<span class="la">a</span>T<span class="e">e</span>X
+ * analyzer. It is based on a map of macros. The source files are scanned and
+ * the handlers found in the map are invoked to react on the input. This means
+ * the sate may be changed or the dependency net can be constructed.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

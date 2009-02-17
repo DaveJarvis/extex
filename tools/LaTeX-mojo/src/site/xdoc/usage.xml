@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+  <properties>
+    <author email="gene@gerd-neugebauer.de">Gerd neugebauer</author>
+    <title>LaTeX mojo: Usage</title>
+  </properties>
+  <meta name="keyword" content="LaTeX, maven, plugin"/>
+<body>
+  <section name="Typesetting Documents">
+  
+  <source>
+    &lt;plugin&gt;
+      &lt;groupId&gt;org.extex&lt;/groupId&gt;
+      &lt;artifactId&gt;maven-latex-plugin&lt;/artifactId&gt;
+      &lt;configuration&gt;
+        &lt;file&gt;user-guide.tex&lt;/file&gt;
+      &lt;/configuration&gt;
+    &lt;/plugin&gt;
+  </source>
+  </section>
+</body>
+</document> 

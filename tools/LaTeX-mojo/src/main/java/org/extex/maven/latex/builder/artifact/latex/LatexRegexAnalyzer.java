@@ -35,7 +35,8 @@ import org.extex.maven.latex.builder.artifact.BibtexArtifact;
 import org.extex.maven.latex.builder.artifact.LatexArtifact;
 
 /**
- * This class represents a LaTeX analyzer.
+ * This class represents a L<span class="la">a</span>T<span class="e">e</span>X
+ * analyzer.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

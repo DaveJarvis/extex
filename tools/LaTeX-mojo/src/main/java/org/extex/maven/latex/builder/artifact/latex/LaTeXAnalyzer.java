@@ -24,7 +24,8 @@ import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
- * This interface describes an analyzer for LaTeX files.
+ * This interface describes an analyzer for L<span class="la">a</span>T<span
+ * class="e">e</span>X files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
@@ -33,7 +34,8 @@ import org.extex.maven.latex.builder.artifact.Artifact;
 public interface LaTeXAnalyzer {
 
     /**
-     * Analyze a LaTeX file and update the dependency net accordingly.
+     * Analyze a L<span class="la">a</span>T<span class="e">e</span>X file and
+     * update the dependency net accordingly.
      * 
      * @param artifact the artifact to analyze
      * @param net the dependency net

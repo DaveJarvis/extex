@@ -1,0 +1,24 @@
+#banner {
+  background: url(../images/fade.png);
+}
+.e {
+  text-transform:uppercase;
+  font-size:95%;
+  vertical-align: -0.45ex;
+  margin-left: -0.1em;
+  margin-right: -0.06em;
+  line-height:0;
+}
+.la {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.08em;
+}
+.sc {
+  font-variant: small-caps;
+}

@@ -1,6 +1,28 @@
 <project name="LaTeX mojo">
 
+  <banner>
+    <src>images/fade.gif</src>
+  </banner>
+
+  <bannerLeft>
+    <name>LaTeX mojo</name>
+    <src>images/LaTeXmojo-banner.png</src>
+    <href>http://www.extex.org/maven/LaTeX-mojo/</href>
+  </bannerLeft>
+  
+  <bannerRight>
+    <name>ExTeX</name>
+    <src>images/ExTeX-spinoff.png</src>
+    <href>http://www.extex.org/</href>
+  </bannerRight>
+
   <body>
+    <menu name="Overview">
+      <item name="Introduction" href="index.html" />
+      <item name="Goals" href="plugin-info.html" />
+      <item name="Usage" href="usage.html" />
+      <item name="FAQ" href="faq.html" />
+    </menu>
     <menu ref="parent" />
     <menu ref="modules" />
     <menu ref="reports" />

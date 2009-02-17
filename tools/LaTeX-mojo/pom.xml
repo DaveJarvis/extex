@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>LaTeX-mojo</artifactId>
+  <artifactId>maven-latex-plugin</artifactId>
   <version>1.0-SNAPSHOT</version>
   <name>LaTeX mojo</name>
   <description>
@@ -14,7 +14,7 @@
   </description>
   <packaging>maven-plugin</packaging>
   <inceptionYear>2008</inceptionYear>
-  <url>http://www.extex.org</url>
+  <url>http://www.extex.org/maven/latex-mojo/</url>
 
   <organization>
     <name>The ExTeX Group</name>
@@ -22,9 +22,9 @@
   </organization>
 
   <scm>
-    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/tools/LaTeX-mojo</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/tools/LaTeX-mojo</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/tools/LaTeX-mojo/</url>
   </scm>
 
   <issueManagement>
@@ -59,6 +59,19 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>generated-helpmojo</id>
+            <goals>
+              <goal>helpmojo</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
           <source>1.5</source>
@@ -74,11 +87,17 @@
           <downloadJavadocs>true</downloadJavadocs>
         </configuration>
       </plugin>
+
     </plugins>
   </build>
 
   <reporting>
     <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-plugin</artifactId>
+      </plugin>
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
@@ -94,6 +113,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <aggregate>true</aggregate>
+          <stylesheetfile>${basedir}/src/javadoc/stylesheet.css</stylesheetfile>  
         </configuration>
       </plugin>
 

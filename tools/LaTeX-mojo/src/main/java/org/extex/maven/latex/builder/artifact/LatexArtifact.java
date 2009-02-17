@@ -26,7 +26,8 @@ import org.extex.maven.latex.builder.artifact.latex.LaTeXAnalyzer;
 import org.extex.maven.latex.builder.artifact.latex.LatexTokenizerAnalyzer;
 
 /**
- * This class represents a LaTeX artifact.
+ * This class represents a L<span class="la">a</span>T<span class="e">e</span>X
+ * artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -58,7 +59,7 @@ public class LatexArtifact extends Artifact {
 
     /**
      * The field <tt>LATEX_EXTENSIONS</tt> contains the context name for the
-     * LaTeX extensions.
+     * L<span class="la">a</span>T<span class="e">e</span>X extensions.
      */
     public static final String LATEX_EXTENSIONS = "latex.extensions";
 

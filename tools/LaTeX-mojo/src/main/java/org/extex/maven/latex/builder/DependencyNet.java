@@ -99,7 +99,7 @@ public class DependencyNet {
      */
     public void build(boolean simulate) throws MakeException {
 
-        build(target.getFile().toString(), simulate);
+        build(target.getFile().getAbsoluteFile().toString(), simulate);
     }
 
     /**

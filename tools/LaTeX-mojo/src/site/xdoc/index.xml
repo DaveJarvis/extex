@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+  <properties>
+    <author email="gene@gerd-neugebauer.de">Gerd neugebauer</author>
+    <title>LaTeX mojo</title>
+  </properties>
+  <meta name="keyword" content="LaTeX, maven, plugin"/>
+<body>
+  <section name="Maven LaTeX Plugin">
+
+    <subsection name="Goals Overview">
+    <p>
+      The LaTeX Plugin has the following goals:
+    </p>
+    <ul>
+      <li><a href="LaTeX-mojo.html">latex:latex</a> analyzes the dependencies
+        and does anything necessary to update the target.</li>
+      <li><a href="Noaction-mojo.html">latex:noaction</a> analyzes the dependencies
+        and shows what's needed to be done to update the target.</li>
+    </ul>
+    </subsection>
+  
+    <subsection name="Usage">
+    <p>
+      Instructions on how to use the LaTeX Plugin can be found on the
+      <a href="usage.html">usage page</a>.
+    </p>
+    </subsection>
+
+    <subsection name="Examples">
+    <p>
+      The following examples shows how to use the LaTeX Plugin in more advanced
+      use cases:
+    </p>
+    <ul>
+      <li>...</li>
+    </ul>
+    </subsection>
+  </section>
+</body>
+</document> 

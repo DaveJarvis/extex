@@ -29,7 +29,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXMojoTest {
+public class NoactionTest {
 
     /**
      * Test method for {@link org.extex.maven.latex.LaTeXMojo#execute()}.
@@ -40,7 +40,7 @@ public class LaTeXMojoTest {
     @Ignore
     public final void test1() throws Exception {
 
-        LaTeXMojo mojo = new LaTeXMojo();
+        NoactionMojo mojo = new NoactionMojo();
         mojo.setFile(new File("src/test/resources/document1.tex"));
         mojo.execute();
     }
@@ -54,7 +54,7 @@ public class LaTeXMojoTest {
     @Ignore
     public final void test2() throws Exception {
 
-        LaTeXMojo mojo = new LaTeXMojo();
+        NoactionMojo mojo = new NoactionMojo();
         mojo.setFile(new File("src/test/resources/document2.tex"));
         mojo.execute();
     }
@@ -65,10 +65,9 @@ public class LaTeXMojoTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public final void test3() throws Exception {
 
-        LaTeXMojo mojo = new LaTeXMojo();
+        NoactionMojo mojo = new NoactionMojo();
         mojo.setFile(new File("src/test/resources/document3.tex"));
         mojo.execute();
     }

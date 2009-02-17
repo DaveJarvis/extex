@@ -30,72 +30,108 @@ import java.util.logging.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
+import org.apache.maven.plugin.logging.Log;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
- * This mojo can act as a compiler for LaTeX documents.
+ * This plug-in is a L<span class="la">a</span><span class="t">T</span><span
+ * class="e">e</span>X adapter for typesetting documentation. It uses an
+ * installed T<span class="e">e</span>X system to compile the source files. The
+ * mojo tries to analyze the input file to find the required programs and a
+ * minimal sequence of commands to produce the desired output format.
  * 
  * @goal latex
  * @execute phase=compile
  * 
+ * @since 1.0
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class LaTeXMojo extends AbstractMojo {
 
     /**
-     * The field <tt>file</tt> contains the name of the master file.
+     * The parameter <tt>bibtexCommand</tt> contains the command to be used for
+     * <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X. This command has to be found on the system path for
+     * executables.
+     * 
+     * @parameter
+     * @since 1.0
+     */
+    private String bibtexCommand = "bibtex";
+
+    /**
+     * The parameter <tt>file</tt> contains the name of the L<span
+     * class="la">a</span><span class="t">T</span><span class="e">e</span>X
+     * master file. This file is analyzed to determine the dependencies.
      * 
      * @parameter
      * @required
+     * @since 1.0
      */
     private File file = new File("texinputs");
 
     /**
-     * The field <tt>format</tt> contains the target format. Currently the
+     * The parameter <tt>format</tt> contains the target format. Currently the
      * values <tt>pdf</tt> and <tt>dvi</tt> are supported. The default is
      * <tt>pdf</tt>.
      * 
      * @parameter
+     * @since 1.0
      */
     private String format = "pdf";
 
     /**
      * The field <tt>handler</tt> contains the handler which acts as adaptor
-     * from the Java Logger to the maven Log.
+     * from the Java Logger to the Maven {@link Log}.
      */
     private Handler handler;
 
     /**
-     * The field <tt>latexCommand</tt> contains the command to be used for
-     * LaTeX.
+     * The parameter <tt>latexCommand</tt> contains the command to be used for
+     * L<span class="la">a</span><span class="t">T</span><span
+     * class="e">e</span>X. This command has to be found on the system path for
+     * executables.
      * 
      * @parameter
+     * @since 1.0
      */
     private String latexCommand = "latex";
 
     /**
-     * The field <tt>output</tt> contains the output directory. The default is
-     * <tt>target</tt>.
+     * The parameter <tt>noaction</tt> contains the indicator that no actions
+     * should be performed.
+     * 
+     * @parameter
+     * @since 1.0
+     */
+    private boolean noaction = false;
+
+    /**
+     * The parameter <tt>output</tt> contains the output directory. The default
+     * is <tt>target</tt>.
      * 
      * @parameter expression="${project.outputDirectory}"
+     * @since 1.0
      */
     private File output = new File("target");
 
     /**
-     * The field <tt>texinputs</tt> contains the list of directories for the
-     * TEXINPUTS environment variable.
+     * The parameter <tt>texinputs</tt> contains the list of directories for the
+     * <tt>TEXINPUTS</tt> environment variable.
      * 
      * @parameter
+     * @since 1.0
      */
     private String[] texinputs = null;
 
     /**
-     * The field <tt>workingDirectory</tt> contains the working directory. This
-     * is usually the base directory of the project.
+     * The parameter <tt>workingDirectory</tt> contains the working directory.
+     * This is usually the base directory of the project.
      * 
      * @parameter expression="${basedir}"
+     * @since 1.0
      */
     private File workingDirectory = new File(".");
 
@@ -110,17 +146,17 @@ public class LaTeXMojo extends AbstractMojo {
     /**
      * Setter for the texinputs.
      * 
-     * @param texinputs the texinputs to set
+     * @param inputs the texinputs to set
      */
-    protected void addTexinputs(String... texinputs) {
+    protected void addTexinputs(String... inputs) {
 
         if (this.texinputs == null || this.texinputs.length == 0) {
-            this.texinputs = texinputs;
+            this.texinputs = inputs;
         } else {
-            String[] a = new String[this.texinputs.length + texinputs.length];
+            String[] a = new String[this.texinputs.length + inputs.length];
             System.arraycopy(this.texinputs, 0, a, 0, this.texinputs.length);
-            System.arraycopy(texinputs, 0, a, this.texinputs.length,
-                texinputs.length);
+            System
+                .arraycopy(inputs, 0, a, this.texinputs.length, inputs.length);
             this.texinputs = a;
         }
     }
@@ -146,13 +182,14 @@ public class LaTeXMojo extends AbstractMojo {
                 workingDirectory.getAbsolutePath());
             net.context("output.directory", output.getAbsolutePath());
             net.context("latex.command", latexCommand);
+            net.context("bibtex.command", bibtexCommand);
             net.context("target.format", format);
 
             net.wire(file);
 
             logNet(net);
 
-            net.build(true);
+            net.build(noaction);
 
         } catch (MakeException e) {
             throw new MojoExecutionException(e.getLocalizedMessage(), e);
@@ -183,6 +220,16 @@ public class LaTeXMojo extends AbstractMojo {
     }
 
     /**
+     * Setter for the bibtexCommand.
+     * 
+     * @param bibtexCommand the bibtexCommand to set
+     */
+    protected void setBibtexCommand(String bibtexCommand) {
+
+        this.bibtexCommand = bibtexCommand;
+    }
+
+    /**
      * Setter for the file.
      * 
      * @param file the file to set
@@ -210,6 +257,16 @@ public class LaTeXMojo extends AbstractMojo {
     protected void setLatexCommand(String latexCommand) {
 
         this.latexCommand = latexCommand;
+    }
+
+    /**
+     * Setter for the noaction.
+     * 
+     * @param noaction the noaction to set
+     */
+    protected void setNoaction(boolean noaction) {
+
+        this.noaction = noaction;
     }
 
     /**

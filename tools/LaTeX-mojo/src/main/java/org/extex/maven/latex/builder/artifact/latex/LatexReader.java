@@ -23,7 +23,8 @@ import java.io.PushbackReader;
 import java.io.Reader;
 
 /**
- * This class is a reader enhanced by some methods to read (La)TeX files.
+ * This class is a reader enhanced by some methods to read L<span
+ * class="la">a</span>T<span class="e">e</span>X files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
