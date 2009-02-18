@@ -19,15 +19,11 @@
 package org.extex.maven.latex.builder.action;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This action runs makeindex in one of its variants on the artifact.
@@ -35,12 +31,7 @@ import org.extex.maven.latex.builder.exception.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class MakeindexAction implements BuildAction {
-
-    /**
-     * The field <tt>artifact</tt> contains the artifact to run LaTeX on.
-     */
-    private final Artifact artifact;
+public class MakeindexAction extends Action {
 
     /**
      * Creates a new object.
@@ -49,97 +40,34 @@ public class MakeindexAction implements BuildAction {
      */
     public MakeindexAction(Artifact artifact) {
 
-        this.artifact = artifact;
+        super("makeindex", artifact);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.action.BuildAction#execute(org.extex.maven.latex.builder.artifact.Artifact,
-     *      java.util.Map, Logger, boolean)
-     */
-    public void execute(Artifact target, Map<String, String> context,
-            Logger logger, boolean simulate) throws MakeException {
-
-        String output = get(context, "makeindex.output.directory", ".");
-        String makeindexCommand =
-                get(context, "makeindex.command", "makeindex");
-        String workingDirectory =
-                get(context, "makeindex.working.directory", ".");
-        String base = artifact.getFile().toString().replace('\\', '/');
-
-        if (logger != null) {
-            logger.log(simulate ? Level.INFO : Level.FINE, //
-                "--> " + makeindexCommand + " " + base);
-        }
-        if (simulate) {
-            return;
-        }
-
-        ProcessBuilder bibtex = new ProcessBuilder(makeindexCommand, //
-            base);
-        bibtex.directory(new File(workingDirectory));
-        bibtex.redirectErrorStream(true);
-        try {
-            Process p = bibtex.start();
-            try {
-                p.getOutputStream().close();
-                StringBuilder buffer = new StringBuilder();
-                InputStream in = p.getInputStream();
-                for (int c = in.read(); c >= 0; c = in.read()) {
-                    buffer.append((char) c);
-                }
-                if (p.exitValue() != 0) {
-                    logger.severe(buffer.toString());
-                }
-            } finally {
-                p.destroy();
-            }
-        } catch (IOException e) {
-            throw new MakeException(e);
-        }
-    }
-
-    /**
-     * Get some value from a context map with a fallback value in case that the
-     * value is not found in the context.
-     * 
-     * @param context the context map
-     * @param key the key
-     * @param fallback the fallback value
-     * 
-     * @return the value for the key of the fallback value
-     */
-    private String get(Map<String, String> context, String key, String fallback) {
-
-        String result = context.get(key);
-        if (result == null) {
-            result = fallback;
-        }
-        return result;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.maven.latex.builder.action.BuildAction#print(java.io.PrintWriter,
-     *      java.lang.String)
-     */
-    public void print(PrintWriter w, String pre) {
-
-        w.print(pre);
-        w.println(toString());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
+     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(java.util.Map)
      */
     @Override
-    public String toString() {
+    protected List<String> makeCommandLine(Map<String, String> context) {
 
-        return "makeindex $*";
+        List<String> list = new ArrayList<String>();
+        list.add(get(context, "makeindex.command", "makeindex"));
+        list.add(getArtifact().getFile().toString().replace('\\', '/'));
+        return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.maven.latex.builder.action.Action#makeWorkingDirectory(java.util.Map)
+     */
+    @Override
+    protected File makeWorkingDirectory(Map<String, String> context) {
+
+        String workingDirectory =
+                get(context, "makeindex.working.directory", ".");
+        return new File(workingDirectory);
     }
 
 }

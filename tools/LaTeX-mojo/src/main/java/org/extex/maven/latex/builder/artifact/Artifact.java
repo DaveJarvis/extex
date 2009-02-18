@@ -29,7 +29,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.builder.action.BuildAction;
+import org.extex.maven.latex.builder.action.Action;
 import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
@@ -62,7 +62,7 @@ public class Artifact {
      * The field <tt>actions</tt> contains the actions to be executed to update
      * the current artifact.
      */
-    private List<BuildAction> actions = new ArrayList<BuildAction>();
+    private List<Action> actions = new ArrayList<Action>();
 
     /**
      * The field <tt>lastModified</tt> contains the cached modification time.
@@ -133,7 +133,7 @@ public class Artifact {
             return true;
         }
 
-        for (BuildAction a : actions) {
+        for (Action a : actions) {
             a.execute(this, context, logger, simulate);
         }
 
@@ -225,7 +225,7 @@ public class Artifact {
             w.print(d.getFile().getName());
             w.print("\n");
         }
-        for (BuildAction a : actions) {
+        for (Action a : actions) {
             w.print(prefix);
             w.print("\tdo ");
             a.print(w, "\t");
@@ -237,10 +237,10 @@ public class Artifact {
      * 
      * @param list the list to add
      */
-    public void provideActions(BuildAction... list) {
+    public void provideActions(Action... list) {
 
         if (actions.size() == 0) {
-            for (BuildAction a : list) {
+            for (Action a : list) {
                 actions.add(a);
             }
         }

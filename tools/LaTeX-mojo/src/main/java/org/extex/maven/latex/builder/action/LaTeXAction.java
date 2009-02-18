@@ -19,15 +19,11 @@
 package org.extex.maven.latex.builder.action;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This action runs LaTeX in one of its variants on the artifact.
@@ -35,12 +31,7 @@ import org.extex.maven.latex.builder.exception.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXAction implements BuildAction {
-
-    /**
-     * The field <tt>artifact</tt> contains the artifact to run LaTeX on.
-     */
-    private final Artifact artifact;
+public class LaTeXAction extends Action {
 
     /**
      * Creates a new object.
@@ -49,94 +40,35 @@ public class LaTeXAction implements BuildAction {
      */
     public LaTeXAction(Artifact artifact) {
 
-        this.artifact = artifact;
+        super("latex", artifact);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.action.BuildAction#execute(org.extex.maven.latex.builder.artifact.Artifact,
-     *      java.util.Map, Logger, boolean)
-     */
-    public void execute(Artifact target, Map<String, String> context,
-            Logger logger, boolean simulate) throws MakeException {
-
-        String output = get(context, "latex.output.directory", ".");
-        String latexCommand = get(context, "latex.command", "latex");
-        String workingDirectory = get(context, "latex.working.directory", ".");
-        String base = artifact.getFile().toString().replace('\\', '/');
-
-        if (logger != null) {
-            logger.log(simulate ? Level.INFO : Level.FINE, //
-                "--> " + latexCommand + " " + base);
-        }
-        if (simulate) {
-            return;
-        }
-
-        ProcessBuilder latex = new ProcessBuilder(latexCommand, //
-            "-output-directory=" + output, //
-            "-nonstopmode", //
-            base);
-        latex.directory(new File(workingDirectory));
-        latex.redirectErrorStream(true);
-        try {
-            Process p = latex.start();
-            try {
-                p.getOutputStream().close();
-                StringBuilder buffer = new StringBuilder();
-                InputStream in = p.getInputStream();
-                for (int c = in.read(); c >= 0; c = in.read()) {
-                    buffer.append((char) c);
-                }
-                if (p.exitValue() != 0) {
-                    logger.severe(buffer.toString());
-                }
-            } finally {
-                p.destroy();
-            }
-        } catch (IOException e) {
-            throw new MakeException(e);
-        }
-    }
-
-    /**
-     * Get some value from a context map with a fallback value in case that the
-     * value is not found in the context.
-     * 
-     * @param context the context map
-     * @param key the key
-     * @param fallback the fallback value
-     * 
-     * @return the value for the key of the fallback value
-     */
-    private String get(Map<String, String> context, String key, String fallback) {
-
-        String result = context.get(key);
-        return result != null ? result : fallback;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.maven.latex.builder.action.BuildAction#print(java.io.PrintWriter,
-     *      java.lang.String)
-     */
-    public void print(PrintWriter w, String pre) {
-
-        w.print(pre);
-        w.println(toString());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
+     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(java.util.Map)
      */
     @Override
-    public String toString() {
+    protected List<String> makeCommandLine(Map<String, String> context) {
 
-        return "latex $*";
+        List<String> list = new ArrayList<String>();
+        list.add(get(context, "latex.command", "latex"));
+        list.add("-output-directory="
+                + get(context, "latex.output.directory", "."));
+        list.add(getArtifact().getFile().toString().replace('\\', '/'));
+        return list;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.maven.latex.builder.action.Action#makeWorkingDirectory(Map)
+     */
+    @Override
+    protected File makeWorkingDirectory(Map<String, String> context) {
+
+        String workingDirectory = get(context, "latex.working.directory", ".");
+        return new File(workingDirectory);
     }
 
 }

@@ -20,6 +20,7 @@ package org.extex.maven.latex;
 
 import java.io.File;
 
+import org.apache.maven.plugin.MojoExecutionException;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -70,6 +71,20 @@ public class LaTeXMojoTest {
 
         LaTeXMojo mojo = new LaTeXMojo();
         mojo.setFile(new File("src/test/resources/document3.tex"));
+        mojo.execute();
+    }
+
+    /**
+     * Test method for {@link org.extex.maven.latex.LaTeXMojo#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MojoExecutionException.class)
+    public final void testNoLaTeX() throws Exception {
+
+        LaTeXMojo mojo = new LaTeXMojo();
+        mojo.setLatexCommand("xyzzy");
+        mojo.setFile(new File("src/test/resources/document1.tex"));
         mojo.execute();
     }
 
