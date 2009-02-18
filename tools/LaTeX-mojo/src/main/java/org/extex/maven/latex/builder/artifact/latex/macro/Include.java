@@ -21,7 +21,6 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
-import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
@@ -48,7 +47,9 @@ public final class Include extends MacroWithArgs {
 
         net.getLogger().fine(base.getName() + ": \\include " + arg);
 
-        File file = net.findFile(arg, ContextKey.LATEX_EXTENSIONS, base);
+        File file =
+                net.findFile(arg, net.getParameters().getLatexExtensions(),
+                    base);
         Artifact a = net.getArtifact(file);
         Artifact target = net.getTarget();
         target.dependsOn(a);

@@ -18,7 +18,6 @@
 
 package org.extex.maven.latex.builder.action;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintWriter;
@@ -27,6 +26,7 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.exception.MakeActionException;
 import org.extex.maven.latex.builder.exception.MakeException;
@@ -66,17 +66,17 @@ public abstract class Action {
      * 
      * @param target the artifact requesting the build; note: this is in general
      *        <i>not</i> the artifact to be build by this action
-     * @param context the environment
+     * @param parameters the environment
      * @param logger the logger
      * @param simulate the indicator whether or not to really execute the
      *        commands
      * 
      * @throws MakeException in case of an error
      */
-    public void execute(Artifact target, Map<String, String> context,
-            Logger logger, boolean simulate) throws MakeException {
+    public void execute(Artifact target, Parameters parameters, Logger logger,
+            boolean simulate) throws MakeException {
 
-        List<String> commandLine = makeCommandLine(context);
+        List<String> commandLine = makeCommandLine(parameters);
         if (logger != null) {
             logger.log(simulate ? Level.INFO : Level.FINE, //
                 "--> " + join(commandLine));
@@ -86,7 +86,7 @@ public abstract class Action {
         }
 
         ProcessBuilder builder = new ProcessBuilder(commandLine);
-        builder.directory(makeWorkingDirectory(context));
+        builder.directory(parameters.getWorkingDirectory());
         builder.redirectErrorStream(true);
         try {
             Process p = builder.start();
@@ -165,16 +165,7 @@ public abstract class Action {
      * 
      * @return the command line
      */
-    protected abstract List<String> makeCommandLine(Map<String, String> context);
-
-    /**
-     * Get the working directory.
-     * 
-     * @param context the context mapping
-     * 
-     * @return the working directory
-     */
-    protected abstract File makeWorkingDirectory(Map<String, String> context);
+    protected abstract List<String> makeCommandLine(Parameters context);
 
     /**
      * Print the action to a writer.

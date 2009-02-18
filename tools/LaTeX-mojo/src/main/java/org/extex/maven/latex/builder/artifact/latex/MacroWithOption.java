@@ -22,6 +22,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.Parameters;
 
 /**
  * This abstract base class provides argument parsing. One optional argument is
@@ -49,7 +50,7 @@ public abstract class MacroWithOption extends Macro {
         if (opt == null) {
             return;
         }
-        expand(reader, net, base, opt);
+        expand(reader, net.getParameters(), base, opt);
     }
 
     /**
@@ -62,7 +63,7 @@ public abstract class MacroWithOption extends Macro {
      * 
      * @throws IOException in case of an I/O error
      */
-    protected abstract void expand(LatexReader reader, DependencyNet net,
+    protected abstract void expand(LatexReader reader, Parameters net,
             File base, String opt) throws IOException;
 
 }

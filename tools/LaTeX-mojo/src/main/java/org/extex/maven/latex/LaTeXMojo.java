@@ -30,8 +30,8 @@ import java.util.logging.Logger;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
-import org.apache.maven.plugin.logging.Log;
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
@@ -84,7 +84,8 @@ public class LaTeXMojo extends AbstractMojo {
 
     /**
      * The field <tt>handler</tt> contains the handler which acts as adaptor
-     * from the Java Logger to the Maven {@link Log}.
+     * from the Java Logger to the Maven
+     * {@link org.apache.maven.plugin.logging.Log}.
      */
     private Handler handler;
 
@@ -177,13 +178,13 @@ public class LaTeXMojo extends AbstractMojo {
         try {
             DependencyNet net = new DependencyNet();
             net.setLogger(logger);
+            Parameters p = net.getParameters();
 
-            net.context("working.directory", //
-                workingDirectory.getAbsolutePath());
-            net.context("output.directory", output.getAbsolutePath());
-            net.context("latex.command", latexCommand);
-            net.context("bibtex.command", bibtexCommand);
-            net.context("target.format", format);
+            p.setWorkingDirectory(workingDirectory);
+            p.setOutputDirectory(output);
+            p.setLatexCommand(latexCommand);
+            p.setBibtexCommand(bibtexCommand);
+            p.setTargetFormat(format);
 
             net.wire(file);
 

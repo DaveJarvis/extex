@@ -26,9 +26,9 @@ import java.io.PrintWriter;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.action.Action;
 import org.extex.maven.latex.builder.exception.MakeException;
 
@@ -88,7 +88,7 @@ public class Artifact {
     /**
      * Make one step in building this artifact.
      * 
-     * @param context the context mapping
+     * @param parameters the context mapping
      * @param logger the logger
      * @param simulate the simulation indicator
      * 
@@ -96,14 +96,14 @@ public class Artifact {
      * 
      * @throws MakeException in case of an error
      */
-    public boolean build(Map<String, String> context, Logger logger,
-            boolean simulate) throws MakeException {
+    public boolean build(Parameters parameters, Logger logger, boolean simulate)
+            throws MakeException {
 
         boolean fire = false;
 
         for (Artifact d : dependencies) {
             // TODO up to date
-            if (!d.build(context, logger, simulate)) {
+            if (!d.build(parameters, logger, simulate)) {
                 // fire = true;
             }
         }
@@ -134,7 +134,7 @@ public class Artifact {
         }
 
         for (Action a : actions) {
-            a.execute(this, context, logger, simulate);
+            a.execute(this, parameters, logger, simulate);
         }
 
         if (!simulate && !file.exists()) {

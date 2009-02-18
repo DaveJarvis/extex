@@ -18,11 +18,10 @@
 
 package org.extex.maven.latex.builder.action;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
+import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
@@ -46,27 +45,15 @@ public class BibTeXAction extends Action {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(java.util.Map)
+     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(org.extex.maven.latex.builder.Parameters)
      */
     @Override
-    protected List<String> makeCommandLine(Map<String, String> context) {
+    protected List<String> makeCommandLine(Parameters parameters) {
 
         List<String> list = new ArrayList<String>();
-        list.add(get(context, "bibtex.command", "makeindex"));
+        list.add(parameters.getBibtexCommand());
         list.add(getArtifact().getFile().toString().replace('\\', '/'));
         return list;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.maven.latex.builder.action.Action#makeWorkingDirectory(java.util.Map)
-     */
-    @Override
-    protected File makeWorkingDirectory(Map<String, String> context) {
-
-        String workingDirectory = get(context, "bibtex.working.directory", ".");
-        return new File(workingDirectory);
     }
 
 }

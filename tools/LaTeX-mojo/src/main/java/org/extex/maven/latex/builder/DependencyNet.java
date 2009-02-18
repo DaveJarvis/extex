@@ -49,10 +49,9 @@ public class DependencyNet implements State {
     private Map<String, Artifact> map;
 
     /**
-     * The field <tt>context</tt> contains the environment to store additional
-     * information.
+     * The field <tt>parameters</tt> contains the parameters.
      */
-    private Map<String, String> context;
+    private Parameters parameters = new Parameters();
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -86,7 +85,6 @@ public class DependencyNet implements State {
     public DependencyNet() {
 
         map = new HashMap<String, Artifact>();
-        context = ContextKey.setup();
     }
 
     /**
@@ -144,7 +142,7 @@ public class DependencyNet implements State {
 
         do {
             logger.info("building " + a.toString());
-        } while (!a.build(context, logger, simulate));
+        } while (!a.build(parameters, logger, simulate));
 
         // LaTeX Warning: There were undefined references.
         // LaTeX Warning: Citation `abc' on page 1 undefined on input line 3.
@@ -152,31 +150,6 @@ public class DependencyNet implements State {
         // cross-references right.
         // No file document2.ind.
         // Output written on target/document2.dvi (1 page, 280 bytes).
-    }
-
-    /**
-     * Getter for a context item.
-     * 
-     * @param key the key
-     * 
-     * @return the context item for the given key or <code>null</code> if none
-     *         exists
-     */
-    public String context(String key) {
-
-        return context.get(key);
-    }
-
-    /**
-     * Setter for a context item. If an item already exists for the given key
-     * then it is overwritten. If none exists the a new one is created.
-     * 
-     * @param key the key
-     * @param value the new value for the new item
-     */
-    public void context(String key, String value) {
-
-        context.put(key, value);
     }
 
     /**
@@ -195,17 +168,17 @@ public class DependencyNet implements State {
      * Find a resource.
      * 
      * @param fileName the file name
-     * @param extensionTag the extensions to be taken from the context
+     * @param extensions the extensions
      * @param base the base file name
      * 
      * @return the full file
      * 
      * @throws FileNotFoundException in case no resource could be found
      */
-    public File findFile(String fileName, String extensionTag, File base)
+    public File findFile(String fileName, String[] extensions, File base)
             throws FileNotFoundException {
 
-        File file = searchFile(fileName, extensionTag, base);
+        File file = searchFile(fileName, extensions, base);
         if (file == null) {
             throw new FileNotFoundException(fileName);
         }
@@ -268,6 +241,16 @@ public class DependencyNet implements State {
     }
 
     /**
+     * Getter for the parameters.
+     * 
+     * @return the parameters
+     */
+    public Parameters getParameters() {
+
+        return parameters;
+    }
+
+    /**
      * Getter for the target.
      * 
      * @return the target
@@ -280,7 +263,7 @@ public class DependencyNet implements State {
             File masterFile = master.getFile();
             String name =
                     masterFile.getName().replaceAll("\\.[a-zA-Z0-9_]*", "")
-                            + "." + context.get("target.format");
+                            + "." + parameters.getTargetFormat();
             File file = new File(masterFile.getParentFile(), name);
             target = new Artifact(file);
         }
@@ -324,12 +307,12 @@ public class DependencyNet implements State {
      * 
      * @return the full file or <code>null</code>
      */
-    public File searchFile(String fileName, String extensions, File base) {
+    public File searchFile(String fileName, String[] extensions, File base) {
 
         String name = fileName.replaceAll("\\.[a-zA-Z0-9_]*", "");
         File parentFile = base.getParentFile();
 
-        for (String ext : context.get(extensions).split(":")) {
+        for (String ext : extensions) {
             File f = new File(parentFile, name + ext);
             if (f.exists()) {
                 return f;
@@ -383,7 +366,7 @@ public class DependencyNet implements State {
         if (file == null) {
             throw new IllegalArgumentException("file == null");
         }
-        File directory = new File(context.get("output.directory"));
+        File directory = parameters.getOutputDirectory();
         if (!directory.isDirectory()) {
             throw new IllegalArgumentException(directory.toString()
                     + ": not a directory");
@@ -392,7 +375,7 @@ public class DependencyNet implements State {
         master = new Artifact(file);
         addArtifact(master);
 
-        String format = context.get("target.format");
+        String format = parameters.getTargetFormat();
         target = FileFormat.valueOf(format.toUpperCase()).makeTarget(//
             directory, file.getName(), this);
 

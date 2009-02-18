@@ -21,7 +21,6 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
-import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.action.BibTeXAction;
 import org.extex.maven.latex.builder.action.LaTeXAction;
@@ -67,8 +66,9 @@ public final class Bibliography extends MacroWithArgs {
         }
         target.dependsOn(bbl);
 
+        String[] bibtexExtensions = net.getParameters().getBibtexExtensions();
         for (String arg : args) {
-            File file = net.findFile(arg, ContextKey.BIBTEX_EXTENSIONS, base);
+            File file = net.findFile(arg, bibtexExtensions, base);
             bbl.dependsOn(net.getArtifact(file));
         }
         Artifact aux = net.getDerivedTargetArtifact("aux");

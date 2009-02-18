@@ -47,7 +47,7 @@ public final class VerbatimInput extends MacroWithArgs {
             String opt, String arg) throws IOException {
 
         net.getLogger().fine(base.getName() + ": \\verbatiminput " + arg);
-        File file = net.findFile(arg, "xxx", base);
+        File file = net.findFile(arg, new String[]{""}, base);
         Artifact a = net.getArtifact(file);
         net.getTarget().dependsOn(a);
     }
