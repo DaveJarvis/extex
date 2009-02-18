@@ -16,6 +16,11 @@
     <href>http://www.extex.org/</href>
   </bannerRight>
 
+  <breadcrumbs>
+    <item name="Codehaus" href="http://www.codehaus.org"/>
+    <item name="Mojo" href="http://mojo.codehaus.org"/>
+  </breadcrumbs>
+
   <body>
     <menu name="Overview">
       <item name="Introduction" href="index.html" />

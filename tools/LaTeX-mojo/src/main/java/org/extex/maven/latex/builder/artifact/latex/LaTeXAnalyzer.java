@@ -39,9 +39,9 @@ public interface LaTeXAnalyzer {
      * 
      * @param artifact the artifact to analyze
      * @param net the dependency net
-     * 
      * @throws IOException in case of an I/O error
      */
-    void analyze(Artifact artifact, DependencyNet net) throws IOException;
+    void analyze(Artifact artifact, DependencyNet net)
+            throws IOException;
 
 }

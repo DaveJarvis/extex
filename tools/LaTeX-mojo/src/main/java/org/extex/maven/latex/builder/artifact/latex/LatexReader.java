@@ -32,28 +32,30 @@ import java.io.Reader;
 public class LatexReader extends PushbackReader {
 
     /**
-     * The field <tt>atLetter</tt> contains the indicator to treat @ as letter.
+     * The field <tt>state</tt> contains the processor state.
      */
-    private boolean atLetter = false;
+    private State state;
 
     /**
      * Creates a new object.
      * 
      * @param in the source to get characters from
+     * @param state the processor state
      */
-    public LatexReader(Reader in) {
+    public LatexReader(Reader in, State state) {
 
         super(in, 1);
+        this.state = state;
     }
 
     /**
-     * Getter for the atLetter.
+     * Getter for the state.
      * 
-     * @return the atLetter
+     * @return the state
      */
-    public boolean isAtLetter() {
+    public State getState() {
 
-        return atLetter;
+        return state;
     }
 
     /**
@@ -126,6 +128,7 @@ public class LatexReader extends PushbackReader {
 
         buffer.append((char) c);
 
+        boolean atLetter = state.isAtLetter();
         if (Character.isLetter(c) || (c == '@' && atLetter)) {
 
             for (c = read(); Character.isLetter(c) || (c == '@' && atLetter); c =
@@ -151,17 +154,18 @@ public class LatexReader extends PushbackReader {
      */
     public int scanNext() throws IOException {
 
-        int c = read();
+        int c;
 
-        for (;;) {
+        do {
+            c = read();
             if (c == '%') {
                 do {
                     c = read();
                 } while (c >= 0 && c != '\n' && c != '\r');
-            } else if (!Character.isWhitespace(c)) {
-                return c;
             }
-        }
+        } while (Character.isWhitespace(c));
+
+        return c;
     }
 
     /**
@@ -227,16 +231,6 @@ public class LatexReader extends PushbackReader {
                 i = 0;
             }
         }
-    }
-
-    /**
-     * Setter for the atLetter.
-     * 
-     * @param atLetter the atLetter to set
-     */
-    public void setAtLetter(boolean atLetter) {
-
-        this.atLetter = atLetter;
     }
 
 }

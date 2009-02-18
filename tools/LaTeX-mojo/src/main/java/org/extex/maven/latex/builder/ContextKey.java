@@ -16,28 +16,18 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.builder.artifact;
+package org.extex.maven.latex.builder;
 
-import java.io.File;
-import java.io.IOException;
-
-import org.extex.maven.latex.builder.DependencyNet;
-import org.extex.maven.latex.builder.artifact.latex.LaTeXAnalyzer;
-import org.extex.maven.latex.builder.artifact.latex.LatexTokenizerAnalyzer;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
- * This class represents a L<span class="la">a</span>T<span class="e">e</span>X
- * artifact.
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LatexArtifact extends Artifact {
-
-    /**
-     * The field <tt>ANALYZER</tt> contains the analyzer.
-     */
-    private static final LaTeXAnalyzer ANALYZER = new LatexTokenizerAnalyzer();
+public final class ContextKey {
 
     /**
      * The field <tt>BIBTEX_EXTENSIONS</tt> contains the context name for the
@@ -66,38 +56,24 @@ public class LatexArtifact extends Artifact {
     /**
      * Callback method to initialize a net.
      * 
-     * @param net the net to initialize
+     * @return the initialized map
      */
-    public static void setup(DependencyNet net) {
+    protected static Map<String, String> setup() {
 
-        net.contextFallback(LATEX_COMMAND, "latex");
-        net.contextFallback(LATEX_EXTENSIONS, ".tex:.TeX:.latex:.LaTeX:.ltx:");
-        net.contextFallback(GRAPHICS_EXTENSIONS,
-            ".png:.jpg:.jpeg:.gif:.tiff:.pdf:");
-        net.contextFallback(BIBTEX_EXTENSIONS, ".bib:.bibtex:.BibTeX:");
+        Map<String, String> map = new HashMap<String, String>();
+        map.put(LATEX_COMMAND, "latex");
+        map.put(LATEX_EXTENSIONS, ".tex:.TeX:.latex:.LaTeX:.ltx:");
+        map.put(GRAPHICS_EXTENSIONS, ".png:.jpg:.jpeg:.gif:.tiff:.pdf:");
+        map.put(BIBTEX_EXTENSIONS, ".bib:.bibtex:.BibTeX:");
+        return map;
     }
 
     /**
-     * Creates a new object.
-     * 
-     * @param file the file
-     * 
-     * @throws IOException in case of an I/O error
+     * Never creates a new object.
      */
-    public LatexArtifact(File file) throws IOException {
+    private ContextKey() {
 
-        super(file);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.maven.latex.builder.artifact.Artifact#analyze(DependencyNet)
-     */
-    @Override
-    public void analyze(DependencyNet net) throws IOException {
-
-        ANALYZER.analyze(this, net);
+        // no constructor for utility class
     }
 
 }

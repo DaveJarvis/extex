@@ -29,7 +29,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
 
-import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.action.BuildAction;
 import org.extex.maven.latex.builder.exception.MakeException;
 
@@ -84,18 +83,6 @@ public class Artifact {
             content = reload();
             lastModified = file.lastModified();
         }
-    }
-
-    /**
-     * Analyze the artifact and augment the net.
-     * 
-     * @param net the net
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    public void analyze(DependencyNet net) throws IOException {
-
-        // nothing to do
     }
 
     /**

@@ -18,6 +18,8 @@
 
 package org.extex.maven.latex;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.io.File;
 
 import org.junit.Ignore;
@@ -68,6 +70,7 @@ public class NoactionTest {
     public final void test3() throws Exception {
 
         NoactionMojo mojo = new NoactionMojo();
+        assertNotNull(mojo);
         mojo.setFile(new File("src/test/resources/document3.tex"));
         mojo.execute();
     }

@@ -28,7 +28,9 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
+import org.extex.maven.latex.builder.artifact.latex.LaTeXAnalyzer;
+import org.extex.maven.latex.builder.artifact.latex.LaTeXMacroAnalyzer;
+import org.extex.maven.latex.builder.artifact.latex.State;
 import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
@@ -38,7 +40,7 @@ import org.extex.maven.latex.builder.exception.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DependencyNet {
+public class DependencyNet implements State {
 
     /**
      * The field <tt>map</tt> contains the mapping from names to the associated
@@ -68,13 +70,23 @@ public class DependencyNet {
     private Artifact target = null;
 
     /**
+     * The field <tt>atLetter</tt> contains the indicator for the at catcode.
+     */
+    private boolean atLetter;
+
+    /**
+     * The field <tt>ANALYZER</tt> contains the analyzer.
+     */
+    private static final LaTeXAnalyzer LATEX_ANALYZER =
+            new LaTeXMacroAnalyzer();
+
+    /**
      * Creates a new object.
      */
     public DependencyNet() {
 
         map = new HashMap<String, Artifact>();
-        context = new HashMap<String, String>();
-        LatexArtifact.setup(this);
+        context = ContextKey.setup();
     }
 
     /**
@@ -87,6 +99,18 @@ public class DependencyNet {
     public Artifact addArtifact(Artifact a) {
 
         return map.put(a.getFile().getAbsoluteFile().toString(), a);
+    }
+
+    /**
+     * Analyze the artifact and augment the net.
+     * 
+     * @param artifact the artifact
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public void analyzeLaTeX(Artifact artifact) throws IOException {
+
+        LATEX_ANALYZER.analyze(artifact, this);
     }
 
     /**
@@ -156,20 +180,6 @@ public class DependencyNet {
     }
 
     /**
-     * Set the fallback for a context item. This means the value is assigned if
-     * the key does not have an associated value already.
-     * 
-     * @param key the key
-     * @param value the fallback value for the item
-     */
-    public void contextFallback(String key, String value) {
-
-        if (context.get(key) == null) {
-            context.put(key, value);
-        }
-    }
-
-    /**
      * Getter for an artifact.
      * 
      * @param file the file
@@ -185,17 +195,17 @@ public class DependencyNet {
      * Find a resource.
      * 
      * @param fileName the file name
-     * @param extensions the extensions
+     * @param extensionTag the extensions to be taken from the context
      * @param base the base file name
      * 
      * @return the full file
      * 
      * @throws FileNotFoundException in case no resource could be found
      */
-    public File findFile(String fileName, String extensions, File base)
+    public File findFile(String fileName, String extensionTag, File base)
             throws FileNotFoundException {
 
-        File file = searchFile(fileName, extensions, base);
+        File file = searchFile(fileName, extensionTag, base);
         if (file == null) {
             throw new FileNotFoundException(fileName);
         }
@@ -278,6 +288,16 @@ public class DependencyNet {
     }
 
     /**
+     * Getter for the atLetter.
+     * 
+     * @return the atLetter
+     */
+    public boolean isAtLetter() {
+
+        return atLetter;
+    }
+
+    /**
      * Print this net.
      * 
      * @param w the writer
@@ -307,14 +327,25 @@ public class DependencyNet {
     public File searchFile(String fileName, String extensions, File base) {
 
         String name = fileName.replaceAll("\\.[a-zA-Z0-9_]*", "");
+        File parentFile = base.getParentFile();
 
-        for (String ext : extensions.split(":")) {
-            File f = new File(base.getParentFile(), name + ext);
+        for (String ext : context.get(extensions).split(":")) {
+            File f = new File(parentFile, name + ext);
             if (f.exists()) {
                 return f;
             }
         }
         return null;
+    }
+
+    /**
+     * Setter for the atLetter.
+     * 
+     * @param atLetter the atLetter to set
+     */
+    public void setAtLetter(boolean atLetter) {
+
+        this.atLetter = atLetter;
     }
 
     /**
@@ -328,7 +359,8 @@ public class DependencyNet {
     }
 
     /**
-     * Setter for the master.
+     * Setter for the master. The dependencies are analyzed and the net is
+     * wired.
      * <p>
      * Note: This method must be invoked exactly once.
      * </p>
@@ -340,7 +372,10 @@ public class DependencyNet {
      *         output directory is no directory
      * @throws IOException in case of an I/O error
      */
-    public void wire(File file) throws IllegalArgumentException, IOException {
+    public void wire(File file)
+            throws IllegalArgumentException,
+                IllegalStateException,
+                IOException {
 
         if (master != null) {
             throw new IllegalStateException("master already set");
@@ -354,14 +389,14 @@ public class DependencyNet {
                     + ": not a directory");
         }
 
-        master = new LatexArtifact(file);
+        master = new Artifact(file);
         addArtifact(master);
 
         String format = context.get("target.format");
         target = FileFormat.valueOf(format.toUpperCase()).makeTarget(//
             directory, file.getName(), this);
 
-        master.analyze(this);
+        analyzeLaTeX(master);
     }
 
 }

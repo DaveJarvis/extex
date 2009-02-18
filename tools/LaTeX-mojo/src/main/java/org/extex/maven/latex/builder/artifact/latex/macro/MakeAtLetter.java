@@ -43,7 +43,7 @@ public final class MakeAtLetter extends Macro {
     public void expand(LatexReader reader, DependencyNet net, File base)
             throws IOException {
 
-        reader.setAtLetter(true);
+        reader.getState().setAtLetter(true);
     }
 
 }

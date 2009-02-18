@@ -21,9 +21,9 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
+import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 
@@ -47,18 +47,14 @@ public final class InputIfFileExists extends MacroWithArgs {
             String opt, String arg) throws IOException {
 
         net.getLogger().fine(base.getName() + ": \\InputIfFileExists " + arg);
-        File file =
-                net.searchFile(arg,
-                    net.context(LatexArtifact.LATEX_EXTENSIONS), base);
+        File file = net.searchFile(arg, ContextKey.LATEX_EXTENSIONS, base);
         if (file == null) {
             return;
         }
-        Artifact a = net.findArtifact(file);
-        if (a == null) {
-            a = new LatexArtifact(file);
-            net.addArtifact(a);
-        }
+        Artifact a = net.getArtifact(file);
         Artifact target = net.getTarget();
         target.dependsOn(a);
+        net.analyzeLaTeX(a);
     }
+
 }

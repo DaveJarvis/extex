@@ -12,6 +12,9 @@
     the input file to find the required programs and a minimal
     sequence of commands to produce the desired output format.
   </description>
+  <prerequisites>
+    <maven>2.0.6</maven>
+  </prerequisites>
   <packaging>maven-plugin</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org/maven/latex-mojo/</url>

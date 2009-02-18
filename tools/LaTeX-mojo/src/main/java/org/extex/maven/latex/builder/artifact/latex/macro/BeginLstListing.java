@@ -16,29 +16,34 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.builder.artifact;
+package org.extex.maven.latex.builder.artifact.latex.macro;
 
 import java.io.File;
 import java.io.IOException;
 
+import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.latex.LatexReader;
+import org.extex.maven.latex.builder.artifact.latex.Macro;
+
 /**
- * This artifact represents a bbl file.
+ * This class implements a handler for <code>\begin{lstlisting}</code>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BblArtifact extends Artifact {
+public final class BeginLstListing extends Macro {
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
      * 
-     * @param file the file
-     * 
-     * @throws IOException in case of an I/O error
+     * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
+     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
      */
-    public BblArtifact(File file) throws IOException {
+    @Override
+    public void expand(LatexReader reader, DependencyNet net, File base)
+            throws IOException {
 
-        super(file);
+        reader.scanTo("\\end{lstlisting}");
     }
 
 }

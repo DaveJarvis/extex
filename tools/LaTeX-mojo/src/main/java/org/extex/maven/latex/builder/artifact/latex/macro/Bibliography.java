@@ -21,13 +21,11 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
+import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.action.BibTeXAction;
 import org.extex.maven.latex.builder.action.LaTeXAction;
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.artifact.BblArtifact;
-import org.extex.maven.latex.builder.artifact.BibtexArtifact;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 
@@ -63,22 +61,15 @@ public final class Bibliography extends MacroWithArgs {
         File bblFile = target.derivedFile("bbl");
         Artifact bbl = net.findArtifact(bblFile);
         if (bbl == null) {
-            bbl = new BblArtifact(bblFile);
+            bbl = new Artifact(bblFile);
             net.addArtifact(bbl);
             bbl.provideActions(new BibTeXAction(net.getMaster()));
         }
         target.dependsOn(bbl);
 
         for (String arg : args) {
-            File file =
-                    net.findFile(arg, net
-                        .context(LatexArtifact.BIBTEX_EXTENSIONS), base);
-            Artifact a = net.findArtifact(file);
-            if (a == null) {
-                a = new BibtexArtifact(file);
-                net.addArtifact(a);
-            }
-            bbl.dependsOn(a);
+            File file = net.findFile(arg, ContextKey.BIBTEX_EXTENSIONS, base);
+            bbl.dependsOn(net.getArtifact(file));
         }
         Artifact aux = net.getDerivedTargetArtifact("aux");
         aux.provideActions(new LaTeXAction(net.getMaster()));

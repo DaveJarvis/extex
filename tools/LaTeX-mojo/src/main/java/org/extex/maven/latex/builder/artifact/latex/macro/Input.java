@@ -21,9 +21,9 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
+import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.Macro;
 
@@ -63,16 +63,10 @@ public final class Input extends Macro {
         }
 
         net.getLogger().fine(base.getName() + ": \\input " + arg);
-        File file =
-                net.findFile(arg, net.context(LatexArtifact.LATEX_EXTENSIONS),
-                    base);
-        Artifact a = net.findArtifact(file);
-        if (a == null) {
-            a = new LatexArtifact(file);
-            net.addArtifact(a);
-        }
+        File file = net.findFile(arg, ContextKey.LATEX_EXTENSIONS, base);
+        Artifact a = net.getArtifact(file);
         Artifact target = net.getTarget();
         target.dependsOn(a);
-        // TODO
+        net.analyzeLaTeX(a);
     }
 }

@@ -1,6 +1,9 @@
 #banner {
   background: url(../images/fade.png);
 }
+#navcolumn ul {
+  margin-bottom:8pt;
+}
 .e {
   text-transform:uppercase;
   font-size:95%;

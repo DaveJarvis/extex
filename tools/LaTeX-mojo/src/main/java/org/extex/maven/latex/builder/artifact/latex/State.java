@@ -16,29 +16,28 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.maven.latex.builder.artifact;
-
-import java.io.File;
-import java.io.IOException;
+package org.extex.maven.latex.builder.artifact.latex;
 
 /**
- * This artifact represents an index file.
+ * This interface describes a state carrier for catcodes.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class IndexArtifact extends Artifact {
+public interface State {
 
     /**
-     * Creates a new object.
+     * Getter for the atLetter.
      * 
-     * @param file the file
-     * 
-     * @throws IOException in case of an I/O error
+     * @return the atLetter
      */
-    public IndexArtifact(File file) throws IOException {
+    boolean isAtLetter();
 
-        super(file);
-    }
+    /**
+     * Setter for the atLetter.
+     * 
+     * @param atLetter the atLetter to set
+     */
+    void setAtLetter(boolean atLetter);
 
 }

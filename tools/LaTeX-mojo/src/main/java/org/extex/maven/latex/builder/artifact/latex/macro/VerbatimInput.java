@@ -22,27 +22,33 @@ import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
-import org.extex.maven.latex.builder.artifact.latex.Macro;
+import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 
 /**
- * This class implements a handler for <code>\makeatother</code>.
+ * This class implements a handler for <code>\verbatiminput</code> or
+ * <code>\lstinputlisting</code>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public final class MakeAtOther extends Macro {
+public final class VerbatimInput extends MacroWithArgs {
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
+     * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
+     *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
+     *      java.lang.String, java.lang.String)
      */
     @Override
-    public void expand(LatexReader reader, DependencyNet net, File base)
-            throws IOException {
+    protected void expand(LatexReader reader, DependencyNet net, File base,
+            String opt, String arg) throws IOException {
 
-        reader.getState().setAtLetter(true);
+        net.getLogger().fine(base.getName() + ": \\verbatiminput " + arg);
+        File file = net.findFile(arg, "xxx", base);
+        Artifact a = net.getArtifact(file);
+        net.getTarget().dependsOn(a);
     }
 }

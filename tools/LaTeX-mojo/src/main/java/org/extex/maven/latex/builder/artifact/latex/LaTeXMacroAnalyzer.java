@@ -28,6 +28,7 @@ import java.util.Map;
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.artifact.latex.macro.BeginDocument;
+import org.extex.maven.latex.builder.artifact.latex.macro.BeginLstListing;
 import org.extex.maven.latex.builder.artifact.latex.macro.BeginVerbatim;
 import org.extex.maven.latex.builder.artifact.latex.macro.Bibliography;
 import org.extex.maven.latex.builder.artifact.latex.macro.Include;
@@ -41,6 +42,7 @@ import org.extex.maven.latex.builder.artifact.latex.macro.PrintIndex;
 import org.extex.maven.latex.builder.artifact.latex.macro.TableOfContents;
 import org.extex.maven.latex.builder.artifact.latex.macro.UsePackage;
 import org.extex.maven.latex.builder.artifact.latex.macro.Verb;
+import org.extex.maven.latex.builder.artifact.latex.macro.VerbatimInput;
 
 /**
  * This class represents a L<span class="la">a</span>T<span class="e">e</span>X
@@ -51,7 +53,7 @@ import org.extex.maven.latex.builder.artifact.latex.macro.Verb;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class LaTeXStringAnalyzer implements LaTeXAnalyzer {
+public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
 
     /**
      * The field <tt>macros</tt> contains the macros.
@@ -61,7 +63,7 @@ public class LaTeXStringAnalyzer implements LaTeXAnalyzer {
     /**
      * Creates a new object.
      */
-    public LaTeXStringAnalyzer() {
+    public LaTeXMacroAnalyzer() {
 
         macros.put("\\begin", new Macro() {
 
@@ -92,12 +94,15 @@ public class LaTeXStringAnalyzer implements LaTeXAnalyzer {
         macros.put("\\includegraphics", new IncludeGraphics());
         macros.put("\\makeatletter", new MakeAtLetter());
         macros.put("\\makeatother", new MakeAtOther());
+        macros.put("\\begin{lstlisting}", new BeginLstListing());
         macros.put("\\printglossary", new PrintGlossary());
         macros.put("\\printindex", new PrintIndex());
         macros.put("\\tableofcontents", new TableOfContents());
         macros.put("\\usepackage", new UsePackage());
         macros.put("\\verb", new Verb());
         macros.put("\\begin{verbatim}", new BeginVerbatim());
+        macros.put("\\verbatiminput", new VerbatimInput());
+        macros.put("\\lstinputlisting", new VerbatimInput());
     }
 
     /**
@@ -111,7 +116,7 @@ public class LaTeXStringAnalyzer implements LaTeXAnalyzer {
 
         File file = artifact.getFile();
         LatexReader reader =
-                new LatexReader(new BufferedReader(new FileReader(file)));
+                new LatexReader(new BufferedReader(new FileReader(file)), net);
 
         try {
             for (String cs = reader.scanControlSequence(); cs != null; cs =

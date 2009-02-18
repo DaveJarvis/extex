@@ -21,8 +21,8 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 import java.io.File;
 import java.io.IOException;
 
+import org.extex.maven.latex.builder.ContextKey;
 import org.extex.maven.latex.builder.DependencyNet;
-import org.extex.maven.latex.builder.artifact.LatexArtifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 
@@ -47,9 +47,7 @@ public final class IncludeGraphics extends MacroWithArgs {
 
         net.getLogger().fine(base.getName() + ": \\includegraphics " + arg);
 
-        File file =
-                net.findFile(arg, net
-                    .context(LatexArtifact.GRAPHICS_EXTENSIONS), base);
+        File file = net.findFile(arg, ContextKey.GRAPHICS_EXTENSIONS, base);
         net.getTarget().dependsOn(net.getArtifact(file));
     }
 }
