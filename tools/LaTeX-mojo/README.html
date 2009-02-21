@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>LaTeX Mojo</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family: sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:90%;
+  vertical-align: -0.4ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.la {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.3em;
+  margin-right: -0.1em;
+}
+.t {
+  margin-left: -0.1em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:10;
+  width:100;
+  height:511;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+pre.output {
+  color:white;
+  background-color:#666666;
+  border: 1px solid #999999;
+  padding:.5em;
+}
+  </style>
+</head>
+<body>
+<img class="left" src="src/images/LaTeXmojo-side.png"/>
+
+<h1>The L<span class="la">a</span><span class="t">T</span><span class="e">e</span>X Mojo</h1>
+
+<p>
+ The L<span class="la">a</span><span class="t">T</span><span class="e">e</span>X
+ mojo tries to create a document from its source files.
+</p>
+
+<h2>Compiling the L<span class="la">a</span><span class="t">T</span><span class="e">e</span>X Mojo</h2>
+
+<p>
+ The L<span class="la">a</span><span class="t">T</span><span class="e">e</span>X 
+ mojo can be created in this directory with the help of Maven2:
+</p>
+<pre>
+  # <b>mvn package</b>
+</pre>
+<p>
+This command requires that <a
+href="http://maven.apache.org">Maven2</a> is properly installed on
+your system and the executable can be found on the search path.
+</p>
+<pre class="output">
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building LaTeX mojo
+[INFO]    task-segment: [package]
+[INFO] ------------------------------------------------------------------------
+[INFO] [plugin:helpmojo {execution: generated-helpmojo}]
+[INFO] Using 2 extractors.
+[INFO] Applying extractor for language: java
+[INFO] Extractor for language: java found 3 mojo descriptors.
+[INFO] Applying extractor for language: bsh
+[INFO] Extractor for language: bsh found 0 mojo descriptors.
+[INFO] [plugin:descriptor]
+[INFO] Using 2 extractors.
+[INFO] Applying extractor for language: java
+[INFO] Extractor for language: java found 3 mojo descriptors.
+[INFO] Applying extractor for language: bsh
+[INFO] Extractor for language: bsh found 0 mojo descriptors.
+[INFO] [resources:resources]
+[INFO] Using default encoding to copy filtered resources.
+[INFO] [compiler:compile]
+...
+[INFO] [plugin:addPluginArtifactMetadata]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5 seconds
+[INFO] Finished at: Sat Feb 21 23:30:59 CET 2009
+[INFO] Final Memory: 13M/24M
+[INFO] ------------------------------------------------------------------------
+</pre>
+<p>
+After a successful completion of the command the jar can be found
+as the file <tt><a href="target/maven-latex-plugin-1.0-SNAPSHOT.jar">target/maven-latex-plugin-1.0-SNAPSHOT.jar</a></tt>.
+</p>
+<p>
+If the build fails the verbose log messages of Maven can be used to
+determine the problem. Usually just reading the messages leads you
+into the right direction.
+</p>
+
+<h2>License</h2>
+
+The L<span class="la">a</span><span class="t">T</span><span class="e">e</span>X
+mojo is released under the 
+<a href="LICENSE.html">GNU Library General Public License</a>.
+
+<address>
+© 2009 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
+</body>
+</html>
