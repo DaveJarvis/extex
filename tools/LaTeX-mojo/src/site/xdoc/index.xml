@@ -18,7 +18,7 @@
         and does anything necessary to update the target.</li>
       <li><a href="Noaction-mojo.html">latex:noaction</a> analyzes the
         dependencies and shows what's needed to be done to update the target.</li>
-      <li><a href="Help-mojo.html">latex:noaction</a> shows the help for this 
+      <li><a href="Help-mojo.html">latex:help</a> shows the help for this 
         plugin.</li>
     </ul>
     </subsection>
