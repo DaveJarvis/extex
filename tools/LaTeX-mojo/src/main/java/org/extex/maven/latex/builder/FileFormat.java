@@ -25,7 +25,7 @@ import org.extex.maven.latex.builder.action.LaTeXAction;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
- * This enumeration lists all supported file formats.
+ * This enumeration lists all supported file formats for the output.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -47,16 +47,21 @@ public enum FileFormat {
         Artifact makeTarget(File directory, String name, DependencyNet net)
                 throws IOException {
 
-            File f = new File(directory, //
-                name.replaceAll("\\.[a-zA-Z0-9_]*$", "") + ".dvi");
-            Artifact artifact = new Artifact(f);
-            Artifact master = net.getMaster();
-            artifact.provideActions(new LaTeXAction(master));
-            net.addArtifact(artifact);
-            artifact.dependsOn(master);
-            return artifact;
+            return make(directory, name, ".dvi", net);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Enum#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "dvi";
         }
     },
+
     /**
      * The field <tt>PDF</tt> contains the value for the PDF file format.
      */
@@ -72,14 +77,48 @@ public enum FileFormat {
         Artifact makeTarget(File directory, String name, DependencyNet net)
                 throws IOException {
 
-            File f = new File(directory, //
-                name.replaceAll("\\.[a-zA-Z0-9_]*$", "") + ".pdf");
-            Artifact artifact = new Artifact(f);
-            Artifact master = net.getMaster();
-            artifact.provideActions(new LaTeXAction(master));
-            net.addArtifact(artifact);
-            artifact.dependsOn(master);
-            return artifact;
+            return make(directory, name, ".pdf", net);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Enum#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "pdf";
+        }
+    },
+
+    /**
+     * The field <tt>PS</tt> contains the value for the PS file format.
+     */
+    PS {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.maven.latex.builder.FileFormat#makeTarget(java.io.File,
+         *      java.lang.String, DependencyNet)
+         */
+        @Override
+        Artifact makeTarget(File directory, String name, DependencyNet net)
+                throws IOException {
+
+            return make(directory, name, ".ps", net);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Enum#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "ps";
         }
     };
 
@@ -88,7 +127,32 @@ public enum FileFormat {
      * 
      * @param directory the directory
      * @param name the base file
-     * @param net TODO
+     * @param ext the extension
+     * @param net the dependency net
+     * 
+     * @return the artifact
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private static Artifact make(File directory, String name, String ext,
+            DependencyNet net) throws IOException {
+
+        Artifact artifact = new Artifact(directory, //
+            name.replaceAll("\\.[a-zA-Z0-9_]*$", "") + ext);
+        Artifact master = net.getMaster();
+        artifact.provideActions(new LaTeXAction(master));
+        net.addArtifact(artifact);
+        artifact.dependsOn(master);
+        return artifact;
+    }
+
+    /**
+     * Make an artifact for the file format.
+     * 
+     * @param directory the directory
+     * @param name the base file
+     * @param net the dependency net
+     * 
      * @return the artifact
      * 
      * @throws IOException in case of an I/O error

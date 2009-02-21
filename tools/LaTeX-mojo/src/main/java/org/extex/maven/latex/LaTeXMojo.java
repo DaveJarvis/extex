@@ -83,13 +83,6 @@ public class LaTeXMojo extends AbstractMojo {
     private String format = "pdf";
 
     /**
-     * The field <tt>handler</tt> contains the handler which acts as adaptor
-     * from the Java Logger to the Maven
-     * {@link org.apache.maven.plugin.logging.Log}.
-     */
-    private Handler handler;
-
-    /**
      * The parameter <tt>latexCommand</tt> contains the command to be used for
      * L<span class="la">a</span><span class="t">T</span><span
      * class="e">e</span>X. This command has to be found on the system path for
@@ -111,12 +104,12 @@ public class LaTeXMojo extends AbstractMojo {
 
     /**
      * The parameter <tt>output</tt> contains the output directory. The default
-     * is <tt>target</tt>.
+     * is <tt>target/doc</tt>.
      * 
      * @parameter expression="${project.outputDirectory}"
      * @since 1.0
      */
-    private File output = new File("target");
+    private File output = new File("target/doc");
 
     /**
      * The parameter <tt>texinputs</tt> contains the list of directories for the
@@ -137,12 +130,9 @@ public class LaTeXMojo extends AbstractMojo {
     private File workingDirectory = new File(".");
 
     /**
-     * Creates a new object.
+     * The field <tt>debug</tt> contains the indicator for the debugging.
      */
-    public LaTeXMojo() {
-
-        handler = new LogAdaptorHandler(this.getLog());
-    }
+    private boolean debug = false;
 
     /**
      * Setter for the texinputs.
@@ -171,9 +161,10 @@ public class LaTeXMojo extends AbstractMojo {
 
         Logger logger = Logger.getLogger(LaTeXMojo.class.getName(), null);
         logger.setUseParentHandlers(false);
-        logger.setLevel(Level.ALL);
-        logger.addHandler(handler);
+        logger.setLevel(debug ? Level.ALL : Level.INFO);
+        Handler handler = new LogAdaptorHandler(this.getLog());
         handler.setLevel(Level.ALL);
+        logger.addHandler(handler);
 
         try {
             DependencyNet net = new DependencyNet();
@@ -185,6 +176,7 @@ public class LaTeXMojo extends AbstractMojo {
             p.setLatexCommand(latexCommand);
             p.setBibtexCommand(bibtexCommand);
             p.setTargetFormat(format);
+            p.setTexinputs(texinputs);
 
             net.wire(file);
 
@@ -212,12 +204,14 @@ public class LaTeXMojo extends AbstractMojo {
      */
     private void logNet(DependencyNet net) {
 
-        ByteArrayOutputStream os = new ByteArrayOutputStream();
-        PrintWriter w = new PrintWriter(os);
-        w.print('\n');
-        net.print(w, "\t");
-        w.flush();
-        getLog().debug(os.toString());
+        if (debug) {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            PrintWriter w = new PrintWriter(os);
+            w.print('\n');
+            net.print(w, "\t");
+            w.flush();
+            getLog().debug(os.toString());
+        }
     }
 
     /**

@@ -18,9 +18,12 @@
 
 package org.extex.maven.latex;
 
+import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 
 import org.apache.maven.plugin.MojoExecutionException;
+import org.apache.maven.plugin.MojoFailureException;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -75,17 +78,67 @@ public class LaTeXMojoTest {
     }
 
     /**
-     * Test method for {@link org.extex.maven.latex.LaTeXMojo#execute()}.
+     * <testcase> The format must be one of the defined formats. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MojoExecutionException.class)
+    public final void testInvalidFormat() throws Exception {
+
+        StringBuilder buffer = new StringBuilder();
+        LaTeXMojo mojo = new LaTeXMojo();
+        mojo.setLog(new TLog(buffer));
+        mojo.setFormat("xyzzy");
+        mojo.setFile(new File("src/test/resources/document1.tex"));
+        mojo.execute();
+    }
+
+    /**
+     * <testcase> A file needs to be given or an exception is raised.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = MojoFailureException.class)
+    public final void testNoFile() throws Exception {
+
+        LaTeXMojo mojo = new LaTeXMojo();
+        mojo.execute();
+    }
+
+    /**
+     * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = MojoExecutionException.class)
     public final void testNoLaTeX() throws Exception {
 
+        StringBuilder buffer = new StringBuilder();
         LaTeXMojo mojo = new LaTeXMojo();
+        mojo.setLog(new TLog(buffer));
         mojo.setLatexCommand("xyzzy");
         mojo.setFile(new File("src/test/resources/document1.tex"));
         mojo.execute();
+    }
+
+    /**
+     * Test method for {@link org.extex.maven.latex.LaTeXMojo#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testUndefinedFile() throws Exception {
+
+        // Locale.setDefault(Locale.US);
+        LaTeXMojo mojo = new LaTeXMojo();
+        mojo.setFile(new File("src/test/resources/xyzzy.tex"));
+        try {
+            mojo.execute();
+            assertTrue(false);
+        } catch (MojoFailureException e) {
+            assertTrue(e.getMessage().contains("file not found"));
+        }
     }
 
 }

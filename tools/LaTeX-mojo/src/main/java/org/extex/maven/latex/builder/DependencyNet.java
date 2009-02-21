@@ -71,7 +71,7 @@ public class DependencyNet implements State {
     /**
      * The field <tt>atLetter</tt> contains the indicator for the at catcode.
      */
-    private boolean atLetter;
+    private boolean atLetter = false;
 
     /**
      * The field <tt>ANALYZER</tt> contains the analyzer.
@@ -96,7 +96,10 @@ public class DependencyNet implements State {
      */
     public Artifact addArtifact(Artifact a) {
 
-        return map.put(a.getFile().getAbsoluteFile().toString(), a);
+        if (a == null) {
+            throw new IllegalArgumentException();
+        }
+        return map.put(a.getKey(), a);
     }
 
     /**
@@ -121,28 +124,30 @@ public class DependencyNet implements State {
      */
     public void build(boolean simulate) throws MakeException {
 
-        build(target.getFile().getAbsoluteFile().toString(), simulate);
-    }
-
-    /**
-     * Build a target.
-     * 
-     * @param name the name of the target to build
-     * @param simulate the indicator whether the commands should really be
-     *        executed
-     * 
-     * @throws MakeException in case of an error
-     */
-    public void build(String name, boolean simulate) throws MakeException {
-
-        Artifact a = map.get(name);
-        if (a == null) {
-            throw new MakeException(name + ": unknown target");
+        if (target == null) {
+            throw new IllegalStateException("undefined target");
         }
 
-        do {
-            logger.info("building " + a.toString());
-        } while (!a.build(parameters, logger, simulate));
+        File outputDirectory = parameters.getOutputDirectory();
+        if (!outputDirectory.exists() && !outputDirectory.mkdirs()) {
+            throw new MakeException("unable to create out directory "
+                    + outputDirectory.toString());
+        }
+
+        int lim = parameters.getLimit();
+
+        for (int i = 0; i < lim; i++) {
+            logger.info(Message.get("net.building", //
+                Integer.toString(i), target.toString()));
+            if (!target.build(parameters, logger, simulate)) {
+                return;
+            }
+
+        }
+        String message = Message.get("net.limit.reached", //
+            Integer.toString(parameters.getLimit()));
+        logger.severe(message);
+        throw new MakeException(message);
 
         // LaTeX Warning: There were undefined references.
         // LaTeX Warning: Citation `abc' on page 1 undefined on input line 3.
@@ -199,7 +204,7 @@ public class DependencyNet implements State {
         String key = file.getAbsoluteFile().toString();
         Artifact a = map.get(key);
         if (a == null) {
-            a = new Artifact(file.getAbsoluteFile());
+            a = new Artifact(file);
             map.put(key, a);
         }
         return a;
@@ -259,14 +264,6 @@ public class DependencyNet implements State {
      */
     public Artifact getTarget() throws IOException {
 
-        if (target == null) {
-            File masterFile = master.getFile();
-            String name =
-                    masterFile.getName().replaceAll("\\.[a-zA-Z0-9_]*", "")
-                            + "." + parameters.getTargetFormat();
-            File file = new File(masterFile.getParentFile(), name);
-            target = new Artifact(file);
-        }
         return target;
     }
 
@@ -291,10 +288,7 @@ public class DependencyNet implements State {
         String[] keys = map.keySet().toArray(new String[0]);
         Arrays.sort(keys);
         for (String key : keys) {
-            Artifact a = map.get(key);
-            if (a != null) {
-                a.print(w, prefix);
-            }
+            map.get(key).print(w, prefix);
         }
     }
 
@@ -310,14 +304,28 @@ public class DependencyNet implements State {
     public File searchFile(String fileName, String[] extensions, File base) {
 
         String name = fileName.replaceAll("\\.[a-zA-Z0-9_]*", "");
-        File parentFile = base.getParentFile();
+
+        File dir = base.getParentFile();
 
         for (String ext : extensions) {
-            File f = new File(parentFile, name + ext);
-            if (f.exists()) {
+            File f = new File(dir, name + ext);
+            if (f.canRead()) {
                 return f;
             }
         }
+
+        for (String path : parameters.getTexinputs()) {
+            dir = new File(path);
+            if (dir.isDirectory()) {
+                for (String ext : extensions) {
+                    File f = new File(dir, name + ext);
+                    if (f.canRead()) {
+                        return f;
+                    }
+                }
+            }
+        }
+
         return null;
     }
 
@@ -360,24 +368,19 @@ public class DependencyNet implements State {
                 IllegalStateException,
                 IOException {
 
-        if (master != null) {
-            throw new IllegalStateException("master already set");
-        }
         if (file == null) {
             throw new IllegalArgumentException("file == null");
+        } else if (master != null) {
+            throw new IllegalStateException("master already set");
         }
         File directory = parameters.getOutputDirectory();
-        if (!directory.isDirectory()) {
-            throw new IllegalArgumentException(directory.toString()
-                    + ": not a directory");
-        }
 
         master = new Artifact(file);
         addArtifact(master);
 
-        String format = parameters.getTargetFormat();
-        target = FileFormat.valueOf(format.toUpperCase()).makeTarget(//
-            directory, file.getName(), this);
+        String format = parameters.getTargetFormat().toUpperCase();
+        FileFormat fmt = FileFormat.valueOf(format);
+        target = fmt.makeTarget(directory, file.getName(), this);
 
         analyzeLaTeX(master);
     }

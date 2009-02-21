@@ -152,7 +152,7 @@ public class BuilderTest {
         abc.dependsOn(xyz);
         xyz.dependsOn(def);
 
-        builder.build(new File("abc").getAbsolutePath(), true);
+        builder.build(true);
     }
 
 }

@@ -37,18 +37,24 @@ public class Parameters {
     private String bibtexCommand = "bibtex";
 
     /**
+     * The field <tt>texinputs</tt> contains the search path for files.
+     */
+    private String[] texinputs = new String[]{""};
+
+    /**
      * The field <tt>bibtexExtensions</tt> contains the <span
      * class="sc">Bib</span></span><span class="t">T</span><span
      * class="e">e</span>X extensions.
      */
-    private String[] bibtexExtensions = ".bib:.bibtex:.BibTeX:".split(":");
+    private String[] bibtexExtensions =
+            new String[]{".bib", ".bibtex", ".BibTeX", ""};
 
     /**
      * The field <tt>graphicsExtensions</tt> contains the extensions for
      * graphics files.
      */
     private String[] graphicsExtensions =
-            ".png:.jpg:.jpeg:.gif:.tiff:.pdf:".split(":");
+            new String[]{".png", ".jpg", ".jpeg", ".gif", ".tiff", ".pdf", ""};
 
     /**
      * The field <tt>latexCommand</tt> contains the L<span
@@ -61,7 +67,7 @@ public class Parameters {
      * class="la">a</span>T<span class="e">e</span>X extensions.
      */
     private String[] latexExtensions =
-            ".tex:.TeX:.latex:.LaTeX:.ltx:".split(":");
+            new String[]{".tex", ".TeX", ".latex", ".LaTeX", ".ltx", ""};
 
     /**
      * The field <tt>makeindexCommand</tt> contains the makeindex command.
@@ -76,12 +82,18 @@ public class Parameters {
     /**
      * The field <tt>targetFormat</tt> contains the target format.
      */
-    private String targetFormat = "pdf";
+    private String targetFormat = FileFormat.PDF.toString();
 
     /**
-     * The field <tt>workingDirectory</tt> contains the workinf directory.
+     * The field <tt>workingDirectory</tt> contains the working directory.
      */
     private File workingDirectory = new File(".");
+
+    /**
+     * The field <tt>limit</tt> contains the artificial limit to break out of
+     * infinite make loops.
+     */
+    private int limit = 3;
 
     /**
      * Getter for the <span class="sc">Bib</span></span><span
@@ -141,6 +153,16 @@ public class Parameters {
     }
 
     /**
+     * Getter for the limit.
+     * 
+     * @return the limit
+     */
+    public int getLimit() {
+
+        return limit;
+    }
+
+    /**
      * Getter for the makeindexCommand.
      * 
      * @return the makeindexCommand
@@ -168,6 +190,16 @@ public class Parameters {
     public String getTargetFormat() {
 
         return targetFormat;
+    }
+
+    /**
+     * Getter for the texinputs.
+     * 
+     * @return the texinputs
+     */
+    public String[] getTexinputs() {
+
+        return texinputs;
     }
 
     /**
@@ -239,6 +271,16 @@ public class Parameters {
     }
 
     /**
+     * Setter for the limit.
+     * 
+     * @param limit the limit to set
+     */
+    protected void setLimit(int limit) {
+
+        this.limit = limit;
+    }
+
+    /**
      * Setter for the makeindexCommand.
      * 
      * @param makeindexCommand the makeindexCommand to set
@@ -269,13 +311,30 @@ public class Parameters {
     }
 
     /**
-     * Setter for the workingDirectory.
+     * Setter for the texinputs. If the argument is <code>null</code> then it is
+     * silently ignored. Thus a <code>null</code> value has no effect.
      * 
-     * @param workingDirectory the workingDirectory to set
+     * @param texinputs the texinputs to set
+     */
+    public void setTexinputs(String[] texinputs) {
+
+        if (texinputs != null) {
+            this.texinputs = texinputs;
+        }
+    }
+
+    /**
+     * Setter for the working Directory. If the argument is <code>null</code>
+     * then it is silently ignored. Thus a <code>null</code> value has no
+     * effect.
+     * 
+     * @param workingDirectory the working directory to set
      */
     public void setWorkingDirectory(File workingDirectory) {
 
-        this.workingDirectory = workingDirectory;
+        if (workingDirectory != null) {
+            this.workingDirectory = workingDirectory;
+        }
     }
 
 }

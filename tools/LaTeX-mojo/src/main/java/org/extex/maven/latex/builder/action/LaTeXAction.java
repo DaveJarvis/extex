@@ -25,7 +25,8 @@ import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
- * This action runs LaTeX in one of its variants on the artifact.
+ * This action runs L<span class="la">a</span>T<span class="e">e</span>X in one
+ * of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +36,8 @@ public class LaTeXAction extends Action {
     /**
      * Creates a new object.
      * 
-     * @param artifact the artifact to run LaTeX on
+     * @param artifact the artifact to run L<span class="la">a</span>T<span
+     *        class="e">e</span>X on
      */
     public LaTeXAction(Artifact artifact) {
 
@@ -53,6 +55,7 @@ public class LaTeXAction extends Action {
         List<String> list = new ArrayList<String>();
         list.add(parameters.getLatexCommand());
         list.add("-output-directory=" + parameters.getOutputDirectory());
+        list.add("-nonstopmode");
         list.add(getArtifact().getFile().toString().replace('\\', '/'));
         return list;
     }

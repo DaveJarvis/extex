@@ -18,12 +18,14 @@
 
 package org.extex.maven.latex.builder.artifact;
 
-import java.io.BufferedReader;
+import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
-import java.io.Reader;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -47,10 +49,10 @@ public class Artifact {
     private File file;
 
     /**
-     * The field <tt>content</tt> contains the cached content from the last
+     * The field <tt>content</tt> contains the cached MD5 checksum from the last
      * round.
      */
-    private StringBuilder content = null;
+    private byte[] content = null;
 
     /**
      * The field <tt>dependencies</tt> contains the artifacts this one depends
@@ -78,11 +80,24 @@ public class Artifact {
      */
     public Artifact(File file) throws IOException {
 
-        this.file = file;
+        this.file = file.getAbsoluteFile();
         if (file.exists()) {
             content = reload();
             lastModified = file.lastModified();
         }
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param directory the directory
+     * @param name the file name
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public Artifact(File directory, String name) throws IOException {
+
+        this(new File(directory, name));
     }
 
     /**
@@ -92,7 +107,7 @@ public class Artifact {
      * @param logger the logger
      * @param simulate the simulation indicator
      * 
-     * @return <code>true</code> iff the build has been completed
+     * @return <code>true</code> iff the build has changed something
      * 
      * @throws MakeException in case of an error
      */
@@ -102,9 +117,8 @@ public class Artifact {
         boolean fire = false;
 
         for (Artifact d : dependencies) {
-            // TODO up to date
-            if (!d.build(parameters, logger, simulate)) {
-                // fire = true;
+            if (d.build(parameters, logger, simulate)) {
+                fire = true;
             }
         }
 
@@ -112,6 +126,7 @@ public class Artifact {
             fire = true;
             logger.info("Creating " + toString());
         } else {
+            // TODO up to date
             for (Artifact d : dependencies) {
                 if (d.isNewer(this)) {
                     fire = true;
@@ -123,14 +138,14 @@ public class Artifact {
         }
 
         if (!fire) {
-            return true;
+            return false;
         } else if (actions.size() == 0) {
             logger.warning("No actions found to create " + toString());
             if (!file.exists()) {
                 logger.severe("Artifact " + toString()
                         + " could not be created");
             }
-            return true;
+            return false;
         }
 
         for (Action a : actions) {
@@ -139,6 +154,7 @@ public class Artifact {
 
         if (!simulate && !file.exists()) {
             logger.severe("The actions did not create " + toString());
+            return false;
         }
         return true;
     }
@@ -175,6 +191,16 @@ public class Artifact {
     public File getFile() {
 
         return file;
+    }
+
+    /**
+     * Getter for the key
+     * 
+     * @return the key
+     */
+    public String getKey() {
+
+        return file.getAbsoluteFile().toString();
     }
 
     /**
@@ -253,18 +279,24 @@ public class Artifact {
      * 
      * @throws IOException in case of an I/O error
      */
-    private StringBuilder reload() throws IOException {
+    private byte[] reload() throws IOException {
 
-        StringBuilder buffer = new StringBuilder();
-        Reader r = new BufferedReader(new FileReader(file));
+        MessageDigest digest;
         try {
-            for (int c = r.read(); c >= 0; c = r.read()) {
-                buffer.append((char) c);
+            digest = java.security.MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            throw new IOException(e);
+        }
+        InputStream r = new BufferedInputStream(new FileInputStream(file));
+        byte[] buffer = new byte[1024];
+        try {
+            for (int n = r.read(buffer); n > 0; n = r.read(buffer)) {
+                digest.update(buffer, 0, n);
             }
         } finally {
             r.close();
         }
-        return buffer;
+        return digest.digest();
     }
 
     /**

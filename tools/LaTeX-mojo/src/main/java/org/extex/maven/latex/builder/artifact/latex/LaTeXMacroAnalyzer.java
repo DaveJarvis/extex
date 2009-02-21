@@ -31,6 +31,7 @@ import org.extex.maven.latex.builder.artifact.latex.macro.BeginDocument;
 import org.extex.maven.latex.builder.artifact.latex.macro.BeginLstListing;
 import org.extex.maven.latex.builder.artifact.latex.macro.BeginVerbatim;
 import org.extex.maven.latex.builder.artifact.latex.macro.Bibliography;
+import org.extex.maven.latex.builder.artifact.latex.macro.DocumentClass;
 import org.extex.maven.latex.builder.artifact.latex.macro.Include;
 import org.extex.maven.latex.builder.artifact.latex.macro.IncludeGraphics;
 import org.extex.maven.latex.builder.artifact.latex.macro.Input;
@@ -88,6 +89,8 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
         });
         macros.put("\\begin{document}", new BeginDocument());
         macros.put("\\bibliography", new Bibliography());
+        macros.put("\\documentclass", new DocumentClass());
+        macros.put("\\LoadClass", new DocumentClass());
         macros.put("\\input", new Input());
         macros.put("\\InputIfFileExists", new InputIfFileExists());
         macros.put("\\include", new Include());

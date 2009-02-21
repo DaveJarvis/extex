@@ -25,7 +25,9 @@ import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
- * This action runs BibTeX in one of its variants on the artifact.
+ * This action runs <span class="sc">Bib</span></span><span
+ * class="t">T</span><span class="e">e</span>XX in one of its variants on the
+ * artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,7 +37,9 @@ public class BibTeXAction extends Action {
     /**
      * Creates a new object.
      * 
-     * @param artifact the artifact to run LaTeX on
+     * @param artifact the artifact to run <span
+     *        class="sc">Bib</span></span><span class="t">T</span><span
+     *        class="e">e</span>X on
      */
     public BibTeXAction(Artifact artifact) {
 
