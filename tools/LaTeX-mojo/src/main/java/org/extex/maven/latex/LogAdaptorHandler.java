@@ -37,7 +37,7 @@ public final class LogAdaptorHandler extends Handler {
      * @see java.util.logging.Handler#close()
      */
     @Override
-    public void close() throws SecurityException {
+    public void close() {
 
         // nothing to do
     }
@@ -78,7 +78,7 @@ public final class LogAdaptorHandler extends Handler {
         Level level = record.getLevel();
         int levelValue = level.intValue();
         if (levelValue < getLevel().intValue()) {
-            // ignore
+            return;
         } else if (levelValue >= Level.SEVERE.intValue()) {
             log.error(record.getMessage());
         } else if (levelValue >= Level.WARNING.intValue()) {
