@@ -208,6 +208,7 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <aggregate>true</aggregate>
+          <stylesheetfile>${basedir}/src/javadoc/stylesheet.css</stylesheetfile>  
           <groups>
             <group>
               <title>Core Packages</title>
@@ -234,7 +235,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>../develop/eclipse/checkstyle42.cfg</configLocation>
+          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
 
