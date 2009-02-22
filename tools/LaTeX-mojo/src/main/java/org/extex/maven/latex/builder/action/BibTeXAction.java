@@ -26,7 +26,7 @@ import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
  * This action runs <span class="sc">Bib</span></span><span
- * class="t">T</span><span class="e">e</span>XX in one of its variants on the
+ * class="t">T</span><span class="e">e</span>X in one of its variants on the
  * artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

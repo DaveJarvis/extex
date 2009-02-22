@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.maven.latex.builder.Message;
 import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.action.Action;
 import org.extex.maven.latex.builder.exception.MakeException;
@@ -44,15 +45,21 @@ import org.extex.maven.latex.builder.exception.MakeException;
 public class Artifact {
 
     /**
+     * The constant <tt>READ_JUNK_SIZE</tt> contains the number of bytes to read
+     * from file.
+     */
+    private static final int READ_JUNK_SIZE = 1024;
+
+    /**
      * The field <tt>file</tt> contains the file.
      */
     private File file;
 
     /**
-     * The field <tt>content</tt> contains the cached MD5 checksum from the last
-     * round.
+     * The field <tt>checksum</tt> contains the cached MD5 checksum from the
+     * last round.
      */
-    private byte[] content = null;
+    private byte[] checksum = null;
 
     /**
      * The field <tt>dependencies</tt> contains the artifacts this one depends
@@ -82,7 +89,7 @@ public class Artifact {
 
         this.file = file.getAbsoluteFile();
         if (file.exists()) {
-            content = reload();
+            checksum = reload();
             lastModified = file.lastModified();
         }
     }
@@ -124,14 +131,13 @@ public class Artifact {
 
         if (!file.exists()) {
             fire = true;
-            logger.info("Creating " + toString());
+            logger.info(Message.get("artifact.create", toString()));
         } else {
-            // TODO up to date
             for (Artifact d : dependencies) {
                 if (d.isNewer(this)) {
                     fire = true;
-                    logger.info("Recreating " + toString() + " since "
-                            + d.toString() + " is newer.");
+                    logger.info(Message.get("artifact.create.newer",
+                        toString(), d.toString()));
                     break;
                 }
             }
@@ -140,23 +146,20 @@ public class Artifact {
         if (!fire) {
             return false;
         } else if (actions.size() == 0) {
-            logger.warning("No actions found to create " + toString());
-            if (!file.exists()) {
-                logger.severe("Artifact " + toString()
-                        + " could not be created");
-            }
-            return false;
+            logger.warning(Message.get("artifact.no.actions", toString()));
         }
 
         for (Action a : actions) {
             a.execute(this, parameters, logger, simulate);
         }
 
-        if (!simulate && !file.exists()) {
-            logger.severe("The actions did not create " + toString());
+        if (simulate) {
             return false;
+        } else if (!file.exists()) {
+            throw new MakeException(logger, "artifact.create.error", toString());
         }
-        return true;
+        // TODO up to date
+        return !simulate;
     }
 
     /**
@@ -204,6 +207,16 @@ public class Artifact {
     }
 
     /**
+     * Getter for the base name of the artifact's file.
+     * 
+     * @return the base name of the artifact's file
+     */
+    public String getName() {
+
+        return file.getName();
+    }
+
+    /**
      * Check whether the file contents has been modified and refresh the cache.
      * 
      * @return <code>true</code> iff the artifact does not exist or has recently
@@ -214,7 +227,7 @@ public class Artifact {
     public boolean isModified() throws IOException {
 
         if (!file.exists()) {
-            content = null;
+            checksum = null;
             lastModified = Long.MIN_VALUE;
             return true;
         }
@@ -231,8 +244,11 @@ public class Artifact {
      */
     private boolean isNewer(Artifact artifact) {
 
-        return !file.exists()
-                || file.lastModified() <= artifact.getFile().lastModified();
+        if (!file.exists()) {
+            return false;
+        }
+        // TODO compare contents
+        return file.lastModified() <= artifact.getFile().lastModified();
     }
 
     /**
@@ -288,7 +304,7 @@ public class Artifact {
             throw new IOException(e);
         }
         InputStream r = new BufferedInputStream(new FileInputStream(file));
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[READ_JUNK_SIZE];
         try {
             for (int n = r.read(buffer); n > 0; n = r.read(buffer)) {
                 digest.update(buffer, 0, n);

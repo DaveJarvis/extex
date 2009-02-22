@@ -20,9 +20,9 @@ package org.extex.maven.latex.builder.artifact.latex.macro;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.Message;
 import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
@@ -36,9 +36,10 @@ import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 public final class DocumentClass extends MacroWithArgs {
 
     /**
-     * The field <tt>CLASSES</tt> contains the ...
+     * The field <tt>CLASSES</tt> contains the list of known classes which do
+     * not lead to a warning.
      */
-    public static final String[] CLASSES =
+    private static final String[] CLASSES =
             new String[]{"book", "report", "article", "letter", "slides",
                     "scrbook", "scrrprt", "scrartcl"};
 
@@ -46,33 +47,31 @@ public final class DocumentClass extends MacroWithArgs {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-     *      java.lang.String, java.lang.String)
+     *      org.extex.maven.latex.builder.DependencyNet,
+     *      org.extex.maven.latex.builder.artifact.Artifact, java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    protected void expand(LatexReader reader, DependencyNet net, File base,
-            String opt, String arg) throws IOException {
+    protected void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact, String opt, String arg) throws IOException {
 
-        Logger logger = net.getLogger();
-        logger.fine(base.getName() + ": \\documentclass");
-
-        File f = net.searchFile(arg, new String[]{".cls"}, base);
+        File f = net.searchFile(arg, new String[]{".cls"}, artifact.getFile());
         if (f == null) {
             for (String s : CLASSES) {
                 if (arg.equals(s)) {
                     return;
                 }
             }
-            logger
-                .info("documentclass " + arg + " not found; analysis skipped");
+            net.getLogger().info(Message.get("documentclass.ignored", arg));
             return;
         }
-        Artifact artifact = new Artifact(f);
-        net.addArtifact(artifact);
-        net.getTarget().dependsOn(artifact);
+        Artifact a = new Artifact(f);
+        net.addArtifact(a);
+        net.getTarget().dependsOn(a);
 
         net.setAtLetter(true);
-        net.analyzeLaTeX(artifact);
+        net.analyzeLaTeX(a);
         net.setAtLetter(false);
     }
+
 }

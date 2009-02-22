@@ -18,6 +18,10 @@
 
 package org.extex.maven.latex.builder.exception;
 
+import java.util.logging.Logger;
+
+import org.extex.maven.latex.builder.Message;
+
 /**
  * This is a base exception for the make.
  * 
@@ -33,22 +37,16 @@ public class MakeException extends Exception {
     private static final long serialVersionUID = 2008L;
 
     /**
-     * Creates a new object.
+     * Creates a new object with a formatted text.
      * 
+     * @param logger the logger
+     * @param tag the tag in the resource bundle
+     * @param arguments the arguments
      */
-    public MakeException() {
+    public MakeException(Logger logger, String tag, Object... arguments) {
 
-        super();
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     */
-    public MakeException(String message) {
-
-        super(message);
+        super(Message.get(tag, arguments));
+        logger.severe(getMessage());
     }
 
     /**
@@ -60,16 +58,6 @@ public class MakeException extends Exception {
     public MakeException(String message, Throwable cause) {
 
         super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param cause the cause
-     */
-    public MakeException(Throwable cause) {
-
-        super(cause);
     }
 
 }

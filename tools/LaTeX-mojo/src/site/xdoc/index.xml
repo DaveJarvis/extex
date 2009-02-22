@@ -8,6 +8,12 @@
 <body>
   <section name="Maven LaTeX Plugin">
 
+    <subsection name="Known Issues and Limitations">
+    <p>
+      This plugin is work in progress. It does not function well at the moment.
+    </p>
+    </subsection>
+
     <subsection name="Goals Overview">
     <p>
       The L<span class="la">a</span>T<span class="e">e</span>X Plugin has the

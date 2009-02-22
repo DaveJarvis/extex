@@ -26,9 +26,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import org.extex.maven.latex.builder.Message;
 import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
-import org.extex.maven.latex.builder.exception.MakeActionException;
 import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
@@ -77,10 +77,8 @@ public abstract class Action {
             boolean simulate) throws MakeException {
 
         List<String> commandLine = makeCommandLine(parameters);
-        if (logger != null) {
-            logger.log(simulate ? Level.INFO : Level.FINE, //
-                "--> " + join(commandLine));
-        }
+        logger.log(simulate ? Level.INFO : Level.FINE, //
+            Message.get("action.show", join(commandLine)));
         if (simulate) {
             return;
         }
@@ -98,14 +96,16 @@ public abstract class Action {
                     buffer.append((char) c);
                 }
                 if (p.exitValue() != 0) {
-                    logger.severe(buffer.toString());
+                    throw new MakeException(logger, "action.log", //
+                        buffer.toString());
                 }
+                logger.fine(Message.get("action.log", buffer.toString()));
             } finally {
                 p.destroy();
             }
         } catch (IOException e) {
-            logger.severe(commandLine.get(0) + " can not be run");
-            throw new MakeActionException(commandLine.get(0), e);
+            throw new MakeException(logger, "action.error", //
+                commandLine.get(0), e.toString());
         }
     }
 

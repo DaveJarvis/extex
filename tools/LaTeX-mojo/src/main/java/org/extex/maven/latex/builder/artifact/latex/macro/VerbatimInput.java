@@ -39,15 +39,15 @@ public final class VerbatimInput extends MacroWithArgs {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-     *      java.lang.String, java.lang.String)
+     *      org.extex.maven.latex.builder.DependencyNet,
+     *      org.extex.maven.latex.builder.artifact.Artifact, java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    protected void expand(LatexReader reader, DependencyNet net, File base,
-            String opt, String arg) throws IOException {
+    protected void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact, String opt, String arg) throws IOException {
 
-        net.getLogger().fine(base.getName() + ": \\verbatiminput " + arg);
-        File file = net.findFile(arg, new String[]{""}, base);
+        File file = net.findFile(arg, new String[]{""}, artifact);
         Artifact a = net.getArtifact(file);
         net.getTarget().dependsOn(a);
     }

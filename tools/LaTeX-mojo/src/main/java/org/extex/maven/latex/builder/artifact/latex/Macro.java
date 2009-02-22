@@ -18,10 +18,10 @@
 
 package org.extex.maven.latex.builder.artifact.latex;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
  * This is a function object. It is necessary in absence of closures.
@@ -33,10 +33,9 @@ public abstract class Macro {
      * 
      * @param reader the reader
      * @param net the dependency net
-     * @param base the base file being processed
-     * 
+     * @param artifact the artifact being processed
      * @throws IOException in case of an I/O error
      */
-    public abstract void expand(LatexReader reader, DependencyNet net, File base)
-            throws IOException;
+    public abstract void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact) throws IOException;
 }

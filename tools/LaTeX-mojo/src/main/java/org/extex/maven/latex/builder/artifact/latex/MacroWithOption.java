@@ -18,11 +18,11 @@
 
 package org.extex.maven.latex.builder.artifact.latex;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
 import org.extex.maven.latex.builder.Parameters;
+import org.extex.maven.latex.builder.artifact.Artifact;
 
 /**
  * This abstract base class provides argument parsing. One optional argument is
@@ -35,11 +35,11 @@ public abstract class MacroWithOption extends Macro {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
+     *      org.extex.maven.latex.builder.DependencyNet, Artifact)
      */
     @Override
-    public final void expand(LatexReader reader, DependencyNet net, File base)
-            throws IOException {
+    public final void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact) throws IOException {
 
         int c = reader.scanNext();
         reader.unread(c);
@@ -50,7 +50,7 @@ public abstract class MacroWithOption extends Macro {
         if (opt == null) {
             return;
         }
-        expand(reader, net.getParameters(), base, opt);
+        expand(reader, net.getParameters(), artifact, opt);
     }
 
     /**
@@ -58,12 +58,12 @@ public abstract class MacroWithOption extends Macro {
      * 
      * @param reader the reader to consume further input
      * @param net the net
-     * @param base the base file
+     * @param artifact the artifact currently processed
      * @param opt the optional argument or <code>null</code>
      * 
      * @throws IOException in case of an I/O error
      */
     protected abstract void expand(LatexReader reader, Parameters net,
-            File base, String opt) throws IOException;
+            Artifact artifact, String opt) throws IOException;
 
 }

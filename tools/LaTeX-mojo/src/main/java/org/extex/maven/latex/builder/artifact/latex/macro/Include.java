@@ -38,18 +38,17 @@ public final class Include extends MacroWithArgs {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-     *      java.lang.String, java.lang.String)
+     *      org.extex.maven.latex.builder.DependencyNet,
+     *      org.extex.maven.latex.builder.artifact.Artifact, java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    public void expand(LatexReader reader, DependencyNet net, File base,
-            String opt, String arg) throws IOException {
-
-        net.getLogger().fine(base.getName() + ": \\include " + arg);
+    public void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact, String opt, String arg) throws IOException {
 
         File file =
                 net.findFile(arg, net.getParameters().getLatexExtensions(),
-                    base);
+                    artifact);
         Artifact a = net.getArtifact(file);
         Artifact target = net.getTarget();
         target.dependsOn(a);

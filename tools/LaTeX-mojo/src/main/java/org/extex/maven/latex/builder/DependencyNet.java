@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -130,8 +131,8 @@ public class DependencyNet implements State {
 
         File outputDirectory = parameters.getOutputDirectory();
         if (!outputDirectory.exists() && !outputDirectory.mkdirs()) {
-            throw new MakeException("unable to create out directory "
-                    + outputDirectory.toString());
+            throw new MakeException(logger, "net.out.dir", //
+                outputDirectory.toString());
         }
 
         int lim = parameters.getLimit();
@@ -144,10 +145,8 @@ public class DependencyNet implements State {
             }
 
         }
-        String message = Message.get("net.limit.reached", //
+        throw new MakeException(logger, "net.limit.reached", //
             Integer.toString(parameters.getLimit()));
-        logger.severe(message);
-        throw new MakeException(message);
 
         // LaTeX Warning: There were undefined references.
         // LaTeX Warning: Citation `abc' on page 1 undefined on input line 3.
@@ -174,16 +173,16 @@ public class DependencyNet implements State {
      * 
      * @param fileName the file name
      * @param extensions the extensions
-     * @param base the base file name
+     * @param artifact the artifact
      * 
      * @return the full file
      * 
      * @throws FileNotFoundException in case no resource could be found
      */
-    public File findFile(String fileName, String[] extensions, File base)
+    public File findFile(String fileName, String[] extensions, Artifact artifact)
             throws FileNotFoundException {
 
-        File file = searchFile(fileName, extensions, base);
+        File file = searchFile(fileName, extensions, artifact.getFile());
         if (file == null) {
             throw new FileNotFoundException(fileName);
         }
@@ -285,7 +284,7 @@ public class DependencyNet implements State {
      */
     public void print(PrintWriter w, String prefix) {
 
-        String[] keys = map.keySet().toArray(new String[0]);
+        String[] keys = map.keySet().toArray(new String[map.size()]);
         Arrays.sort(keys);
         for (String key : keys) {
             map.get(key).print(w, prefix);
@@ -353,20 +352,15 @@ public class DependencyNet implements State {
      * Setter for the master. The dependencies are analyzed and the net is
      * wired.
      * <p>
-     * Note: This method must be invoked exactly once.
+     * Note: This method must be invoked exactly once. Otherwise an
+     * {@link IllegalStateException} is thrown.
      * </p>
      * 
      * @param file the master file; this can not be <code>null</code>
      * 
-     * @throws IllegalStateException if this method is invoked a second time
-     * @throws IllegalArgumentException if the file is <code>null</code> or the
-     *         output directory is no directory
      * @throws IOException in case of an I/O error
      */
-    public void wire(File file)
-            throws IllegalArgumentException,
-                IllegalStateException,
-                IOException {
+    public void wire(File file) throws IOException {
 
         if (file == null) {
             throw new IllegalArgumentException("file == null");
@@ -378,7 +372,8 @@ public class DependencyNet implements State {
         master = new Artifact(file);
         addArtifact(master);
 
-        String format = parameters.getTargetFormat().toUpperCase();
+        String format =
+                parameters.getTargetFormat().toUpperCase(Locale.ENGLISH);
         FileFormat fmt = FileFormat.valueOf(format);
         target = fmt.makeTarget(directory, file.getName(), this);
 

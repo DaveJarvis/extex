@@ -18,7 +18,6 @@
 
 package org.extex.maven.latex.builder.artifact.latex.macro;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
@@ -27,12 +26,12 @@ import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.MacroWithArgs;
 
 /**
- * This class implements a handler for <code>\InputIfFileExists</code>.
+ * This class implements a handler for <code>\print</code>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 7699 $
  */
-public final class InputIfFileExists extends MacroWithArgs {
+public final class Index extends MacroWithArgs {
 
     /**
      * {@inheritDoc}
@@ -43,19 +42,10 @@ public final class InputIfFileExists extends MacroWithArgs {
      *      java.lang.String)
      */
     @Override
-    public void expand(LatexReader reader, DependencyNet net,
+    protected void expand(LatexReader reader, DependencyNet net,
             Artifact artifact, String opt, String arg) throws IOException {
 
-        File file =
-                net.searchFile(arg, net.getParameters().getLatexExtensions(),
-                    artifact.getFile());
-        if (file == null) {
-            return;
-        }
-        Artifact a = net.getArtifact(file);
-        Artifact target = net.getTarget();
-        target.dependsOn(a);
-        net.analyzeLaTeX(a);
+        net.getDerivedTargetArtifact("idx").dependsOn(artifact);
     }
 
 }

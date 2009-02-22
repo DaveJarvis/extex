@@ -148,6 +148,15 @@
           <configLocation>../../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <xmlOutput>true</xmlOutput>
+        </configuration>
+      </plugin>
+
     </plugins>
   </reporting>
 

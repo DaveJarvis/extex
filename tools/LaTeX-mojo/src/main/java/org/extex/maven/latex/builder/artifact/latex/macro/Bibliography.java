@@ -40,21 +40,15 @@ public final class Bibliography extends MacroWithArgs {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.MacroWithArgs#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File,
-     *      java.lang.String, java.lang.String)
+     *      org.extex.maven.latex.builder.DependencyNet,
+     *      org.extex.maven.latex.builder.artifact.Artifact, java.lang.String,
+     *      java.lang.String)
      */
     @Override
-    protected void expand(LatexReader reader, DependencyNet net, File base,
-            String opt, String block) throws IOException {
+    protected void expand(LatexReader reader, DependencyNet net,
+            Artifact artifact, String opt, String block) throws IOException {
 
         String[] args = block.split(",");
-        StringBuilder buffer =
-                new StringBuilder(base.getName() + ": \\bibliography");
-        for (String arg : args) {
-            buffer.append(' ');
-            buffer.append(arg);
-        }
-        net.getLogger().fine(buffer.toString());
 
         Artifact target = net.getTarget();
         File bblFile = target.derivedFile("bbl");
@@ -68,7 +62,7 @@ public final class Bibliography extends MacroWithArgs {
 
         String[] bibtexExtensions = net.getParameters().getBibtexExtensions();
         for (String arg : args) {
-            File file = net.findFile(arg, bibtexExtensions, base);
+            File file = net.findFile(arg, bibtexExtensions, artifact);
             bbl.dependsOn(net.getArtifact(file));
         }
         Artifact aux = net.getDerivedTargetArtifact("aux");

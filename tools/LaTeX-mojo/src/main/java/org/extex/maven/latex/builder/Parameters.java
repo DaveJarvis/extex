@@ -116,7 +116,7 @@ public class Parameters {
      */
     public String[] getBibtexExtensions() {
 
-        return bibtexExtensions;
+        return bibtexExtensions.clone();
     }
 
     /**
@@ -126,7 +126,7 @@ public class Parameters {
      */
     public String[] getGraphicsExtensions() {
 
-        return graphicsExtensions;
+        return graphicsExtensions.clone();
     }
 
     /**
@@ -149,7 +149,7 @@ public class Parameters {
      */
     public String[] getLatexExtensions() {
 
-        return latexExtensions;
+        return latexExtensions.clone();
     }
 
     /**
@@ -199,7 +199,7 @@ public class Parameters {
      */
     public String[] getTexinputs() {
 
-        return texinputs;
+        return texinputs.clone();
     }
 
     /**
@@ -233,7 +233,7 @@ public class Parameters {
      */
     public void setBibtexExtensions(String[] bibtexExtensions) {
 
-        this.bibtexExtensions = bibtexExtensions;
+        this.bibtexExtensions = bibtexExtensions.clone();
     }
 
     /**
@@ -243,7 +243,7 @@ public class Parameters {
      */
     public void setGraphicsExtensions(String[] graphicsExtensions) {
 
-        this.graphicsExtensions = graphicsExtensions;
+        this.graphicsExtensions = graphicsExtensions.clone();
     }
 
     /**
@@ -267,7 +267,7 @@ public class Parameters {
      */
     public void setLatexExtensions(String[] latexExtensions) {
 
-        this.latexExtensions = latexExtensions;
+        this.latexExtensions = latexExtensions.clone();
     }
 
     /**
@@ -319,7 +319,7 @@ public class Parameters {
     public void setTexinputs(String[] texinputs) {
 
         if (texinputs != null) {
-            this.texinputs = texinputs;
+            this.texinputs = texinputs.clone();
         }
     }
 

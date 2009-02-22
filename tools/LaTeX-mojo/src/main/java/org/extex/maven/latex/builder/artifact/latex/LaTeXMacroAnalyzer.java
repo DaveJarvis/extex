@@ -72,17 +72,17 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
              * {@inheritDoc}
              * 
              * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-             *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
+             *      org.extex.maven.latex.builder.DependencyNet, Artifact)
              */
             @Override
-            public void expand(LatexReader reader, DependencyNet net, File base)
-                    throws IOException {
+            public void expand(LatexReader reader, DependencyNet net,
+                    Artifact artifact) throws IOException {
 
                 String arg = reader.scanBlock();
                 if (arg != null) {
                     Macro macro = macros.get("\\begin{" + arg + "}");
                     if (macro != null) {
-                        macro.expand(reader, net, base);
+                        macro.expand(reader, net, artifact);
                     }
                 }
             }
@@ -126,7 +126,8 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
                     reader.scanControlSequence()) {
                 Macro macro = macros.get(cs);
                 if (macro != null) {
-                    macro.expand(reader, net, file);
+                    net.getLogger().fine(artifact.getName() + ": " + cs);
+                    macro.expand(reader, net, artifact);
                 }
             }
         } finally {

@@ -38,10 +38,10 @@ public final class Input extends Macro {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(org.extex.maven.latex.builder.artifact.latex.LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
+     *      org.extex.maven.latex.builder.DependencyNet, Artifact)
      */
     @Override
-    public void expand(LatexReader reader, DependencyNet net, File base)
+    public void expand(LatexReader reader, DependencyNet net, Artifact artifact)
             throws IOException {
 
         String arg;
@@ -61,10 +61,9 @@ public final class Input extends Macro {
             arg = buffer.toString();
         }
 
-        net.getLogger().fine(base.getName() + ": \\input " + arg);
         File file =
                 net.findFile(arg, net.getParameters().getLatexExtensions(),
-                    base);
+                    artifact);
         Artifact a = net.getArtifact(file);
         Artifact target = net.getTarget();
         target.dependsOn(a);

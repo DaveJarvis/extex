@@ -1,6 +1,9 @@
 #banner {
   background: url(../images/fade.png);
 }
+#breadcrumbs {
+  background: url(../images/fade2.png);
+}
 #navcolumn ul {
   margin-bottom:8pt;
 }

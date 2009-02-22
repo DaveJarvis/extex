@@ -18,10 +18,10 @@
 
 package org.extex.maven.latex.builder.artifact.latex.macro;
 
-import java.io.File;
 import java.io.IOException;
 
 import org.extex.maven.latex.builder.DependencyNet;
+import org.extex.maven.latex.builder.artifact.Artifact;
 import org.extex.maven.latex.builder.artifact.latex.LatexReader;
 import org.extex.maven.latex.builder.artifact.latex.Macro;
 
@@ -37,10 +37,10 @@ public final class Verb extends Macro {
      * {@inheritDoc}
      * 
      * @see org.extex.maven.latex.builder.artifact.latex.Macro#expand(LatexReader,
-     *      org.extex.maven.latex.builder.DependencyNet, java.io.File)
+     *      org.extex.maven.latex.builder.DependencyNet, Artifact)
      */
     @Override
-    public void expand(LatexReader reader, DependencyNet net, File base)
+    public void expand(LatexReader reader, DependencyNet net, Artifact artifact)
             throws IOException {
 
         int del = reader.scanNext();

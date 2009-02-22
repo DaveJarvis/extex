@@ -22,7 +22,7 @@ import java.text.MessageFormat;
 import java.util.ResourceBundle;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides means to deal with messages to the user.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -35,10 +35,10 @@ public final class Message {
     private static ResourceBundle bundle;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Get a pattern from the resource bundle and merge in the given arguments.
      * 
-     * @param key
-     * @param arguments
+     * @param key the key
+     * @param arguments the optional arguments
      * 
      * @return the formatted string
      */
