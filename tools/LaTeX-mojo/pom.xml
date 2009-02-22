@@ -29,6 +29,14 @@
     <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/tools/LaTeX-mojo</developerConnection>
     <url>http://svn.berlios.de/wsvn/extex/trunk/tools/LaTeX-mojo/</url>
   </scm>
+  
+  <distributionManagement>
+    <site>
+      <id>latex.mojo.website</id>
+      <name>LaTeX Mojo Website</name>
+      <url>scp://comedy.dante.de/serv/extex-project/www.extex.org/reports/tools/LaTeX-mojo</url>
+    </site>
+  </distributionManagement>
 
   <issueManagement>
     <system>Berlios Bugs</system>
