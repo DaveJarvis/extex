@@ -95,6 +95,7 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
         macros.put("\\InputIfFileExists", new InputIfFileExists());
         macros.put("\\include", new Include());
         macros.put("\\includegraphics", new IncludeGraphics());
+        macros.put("\\epsfig", new IncludeGraphics());
         macros.put("\\makeatletter", new MakeAtLetter());
         macros.put("\\makeatother", new MakeAtOther());
         macros.put("\\begin{lstlisting}", new BeginLstListing());
