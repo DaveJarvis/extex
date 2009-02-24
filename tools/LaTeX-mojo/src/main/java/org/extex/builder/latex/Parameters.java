@@ -82,7 +82,7 @@ public class Parameters {
     /**
      * The field <tt>targetFormat</tt> contains the target format.
      */
-    private String targetFormat = FileFormat.PDF.toString();
+    private FileFormat targetFormat = FileFormat.PDF;
 
     /**
      * The field <tt>workingDirectory</tt> contains the working directory.
@@ -187,7 +187,7 @@ public class Parameters {
      * 
      * @return the targetFormat
      */
-    public String getTargetFormat() {
+    public FileFormat getTargetFormat() {
 
         return targetFormat;
     }
@@ -332,7 +332,7 @@ public class Parameters {
      * 
      * @param targetFormat the target format to set
      */
-    public void setTargetFormat(String targetFormat) {
+    public void setTargetFormat(FileFormat targetFormat) {
 
         this.targetFormat = targetFormat;
     }

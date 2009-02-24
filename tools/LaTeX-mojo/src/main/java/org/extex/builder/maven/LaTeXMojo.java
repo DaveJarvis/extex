@@ -21,6 +21,7 @@ package org.extex.builder.maven;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintWriter;
+import java.util.Locale;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.extex.builder.latex.DependencyNet;
+import org.extex.builder.latex.FileFormat;
 import org.extex.builder.latex.Parameters;
 import org.extex.builder.latex.exception.MakeException;
 
@@ -60,18 +62,19 @@ public class LaTeXMojo extends AbstractMojo {
     private String bibtexCommand = "bibtex";
 
     /**
-     * The parameter <tt>limit</tt> contains the maximal number of iterations in
-     * the attempt to come to a fixed point. The value should be greater than 2.
-     * <p>
-     * Note that you can construct files which converge not to a fixed point but
-     * oscillate between two states. This parameter forces an artificial break
-     * out of such an infinite loop.
-     * </p>
+     * The parameter <tt>bibtexExtensions</tt> contains the list of extensions
+     * for <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X files.
      * 
-     * @parameter default-value=3
+     * @parameter
      * @since 1.0
      */
-    private int limit = 3;
+    private String[] bibtexExtensions = null;
+
+    /**
+     * The field <tt>debug</tt> contains the indicator for the debugging.
+     */
+    private boolean debug = false;
 
     /**
      * The parameter <tt>file</tt> contains the name of the L<span
@@ -82,7 +85,7 @@ public class LaTeXMojo extends AbstractMojo {
      * @required
      * @since 1.0
      */
-    private File file;
+    private File file = null;
 
     /**
      * The parameter <tt>format</tt> contains the target format. Currently the
@@ -93,6 +96,16 @@ public class LaTeXMojo extends AbstractMojo {
      * @since 1.0
      */
     private String format = "pdf";
+
+    /**
+     * The parameter <tt>indexerCommand</tt> contains the command to be used for
+     * index creation. This command has to be found on the system path for
+     * executables.
+     * 
+     * @parameter
+     * @since 1.0
+     */
+    private String indexerCommand = "makeindex";
 
     /**
      * The parameter <tt>latexCommand</tt> contains the command to be used for
@@ -106,14 +119,28 @@ public class LaTeXMojo extends AbstractMojo {
     private String latexCommand = "pdflatex";
 
     /**
-     * The parameter <tt>indexerCommand</tt> contains the command to be used for
-     * index creation. This command has to be found on the system path for
-     * executables.
+     * The parameter <tt>latexExtensions</tt> contains the list of extensions
+     * for L<span class="la">a</span><span class="t">T</span><span
+     * class="e">e</span>X files.
      * 
      * @parameter
      * @since 1.0
      */
-    private String indexerCommand = "makeindex";
+    private String[] latexExtensions = null;
+
+    /**
+     * The parameter <tt>limit</tt> contains the maximal number of iterations in
+     * the attempt to come to a fixed point. The value should be greater than 2.
+     * <p>
+     * Note that you can construct files which converge not to a fixed point but
+     * oscillate between two states. This parameter forces an artificial break
+     * out of such an infinite loop.
+     * </p>
+     * 
+     * @parameter default-value=3
+     * @since 1.0
+     */
+    private int limit = 3;
 
     /**
      * The parameter <tt>noaction</tt> contains the indicator that no actions
@@ -143,16 +170,6 @@ public class LaTeXMojo extends AbstractMojo {
     private String[] texinputs = null;
 
     /**
-     * The parameter <tt>latexExtensions</tt> contains the list of extensions
-     * for L<span class="la">a</span><span class="t">T</span><span
-     * class="e">e</span>X files.
-     * 
-     * @parameter
-     * @since 1.0
-     */
-    private String[] latexExtensions = null;
-
-    /**
      * The parameter <tt>workingDirectory</tt> contains the working directory.
      * This is usually the base directory of the project.
      * 
@@ -162,46 +179,22 @@ public class LaTeXMojo extends AbstractMojo {
     private File workingDirectory = new File(".");
 
     /**
-     * The field <tt>debug</tt> contains the indicator for the debugging.
-     */
-    private boolean debug = false;
-
-    /**
-     * Setter for the LatexExtensions.
+     * Creates a new object.
      * 
-     * @param extensions the LatexExtensions to set
      */
-    protected void addLatexExtensions(String... extensions) {
+    public LaTeXMojo() {
 
-        if (this.latexExtensions == null || this.latexExtensions.length == 0) {
-            this.latexExtensions = extensions;
-        } else {
-            String[] a =
-                    new String[this.latexExtensions.length + extensions.length];
-            System.arraycopy(this.latexExtensions, 0, a, 0,
-                this.latexExtensions.length);
-            System.arraycopy(extensions, 0, a, this.latexExtensions.length,
-                extensions.length);
-            this.latexExtensions = a;
-        }
+        super();
     }
 
     /**
-     * Setter for the texinputs.
+     * Creates a new object.
      * 
-     * @param inputs the texinputs to set
+     * @param noaction the initial value for the noaction flag
      */
-    protected void addTexinputs(String... inputs) {
+    public LaTeXMojo(boolean noaction) {
 
-        if (this.texinputs == null || this.texinputs.length == 0) {
-            this.texinputs = inputs;
-        } else {
-            String[] a = new String[this.texinputs.length + inputs.length];
-            System.arraycopy(this.texinputs, 0, a, 0, this.texinputs.length);
-            System
-                .arraycopy(inputs, 0, a, this.texinputs.length, inputs.length);
-            this.texinputs = a;
-        }
+        this.noaction = noaction;
     }
 
     /**
@@ -226,11 +219,18 @@ public class LaTeXMojo extends AbstractMojo {
             p.setWorkingDirectory(workingDirectory);
             p.setOutputDirectory(output);
             p.setLatexCommand(latexCommand);
+            p.setLatexExtensions(latexExtensions);
             p.setBibtexCommand(bibtexCommand);
+            p.setBibtexExtensions(bibtexExtensions);
             p.setMakeindexCommand(indexerCommand);
-            p.setTargetFormat(format);
             p.setTexinputs(texinputs);
             p.setLimit(limit);
+            try {
+                p.setTargetFormat(FileFormat.valueOf(format
+                    .toUpperCase(Locale.ENGLISH)));
+            } catch (IllegalArgumentException e) {
+                throw new MakeException(logger, "net.illegal.format", format);
+            }
 
             net.wire(file);
 
@@ -245,26 +245,6 @@ public class LaTeXMojo extends AbstractMojo {
         } finally {
             logger.removeHandler(handler);
         }
-    }
-
-    /**
-     * Getter for the indexerCommand.
-     * 
-     * @return the indexerCommand
-     */
-    protected String getIndexerCommand() {
-
-        return indexerCommand;
-    }
-
-    /**
-     * Getter for the limit.
-     * 
-     * @return the limit
-     */
-    protected int getLimit() {
-
-        return limit;
     }
 
     /**
@@ -285,93 +265,16 @@ public class LaTeXMojo extends AbstractMojo {
     }
 
     /**
-     * Setter for the bibtexCommand.
-     * 
-     * @param bibtexCommand the bibtexCommand to set
-     */
-    protected void setBibtexCommand(String bibtexCommand) {
-
-        this.bibtexCommand = bibtexCommand;
-    }
-
-    /**
      * Setter for the file.
      * 
      * @param file the file to set
+     * 
+     * @deprecated use the configuration instead
      */
+    @Deprecated
     protected void setFile(File file) {
 
         this.file = file;
-    }
-
-    /**
-     * Setter for the format.
-     * 
-     * @param format the format to set
-     */
-    protected void setFormat(String format) {
-
-        this.format = format;
-    }
-
-    /**
-     * Setter for the indexerCommand.
-     * 
-     * @param indexerCommand the indexerCommand to set
-     */
-    protected void setIndexerCommand(String indexerCommand) {
-
-        this.indexerCommand = indexerCommand;
-    }
-
-    /**
-     * Setter for the latexCommand.
-     * 
-     * @param latexCommand the latexCommand to set
-     */
-    protected void setLatexCommand(String latexCommand) {
-
-        this.latexCommand = latexCommand;
-    }
-
-    /**
-     * Setter for the limit.
-     * 
-     * @param limit the limit to set
-     */
-    protected void setLimit(int limit) {
-
-        this.limit = limit;
-    }
-
-    /**
-     * Setter for the noaction.
-     * 
-     * @param noaction the noaction to set
-     */
-    protected void setNoaction(boolean noaction) {
-
-        this.noaction = noaction;
-    }
-
-    /**
-     * Setter for the output.
-     * 
-     * @param output the output to set
-     */
-    protected void setOutput(File output) {
-
-        this.output = output;
-    }
-
-    /**
-     * Setter for the workingDirectory.
-     * 
-     * @param workingDirectory the workingDirectory to set
-     */
-    protected void setWorkingDirectory(File workingDirectory) {
-
-        this.workingDirectory = workingDirectory;
     }
 
 }

@@ -24,7 +24,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 import java.util.logging.Logger;
 
@@ -130,7 +129,7 @@ public class DependencyNet implements State {
         }
 
         File outputDirectory = parameters.getOutputDirectory();
-        if (!outputDirectory.exists() && !outputDirectory.mkdirs()) {
+        if (!outputDirectory.isDirectory() && !outputDirectory.mkdirs()) {
             throw new MakeException(logger, "net.out.dir", //
                 outputDirectory.toString());
         }
@@ -366,16 +365,8 @@ public class DependencyNet implements State {
             master = new Artifact(file);
             addArtifact(master);
 
-            String format =
-                    parameters.getTargetFormat().toUpperCase(Locale.ENGLISH);
-            FileFormat fmt;
-            try {
-                fmt = FileFormat.valueOf(format);
-            } catch (IllegalArgumentException e) {
-                throw new MakeException(logger, "net.illegal.format",
-                    parameters.getTargetFormat());
-            }
-            target = fmt.makeTarget(directory, file.getName(), this);
+            target = parameters.getTargetFormat().makeTarget(directory, //
+                file.getName(), this);
 
             analyzeLaTeX(master);
         } catch (FileNotFoundException e) {

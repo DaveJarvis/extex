@@ -40,8 +40,7 @@ public class NoactionMojo extends LaTeXMojo {
      */
     public NoactionMojo() {
 
-        super();
-        setNoaction(true);
+        super(true);
     }
 
 }
