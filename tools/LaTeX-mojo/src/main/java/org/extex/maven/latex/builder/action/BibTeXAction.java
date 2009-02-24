@@ -20,6 +20,7 @@ package org.extex.maven.latex.builder.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
@@ -49,10 +50,12 @@ public class BibTeXAction extends Action {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(org.extex.maven.latex.builder.Parameters)
+     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(org.extex.maven.latex.builder.Parameters,
+     *      Artifact, Artifact, Logger)
      */
     @Override
-    protected List<String> makeCommandLine(Parameters parameters) {
+    protected List<String> makeCommandLine(Parameters parameters,
+            Artifact artifact, Artifact target, Logger logger) {
 
         List<String> list = new ArrayList<String>();
         list.add(parameters.getBibtexCommand());

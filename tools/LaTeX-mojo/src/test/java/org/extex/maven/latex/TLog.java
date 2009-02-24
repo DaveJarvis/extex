@@ -66,6 +66,7 @@ public class TLog implements Log {
         buffer.append(content);
         buffer.append(" ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -77,6 +78,7 @@ public class TLog implements Log {
 
         buffer.append("[debug] ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -88,6 +90,7 @@ public class TLog implements Log {
 
         buffer.append("[error] ");
         buffer.append(content);
+        buffer.append('\n');
     }
 
     /**
@@ -102,6 +105,7 @@ public class TLog implements Log {
         buffer.append(content);
         buffer.append(" ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -113,6 +117,7 @@ public class TLog implements Log {
 
         buffer.append("[error] ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -124,6 +129,7 @@ public class TLog implements Log {
 
         buffer.append("[info] ");
         buffer.append(content);
+        buffer.append('\n');
     }
 
     /**
@@ -138,6 +144,7 @@ public class TLog implements Log {
         buffer.append(content);
         buffer.append(" ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -149,6 +156,7 @@ public class TLog implements Log {
 
         buffer.append("[info] ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -200,6 +208,7 @@ public class TLog implements Log {
 
         buffer.append("[warning] ");
         buffer.append(content);
+        buffer.append('\n');
     }
 
     /**
@@ -214,6 +223,7 @@ public class TLog implements Log {
         buffer.append(content);
         buffer.append(" ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
     /**
@@ -225,6 +235,7 @@ public class TLog implements Log {
 
         buffer.append("[warning] ");
         buffer.append(error.toString());
+        buffer.append('\n');
     }
 
 }

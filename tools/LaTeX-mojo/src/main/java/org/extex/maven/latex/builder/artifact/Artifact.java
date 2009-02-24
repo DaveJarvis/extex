@@ -134,11 +134,8 @@ public class Artifact {
             logger.info(Message.get("artifact.create", toString()));
         } else {
             for (Artifact d : dependencies) {
-                if (d.isNewer(this)) {
+                if (!d.isUpToDate(this, logger)) {
                     fire = true;
-                    logger.info(Message.get("artifact.create.newer",
-                        toString(), d.toString()));
-                    break;
                 }
             }
         }
@@ -148,9 +145,10 @@ public class Artifact {
         } else if (actions.size() == 0) {
             logger.warning(Message.get("artifact.no.actions", toString()));
         }
+        boolean modified = false;
 
         for (Action a : actions) {
-            a.execute(this, parameters, logger, simulate);
+            modified |= a.execute(this, parameters, logger, simulate);
         }
 
         if (simulate) {
@@ -158,8 +156,7 @@ public class Artifact {
         } else if (!file.exists()) {
             throw new MakeException(logger, "artifact.create.error", toString());
         }
-        // TODO up to date
-        return !simulate;
+        return modified;
     }
 
     /**
@@ -184,6 +181,30 @@ public class Artifact {
         String name =
                 file.getName().replaceAll("\\.[a-zA-Z0-9_]*", "") + "." + ext;
         return new File(file.getParentFile(), name);
+    }
+
+    /**
+     * Compare two checksums.
+     * 
+     * @param cs1 checksum 1
+     * @param cs2 checksum 2
+     * 
+     * @return <code>true</code> iff the two arrays are different
+     */
+    private boolean different(byte[] cs1, byte[] cs2) {
+
+        if (cs1 == null) {
+            return cs2 != null;
+        } else if (cs2 == null) {
+            return true;
+        }
+
+        for (int i = 0; i < cs1.length; i++) {
+            if (cs1[i] != cs2[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**
@@ -236,19 +257,51 @@ public class Artifact {
     }
 
     /**
-     * Compare the age against a reference artifact.
+     * Check whether the current artifact is up to date w.r.t. another artifact.
      * 
-     * @param artifact the reference artifact
+     * @param artifact the artifact
+     * @param logger the logger
      * 
-     * @return <code>true</code> iff the artifact is newer than the reference
+     * @return <code>true</code> iff the artifact exists and is up to date
+     *         w.r.t. the argument
+     * 
+     * @throws MakeException in case of an I/O error
      */
-    private boolean isNewer(Artifact artifact) {
+    public boolean isUpToDate(Artifact artifact, Logger logger)
+            throws MakeException {
 
         if (!file.exists()) {
+            logger.info(Message.get("artifact.does.not.exist", file.getName()));
             return false;
         }
-        // TODO compare contents
-        return file.lastModified() <= artifact.getFile().lastModified();
+        if (file.lastModified() != lastModified) {
+            byte[] cs;
+            try {
+                cs = reload();
+            } catch (IOException e) {
+                throw new MakeException(logger, "thrown", e);
+            }
+            if (checksum == null) {
+                checksum = cs;
+                lastModified = file.lastModified();
+                return false;
+            }
+            if (different(checksum, cs)) {
+                logger.info(Message
+                    .get("artifact.new.checksum", file.getName()));
+                checksum = cs;
+                lastModified = file.lastModified();
+            }
+        }
+
+        if (lastModified > artifact.lastModified) {
+
+            logger.info(Message.get("artifact.up.to.date", file.getName()));
+            return true;
+        }
+
+        logger.info(Message.get("artifact.not.up.to.date", file.getName()));
+        return false;
     }
 
     /**

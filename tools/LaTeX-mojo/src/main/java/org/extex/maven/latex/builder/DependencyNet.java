@@ -137,7 +137,7 @@ public class DependencyNet implements State {
 
         int lim = parameters.getLimit();
 
-        for (int i = 0; i < lim; i++) {
+        for (int i = 1; i <= lim; i++) {
             logger.info(Message.get("net.building", //
                 Integer.toString(i), target.toString()));
             if (!target.build(parameters, logger, simulate)) {
@@ -147,13 +147,6 @@ public class DependencyNet implements State {
         }
         throw new MakeException(logger, "net.limit.reached", //
             Integer.toString(parameters.getLimit()));
-
-        // LaTeX Warning: There were undefined references.
-        // LaTeX Warning: Citation `abc' on page 1 undefined on input line 3.
-        // LaTeX Warning: Label(s) may have changed. Rerun to get
-        // cross-references right.
-        // No file document2.ind.
-        // Output written on target/document2.dvi (1 page, 280 bytes).
     }
 
     /**
@@ -358,26 +351,39 @@ public class DependencyNet implements State {
      * 
      * @param file the master file; this can not be <code>null</code>
      * 
-     * @throws IOException in case of an I/O error
+     * @throws MakeException in case of an error
      */
-    public void wire(File file) throws IOException {
+    public void wire(File file) throws MakeException {
 
-        if (file == null) {
-            throw new IllegalArgumentException("file == null");
-        } else if (master != null) {
+        if (master != null) {
             throw new IllegalStateException("master already set");
+        } else if (file == null) {
+            throw new MakeException(logger, "net.missing.file");
         }
         File directory = parameters.getOutputDirectory();
 
-        master = new Artifact(file);
-        addArtifact(master);
+        try {
+            master = new Artifact(file);
+            addArtifact(master);
 
-        String format =
-                parameters.getTargetFormat().toUpperCase(Locale.ENGLISH);
-        FileFormat fmt = FileFormat.valueOf(format);
-        target = fmt.makeTarget(directory, file.getName(), this);
+            String format =
+                    parameters.getTargetFormat().toUpperCase(Locale.ENGLISH);
+            FileFormat fmt;
+            try {
+                fmt = FileFormat.valueOf(format);
+            } catch (IllegalArgumentException e) {
+                throw new MakeException(logger, "net.illegal.format",
+                    parameters.getTargetFormat());
+            }
+            target = fmt.makeTarget(directory, file.getName(), this);
 
-        analyzeLaTeX(master);
+            analyzeLaTeX(master);
+        } catch (FileNotFoundException e) {
+            throw new MakeException(logger, "net.file.not.found", e
+                .getMessage());
+        } catch (IOException e) {
+            throw new MakeException(logger, "thrown", e);
+        }
     }
 
 }

@@ -214,60 +214,78 @@ public class Parameters {
 
     /**
      * Setter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X command.
+     * class="t">T</span><span class="e">e</span>X command. If the argument is
+     * <code>null</code> then it is silently ignored. Thus a <code>null</code>
+     * value has no effect.
      * 
      * @param bibtexCommand the <span class="sc">Bib</span></span><span
      *        class="t">T</span><span class="e">e</span>X command to set
      */
     public void setBibtexCommand(String bibtexCommand) {
 
-        this.bibtexCommand = bibtexCommand;
+        if (bibtexCommand != null) {
+            this.bibtexCommand = bibtexCommand;
+        }
     }
 
     /**
      * Setter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X extensions.
+     * class="t">T</span><span class="e">e</span>X extensions. If the argument
+     * is <code>null</code> then it is silently ignored. Thus a
+     * <code>null</code> value has no effect.
      * 
      * @param bibtexExtensions the <span class="sc">Bib</span></span><span
      *        class="t">T</span><span class="e">e</span>X extensions to set
      */
     public void setBibtexExtensions(String[] bibtexExtensions) {
 
-        this.bibtexExtensions = bibtexExtensions.clone();
+        if (bibtexExtensions != null) {
+            this.bibtexExtensions = bibtexExtensions.clone();
+        }
     }
 
     /**
-     * Setter for the graphics extensions.
+     * Setter for the graphics extensions. If the argument is <code>null</code>
+     * then it is silently ignored. Thus a <code>null</code> value has no
+     * effect.
      * 
      * @param graphicsExtensions the graphics extensions to set
      */
     public void setGraphicsExtensions(String[] graphicsExtensions) {
 
-        this.graphicsExtensions = graphicsExtensions.clone();
+        if (graphicsExtensions != null) {
+            this.graphicsExtensions = graphicsExtensions.clone();
+        }
     }
 
     /**
      * Setter for the L<span class="la">a</span>T<span class="e">e</span>X
-     * command.
+     * command. If the argument is <code>null</code> then it is silently
+     * ignored. Thus a <code>null</code> value has no effect.
      * 
      * @param latexCommand the L<span class="la">a</span>T<span
      *        class="e">e</span>X command to set
      */
     public void setLatexCommand(String latexCommand) {
 
-        this.latexCommand = latexCommand;
+        if (latexCommand != null) {
+            this.latexCommand = latexCommand;
+        }
     }
 
     /**
      * Setter for the L<span class="la">a</span>T<span class="e">e</span>X
-     * extensions.
+     * extensions. If the argument is <code>null</code> then it is silently
+     * ignored. Thus a <code>null</code> value has no effect.
      * 
      * @param latexExtensions the L<span class="la">a</span>T<span
      *        class="e">e</span>X extensions to set
      */
     public void setLatexExtensions(String[] latexExtensions) {
 
-        this.latexExtensions = latexExtensions.clone();
+        if (latexExtensions != null) {
+            this.latexExtensions = latexExtensions.clone();
+        }
     }
 
     /**
@@ -275,35 +293,44 @@ public class Parameters {
      * 
      * @param limit the limit to set
      */
-    protected void setLimit(int limit) {
+    public void setLimit(int limit) {
 
         this.limit = limit;
     }
 
     /**
-     * Setter for the makeindexCommand.
+     * Setter for the makeindex command. If the argument is <code>null</code>
+     * then it is silently ignored. Thus a <code>null</code> value has no
+     * effect.
      * 
-     * @param makeindexCommand the makeindexCommand to set
+     * @param makeindexCommand the makeindex command to set
      */
     public void setMakeindexCommand(String makeindexCommand) {
 
-        this.makeindexCommand = makeindexCommand;
+        if (makeindexCommand != null) {
+            this.makeindexCommand = makeindexCommand;
+        }
     }
 
     /**
-     * Setter for the outputDirectory.
+     * Setter for the output directory. If the argument is <code>null</code>
+     * then it is silently ignored. Thus a <code>null</code> value has no
+     * effect.
      * 
-     * @param outputDirectory the outputDirectory to set
+     * @param outputDirectory the output directory to set
      */
     public void setOutputDirectory(File outputDirectory) {
 
-        this.outputDirectory = outputDirectory;
+        if (outputDirectory != null) {
+            this.outputDirectory = outputDirectory;
+        }
     }
 
     /**
-     * Setter for the targetFormat.
+     * Setter for the target format. If the argument is <code>null</code> then
+     * it is silently ignored. Thus a <code>null</code> value has no effect.
      * 
-     * @param targetFormat the targetFormat to set
+     * @param targetFormat the target format to set
      */
     public void setTargetFormat(String targetFormat) {
 
@@ -324,7 +351,7 @@ public class Parameters {
     }
 
     /**
-     * Setter for the working Directory. If the argument is <code>null</code>
+     * Setter for the working directory. If the argument is <code>null</code>
      * then it is silently ignored. Thus a <code>null</code> value has no
      * effect.
      * 

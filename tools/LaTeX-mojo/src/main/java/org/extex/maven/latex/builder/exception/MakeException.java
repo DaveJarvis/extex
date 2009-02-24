@@ -49,15 +49,4 @@ public class MakeException extends Exception {
         logger.severe(getMessage());
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param message the message
-     * @param cause the cause
-     */
-    public MakeException(String message, Throwable cause) {
-
-        super(message, cause);
-    }
-
 }

@@ -20,9 +20,11 @@ package org.extex.maven.latex.builder.action;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.extex.maven.latex.builder.Parameters;
 import org.extex.maven.latex.builder.artifact.Artifact;
+import org.extex.maven.latex.builder.exception.MakeException;
 
 /**
  * This action runs L<span class="la">a</span>T<span class="e">e</span>X in one
@@ -47,16 +49,29 @@ public class LaTeXAction extends Action {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(org.extex.maven.latex.builder.Parameters)
+     * @see org.extex.maven.latex.builder.action.Action#makeCommandLine(org.extex.maven.latex.builder.Parameters,
+     *      Artifact, Artifact, Logger)
      */
     @Override
-    protected List<String> makeCommandLine(Parameters parameters) {
+    protected List<String> makeCommandLine(Parameters parameters,
+            Artifact artifact, Artifact target, Logger logger)
+            throws MakeException {
+
+        if (target.isUpToDate(artifact, logger)) {
+            return null;
+        }
+        // LaTeX Warning: There were undefined references.
+        // LaTeX Warning: Citation `abc' on page 1 undefined on input line 3.
+        // LaTeX Warning: Label(s) may have changed. Rerun to get
+        // cross-references right.
+        // No file document2.ind.
+        // Output written on target/document2.dvi (1 page, 280 bytes).
 
         List<String> list = new ArrayList<String>();
         list.add(parameters.getLatexCommand());
         list.add("-output-directory=" + parameters.getOutputDirectory());
         list.add("-nonstopmode");
-        list.add(getArtifact().getFile().toString().replace('\\', '/'));
+        list.add(artifact.getFile().toString().replace('\\', '/'));
         return list;
     }
 

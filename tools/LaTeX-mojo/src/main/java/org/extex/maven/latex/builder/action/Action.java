@@ -71,16 +71,22 @@ public abstract class Action {
      * @param simulate the indicator whether or not to really execute the
      *        commands
      * 
+     * @return <code>true</code> iff something has been changed
+     * 
      * @throws MakeException in case of an error
      */
-    public void execute(Artifact target, Parameters parameters, Logger logger,
-            boolean simulate) throws MakeException {
+    public boolean execute(Artifact target, Parameters parameters,
+            Logger logger, boolean simulate) throws MakeException {
 
-        List<String> commandLine = makeCommandLine(parameters);
-        logger.log(simulate ? Level.INFO : Level.FINE, //
+        List<String> commandLine =
+                makeCommandLine(parameters, artifact, target, logger);
+        if (commandLine == null) {
+            return false;
+        }
+        logger.log(simulate ? Level.INFO : Level.INFO, //
             Message.get("action.show", join(commandLine)));
         if (simulate) {
-            return;
+            return false;
         }
 
         ProcessBuilder builder = new ProcessBuilder(commandLine);
@@ -107,6 +113,7 @@ public abstract class Action {
             throw new MakeException(logger, "action.error", //
                 commandLine.get(0), e.toString());
         }
+        return true;
     }
 
     /**
@@ -162,10 +169,17 @@ public abstract class Action {
      * Make the command line.
      * 
      * @param context the processor context
+     * @param a the artifact to be run
+     * @param t the artifact to be made
+     * @param logger the logger
      * 
-     * @return the command line
+     * @return the command line; if the command line is <code>null</code> then
+     *         no attempt is made to run a program
+     * 
+     * @throws MakeException in case of an I/O error
      */
-    protected abstract List<String> makeCommandLine(Parameters context);
+    protected abstract List<String> makeCommandLine(Parameters context,
+            Artifact a, Artifact t, Logger logger) throws MakeException;
 
     /**
      * Print the action to a writer.
