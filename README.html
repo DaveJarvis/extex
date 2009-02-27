@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-  <title>ExTeX</title>
+  <title>ExTeX ReadMe</title>
   <meta name="Author" content="Gerd Neugebauer">
   <style>
 body {
@@ -9,7 +9,7 @@ body {
   font-family:sans-serif;
   margin-left:150px;
   margin-right:2em;
-  background: url(ExBib/ExBib-core/src/image/side.png) repeat-y;
+  background: url(src/images/side.png) repeat-y;
 }
 .e {
   text-transform:uppercase;
@@ -34,6 +34,11 @@ body {
   top:0;
   left:0;
 }
+.dir {
+  text-indent:-32px;
+  margin-left:32px;
+  margin-right:32px;
+}
 h1,h2,h3 {
   color:firebrick;
 }
@@ -51,7 +56,7 @@ pre {
   </style>
 </head>
 <body>
-<img class="left" src="ExBib/ExBib-Installer/src/izpack/images/extex-side.png"/>
+<img class="left" src="src/images/extex-side.png"/>
 
 <h1>&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X</h1>
 
@@ -73,44 +78,36 @@ pre {
  compatible with T<span class="e">e</span>X as much as reasonable.
 </p>
 
+<h2>&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X on the Web</h2>
+
+<p>
+  &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is
+  present on the Web with the Web site at <a
+  href="http://www.extex.org/">www.extex.org</a>. This Web site is
+  hosted by <a href="http://www.dante.de">DANTE e.V.</a>
+</p>
+<p>
+  The source for this site can be found in the directory <a
+  href="www/"><tt>www</tt></a>. The site is regenerated from these
+  source each night.
+</p>
+
 <h2>Getting Started &ndash; with Reading</h2>
 
 <p>
  If you are interested in using &epsilon;&chi;<span
  class="t">T</span><span class="e">e</span>X you should have a look at
- the <i>User's Guide</i>. The source code can be found in <a
- href="doc/UsersGuide"><tt>doc/UsersGuide</tt></a>.
+ the <i>&epsilon;&chi;<span class="t">T</span><span
+ class="e">e</span>X User's Guide</i>. The source code for the user's
+ guide can be found in the directory
+ <a href="doc/UsersGuide"><tt>doc/UsersGuide</tt></a>.
 </p>
 <p>
  If you are interested in the sources you should have a look at the
  <i>Developer's Guide</i>. The source code can be found in <a
  href="doc/DevelopersGuide"><tt>doc/DevelopersGuide</tt></a>.
 </p>
-<p>
- &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X has a
- sub-project &epsilon;&chi;Bib which aims at providing a bibliography
- processor. &epsilon;&chi;Bib can be found in the sub-directory <a
- href="ExBib"><tt>ExBib</tt></a>.
-</p>
-<p>
- &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X has a
- sub-project &epsilon;&chi;Index which aims at providing an index
- processor. &epsilon;&chi;Index can be found in the sub-directory <a
- href="ExIndex"><tt>ExIndex</tt></a>.
-</p>
 
-<h2>&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X on
-the Web</h2>
-
-<p>
-  &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is
-  present on the Web with the Web site at <a
-  href="http://www.extex.org/">www.extex.org</a>. This Web site is
-  hosted by <a href="http://www.dante.de">DANTE</a>. The source for
-  this site can be found in the directory <a
-  href="www/"><tt>www</tt></a>. The site is regenerated from these
-  source each night.
-</p>
 
 <h2>Licences &ndash; Legal Issues</h2>
 
@@ -125,10 +122,212 @@ the Web</h2>
  some libraries. They usually come with a license of their own. Thus
  watch out to respect those licenses aswell.
 </p>
+ 
+<h2>File Organization</h2>
+
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="CLI/">CLI</a> contains a general purpose library for command line parsing
+  and processing.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExBib/README.html">ExBib</a>
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X has a
+ sub-project &epsilon;&chi;Bib which aims at providing a bibliography
+ processor. &epsilon;&chi;Bib can be found in the sub-directory <a
+ href="ExBib"><tt>ExBib</tt></a>.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExIndex/README.html">ExIndex</a>
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X has a
+ sub-project &epsilon;&chi;Index which aims at providing an index
+ processor. &epsilon;&chi;Index can be found in the sub-directory <a
+ href="ExIndex"><tt>ExIndex</tt></a>.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX/">ExTeX</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-dump/">ExTeX-Backend-dump</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-dvi/">ExTeX-Backend-dvi</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-dvix/">ExTeX-Backend-dvix</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-iText/">ExTeX-Backend-iText</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-pdfbox/">ExTeX-Backend-pdfbox</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-ps/">ExTeX-Backend-ps</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-rtf/">ExTeX-Backend-rtf</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-svg/">ExTeX-Backend-svg</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-text/">ExTeX-Backend-text</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Backend-xml/">ExTeX-Backend-xml</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Font-API/">ExTeX-Font-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Font-API-Test/">ExTeX-Font-API-Test</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Font-afm/">ExTeX-Font-afm</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Font-otf/">ExTeX-Font-otf</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Font-tfm/">ExTeX-Font-tfm</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Interpreter-API/">ExTeX-Interpreter-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Interpreter-max/">ExTeX-Interpreter-max</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Main-fmt/">ExTeX-Main-fmt</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Main-tex/">ExTeX-Main-tex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Pdf-API/">ExTeX-Pdf-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Scanner/">ExTeX-Scanner</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Scanner-API/">ExTeX-Scanner-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Scanner32/">ExTeX-Scanner32</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Typesetter-API/">ExTeX-Typesetter-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Typesetter-core/">ExTeX-Typesetter-core</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Typesetter-tex/">ExTeX-Typesetter-tex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-color/">ExTeX-Unit-color</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-etex/">ExTeX-Unit-etex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-extex/">ExTeX-Unit-extex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-image/">ExTeX-Unit-image</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-namespace/">ExTeX-Unit-namespace</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-native/">ExTeX-Unit-native</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-omega/">ExTeX-Unit-omega</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-pdftex/">ExTeX-Unit-pdftex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-Unit-tex/">ExTeX-Unit-tex</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-base/">ExTeX-base</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-base-ext/">ExTeX-base-ext</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-core/">ExTeX-core</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-fontware/">ExTeX-fontware</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-ocpware/">ExTeX-ocpware</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="ExTeX-resource/">ExTeX-resource</a> contains a library for
+  resource loading and several supporting functionality for components and
+  configuration.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="Sandbox/">Sandbox</a> contains sandboxes of developers. Here code can be
+  put under version control without integrate it into the official project tree.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="Test-Backend-iText/">Test-Backend-iText</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="Test-Backend-xml/">Test-Backend-xml</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="Test-Font-API/">Test-Font-API</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="build/">build</a> contains the Ant-based build system. It is outdated and
+  will sooner or later be completely replaced by the Maven build.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="develop/">develop</a> contains configurations and tools for the development.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="doc/">doc</a> contains documentation.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="library/">library</a> contains the library of collected papers and documents.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="maven2/">maven2</a> contains Maven2 projects which do not have a public site
+  if their own. The contents is directly published each night under the URL 
+  <a href="http://www.extex.org/maven2/">http://www.extex.org/maven2/</a>.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="site/">site</a> contains the relaunch of the web pages on <a
+  href="http://www.extex.org/">www.extex.org</a>. It is not active yet.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="src/">src</a>
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="texmf/">texmf</a> contains sources for a texmf tree.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="tools/">tools</a> contains some tools.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="util/">util</a> contains some utilities.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
+  <a href="www/">www</a> contains the sources for the web pages for <a
+  href="http://www.extex.org/">www.extex.org</a>.
+</p>
+
 
 <address>
 <font face="helvetica,sans-serif" size="1">
-© 2009 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+© 2009 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span
+class="t">T</span><span class="e">e</span>X Group</a>
 </font>
 </address>
 </body>
