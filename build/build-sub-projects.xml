@@ -30,7 +30,9 @@
     <attribute name="target"/>
     <sequential>
       <subant target="@{target}">
-        <fileset dir=".." includes="ExTeX-*/build.xml"/>
+        <fileset dir=".." includes="CLI/build.xml"/>
+        <fileset dir=".." includes="ExTeX-resource/build.xml"/>
+        <fileset dir="../ExTeX" includes="ExTeX-*/build.xml"/>
       </subant>
     </sequential>
   </macrodef>
