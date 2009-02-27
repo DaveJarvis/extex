@@ -4,9 +4,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-Unit-omega</artifactId>
-  <name>ExTeX Unit omege</name>
+  <name>ExTeX Unit omega</name>
   <description>
-    This is the ExTeX unit omega.
+    This is the ExTeX unit omega. It contains primitives for Omega-compatibility.
   </description>
 
   <packaging>jar</packaging>
