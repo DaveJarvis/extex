@@ -42,30 +42,33 @@
   <xsl:template name="translate">
     <xsl:param name="in"/>
     <xsl:choose>
-     <xsl:when test="string-length($in)=0"></xsl:when>
-     <xsl:when test="starts-with($in,'ExTeX')">\ExTeX{}<xsl:call-template name="translate"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'ExBib')">\ExBib{}<xsl:call-template name="translate"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'ExIndex')">\ExIndex{}<xsl:call-template name="translate"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,8)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'BibTeX')">\BibTeX{}<xsl:call-template name="translate"
+      <xsl:when test="string-length($in)=0"></xsl:when>
+      <xsl:when test="starts-with($in,' - ')"> -- <xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,4)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'ExTeX')">\ExTeX{}<xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'ExBib')">\ExBib{}<xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'ExIndex')">\ExIndex{}<xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,8)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'BibTeX')">\BibTeX{}<xsl:call-template name="translate"
         ><xsl:with-param name="in"><xsl:value-of select="substring($in,7)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'LaTeX')">\LaTeX{}<xsl:call-template name="translate"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:when test="starts-with($in,'TeX')">\TeX{}<xsl:call-template name="translate"
-        ><xsl:with-param name="in"><xsl:value-of select="substring($in,4)"
-        /></xsl:with-param></xsl:call-template></xsl:when>
-     <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
-       /><xsl:call-template name="translate"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'LaTeX')">\LaTeX{}<xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,6)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:when test="starts-with($in,'TeX')">\TeX{}<xsl:call-template name="translate"
+         ><xsl:with-param name="in"><xsl:value-of select="substring($in,4)"
+         /></xsl:with-param></xsl:call-template></xsl:when>
+      <xsl:otherwise><xsl:value-of select="substring($in,1,1)"
+        /><xsl:call-template name="translate"
         ><xsl:with-param name="in"><xsl:value-of select="substring($in,2)"
         /></xsl:with-param></xsl:call-template>
-</xsl:otherwise>
+      </xsl:otherwise>
     </xsl:choose>
   </xsl:template>
 
