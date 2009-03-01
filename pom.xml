@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>extex</artifactId>
+  <artifactId>root</artifactId>
   <packaging>pom</packaging>
   <version>0.1-SNAPSHOT</version>
-  <name>ExTeX</name>
+  <name>ExTeX root</name>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
   <description>
@@ -148,57 +150,10 @@
 
   <modules>
    <module>build</module>
-   <!-- <module>develop</module> -->
-   <!-- <module>doc</module> -->
-<!--
+   <module>doc</module>
    <module>ExBib</module>
-   <module>ExBib-Main</module>
--->
-
-   <module>ExTeX-Backend-dump</module>
-   <module>ExTeX-Backend-dvi</module>
-   <module>ExTeX-Backend-dvix</module>
-<!--
-   <module>ExTeX-Backend-pdfbox</module>
-   <module>ExTeX-Backend-iText</module>
--->
-   <module>ExTeX-Backend-ps</module>
-   <module>ExTeX-Backend-rtf</module>
-   <module>ExTeX-Backend-svg</module>
-   <module>ExTeX-Backend-text</module>
-   <module>ExTeX-Backend-xml</module>
-   <module>ExTeX-base</module>
-   <module>ExTeX-base-ext</module>
-   <module>ExTeX-core</module>
-   <module>ExTeX-Font-API</module>
-   <module>ExTeX-Font-tfm</module>
-   <module>ExTeX-Font-afm</module>
-   <module>ExTeX-Font-otf</module>
-   <module>ExTeX-fontware</module>
-   <module>ExTeX-Interpreter-API</module>
-   <module>ExTeX-Interpreter-max</module>
-   <module>ExTeX-Main-fmt</module>
-   <module>ExTeX-Main-tex</module>
-   <module>ExTeX-ocpware</module>
-   <module>ExTeX-Pdf-API</module>
-   <module>ExTeX-resource</module>
-   <module>ExTeX-Scanner</module>
-   <module>ExTeX-Scanner32</module>
-   <module>ExTeX-Scanner-API</module>
-   <module>ExTeX-Typesetter-API</module>
-   <module>ExTeX-Typesetter-core</module>
-   <module>ExTeX-Typesetter-tex</module>
-   <module>ExTeX-Unit-color</module>
-   <module>ExTeX-Unit-etex</module>
-   <module>ExTeX-Unit-extex</module>
-   <module>ExTeX-Unit-image</module>
-   <module>ExTeX-Unit-namespace</module>
-   <module>ExTeX-Unit-native</module>
-   <module>ExTeX-Unit-omega</module>
-   <module>ExTeX-Unit-pdftex</module>
-   <module>ExTeX-Unit-tex</module>
-   <module>CLI</module>
-   <!-- <module>library</module> -->
+   <module>ExIndex</module>
+   <module>ExTeX</module>
    <module>texmf</module>
    <!-- <module>util</module> -->
    <module>www</module>
@@ -210,8 +165,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
       </plugin>
     </plugins>
