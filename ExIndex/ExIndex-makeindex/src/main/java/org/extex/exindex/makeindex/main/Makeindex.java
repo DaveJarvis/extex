@@ -64,7 +64,7 @@ import org.extex.logging.LogFormatter;
  * This is the main program for an indexer a la Makeindex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:7779 $
  */
 public class Makeindex {
 
@@ -78,7 +78,7 @@ public class Makeindex {
      * The field <tt>REVISION</tt> contains the revision number.
      */
     public static final String REVISION =
-            "$Revision$".replaceAll("[^0-9]", "");
+            "$Revision:7779 $".replaceAll("[^0-9]", "");
 
     /**
      * The field <tt>VERSION</tt> contains the version number.
@@ -182,11 +182,6 @@ public class Makeindex {
     private List<String> files = new ArrayList<String>();
 
     /**
-     * The field <tt>index</tt> contains the enclosed index.
-     */
-    private Index index;
-
-    /**
      * The field <tt>letterOrdering</tt> contains the indicator for letter
      * ordering.
      */
@@ -246,7 +241,7 @@ public class Makeindex {
      */
     public Makeindex() {
 
-        index = new Index();
+        super();
     }
 
     /**
@@ -625,18 +620,20 @@ public class Makeindex {
                 getLogger().addHandler(fileHandler);
             }
 
+            Index index = new Index();
+
             for (String s : styles) {
-                scanStyle(s);
+                scanStyle(s, index.getParams());
             }
 
             if (files.size() == 0) {
-                scanInput(null);
+                scanInput(null, index);
             } else {
                 for (String s : files) {
-                    scanInput(s);
+                    scanInput(s, index);
                 }
             }
-            writeOutput(index.getParams());
+            writeOutput(index);
 
             if (transcript != null) {
                 info("Transcript", transcript);
@@ -671,12 +668,13 @@ public class Makeindex {
      * Load data into the index.
      * 
      * @param file the name of the input file
+     * @param index the index
      * 
      * @throws IOException in case of an I/O error
      * @throws RawIndexMissingCharException in case of an error
      * @throws RawIndexEofException in case of an error
      */
-    protected void scanInput(String file)
+    protected void scanInput(String file, Index index)
             throws IOException,
                 RawIndexEofException,
                 RawIndexMissingCharException {
@@ -726,13 +724,14 @@ public class Makeindex {
      * Merge a style into the one already loaded.
      * 
      * @param file the name of the resource
+     * @param params the parameters
      * 
      * @throws IOException in case of an I/O error
      * @throws RawIndexException in case of an error
      * @throws RawIndexEofException in case of an error
      * @throws MissingSymbolException in case of an error
      */
-    protected void scanStyle(String file)
+    protected void scanStyle(String file, Parameters params)
             throws IOException,
                 MissingSymbolException,
                 RawIndexEofException,
@@ -748,8 +747,7 @@ public class Makeindex {
         }
         try {
             info("ScanningStyle", file);
-            int[] count =
-                    MakeindexParameters.load(reader, file, index.getParams());
+            int[] count = MakeindexParameters.load(reader, file, params, logger);
             info("ScanningStyleDone", //
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {
@@ -870,13 +868,12 @@ public class Makeindex {
     /**
      * Generate the output.
      * 
-     * @param params the parameters
+     * @param index the index
      * 
      * @throws IOException in case of an I/O error
      */
-    protected void writeOutput(Parameters params) throws IOException {
+    protected void writeOutput(Index index) throws IOException {
 
-        int[] count;
         Writer w;
         String fmt;
         if (output == null) {
@@ -887,17 +884,20 @@ public class Makeindex {
             w = new OutputStreamWriter(new FileOutputStream(output), //
                 outputEncoding);
         }
-        IndexWriter indexWriter = new MakeindexWriter(w, params);
-        PageProcessor pageProcessor =
-                new MakeindexPageProcessor(params, logger);
-
         try {
+            Parameters params = index.getParams();
+            IndexWriter indexWriter = new MakeindexWriter(w, params);
+            PageProcessor pageProcessor =
+                    new MakeindexPageProcessor(params, logger);
+
             info("Sorting");
             comparisons = 0;
             List<Entry> entries = index.sort(comp, pageProcessor);
             info("SortingDone", Long.toString(comparisons));
             info(fmt, output);
-            count = indexWriter.write(entries, logger, startPage);
+
+            int[] count = indexWriter.write(entries, logger, startPage);
+
             info("GeneratingOutputDone", //
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {

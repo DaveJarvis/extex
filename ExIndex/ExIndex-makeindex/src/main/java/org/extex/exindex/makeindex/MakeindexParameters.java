@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
@@ -33,7 +34,7 @@ import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.exindex.makeindex.exceptions.MissingSymbolException;
-import org.extex.exindex.makeindex.exceptions.UnknownAttributeException;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class encapsulates reader for a set of parameters of type int, char, and
@@ -279,7 +280,7 @@ import org.extex.exindex.makeindex.exceptions.UnknownAttributeException;
  * </table>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:7790 $
  */
 public final class MakeindexParameters {
 
@@ -370,6 +371,7 @@ public final class MakeindexParameters {
      * 
      * @param reader the reader to get new characters from
      * @param resource the name of the resource
+     * @param logger the logger for warnings
      * 
      * @return the parameters read
      * 
@@ -378,14 +380,14 @@ public final class MakeindexParameters {
      * @throws RawIndexEofException in case of an error
      * @throws MissingSymbolException in case of an error
      */
-    public static Parameters load(Reader reader, String resource)
+    public static Parameters load(Reader reader, String resource, Logger logger)
             throws IOException,
                 MissingSymbolException,
                 RawIndexEofException,
                 RawIndexException {
 
         Parameters p = load();
-        load(reader, resource, p);
+        load(reader, resource, p, logger);
         return p;
     }
 
@@ -395,50 +397,67 @@ public final class MakeindexParameters {
      * @param reader the reader to get new characters from
      * @param resource the name or the resource
      * @param p the parameters to store the values read
+     * @param logger the logger for warnings
      * 
      * @return a pair of numbers denoting the number of attributes set and
      *         rejected
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws RawIndexException in case of an error
-     * @throws RawIndexEofException in case of an error
-     * @throws MissingSymbolException in case of an error
      */
-    public static int[] load(Reader reader, String resource, Parameters p)
-            throws IOException,
-                MissingSymbolException,
-                RawIndexEofException,
-                RawIndexException {
+    public static int[] load(Reader reader, String resource, Parameters p,
+            Logger logger) {
 
         int[] count = new int[2];
         ReaderLocator locator = new ReaderLocator(resource, reader);
 
-        for (LValue t = scan(locator); t != null; t = scan(locator)) {
-            if (!(t instanceof LSymbol)) {
-                throw new MissingSymbolException(locator);
-            }
-            String name = ((LSymbol) t).getValue();
+        try {
+            for (LValue t = scan(locator); t != null; t = scan(locator)) {
+                if (!(t instanceof LSymbol)) {
+                    count[1]++;
+                    logger.severe(LocalizerFactory.getLocalizer(
+                        MakeindexParameters.class).format("MissingSymbol",
+                        t.toString()));
+                    break;
+                }
+                String name = ((LSymbol) t).getValue();
 
-            String exindexName = MAKEINDEX2PARAM.get(name);
-            if (exindexName == null) {
-                count[1]++;
-                throw new UnknownAttributeException(name);
+                String exindexName = MAKEINDEX2PARAM.get(name);
+                if (exindexName == null) {
+                    count[1]++;
+                    logger.warning(LocalizerFactory.getLocalizer(
+                        MakeindexParameters.class).format("UnknownAttribute",
+                        name));
+                    continue;
+                }
+                LValue val = p.get(exindexName);
+                LValue v = scan(locator);
+                if (v == null) {
+                    logger
+                        .severe(LocalizerFactory.getLocalizer(
+                            MakeindexParameters.class).format("MissingValue",
+                            name));
+                    break;
+                } else if (val == null) {
+                    count[1]++;
+                    logger.warning(LocalizerFactory.getLocalizer(
+                        MakeindexParameters.class).format("UnknownAttribute",
+                        name));
+                    continue;
+                } else if (v.getClass() != val.getClass()) {
+                    count[1]++;
+                    logger.warning(LocalizerFactory.getLocalizer(
+                        MakeindexParameters.class).format(
+                        "IllegalAttributeType", name, v.toString()));
+                    continue;
+                }
+                p.put(exindexName, v);
+                count[0]++;
             }
-            LValue val = p.get(exindexName);
-            LValue v = scan(locator);
-            if (v == null) {
-                throw new RawIndexEofException(locator);
-            } else if (val == null) {
-                count[1]++;
-                // TODO gene: load unimplemented
-                throw new RuntimeException("unimplemented ");
-            } else if (v.getClass() != val.getClass()) {
-                count[1]++;
-                // TODO gene: load unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-            p.put(name, v);
-            count[0]++;
+        } catch (RawIndexException e) {
+            count[1]++;
+            logger.severe(e.getLocalizedMessage());
+        } catch (IOException e) {
+            count[1]++;
+            logger.warning(LocalizerFactory.getLocalizer(
+                MakeindexParameters.class).format("IOException"));
         }
         return count;
     }
