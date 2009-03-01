@@ -352,9 +352,46 @@ The locator is a means to determine where something is coming from.
 \end{methods}
 
 
+\subsection{Accessing \BibTeX\ Functions}
+
+Sometimes it is desirable to have access to the original or enhanced
+function of the \BibTeX\ style language. There are two ways to access
+them. The complex functions -- which are likely to be needed this way
+-- are provided as static methods of implementing classes. All
+functions can be accesed via implementing function objects.
+
+The implementation classes described below can be found in a Java
+package This packege is \texttt{org.extex.exbib.core.bst.code.impl}.
+It must be used for the imports of the classes or for direct refernce.
+
+\begin{methods}
+
+  \method{String ChangeCase.changeCase(String type, String string)}\MethodIndex{changeCase}%
+  Apply the function \texttt{change.case\$}\fctIndex{change.case\$}.
+
+  \method{String FormatName.formatName(String names, int index, String format)}\MethodIndex{formatName}%
+  Apply the function \texttt{format.name\$}\fctIndex{format.name\$}.
+
+  \method{String NumNames.numNames(String names)}\MethodIndex{numNames}%
+  Apply the function \texttt{num.names\$}\fctIndex{num.names\$}.
+
+  \method{String Purify.purify(String string)}\MethodIndex{purify}%
+  Apply the function \texttt{purify\$}\fctIndex{purify\$}.
+
+  \method{String Substring.substring(String string, int startIndex, int endIndex)}\MethodIndex{substring}%
+  Apply the function \texttt{substring\$}\fctIndex{substring\$}.
+
+  \method{int TextLength.textLength(String string)}\MethodIndex{textLength}%
+  Apply the function \texttt{text.length\$}\fctIndex{text.length\$}.
+
+  \method{int Width.width(String string)}\MethodIndex{width}%
+  Apply the function \texttt{width\$}\fctIndex{width\$}.
+
+\end{methods}
 \endinput%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Local Variables: 
-% mode: latex
+% mode: latex 
 % TeX-master: "../exbib-manual"
-% End: 
+% End:
+
