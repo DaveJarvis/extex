@@ -5,6 +5,7 @@
 
   <artifactId>ExIndex-lisp</artifactId>
   <name>ExIndex lisp component</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExIndex lisp component. It provides lisp file parsing and
     rudimentary processing capabilities.

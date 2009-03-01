@@ -30,6 +30,18 @@
 
     <dependency>
       <groupId>org.extex</groupId>
+      <artifactId>CLI</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExIndex-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
       <artifactId>ExIndex-lisp</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>

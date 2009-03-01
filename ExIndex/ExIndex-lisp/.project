@@ -1,24 +1,14 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>ExIndex-lisp</name>
-	<comment></comment>
-	<projects>
-		<project>ExTeX</project>
-	</projects>
-	<buildSpec>
-		<buildCommand>
-			<name>org.eclipse.jdt.core.javabuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-		<buildCommand>
-			<name>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</name>
-			<arguments>
-			</arguments>
-		</buildCommand>
-	</buildSpec>
-	<natures>
-		<nature>org.eclipse.jdt.core.javanature</nature>
-		<nature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</nature>
-	</natures>
+  <name>ExIndex-lisp</name>
+  <comment>This is the ExIndex lisp component. It provides lisp file parsing and
+    rudimentary processing capabilities.</comment>
+  <projects/>
+  <buildSpec>
+    <buildCommand>
+      <name>org.eclipse.jdt.core.javabuilder</name>
+    </buildCommand>
+  </buildSpec>
+  <natures>
+    <nature>org.eclipse.jdt.core.javanature</nature>
+  </natures>
 </projectDescription>
