@@ -106,6 +106,13 @@
     </site>
   </distributionManagement>
 
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>root</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -119,6 +126,13 @@
    <module>ExIndex-core</module>
    <module>ExIndex-lisp</module>
    <module>ExIndex-Main</module>
+<!--
+   <module>ExIndex-doc</module>
+-->
+   <module>ExIndex-Installer</module>
+   <module>ExIndex-makeindex</module>
+   <module>../CLI</module>
+   <module>../ExTeX-resource</module>
   </modules>
 
   <build>
