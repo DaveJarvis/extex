@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exindex.main;
+package org.extex.exindex.makeindex.main;
 
 import static org.junit.Assert.assertEquals;
 
