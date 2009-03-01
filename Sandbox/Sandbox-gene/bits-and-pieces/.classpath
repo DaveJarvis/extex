@@ -3,6 +3,7 @@
 	<classpathentry kind="src" path="src/main/java"/>
 	<classpathentry kind="src" path="src/main/resources"/>
 	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/test/resources"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-core"/>
@@ -40,5 +41,8 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-otf"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Font-tfm"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-ocpware"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-core"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-lisp"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
