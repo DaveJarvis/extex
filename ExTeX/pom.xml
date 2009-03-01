@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.extex</groupId>
+  <artifactId>extex</artifactId>
+  <packaging>pom</packaging>
+  <version>0.1-SNAPSHOT</version>
+  <name>ExTeX</name>
+  <inceptionYear>2003</inceptionYear>
+  <url>http://www.extex.org</url>
+  <description>
+   ExTeX aims at the development of a high quality typesetting system.
+   This development is massively based on the experiences with the
+   typesetting system TeX. Despite of its age TeX can still be
+   considered a very good choice. Nevertheless design decisions which
+   where reasonable at the time of the writing of TeX can nowadays no
+   longer be considered as state of the art.
+
+   The stability of TeX is one of its virtues. On the other side it
+   makes it hard to improve the system - even in the few areas which
+   deserve improvements. The new millenium needs a system which is open
+   for further development and at the same time compatible with TeX
+   as much as reasonable.
+  </description>
+
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  </organization>
+
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <mailingLists>
+    <mailingList>
+      <name>extex</name>
+      <post>extex@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-devel</name>
+      <post>extex-devel@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
+    </mailingList>
+
+    <mailingList>
+      <name>extex-build@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-svn@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-bugs@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
+    </mailingList>
+  </mailingLists>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+    <developer>
+      <id>mgn</id>
+      <name>Michael Niedermair</name>
+      <email>m.g.n@gmx.de</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+    <developer>
+      <id>plaicy</id>
+      <name>Sebastian Waschik</name>
+      <email>sebastian.waschik@gmx.de</email>
+      <roles>
+        <role>developer</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+<!--
+  <ciManagement>
+    <system>continuum</system>
+    <notifier>
+      <type>mail</type>
+      <configuration>
+        <address>dev@maven.apache.org</address>
+      </configuration>
+    <notifier>
+  </ciManagement>
+-->
+
+  <repositories>
+    <repository>
+      <id>extex.org</id>
+      <name>extex.org Maven Repository</name>
+      <url>http://www.extex.org/maven2/</url>
+    </repository>
+  </repositories> 
+
+  <distributionManagement>
+    <site>
+      <id>www.extex.org</id>
+<!--
+      <url>file://serv/www/extex/maven2</url>
+-->
+      <url>http://www.extex.org/maven2</url>
+    </site>
+  </distributionManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.5</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <modules>
+<!--
+   <module>../CLI</module>
+   <module>../ExTeX-resource</module>
+-->
+   <module>ExTeX-Backend-dump</module>
+   <module>ExTeX-Backend-dvi</module>
+   <module>ExTeX-Backend-dvix</module>
+<!--
+   <module>ExTeX-Backend-pdfbox</module>
+   <module>ExTeX-Backend-iText</module>
+-->
+   <module>ExTeX-Backend-ps</module>
+   <module>ExTeX-Backend-rtf</module>
+   <module>ExTeX-Backend-svg</module>
+   <module>ExTeX-Backend-text</module>
+   <module>ExTeX-Backend-xml</module>
+   <module>ExTeX-base</module>
+   <module>ExTeX-base-ext</module>
+   <module>ExTeX-core</module>
+   <module>ExTeX-Font-API</module>
+   <module>ExTeX-Font-tfm</module>
+   <module>ExTeX-Font-afm</module>
+   <module>ExTeX-Font-otf</module>
+   <module>ExTeX-fontware</module>
+   <module>ExTeX-Interpreter-API</module>
+   <module>ExTeX-Interpreter-max</module>
+   <module>ExTeX-Main-fmt</module>
+   <module>ExTeX-Main-tex</module>
+   <module>ExTeX-ocpware</module>
+   <module>ExTeX-Pdf-API</module>
+   <module>ExTeX-Scanner</module>
+   <module>ExTeX-Scanner32</module>
+   <module>ExTeX-Scanner-API</module>
+   <module>ExTeX-Typesetter-API</module>
+   <module>ExTeX-Typesetter-core</module>
+   <module>ExTeX-Typesetter-tex</module>
+   <module>ExTeX-Unit-color</module>
+   <module>ExTeX-Unit-etex</module>
+   <module>ExTeX-Unit-extex</module>
+   <module>ExTeX-Unit-image</module>
+   <module>ExTeX-Unit-namespace</module>
+   <module>ExTeX-Unit-native</module>
+   <module>ExTeX-Unit-omega</module>
+   <module>ExTeX-Unit-pdftex</module>
+   <module>ExTeX-Unit-tex</module>
+  </modules>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.5</source>
+          <target>1.5</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <configuration>
+          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
+        </configuration>
+        <executions>
+          <execution>
+            <phase>test</phase>
+            <goals>
+              <goal>report</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+-->
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>${project.build.directory}develop/eclipse/checkstyle42.cfg</configLocation>
+        </configuration>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>@todo</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+      </plugin>
+
+    </plugins>
+
+  </reporting>
+
+</project>
