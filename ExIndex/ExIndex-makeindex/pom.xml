@@ -30,7 +30,7 @@
 
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExBib-lisp</artifactId>
+      <artifactId>ExIndex-lisp</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
