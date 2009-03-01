@@ -13,7 +13,7 @@
   </description>
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>extex</artifactId>
+    <artifactId>root</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
 
