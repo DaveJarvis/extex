@@ -6,7 +6,8 @@
   <artifactId>build</artifactId>
   <name>ExTeX build system</name>
   <description>
-    This is the ExTeX build system -- at least those parts not yet migrated to maven.
+    This is the ExTeX build system -- at least those parts not migrated to Maven
+    yet.
   </description>
 
   <version>1.0</version>
@@ -16,7 +17,7 @@
 
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>extex</artifactId>
+    <artifactId>root</artifactId>
     <version>0.1-SNAPSHOT</version>
   </parent>
   
