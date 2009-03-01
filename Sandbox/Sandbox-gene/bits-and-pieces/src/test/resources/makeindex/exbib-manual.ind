@@ -1,0 +1,461 @@
+\begin{theindex}
+
+ \indexGroup{Symbols}
+  \item \texttt  {*}\dotfill\hyperpage{63, 64}, \hyperpage{71, 72}
+  \item \texttt  {+}\dotfill\hyperpage{63}, \hyperpage{76}
+  \item \texttt  {-}\dotfill\hyperpage{21}, \hyperpage{64, 65}, 
+		\hyperpage{76}
+  \item \texttt  {-{}-}\dotfill\hyperpage{21}
+  \item \textsf  {.cshrc}\dotfill\hyperpage{32}
+  \item \textsf  {.exbib}\dotfill\hyperpage{17, 18}, \hyperpage{77}
+  \item \textsf  {.profile}\dotfill\hyperpage{32}
+  \item \texttt  {:=}\dotfill\hyperpage{64, 65}, \hyperpage{76}
+  \item \texttt  {<}\dotfill\hyperpage{62, 63}
+  \item \texttt  {=}\dotfill\hyperpage{63}, \hyperpage{75}
+  \item \texttt  {>}\dotfill\hyperpage{62}, \hyperpage{65}, 
+		\hyperpage{71}, \hyperpage{76}
+  \item \texttt  {-{}?}\dotfill\hyperpage{22}
+  \item \texttt  {\char `\\ \char 64include}\dotfill\hyperpage{86}
+  \item \texttt  {-{}-8bit}\dotfill\hyperpage{27}
+ \indexGroup{Numbers}
+  \item \texttt  {-{}7}\dotfill\hyperpage{26}
+  \item \texttt  {-{}8}\dotfill\hyperpage{27}
+ \indexGroup{A}
+  \item \texttt  {add.period\$}\dotfill\hyperpage{65}
+  \item Aguilar-Sierra, Alejandro\dotfill\hyperpage{8}
+  \item \char64 alias\dotfill\hyperpage{39}
+  \item \textsf  {alpha.bst}\dotfill\hyperpage{57--60}, 
+		\hyperpage{62--72}, \hyperpage{74--76}
+  \item and\dotfill\hyperpage{70}
+  \item Ant\dotfill\hyperpage{49--53}
+  \item \Tag {atomic value}\dotfill\hyperpage{34}
+  \item \Tag {attribute}\dotfill\hyperpage{34}
+  \item \Tag {attributes}\dotfill\hyperpage{34}, \hyperpage{39}
+  \item \texttt  {-{}-availableCharsets}\dotfill\hyperpage{25}
+ \indexGroup{B}
+  \item \texttt  {-{}B}\dotfill\hyperpage{30}
+  \item bash\dotfill\hyperpage{32}
+  \item \texttt  {-{}-bib-encoding}\dotfill\hyperpage{25}
+  \item \texttt  {-{}-bib.encoding}\dotfill\hyperpage{25}
+  \item \texttt  {\char `\\ bibdata}\dotfill\hyperpage{85}
+  \item bibDB\dotfill\hyperpage{77}
+  \item bibEncoding
+    \subitem Ant task parameter\dotfill\hyperpage{51}
+  \item \texttt  {\char `\\ biboption}\dotfill\hyperpage{86, 87}
+  \item bibProcessor\dotfill\hyperpage{78}
+  \item \texttt  {\char `\\ bibstyle}\dotfill\hyperpage{86}
+  \item \BibTeX\dotfill\hyperpage{7, 8}, \hyperpage{17}, \hyperpage{33}, 
+		\hyperpage{38}, \hyperpage{55}
+  \item \texttt  {-{}-bibtex}\dotfill\hyperpage{23}
+  \item \BibTeX~0.99c\dotfill\hyperpage{7, 8}, \hyperpage{43}, 
+		\hyperpage{52}, \hyperpage{66}, \hyperpage{69}
+  \item \BibTeX~1.0\dotfill\hyperpage{8}
+  \item BibTeX 8\dotfill\\BibTeX 8{26}, \\BibTeX 8{42}
+  \item \BibTeX~8\dotfill\hyperpage{7}, \hyperpage{17}, \hyperpage{66}, 
+		\hyperpage{69}
+  \item \BibTeX++\dotfill\hyperpage{8}
+  \item bibWriter\dotfill\hyperpage{77, 78}
+  \item \texttt  {-{}-big}\dotfill\hyperpage{30}
+  \item \textsf  {bin}\dotfill\hyperpage{16}
+  \item \Tag {block}\dotfill\hyperpage{34}, \hyperpage{38}
+  \item bst
+    \subitem abbrev\dotfill\hyperpage{47--48}
+    \subitem alpha\dotfill\hyperpage{44--45}
+    \subitem plain\dotfill\hyperpage{43--44}
+    \subitem unsrt\dotfill\hyperpage{46--47}
+  \item BST language\dotfill\hyperpage{55--76}
+ \indexGroup{C}
+  \item \texttt  {-{}c}\dotfill\hyperpage{23}
+  \item \texttt  {call.type\$}\dotfill\hyperpage{65}
+  \item \texttt  {change.case\$}\dotfill\hyperpage{61}, \hyperpage{65}, 
+		\hyperpage{72}, \hyperpage{82}
+  \item \texttt  {chr.to.int\$}\dotfill\hyperpage{66}
+  \item \texttt  {\char `\\ citation}\dotfill\hyperpage{86}
+  \item \texttt  {\char `\\ cite}\dotfill\hyperpage{39}
+  \item \verb/\cite/\dotfill\hyperpage{8}
+  \item \texttt  {cite\$}\dotfill\hyperpage{67}, \hyperpage{75}
+  \item \char64 comment\dotfill\hyperpage{38}
+  \item config
+    \subitem Ant task parameter\dotfill\hyperpage{52}
+  \item \textsf  {config}\dotfill\hyperpage{87}
+  \item configuration\dotfill\hyperpage{23--24}
+  \item \texttt  {-{}-configuration}\dotfill\hyperpage{23}
+  \item \texttt  {-{}-copying}\dotfill\hyperpage{21}
+  \item csf\dotfill\hyperpage{26--27}, \hyperpage{42}
+  \item \texttt  {-{}-csf-encoding}\dotfill\hyperpage{26}
+  \item \texttt  {-{}-csf.encoding}\dotfill\hyperpage{26}
+  \item csfEncoding
+    \subitem Ant task parameter\dotfill\hyperpage{51}
+  \item \texttt  {-{}-csfile}\dotfill\hyperpage{26}
+  \item csh\dotfill\hyperpage{32}
+  \item CTAN\dotfill\hyperpage{11}
+  \item Cygwin\dotfill\hyperpage{32}
+ \indexGroup{D}
+  \item \texttt  {-{}D}\dotfill\hyperpage{20}
+  \item \texttt  {-{}d}\dotfill\hyperpage{29}
+  \item debug
+    \subitem Ant task parameter\dotfill\hyperpage{52}
+  \item \texttt  {-{}-debug}\dotfill\hyperpage{29}
+  \item \texttt  {default.type}\dotfill\hyperpage{65}
+  \item directory installation\dotfill\hyperpage{13}, 
+		\hyperpage{15--16}
+  \item \textsf  {doc}\dotfill\hyperpage{16}
+  \item dot     file\dotfill\hyperpage{20}
+  \item dot file\dotfill\hyperpage{17--20}, \hyperpage{49}
+  \item \texttt  {duplicate\$}\dotfill\hyperpage{63}, \hyperpage{67}, 
+		\hyperpage{71}
+ \indexGroup{E}
+  \item \texttt  {-{}E}\dotfill\hyperpage{25}
+  \item \texttt  {-{}e}\dotfill\hyperpage{26}
+  \item \texttt  {empty\$}\dotfill\hyperpage{67}, \hyperpage{71}
+  \item encoding\dotfill\hyperpage{24--26}
+    \subitem Ant task parameter\dotfill\hyperpage{51}
+    \subitem ISO-8859-1\dotfill\hyperpage{24}
+    \subitem US-ASCII\dotfill\hyperpage{24}
+    \subitem UTF\dotfill\hyperpage{24}
+    \subitem UTF16BE\dotfill\hyperpage{24}
+    \subitem UTF16LE\dotfill\hyperpage{24}
+    \subitem UTF8\dotfill\hyperpage{24}
+  \item \texttt  {-{}-encoding}\dotfill\hyperpage{25, 26}
+  \item \texttt  {entry}\dotfill\hyperpage{58}
+  \item \texttt  {entry.max\$}\dotfill\hyperpage{56}
+  \item environment variable\dotfill\hyperpage{11}
+  \item environment variables\dotfill\hyperpage{31--32}
+  \item \ExBib\dotfill\hyperpage{56}
+  \item exbib\dotfill\hyperpage{15}, \hyperpage{17}, \hyperpage{20}, 
+		\hyperpage{49}
+  \item \textsf  {ExBib-setup.jar}\dotfill\hyperpage{12}, 
+		\hyperpage{16}
+  \item exbib.bat\dotfill\hyperpage{15}, \hyperpage{17}
+  \item \texttt  {exbib.bib.encoding}\dotfill\hyperpage{19}
+  \item \texttt  {exbib.config}\dotfill\hyperpage{18}
+  \item \texttt  {exbib.csf.encoding}\dotfill\hyperpage{19}
+  \item \texttt  {exbib.encoding}\dotfill\hyperpage{19}
+  \item \texttt  {exbib.file}\dotfill\hyperpage{18}
+  \item \texttt  {exbib.logfile}\dotfill\hyperpage{18}
+  \item \texttt  {exbib.min.crossref}\dotfill\hyperpage{18}
+  \item \texttt  {exbib.min.crossref.\Arg {type}}\dotfill\hyperpage{18}
+  \item \texttt  {exbib.output}\dotfill\hyperpage{19}
+  \item \texttt  {exbib.processor}\dotfill\hyperpage{19}, 
+		\hyperpage{77}
+  \item \texttt  {exbib.sort}\dotfill\hyperpage{19}
+  \item \texttt  {exbib.sort.\Arg {type}}\dotfill\hyperpage{19}
+  \item \textsf  {exbib.xml}\dotfill\hyperpage{88}
+  \item exbibutil\dotfill\hyperpage{49}
+  \item exbibutil.bat\dotfill\hyperpage{49}
+  \item \texttt  {execute}\dotfill\hyperpage{60}
+  \item Explorer\dotfill\hyperpage{12}
+  \item \ExTeX\dotfill\hyperpage{7}, \hyperpage{88}
+  \item \texttt  {extex.texinputs}\dotfill\hyperpage{19}, 
+		\hyperpage{31}
+  \item \texttt  {EXTEX\_TEXINPUTS}\dotfill\hyperpage{19}, 
+		\hyperpage{31}
+ \indexGroup{F}
+  \item \Tag {field name}\dotfill\hyperpage{34}
+  \item file
+    \subitem Ant task parameter\dotfill\hyperpage{50}
+  \item \Tag {first}\dotfill\hyperpage{36, 37}
+  \item \texttt  {format.name\$}\dotfill\hyperpage{68}, \hyperpage{76}, 
+		\hyperpage{82}
+  \item function
+    \subitem \texttt  {*}\dotfill\hyperpage{63, 64}, \hyperpage{71, 72}
+    \subitem \texttt  {+}\dotfill\hyperpage{63}, \hyperpage{76}
+    \subitem \texttt  {-}\dotfill\hyperpage{64, 65}, \hyperpage{76}
+    \subitem \texttt  {:=}\dotfill\hyperpage{64, 65}, \hyperpage{76}
+    \subitem \texttt  {<}\dotfill\hyperpage{62, 63}
+    \subitem \texttt  {=}\dotfill\hyperpage{63}, \hyperpage{75}
+    \subitem \texttt  {>}\dotfill\hyperpage{62}, \hyperpage{65}, 
+		\hyperpage{71}, \hyperpage{76}
+    \subitem \texttt  {add.period\$}\dotfill\hyperpage{65}
+    \subitem \texttt  {call.type\$}\dotfill\hyperpage{65}
+    \subitem \texttt  {change.case\$}\dotfill\hyperpage{61}, 
+		\hyperpage{65}, \hyperpage{72}, \hyperpage{82}
+    \subitem \texttt  {chr.to.int\$}\dotfill\hyperpage{66}
+    \subitem \texttt  {cite\$}\dotfill\hyperpage{67}, \hyperpage{75}
+    \subitem \texttt  {default.type}\dotfill\hyperpage{65}
+    \subitem \texttt  {duplicate\$}\dotfill\hyperpage{63}, 
+		\hyperpage{67}, \hyperpage{71}
+    \subitem \texttt  {empty\$}\dotfill\hyperpage{67}, \hyperpage{71}
+    \subitem \texttt  {format.name\$}\dotfill\hyperpage{68}, 
+		\hyperpage{76}, \hyperpage{82}
+    \subitem \texttt  {if\$}\dotfill\hyperpage{63}, \hyperpage{67}, 
+		\hyperpage{69--71}
+    \subitem \texttt  {int.to.chr\$}\dotfill\hyperpage{69}
+    \subitem \texttt  {int.to.str\$}\dotfill\hyperpage{69}
+    \subitem \texttt  {missing\$}\dotfill\hyperpage{70}
+    \subitem \texttt  {newline\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
+		\hyperpage{70}
+    \subitem \texttt  {num.names\$}\dotfill\hyperpage{70, 71}, 
+		\hyperpage{83}
+    \subitem \texttt  {pop\$}\dotfill\hyperpage{71}
+    \subitem \texttt  {preamble\$}\dotfill\hyperpage{67}, 
+		\hyperpage{71}
+    \subitem \texttt  {purify\$}\dotfill\hyperpage{61}, 
+		\hyperpage{71, 72}, \hyperpage{83}
+    \subitem \texttt  {quote\$}\dotfill\hyperpage{72}
+    \subitem \texttt  {skip\$}\dotfill\hyperpage{67}, \hyperpage{72}
+    \subitem \texttt  {stack\$}\dotfill\hyperpage{73}
+    \subitem \texttt  {substring\$}\dotfill\hyperpage{73}, 
+		\hyperpage{83}
+    \subitem \texttt  {swap\$}\dotfill\hyperpage{63}, \hyperpage{73}
+    \subitem \texttt  {text.length\$}\dotfill\hyperpage{63}, 
+		\hyperpage{74}, \hyperpage{83}
+    \subitem \texttt  {text.prefix\$}\dotfill\hyperpage{74}
+    \subitem \texttt  {top\$}\dotfill\hyperpage{74}
+    \subitem \texttt  {type\$}\dotfill\hyperpage{75}
+    \subitem \texttt  {warning\$}\dotfill\hyperpage{75}
+    \subitem \texttt  {while\$}\dotfill\hyperpage{65}, 
+		\hyperpage{75, 76}
+    \subitem \texttt  {width\$}\dotfill\hyperpage{76}, \hyperpage{83}
+    \subitem \texttt  {write\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
+		\hyperpage{70}, \hyperpage{76}
+  \item \texttt  {function}\dotfill\hyperpage{61}
+ \indexGroup{G}
+  \item \texttt  {global.max\$}\dotfill\hyperpage{56}
+  \item GNU Free Documentation License\dotfill\hyperpage{101--103}
+  \item GNU Library General Public License\dotfill\hyperpage{103--105}
+  \item GPL\dotfill\hyperpage{13}
+ \indexGroup{H}
+  \item \texttt  {-{}H}\dotfill\hyperpage{30}
+  \item \texttt  {-{}h}\dotfill\hyperpage{22}
+  \item \texttt  {-{}-help}\dotfill\hyperpage{22}
+  \item \texttt  {HOME}\dotfill\hyperpage{20}
+  \item home directory\dotfill\hyperpage{20}
+  \item \texttt  {http.proxyHost}\dotfill\hyperpage{19}
+  \item \texttt  {http.proxyPort}\dotfill\hyperpage{19}
+  \item Hufflen, Jean-Michel\dotfill\hyperpage{8}
+  \item \texttt  {-{}-huge}\dotfill\hyperpage{30}
+ \indexGroup{I}
+  \item \texttt  {if\$}\dotfill\hyperpage{63}, \hyperpage{67}, 
+		\hyperpage{69--71}
+  \item \texttt  {\char `\\ include}\dotfill\hyperpage{7}
+  \item \char64 input\dotfill\hyperpage{33}
+  \item \texttt  {input}\dotfill\hyperpage{61}
+  \item installation directory\dotfill\hyperpage{13}, 
+		\hyperpage{15--16}
+  \item installation script\dotfill\hyperpage{16}
+  \item installer\dotfill\hyperpage{12}, \hyperpage{16}
+    \subitem language\dotfill\hyperpage{12}
+  \item \Tag {instruction}\dotfill\hyperpage{33, 34}, 
+		\hyperpage{38--40}
+  \item \texttt  {int.to.chr\$}\dotfill\hyperpage{69}
+  \item \texttt  {int.to.str\$}\dotfill\hyperpage{69}
+  \item \texttt  {integers}\dotfill\hyperpage{59}
+  \item \texttt  {iterate}\dotfill\hyperpage{60}
+ \indexGroup{J}
+  \item jar\dotfill\hyperpage{88}, \hyperpage{96}
+  \item Java\dotfill\hyperpage{11--12}
+  \item java\dotfill\hyperpage{11}
+  \item \texttt  {JAVA\_HOME}\dotfill\hyperpage{11}
+  \item \Tag {jr}\dotfill\hyperpage{36, 37}
+ \indexGroup{K}
+  \item Kempson, Niel\dotfill\hyperpage{8}
+  \item \Tag {key}\dotfill\hyperpage{34}, \hyperpage{39}
+  \item kpathsea\dotfill\hyperpage{88}
+ \indexGroup{L}
+  \item \texttt  {-{}L}\dotfill\hyperpage{23}
+  \item \texttt  {-{}l}\dotfill\hyperpage{27}
+  \item language\dotfill\hyperpage{13}
+    \subitem installer\dotfill\hyperpage{12}
+  \item \texttt  {-{}-language}\dotfill\hyperpage{23}
+  \item \Tag {last}\dotfill\hyperpage{36, 37}
+  \item \LaTeX\dotfill\hyperpage{7}, \hyperpage{73}, \hyperpage{85}
+  \item LGPL\dotfill\hyperpage{13}, \hyperpage{103--105}
+  \item \textsf  {lib}\dotfill\hyperpage{16}, \hyperpage{87}
+  \item license\dotfill\hyperpage{13}, \hyperpage{101--105}
+    \subitem GNU Free Documentation License\dotfill\hyperpage{101--103}
+    \subitem GNU Library General Public License\dotfill
+		\hyperpage{103--105}
+    \subitem GPL\dotfill\hyperpage{13}
+    \subitem LGPL\dotfill\hyperpage{13}, \hyperpage{103--105}
+  \item load
+    \subitem Ant task parameter\dotfill\hyperpage{52}
+  \item \texttt  {-{}-load}\dotfill\hyperpage{20}
+  \item \texttt  {locator.line\$}\dotfill\hyperpage{56}
+  \item \texttt  {locator.resource\$}\dotfill\hyperpage{55}
+  \item logfile
+    \subitem Ant task parameter\dotfill\hyperpage{52}
+  \item \texttt  {-{}-logfile}\dotfill\hyperpage{27}
+  \item \textsf  {ls-R}\dotfill\hyperpage{11}, \hyperpage{92--94}
+ \indexGroup{M}
+  \item \texttt  {-{}M}\dotfill\hyperpage{28}
+  \item \texttt  {macro}\dotfill\hyperpage{60}
+  \item \Tag {macro name}\dotfill\hyperpage{34}, \hyperpage{40}
+  \item mailing list\dotfill\hyperpage{9}
+  \item \texttt  {-{}-mcites}\dotfill\hyperpage{31}
+  \item \texttt  {-{}-mentints}\dotfill\hyperpage{31}
+  \item \texttt  {-{}-mentstrs}\dotfill\hyperpage{31}
+  \item Method
+    \subitem add()\dotfill\hyperpage{81}
+    \subitem changeCase()\dotfill\hyperpage{82}
+    \subitem expand()\dotfill\hyperpage{81, 82}
+    \subitem formatName()\dotfill\hyperpage{82}
+    \subitem geLocatort()\dotfill\hyperpage{80}
+    \subitem get()\dotfill\hyperpage{79}
+    \subitem getCite()\dotfill\hyperpage{78}
+    \subitem getContent()\dotfill\hyperpage{82}
+    \subitem getDB()\dotfill\hyperpage{78}
+    \subitem getEntries()\dotfill\hyperpage{78}
+    \subitem getEntry()\dotfill\hyperpage{78}
+    \subitem getExpanded()\dotfill\hyperpage{80}
+    \subitem getExpandedMacro()\dotfill\hyperpage{79}
+    \subitem getKey()\dotfill\hyperpage{80}
+    \subitem getKeys()\dotfill\hyperpage{80}
+    \subitem getLineNumber()\dotfill\hyperpage{82}
+    \subitem getLinePointer()\dotfill\hyperpage{82}
+    \subitem getLocal()\dotfill\hyperpage{80}
+    \subitem getLocalInt()\dotfill\hyperpage{80}
+    \subitem getLocalString()\dotfill\hyperpage{80}
+    \subitem getLogger()\dotfill\hyperpage{78}
+    \subitem getMacro()\dotfill\hyperpage{78, 79}
+    \subitem getMacroNames()\dotfill\hyperpage{78, 79}
+    \subitem getMinCrossrefs()\dotfill\hyperpage{79}
+    \subitem getNumberOfWarnings()\dotfill\hyperpage{78}
+    \subitem getOutWriter()\dotfill\hyperpage{78}
+    \subitem getPreamble()\dotfill\hyperpage{79}
+    \subitem getPreambleExpanded()\dotfill\hyperpage{79}
+    \subitem getResourceName()\dotfill\hyperpage{82}
+    \subitem getSortKey()\dotfill\hyperpage{80}
+    \subitem getType()\dotfill\hyperpage{80}
+    \subitem isEmpty()\dotfill\hyperpage{81}
+    \subitem isKnown()\dotfill\hyperpage{78}
+    \subitem iterator()\dotfill\hyperpage{80, 81}
+    \subitem numNames()\dotfill\hyperpage{83}
+    \subitem print()\dotfill\hyperpage{77}
+    \subitem println()\dotfill\hyperpage{77}
+    \subitem purify()\dotfill\hyperpage{83}
+    \subitem set()\dotfill\hyperpage{80}
+    \subitem setContent()\dotfill\hyperpage{82}
+    \subitem setKey()\dotfill\hyperpage{80}
+    \subitem setLocal()\dotfill\hyperpage{81}
+    \subitem setMinCrossrefs()\dotfill\hyperpage{79}
+    \subitem setSortKey()\dotfill\hyperpage{81}
+    \subitem setType()\dotfill\hyperpage{81}
+    \subitem sort()\dotfill\hyperpage{79}
+    \subitem substring()\dotfill\hyperpage{83}
+    \subitem textLength()\dotfill\hyperpage{83}
+    \subitem warning()\dotfill\hyperpage{78}
+    \subitem width()\dotfill\hyperpage{83}
+  \item \texttt  {-{}-mfields}\dotfill\hyperpage{31}
+  \item \texttt  {-{}-min-crossrefs}\dotfill\hyperpage{28}
+  \item \texttt  {-{}-min.crossrefs}\dotfill\hyperpage{28}
+  \item minCrossrefs
+    \subitem Ant task parameter\dotfill\hyperpage{51}
+  \item \texttt  {missing\$}\dotfill\hyperpage{70}
+  \item ML\BibTeX\dotfill\hyperpage{8}
+  \item \char64 modify\dotfill\hyperpage{39}
+  \item \texttt  {-{}-mpool}\dotfill\hyperpage{31}
+  \item \texttt  {-{}-mstrings}\dotfill\hyperpage{31}
+  \item \texttt  {-{}-mwizfuns}\dotfill\hyperpage{31}
+ \indexGroup{N}
+  \item name\dotfill\hyperpage{35--38}
+  \item \Tag {name}\dotfill\hyperpage{36--38}
+  \item name list\dotfill\hyperpage{37--38}
+  \item \Tag {name list}\dotfill\hyperpage{38}
+  \item \texttt  {newline\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
+		\hyperpage{70}
+  \item \texttt  {num.names\$}\dotfill\hyperpage{70, 71}, 
+		\hyperpage{83}
+  \item \Tag {number}\dotfill\hyperpage{34}
+ \indexGroup{O}
+  \item \texttt  {-{}o}\dotfill\hyperpage{27}
+  \item \texttt  {option}\dotfill\hyperpage{61}
+  \item \texttt  {-{}-outfile}\dotfill\hyperpage{27}
+  \item output
+    \subitem Ant task parameter\dotfill\hyperpage{52}
+  \item \texttt  {-{}-output}\dotfill\hyperpage{27}
+ \indexGroup{P}
+  \item \texttt  {-{}p}\dotfill\hyperpage{28}
+  \item Patashnik, Oren\dotfill\hyperpage{8}
+  \item path\dotfill\hyperpage{15}
+  \item \texttt  {pop\$}\dotfill\hyperpage{71}
+  \item \char64 preamble\dotfill\hyperpage{40}
+  \item \texttt  {preamble\$}\dotfill\hyperpage{67}, \hyperpage{71}
+  \item prefix\dotfill\hyperpage{31}
+  \item \texttt  {-{}-progname}\dotfill\hyperpage{28}
+  \item \texttt  {-{}-program-name}\dotfill\hyperpage{28}
+  \item \texttt  {-{}-program.name}\dotfill\hyperpage{28}
+  \item \texttt  {program.name}\dotfill\hyperpage{19}
+  \item \texttt  {purify\$}\dotfill\hyperpage{61}, \hyperpage{71, 72}, 
+		\hyperpage{83}
+ \indexGroup{Q}
+  \item \texttt  {-{}q}\dotfill\hyperpage{29}
+  \item \texttt  {-{}-quiet}\dotfill\hyperpage{30}
+  \item \texttt  {quote\$}\dotfill\hyperpage{72}
+ \indexGroup{R}
+  \item \texttt  {read}\dotfill\hyperpage{61}
+  \item \texttt  {-{}-release}\dotfill\hyperpage{22}
+  \item \Tag {resource name}\dotfill\hyperpage{33}
+  \item \texttt  {reverse}\dotfill\hyperpage{60}
+ \indexGroup{S}
+  \item \texttt  {-{}s}\dotfill\hyperpage{26}, \hyperpage{30}
+  \item Scribe\dotfill\hyperpage{8}, \hyperpage{33}
+  \item sh\dotfill\hyperpage{32}
+  \item \texttt  {skip\$}\dotfill\hyperpage{67}, \hyperpage{72}
+  \item sort
+    \subitem Ant task parameter\dotfill\hyperpage{50}
+  \item \texttt  {sort}\dotfill\hyperpage{60}
+  \item \texttt  {sort.key\$}\dotfill\hyperpage{55}
+  \item \texttt  {-{}-sorter}\dotfill\hyperpage{26}
+  \item \texttt  {stack\$}\dotfill\hyperpage{73}
+  \item \texttt  {-{}-statistics}\dotfill\hyperpage{30}
+  \item \texttt  {-{}-strict}\dotfill\hyperpage{24}
+  \item \Tag {string}\dotfill\hyperpage{34}
+  \item \char64 string\dotfill\hyperpage{39--40}
+  \item \texttt  {strings}\dotfill\hyperpage{59}
+  \item \texttt  {substring\$}\dotfill\hyperpage{73}, \hyperpage{83}
+  \item \texttt  {swap\$}\dotfill\hyperpage{63}, \hyperpage{73}
+ \indexGroup{T}
+  \item \texttt  {-{}t}\dotfill\hyperpage{30}
+  \item target\dotfill\hyperpage{50--53}
+  \item taskdef\dotfill\hyperpage{49, 50}
+  \item \texttt  {-{}-terse}\dotfill\hyperpage{30}
+  \item \TeX\dotfill\hyperpage{57}, \hyperpage{73}
+  \item \texttt  {TEXINPUTS}\dotfill\hyperpage{19}, \hyperpage{31}
+  \item \texttt  {texinputs}\dotfill\hyperpage{19}, \hyperpage{31}
+  \item \TeX Live\dotfill\hyperpage{11}
+  \item TEXMF\dotfill\hyperpage{11}
+  \item texmf\dotfill\hyperpage{11}
+  \item text processor\dotfill\hyperpage{7}
+  \item \texttt  {text.length\$}\dotfill\hyperpage{63}, \hyperpage{74}, 
+		\hyperpage{83}
+  \item \texttt  {text.prefix\$}\dotfill\hyperpage{74}
+  \item \texttt  {top\$}\dotfill\hyperpage{74}
+  \item \texttt  {-{}-trace}\dotfill\hyperpage{30}
+  \item \texttt  {-{}-traditional}\dotfill\hyperpage{27}
+  \item \Tag {type}\dotfill\hyperpage{34}
+  \item \texttt  {type\$}\dotfill\hyperpage{75}
+ \indexGroup{U}
+  \item Unicode\dotfill\hyperpage{24}, \hyperpage{66}, \hyperpage{69}
+  \item \textsf  {Uninstaller}\dotfill\hyperpage{16}
+  \item \textsf  {uninstaller.jar}\dotfill\hyperpage{16}
+  \item Unix\dotfill\hyperpage{14}, \hyperpage{17}, \hyperpage{20}
+  \item unzip\dotfill\hyperpage{96}
+ \indexGroup{V}
+  \item \texttt  {-{}v}\dotfill\hyperpage{30}
+  \item \Tag {value}\dotfill\hyperpage{34}, \hyperpage{40}
+  \item variable
+    \subitem \texttt  {entry.max\$}\dotfill\hyperpage{56}
+    \subitem \texttt  {global.max\$}\dotfill\hyperpage{56}
+    \subitem \texttt  {locator.line\$}\dotfill\hyperpage{56}
+    \subitem \texttt  {locator.resource\$}\dotfill\hyperpage{55}
+    \subitem \texttt  {sort.key\$}\dotfill\hyperpage{55}
+  \item \texttt  {-{}-verbose}\dotfill\hyperpage{30}
+  \item version\dotfill\hyperpage{22}
+  \item \texttt  {-{}-version}\dotfill\hyperpage{22}
+  \item \Tag {von}\dotfill\hyperpage{36, 37}
+ \indexGroup{W}
+  \item \texttt  {-{}W}\dotfill\hyperpage{31}
+  \item \texttt  {warning\$}\dotfill\hyperpage{75}
+  \item Web Site\dotfill\hyperpage{9}
+  \item \texttt  {while\$}\dotfill\hyperpage{65}, \hyperpage{75, 76}
+  \item \texttt  {width\$}\dotfill\hyperpage{76}, \hyperpage{83}
+  \item Windows\dotfill\hyperpage{12}, \hyperpage{14}, \hyperpage{20}
+  \item Winzip\dotfill\hyperpage{96}
+  \item \texttt  {-{}-wolfgang}\dotfill\hyperpage{31}
+  \item \texttt  {write\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
+		\hyperpage{70}, \hyperpage{76}
+  \item WWW\dotfill\hyperpage{9}
+  \item www.extex.org\dotfill\hyperpage{9}
+
+\end{theindex}
