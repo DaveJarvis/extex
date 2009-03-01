@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
+import org.extex.exindex.makeindex.main.Makeindex;
 import org.junit.Test;
 
 /**
