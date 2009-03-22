@@ -89,14 +89,7 @@ public class MakeindexWriter implements IndexWriter {
 
         for (Entry e : entries) {
             if (headingFlag != 0 && e.getHeading() != currentHeading) {
-                currentHeading = e.getHeading();
-                writer.write(params.getString("markup:heading-prefix"));
-                if (headingFlag > 0) {
-                    writer.write(Character.toUpperCase(currentHeading));
-                } else {
-                    writer.write(Character.toLowerCase(currentHeading));
-                }
-                writer.write(params.getString("markup:heading-suffix"));
+                currentHeading = writeHeading(headingFlag, e);
             }
             writer.write(item0);
             writer.write(e.getValue());
@@ -125,6 +118,40 @@ public class MakeindexWriter implements IndexWriter {
 
         writer.write(params.getString("markup:index-close"));
         return count;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param headingFlag the heading flag
+     * @param e the entry
+     * 
+     * @return
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private char writeHeading(final long headingFlag, Entry e)
+            throws IOException {
+
+        char heading = e.getHeading();
+        writer.write(params.getString("markup:heading-prefix"));
+        if (headingFlag > 0) {
+            if (heading == ' ') {
+                writer.write(params.getString("markup:symhead-positive"));
+            } else if (heading == '1') {
+                writer.write(params.getString("markup:numhead-positive"));
+            } else {
+                writer.write(Character.toUpperCase(heading));
+            }
+        } else if (heading == ' ') {
+            writer.write(params.getString("markup:symhead-negative"));
+        } else if (heading == '1') {
+            writer.write(params.getString("markup:numhead-negative"));
+        } else {
+            writer.write(Character.toLowerCase(heading));
+        }
+        writer.write(params.getString("markup:heading-suffix"));
+        return heading;
     }
 
 }
