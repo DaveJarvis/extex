@@ -78,8 +78,10 @@ public class Entry {
     public char getHeading() {
 
         String key0 = key[0];
-        return (key0 == null || key0.equals("") //
-        ? 0 : Character.toLowerCase(key0.charAt(0)));
+        char c = (key0 == null || key0.equals("")) //
+                ? ' '
+                : Character.toLowerCase(key0.charAt(0));
+        return Character.isDigit(c) ? '1' : c;
     }
 
     /**
