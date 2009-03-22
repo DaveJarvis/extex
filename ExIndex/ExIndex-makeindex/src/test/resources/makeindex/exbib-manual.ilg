@@ -1,0 +1,11 @@
+This is exindex version 0.1 (revision 7779)
+Scanning style file src/test/resources/makeindex/doc.ist...done (7 attributes
+redefined, 0 ignored).
+Scanning input file
+src/test/resources/makeindex/exbib-manual.idx...done (714 entries accepted, 0
+rejected)
+Sorting...done (5958 comparisons).
+Generating output file target/exbib-manual.ind...done (0 entries written, 0
+warnings).
+Output written in target/exbib-manual.ind.
+Transcript written in src/test/resources/makeindex/exbib-manual.ilg.
