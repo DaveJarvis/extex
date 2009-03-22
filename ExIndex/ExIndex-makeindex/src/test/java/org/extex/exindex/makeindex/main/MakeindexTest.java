@@ -86,8 +86,8 @@ public class MakeindexTest extends AbstractTester {
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\subitem aaa, 3\n" //
-                    + "\\subitem bbb, 2\n" //
+                    + "\\item aaa, 3\n" //
+                    + "\\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -113,8 +113,8 @@ public class MakeindexTest extends AbstractTester {
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\subitem aaa, 3\n" //
-                    + "\\subitem bbb, 2\n" //
+                    + "\\item aaa, 3\n" //
+                    + "\\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -138,8 +138,8 @@ public class MakeindexTest extends AbstractTester {
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\subitem aaa, 3\n" //
-                    + "\\subitem bbb, 2\n" //
+                    + "\\item aaa, 3\n" //
+                    + "\\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -165,8 +165,8 @@ public class MakeindexTest extends AbstractTester {
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\subitem aaa, 3\n" //
-                    + "\\subitem bbb, 2, 4\n" //
+                    + "\\item aaa, 3\n" //
+                    + "\\item bbb, 2, 4\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }

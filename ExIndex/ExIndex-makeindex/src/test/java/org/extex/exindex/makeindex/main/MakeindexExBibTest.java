@@ -79,7 +79,9 @@ public class MakeindexExBibTest extends AbstractTester {
             r = new BufferedReader(new FileReader(ind));
             StringBuilder buffer = new StringBuilder();
             for (int c = r.read(); c >= 0; c = r.read()) {
-                buffer.append((char) c);
+                if (c != '\r') {
+                    buffer.append((char) c);
+                }
             }
             r.close();
             r = null;
@@ -87,7 +89,9 @@ public class MakeindexExBibTest extends AbstractTester {
                 "src/test/resources/makeindex/exbib-manual.ind"));
             StringBuilder expected = new StringBuilder();
             for (int c = r.read(); c >= 0; c = r.read()) {
-                expected.append((char) c);
+                if (c != '\r') {
+                    expected.append((char) c);
+                }
             }
             assertEquals(expected.toString(), buffer.toString());
         } finally {

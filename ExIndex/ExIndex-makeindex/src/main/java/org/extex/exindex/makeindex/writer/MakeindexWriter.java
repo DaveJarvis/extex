@@ -68,12 +68,13 @@ public class MakeindexWriter implements IndexWriter {
     public int[] write(List<Entry> entries, Logger logger, String startPage)
             throws IOException {
 
+        final String item0 = params.getString("index:item_0");
         final String item1 = params.getString("index:item_1");
         final String delim0 = params.getString("index:delim_0");
         final String delim1 = params.getString("index:delim_1");
-        final String encapPrefix = params.getString("index:encap_prefix");
-        final String encapInfix = params.getString("index:encap_infix");
-        final String encalSuffix = params.getString("index:encap_suffix");
+        final String encapPrefix = params.getString("index:encap-prefix");
+        final String encapInfix = params.getString("index:encap-infix");
+        final String encalSuffix = params.getString("index:encap-suffix");
         final long headingFlag = params.getNumber("index:headings-flag");
         int[] count = new int[2];
         char currentHeading = '\0';
@@ -97,7 +98,7 @@ public class MakeindexWriter implements IndexWriter {
                 }
                 writer.write(params.getString("markup:heading-suffix"));
             }
-            writer.write(item1);
+            writer.write(item0);
             writer.write(e.getValue());
             List<PageReference> pages = e.getPages();
             boolean first = true;

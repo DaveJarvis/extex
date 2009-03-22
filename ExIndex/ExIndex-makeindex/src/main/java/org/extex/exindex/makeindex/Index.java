@@ -18,13 +18,11 @@
 
 package org.extex.exindex.makeindex;
 
-import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
-import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.exindex.makeindex.pages.PageProcessor;
 
 /**
@@ -33,7 +31,7 @@ import org.extex.exindex.makeindex.pages.PageProcessor;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6731 $
  */
-public class Index implements LValue {
+public class Index {
 
     /**
      * The field <tt>params</tt> contains the parameters.
@@ -104,17 +102,6 @@ public class Index implements LValue {
     public Parameters getParams() {
 
         return params;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.lisp.type.value.LValue#print(java.io.PrintStream)
-     */
-    public void print(PrintStream stream) {
-
-        // TODO gene: print unimplemented
-        throw new RuntimeException("unimplemented");
     }
 
     /**

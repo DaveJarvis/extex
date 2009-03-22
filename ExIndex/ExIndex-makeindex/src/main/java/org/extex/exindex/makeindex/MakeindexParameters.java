@@ -319,25 +319,34 @@ public final class MakeindexParameters {
         def("heading_prefix", "markup:heading-prefix", new LString(""));
         def("heading_suffix", "markup:heading-suffix", new LString(""));
         def("headings_flag", "index:headings-flag", new LNumber(0));
-        def("item_0", "index:item_0", new LString("\n\\item "));
-        def("item_1", "index:item_1", new LString("\n\\subitem "));
-        def("item_2", "indexitem_2:", new LString("\n\\subsubitem "));
-        def("item_01", "index:item_01", new LString("\n\\subitem "));
-        def("item_12", "index:item_12", new LString("\n\\subsubitem "));
-        def("item_x1", "index:item_x1", new LString("\n\\subitem "));
-        def("item_x2", "index:item_x2", new LString("\n\\subsubitem "));
+        def("item_0", "index:item_0", new LString("\n  \\item "));
+        def("item_1", "index:item_1", new LString("\n    \\subitem "));
+        def("item_2", "indexitem_2:", new LString("\n      \\subsubitem "));
+        def("item_01", "index:item_01", new LString("\n    \\subitem "));
+        def("item_12", "index:item_12", new LString("\n      \\subsubitem "));
+        def("item_x1", "index:item_x1", new LString("\n    \\subitem "));
+        def("item_x2", "index:item_x2", new LString("\n      \\subsubitem "));
         def("delim_0", "index:delim_0", new LString(", "));
         def("delim_1", "index:delim_1", new LString(", "));
         def("delim_2", "index:delim_2", new LString(", "));
         def("delim_n", "markup:locref-list-sep", new LString(", "));
         def("delim_r", "markup:range", new LString("--"));
-        def("encap_prefix", "index:encap_prefix", new LString("\\"));
-        def("encap_infix", "index:encap_infix", new LString("{"));
-        def("encap_suffix", "index:encap_suffix", new LString("}"));
-        def("page_precedence", "index:", new LString("rnaRA"));
+        def("encap_prefix", "index:encap-prefix", new LString("\\"));
+        def("encap_infix", "index:encap-infix", new LString("{"));
+        def("encap_suffix", "index:encap-suffix", new LString("}"));
+        def("page_precedence", "index:page-precedence", new LString("rnaRA"));
         def("line_max", "markup:line-max", new LNumber(72));
         def("indent_space", "markup:indent-space", new LString("\t\t"));
         def("indent_length", "markup:indent-length", new LNumber(16));
+
+        def("symhead_positive", "markup:symhead-positive", new LString(
+            "Symbols"));
+        def("symhead_negative", "markup:symhead-negative", new LString(
+            "symbols"));
+        def("numhead_positive", "markup:numhead-positive", new LString(
+            "Numbers"));
+        def("numhead_negative", "markup:numhead-negative", new LString(
+            "numbers"));
 
         defaultParameters.put("markup-index-hierdepth", new LNumber(2));
     }

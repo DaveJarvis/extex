@@ -24,15 +24,15 @@ import java.util.List;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents an entry in the index.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:7790 $
  */
 public class Entry {
 
     /**
-     * The field <tt>value</tt> contains the value.
+     * The field <tt>value</tt> contains the display value.
      */
     private String display;
 
