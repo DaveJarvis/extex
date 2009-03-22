@@ -47,6 +47,21 @@ public class Entry {
     private List<PageReference> pages = new ArrayList<PageReference>();
 
     /**
+     * The field <tt>heading</tt> contains the heading character.
+     */
+    private char heading;
+
+    /**
+     * The field <tt>HEADING_NUMBER</tt> contains the ...
+     */
+    public static final char HEADING_NUMBER = '1';
+
+    /**
+     * The field <tt>HEADING_SYMBOL</tt> contains the ...
+     */
+    public static final char HEADING_SYMBOL = ' ';
+
+    /**
      * Creates a new object.
      * 
      * @param k the key
@@ -58,6 +73,18 @@ public class Entry {
         this.key = k;
         this.display = display;
         this.pages.add(page);
+
+        String s = key[0] == null ? "" : key[0].replaceAll("[{}]", "");
+        if (s.equals("")) {
+            this.heading = HEADING_SYMBOL;
+        } else if (s.matches("[-]?[0-9]+")) {
+            this.heading = HEADING_NUMBER;
+        } else {
+            char c = s.charAt(0);
+            this.heading = (Character.isLetter(c)) //
+                    ? Character.toLowerCase(c)
+                    : HEADING_SYMBOL;
+        }
     }
 
     /**
@@ -77,11 +104,7 @@ public class Entry {
      */
     public char getHeading() {
 
-        String key0 = key[0];
-        char c = (key0 == null || key0.equals("")) //
-                ? ' '
-                : Character.toLowerCase(key0.charAt(0));
-        return Character.isDigit(c) ? '1' : c;
+        return heading;
     }
 
     /**
