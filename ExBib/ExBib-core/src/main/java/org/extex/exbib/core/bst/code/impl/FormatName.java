@@ -160,25 +160,25 @@ public class FormatName extends AbstractCode implements Serializable {
                 int enoughChars, int start, int end) {
 
             int count = 0;
-            int brace_level = 0;
+            int braceLevel = 0;
             int ptr = start;
             while (ptr < end && count < enoughChars) {
                 ++ptr;
                 if (buffer.charAt(ptr - 1) == '{') {
-                    ++brace_level;
-                    if (brace_level == 1 && ptr < end
+                    ++braceLevel;
+                    if (braceLevel == 1 && ptr < end
                             && buffer.charAt(ptr) == '\\') {
-                        for (ptr++; ptr < end && brace_level > 0; ptr++) {
+                        for (ptr++; ptr < end && braceLevel > 0; ptr++) {
                             char c = buffer.charAt(ptr);
                             if (c == '}') {
-                                --brace_level;
+                                --braceLevel;
                             } else if (c == '{') {
-                                ++brace_level;
+                                ++braceLevel;
                             }
                         }
                     }
                 } else if (buffer.charAt(ptr - 1) == '}') {
-                    --brace_level;
+                    --braceLevel;
                 }
                 ++count;
             }
@@ -271,7 +271,6 @@ public class FormatName extends AbstractCode implements Serializable {
                         level++;
                         break;
                     case '}':
-
                         if (--level < 1) {
                             if (midp) {
                                 item.setMid(format.substring(start, i));
@@ -281,8 +280,9 @@ public class FormatName extends AbstractCode implements Serializable {
 
                             return i + 1;
                         }
-
                         break;
+                    default:
+                        // nothing to do
                 }
             }
 
@@ -391,7 +391,7 @@ public class FormatName extends AbstractCode implements Serializable {
                             add(item);
 
                             if (c == '{') {
-                                i = parseEndOfBlock(i + 1, item, format, true,//
+                                i = parseEndOfBlock(i + 1, item, format, true, //
                                     locator);
                             }
 
@@ -400,6 +400,10 @@ public class FormatName extends AbstractCode implements Serializable {
                         }
 
                         break;
+                    default:
+                        throw new ExBibImpossibleException(LocalizerFactory
+                            .getLocalizer(getClass()).format("desaster.format",
+                                Character.toString(letter)), locator);
                 }
             }
 
@@ -475,6 +479,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
+         * 
+         *         {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder sb, Name name, Locator locator)
@@ -505,6 +514,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param sb the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
+         * 
+         *        {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder sb, Name name, Locator locator) {
@@ -676,6 +690,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
+         * 
+         *         {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator)
@@ -706,6 +725,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
+         * 
+         *        {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator) {
@@ -737,6 +761,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
+         * 
+         *         {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator)
@@ -768,6 +797,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
+         * 
+         *        {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator) {
@@ -800,6 +834,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param locator the locator from the users perspective
          * 
          * @throws ExBibException in case that no initial is found
+         * 
+         *         {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator)
@@ -832,6 +871,11 @@ public class FormatName extends AbstractCode implements Serializable {
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
+         * 
+         *        {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
+         *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
         @Override
         public boolean format(StringBuilder buffer, Name name, Locator locator) {

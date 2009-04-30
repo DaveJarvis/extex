@@ -446,9 +446,9 @@ public class ProcessorContainer
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder f) {
 
-        this.finder = finder;
+        this.finder = f;
     }
 
     /**

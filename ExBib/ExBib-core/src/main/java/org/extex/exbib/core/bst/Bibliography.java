@@ -106,7 +106,7 @@ public interface Bibliography {
      * 
      * @return the options
      */
-    public Map<String, Token> getOptions();
+    Map<String, Token> getOptions();
 
     /**
      * Reset the bibliography to its initial state.

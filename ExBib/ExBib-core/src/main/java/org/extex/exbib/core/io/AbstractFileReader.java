@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io;
@@ -172,8 +171,8 @@ public abstract class AbstractFileReader implements Observable {
      * 
      * @param name the name of the file to open
      * @param type the type of the file to open
-     * @param encoding the encoding to use or <code>null</code> for the
-     *        platform default
+     * @param encoding the encoding to use or <code>null</code> for the platform
+     *        default
      * 
      * @return a Reader for the requested file
      * 
@@ -234,8 +233,10 @@ public abstract class AbstractFileReader implements Observable {
     }
 
     /**
-     * @see org.extex.exbib.core.util.Observable#registerObserver(
-     *      java.lang.String, org.extex.exbib.core.util.Observer)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
+     *      org.extex.exbib.core.util.Observer)
      */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -256,11 +257,11 @@ public abstract class AbstractFileReader implements Observable {
     /**
      * Setter for the resource finder.
      * 
-     * @param finder the resource finder
+     * @param f the resource finder
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder f) {
 
-        this.finder = finder;
+        this.finder = f;
     }
 
     /**

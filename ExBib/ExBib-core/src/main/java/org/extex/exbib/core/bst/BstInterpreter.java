@@ -88,7 +88,6 @@ public class BstInterpreter extends BstInterpreterCore {
                 }
                 addFunction(name, code, new Locator(config.toString(), 0));
             } catch (Exception e) {
-                System.err.println(name + " " + className);
                 throw new ConfigurationWrapperException(e);
             }
         }

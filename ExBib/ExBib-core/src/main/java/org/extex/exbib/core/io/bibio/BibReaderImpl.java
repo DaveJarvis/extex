@@ -1,20 +1,19 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- *
- * This library is free software; you can redistribute it and/or modify it
- * under the terms of the GNU Lesser General Public License as published by the
- * Free Software Foundation; either version 2.1 of the License, or (at your
- * option) any later version.
- *
+ * 
+ * This library is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU Lesser General Public License as published by the Free
+ * Software Foundation; either version 2.1 of the License, or (at your option)
+ * any later version.
+ * 
  * This library is distributed in the hope that it will be useful, but WITHOUT
- * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
- * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
- * for more details.
- *
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
+ * details.
+ * 
  * You should have received a copy of the GNU Lesser General Public License
- * along with this library; if not, write to the Free Software Foundation,
- * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
- *
+ * along with this library; if not, write to the Free Software Foundation, Inc.,
+ * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.core.io.bibio;
@@ -34,11 +33,11 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a reader for B<small>IB</small>T<sub>E</sub>X files. It extends
- * the reader for the B<small>IB</small>T<sub>E</sub>X 0.99c format. The
- * constructions supported roughly approximate the features announced for B<small>IB</small>T<sub>E</sub>X
- * 1.0 (which has net been published at the time of this writing &ndash; and
- * probably never will).
+ * This is a reader for B<small>IB</small>T<sub>E</sub>X files. It extends the
+ * reader for the B<small>IB</small>T<sub>E</sub>X 0.99c format. The
+ * constructions supported roughly approximate the features announced for
+ * B<small>IB</small>T<sub>E</sub>X 1.0 (which has net been published at the
+ * time of this writing &ndash; and probably never will).
  * <p>
  * The following constructs are supported:
  * </p>
@@ -139,6 +138,7 @@ public class BibReaderImpl extends BibReader099Impl {
      * @param db the database to store the information in
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
      *              depending in the opening brace
+     * @param locator the locator
      *              
      * @return <code>true</code> iff the item is special and has been handled
      *         successfully.
@@ -206,8 +206,8 @@ public class BibReaderImpl extends BibReader099Impl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.bibio.BibReader099Impl#handleComment(
-     *      java.lang.StringBuilder, java.lang.String)
+     * @see org.extex.exbib.core.io.bibio.BibReader099Impl#handleComment(java.lang.StringBuilder,
+     *      java.lang.String)
      */
     @Override
     protected void handleComment(StringBuilder comment, String tag)

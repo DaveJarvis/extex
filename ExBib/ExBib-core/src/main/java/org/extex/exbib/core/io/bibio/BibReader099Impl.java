@@ -121,9 +121,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
             case ',':
             case '"':
                 return false;
+            default:
+                return !Character.isWhitespace(c);
         }
-
-        return !Character.isWhitespace(c);
     }
 
     /**

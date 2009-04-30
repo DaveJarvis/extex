@@ -329,18 +329,17 @@ public class BstInterpreterCore extends BibliographyCore
      * <dt>obsolete variable entries.max$</dt>
      * </dl>
      * 
-     * @param configuration the configuration to consult
+     * @param config the configuration to consult
      * 
      * @throws ConfigurationException in case of an error
      */
     @Override
-    public void configure(Configuration configuration)
-            throws ConfigurationException {
+    public void configure(Configuration config) throws ConfigurationException {
 
-        super.configure(configuration);
-        this.configuration = configuration;
+        super.configure(config);
+        this.configuration = config;
         Locator locator = new Locator(getClass().getName() + "#configure()", 0);
-        int i = configuration.getValueAsInteger("globalMax", -1);
+        int i = config.getValueAsInteger("globalMax", -1);
 
         if (i >= 0 && i != globalMax) {
             try {
@@ -351,7 +350,7 @@ public class BstInterpreterCore extends BibliographyCore
             }
         }
 
-        i = configuration.getValueAsInteger("entryMax", -1);
+        i = config.getValueAsInteger("entryMax", -1);
 
         if (i >= 0 && i != entryMax) {
             try {
@@ -789,7 +788,7 @@ public class BstInterpreterCore extends BibliographyCore
     /**
      * Setter for the output writer.
      * 
-     * @param writer
+     * @param writer the writer
      */
     public void setOutWriter(Writer writer) {
 
@@ -801,9 +800,9 @@ public class BstInterpreterCore extends BibliographyCore
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder f) {
 
-        this.finder = finder;
+        this.finder = f;
     }
 
     /**

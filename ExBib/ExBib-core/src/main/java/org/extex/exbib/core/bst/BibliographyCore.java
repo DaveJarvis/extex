@@ -280,6 +280,8 @@ public class BibliographyCore implements Bibliography, Observable {
      * Getter for bib style. The bib style is the name of he BST file to use for
      * processing the database.
      * 
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.core.bst.Bibliography#getBibliographyStyles()
      */
     public List<String> getBibliographyStyles() {
