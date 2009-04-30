@@ -218,12 +218,8 @@ public class MakeindexParser implements Parser {
             list.add(key.substring(a, i));
             a = i + 1;
         }
-        list.add(key);
-        String[] k = new String[list.size()];
-        int i = 0;
-        for (String s : list) {
-            k[i] = s;
-        }
+        list.add(key.substring(a));
+        String[] k = list.toArray(new String[list.size()]);
         PageReference from = AbstractPage.get(p, null);
         PageRange page;
         String enc = encap;
