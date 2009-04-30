@@ -23,9 +23,9 @@ import java.io.Writer;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.makeindex.Entry;
 import org.extex.exindex.makeindex.Parameters;
+import org.extex.exindex.makeindex.pages.PageRange;
 
 /**
  * This class is an index writer for the makeindex emulator.
@@ -93,26 +93,17 @@ public class MakeindexWriter implements IndexWriter {
             }
             writer.write(item0);
             writer.write(e.getValue());
-            List<PageReference> pages = e.getPages();
+            List<PageRange> pages = e.getPages();
             boolean first = true;
 
-            for (PageReference page : pages) {
+            for (PageRange page : pages) {
                 if (first) {
                     first = false;
                     writer.write(delim0);
                 } else {
                     writer.write(delim1);
                 }
-                String encap = page.getEncap();
-                if (encap != null) {
-                    writer.write(encapPrefix);
-                    writer.write(encap);
-                    writer.write(encapInfix);
-                    writer.write(page.getPage());
-                    writer.write(encalSuffix);
-                } else {
-                    writer.write(page.getPage());
-                }
+                page.write(writer, encapPrefix, encapInfix, encalSuffix);
             }
         }
 
@@ -121,12 +112,12 @@ public class MakeindexWriter implements IndexWriter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the heading for the new heading character.
      * 
      * @param headingFlag the heading flag
      * @param e the entry
      * 
-     * @return
+     * @return the new heading character
      * 
      * @throws IOException in case of an I/O error
      */
@@ -136,16 +127,16 @@ public class MakeindexWriter implements IndexWriter {
         char heading = e.getHeading();
         writer.write(params.getString("markup:heading-prefix"));
         if (headingFlag > 0) {
-            if (heading == ' ') {
+            if (heading == Entry.HEADING_SYMBOL) {
                 writer.write(params.getString("markup:symhead-positive"));
-            } else if (heading == '1') {
+            } else if (heading == Entry.HEADING_NUMBER) {
                 writer.write(params.getString("markup:numhead-positive"));
             } else {
                 writer.write(Character.toUpperCase(heading));
             }
-        } else if (heading == ' ') {
+        } else if (heading == Entry.HEADING_SYMBOL) {
             writer.write(params.getString("markup:symhead-negative"));
-        } else if (heading == '1') {
+        } else if (heading == Entry.HEADING_NUMBER) {
             writer.write(params.getString("markup:numhead-negative"));
         } else {
             writer.write(Character.toLowerCase(heading));

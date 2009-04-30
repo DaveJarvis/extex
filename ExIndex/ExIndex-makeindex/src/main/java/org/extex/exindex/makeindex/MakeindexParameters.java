@@ -301,7 +301,7 @@ public final class MakeindexParameters {
         def("arg_open", "index:arg-open", new LChar('{'));
         def("arg_close", "index:arg-close", new LChar('}'));
         def("range_open", "index:range-open", new LChar('('));
-        def("range_close", "indexrange-close:", new LChar(')'));
+        def("range_close", "index:range-close", new LChar(')'));
         def("level", "index:level", new LChar('!'));
         def("actual", "index:actual", new LChar('@'));
         def("encap", "index:encap", new LChar('|'));

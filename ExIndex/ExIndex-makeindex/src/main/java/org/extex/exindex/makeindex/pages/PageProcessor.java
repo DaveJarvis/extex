@@ -20,8 +20,6 @@ package org.extex.exindex.makeindex.pages;
 
 import java.util.List;
 
-import org.extex.exindex.core.type.page.PageReference;
-
 /**
  * This interface describes a processor for a list of pages.
  * 
@@ -35,6 +33,6 @@ public interface PageProcessor {
      * 
      * @param pages the list of pages
      */
-    void join(List<PageReference> pages);
+    void join(List<PageRange> pages);
 
 }

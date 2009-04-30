@@ -68,7 +68,7 @@ public class MakeindexExBibTest extends AbstractTester {
                         + "Scanning input file\n"
                         + "src/test/resources/makeindex/exbib-manual.idx...done (714 entries accepted, 0\n"
                         + "rejected)\n"
-                        + "Sorting...done (5958 comparisons).\n"
+                        + "Sorting...done (5959 comparisons).\n"
                         + "Generating output file target/exbib-manual.ind...done (0 entries written, 0\n"
                         + "warnings).\n"
                         + "Output written in target/exbib-manual.ind.\n"

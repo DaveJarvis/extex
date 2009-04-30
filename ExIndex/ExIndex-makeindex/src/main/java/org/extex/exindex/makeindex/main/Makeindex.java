@@ -135,6 +135,14 @@ public class Makeindex {
         public int compare(Entry o1, Entry o2) {
 
             comparisons++;
+            char c1 = o1.getHeading();
+            char c2 = o2.getHeading();
+            if (c1 < c2) {
+                return -1;
+            } else if (c1 > c2) {
+                return 1;
+            }
+
             String[] ka1 = o1.getKey();
             String[] ka2 = o2.getKey();
             int len = (ka1.length < ka2.length ? ka1.length : ka2.length);
@@ -745,9 +753,10 @@ public class Makeindex {
         } catch (FileNotFoundException e) {
             throw new StyleNotFoundException(file);
         }
+        info("ScanningStyle", file);
         try {
-            info("ScanningStyle", file);
-            int[] count = MakeindexParameters.load(reader, file, params, logger);
+            int[] count =
+                    MakeindexParameters.load(reader, file, params, logger);
             info("ScanningStyleDone", //
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {

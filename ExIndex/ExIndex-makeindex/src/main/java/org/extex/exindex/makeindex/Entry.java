@@ -21,7 +21,7 @@ package org.extex.exindex.makeindex;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.makeindex.pages.PageRange;
 
 /**
  * This class represents an entry in the index.
@@ -30,6 +30,16 @@ import org.extex.exindex.core.type.page.PageReference;
  * @version $Revision:7790 $
  */
 public class Entry {
+
+    /**
+     * The field <tt>HEADING_NUMBER</tt> contains the heading number constant.
+     */
+    public static final char HEADING_NUMBER = '1';
+
+    /**
+     * The field <tt>HEADING_SYMBOL</tt> contains the heading symbol constant.
+     */
+    public static final char HEADING_SYMBOL = ' ';
 
     /**
      * The field <tt>value</tt> contains the display value.
@@ -44,22 +54,12 @@ public class Entry {
     /**
      * The field <tt>pages</tt> contains the pages contained.
      */
-    private List<PageReference> pages = new ArrayList<PageReference>();
+    private List<PageRange> pages = new ArrayList<PageRange>();
 
     /**
      * The field <tt>heading</tt> contains the heading character.
      */
     private char heading;
-
-    /**
-     * The field <tt>HEADING_NUMBER</tt> contains the ...
-     */
-    public static final char HEADING_NUMBER = '1';
-
-    /**
-     * The field <tt>HEADING_SYMBOL</tt> contains the ...
-     */
-    public static final char HEADING_SYMBOL = ' ';
 
     /**
      * Creates a new object.
@@ -68,7 +68,7 @@ public class Entry {
      * @param display the display string
      * @param page the page specification
      */
-    public Entry(String[] k, String display, PageReference page) {
+    public Entry(String[] k, String display, PageRange page) {
 
         this.key = k;
         this.display = display;
@@ -92,11 +92,22 @@ public class Entry {
      * 
      * @param morePages the pages to add
      */
-    public void addPages(List<PageReference> morePages) {
+    public void addPages(List<PageRange> morePages) {
 
         pages.addAll(morePages);
     }
 
+    /**
+     * Add the given pages.
+     * 
+     * @param morePages the pages to add
+     */
+    // public void addPages(List<PageReference> morePages) {
+    //
+    // for (PageReference pr : morePages) {
+    // pages.add(new PageRange(pr));
+    // }
+    // }
     /**
      * Getter for the heading character.
      * 
@@ -122,7 +133,7 @@ public class Entry {
      * 
      * @return the pages
      */
-    public List<PageReference> getPages() {
+    public List<PageRange> getPages() {
 
         return pages;
     }

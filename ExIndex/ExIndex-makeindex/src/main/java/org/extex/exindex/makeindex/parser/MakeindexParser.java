@@ -27,10 +27,12 @@ import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
 import org.extex.exindex.core.parser.reader.ReaderLocator;
 import org.extex.exindex.core.type.page.AbstractPage;
+import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.makeindex.Entry;
 import org.extex.exindex.makeindex.Index;
 import org.extex.exindex.makeindex.Parameters;
 import org.extex.exindex.makeindex.normalizer.Collator;
+import org.extex.exindex.makeindex.pages.PageRange;
 
 /**
  * This class provides a parser for a makeindex raw index file format.
@@ -82,17 +84,17 @@ public class MakeindexParser implements Parser {
         final char encap = params.getChar("index:encap");
         final char level = params.getChar("index:level");
         final char actual = params.getChar("index:actual");
+        final char open = params.getChar("index:range-open");
+        final char close = params.getChar("index:range-close");
         char k0 = keyword.charAt(0);
         try {
 
             for (int c = locator.read(); c >= 0; c = locator.read()) {
                 if (c == k0 && scanKeyword(locator, keyword)) {
-                    String arg =
-                            scanArgument(locator, argOpen, argClose, escape,
-                                quote, index);
-                    String p =
-                            scanArgument(locator, argOpen, argClose, escape,
-                                quote, index);
+                    String arg = scanArgument(locator, argOpen, argClose, //
+                        escape, quote, index);
+                    String p = scanArgument(locator, argOpen, argClose, //
+                        escape, quote, index);
                     String enc = null;
                     int x = arg.lastIndexOf(encap);
                     if (x >= 0) {
@@ -110,7 +112,7 @@ public class MakeindexParser implements Parser {
                     if (collator != null) {
                         a = collator.collate(a);
                     }
-                    store(index, arg, p, enc, a, level);
+                    store(index, arg, p, enc, a, level, open, close);
                     count[0]++;
                 }
             }
@@ -195,7 +197,7 @@ public class MakeindexParser implements Parser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Store an entry in the index.
      * 
      * @param index the index
      * @param argument the complete argument
@@ -203,9 +205,11 @@ public class MakeindexParser implements Parser {
      * @param encap the page encapsulator or <code>null</code> for none
      * @param display the display representation
      * @param level the level separating character
+     * @param open the range open character
+     * @param close the range close character
      */
     private void store(Index index, String argument, String p, String encap,
-            String display, char level) {
+            String display, char level, char open, char close) {
 
         String key = argument;
         List<String> list = new ArrayList<String>();
@@ -220,9 +224,21 @@ public class MakeindexParser implements Parser {
         for (String s : list) {
             k[i] = s;
         }
-
-        Entry entry = new Entry(k, display, AbstractPage.get(p, encap));
-        index.add(entry);
+        PageReference from = AbstractPage.get(p, null);
+        PageRange page;
+        String enc = encap;
+        if (encap == null || encap.equals("")) {
+            page = new PageRange(from, enc, false, false);
+        } else if (encap.charAt(0) == open) {
+            enc = encap.length() == 1 ? null : encap.substring(1);
+            page = new PageRange(from, enc, true, false);
+        } else if (encap.charAt(0) == close) {
+            enc = encap.length() == 1 ? null : encap.substring(1);
+            page = new PageRange(from, enc, false, true);
+        } else {
+            page = new PageRange(from, enc, false, false);
+        }
+        index.add(new Entry(k, display, page));
     }
 
 }

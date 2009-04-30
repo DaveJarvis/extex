@@ -21,8 +21,6 @@ package org.extex.exindex.makeindex.pages;
 import java.util.List;
 import java.util.logging.Logger;
 
-import org.extex.exindex.core.type.page.AbstractPage;
-import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.makeindex.Parameters;
 import org.extex.framework.i18n.LocalizerFactory;
 
@@ -62,11 +60,10 @@ public class MakeindexPageProcessor implements PageProcessor {
      */
     public MakeindexPageProcessor(Parameters params, Logger logger) {
 
-        super();
         this.logger = logger;
-        rangeOpen = Character.toString(params.getChar("range_open"));
-        rangeClose = Character.toString(params.getChar("range_close"));
-        delimR = params.getString("delim_r");
+        rangeOpen = Character.toString(params.getChar("index:range-open"));
+        rangeClose = Character.toString(params.getChar("index:range-close"));
+        delimR = params.getString("markup:range");
     }
 
     /**
@@ -74,49 +71,36 @@ public class MakeindexPageProcessor implements PageProcessor {
      * 
      * @see org.extex.exindex.makeindex.pages.PageProcessor#join(java.util.List)
      */
-    public void join(List<PageReference> pages) {
+    public void join(List<PageRange> pages) {
 
-        PageReference open = null;
-        String openEncap = null;
+        PageRange open = null;
 
         for (int i = 0; i < pages.size(); i++) {
-            PageReference p = pages.get(i);
-            String encap = p.getEncap();
-            if (encap == null) {
-                encap = "";
-            }
-            if (encap.startsWith(rangeOpen)) {
+            PageRange p = pages.get(i);
+            if (p.isOpen()) {
                 if (open != null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingClose"));
                 }
                 open = p;
-                openEncap = encap.substring(1);
-                pages.remove(i);
-                i--;
-            } else if (encap.startsWith(rangeClose)) {
+                p.setDelimiter(delimR);
+            } else if (p.isClose()) {
                 if (open == null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingOpen"));
                 } else {
-                    String enc =
-                            (encap.length() == 1 ? null : encap.substring(1));
-                    StringBuilder range = new StringBuilder();
-                    range.append(open.getPage());
-                    range.append(delimR);
-                    range.append(p.getPage());
-                    pages.set(i, AbstractPage.get(range.toString(), enc));
+                    open.setTo(p.getTo());
                     open = null;
-                }
-            } else if (open != null) {
-                if (openEncap.equals(encap)) {
                     pages.remove(i);
                     i--;
-                } else {
-                    logger.warning(LocalizerFactory.getLocalizer(getClass())
-                        .format("Incompatible"));
                 }
-
+            } else if (open != null) {
+                String oe = open.getEncap();
+                if ((oe == null && p.getEncap() == null) || //
+                        (oe != null && oe.equals(p.getEncap()))) {
+                    pages.remove(i);
+                    i--;
+                }
             }
         }
 
@@ -125,5 +109,4 @@ public class MakeindexPageProcessor implements PageProcessor {
                 "MissingClose"));
         }
     }
-
 }
