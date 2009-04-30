@@ -1,0 +1,4018 @@
+%%*****************************************************************************
+%% $Id$
+%%*****************************************************************************
+%%
+%% Copyright (C) 2009 ExTeX Group and individual authors listed below
+%%
+%% Permission is granted to copy, distribute and/or modify this
+%% document under the terms of the GNU Free Documentation License,
+%% Version 1.2 or any later version published by the Free Software
+%% Foundation. A copy of the license is included in the section
+%% entitled ``GNU Free Documentation License''.
+%%
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass[11pt,a4paper]{extex-doc}
+
+\usepackage{rule}
+\usepackage{menu}
+
+\lstset{basicstyle=\ttfamily\footnotesize}
+
+\def\Version{1.0}
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{titlepage}\parindent=0pt
+
+  \title{\ExTeX{} Coding Standards and Design~Guidelines}
+  \author{Gerd Neugebauer}
+
+  \maketitle
+
+  \begin{center}
+    \begin{abstract}
+      This document defines coding standards and design guidelines for
+      the development of \ExTeX. Object-oriented design and especially
+      programming in Java allow a broad variety of styles.  Due to the
+      goal of readbility and maintenance of the software it is highly
+      desirable to establish a uniform way of solving common tasks.
+      This guide provides an attempt into this direction.
+    \end{abstract}
+  \end{center}
+  \newpage
+  \footnotesize
+  \copyright\ 2009 The \ExTeX\ Group and individual authors listed below
+  \medskip
+  
+  Permission is granted to copy, distribute and/or modify this
+  document under the terms of the GNU Free Documentation License,
+  Version 1.2 or any later version published by the Free Software
+  Foundation. A copy of the license is included in the section
+  entitled ``GNU Free Documentation License''.
+
+  \vfill
+
+  Gerd Neugebauer\\
+  Im Lerchelsb\"ohl 5\\
+  64521 Gro\ss-Gerau (Germany)
+  \smallskip\par
+  \href{mailto://gene@gerd-neugebauer.de}{gene@gerd-neugebauer.de}
+\end{titlepage}
+
+\tableofcontents
+
+\newpage
+
+\chapter{Introduction}
+
+\section{Why Coding Standards and Design Guidelines?}
+
+It is often the prime goal to increase efficiency. This is especially
+true for software development in a team. The programming languages
+like Java or modeling languages for design like UML allow a broad
+variety of styles.
+
+The overall goal in development should be efficiency. This overall
+goal can be found in different aspects during the live cycle of
+software. In this context the phases ``design'', ``implementation'',
+and ``maintenance'' are of interest.
+
+To achieve efficiency in these phases uniformity of the design and the
+code should be aimed at. This can be done by enforcing general rules
+which are mandatory for all -- designers, programmers and
+maintainers.
+
+This document tries to collect a set of rules for this purpose.
+
+\section{Success Factors}
+
+These code standards and design guidelines can achieve the overall
+goals best when several success factors are met:
+
+\begin{description}
+\item[Know and Understand the Standards] The standards have to be
+  known and understood by everybody concerned.  Standards for the book
+  shelf are a waste.
+\item[Believe in the Standards] It should be consensus among the
+  developers that those standards are sensible and should be followed.
+  In case of diverging opinions try to find a common understanding and
+  a solution everybody can live with.
+\item[Apply the Standards while Coding] The attempt to apply standards
+  after the coding is complete brings in an enormous amount of work
+  without obvious advantages for the code. Thus the motivation is low
+  to perform this task. On the other side, following the standards
+  while coding imposes only a minor overhead.
+\item[Define a Stakeholder for the Standards] The developers following
+  the standards need to see a consumer for their efforts. Thus a role
+  has to be defined who checks the adherence to the standards and
+  provides feedback upon violation. One possibility is to integrate
+  this feedback into the build process.
+\item[Support the Standards with Tools] The best standards are those
+  which are followed automatically. This effect can be reached by
+  providing tools which are best integrated in the IDE.
+\end{description}
+
+
+\section{Tools}
+
+One of the success factors is the support of the standards with tools. In
+the \ExTeX{} project the following tools are used:
+
+\begin{description}
+\item[Checkstyle] (\url{http://checkstyle.sourceforge.net/}) is used in the
+  \ExTeX{} project to provide feedback on the code quality during the
+  development. Checkstyle is integrated in the Eclipse IDE and the Maven
+  build. 
+
+  Some of the rules can be translated into configuration instructions for
+  Checkstyle. 
+
+\item[Eclipse] (\url{http://www.eclipse.org/}) is the preferred IDE. Some of
+  the code conventions can directly be translated into preference settings.
+  Thus part of code creation and cleanup can be automated.
+  
+\item[Maven] (\url{http://maven.apache.org/}) is used as a build tool.
+  The Checkstyle rules are applied during the build and a report about
+  violations is generated.
+\end{description}
+
+
+\section{Typographic Conventions of this  Document}
+
+The rules in this document are presented in a fixed structure. Each
+rule consists of a \emph{Name and Number}, \emph{Description},
+\emph{Motivation}, \emph{Exceptions}, \emph{Counter Example},
+\emph{Example}, and \emph{Reference}. The first three sections are
+mandatory; the others are optional.
+
+In addition it has to be mentioned that the Sun Coding Standards
+\cite{Sun99} are the base for the most rules given here. Thus most
+rules of the Sun Coding Standards are cited more or less completely.
+
+
+\chapter{Rules and Recommendations}
+
+Whichever rules for the software design and implementation process are
+given they can only reflect the current knowledge and the current
+goals. Many experiences can not even be formulated as hard rules. Best
+practices show how problems have been solved successfully. The coining
+of patterns from those best practices seems to be often not straight
+forward.
+
+All rules given in the following sections are not strict in the sense
+that no exception is allowed. They should be understood as strong
+recommendations. There is only one hard rule which is indispensable:
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Justification for Rule Violations}
+  \begin{Description}
+    Whenever a rule is violated this has to be accompanied by
+    exhaustive justification and documentation in written form.
+  \end{Description}
+  \begin{Motivation}
+    Rules can be understood as recommendations and exceptions to the
+    rule are \emph{not} prohibited. Nevertheless the goal is to
+    minimize the violations of rules by putting a penalty on the
+    violation in form of written documentation.
+  \end{Motivation}
+  \begin{Exceptions}
+    none
+  \end{Exceptions}
+  \begin{References}
+    cf. \cite{VAB00} p.3
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Justification for Performance Tweaks}
+  \begin{Description}
+    The only justification for changes because of performance issues
+    are measured performance results.
+  \end{Description}
+  \begin{Motivation}
+    Often pure speculation about performance impacts leads to obscure
+    code.  The only way to avoid this trap is to allow the performance
+    argument only if justified by practical experiments -- which have
+    to be documented properly.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\chapter{Coding Standards}
+
+\section{Language}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Coding and Documentation Language is English}
+  \begin{Description}
+    The language used for coding and documentation is English in the
+    US dialect.
+  \end{Description}
+  \begin{Motivation}
+    \ExTeX\ is a project which aims at international users.  Thus it
+    is highly desirable to use a language widely used in the world of
+    computers.  Since the functionality is mainly technical there is
+    no terminology in another language to honor and this rule may not
+    lead to contradictions.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+  \begin{ToolSupport}
+    In Eclipse it is possible to turn on spell checking. This can be
+    accomplished in the preferences which can be opened via the menu
+    \Menu[Window][Preferences]. The spell checker can be found under
+    the key \Menu[General][Editors][Text Editors][Spelling]. See the
+    following figure for the sample settings:
+
+    \includegraphics[width=.8\linewidth]{image/General-Spelling.png}
+  \end{ToolSupport}
+\end{Rule}
+
+
+\section{File Names}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Common Suffixes for Files}
+  \begin{Description}
+    This section lists commonly used file suffixes and names.
+    \smallskip
+
+    \begin{tabular}{ll}\toprule
+      \emph{Suffix}         &\emph{Description}\\\midrule
+      \texttt{.java}	    &Java source\\
+      \texttt{.class}	    &Java byte code\\
+      \texttt{.jar}	    &Java archive\\
+      \texttt{.properties}  &Properties file\\\bottomrule
+    \end{tabular}
+  \end{Description}
+  \begin{Motivation}
+    To achieve the uniformity on the level of files, some naming
+    conventions are necessary. Here the suffixes for some files are
+    specified.
+  \end{Motivation}
+  \begin{Note}
+    Those suffixes are not a surprise. They just manifest the
+    well-known practice supported by the tools and used widely.
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 2.1 and extensions
+  \end{References}
+\end{Rule}
+           
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Common Names for Files}
+  \begin{Description}
+    This section lists commonly used file suffixes and names.
+    \smallskip
+
+    \begin{tabular}{lp{.75\linewidth}}\toprule
+      \emph{File Name}       &\emph{Description}\\\midrule
+      \texttt{pom.xml}	     &Maven configuration for building a project\\
+      \texttt{README.html}   &The preferred name for the file that summarizes
+                              the contents of a particular directory.
+                              Especially each top level directory for
+                              a component should have such a description.\\
+      \texttt{index.html}    &The name of a file that summarizes the contents
+                              of a directory which is not a package.\\
+      \texttt{package.html}  &The name of a file that summarizes the contents
+                              of a package.\\
+      \texttt{LICENSE.html}  &The name of a file that contains the
+                              license conditions for a component.\\\bottomrule
+    \end{tabular}
+  \end{Description}
+  \begin{Motivation}
+    To achieve the uniformity on the level of files, some naming
+    conventions are necessary. Here some common file types are named.
+  \end{Motivation}
+  \begin{References}
+    cf. \cite{Sun99} rule 2
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Special Characters in File and Directory Names}
+  \begin{Description}
+    File and Directory names should consist of ASCII characters
+    without white-space only. Especially the use of the space
+    character and extended characters (with ASCII code > 127) are
+    prohibited.
+  \end{Description}
+  \begin{Motivation}
+    There exist many programs which can not deal with white-space in
+    file or directory names especially well. Usually those white-space
+    characters have to be escaped in some way. This makes it
+    cumbersome to deal with those files and directories.
+  \end{Motivation}
+  \begin{Note}
+    Beware of strange characters in the \emph{complete} path. The
+    workspace should not be placed in such a directory. Otherwise you
+    might experience strange effects with some tools.
+  \end{Note}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+MyFile.txt
+    \end{lstlisting}
+  \end{Example}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+My File.txt
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Note}
+    Beware that file names are in general case sensitive -- even so
+    some ``operating systems'' treat them case insensitive.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Summary of Directories and Packages}
+  \begin{Description}
+    Consider writing an \texttt{index.html} file in each directory
+    briefly outlining the purpose and structure of the package. For
+    Java packages the file name \texttt{package.html} should be used.
+  \end{Description}
+  \begin{Motivation}
+    The name \texttt{package.html} is used by JavaDoc to find the
+    summary files for packages.  Thus it is highly desirable to use
+    this name for packages.  On the other side the name
+    \texttt{index.html} is used by Web servers as the default name.
+    Thus the directory containing such a file can easily be published
+    on the Internet.
+  \end{Motivation}
+  \begin{References}
+    \cite{Lea00} with modifications
+  \end{References}
+\end{Rule}
+
+
+\section{File Organization }
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Sectioning of Files}
+  \begin{Description}
+    A file consists of sections that should be separated by blank
+    lines and an optional comment identifying each section.
+    Java source files have the following ordering:
+    \begin{itemize}
+    \item Beginning comments
+    \item Package and import statements
+    \item Class and Interface declarations
+    \end{itemize}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} section 3 and modifications 
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Long Files}
+  \begin{Description}
+    Files longer than 2000 lines are cumbersome and should be avoided.
+  \end{Description}
+  \begin{Motivation}
+    Long files are hard to read and understand as a whole.  Usually a
+    class should have a restricted task and a method should be short
+    and concise. Thus shortness is preferred.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} section 3 and extensions
+  \end{References}
+\end{Rule}
+
+
+\section{Projects and Components}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Components are Projects}
+  \begin{Description}
+    Components are put into (sub-)projects. They are kept in a directory of
+    their own. They specify their dependencies to other components.
+  \end{Description}
+  \begin{Motivation}
+    The concept of a component is not directly supported by Java. Thus it is
+    necessary to define a layer above the programming language for the
+    components.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+
+\section{Packages}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Creation of Packages}
+  \begin{Description}
+    Create a new Java package for each self-contained project or group
+    of related functionality.
+    
+    Create and use directories in accord with Java package
+    conventions.
+  \end{Description}
+  \begin{Motivation}
+    Packages are a means to structure the source code. This means
+    should be used wisely to support readability and ease the
+    navigation in the packages.
+  \end{Motivation}
+  \begin{References}
+    \cite{Lea00}
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Test Packages}
+  \begin{Description}
+    Place test cases for a package in a parallel test tree -- with the
+    same package name as the tested class.
+  \end{Description}
+  \begin{Motivation}
+    The same package name allows test to be written for protected
+    methods as well. Thus the contracts to derived classes can be
+    tested.
+  \end{Motivation}
+  \begin{Note}
+    For black box tests it is necessary to have a test class which is
+    \emph{not} in the same package as the tested class. This is
+    optionally allowed as well.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{File Names for Test Classes}
+  \begin{Description}
+    The default test cases for the class \texttt{Abc} are named
+    \texttt{AbcTest}.
+  \end{Description}
+  \begin{Motivation}
+    A naming convention for test files does make sense. The given
+    naming convention follows the practice for JUnit tests.
+  \end{Motivation}
+  \begin{Note}
+    If necessary the file named \texttt{AbcTest} can contain the
+    definition of a test suite which uses other classes.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{Java Source Files}
+
+The overall goal of the rules in this section is to provide adequate
+documentation. The primary reader is someone who applies the software
+but does not have the sources at hand. Thus all information required
+for this task has to be provided in the documentation. Among this is
+the complete description of the interface with the assumptions which
+can not be expressed by the signature.
+
+As a technical means JavaDoc is used to prepare the documentation.
+Thus all information requested by JavaDoc should be provided.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{One Class or Interface per File}
+  \begin{Description}
+    Each Java source file contains a single public class or interface.
+  \end{Description}
+  \begin{Motivation}
+    This rule leads to short files, which supports the readability of
+    code.
+  \end{Motivation}
+  \begin{Exceptions}
+    When private classes and interfaces are associated with a public
+    class, you can put them in the same source file as the public
+    class. The public class should be the first class or interface in
+    the file.
+  \end{Exceptions}
+  \begin{Note}
+    This rule does not forbit inner classes or interfaces.
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 3.1 and extensions
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Beginning Comments in Java Files}
+  \begin{Description}
+    All source Java files should begin with a C-style comment that lists
+    the class name, version information, date, and copyright notice:
+    \begin{lstlisting}[language=Java,basicstyle=\ttfamily\scriptsize]
+/*
+ * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * 
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or (at
+ * your option) any later version.
+ * 
+ * This library is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ * 
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ */
+    \end{lstlisting}
+    The year should be adjusted to reflect the current year in the
+    copyright notice above.
+  \end{Description}
+  \begin{Motivation}
+    The beginning of the file should contain the uniform legal stuff.
+    Information that is contained somewhere else should not be
+    repeated in the global header. The motivation is to reduce the
+    expenses of doubled maintenance and the risk of diverging
+    contents. This holds especially for:
+    \begin{description}
+    \item [Class name/interface name] This information is already
+      contained in the file name and the class or interface
+      declaration.
+    \item [Version information] This should be placed -- automatically
+      -- in the \texttt{@version} tag of the JavaDoc summary.
+    \item [History information and change log] This can be found in
+      the configuration management system.
+    \end{description}
+  \end{Motivation}
+  \begin{Note}
+    The year has to be adjusted at the beginning of each year to
+    reflect the current year. For several years the form
+    \emph{from}-\emph{to} should be used. For instance
+    \texttt{2003-2009}.
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 3.1.1 and extensions
+  \end{References}
+  \begin{ToolSupport}
+    Eclipse provides a means to configure code templates. Those templates
+    are instanciated when needed. The configuration can be found in the
+    dialog started with \Menu[Window][Preferences]. The settings can be
+    found under \Menu[Java][Code Style][Code Templates][Code][New Java
+    files]. 
+
+    You can set up the template to include the current year and other
+    fragments. They are accessible via template variables.
+    An example can be seen in the figure below:
+
+    \includegraphics[width=.8\linewidth]{image/Template-New-Java-Files.png}
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{package} and \texttt{import} Statements}
+  \begin{Description}
+    The first non-comment line of most Java source files is a \texttt{package}
+    statement. After that, \texttt{import} statements can follow.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{langugae=Java}
+package java.awt;
+
+import java.awt.peer.CanvasPeer;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 3.1.2 and extensions
+  \end{References}
+\end{Rule}
+                
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Sort \texttt{import} Statements}
+  \begin{Description}
+    The \texttt{import} statements should be sorted alphabetically.
+  \end{Description}
+  \begin{Motivation}
+    The sorting brings together the classes belonging to one package.
+    Thus the dependencies of the current class from other packages can
+    be grasped easier.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+import java.util.Map;
+import java.util.HashMap;      
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+import java.util.HashMap;
+import java.util.Map;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+  \begin{ToolSupport}
+    In Eclipse it is possible to define the sort order for imports. This can be
+    accomplished in the preferences which can be opened via the menu
+    \Menu[Window][Preferences]. The sort order can be found under
+    the key \Menu[Java][Code Style][Organize Imports]. See the
+    following figure for sample settings:
+
+    \includegraphics[width=.8\linewidth]{image/Java-Imports.png}
+    
+    The sorting of imports can be triggered with the function
+    \Menu[Source][Organize Imports] or the assigned shortcut.
+    Alternatively it can be integrated in the save actions (see
+    section~\ref{save.actions}).
+  \end{ToolSupport}
+\end{Rule}                
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No * Forms of \texttt{import} Statements}
+  \begin{Description}
+    Avoid the use of * forms for imports.
+  \end{Description}
+  \begin{Motivation}
+    The * forms of \texttt{import} statements reduce the readability since
+    it is not clear which imports are really meant. In very rare cases all
+    imports specified by a * form are needed.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+import java.util.*;
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+import java.util.HashMap;
+import java.util.Map;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Lea00}; \cite{Amb99} rule 7.2.1
+  \end{References}
+  \begin{ToolSupport}
+    In Eclipse it is possible to define the number of imports before
+    the star forms are used. If this number is set to a high number
+    then no stared froms are used. This can be accomplished in the
+    preferences which can be opened via the menu
+    \Menu[Window][Preferences]. The sort order can be found under the
+    key \Menu[Java][Code Style][Organize Imports]. See the following
+    figure where the number is set to 999 for non-static and static
+    imports:
+
+    \includegraphics[width=.8\linewidth]{image/Java-Imports.png}
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Class and Interface Declarations}
+  \begin{Description}
+    The following table describes the parts of a class or interface
+    declaration, in the order that they should appear.
+    \smallskip
+
+    \begin{tabular}{p{.35\linewidth}p{.6\linewidth}}\toprule
+      \emph{Part of Declaration}&	\emph{Notes}\\\midrule
+      Class/interface documentation comment&	This is a JavaDoc comment.\\
+      \texttt{class} or \texttt{interface} statement&	\\
+      Class/interface implementation comment if necessary&
+        This is no JavaDoc comment.\\ 
+      Class (static) variables&
+        First the public class variables, then the protected, then
+        package level (no access modifier), and then the private.\\
+      Initializers&
+        Note that initializers should be avoided.\\
+      Instance variables&
+	First public, then protected, then package level (no access
+        modifier), and then private.\\  
+      Constructors&\\	
+      Static Methods&\\	
+      Methods&
+	These methods should simply be ordered alphabetically.\\ \bottomrule
+    \end{tabular}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 3.1.3 and extensions
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Class and Interface Documentation}
+  \begin{Description}
+    The class and interface documentation starts with a sentence
+    giving the overall task for the class or interface.
+    
+    It contains \texttt{@author} tags listing the original authors with the
+    complete name -- no abbreviation -- and their email address in the
+    following form:
+
+    \begin{lstlisting}{language=Java}
+ * @author <a href="mailto:Email">Full Name</a>
+    \end{lstlisting}
+ 
+    It contains the \texttt{@version} tag in the following form:
+
+    \begin{lstlisting}{language=Java}
+ * @version $Revision: number $
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    The first sentence is extracted by JavaDoc and used for the
+    summary. Thus it has to be suitable for this purpose.
+    
+    The version number of the given form is updated automatically by
+    version control system thus it minimizes the risk of wrong
+    information.
+  \end{Motivation}
+  \begin{Note}
+    The documentation of classes and interfaces should describe the
+    following things:
+
+    \begin{itemize}
+    \item What should it be used for?
+    \item What are the restrictions (pre-conditions)?
+    \end{itemize}
+  \end{Note}
+  \begin{Note}
+    The format of the substitutable keywords depends on the version
+    control system used. This is currently Subversion. A switch to
+    another version control system might have impact on this rule.
+  \end{Note}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+/**
+ * This interface describes the container for all data of an
+ * interpreter context.
+ * <p>
+ * ...
+ * </p>
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version \$Revision: 1.42 \$
+ */
+public interface Context
+        extends
+            ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Lea00} and extensions 
+  \end{References}
+\end{Rule}                       
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Method Documentation}
+  \begin{Description}
+    Each method is documented with JavaDoc comments.
+    
+    Here the following order of the elements should to be used:
+
+    \begin{itemize}
+    \item \emph{Description}\\
+      A description of the methods functionality for the user's point
+      of view. The first sentence should summarize the method's
+      functionality.
+    \item \texttt{@param}\\
+      For each parameter the corresponding \texttt{@param} tag has to
+      appear.  The order of the \texttt{@param} tags is the same as
+      the order of the parameters. This block is omitted for methods
+      without parameters.
+    \item \texttt{@returns}\\
+      explains the return value. This block is omitted for void
+      methods.
+    \item \texttt{@throws}\\
+      For each checked exception a @throws declaration has to be
+      given.
+    \item \texttt{@see}\\
+      declares references to other resources. This block is optional.
+    \item \texttt{@author}\\
+      declares the authors of the method. This block should be omitted
+      if the author is the author of the whole package.
+    \item \texttt{@since}\\
+      declares a first release date for the method. This block is
+      optional.
+    \item \texttt{@deprecated}\\
+      declares the method to be deprecated. This block is optional.
+    \end{itemize}
+  \end{Description}
+  \begin{Motivation}
+    The overall goal is to get appropriate documentation. The tags
+    given tags are used by JavaDoc. The order given should ensure that
+    the code is documented uniformly and thus the readability is
+    supported.
+  \end{Motivation}
+  \begin{Note}
+    The documentation of methods should describe the following things:
+
+    \begin{itemize}
+    \item What should it be used for?
+    \item What are the restrictions (pre-conditions and
+      post-conditions)?
+    \item Known bugs and limitations
+    \end{itemize}
+  \end{Note}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+/**
+ * The method <tt>setErrorMessage</tt> is a setter for the last
+ * error message.
+ * <p>
+ * ...
+ * </p>
+ *
+ * @param message the message to set.
+ *
+ * @throws SetterException in the case that the message could not
+ * be sent to the registered listeners.
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @since 1.0
+ * @deprecated Use the new method
+ *    {@link #setLastErrorMessage() setLastErrorMessage} instead.
+ */
+public void setErrorMessage(String message) 
+        throws SetterException {
+    ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Documentation of Fields}
+  \begin{Description}
+    Each field has to be documented with a JavaDoc comment.
+    
+    The tags \texttt{@author}, \texttt{@since}, and \texttt{@deprecated} can
+    optionally be used as for methods.
+  \end{Description}
+  \begin{Motivation}
+    Usually instance variables are not seen outside of the implementing
+    class. Thus the documentation does not belong to the interface.
+    Nevertheless the given rule has the impact that the documentation of the
+    variables is done in the same way as for methods. This supports the
+    readability.
+  \end{Motivation}
+  \begin{Note}
+    Method local variables need not to be documented with JavaDoc.
+  \end{Note}
+  \begin{Note}
+    This rule also covers static fields, i.e.  constants.
+  \end{Note}
+  \begin{Note}
+    The documentation of methods should describe the following things:
+    \begin{itemize}
+    \item What should it be used for?
+    \item What are the restrictions (allowed values; invariants)?
+    \end{itemize}
+  \end{Note}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+/**
+ * The field <tt>errorCount</tt> contains the number of
+ * recoverable errors encountered so far.
+ * <p>
+ * ...
+ * </p>
+ *
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @since 1.0
+ */
+private int errorCount = 0;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{Code Formatting}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Indentation by Four Spaces}
+  \begin{Description}
+    Four spaces should be used as the unit of indentation.
+    
+    Tabs must not appear in the Java source files.
+  \end{Description}
+  \begin{Motivation}
+    Uniformity when viewed with different IDEs or printed can be
+    achieved only when the use of tabs is omitted since they are
+    interpreted differently in different environments.
+    
+    Sometimes a full tab (8 spaces) or just 2 spaces are recommended
+    for indentation. A full tab leads to really deep indentation which
+    easily conflicts with the limit of 100 characters per line and
+    expressive method and variable names. Two spaces are very economic
+    wrt the space. But this encourages the use of deeper indentation
+    structures which is in conflict to the principle of simple and
+    easy to understand code.
+  \end{Motivation}
+  \begin{Note}
+    Tabs should be set exactly every 8 spaces (not 4) tomake their use
+    obvious.
+  \end{Note}
+  \begin{Example}
+    See the other examples of this document.
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 4 and extensions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Line Length}
+  \begin{Description}
+    Avoid lines longer than 80 characters.
+  \end{Description}
+  \begin{Motivation}
+    They are not handled well by many terminals and tools.
+  \end{Motivation}
+  \begin{Note}
+    Examples for use in documentation should have a shorter line
+    length -- generally no more than 70 characters.
+  \end{Note}
+  \begin{Exceptions}
+    Sometimes it is not possible to avoid long lines. This can be the case
+    for example for comment lines containing references with \texttt{@see}.
+  \end{Exceptions}
+  \begin{References}
+    \cite{Sun99} rule 4.1 and modifications
+  \end{References}
+  \begin{ToolSupport}
+    The line length can be checked with Checkstyle with the following
+    setting: 
+    \begin{lstlisting}{language=XML}
+<module name="LineLength">
+    <property name="ignorePattern" value="^.*@see.*$"/>
+    <property name="max" value="128"/>
+    <property name="tabWidth" value="8"/>
+</module>
+    \end{lstlisting}
+
+    This setting uses a maximal length of 128 to avoid too many warnings.
+
+    In Eclipse the formatter can be configured for a predefined line length.
+    This can be fond under the menu \Menu[Window][Preferences]{} under the key
+    \Menu[Java][Code Style][Formatter] on the tab \Menu[Line Wrapping].
+    See the figure below:
+    
+    \includegraphics[width=.8\linewidth]{image/Formatter-Line-Wrapping.png}
+
+    To get some visual feedback on the line length you can activate the
+    margin column. This can be achieved in the preferences under the key
+    \Menu[General][Editors][Tetx Editors]. Here you should activate
+    \Menu[Show print margin] and set \Menu[Print margin column] to
+    80. You can also set the color of the print margin. See the figure below:
+
+    \includegraphics[width=.8\linewidth]{image/General-Text-Editors.png}
+  \end{ToolSupport}
+\end{Rule}
+                
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Wrapping Lines}
+  \begin{Description}
+    When an expression will not fit on a single line, break it
+    according to these general principles:
+    
+    Break after a comma.
+    
+    Break before an operator.
+    
+    Prefer higher-level breaks to lower-level breaks.
+    
+    Align the new line with the beginning of the expression at the
+    same level on the previous line.
+    
+    If the above rules lead to confusing code or to code that's
+    squished up against the right margin, just indent 8 spaces
+    instead.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    Here are some examples of breaking method calls:
+    \begin{lstlisting}{language=Java}
+someMethod(longExpression1, longExpression2, longExpression3,
+        longExpression4, longExpression5);
+var = someMethod1(longExpression1,
+        someMethod2(longExpression2,
+                longExpression3));
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    Following are two examples of breaking an arithmetic expression.
+    The first is preferred, since the break occurs outside the
+    parenthesized expression, which is at a higher level.
+    \begin{lstlisting}{language=Java}
+longName1 = longName2 * (longName3 + longName4 - longName5)
+            + 4 * longname6; // PREFER
+longName1 = longName2 * (longName3 + longName4
+                         - longName5) + 4 * longname6; // AVOID
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    Following are two examples of indenting method declarations. The
+    first is the conventional case. The second would shift the second
+    and third lines to the far right if it used conventional
+    indentation, so instead it indents only 8 spaces.
+
+    \begin{lstlisting}{language=Java}
+//CONVENTIONAL INDENTATION
+someMethod(int anArg, Object anotherArg, String yetAnotherArg,
+        Object andStillAnother) {
+    ...
+}
+//INDENT 8 SPACES TO AVOID VERY DEEP INDENTS
+private static synchronized horkingLongMethodName(int anArg,
+        Object anotherArg, String yetAnotherArg,
+        Object andStillAnother) {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    Line wrapping for if statements should generally use the 8-space
+    rule, since conventional (4 space) indentation makes seeing the
+    body difficult. For example:
+
+    \begin{lstlisting}{language=Java}
+//DON'T USE THIS INDENTATION
+if ((condition1 && condition2)
+    || (condition3 && condition4)
+    ||!(condition5 && condition6)) { //BAD WRAPS
+    doSomethingAboutIt(); //MAKE THIS LINE EASY TO MISS
+}
+//USE THIS INDENTATION INSTEAD
+if ((condition1 && condition2)
+        || (condition3 && condition4)
+        ||!(condition5 && condition6)) {
+    doSomethingAboutIt();
+}
+//OR USE THIS
+if ((condition1 && condition2) || (condition3 && condition4)
+        ||!(condition5 && condition6)) {
+    doSomethingAboutIt();
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    Here are three acceptable ways to format ternary expressions:
+    \begin{lstlisting}{language=Java}
+alpha = (aLongBooleanExpression) ? beta : gamma;
+alpha = (aLongBooleanExpression) ? beta
+                                 : gamma;
+alpha = (aLongBooleanExpression)
+        ? beta
+        : gamma;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 4.2 and extensions
+  \end{References}
+\end{Rule}
+               
+
+\section{Comments}
+
+Java programs can have two kinds of comments: implementation comments and
+documentation comments. Implementation comments are those found in C++,
+which are delimited by \texttt{/*...*/}, and \texttt{//}. Documentation
+comments (known as ``doc comments'') are Java-only, and are delimited by
+\texttt{/**...*/}. Doc comments can be extracted to HTML files using the
+JavaDoc tool.
+
+Implementation comments are means for commenting out code or for
+comments about the particular implementation. Doc comments are meant
+to describe the specification of the code, from an implementation-free
+perspective to be read by developers who might not necessarily have
+the source code at hand.
+
+Comments should be used to give overviews of code and provide
+additional information that is not readily available in the code
+itself. Comments should contain only information that is relevant to
+reading and understanding the program. For example, information about
+how the corresponding package is built or in what directory it resides
+should not be included as a comment.
+
+Discussion of nontrivial or non-obvious design decisions is
+appropriate, but avoid duplicating information that is present in (and
+clear from) the code. It is too easy for redundant comments to get out
+of date. In general, avoid any comments that are likely to get out of
+date as the code evolves.
+
+Note: The frequency of comments sometimes reflects poor quality of
+code. When you feel compelled to add a comment, consider rewriting the
+code to make it clearer.
+
+Comments should not be enclosed in large boxes drawn with asterisks or
+other characters.
+
+Comments should never include special characters such as form-feed and
+backspace.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Block Comments}
+  \begin{Description}
+    Block comments are used to provide descriptions of files, methods,
+    data structures and algorithms. Block comments may be used at the
+    beginning of each file and before each method. They can also be
+    used in other places, such as within methods. Block comments
+    inside a function or method should be indented to the same level
+    as the code they describe.
+    
+    A block comment should be preceded by a blank line to set it apart
+    from the rest of the code.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+/*
+ * Here is a block comment.
+ */
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.1.1 and extensions (block comments for indent
+    omitted)
+  \end{References}
+\end{Rule}
+             
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Single-Line Comments}
+  \begin{Description}
+    Short comments can appear on a single line indented to the level
+    of the code that follows. If a comment can't be written in a
+    single line, it should follow the block comment format (see
+    above). A single-line comment should be preceded by a blank line.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Note}
+    In general the use of single-line comments should be avoided in
+    favor of better naming for variables and methods.
+  \end{Note}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+if (condition) {
+   /* Handle the condition. */
+   ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.1.2 and extensions
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Trailing Comments}
+  \begin{Description}
+    Very short comments can appear on the same line as the code they
+    describe, but should be shifted far enough to separate them from
+    the statements. If more than one short comment appears in a chunk
+    of code, they should all be indented to the same tab setting.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    Here's an example of a trailing comment in Java code:
+    \begin{lstlisting}{language=Java}
+if (a == 2) {
+   return TRUE;             /* special case */
+} else {
+   return isPrime(a);       /* works only for odd a */
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.1.3 and extensions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{End-Of-Line Comments}
+  \begin{Description}
+    The \texttt{//} comment delimiter can comment out a complete line or
+    only a partial line. It shouldn't be used on consecutive multiple lines
+    for text comments; however, it can be used in consecutive multiple lines
+    for commenting out sections of code.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    Examples of all three styles follow:
+    \begin{lstlisting}{language=Java}
+if (foo > 1) {
+   // Do a double-flip.
+   ...
+}
+else{
+   return false;                // Explain why here.
+}
+//if (bar > 1) {
+//
+//   
+// Do a triple-flip.
+// ...
+//}
+//else{
+//   
+return false;
+//}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.1.3 and extensions
+  \end{References}
+\end{Rule}
+               
+
+\section{Documentation Comments}
+
+JavaDoc comments describe Java classes, interfaces, constructors, methods,
+and fields. Each JavaDoc comment is set inside the comment delimiters
+\texttt{/**...*/}.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Documentation is Mandatory}
+  \begin{Description}
+    Each class, interface, constructor, method, and field has one
+    JavaDoc comment. This comment should appear just before the
+    declaration.
+  \end{Description}
+  \begin{Motivation}
+    The documentation serves several purposes. On one hand it can be
+    used as a reference for a user of the software. On the other hand
+    the documentation is a means to write down what the code is
+    supposed to do. Thus it can serve as a base against which the
+    actual behavior can be tested.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+/**
+ * The Example class provides ...
+ * ...
+ */
+public class Example { ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.2 and extensions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Indentation of JavaDoc Comments}
+  \begin{Description}
+    The first line of JavaDoc comment (\texttt{/**}) for classes and
+    interfaces is not indented; subsequent doc comment lines each have 1
+    space of indentation (to vertically align the asterisks).
+    
+    Members, including constructors, have 4 spaces for the first doc
+    comment line and 5 spaces thereafter.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    see above
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 5.2 and extensions
+  \end{References}
+\end{Rule}
+               
+
+\section{Declarations}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{One Declaration per Line}
+  \begin{Description}
+    Declarations are written one per line.
+  \end{Description}
+  \begin{Motivation}
+    One declaration per line is recommended since it encourages
+    commenting.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+int level, size;         // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+int level;               // indentation level
+int size;                // size of table
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 6.1 and extensions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Initialization}
+  \begin{Description}
+    Try to initialize local variables where they're declared.
+  \end{Description}
+  \begin{Exceptions}
+    The only reason not to initialize a variable where it's declared
+    is if the initial value depends on some computation occurring
+    first.
+  \end{Exceptions}
+  \begin{Motivation}
+    One source for bugs are non-initialized variables. To avoid this
+    problem it is a good practice to initialize variables as soon as
+    possible. The earliest place to do so is in the declaration. This
+    is enforced here.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+int level;                      //AVOID!
+int size = computeSize();
+level = size/2;
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+int size = computeSize();
+int level = size/2;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 6.2 and extensions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Placement}
+  \begin{Description}
+    Declare variables as late as possible.
+  \end{Description}
+  \begin{Exceptions}
+    The only reason not to declare variables late is the declaration
+    of variables outside of a loop for performance tuning. This has to
+    be justified by experiments.
+  \end{Exceptions}
+  \begin{Motivation}
+    Declaring variables early leads to a large list of variable
+    declarations at the beginning of a block. It also supports the
+    ``reuse'' of variables. Both effects have to be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+String trimmedPart;
+
+for (i = 0; i < parts.length; i++) {
+    ...
+    trimmedPart = parts[i].trim();
+    if ( trimmedPart.startsWith("") ) {
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+for (i = 0; i < parts.length; i++) {
+    ...
+    String trimmedPart = parts[i].trim();
+    if ( trimmedPart.startsWith("") ) {
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none; cf. \cite{Sun99} rule 6.3
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Shadowing of Variables}
+  \begin{Description}
+    Avoid local declarations that hide declarations at higher levels.
+  \end{Description}
+  \begin{Motivation}
+    When variables are shadowed the readability of the code decreases
+    drastically and the risk of bugs increases. Thus it should be
+    avoided.
+  \end{Motivation}
+  \begin{Exceptions}
+    Shadowing is permitted in setter methods for the identical named
+    arguments and fields and in constructors.
+  \end{Exceptions}
+  \begin{CounterExample}
+    For example, do not declare the same variable name in an inner
+    block:
+    \begin{lstlisting}{language=Java}
+private int count;
+...
+private void myMethod() {
+    if (condition) {
+        int count;                // AVOID!
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    \cite{Sun99} rule 6.3
+  \end{References}
+  \begin{ToolSupport}
+    The shadowing can be checked with Checkstyle with the following
+    setting: 
+    \begin{lstlisting}{language=XML}
+<module name="HiddenField">
+    <property name="tokens" value="PARAMETER_DEF, VARIABLE_DEF"/>
+    <property name="ignoreConstructorParameter" value="true"/>
+    <property name="ignoreSetter" value="true"/>
+</module>
+    \end{lstlisting}
+  \end{ToolSupport}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Formatting of Class and Interface Declarations}
+  \begin{Description}
+    When coding Java classes and interfaces, the following formatting
+    rules should be followed:
+    
+    No space between a method name and the parenthesis ``\verb|(|'' starting
+    its parameter list.
+    
+    Open brace ``\verb|{|'' appears at the end of the same line as the
+      declaration statement.
+      
+      Closing brace ``\verb|}|'' starts a line by itself indented to match
+    its corresponding opening statement, except when it is a null
+    statement the ``\verb|}|'' should appear immediately after the
+  ``\verb|{|''.
+    
+    Methods are separated by a blank line.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+class Sample extends Object {
+    int ivar1;
+    int ivar2;
+
+    Sample(int i, int j) {
+        ivar1 = i;
+        ivar2 = j;
+    }
+
+    int emptyMethod() {}
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 6.4
+  \end{References}
+\end{Rule}
+     
+
+\section{Statements}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Simple Statements}
+  \begin{Description}
+    Each line should contain at most one statement.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+argv++; argc--;    // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+argv++;            // Correct
+argc++;            // Correct
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 7.1
+  \end{References}
+\end{Rule}
+
+Compound statements are statements that contain lists of statements
+enclosed in braces ``\verb|{| \emph{statements} \verb|}|''.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Indentation of Compound Statements}
+  \begin{Description}
+    The enclosed statements should be indented one more level than the
+    compound statement.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 7.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Braces of Compound Statements}
+  \begin{Description}
+    The opening brace should be at the end of the line that begins the
+    compound statement.              
+    
+    The closing brace should begin a line and be indented to the
+    beginning of the compound statement.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+if (condition) {
+    statement;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 7.2
+  \end{References}
+\end{Rule}
+                
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Braces are Mandatory for Control Structures}
+  \begin{Description}
+    Braces are used around all statements, even single statements,
+    when they are part of a control structure, such as an if-else or
+    for statement.
+  \end{Description}
+  \begin{Motivation}
+    This makes it easier to add statements without accidentally
+    introducing bugs due to forgetting to add braces.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if (condition)        //AVOID! THIS OMITS THE BRACES {}!
+    statement;
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+if (condition) {
+    statement;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 7.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{return} Statements}
+  \begin{Description}
+    A \texttt{return} statement with a value should not use parentheses
+    unless they make the return value more obvious in some way.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+return;
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+return myDisk.size();
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+return (size ? size : defaultSize);
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 7.3
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{if}, \texttt{if}-\texttt{else}, \texttt{if}-\texttt{else}-\texttt{if} \texttt{else} Statements}
+  \begin{Description}
+    The \texttt{if}-\texttt{else} class of statements should have the following form:
+
+    \begin{lstlisting}{language=Java}
+if ( condition) {
+   statements;
+}
+if ( condition) {
+   statements;
+} else {
+   statements;
+}
+if ( condition) {
+   statements;
+} else if ( condition) {
+   statements;
+} else {
+   statements;
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Note}
+    If statements always use braces {}.  (cf. ``Braces are Mandatory
+    for Control Structures'')
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 7.4
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{for} Statements}
+  \begin{Description}
+    A \texttt{for} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+for (initialization; condition; update) {
+   statements;
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Note}
+    \texttt{for} statements always use braces {}.  (cf. ``Braces are Mandatory
+    for Control Structures'')
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 7.5
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Empty \texttt{for} Statements}
+  \begin{Description}
+    An empty \texttt{for} statement (one in which all the work is done in
+    the initialization, condition, and update clauses) should have the
+    following form:
+    \begin{lstlisting}{language=Java}
+for (initialization; condition; update) {
+    // Comment
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    The comment is mandatory and has to explain, why the for statement
+    is empty.
+  \end{Motivation}
+  \begin{References}
+    cf. \cite{Sun99} rule 7.5
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Comma Operator in \texttt{for} Statements}
+  \begin{Description}
+    Avoid to use a comma operator in a \texttt{for} statement.
+  \end{Description}
+  \begin{Motivation}
+    The use of a comma operator is usually accompanied with complex
+    loop logic. This should be avoided where possible to increase
+    readability and maintainability
+  \end{Motivation}
+  \begin{Note}
+    If needed, use separate statements before the \texttt{for} loop (for the
+    initialization clause) or at the end of the loop (for the update
+    clause).
+    
+    Alternatively you should consider to use a \texttt{while} loop instead
+    of the for loop whenever the comma operator seems necessary to write
+    clear code.
+  \end{Note}
+  \begin{References}
+    cf. \cite{Sun99} rule 7.5
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{while} Statements}
+  \begin{Description}
+    A \texttt{while} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+while (condition) {
+   statements;
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+\cite{Sun99}
+rule 7.6
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Empty \texttt{while} Statements}
+  \begin{Description}
+    An empty \texttt{while} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+while (condition) {
+    // Comment
+}
+    \end{lstlisting}
+    Here the comment is mandatory and explains why the loop is empty
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    cf. \cite{Sun99} rule 7.6
+  \end{References}
+\end{Rule}                 
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{do}-\texttt{while} Loops}
+  \begin{Description}
+    A \texttt{do}-\texttt{while} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+do {
+   statements;
+} while (condition);
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 7.7
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Empty \texttt{do}-\texttt{while} Statements}
+  \begin{Description}
+    Avoid using an empty \texttt{do}-\texttt{while} statement.
+  \end{Description}
+  \begin{Motivation}
+    An empty \texttt{do}-\texttt{while} statement can always be
+    written as empty while statement. Thus this rule helps to reduce
+    the expressive variety and increases readability.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{switch} Statements}
+  \begin{Description}
+    A \texttt{switch} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+switch (condition) {
+case ABC:
+   statements;
+   /* falls through */
+case DEF:
+   statements;
+   break;
+case XYZ:
+   statements;
+   break;
+default:
+   statements;
+   break;
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 7.8
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Fall-Through Cases in \texttt{switch} Statements}
+  \begin{Description}
+    Every time a case falls through (doesn't include a \texttt{break}
+    statement), add a comment where the \texttt{break} statement would
+    normally be.
+  \end{Description}
+  \begin{Exceptions}
+    A case without any statements associated directly does not need to
+    contain a justifying comment.
+  \end{Exceptions}
+  \begin{Motivation}
+    The comment does document that the fall-through occurs on purpose
+    and does not just result from an omission. Thus it helps to
+    understand the code and increases its maintainability.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+switch (condition) {
+case ABC:
+case DEF:
+    statements;
+default:
+    statements;
+    break;
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+switch (condition) {
+case ABC:
+case DEF:
+    statements;
+    /* falls through */
+default:
+    statements;
+    break;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{Sun99} rule 7.8
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{default} in \texttt{switch} Statements}
+  \begin{Description}
+    Every \texttt{switch} statement should include a default case.  The
+    \texttt{break} in the default case is redundant, but it prevents a
+    fall-through error if later another case is added.
+  \end{Description}
+  \begin{Motivation}
+    Usually the default case contains some kind of error handling. It
+    is a common mistake to omit the default case and do nothing if the
+    given cases are not met.
+  \end{Motivation}
+  \begin{Note}
+    At least an empty default statement can be included which carries
+    a comment, that nothing has to be done and this is not an
+    oversight.
+  \end{Note}
+  \begin{References}
+    \cite{Sun99} rule 7.8
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{\texttt{try}-\texttt{catch} Statements}
+  \begin{Description}
+    A \texttt{try}-\texttt{catch} statement should have the following form:
+    \begin{lstlisting}{language=Java}
+try {
+   statements;
+} catch (SomeException e) {
+   statements;
+}
+    \end{lstlisting}
+    
+    A \texttt{try}-\texttt{catch} statement may also be followed by finally,
+    which executes regardless of whether or not the try block has completed
+    successfully.
+
+    \begin{lstlisting}{language=Java}
+try {
+   statements;
+} catch (SomeException e) {
+   statements;
+} finally {
+   statements;
+}
+    \end{lstlisting}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 7.8
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Empty \texttt{catch} Blocks}
+  \begin{Description}
+    Avoid empty \texttt{catch} blocks.
+  \end{Description}
+  \begin{Motivation}
+    Empty \texttt{catch} blocks should at least be commented. In general
+    ignoring an error is seldom a good idea.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+try {
+    ...
+} catch (IOException e) {
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+try {
+    ...
+} catch (IOException e) {
+    // The IOException is ignored since nobody is
+    // interested in the output anyhow.
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{White Space}
+
+Blank lines improve readability by setting off sections of code that
+are logically related.
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{One Blank Line}
+  \begin{Description}
+    One blank line should always be used in the following
+    circumstances:
+    \begin{itemize}
+    \item Between sections of a source file
+    \item Between methods
+    \item Between the local variables in a method and its first
+      statement
+    \item Before a block or single-line comment
+    \item Between logical sections inside a method to improve
+      readability
+    \end{itemize}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} rule 8.1
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Spaces between Keyword and Parenthesis}
+  \begin{Description}
+    A keyword followed by a parenthesis should be separated by a
+    space.
+  \end{Description}
+  \begin{Motivation}
+    Note that a blank space should not be used between a method name
+    and its opening parenthesis.  This helps to distinguish keywords
+    from method calls.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+while (true) {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Space after Commas}
+  \begin{Description}
+    A blank space should appear after commas in argument lists.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+x = t.abc(y, z);
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Spaces around Binary Operators}
+  \begin{Description}
+    All binary operators except ``\texttt{.}'' should be separated from
+    their operands by spaces.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+a += c + d;
+a = (a + b) / (c * d);
+
+while (d++ = s++) {
+    n++;
+}
+prints("size is " + foo + "\n");
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Space at Unary Operators}
+  \begin{Description}
+    Blank spaces should never separate unary operators such as unary minus,
+    increment (``\texttt{++}''), and decrement (``\texttt{--}'') from their
+    operands.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+while ((d ++ = s ++) != 0) {    // AVOID!
+    n ++;                       // AVOID!
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+while ((d++ = s++) != 0) {
+    n++;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+                
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Spaces in for Statements}
+  \begin{Description}
+    The expressions in a for statement should be separated by blank
+    spaces.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+for (expr1; expr2; expr3) {
+   ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Blank Space after Casts}
+  \begin{Description}
+    Casts should be followed by a blank space.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+myMethod((byte) aNum, (Object) x);
+
+myMethod((int) (cp + 5), ((int) (i + 3))
+                             + 1);
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 8.2
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Trailing Blank Space}
+  \begin{Description}
+    Avoid trailing space at the end of lines.
+  \end{Description}
+  \begin{Motivation}
+    Trailing white-space usually indicates some remainders which
+    should be eliminated for cleanness.
+  \end{Motivation}
+  \begin{References}
+      \cite{checkstyle}
+  \end{References}
+\end{Rule}
+
+
+\section{Naming Conventions}
+
+Naming conventions make programs more understandable by making them
+easier to read. They can also give information about the function of
+the identifier -- for example, whether it's a constant, package, or
+class -- which can be helpful in understanding the code.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Name Collisions}
+  \begin{Description}
+    Avoid to use the same name for several classes or interfaces in
+    different packages.
+  \end{Description}
+  \begin{Motivation}
+    If a name collision occurs, it is not immediately obvious which
+    class or interface one refers to. In the worst case it can even
+    happen that two classes or interfaces with the same name have to
+    be used in one file. Then we are forced to fully specify at least
+    one of them.  Thus the readability of code would be restricted.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Abbreviations}
+  \begin{Description}
+    Avoid to use abbreviations in names.
+  \end{Description}
+  \begin{Motivation}
+    An abbreviation is almost always harder to read. There is always
+    the potential risk of ambiguity and misunderstanding. The support
+    the readability of code, abbreviations should be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public TypesettingContext getTCtxt() {
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public TypesettingContext getTypesettingContext() {
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+none
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Packages}
+  \begin{Description}
+    Packages The prefix of a unique package name is always written in
+    all-lowercase ASCII letters and should be one of the top-level
+    domain names, currently com, edu, gov, mil, net, org, or one of
+    the English two-letter codes identifying countries as specified in
+    ISO Standard 3166, 1981.
+    
+    Subsequent components of the package name vary according to an
+    organization's own internal naming conventions. Such conventions
+    might specify that certain directory name components be division,
+    department, project, machine, or login names. 
+    
+    The base package for all \ExTeX\ components is
+
+    \begin{quote}
+      \texttt{org.extex}
+    \end{quote}
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} section 9 with modifications
+  \end{References}
+\end{Rule}
+             
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Classes}
+  \begin{Description}
+    Class names should be nouns, in mixed case with the first letter
+    of each internal word capitalized.
+    
+    Try to keep your class names simple and descriptive. Use whole
+    words avoid acronyms and abbreviations (unless the abbreviation is
+    much more widely used than the long form, such as URL or HTML).
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{References}
+    \cite{Sun99} section 9
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Abstract Classes}
+  \begin{Description}
+    Abstract classes have the name prefix ``\texttt{Abstract}''.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public abstract class AbstractExpandable() {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+ 
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Interfaces}
+  \begin{Description}
+    Interface names should be nouns or adjectives, in mixed case with
+    the first letter of each internal word capitalized.
+    
+    Try to keep your interface names simple and descriptive. Use whole
+    words avoid acronyms and abbreviations (unless the abbreviation is
+    much more widely used than the long form, such as URL or HTML).
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public interface Expandable {
+   ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public interface Context {
+    ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public interface ExpandableContext {
+    ...
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} section 9 with additions
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Additions to Mark Interfaces}
+  \begin{Description}
+    Interfaces should not be marked as such, e.g. by prefixes like
+    ``I''.
+  \end{Description}
+  \begin{Motivation}
+    Interfaces define the outside view of a component. Thus it is the
+    normal case to deal with interfaces instead of dealing with
+    implementing classes directly. The omission of a mark for
+    interfaces increases readability in this ``normal'' case and makes
+    it harder to use an implementation by accident just because a
+    (purely technical) prefix has been omitted.
+  \end{Motivation}
+  \begin{Note}
+    Instead of marking the interfaces it is always possible to mark
+    the implementing classes.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+interface IExpandable {             // AVOID!
+    ...
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+interface InterfaceExpandable {     // AVOID!
+    ...
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+interface ExpandableInterf {        // AVOID!
+    ...
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Methods}
+  \begin{Description}
+    Methods should be verbs, in mixed case with the first letter
+    lowercase, with the first letter of each internal word
+    capitalized. The verb can be followed by optional objects.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+run();
+
+runFast();
+
+getBackground();
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} section 9
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Factory Methods}
+  \begin{Description}
+    Factory methods for type \emph{ABC} are named create\emph{Abc}().
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public Context createContext() {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Lea00} and extensions; cf. \cite{Chi98}
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Setters}
+  \begin{Description}
+    Setter methods for instance variable \emph{ABC} are named
+    \texttt{set}\emph{Abc}(\ldots).
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability. This rule follows the conventions for JavaBeans.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+private Context context;
+
+public void setContext(Context context) {
+
+    this.context = context;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{VAB00} item 24
+  \end{References}
+\end{Rule}
+             
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Getters}
+  \begin{Description}
+    Getter methods for instance variable \emph{ABC} are named
+    \texttt{get}\emph{Abc}().
+  \end{Description}
+  \begin{Exceptions}
+    If the instance variable \emph{ABC} is Boolean then the getter is
+    named \texttt{is}\emph{Abc}(...) or \texttt{has}\emph{Abc}(...).
+  \end{Exceptions}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability. This rule follows the conventions for JavaBeans.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public boolean getExpandable() {
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above should be written instead as
+    \begin{lstlisting}{language=Java}
+public boolean isExpandable() {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{VAB00} item 24
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming Singleton Instance}
+  \begin{Description}
+    Singleton instance methods have the name \texttt{getInstance()}.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here for consistency.  In general singletons are
+    discouraged and this rule should be applied seldomly.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Variables}
+  \begin{Description}
+    Except for variables, all instance, class, and class constants are
+    in mixed case with a lowercase first letter. Internal words start
+    with capital letters.
+    
+    Variable names should not start with underscore \texttt{\_} or dollar
+    sign \texttt{\$} characters, even though both are allowed.
+    
+    Variable names should not contain any characters except the
+    letters a--z and A--Z and the digits 0--9.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{Note}
+    Variable names should be short yet meaningful. The choice of a
+    variable name should be mnemonic -- that is, designed to indicate
+    to the casual observer the intent of its use.
+    
+    One-character variable names should be avoided except for
+    temporary throwaway variables.  Common names for temporary
+    variables are i, j, k, m, and n for integers; c, d, and e for
+    characters.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private int _context_counter;          // AVOID!
+private int _contextCounter;           // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+int i;
+char c;
+float myWidth;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} section 9
+  \end{References}
+\end{Rule}
+                
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Class or Instance}
+  \begin{Description}
+    No special prefixes or postfixes are used to mark class or
+    instance variables.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private int _context_counter;   // AVOID!
+private int _contextCounter;    // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+private int contextCounter;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Naming of Constants}
+  \begin{Description}
+    The names of variables declared class constants should be all uppercase
+    with words separated by underscores ``\texttt{\_}''.
+  \end{Description}
+  \begin{Motivation}
+    This rule is here to enforce uniformity of the code and enhance
+    readability.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+static final int minWidth = 4;
+static final int maxWIDTH = 999;
+static final int GETtheCPU = 1;
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+static final int MIN_WIDTH = 4;
+static final int MAX_WIDTH = 999;
+static final int GET_THE_CPU = 1;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} section 9
+  \end{References}
+\end{Rule}
+               
+
+\section{Minimality}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Unused \texttt{import} Statements}
+  \begin{Description}
+    Avoid the declaration of imports which are not required.
+  \end{Description}
+  \begin{Motivation}
+    To declare unused import statements indicate dependencies which are
+    not needed. Thus they reduce readability of code.
+  \end{Motivation}
+  \begin{Note}
+    Eclipse 3.4 has a ``feature'' to need import statements for
+    classes or interfaces mentioned in \texttt{@link} or \texttt{@see}
+    sections of Javadoc comments.
+  \end{Note}
+  \begin{References}
+    \cite{Lea00}
+  \end{References}
+  \begin{ToolSupport}
+    The unused imports can be checked with Checkstyle with the
+    following setting:
+    \begin{lstlisting}{language=XML}
+<module name="UnusedImports"/>
+    \end{lstlisting}
+    
+    In Eclipse the save actions can be configured to remove unused
+    imports upon saving.  This setting can be fond under the menu
+    \Menu[Window][Preferences]{} under the key
+    \Menu[Java][Editor][Save Actions]. There you can add the
+    configuration option \textsf{Remove unused imports}.
+    See the figure below:
+    
+    \includegraphics[width=.8\linewidth]{image/Java-Save-Imports.png}
+  \end{ToolSupport}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Unused Variables}
+  \begin{Description}
+    Avoid unused variables.
+  \end{Description}
+  \begin{Motivation}
+    The declaration of an unused variable reduces the readability of
+    code. Thus it should be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private void getText() {
+    int whatsIt = 42;               // AVOID!
+    return text;
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Unused private Methods}
+  \begin{Description}
+    Avoid unused private Methods.
+  \end{Description}
+  \begin{Motivation}
+    The definition of an unused private method reduces the readability
+    of code. Thus it should be avoided.
+  \end{Motivation}
+  \begin{Note}
+    There is no such rule for protected or public methods since the
+    detection of unused methods is not trivial -- especially for methods
+    contained in a library.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Declaration of Exceptions which are not Thrown}
+  \begin{Description}
+    Avoid the declaration of exceptions which are not thrown.
+  \end{Description}
+  \begin{Motivation}
+    The definition of an unused \texttt{Exception} reduces the
+    readability of code. Thus it should be avoided.
+  \end{Motivation}
+  \begin{Exceptions}
+    For abstract classes or methods it can be necessary to declare a
+    general Exception to be thrown which might be used in a sub-class.
+  \end{Exceptions}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private void getText() throws IOException {       // AVOID!
+
+    return text;
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Unnecessary \texttt{instanceof} Tests}
+  \begin{Description}
+    Avoid unnecessary \texttt{instanceof} tests.
+  \end{Description}
+  \begin{Motivation}
+    The use of an unused test reduces the readability of code. Thus it
+    should be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private void doit(String arg) {
+
+    if ( arg instanceof String ) {       // AVOID!
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Unnecessary Semicolons}
+  \begin{Description}
+    Avoid unnecessary semicolons.
+  \end{Description}
+  \begin{Motivation}
+    Unused semicolons clutter up the code and reduce the readability
+    of code. Thus they should be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+x = 42;;           // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{References}
+    \cite{checkstyle}
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Code Duplication}
+  \begin{Description}
+    Avoid duplication of code.
+  \end{Description}
+  \begin{Motivation}
+    Often the same code -- or nearly the same code -- can be found in
+    several methods. This is an indication of a bad design (bad smell
+    in \cite{Fow99}).
+  \end{Motivation}
+  \begin{References}
+    \cite{HT99} the DRY principle; \cite{Fow99} ``once and only once''
+  \end{References}
+\end{Rule}
+
+
+\chapter{Programming Practices}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Providing Access to Instance and Class Variables}
+  \begin{Description}
+    Any instance and class variables should be declared private.
+  \end{Description}
+  \begin{Motivation}
+    The principle of information hiding is hurt by presenting internals of a
+    class to the outside. A class has to expose just the features definable
+    in an interface -- with the addition of constructors.
+    
+    With a direct access to instance or class variables you can not change
+    your mind and compute them on the fly instead of storing them later on.
+  \end{Motivation}
+  \begin{Note}
+    You can always define getter and setter for the variables to provide
+    external access.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+protected int internalState = 42;      //AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+private int internalState = 42;        //OK
+
+protected int getInternalState() {
+    return mySecret;
+}
+
+protected void setInternalState(int state) {
+
+    this.internalState = state;
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{Lea00}\\
+    strong form of \cite{Sun99} rule 10.1
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Referring to Class Variables and Methods}
+  \begin{Description}
+    Avoid using an object to access a class (static) variable or
+    method.
+  \end{Description}
+  \begin{Motivation}
+    Static variables live on their own without an instance of the
+    class. Thus the access via an object does not reflect the real
+    dependencies. This makes the code harder to understand and should
+    be avoided.
+  \end{Motivation}
+  \begin{Note}
+    Use a class name instead.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+anObject.classMethod(); //AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+classMethod();          //OK
+AClass.classMethod();   //OK
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.2
+  \end{References}
+\end{Rule}
+             
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Chains of Method Invocation}
+  \begin{Description}
+    Avoid chains of method invocations.
+  \end{Description}
+  \begin{Motivation}
+    Chains of method invocations (deep access) are an indication that
+    a class does not provide the necessary means to perform the
+    desired action. Instead a sibling is exposed.
+  \end{Motivation}
+  \begin{Note}
+    Use delegation to hide the internal of the object net.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+this.getA().getB().getC().doSomething();     //AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example should better be covered by a delegating
+    method:
+    \begin{lstlisting}{language=Java}
+this.doSomething();
+...
+
+public class doSomething() {
+    getA().doSomething();
+}
+...
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Magical Constants}
+  \begin{Description}
+    Numerical constants (literals) should not be coded directly,
+    except for -1, 0, and 1, which can appear in a for loop as counter
+    values.
+  \end{Description}
+  \begin{Motivation}
+    It can be hard to guess correctly the meaning of constants in the
+    code. This can be circumvented by using meaningful constant names.
+    This practice also prevents some bugs and enhanced changeability
+    of the code.
+  \end{Motivation}
+  \begin{Note}
+    You can always define symbolic constants (finals) for the
+    numerical constants. Those symbolic constants should be named
+    according to the meaning and not the current content of the
+    constant.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if ( index >= 42 ) {                   // AVOID!
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    Use the following code instead:
+    \begin{lstlisting}{language=Java}
+private static final MAX_INDEX = 42;
+
+if ( index >= MAX_INDEX ) {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99}
+rule 10.3
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Magical Integers}
+  \begin{Description}
+    Avoid using primitive data types like ints when they are not
+    required.
+  \end{Description}
+  \begin{Motivation}
+    Often the practice can be found to use integers -- and even bit
+    fiddling -- to store and pass flags to methods. Here the use of
+    integers is not really adequate and should be avoided.
+  \end{Motivation}
+  \begin{Note}
+    A better way to deal with this situation is to define special
+    classes and provide static instances of these classes instead of
+    integers. An advantage of this technique is that a static type
+    checking is performed by the Java compiler and thus some sources
+    of bugs are disabled.
+
+    The use of an enumeration is also a very good alternative.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public static int MY_FLAG_1 = 42;        //AVOID!
+public static int MY_FLAG_2 = 66;        //AVOID!
+
+public myMethod(int flag) {              //AVOID!
+    ...
+  
+    if ( flag == MY_FLAG_1 ) {
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public static Flag MY_FLAG_1 = new Flag();
+public static Flag MY_FLAG_2 = new Flag();
+
+public myMethod(Flag flag) {
+   ...
+   if ( flag == MY_FLAG_1 ) {
+        ...
+    }
+    ...
+}
+
+public static class Flag {
+    // Note: the default constructor is provided automatically
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none 
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Visibility of Methods}
+  \begin{Description}
+    Avoid using the implicit visibility (package) for method.  Instead
+    declare each method to be private, protected, or public.
+  \end{Description}
+  \begin{Motivation}
+    The package visibility has no meaningful counterpart in the
+    object-oriented design. Thus it should be avoided.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+int getSomeInteger() {           //AVOID!
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+protected int getSomeInteger() { //OK
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Combined Assignments}
+  \begin{Description}
+    Avoid assigning several variables to the same value in a single
+    statement.
+  \end{Description}
+  \begin{Motivation}
+    It is hard to read.
+  \end{Motivation}
+  \begin{Note}
+    Use several assignments instead.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+fooBar.fChar = barFoo.lchar = 'c';     // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above should be written as 
+    \begin{lstlisting}{language=Java}
+fooBar.fChar = 'c';
+barFoo.lchar = 'c';
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.4
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Combined Assignments}
+  \begin{Description}
+    Do not use embedded assignments in an attempt to improve run-time
+    performance.
+  \end{Description}
+  \begin{Motivation}
+    It is hard to read.
+  \end{Motivation}
+  \begin{Note}
+    This is the job of the compiler.
+  \end{Note}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+d = (a = b + c) + r;     // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+a = b + c;
+d = a + r;
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.4
+  \end{References}
+  \begin{ToolSupport}
+    The inner assignments can be checked with Checkstyle with the
+    following setting:
+    \begin{lstlisting}{language=XML}
+<module name="InnerAssignment"/>
+    \end{lstlisting}
+
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Assignment and Comparison}
+  \begin{Description}
+    Do not use the assignment operator in a place where it can be
+    easily confused with the equality operator.
+  \end{Description}
+  \begin{Motivation}
+    It is hard to read. In addition this can be misunderstood as
+    erroneous comparison operator instead of the assignment operator.
+  \end{Motivation}
+  \begin{CounterExample}
+    The following is legal for boolean variables c and d:
+    \begin{lstlisting}{language=Java}
+if (c = d) {                    // AVOID!
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+c = d;
+if (c) {
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.4
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Constants in Comparisons}
+  \begin{Description}
+    Place constants on the left side of comparisons.
+  \end{Description}
+  \begin{Motivation}
+    This practice is especially helpful for comparisons with the
+    equality operator. It helps to find typos where the assignment has
+    been used instead of the comparison operator since the compiler
+    complains in this case.
+    
+    Another case is covered here as well. Consider the comparison of a
+    variable with a String literal -- with \texttt{equals()}. In case of the
+    variable on the left hand side there is always the risk of a
+    \texttt{NullPointerException}.  This can be avoided with the constant on
+    the left hand side.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if (something == 0) {              //AVOID!
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above can better be written as:
+    \begin{lstlisting}{language=Java}
+if (0 == something) {              //OK
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if (foo.equals("bar")) {           //AVOID!
+    ...
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above can better be written as:
+    \begin{lstlisting}{language=Java}
+if ("bar".equals(foo) ) {         //OK
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{Amb99} rule 2.5.2
+  \end{References}
+\end{Rule}
+
+
+
+\section{Miscellaneous Practices}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Returning Values}
+  \begin{Description}
+    Try to make the structure of your program match the intent.
+  \end{Description}
+  \begin{Motivation}
+    
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if ( booleanExpression ) {
+    return true;
+} else {
+    return false;
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above should be written as
+    \begin{lstlisting}{language=Java}
+return booleanExpression; 
+    \end{lstlisting}
+  \end{Example}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+if (condition) {
+    return x;
+}
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    The counter example above should be written as
+    \begin{lstlisting}{language=Java}
+return (condition ? x : y);
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.5.2
+  \end{References}
+\end{Rule}
+              
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Expressions before ``\texttt{?}'' in the Conditional Operator}
+  \begin{Description}
+    If an expression containing a binary operator appears before the
+    \texttt{?}  in the ternary \texttt{?:} operator, it should be
+    parenthesized.
+  \end{Description}
+  \begin{Motivation}
+    This rule is meant to support the readability of the code.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+x >= 0 ? x : -x; 
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+(x >= 0) ? x : -x; 
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    \cite{Sun99} rule 10.5.3
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Special Comments}
+  \begin{Description}
+    Use the special comment TODO to mark places which deserve further
+    work.
+  \end{Description}
+  \begin{Motivation}
+    It is a good practice to mark the places in the code where
+    something is bogus or even unimplemented. With the special tag it
+    is easy to scan the source and find those places. Eclipse even
+    supports special tags in the form of a task list.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+if ( false ) {     //TODO implement the correct test for ...
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    cf. \cite{Sun99} rule 10.5.4
+  \end{References}
+  \begin{ToolSupport}
+    Eclipse supports a \textsf{Tasks} view. The listed items can be
+    configured in the preferences (\Menu[Window][Preferences]) under
+    the key \Menu[Java][Compiler][Task Tags]. See the figure below:
+
+    \includegraphics[width=.8\linewidth]{image/Java-Task-Tags.png}
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Assignment to Parameters}
+  \begin{Description}
+    All parameters of methods must not be used as target in an assignment.
+  \end{Description}
+  \begin{Motivation}
+    In general it is a bad idea to ``reuse'' parameters as variables in a
+    method.
+  \end{Motivation}
+  \begin{Note}
+    One way to ensure that parameters are not reused would be to
+    declare them \texttt{final}. This can be checked by the Java
+    compiler and Checkstyle. Unfortunately this would clutter up the
+    code and introduce a new source for mistakes.
+  \end{Note}
+  \begin{References}
+    \cite{checkstyle}
+  \end{References}
+  \begin{ToolSupport}
+    Eclipse provides a means to configure compiler warnings and
+    errors. The configuration can be found in the dialog started with
+    \Menu[Window][Preferences]. The settings can be found under
+    \Menu[Java][Compiler][Errors/Warnings]. The option \Menu[Parameter
+    assignment] should be set to \textsf{Error}. See the figure below:
+
+    \includegraphics[width=.8\linewidth]{image/Template-New-Java-Files.png}
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Call protected Methods in Super- or Sub-Classes Only}
+  \begin{Description}
+    Do not call protected methods of a class unless the calling class is a
+    super-class or a sub-class of the class containing the protected method.
+  \end{Description}
+  \begin{Motivation}
+    In Java it is possible to call a protected method in a class which is in
+    the same package. This fact should not be exploited for classes not
+    lying in the inheritance hierarchy.
+  \end{Motivation}
+  \begin{Exceptions}
+    This rule of thumb might be ignored in test classes.
+  \end{Exceptions}
+  \begin{References}
+    \cite{checkstyle}
+  \end{References}
+\end{Rule}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Prefer Interfaces over Classes}
+  \begin{Description}
+    Prefer to use interfaces over classes for the declaration of variables.
+  \end{Description}
+  \begin{Motivation}
+    Interfaces establish the contract for the implementing classes. Thus
+    this contract has to be specified. The use of interfaces allows for the
+    replacement of classes by a different implementation.  Thus a higher
+    flexibility can be achieved.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+private HashMap hash = new HashMap();  // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+private Map hash = new HashMap();
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Implicit Casting}
+  \begin{Description}
+    Avoid the implicit type casting rules for primitive types which are
+    provided by Java.
+  \end{Description}
+  \begin{Motivation}
+    The implicit rules may cause unexpected effects especially if
+    ``applied'' within arithmetic expressions. In this case an explicit cast
+    should be provided to prevent bug and enhance readability.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Concatenation with the Empty String Constant}
+  \begin{Description}
+    Avoid expressions which contain a concatenation with the empty String
+    constant ("").
+  \end{Description}
+  \begin{Motivation}
+    The concatenation with the empty String constant is usually abused to
+    perform an implicit conversion to a String. Here the explicit conversion
+    should be preferred.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+logger.warning("" + count); // AVOID!
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+logger.warning(Integer.toString(count));
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{Program for Testing}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Provide JUnit Test for each Class}
+  \begin{Description}
+      Each class as to be accompanied by at least one test class. The test
+      class contains JUnit tests for all (non-trivial) methods of the class.
+  \end{Description}
+  \begin{Exceptions}
+    Getter and setter rarely deserve a test unless they involve more than
+    just the assignment and retrieval of an internal variable.
+  \end{Exceptions}
+  \begin{Motivation}
+    The developer will have to test the functionality of each method anyhow.
+    The rule just enforces that those tests are reproducible. JUnit has
+    evolved as the standard tool for unit tests in the last years. Thus
+    JUnit should be used for this purpose.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{Deprecated Java Constructs}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid continue}
+  \begin{Description}
+    Do not use continue in Java programs.
+  \end{Description}
+  \begin{Motivation}
+    The continue statement constitutes a kind of \emph{goto} and is
+    considered bad programming style.  You can always rearrange the flow of
+    control to avoid the use of the continue statement.
+  \end{Motivation}
+  \begin{Note}
+    You can always consider to extract the code containing the continue into
+    a new methods and use return instead.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid break}
+  \begin{Description}
+    Do not use break in Java programs outside of switch statements.
+  \end{Description}
+  \begin{Motivation}
+    The break statement constitutes a kind of \emph{goto} and is considered
+    bad programming style. For switch statements it is part of the whole
+    construct and acceptable as such -- in the seldom case that a switch
+    statement is needed.  You can always rearrange the flow of control to
+    avoid the use of the break statement.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Initilizers for non-static Fields}
+  \begin{Description}
+    Avoid to use initializers for non-static fields.
+  \end{Description}
+  \begin{Motivation}
+    Initializers for non-static fields are pieces of code executed any time
+    a new instance is created. Because of the implicit definition of the
+    order in which those pieces of code are executed it is preferable not to
+    use this construct and perform those actions in the constructor -- in a
+    controlled way.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid \texttt{assert}}
+  \begin{Description}
+    Do not use \texttt{assert} in Java programs.
+  \end{Description}
+  \begin{Motivation}
+    With Java 1.4 the \texttt{assert} statement has been introduced. The
+    behavior of a program with assert can be easily altered by enabling or
+    disabling the asserts, if the conditions contain method invocations with
+    side-effects.  Thus the use is strongly discouraged.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid \texttt{System.out} and \texttt{System.err}}
+  \begin{Description}
+    Do not use \texttt{System.out.print()} or \texttt{System.err.print()}
+    and friends for debugging or tracing purposes.
+  \end{Description}
+  \begin{Exceptions}
+    The use of these streams is permitted in special logger classes.
+  \end{Exceptions}
+  \begin{Motivation}
+    It is a bad practice to use the standard streams for tracing and
+    debugging of code. Especially since the risk is high that such debugging
+    statements make it into the production code. For tracing and debugging
+    the prepared tracing and logging mechanisms should be used instead.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+  \begin{ToolSupport}
+    The use of the system streams can be checked with Checkstyle with
+    the following setting:
+    \begin{lstlisting}{language=XML}
+<module name="GenericIllegalRegexp">
+    <metadata name="com.atlassw.tools.eclipse.checkstyle.comment"
+              value="System.*.print"/>
+    <property name="format" value="[^/][^/].*System.(err|out).print"/>
+    <property name="message" value="Direct output discouraged"/>
+</module>
+    \end{lstlisting}
+
+  \end{ToolSupport}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid \texttt{System.exit()}}
+  \begin{Description}
+    Do not use \texttt{System.exit()} outside the \texttt{main()} method.
+  \end{Description}
+  \begin{Motivation}
+    The method System.exit() terminates the JVM and returns a value to the
+    operating system.  Thus it is more or less the final action of a
+    program. The behavior of this method makes it hard to write JUnit tests
+    for methods calling it.
+    
+    The other aspect of this method is that it has the flavor of a non-local
+    goto. This should be avoided in object-oriented programming.
+  \end{Motivation}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public static void main(String[] argv) {
+
+    initializeEngine();
+    driveEngine();
+    System.exit(shutdownEngine());
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Historic Classes}
+  \begin{Description}
+    Do not use old classes like:
+    \begin{description}
+    \item[java.util.Hashtable] use java.util.HashMap instead
+    \item[java.util.Vector] use java.util.ArrayList instead
+    \end{description}
+  \end{Description}
+  \begin{Motivation}
+    The early releases of the Java library have contained some classes which
+    are now superceded by new developments. The old classes should be
+    avoided since they are not state of the art and come sometimes in
+    combination with design or performance penalties.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Operator Overloading}
+  \begin{Description}
+    Avoid operator overloading on parameter types which are
+    subclasses/super-classes of each other.
+  \end{Description}
+  \begin{Motivation}
+    For sub classes and super-classes it may not be evident immediately
+    which method is really invoked. This may lead to nasty bugs even for the
+    somewhat experienced programmer.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public class MyClass {
+    ...
+    public equals(MyClass aMyClass) {  // AVOID!
+        ...
+    }
+    ...
+}
+    \end{lstlisting}
+    This counter example shows how a method from the super-class Object is
+    overwritten with a different signature. This is one pitfall when
+    redefining equals.
+  \end{CounterExample}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid synchronized Blocks, Methods and Variables}
+  \begin{Description}
+    Avoid the use of the keyword \texttt{synchronized} for blocks, methods and
+    variables.
+  \end{Description}
+  \begin{Motivation}
+    The keyword \texttt{synchronized} has to be applied very carefully. Thus
+    this rule forces the designer not to be too lacy. In combination with
+    the rule violation -- when justified -- this rule tries to lead to a
+    conscious use of this construct.
+  \end{Motivation}
+  \begin{References}
+     none
+  \end{References}
+\end{Rule}
+
+
+\section{Exception Handling}
+
+The rules given here give some first hints. Details can be found in
+the Exception architecture.
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Use Exceptions for Exceptional Cases Only}
+  \begin{Description}
+    In the normal flow of a program no Exceptions should be thrown or
+    caught.
+  \end{Description}
+  \begin{Motivation}
+    Exceptions should be used in exceptional cases only and omitted in the
+    normal execution of a program. Methods should not abuse Exceptions as
+    non-local ``gotos''.
+  \end{Motivation}
+  \begin{CounterExample}
+    The search for something throws an Exception if the nothing is not
+    found.
+  \end{CounterExample}
+  \begin{Example}
+    The failure of the search can be signaled by a reserved return value.
+    For instance \texttt{null} can be returned for a failed search for a
+    single object. The search for lists of results can simply return the
+    empty list.
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Define an Exception Hierarchy}
+  \begin{Description}
+    Each component should define an Exception hierarchy as part of its
+    interface definition.
+  \end{Description}
+  \begin{Motivation}
+    The interface of a component consists of all information available about
+    the classes and interfaces. This includes the behavior in exceptional
+    cases. This is expressed in an Exception hierarchy.
+    
+    In general it is not a good idea to pass through exceptions from
+    underlying components. This laciness just covers design flaws.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Do Not Declare ``\texttt{throws Exception}''}
+  \begin{Description}
+    Do not declare the Exception type Exception to be thrown.
+  \end{Description}
+  \begin{Motivation}
+    Usually it is a sign of laciness or bad design when a method declares
+    Exception to be thrown. The class Exception should be used as a base
+    class for own Exception classes only thus those Exceptions have to be
+    exposed instead of \texttt{java.lang.Exception}.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public myMethod(int arg) throws Exception {       //AVOID!
+    ...
+    throw new MyApplicationException(...);
+    ...
+} 
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public myMethod(int arg) throws MyApplicationException {
+    ...
+    throw new MyApplicationException(...);
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Do not Use \texttt{RuntimeException} or Derived Classes}
+  \begin{Description}
+    The Exception hierarchy of a component should not use
+    \texttt{RuntimeException}s for business excsptions.
+  \end{Description}
+  \begin{Motivation}
+    \texttt{RuntimeException}s need not to be declared for a method. Thus
+    they form an implicit part of the interface of a component. Since we
+    want to make as much as possible explicit we prohibit the use of
+    \texttt{RuntimeException}s.
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+public myMethod(int arg) {
+    ...
+    throw new RuntimeException(...);       //AVOID!
+    ...
+}  
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+public myMethod(int arg)
+throws MyApplicationException {
+    ...
+    throw new MyApplicationException(...);
+    ...
+}
+    \end{lstlisting}
+  \end{Example}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+
+\chapter{Design Guidelines}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Model the Software First}
+  \begin{Description}
+    Describe the interfaces of components before programming.
+  \end{Description}
+  \begin{Motivation}
+    It is highly recommended to model the software before writing
+    program code to depict the overall picture. This gives an
+    additional security that the global view is correct and not lost
+    in the programming details.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid Cyclic Dependencies of Packages}
+  \begin{Description}
+    Avoid cyclic dependencies of packages.
+  \end{Description}
+  \begin{Motivation}
+    Cyclic dependencies of packages normally indicate that those
+    packages are not properly designed.
+  \end{Motivation}
+  \begin{References}
+    \cite{VAB00} and variations
+  \end{References}
+\end{Rule}
+               
+
+\section{Notation}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Use UML Notation}
+  \begin{Description}
+    Whenever there is UML notation for a design it has to be used.
+  \end{Description}
+  \begin{Motivation}
+    Adhering to the standard makes it easier for anyone to
+    communicate.  This rule applies especially to diagrams (class,
+    component interaction,\ldots).
+  \end{Motivation}
+  \begin{References}
+    \cite{Amb05,UML:ref}
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Extend UML Notation}
+  \begin{Description}
+    Whenever UML notation is not sufficient extend it.  The extensions
+    should be minimal, documented and used further on consistently.
+  \end{Description}
+  \begin{Motivation}
+    Sometimes it can be necessary to express something which is not
+    possible with UML notation. In this situation one should be free
+    to invent something new. But this creative acts have to be
+    minimized.
+  \end{Motivation}
+  \begin{References}
+    \cite{Amb05,UML:ref}
+  \end{References}
+\end{Rule}
+
+
+\section{Limitations of Design}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Design is Not Programming}
+  \begin{Description}
+    UML can be used like a programming language in some aspects. This
+    should be avoided.
+  \end{Description}
+  \begin{Motivation}
+    Design is primarily concerned with the overall structure of
+    software and its components. The task of programming should be
+    left to the programmers.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+\section{Design Patterns}
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Use Design Patterns Where Possible}
+  \begin{Description}
+    Design patterns (e.g. [GJH94]) should be consistently applied and
+    documented.
+  \end{Description}
+  \begin{Motivation}
+    Design patterns make it easier to construct and understand
+    software systems. Thus the use of design patterns can increase
+    productivity.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Do Not Use the Singleton Pattern}
+  \begin{Description}
+    The singleton pattern should not be used.
+  \end{Description}
+  \begin{Motivation}
+    The singleton pattern contradicts object-oriented software design
+    principles. It may lead to a reduced flexibility and general
+    problems when using the software.
+    
+    Thus it is highly recommended not to use this design pattern.
+  \end{Motivation}
+  \begin{Note}
+    The singleton pattern can always be avoided by creating the
+    ``singleton'' object at the beginning of the execution -- e.g. in
+    the main program. This object is then passed down to all places
+    where it is needed. Thus the same object can be used just like the
+    singleton would have been.
+    
+    The singleton pattern just allows us not to specify the context
+    under which an object acts. The singleton provides something like
+    an implicit context. This contradicts the principle to explicitly
+    declare the interface of a component.
+  \end{Note}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+
+%------------------------------------------------------------------------------
+\begin{Rule}{Avoid \texttt{static} Fields}
+  \begin{Description}
+    Avoid static fields which are not final.
+  \end{Description}
+  \begin{Motivation}
+    Static fields have a flavor of global variables.  As such they
+    should be avoided in object-oriented programming.
+    
+    One place where static fields seem to be necessary is the
+    application of the singleton pattern. As shown above, this pattern
+    can be avoided.
+  \end{Motivation}
+  \begin{References}
+    \cite{Lea00} and variations
+  \end{References}
+\end{Rule}
+               
+
+%------------------------------------------------------------------------------
+\begin{Rule}{No Self Reference}
+  \begin{Description}
+    A non-static method which does not send messages to self or
+    accesses instance variables should be refactored.
+  \end{Description}
+  \begin{Motivation}
+    Such a method should be moved to another class or be declared as a
+    static utility method instead.
+  \end{Motivation}
+  \begin{References}
+    none
+  \end{References}
+\end{Rule}
+
+\chapter*{Appendix}
+
+\InputIfFileExists{license/fdl}{}{--- Free Documenatation License not found ---}
+
+\bibliographystyle{alpha}
+\bibliography{coding}
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
+
+\begin{Rule}{}
+  \begin{Description}
+
+  \end{Description}
+  \begin{Motivation}
+    
+  \end{Motivation}
+  \begin{CounterExample}
+    \begin{lstlisting}{language=Java}
+
+    \end{lstlisting}
+  \end{CounterExample}
+  \begin{Example}
+    \begin{lstlisting}{language=Java}
+
+    \end{lstlisting}
+  \end{Example}
+  \begin{Note}
+
+  \end{Note}
+  \begin{Exceptions}
+    
+  \end{Exceptions}
+  \begin{References}
+    
+  \end{References}
+\end{Rule}
