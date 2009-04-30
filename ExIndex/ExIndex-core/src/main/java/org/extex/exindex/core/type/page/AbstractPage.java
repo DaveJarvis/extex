@@ -46,15 +46,15 @@ public abstract class AbstractPage implements PageReference {
     public static PageReference get(String p, String encap) {
 
         PageReference page;
-        if (p.matches("^[0-9-]+$")) {
+        if (p.matches("^-?[0-9]+$")) {
             page = new NumericPage(encap, p);
-        } else if (p.matches("^[IVXLCM-]+$")) {
+        } else if (p.matches("^[IVXLCM]+$")) {
             page = new UpperRomanPage(encap, p);
-        } else if (p.matches("^[ivxlcm-]+$")) {
+        } else if (p.matches("^[ivxlcm]+$")) {
             page = new LowerRomanPage(encap, p);
-        } else if (p.matches("^[A-Z-]+$")) {
+        } else if (p.matches("^[A-Z]+$")) {
             page = new UpperPage(encap, p);
-        } else if (p.matches("^[a-z-]+$")) {
+        } else if (p.matches("^[a-z]+$")) {
             page = new LowerPage(encap, p);
         } else {
             page = new SomePage(encap, p);
