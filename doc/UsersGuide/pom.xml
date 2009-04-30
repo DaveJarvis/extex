@@ -58,9 +58,9 @@
                 <argument>org.extex.doctools.PrimitiveCollector</argument>
                 <argument>-output</argument>
                 <argument>${project.build.directory}/generated</argument>
-                <argument>../../ExTeX-base</argument>
-                <argument>../../ExTeX-Unit-*</argument>
-                <argument>../../ExTeX-Typesetter-*</argument>
+                <argument>../../ExTeX/ExTeX-base</argument>
+                <argument>../../ExTeX/ExTeX-Unit-*</argument>
+                <argument>../../ExTeX/ExTeX-Typesetter-*</argument>
               </arguments>
               <workingDirectory>${basedir}</workingDirectory>
               <outputFile>${project.build.directory}/compile.out</outputFile>
