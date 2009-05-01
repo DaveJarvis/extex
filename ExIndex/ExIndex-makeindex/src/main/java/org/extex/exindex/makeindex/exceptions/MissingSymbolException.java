@@ -22,7 +22,7 @@ import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.lisp.parser.ResourceLocator;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This exception signals a missing symbol.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6731 $
