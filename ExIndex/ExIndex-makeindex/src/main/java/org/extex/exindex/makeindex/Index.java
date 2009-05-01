@@ -63,38 +63,6 @@ public class Index {
     }
 
     /**
-     * Test that key and value of two entries are equal.
-     * 
-     * @param a the first entry
-     * @param b the second entry
-     * 
-     * @return <code>true</code> iff the entries can be considered equal
-     */
-    private boolean eq(Entry a, Entry b) {
-
-        String[] ka = a.getKey();
-        String[] kb = b.getKey();
-        if (ka.length != kb.length || !a.getValue().equals(b.getValue())) {
-            return false;
-        }
-
-        for (int i = 0; i < ka.length; i++) {
-            String v1 = ka[i];
-            String v2 = kb[i];
-            if (v1 == null) {
-                if (v2 != null) {
-                    return false;
-                }
-            } else if (v1 == null) {
-                return false;
-            } else if (!v1.equals(v2)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
-    /**
      * Getter for params.
      * 
      * @return the params
@@ -118,28 +86,24 @@ public class Index {
         if (size == 0) {
             return content;
         }
-        Entry[] ea = new Entry[size];
-        int i = 0;
-        for (Entry e : content) {
-            ea[i++] = e;
-        }
-        Arrays.sort(ea, comperator);
+        Entry[] entries = content.toArray(new Entry[size]);
+        Arrays.sort(entries, comperator);
 
         content = new ArrayList<Entry>();
 
-        Entry e = ea[0];
-        content.add(e);
-        for (i = 1; i < size; i++) {
-            Entry x = ea[i];
-            if (eq(e, x)) {
-                e.addPages(x.getPages());
+        Entry entry = entries[0];
+        content.add(entry);
+        for (int i = 1; i < size; i++) {
+            Entry x = entries[i];
+            if (comperator.compare(entry, x) == 0) {
+                entry.addPages(x.getPages());
             } else {
-                pp.join(e.getPages());
-                e = x;
-                content.add(e);
+                pp.join(entry.getPages());
+                entry = x;
+                content.add(entry);
             }
         }
-        pp.join(e.getPages());
+        pp.join(entry.getPages());
 
         return content;
     }

@@ -44,7 +44,7 @@ public class Entry {
     /**
      * The field <tt>value</tt> contains the display value.
      */
-    private String display;
+    private String[] display;
 
     /**
      * The field <tt>key</tt> contains the key.
@@ -65,10 +65,10 @@ public class Entry {
      * Creates a new object.
      * 
      * @param k the key
-     * @param display the display string
+     * @param display the display strings
      * @param page the page specification
      */
-    public Entry(String[] k, String display, PageRange page) {
+    public Entry(String[] k, String[] display, PageRange page) {
 
         this.key = k;
         this.display = display;
@@ -143,7 +143,7 @@ public class Entry {
      * 
      * @return the value
      */
-    public String getValue() {
+    public String[] getValue() {
 
         return display;
     }

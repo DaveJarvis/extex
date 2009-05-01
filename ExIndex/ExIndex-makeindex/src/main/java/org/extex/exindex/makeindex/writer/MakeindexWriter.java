@@ -70,13 +70,14 @@ public class MakeindexWriter implements IndexWriter {
 
         final String item0 = params.getString("index:item_0");
         final String item1 = params.getString("index:item_1");
+        final String indentSpace = params.getString("markup:indent-space");
         final String delim0 = params.getString("index:delim_0");
         final String delim1 = params.getString("index:delim_1");
         final String encapPrefix = params.getString("index:encap-prefix");
         final String encapInfix = params.getString("index:encap-infix");
         final String encalSuffix = params.getString("index:encap-suffix");
         final long headingFlag = params.getNumber("index:headings-flag");
-        int[] count = new int[2];
+        int[] count = {0, 0};
         char currentHeading = '\0';
 
         writer.write(params.getString("markup:index-open"));
@@ -87,24 +88,36 @@ public class MakeindexWriter implements IndexWriter {
             writer.write(params.getString("markup:setpage-suffix"));
         }
 
-        for (Entry e : entries) {
-            if (headingFlag != 0 && e.getHeading() != currentHeading) {
-                currentHeading = writeHeading(headingFlag, e);
-            }
-            writer.write(item0);
-            writer.write(e.getValue());
-            List<PageRange> pages = e.getPages();
-            boolean first = true;
+        int level = 0;
+        String[] lastKey = {};
 
-            for (PageRange page : pages) {
-                if (first) {
-                    first = false;
-                    writer.write(delim0);
-                } else {
-                    writer.write(delim1);
-                }
-                page.write(writer, encapPrefix, encapInfix, encalSuffix);
+        for (Entry entry : entries) {
+            if (headingFlag != 0 && entry.getHeading() != currentHeading) {
+                currentHeading = writeHeading(headingFlag, entry);
             }
+
+            String[] display = entry.getValue();
+            for (int i = 0;; i++) {
+                if (i >= lastKey.length) {
+                    for (; i < display.length; i++) {
+                        writer.write(item0); // TODO
+                        writer.write(display[i]);
+                    }
+                    break;
+                } else if (i >= display.length) {
+                    throw new RuntimeException("this should not happen");
+                } else if (!lastKey[i].equals(display[i])) {
+
+                    writer.write(item0); // TODO
+                    writer.write(display[i]);
+                    // throw new RuntimeException("unimplemented");
+                    break;
+                }
+            }
+
+            lastKey = display;
+            writePages(entry, delim0, delim1, encapPrefix, encapInfix,
+                encalSuffix);
         }
 
         writer.write(params.getString("markup:index-close"));
@@ -143,6 +156,37 @@ public class MakeindexWriter implements IndexWriter {
         }
         writer.write(params.getString("markup:heading-suffix"));
         return heading;
+    }
+
+    /**
+     * Write pages.
+     * 
+     * @param entry the entry
+     * @param delim0 the delim0
+     * @param delim1 the delim1
+     * @param encapPrefix the encap prefix
+     * @param encapInfix the encap infix
+     * @param encapSuffix the encap suffix
+     * 
+     * @throws IOException Signals that an I/O exception has occurred.
+     */
+    private void writePages(Entry entry, final String delim0,
+            final String delim1, final String encapPrefix,
+            final String encapInfix, final String encapSuffix)
+            throws IOException {
+
+        List<PageRange> pages = entry.getPages();
+        boolean first = true;
+
+        for (PageRange page : pages) {
+            if (first) {
+                first = false;
+                writer.write(delim0);
+            } else {
+                writer.write(delim1);
+            }
+            page.write(writer, encapPrefix, encapInfix, encapSuffix);
+        }
     }
 
 }

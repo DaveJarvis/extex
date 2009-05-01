@@ -101,18 +101,9 @@ public class MakeindexParser implements Parser {
                         enc = arg.substring(x + 1);
                         arg = arg.substring(0, x);
                     }
-                    x = arg.indexOf(actual);
-                    String a;
-                    if (x >= 0) {
-                        a = arg.substring(x + 1);
-                        arg = arg.substring(0, x);
-                    } else {
-                        a = arg;
-                    }
-                    if (collator != null) {
-                        a = collator.collate(a);
-                    }
-                    store(index, arg, p, enc, a, level, open, close);
+                    String[] key = splitKey(level, arg);
+                    String[] display = splitDisplay(key, actual, collator);
+                    store(index, key, display, p, enc, level, open, close);
                     count[0]++;
                 }
             }
@@ -197,21 +188,48 @@ public class MakeindexParser implements Parser {
     }
 
     /**
-     * Store an entry in the index.
+     * Split off the display valued from the key.
      * 
-     * @param index the index
-     * @param argument the complete argument
-     * @param p the page
-     * @param encap the page encapsulator or <code>null</code> for none
-     * @param display the display representation
-     * @param level the level separating character
-     * @param open the range open character
-     * @param close the range close character
+     * @param key the key
+     * @param actual the actual character
+     * @param collator the collator or <code>null</code>
+     * 
+     * @return the display value
      */
-    private void store(Index index, String argument, String p, String encap,
-            String display, char level, char open, char close) {
+    private String[] splitDisplay(String[] key, char actual, Collator collator) {
 
-        String key = argument;
+        String[] display = new String[key.length];
+        for (int i = 0; i < key.length; i++) {
+            int x = key[i].indexOf(actual);
+            String a;
+            if (x >= 0) {
+                a = key[i].substring(x + 1);
+                if (collator != null) {
+                    key[i] = collator.collate(key[i].substring(0, x));
+                } else {
+                    key[i] = key[i].substring(0, x);
+                }
+            } else {
+                a = key[i];
+                if (collator != null) {
+                    key[i] = collator.collate(key[i]);
+                }
+            }
+            display[i] = a;
+        }
+        return display;
+    }
+
+    /**
+     * Split the key into an array.
+     * 
+     * @param level the level separating character
+     * @param key the key
+     * 
+     * @return the key array
+     */
+    private String[] splitKey(char level, String key) {
+
         List<String> list = new ArrayList<String>();
         int a = 0;
         for (int i = key.indexOf(level, a); i >= 0; i = key.indexOf(level, a)) {
@@ -219,22 +237,37 @@ public class MakeindexParser implements Parser {
             a = i + 1;
         }
         list.add(key.substring(a));
-        String[] k = list.toArray(new String[list.size()]);
+        return list.toArray(new String[list.size()]);
+    }
+
+    /**
+     * Store an entry in the index.
+     * 
+     * @param index the index
+     * @param key the key
+     * @param display the display value
+     * @param p the page
+     * @param encap the page encapsulator or <code>null</code> for none
+     * @param open the range open character
+     * @param close the range close character
+     */
+    private void store(Index index, String[] key, String[] display, String p,
+            String encap, char level, char open, char close) {
+
         PageReference from = AbstractPage.get(p, null);
         PageRange page;
-        String enc = encap;
         if (encap == null || encap.equals("")) {
-            page = new PageRange(from, enc, false, false);
+            page = new PageRange(from, encap, false, false);
         } else if (encap.charAt(0) == open) {
-            enc = encap.length() == 1 ? null : encap.substring(1);
+            String enc = encap.length() == 1 ? null : encap.substring(1);
             page = new PageRange(from, enc, true, false);
         } else if (encap.charAt(0) == close) {
-            enc = encap.length() == 1 ? null : encap.substring(1);
+            String enc = encap.length() == 1 ? null : encap.substring(1);
             page = new PageRange(from, enc, false, true);
         } else {
-            page = new PageRange(from, enc, false, false);
+            page = new PageRange(from, encap, false, false);
         }
-        index.add(new Entry(k, display, page));
+        index.add(new Entry(key, display, page));
     }
 
 }
