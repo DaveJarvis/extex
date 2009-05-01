@@ -26,6 +26,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
+import java.util.Locale;
 
 import org.junit.Test;
 
@@ -33,7 +34,7 @@ import org.junit.Test;
  * This is a real life test suite for {@link Makeindex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision: 7821 $
  */
 public class MakeindexExBibTest extends AbstractTester {
 
@@ -56,6 +57,7 @@ public class MakeindexExBibTest extends AbstractTester {
     @Test
     public void test1() throws IOException {
 
+        Locale.setDefault(Locale.US);
         Reader r = null;
         try {
             run(
@@ -68,7 +70,7 @@ public class MakeindexExBibTest extends AbstractTester {
                         + "Scanning input file\n"
                         + "src/test/resources/makeindex/exbib-manual.idx...done (714 entries accepted, 0\n"
                         + "rejected)\n"
-                        + "Sorting...done (5959 comparisons).\n"
+                        + "Sorting...done (6671 comparisons).\n"
                         + "Generating output file target/exbib-manual.ind...done (0 entries written, 0\n"
                         + "warnings).\n"
                         + "Output written in target/exbib-manual.ind.\n"
