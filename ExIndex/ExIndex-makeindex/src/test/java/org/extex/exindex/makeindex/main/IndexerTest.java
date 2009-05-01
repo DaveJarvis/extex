@@ -28,7 +28,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -38,6 +37,44 @@ import org.junit.Test;
  * @version $Revision:7790 $
  */
 public class IndexerTest {
+
+    /**
+     * The field <tt>MARKER_STYLE</tt> contains the definition of all output
+     * options for the test.
+     */
+    private static final String MARKER_STYLE =
+            "page_compositor \"<page_compositor>\"\n" //
+                    + "preamble \"<preamble>\"\n" //
+                    + "postamble \"<postamble>\"\n" //
+                    + "setpage_prefix \"<setpage_prefix>\"\n" //
+                    + "setpage_suffix \"<setpage_suffix>\"\n" //
+                    + "group_skip \"<group_skip>\"\n" //
+                    + "heading_prefix \"<heading_prefix>\"\n" //
+                    + "heading_suffix \"<heading_suffix>\"\n" //
+                    + "headings_flag 0\n" //
+                    + "item_0 \"<item_0>\"\n" //
+                    + "item_1 \"<item_1>\"\n" //
+                    + "item_2 \"<item_2>\"\n" //
+                    + "item_01 \"<item_01>\"\n" //
+                    + "item_12 \"<item_12>\"\n" //
+                    + "item_x1 \"<item_x1>\"\n" //
+                    + "item_x2 \"<item_x2>\"\n" //
+                    + "delim_0 \"<delim_0>\"\n" //
+                    + "delim_1 \"<delim_1>\"\n" //
+                    + "delim_2 \"<delim_2>\"\n" //
+                    + "delim_n \"<delim_n>\"\n" //
+                    + "delim_r \"<delim_r>\"\n" //
+                    + "encap_prefix \"<encap_prefix>\"\n" //
+                    + "encap_infix \"<encap_infix>\"\n" //
+                    + "encap_suffix \"<encap_suffix>\"\n" //
+                    + "page_precedence \"<page_precedence>\"\n" //
+                    + "line_max 9999\n" //
+                    + "indent_space \"<indent_space>\"\n" //
+                    + "indent_length 16\n" //
+                    + "symhead_positive \"<symhead_positive>\"\n" //
+                    + "symhead_negative \"<symhead_negative>\"\n" //
+                    + "numhead_positive \"<numhead_positive>\"\n" //
+                    + "numhead_negative \"<numhead_negative>\"\n";
 
     /**
      * Create an indexer.
@@ -355,12 +392,10 @@ public class IndexerTest {
      * @throws IOException in case of an error
      */
     @Test
-    @Ignore
     public final void test47() throws IOException {
 
         run("\\indexentry{abc|(}{1}",
-            "\\begin{theindex}\n\n  \\item abc, 1\n\n\\end{theindex}\n", "xxx",
-            0);
+            "\\begin{theindex}\n\n  \\item abc, 1\n\n\\end{theindex}\n", "", 0);
     }
 
     /**
@@ -371,9 +406,8 @@ public class IndexerTest {
     @Test
     public final void testF0() throws IOException {
 
-        run("\\indexentry{abc}{12}",
-            "", "\\begin{theindex}\n\n  \\item abc, 12\n\n\\end{theindex}\n",
-            "", 0);
+        run("\\indexentry{abc}{12}", "",
+            "\\begin{theindex}\n\n  \\item abc, 12\n\n\\end{theindex}\n", "", 0);
     }
 
     /**
@@ -384,10 +418,84 @@ public class IndexerTest {
     @Test
     public final void testF1() throws IOException {
 
-        run("\\indexentry{abc}{12}", "preamble \"<preamble>\"\n" //
-                + "postamble \"<postamble>\"\n" //
-                + "item_0 \"<item_0>\"",
-            "<preamble><item_0>abc, 12<postamble>", "", 0);
+        run("\\indexentry{abc}{12}", //
+            MARKER_STYLE, "<preamble><item_0>abc<delim_0>12<postamble>", "", 0);
+    }
+
+    /**
+     * <testcase> Two pages are separated correctly. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testPages1() throws IOException {
+
+        run(
+            "\\indexentry{bst}{1}\n" //
+                    + "\\indexentry{bst}{3}\n", //
+            MARKER_STYLE,
+            "<preamble><item_0>bst<delim_0>1<delim_n>3<postamble>", "", 0);
+    }
+
+    /**
+     * <testcase> Two identical numerical pages are joined. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testPages2() throws IOException {
+
+        run("\\indexentry{bst}{1}\n" //
+                + "\\indexentry{bst}{1}\n", //
+            MARKER_STYLE, //
+            "<preamble><item_0>bst<delim_0>1<postamble>", "", 0);
+    }
+
+    /**
+     * <testcase> Two identical numerical pages with encap are joined.
+     * </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testPages3() throws IOException {
+
+        run(
+            "\\indexentry{bst|hyperpage}{1}\n" //
+                    + "\\indexentry{bst|hyperpage}{1}\n", //
+            MARKER_STYLE, //
+            "<preamble><item_0>bst<delim_0><encap_prefix>hyperpage<encap_infix>1<encap_suffix><postamble>",
+            "", 0);
+    }
+
+    /**
+     * <testcase> A subitem is produced correctly. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testSubitem1() throws IOException {
+
+        run(
+            "\\indexentry{bst!plain|(hyperpage}{43}\n"
+                    + "\\indexentry{bst!plain|)hyperpage}{44}\n", //
+            MARKER_STYLE,
+            "<preamble><item_0>bst<item_x1>plain<delim_1><encap_prefix>hyperpage<encap_infix>43<delim_r>44<encap_suffix><postamble>",
+            "", 0);
+    }
+
+    /**
+     * <testcase> A subitem is produced correctly. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testSubitem2() throws IOException {
+
+        run("\\indexentry{bst}{1}\n" //
+                + "\\indexentry{bst!plain}{1}\n", //
+            MARKER_STYLE, "<preamble>" + "<item_0>bst<delim_0>1"
+                    + "<item_01>plain<delim_1>1" + "<postamble>", "", 0);
     }
 
 }
