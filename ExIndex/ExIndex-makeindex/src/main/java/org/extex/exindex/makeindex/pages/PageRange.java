@@ -42,22 +42,25 @@ public class PageRange {
     private PageReference to;
 
     /**
-     * The field <tt>delimiter</tt> contains the ...
+     * The field <tt>delimiter</tt> contains the delimiter.
      */
     private String delimiter = null;
 
     /**
-     * The field <tt>open</tt> contains the ...
+     * The field <tt>open</tt> contains the indicator that this is an open
+     * range.
      */
     private boolean open;
 
     /**
-     * The field <tt>close</tt> contains the ...
+     * The field <tt>close</tt> contains the indicator that this is a close
+     * range.
      */
     private final boolean close;
 
     /**
-     * The field <tt>encap</tt> contains the ...
+     * The field <tt>encap</tt> contains the encapsulator or <code>null</code>
+     * for none.
      */
     private final String encap;
 
@@ -65,9 +68,9 @@ public class PageRange {
      * Creates a new object.
      * 
      * @param from the start and end page
-     * @param encap
-     * @param open
-     * @param close
+     * @param encap the encapsulator
+     * @param open the open indicator
+     * @param close the close indicator
      */
     public PageRange(PageReference from, String encap, boolean open,
             boolean close) {
@@ -127,6 +130,55 @@ public class PageRange {
     protected boolean isOpen() {
 
         return open;
+    }
+
+    /**
+     * Try to join with another page range.
+     * 
+     * @param other the other page range
+     * 
+     * @return <code>true</code> iff the joining succeeded
+     */
+    public boolean join(PageRange other) {
+
+        if (encap == null) {
+            if (other.encap != null) {
+                return false;
+            }
+        } else if (!encap.equals(other.encap)) {
+            return false;
+        }
+        if (other.from.getClass() != from.getClass()) {
+            return false;
+        }
+        int otherFromOrd = other.from.getOrd();
+        int otherToOrd = other.to.getOrd();
+        int fromOrd = from.getOrd();
+        int toOrd = to.getOrd();
+        if (otherFromOrd < 0 || otherToOrd < 0 || fromOrd < 0 || toOrd <= 0) {
+            // TODO join identical pages
+            return false;
+        }
+        if (otherFromOrd >= fromOrd) {
+            if (otherFromOrd <= toOrd) {
+                to = other.to;
+                return true;
+            } else if (otherToOrd <= toOrd) {
+                return true;
+            }
+        }
+        if (otherFromOrd <= fromOrd) {
+            if (otherToOrd >= toOrd) {
+                from = other.from;
+                to = other.to;
+                return true;
+            } else if (otherToOrd >= fromOrd) {
+                from = other.from;
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -192,10 +244,14 @@ public class PageRange {
             writer.write(encap);
             writer.write(encapInfix);
         }
-        writer.write(from.getPage());
-        if (to != from) {
-            writer.write(delimiter);
-            writer.write(to.getPage());
+        String fromPage = from.getPage();
+        String toPage = to.getPage();
+        writer.write(fromPage);
+        if (!toPage.equals(fromPage)) {
+            if (delimiter != null) {
+                writer.write(delimiter);
+            }
+            writer.write(toPage);
         }
         if (encap != null) {
             writer.write(encalSuffix);

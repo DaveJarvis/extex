@@ -164,9 +164,9 @@ public class Makeindex {
                 }
             }
             if (ka1.length < ka2.length) {
-                return 1;
-            } else if (ka1.length > ka2.length) {
                 return -1;
+            } else if (ka1.length > ka2.length) {
+                return 1;
             }
 
             ka1 = o1.getValue();

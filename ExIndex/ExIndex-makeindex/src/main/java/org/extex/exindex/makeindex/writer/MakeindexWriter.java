@@ -43,7 +43,7 @@ public class MakeindexWriter implements IndexWriter {
     /**
      * The field <tt>writer</tt> contains the writer.
      */
-    private Writer writer;
+    private ColumnCountingWriter writer;
 
     /**
      * Creates a new object.
@@ -55,7 +55,7 @@ public class MakeindexWriter implements IndexWriter {
      */
     public MakeindexWriter(Writer writer, Parameters params) throws IOException {
 
-        this.writer = writer;
+        this.writer = new ColumnCountingWriter(writer);
         this.params = params;
     }
 
@@ -68,15 +68,21 @@ public class MakeindexWriter implements IndexWriter {
     public int[] write(List<Entry> entries, Logger logger, String startPage)
             throws IOException {
 
-        final String item0 = params.getString("index:item_0");
-        final String item1 = params.getString("index:item_1");
-        final String indentSpace = params.getString("markup:indent-space");
-        final String delim0 = params.getString("index:delim_0");
-        final String delim1 = params.getString("index:delim_1");
-        final String encapPrefix = params.getString("index:encap-prefix");
-        final String encapInfix = params.getString("index:encap-infix");
-        final String encalSuffix = params.getString("index:encap-suffix");
-        final long headingFlag = params.getNumber("index:headings-flag");
+        String[] item = {params.getString("index:item_0"), //
+                params.getString("index:item_1"), //
+                params.getString("index:item_2")};
+        String[] itemX = {params.getString("index:item_0"), //
+                params.getString("index:item_x1"), //
+                params.getString("index:item_x2")};
+        // String indentSpace = params.getString("markup:indent-space");
+        String[] delim = {params.getString("index:delim_0"), //
+                params.getString("index:delim_1"), //
+                params.getString("index:delim_2")};
+        String delimN = params.getString("markup:locref-list-sep");
+        String encapPrefix = params.getString("index:encap-prefix");
+        String encapInfix = params.getString("index:encap-infix");
+        String encalSuffix = params.getString("index:encap-suffix");
+        long headingFlag = params.getNumber("index:headings-flag");
         int[] count = {0, 0};
         char currentHeading = '\0';
 
@@ -88,40 +94,62 @@ public class MakeindexWriter implements IndexWriter {
             writer.write(params.getString("markup:setpage-suffix"));
         }
 
-        int level = 0;
         String[] lastKey = {};
 
         for (Entry entry : entries) {
             if (headingFlag != 0 && entry.getHeading() != currentHeading) {
                 currentHeading = writeHeading(headingFlag, entry);
             }
-
             String[] display = entry.getValue();
+            String[] key = entry.getKey();
+            int level;
+            boolean b = true;
             for (int i = 0;; i++) {
                 if (i >= lastKey.length) {
+                    String[] it = (b ? itemX : item);
                     for (; i < display.length; i++) {
-                        writer.write(item0); // TODO
-                        writer.write(display[i]);
+                        writer.write(it[i]);
+                        write(display[i]);
                     }
+                    level = i - 1;
                     break;
-                } else if (i >= display.length) {
-                    throw new RuntimeException("this should not happen");
+                } else if (i >= key.length) {
+                    level = i - 1;
+                    break;
                 } else if (!lastKey[i].equals(display[i])) {
+                    level = i;
 
-                    writer.write(item0); // TODO
-                    writer.write(display[i]);
+                    writer.write(item[0]); // TODO
+                    write(display[i]);
                     // throw new RuntimeException("unimplemented");
                     break;
+                } else {
+                    b = false;
                 }
             }
 
-            lastKey = display;
-            writePages(entry, delim0, delim1, encapPrefix, encapInfix,
+            if (level > delim.length) {
+                level = delim.length;
+            }
+            lastKey = key;
+            writePages(entry, delim[level], delimN, encapPrefix, encapInfix,
                 encalSuffix);
         }
 
         writer.write(params.getString("markup:index-close"));
         return count;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param s
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void write(String s) throws IOException {
+
+        writer.write(s);
     }
 
     /**
@@ -162,16 +190,16 @@ public class MakeindexWriter implements IndexWriter {
      * Write pages.
      * 
      * @param entry the entry
-     * @param delim0 the delim0
-     * @param delim1 the delim1
+     * @param delim the first delimiter
+     * @param delimNext the next delimiter
      * @param encapPrefix the encap prefix
      * @param encapInfix the encap infix
      * @param encapSuffix the encap suffix
      * 
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private void writePages(Entry entry, final String delim0,
-            final String delim1, final String encapPrefix,
+    private void writePages(Entry entry, final String delim,
+            final String delimNext, final String encapPrefix,
             final String encapInfix, final String encapSuffix)
             throws IOException {
 
@@ -181,9 +209,9 @@ public class MakeindexWriter implements IndexWriter {
         for (PageRange page : pages) {
             if (first) {
                 first = false;
-                writer.write(delim0);
+                writer.write(delim);
             } else {
-                writer.write(delim1);
+                writer.write(delimNext);
             }
             page.write(writer, encapPrefix, encapInfix, encapSuffix);
         }

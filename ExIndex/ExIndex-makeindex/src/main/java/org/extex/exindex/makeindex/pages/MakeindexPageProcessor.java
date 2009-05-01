@@ -101,6 +101,9 @@ public class MakeindexPageProcessor implements PageProcessor {
                     pages.remove(i);
                     i--;
                 }
+            } else if (i > 0 && pages.get(i - 1).join(p)) {
+                pages.remove(i);
+                i--;
             }
         }
 
