@@ -77,10 +77,13 @@ public class Index {
      * 
      * @param comperator the comparator
      * @param pp the page processor
+     * @param warn the number of warnings encoded in a single value array. The
+     *        array is used to allow the modification of the value
      * 
      * @return the sorted list of the entries
      */
-    public List<Entry> sort(Comparator<Entry> comperator, PageProcessor pp) {
+    public List<Entry> sort(Comparator<Entry> comperator, PageProcessor pp,
+            int[] warn) {
 
         int size = content.size();
         if (size == 0) {
@@ -98,12 +101,12 @@ public class Index {
             if (comperator.compare(entry, x) == 0) {
                 entry.addPages(x.getPages());
             } else {
-                pp.join(entry.getPages());
+                warn[0] += pp.join(entry.getPages());
                 entry = x;
                 content.add(entry);
             }
         }
-        pp.join(entry.getPages());
+        warn[0] += pp.join(entry.getPages());
 
         return content;
     }

@@ -19,7 +19,7 @@
 package org.extex.exindex.makeindex.normalizer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the default collator for makeindex.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6622 $
@@ -49,10 +49,6 @@ public class MakeindexCollator implements Collator {
      */
     public String collate(String in) {
 
-        String s = in;
-        if (collateSpaces) {
-            s = s.replaceAll("[ \t\n\r\f\b]", "");
-        }
-        return s;
+        return (collateSpaces ? in.replaceAll("[ \t\n\r\f\b]", "") : in);
     }
 }

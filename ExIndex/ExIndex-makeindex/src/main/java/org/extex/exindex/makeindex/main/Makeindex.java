@@ -922,19 +922,21 @@ public class Makeindex {
         try {
             Parameters params = index.getParams();
             IndexWriter indexWriter = new MakeindexWriter(w, params);
+            int[] warn = {0};
             PageProcessor pageProcessor =
                     new MakeindexPageProcessor(params, logger);
 
             info("Sorting");
             comparisons = 0;
-            List<Entry> entries = index.sort(comp, pageProcessor);
+            List<Entry> entries = index.sort(comp, pageProcessor, warn);
             info("SortingDone", Long.toString(comparisons));
             info(fmt, output);
 
             int[] count = indexWriter.write(entries, logger, startPage);
 
             info("GeneratingOutputDone", //
-                Integer.toString(count[0]), Integer.toString(count[1]));
+                Integer.toString(count[0]), //
+                Integer.toString(count[1] + warn[0]));
         } finally {
             w.close();
         }

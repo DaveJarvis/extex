@@ -32,7 +32,8 @@ public interface PageProcessor {
      * Process the pages given.
      * 
      * @param pages the list of pages
+     * @return TODO
      */
-    void join(List<PageRange> pages);
+    int join(List<PageRange> pages);
 
 }

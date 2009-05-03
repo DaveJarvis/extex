@@ -43,7 +43,7 @@ public class MakeindexPageProcessor implements PageProcessor {
     private String rangeClose;
 
     /**
-     * The field <tt>delimR</tt> contains the parameter delim_r.
+     * The field <tt>delimR</tt> contains the range delimiter.
      */
     private String delimR;
 
@@ -71,8 +71,9 @@ public class MakeindexPageProcessor implements PageProcessor {
      * 
      * @see org.extex.exindex.makeindex.pages.PageProcessor#join(java.util.List)
      */
-    public void join(List<PageRange> pages) {
+    public int join(List<PageRange> pages) {
 
+        int warnings = 0;
         PageRange open = null;
 
         for (int i = 0; i < pages.size(); i++) {
@@ -81,6 +82,7 @@ public class MakeindexPageProcessor implements PageProcessor {
                 if (open != null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingClose"));
+                    warnings++;
                 }
                 open = p;
                 p.setDelimiter(delimR);
@@ -88,6 +90,7 @@ public class MakeindexPageProcessor implements PageProcessor {
                 if (open == null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingOpen"));
+                    warnings++;
                 } else {
                     open.setTo(p.getTo());
                     open = null;
@@ -110,6 +113,8 @@ public class MakeindexPageProcessor implements PageProcessor {
         if (open != null) {
             logger.warning(LocalizerFactory.getLocalizer(getClass()).format(
                 "MissingClose"));
+            warnings++;
         }
+        return warnings;
     }
 }
