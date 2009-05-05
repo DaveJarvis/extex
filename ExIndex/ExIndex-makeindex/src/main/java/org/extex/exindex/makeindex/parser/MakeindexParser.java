@@ -257,15 +257,15 @@ public class MakeindexParser implements Parser {
         PageReference from = AbstractPage.get(p, null);
         PageRange page;
         if (encap == null || encap.equals("")) {
-            page = new PageRange(from, encap, false, false);
+            page = new PageRange(from, encap, PageRange.Type.SINGLE);
         } else if (encap.charAt(0) == open) {
             String enc = encap.length() == 1 ? null : encap.substring(1);
-            page = new PageRange(from, enc, true, false);
+            page = new PageRange(from, enc, PageRange.Type.OPEN);
         } else if (encap.charAt(0) == close) {
             String enc = encap.length() == 1 ? null : encap.substring(1);
-            page = new PageRange(from, enc, false, true);
+            page = new PageRange(from, enc, PageRange.Type.CLOSE);
         } else {
-            page = new PageRange(from, encap, false, false);
+            page = new PageRange(from, encap, PageRange.Type.SINGLE);
         }
         index.add(new Entry(key, display, page));
     }

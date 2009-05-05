@@ -19,6 +19,7 @@
 package org.extex.exindex.makeindex.pages;
 
 import java.io.IOException;
+import java.io.StringWriter;
 import java.io.Writer;
 
 import org.extex.exindex.core.type.page.PageReference;
@@ -32,6 +33,65 @@ import org.extex.exindex.core.type.page.PageReference;
 public class PageRange {
 
     /**
+     * TODO gene: missing JavaDoc.
+     */
+    public static enum Type {
+
+        /**
+         * The field <tt>SINGLE</tt> contains the ...
+         */
+        SINGLE {
+
+            @Override
+            protected void write(Writer writer, String fromPage, String toPage,
+                    String[] pageParams) throws IOException {
+
+            }
+        },
+        /**
+         * The field <tt>RANGE</tt> contains the ...
+         */
+        RANGE,
+        /**
+         * The field <tt>MULTIPLE</tt> contains the ...
+         */
+        MULTIPLE {
+
+            @Override
+            protected void write(Writer writer, String fromPage, String toPage,
+                    String[] pageParams) throws IOException {
+
+                if (!toPage.equals(fromPage)) {
+                    writer.write(pageParams[4]);
+                    writer.write(toPage);
+                }
+            }
+        },
+        /**
+         * The field <tt>OPEN</tt> contains the ...
+         */
+        OPEN,
+        /**
+         * The field <tt>CLOSE</tt> contains the ...
+         */
+        CLOSE;
+
+        protected void write(Writer writer, String fromPage, String toPage,
+                String[] pageParams) throws IOException {
+
+            if (!toPage.equals(fromPage)) {
+                writer.write(pageParams[3]);
+                writer.write(toPage);
+            }
+        }
+    }
+
+    /**
+     * The field <tt>PAGE_PARAMS</tt> contains the ...
+     */
+    private static final String[] PAGE_PARAMS = {"\\", "{", "}", "--", ", "};;
+
+    /**
      * The field <tt>from</tt> contains the star page.
      */
     private PageReference from;
@@ -42,27 +102,15 @@ public class PageRange {
     private PageReference to;
 
     /**
-     * The field <tt>delimiter</tt> contains the delimiter.
+     * The field <tt>type</tt> contains the ...
      */
-    private String delimiter = null;
-
-    /**
-     * The field <tt>open</tt> contains the indicator that this is an open
-     * range.
-     */
-    private boolean open;
-
-    /**
-     * The field <tt>close</tt> contains the indicator that this is a close
-     * range.
-     */
-    private final boolean close;
+    private Type type;
 
     /**
      * The field <tt>encap</tt> contains the encapsulator or <code>null</code>
      * for none.
      */
-    private final String encap;
+    private String encap;
 
     /**
      * Creates a new object.
@@ -72,14 +120,12 @@ public class PageRange {
      * @param open the open indicator
      * @param close the close indicator
      */
-    public PageRange(PageReference from, String encap, boolean open,
-            boolean close) {
+    public PageRange(PageReference from, String encap, Type type) {
 
         this.from = from;
         this.to = from;
         this.encap = encap;
-        this.open = open;
-        this.close = close;
+        this.type = type;
     }
 
     /**
@@ -87,7 +133,7 @@ public class PageRange {
      * 
      * @return the encap
      */
-    protected String getEncap() {
+    public String getEncap() {
 
         return encap;
     }
@@ -97,7 +143,7 @@ public class PageRange {
      * 
      * @return the from
      */
-    protected PageReference getFrom() {
+    public PageReference getFrom() {
 
         return from;
     }
@@ -107,29 +153,29 @@ public class PageRange {
      * 
      * @return the to
      */
-    protected PageReference getTo() {
+    public PageReference getTo() {
 
         return to;
     }
 
     /**
-     * Getter for the close.
+     * Getter for type.
      * 
-     * @return the close
+     * @return the type
      */
-    protected boolean isClose() {
+    public Type getType() {
 
-        return close;
+        return type;
     }
 
     /**
-     * Getter for the open.
+     * Checks if is one.
      * 
-     * @return the open
+     * @return true, if is one
      */
-    protected boolean isOpen() {
+    public boolean isOne() {
 
-        return open;
+        return from.getPage().equals(to.getPage());
     }
 
     /**
@@ -159,36 +205,37 @@ public class PageRange {
             // TODO join identical pages
             return false;
         }
-        if (otherFromOrd >= fromOrd) {
-            if (otherFromOrd <= toOrd) {
-                to = other.to;
-                return true;
-            } else if (otherToOrd <= toOrd) {
-                return true;
-            }
-        }
-        if (otherFromOrd <= fromOrd) {
-            if (otherToOrd >= toOrd) {
-                from = other.from;
-                to = other.to;
-                return true;
-            } else if (otherToOrd >= fromOrd) {
-                from = other.from;
-                return true;
-            }
-        }
 
+        if (type.equals(Type.RANGE) && other.type.equals(Type.RANGE)) {
+
+            if (otherFromOrd >= fromOrd) {
+                if (otherFromOrd <= toOrd) {
+                    to = other.to;
+                    return true;
+                } else if (otherToOrd <= toOrd) {
+                    return true;
+                }
+            }
+            if (otherFromOrd <= fromOrd) {
+                if (otherToOrd >= toOrd) {
+                    from = other.from;
+                    to = other.to;
+                    return true;
+                } else if (otherToOrd >= fromOrd) {
+                    from = other.from;
+                    return true;
+                }
+            }
+        } else if (type.equals(Type.SINGLE) && other.type.equals(Type.SINGLE)) {
+            if (otherFromOrd == fromOrd) {
+                return true;
+            } else if (otherFromOrd == fromOrd + 1) {
+                type = Type.MULTIPLE;
+                to = other.from;
+                return true;
+            }
+        }
         return false;
-    }
-
-    /**
-     * Setter for the delimiter.
-     * 
-     * @param delimiter the delimiter to set
-     */
-    protected void setDelimiter(String delimiter) {
-
-        this.delimiter = delimiter;
     }
 
     /**
@@ -202,6 +249,16 @@ public class PageRange {
     }
 
     /**
+     * Setter for type.
+     * 
+     * @param type the type to set
+     */
+    public void setType(Type type) {
+
+        this.type = type;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -209,52 +266,35 @@ public class PageRange {
     @Override
     public String toString() {
 
-        StringBuilder buffer = new StringBuilder();
-        if (encap != null) {
-            buffer.append("\\");
-            buffer.append(encap);
-            buffer.append("{");
+        StringWriter writer = new StringWriter();
+        try {
+            write(writer, PAGE_PARAMS);
+        } catch (IOException e) {
+            // ignored on purpose; this could not happen
         }
-        buffer.append(from.getPage());
-        if (to != from) {
-            buffer.append("--");
-            buffer.append(to.getPage());
-        }
-        if (encap != null) {
-            buffer.append("}");
-        }
-        return buffer.toString();
+        return writer.toString();
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
      * @param writer the writer
-     * @param encapPrefix the encapsulator prefix
-     * @param encapInfix the encapsulator infix
-     * @param encalSuffix the encapsulator suffix
+     * @param pageParams the page parameters
      * 
      * @throws IOException in case of an I/O error
      */
-    public void write(Writer writer, String encapPrefix, String encapInfix,
-            String encalSuffix) throws IOException {
+    public void write(Writer writer, String[] pageParams) throws IOException {
 
         if (encap != null) {
-            writer.write(encapPrefix);
+            writer.write(pageParams[0]);
             writer.write(encap);
-            writer.write(encapInfix);
+            writer.write(pageParams[1]);
         }
         String fromPage = from.getPage();
-        String toPage = to.getPage();
         writer.write(fromPage);
-        if (!toPage.equals(fromPage)) {
-            if (delimiter != null) {
-                writer.write(delimiter);
-            }
-            writer.write(toPage);
-        }
+        type.write(writer, fromPage, to.getPage(), pageParams);
         if (encap != null) {
-            writer.write(encalSuffix);
+            writer.write(pageParams[2]);
         }
     }
 

@@ -22,6 +22,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.makeindex.Parameters;
+import org.extex.exindex.makeindex.pages.PageRange.Type;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -78,21 +79,25 @@ public class MakeindexPageProcessor implements PageProcessor {
 
         for (int i = 0; i < pages.size(); i++) {
             PageRange p = pages.get(i);
-            if (p.isOpen()) {
+            Type type = p.getType();
+            if (type == PageRange.Type.OPEN) {
                 if (open != null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingClose"));
                     warnings++;
                 }
                 open = p;
-                p.setDelimiter(delimR);
-            } else if (p.isClose()) {
+                p.setType(PageRange.Type.RANGE);
+            } else if (type == PageRange.Type.CLOSE) {
                 if (open == null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingOpen"));
                     warnings++;
                 } else {
                     open.setTo(p.getTo());
+                    if (open.isOne()) {
+                        open.setType(PageRange.Type.SINGLE);
+                    }
                     open = null;
                     pages.remove(i);
                     i--;

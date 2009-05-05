@@ -79,9 +79,11 @@ public class MakeindexWriter implements IndexWriter {
                 params.getString("index:delim_1"), //
                 params.getString("index:delim_2")};
         String delimN = params.getString("markup:locref-list-sep");
-        String encapPrefix = params.getString("index:encap-prefix");
-        String encapInfix = params.getString("index:encap-infix");
-        String encalSuffix = params.getString("index:encap-suffix");
+        String[] pageParams = {params.getString("index:encap-prefix"), //
+                params.getString("index:encap-infix"), //
+                params.getString("index:encap-suffix"), //
+                params.getString("markup:range"), //
+                params.getString("markup:locref-list-sep")};
         long headingFlag = params.getNumber("index:headings-flag");
         int[] count = {0, 0};
         char currentHeading = '\0';
@@ -132,8 +134,7 @@ public class MakeindexWriter implements IndexWriter {
                 level = delim.length;
             }
             lastKey = key;
-            writePages(entry, delim[level], delimN, encapPrefix, encapInfix,
-                encalSuffix);
+            writePages(entry, delim[level], delimN, pageParams);
         }
 
         writer.write(params.getString("markup:index-close"));
@@ -192,28 +193,23 @@ public class MakeindexWriter implements IndexWriter {
      * @param entry the entry
      * @param delim the first delimiter
      * @param delimNext the next delimiter
-     * @param encapPrefix the encap prefix
-     * @param encapInfix the encap infix
-     * @param encapSuffix the encap suffix
+     * @param pageParams the page parameters
      * 
      * @throws IOException Signals that an I/O exception has occurred.
      */
-    private void writePages(Entry entry, final String delim,
-            final String delimNext, final String encapPrefix,
-            final String encapInfix, final String encapSuffix)
-            throws IOException {
+    private void writePages(Entry entry, String delim, String delimNext,
+            String[] pageParams) throws IOException {
 
-        List<PageRange> pages = entry.getPages();
         boolean first = true;
 
-        for (PageRange page : pages) {
+        for (PageRange range : entry.getPages()) {
             if (first) {
                 first = false;
                 writer.write(delim);
             } else {
                 writer.write(delimNext);
             }
-            page.write(writer, encapPrefix, encapInfix, encapSuffix);
+            range.write(writer, pageParams);
         }
     }
 
