@@ -469,6 +469,23 @@ public class IndexerTest {
     }
 
     /**
+     * <testcase> Two identical numerical pages with encap are joined.
+     * </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testPages4() throws IOException {
+
+        run(
+            "\\indexentry{bst|tt}{1}\n" //
+                    + "\\indexentry{bst|tt}{2}\n", //
+            MARKER_STYLE, //
+            "<preamble><item_0>bst<delim_0><encap_prefix>tt<encap_infix>1<delim_n>2<encap_suffix><postamble>",
+            "", 0);
+    }
+
+    /**
      * <testcase> A subitem is produced correctly. </testcase>
      * 
      * @throws IOException in case of an error
