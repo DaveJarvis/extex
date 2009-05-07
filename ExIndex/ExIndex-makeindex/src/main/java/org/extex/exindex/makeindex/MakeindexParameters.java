@@ -321,7 +321,7 @@ public final class MakeindexParameters {
         def("headings_flag", "index:headings-flag", new LNumber(0));
         def("item_0", "index:item_0", new LString("\n  \\item "));
         def("item_1", "index:item_1", new LString("\n    \\subitem "));
-        def("item_2", "indexitem_2:", new LString("\n      \\subsubitem "));
+        def("item_2", "index:item_2", new LString("\n      \\subsubitem "));
         def("item_01", "index:item_01", new LString("\n    \\subitem "));
         def("item_12", "index:item_12", new LString("\n      \\subsubitem "));
         def("item_x1", "index:item_x1", new LString("\n    \\subitem "));
