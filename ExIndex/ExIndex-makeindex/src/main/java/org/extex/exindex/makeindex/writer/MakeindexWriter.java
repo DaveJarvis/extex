@@ -43,7 +43,7 @@ public class MakeindexWriter implements IndexWriter {
     /**
      * The field <tt>writer</tt> contains the writer.
      */
-    private ColumnCountingWriter writer;
+    private LineBreakingWriter writer;
 
     /**
      * Creates a new object.
@@ -55,7 +55,10 @@ public class MakeindexWriter implements IndexWriter {
      */
     public MakeindexWriter(Writer writer, Parameters params) throws IOException {
 
-        this.writer = new ColumnCountingWriter(writer);
+        this.writer = new LineBreakingWriter(writer, //
+            (int) params.getNumber("markup:line-max"), //
+            params.getString("markup:indent-space"), //
+            (int) params.getNumber("markup:indent_length"));
         this.params = params;
     }
 
@@ -74,7 +77,6 @@ public class MakeindexWriter implements IndexWriter {
         String[] itemX = {params.getString("index:item_0"), //
                 params.getString("index:item_x1"), //
                 params.getString("index:item_x2")};
-        // String indentSpace = params.getString("markup:indent-space");
         String[] delim = {params.getString("index:delim_0"), //
                 params.getString("index:delim_1"), //
                 params.getString("index:delim_2")};
@@ -138,6 +140,7 @@ public class MakeindexWriter implements IndexWriter {
         }
 
         writer.write(params.getString("markup:index-close"));
+        writer.flush();
         return count;
     }
 
