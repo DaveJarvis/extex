@@ -226,6 +226,16 @@ public class PageRange {
                     return true;
                 }
             }
+        } else if (type.equals(Type.RANGE) && other.type.equals(Type.SINGLE)) {
+            if (otherFromOrd >= fromOrd && otherFromOrd <= toOrd) {
+                return true;
+            }
+        } else if (type.equals(Type.MULTIPLE) && other.type.equals(Type.SINGLE)) {
+            if (otherFromOrd == toOrd + 1) {
+                to = other.from;
+                type = Type.RANGE;
+                return true;
+            }
         } else if (type.equals(Type.SINGLE) && other.type.equals(Type.SINGLE)) {
             if (otherFromOrd == fromOrd) {
                 return true;
