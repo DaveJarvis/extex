@@ -134,7 +134,7 @@ public class LineBreakingWriter extends Writer {
                     }
                     break;
                 default:
-                    if (column > lineLength && next) {
+                    if (column >= lineLength && next) {
                         w.write("\n");
                         w.write(sep);
                         column = in;
