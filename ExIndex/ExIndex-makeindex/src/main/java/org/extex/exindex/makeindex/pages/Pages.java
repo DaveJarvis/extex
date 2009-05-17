@@ -30,7 +30,7 @@ import org.extex.exindex.core.type.page.PageReference;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class PageRange {
+public abstract class Pages {
 
     /**
      * TODO gene: missing JavaDoc.
@@ -87,7 +87,8 @@ public class PageRange {
     }
 
     /**
-     * The field <tt>PAGE_PARAMS</tt> contains the ...
+     * The field <tt>PAGE_PARAMS</tt> contains the default parameters for
+     * displaying a page.
      */
     private static final String[] PAGE_PARAMS = {"\\", "{", "}", "--", ", "};;
 
@@ -120,7 +121,7 @@ public class PageRange {
      * @param open the open indicator
      * @param close the close indicator
      */
-    public PageRange(PageReference from, String encap, Type type) {
+    protected Pages(PageReference from, String encap, Type type) {
 
         this.from = from;
         this.to = from;
@@ -179,73 +180,13 @@ public class PageRange {
     }
 
     /**
-     * Try to join with another page range.
+     * Setter for from.
      * 
-     * @param other the other page range
-     * 
-     * @return <code>true</code> iff the joining succeeded
+     * @param from the from to set
      */
-    public boolean join(PageRange other) {
+    public void setFrom(PageReference from) {
 
-        if (encap == null) {
-            if (other.encap != null) {
-                return false;
-            }
-        } else if (!encap.equals(other.encap)) {
-            return false;
-        }
-        if (other.from.getClass() != from.getClass()) {
-            return false;
-        }
-        int otherFromOrd = other.from.getOrd();
-        int otherToOrd = other.to.getOrd();
-        int fromOrd = from.getOrd();
-        int toOrd = to.getOrd();
-        if (otherFromOrd < 0 || otherToOrd < 0 || fromOrd < 0 || toOrd <= 0) {
-            // TODO join identical pages
-            return false;
-        }
-
-        if (type.equals(Type.RANGE) && other.type.equals(Type.RANGE)) {
-
-            if (otherFromOrd >= fromOrd) {
-                if (otherFromOrd <= toOrd) {
-                    to = other.to;
-                    return true;
-                } else if (otherToOrd <= toOrd) {
-                    return true;
-                }
-            }
-            if (otherFromOrd <= fromOrd) {
-                if (otherToOrd >= toOrd) {
-                    from = other.from;
-                    to = other.to;
-                    return true;
-                } else if (otherToOrd >= fromOrd) {
-                    from = other.from;
-                    return true;
-                }
-            }
-        } else if (type.equals(Type.RANGE) && other.type.equals(Type.SINGLE)) {
-            if (otherFromOrd >= fromOrd && otherFromOrd <= toOrd) {
-                return true;
-            }
-        } else if (type.equals(Type.MULTIPLE) && other.type.equals(Type.SINGLE)) {
-            if (otherFromOrd == toOrd + 1) {
-                to = other.from;
-                type = Type.RANGE;
-                return true;
-            }
-        } else if (type.equals(Type.SINGLE) && other.type.equals(Type.SINGLE)) {
-            if (otherFromOrd == fromOrd) {
-                return true;
-            } else if (otherFromOrd == fromOrd + 1) {
-                type = Type.MULTIPLE;
-                to = other.from;
-                return true;
-            }
-        }
-        return false;
+        this.from = from;
     }
 
     /**
@@ -253,7 +194,7 @@ public class PageRange {
      * 
      * @param to the to to set
      */
-    protected void setTo(PageReference to) {
+    public void setTo(PageReference to) {
 
         this.to = to;
     }
@@ -262,7 +203,10 @@ public class PageRange {
      * Setter for type.
      * 
      * @param type the type to set
+     * 
+     * @deprecated
      */
+    @Deprecated
     public void setType(Type type) {
 
         this.type = type;
@@ -302,10 +246,24 @@ public class PageRange {
         }
         String fromPage = from.getPage();
         writer.write(fromPage);
-        type.write(writer, fromPage, to.getPage(), pageParams);
+        writeCore(writer, pageParams, fromPage);
         if (encap != null) {
             writer.write(pageParams[2]);
         }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param writer
+     * @param pageParams
+     * @param fromPage
+     * @throws IOException
+     */
+    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
+            throws IOException {
+
+        type.write(writer, fromPage, to.getPage(), pageParams);
     }
 
 }

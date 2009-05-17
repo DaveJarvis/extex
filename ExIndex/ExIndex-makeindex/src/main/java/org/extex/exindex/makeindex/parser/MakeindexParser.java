@@ -32,7 +32,10 @@ import org.extex.exindex.makeindex.Entry;
 import org.extex.exindex.makeindex.Index;
 import org.extex.exindex.makeindex.Parameters;
 import org.extex.exindex.makeindex.normalizer.Collator;
-import org.extex.exindex.makeindex.pages.PageRange;
+import org.extex.exindex.makeindex.pages.Pages;
+import org.extex.exindex.makeindex.pages.PageRangeClose;
+import org.extex.exindex.makeindex.pages.PageRangeOpen;
+import org.extex.exindex.makeindex.pages.PageRangeSingle;
 
 /**
  * This class provides a parser for a makeindex raw index file format.
@@ -255,17 +258,17 @@ public class MakeindexParser implements Parser {
             String encap, char level, char open, char close) {
 
         PageReference from = AbstractPage.get(p, null);
-        PageRange page;
+        Pages page;
         if (encap == null || encap.equals("")) {
-            page = new PageRange(from, encap, PageRange.Type.SINGLE);
+            page = new PageRangeSingle(from, encap);
         } else if (encap.charAt(0) == open) {
             String enc = encap.length() == 1 ? null : encap.substring(1);
-            page = new PageRange(from, enc, PageRange.Type.OPEN);
+            page = new PageRangeOpen(from, enc);
         } else if (encap.charAt(0) == close) {
             String enc = encap.length() == 1 ? null : encap.substring(1);
-            page = new PageRange(from, enc, PageRange.Type.CLOSE);
+            page = new PageRangeClose(from, enc);
         } else {
-            page = new PageRange(from, encap, PageRange.Type.SINGLE);
+            page = new PageRangeSingle(from, encap);
         }
         index.add(new Entry(key, display, page));
     }

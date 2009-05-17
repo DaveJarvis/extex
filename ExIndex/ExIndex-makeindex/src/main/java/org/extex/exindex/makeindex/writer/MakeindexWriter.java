@@ -25,7 +25,7 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.makeindex.Entry;
 import org.extex.exindex.makeindex.Parameters;
-import org.extex.exindex.makeindex.pages.PageRange;
+import org.extex.exindex.makeindex.pages.Pages;
 
 /**
  * This class is an index writer for the makeindex emulator.
@@ -60,6 +60,26 @@ public class MakeindexWriter implements IndexWriter {
             params.getString("markup:indent-space"), //
             (int) params.getNumber("markup:indent_length"));
         this.params = params;
+    }
+
+    /**
+     * Find the first array index in which two arrays differ.
+     * 
+     * @param a the first array
+     * @param b the second array
+     * 
+     * @return the first non equal array position
+     */
+    private int matchPrefix(String[] a, String[] b) {
+
+        int len = a.length > b.length ? b.length : a.length;
+        int i;
+        for (i = 0; i < len; i++) {
+            if (!a[i].equals(b[i])) {
+                return i;
+            }
+        }
+        return i;
     }
 
     /**
@@ -106,54 +126,47 @@ public class MakeindexWriter implements IndexWriter {
             }
             String[] display = entry.getValue();
             String[] key = entry.getKey();
-            int level;
             boolean b = true;
-            for (int i = 0;; i++) {
-                if (i >= lastKey.length) {
-                    String[] it = (b ? itemX : item);
-                    for (; i < display.length; i++) {
-                        writer.write(it[i]);
-                        write(display[i]);
-                    }
-                    level = i - 1;
-                    break;
-                } else if (i >= key.length) {
-                    level = i - 1;
-                    break;
-                } else if (!lastKey[i].equals(display[i])) {
-                    level = i;
+            int level = matchPrefix(lastKey, display);
+            for (int i = level; i < display.length; i++) {
 
-                    writer.write(item[0]); // TODO
-                    write(display[i]);
-                    // throw new RuntimeException("unimplemented");
-                    break;
-                } else {
-                    b = false;
-                }
+                writer.write(itemX[i < itemX.length ? i : itemX.length - 1]); // TODO
+                writer.write(display[i]);
             }
+            // for (int i = 0;; i++) {
+            // if (i >= lastKey.length) {
+            // String[] it = (b ? itemX : item);
+            // for (; i < display.length; i++) {
+            // writer.write(it[i]);
+            // write(display[i]);
+            // }
+            // level = i - 1;
+            // break;
+            // } else if (i >= key.length) {
+            // level = i - 1;
+            // break;
+            // } else if (!lastKey[i].equals(display[i])) {
+            // level = i;
+            //
+            // writer.write(item[0]); // TODO
+            // write(display[i]);
+            // // throw new RuntimeException("unimplemented");
+            // break;
+            // } else {
+            // b = false;
+            // }
+            // }
 
             if (level > delim.length) {
                 level = delim.length;
             }
-            lastKey = key;
+            lastKey = display;
             writePages(entry, delim[level], delimN, pageParams);
         }
 
         writer.write(params.getString("markup:index-close"));
         writer.flush();
         return count;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param s
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private void write(String s) throws IOException {
-
-        writer.write(s);
     }
 
     /**
@@ -205,7 +218,7 @@ public class MakeindexWriter implements IndexWriter {
 
         boolean first = true;
 
-        for (PageRange range : entry.getPages()) {
+        for (Pages range : entry.getPages()) {
             if (first) {
                 first = false;
                 writer.write(delim);

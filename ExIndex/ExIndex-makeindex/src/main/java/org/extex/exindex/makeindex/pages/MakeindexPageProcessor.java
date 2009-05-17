@@ -21,8 +21,9 @@ package org.extex.exindex.makeindex.pages;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.type.page.PageReference;
 import org.extex.exindex.makeindex.Parameters;
-import org.extex.exindex.makeindex.pages.PageRange.Type;
+import org.extex.exindex.makeindex.pages.Pages.Type;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
@@ -72,23 +73,23 @@ public class MakeindexPageProcessor implements PageProcessor {
      * 
      * @see org.extex.exindex.makeindex.pages.PageProcessor#join(java.util.List)
      */
-    public int join(List<PageRange> pages) {
+    public int join(List<Pages> pages) {
 
         int warnings = 0;
-        PageRange open = null;
+        Pages open = null;
 
         for (int i = 0; i < pages.size(); i++) {
-            PageRange p = pages.get(i);
+            Pages p = pages.get(i);
             Type type = p.getType();
-            if (type == PageRange.Type.OPEN) {
+            if (type == Pages.Type.OPEN) {
                 if (open != null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingClose"));
                     warnings++;
                 }
                 open = p;
-                p.setType(PageRange.Type.RANGE);
-            } else if (type == PageRange.Type.CLOSE) {
+                p.setType(Pages.Type.RANGE);
+            } else if (type == Pages.Type.CLOSE) {
                 if (open == null) {
                     logger.warning(LocalizerFactory.getLocalizer(getClass())
                         .format("MissingOpen"));
@@ -96,7 +97,9 @@ public class MakeindexPageProcessor implements PageProcessor {
                 } else {
                     open.setTo(p.getTo());
                     if (open.isOne()) {
-                        open.setType(PageRange.Type.SINGLE);
+                        open.setType(Pages.Type.SINGLE);
+                    } else {
+                        open.setType(Pages.Type.RANGE);
                     }
                     open = null;
                     pages.remove(i);
@@ -109,9 +112,8 @@ public class MakeindexPageProcessor implements PageProcessor {
                     pages.remove(i);
                     i--;
                 }
-            } else if (i > 0 && pages.get(i - 1).join(p)) {
-                pages.remove(i);
-                i--;
+            } else if (i > 0) {
+                i = joinTwo(pages, i, pages.get(i - 1), p);
             }
         }
 
@@ -122,4 +124,103 @@ public class MakeindexPageProcessor implements PageProcessor {
         }
         return warnings;
     }
+
+    /**
+     * Try to join with another page range.
+     * 
+     * @param i
+     * @param pages
+     * 
+     * @param other the other page range
+     * 
+     * @return <code>true</code> iff the joining succeeded
+     */
+    public int joinTwo(List<Pages> pages, int i, Pages p, Pages other) {
+
+        String encap = p.getEncap();
+        String otherEncap = other.getEncap();
+
+        if (encap == null) {
+            if (otherEncap != null) {
+                return i;
+            }
+        } else if (!encap.equals(otherEncap)) {
+            return i;
+        }
+        PageReference from = p.getFrom();
+        PageReference otherFrom = other.getFrom();
+        if (otherFrom.getClass() != from.getClass()) {
+            return i;
+        }
+        PageReference to = p.getTo();
+        PageReference otherTo = other.getTo();
+        int otherFromOrd = otherFrom.getOrd();
+        int otherToOrd = otherTo.getOrd();
+        int fromOrd = from.getOrd();
+        int toOrd = to.getOrd();
+        if (otherFromOrd < 0 || otherToOrd < 0 || fromOrd < 0 || toOrd <= 0) {
+            // TODO join identical pages
+            return i;
+        }
+
+        Type type = p.getType();
+        Type otherType = other.getType();
+
+        if (type.equals(Type.RANGE) && otherType.equals(Type.RANGE)) {
+
+            if (otherFromOrd >= fromOrd) {
+                if (otherFromOrd <= toOrd) {
+                    p.setTo(otherTo);
+                    pages.remove(i);
+                    return i - 1;
+                } else if (otherToOrd <= toOrd) {
+                    pages.remove(i);
+                    return i - 1;
+                }
+            }
+            if (otherFromOrd <= fromOrd) {
+                if (otherToOrd >= toOrd) {
+                    p.setFrom(otherFrom);
+                    p.setTo(otherTo);
+                    pages.remove(i);
+                    return i - 1;
+                } else if (otherToOrd >= fromOrd) {
+                    from = otherFrom;
+                    pages.remove(i);
+                    return i - 1;
+                }
+            }
+        } else if (type.equals(Type.RANGE) && otherType.equals(Type.SINGLE)) {
+            if (otherFromOrd >= fromOrd && otherFromOrd <= toOrd) {
+                pages.remove(i);
+                return i - 1;
+            } else if (otherFromOrd == toOrd + 1) {
+                p.setTo(otherTo);
+                pages.remove(i);
+                return i - 1;
+            }
+        } else if (type.equals(Type.MULTIPLE) && otherType.equals(Type.SINGLE)) {
+            if (otherFromOrd == toOrd || otherFromOrd == fromOrd) {
+                pages.remove(i);
+                return i - 1;
+            } else if (otherFromOrd == toOrd + 1) {
+                p.setTo(otherFrom);
+                p.setType(Type.RANGE);
+                pages.remove(i);
+                return i - 1;
+            }
+        } else if (type.equals(Type.SINGLE) && otherType.equals(Type.SINGLE)) {
+            if (otherFromOrd == fromOrd) {
+                pages.remove(i);
+                return i - 1;
+            } else if (otherFromOrd == fromOrd + 1) {
+                p.setType(Type.MULTIPLE);
+                p.setTo(otherFrom);
+                pages.remove(i);
+                return i - 1;
+            }
+        }
+        return i;
+    }
+
 }

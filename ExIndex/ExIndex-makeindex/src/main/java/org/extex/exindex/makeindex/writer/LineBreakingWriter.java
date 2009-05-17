@@ -23,7 +23,8 @@ import java.io.IOException;
 import java.io.Writer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a writer which tries to achieve a certain line length by breaking
+ * longer lines.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -31,32 +32,32 @@ import java.io.Writer;
 public class LineBreakingWriter extends Writer {
 
     /**
-     * The field <tt>buffer</tt> contains the ...
+     * The field <tt>buffer</tt> contains the intermediary buffer.
      */
     private StringBuilder buffer = new StringBuilder();
 
     /**
-     * The field <tt>w</tt> contains the ...
+     * The field <tt>w</tt> contains the target writer.
      */
     private Writer w;
 
     /**
-     * The field <tt>column</tt> contains the ...
+     * The field <tt>column</tt> contains the current column.
      */
     private int column = 0;
 
     /**
-     * The field <tt>sep</tt> contains the ...
+     * The field <tt>sep</tt> contains the separator.
      */
     private String sep;
 
     /**
-     * The field <tt>in</tt> contains the ...
+     * The field <tt>in</tt> contains the width of sep.
      */
     private int in;
 
     /**
-     * The field <tt>lineLength</tt> contains the ...
+     * The field <tt>lineLength</tt> contains the desired line length.
      */
     private int lineLength;
 
@@ -68,6 +69,10 @@ public class LineBreakingWriter extends Writer {
     /**
      * Creates a new object.
      * 
+     * @param w the target writer
+     * @param lineLength the line length
+     * @param separator the separator
+     * @param indent the indent
      */
     public LineBreakingWriter(Writer w, int lineLength, String separator,
             int indent) {
@@ -134,7 +139,7 @@ public class LineBreakingWriter extends Writer {
                     }
                     break;
                 default:
-                    if (column >= lineLength && next) {
+                    if (column >= lineLength + 1 && next) {
                         w.write("\n");
                         w.write(sep);
                         column = in;

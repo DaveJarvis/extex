@@ -21,7 +21,7 @@ package org.extex.exindex.makeindex;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.makeindex.pages.PageRange;
+import org.extex.exindex.makeindex.pages.Pages;
 
 /**
  * This class represents an entry in the index.
@@ -54,7 +54,7 @@ public class Entry {
     /**
      * The field <tt>pages</tt> contains the pages contained.
      */
-    private List<PageRange> pages = new ArrayList<PageRange>();
+    private List<Pages> pages = new ArrayList<Pages>();
 
     /**
      * The field <tt>heading</tt> contains the heading character.
@@ -68,7 +68,7 @@ public class Entry {
      * @param display the display strings
      * @param page the page specification
      */
-    public Entry(String[] k, String[] display, PageRange page) {
+    public Entry(String[] k, String[] display, Pages page) {
 
         this.key = k;
         this.display = display;
@@ -92,7 +92,7 @@ public class Entry {
      * 
      * @param morePages the pages to add
      */
-    public void addPages(List<PageRange> morePages) {
+    public void addPages(List<Pages> morePages) {
 
         pages.addAll(morePages);
     }
@@ -133,7 +133,7 @@ public class Entry {
      * 
      * @return the pages
      */
-    public List<PageRange> getPages() {
+    public List<Pages> getPages() {
 
         return pages;
     }
