@@ -30,18 +30,55 @@ import org.extex.exindex.core.type.page.PageReference;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
  */
-public class PageRangeClose extends Pages {
+public class PageRangeRange extends Pages {
+
+    /**
+     * The field <tt>to</tt> contains the end page.
+     */
+    private PageReference to;
 
     /**
      * Creates a new object.
      * 
-     * @param from
-     * @param encap
+     * @param p
+     * @param to
      * @param type
      */
-    public PageRangeClose(PageReference from, String encap) {
+    public PageRangeRange(Pages pages, PageReference to) {
 
-        super(from, encap);
+        super(pages.getFrom(), pages.getEncap());
+        this.to = to;
+    }
+
+    /**
+     * Getter for the to.
+     * 
+     * @return the to
+     */
+    public PageReference getTo() {
+
+        return to;
+    }
+
+    /**
+     * Checks if is one.
+     * 
+     * @return true, if is one
+     */
+    @Override
+    public boolean isOne() {
+
+        return getFrom().getPage().equals(to.getPage());
+    }
+
+    /**
+     * Setter for the to.
+     * 
+     * @param to the to to set
+     */
+    public void setTo(PageReference to) {
+
+        this.to = to;
     }
 
     /**
@@ -54,6 +91,11 @@ public class PageRangeClose extends Pages {
     protected void writeCore(Writer writer, String[] pageParams, String fromPage)
             throws IOException {
 
+        String toPage = to.getPage();
+        if (!toPage.equals(fromPage)) {
+            writer.write(pageParams[3]);
+            writer.write(toPage);
+        }
     }
 
 }

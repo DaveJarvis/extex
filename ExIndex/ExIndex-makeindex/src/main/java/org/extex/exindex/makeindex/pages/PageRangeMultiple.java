@@ -19,6 +19,9 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
@@ -30,15 +33,57 @@ import org.extex.exindex.core.type.page.PageReference;
 public class PageRangeMultiple extends Pages {
 
     /**
+     * The field <tt>to</tt> contains the end page.
+     */
+    private PageReference to;
+
+    /**
      * Creates a new object.
      * 
-     * @param from
-     * @param encap
-     * @param type
+     * @param pages
+     * @param to
      */
-    public PageRangeMultiple(PageReference from, String encap) {
+    public PageRangeMultiple(Pages pages, PageReference to) {
 
-        super(from, encap, Type.MULTIPLE);
+        super(pages.getFrom(), pages.getEncap());
+        this.to = to;
+    }
+
+    /**
+     * Getter for the to.
+     * 
+     * @return the to
+     */
+    public PageReference getTo() {
+
+        return to;
+    }
+
+    /**
+     * Setter for the to.
+     * 
+     * @param to the to to set
+     */
+    public void setTo(PageReference to) {
+
+        this.to = to;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
+     *      java.lang.String[], java.lang.String)
+     */
+    @Override
+    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
+            throws IOException {
+
+        String toPage = to.getPage();
+        if (!toPage.equals(fromPage)) {
+            writer.write(pageParams[4]);
+            writer.write(toPage);
+        }
     }
 
 }

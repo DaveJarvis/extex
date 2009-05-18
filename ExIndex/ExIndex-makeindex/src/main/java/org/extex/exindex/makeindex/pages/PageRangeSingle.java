@@ -19,6 +19,9 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
@@ -38,7 +41,40 @@ public class PageRangeSingle extends Pages {
      */
     public PageRangeSingle(PageReference from, String encap) {
 
-        super(from, encap, Type.SINGLE);
+        super(from, encap);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param pages
+     */
+    public PageRangeSingle(Pages pages) {
+
+        super(pages.getFrom(), pages.getEncap());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.makeindex.pages.Pages#isOne()
+     */
+    @Override
+    public boolean isOne() {
+
+        return true;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
+     *      java.lang.String[], java.lang.String)
+     */
+    @Override
+    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
+            throws IOException {
+
     }
 
 }

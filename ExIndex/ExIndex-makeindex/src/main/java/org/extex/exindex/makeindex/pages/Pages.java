@@ -33,60 +33,6 @@ import org.extex.exindex.core.type.page.PageReference;
 public abstract class Pages {
 
     /**
-     * TODO gene: missing JavaDoc.
-     */
-    public static enum Type {
-
-        /**
-         * The field <tt>SINGLE</tt> contains the ...
-         */
-        SINGLE {
-
-            @Override
-            protected void write(Writer writer, String fromPage, String toPage,
-                    String[] pageParams) throws IOException {
-
-            }
-        },
-        /**
-         * The field <tt>RANGE</tt> contains the ...
-         */
-        RANGE,
-        /**
-         * The field <tt>MULTIPLE</tt> contains the ...
-         */
-        MULTIPLE {
-
-            @Override
-            protected void write(Writer writer, String fromPage, String toPage,
-                    String[] pageParams) throws IOException {
-
-                if (!toPage.equals(fromPage)) {
-                    writer.write(pageParams[4]);
-                    writer.write(toPage);
-                }
-            }
-        },
-        /**
-         * The field <tt>OPEN</tt> contains the ...
-         */
-        OPEN,
-        /**
-         * The field <tt>CLOSE</tt> contains the ...
-         */
-        CLOSE;
-
-        protected void write(Writer writer, String fromPage, String toPage,
-                String[] pageParams) throws IOException {
-
-            if (!toPage.equals(fromPage)) {
-                writer.write(pageParams[3]);
-                writer.write(toPage);
-            }
-        }
-    }
-
-    /**
      * The field <tt>PAGE_PARAMS</tt> contains the default parameters for
      * displaying a page.
      */
@@ -96,16 +42,6 @@ public abstract class Pages {
      * The field <tt>from</tt> contains the star page.
      */
     private PageReference from;
-
-    /**
-     * The field <tt>to</tt> contains the end page.
-     */
-    private PageReference to;
-
-    /**
-     * The field <tt>type</tt> contains the ...
-     */
-    private Type type;
 
     /**
      * The field <tt>encap</tt> contains the encapsulator or <code>null</code>
@@ -121,12 +57,10 @@ public abstract class Pages {
      * @param open the open indicator
      * @param close the close indicator
      */
-    protected Pages(PageReference from, String encap, Type type) {
+    protected Pages(PageReference from, String encap) {
 
         this.from = from;
-        this.to = from;
         this.encap = encap;
-        this.type = type;
     }
 
     /**
@@ -150,33 +84,13 @@ public abstract class Pages {
     }
 
     /**
-     * Getter for the to.
-     * 
-     * @return the to
-     */
-    public PageReference getTo() {
-
-        return to;
-    }
-
-    /**
-     * Getter for type.
-     * 
-     * @return the type
-     */
-    public Type getType() {
-
-        return type;
-    }
-
-    /**
      * Checks if is one.
      * 
      * @return true, if is one
      */
     public boolean isOne() {
 
-        return from.getPage().equals(to.getPage());
+        return true;
     }
 
     /**
@@ -187,29 +101,6 @@ public abstract class Pages {
     public void setFrom(PageReference from) {
 
         this.from = from;
-    }
-
-    /**
-     * Setter for the to.
-     * 
-     * @param to the to to set
-     */
-    public void setTo(PageReference to) {
-
-        this.to = to;
-    }
-
-    /**
-     * Setter for type.
-     * 
-     * @param type the type to set
-     * 
-     * @deprecated
-     */
-    @Deprecated
-    public void setType(Type type) {
-
-        this.type = type;
     }
 
     /**
@@ -255,15 +146,13 @@ public abstract class Pages {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param writer
-     * @param pageParams
-     * @param fromPage
-     * @throws IOException
+     * @param writer the target writer
+     * @param pageParams the parameters
+     * @param fromPage start page
+     * 
+     * @throws IOException in case of an I/O error
      */
-    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
-            throws IOException {
-
-        type.write(writer, fromPage, to.getPage(), pageParams);
-    }
+    protected abstract void writeCore(Writer writer, String[] pageParams,
+            String fromPage) throws IOException;
 
 }

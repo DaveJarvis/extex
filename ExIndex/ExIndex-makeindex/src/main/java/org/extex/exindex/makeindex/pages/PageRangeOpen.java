@@ -19,6 +19,9 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import java.io.IOException;
+import java.io.Writer;
+
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
@@ -38,7 +41,19 @@ public class PageRangeOpen extends Pages {
      */
     public PageRangeOpen(PageReference from, String encap) {
 
-        super(from, encap, Type.OPEN);
+        super(from, encap);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exindex.makeindex.pages.Pages#writeCore(java.io.Writer,
+     *      java.lang.String[], java.lang.String)
+     */
+    @Override
+    protected void writeCore(Writer writer, String[] pageParams, String fromPage)
+            throws IOException {
+
     }
 
 }
