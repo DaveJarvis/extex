@@ -137,8 +137,25 @@ public class LineBreakingWriterTest {
         LineBreakingWriter w = new LineBreakingWriter(sw, 30, "\t\t", 16);
         w.write("a b c d e f g h i j k l m n o p q r s t u v w x y z");
         w.close();
-        assertEquals("a b c d e f g h i j k l m n \n\t\t"
-                + "o p q r s t u v \n\t\tw x y z", sw.toString());
+        assertEquals("a b c d e f g h i j k l m n o \n\t\t"
+                + "p q r s t u v \n\t\tw x y z", sw.toString());
+    }
+
+    /**
+     * <testcase>A long string with several white-spaces and newline is
+     * broken.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test011() throws IOException {
+
+        StringWriter sw = new StringWriter();
+        LineBreakingWriter w = new LineBreakingWriter(sw, 30, "\t\t", 16);
+        w.write("abcde\na b c d e f g h i j k l m n o p q r s t u v w x y z");
+        w.close();
+        assertEquals("abcde\na b c d e f g h i j k l m n o \n\t\t"
+                + "p q r s t u v \n\t\tw x y z", sw.toString());
     }
 
     /**
