@@ -62,24 +62,19 @@ public class LineBreakingWriter extends Writer {
     private int lineLength;
 
     /**
-     * The field <tt>next</tt> contains the ...
-     */
-    private boolean next = false;
-
-    /**
      * Creates a new object.
      * 
      * @param w the target writer
      * @param lineLength the line length
      * @param separator the separator
-     * @param indent the indent
+     * @param indent the indentation
      */
     public LineBreakingWriter(Writer w, int lineLength, String separator,
             int indent) {
 
         this.w = w;
         this.lineLength = lineLength;
-        this.sep = separator;
+        this.sep = "\n" + separator;
         this.in = indent;
     }
 
@@ -91,6 +86,10 @@ public class LineBreakingWriter extends Writer {
     @Override
     public void close() throws IOException {
 
+        if (column >= lineLength + 1) {
+            w.write(sep);
+            column = in + buffer.length();
+        }
         flush();
         w.close();
     }
@@ -109,9 +108,11 @@ public class LineBreakingWriter extends Writer {
 
     private void propagate() throws IOException {
 
-        w.write(buffer.toString());
-        buffer.delete(0, buffer.length());
-        next = true;
+        int length = buffer.length();
+        if (length != 0) {
+            w.write(buffer.toString());
+            buffer.delete(0, length);
+        }
     }
 
     /**
@@ -125,27 +126,26 @@ public class LineBreakingWriter extends Writer {
         for (int i = off; i < off + len; i++) {
             char c = cbuf[i];
             buffer.append(c);
-            column++;
             switch (c) {
                 case '\n':
-                    column = 0;
+                case '\r':
                     propagate();
-                    next = false;
+                    column = 0;
                     break;
+                case '\f':
                 case '\t':
                 case ' ':
-                    if (column < lineLength) {
-                        propagate();
+                    column++;
+                    if (column >= lineLength + 1) {
+                        w.write(sep);
+                        column = in + buffer.length();
                     }
+                    propagate();
                     break;
                 default:
-                    if (column >= lineLength + 1 && next) {
-                        w.write("\n");
-                        w.write(sep);
-                        column = in;
-                        next = false;
-                    }
+                    column++;
             }
         }
     }
+
 }
