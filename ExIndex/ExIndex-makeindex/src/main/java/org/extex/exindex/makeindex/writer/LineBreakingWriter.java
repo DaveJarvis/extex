@@ -86,11 +86,8 @@ public class LineBreakingWriter extends Writer {
     @Override
     public void close() throws IOException {
 
-        if (column >= lineLength + 1) {
-            w.write(sep);
-            column = in + buffer.length();
-        }
-        flush();
+        propagate();
+        w.flush();
         w.close();
     }
 
@@ -102,12 +99,25 @@ public class LineBreakingWriter extends Writer {
     @Override
     public void flush() throws IOException {
 
-        propagate();
+        int length = buffer.length();
+        if (length != 0) {
+            w.write(buffer.toString());
+            buffer.delete(0, length);
+        }
         w.flush();
     }
 
+    /**
+     * Pass the buffer contents to the encapsulated writer.
+     * 
+     * @throws IOException in case of an I/O error
+     */
     private void propagate() throws IOException {
 
+        if (column >= lineLength + 2) {
+            w.write(sep);
+            column = in + buffer.length();
+        }
         int length = buffer.length();
         if (length != 0) {
             w.write(buffer.toString());
@@ -124,9 +134,8 @@ public class LineBreakingWriter extends Writer {
     public void write(char[] cbuf, int off, int len) throws IOException {
 
         for (int i = off; i < off + len; i++) {
-            char c = cbuf[i];
-            buffer.append(c);
-            switch (c) {
+            buffer.append(cbuf[i]);
+            switch (cbuf[i]) {
                 case '\n':
                 case '\r':
                     propagate();
@@ -136,14 +145,11 @@ public class LineBreakingWriter extends Writer {
                 case '\t':
                 case ' ':
                     column++;
-                    if (column >= lineLength + 1) {
-                        w.write(sep);
-                        column = in + buffer.length();
-                    }
                     propagate();
                     break;
                 default:
                     column++;
+                    // nothing else to do
             }
         }
     }

@@ -74,7 +74,7 @@ public class Entry {
         this.display = display;
         this.pages.add(page);
 
-        String s = key[0] == null ? "" : key[0].replaceAll("[{}]", "");
+        String s = key[0] == null ? "" : key[0];
         if (s.equals("")) {
             this.heading = HEADING_SYMBOL;
         } else if (s.matches("[-]?[0-9]+")) {

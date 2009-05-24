@@ -438,6 +438,57 @@ public class IndexerTest {
     }
 
     /**
+     * <testcase> Two identical numerical pages with encap are joined.
+     * </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public final void testPages10() throws IOException {
+
+        run(
+            "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{57}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{58}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{59}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{59}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{60}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{60}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{60}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{60}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{62}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{62}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{63}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{63}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{64}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{64}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{64}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{65}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{65}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{66}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{67}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{67}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{68}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{69}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{70}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{70}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{70}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{71}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{72}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{74}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{75}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{75}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{76}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{76}"
+                    + "\\indexentry{alpha.bst@\\textsf  {alpha.bst}|hyperpage}{76}",
+            "", //
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item \\textsf  {alpha.bst}, \\hyperpage{57--60}, \\hyperpage{62--72}, \n"
+                    + "\t\t\\hyperpage{74--76}\n" + "\n" + "\\end{theindex}\n",
+            "", 0);
+    }
+
+    /**
      * <testcase> Two identical numerical pages are joined. </testcase>
      * 
      * @throws IOException in case of an error

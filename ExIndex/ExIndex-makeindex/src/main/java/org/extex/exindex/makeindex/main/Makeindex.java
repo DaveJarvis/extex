@@ -146,6 +146,8 @@ public class Makeindex {
             String[] ka1 = o1.getKey();
             String[] ka2 = o2.getKey();
             int len = (ka1.length < ka2.length ? ka1.length : ka2.length);
+            String[] va1 = o1.getValue();
+            String[] va2 = o2.getValue();
 
             for (int i = 0; i < len; i++) {
                 String v1 = ka1[i];
@@ -162,20 +164,8 @@ public class Makeindex {
                         return cmp;
                     }
                 }
-            }
-            if (ka1.length < ka2.length) {
-                return -1;
-            } else if (ka1.length > ka2.length) {
-                return 1;
-            }
-
-            ka1 = o1.getValue();
-            ka2 = o2.getValue();
-            len = (ka1.length < ka2.length ? ka1.length : ka2.length);
-
-            for (int i = 0; i < len; i++) {
-                String v1 = ka1[i];
-                String v2 = ka2[i];
+                v1 = va1[i];
+                v2 = va2[i];
                 if (v1 == null) {
                     if (v2 != null) {
                         return 1;
@@ -183,17 +173,18 @@ public class Makeindex {
                 } else if (v2 == null) {
                     return -1;
                 } else {
-                    int cmp = v1.compareToIgnoreCase(v2);
+                    int cmp = v1.compareTo(v2);
                     if (cmp != 0) {
                         return cmp;
                     }
                 }
             }
             if (ka1.length < ka2.length) {
-                return 1;
-            } else if (ka1.length > ka2.length) {
                 return -1;
+            } else if (ka1.length > ka2.length) {
+                return 1;
             }
+
             return 0;
         }
 
