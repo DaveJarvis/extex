@@ -25,7 +25,7 @@ import java.io.Writer;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a base class for page ranges.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -121,7 +121,7 @@ public abstract class Pages {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the page to the target writer.
      * 
      * @param writer the writer
      * @param pageParams the page parameters
@@ -144,7 +144,7 @@ public abstract class Pages {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write the additional page range data to the target writer.
      * 
      * @param writer the target writer
      * @param pageParams the parameters

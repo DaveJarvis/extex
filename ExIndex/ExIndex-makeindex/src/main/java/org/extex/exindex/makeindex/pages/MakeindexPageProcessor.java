@@ -18,15 +18,25 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
+import org.extex.exindex.core.type.page.LowerPage;
+import org.extex.exindex.core.type.page.LowerRomanPage;
+import org.extex.exindex.core.type.page.NumericPage;
 import org.extex.exindex.core.type.page.PageReference;
+import org.extex.exindex.core.type.page.SomePage;
+import org.extex.exindex.core.type.page.UpperPage;
+import org.extex.exindex.core.type.page.UpperRomanPage;
 import org.extex.exindex.makeindex.Parameters;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides some functions to process pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6622 $
@@ -39,6 +49,31 @@ public class MakeindexPageProcessor implements PageProcessor {
     private Logger logger;
 
     /**
+     * The field <tt>map</tt> contains the mapping from classes to integers for
+     * sorting.
+     */
+    private Map<Class<? extends PageReference>, Integer> map =
+            new HashMap<Class<? extends PageReference>, Integer>();
+
+    /**
+     * The field <tt>comparator</tt> contains the ...
+     */
+    private Comparator<? super Pages> comparator = new Comparator<Pages>() {
+
+        public int compare(Pages o1, Pages o2) {
+
+            Integer m1 = map.get(o1.getFrom().getClass());
+            Integer m2 = map.get(o2.getFrom().getClass());
+
+            if (m1 == m2) {
+                return 0;
+            }
+
+            return m1 < m2 ? -1 : 1;
+        }
+    };
+
+    /**
      * Creates a new object.
      * 
      * @param params the parameters
@@ -47,6 +82,36 @@ public class MakeindexPageProcessor implements PageProcessor {
     public MakeindexPageProcessor(Parameters params, Logger logger) {
 
         this.logger = logger;
+        String option = params.getString("index:page-precedence");
+        int precedence = 0;
+        map.put(LowerRomanPage.class, 100 + precedence++);
+        map.put(NumericPage.class, 100 + precedence++);
+        map.put(LowerPage.class, 100 + precedence++);
+        map.put(UpperRomanPage.class, 100 + precedence++);
+        map.put(UpperPage.class, 100 + precedence++);
+        map.put(SomePage.class, 100 + precedence++);
+
+        for (char c : option.toCharArray()) {
+            switch (c) {
+                case 'n':
+                    map.put(NumericPage.class, precedence++);
+                    break;
+                case 'r':
+                    map.put(LowerRomanPage.class, precedence++);
+                    break;
+                case 'R':
+                    map.put(UpperRomanPage.class, precedence++);
+                    break;
+                case 'a':
+                    map.put(LowerPage.class, precedence++);
+                    break;
+                case 'A':
+                    map.put(UpperPage.class, precedence++);
+                    break;
+                default:
+                    map.put(SomePage.class, precedence++);
+            }
+        }
     }
 
     /**
@@ -206,6 +271,16 @@ public class MakeindexPageProcessor implements PageProcessor {
             }
         }
         return i;
+    }
+
+    /**
+     * Sort a list of pages.
+     * 
+     * @param list the list to be sorted
+     */
+    public void sort(List<Pages> list) {
+
+        Collections.sort(list, comparator);
     }
 
 }

@@ -25,6 +25,7 @@ import java.util.logging.Logger;
 
 import org.extex.exindex.makeindex.Entry;
 import org.extex.exindex.makeindex.Parameters;
+import org.extex.exindex.makeindex.pages.PageProcessor;
 import org.extex.exindex.makeindex.pages.Pages;
 
 /**
@@ -86,14 +87,15 @@ public class MakeindexWriter implements IndexWriter {
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.makeindex.writer.IndexWriter#write(java.util.List,
-     *      java.util.logging.Logger, java.lang.String)
+     *      java.util.logging.Logger, java.lang.String,
+     *      org.extex.exindex.makeindex.pages.PageProcessor)
      */
-    public int[] write(List<Entry> entries, Logger logger, String startPage)
-            throws IOException {
+    public int[] write(List<Entry> entries, Logger logger, String startPage,
+            PageProcessor pageProcessor) throws IOException {
 
-        String[] item = {params.getString("index:item_0"), //
-                params.getString("index:item_1"), //
-                params.getString("index:item_2")};
+        // String[] item = {params.getString("index:item_0"), //
+        // params.getString("index:item_1"), //
+        // params.getString("index:item_2")};
         String[] itemX = {params.getString("index:item_0"), //
                 params.getString("index:item_x1"), //
                 params.getString("index:item_x2")};
@@ -125,8 +127,8 @@ public class MakeindexWriter implements IndexWriter {
                 currentHeading = writeHeading(headingFlag, entry);
             }
             String[] display = entry.getValue();
-            String[] key = entry.getKey();
-            boolean b = true;
+            // String[] key = entry.getKey();
+            // boolean b = true;
             int level = matchPrefix(lastKey, display);
             for (int i = level; i < display.length; i++) {
 

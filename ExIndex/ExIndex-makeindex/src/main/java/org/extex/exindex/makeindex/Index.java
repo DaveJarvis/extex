@@ -73,7 +73,7 @@ public class Index {
     }
 
     /**
-     * Sort the entries and return an array of sorted entries.
+     * Sort the entries and return a list of sorted entries.
      * 
      * @param comperator the comparator
      * @param pp the page processor
@@ -96,16 +96,19 @@ public class Index {
 
         Entry entry = entries[0];
         content.add(entry);
+
         for (int i = 1; i < size; i++) {
             Entry x = entries[i];
             if (comperator.compare(entry, x) == 0) {
                 entry.addPages(x.getPages());
             } else {
                 warn[0] += pp.join(entry.getPages());
+                pp.sort(entry.getPages());
                 entry = x;
                 content.add(entry);
             }
         }
+        pp.sort(entry.getPages());
         warn[0] += pp.join(entry.getPages());
 
         return content;

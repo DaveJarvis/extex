@@ -923,7 +923,8 @@ public class Makeindex {
             info("SortingDone", Long.toString(comparisons));
             info(fmt, output);
 
-            int[] count = indexWriter.write(entries, logger, startPage);
+            int[] count = indexWriter.write(entries, logger, startPage, //
+                pageProcessor);
 
             info("GeneratingOutputDone", //
                 Integer.toString(count[0]), //

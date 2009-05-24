@@ -32,8 +32,15 @@ public interface PageProcessor {
      * Process the pages given.
      * 
      * @param pages the list of pages
-     * @return TODO
+     * 
+     * @return the number of warnings produced
      */
     int join(List<Pages> pages);
 
+    /**
+     * Sort a list of pages.
+     * 
+     * @param list the list to be sorted
+     */
+    void sort(List<Pages> list);
 }

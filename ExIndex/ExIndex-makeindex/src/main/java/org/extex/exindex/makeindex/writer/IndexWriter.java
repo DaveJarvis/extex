@@ -23,6 +23,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import org.extex.exindex.makeindex.Entry;
+import org.extex.exindex.makeindex.pages.PageProcessor;
 
 /**
  * This interface describes a writer for an index.
@@ -38,11 +39,12 @@ public interface IndexWriter {
      * @param entries the entries
      * @param logger the logger
      * @param page the page
+     * @param pageProcessor the page processor
      * @return the number of lines and the number of warnings produced
      * 
      * @throws IOException in case of an I/O error
      */
-    int[] write(List<Entry> entries, Logger logger, String page)
-            throws IOException;
+    int[] write(List<Entry> entries, Logger logger, String page,
+            PageProcessor pageProcessor) throws IOException;
 
 }
