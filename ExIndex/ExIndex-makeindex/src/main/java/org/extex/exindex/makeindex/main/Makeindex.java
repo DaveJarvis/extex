@@ -120,9 +120,9 @@ public class Makeindex {
     private long comparisons;
 
     /**
-     * The field <tt>comp</tt> contains the comparator.
+     * The field <tt>comperator</tt> contains the comparator.
      */
-    private Comparator<Entry> comp = new Comparator<Entry>() {
+    private Comparator<Entry> comperator = new Comparator<Entry>() {
 
         /**
          * Compare two entries.
@@ -919,7 +919,7 @@ public class Makeindex {
 
             info("Sorting");
             comparisons = 0;
-            List<Entry> entries = index.sort(comp, pageProcessor, warn);
+            List<Entry> entries = index.sort(comperator, pageProcessor, warn);
             info("SortingDone", Long.toString(comparisons));
             info(fmt, output);
 
