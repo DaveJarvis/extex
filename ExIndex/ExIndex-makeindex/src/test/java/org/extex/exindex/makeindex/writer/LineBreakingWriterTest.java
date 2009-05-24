@@ -142,13 +142,29 @@ public class LineBreakingWriterTest {
     }
 
     /**
+     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test011() throws IOException {
+
+        StringWriter sw = new StringWriter();
+        LineBreakingWriter w = new LineBreakingWriter(sw, 30, "\t\t", 16);
+        w.write("-a b c d e f g h i j k l m n o p q r s t u v w x y z");
+        w.close();
+        assertEquals("-a b c d e f g h i j k l m n o \n\t\t"
+                + "p q r s t u v \n\t\tw x y z", sw.toString());
+    }
+
+    /**
      * <testcase>A long string with several white-spaces and newline is
      * broken.</testcase>
      * 
      * @throws IOException in case of an I/O error
      */
     @Test
-    public void test011() throws IOException {
+    public void test012() throws IOException {
 
         StringWriter sw = new StringWriter();
         LineBreakingWriter w = new LineBreakingWriter(sw, 30, "\t\t", 16);
@@ -173,6 +189,29 @@ public class LineBreakingWriterTest {
         assertEquals(
             "abcdefghijklmnopqrstuvwxyz \n\t\tabcdefghijklmnopqrstuvwxyz", sw
                 .toString());
+    }
+
+    /**
+     * <testcase>A long string with several white-spaces is broken.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test100() throws IOException {
+
+        StringWriter sw = new StringWriter();
+        LineBreakingWriter w = new LineBreakingWriter(sw, 72, "\t\t", 16);
+        w.write("  \\item ");
+        w.write("\\BibTeX~8");
+        w.write("\\dotfill");
+        w.write("\\hyperpage{7}, ");
+        w.write("\\hyperpage{17}, ");
+        w.write("\\hyperpage{66}, ");
+        w.write("\\hyperpage{69}\n");
+        w.close();
+        assertEquals(
+            "  \\item \\BibTeX~8\\dotfill\\hyperpage{7}, \\hyperpage{17}, \\hyperpage{66}, \n\t\t\\hyperpage{69}\n",
+            sw.toString());
     }
 
 }
