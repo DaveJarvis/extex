@@ -25,7 +25,8 @@ import java.io.Writer;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a closing page range indicator. The opening page has
+ * not been assigned yet.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -35,13 +36,12 @@ public class PageRangeClose extends Pages {
     /**
      * Creates a new object.
      * 
-     * @param from
-     * @param encap
-     * @param type
+     * @param page the page
+     * @param encap the encapsulator or <code>null</code>
      */
-    public PageRangeClose(PageReference from, String encap) {
+    public PageRangeClose(PageReference page, String encap) {
 
-        super(from, encap);
+        super(page, encap);
     }
 
     /**

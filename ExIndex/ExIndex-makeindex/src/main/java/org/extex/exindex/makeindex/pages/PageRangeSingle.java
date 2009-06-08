@@ -25,7 +25,7 @@ import java.io.Writer;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a single page.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -35,23 +35,12 @@ public class PageRangeSingle extends Pages {
     /**
      * Creates a new object.
      * 
-     * @param from
-     * @param encap
-     * @param type
+     * @param page the page
+     * @param encap the encapsulator or <code>null</code>
      */
-    public PageRangeSingle(PageReference from, String encap) {
+    public PageRangeSingle(PageReference page, String encap) {
 
-        super(from, encap);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param pages
-     */
-    public PageRangeSingle(Pages pages) {
-
-        super(pages.getFrom(), pages.getEncap());
+        super(page, encap);
     }
 
     /**

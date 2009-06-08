@@ -25,7 +25,7 @@ import java.io.Writer;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a page range.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -40,9 +40,8 @@ public class PageRangeRange extends Pages {
     /**
      * Creates a new object.
      * 
-     * @param p
-     * @param to
-     * @param type
+     * @param pages the pages
+     * @param to the end
      */
     public PageRangeRange(Pages pages, PageReference to) {
 

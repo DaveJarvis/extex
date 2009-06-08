@@ -25,7 +25,7 @@ import java.io.Writer;
 import org.extex.exindex.core.type.page.PageReference;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class represents a list of two pages.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -40,8 +40,8 @@ public class PageRangeMultiple extends Pages {
     /**
      * Creates a new object.
      * 
-     * @param pages
-     * @param to
+     * @param pages the first page
+     * @param to the other page
      */
     public PageRangeMultiple(Pages pages, PageReference to) {
 

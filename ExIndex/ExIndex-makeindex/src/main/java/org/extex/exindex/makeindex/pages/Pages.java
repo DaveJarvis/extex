@@ -53,9 +53,7 @@ public abstract class Pages {
      * Creates a new object.
      * 
      * @param from the start and end page
-     * @param encap the encapsulator
-     * @param open the open indicator
-     * @param close the close indicator
+     * @param encap the encapsulator or <code>null</code>
      */
     protected Pages(PageReference from, String encap) {
 
