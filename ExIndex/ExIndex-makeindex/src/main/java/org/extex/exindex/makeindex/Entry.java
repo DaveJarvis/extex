@@ -148,4 +148,31 @@ public class Entry {
         return display;
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder buffer = new StringBuilder();
+        buffer.append("  entry ");
+        for (String k : key) {
+            buffer.append("\n\t");
+            buffer.append(k);
+        }
+        buffer.append("\n  as ");
+        for (String v : display) {
+            buffer.append("\n\t");
+            buffer.append(v);
+        }
+        buffer.append("\n  at ");
+        for (Pages p : pages) {
+            buffer.append("\n\t");
+            buffer.append(p.toString());
+        }
+        return buffer.toString();
+    }
+
 }

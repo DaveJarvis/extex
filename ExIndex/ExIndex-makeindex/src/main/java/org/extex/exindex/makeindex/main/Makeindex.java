@@ -30,7 +30,6 @@ import java.io.PrintStream;
 import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
@@ -114,81 +113,9 @@ public class Makeindex {
     private boolean collateSpaces = false;
 
     /**
-     * The field <tt>comparisons</tt> contains the number of comparisons
-     * performed.
-     */
-    private long comparisons;
-
-    /**
      * The field <tt>comperator</tt> contains the comparator.
      */
-    private Comparator<Entry> comperator = new Comparator<Entry>() {
-
-        /**
-         * Compare two entries.
-         * 
-         * @param o1 the first entry
-         * @param o2 the second entry
-         * 
-         * @return the result
-         */
-        public int compare(Entry o1, Entry o2) {
-
-            comparisons++;
-            char c1 = o1.getHeading();
-            char c2 = o2.getHeading();
-            if (c1 < c2) {
-                return -1;
-            } else if (c1 > c2) {
-                return 1;
-            }
-
-            String[] ka1 = o1.getKey();
-            String[] ka2 = o2.getKey();
-            int len = (ka1.length < ka2.length ? ka1.length : ka2.length);
-            String[] va1 = o1.getValue();
-            String[] va2 = o2.getValue();
-
-            for (int i = 0; i < len; i++) {
-                String v1 = ka1[i];
-                String v2 = ka2[i];
-                if (v1 == null) {
-                    if (v2 != null) {
-                        return 1;
-                    }
-                } else if (v2 == null) {
-                    return -1;
-                } else {
-                    int cmp = v1.compareToIgnoreCase(v2);
-                    if (cmp != 0) {
-                        return cmp;
-                    }
-                }
-                v1 = va1[i];
-                v2 = va2[i];
-                if (v1 == null) {
-                    if (v2 != null) {
-                        return 1;
-                    }
-                } else if (v2 == null) {
-                    return -1;
-                } else {
-                    int cmp = v1.compareTo(v2);
-                    if (cmp != 0) {
-                        return cmp;
-                    }
-                }
-            }
-            if (ka1.length < ka2.length) {
-                return -1;
-            } else if (ka1.length > ka2.length) {
-                return 1;
-            }
-
-            return 0;
-        }
-
-    };
+    private MakeindexComparator comperator = new MakeindexComparator();
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
@@ -474,14 +401,14 @@ public class Makeindex {
      */
     protected void log(String message) {
 
+        Logger log = getLogger();
         if (banner) {
-            getLogger().log(Level.INFO,
-                LOCALIZER.format("Banner", VERSION, REVISION, //
-                    System.getProperty("java.version")));
+            log.log(Level.INFO, LOCALIZER.format("Banner", VERSION, REVISION, //
+                System.getProperty("java.version")));
             banner = false;
         }
         if (message != null) {
-            getLogger().log(Level.SEVERE, message);
+            log.log(Level.SEVERE, message);
         }
     }
 
@@ -918,9 +845,9 @@ public class Makeindex {
                     new MakeindexPageProcessor(params, logger);
 
             info("Sorting");
-            comparisons = 0;
+            // comparisons = 0;
             List<Entry> entries = index.sort(comperator, pageProcessor, warn);
-            info("SortingDone", Long.toString(comparisons));
+            info("SortingDone", Long.toString(comperator.getComparisons()));
             info(fmt, output);
 
             int[] count = indexWriter.write(entries, logger, startPage, //

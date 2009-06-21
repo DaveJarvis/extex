@@ -181,8 +181,7 @@ public class MakeindexWriter implements IndexWriter {
      * 
      * @throws IOException in case of an I/O error
      */
-    private char writeHeading(final long headingFlag, Entry e)
-            throws IOException {
+    private char writeHeading(long headingFlag, Entry e) throws IOException {
 
         char heading = e.getHeading();
         writer.write(params.getString("markup:heading-prefix"));
@@ -218,15 +217,11 @@ public class MakeindexWriter implements IndexWriter {
     private void writePages(Entry entry, String delim, String delimNext,
             String[] pageParams) throws IOException {
 
-        boolean first = true;
+        String d = delim;
 
         for (Pages range : entry.getPages()) {
-            if (first) {
-                first = false;
-                writer.write(delim);
-            } else {
-                writer.write(delimNext);
-            }
+            writer.write(d);
+            d = delimNext;
             range.write(writer, pageParams);
         }
     }
