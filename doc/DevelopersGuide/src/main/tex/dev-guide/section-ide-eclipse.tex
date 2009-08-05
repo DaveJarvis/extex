@@ -1,8 +1,8 @@
 %%*****************************************************************************
-%% $Id: section-ide-eclipse.tex 5558 2007-05-02 08:59:42Z gene $
+%% $Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -24,13 +24,14 @@
 %%-----------------------------------------------------------------------------
 \section{Eclipse}
 
-Eclipse is a free IDE for Java and other programming languages. It
-also provides a framework for the development of own programs. But
-this is not needed for the \ExTeX\ core. Currently the version 3.1 of
+Eclipse (http://www.eclipse.org) is a free IDE for Java and other
+programming languages. It also provides a framework for the
+development of own programs. But this is not needed for the \ExTeX\ 
+core. Currently the versions 3.4 (Ganymede) and 3.5 (Galileo) of
 Eclipse is used within the \ExTeX\ development team.
 \begin{figure}[h]
   \centering  \includegraphics[scale=.5]{image/eclipse-splash}
-  \caption{Eclipse}\label{fig:eclipse}
+  \caption{The Eclipse Splash Screen}\label{fig:eclipse}
 \end{figure}
 
 \subsection{Eclipse Installation}
@@ -39,11 +40,14 @@ Eclipse can be downloaded for free from \url{http://www.eclipse.org}.
 There you can get a file appropriate for your operating system
 containing the software development kit (SDK). For instance
 \begin{description}
-\item [eclipse-SDK-3.1-win32.zip]\ \\
+\item [eclipse-jee-galileo-win32.zip]\ \\
   for any decent Windows platform.
-\item [eclipse-SDK-3.1-linux-gtk.zip]\ \\
-  for Linux on Intel x86 with GTK.
+\item [eclipse-jee-galileo-linux-gtk.tar.gz]\ \\
+  for Linux on Intel x86 (32 bit) with GTK.
 \end{description}
+
+Note that we use and show here the jee edition of eclipse. Other
+editions will also work but show a slightly different appearance.
 
 Download the appropriate file and unpack it in the installation
 directory. A new subdirectory \texttt{eclipse} will be created
@@ -74,13 +78,33 @@ The following sections describe some of the configurations which
 should be performed in order to work with Eclipse on \ExTeX.
 
 
+\subsection{Installing Eclipse Plugins}
+
+Eclipse can be extended with plugins which provide additional
+functionality. It is recommended to use some of them.
+
+The installation of a plugin follows the same scheme.
+
+***
+
+The following plugins can be considered for installation.
+
+\begin{tabular}{lll}
+  Name & Update Site & Remark \\
+  Subversive & ... & highly recommended \\
+  Checkstyle & ... & recommended \\
+  Findbugs   & ... & recommended \\
+\end{tabular}
+
+
 \subsection{Downloading the Sources}
 
 Now we are ready to create a project for the sources of \ExTeX.
-Everything needed can be found in the CVs repository of \ExTeX\ hosted
-by Berlios.. Thus we start to get things onto the local host. For this
-purpose we need to open a new perspective in Eclipse. A perspective is
-a collection of windows which are usually meant for a common task.
+Everything needed can be found in the Subversion repository of \ExTeX\ 
+hosted by Berlios. Thus we start to get things onto the local host.
+For this purpose we need to open a new perspective in Eclipse. A
+perspective is a collection of windows which are usually meant for a
+common task.
 
 A new perspective can be opened via the window \menu{Window \sub Open
   Perspective \sub Other\ldots} which can be seen in
@@ -88,43 +112,44 @@ figure~\ref{fig:eclipse-open-perspective-menu}. This menu item opens a
 dialog box which offers some perspectives for opening. Currently we
 need a ``Subversion Exploring'' perspective. This perspective is meant
 for inspecting Subversion repositories and manipulation. Thus this
-perspective is selected (see figure~\ref{fig:eclipse-select-cvs}) and
+perspective is selected (see figure~\ref{fig:eclipse-select-svn}) and
 the dialog is completed with the OK button.
 \begin{figure}[ht]
   \hbox{}\hfill
   \subfigure[Open Perspective\label{fig:eclipse-open-perspective-menu}]{%
     \includegraphics[scale=.4]{image/eclipse-open-perspective-menu}}%
   \hfill
-  \subfigure[Selecting ``CVS Exploring Perspective''\label{fig:eclipse-select-cvs}]{%
-    \includegraphics[scale=.4]{image/eclipse-select-cvs}}%
+  \subfigure[Selecting ``Subversion Exploring
+             Perspective''\label{fig:eclipse-select-svn}]{%
+    \includegraphics[scale=.4]{image/eclipse-select-svn}}%
   \hfill\hbox{}
 
   \caption{Switching to a Perspective}\label{fig:eclipse-perspective}
 \end{figure}
 
-Now a CVS exploring perspective is opened (see
-figure~\ref{fig:eclipse-cvs-1}). You see a lot of windows and icons
-there. The tab ``CVS Repositories'' on the left side shows all
+Now a Subversion exploring perspective is opened (see
+figure~\ref{fig:eclipse-svn-1}). You see a lot of windows and icons
+there. The tab ``SVN Repositories'' on the left side shows all
 repository locations currently known. This list is empty since we have
-not added any CVS locations yet.
+not added any SVN location yet.
 \begin{figure}[htbp]
-  \centering  \includegraphics[scale=.33]{image/eclipse-cvs-1}
-  \caption{CVS Exploring Perspective}\label{fig:eclipse-cvs-1}
+  \centering  \includegraphics[scale=.33]{image/eclipse-svn-1}
+  \caption{CVS Exploring Perspective}\label{fig:eclipse-svn-1}
 \end{figure}
 
 To add a new repository location press the left mouse button on this
 tab and select \menu{New \sub Repository Location\ldots} (see
 figure~\ref{fig:eclipse-new-repository}). This brings up the dialog
-shown in figure~\ref{fig:eclipse-add-cvs}. Here you can enter the
-coordinates of the \ExTeX\ CVS repository.
+shown in figure~\ref{fig:eclipse-add-svn}. Here you can enter the
+coordinates of the \ExTeX\ Subversion repository.
 \begin{figure}[htp]
   \hbox{}\hfill
   \subfigure[New Repository Location\label{fig:eclipse-new-repository}]{%
     \includegraphics[scale=.4]{image/eclipse-new-repository}}%
   \hfill
-  \subfigure[The Coordinates of the \ExTeX\ CVS
-  Repository\label{fig:eclipse-add-cvs}]{%
-    \includegraphics[scale=.4]{image/eclipse-add-cvs}}%
+  \subfigure[The Coordinates of the \ExTeX\ Subversion
+  Repository\label{fig:eclipse-add-svn}]{%
+    \includegraphics[scale=.4]{image/eclipse-add-svn}}%
   \caption{Adding the \ExTeX\ CVS Repository}
 \end{figure}
 
