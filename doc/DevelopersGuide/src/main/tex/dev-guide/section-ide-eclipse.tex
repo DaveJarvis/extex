@@ -22,16 +22,17 @@
 %% @author Gerd Neugebauer
 %% @author Michael Niedermair
 %%-----------------------------------------------------------------------------
-\section{Eclipse}
+\section{Eclipse}\index{Eclipse|(}
 
 Eclipse (http://www.eclipse.org) is a free IDE for Java and other
 programming languages. It also provides a framework for the
 development of own programs. But this is not needed for the \ExTeX\ 
-core. Currently the versions 3.4 (Ganymede) and 3.5 (Galileo) of
-Eclipse is used within the \ExTeX\ development team.
+core. Currently the versions 3.4 (Ganymede\index{Eclipse!Ganymede})
+and 3.5 (Galileo\index{Eclipse!Galileo}) of Eclipse is used within the
+\ExTeX\ development team.
 \begin{figure}[h]
   \centering  \includegraphics[scale=.5]{image/eclipse-splash}
-  \caption{The Eclipse Splash Screen}\label{fig:eclipse}
+  \caption{The Eclipse Splash Screen}\index{Eclipse!splash screen}\label{fig:eclipse}
 \end{figure}
 
 \subsection{Eclipse Installation}
@@ -41,13 +42,14 @@ There you can get a file appropriate for your operating system
 containing the software development kit (SDK). For instance
 \begin{description}
 \item [eclipse-jee-galileo-win32.zip]\ \\
-  for any decent Windows platform.
+  for any decent Windows\index{Windows} platform.
 \item [eclipse-jee-galileo-linux-gtk.tar.gz]\ \\
-  for Linux on Intel x86 (32 bit) with GTK.
+  for Linux\index{Linux} on Intel x86 (32 bit) with GTK.
 \end{description}
 
-Note that we use and show here the jee edition of eclipse. Other
-editions will also work but show a slightly different appearance.
+Note that we use and show here the jee edition\index{Eclipse!jee
+  edition} of eclipse. Other editions will also work but show a
+slightly different appearance.
 
 Download the appropriate file and unpack it in the installation
 directory. A new subdirectory \texttt{eclipse} will be created
@@ -57,14 +59,20 @@ the just installed directory.
 
 \begin{figure}[h]
   \centering  \includegraphics[scale=.5]{image/eclipse-workspace}
-  \caption{Eclipse Workspace}\label{fig:eclipse-workspace}
+  \caption{Eclipse Workspace}\index{Eclipse workspace}\label{fig:eclipse-workspace}
 \end{figure}
 When Eclipse starts you first see the splash screen shown in
 figure~\ref{fig:eclipse}. Then Eclipse requests a workspace -- as
-shown in figure~\ref{fig:eclipse-workspace}. The workspace is a
-directory where the projects live and where your preferences are
-stored. If you have chosen the workspace directory carefully, you can
-turn on the check mark in this dialog to be not asked again.
+shown in figure~\ref{fig:eclipse-workspace}. The
+workspace\index{Eclipse workspace} is a directory where the projects
+live and where your preferences are stored. If you have chosen the
+workspace directory carefully, you can turn on the check mark in this
+dialog to be not asked again.
+
+Note it is a good practice to have a separate workspace for \ExTeX{}
+and not mix it with other Eclipse projects. \ExTeX{} comes with a
+multitude of Eclipse projects itself. Thus other project might get
+lost in the workspace.
 
 Finally you end up in the welcome window of Eclipse shown in
 figure~\ref{fig:eclipse-welcome}. Take some time and read the
@@ -78,7 +86,7 @@ The following sections describe some of the configurations which
 should be performed in order to work with Eclipse on \ExTeX.
 
 
-\subsection{Installing Eclipse Plugins}
+\subsection{Installing Eclipse Plugins}\label{sec:eclipse.plugins}\index{Eclipse!Plugins|(}
 
 Eclipse can be extended with plugins which provide additional
 functionality. It is recommended to use some of them.
@@ -91,24 +99,25 @@ The following plugins can be considered for installation.
 
 \begin{tabular}{lll}
   Name & Update Site & Remark \\
-  Subversive & ... & highly recommended \\
-  Checkstyle & ... & recommended \\
-  Findbugs   & ... & recommended \\
+  Subversive\index{Eclipse!Plugins!Subversive} & ... & highly recommended \\
+  Checkstyle\index{Eclipse!Plugins!Checkstyle} & ... & recommended \\
+  FindBugs\index{Eclipse!Plugins!FindBugs}     & ... & recommended \\
+  Eclemma\index{Eclipse!Plugins!Eclemma}       & ... & recommended \\
 \end{tabular}
-
+\index{Eclipse!Plugins|)}
 
 \subsection{Downloading the Sources}
 
 Now we are ready to create a project for the sources of \ExTeX.
 Everything needed can be found in the Subversion repository of \ExTeX\ 
-hosted by Berlios. Thus we start to get things onto the local host.
-For this purpose we need to open a new perspective in Eclipse. A
-perspective is a collection of windows which are usually meant for a
-common task.
+hosted by Berlios\index{Berlios}. Thus we start to get things onto the
+local host. For this purpose we need to open a new perspective in
+Eclipse. A perspective is a collection of windows which are usually
+meant for a common task.
 
 A new perspective can be opened via the window \menu{Window \sub Open
   Perspective \sub Other\ldots} which can be seen in
-figure~\ref{fig:eclipse-open-perspective-menu}. This menu item opens a
+figure~\ref{fig:eclipse-open-perspective-other}. This menu item opens a
 dialog box which offers some perspectives for opening. Currently we
 need a ``Subversion Exploring'' perspective. This perspective is meant
 for inspecting Subversion repositories and manipulation. Thus this
@@ -116,15 +125,15 @@ perspective is selected (see figure~\ref{fig:eclipse-select-svn}) and
 the dialog is completed with the OK button.
 \begin{figure}[ht]
   \hbox{}\hfill
-  \subfigure[Open Perspective\label{fig:eclipse-open-perspective-menu}]{%
-    \includegraphics[scale=.4]{image/eclipse-open-perspective-menu}}%
+  \subfigure[Open Perspective\label{fig:eclipse-open-perspective-other}]{%
+    \includegraphics[scale=.4]{image/eclipse-open-perspective-other}}%
   \hfill
   \subfigure[Selecting ``Subversion Exploring
              Perspective''\label{fig:eclipse-select-svn}]{%
     \includegraphics[scale=.4]{image/eclipse-select-svn}}%
   \hfill\hbox{}
 
-  \caption{Switching to a Perspective}\label{fig:eclipse-perspective}
+  \caption{Switching to a Perspective}\index{Eclipse!perspective}\label{fig:eclipse-perspective}
 \end{figure}
 
 Now a Subversion exploring perspective is opened (see
@@ -133,8 +142,8 @@ and icons there. The tab ``SVN Repositories'' on the left side shows
 all repository locations currently known. This list is empty since we
 have not added any Subversion location yet.
 \begin{figure}[htbp]
-  \centering  \includegraphics[scale=.33]{image/eclipse-svn-perspective}
-  \caption{CVS Exploring Perspective}\label{fig:eclipse-svn-perspective}
+  \centering  \includegraphics[scale=.33]{image/eclipse-svn-exploring}
+  \caption{SVN Exploring Perspective}\label{fig:eclipse-svn-perspective}
 \end{figure}
 
 To add a new repository location press the left mouse button on this
@@ -153,10 +162,10 @@ coordinates of the \ExTeX\ Subversion repository.
   \caption{Adding the \ExTeX\ CVS Repository}
 \end{figure}
 
-Note that you have to enter your account at Berlios and its password
-into the appropriate fields. If you do not have an account you can use
-the account name \texttt{anonymous} without any password to get
-reading access to the sources.
+Note that you have to enter your account at Berlios\index{Berlios} and
+its password into the appropriate fields. If you do not have an
+account you can use the account name \texttt{anonymous} without any
+password to get reading access to the sources.
 
 For this step you need online access to the internet. When the form is
 submitted with the OK button, the accessibility of the repository
@@ -483,9 +492,10 @@ Ant target \texttt{javadoc}. See sections \ref{sec:eclipse.ant} and
 
 \subsection{Creating the Installer}
 
-To create the inastaller you can use the Ant target
+To create the installer you can use the Ant target
 \texttt{installer}. See sections \ref{sec:eclipse.ant} and
 \ref{sec:Ant}. The result can be found in the file
 \File{target/ExTeX-setup.jar}.
 
 
+\index{Eclipse|)}

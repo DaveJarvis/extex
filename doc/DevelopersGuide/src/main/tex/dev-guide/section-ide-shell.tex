@@ -2,7 +2,7 @@
 %% $Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -29,8 +29,8 @@
 The sources of \ExTeX\ are stored in a Subversion repository. To
 access this repository you need access to the internet and Subversion
 installed and configured in some way\footnote{For instance if you are
-  behind a firewall you might have to configure the proxy settings in
-  \texttt{servers.xml}}.
+  behind a firewall you might have to configure the proxy\index{proxy}
+  settings in \texttt{servers.xml}\index{Subversion!servers.xml|tt}}.
 
 The coordinates of the repository are:
 
@@ -42,32 +42,34 @@ These coordinates provide anonymous access to the sources with reading
 permissions only. You are not allowed to commit changes when you are
 using this URL.
 
-Developers with commit permissions need to have an account at Berlios
-and be registered as committers. They can use one of the following
-URLs instead:
+Developers with commit permissions need to have an account at
+Berlios\index{Berlios} and be registered as committer\index{comitter}.
+They can use one of the following URLs instead:
 
 \begin{quotation}
   https://svn.berlios.de/svnroot/repos/extex/trunk
   svn+ssh://svn.berlios.de/svnroot/repos/extex/trunk
 \end{quotation}
 
-You need to download the sources of \ExTeX. On the command line this
-can be done with the following commands:
+You need to download\index{download} the sources of \ExTeX. On the
+command line this can be done with the following
+check-out\index{check-out} commands:
 
 \begin{lstlisting}{}
 # svn co http://svn.berlios.de/svnroot/repos/extex/trunk
 \end{lstlisting}{}
 
-After some time you should have a working copy of the files on your
-computer.
+After some time you should have a working copy of the files in the
+current directory.
 
-\subsection{Maven}\label{sec:Maven}
+
+\subsection{Maven}\label{sec:Maven}\index{Maven|(}
 
 Maven (\url{http://maven.apache.org}) is a build tool which comes with a
 set of conventions and plugins which are very useful. The primary
 features of Maven are the dependency management and the automatic
 downloading of missing dependencies.
-
+\index{Maven|)}
 
 %\subsection{Checkstyle}
 %
@@ -218,7 +220,7 @@ above.
 
 \subsection{JUnit}\label{sec:shell-junit}
 
-JUnit is the state of the art concerning test automation for Java
+JUnit is the state of art concerning test automation for Java
 programs. Thus \ExTeX\ provides some test cases in the form of JUnit
 classes.
 

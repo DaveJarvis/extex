@@ -26,7 +26,7 @@
 
 The project goal of \ExTeX\ is to provide a typesetting library
 facility.  The global licence of the heart of \ExTeX\ is therefore the
-LGPL. But in order to keep open linking facility against all the
+LGPL\index{LGPL}. But in order to keep open linking facility against all the
 different licenses we must be choose carefully third party program
 licenses, i.e. jar files.
 
@@ -35,20 +35,20 @@ licenses, i.e. jar files.
 The licence that we accept and why:
 
 \begin{itemize}
-\item LGPL\\
+\item LGPL\index{LGPL}\\
   for obvious reasons.
-\item  modified BSD licence
+\item  modified BSD licence\index{BSD license}
   (\url{http://www.xfree86.org/3.3.6/COPYRIGHT2.html#5})\\
   We can always convert this licence to LGPL.
-\item  Apache 2.0 licence \\
+\item  Apache 2.0 licence \\\index{Apache 2.0 licence}
   Unfortunately linking with GPL2 programs is in gray area.
   Interpretation differs between FSF and Apache but GPLv3 will be
   compatible.
-\item Public domain\\
+\item Public domain\\\index{Public domain}
   (obvious)
-\item GPL with explicit linking clause that don't enforce viral clause
-  of GPL and insure clear encapsulation of GPL license. It is the GPL
-  with this special exception like this:
+\item GPL\index{GPL} with explicit linking clause that don't enforce
+  viral clause of GPL and insure clear encapsulation of GPL license.
+  It is the GPL with this special exception like this:
 
   \begin{quote}
     As a special exception, if other files instantiate templates or
@@ -65,7 +65,7 @@ The licence that we accept and why:
   \begin{quote}
     Linking this library statically or dynamically with other modules
     is making a combined work based on this library. Thus, the terms
-    and conditions of the G NU General Public License cover the whole
+    and conditions of the GNU General Public License cover the whole
     combination.
   
     As a special exception, the copyright holders of this library give
@@ -88,16 +88,16 @@ The licence that we accept and why:
 The licence that \emph{don't} accept and why:
 
 \begin{itemize}
-\item GPL license:\\
+\item GPL license:\\\index{GPL}
   We would loose the free linking facility.
-\item Apache 1.1 license:\\
+\item Apache 1.1 license:\\\index{Apache 1.1 licence}
   It forbids linking with GPL software. Check if an upgrade to
   Apache~2.0 exists.
-\item Eclipse public license:\\
+\item Eclipse public license:\\\index{Eclipse public license}
   It forbids linking with GPL software and has nasty side effects for
   proprietary software.  Perhaps side effects exist with Apache 2.0
   due to patents issue.
-\item Original BSD license and Apache 1.0\\
+\item Original BSD license and Apache 1.0\\\index{Apache 1.0 licence}
   Have a boring clause that forbids linking with a lot of different
   licenses -- particularly GPL -- and non carefully written
   proprietary software.
