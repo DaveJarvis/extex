@@ -23,10 +23,10 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.Writer;
 
+import org.apache.maven.plugin.Mojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.testing.AbstractMojoTestCase;
 import org.codehaus.plexus.configuration.PlexusConfiguration;
-import org.extex.builder.maven.LaTeXMojo;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -35,7 +35,7 @@ import org.junit.Test;
  * This is a test suite for {@link LaTeXMojo}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:7717 $
  */
 public class LaTeXMojoTest extends AbstractMojoTestCase {
 
@@ -43,61 +43,6 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
      * The field <tt>basedir</tt> contains the base directory.
      */
     private String basedir = getBasedir().replace('\\', '/');
-
-    /**
-     * Test method for {@link org.extex.builder.maven.LaTeXMojo#execute()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public final void _test2() throws Exception {
-
-        rmdir("target/doc");
-        LaTeXMojo mojo = new LaTeXMojo();
-        mojo.setFile(new File("src/test/resources/document2.tex"));
-        StringBuilder buffer = new StringBuilder();
-        mojo.setLog(new TLog(buffer));
-        mojo.execute();
-    }
-
-    /**
-     * Test method for {@link org.extex.builder.maven.LaTeXMojo#execute()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public final void _test3() throws Exception {
-
-        rmdir("target/doc");
-        LaTeXMojo mojo = new LaTeXMojo();
-        mojo.setFile(new File("src/test/resources/document3.tex"));
-        StringBuilder buffer = new StringBuilder();
-        mojo.setLog(new TLog(buffer));
-        mojo.execute();
-    }
-
-    /**
-     * Create a mojo to be tested an feed it with a configuration.
-     * 
-     * @param pom the name of the POM
-     * 
-     * @return the mojo to be tested
-     * 
-     * @throws Exception in case of an error
-     */
-    private LaTeXMojo makeMojo(File pom) throws Exception {
-
-        rmdir("target/doc");
-        PlexusConfiguration configuration =
-                extractPluginConfiguration("maven-latex-plugin", pom);
-        assertNotNull(configuration);
-        LaTeXMojo mojo = new LaTeXMojo();
-        configureMojo(mojo, configuration);
-        assertNotNull(mojo);
-        return mojo;
-    }
 
     /**
      * Create a mojo to be tested an feed it with a configuration.
@@ -109,7 +54,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
      * 
      * @throws Exception in case of an error
      */
-    private LaTeXMojo makeMojo(String pom, String content) throws Exception {
+    private Mojo makeMojo(String pom, String content) throws Exception {
 
         File testPom = new File(pom);
         Writer w = new BufferedWriter(new FileWriter(testPom));
@@ -135,9 +80,15 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
         } finally {
             w.close();
         }
-        LaTeXMojo mojo;
+        rmdir("target/doc");
+        Mojo mojo;
         try {
-            mojo = makeMojo(testPom);
+            PlexusConfiguration configuration =
+                    extractPluginConfiguration("maven-latex-plugin", testPom);
+            assertNotNull(configuration);
+            mojo = new LaTeXMojo();
+            configureMojo(mojo, configuration);
+            assertNotNull(mojo);
         } finally {
             testPom.delete();
         }
@@ -174,7 +125,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     private void runMojo(String pom, String content, String log)
             throws Exception {
 
-        LaTeXMojo mojo = makeMojo(pom, content);
+        Mojo mojo = makeMojo(pom, content);
         StringBuilder buffer = new StringBuilder();
         mojo.setLog(new TLog(buffer));
         mojo.execute();
@@ -202,30 +153,65 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
+    public final void t_est3() throws Exception {
+
+        runMojo("target/latex-3.xml",
+            "<file>src/test/resources/document3.tex</file>\n", null);
+    }
+
+    /**
+     * Test method for {@link org.extex.builder.maven.LaTeXMojo#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
     public final void test1() throws Exception {
 
         runMojo(
             "target/latex-1.xml",
             "<file>src/test/resources/document1.tex</file>\n"
                     + "<latexCommand>pdflatex</latexCommand>\n",
-            "[info] Building [1] "
-                    + basedir
-                    + "/target/doc/document1.pdf\n"
-                    + "[info] Looking after "
-                    + basedir
-                    + "/target/doc/document1.aux\n"
+            ("[info] Building [1] {0}/target/doc/document1.pdf\n"
+                    + "[info] Looking after {0}/target/doc/document1.aux\n"
                     + "[info] document1.aux does not exist\n"
-                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode "
-                    + basedir
-                    + "/src/test/resources/document1.tex\n"
+                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode {0}/src/test/resources/document1.tex\n"
                     + "[info] document1.tex is up to date\n"
-                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode "
-                    + basedir + "/src/test/resources/document1.tex\n"
-                    + "[info] Building [2] " + basedir
-                    + "/target/doc/document1.pdf\n"
+                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode {0}/src/test/resources/document1.tex\n"
+                    + "[info] Building [2] {0}/target/doc/document1.pdf\n"
                     + "[info] document1.tex is not up to date\n"
                     + "[info] document1.aux is not up to date\n"
-                    + "[info] document1.pdf is up to date\n");
+                    + "[info] document1.pdf is up to date\n").replaceAll(
+                "\\{0\\}", basedir));
+    }
+
+    /**
+     * Test method for {@link org.extex.builder.maven.LaTeXMojo#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test2() throws Exception {
+
+        runMojo(
+            "target/latex-2.xml",
+            "<file>src/test/resources/document2.tex</file>\n",
+            ("[info] Building [1] {0}/target/doc/document2.pdf\n"
+                    + "[info] Looking after {0}/target/doc/document2.aux\n"
+                    + "[info] document2.aux does not exist\n"
+                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode {0}/src/test/resources/document2.tex\n"
+                    + "[info] Looking after {0}/target/doc/document2.ind\n"
+                    + "[info] -> makeindex -o {0}/target/doc/document2.ind -t {0}/target/doc/document2.ilg {0}/src/test/resources/document2.tex\n"
+                    + "[info] document2.tex is up to date\n"
+                    + "[info] -> pdflatex -output-directory=target/doc -nonstopmode {0}/src/test/resources/document2.tex\n"
+                    + "[info] Building [2] {0}/target/doc/document2.pdf\n"
+                    + "[info] -> makeindex -o {0}/target/doc/document2.ind -t {0}/target/doc/document2.ilg {0}/src/test/resources/document2.tex\n"
+                    + "[info] document2.tex is not up to date\n"
+                    + "[info] document2.aux is not up to date\n"
+                    + "[info] document2.ind is up to date\n"
+                    + "[info] document2.pdf has new content\n"
+                    + "[info] document2.pdf is up to date\n").replaceAll(
+                "\\{0\\}", basedir));
     }
 
     /**

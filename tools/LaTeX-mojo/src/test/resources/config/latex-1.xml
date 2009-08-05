@@ -1,0 +1,21 @@
+<project>
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.extex</groupId>
+        <artifactId>maven-latex-plugin</artifactId>
+        <configuration>
+          <file>src/test/resources/document1.tex</file>
+          <latexCommand>pdflatex</latexCommand>
+        </configuration>
+        <executions>
+          <execution>
+            <goals>
+              <goal>latex</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+</project>

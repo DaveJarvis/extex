@@ -29,7 +29,7 @@ import org.extex.builder.latex.artifact.Artifact;
  * This action runs makeindex in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision$
+ * @version $Revision:7717 $
  */
 public class MakeindexAction extends Action {
 
@@ -53,8 +53,18 @@ public class MakeindexAction extends Action {
     protected List<String> makeCommandLine(Parameters parameters,
             Artifact artifact, Artifact target, Logger logger) {
 
+        String ist = parameters.getMakeindexStyle();
+
         List<String> list = new ArrayList<String>();
         list.add(parameters.getMakeindexCommand());
+        if (ist != null) {
+            list.add("-s");
+            list.add(ist);
+        }
+        list.add("-o");
+        list.add(target.toString());
+        list.add("-t");
+        list.add(target.toString().replaceAll("....$", ".ilg"));
         list.add(getArtifact().getFile().toString().replace('\\', '/'));
         return list;
     }

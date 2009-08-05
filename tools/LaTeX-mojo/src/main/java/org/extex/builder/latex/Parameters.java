@@ -75,6 +75,11 @@ public class Parameters {
     private String makeindexCommand = "makeindex";
 
     /**
+     * The field <tt>makeindexStyle</tt> contains the makeindex style.
+     */
+    private String makeindexStyle = null;
+
+    /**
      * The field <tt>outputDirectory</tt> contains the output directory.
      */
     private File outputDirectory = new File(".");
@@ -170,6 +175,16 @@ public class Parameters {
     public String getMakeindexCommand() {
 
         return makeindexCommand;
+    }
+
+    /**
+     * Getter for the makeindexStyle.
+     * 
+     * @return the makeindexStyle
+     */
+    public String getMakeindexStyle() {
+
+        return makeindexStyle;
     }
 
     /**
@@ -310,6 +325,16 @@ public class Parameters {
         if (makeindexCommand != null) {
             this.makeindexCommand = makeindexCommand;
         }
+    }
+
+    /**
+     * Setter for the makeindexStyle.
+     * 
+     * @param makeindexStyle the makeindexStyle to set
+     */
+    public void setMakeindexStyle(String makeindexStyle) {
+
+        this.makeindexStyle = makeindexStyle;
     }
 
     /**
