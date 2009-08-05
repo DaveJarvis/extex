@@ -39,11 +39,19 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-/**
+/*
  * This class provides a object usable as Code carrying a scaled number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4787 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class ScaledCode extends AbstractAssignment
         implements
@@ -59,10 +67,19 @@ public class ScaledCode extends AbstractAssignment
      */
     protected static final long serialVersionUID = 20060606L;
 
-    /**
+    /*
      * The field <tt>value</tt> contains the encapsulated value. Unfortunately
      * Java does not allow multiple inheritance. Thus we have to use delegation
      * instead.
+     * 
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
      */
     private ScaledNumber value = new ScaledNumber();
 

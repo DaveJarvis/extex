@@ -13,20 +13,22 @@ import java.util.ResourceBundle;
 import org.extex.ocpware.engine.OcpReader;
 import org.extex.ocpware.engine.OcpReaderObserver;
 
-/**
+/*
  * This class provides a main program to run an otp or ocp file on some input.
- * 
- * <p>
- * The program takes as one argument the name of the otp file:
- * </p>
- * 
- * <pre class="CLI">
- *   java org.extex.ocpware.OtpDebugger &lang;<i>file</i>&rang;
+ * <p> The program takes as one argument the name of the otp file: </p> <pre
+ * class="CLI"> java org.extex.ocpware.OtpDebugger &lang;<i>file</i>&rang;
  * </pre>
  * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision:6007 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision:6007 $
+ * 
+ * @version $Revision$
  */
 public final class OcpDebugger {
 
@@ -171,8 +173,17 @@ public final class OcpDebugger {
      */
     private LineNumberReader in;
 
-    /**
+    /*
      * The field <tt>obs</tt> contains the observer.
+     * 
+     * @uml.property name="obs"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="obs"
+     * 
+     * @uml.associationEnd
      */
     private Observer obs = new Observer();
 

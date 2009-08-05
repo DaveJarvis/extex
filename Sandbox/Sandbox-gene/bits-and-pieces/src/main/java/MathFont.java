@@ -8,15 +8,22 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontKey;
 import org.extex.typesetter.tc.font.Font;
 
-/**
+/*
  * This class encapsulates a font and provides access to the font dimens with
  * convenience methods.
- * 
  * 
  * @see "TTP [700]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision:5555 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class MathFont implements Font {
 
@@ -25,8 +32,17 @@ public class MathFont implements Font {
      */
     private static final long serialVersionUID = 1L;
 
-    /**
+    /*
      * The field <tt>font</tt> contains the encapsulated font.
+     * 
+     * @uml.property name="font"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="font"
+     * 
+     * @uml.associationEnd
      */
     private Font font;
 

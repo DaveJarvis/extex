@@ -27,17 +27,33 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
-/**
- * This class encapsulates a glue value for the use in the expression
- * evaluator.
- *
+/*
+ * This class encapsulates a glue value for the use in the expression evaluator.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4733 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class TGlue extends WideGlue implements EType {
 
-    /**
+    /*
      * The field <tt>value</tt> contains the encapsulated value.
+     * 
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
      */
     private Glue value = new Glue();
 

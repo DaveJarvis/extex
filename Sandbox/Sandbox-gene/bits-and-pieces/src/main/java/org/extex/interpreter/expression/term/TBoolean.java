@@ -24,12 +24,20 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
-/**
+/*
  * This class encapsulates a boolean value for the use in the expression
  * evaluator.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4733 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class TBoolean implements EType {
 
@@ -136,10 +144,19 @@ public class TBoolean implements EType {
         throw new UnsupportedException("gt", toString());
     }
 
-    /**
+    /*
      * Getter for value.
-     *
+     * 
      * @return the value
+     * 
+     * @uml.property name="value"
+     */
+    /*
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     * 
+     * @uml.property name="value"
      */
     public boolean isValue() {
 
@@ -249,10 +266,19 @@ public class TBoolean implements EType {
         return this;
     }
 
-    /**
+    /*
      * Setter for value.
-     *
+     * 
      * @param value the value to set
+     * 
+     * @uml.property name="value"
+     */
+    /*
+     * TODO gene: missing JavaDoc
+     * 
+     * @param value
+     * 
+     * @uml.property name="value"
      */
     public void setValue(boolean value) {
 

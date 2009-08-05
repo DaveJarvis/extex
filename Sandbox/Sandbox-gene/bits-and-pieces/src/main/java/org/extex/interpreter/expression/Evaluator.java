@@ -46,18 +46,35 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-/**
+/*
  * This class provides some static methods to parse an expression and return its
  * value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4787 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class Evaluator {
 
-    /**
+    /*
      * The field <tt>ASSIGN</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="aSSIGN"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="aSSIGN"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction ASSIGN = new BinaryFunction() {
 
@@ -86,9 +103,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>EQ</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="eQ"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="eQ"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction EQ = new BinaryFunction() {
 
@@ -119,9 +145,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>GE</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="gE"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="gE"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction GE = new BinaryFunction() {
 
@@ -152,9 +187,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>GT</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="gT"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="gT"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction GT = new BinaryFunction() {
 
@@ -185,9 +229,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>LAND</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="lAND"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="lAND"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction LAND = new BinaryFunction() {
 
@@ -218,9 +271,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>LE</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="lE"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="lE"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction LE = new BinaryFunction() {
 
@@ -251,9 +313,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>LOR</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="lOR"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="lOR"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction LOR = new BinaryFunction() {
 
@@ -284,9 +355,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>LT</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="lT"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="lT"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction LT = new BinaryFunction() {
 
@@ -317,8 +397,17 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>MINUS</tt> contains the subtractor.
+     * 
+     * @uml.property name="mINUS"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="mINUS"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction MINUS = new BinaryFunction() {
 
@@ -347,9 +436,18 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>LAND</tt> contains the operation to assign the second
      * argument to the first one.
+     * 
+     * @uml.property name="nE"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="nE"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction NE = new BinaryFunction() {
 
@@ -380,8 +478,17 @@ public class Evaluator {
 
     };
 
-    /**
+    /*
      * The field <tt>PLUS</tt> contains the adder.
+     * 
+     * @uml.property name="pLUS"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="pLUS"
+     * 
+     * @uml.associationEnd
      */
     private static final BinaryFunction PLUS = new BinaryFunction() {
 

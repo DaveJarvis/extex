@@ -44,5 +44,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-core"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExIndex-lisp"/>
+	<classpathentry kind="con" path="com.soyatec.uml.CONTAINER"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

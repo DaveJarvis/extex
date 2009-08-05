@@ -24,17 +24,34 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
-/**
- * This data type contains an accumulator which can contain values of
- * different kinds.
- *
+/*
+ * This data type contains an accumulator which can contain values of different
+ * kinds.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4733 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class Accumulator implements EType {
 
-    /**
+    /*
      * The field <tt>value</tt> contains the encapsulated value.
+     * 
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="value"
+     * 
+     * @uml.associationEnd
      */
     private EType value;
 
@@ -109,10 +126,19 @@ public class Accumulator implements EType {
         return (value != null ? value.ge(t) : null);
     }
 
-    /**
+    /*
      * Getter for value.
-     *
+     * 
      * @return the value
+     * 
+     * @uml.property name="value"
+     */
+    /*
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     * 
+     * @uml.property name="value"
      */
     public EType getValue() {
 

@@ -28,16 +28,33 @@ import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Catcode;
 
-/**
+/*
  * TODO gene: missing JavaDoc.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision:6459 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class MagicInputFilter extends InputStream {
 
-    /**
+    /*
      * The field <tt>context</tt> contains the interpreter context.
+     * 
+     * @uml.property name="context"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="context"
+     * 
+     * @uml.associationEnd
      */
     private Context context;
 

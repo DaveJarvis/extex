@@ -35,11 +35,19 @@ import org.extex.framework.configuration.exception.ConfigurationInvalidResourceE
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
-/**
+/*
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision:6459 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class PropertiesConfiguration implements Configuration {
 
@@ -48,8 +56,17 @@ public class PropertiesConfiguration implements Configuration {
      */
     private String base = "";
 
-    /**
+    /*
      * The field <tt>loader</tt> contains the optional loader.
+     * 
+     * @uml.property name="loader"
+     * 
+     * @uml.associationEnd
+     */
+    /*
+     * @uml.property name="loader"
+     * 
+     * @uml.associationEnd
      */
     private ConfigurationLoader loader = null;
 

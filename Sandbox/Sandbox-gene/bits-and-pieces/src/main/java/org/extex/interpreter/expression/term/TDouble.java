@@ -25,11 +25,19 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
-/**
+/*
  * This implementation of a Terminal encapsulates a floating point number.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
  * @version $Revision: 4733 $
+ */
+/*
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * 
+ * @version $Revision$
  */
 public class TDouble implements EType {
 
@@ -135,10 +143,19 @@ public class TDouble implements EType {
         return new TBoolean(this.value >= castTerminal(t));
     }
 
-    /**
+    /*
      * Getter for value.
-     *
+     * 
      * @return the value
+     * 
+     * @uml.property name="value"
+     */
+    /*
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     * 
+     * @uml.property name="value"
      */
     public double getValue() {
 
@@ -241,10 +258,19 @@ public class TDouble implements EType {
         return this;
     }
 
-    /**
+    /*
      * Setter for value.
-     *
+     * 
      * @param value the value to set
+     * 
+     * @uml.property name="value"
+     */
+    /*
+     * TODO gene: missing JavaDoc
+     * 
+     * @param value
+     * 
+     * @uml.property name="value"
      */
     protected void setValue(double value) {
 
