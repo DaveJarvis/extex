@@ -25,10 +25,10 @@
 
 \section{Java}
 
-You need to have Java 6\index{Java} or later installed on your
-system. You can get Java for a several systems directly from
-\url{java.sun.com}. Download and install it according to the
-installation instructions for your environment.
+You need to have \+Java+ 6 or later installed on your system. You can
+get Java for a several systems directly from \url{java.sun.com}.
+Download and install it according to the installation instructions for
+your environment.
 
 To check that you have an appropriate Java on your path you can use
 the command \texttt{java} with the argument \texttt{-version}. This
@@ -44,12 +44,12 @@ Java HotSpot(TM) Client VM (build 14.1-b02, mixed mode, sharing)
 \end{lstlisting}
 
 Other Java implementations are currently not supported. They might
-work, but the last time we checked it, GCJ didn't suffice. We would be
-happy to have someone working on a compatibility layer for a free Java
-implementation.
+work, but the last time we checked it, \+GCJ+ didn't suffice. We would
+be happy to have someone working on a compatibility layer for a other
+Java implementations.
 
 
-\section{TEXMF}
+\section{TEXMF}\index{TEXMF|(}
 
 If you want to use more than the pure \ExTeX\ engine, fonts and macros
 can be inherited from a texmf tree\index{texmf}. \ExTeX\ itself does
@@ -70,22 +70,22 @@ alternative.
 
 To use your texmf tree you should create a configuration file in your
 home directory. On a Unix\index{Unix} system the home directory is
-stored the environment variable \verb|$HOME|. On a Windows system the
+stored the environment variable
+\verb|$HOME|\index{HOME@\texttt{\$HOME}}. On a \+Windows+ system the
 home directory is usually located under \verb|C:\WINDOWS\Profiles\|.
 The configuration file must have the name \File{.extex} (a little
-intelligence test under Windows\index{Windows};-). It contains one
-line of the following form
+intelligence test under \+Windows+;-). It contains one line of the
+following form
 
 \begin{lstlisting}{}
 texmf.path=/usr/lib/texmf
 \end{lstlisting}
 
 The value should point to the location of the texmf tree. If you have
-several texmf trees which need to be used you can put them into this
+several TEXMF trees which need to be used you can put them into this
 attribute by separating them by a platform-specific separator. This
-separator is a colon (\verb|:|) under Unix\index{Unix} and a semicolon
-(\verb|;|) under Windows\index{Windows}.
-
+separator is a colon (\verb|:|) under \+Unix+ and a semicolon
+(\verb|;|) under \+Windows+. \index{TEXMF|)}
 
 \section{Subversion Client}\index{Subversion|(}
 
@@ -97,22 +97,37 @@ case this is the client integrated into the IDE Eclipse (see
 section~\ref{sec:eclipse.plugins}), or the command line version of
 \texttt{svn}.
 
-On Windows TortoiseSNV\index{TortoiseSVN}
-(\url{http://tortoisesvn.tigris.org/}) can be used. It is an
-integration into the Explorer which simplifies the access to a
-subversion repository without a separate client. \index{Subversion|)}
+On Unix systems the Subversion command line client might be available
+in the form of the used package system. Otherwise download it from the
+Subversion site and install it according to the instructions.
+
+On Windows \+TortoiseSNV+ (\url{http://tortoisesvn.tigris.org/}) can
+be used. It is an integration into the Explorer which simplifies the
+access to a subversion repository without a separate client.
+\index{Subversion|)}
 
 
 \section{Maven}\index{Maven|(}
 
-The build system is based on Maven~2 (\url{http://maven.apache.org/}).
-Thus Maven~2 needs to be installed. \index{Maven|)}
+The \+build system+ is based on Maven~2 (\url{http://maven.apache.org/}).
+Thus Maven~2 needs to be installed. To install Maven 
+
+\begin{itemize}
+\item load it down from its download site -- or a mirror close by,
+\item unpack the archive to a destination directory,
+\item define an environment variable
+  \texttt{MAVEN\_HOME}\index{MAVEN\_HOME@\texttt{MAVEN\_HOME}} to
+  point to the unpacked directory, and
+\item put \texttt{\$MAVEN\_HOME/bin} onto the path.
+\end{itemize}
+
+ \index{Maven|)}
 
 
 \section{Ant}\index{Ant|(}
 
-Ant is used at some places in the buld system. Thus it might be
-necessary to have Ant installed and on the path for special tasks.
+Ant is used at some places in the old \+build system+. Thus it might
+be necessary to have Ant installed and on the path for special tasks.
 \index{Ant|)}
 
 
@@ -126,11 +141,10 @@ is not necesary to have Perl installed. \index{Perl|)}
 \section{A Command Line Interpreter}\index{Shell|(}
 
 For several tasks it is convenient to have a command line interpreter
-at hand. On Unix\index{Unix} this can be the (bourne\index{bourne
-  shell}, bash\index{bash}, korn\index{korn shell}\ldots) shell. On
-Windows\index{Windows} we recommend the Cygwin\index{Cygwin} suite
-(http://cygwin.com/) which contains bash. 
-\index{Shell|)}
+at hand. On \+Unix+ this can be the (bourne\index{bourne shell},
+\+bash+, korn\index{korn shell}\ldots) shell. On \+Windows+ we
+recommend the \+Cygwin+ suite (http://cygwin.com/) which contains
+bash.  \index{Shell|)}
 
 \section{User Account at Berlios}\index{Berlios|(}
 
@@ -151,5 +165,5 @@ easily.
 
 When you have an account at Berlios you might be added to the
 developers list of \ExTeX. This as to be done by one of the admins of
-\ExTeX. \index{Berlios|)}
+\ExTeX. Contact us via the developer mailing list \index{Berlios|)}
 

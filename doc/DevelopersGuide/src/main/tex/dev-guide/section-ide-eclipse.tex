@@ -24,6 +24,13 @@
 %%-----------------------------------------------------------------------------
 \section{Eclipse}\index{Eclipse|(}
 
+\index{Galileo|see{Eclipse $\rightarrow$ Galileo}}%
+\index{Ganymede|see{Eclipse $\rightarrow$ Ganymede}}%
+\index{Subversion|seealso{Eclipse $\rightarrow$ Plugins $\rightarrow$ Subversive}}%
+\index{Eclipse!Plugins!Subversive|seealso{Subversion}}%
+\index{Checkstlye|seealso{Eclipse $\rightarrow$ Plugins $\rightarrow$ Checkstyle}}%
+\index{FindBugs|seealso{Eclipse $\rightarrow$ Plugins $\rightarrow$ FindBugs}}%
+%\index{}%
 Eclipse (\url{http://www.eclipse.org}) is a free IDE for Java and
 other programming languages. It also provides a framework for the
 development of own programs. But this is not needed for the \ExTeX\ 
@@ -57,18 +64,18 @@ containing all files of Eclipse. You are done with the basic
 installation. You can start the \texttt{eclipse} executable found in
 the just installed directory.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering  \includegraphics[scale=.5]{image/eclipse/workspace}
   \caption{\+Eclipse Workspace+}\label{fig:eclipse-workspace}
 \end{figure}
 When Eclipse starts you first see the splash
 screen\index{Eclipse!splash screen} shown in figure~\ref{fig:eclipse}.
 Then Eclipse requests a workspace -- as shown in
-figure~\ref{fig:eclipse-workspace}. The workspace\index{Eclipse
-  workspace} is a directory where the projects live and where your
-preferences are stored. If you have chosen the workspace directory
-carefully, you can turn on the check mark in this dialog to be not
-asked again.
+figure~\ref{fig:eclipse-workspace}. The
+workspace\index{Eclipse!workspace} is a directory where the projects
+live and where your preferences are stored. If you have chosen the
+workspace directory carefully, you can turn on the check mark in this
+dialog to be not asked again.
 
 Note it is a good practice to have a separate workspace for \ExTeX{}
 and not mix it with other Eclipse projects. \ExTeX{} comes with a
@@ -78,7 +85,7 @@ lost in the workspace.
 Finally you end up in the welcome window of Eclipse shown in
 figure~\ref{fig:eclipse-welcome}. Take some time and read the
 introductory material found there.
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering  \includegraphics[scale=.33]{image/eclipse/welcome}
   \caption{Eclipse Initial Window}\label{fig:eclipse-welcome}
 \end{figure}
@@ -99,7 +106,7 @@ This dialog can be opened via \menu{Window \sub Preferences\ldots}
   \hfill
   \subfigure[Eclipse Print Margin\label{fig:eclipse-print-margin}]{%
     \includegraphics[scale=.4]{image/eclipse/print-margin}}%
-  \caption{Some simple Settings}
+  \caption{Some simple Settings}\index{Eclipse!Print margin}
 \end{figure}
 
 This menu brings up a dialog with many tabs which can be used to
@@ -117,9 +124,10 @@ the \menu{OK} button.
 
 The rational is that the tabs should be used in the traditional sense
 of eight chracters wide. In fact this is just a fallback. Usually tabs
-should be avoided where possible. The print margin of 80 is a weak
+should be avoided where possible. The print margin\index{Eclipse!print
+margin} of 80 is a weak
 rule. Try to limit yourself to this width. Sometimes it is not
-reasonable. Thus the checkstyle rules allow some more characters
+reasonable. Thus the \+Checkstyle+ rules allow some more characters
 before complaining.
 
 The following sections describe some more of the configuration
@@ -263,11 +271,11 @@ This plugin is highly recommended. Alternatively the subclipse plugin
 can be used for the same purpose.
 
 
-\subsubsection{Checkstyle}\index{Eclipse!Plugins!Checkstyle}
+\subsubsection{Checkstyle}\index{Eclipse!Plugins!Checkstyle|(}
 
-Checkstyle\index{Checkstyle} is a tool for checking the adherence of
-Java source code to certain rules. The rules can be freely configured.
-The \ExTeX\ repository contains a set of rules for checkstyle.
+\+Checkstyle+ is a tool for checking the adherence of Java source code
+to certain rules. The rules can be freely configured. The \ExTeX\ 
+repository contains a set of rules for Checkstyle.
 \begin{description}
 \item [Update site:] \url{http://eclipse-cs.sf.net/update/}
 \item [Component:] \menu{Eclipse Checkstyle Plug-in \sub Eclipse
@@ -287,17 +295,17 @@ The configuration is stored in \File{develop/eclipse/extex\_checkstyle.xml}.
 \end{figure}
 
 To enable the checks set in \menu{Project \sub Properties \sub
-  Chekcstyle} the configuration to \emph{ExTeX} (see
+  Checkstyle} the configuration to \emph{ExTeX} (see
 figure~\ref{fig:eclipse-checkstyle-enable}).
 \begin{figure}[htp]
   \centering  \includegraphics[scale=.5]{image/eclipse/checkstyle-enable}
   \caption{enable Checkstyle}\label{fig:eclipse-checkstyle-enable}
 \end{figure}
-
+\index{Eclipse!Plugins!Checkstyle|)}
 
 \subsubsection{FindBugs}\index{Eclipse!Plugins!FindBugs}
-This is an integration of the FindBugs\index{FindBugs} analyzer to
-detect code anomalies in Eclipse.
+This is an integration of the \+FindBugs+ analyzer to detect code
+anomalies in Eclipse.
 \begin{description}
 \item [Update site:] \url{http://findbugs.cs.umd.edu/eclipse}
 \item [Component:] \menu{FindBugs}
@@ -306,7 +314,7 @@ This plugin is highly recommended.
 
 
 \subsubsection{EclEmma}\index{Eclipse!Plugins!EclEmma}\index{EclEmma}\
-This is an integration of the code coverage tool Emma\index{Emma} into
+This is an integration of the code coverage tool \+Emma+ into
 Eclipse.
 \begin{description}
 \item [Update site:] \url{http://update.eclemma.org/}
@@ -407,12 +415,15 @@ figure~\ref{fig:eclipse-svn}.
 \end{figure}
 
 The next step consists of the check-out of the sources into an Eclipse
-project. To accomplish this you have to open the repository location
-and the HEAD within. Right-click the item \texttt{ExTeX} in the list
-(see figure~\ref{fig:eclipse-svn}) and select \menu{Checkout} in the
-appearing context menu (see figure~\ref{fig:eclipse-checkout-extex}).
-This will instruct Exclipe to create a new project in the workspace
-and fill it with the files from the repository.
+project. This project serves as a first container and will not really
+be used later on. To accomplish this you have to open the repository
+location and the \texttt{trunk}\index{trunk|tt} within. Right-click
+the item \texttt{trunk} in the list (see figure~\ref{fig:eclipse-svn})
+and select \menu{Check Out} in the appearing context menu (see
+figure~\ref{fig:eclipse-checkout-extex}). This will instruct Exclipe
+to create a new project in the workspace and fill it with the files
+from the repository. The name is inherited from the last component of
+the URL -- i.e. it will be named \texttt{extex}.
 
 Eclipse shows a progress bar during the check-out (see
 figure~ref{fig:eclipse-checkout}). This operation may take some time
@@ -430,6 +441,8 @@ those files is shown in figure~\ref{fig:eclipse-extex-project}.
     \includegraphics[scale=.4]{image/eclipse/extex-project}}%
   \caption{Checking out \ExTeX\ from the Repository}
 \end{figure}
+
+\Incomplete
 
 
 \subsection{Compiling \ExTeX}
