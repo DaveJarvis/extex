@@ -234,6 +234,8 @@
   \vskip 6pt plus 3pt minus 1pt
   \nopagebreak
 }
+\def\+#1+{#1\index{#1}}
+
 
 \let\titleArt=\ExTeXbox
 
