@@ -24,14 +24,14 @@
 %%-----------------------------------------------------------------------------
 \section{Eclipse}\index{Eclipse|(}
 
-Eclipse (http://www.eclipse.org) is a free IDE for Java and other
-programming languages. It also provides a framework for the
+Eclipse (\url{http://www.eclipse.org}) is a free IDE for Java and
+other programming languages. It also provides a framework for the
 development of own programs. But this is not needed for the \ExTeX\ 
 core. Currently the versions 3.4 (Ganymede\index{Eclipse!Ganymede})
 and 3.5 (Galileo\index{Eclipse!Galileo}) of Eclipse is used within the
 \ExTeX\ development team.
 \begin{figure}[h]
-  \centering  \includegraphics[scale=.5]{image/eclipse-splash}
+  \centering  \includegraphics[scale=.5]{image/eclipse/splash}
   \caption{The Eclipse Splash Screen}\index{Eclipse!splash screen}\label{fig:eclipse}
 \end{figure}
 
@@ -42,9 +42,9 @@ There you can get a file appropriate for your operating system
 containing the software development kit (SDK). For instance
 \begin{description}
 \item [eclipse-jee-galileo-win32.zip]\ \\
-  for any decent Windows\index{Windows} platform.
+  for any decent \+Windows+ platform.
 \item [eclipse-jee-galileo-linux-gtk.tar.gz]\ \\
-  for Linux\index{Linux} on Intel x86 (32 bit) with GTK.
+  for \+Linux+ on Intel x86 (32 bit) with GTK.
 \end{description}
 
 Note that we use and show here the jee edition\index{Eclipse!jee
@@ -58,16 +58,17 @@ installation. You can start the \texttt{eclipse} executable found in
 the just installed directory.
 
 \begin{figure}[h]
-  \centering  \includegraphics[scale=.5]{image/eclipse-workspace}
-  \caption{Eclipse Workspace}\index{Eclipse workspace}\label{fig:eclipse-workspace}
+  \centering  \includegraphics[scale=.5]{image/eclipse/workspace}
+  \caption{\+Eclipse Workspace+}\label{fig:eclipse-workspace}
 \end{figure}
-When Eclipse starts you first see the splash screen shown in
-figure~\ref{fig:eclipse}. Then Eclipse requests a workspace -- as
-shown in figure~\ref{fig:eclipse-workspace}. The
-workspace\index{Eclipse workspace} is a directory where the projects
-live and where your preferences are stored. If you have chosen the
-workspace directory carefully, you can turn on the check mark in this
-dialog to be not asked again.
+When Eclipse starts you first see the splash
+screen\index{Eclipse!splash screen} shown in figure~\ref{fig:eclipse}.
+Then Eclipse requests a workspace -- as shown in
+figure~\ref{fig:eclipse-workspace}. The workspace\index{Eclipse
+  workspace} is a directory where the projects live and where your
+preferences are stored. If you have chosen the workspace directory
+carefully, you can turn on the check mark in this dialog to be not
+asked again.
 
 Note it is a good practice to have a separate workspace for \ExTeX{}
 and not mix it with other Eclipse projects. \ExTeX{} comes with a
@@ -78,135 +79,12 @@ Finally you end up in the welcome window of Eclipse shown in
 figure~\ref{fig:eclipse-welcome}. Take some time and read the
 introductory material found there.
 \begin{figure}[h]
-  \centering  \includegraphics[scale=.33]{image/eclipse-welcome}
+  \centering  \includegraphics[scale=.33]{image/eclipse/welcome}
   \caption{Eclipse Initial Window}\label{fig:eclipse-welcome}
 \end{figure}
 
 The following sections describe some of the configurations which
 should be performed in order to work with Eclipse on \ExTeX.
-
-
-\subsection{Installing Eclipse Plugins}\label{sec:eclipse.plugins}\index{Eclipse!Plugins|(}
-
-Eclipse can be extended with plugins which provide additional
-functionality. It is recommended to use some of them.
-
-The installation of a plugin follows the same scheme.
-
-***
-
-The following plugins can be considered for installation.
-
-\begin{tabular}{lll}
-  Name & Update Site & Remark \\
-  Subversive\index{Eclipse!Plugins!Subversive} & ... & highly recommended \\
-  Checkstyle\index{Eclipse!Plugins!Checkstyle} & ... & recommended \\
-  FindBugs\index{Eclipse!Plugins!FindBugs}     & ... & recommended \\
-  Eclemma\index{Eclipse!Plugins!Eclemma}       & ... & recommended \\
-\end{tabular}
-\index{Eclipse!Plugins|)}
-
-\subsection{Downloading the Sources}
-
-Now we are ready to create a project for the sources of \ExTeX.
-Everything needed can be found in the Subversion repository of \ExTeX\ 
-hosted by Berlios\index{Berlios}. Thus we start to get things onto the
-local host. For this purpose we need to open a new perspective in
-Eclipse. A perspective is a collection of windows which are usually
-meant for a common task.
-
-A new perspective can be opened via the window \menu{Window \sub Open
-  Perspective \sub Other\ldots} which can be seen in
-figure~\ref{fig:eclipse-open-perspective-other}. This menu item opens a
-dialog box which offers some perspectives for opening. Currently we
-need a ``Subversion Exploring'' perspective. This perspective is meant
-for inspecting Subversion repositories and manipulation. Thus this
-perspective is selected (see figure~\ref{fig:eclipse-select-svn}) and
-the dialog is completed with the OK button.
-\begin{figure}[ht]
-  \hbox{}\hfill
-  \subfigure[Open Perspective\label{fig:eclipse-open-perspective-other}]{%
-    \includegraphics[scale=.4]{image/eclipse-open-perspective-other}}%
-  \hfill
-  \subfigure[Selecting ``Subversion Exploring
-             Perspective''\label{fig:eclipse-select-svn}]{%
-    \includegraphics[scale=.4]{image/eclipse-select-svn}}%
-  \hfill\hbox{}
-
-  \caption{Switching to a Perspective}\index{Eclipse!perspective}\label{fig:eclipse-perspective}
-\end{figure}
-
-Now a Subversion exploring perspective is opened (see
-figure~\ref{fig:eclipse-svn-perspective}). You see a lot of windows
-and icons there. The tab ``SVN Repositories'' on the left side shows
-all repository locations currently known. This list is empty since we
-have not added any Subversion location yet.
-\begin{figure}[htbp]
-  \centering  \includegraphics[scale=.33]{image/eclipse-svn-exploring}
-  \caption{SVN Exploring Perspective}\label{fig:eclipse-svn-perspective}
-\end{figure}
-
-To add a new repository location press the left mouse button on this
-tab and select \menu{New \sub Repository Location\ldots} (see
-figure~\ref{fig:eclipse-new-repository}). This brings up the dialog
-shown in figure~\ref{fig:eclipse-add-svn}. Here you can enter the
-coordinates of the \ExTeX\ Subversion repository.
-\begin{figure}[htp]
-  \hbox{}\hfill
-  \subfigure[New Repository Location\label{fig:eclipse-new-repository}]{%
-    \includegraphics[scale=.4]{image/eclipse-new-repository}}%
-  \hfill
-  \subfigure[The Coordinates of the \ExTeX\ Subversion
-  Repository\label{fig:eclipse-add-svn}]{%
-    \includegraphics[scale=.4]{image/eclipse-add-svn}}%
-  \caption{Adding the \ExTeX\ CVS Repository}
-\end{figure}
-
-Note that you have to enter your account at Berlios\index{Berlios} and
-its password into the appropriate fields. If you do not have an
-account you can use the account name \texttt{anonymous} without any
-password to get reading access to the sources.
-
-For this step you need online access to the internet. When the form is
-submitted with the OK button, the accessibility of the repository
-location is checked. Upon success the new repository location is
-added to the list of repository locations as can be seen in
-figure~\ref{fig:eclipse-cvs}.
-\begin{figure}[htbp]
-  \hbox{}\hfill
-  \subfigure[The \ExTeX\ Repository Listed\label{fig:eclipse-cvs}]{%
-    \includegraphics[scale=.4]{image/eclipse-cvs}}%
-  \hfill
-  \subfigure[Selecting to check-out of
-  \ExTeX\label{fig:eclipse-checkout-extex}]{%
-    \includegraphics[scale=.4]{image/eclipse-checkout-extex}}%
-  \caption{Checking-out of \ExTeX}
-\end{figure}
-
-The next step consists of the check-out of the sources into an Eclipse
-project. To accomplish this you have to open the repository location
-and the HEAD within. Right-click the item \texttt{ExTeX} in the list
-(see figure~\ref{fig:eclipse-cvs}) and select \menu{Checkout} in the
-appearing context menu (see figure~\ref{fig:eclipse-checkout-extex}).
-This will instruct Exclipe to create a new project in the workspace
-and fill it with the files from the repository.
-
-Eclipse shows a progress bar during the check-out (see
-figure~ref{fig:eclipse-checkout}). This operation may take some time
--- we have been really busy creating files. When the checkout is
-finished you will find the project \texttt{ExTeX} in Eclipse
-containing the files within. The appearance of the Package View with
-those files is shown in figure~\ref{fig:eclipse-extex-project}.
-\begin{figure}[htp]
-  \hbox{}\hfill
-  \subfigure[The Checkout Progress Bar\label{fig:eclipse-checkout}]{%
-    \includegraphics[scale=.4]{image/eclipse-checkout}}%
-  \hfill
-  \subfigure[The \ExTeX\ Project in the Package
-  View\label{fig:eclipse-extex-project}]{%
-    \includegraphics[scale=.4]{image/eclipse-extex-project}}%
-  \caption{Checking out \ExTeX\ from the Repository}
-\end{figure}
 
 \subsection{Configuring Eclipse}
 
@@ -217,10 +95,10 @@ This dialog can be opened via \menu{Window \sub Preferences\ldots}
 \begin{figure}[htp]
   \hbox{}\hfill
   \subfigure[Eclipse Preferences\label{fig:eclipse-preferences}]{%
-    \includegraphics[scale=.4]{image/eclipse-preferences}}%
+    \includegraphics[scale=.4]{image/eclipse/preferences}}%
   \hfill
   \subfigure[Eclipse Print Margin\label{fig:eclipse-print-margin}]{%
-    \includegraphics[scale=.4]{image/eclipse-print-margin}}%
+    \includegraphics[scale=.4]{image/eclipse/print-margin}}%
   \caption{Some simple Settings}
 \end{figure}
 
@@ -250,7 +128,7 @@ maximal use of the configurations provided with \ExTeX.
 
 
 
-\subsection{Code Templates}
+\subsubsection{Code Templates}
 
 Code templates provide a convenient way of filling in a frame for the
 documentation whenever some code is generated by Eclipse. The \ExTeX\
@@ -262,21 +140,22 @@ figure~\ref{fig:eclipse-preferences}). Here select the item \menu{Java
 can leads to a file selector where the file
 \File{develop/eclipse/codetemplates.xml} should be entered.
 \begin{figure}[htp]
-  \centering  \includegraphics[scale=.4]{image/eclipse-templates}
+  \centering  \includegraphics[scale=.4]{image/eclipse/templates}
   \caption{Eclipse Preferences}\label{fig:eclipse-templates}
 \end{figure}
 
 After the code templates have been loaded a minor adaption is
 required. The entry under the key \menu{Comments \sub Types} containes
 hard-wired a name and email address of the author. Here the own name
-and email address should be entered (see figure~{fig:eclipse-template-author}).
+and email address should be entered (see
+figure~{fig:eclipse-template-author}).
 \begin{figure}[htp]
-  \centering  \includegraphics[scale=.4]{image/eclipse-template-author}
+  \centering  \includegraphics[scale=.4]{image/eclipse/template-author}
   \caption{Code Template Author Name}\label{fig:eclipse-template-author}
 \end{figure}
 
 
-\subsection{The Code Formatter}
+\subsubsection{The Code Formatter}
 
 Eclipse comes has a code formatter which can be invoked easily. This
 code formatter can be configured for different needs. A configuration
@@ -287,66 +166,21 @@ ere you can use the button \menu{Import\dots} and select the
 configuration file. Now the profile ``gene'' is loaded and can be
 selected. This is shown in figure~\ref{fig:eclipse-formatter-gene}.
 \begin{figure}[htp]
-  \centering  \includegraphics[scale=.4]{image/eclipse-formatter-gene}
+  \centering  \includegraphics[scale=.4]{image/eclipse/formatter-gene}
   \caption{Settings for the Code Formatter}\label{fig:eclipse-formatter-gene}
 \end{figure}
 
-
 The formatter for Ant files has distinct parameters which should be
-adapted. The Prference page can be found under the key \menu{Ant \sub
+adapted. The preference page can be found under the key \menu{Ant \sub
   Editor \sub Formatter}. The values should be adjusted as shown in
 figure~\ref{fig:eclipse-ant-formatter}.
 \begin{figure}[htp]
-  \centering  \includegraphics[scale=.4]{image/eclipse-ant-formatter}
+  \centering  \includegraphics[scale=.4]{image/eclipse/ant-formatter}
   \caption{Settings for the Ant Formatter}\label{fig:eclipse-ant-formatter}
 \end{figure}
 
 
-\subsection{Checkstyle}
-
-Checkstyle is a tool for checking the adherence of Java source code to
-certain rules. The rules can be freely configured. The \ExTeX\
-repository contains a set of rules for checkstyle.
-
-Checkstyle comes in a command line version and as a plug-in for
-Eclipse. This plugin has to be installed first.
-
-\subsubsection*{Install Checkstyle plugin}
-
-To install the checkstyle plugin over the update wizard, use
-\menu{Help \sub Software Update \sub Find and Install \sub
-Search for new features to install \sub Next \sub New Remote Site } and input the name
-'checkstyle' and the URL \url{http://eclipse-cs.sourceforge.net/update}
-(see figure~\ref{fig:eclipse-checkstyle-url}).
-\begin{figure}[htp]
-  \centering  \includegraphics[scale=.5]{image/eclipse-checkstyle-url}
-  \caption{Checkstyle URL}\label{fig:eclipse-checkstyle-url}
-\end{figure}
-
-\subsubsection*{Configure Checkstyle}
-
-To set the configuration use \menu{Window \sub Preferences \sub Checkstyle }.
-Create a new configuration and set the values in
-figure~\ref{fig:eclipse-checkstyle-config}.
-
-The configuration is stored in \File{develop/eclipse/extex\_checkstyle.xml}.
-
-\begin{figure}[htp]
-  \centering  \includegraphics[scale=.5]{image/eclipse-checkstyle-config}
-  \caption{Checkstyle configuration}\label{fig:eclipse-checkstyle-config}
-\end{figure}
-
-\subsubsection*{Enable Checkstyle}
-
-To enable the checks set in \menu{Project \sub Properties \sub Chekcstyle}
-the configuration to \emph{ExTeX} (see figure~\ref{fig:eclipse-checkstyle-enable}).
-\begin{figure}[htp]
-  \centering  \includegraphics[scale=.5]{image/eclipse-checkstyle-enable}
-  \caption{enable Checkstyle}\label{fig:eclipse-checkstyle-enable}
-\end{figure}
-
-
-\subsection{Spelling}
+\subsubsection{Spelling}\index{Spell checker|(}
 
 Since English is not the native language of each developer it is a
 good idea to enable the spell checking of the source code. This
@@ -359,7 +193,7 @@ checking and provide a dictionary.
   \caption{Spelling Preferences}\label{fig:eclipse-spelling}
 \end{figure}
 
-A dictionary can be got from SCOWL
+A dictionary\index{dictionary} can be got from SCOWL\index{SCOWL}
 (\url{http://wordlist.sourceforge.net/}). You might want to use the US
 dictionary of medium size. Since this contains enough words to fit but
 not too much obscure words which hide typos.
@@ -367,6 +201,235 @@ not too much obscure words which hide typos.
 After the spell checking is activated potential typos are marked in
 the editor with yellow lines. Correction proposals can be requested
 with the quick fix shortcut Ctrl-1.
+\index{Spell checker|)}
+
+\subsubsection{Maven}\index{Maven|(}
+
+To prepare the interaction with Maven you need to define the classpath
+variable \texttt{MAVEN\_HOME}.
+\index{Maven|)}
+
+
+\subsection{Eclipse Plugins}\label{sec:eclipse.plugins}\index{Eclipse!Plugins|(}
+
+Eclipse can be extended with plugins which provide additional
+functionality. It is recommended to use some of them.
+
+The installation of a plugin follows the same scheme.
+
+\begin{itemize}
+\item The menu \menu{Help \sub Install New Software \ldots} (see
+  figure~\ref{fig:eclipse-install-new-software}) opens the dialog for
+  software installation.
+\item Add or select an update site (see
+  figure~\ref{fig:eclipse-install-subversive}).
+\item The list is filled with the available software components from
+  this site.  Mark the software components to be installed in this
+  list and submit with the \textsf{Next} button.
+\item Check the list for correctness and accept the licence agreements
+  -- after reading and understanding.
+\item Restart Eclipse when requested.
+\end{itemize}
+\begin{figure}[ht]
+  \hbox{}\hfill
+  \subfigure[Install New Software Menu\label{fig:eclipse-install-new-software}]{%
+    \includegraphics[scale=.4]{image/eclipse/install-new-software}}%
+  \hfill
+  \subfigure[The Installation Dialog
+             Perspective''\label{fig:eclipse-install-subversive}]{%
+    \includegraphics[scale=.4]{image/eclipse/install-subversive}}%
+  \hfill\hbox{}
+
+  \caption{Installing a Plugin}\index{Eclipse!plugin}\label{fig:eclipse-plugin}
+\end{figure}
+
+The following plugins can be considered for installation.
+
+
+\subsubsection{Subversive}\index{Eclipse!Plugins!Subversive}\label{sec:subversive}
+This is an integrated Subversion\index{Subversion} client to Eclipse.
+\begin{description}
+\item [Update site:] \url{http://download.eclipse.org/releases/galileo}
+\item [Component:] \menu{Collaboration \sub Subversive SVN Team Provider}
+\end{description}
+You need additionally the connectors for Subclispe to connect to a Subversion
+server.\index{Eclipse!Plugins!Subversive connectors}
+\begin{description}
+\item [Update site:] \url{http://community.polarion.com/projects/subversive/download/eclipse/2.0/galileo-site/}
+\item [Component:] \menu{Subversive SVN Connectors \sub Subversive SVN Connectors}
+\end{description}
+
+This plugin is highly recommended. Alternatively the subclipse plugin
+can be used for the same purpose.
+
+
+\subsubsection{Checkstyle}\index{Eclipse!Plugins!Checkstyle}
+
+Checkstyle\index{Checkstyle} is a tool for checking the adherence of
+Java source code to certain rules. The rules can be freely configured.
+The \ExTeX\ repository contains a set of rules for checkstyle.
+\begin{description}
+\item [Update site:] \url{http://eclipse-cs.sf.net/update/}
+\item [Component:] \menu{Eclipse Checkstyle Plug-in \sub Eclipse
+    Checkstyle Plug-in 5.0.1}\\
+  or any decent version
+\end{description}
+This plugin is highly recommended.
+
+To set the configuration use \menu{Window \sub Preferences \sub Checkstyle}.
+Create a new configuration and set the values in
+figure~\ref{fig:eclipse-checkstyle-config}.
+
+The configuration is stored in \File{develop/eclipse/extex\_checkstyle.xml}.
+\begin{figure}[htp]
+  \centering  \includegraphics[scale=.5]{image/eclipse/checkstyle-config}
+  \caption{Checkstyle configuration}\label{fig:eclipse-checkstyle-config}
+\end{figure}
+
+To enable the checks set in \menu{Project \sub Properties \sub
+  Chekcstyle} the configuration to \emph{ExTeX} (see
+figure~\ref{fig:eclipse-checkstyle-enable}).
+\begin{figure}[htp]
+  \centering  \includegraphics[scale=.5]{image/eclipse/checkstyle-enable}
+  \caption{enable Checkstyle}\label{fig:eclipse-checkstyle-enable}
+\end{figure}
+
+
+\subsubsection{FindBugs}\index{Eclipse!Plugins!FindBugs}
+This is an integration of the FindBugs\index{FindBugs} analyzer to
+detect code anomalies in Eclipse.
+\begin{description}
+\item [Update site:] \url{http://findbugs.cs.umd.edu/eclipse}
+\item [Component:] \menu{FindBugs}
+\end{description}
+This plugin is highly recommended.
+
+
+\subsubsection{EclEmma}\index{Eclipse!Plugins!EclEmma}\index{EclEmma}\
+This is an integration of the code coverage tool Emma\index{Emma} into
+Eclipse.
+\begin{description}
+\item [Update site:] \url{http://update.eclemma.org/}
+\item [Component:] \menu{EclEmma}
+\end{description}
+This plugin is recommended.
+
+
+\subsubsection{EPIC}\index{Eclipse!Plugins!EPIC}\
+This is a set of tools and editors to deal with \+Perl+
+programs in Eclipse in Eclipse.
+\begin{description}
+\item [Update site:] \url{http://e-p-i-c.sf.net/updates}
+\item [Component:] \menu{EPIC Main Components \sub EPIC}
+\end{description}
+This plugin is recommended if you are interested in the few parts
+written in \+Perl+.
+%
+\index{Eclipse!Plugins|)}
+
+
+\subsection{Downloading the Sources}
+
+Now we are ready to create a project for the sources of \ExTeX.
+Everything needed can be found in the Subversion repository of \ExTeX\ 
+hosted by \+Berlios+. Thus we start to get things onto the local host.
+For this purpose we need to open a new perspective in Eclipse. A
+perspective is a collection of windows which are usually meant for a
+common task.
+
+A new perspective\index{Eclipse!perspective} can be opened via the
+window \menu{Window \sub Open Perspective \sub Other\ldots} which can
+be seen in figure~\ref{fig:eclipse-open-perspective-other}. This menu
+item opens a dialog box which offers some perspectives for opening.
+Currently we need a ``Subversion Exploring'' perspective. This
+perspective is meant for inspecting Subversion repositories and
+manipulation. Thus this perspective is selected (see
+figure~\ref{fig:eclipse-select-svn}) and the dialog is completed with
+the OK button.
+\begin{figure}[ht]
+  \hbox{}\hfill
+  \subfigure[Open Perspective\label{fig:eclipse-open-perspective-other}]{%
+    \includegraphics[scale=.4]{image/eclipse/open-perspective-other}}%
+  \hfill
+  \subfigure[Selecting ``Subversion Exploring
+             Perspective''\label{fig:eclipse-select-svn}]{%
+    \includegraphics[scale=.4]{image/eclipse/select-svn}}%
+  \hfill\hbox{}
+
+  \caption{Switching to a Perspective}\index{Eclipse!perspective}\label{fig:eclipse-perspective}
+\end{figure}
+
+Now a Subversion exploring perspective is opened (see
+figure~\ref{fig:eclipse-svn-perspective}). You see a lot of windows
+and icons there. The tab ``SVN Repositories'' on the left side shows
+all repository locations currently known. This list is empty since we
+have not added any Subversion location yet.
+\begin{figure}[htbp]
+  \centering  \includegraphics[scale=.33]{image/eclipse/svn-exploring}
+  \caption{SVN Exploring Perspective}\label{fig:eclipse-svn-perspective}
+\end{figure}
+
+To add a new repository location press the left mouse button on this
+tab and select \menu{New \sub Repository Location\ldots} (see
+figure~\ref{fig:eclipse-new-repository}). This brings up the dialog
+shown in figure~\ref{fig:eclipse-add-svn}. Here you can enter the
+coordinates of the \ExTeX\ Subversion repository.
+\begin{figure}[htp]
+  \hbox{}\hfill
+  \subfigure[New Repository Location\label{fig:eclipse-new-repository}]{%
+    \includegraphics[scale=.4]{image/eclipse/new-repository}}%
+  \hfill
+  \subfigure[The Coordinates of the \ExTeX\ Subversion
+  Repository\label{fig:eclipse-add-svn}]{%
+    \includegraphics[scale=.4]{image/eclipse/add-svn}}%
+  \caption{Adding the \ExTeX\ SVN Repository}
+\end{figure}
+
+Note that you have to enter your account at \+Berlios+ and its
+password into the appropriate fields. If you do not have an account
+you can use the account name \texttt{anonymous} without any password
+to get reading access to the sources.
+
+For this step you need online access to the internet. When the form is
+submitted with the OK button, the accessibility of the repository
+location is checked. Upon success the new repository location is
+added to the list of repository locations as can be seen in
+figure~\ref{fig:eclipse-svn}.
+\begin{figure}[htbp]
+  \hbox{}\hfill
+  \subfigure[The \ExTeX\ Repository Listed\label{fig:eclipse-svn}]{%
+    \includegraphics[scale=.4]{image/eclipse/svn}}%
+  \hfill
+  \subfigure[Selecting to check-out of
+  \ExTeX\label{fig:eclipse-checkout-extex}]{%
+    \includegraphics[scale=.4]{image/eclipse/checkout-extex}}%
+  \caption{Checking-out of \ExTeX}
+\end{figure}
+
+The next step consists of the check-out of the sources into an Eclipse
+project. To accomplish this you have to open the repository location
+and the HEAD within. Right-click the item \texttt{ExTeX} in the list
+(see figure~\ref{fig:eclipse-svn}) and select \menu{Checkout} in the
+appearing context menu (see figure~\ref{fig:eclipse-checkout-extex}).
+This will instruct Exclipe to create a new project in the workspace
+and fill it with the files from the repository.
+
+Eclipse shows a progress bar during the check-out (see
+figure~ref{fig:eclipse-checkout}). This operation may take some time
+-- we have been really busy creating files. When the checkout is
+finished you will find the project \texttt{ExTeX} in Eclipse
+containing the files within. The appearance of the Package View with
+those files is shown in figure~\ref{fig:eclipse-extex-project}.
+\begin{figure}[htp]
+  \hbox{}\hfill
+  \subfigure[The Checkout Progress Bar\label{fig:eclipse-checkout}]{%
+    \includegraphics[scale=.4]{image/eclipse/checkout}}%
+  \hfill
+  \subfigure[The \ExTeX\ Project in the Package
+  View\label{fig:eclipse-extex-project}]{%
+    \includegraphics[scale=.4]{image/eclipse/extex-project}}%
+  \caption{Checking out \ExTeX\ from the Repository}
+\end{figure}
 
 
 \subsection{Compiling \ExTeX}
@@ -379,7 +442,7 @@ selecting \menu{Project \sub Clean\ldots} while the item \menu{Project
 figure~\ref{fig:eclipse-recompile}).
 \begin{figure}[thp]
   \centering
-  \includegraphics[scale=.4]{image/eclipse-recompile}
+  \includegraphics[scale=.4]{image/eclipse/recompile}
   \caption{Recompiling a Project}\label{fig:eclipse-recompile}
 \end{figure}
 
@@ -403,20 +466,20 @@ Enter a name, the project and the main class. The main class to use is
 \begin{figure}[htp]
   \hbox{}\hfill
   \subfigure[The Run Menu\label{fig:eclipse-run-menu}]{%
-    \includegraphics[scale=.4]{image/eclipse-run-menu}}%
+    \includegraphics[scale=.4]{image/eclipse/run-menu}}%
   \hfill
   \subfigure[Creating a run configuration\label{fig:eclipse-run}]{%
-    \includegraphics[scale=.4]{image/eclipse-run}}%
+    \includegraphics[scale=.4]{image/eclipse/run}}%
   \caption{Checking out \ExTeX\ from the Repository}
 \end{figure}
 
-On the Arguments tab you can enter the arguments for the invocation of
-\ExTeX. These are the same arguments which can also be used on the
-command line. Usually here the input file is given (see
+On the \textsf{Arguments} tab you can enter the arguments for the
+invocation of \ExTeX. These are the same arguments which can also be
+used on the command line. Usually here the input file is given (see
 figure~\ref{fig:eclipse-run-args}.
 \begin{figure}[thp]
   \centering
-  \includegraphics[scale=.4]{image/eclipse-run-args}
+  \includegraphics[scale=.4]{image/eclipse/run-args}
   \caption{Arguments for Running \ExTeX}\label{fig:eclipse-run-args}
 \end{figure}
 
@@ -427,11 +490,12 @@ command line interpreter.
 
 \subsection{Committing Changes}
 
-Eclipse ships with a CVS plugin which hides the details of the
+For Eclipse a Subversion plugin should be installed (see
+section~\ref{sec:subversive}) which hides the details of the
 underlying version control system. Thus things are quite simple for
 the newcomers. On the other hand they are differnt from the procedure
 on the command line or other tools whic mimic the command line (like
-WinCVS or TortoiseCVS).
+\+TortoiseSVN+).
 
 The metaphor used in Eclipse is the synchronisation of the workspace
 with the reporsitory. In the course of this syncronisation changes in
@@ -446,7 +510,7 @@ context menu (right mouse button) the entry \menu{Team \sub Synchronize
 with Repository} (see figure~\ref{fig:eclipse-team}).
 \begin{figure}[htp]
   \centering
-  \includegraphics[scale=.4]{image/eclipse-team}
+  \includegraphics[scale=.4]{image/eclipse/team}
   \caption{Starting Synchronization}\label{fig:eclipse-team}
 \end{figure}
 
@@ -469,10 +533,10 @@ available (see figure~\ref{fig:eclipse-ant}).
 \begin{figure}[htp]
   \hbox{}\hfill
   \subfigure[Opening an Ant View\label{fig:eclipse-ant-open}]{%
-    \includegraphics[scale=.4]{image/eclipse-ant-open}}%
+    \includegraphics[scale=.4]{image/eclipse/ant-open}}%
   \hfill
   \subfigure[The Ant View for \ExTeX\label{fig:eclipse-ant}]{%
-    \includegraphics[scale=.4]{image/eclipse-ant}}%
+    \includegraphics[scale=.4]{image/eclipse/ant}}%
   \caption{Ant in Eclipse}
 \end{figure}
 
@@ -484,9 +548,9 @@ A description of the targets can be found in section~\ref{sec:Ant}.
 
 \subsection{Creating Javadoc}
 
-To create the Javadoc HTML description of the sources you can use the
-Ant target \texttt{javadoc}. See sections \ref{sec:eclipse.ant} and
-\ref{sec:Ant}. The result can be found in the directory
+To create the \+Javadoc+ HTML description of the sources you can use
+the \+Ant+ target \texttt{javadoc}. See sections \ref{sec:eclipse.ant}
+and \ref{sec:Ant}. The result can be found in the directory
 \File{target/javadoc}.
 
 

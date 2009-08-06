@@ -69,12 +69,12 @@ One requirement for the texmf trees is that they have a file database
 alternative.
 
 To use your texmf tree you should create a configuration file in your
-home directory. On a Unix system the home directory is stored the
-environment variable \verb|$HOME|. On a Windows system the home
-directory is usually located under \verb|C:\WINDOWS\Profiles\|.  The
-configuration file must have the name \File{.extex} (a little
-intelligence test under Windows;-). It contains one line of the
-following form
+home directory. On a Unix\index{Unix} system the home directory is
+stored the environment variable \verb|$HOME|. On a Windows system the
+home directory is usually located under \verb|C:\WINDOWS\Profiles\|.
+The configuration file must have the name \File{.extex} (a little
+intelligence test under Windows\index{Windows};-). It contains one
+line of the following form
 
 \begin{lstlisting}{}
 texmf.path=/usr/lib/texmf
@@ -83,23 +83,30 @@ texmf.path=/usr/lib/texmf
 The value should point to the location of the texmf tree. If you have
 several texmf trees which need to be used you can put them into this
 attribute by separating them by a platform-specific separator. This
-separator is a colon (\verb|:|) under Unix and a semicolon (\verb|;|)
-under Windows.
+separator is a colon (\verb|:|) under Unix\index{Unix} and a semicolon
+(\verb|;|) under Windows\index{Windows}.
 
 
 \section{Subversion Client}\index{Subversion|(}
 
-You need a Subversion client installed on your machine. In the
-simplest case this is the client integrated into the IDE Eclipse (see
+\ExTeX{} uses Subversion (\url{http://subversion.tigris.org/}) as
+revision control system.\footnote{\ExTeX{} has used CVS\index{CVS} in
+  the beginning. Thus references to CVS might be left over.} Thus you
+need a Subversion client installed on your machine. In the simplest
+case this is the client integrated into the IDE Eclipse (see
 section~\ref{sec:eclipse.plugins}), or the command line version of
-svn. \index{Subversion|)}
+\texttt{svn}.
+
+On Windows TortoiseSNV\index{TortoiseSVN}
+(\url{http://tortoisesvn.tigris.org/}) can be used. It is an
+integration into the Explorer which simplifies the access to a
+subversion repository without a separate client. \index{Subversion|)}
 
 
 \section{Maven}\index{Maven|(}
 
-The build system is based on Maven~2. Thus Maven~2 needs to be
-installed.
-\index{Maven|)}
+The build system is based on Maven~2 (\url{http://maven.apache.org/}).
+Thus Maven~2 needs to be installed. \index{Maven|)}
 
 
 \section{Ant}\index{Ant|(}
@@ -111,9 +118,9 @@ necessary to have Ant installed and on the path for special tasks.
 
 \section{Perl}\index{Perl|(}
 
-Perl is used to create the web site. Thus it has to be installed for this
-purpose. For the usual development it is not necesary to have Perl installed.
-\index{Perl|)}
+Perl (\url{http://www.perl.org/}) is used to create the web site. Thus
+it has to be installed for this purpose. For the usual development it
+is not necesary to have Perl installed. \index{Perl|)}
 
 
 \section{A Command Line Interpreter}\index{Shell|(}
