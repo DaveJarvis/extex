@@ -1,8 +1,8 @@
 %%*****************************************************************************
-%% $Id$
+\SVN$Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -109,4 +109,56 @@ The first author is always the maintainer.
 Changes to a file can be carried out by the maintainer or delegated to
 somebody else. The maintainer can change if both the old and new
 maintainer agree in this.
+
+
+\section{Design Rationals}
+
+\subsection{Java 6}
+
+\ExTeX\ is assumed to run on \+Java+ 6 and upwards. Thus the features
+of this release can be used. No provisions have to be made to
+support any version of Java prior to Version 6.
+
+
+\subsection{Library Character}
+
+\ExTeX\ should provide a \+library+ for typesetting. It should be
+embeddable in arbitrary programs. Thus minimal assumptions have to be
+made about the execution environment.
+
+For instance this means that it is possible that \ExTeX\ is run is an
+application server. Application servers usually deal with their own
+thread management. Thus \ExTeX\ should avoid to play around with
+threads.
+
+
+\subsection{Code Formatting}
+
+The Coding Standards \cite{coding-conventions} of Sun have been become
+the de facto standard in the context of Java programming. Thus these
+rules are used as base for this project as well.
+
+The coding standards -- with some deviations from the Sun Coding
+Conventions -- have been manifested in the form of \+Checkstyle+ rules
+and an Ecliüpse Java Formatter configuration (see
+section~\ref{sec:eclipse.checkstyle}).
+
+
+\subsection{No Static Class Variables}
+
+Static class variables act like global variables. In the context of
+object-oriented programming it is considered as bad design to use
+them. Thus each static variable has to be justified extensively.
+
+
+\subsection{No System.exits() Outside of main()}
+
+The method |System.exit()| terminates the execution of the programn
+and returns an exit status back to the operating system. Invoking this
+method somewhere in code makes it impossible to easily test the code
+from within Java (e.g. with JUnit)
+
+The method \verb|System.exit()| is allowed in the method \verb|main()|
+only.
+
 

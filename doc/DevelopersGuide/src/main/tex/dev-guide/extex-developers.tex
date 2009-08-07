@@ -28,8 +28,7 @@
 \usepackage{multicol}
 \usepackage{makeidx}
 
-\def\setVersion$#1: #2 ${\gdef\Version{#2}}
-\setVersion$Revision: 5720 $
+\def\Version{\SVNdate}
 
 \newcommand\menu{\textsf}
 \newcommand\sub{\(\rightarrow\) }
@@ -37,17 +36,18 @@
 \makeindex
 
 \begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\SVN$Id$
 
 \begin{titlepage}\parindent=0pt
 
   \title{Developer's Guide}
-  \author{Gerd Neugebauer\\[2ex]%
-    Michael Niedermair\\[2ex]%
-    With contribtions of Bastien Roucaries}
+  \author{Gerd Neugebauer\\[1ex]%
+    Michael Niedermair\\[1ex]%
+    With contribtions by Bastien Roucaries}
   \maketitle
 
   \begin{center}
-    \begin{abstract}\parindent=0pt
+    \begin{abstract}\noindent
       This document describes some basic steps to develop and test
       \ExTeX.  It is meant for newcomers to the project or people who
       want to evaluate \ExTeX\ by inspecting the sources.
@@ -107,6 +107,7 @@ Bastien Roucaries
 \appendix
 %------------------------------------------------------------------------------
 \chapter{Licenses}
+\input{license/lgpl}
 \input{license/fdl}
 
 \bibliographystyle{alpha}

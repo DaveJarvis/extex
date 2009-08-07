@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+\SVN$Id$
 %%*****************************************************************************
 %%
 %% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
@@ -106,7 +106,7 @@ This dialog can be opened via \menu{Window \sub Preferences\ldots}
   \hfill
   \subfigure[Eclipse Print Margin\label{fig:eclipse-print-margin}]{%
     \includegraphics[scale=.4]{image/eclipse/print-margin}}%
-  \caption{Some simple Settings}\index{Eclipse!Print margin}
+  \caption{Some simple Settings}\index{Eclipse!print margin}
 \end{figure}
 
 This menu brings up a dialog with many tabs which can be used to
@@ -188,7 +188,7 @@ figure~\ref{fig:eclipse-ant-formatter}.
 \end{figure}
 
 
-\subsubsection{Spelling}\index{Spell checker|(}
+\subsubsection{Spelling}\index{spell checker|(}
 
 Since English is not the native language of each developer it is a
 good idea to enable the spell checking of the source code. This
@@ -209,12 +209,27 @@ not too much obscure words which hide typos.
 After the spell checking is activated potential typos are marked in
 the editor with yellow lines. Correction proposals can be requested
 with the quick fix shortcut Ctrl-1.
-\index{Spell checker|)}
+\index{spell checker|)}
+
 
 \subsubsection{Maven}\index{Maven|(}
 
 To prepare the interaction with Maven you need to define the classpath
-variable \texttt{MAVEN\_HOME}.
+variable \texttt{M2\_REPO}. This is done with the help of a Maven
+task:
+\begin{lstlisting}{}
+# mvn -Declipse.workspace=. eclipse:configure-workspace
+\end{lstlisting}
+This command should be issued in a shell when the current directory is
+the Eclipse workspace directory. Alternatively you can give an
+absolute or relative path to the workspace directory instead of the
+\File{.} in the define.
+
+You can control that the plugin did the right thing. In the
+preferences dialog check the list under \menu{Java \sub Build Path
+  \sub Classpath Variables}. It should now (maybe after a restart of
+Eclipse) contain a variable \texttt{M2\_REPO} pointing to the Maven
+repository.
 \index{Maven|)}
 
 
@@ -271,7 +286,7 @@ This plugin is highly recommended. Alternatively the subclipse plugin
 can be used for the same purpose.
 
 
-\subsubsection{Checkstyle}\index{Eclipse!Plugins!Checkstyle|(}
+\subsubsection{Checkstyle}\index{Eclipse!Plugins!Checkstyle|(}\label{sec:eclipse.checkstyle}
 
 \+Checkstyle+ is a tool for checking the adherence of Java source code
 to certain rules. The rules can be freely configured. The \ExTeX\ 
@@ -313,7 +328,7 @@ anomalies in Eclipse.
 This plugin is highly recommended.
 
 
-\subsubsection{EclEmma}\index{Eclipse!Plugins!EclEmma}\index{EclEmma}\
+\subsubsection{EclEmma}\index{Eclipse!Plugins!EclEmma|(}\index{EclEmma}\
 This is an integration of the code coverage tool \+Emma+ into
 Eclipse.
 \begin{description}
@@ -321,6 +336,18 @@ Eclipse.
 \item [Component:] \menu{EclEmma}
 \end{description}
 This plugin is recommended.
+\index{Eclipse!Plugins!EclEmma|)}
+
+
+\subsubsection{TeXlipse}\index{Eclipse!Plugins!TeXlipse|(}\index{TeXlipse}\
+This plugin provides tools and editors for dealing with \LaTeX\ 
+documents in Eclipse.
+\begin{description}
+\item [Update site:] \url{http://texlipse.sourceforge.net/}
+\item [Component:] \menu{TeXlipse}
+\end{description}
+This plugin is optional.
+\index{Eclipse!Plugins!TeXlipse|)}
 
 
 \subsubsection{EPIC}\index{Eclipse!Plugins!EPIC}\
@@ -332,11 +359,23 @@ programs in Eclipse in Eclipse.
 \end{description}
 This plugin is recommended if you are interested in the few parts
 written in \+Perl+.
+
+
+\subsubsection{Wicked Shell}\index{Eclipse!Plugins!Wicked Shell|(}\index{shell}\
+This plugin provides means to run shells inside Elipse.
+\begin{description}
+\item [Update site:] \url{http://www.wickedshell.net/updatesite}
+\item [Component:] \menu{Wicked Shell}
+\end{description}
+This plugin is optional.
+\index{Eclipse!Plugins!Wicked Shell|)}
 %
 \index{Eclipse!Plugins|)}
 
 
-\subsection{Downloading the Sources}
+\subsection{Getting Started}
+
+\subsubsection{Downloading the Sources}
 
 Now we are ready to create a project for the sources of \ExTeX.
 Everything needed can be found in the Subversion repository of \ExTeX\ 
@@ -372,7 +411,7 @@ figure~\ref{fig:eclipse-svn-perspective}). You see a lot of windows
 and icons there. The tab ``SVN Repositories'' on the left side shows
 all repository locations currently known. This list is empty since we
 have not added any Subversion location yet.
-\begin{figure}[htbp]
+\begin{figure}[ht]
   \centering  \includegraphics[scale=.33]{image/eclipse/svn-exploring}
   \caption{SVN Exploring Perspective}\label{fig:eclipse-svn-perspective}
 \end{figure}
@@ -382,7 +421,7 @@ tab and select \menu{New \sub Repository Location\ldots} (see
 figure~\ref{fig:eclipse-new-repository}). This brings up the dialog
 shown in figure~\ref{fig:eclipse-add-svn}. Here you can enter the
 coordinates of the \ExTeX\ Subversion repository.
-\begin{figure}[htp]
+\begin{figure}[ht]
   \hbox{}\hfill
   \subfigure[New Repository Location\label{fig:eclipse-new-repository}]{%
     \includegraphics[scale=.4]{image/eclipse/new-repository}}%
@@ -399,10 +438,10 @@ you can use the account name \texttt{anonymous} without any password
 to get reading access to the sources.
 
 For this step you need online access to the internet. When the form is
-submitted with the OK button, the accessibility of the repository
-location is checked. Upon success the new repository location is
-added to the list of repository locations as can be seen in
-figure~\ref{fig:eclipse-svn}.
+submitted with the \textsf{OK} button, the accessibility of the
+repository location is checked. Upon success the new repository
+location is added to the list of repository locations as can be seen
+in figure~\ref{fig:eclipse-svn}.
 \begin{figure}[htbp]
   \hbox{}\hfill
   \subfigure[The \ExTeX\ Repository Listed\label{fig:eclipse-svn}]{%
@@ -414,7 +453,7 @@ figure~\ref{fig:eclipse-svn}.
   \caption{Checking-out of \ExTeX}
 \end{figure}
 
-The next step consists of the check-out of the sources into an Eclipse
+The next step consists of the \+check out+ of the sources into an Eclipse
 project. This project serves as a first container and will not really
 be used later on. To accomplish this you have to open the repository
 location and the \texttt{trunk}\index{trunk|tt} within. Right-click
@@ -441,6 +480,16 @@ those files is shown in figure~\ref{fig:eclipse-extex-project}.
     \includegraphics[scale=.4]{image/eclipse/extex-project}}%
   \caption{Checking out \ExTeX\ from the Repository}
 \end{figure}
+
+Now you can close the project in Eclipse. We will reopen the
+sub-projects later on.
+
+\subsubsection{Creating Eclipse Projects}
+
+Eclipse uses some control files to define an Ecipse project. Usually
+these files can be generated automatically by Maven. Thus they should
+not be checked into the repository. They are included in the
+\+svn:ignore+ list.
 
 \Incomplete
 

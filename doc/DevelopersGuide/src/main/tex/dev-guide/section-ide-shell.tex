@@ -1,5 +1,5 @@
 %%*****************************************************************************
-%% $Id$
+\SVN$Id$
 %%*****************************************************************************
 %%
 %% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
@@ -56,7 +56,7 @@ this can be done with the following \+check-out+ commands:
 
 \begin{lstlisting}{}
 # svn co http://svn.berlios.de/svnroot/repos/extex/trunk
-\end{lstlisting}{}
+\end{lstlisting}
 
 After some time you should have a working copy of the files in the
 current directory.
@@ -86,9 +86,11 @@ The files needed for running Ant are included in the \ExTeX\
 repository. Thus no additional installation is required. Just some
 setting need to be performed before Ant can be used.
 
-An environment variable \verb|JAVA_HOME| should be defined which points
-to the JDK. The following jars should be placed on the environment
-variable \verb|CLASSPATH|:
+An environment variable
+\verb|JAVA_HOME|\index{JAVA\_HOME}\index{environment variable!JAVA\_HOME}
+should be defined which points to the JDK. The following jars should
+be placed on the environment variable
+\verb|CLASSPATH|\index{CLASSPATH}\index{environment variable!CLASSPATH}: 
 \begin{itemize}
 \item \verb|$JAVA_HOME/lib/tools.jar|
 \item \verb|$JAVA_HOME/lib/classes.zip|
