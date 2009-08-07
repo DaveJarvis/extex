@@ -126,13 +126,13 @@
    <module>ExIndex-core</module>
    <module>ExIndex-lisp</module>
    <module>ExIndex-Main</module>
-<!--
-   <module>ExIndex-doc</module>
--->
    <module>ExIndex-Installer</module>
    <module>ExIndex-makeindex</module>
+<!--
+   <module>ExIndex-doc</module>
    <module>../CLI</module>
    <module>../ExTeX-resource</module>
+-->
   </modules>
 
   <build>
