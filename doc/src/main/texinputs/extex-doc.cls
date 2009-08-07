@@ -236,6 +236,19 @@
 }
 \def\+#1+{#1\index{#1}}
 
+\def\SVN@empty{???}
+\let\SVNdate\SVN@empty
+\def\SVN$Id{\@ifnextchar:{\SVN@}{}}
+\def\SVN@: #1 #2 #3-#4-#5 #6${\ifx\SVNdate\SVN@empty
+  \global\def\SVNdate{#3-#4-#5}%
+  \immediate\write\@auxout{\string\gdef\string\SVNdate{#3-#4-#5}}%
+  \else\expandafter\SVN@@\SVNdate.#3-#4-#5.\fi}
+\def\SVN@@#1-#2-#3.#4-#5-#6.{%
+  \ifnum #4#5#6>#1#2#3
+    \global\def\SVNdate{#4-#5-#6}%
+    \immediate\write\@auxout{\string\gdef\string\SVNdate{#4-#5-#6}}%
+  \fi
+}
 
 \let\titleArt=\ExTeXbox
 
