@@ -96,7 +96,7 @@ variable
 \begin{itemize}
 \item \verb|$JAVA_HOME/lib/tools.jar|
 \item \verb|$JAVA_HOME/lib/classes.zip|
-\item and all jars found in \File{develop/lib}
+\item and all jars found in \Dir*{develop}\Dir{lib}
 \end{itemize}
 
 The Ant can be invoked like in
@@ -135,19 +135,21 @@ following targets:
 \begin{description}
 \item [all] This target builds nearly everything.
 \item [compile] Tis target compiles all Java files of the sources into
-  the directora \File{target/classes}. Note, that the test classess
+  the directora \Dir*{target}\Dir{classes}. Note, that the test classess
   are not compiled. See also section~\ref{sec:shell-compile}.
-\item [jar] This target arranges that the file \File{target/extex.jar}
+\item [jar] This target arranges that the file \Dir*{target}\Dir{extex.jar}
   is created. It contains the compiled sources of  \ExTeX.
-\item [javadoc] This target creates the Javadoc HTML files in the
-  directory \File{target/javadoc}. See also section~\ref{sec:shell-javadoc}.
+\item [javadoc] This target creates the \+Javadoc+ \+HTML+ files in
+  the directory \Dir*{target}\Dir{javadoc}. See also
+  section~\ref{sec:shell-javadoc}.
 \item [checkstyle] This target applies checkstyle and creates a report
-  in \File{target/checkstyle.txt}.
-\item [tests] This target aplies all JUnit test cases. See also
+  in \Dir*{target}\Dir{checkstyle.txt}.
+\item [tests] This target aplies all \+JUnit+ test cases. See also
   section~\ref{sec:shell-junit}.
 \item [installer] This target creates the installer with the graphical
   user interface. The result is placed in the file
-  \File{target/ExTeX-setup.jar}. See also section~\ref{sec:shell-installer}.
+  \Dir*{target}\Dir{ExTeX-setup.jar}. See also
+  section~\ref{sec:shell-installer}.
 \item [clean] This target deletes some generated files.
 \end{description}
 
@@ -171,8 +173,8 @@ Total time: 1 second
 \end{lstlisting}
 
 The generated files are placed in the sub-directory
-\texttt{target/classes}. Thus if this directory and the jars in
-\File{lib} are on the class path then \ExTeX\ can be run immediately.
+\Dir*{target}\Dir{classes}. Thus if this directory and the jars in
+\Dir{lib} are on the class path then \ExTeX\ can be run immediately.
 
 
 \subsection{Running \ExTeX}
@@ -196,8 +198,8 @@ options.
 
 To run \ExTeX\ from the command line prepare the class path -- i.e.
 the environment variable \texttt{CLASSPATH} -- to contain all
-libraries found in the directory \texttt{lib}. In addition the
-directory \texttt{target/classes} have to be on the class path.
+libraries found in the directory \Dir{lib}. In addition the
+directory \Dir*{target}\Dir{classes} have to be on the class path.
 Then you can invoke \ExTeX\ like in the following example:
 
 \begin{lstlisting}{}
@@ -213,7 +215,7 @@ The command line arguments are the same as for \File{extex} mentioned
 above.
 
 
-\subsection{JUnit}\label{sec:shell-junit}
+\subsection{JUnit}\label{sec:shell-junit}\index{JUnit|(}
 
 JUnit is the state of art concerning test automation for Java
 programs. Thus \ExTeX\ provides some test cases in the form of JUnit
@@ -248,9 +250,9 @@ Total time: 3 minutes 54 seconds
 #
 \end{lstlisting}
 
-This invocation runas all JUnit test cases found in the directory
-\File{src/test}. The results can be found in the directory
-\File{target/tests} with one file per test class.
+This invocation runas all \+JUnit+ test cases found in the directory
+\Dir*{src}\Dir{test}. The results can be found in the directory
+\Dir*{target}\Dir{tests} with one file per test class.
 
 To run single cases or a selected set of test cases you can use the
 parameter \texttt{cases}. This parameter is added to the command line
@@ -286,13 +288,13 @@ Total time: 5 seconds
 
 Details on testing and test cases can be found in
 section~\ref{chapter:testing}.
-
+\index{JUnit|)}
 
 \subsection{Creating Javadoc}\label{sec:shell-javadoc}
 
-Creating the Javadoc HTML pages can best be complished with the help
-of the build script. Here the target \texttt{javadoc} does everythign
-necessary:
+Creating the \+Javadoc+ \+HTML+ pages can best be complished with the
+help of the build script. Here the target \texttt{javadoc} does
+everything necessary:
 
 \begin{lstlisting}{}
 # cd build
@@ -312,8 +314,8 @@ Total time: 2 minutes 20 seconds
 #
 \end{lstlisting}{}
 
-As the result of this invocation the Javadoc HTML pages are stored in
-the sub-directory \File{target/javadoc}.
+As the result of this invocation the Javadoc \+HTML+ pages are stored in
+the sub-directory \Dir*{target}\Dir{javadoc}.
 
 
 \subsection{Creating the Installer}\label{sec:shell-installer}
@@ -350,7 +352,7 @@ Total time: 1 minute 30 seconds
 \end{lstlisting}{}
 
 After the work is complete the installer can be found in the file
-\File{ExTeX-setup.jar} in the directory \File{target}. The use of the
+\File{ExTeX-setup.jar} in the directory \Dir{target}. The use of the
 installer is described in the User's Manual.
 
 Alternatively the installer can also be created with the Ant task

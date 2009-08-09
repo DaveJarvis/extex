@@ -37,7 +37,7 @@ been registered by DANTE e.V. In this location the official Web pages
 The Web pages are build with a simple generator for a Web site written
 in Perl. It has been made for \ExTeX. The aim is the ease of
 maintainance for normal content of pages. They are stored as simple
-HTML files and augmented automatically upon publication.
+\+HTML+ files and augmented automatically upon publication.
 
 The layout is separated form the content and stored in several files.
 This makes it very easy to adapt the appearance without touching the
@@ -48,15 +48,16 @@ files are put into the subdirectory \texttt{www}. Both locations can
 be configured.
 
 To generate the Web site run the following command, where the current
-directory is the directory \texttt{www}:
+directory is the directory \Dir{www}:
 
 \begin{lstlisting}{}
 #  make
 \end{lstlisting}{}
 
 This command creates a complete directory hierarchy with all necessary
-sub-di\-rec\-to\-ries in \texttt{../target/www}. An exception are the
-directories named \texttt{CVS}. Those directories are ignored.
+sub-di\-rec\-to\-ries in \Dir*{../target/www}. An exception are the
+directories named \texttt{CVS} and \texttt{.svn}. Those directories
+are ignored.
 
 The files starting with \verb|.| or ending in \verb|~| or in
 \texttt{.bak} are also ignored. The files not ending in \verb|.html|

@@ -28,6 +28,25 @@ contained. This structure is oriented on the structuring proposed by
 Maven (\url{http://maven.apache.org}).
 
 
+\section{General File Organization}
+
+
+\begin{description}
+\item[\File{README.html}] The file \File{README.html} contains the
+  starting and overview inforamtion about the current directory.
+\item[\File{LICENSE.txt}] The file \File{LICENSE.txt} contains the
+  lincense conditions for the contents of the current directory.
+\item[\File{pom.xml}] The file \File{pom.xml} is the configuration
+  file for Maven. It includes the specification for the artifacts to b
+  created in this directory.
+\item[\Dir{src}] The directory \Dir{src} contains the source for the
+  current module. This follows the conventions of Maven. The
+  subdirectories are usually \Dir{main} and \Dir{test}. 
+\item[\Dir{target}] The directory \Dir{target} is used by Maven to
+  stor intermediaray files and the result of the build process.
+\end{description}
+
+
 \section{The Toplevel Directory}
 
 The toplevel directory of an \ExTeX\ project contains the sub-projects
@@ -44,6 +63,22 @@ directory.
 
 {
 \begin{multicols}3 \footnotesize\sf\obeylines
+CLI
+ExBib
+ExIndex
+ExTeX
+ExTeX-resource
+Sandbox
+build
+develop
+doc
+library
+maven2
+site
+texmf
+tools
+util
+www
 %  ExTeX-Backend-dump
 %  ExTeX-Backend-dvi
 %  ExTeX-Backend-dvix
@@ -80,15 +115,6 @@ directory.
 %  ExTeX-base-ext
 %  ExTeX-core
 %  ExTeX-fontware
-  CLI
-  ExTeX-resource
-  build
-  develop
-  doc
-  library
-  texmf
-  util
-  www
 \end{multicols}
 }
 
@@ -104,35 +130,35 @@ to the Maven conventions. Thus the following sub-directories may be
 present:
 
 \begin{description}
-\item[src/main/java] \ \\
+\item[\Dir*{src/main}\Dir{java}] \ \\
   This directory contains the Java source code and additional files
   meant for documenting it with Javadoc. Note that other files will
   not be copied to the classpath or included into the jar.
-\item[src/main/resources] \ \\
+\item[\Dir*{src/main}\Dir{resources}] \ \\
   This directory contains files which are copied to the output
   directory and included in the jar. For instance properties and XML
   configurations files for the productive version are contained here.
-\item[src/test/java] \ \\
+\item[\Dir*{src/test}\Dir{java}] \ \\
   This directory contains Java source code for the tests. These are
-  JUnit test cases and test suites as well as supporting files. These
-  files are not contained in the jar and not be present in the
+  \+JUnit+ test cases and test suites as well as supporting files.
+  These files are not contained in the jar and not be present in the
   productive environment. Note that non-Java files will not be copied
   to the outut directory and thus they will not be present during the
   tests.
-\item[src/test/resources] \ \\
+\item[\Dir*{src/test}\Dir{resources}] \ \\
   This directory contains files which are copied to the output
   directory for test files.
-\item[src/site] \ \\
+\item[\Dir*{src}\Dir{site}] \ \\
   This directory contains files included into the site produced by
-  Maven. This site describes the result of building and testing the
+  \+Maven+. This site describes the result of building and testing the
   current module.
-\item[src/target] \ \\
+\item[\Dir{target}] \ \\
   This directory contains files generated during the build process.
   Thus this directory is excluded from the Subversion repository.
-\item[src/target/classes] \ \\
+\item[\Dir*{target}\Dir{classes}] \ \\
   This directory continas the classes and files for the productive
   environment.
-\item[src/target/test-classes] \ \\
+\item[\Dir*{target}\Dir{test-classes}] \ \\
   This directory contains the additional classes and files for the
   tests.
 \end{description}
@@ -149,9 +175,9 @@ third-party libraries needed for the differet phases:
 
 
 \begin{description}
-\item[lib] \ \\
+\item[\Dir{lib}] \ \\
   These libraries are needed for production.
-\item[src/test/lib] \ \\
+\item[\Dir*{src/test}\Dir{lib}] \ \\
   These libraries are needed for tests only.
 \end{description}
 
