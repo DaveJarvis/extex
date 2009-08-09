@@ -271,7 +271,13 @@
   \end{center}
 }
 
-\newcommand\File[1]{\texttt{#1}}
+\newcommand\File{\@ifstar{\File@Star}{\File@NoStar}}
+\newcommand\File@Star[1]{\texttt{#1}}
+\newcommand\File@NoStar[1]{\texttt{#1}\index{#1|texttt}}
+
+\newcommand\Dir{\@ifstar{\Dir@Star}{\Dir@NoStar}}
+\newcommand\Dir@Star[1]{\texttt{#1/}}
+\newcommand\Dir@NoStar[1]{\texttt{#1/}\index{#1/|texttt}}
 
 \newcommand\Macro[1]{\texttt{\char`\\ #1}}
 
