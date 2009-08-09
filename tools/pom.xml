@@ -92,6 +92,7 @@
   </dependencies>
 
   <modules>
+    <module>doc-tools</module>
   </modules>
 
   <build>

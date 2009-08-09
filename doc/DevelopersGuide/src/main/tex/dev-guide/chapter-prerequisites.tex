@@ -101,7 +101,7 @@ On Unix systems the Subversion command line client might be available
 in the form of the used package system. Otherwise download it from the
 Subversion site and install it according to the instructions.
 
-On Windows \+TortoiseSNV+ (\url{http://tortoisesvn.tigris.org/}) can
+On Windows \+TortoiseSVN+ (\url{http://tortoisesvn.tigris.org/}) can
 be used. It is an integration into the Explorer which simplifies the
 access to a subversion repository without a separate client.
 \index{Subversion|)}
@@ -116,9 +116,9 @@ Thus Maven~2 needs to be installed. To install Maven
 \item load it down from its download site -- or a mirror close by,
 \item unpack the archive to a destination directory,
 \item define an environment variable
-  \texttt{MAVEN\_HOME}\index{MAVEN\_HOME@\texttt{MAVEN\_HOME}} to
+  \texttt{MAVEN\_HOME}\index{MAVEN_HOME@\texttt{\$MAVEN\_HOME}} to
   point to the unpacked directory, and
-\item put \texttt{\$MAVEN\_HOME/bin} onto the path.
+\item put \texttt{\$MAVEN\_HOME/bin} onto the path of executables.
 \end{itemize}
 
  \index{Maven|)}
@@ -126,9 +126,18 @@ Thus Maven~2 needs to be installed. To install Maven
 
 \section{Ant}\index{Ant|(}
 
-Ant is used at some places in the old \+build system+. Thus it might
-be necessary to have Ant installed and on the path for special tasks.
-\index{Ant|)}
+Ant (\url{http://ant.apache.org/}) is used at some places in the old
+\+build system+. Thus it might be necessary to have Ant installed and
+on the path for special tasks. To install Ant for the use from the
+command line
+
+\begin{itemize}
+\item load it down from its download site -- or a mirror close by,
+\item unpack the archive to a destination directory,
+\item put \texttt{bin} in the new directory onto the path of
+  executables.
+\end{itemize}
+ \index{Ant|)}
 
 
 \section{Perl}\index{Perl|(}
@@ -154,7 +163,7 @@ Berlios -- the hosting site. If you just want to read the sources then
 you can use anonymous access.
 
 To register at Berios use the page \url{http://developer.berlios.de/}
-and select the item \menu{} on the upper left side. You will find
+and select the item \menu{???} on the upper left side. You will find
 yourself in the registration page as shown in
 figure~\ref{fig:berlios-register}. You will find your way through
 easily.
@@ -163,7 +172,7 @@ easily.
   \caption{New Account at Berlios}\index{Berlios!account}\label{fig:berlios-register}
 \end{figure}
 
-When you have an account at Berlios you might be added to the
+When you have an \+account+ at Berlios you might be added to the
 developers list of \ExTeX. This as to be done by one of the admins of
 \ExTeX. Contact us via the developer mailing list \index{Berlios|)}
 

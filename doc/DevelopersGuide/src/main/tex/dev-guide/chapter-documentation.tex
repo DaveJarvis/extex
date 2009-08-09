@@ -29,7 +29,8 @@ a proper documenatation. Donald Knuth\index{Knuth!Donald} has invented
 the Web system to keep together the documentation and the source code.
 This is called \+literate programming+. The source code and
 documentation are extracted from a common file. In the Java world the
-\+Javadoc+ system has been invented for a similar purpose.
+\+Javadoc+ system has been invented for a similar purpose. This is
+used -- with some extensions -- in \ExTeX\ development.
 
 
 \section{Javadoc}\index{Javadoc|(}
@@ -56,3 +57,47 @@ marked and formatted specially.
 \INCOMPLETE
 
 
+\section{Generating The Documentation}\index{documentation|(}
+
+The documentation is contained in the directory \File{doc} in the
+\ExTeX\ top level directory.
+
+\subsection{Preparation}
+
+The build system for the documentation is based on Maven.
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  # cd tool/doc_tools
+  # mvn install
+\end{lstlisting}
+
+\INCOMPLETE
+
+\begin{lstlisting}{}
+  # cd ExBib
+  # mvn install
+\end{lstlisting}
+
+
+\subsection{The \ExTeX\ User's Manual}\index{user's manual}
+
+After the preparating steps the documentation can be build with the
+Maven task \texttt{compile} as shown below:
+
+\begin{lstlisting}{}
+  # cd doc/UsersGuide
+  # mvn compile
+\end{lstlisting}
+
+\subsection{The Developer's Guide}\index{developer's manual}
+
+After the preparating steps the documentation can be build with the
+Maven task \texttt{compile} as shown below:
+
+\begin{lstlisting}{}
+  # cd doc/DevelopersGuide
+  # mvn compile
+\end{lstlisting}
+\index{documentation|)}

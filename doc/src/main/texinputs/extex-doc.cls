@@ -222,6 +222,7 @@
   \setchapterpreamble{\index@preamble}%
   \if@openright\cleardoublepage\else\clearpage\fi%
   \chapter*{\indexname}\@mkboth{\indexname}{\indexname}%
+  \addcontentsline{toc}{chapter}{\indexname}
   \begin{multicols}3
   \thispagestyle{\indexpagestyle}\parindent\z@
   \setlength{\parskip}{\z@ \@plus .3\p@}
@@ -251,6 +252,7 @@
 }
 
 \let\titleArt=\ExTeXbox
+\newcommand\versionname{Version}
 
 \renewcommand\maketitle{
   \begin{center}
@@ -261,7 +263,7 @@
   \vfill
   \textsf{\bfseries\Huge \@title}
   \vfill
-  \textsf{\Large Version \Version}
+  \textsf{\large \versionname \Version}
   \vfill
   \textsf{\large \@author}
   \vfill

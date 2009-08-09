@@ -29,10 +29,10 @@
 The sources of \ExTeX\ are stored in a \+Subversion+ repository. To
 access this repository you need access to the internet and Subversion
 installed and configured in some way\footnote{For instance if you are
-  behind a firewall you might have to configure the proxy\index{proxy}
-  settings in \texttt{servers.xml}\index{Subversion!servers.xml|tt}}.
+  behind a firewall you might have to configure the \+proxy+ settings
+  in \texttt{servers.xml}\index{Subversion!servers.xml|tt}}.
 
-The coordinates of the repository are:
+The coordinates of the \+repository+ are:
 
 \begin{quotation}
   http://svn.berlios.de/svnroot/repos/extex/trunk
@@ -87,10 +87,12 @@ repository. Thus no additional installation is required. Just some
 setting need to be performed before Ant can be used.
 
 An environment variable
-\verb|JAVA_HOME|\index{JAVA\_HOME}\index{environment variable!JAVA\_HOME}
-should be defined which points to the JDK. The following jars should
-be placed on the environment variable
-\verb|CLASSPATH|\index{CLASSPATH}\index{environment variable!CLASSPATH}: 
+\verb|JAVA_HOME|\index{JAVA_HOME@\texttt{\$JAVA\_HOME}}%
+\index{environment variable!JAVA\_HOME} should be defined which points
+to the JDK. The following jars should be placed on the environment
+variable
+\verb|CLASSPATH|\index{CLASSPATH@\texttt{\$CLASSPATH}}\index{environment
+  variable!CLASSPATH}:
 \begin{itemize}
 \item \verb|$JAVA_HOME/lib/tools.jar|
 \item \verb|$JAVA_HOME/lib/classes.zip|

@@ -154,8 +154,10 @@
    <module>ExBib</module>
    <module>ExIndex</module>
    <module>ExTeX</module>
+   <module>CLI</module>
+   <module>ExTeX-resource</module>
    <module>texmf</module>
-   <!-- <module>util</module> -->
+   <module>tools</module>
    <module>www</module>
   </modules>
 

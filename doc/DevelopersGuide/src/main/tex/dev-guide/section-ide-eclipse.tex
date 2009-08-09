@@ -453,7 +453,7 @@ in figure~\ref{fig:eclipse-svn}.
   \caption{Checking-out of \ExTeX}
 \end{figure}
 
-The next step consists of the \+check out+ of the sources into an Eclipse
+The next step consists of the \+check-out+ of the sources into an Eclipse
 project. This project serves as a first container and will not really
 be used later on. To accomplish this you have to open the repository
 location and the \texttt{trunk}\index{trunk|tt} within. Right-click
@@ -481,15 +481,26 @@ those files is shown in figure~\ref{fig:eclipse-extex-project}.
   \caption{Checking out \ExTeX\ from the Repository}
 \end{figure}
 
-Now you can close the project in Eclipse. We will reopen the
+Now you should close the project in Eclipse. We will reopen the
 sub-projects later on.
+
+Alternatively you could check-out the files of \ExTeX\ externally and
+open Eclipse later.
+
 
 \subsubsection{Creating Eclipse Projects}
 
-Eclipse uses some control files to define an Ecipse project. Usually
-these files can be generated automatically by Maven. Thus they should
-not be checked into the repository. They are included in the
-\+svn:ignore+ list.
+Eclipse uses some control files to define an Ecipse project. For
+instance the files and diretories \File{.project}, \File{.settings},
+\File{.classpath}, and \File{.checkstyle} belong to this category.
+Usually these files can be generated automatically by Maven from the
+information present in the pom. Thus they should not be checked into
+the repository. They are included in the \+svn:ignore+ list.
+
+
+\begin{lstlisting}{}
+# mvn eclipse:eclipse
+\end{lstlisting}
 
 \Incomplete
 
