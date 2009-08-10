@@ -57,7 +57,7 @@
                 <argument>org.extex.doctools.PomCollector</argument>
                 <argument>-output</argument>
                 <argument>${project.build.directory}/modules.tex</argument>
-                <argument>../..</argument>
+                <argument>${project.basedir}${path.separator}..${path.separator}..</argument>
               </arguments>
               <workingDirectory>${basedir}</workingDirectory>
               <outputFile>${project.build.directory}/compile.out</outputFile>
