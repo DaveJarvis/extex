@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -43,7 +43,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * B<small>IB</small>T<sub>E</sub>X built-in function <code>format.name$</code>
- * 
+ *
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
  * <dt>
@@ -54,7 +54,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * name, as explained in the next subsection. Finally, this function pushes the
  * formatted name.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>format.name$</code> pops the top
@@ -66,7 +66,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * Finally, this function pushes the formatted name. If any of the types is
  * incorrect, it complains and pushes the null string.</dd>
  * </dl>
- * 
+ *
  * <dl>
  * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
  * <dd>Here we output either the <code>.bst</code> given string if it exists, or
@@ -74,14 +74,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  * default string. A <code>tie</code> is the default space character between the
  * last two tokens of the name part, and between the first two tokens if the
  * first token is short enough; otherwise, a <code>space</code> is the default.
- * 
+ *
  * <pre>
  *     long_token = 3       {a token this length or longer is ``long''}
  *  </pre>
- * 
+ *
  * </dd>
  * </dl>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -100,10 +100,10 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param format the format string to parse
          * @param locator the locator for the format
-         * 
+         *
          * @throws ExBibSyntaxException in case that the syntax is not correct
          * @throws ExBibImpossibleException this case should never happen
          * @throws ExBibException in case that something else went wrong
@@ -116,12 +116,12 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Check if a buffer contains an ending.
-         * 
+         *
          * @param sb the buffer
          * @param s the string to compare to
          * @param index the last character position in buffer to start
          *        comparison with; anything behind is treated as not present
-         * 
+         *
          * @return <code>true</code> if the buffer ends in the string
          */
         private boolean endsIn(StringBuilder sb, String s, int index) {
@@ -142,17 +142,17 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * Count the number of text characters in a buffer and compare it
          * against a given limit.
-         * 
+         *
          * <p>
          * This function reimplements the function 418 of the
          * B<small>IB</small>T<sub>E</sub>X web sources.
          * </p>
-         * 
+         *
          * @param buffer the buffer to analyze
          * @param enoughChars the threshold
          * @param start the starting position
          * @param end the ending position
-         * 
+         *
          * @return <code>true</code> iff the number of text characters is at
          *         least the limit
          */
@@ -187,12 +187,12 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format all names in the list.
-         * 
+         *
          * @param name the name to format
          * @param locator the locator
-         * 
+         *
          * @return the formatted names
-         * 
+         *
          * @throws ExBibException in case that something happens
          */
         public String format(Name name, Locator locator) throws ExBibException {
@@ -223,10 +223,10 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Parse a format string and generate an internal representation of it.
-         * 
+         *
          * @param format the format string to parse
          * @param locator the locator
-         * 
+         *
          * @throws ExBibSyntaxException in case of an syntax error
          * @throws ExBibImpossibleException in case of an programming error
          */
@@ -246,7 +246,7 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * Parses from a start position in a string which follows an opening
          * brace till the matching closing brace is found.
-         * 
+         *
          * @param start start position in the format
          * @param item the item to store the result in
          * @param format the format string to parse
@@ -254,9 +254,9 @@ public class FormatName extends AbstractCode implements Serializable {
          *        attribute of item, otherwise it is stored in the Post
          *        attribute
          * @param locator the locator for the format string
-         * 
+         *
          * @return the position of the first unprocessed character in format
-         * 
+         *
          * @throws ExBibSyntaxException in case that the matching end brace
          *         could not be found before the end of format
          */
@@ -286,7 +286,8 @@ public class FormatName extends AbstractCode implements Serializable {
                 }
             }
 
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            Localizer localizer =
+                    LocalizerFactory.getLocalizer(FormatName.class);
             throw new ExBibSyntaxException(localizer
                 .format("Missing.end.of.group"), locator);
         }
@@ -294,14 +295,14 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * Parse a format item. I.e. a brace group at level 1 with a predefined
          * content structure.
-         * 
+         *
          * @param start the index in <code>format</code> for the initial '{'
          * @param format the format string to parse
          * @param locator the locator for the format string
-         * 
+         *
          * @return the index in <code>format</code> containing the first
          *         character after the group parsed
-         * 
+         *
          * @throws ExBibSyntaxException in case of an syntax error
          * @throws ExBibImpossibleException in case of an programming error
          */
@@ -332,7 +333,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
                             if (++i >= format.length()) {
                                 throw new ExBibSyntaxException(LocalizerFactory
-                                    .getLocalizer(getClass()).format(
+                                    .getLocalizer(FormatName.class).format(
                                         "Missing.end.of.item"), locator);
                             }
 
@@ -344,7 +345,7 @@ public class FormatName extends AbstractCode implements Serializable {
                                 if (++i >= format.length()) {
                                     throw new ExBibSyntaxException(
                                         LocalizerFactory.getLocalizer(
-                                            getClass()).format(
+                                            FormatName.class).format(
                                             "Missing.end.of.item"), locator);
                                 }
 
@@ -381,7 +382,7 @@ public class FormatName extends AbstractCode implements Serializable {
                                 default:
                                     throw new ExBibImpossibleException(
                                         LocalizerFactory.getLocalizer(
-                                            getClass()).format(
+                                            FormatName.class).format(
                                             "desaster.format",
                                             Character.toString(letter)),
                                         locator);
@@ -402,12 +403,14 @@ public class FormatName extends AbstractCode implements Serializable {
                         break;
                     default:
                         throw new ExBibImpossibleException(LocalizerFactory
-                            .getLocalizer(getClass()).format("desaster.format",
-                                Character.toString(letter)), locator);
+                            .getLocalizer(FormatName.class).format(
+                                "desaster.format", Character.toString(letter)),
+                            locator);
                 }
             }
 
-            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            Localizer localizer =
+                    LocalizerFactory.getLocalizer(FormatName.class);
             throw new ExBibSyntaxException(localizer
                 .format("Missing.end.of.item="), locator);
         }
@@ -416,10 +419,10 @@ public class FormatName extends AbstractCode implements Serializable {
          * Find the matching closing brace in a String. The starting position
          * <tt>start</tt> points to the first character after the opening brace
          * in the format string <tt>fmt</tt>.
-         * 
+         *
          * @param start the starting position to consider
          * @param format the format string to parse
-         * 
+         *
          * @return the position of the closing brace
          */
         private int parseToBrace(int start, String format) {
@@ -444,7 +447,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
@@ -473,15 +476,15 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the first names in its short form.
-         * 
+         *
          * @param sb the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          * @throws ExBibException in case that no initial is found
-         * 
+         *
          *         {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -510,13 +513,13 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the first names in its long form.
-         * 
+         *
          * @param sb the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          *        {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -538,7 +541,7 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * The field <tt>id</tt> contains the id for printing.
          */
-        private String id;
+        private final String id;
 
         /**
          * The <i>mid</i> string is inserted between multi-part fragments of a
@@ -560,7 +563,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param id the id for printing
          */
         public FormatItem(String id) {
@@ -572,13 +575,13 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * Format a part of the name. In this case the constant stored in the
          * object is used and the name is ignored completely.
-         * 
+         *
          * @param sb the string buffer to store the result in
          * @param name the (ignored) name to format
          * @param locator the locator
-         * 
+         *
          * @return <code>true</code> iff the buffer has been modified
-         * 
+         *
          * @throws ExBibException never; just for the subclasses
          */
         public boolean format(StringBuilder sb, Name name, Locator locator)
@@ -590,7 +593,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Getter for the <i>mid</i> string.
-         * 
+         *
          * @return the current value
          */
         public String getMid() {
@@ -600,7 +603,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Getter for the <i>post</i> string.
-         * 
+         *
          * @return the current value
          */
         public String getPost() {
@@ -610,7 +613,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Getter for the <i>pre</i> string.
-         * 
+         *
          * @return the current value
          */
         public String getPre() {
@@ -621,7 +624,7 @@ public class FormatName extends AbstractCode implements Serializable {
         /**
          * Setter for the <i>mid</i> string. The <i>mid</i> string is inserted
          * between multi-part fragments of a name.
-         * 
+         *
          * @param string the new value
          */
         public void setMid(String string) {
@@ -633,7 +636,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * Setter for the <i>post</i> string. The <i>post</i> string is inserted
          * after multi-part fragments of a name if those fragments are not
          * empty.
-         * 
+         *
          * @param string the new value
          */
         public void setPost(String string) {
@@ -645,7 +648,7 @@ public class FormatName extends AbstractCode implements Serializable {
          * Setter for the <i>pre</i> string. The <i>pre</i> string is inserted
          * before multi-part fragments of a name if those fragments are not
          * empty.
-         * 
+         *
          * @param string the new value
          */
         public void setPre(String string) {
@@ -655,7 +658,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
@@ -684,15 +687,15 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the junior part in its short form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          * @throws ExBibException in case that no initial is found
-         * 
+         *
          *         {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -721,13 +724,13 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the junior part in its long form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          *        {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -755,15 +758,15 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the last names in its short form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          * @throws ExBibException in case that no initial is found
-         * 
+         *
          *         {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -793,13 +796,13 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format the last names in its long form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          *        {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -828,15 +831,15 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format a von part in its short form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          * @throws ExBibException in case that no initial is found
-         * 
+         *
          *         {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -867,13 +870,13 @@ public class FormatName extends AbstractCode implements Serializable {
 
         /**
          * Format a von part in its long form.
-         * 
+         *
          * @param buffer the target StringBuilder
          * @param name the name to format
          * @param locator the locator from the users perspective
-         * 
+         *
          *        {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.bst.code.impl.FormatName.FormatItem#format(java.lang.StringBuilder,
          *      org.extex.exbib.core.name.Name, org.extex.exbib.core.io.Locator)
          */
@@ -898,7 +901,7 @@ public class FormatName extends AbstractCode implements Serializable {
      * format cache. The key is the string representation. Thus it is possible
      * to get the Format from the cache.
      */
-    private Map<String, Format> formatCache = new HashMap<String, Format>();
+    private final Map<String, Format> formatCache = new HashMap<String, Format>();
 
     /**
      * The field <tt>tie</tt> contains the string used as tie.
@@ -914,13 +917,13 @@ public class FormatName extends AbstractCode implements Serializable {
     /**
      * Format a name like the B<small>IB</small>T<sub>E</sub>X built-in function
      * <code>format.name$</code>.
-     * 
+     *
      * @param names the names string
      * @param index the index of the name
      * @param fmt the format
-     * 
+     *
      * @return the formatted name
-     * 
+     *
      * @throws ExBibException in case that no initial is found
      */
     public static String formatName(String names, int index, String fmt)
@@ -943,7 +946,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the function name in the processor context
      */
     public FormatName(String name) {
@@ -954,14 +957,14 @@ public class FormatName extends AbstractCode implements Serializable {
     /**
      * Extract the initials from a String and append it to the given
      * {@link StringBuilder}.
-     * 
+     *
      * @param buffer the string buffer to append to
      * @param s the string to analyze
      * @param sep the separator
      * @param locator the locator
-     * 
+     *
      * @return <code>true</code> if the last non-brace was a dot
-     * 
+     *
      * @throws ExBibException in case of an error
      */
     protected boolean appendInitial(StringBuilder buffer, String s, String sep,
@@ -1049,7 +1052,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
@@ -1082,7 +1085,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Format a part of a name part in its full form.
-     * 
+     *
      * @param buffer the target StringBuilder
      * @param list the list of constituents of the name part
      * @param mid the mid parameter
@@ -1119,7 +1122,7 @@ public class FormatName extends AbstractCode implements Serializable {
     /**
      * Format a part of a name part in its short form; only the initials are
      * used.
-     * 
+     *
      * @param buffer the target StringBuilder
      * @param list the list of constituents of the name part
      * @param mid the mid parameter
@@ -1129,7 +1132,7 @@ public class FormatName extends AbstractCode implements Serializable {
      * @param n the line length?
      * @param locator the locator from the users perspective
      * @return <code>true</code> iff the buffer has been modified
-     * 
+     *
      * @throws ExBibException in case that no initial is found
      */
     protected boolean fmtInitials(StringBuilder buffer, List<String> list,
@@ -1163,13 +1166,13 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Format a name.
-     * 
+     *
      * @param names the names field
      * @param index the number of the name to format
      * @param fmt the format specification
-     * 
+     *
      * @return the formatted name
-     * 
+     *
      * @throws ExBibException in case of an error
      */
     protected String format(String names, int index, String fmt)
@@ -1196,7 +1199,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Getter for the tie
-     * 
+     *
      * @return the tie string
      */
     protected String getTie() {
@@ -1208,9 +1211,9 @@ public class FormatName extends AbstractCode implements Serializable {
      * Post-processing method for massaging the result before it is pushed to
      * the stack. In this base implementation this is a dummy method which does
      * nothing. In derived classes this can be overwritten.
-     * 
+     *
      * @param s the string to post-process
-     * 
+     *
      * @return the token to push to the stack
      */
     protected TString process(String s) {
@@ -1220,7 +1223,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Setter for the tie.
-     * 
+     *
      * @param tie the tie string
      */
     protected void setTie(String tie) {
