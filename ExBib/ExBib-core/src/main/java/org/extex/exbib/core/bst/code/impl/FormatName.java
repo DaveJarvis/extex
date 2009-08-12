@@ -402,10 +402,7 @@ public class FormatName extends AbstractCode implements Serializable {
 
                         break;
                     default:
-                        throw new ExBibImpossibleException(LocalizerFactory
-                            .getLocalizer(FormatName.class).format(
-                                "desaster.format", Character.toString(letter)),
-                            locator);
+                        // colllect pre
                 }
             }
 
@@ -901,7 +898,8 @@ public class FormatName extends AbstractCode implements Serializable {
      * format cache. The key is the string representation. Thus it is possible
      * to get the Format from the cache.
      */
-    private final Map<String, Format> formatCache = new HashMap<String, Format>();
+    private final Map<String, Format> formatCache =
+            new HashMap<String, Format>();
 
     /**
      * The field <tt>tie</tt> contains the string used as tie.
