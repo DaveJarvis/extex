@@ -81,7 +81,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This class provides a base implementation of a DVI document writer.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4457 $
  */
@@ -128,7 +128,7 @@ public class DviDocumentWriter
     /**
      * The field <tt>dviStack</tt> contains the stack of the DVI interpreter.
      */
-    private Stack<int[]> dviStack = new Stack<int[]>();
+    private final Stack<int[]> dviStack = new Stack<int[]>();
 
     /**
      * The field <tt>dviV</tt> contains the v value of the DVI interpreter.
@@ -174,7 +174,7 @@ public class DviDocumentWriter
     /**
      * The field <tt>options</tt> contains the options to use.
      */
-    private DocumentWriterOptions options;
+    private final DocumentWriterOptions options;
 
     /**
      * The field <tt>pointer</tt> contains the index of the next byte to be
@@ -218,7 +218,7 @@ public class DviDocumentWriter
      * performed successfully. Otherwise the node should be ignored.
      * </p>
      */
-    private NodeVisitor<Boolean, List<DviCode>> visitor =
+    private final NodeVisitor<Boolean, List<DviCode>> visitor =
             new NodeVisitor<Boolean, List<DviCode>>() {
 
                 /**
@@ -231,7 +231,7 @@ public class DviDocumentWriter
                 /**
                  * Move the reference point to vertically. This means move it
                  * downwards or upwards if the argument is negative.
-                 * 
+                 *
                  * @param dist the distance to move down
                  * @param list the list with DVI instructions.
                  */
@@ -257,9 +257,10 @@ public class DviDocumentWriter
 
                 /**
                  * Pop the state from the DVI stack.
-                 * 
+                 *
                  * @param list the list with DVI instructions.
                  */
+                @SuppressWarnings("unused")
                 protected void pop(List<DviCode> list) {
 
                     int size = list.size();
@@ -282,9 +283,10 @@ public class DviDocumentWriter
 
                 /**
                  * Push the state to the DVI stack.
-                 * 
+                 *
                  * @param list the list with DVI instructions.
                  */
+                @SuppressWarnings("unused")
                 protected void push(List<DviCode> list) {
 
                     list.add(DviCode.PUSH);
@@ -294,7 +296,7 @@ public class DviDocumentWriter
                 /**
                  * Move the reference point to horizontally. This means move it
                  * rightwards or leftwards if the argument is negative.
-                 * 
+                 *
                  * @param dist the distance to move right
                  * @param list the list with DVI instructions.
                  */
@@ -320,7 +322,7 @@ public class DviDocumentWriter
                 /**
                  * Insert a color switching special if the current color is not
                  * set to the expected value and remember the current color.
-                 * 
+                 *
                  * @param dviCode list of DVI instructions to add the special to
                  * @param color the new color
                  */
@@ -620,7 +622,6 @@ public class DviDocumentWriter
                  *      org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
-                @SuppressWarnings("unchecked")
                 public Boolean visitWhatsIt(WhatsItNode node, List<DviCode> list)
                         throws GeneralException {
 
@@ -641,7 +642,7 @@ public class DviDocumentWriter
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param options the document writer options
      */
     public DviDocumentWriter(DocumentWriterOptions options) {
@@ -652,7 +653,7 @@ public class DviDocumentWriter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
     public void close() throws GeneralException, IOException {
@@ -674,9 +675,9 @@ public class DviDocumentWriter
 
     /**
      * Get the color representation for the specials.
-     * 
+     *
      * @param color the color
-     * 
+     *
      * @return the string representation
      */
     private String color(Color color) {
@@ -711,11 +712,11 @@ public class DviDocumentWriter
 
     /**
      * Configure an object according to a given Configuration.
-     * 
+     *
      * @param config the configuration object to consider
-     * 
+     *
      * @throws ConfigurationException in case that something went wrong
-     * 
+     *
      * @see org.extex.framework.configuration.Configurable#configure(
      *      org.extex.framework.configuration.Configuration)
      */
@@ -735,9 +736,9 @@ public class DviDocumentWriter
      * Getter for the extension associated with this kind of output. For
      * instance <tt>pdf</tt> is the expected value for PDF files and
      * <tt>dvi</tt> is the expected value for DVI files.
-     * 
+     *
      * @return the appropriate extension for file names
-     * 
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
     public String getExtension() {
@@ -747,7 +748,7 @@ public class DviDocumentWriter
 
     /**
      * Optimize the description of a single page.
-     * 
+     *
      * @param list the list of codes for the page
      */
     protected void optimize(List<DviXxx> list) {
@@ -757,9 +758,9 @@ public class DviDocumentWriter
 
     /**
      * Setter for the color converter.
-     * 
+     *
      * @param converter the color converter
-     * 
+     *
      * @see org.extex.color.ColorAware#setColorConverter(
      *      org.extex.color.ColorConverter)
      */
@@ -770,9 +771,9 @@ public class DviDocumentWriter
 
     /**
      * Setter for the output stream.
-     * 
+     *
      * @param writer the output stream
-     * 
+     *
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
      *      java.io.OutputStream)
      */
@@ -785,10 +786,10 @@ public class DviDocumentWriter
      * Setter for a named parameter. Parameters are a general mechanism to
      * influence the behavior of the document writer. Any parameter not known by
      * the document writer has to be ignored.
-     * 
+     *
      * @param name the name of the parameter
      * @param value the value of the parameter
-     * 
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
      *      java.lang.String, java.lang.String)
      */
@@ -805,16 +806,16 @@ public class DviDocumentWriter
      * that all values for width, height, and depth of the node lists are
      * properly filled. Thus all information should be present to place the ink
      * on the paper.
-     * 
+     *
      * @param page the page to send
-     * 
+     *
      * @return returns the number of pages shipped
-     * 
+     *
      * @throws GeneralException in case of a general exception<br>
      *         especially<br>
      *         DocumentWriterException in case of an error
      * @throws IOException in case of an IO exception
-     * 
+     *
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
      *      org.extex.typesetter.type.page.Page)
      */
@@ -882,9 +883,9 @@ public class DviDocumentWriter
     /**
      * Ensure that a string has at least two characters length by padding it
      * with 0 if necessary.
-     * 
+     *
      * @param name the name of the count register
-     * 
+     *
      * @return the string representation of the value padded with a leading 0
      */
     private String two(String name) {
@@ -895,9 +896,9 @@ public class DviDocumentWriter
 
     /**
      * Write the preamble.
-     * 
+     *
      * @throws IOException in case of an error
-     * 
+     *
      * @see "TTP [617]"
      */
     private void writePreamble() throws IOException {
