@@ -19,12 +19,6 @@
 
 package org.extex.font.format.afm;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.InputStream;
 
 import org.extex.core.UnicodeChar;
@@ -43,7 +37,7 @@ import org.junit.Test;
 
 /**
  * Test for the font factory (afm).
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -71,7 +65,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     public FontFactoryImplAfmTest() throws Exception {
@@ -87,7 +81,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -100,7 +94,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -116,7 +110,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -129,7 +123,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -141,7 +135,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -156,7 +150,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -169,7 +163,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -182,7 +176,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -195,7 +189,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -209,7 +203,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -242,7 +236,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -258,7 +252,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -274,7 +268,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -290,7 +284,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -307,7 +301,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -326,7 +320,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -344,7 +338,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -358,7 +352,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -372,7 +366,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -386,7 +380,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -401,7 +395,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
@@ -416,7 +410,7 @@ public class FontFactoryImplAfmTest extends AbstractFontFactoryTester {
 
     /**
      * Test for the font: fxlr
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
