@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,11 +30,17 @@ import org.extex.scanner.type.token.Token;
 /**
  * This is the abstract base class for primitives dealing with an input or
  * output mode as defined by Omega.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4411 $
  */
 public abstract class AbstractModeCode extends AbstractCode {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The constant <tt>INPUT_MODE</tt> contains the key for the input mode.
@@ -84,7 +90,7 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param token the initial token for the primitive
      */
     public AbstractModeCode(CodeToken token) {
@@ -94,12 +100,12 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing an input mode.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * 
+     *
      * @return mode
-     * 
+     *
      * @throws HelpingException in case of an error
      */
     protected OmegaMode scanInputMode(Context context, TokenSource source)
@@ -122,12 +128,12 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing a mode.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * 
+     *
      * @return the mode or <code>null</code> if none is found
-     * 
+     *
      * @throws HelpingException in case of an error
      */
     private OmegaMode scanMode(Context context, TokenSource source)
@@ -148,12 +154,12 @@ public abstract class AbstractModeCode extends AbstractCode {
 
     /**
      * Scan the token source for a keyword describing an input mode.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
-     * 
+     *
      * @return the mode
-     * 
+     *
      * @throws HelpingException in case of an error
      */
     protected OmegaMode scanOutputMode(Context context, TokenSource source)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,11 +34,17 @@ import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This is the abstract base class for destination types in PDF.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
 public abstract class DestType implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The constant <tt>FIT</tt> contains the destination type fit.
@@ -52,23 +58,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFit(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -78,13 +72,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fit";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFit(this);
         }
 
     };
@@ -101,23 +107,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFitb(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -127,13 +121,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fitb";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFitb(this);
         }
 
     };
@@ -150,23 +156,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFitbh(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -176,13 +170,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fitbh";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFitbh(this);
         }
 
     };
@@ -199,23 +205,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFitbv(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -225,13 +219,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fitbv";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFitbv(this);
         }
 
     };
@@ -248,23 +254,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFith(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -274,13 +268,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fith";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFith(this);
         }
 
     };
@@ -297,23 +303,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitFitv(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -323,13 +317,25 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
         public String toString() {
 
             return "fitv";
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitFitv(this);
         }
 
     };
@@ -346,23 +352,11 @@ public abstract class DestType implements Serializable {
         private static final long serialVersionUID = 2007L;
 
         /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.pdf.api.destination.DestType#visit(
-         *      org.extex.pdf.api.destination.DestinationVisitor)
-         */
-        @Override
-        public Object visit(DestinationVisitor visitor) {
-
-            return visitor.visitXyz(this);
-        }
-
-        /**
          * Return the singleton constant object after the serialized instance
          * has been read back in.
-         * 
+         *
          * @return the one and only instance of this object
-         * 
+         *
          * @throws ObjectStreamException never
          */
         protected Object readResolve() throws ObjectStreamException {
@@ -372,7 +366,7 @@ public abstract class DestType implements Serializable {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see java.lang.Object#toString()
          */
         @Override
@@ -381,18 +375,30 @@ public abstract class DestType implements Serializable {
             return "xyz";
         }
 
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.pdf.api.destination.DestType#visit(
+         *      org.extex.pdf.api.destination.DestinationVisitor)
+         */
+        @Override
+        public Object visit(DestinationVisitor visitor) {
+
+            return visitor.visitXyz(this);
+        }
+
     };
 
     /**
      * Parse a destination type.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param name the name of the invoking primitive
-     * 
+     *
      * @return the destination type
-     * 
+     *
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -454,9 +460,9 @@ public abstract class DestType implements Serializable {
 
     /**
      * This method is the entry point for the visitor pattern.
-     * 
+     *
      * @param visitor the visitor to call back
-     * 
+     *
      * @return an arbitrary return object
      */
     public abstract Object visit(DestinationVisitor visitor);

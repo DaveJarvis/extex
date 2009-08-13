@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * Abstract class for math primitives. E.g. sin, cos
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -47,8 +47,14 @@ public abstract class AbstractMath extends AbstractCode
             CountConvertible {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
+
+    /**
      * Creates a new object.
-     * 
+     *
      * @param token the initial token for the primitive
      */
     public AbstractMath(CodeToken token) {
@@ -57,8 +63,57 @@ public abstract class AbstractMath extends AbstractCode
     }
 
     /**
+     * Calculate
+     *
+     * @param context the context
+     * @param source the token source
+     * @param typesetter the typesetter
+     *
+     * @return the real value
+     *
+     * @throws HelpingException in case of an error
+     * @throws ConfigurationException in case of an configuration error
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    protected abstract Real calculate(Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException;
+
+    /**
+     * {@inheritDoc}
+     *
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    public long convertCount(Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
+
+        return calculate(context, source, typesetter).getLong();
+    }
+
+    /**
+     * @see org.extex.interpreter.primitives.register.real.RealConvertible#convertReal(
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, Typesetter)
+     */
+    public Real convertReal(Context context, TokenSource source,
+            Typesetter typesetter)
+            throws ConfigurationException,
+                HelpingException,
+                TypesetterException {
+
+        return calculate(context, source, typesetter);
+    }
+
+    /**
      * execute
-     * 
+     *
      * @see org.extex.interpreter.type.Code#execute(
      *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -77,11 +132,11 @@ public abstract class AbstractMath extends AbstractCode
 
     /**
      * This method is the getter for the description of the primitive.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for further tokens to qualify the request
      * @param typesetter the typesetter to use
-     * 
+     *
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
@@ -98,54 +153,5 @@ public abstract class AbstractMath extends AbstractCode
         Real real = calculate(context, source, typesetter);
         return context.getTokenFactory().toTokens(real.toString());
     }
-
-    /**
-     * @see org.extex.interpreter.primitives.register.real.RealConvertible#convertReal(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
-     */
-    public Real convertReal(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
-
-        return calculate(context, source, typesetter);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public long convertCount(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException {
-
-        return calculate(context, source, typesetter).getLong();
-    }
-
-    /**
-     * Calculate
-     * 
-     * @param context the context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * 
-     * @return the real value
-     * 
-     * @throws HelpingException in case of an error
-     * @throws ConfigurationException in case of an configuration error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    protected abstract Real calculate(Context context, TokenSource source,
-            Typesetter typesetter)
-            throws ConfigurationException,
-                HelpingException,
-                TypesetterException;
 
 }

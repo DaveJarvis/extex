@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,15 +31,21 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This abstract base class provides the methods to compute the keys for
  * numbered tokens registers.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
 public abstract class AbstractToks extends AbstractAssignment {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
+
+    /**
      * Creates a new object.
-     * 
+     *
      * @param token the initial token for the primitive
      */
     public AbstractToks(CodeToken token) {
@@ -50,13 +56,13 @@ public abstract class AbstractToks extends AbstractAssignment {
     /**
      * Return the key (the name of the primitive) for the numbered tokens
      * register.
-     * 
+     *
      * @param source the source for new tokens
      * @param context the interpreter context to use
      * @param typesetter the typesetter
-     * 
+     *
      * @return the key for the current register
-     * 
+     *
      * @throws HelpingException in case that a derived class needs to throw an
      *         Exception this one is declared.
      * @throws TypesetterException in case of an error in the typesetter

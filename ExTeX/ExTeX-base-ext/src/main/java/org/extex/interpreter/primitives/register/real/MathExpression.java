@@ -36,17 +36,17 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * Math. Expressions to get a real-value. It uses the JEval
  * http://jeval.sourceforge.net/.
- * 
+ *
  * <p>
  * Example
  * </p>
- * 
+ *
  * <pre>
  * \mathexpr{2*7}
  * \real7=\mathexpr{7+4-2*3}
  * \count99=\mathexpr{7+4-2*3}
  * </pre>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -62,11 +62,22 @@ public class MathExpression extends AbstractMath
     private static final long serialVersionUID = 2007L;
 
     /**
+     * The field <tt>localizer</tt> contains the localizer. It is initiated
+     * with a localizer for the name of this class.
+     */
+    private final Localizer localizer =
+            LocalizerFactory.getLocalizer(MathExpression.class);
+
+    /**
+     * JEval Evaluator.
+     */
+    private final Evaluator evaluator;
+
+    /**
      * Creates a new object.
-     * 
+     *
      * @param token the initial token for the primitive
      */
-    @SuppressWarnings("unchecked")
     public MathExpression(CodeToken token) {
 
         super(token);
@@ -75,20 +86,8 @@ public class MathExpression extends AbstractMath
     }
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
-     */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(MathExpression.class);
-
-    /**
-     * JEval Evaluator.
-     */
-    private Evaluator evaluator;
-
-    /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.interpreter.primitives.register.real.AbstractMath#calculate(
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)

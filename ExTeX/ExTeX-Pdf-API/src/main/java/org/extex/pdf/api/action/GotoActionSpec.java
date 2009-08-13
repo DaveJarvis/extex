@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,6 +37,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * @version $Revision:4409 $
  */
 public abstract class GotoActionSpec extends ActionSpec {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * Parse a goto action spec.

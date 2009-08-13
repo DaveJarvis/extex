@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,6 +33,12 @@ import org.extex.typesetter.type.NodeVisitor;
  * @version $Revision: 4739 $
  */
 public abstract class AbstractKernNode extends AbstractNode implements KernNode {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * Creates a new object.

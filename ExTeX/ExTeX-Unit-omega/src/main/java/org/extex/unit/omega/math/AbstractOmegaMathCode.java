@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,11 +42,17 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 /**
  * This is the base class for all math primitives using the Omega encoding. It
  * tries to ensure that the primitive is invoked in math mode only.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public abstract class AbstractOmegaMathCode extends AbstractMathCode {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The field <tt>CLASS_OFFSET</tt> contains the offset for adjoining the
@@ -159,11 +165,11 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
-     * 
+     *
      * @param mc the math code
-     * 
+     *
      * @return a TeX-encoded math code
-     * 
+     *
      * @throws HelpingException in case of an error
      */
     public static long mathCodeToLong(MathCode mc) throws HelpingException {
@@ -192,14 +198,14 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Parse Math code according to TeX rules and extensions.
-     * 
+     *
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive
-     * 
+     *
      * @return the MathCode
-     * 
+     *
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -255,7 +261,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param token the initial token for the primitive
      */
     public AbstractOmegaMathCode(CodeToken token) {

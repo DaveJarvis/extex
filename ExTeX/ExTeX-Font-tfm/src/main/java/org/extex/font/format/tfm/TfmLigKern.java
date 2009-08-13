@@ -35,15 +35,21 @@ import java.io.Serializable;
 public abstract class TfmLigKern implements Serializable {
 
     /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
+
+    /**
      * Character code representing the character which must be next to the
      * current one to activate this instruction.
      */
-    private short nextChar;
+    private final short nextChar;
 
     /**
      * The skip amount.
      */
-    private int skip;
+    private final int skip;
 
     /**
      * Create a new object.

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,11 +34,17 @@ import org.extex.typesetter.type.Node;
 
 /**
  * This abstract class provides some methods common to all Nodes.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
 public abstract class AbstractNode implements Node {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The constant <tt>NO_CHAR</tt> contains the empty array of CharNode.
@@ -82,7 +88,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param aWidth the width of the node
      */
     public AbstractNode(FixedDimen aWidth) {
@@ -95,7 +101,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param aWidth the width of the node
      * @param aHeight the height of the node
      * @param aDepth the depth of the node
@@ -110,9 +116,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Add the flexible depth of the current node to the given glue.
-     * 
+     *
      * @param glue the glue to add to.
-     * 
+     *
      * @see org.extex.typesetter.type.Node#addDepthTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -123,9 +129,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Add the flexible height of the current node to the given glue.
-     * 
+     *
      * @param glue the glue to add to.
-     * 
+     *
      * @see org.extex.typesetter.type.Node#addHeightTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -136,9 +142,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Add the flexible width of the current node to the given glue.
-     * 
+     *
      * @param glue the glue to add to.
-     * 
+     *
      * @see org.extex.typesetter.type.Node#addWidthTo(
      *      org.extex.core.glue.WideGlue)
      */
@@ -149,7 +155,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Advance the depth by some length. The length can also be negative.
-     * 
+     *
      * @param x the length to add
      */
     public void advanceNaturalDepth(FixedDimen x) {
@@ -159,7 +165,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Advance the height by some length. The length can also be negative.
-     * 
+     *
      * @param x the length to add
      */
     public void advanceNaturalHeight(FixedDimen x) {
@@ -169,7 +175,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Advance the width by some length. The length can also be negative.
-     * 
+     *
      * @param x the length to add
      */
     public void advanceNaturalWidth(FixedDimen x) {
@@ -179,7 +185,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.typesetter.type.Node#atShipping(
      *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
      *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
@@ -192,7 +198,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.lang.Object#clone()
      */
     @Override
@@ -207,11 +213,11 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Compute the amount of adjustment needed to achieve a certain size.
-     * 
+     *
      * @param size the current size in scaled points
      * @param glue the glue
      * @param sum the total stretchability or shrinkability
-     * 
+     *
      * @return the adjustment
      */
     protected long computeAdjustment(long size, FixedGlue glue,
@@ -240,9 +246,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * This method determines the number of characters contained in a node.
-     * 
+     *
      * @return the number of characters contained
-     * 
+     *
      * @see org.extex.typesetter.type.Node#countChars()
      */
     public int countChars() {
@@ -252,9 +258,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for the array of characters enclosed in this node.
-     * 
+     *
      * @return the array of characters
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getChars()
      */
     public CharNode[] getChars() {
@@ -264,9 +270,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for the depth of the node.
-     * 
+     *
      * @return the depth
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getDepth()
      */
     public FixedDimen getDepth() {
@@ -276,9 +282,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for the height of the node.
-     * 
+     *
      * @return the height
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getHeight()
      */
     public FixedDimen getHeight() {
@@ -288,7 +294,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for localizer.
-     * 
+     *
      * @return the localizer
      */
     protected Localizer getLocalizer() {
@@ -301,7 +307,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getNaturalDepth()
      */
     public FixedDimen getNaturalDepth() {
@@ -311,7 +317,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getNaturalHeight()
      */
     public FixedDimen getNaturalHeight() {
@@ -321,9 +327,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for the natural width of the node.
-     * 
+     *
      * @return the width
-     * 
+     *
      * @see #getWidth()
      */
     public FixedDimen getNaturalWidth() {
@@ -333,9 +339,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Compute the vertical size of a node.
-     * 
+     *
      * @return the vertical size
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getVerticalSize()
      */
     public FixedDimen getVerticalSize() {
@@ -365,9 +371,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Getter for the width of the node.
-     * 
+     *
      * @return the width
-     * 
+     *
      * @see org.extex.typesetter.type.Node#getWidth()
      */
     public FixedDimen getWidth() {
@@ -378,7 +384,7 @@ public abstract class AbstractNode implements Node {
     /**
      * Assign the maximum of the current value and a comparison value to the
      * depth.
-     * 
+     *
      * @param x the length to compare to
      */
     public void maxDepth(FixedDimen x) {
@@ -391,7 +397,7 @@ public abstract class AbstractNode implements Node {
     /**
      * Assign the maximum of the current value and a comparison value to the
      * height.
-     * 
+     *
      * @param x the length to compare to
      */
     public void maxHeight(FixedDimen x) {
@@ -404,7 +410,7 @@ public abstract class AbstractNode implements Node {
     /**
      * Assign the maximum of the current value and a comparison value to the
      * width.
-     * 
+     *
      * @param x the length to compare to
      */
     public void maxWidth(FixedDimen x) {
@@ -416,9 +422,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Setter for the depth of the node.
-     * 
+     *
      * @param depth the node depth
-     * 
+     *
      * @see org.extex.typesetter.type.Node#setDepth(
      *      org.extex.core.dimen.FixedDimen)
      */
@@ -429,9 +435,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Setter for the height of the node.
-     * 
+     *
      * @param height the new height
-     * 
+     *
      * @see org.extex.typesetter.type.Node#setHeight(
      *      org.extex.core.dimen.FixedDimen)
      */
@@ -442,9 +448,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Setter for the width of the node.
-     * 
+     *
      * @param width the new width
-     * 
+     *
      * @see org.extex.typesetter.type.Node#setWidth(
      *      org.extex.core.dimen.FixedDimen)
      */
@@ -456,10 +462,10 @@ public abstract class AbstractNode implements Node {
     /**
      * Adjust the height of a flexible node. This method is a noop for any but
      * the flexible nodes.
-     * 
+     *
      * @param h the desired height
      * @param sum the total sum of the glues
-     * 
+     *
      * @see org.extex.typesetter.type.Node#spreadHeight(
      *      org.extex.core.dimen.FixedDimen, FixedGlueComponent)
      */
@@ -471,10 +477,10 @@ public abstract class AbstractNode implements Node {
     /**
      * Adjust the width of a flexible node. This method is a noop for any but
      * the flexible nodes.
-     * 
+     *
      * @param w the desired width
      * @param sum the total sum of the glues
-     * 
+     *
      * @see org.extex.typesetter.type.Node#spreadWidth(
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
@@ -488,7 +494,7 @@ public abstract class AbstractNode implements Node {
      * This method returns the printable representation. This is meant to
      * produce a exhaustive form as it is used in tracing output to the log
      * file.
-     * 
+     *
      * @return the printable representation
      */
     @Override
@@ -501,7 +507,7 @@ public abstract class AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
@@ -512,9 +518,9 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Compute a text representation of this object.
-     * 
+     *
      * @param prefix the string prepended to each line of the resulting text
-     * 
+     *
      * @return the text representation of this object
      */
     protected String toText(String prefix) {
@@ -526,10 +532,10 @@ public abstract class AbstractNode implements Node {
 
     /**
      * Puts a text representation of the object into a string buffer.
-     * 
+     *
      * @param sb the output string buffer
      * @param prefix the string prepended to each line of the resulting text
-     * 
+     *
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
