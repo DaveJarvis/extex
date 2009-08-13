@@ -23,12 +23,11 @@ import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;
-import java.nio.charset.CharsetEncoder;
 import java.nio.charset.CoderResult;
 
 /**
  * This class provides a table-based {@link CharsetDecoder}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,11 +36,11 @@ public class TableDecoder extends CharsetDecoder {
     /**
      * The field <tt>table</tt> contains the table.
      */
-    private char[] table;
+    private final char[] table;
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param cs the character set
      * @param table the table
      */
@@ -53,7 +52,7 @@ public class TableDecoder extends CharsetDecoder {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.nio.charset.CharsetDecoder#decodeLoop(java.nio.ByteBuffer,
      *      java.nio.CharBuffer)
      */
