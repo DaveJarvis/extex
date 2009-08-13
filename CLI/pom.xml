@@ -11,6 +11,13 @@
     This is the ExTeX command line interface support component.
   </description>
 
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>root</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
   <packaging>jar</packaging>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
@@ -37,6 +44,7 @@
     </plugins>
   </build>
 
+<!--
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -45,6 +53,7 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+-->
 
   <reporting>
     <plugins>

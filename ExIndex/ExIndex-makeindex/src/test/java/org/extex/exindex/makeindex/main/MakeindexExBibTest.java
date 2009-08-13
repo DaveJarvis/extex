@@ -34,7 +34,7 @@ import org.junit.Test;
  * This is a real life test suite for {@link Makeindex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7821 $
+ * @version $Revision: 7856 $
  */
 public class MakeindexExBibTest extends AbstractTester {
 

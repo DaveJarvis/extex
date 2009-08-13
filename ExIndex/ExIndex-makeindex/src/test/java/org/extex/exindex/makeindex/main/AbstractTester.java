@@ -38,7 +38,7 @@ import java.io.Writer;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision$
+ * @version $Revision: 7805 $
  */
 public abstract class AbstractTester {
 

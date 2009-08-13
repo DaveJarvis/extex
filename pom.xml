@@ -171,6 +171,15 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -211,7 +220,6 @@
         </executions>
       </plugin>
 -->
-<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -219,6 +227,7 @@
           <configLocation>${project.build.directory}develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
+<!--
 -->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>

@@ -25,6 +25,13 @@
    as much as reasonable.
   </description>
 
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>root</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
   <organization>
     <name>The ExTeX Group</name>
     <url>http://www.extex.org</url>
