@@ -38,7 +38,7 @@
     </dependency> 
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Font-atm</artifactId>
+      <artifactId>ExTeX-Font-afm</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
