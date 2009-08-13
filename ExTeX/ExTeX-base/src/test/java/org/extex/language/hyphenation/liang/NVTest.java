@@ -31,15 +31,11 @@ import org.extex.font.FontKeyFactory;
 import org.extex.language.ModifiableLanguage;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
-import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.tc.ModifiableTypesettingContext;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.impl.NullFont;
-import org.extex.typesetter.type.NodeList;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -47,7 +43,7 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is the test class for NV.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
@@ -55,7 +51,7 @@ public class NVTest {
 
     /**
      * This is a mock implementation of a font.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
@@ -89,7 +85,7 @@ public class NVTest {
         /**
          * The field <tt>map</tt> contains the glyph cache.
          */
-        private Map<UnicodeChar, MockGlyph> map =
+        private final Map<UnicodeChar, MockGlyph> map =
                 new HashMap<UnicodeChar, MockGlyph>();
 
         /**
@@ -108,7 +104,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getActualSize()
          */
         @Override
@@ -119,7 +115,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getCheckSum()
          */
         @Override
@@ -130,7 +126,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getDesignSize()
          */
         @Override
@@ -141,7 +137,19 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
+         * @see org.extex.typesetter.tc.font.impl.NullFont#getEfCode(org.extex.core.UnicodeChar)
+         */
+        @Override
+        public long getEfCode(UnicodeChar uc) {
+
+            // not needed
+            return 0;
+        }
+
+        /**
+         * {@inheritDoc}
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getEm()
          */
         @Override
@@ -152,7 +160,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getEx()
          */
         @Override
@@ -163,7 +171,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getFontDimen(java.lang.String)
          */
         @Override
@@ -174,7 +182,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getFontKey()
          */
         @Override
@@ -186,7 +194,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getFontName()
          */
         @Override
@@ -197,7 +205,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getHyphenChar()
          */
         @Override
@@ -208,7 +216,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getSkewChar()
          */
         @Override
@@ -219,7 +227,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#getSpace()
          */
         @Override
@@ -230,41 +238,7 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
-         *      org.extex.core.dimen.Dimen)
-         */
-        @Override
-        public void setFontDimen(String name, Dimen value) {
-
-            // not needed
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
-         */
-        @Override
-        public void setHyphenChar(UnicodeChar h) {
-
-            this.hyphen = h;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#setSkewChar(org.extex.core.UnicodeChar)
-         */
-        @Override
-        public void setSkewChar(UnicodeChar skew) {
-
-            // not needed
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
+         *
          * @see org.extex.typesetter.tc.font.impl.NullFont#setEfCode(org.extex.core.UnicodeChar,
          *      long)
          */
@@ -276,20 +250,42 @@ public class NVTest {
 
         /**
          * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.tc.font.impl.NullFont#getEfCode(org.extex.core.UnicodeChar)
+         *
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setFontDimen(java.lang.String,
+         *      org.extex.core.dimen.Dimen)
          */
         @Override
-        public long getEfCode(UnicodeChar uc) {
+        public void setFontDimen(String name, Dimen value) {
 
             // not needed
-            return 0;
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setHyphenChar(org.extex.core.UnicodeChar)
+         */
+        @Override
+        public void setHyphenChar(UnicodeChar h) {
+
+            this.hyphen = h;
+        }
+
+        /**
+         * {@inheritDoc}
+         *
+         * @see org.extex.typesetter.tc.font.impl.NullFont#setSkewChar(org.extex.core.UnicodeChar)
+         */
+        @Override
+        public void setSkewChar(UnicodeChar skew) {
+
+            // not needed
         }
     }
 
     /**
      * This is a mock implementation of a glyph.
-     * 
+     *
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision:4527 $
      */
@@ -298,11 +294,11 @@ public class NVTest {
         /**
          * The field <tt>c</tt> contains the character.
          */
-        private char c;
+        private final char c;
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param c the character
          */
         public MockGlyph(char c) {
@@ -313,11 +309,12 @@ public class NVTest {
 
         /**
          * Try to build a ligature.
-         * 
+         *
          * @param uc the character
-         * 
+         *
          * @return the ligature
          */
+        @SuppressWarnings("unused")
         public UnicodeChar getLigature(UnicodeChar uc) {
 
             if (c == 'f') {
@@ -342,7 +339,7 @@ public class NVTest {
     // private static TokenFactory tokenFactory;
     /**
      * The command line interface.
-     * 
+     *
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -353,12 +350,12 @@ public class NVTest {
     /**
      * The field <tt>cnf</tt> contains the char node factory.
      */
-    private NodeFactory cnf;
+    // private NodeFactory cnf;
 
     /**
      * The field <tt>f</tt> contains the token for f.
      */
-    private Token f;
+    // private Token f;
 
     /**
      * The field <tt>font</tt> contains the font.
@@ -368,7 +365,7 @@ public class NVTest {
     /**
      * The field <tt>l</tt> contains the token for l.
      */
-    private Token l;
+    // private Token l;
 
     /**
      * The field <tt>tc</tt> contains the typesetting context.
@@ -377,7 +374,7 @@ public class NVTest {
 
     /**
      * Set up the test suite
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Before
@@ -399,14 +396,14 @@ public class NVTest {
 
     /**
      * f-fl ((f f) l)
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void test1() throws Exception {
 
-        NodeList list = new HorizontalListNode();
+        // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
         // UnicodeChar.get(MockFont.FFL), //
         // getCharNode(tc, f.getChar()), //
@@ -429,14 +426,14 @@ public class NVTest {
 
     /**
      * f-fl (f (fl))
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void test2() throws Exception {
 
-        NodeList list = new HorizontalListNode();
+        // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
         // UnicodeChar.get(MockFont.FFL), //
         // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
@@ -459,14 +456,14 @@ public class NVTest {
 
     /**
      * f-f-l ((f f) l)
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void testDouble() throws Exception {
 
-        NodeList list = new HorizontalListNode();
+        // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
         // UnicodeChar.get(MockFont.FFL), //
         // getCharNode(tc, f.getChar()), //
@@ -486,14 +483,14 @@ public class NVTest {
 
     /**
      * ffl ((f f) l)
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void testNone() throws Exception {
 
-        NodeList list = new HorizontalListNode();
+        // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
         // UnicodeChar.get(MockFont.FFL), //
         // getCharNode(tc, f.getChar()), //
@@ -513,14 +510,14 @@ public class NVTest {
 
     /**
      * -ffl ((f f) l)
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void testPre() throws Exception {
 
-        NodeList list = new HorizontalListNode();
+        // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
         // UnicodeChar.get(MockFont.FFL), //
         // getCharNode(tc, f.getChar()), //
