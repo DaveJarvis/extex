@@ -3,7 +3,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExBib-styles</artifactId>
+  <artifactId>ExBib-texmf</artifactId>
   <name>ExBib texmf</name>
   <description>
     This is a source for ExBib styles and assets. Those files are packaged into

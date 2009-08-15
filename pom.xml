@@ -243,6 +243,7 @@
         </configuration>
       </plugin>
 
+<!--
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-changelog-plugin</artifactId>
@@ -252,6 +253,7 @@
           <range>90</range>
         </configuration>
       </plugin>
+-->
 
     </plugins>
 

@@ -125,6 +125,16 @@ Maven stores some information in the user's home directory in a
 directory \Dir{.m2}. The file \File{settings.xml} contains the overall
 configuration. Especially if a \+proxy+ is required it can be
 configured there.
+
+Usually the memory reserved for Maven should be sufficient.
+Unfortunately Maven runs out of memory for some operation like
+generating the Maven report site. For these tatsks it is necessary to
+enlarge the memory by setting the environment variable
+\verb|MAVEN_OPTS|\index{MAVEN\_OPTS|\texttt{MAVEN\_OPTS}}. On \+Unix+
+this can be achieved with the following statement
+\begin{lstlisting}{}
+  export MAVEN_OPTS="-Xmx512m"
+\end{lstlisting}
 \index{Maven|)}
 
 
