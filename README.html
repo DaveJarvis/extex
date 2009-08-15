@@ -105,7 +105,9 @@ pre {
 <p>
  If you are interested in the sources you should have a look at the
  <i>Developer's Guide</i>. The source code can be found in <a
- href="doc/DevelopersGuide"><tt>doc/DevelopersGuide</tt></a>.
+ href="doc/DevelopersGuide"><tt>doc/DevelopersGuide</tt></a>. A
+ compiled version can be downloaded from the &epsilon;&chi;<span
+ class="t">T</span><span class="e">e</span>X web site.
 </p>
 
 
@@ -181,7 +183,13 @@ pre {
   href="http://www.extex.org/">www.extex.org</a>. It is not active yet.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
-  <a href="src/">src</a>
+  <a href="src/">src</a> contains additional sources. Thus we follow
+  the conventions of Maven.
+</p>
+<p class="dir"><img style="vertical-align:top" src="src/images/folder-gray.png"/>
+  <a href="target/">target</a> is not contained in the repository. It
+  is created on the fly during compilation to receive the intermediate
+  files and results.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
   <a href="texmf/">texmf</a> contains sources for a texmf tree.
@@ -190,7 +198,9 @@ pre {
   <a href="tools/">tools</a> contains some tools.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
-  <a href="util/">util</a> contains some utilities.
+  <a href="util/">util</a> contains some utilities. Usually they are
+  shell scripts or programs of some sort which do not need the global
+  build system of &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png"/>
   <a href="www/">www</a> contains the sources for the web pages for <a
