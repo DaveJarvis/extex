@@ -3,10 +3,10 @@
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
-  <artifactId>ExBib-Documentation</artifactId>
-  <name>ExBib documentation</name>
+  <artifactId>ExBib-doc</artifactId>
+  <name>ExBib Documentation</name>
   <description>
-    This is the ExBib documentation.
+    This is the ExBib documentation. It contains the ExBiB Reference Manual.
   </description>
 
   <version>0.1-SNAPSHOT</version>
