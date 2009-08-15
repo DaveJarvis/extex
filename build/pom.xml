@@ -17,8 +17,9 @@
 
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>project</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
   
   <dependencies>
@@ -43,6 +44,18 @@
       </snapshots>
     </repository>
   </repositories>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <configuration>
+          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
+        </configuration>
+      </plugin>
+    </plugins>
+  </reporting>
 
   <developers>
     <developer>

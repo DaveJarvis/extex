@@ -13,8 +13,9 @@
   </description>
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>project</artifactId>
     <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
   </parent>
 
   <developers>

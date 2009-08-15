@@ -17,7 +17,7 @@
 
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>project</artifactId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
@@ -87,18 +87,6 @@
     </developer>
   </developers>
 
-<!--
-  <ciManagement>
-    <system>continuum</system>
-    <notifier>
-      <type>mail</type>
-      <configuration>
-        <address>dev@maven.apache.org</address>
-      </configuration>
-    <notifier>
-  </ciManagement>
--->
-
   <distributionManagement>
     <repository>
       <id>org.extex.exbib</id>
@@ -121,7 +109,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.4</version>
+      <version>4.7</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -149,10 +137,6 @@
   <modules>
    <module>ExBib-core</module>
    <module>ExBib-Main</module>
-<!--
-   <module>../ExTeX-resource</module>
-   <module>../CLI</module>
--->
    <module>ExBib-bsf</module>
    <module>ExBib-groovy</module>
    <module>ExBib-bst2gy</module>
@@ -170,8 +154,8 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
       </plugin>
 
@@ -244,7 +228,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
+          <configLocation>${basedir}/../../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
 

@@ -13,7 +13,7 @@
 
   <parent>
     <groupId>org.extex</groupId>
-    <artifactId>root</artifactId>
+    <artifactId>project</artifactId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
@@ -22,46 +22,13 @@
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-eclipse-plugin</artifactId>
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>true</downloadJavadocs>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
-<!--
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.4</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
--->
-
   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>../develop/eclipse/checkstyle42.cfg</configLocation>
+          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
     </plugins>

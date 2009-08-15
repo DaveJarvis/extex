@@ -12,21 +12,12 @@
    ExIndex ...
   </description>
 
-  <organization>
-    <name>The ExTeX Group</name>
-    <url>http://www.extex.org</url>
-  </organization>
-
-  <scm>
-    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
-  </scm>
-
-  <issueManagement>
-    <system>Berlios Bugs</system>
-    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
-  </issueManagement>
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>project</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
   <licenses>
     <license>
@@ -62,32 +53,6 @@
     </mailingList>
   </mailingLists>
 
-  <developers>
-    <developer>
-      <id>gene</id>
-      <name>Gerd Neugebauer</name>
-      <email>gene@gerd-neugebauer.de</email>
-      <roles>
-        <role>developer</role>
-        <role>build manager</role>
-      </roles>
-      <timezone>+1</timezone>
-      <properties/>
-    </developer>
-  </developers>
-
-<!--
-  <ciManagement>
-    <system>continuum</system>
-    <notifier>
-      <type>mail</type>
-      <configuration>
-        <address>dev@maven.apache.org</address>
-      </configuration>
-    <notifier>
-  </ciManagement>
--->
-
   <distributionManagement>
     <repository>
       <id>org.extex.exindex</id>
@@ -106,47 +71,16 @@
     </site>
   </distributionManagement>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>root</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.5</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
   <modules>
    <module>ExIndex-core</module>
    <module>ExIndex-lisp</module>
    <module>ExIndex-Main</module>
-   <module>ExIndex-Installer</module>
    <module>ExIndex-makeindex</module>
 <!--
+   <module>ExIndex-Installer</module>
    <module>ExIndex-doc</module>
-   <module>../CLI</module>
-   <module>../ExTeX-resource</module>
 -->
   </modules>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.5</source>
-          <target>1.5</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
   <reporting>
     <plugins>
@@ -172,7 +106,7 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
-          <configLocation>../develop/eclipse/checkstyle42.cfg</configLocation>
+          <configLocation>${basedir}/../../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
 
@@ -200,5 +134,19 @@
     </plugins>
 
   </reporting>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <roles>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
 
 </project>
