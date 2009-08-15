@@ -61,6 +61,15 @@ this can be done with the following \+check-out+ commands:
 After some time you should have a working copy of the files in the
 current directory.
 
+\subsection{Basic Steps}
+
+
+\begin{lstlisting}{}
+# cd tools/doc-tools
+# mvn install
+\end{lstlisting}
+
+
 
 %\subsection{Checkstyle}
 %
@@ -71,88 +80,88 @@ current directory.
 %
 %\begin{lstlisting}{}
 %# ant checkstyle
-%\end{lstlisting}{}
+%\end{lstlisting}
 %
 %The result can be found in the file \File{target/checkstyle.txt}.
 
-\subsection{Ant}\label{sec:Ant}
-
-Apache Ant (\url{http://ant.apache.org}) is a build system for Java.
-It can be considered state of the art for Java programs to come with
-Ant scripts. \ExTeX\ supports Ant by providing a \texttt{build.xml}
-file for various tasks.
-
-The files needed for running Ant are included in the \ExTeX\
-repository. Thus no additional installation is required. Just some
-setting need to be performed before Ant can be used.
-
-An environment variable
-\verb|JAVA_HOME|\index{JAVA_HOME@\texttt{\$JAVA\_HOME}}%
-\index{environment variable!JAVA\_HOME} should be defined which points
-to the JDK. The following jars should be placed on the environment
-variable
-\verb|CLASSPATH|\index{CLASSPATH@\texttt{\$CLASSPATH}}\index{environment
-  variable!CLASSPATH}:
-\begin{itemize}
-\item \verb|$JAVA_HOME/lib/tools.jar|
-\item \verb|$JAVA_HOME/lib/classes.zip|
-\item and all jars found in \Dir*{develop}\Dir{lib}
-\end{itemize}
-
-The Ant can be invoked like in
-
-\begin{lstlisting}{}
-#  $JAVA_HOME/bin/java -Dant.home=$ANT_HOME org.apache.tools.ant.Main compile
-Buildfile: build.xml
-
-compile:
-
-BUILD SUCCESSFUL
-Total time: 1 second
-#
-\end{lstlisting}
-
-These steps are performed by the shell script \File{build} in the
-\ExTeX\ directory. Thus you can achieve the same effect -- without any
-preparations except setting \verb|JAVA_HOME| -- with the following command:
-
-\begin{lstlisting}{}
-# cd build
-# ant compile
-Buildfile: build.xml
-
-compile:
-
-BUILD SUCCESSFUL
-Total time: 1 second
-#
-\end{lstlisting}
-
-The Ant configuration can be found in the file \File{build.xml} in the
-\ExTeX\ main directory. This configuration contains at least the
-following targets:
-
-\begin{description}
-\item [all] This target builds nearly everything.
-\item [compile] Tis target compiles all Java files of the sources into
-  the directora \Dir*{target}\Dir{classes}. Note, that the test classess
-  are not compiled. See also section~\ref{sec:shell-compile}.
-\item [jar] This target arranges that the file \Dir*{target}\Dir{extex.jar}
-  is created. It contains the compiled sources of  \ExTeX.
-\item [javadoc] This target creates the \+Javadoc+ \+HTML+ files in
-  the directory \Dir*{target}\Dir{javadoc}. See also
-  section~\ref{sec:shell-javadoc}.
-\item [checkstyle] This target applies checkstyle and creates a report
-  in \Dir*{target}\Dir{checkstyle.txt}.
-\item [tests] This target aplies all \+JUnit+ test cases. See also
-  section~\ref{sec:shell-junit}.
-\item [installer] This target creates the installer with the graphical
-  user interface. The result is placed in the file
-  \Dir*{target}\Dir{ExTeX-setup.jar}. See also
-  section~\ref{sec:shell-installer}.
-\item [clean] This target deletes some generated files.
-\end{description}
-
+%\subsection{Ant}\label{sec:Ant}
+%
+%Apache Ant (\url{http://ant.apache.org}) is a build system for Java.
+%It can be considered state of the art for Java programs to come with
+%Ant scripts. \ExTeX\ supports Ant by providing a \texttt{build.xml}
+%file for various tasks.
+%
+%The files needed for running Ant are included in the \ExTeX\
+%repository. Thus no additional installation is required. Just some
+%setting need to be performed before Ant can be used.
+%
+%An environment variable
+%\verb|JAVA_HOME|\index{JAVA_HOME@\texttt{\$JAVA\_HOME}}%
+%\index{environment variable!JAVA\_HOME} should be defined which points
+%to the JDK. The following jars should be placed on the environment
+%variable
+%\verb|CLASSPATH|\index{CLASSPATH@\texttt{\$CLASSPATH}}\index{environment
+%  variable!CLASSPATH}:
+%\begin{itemize}
+%\item \verb|$JAVA_HOME/lib/tools.jar|
+%\item \verb|$JAVA_HOME/lib/classes.zip|
+%\item and all jars found in \Dir*{develop}\Dir{lib}
+%\end{itemize}
+%
+%The Ant can be invoked like in
+%
+%\begin{lstlisting}{}
+%#  $JAVA_HOME/bin/java -Dant.home=$ANT_HOME org.apache.tools.ant.Main compile
+%Buildfile: build.xml
+%
+%compile:
+%
+%BUILD SUCCESSFUL
+%Total time: 1 second
+%#
+%\end{lstlisting}
+%
+%These steps are performed by the shell script \File{build} in the
+%\ExTeX\ directory. Thus you can achieve the same effect -- without any
+%preparations except setting \verb|JAVA_HOME| -- with the following command:
+%
+%\begin{lstlisting}{}
+%# cd build
+%# ant compile
+%Buildfile: build.xml
+%
+%compile:
+%
+%BUILD SUCCESSFUL
+%Total time: 1 second
+%#
+%\end{lstlisting}
+%
+%The Ant configuration can be found in the file \File{build.xml} in the
+%\ExTeX\ main directory. This configuration contains at least the
+%following targets:
+%
+%\begin{description}
+%\item [all] This target builds nearly everything.
+%\item [compile] Tis target compiles all Java files of the sources into
+%  the directora \Dir*{target}\Dir{classes}. Note, that the test classess
+%  are not compiled. See also section~\ref{sec:shell-compile}.
+%\item [jar] This target arranges that the file \Dir*{target}\Dir{extex.jar}
+%  is created. It contains the compiled sources of  \ExTeX.
+%\item [javadoc] This target creates the \+Javadoc+ \+HTML+ files in
+%  the directory \Dir*{target}\Dir{javadoc}. See also
+%  section~\ref{sec:shell-javadoc}.
+%\item [checkstyle] This target applies checkstyle and creates a report
+%  in \Dir*{target}\Dir{checkstyle.txt}.
+%\item [tests] This target aplies all \+JUnit+ test cases. See also
+%  section~\ref{sec:shell-junit}.
+%\item [installer] This target creates the installer with the graphical
+%  user interface. The result is placed in the file
+%  \Dir*{target}\Dir{ExTeX-setup.jar}. See also
+%  section~\ref{sec:shell-installer}.
+%\item [clean] This target deletes some generated files.
+%\end{description}
+%
 
 \subsection{Compiling \ExTeX}\label{sec:shell-compile}
 

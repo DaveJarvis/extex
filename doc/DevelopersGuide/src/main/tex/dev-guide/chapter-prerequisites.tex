@@ -121,7 +121,11 @@ Thus Maven~2 needs to be installed. To install Maven
 \item put \texttt{\$MAVEN\_HOME/bin} onto the path of executables.
 \end{itemize}
 
- \index{Maven|)}
+Maven stores some information in the user's home directory in a
+directory \Dir{.m2}. The file \File{settings.xml} contains the overall
+configuration. Especially if a \+proxy+ is required it can be
+configured there.
+\index{Maven|)}
 
 
 \section{Ant}\index{Ant|(}

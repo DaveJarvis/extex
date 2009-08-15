@@ -1,0 +1,74 @@
+%%*****************************************************************************
+%% $Id: splash.tex,v 0.00 2008/04/16 14:01:41 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass{../texinputs/extex-doc}
+
+\usepackage[latin1]{inputenc}
+\usepackage{color}
+
+\input random
+\newcount\cx
+\newcount\cy
+\newcount\cs
+\newcount\ct
+\newcount\cangle
+\newcount\cnum
+\newcount\cfac
+\newdimen\cscale
+
+\def\draw#1{
+  \boldmath\bf
+  \loop
+%    \setrannum\cx{1}{9}
+%    \setrannum\cy{1}{9}
+%    \setrannum\cs{1}{9}
+%    \definecolor{color}{rgb}{.\the\cx,.\the\cy,.\the\cs}
+    \setrannum\cx{40}{99}
+    \setrannum\cy{10}{99}
+    \setrannum\cs{10}{99}
+    \definecolor{color}{rgb}{.\the\cs,.\the\cx,.\the\cs}
+    %
+    \setrannum\cx{0}{280}\advance\cx-20
+    \setrannum\cy{0}{360}%\advance\cy50
+    \setrannum\cangle0{90}\advance\cangle-90
+    \setrannum\cfac0{6}
+    \setrannum\cs{1}{#1}
+    \setrannum\ct{1}{#1}\advance\cs\ct
+    \setrannum\ct{1}{#1}\advance\cs\ct
+    \setrannum\ct{1}{#1}\advance\cs\ct
+    \setrannum\ct{1}{#1}\advance\cs\ct
+    \setrannum\ct{1}{#1}\advance\cs\ct
+    \divide\cs4
+    \ifnum\cs<1 \cs=1\fi
+    %\setrandim\cscale{1p}{60pt}
+    %\typeout{\the\cx.\the\cy}
+    \put(\the\cx,\the\cy){%
+      \rotatebox{\the\cangle}{\scalebox{\the\cs}{\textcolor{color}{\ExTeX}}}}
+    \advance\cnum1
+  \ifnum\cnum<400\repeat
+}
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\thispagestyle{empty}
+\unitlength=1mm
+\begin{picture}(0,0)(90,271.6)
+  %\put(0,0){\framebox(210,297){}}
+  \Huge\draw{3}
+  \huge\draw{3}
+  \LARGE\draw{4}
+  \Large\draw{4}
+  \large\draw{4}
+  \normalsize\draw{5}
+  \small\draw{5}
+  \scriptsize\draw{5}
+  \footnotesize\draw{6}
+  \tiny\draw{6}
+\end{picture}
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 
