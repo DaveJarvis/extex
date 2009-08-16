@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -18,7 +18,6 @@
 
 package org.extex.exbib.core.io;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -30,7 +29,7 @@ import java.io.UnsupportedEncodingException;
 /**
  * This class provides a writer with a target in a {@link PrintStream} or a
  * {@link File}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -43,10 +42,10 @@ public class StreamWriter implements Writer {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param stream the output stream
      * @param encoding the encoding to use for writing
-     * 
+     *
      * @throws UnsupportedEncodingException in case that the given encoding is
      *         undefined
      */
@@ -64,10 +63,10 @@ public class StreamWriter implements Writer {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param file the name of the file to write to
      * @param encoding the encoding to use for writing
-     * 
+     *
      * @throws IOException in case of an I/O error
      */
     public StreamWriter(String file, String encoding) throws IOException {
@@ -84,7 +83,7 @@ public class StreamWriter implements Writer {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.io.Writer#close()
      */
     public void close() throws IOException {
@@ -94,7 +93,7 @@ public class StreamWriter implements Writer {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.io.Writer#flush()
      */
     public void flush() throws IOException {
@@ -104,7 +103,7 @@ public class StreamWriter implements Writer {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.io.Writer#print(java.lang.String[])
      */
     public void print(String... args) throws IOException {
@@ -116,7 +115,7 @@ public class StreamWriter implements Writer {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.io.Writer#println(java.lang.String[])
      */
     public void println(String... args) throws IOException {
@@ -129,7 +128,7 @@ public class StreamWriter implements Writer {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.io.Writer#write(int)
      */
     public void write(int c) throws IOException {
