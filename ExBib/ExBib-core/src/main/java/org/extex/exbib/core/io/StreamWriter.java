@@ -23,12 +23,11 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import java.io.PrintStream;
 import java.io.UnsupportedEncodingException;
 
 /**
- * This class provides a writer with a target in a {@link PrintStream} or a
- * {@link File}.
+ * This class provides a writer with a target in a {@link java.io.PrintStream}
+ * or a {@link java.io.File}.
  *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
