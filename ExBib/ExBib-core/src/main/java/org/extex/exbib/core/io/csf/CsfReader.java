@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -26,7 +26,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class is a reader for a csf file.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -61,10 +61,10 @@ public class CsfReader {
     /**
      * Expect a certain character and complain if it is not found. Newline
      * characters are skipped.
-     * 
+     *
      * @param c the expected character
      * @param reader the reader to acquire characters from
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -85,11 +85,11 @@ public class CsfReader {
 
     /**
      * Parse an \lowercase, \lowupcase, or \ uppercase section.
-     * 
+     *
      * @param csf the transport object
      * @param reader the reader to acquire characters from
      * @param mode the mode of operation
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -128,6 +128,8 @@ public class CsfReader {
                     case UPPER:
                         csf.setUpper((char) c, (char) d);
                         break;
+                    default:
+                        // this can not happen
                 }
                 c = readChar(reader);
                 if (c != '\n') {
@@ -147,10 +149,10 @@ public class CsfReader {
 
     /**
      * Parse an \order section.
-     * 
+     *
      * @param csf the transport object
      * @param reader the reader to acquire characters from
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -206,11 +208,11 @@ public class CsfReader {
 
     /**
      * Read the configuration from a csf.
-     * 
+     *
      * @param reader the reader to acquire characters from
-     * 
+     *
      * @return the sorter containing the configuration read
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a csf error
      */
@@ -221,12 +223,12 @@ public class CsfReader {
 
     /**
      * Read the configuration from a csf.
-     * 
+     *
      * @param reader the reader to acquire characters from
      * @param csf the CSF to store the read information in
-     * 
+     *
      * @return the sorter containing the configuration read
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a csf error
      */
@@ -256,11 +258,11 @@ public class CsfReader {
 
     /**
      * read a single character.
-     * 
+     *
      * @param reader the reader to acquire characters from
-     * 
+     *
      * @return the character read or -1 on EOF
-     * 
+     *
      * @throws IOException in case of an I/O error
      */
     private int readChar(Reader reader) throws IOException {
@@ -281,11 +283,11 @@ public class CsfReader {
 
     /**
      * Read a token started by backslash and consisting of letters.
-     * 
+     *
      * @param reader the reader to get characters from
-     * 
+     *
      * @return the token found or <code>null</code> ON eof
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
