@@ -39,48 +39,9 @@
 
   <scm>
     <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/</url>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExTeX</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/ExTeX</url>
   </scm>
-
-  <issueManagement>
-    <system>Berlios Bugs</system>
-    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
-  </issueManagement>
-
-  <licenses>
-    <license>
-      <name>GNU Lesser General Public License</name>
-      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
-  <mailingLists>
-    <mailingList>
-      <name>extex</name>
-      <post>extex@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-devel</name>
-      <post>extex-devel@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
-    </mailingList>
-
-    <mailingList>
-      <name>extex-build@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-svn@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-bugs@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
-    </mailingList>
-  </mailingLists>
 
   <developers>
     <developer>
@@ -123,25 +84,6 @@
       <url>http://www.extex.org/maven2/</url>
     </repository>
   </repositories> 
-
-  <distributionManagement>
-    <site>
-      <id>www.extex.org</id>
-<!--
-      <url>file://serv/www/extex/maven2</url>
--->
-      <url>http://www.extex.org/maven2</url>
-    </site>
-  </distributionManagement>
-
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.7</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
 
   <modules>
    <module>ExTeX-Backend-dump</module>
@@ -187,26 +129,8 @@
    <module>ExTeX-Unit-tex</module>
   </modules>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
-
   <reporting>
     <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-      </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -214,51 +138,7 @@
           <configLocation>${basedir}/../../develop/eclipse/checkstyle42.cfg</configLocation>
         </configuration>
       </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
-        <configuration>
-          <aggregate>true</aggregate>
-        </configuration>
-      </plugin>
-
-<!--
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-surefire-report-plugin</artifactId>
-        <configuration>
-          <outputDirectory>${project.build.directory}/surefire-reports</outputDirectory>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>test</phase>
-            <goals>
-              <goal>report</goal>
-            </goals>
-          </execution>
-        </executions>
-      </plugin>
--->
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
-        <configuration>
-          <tags>
-            <tag>TODO</tag>
-            <tag>@todo</tag>
-            <tag>FIXME</tag>
-          </tags>
-        </configuration>
-      </plugin>
-
     </plugins>
-
   </reporting>
 
 </project>
