@@ -10,7 +10,7 @@
   <str id="exbib-util"
        txt="ExBib utility"/>
   <str id="exbib-util.description"
-       txt="The utitlity program for ExBib files."/>
+       txt="The utility program for ExBib files."/>
 
   <str id="exbib-styles"
        txt="ExBib Styles"/>
@@ -35,12 +35,14 @@
   <str id="exbib-groovy"
        txt="ExBib Groovy"/>
   <str id="exbib-groovy.description"
-       txt="This package contains Groovy as extension language for ExBib."/>
+       txt="This package contains Groovy as extension language for ExBib.
+This package requires the BSF adaptor as prerequisite."/>
 
   <str id="exbib-jython"
        txt="ExBib Jython"/>
   <str id="exbib-jython.description"
-       txt="This package contains Python with the help of the jython implementation as extension language for ExBib."/>
+       txt="This package contains Python with the help of the jython implementation as extension language for ExBib.
+This package requires the BSF adaptor as prerequisite."/>
 
   <str id="settings"
        txt="User Settings"/>

@@ -20,7 +20,7 @@
   <str id="exbib-docs"
        txt="ExBib-Dokumentation"/>
   <str id="exbib-docs.description"
-       txt="Das Dokumentationpaket enthält eine Beschreibung von ExBib."/>
+       txt="Das Dokumentationspaket enthält eine Beschreibung von ExBib."/>
 
   <str id="exbib-ant"
        txt="ExBib-Ant-Task"/>
@@ -35,12 +35,14 @@
   <str id="exbib-groovy"
        txt="ExBib-Groovy"/>
   <str id="exbib-groovy.description"
-       txt="Dieses Paket enthält Groovy als Erweiterungssprache für ExBib."/>
+       txt="Dieses Paket enthält Groovy als Erweiterungssprache für ExBib.
+Als Voraussetzung wird der BSF-Adaptor benötigt."/>
 
   <str id="exbib-jython"
        txt="ExBib-Jython"/>
   <str id="exbib-jython.description"
-       txt="Dieses Paket enthält Python durch die Implementieruing Jython als Erweiterungssprache für ExBib."/>
+       txt="Dieses Paket enthält Python durch die Implementieruing Jython als Erweiterungssprache für ExBib.
+Als Voraussetzung wird der BSF-Adaptor benötigt."/>
 
   <str id="settings"
        txt="Nutzer-Einstellungen"/>

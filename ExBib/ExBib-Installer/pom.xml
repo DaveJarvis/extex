@@ -6,7 +6,8 @@
   <artifactId>ExBib-Installer</artifactId>
   <name>ExBib install system</name>
   <description>
-    This is the ExBib install system.
+    This is the ExBib install system. It provides an GUI installer for ExBib and
+    related packages after the Maven `package' phase. 
   </description>
 
   <version>0.1-SNAPSHOT</version>
@@ -76,7 +77,6 @@
       <plugin>
         <groupId>org.codehaus.izpack</groupId>
         <artifactId>izpack-maven-plugin</artifactId>
-        <version>1.0-alpha-4</version>
         <configuration>
           <izpackBasedir>${staging.dir}</izpackBasedir>
           <kind>standard</kind>

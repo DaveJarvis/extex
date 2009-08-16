@@ -29,7 +29,7 @@
     </authors>
     <url>http://www.extex.org/</url>
     <webdir>http://www.extex.org/download/exbib/</webdir>
-    <javaversion>1.5</javaversion>
+    <javaversion>1.6</javaversion>
   </info>
 
   <variables>
