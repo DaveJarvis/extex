@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -32,7 +32,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 
 /**
  * This class implements a processor. The major features are configurable.
- * 
+ *
  * <h3>The Configuration</h3>
  * <p>
  * The configuration can be performed with the method
@@ -40,7 +40,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * function tags which are used to set up the functions of the processor. Each
  * one needs to have the attributes <tt>name</tt> and <tt>class</tt>.
  * </p>
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -48,7 +48,7 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * Create a new object.
-     * 
+     *
      * @throws ExBibException in case of an error
      */
     public BstInterpreter() throws ExBibException {
@@ -58,9 +58,9 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * Configure an object according to a given Configuration.
-     * 
+     *
      * @param config the configuration object to consider
-     * 
+     *
      * @throws ConfigurationException in case that something went wrong
      */
     @Override
@@ -87,7 +87,13 @@ public class BstInterpreter extends BstInterpreterCore {
                     ((Configurable) code).configure(builtin);
                 }
                 addFunction(name, code, new Locator(config.toString(), 0));
-            } catch (Exception e) {
+            } catch (ExBibException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (InstantiationException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (IllegalAccessException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (ClassNotFoundException e) {
                 throw new ConfigurationWrapperException(e);
             }
         }
@@ -95,7 +101,7 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.bst.Bibliography#reset()
      */
     @Override
