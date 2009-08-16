@@ -1,16 +1,16 @@
 /*
  * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
@@ -40,7 +40,7 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This is a sorter which used a csf file to read a configuration from.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -57,22 +57,22 @@ public class CsfSorter
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2008L;
+    private static final long serialVersionUID = 2009L;
 
     /**
      * The field <tt>ord</tt> contains the order mapping.
      */
-    private int[] ord = new int[256];
+    private final int[] ord = new int[256];
 
     /**
      * The field <tt>upper</tt> contains the uppercase mapping.
      */
-    private char[] upper = new char[256];
+    private final char[] upper = new char[256];
 
     /**
      * The field <tt>lower</tt> contains the lowercase mapping.
      */
-    private char[] lower = new char[256];
+    private final char[] lower = new char[256];
 
     /**
      * The field <tt>resource</tt> contains the name of the resource to read.
@@ -82,7 +82,7 @@ public class CsfSorter
     /**
      * The field <tt>finder</tt> contains the resource finder.
      */
-    private ResourceFinder finder;
+    private transient ResourceFinder finder;
 
     /**
      * The field <tt>properties</tt> contains the properties.
@@ -108,7 +108,7 @@ public class CsfSorter
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param resource the name of the resource to read
      */
     public CsfSorter(String resource) {
@@ -119,7 +119,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
      */
     public int compare(Entry a, Entry b) {
@@ -155,9 +155,9 @@ public class CsfSorter
     /**
      * Get the lower counterpart for a character. If a character has no such
      * counterpart the character itself is returned.
-     * 
+     *
      * @param c the character
-     * 
+     *
      * @return the lower case character
      */
     int getLower(char c) {
@@ -168,9 +168,9 @@ public class CsfSorter
     /**
      * Get the upper counterpart for a character. If a character has no such
      * counterpart the character itself is returned.
-     * 
+     *
      * @param c the character
-     * 
+     *
      * @return the uppercase character
      */
     int getUpper(char c) {
@@ -179,10 +179,10 @@ public class CsfSorter
     }
 
     /**
-     * Setter for the lowercase counterpart of a uppercase character.
-     * 
-     * @param uc the uppercase character
-     * @param lc the lowercase character
+     * Setter for the lower case counterpart of a upper case character.
+     *
+     * @param uc the upper case character
+     * @param lc the lower case character
      */
     public void setLower(char uc, char lc) {
 
@@ -191,7 +191,7 @@ public class CsfSorter
 
     /**
      * Setter for the order mapping.
-     * 
+     *
      * @param c the character
      * @param on the ordinal number
      */
@@ -202,7 +202,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties properties) {
@@ -212,7 +212,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder f) {
@@ -221,10 +221,10 @@ public class CsfSorter
     }
 
     /**
-     * Setter for the uppercase counterpart of a lowercase character.
-     * 
-     * @param lc the lowercase character
-     * @param uc the uppercase character
+     * Setter for the upper case counterpart of a lower case character.
+     *
+     * @param lc the lower case character
+     * @param uc the upper case character
      */
     public void setUpper(char lc, char uc) {
 
@@ -233,7 +233,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
      */
     public void sort(List<Entry> list) throws ConfigurationException {
@@ -243,7 +243,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.db.sorter.Startable#start()
      */
     public void start() throws ExBibException {
@@ -273,11 +273,11 @@ public class CsfSorter
     }
 
     /**
-     * Translate a character to upper case.
-     * 
+     * Translate a character to lower case.
+     *
      * @param c the input character
-     * 
-     * @return the lowered character or c itself
+     *
+     * @return the lower-cased character or c itself if no counterpart is known
      */
     public char toLowerCase(char c) {
 
@@ -285,11 +285,11 @@ public class CsfSorter
     }
 
     /**
-     * Translate a character to lower case.
-     * 
+     * Translate a character to upper case.
+     *
      * @param c the input character
-     * 
-     * @return the uppered character or c itself
+     *
+     * @return the upper-cased character or c itself if no counterpart is known
      */
     public char toUpperCase(char c) {
 
