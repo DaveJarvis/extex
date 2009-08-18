@@ -3,15 +3,68 @@
 <head>
   <title>The ExTeX Build System</title>
   <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family:sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:0;
+}
+.dir {
+  text-indent:-32px;
+  margin-left:32px;
+  margin-right:32px;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+  </style>
 </head>
 <body>
 
-<h1>The ExTeX Build System </h1>
+<h1>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Build System </h1>
 
 <p>
- The ExTeX build system is run on a regularily basis to regenerate all files
- presented on the ExTeX web site <a
- href="http://www.extex.org">www.extex.org</a>. 
+ The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
+ build system is run on a regularily basis to regenerate all files
+ presented on the &epsilon;&chi;<span class="t">T</span><span
+ class="e">e</span>X Web site <a
+ href="http://www.extex.org">www.extex.org</a>.
 </p>
 
 <h2>Prerequisites</h2>
@@ -20,19 +73,31 @@
 </p>
 <ul>
  <li>
-   The command <tt>cvs</tt> needs to be present on the user&quot;s execution path.
-   This is the case when cvs has been installed properly.
+   The command <tt>svn</tt> needs to be present on the user&quot;s
+   execution path. This is the case when Subversion has been installed
+   properly.
  </li>
  <li>
-   The command <tt>make</tt> needs to be present on the user&quot;s execution path.
-   This is the case when the development tools on Linux have been installed.
+   The command <tt>make</tt> needs to be present on the user&quot;s
+   execution path. This is the case when the development tools on
+   Linux have been installed.
  </li>
  <li>
-   The command <tt>perl</tt> needs to be present on the user&quot;s execution path.
+   The command <tt>perl</tt> needs to be present on the user&quot;s
+   execution path.
  </li>
  <li>
-   The command <tt>java</tt> needs to be present on the system.
-   For this a JDK has to be present. Currently Java 1.4.2 is used.
+   The command <tt>java</tt> needs to be present on the path. For this
+   a JDK has to be present. Currently Java 1.6.0 is used.
+ </li>
+ <li>
+   The command <tt>mvn</tt> needs to be present on the path. This is
+   the case after Maven has been installed. Currently the version 2.06
+   is used.
+ </li>
+ <li>
+   The commands <tt>pdftex</tt> and <tt>makeindex</tt> need to be
+   present on the path.
  </li>
 </ul>
 
@@ -51,40 +116,40 @@
 LOCALDIR="/serv/extex-project/build"
 #--------------------------------------------------------------------
 # INSTALLDIR contains the directory to store the web site in.
-INSTALLDIR=/serv/extex-project/www.extex.org
+INSTALLDIR=/serv/www/extex
 #--------------------------------------------------------------------
 # Point to the Java SDK
-export JAVA_HOME=/serv/extex-project/lib/j2sdk1.4.2_09/
+export JAVA_HOME=/serv/extex-project/lib/jdk
+#--------------------------------------------------------------------
+# Point to Ant
+export ANT_HOME=/serv/extex-project/lib/ant/
 #--------------------------------------------------------------------
 #
-CVSDIR=":pserver:anonymous@cvs.extex.berlios.de:/cvsroot/extex"
+LOG=$LOCALDIR/logs/build.log
 #--------------------------------------------------------------------
-# MODULES contains the list of CVS modelues to check-out.
-MODULES="ExTeX"
-#--------------------------------------------------------------------
-# LOG contains the directory where the logs are stored.
-LOG=$LOCALDIR/log
-#--------------------------------------------------------------------
+#
+export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$HOME/bin:$PATH
 
-mkdir -p $LOCALDIR $LOG
-cd $LOCALDIR
-date >$LOG/export.log
-cvs -q -r -d $CVSDIR checkout -P $MODULES >>$LOG/export.log 2>&1
-cvs -q -r -d $CVSDIR update -P $MODULES >>$LOG/export.log 2>&1
+cd $LOCALDIR/trunk
+date >$LOG 2>&1
 
-source $LOCALDIR/ExTeX/util/Build/build.sh
+svn update >>$LOG 2>&1
+
+cd build
+source src/nightly-build/nightly-build.sh >>$LOG 2>&1
 </pre>
 <p>
  This script can be found in the repository in
- <tt>util/Build/bootstrap.sh</tt>. Since this script carries the configuration
- parameters it needs to be copied onto the build machine and adapted. The
- comments above should be enough to fill in the appropriate values.
+ <tt>build/src/nightly-build/bootstrap.sh</tt>. Since this script
+ carries the configuration parameters it needs to be copied onto the
+ build machine and adapted. The comments above should be enough to
+ fill in the appropriate values.
 </p>
 
 <h2>Nightly Build</h2>
 <p>
- The nightly build is run on <tt>comedy.dante.de</tt>. It is started by a  cron
- script. This cron job is declared in the following manner:
+ The nightly build is run on <tt>comedy.dante.de</tt>. It is started
+ by a cron script. This cron job is declared in the following manner:
 </p>
 <pre>
 42 1 * * * /serv/extex-project/bin/bootstrap.sh
@@ -98,7 +163,7 @@ source $LOCALDIR/ExTeX/util/Build/build.sh
 
 <address>
 <font face="helvetica,sans-serif" size="1">
-© 2006 <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+© 2006-2009 <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 </font>
 </address>
 </body>
