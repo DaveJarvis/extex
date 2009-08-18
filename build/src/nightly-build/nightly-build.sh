@@ -5,7 +5,7 @@
 # Assumption: The current directory when this script is run has to be
 #             the build directory in the ExTeX root (trunk)
 #
-# (c) 2003-2007 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# (c) 2003-2009 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
 if [ "$LOG" == "" ]; then
@@ -16,24 +16,28 @@ if [ "$JAVA_HOME" == "" ]; then
     echo "JAVA_HOME is undefined"
     exit 1
 fi
-if [ "$ANT_HOME" == "" ]; then
-    echo "ANT_HOME is undefined"
-    exit 1
-fi
 if [ "$INSTALLDIR" == "" ]; then
     echo "INSTALLDIR is undefined"
     exit 1
 fi
 
-$ANT_HOME/bin/ant               \
-    -f nightly-build.xml        \
-    -keep-going                 \
-    -noinput                    \
-    -Ddeploy.dir=$INSTALLDIR    \
-    all deploy
+cd ..
+mvn compile
+
+(cd ExBib/ExBib-Installer; mvn package)
 
 
 #####################################################################
+#if [ "$ANT_HOME" == "" ]; then
+#    echo "ANT_HOME is undefined"
+#    exit 1
+#fi
+#$ANT_HOME/bin/ant               \
+#    -f nightly-build.xml        \
+#    -keep-going                 \
+#    -noinput                    \
+#    -Ddeploy.dir=$INSTALLDIR    \
+#    all deploy
 #####################################################################
 
 ##--------------------------------------------------------------------
