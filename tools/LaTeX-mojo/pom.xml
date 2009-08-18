@@ -13,7 +13,7 @@
     sequence of commands to produce the desired output format.
   </description>
   <prerequisites>
-    <maven>2.0.6</maven>
+    <maven>2.2.0</maven>
   </prerequisites>
   <packaging>maven-plugin</packaging>
   <inceptionYear>2008</inceptionYear>
@@ -61,7 +61,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.5</version>
+      <version>4.7</version>
       <scope>test</scope>
     </dependency>
 
