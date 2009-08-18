@@ -1,6 +1,6 @@
 #!/bin/bash
 #--------------------------------------------------------------------
-# (c) 2003-2007 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# (c) 2003-2009 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 #--------------------------------------------------------------------
 # LOCALDIR contains the location where the build resides.
@@ -28,7 +28,7 @@ date >$LOG 2>&1
 svn update >>$LOG 2>&1
 
 cd build
-source bin/nightly-build.sh >>$LOG 2>&1
+source src/nightly-build/nightly-build.sh >>$LOG 2>&1
 
 if test $? != "0"; then
     mail -s 'ExTeX build failed' gene@gerd-neugebauer.de < $LOG
