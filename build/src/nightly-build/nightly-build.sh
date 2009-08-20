@@ -22,9 +22,12 @@ if [ "$INSTALLDIR" == "" ]; then
 fi
 
 cd ..
+
+(cd tools/doc-tools; mvn install)
+
 mvn compile
 
-(cd ExBib/ExBib-Installer; mvn package)
+# (cd ExBib/ExBib-Installer; mvn package)
 
 
 #####################################################################
