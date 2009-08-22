@@ -148,6 +148,21 @@
     </dependency>
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>CLI</artifactId>
+        <version>0.1-SNAPSHOT</version>
+      </dependency> 
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-resource</artifactId>
+        <version>0.1-SNAPSHOT</version>
+      </dependency> 
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
    <module>build</module>
    <module>doc</module>

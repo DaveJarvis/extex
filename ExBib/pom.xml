@@ -123,11 +123,6 @@
       </dependency>
       <dependency>
         <groupId>org.extex</groupId>
-        <artifactId>ExTeX-resource</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>org.extex</groupId>
         <artifactId>ExBib-Main</artifactId>
         <version>${project.version}</version>
       </dependency>
