@@ -994,7 +994,8 @@ public class PrimitiveCollector {
         writer =
                 output == null || primitivesFileName == null
                         ? new OutputStreamWriter(System.out)
-                        : new FileWriter(new File(output, primitivesFileName));
+                        : new OutputStreamWriter(new FileOutputStream(new File(
+                            output, primitivesFileName)), "ISO-8859-1");
         try {
             writeDocs(writer, "primitive");
         } finally {
