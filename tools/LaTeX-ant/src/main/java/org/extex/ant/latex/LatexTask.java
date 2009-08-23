@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -33,29 +33,46 @@ import org.apache.tools.ant.Task;
  */
 public class LatexTask extends Task {
 
+    /**
+     * The field <tt>bibtexLimit</tt> contains the maximum number of BibTeX
+     * runs.
+     */
     private int bibtexLimit = 3;
 
+    /**
+     * The field <tt>latexLimit</tt> contains the maximum number of LaTeX runs.
+     */
     private int latexLimit = 8;
 
     /**
-     * The field <tt>simulate</tt> contains the ...
+     * The field <tt>simulate</tt> contains the simulation indicator.
      */
     private boolean simulate = true;
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the output directory.
      */
     private File output = new File("target");
 
     /**
-     * The field <tt>latexCommand</tt> contains the ...
+     * The field <tt>latexCommand</tt> contains the command for LaTeX.
      */
     private String latexCommand = "pdflatex";
 
     /**
-     * The field <tt>workingDirectory</tt> contains the ...
+     * The field <tt>workingDirectory</tt> contains the working directory.
      */
     private File workingDirectory = new File(".");
+
+    /**
+     * The field <tt>master</tt> contains the name of the master file.
+     */
+    private File master = null;
+
+    /**
+     * The field <tt>target</tt> contains the ...
+     */
+    private File target = new File("target");
 
     /**
      * {@inheritDoc}
@@ -65,25 +82,86 @@ public class LatexTask extends Task {
     @Override
     public void execute() throws BuildException {
 
-        File base = new File("base.tex");
-        File target = new File("target");
+        if (master == null) {
+            throw new BuildException("master file parameter missing");
+        }
         File aux = new File(target, //
-            base.getName().replaceFirst("\\.[a-zA-Z]+$", ".aux"));
+            master.getName().replaceFirst("\\.[a-zA-Z]+$", ".aux"));
 
         target.mkdirs();
 
-        if (!base.exists()) {
+        if (!master.exists()) {
             // TODO gene: execute unimplemented
             throw new RuntimeException("unimplemented");
         }
-        if (!aux.exists() || aux.lastModified() < base.lastModified()) {
-            latex(base);
+        if (!aux.exists() || aux.lastModified() < master.lastModified()) {
+            latex(master);
             if (!aux.exists()) {
                 // TODO gene: execute unimplemented
                 throw new RuntimeException("unimplemented");
             }
         }
         // determineDependencies(base, aux);
+    }
+
+    /**
+     * Getter for bibtexLimit.
+     * 
+     * @return the bibtexLimit
+     */
+    public int getBibtexLimit() {
+
+        return bibtexLimit;
+    }
+
+    /**
+     * Getter for latexCommand.
+     * 
+     * @return the latexCommand
+     */
+    public String getLatexCommand() {
+
+        return latexCommand;
+    }
+
+    /**
+     * Getter for latexLimit.
+     * 
+     * @return the latexLimit
+     */
+    public int getLatexLimit() {
+
+        return latexLimit;
+    }
+
+    /**
+     * Getter for output.
+     * 
+     * @return the output
+     */
+    public File getOutput() {
+
+        return output;
+    }
+
+    /**
+     * Getter for workingDirectory.
+     * 
+     * @return the workingDirectory
+     */
+    public File getWorkingDirectory() {
+
+        return workingDirectory;
+    }
+
+    /**
+     * Getter for simulate.
+     * 
+     * @return the simulate
+     */
+    public boolean isSimulate() {
+
+        return simulate;
     }
 
     /**
@@ -127,6 +205,66 @@ public class LatexTask extends Task {
                 p.destroy();
             }
         }
+    }
+
+    /**
+     * Setter for bibtexLimit.
+     * 
+     * @param bibtexLimit the bibtexLimit to set
+     */
+    public void setBibtexLimit(int bibtexLimit) {
+
+        this.bibtexLimit = bibtexLimit;
+    }
+
+    /**
+     * Setter for latexCommand.
+     * 
+     * @param latexCommand the latexCommand to set
+     */
+    public void setLatexCommand(String latexCommand) {
+
+        this.latexCommand = latexCommand;
+    }
+
+    /**
+     * Setter for latexLimit.
+     * 
+     * @param latexLimit the latexLimit to set
+     */
+    public void setLatexLimit(int latexLimit) {
+
+        this.latexLimit = latexLimit;
+    }
+
+    /**
+     * Setter for output.
+     * 
+     * @param output the output to set
+     */
+    public void setOutput(File output) {
+
+        this.output = output;
+    }
+
+    /**
+     * Setter for simulate.
+     * 
+     * @param simulate the simulate to set
+     */
+    public void setSimulate(boolean simulate) {
+
+        this.simulate = simulate;
+    }
+
+    /**
+     * Setter for workingDirectory.
+     * 
+     * @param workingDirectory the workingDirectory to set
+     */
+    public void setWorkingDirectory(File workingDirectory) {
+
+        this.workingDirectory = workingDirectory;
     }
 
 }
