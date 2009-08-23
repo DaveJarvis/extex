@@ -21,6 +21,7 @@ package org.extex.doctools;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -935,7 +936,7 @@ public class PrimitiveCollector {
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      * @throws TransformerFactoryConfigurationError in case of a transformer
-     * factory configuration exception
+     *         factory configuration exception
      * @throws TransformerException in case of a transformer exception
      */
     public void run()
@@ -949,7 +950,9 @@ public class PrimitiveCollector {
         if (output != null) {
             File outDir = output == null ? null : new File(output);
             outDir.mkdirs();
-            writer = new FileWriter(new File(outDir, configurationsFileName));
+            writer =
+                    new OutputStreamWriter(new FileOutputStream(new File(
+                        outDir, configurationsFileName)), "ISO-8859-1");
         } else {
             writer = new OutputStreamWriter(System.out);
         }
