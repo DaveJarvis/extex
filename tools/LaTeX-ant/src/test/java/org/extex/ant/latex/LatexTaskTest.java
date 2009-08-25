@@ -19,9 +19,11 @@
 
 package org.extex.ant.latex;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.Locale;
 
 import org.apache.tools.ant.BuildException;
@@ -43,6 +45,23 @@ public class LatexTaskTest extends BuildFileTest {
     public LatexTaskTest(String name) {
 
         super(name);
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param fileName
+     * @param text
+     * @return
+     * @throws IOException
+     */
+    private File mkfile(String fileName, String text) throws IOException {
+
+        File f = new File("target", fileName);
+        Writer w = new BufferedWriter(new FileWriter(f));
+        w.append(text);
+        w.close();
+        return f;
     }
 
     /**
@@ -102,6 +121,43 @@ public class LatexTaskTest extends BuildFileTest {
         } catch (BuildException e) {
             assertEquals("message", //
                 "master file parameter missing", e.getMessage());
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void test02() throws IOException {
+
+        String fileName = "file_does_not_exist";
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\"/>", null, "");
+        } catch (BuildException e) {
+            assertEquals("message", //
+                "master file " + new File("target", fileName).getAbsoluteFile()
+                        + " not found", e.getMessage());
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void test10() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, "");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\"/>", null, "");
+        } catch (BuildException e) {
+            assertEquals("message", //
+                "master file " + new File("target", fileName).getAbsoluteFile()
+                        + " not found", e.getMessage());
+        } finally {
+            f.delete();
         }
     }
 

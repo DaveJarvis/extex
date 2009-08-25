@@ -19,14 +19,37 @@
 package org.extex.ant.latex;
 
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.Task;
+import org.extex.ant.latex.command.BibTeX;
+import org.extex.ant.latex.command.Command;
+import org.extex.ant.latex.command.LaTeX;
+import org.extex.ant.latex.command.Makeindex;
 
 /**
  * TODO gene: missing JavaDoc.
+ * 
+ * <pre>
+ *   &lt;taskdef name="LaTeX"
+ *            classname="org.extex.ant.latex.LatexTask" /&gt;
+ * </pre>
+ * 
+ * <pre>
+ *   &lt;LaTeX master="master_file" /&gt;
+ * </pre>
+ * 
+ * <pre>
+ *   &lt;LaTeX master="master_file"&gt;
+ *     &lt;files&gt;
+ *       &lt;file&gt;abc&lt;/file&gt;
+ *       &lt;file&gt;def&lt;/file&gt;
+ *     &lt;/files&gt;
+ *   &lt;/LaTeX&gt;
+ * </pre>
+ * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -34,25 +57,17 @@ import org.apache.tools.ant.Task;
 public class LatexTask extends Task {
 
     /**
+     * The field <tt>bibtexCommand</tt> contains the command for BibTeX.
+     */
+    private String bibtexCommand = "bibtex";
+
+    /**
      * The field <tt>bibtexLimit</tt> contains the maximum number of BibTeX
      * runs.
      */
     private int bibtexLimit = 3;
 
-    /**
-     * The field <tt>latexLimit</tt> contains the maximum number of LaTeX runs.
-     */
-    private int latexLimit = 8;
-
-    /**
-     * The field <tt>simulate</tt> contains the simulation indicator.
-     */
-    private boolean simulate = true;
-
-    /**
-     * The field <tt>output</tt> contains the output directory.
-     */
-    private File output = new File("target");
+    private Map<String, Command> commandMap = new HashMap<String, Command>();
 
     /**
      * The field <tt>latexCommand</tt> contains the command for LaTeX.
@@ -60,9 +75,9 @@ public class LatexTask extends Task {
     private String latexCommand = "pdflatex";
 
     /**
-     * The field <tt>workingDirectory</tt> contains the working directory.
+     * The field <tt>latexLimit</tt> contains the maximum number of LaTeX runs.
      */
-    private File workingDirectory = new File(".");
+    private int latexLimit = 8;
 
     /**
      * The field <tt>master</tt> contains the name of the master file.
@@ -70,9 +85,40 @@ public class LatexTask extends Task {
     private File master = null;
 
     /**
+     * The field <tt>output</tt> contains the output directory.
+     */
+    private File output = new File("target");
+
+    /**
+     * The field <tt>outputFormat</tt> contains the output format.
+     */
+    private String outputFormat = "pdf";
+
+    /**
+     * The field <tt>simulate</tt> contains the simulation indicator.
+     */
+    private boolean simulate = true;
+
+    /**
      * The field <tt>target</tt> contains the ...
      */
     private File target = new File("target");
+
+    /**
+     * The field <tt>workingDirectory</tt> contains the working directory.
+     */
+    private File workingDirectory = new File(".");
+
+    /**
+     * Creates a new object.
+     * 
+     */
+    public LatexTask() {
+
+        commandMap.put("latex", new LaTeX(this));
+        commandMap.put("bibtex", new BibTeX(this));
+        commandMap.put("makeindex", new Makeindex());
+    }
 
     /**
      * {@inheritDoc}
@@ -85,23 +131,49 @@ public class LatexTask extends Task {
         if (master == null) {
             throw new BuildException("master file parameter missing");
         }
-        File aux = new File(target, //
-            master.getName().replaceFirst("\\.[a-zA-Z]+$", ".aux"));
+        if (!master.exists()) {
+            throw new BuildException("master file " + master.toString()
+                    + " not found");
+        }
+        String base = master.getName().replaceFirst("\\.[a-zA-Z]+$", "");
+        // File aux = new File(target, base + ".aux");
 
         target.mkdirs();
 
-        if (!master.exists()) {
-            // TODO gene: execute unimplemented
-            throw new RuntimeException("unimplemented");
-        }
-        if (!aux.exists() || aux.lastModified() < master.lastModified()) {
-            latex(master);
-            if (!aux.exists()) {
-                // TODO gene: execute unimplemented
-                throw new RuntimeException("unimplemented");
-            }
-        }
+        LaTeX latex = new LaTeX(this);
+        BibTeX bibtex = new BibTeX(this);
+        Makeindex makeindex = new Makeindex();
+
+        run(latex, master);
+        run(bibtex, master);
+        run(makeindex, master);
+        run(latex, master);
+        run(latex, master);
+
+        // File goal = new File(base + "." + outputFormat);
+        //
+        // if (!goal.exists()) {
+        // throw new RuntimeException("goal unimplemented");
+        // }
+        //
+        // if (!aux.exists() || aux.lastModified() < master.lastModified()) {
+        // latex(master);
+        // if (!aux.exists()) {
+        // // TODO gene: execute unimplemented
+        // throw new RuntimeException("unimplemented");
+        // }
+        // }
         // determineDependencies(base, aux);
+    }
+
+    /**
+     * Getter for bibtexCommand.
+     * 
+     * @return the bibtexCommand
+     */
+    public String getBibtexCommand() {
+
+        return bibtexCommand;
     }
 
     /**
@@ -135,6 +207,16 @@ public class LatexTask extends Task {
     }
 
     /**
+     * Getter for master.
+     * 
+     * @return the master
+     */
+    public File getMaster() {
+
+        return master;
+    }
+
+    /**
      * Getter for output.
      * 
      * @return the output
@@ -142,6 +224,26 @@ public class LatexTask extends Task {
     public File getOutput() {
 
         return output;
+    }
+
+    /**
+     * Getter for outputFormat.
+     * 
+     * @return the outputFormat
+     */
+    public String getOutputFormat() {
+
+        return outputFormat;
+    }
+
+    /**
+     * Getter for target.
+     * 
+     * @return the target
+     */
+    public File getTarget() {
+
+        return target;
     }
 
     /**
@@ -167,44 +269,30 @@ public class LatexTask extends Task {
     /**
      * TODO gene: missing JavaDoc
      * 
+     * @param type
      * @param artifact
-     * 
-     * @throws BuildException in case of an error
      */
-    private void latex(File artifact) throws BuildException {
+    private void run(Command type, File artifact) {
 
-        log(latexCommand + " " + artifact.getName());
+        log(type + " " + artifact.getName() + "\n");
 
         if (simulate) {
             return;
         }
 
-        String base = artifact.getName().replace('\\', '/');
+        throw new RuntimeException("unimplemented");
+        // TODO gene: run unimplemented
 
-        ProcessBuilder latex = new ProcessBuilder(latexCommand, //
-            "-output-directory=" + output, //
-            base);
-        latex.directory(workingDirectory);
-        latex.redirectErrorStream(true);
-        Process p = null;
-        try {
-            p = latex.start();
-            p.getOutputStream().close();
-            StringBuilder buffer = new StringBuilder();
-            InputStream in = p.getInputStream();
-            for (int c = in.read(); c >= 0; c = in.read()) {
-                buffer.append((char) c);
-            }
-            if (p.exitValue() != 0) {
-                log(buffer.toString());
-            }
-        } catch (IOException e) {
-            throw new BuildException(e);
-        } finally {
-            if (p != null) {
-                p.destroy();
-            }
-        }
+    }
+
+    /**
+     * Setter for bibtexCommand.
+     * 
+     * @param bibtexCommand the bibtexCommand to set
+     */
+    public void setBibtexCommand(String bibtexCommand) {
+
+        this.bibtexCommand = bibtexCommand;
     }
 
     /**
@@ -238,6 +326,16 @@ public class LatexTask extends Task {
     }
 
     /**
+     * Setter for master.
+     * 
+     * @param master the master to set
+     */
+    public void setMaster(File master) {
+
+        this.master = master;
+    }
+
+    /**
      * Setter for output.
      * 
      * @param output the output to set
@@ -248,6 +346,16 @@ public class LatexTask extends Task {
     }
 
     /**
+     * Setter for outputFormat.
+     * 
+     * @param outputFormat the outputFormat to set
+     */
+    public void setOutputFormat(String outputFormat) {
+
+        this.outputFormat = outputFormat;
+    }
+
+    /**
      * Setter for simulate.
      * 
      * @param simulate the simulate to set
@@ -255,6 +363,16 @@ public class LatexTask extends Task {
     public void setSimulate(boolean simulate) {
 
         this.simulate = simulate;
+    }
+
+    /**
+     * Setter for target.
+     * 
+     * @param target the target to set
+     */
+    public void setTarget(File target) {
+
+        this.target = target;
     }
 
     /**
