@@ -19,10 +19,11 @@
 package org.extex.ant.latex;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.Project;
 import org.apache.tools.ant.Task;
 import org.extex.ant.latex.command.BibTeX;
 import org.extex.ant.latex.command.Command;
@@ -56,10 +57,15 @@ import org.extex.ant.latex.command.Makeindex;
  */
 public class LatexTask extends Task {
 
+    public class Dep {
+
+    }
+
     /**
-     * The field <tt>bibtexCommand</tt> contains the command for BibTeX.
+     * The field <tt>DEFAULT_BIBTEX_COMMAND</tt> contains the command for
+     * BibTeX.
      */
-    private String bibtexCommand = "bibtex";
+    private static final String DEFAULT_BIBTEX_COMMAND = "bibtex";
 
     /**
      * The field <tt>bibtexLimit</tt> contains the maximum number of BibTeX
@@ -67,12 +73,10 @@ public class LatexTask extends Task {
      */
     private int bibtexLimit = 3;
 
-    private Map<String, Command> commandMap = new HashMap<String, Command>();
-
     /**
-     * The field <tt>latexCommand</tt> contains the command for LaTeX.
+     * The field <tt>DEFAULT_LATEX_COMMAND</tt> contains the command for LaTeX.
      */
-    private String latexCommand = "pdflatex";
+    private static final String DEFAULT_LATEX_COMMAND = "pdflatex";
 
     /**
      * The field <tt>latexLimit</tt> contains the maximum number of LaTeX runs.
@@ -97,10 +101,10 @@ public class LatexTask extends Task {
     /**
      * The field <tt>simulate</tt> contains the simulation indicator.
      */
-    private boolean simulate = true;
+    private boolean simulate = false;
 
     /**
-     * The field <tt>target</tt> contains the ...
+     * The field <tt>target</tt> contains the target directory.
      */
     private File target = new File("target");
 
@@ -110,14 +114,56 @@ public class LatexTask extends Task {
     private File workingDirectory = new File(".");
 
     /**
-     * Creates a new object.
-     * 
+     * The field <tt>files</tt> contains the files.
      */
-    public LatexTask() {
+    private List<File> files = new ArrayList<File>();
 
-        commandMap.put("latex", new LaTeX(this));
-        commandMap.put("bibtex", new BibTeX(this));
-        commandMap.put("makeindex", new Makeindex());
+    /**
+     * The field <tt>dependencies</tt> contains the dependencies.
+     */
+    private List<Dep> dependencies = new ArrayList<Dep>();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    private boolean checkDependencies() {
+
+        String base = master.getName().replaceFirst("\\.[a-zA-Z]+$", "");
+        File goal = new File(base + "." + outputFormat);
+        if (!goal.exists()) {
+            log(goal.toString() + " needed\n", Project.MSG_VERBOSE);
+            return false;
+        }
+        long goalLastModified = goal.lastModified();
+        if (goalLastModified > master.lastModified()) {
+            log(goal.toString() + " not up to date\n", Project.MSG_VERBOSE);
+            return false;
+        }
+        for (File f : files) {
+            if (!f.exists()) {
+                throw new BuildException(f.toString() + " does not exist\n");
+            }
+            if (goalLastModified > f.lastModified()) {
+                log(goal.toString() + " not up to date\n", Project.MSG_VERBOSE);
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return the dependency
+     */
+    public Dep createDependency() {
+
+        Dep dep = new Dep();
+        dependencies.add(dep);
+        return dep;
     }
 
     /**
@@ -135,35 +181,32 @@ public class LatexTask extends Task {
             throw new BuildException("master file " + master.toString()
                     + " not found");
         }
-        String base = master.getName().replaceFirst("\\.[a-zA-Z]+$", "");
-        // File aux = new File(target, base + ".aux");
 
         target.mkdirs();
 
         LaTeX latex = new LaTeX(this);
         BibTeX bibtex = new BibTeX(this);
-        Makeindex makeindex = new Makeindex();
+        Makeindex makeindex = new Makeindex(this);
 
-        run(latex, master);
-        run(bibtex, master);
-        run(makeindex, master);
-        run(latex, master);
-        run(latex, master);
-
-        // File goal = new File(base + "." + outputFormat);
-        //
-        // if (!goal.exists()) {
-        // throw new RuntimeException("goal unimplemented");
-        // }
-        //
-        // if (!aux.exists() || aux.lastModified() < master.lastModified()) {
-        // latex(master);
-        // if (!aux.exists()) {
-        // // TODO gene: execute unimplemented
-        // throw new RuntimeException("unimplemented");
-        // }
-        // }
-        // determineDependencies(base, aux);
+        if (checkDependencies()) {
+            log("up to date");
+            return;
+        }
+        if (run(latex, master)) {
+            return;
+        }
+        if (run(bibtex, master)) {
+            return;
+        }
+        if (run(makeindex, master)) {
+            return;
+        }
+        if (run(latex, master)) {
+            return;
+        }
+        if (run(latex, master)) {
+            return;
+        }
     }
 
     /**
@@ -173,7 +216,8 @@ public class LatexTask extends Task {
      */
     public String getBibtexCommand() {
 
-        return bibtexCommand;
+        String value = getProject().getProperty("bibtex.command");
+        return value != null ? value : DEFAULT_BIBTEX_COMMAND;
     }
 
     /**
@@ -193,7 +237,8 @@ public class LatexTask extends Task {
      */
     public String getLatexCommand() {
 
-        return latexCommand;
+        String value = getProject().getProperty("latex.command");
+        return value != null ? value : DEFAULT_LATEX_COMMAND;
     }
 
     /**
@@ -267,32 +312,19 @@ public class LatexTask extends Task {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Execute a command or simulate the execution.
      * 
-     * @param type
-     * @param artifact
+     * @param command the command to run
+     * @param artifact the artifact
      */
-    private void run(Command type, File artifact) {
-
-        log(type + " " + artifact.getName() + "\n");
+    private boolean run(Command command, File artifact) {
 
         if (simulate) {
-            return;
+            command.simulate(artifact);
+        } else {
+            command.execute(artifact);
         }
-
-        throw new RuntimeException("unimplemented");
-        // TODO gene: run unimplemented
-
-    }
-
-    /**
-     * Setter for bibtexCommand.
-     * 
-     * @param bibtexCommand the bibtexCommand to set
-     */
-    public void setBibtexCommand(String bibtexCommand) {
-
-        this.bibtexCommand = bibtexCommand;
+        return false;
     }
 
     /**
@@ -303,16 +335,6 @@ public class LatexTask extends Task {
     public void setBibtexLimit(int bibtexLimit) {
 
         this.bibtexLimit = bibtexLimit;
-    }
-
-    /**
-     * Setter for latexCommand.
-     * 
-     * @param latexCommand the latexCommand to set
-     */
-    public void setLatexCommand(String latexCommand) {
-
-        this.latexCommand = latexCommand;
     }
 
     /**

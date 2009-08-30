@@ -48,12 +48,31 @@ public class LatexTaskTest extends BuildFileTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
      * 
-     * @param fileName
-     * @param text
-     * @return
-     * @throws IOException
+     * @throws IOException in case of an I/O error
+     */
+    public final void _test20() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, //
+            "\\documentclass{article}\n" //
+                    + "\\begin{document}\n" //
+                    + "\\end{document}\n");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\"/>", "");
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Create a file and write some contents to it.
+     * 
+     * @param fileName the name of the file
+     * @param text the contents
+     * @return the file created
+     * @throws IOException in case of an I/O error
      */
     private File mkfile(String fileName, String text) throws IOException {
 
@@ -68,13 +87,11 @@ public class LatexTaskTest extends BuildFileTest {
      * Run a test.
      * 
      * @param invocation the invocation XML
-     * @param aux the contents of the aux file
      * @param log the contents of the log stream
      * 
      * @throws IOException in case of an I/O error during writing a temp file
      */
-    private void runTest(String invocation, String aux, String log)
-            throws IOException {
+    private void runTest(String invocation, String log) throws IOException {
 
         File build = new File("target/build.xml");
         FileWriter w = new FileWriter(build);
@@ -93,6 +110,31 @@ public class LatexTaskTest extends BuildFileTest {
             w.close();
         }
 
+        Locale.setDefault(Locale.ENGLISH);
+        configureProject("target/build.xml");
+        expectOutput("test.case", "");
+        if (log != null) {
+            assertEquals("Message was logged but should not.", //
+                log, //
+                getLog().replaceAll("\\r", ""));
+        }
+        build.delete();
+    }
+
+    /**
+     * Run a test.
+     * 
+     * @param invocation the invocation XML
+     * @param aux the contents of the aux file
+     * @param log the contents of the log stream
+     * 
+     * @throws IOException in case of an I/O error during writing a temp file
+     */
+    private void runTest(String invocation, String aux, String log)
+            throws IOException {
+
+        FileWriter w;
+
         if (aux != null) {
             w = new FileWriter("target/test.aux");
             try {
@@ -101,12 +143,7 @@ public class LatexTaskTest extends BuildFileTest {
                 w.close();
             }
         }
-        Locale.setDefault(Locale.ENGLISH);
-        configureProject("target/build.xml");
-        executeTarget("test.case");
-        assertEquals("Message was logged but should not.", log, //
-            getLog().replaceAll("\\r", ""));
-        build.delete();
+        runTest(invocation, log);
     }
 
     /**
@@ -117,7 +154,8 @@ public class LatexTaskTest extends BuildFileTest {
     public final void test01() throws IOException {
 
         try {
-            runTest("<LaTeX/>", null, "");
+            runTest("<LaTeX/>", "");
+            assertTrue("unexpected success", false);
         } catch (BuildException e) {
             assertEquals("message", //
                 "master file parameter missing", e.getMessage());
@@ -133,7 +171,8 @@ public class LatexTaskTest extends BuildFileTest {
 
         String fileName = "file_does_not_exist";
         try {
-            runTest("<LaTeX master=\"" + fileName + "\"/>", null, "");
+            runTest("<LaTeX master=\"" + fileName + "\"/>", "");
+            assertTrue("unexpected success", false);
         } catch (BuildException e) {
             assertEquals("message", //
                 "master file " + new File("target", fileName).getAbsoluteFile()
@@ -146,16 +185,65 @@ public class LatexTaskTest extends BuildFileTest {
      * 
      * @throws IOException in case of an I/O error
      */
-    public final void test10() throws IOException {
+    public final void test03() throws IOException {
 
         String fileName = "abc.tex";
         File f = mkfile(fileName, "");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\"/>", null, "");
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "</LaTeX>", null);
+            assertTrue("unexpected success", false);
         } catch (BuildException e) {
-            assertEquals("message", //
-                "master file " + new File("target", fileName).getAbsoluteFile()
-                        + " not found", e.getMessage());
+            assertTrue(true);
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void test04() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, //
+            "\\documentclass{article}\n" //
+                    + "\\begin{document}\n" //
+                    + "\\end{document}\n");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "<Dependency/>" //
+                    + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue(e.toString().contains("I found no \\citation commands"));
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void test05() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, //
+            "\\documentclass{article}\n" //
+                    + "\\begin{document}\n" //
+                    + "\\bibliography{abc}" //
+                    + "\\bibliographystyle{plain}" //
+                    + "\\nocite{*}" //
+                    + "\\end{document}\n");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "<Dependency/>" //
+                    + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue(e.toString().contains("I couldn't open database file "));
         } finally {
             f.delete();
         }

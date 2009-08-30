@@ -23,7 +23,14 @@ import java.io.File;
 
 import org.extex.ant.latex.LatexTask;
 
-public class Makeindex implements Command {
+/**
+ * This is an adaptor to run an internal &epsilon;&chi;Bib to process the
+ * bibliography.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision: 5432 $
+ */
+public class ExBib implements Command {
 
     /**
      * The field <tt>task</tt> contains the task.
@@ -33,9 +40,9 @@ public class Makeindex implements Command {
     /**
      * Creates a new object.
      * 
-     * @param task
+     * @param task the task
      */
-    public Makeindex(LatexTask task) {
+    public ExBib(LatexTask task) {
 
         this.task = task;
     }
@@ -49,7 +56,8 @@ public class Makeindex implements Command {
 
         task.log(toString() + " " + artifact.getName() + "\n");
 
-        // TODO gene: execute unimplemented
+        String base = artifact.getName().replace('\\', '/');
+
     }
 
     /**
@@ -70,7 +78,7 @@ public class Makeindex implements Command {
     @Override
     public String toString() {
 
-        return "makeindex";
+        return "exbib";
     }
 
 }

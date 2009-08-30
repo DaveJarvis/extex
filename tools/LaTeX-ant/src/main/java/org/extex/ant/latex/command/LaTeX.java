@@ -29,14 +29,14 @@ import org.extex.ant.latex.LatexTask;
 public class LaTeX implements Command {
 
     /**
-     * The field <tt>task</tt> contains the ...
+     * The field <tt>task</tt> contains the task.
      */
     private LatexTask task;
 
     /**
      * Creates a new object.
      * 
-     * @param task
+     * @param task the task for reference to logging an d parameters
      */
     public LaTeX(LatexTask task) {
 
@@ -45,11 +45,15 @@ public class LaTeX implements Command {
 
     public void execute(File artifact) {
 
-        String base = artifact.getName().replace('\\', '/');
+        task.log(toString() + " " + artifact.getName() + "\n");
+
+        String base = artifact.getAbsolutePath();
 
         ProcessBuilder latex = new ProcessBuilder(task.getLatexCommand(), //
+            "-output-format=" + task.getOutputFormat(), //
             "-output-directory=" + task.getOutput(), //
-            base);
+            "-recorder", //
+            base.replaceAll("[\\\\]", "\\\\"));
         latex.directory(task.getWorkingDirectory());
         latex.redirectErrorStream(true);
         Process p = null;
@@ -62,7 +66,12 @@ public class LaTeX implements Command {
                 buffer.append((char) c);
             }
             if (p.exitValue() != 0) {
-                task.log(buffer.toString());
+                String msg = buffer.toString();
+                if (msg.contains("! Emergency stop.")) {
+                    throw new BuildException(msg);
+                } else {
+                    task.log(msg);
+                }
             }
         } catch (IOException e) {
             throw new BuildException(e);
@@ -73,10 +82,20 @@ public class LaTeX implements Command {
         }
     }
 
-    public void simulate(File base) {
+    public void simulate(File artifact) {
 
-        // TODO gene: simulate unimplemented
+        task.log(toString() + " " + artifact.getName() + "\n");
+    }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        return task.getLatexCommand();
     }
 
 }

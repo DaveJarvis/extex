@@ -26,10 +26,18 @@ import java.io.InputStream;
 import org.apache.tools.ant.BuildException;
 import org.extex.ant.latex.LatexTask;
 
+/**
+ * This is an adaptor to run an external B<small>IB</small><span
+ * style="margin-left: -0.15em;">T</span><span sytle="text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
+ * >e</span>X to process the bibliography.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision: 5432 $
+ */
 public class BibTeX implements Command {
 
     /**
-     * The field <tt>task</tt> contains the ...
+     * The field <tt>task</tt> contains the task.
      */
     private LatexTask task;
 
@@ -50,10 +58,12 @@ public class BibTeX implements Command {
      */
     public void execute(File artifact) {
 
-        String base = artifact.getName().replace('\\', '/');
+        task.log(toString() + " " + artifact.getName() + "\n");
+
+        String base =
+                artifact.getAbsolutePath().replaceAll("\\.[a-zA-Z0-9]*$", "");
 
         ProcessBuilder bibtex = new ProcessBuilder(task.getBibtexCommand(), //
-            "-output-directory=" + task.getOutput(), //
             base);
         bibtex.directory(task.getWorkingDirectory());
         bibtex.redirectErrorStream(true);
@@ -67,7 +77,7 @@ public class BibTeX implements Command {
                 buffer.append((char) c);
             }
             if (p.exitValue() != 0) {
-                task.log(buffer.toString());
+                throw new BuildException(buffer.toString());
             }
         } catch (IOException e) {
             throw new BuildException(e);
@@ -83,10 +93,9 @@ public class BibTeX implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
      */
-    public void simulate(File base) {
+    public void simulate(File artifact) {
 
-        // TODO gene: simulate unimplemented
-
+        task.log(toString() + " " + artifact.getName() + "\n");
     }
 
     /**
