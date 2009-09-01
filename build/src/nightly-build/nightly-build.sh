@@ -27,6 +27,8 @@ cd ..
 
 mvn compile
 
+mvn site
+
 # (cd ExBib/ExBib-Installer; mvn package)
 
 
