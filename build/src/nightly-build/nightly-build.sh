@@ -25,6 +25,8 @@ cd ..
 
 (cd tools/doc-tools; mvn install)
 
+mvn -Dmaven.test.skip=true install
+
 mvn compile
 
 mvn site
