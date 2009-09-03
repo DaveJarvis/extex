@@ -1379,7 +1379,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
             curBreak++;
 
             node = nodes.get(curBreak);
-            // until ¬ is_char_node(cur_p);
+            // until not is_char_node(cur_p);
         } while (node instanceof CharNode);
 
         // end
@@ -2518,7 +2518,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
             // <<Clean up the memory by removing the break nodes 865>>;
             cleanUpTheMemory();
 
-            // if ¬ second_pass then
+            // if not second_pass then
             if (!secondPass) {
                 // begin stat if tracing_paragraphs > 0 then
                 if (tracingParagraphs) {
@@ -2981,7 +2981,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private void kernBreak(NodeList nodes) {
 
-        // begin if ¬ is_char_node(link(cur_p)) && auto_breaking then
+        // begin if not is_char_node(link(cur_p)) && auto_breaking then
         Node n = nodes.get(curBreak + 1);
         if (!(n instanceof CharNode) && autoBreaking) {
             // if type(link(cur_p))=glue_node then
@@ -3203,7 +3203,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
             curP = curP.getNextBreak();
             // if cur_p != null then
             if (curP != null) {
-                // if ¬ post_disc_break then
+                // if not post_disc_break then
                 if (postDiscBreak == null) {
                     // <<Prune unwanted nodes at the beginning of the next line
                     // 879>>;
