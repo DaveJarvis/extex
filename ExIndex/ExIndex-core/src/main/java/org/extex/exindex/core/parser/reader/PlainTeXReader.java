@@ -31,13 +31,13 @@ import java.util.Map;
  * 
  * 
  * <pre>
- * \aa --> å
- * \AA --> Å
- * \ss --> s
+ * \aa --> &aring;
+ * \AA --> &Aring;
+ * \ss --> &szlig;
  *
- * \"a --> ä
- * \" a --> ä
- * \"{a} --> ä
+ * \"a --> &auml;
+ * \" a --> &auml;
+ * \"{a} --> &auml;
  * </pre>
  * 
  * 
