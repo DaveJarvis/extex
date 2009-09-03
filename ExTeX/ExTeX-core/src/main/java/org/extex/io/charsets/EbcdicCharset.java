@@ -216,7 +216,7 @@ public class EbcdicCharset extends Charset {
                     /* B2 */0,
                     /* B3 */0,
                     /* B4 */0,
-                    /* B5 */'§',
+                    /* B5 */'\u00a7',
                     /* B6 */0,
                     /* B7 */0,
                     /* B8 */0,
