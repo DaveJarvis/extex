@@ -56,14 +56,14 @@ public class PlainTeXReader extends TeXReader {
     private static final Map<String, String> MAP =
             new HashMap<String, String>();
     static {
-        MAP.put("ss", "ﬂ");
-        MAP.put("o", "¯");
-        MAP.put("O", "ÿ");
-        MAP.put("ae", "Ê");
-        MAP.put("AE", "∆");
+        MAP.put("ss", "\u00DF");
+        MAP.put("o", "\u00F8");
+        MAP.put("O", "\u00D8");
+        MAP.put("ae", "\u00E6");
+        MAP.put("AE", "\u00C6");
         MAP.put("S", "ß");
-        MAP.put("aa", "Â");
-        MAP.put("AA", "≈");
+        MAP.put("aa", "\u00E5");
+        MAP.put("AA", "\u00C5");
     }
 
     /**
@@ -151,24 +151,26 @@ public class PlainTeXReader extends TeXReader {
         String t;
         switch (cc) {
             case '"':
-                a = "aeouyAEIOU";
-                t = "‰Îˆ¸ˇƒÀœ÷‹";
+                a = "AEIOUaeouy";
+                t =
+                        "\u00C4\u00CB\u00CF\u00D6\u00DC\u00E4\u00EB\u00F6\u00FC\u00FF";
                 break;
             case '\'':
                 a = "AEIOUYaeouy";
-                t = "¡…Õ”⁄›·ÈÛ˙˝";
+                t =
+                        "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD\u00E1\u00E9\u00F3\u00FA\u00FD";
                 break;
             case '`':
                 a = "AEIOUaeiou";
-                t = "¿»Ã“Ÿ‡ËÏÚ˘";
+                t = "\u00C0\u00C8\u00CC\u00D2\u00D9\u00E0\u00E8Ï\u00F2\u00F9";
                 break;
             case '^':
                 a = "AEIOUaeou";
-                t = "¬ Œ‘€‚ÍÙ˚";
+                t = "\u00C2\u00CA\u00CE\u00D4\u00DB\u00E2\u00EA\u00F4\u00FB";
                 break;
             case '~':
                 a = "ANOano";
-                t = "√—’„Òı";
+                t = "\u00C3\u00D1\u00D5\u00E3\u00F1\u00F5";
                 break;
             default:
                 StringBuilder sb = new StringBuilder();
@@ -193,7 +195,7 @@ public class PlainTeXReader extends TeXReader {
                     return c;
                 } else if ("c".equals(sb.toString())) {
                     a = "cC";
-                    t = "Á«";
+                    t = "\u00E7\u00C7";
                 } else {
                     buffer.append('\\');
                     buffer.append(sb);

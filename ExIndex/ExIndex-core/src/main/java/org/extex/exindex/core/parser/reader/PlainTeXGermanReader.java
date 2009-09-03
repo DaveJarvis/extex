@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,7 +41,8 @@ public class PlainTeXGermanReader extends PlainTeXReader {
      * The field <tt>MAP_TO</tt> contains the target part of the mapping of
      * characters after ".
      */
-    private static final String MAP_TO = "äëïöüÄËÏÖÜßß";
+    private static final String MAP_TO =
+            "\u00E4\u00EB\u00EF\u00F6\u00FC\u00C4\u00CB\u00CF\u00D6\u00DC\u00DF\u00DF";
 
     /**
      * Creates a new object.
@@ -75,7 +76,7 @@ public class PlainTeXGermanReader extends PlainTeXReader {
                 }
                 int i = MAP_FROM.indexOf(c);
                 if (i >= 0) {
-                    c = MAP_TO.charAt(i);
+                    bufferAppend(MAP_TO.charAt(i));
                 } else if (c == 'S') {
                     bufferAppend('S');
                     c = 'S';
