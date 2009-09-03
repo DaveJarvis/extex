@@ -41,13 +41,11 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
       <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
       <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
     </dependency>
   </dependencies>
 
