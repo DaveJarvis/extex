@@ -61,7 +61,7 @@ public class PlainTeXReader extends TeXReader {
         MAP.put("O", "\u00D8");
         MAP.put("ae", "\u00E6");
         MAP.put("AE", "\u00C6");
-        MAP.put("S", "§");
+        MAP.put("S", "\u00A7");
         MAP.put("aa", "\u00E5");
         MAP.put("AA", "\u00C5");
     }
@@ -152,17 +152,18 @@ public class PlainTeXReader extends TeXReader {
         switch (cc) {
             case '"':
                 a = "AEIOUaeouy";
-                t =
-                        "\u00C4\u00CB\u00CF\u00D6\u00DC\u00E4\u00EB\u00F6\u00FC\u00FF";
+                t = "\u00C4\u00CB\u00CF\u00D6\u00DC" //
+                        + "\u00E4\u00EB\u00F6\u00FC\u00FF";
                 break;
             case '\'':
                 a = "AEIOUYaeouy";
-                t =
-                        "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD\u00E1\u00E9\u00F3\u00FA\u00FD";
+                t = "\u00C1\u00C9\u00CD\u00D3\u00DA\u00DD" //
+                        + "\u00E1\u00E9\u00F3\u00FA\u00FD";
                 break;
             case '`':
                 a = "AEIOUaeiou";
-                t = "\u00C0\u00C8\u00CC\u00D2\u00D9\u00E0\u00E8ì\u00F2\u00F9";
+                t = "\u00C0\u00C8\u00CC\u00D2\u00D9" //
+                        + "\u00E0\u00E8\u00ED\u00F2\u00F9";
                 break;
             case '^':
                 a = "AEIOUaeou";
