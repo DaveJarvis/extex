@@ -149,7 +149,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
      * 
      * b. Exclusive-OR C with T, producing a plaintext byte, P.
      * 
-     * c. Compute the next value of R by the formula ((C + R) ´ c1 + c2) mod
+     * c. Compute the next value of R by the formula ((C + R) * c1 + c2) mod
      * 65536, where c1 and c2 are the same constants that were used to encrypt.
      * 
      * 3. Discard the first n bytes of plaintext; these are the random bytes
@@ -394,7 +394,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     // *
     // * b. Exclusive-OR P with T, producing a ciphertext byte, C.
     // *
-    // * c. Compute the next value of R by the formula ((C + R) ´ c1 + c2) mod
+    // * c. Compute the next value of R by the formula ((C + R) * c1 + c2) mod
     // * 65536, where c1 is 52845 (decimal) and c2 is 22719 (decimal).
     // *
     // * @param data The data.
@@ -488,16 +488,18 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
 
             // look for first byte
             if (src[i] != first) {
-                while (++i <= max && src[i] != first)
+                while (++i <= max && src[i] != first) {
                     ;
+                }
             }
 
             // found first byte, now look at the rest
             if (i <= max) {
                 int j = i + 1;
                 int end = j + data.length - 1;
-                for (int k = 1; j < end && src[j] == data[k]; j++, k++)
+                for (int k = 1; j < end && src[j] == data[k]; j++, k++) {
                     ;
+                }
 
                 if (j == end) {
                     // found
