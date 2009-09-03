@@ -116,7 +116,7 @@
           id="exbib-docs"
           required="no">
       <description/>
-      <file src="../../../ExBib-Doc/target/exbib-manual.pdf"
+      <file src="../../../ExBib-doc/target/exbib-manual.pdf"
             targetdir="$INSTALL_PATH/doc"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
