@@ -38,120 +38,6 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.1</version>
-        <executions>
-          <execution>
-            <id>latex-1</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${basedir}/target/manual.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>exbib</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>java</executable>
-              <arguments>
-                <argument>-classpath</argument>
-                <classpath/>
-                <argument>org.extex.exbib.main.ExBibMain</argument>
-                <argument>--quiet</argument>
-                <argument>-Dtexinputs=${basedir}/src/main/texinputs/bibtex${path.separator}${basedir}/src/main/bibtex${path.separator}${basedir}/src/main/bibtex</argument>
-                <argument>--logfile=${project.build.directory}/${doc.file}.blg</argument>
-                <argument>${project.build.directory}/${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>makeindex</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>makeindex</executable>
-              <arguments>
-                <argument>-s</argument>
-                <argument>../src/main/texinputs/doc.ist</argument>
-                <argument>${doc.file}.idx</argument>
-              </arguments>
-              <workingDirectory>${project.build.directory}</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>${basedir}/src/main/texinputs${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${project.build.directory}/compile.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>latex-2</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${basedir}/target/manual.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>latex-3</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/manual</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>../../texinputs${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${basedir}/target/manual.out</outputFile>
-            </configuration>
-          </execution>
-
-        </executions>
-      </plugin>
-
-<!--
-      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -159,21 +45,13 @@
             <phase>compile</phase>
             <configuration>
               <tasks>
-                <echo message="moving files to target"/>
-                <move todir="${basedir}/target">
-                  <fileset dir="${basedir}/src/main/tex/manual">
-                    <include name="*.log"/>
-                    <include name="*.aux"/>
-                    <include name="*.blg"/>
-                    <include name="*.bbl"/>
-                    <include name="*.idx"/>
-                    <include name="*.ind"/>
-                    <include name="*.ilg"/>
-                    <include name="*.toc"/>
-                    <include name="*.out"/>
-                    <include name="*.pdf"/>
-                  </fileset>
-                </move>
+                <ant antfile="src/build/latex.ant">
+                  <property name="doc.file" value="exbib-manual" />
+                  <property name="doc.dir" location="src/main/tex/manual" />
+                  <property name="texinputs.dir" location="src/main/texinputs" />
+                  <property name="makeindex.style" location="src/main/texinputs/doc.ist" />
+                  <property name="maven.classpath" refid="maven.compile.classpath" />
+                </ant>
               </tasks>
             </configuration>
             <goals>
@@ -182,7 +60,6 @@
           </execution>
         </executions>
       </plugin>
--->
     </plugins>
   </build>
 

@@ -1,0 +1,159 @@
+<!--
+  ############################################################################
+  # This is the Ant build file for ExTeX documentation
+  ############################################################################
+  # Copyright (C) 2009 The ExTeX Group
+  #
+  # This library is free software; you can redistribute it and/or modify it
+  # under the terms of the GNU Lesser General Public License as published by
+  # the Free Software Foundation; either version 2.1 of the License, or (at
+  # your option) any later version.
+  #
+  # This library is distributed in the hope that it will be useful, but
+  # WITHOUT ANY WARRANTY; without even the implied warranty of
+  # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU Lesser
+  # General Public License for more details.
+  #
+  # You should have received a copy of the GNU Lesser General Public License
+  # along with this library; if not, write to the Free Software Foundation,
+  # Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  #
+  ######################################################################### -->
+
+<project name="build" default="LaTeX" basedir=".">
+
+  <description>
+    This build file is meant to produce the printable documentation.
+    To work properly some properties need to be defined. Some of them
+    have reasonable defaults
+
+    doc.file
+       the base name of the LaTeX document file
+    doc.dir
+       the directory containing the LaTeX document file
+    texinputs.dir
+       an additional dirctory for the TEXINPUTS environment variable
+    makeindex.style
+       the name of the makeindex style to be used
+    output.format
+       the ouput format. The default is "pdf"
+    project.build.directory
+       the output directory. The default is "target"
+    latex.command
+       the command to be used to run LaTeX. The default is "pdflatex"
+    makeindex.command
+       the command to be used to run makeindex. The default is "makeindex"
+    exbib.class
+       the Java class for ExBib.
+       The default is "org.extex.exbib.main.ExBibMain"
+    maven.classpath
+       the classpath used to find ExBib
+  </description>
+
+  <property name="project.build.directory" location="target" />
+  <property name="doc.file" value="doc" />
+  <property name="doc.dir" location="src/main/tex" />
+  <property name="texinputs.dir" location="src/main/texinputs" />
+  <property name="makeindex.style" location="doc.ist" />
+
+  <property name="latex.command" value="pdflatex" />
+  <property name="makeindex.command" value="makeindex" />
+  <property name="exbib.class" value="org.extex.exbib.main.ExBibMain" />
+
+  <property name="output.format" value="pdf" />
+
+  <property name="path.separator" value="${ENV.path.separator}" />
+
+  <uptodate property="latex.not.required"
+            targetfile="target/${doc.file}.${output.format}">
+    <srcfiles dir= "${doc.dir}" includes="**/*.tex"/>
+    <srcfiles dir= "${doc.dir}" includes="**/*.png"/>
+  </uptodate>
+
+  <!-- ==================================================================== -->
+  <target name="LaTeX" 
+          unless="latex.not.required"
+          description="Run LaTeX, BibTeX, and makeindex to produce a document">
+    <mkdir dir="target"/>
+    <echo message="Updating ${doc.file}.${output.format}"/>
+    <antcall target="latex"/>
+    <antcall target="exbib"/>
+    <antcall target="makeindex"/>
+    <antcall target="latex"/>
+    <antcall target="latex"/>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="latex" 
+          description="Run LaTeX">
+
+    <exec executable="${latex.command}"
+          dir="${doc.dir}"
+	  outputproperty="latex.err"
+	  resultproperty="latex.status">
+      <arg value="-halt-on-error"/>
+      <arg value="-output-directory=${project.build.directory}"/>
+      <arg value="-output-format=${output.format}"/>
+      <arg value="${doc.file}.tex"/>
+      <env key="TEXINPUTS"
+           value=".${path.separator}${doc.dir}/chapter${path.separator}${texinputs.dir}${path.separator}${path.separator}"/>
+    </exec>
+    <fail message="${latex.err}">
+      <condition>
+        <not>
+          <equals arg1="${latex.status}" arg2="0"/>
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="exbib" 
+          description="Run exbib">
+
+    <java classname="${exbib.class}"
+          dir="${doc.dir}"
+	  fork="true"
+	  outputproperty="exbib.err"
+	  resultproperty="exbib.status">
+      <arg value="-Dtexinputs=${basedir}/src/main/texinputs/bibtex${path.separator}${basedir}/src/main/bibtex${path.separator}${basedir}/src/main/bibtex${path.separator}"/>
+      <arg value="--logfile=${project.build.directory}/${doc.file}.blg"/>
+      <arg value="${project.build.directory}/${doc.file}"/>
+      <classpath>
+        <pathelement path="${maven.classpath}"/>
+        <pathelement path="${java.class.path}"/>
+      </classpath>
+    </java>
+    <fail message="${exbib.err}">
+      <condition>
+        <not>
+          <equals arg1="${exbib.status}" arg2="0"/>
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="makeindex" 
+          description="Run makeindex">
+
+    <exec executable="${makeindex.command}"
+          dir="${project.build.directory}"
+	  outputproperty="latex.err"
+	  resultproperty="latex.status">
+      <arg value="-s"/>
+      <arg value="${makeindex.style}"/>
+      <arg value="${doc.file}.idx"/>
+    </exec>
+    <fail message="${latex.err}">
+      <condition>
+        <not>
+          <equals arg1="${latex.status}" arg2="0"/>
+        </not>
+      </condition>
+    </fail>
+  </target>
+
+</project>
+
+
