@@ -37,7 +37,6 @@
 
   <build>
     <plugins>
-
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>exec-maven-plugin</artifactId>
@@ -66,115 +65,32 @@
               <outputFile>${project.build.directory}/compile.out</outputFile>
             </configuration>
           </execution>
-
-          <execution>
-            <id>latex-1</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${project.build.directory}/compile.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>exbib</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>java</executable>
-              <arguments>
-                <argument>-classpath</argument>
-                <classpath/>
-                <argument>org.extex.exbib.main.ExBibMain</argument>
-                <argument>--quiet</argument>
-                <argument>-Dtexinputs=${basedir}/../src/main/texinputs/bibtex${path.separator}${basedir}/../src/main/bibtex${path.separator}${basedir}/src/main/bibtex</argument>
-                <argument>--logfile=${project.build.directory}/${doc.file}.blg</argument>
-                <argument>${project.build.directory}/${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>makeindex</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>makeindex</executable>
-              <arguments>
-                <argument>-s</argument>
-                <argument>../../src/main/texinputs/makeindex/doc.ist</argument>
-                <argument>${doc.file}.idx</argument>
-              </arguments>
-              <workingDirectory>${project.build.directory}</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>${basedir}/../src/main/texinputs${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${project.build.directory}/compile.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>latex-2</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${project.build.directory}/compile.out</outputFile>
-            </configuration>
-          </execution>
-
-          <execution>
-            <id>latex-3</id>
-            <goals>
-              <goal>exec</goal>
-            </goals>
-            <phase>compile</phase>
-            <configuration>
-              <executable>pdflatex</executable>
-              <arguments>
-                <argument>-halt-on-error</argument>
-                <argument>-output-directory=${project.build.directory}</argument>
-                <argument>${doc.file}</argument>
-              </arguments>
-              <workingDirectory>${basedir}/src/main/tex/${doc.dir}</workingDirectory>
-              <environmentVariables>
-                <TEXINPUTS>${project.build.directory}${path.separator}${basedir}/../src/main/texinputs${path.separator}${basedir}/../src/main/tex${path.separator}${basedir}/src/main${path.separator}chapter${path.separator}${path.separator}.</TEXINPUTS>
-              </environmentVariables>
-              <outputFile>${project.build.directory}/compile.out</outputFile>
-            </configuration>
-          </execution>
-
         </executions>
       </plugin>
 
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+            <configuration>
+              <tasks>
+                <ant antfile="src/build/latex.ant">
+                  <property name="doc.file" value="extex-users" />
+                  <property name="doc.dir" location="src/main/tex/extex-users" />
+                  <property name="texinputs.dir" location="${project.basedir}/../src/main/texinputs/bibtex${path.separator}${project.basedir}/../src/main/bibtex${path.separator}${project.basedir}/src/main/bibtex${path.separator}${project.basedir}/../src/main/tex${path.separator}${project.basedir}/../src/main/texinputs${path.separator}${project.basedir}/src/main${path.separator}${path.separator}" />
+                  <property name="makeindex.style" location="../src/main/texinputs/makeindex/doc.ist" />
+                  <property name="maven.classpath" refid="maven.compile.classpath" />
+                </ant>
+              </tasks>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
     </plugins>
   </build>
 
