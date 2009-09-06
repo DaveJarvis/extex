@@ -38,11 +38,11 @@ import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
 import org.extex.exbib.bsf.BsfProcessor;
-import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.bst2groovy.parameters.Parameter;
 import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.exbib.core.ExBib;
 import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 import org.junit.Test;
