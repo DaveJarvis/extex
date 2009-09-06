@@ -164,7 +164,6 @@
   </dependencyManagement>
 
   <modules>
-   <module>build</module>
    <module>doc</module>
    <module>ExBib</module>
    <module>ExIndex</module>
@@ -173,7 +172,6 @@
    <module>ExTeX-resource</module>
    <module>texmf</module>
    <module>tools</module>
-   <module>www</module>
   </modules>
 
   <properties>
