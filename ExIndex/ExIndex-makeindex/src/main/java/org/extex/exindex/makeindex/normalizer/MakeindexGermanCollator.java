@@ -19,7 +19,7 @@
 package org.extex.exindex.makeindex.normalizer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This collator maps the German special letters to their ASCII counterparts.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6622 $
@@ -35,10 +35,14 @@ public class MakeindexGermanCollator implements Collator {
 
         return in
         //
+            .replaceAll("[\u00c4\u00e4]", "ae")//
+            .replaceAll("[\u00d6\u00f6]", "oe")//
+            .replaceAll("[\u00dc\u00fc]", "ue")//
+            .replaceAll("[\u00df]", "ss")//
             .replaceAll("[\\\\]?\"[aA]", "ae")//
             .replaceAll("[\\\\]?\"[oO]", "oe")//
             .replaceAll("[\\\\]?\"[uU]", "ue")//
             .replaceAll("\"s", "ss")//
-            .replaceAll("\\\\ss ", "ss ");
+            .replaceAll("\\\\ss ", "ss");
     }
 }
