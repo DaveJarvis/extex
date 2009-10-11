@@ -19,8 +19,6 @@
 package org.extex.exindex.makeindex.main;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -67,6 +65,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+import org.extex.resource.io.NamedInputStream;
 
 /**
  * This is the main program for an indexer a la <i>MakeIndex</i>.
@@ -725,22 +724,16 @@ public class Makeindex {
             fmt = "ScanningStandardInput";
             reader = new InputStreamReader(System.in, inputEncoding);
         } else {
-            File f = new File(file);
-            if (!f.exists()) {
-                fileName = file + ".idx";
-                f = new File(fileName);
-                if (!f.exists()) {
-                    throw new FileNotFoundException(file);
-                }
-                if (output == null) {
-                    output = file + ".ind";
-                }
-            } else if (output == null) {
-                output = file.replaceAll(".idx$", "") + ".ind";
+            NamedInputStream nis = finder.findResource(file, "idx");
+            if (nis == null) {
+                throw new FileNotFoundException(file);
             }
-            reader = new InputStreamReader(new FileInputStream(f), //
-                inputEncoding);
+            reader = new InputStreamReader(nis, inputEncoding);
             fmt = "ScanningInput";
+
+            if (output == null) {
+                output = nis.getName().replaceAll(".idx$", "") + ".ind";
+            }
         }
         try {
             info(fmt, fileName);
@@ -785,13 +778,12 @@ public class Makeindex {
                 RawIndexException {
 
         log(null);
-        Reader reader;
-        try {
-            reader = new InputStreamReader(new FileInputStream(file), //
-                styleEncoding);
-        } catch (FileNotFoundException e) {
+
+        NamedInputStream nis = finder.findResource(file, "ist");
+        if (nis == null) {
             throw new StyleNotFoundException(file);
         }
+        Reader reader = new InputStreamReader(nis, styleEncoding);
         info("ScanningStyle", file);
         try {
             int[] count =
