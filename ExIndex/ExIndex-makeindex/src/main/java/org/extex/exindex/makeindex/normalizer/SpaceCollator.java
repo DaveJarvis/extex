@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2009 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,36 +16,23 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
-package org.extex.exindex.makeindex.main;
+package org.extex.exindex.makeindex.normalizer;
 
 /**
- * This is the main program for an indexer a la <i>MakeIndex</i>.
- * 
- * It uses latin-1 as the default encoding for reading and writing.
+ * This is the default collator for <i>MakeIndex</i>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7667 $
+ * @version $Revision:6622 $
  */
-public class MakeindexLatin1 extends Makeindex {
+public class SpaceCollator implements Collator {
 
     /**
-     * This is the command line interface to the indexer.
+     * {@inheritDoc}
      * 
-     * @param args the command line arguments
+     * @see org.extex.exindex.makeindex.normalizer.Collator#collate(java.lang.String)
      */
-    public static void main(String[] args) {
+    public String collate(String in) {
 
-        System.exit(new MakeindexLatin1().run(args));
+        return in.replaceAll("[ \t\n\r\f\b]+", " ");
     }
-
-    /**
-     * Creates a new object.
-     */
-    public MakeindexLatin1() {
-
-        setInputEncoding("latin-1");
-        setOutputEncoding("latin-1");
-        setStyleEncoding("latin-1");
-    }
-
 }

@@ -26,7 +26,7 @@ import org.extex.exindex.makeindex.Entry;
 
 /**
  * This class provides a comparator for the sorting of makeindex entries.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
  */
@@ -44,59 +44,75 @@ public class MakeindexComparator implements Comparator<Entry> {
     private long comparisons;
 
     /**
-     * Compare two entries.
-     *
-     * @param o1 the first entry
-     * @param o2 the second entry
-     *
-     * @return the result
+     * The field <tt>EQUAL</tt> contains the value for the equal comparison
+     * result.
      */
-    public int compare(Entry o1, Entry o2) {
+    private static final int EQUAL = 0;
+
+    /**
+     * The field <tt>GREATER</tt> contains the value for the greater comparison
+     * result, i.e. the first parameter is greater than the second one.
+     */
+    private static final int GREATER = 1;
+
+    /**
+     * The field <tt>LESS</tt> contains the value for the less comparison
+     * result, i.e. the first parameter is less than the second one.
+     */
+    private static final int LESS = -1;
+
+    /**
+     * Compare two entries.
+     * 
+     * @param entry1 the first entry
+     * @param entry2 the second entry
+     * 
+     * @return the result
+     * 
+     * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
+     */
+    public int compare(Entry entry1, Entry entry2) {
 
         comparisons++;
-        char c1 = o1.getHeading();
-        char c2 = o2.getHeading();
-        if (c1 < c2) {
-            return -1;
-        } else if (c1 > c2) {
-            return 1;
+        int cmp = entry1.getHeading() - entry2.getHeading();
+        if (cmp != EQUAL) {
+            return cmp;
         }
-        String[] keys1 = o1.getKey();
-        String[] keys2 = o2.getKey();
+        String[] keys1 = entry1.getKey();
+        String[] keys2 = entry2.getKey();
+        String[] values1 = entry1.getValue();
+        String[] values2 = entry2.getValue();
         int len = Math.max(keys1.length, keys2.length);
-        String[] values1 = o1.getValue();
-        String[] values2 = o2.getValue();
-        int cmp;
 
         for (int i = 0; i < len; i++) {
             cmp = compareOne(keys1, keys2, i);
-            if (cmp != 0) {
+            if (cmp != EQUAL) {
                 return cmp;
             }
             cmp = compareOne(values1, values2, i);
-            if (cmp != 0) {
+            if (cmp != EQUAL) {
                 return cmp;
             }
         }
 
-        return keys1.length - keys2.length;
+        return EQUAL;
     }
 
     /**
      * Compare two string arrays at a certain position.
-     *
+     * 
      * @param a1 the first array of strings
      * @param a2 the second array of strings
      * @param i the index
-     *
-     * @return
+     * 
+     * @return the result of the comparison at the position
      */
-    private int compareOne(String[] a1, String[] a2, int i) {
+    protected int compareOne(String[] a1, String[] a2, int i) {
 
         if (i >= a1.length) {
-            return (i < a2.length ? -1 : 0);
+            return (i < a2.length ? LESS : EQUAL);
         } else if (i >= a2.length) {
-            return 1;
+            return GREATER;
         }
         return compareStrings(a1[i], a2[i]);
     }
@@ -109,58 +125,55 @@ public class MakeindexComparator implements Comparator<Entry> {
      * according to the numerical value.</li>
      * <li>If the first character is a special character then they come after
      * the numbers and before the alphabetic segment.</li>
-     * <li>Finally the alphabetic segment is ordered according to the lowercased
-     * equivalent. If the numbers are compared equal when ignoring case they are
-     * compared case insensitive.</li>
+     * <li>Finally the alphabetic segment is ordered according to the
+     * lower-cased equivalent. If the numbers are compared equal when ignoring
+     * case they are compared case insensitive.</li>
      * </ul>
-     *
-     * @param x the first string
-     * @param y the second string
-     *
+     * 
+     * @param first the first string
+     * @param second the second string
+     * 
      * @return 0 if they are equal, -1 if the first one is before the second one
      *         and 1 if the second one is before the first one
      */
-    protected int compareStrings(String x, String y) {
+    protected int compareStrings(String first, String second) {
 
-        if (x.equals("")) {
-            return y.equals("") ? 0 : -1;
-        } else if (y.equals("")) {
-            return 1;
+        if (first.equals("")) {
+            return second.equals("") ? EQUAL : LESS;
+        } else if (second.equals("")) {
+            return GREATER;
         }
 
-        if (NUMBER_PATTERN.matcher(x).matches()) {
-            return NUMBER_PATTERN.matcher(y).matches() //
-                    ? Integer.parseInt(x) - Integer.parseInt(y)
-                    : -1;
-        } else if (NUMBER_PATTERN.matcher(y).matches()) {
-            return 1;
+        if (NUMBER_PATTERN.matcher(first).matches()) {
+            return NUMBER_PATTERN.matcher(second).matches() //
+                    ? Integer.parseInt(first) - Integer.parseInt(second)
+                    : LESS;
+        } else if (NUMBER_PATTERN.matcher(second).matches()) {
+            return GREATER;
         }
-        char cx = x.charAt(0);
-        char cy = y.charAt(0);
-        if (issymbol(cx)) {
-            if (issymbol(cy)) {
-                if (Character.isDigit(cx)) {
-                    if (!Character.isDigit(cy)) {
-                        return 1;
-                    }
-                    return 1;
-                } else if (Character.isDigit(cy)) {
-                    return -1;
+        char c1 = first.charAt(0);
+        char c2 = second.charAt(0);
+        if (issymbol(c1)) {
+            if (issymbol(c2)) {
+                if (Character.isDigit(c1)) {
+                    return Character.isDigit(c2)
+                            ? first.compareTo(second)
+                            : GREATER;
                 }
-                return x.compareTo(y);
+                return Character.isDigit(c2) ? LESS : first.compareTo(second);
             }
-            return -1;
-        } else if (issymbol(cy)) {
-            return 1;
+            return LESS;
+        } else if (issymbol(c2)) {
+            return GREATER;
         }
-        int cmp = x.compareToIgnoreCase(y);
-        return (cmp != 0 ? cmp : x.compareTo(y));
+        int cmp = first.compareToIgnoreCase(second);
+        return (cmp != EQUAL ? cmp : first.compareTo(second));
     }
 
     /**
-     * Getter for comparisons.
-     *
-     * @return the comparisons
+     * Getter for the number of comparisons.
+     * 
+     * @return the number of comparisons
      */
     public long getComparisons() {
 
@@ -169,9 +182,9 @@ public class MakeindexComparator implements Comparator<Entry> {
 
     /**
      * Check whether the parameter is a symbol.
-     *
+     * 
      * @param c the character
-     *
+     * 
      * @return <code>true</code> iff the character is a symbol
      */
     protected boolean issymbol(char c) {
@@ -179,6 +192,14 @@ public class MakeindexComparator implements Comparator<Entry> {
         return ('!' <= c && c <= '@') || //
                 ('[' <= c && c <= '`') || //
                 ('{' <= c && c <= '~');
+    }
+
+    /**
+     * Reset the number of comparisons to 0.
+     */
+    public void reset() {
+
+        comparisons = 0;
     }
 
 }

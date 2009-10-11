@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.extex.exindex.makeindex.pages.PageProcessor;
 
@@ -77,16 +78,17 @@ public class Index {
      * 
      * @param comperator the comparator
      * @param pp the page processor
+     * @param logger the logger
      * @param warn the number of warnings encoded in a single value array. The
      *        array is used to allow the modification of the value
      * 
      * @return the sorted list of the entries
      */
     public List<Entry> sort(Comparator<Entry> comperator, PageProcessor pp,
-            int[] warn) {
+            Logger logger, int[] warn) {
 
         int size = content.size();
-        if (size == 0) {
+        if (size <= 1) {
             return content;
         }
         Entry[] entries = content.toArray(new Entry[size]);
@@ -102,14 +104,14 @@ public class Index {
             if (comperator.compare(entry, x) == 0) {
                 entry.addPages(x.getPages());
             } else {
-                warn[0] += pp.join(entry.getPages());
+                warn[0] += pp.join(entry.getPages(), logger);
                 pp.sort(entry.getPages());
                 entry = x;
                 content.add(entry);
             }
         }
         pp.sort(entry.getPages());
-        warn[0] += pp.join(entry.getPages());
+        warn[0] += pp.join(entry.getPages(), logger);
 
         return content;
     }

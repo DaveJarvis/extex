@@ -18,6 +18,7 @@
 
 package org.extex.exindex.makeindex.pages;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -44,11 +45,6 @@ import org.extex.framework.i18n.LocalizerFactory;
 public class MakeindexPageProcessor implements PageProcessor {
 
     /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private Logger logger;
-
-    /**
      * The field <tt>map</tt> contains the mapping from classes to integers for
      * sorting.
      */
@@ -56,14 +52,22 @@ public class MakeindexPageProcessor implements PageProcessor {
             new HashMap<Class<? extends PageReference>, Integer>();
 
     /**
-     * The field <tt>comparator</tt> contains the ...
+     * The field <tt>comparator</tt> contains the comparator.
      */
     private Comparator<? super Pages> comparator = new Comparator<Pages>() {
 
+        /**
+         * Compare pages.
+         * 
+         * @param o1 the first pages
+         * @param o2 the second pages
+         * 
+         * @return the result
+         */
         public int compare(Pages o1, Pages o2) {
 
-            Integer m1 = map.get(o1.getFrom().getClass());
-            Integer m2 = map.get(o2.getFrom().getClass());
+            int m1 = map.get(o1.getFrom().getClass()).intValue();
+            int m2 = map.get(o2.getFrom().getClass()).intValue();
 
             if (m1 == m2) {
                 return 0;
@@ -81,45 +85,57 @@ public class MakeindexPageProcessor implements PageProcessor {
      */
     public MakeindexPageProcessor(Parameters params, Logger logger) {
 
-        this.logger = logger;
         String option = params.getString("index:page-precedence");
         int precedence = 0;
-        map.put(LowerRomanPage.class, 100 + precedence++);
-        map.put(NumericPage.class, 100 + precedence++);
-        map.put(LowerPage.class, 100 + precedence++);
-        map.put(UpperRomanPage.class, 100 + precedence++);
-        map.put(UpperPage.class, 100 + precedence++);
-        map.put(SomePage.class, 100 + precedence++);
+        List<Class<? extends PageReference>> classes =
+                new ArrayList<Class<? extends PageReference>>();
+        classes.add(LowerRomanPage.class);
+        classes.add(NumericPage.class);
+        classes.add(LowerPage.class);
+        classes.add(UpperRomanPage.class);
+        classes.add(UpperPage.class);
+        classes.add(SomePage.class);
 
         for (char c : option.toCharArray()) {
+            Class<? extends PageReference> cl;
             switch (c) {
                 case 'n':
-                    map.put(NumericPage.class, precedence++);
+                    cl = NumericPage.class;
                     break;
                 case 'r':
-                    map.put(LowerRomanPage.class, precedence++);
+                    cl = LowerRomanPage.class;
                     break;
                 case 'R':
-                    map.put(UpperRomanPage.class, precedence++);
+                    cl = UpperRomanPage.class;
                     break;
                 case 'a':
-                    map.put(LowerPage.class, precedence++);
+                    cl = LowerPage.class;
                     break;
                 case 'A':
-                    map.put(UpperPage.class, precedence++);
+                    cl = UpperPage.class;
                     break;
                 default:
-                    map.put(SomePage.class, precedence++);
+                    cl = SomePage.class;
             }
+            map.put(cl, precedence++);
+            classes.remove(cl);
+        }
+
+        for (Class<? extends PageReference> cl : classes) {
+            map.put(cl, precedence++);
         }
     }
 
     /**
-     * {@inheritDoc}
+     * Take a list of pages and join them into a condensed list by considering
+     * ranges.
      * 
-     * @see org.extex.exindex.makeindex.pages.PageProcessor#join(java.util.List)
+     * @param pages the pages
+     * @param logger the logger
+     * 
+     * @return the number of warnings written to the logger
      */
-    public int join(List<Pages> pages) {
+    public int join(List<Pages> pages, Logger logger) {
 
         int warnings = 0;
         PageRangeRange open = null;
@@ -173,12 +189,12 @@ public class MakeindexPageProcessor implements PageProcessor {
     /**
      * Try to join with another page range.
      * 
-     * @param i
-     * @param pages
-     * 
+     * @param i the index
+     * @param pages the list of pages
+     * @param p the pages
      * @param other the other page range
      * 
-     * @return <code>true</code> iff the joining succeeded
+     * @return the next index
      */
     private int joinTwo(List<Pages> pages, int i, Pages p, Pages other) {
 
@@ -228,7 +244,6 @@ public class MakeindexPageProcessor implements PageProcessor {
                         pages.remove(i);
                         return i - 1;
                     } else if (otherToOrd >= fromOrd) {
-                        from = otherFrom;
                         pages.remove(i);
                         return i - 1;
                     }

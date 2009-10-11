@@ -97,8 +97,7 @@
     \subitem Ant task parameter\dotfill\hyperpage{52}
   \item \texttt  {-{}-debug}\dotfill\hyperpage{29}
   \item \texttt  {default.type}\dotfill\hyperpage{65}
-  \item directory installation\dotfill\hyperpage{13}, 
-		\hyperpage{15--16}
+  \item directory installation\dotfill\hyperpage{13}, \hyperpage{15--16}
   \item \textsf  {doc}\dotfill\hyperpage{16}
   \item dot     file\dotfill\hyperpage{20}
   \item dot file\dotfill\hyperpage{17--20}, \hyperpage{49}
@@ -124,8 +123,7 @@
   \item \ExBib\dotfill\hyperpage{56}
   \item exbib\dotfill\hyperpage{15}, \hyperpage{17}, \hyperpage{20}, 
 		\hyperpage{49}
-  \item \textsf  {ExBib-setup.jar}\dotfill\hyperpage{12}, 
-		\hyperpage{16}
+  \item \textsf  {ExBib-setup.jar}\dotfill\hyperpage{12}, \hyperpage{16}
   \item exbib.bat\dotfill\hyperpage{15}, \hyperpage{17}
   \item \texttt  {exbib.bib.encoding}\dotfill\hyperpage{19}
   \item \texttt  {exbib.config}\dotfill\hyperpage{18}
@@ -136,8 +134,7 @@
   \item \texttt  {exbib.min.crossref}\dotfill\hyperpage{18}
   \item \texttt  {exbib.min.crossref.\Arg {type}}\dotfill\hyperpage{18}
   \item \texttt  {exbib.output}\dotfill\hyperpage{19}
-  \item \texttt  {exbib.processor}\dotfill\hyperpage{19}, 
-		\hyperpage{77}
+  \item \texttt  {exbib.processor}\dotfill\hyperpage{19}, \hyperpage{77}
   \item \texttt  {exbib.sort}\dotfill\hyperpage{19}
   \item \texttt  {exbib.sort.\Arg {type}}\dotfill\hyperpage{19}
   \item \textsf  {exbib.xml}\dotfill\hyperpage{88}
@@ -146,10 +143,8 @@
   \item \texttt  {execute}\dotfill\hyperpage{60}
   \item Explorer\dotfill\hyperpage{12}
   \item \ExTeX\dotfill\hyperpage{7}, \hyperpage{88}
-  \item \texttt  {extex.texinputs}\dotfill\hyperpage{19}, 
-		\hyperpage{31}
-  \item \texttt  {EXTEX\_TEXINPUTS}\dotfill\hyperpage{19}, 
-		\hyperpage{31}
+  \item \texttt  {extex.texinputs}\dotfill\hyperpage{19}, \hyperpage{31}
+  \item \texttt  {EXTEX\_TEXINPUTS}\dotfill\hyperpage{19}, \hyperpage{31}
  \indexGroup{F}
   \item \Tag {field name}\dotfill\hyperpage{34}
   \item file
@@ -188,15 +183,13 @@
     \subitem \texttt  {num.names\$}\dotfill\hyperpage{70, 71}, 
 		\hyperpage{83}
     \subitem \texttt  {pop\$}\dotfill\hyperpage{71}
-    \subitem \texttt  {preamble\$}\dotfill\hyperpage{67}, 
-		\hyperpage{71}
-    \subitem \texttt  {purify\$}\dotfill\hyperpage{61}, 
-		\hyperpage{71, 72}, \hyperpage{83}
+    \subitem \texttt  {preamble\$}\dotfill\hyperpage{67}, \hyperpage{71}
+    \subitem \texttt  {purify\$}\dotfill\hyperpage{61}, \hyperpage{71, 
+		72}, \hyperpage{83}
     \subitem \texttt  {quote\$}\dotfill\hyperpage{72}
     \subitem \texttt  {skip\$}\dotfill\hyperpage{67}, \hyperpage{72}
     \subitem \texttt  {stack\$}\dotfill\hyperpage{73}
-    \subitem \texttt  {substring\$}\dotfill\hyperpage{73}, 
-		\hyperpage{83}
+    \subitem \texttt  {substring\$}\dotfill\hyperpage{73}, \hyperpage{83}
     \subitem \texttt  {swap\$}\dotfill\hyperpage{63}, \hyperpage{73}
     \subitem \texttt  {text.length\$}\dotfill\hyperpage{63}, 
 		\hyperpage{74}, \hyperpage{83}
@@ -204,8 +197,7 @@
     \subitem \texttt  {top\$}\dotfill\hyperpage{74}
     \subitem \texttt  {type\$}\dotfill\hyperpage{75}
     \subitem \texttt  {warning\$}\dotfill\hyperpage{75}
-    \subitem \texttt  {while\$}\dotfill\hyperpage{65}, 
-		\hyperpage{75, 76}
+    \subitem \texttt  {while\$}\dotfill\hyperpage{65}, \hyperpage{75, 76}
     \subitem \texttt  {width\$}\dotfill\hyperpage{76}, \hyperpage{83}
     \subitem \texttt  {write\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
 		\hyperpage{70}, \hyperpage{76}
@@ -354,8 +346,7 @@
   \item \Tag {name list}\dotfill\hyperpage{38}
   \item \texttt  {newline\$}\dotfill\hyperpage{65}, \hyperpage{67}, 
 		\hyperpage{70}
-  \item \texttt  {num.names\$}\dotfill\hyperpage{70, 71}, 
-		\hyperpage{83}
+  \item \texttt  {num.names\$}\dotfill\hyperpage{70, 71}, \hyperpage{83}
   \item \Tag {number}\dotfill\hyperpage{34}
  \indexGroup{O}
   \item \texttt  {-{}o}\dotfill\hyperpage{27}

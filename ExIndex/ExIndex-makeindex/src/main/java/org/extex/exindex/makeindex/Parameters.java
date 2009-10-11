@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2009 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.exindex.makeindex;
 import java.util.HashMap;
 
 import org.extex.exindex.lisp.type.value.LChar;
-import org.extex.exindex.lisp.type.value.LList;
 import org.extex.exindex.lisp.type.value.LNumber;
 import org.extex.exindex.lisp.type.value.LString;
 import org.extex.exindex.lisp.type.value.LValue;
@@ -39,15 +38,7 @@ public class Parameters extends HashMap<String, LValue> {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2007L;
-
-    /**
-     * Creates a new object.
-     */
-    public Parameters() {
-
-        super();
-    }
+    private static final long serialVersionUID = 2009L;
 
     /**
      * Getter for a named character parameter.
@@ -70,7 +61,7 @@ public class Parameters extends HashMap<String, LValue> {
      * 
      * @param name the name of the parameter
      * 
-     * @return the number or 0 if not defined
+     * @return the number or 0 if not defined or not a number
      */
     public long getNumber(String name) {
 
@@ -94,38 +85,19 @@ public class Parameters extends HashMap<String, LValue> {
         if (value instanceof LString) {
             return ((LString) value).getValue();
         }
+        if (value != null) {
+            return value.toString();
+        }
         return null;
     }
 
     /**
-     * Setter for the list
-     * 
-     * @param name the name
-     * @param list the list
-     */
-    public void setList(String name, LList list) {
-
-        put(name, list);
-    }
-
-    /**
-     * Setter for the number.
+     * Setter for the value.
      * 
      * @param name the name
      * @param value the value
      */
-    public void setNumber(String name, LNumber value) {
-
-        put(name, value);
-    }
-
-    /**
-     * Setter for the string
-     * 
-     * @param name the name
-     * @param value the value
-     */
-    public void setString(String name, LString value) {
+    public void set(String name, LValue value) {
 
         put(name, value);
     }

@@ -19,6 +19,7 @@
 package org.extex.exindex.makeindex.pages;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * This interface describes a processor for a list of pages.
@@ -32,10 +33,11 @@ public interface PageProcessor {
      * Process the pages given.
      * 
      * @param pages the list of pages
+     * @param logger the logger
      * 
      * @return the number of warnings produced
      */
-    int join(List<Pages> pages);
+    int join(List<Pages> pages, Logger logger);
 
     /**
      * Sort a list of pages.

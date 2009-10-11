@@ -27,34 +27,18 @@ package org.extex.exindex.makeindex.normalizer;
 public class MakeindexGermanCollator implements Collator {
 
     /**
-     * The field <tt>collateSpaces</tt> contains the indicator for collating
-     * spaces.
-     */
-    private boolean collateSpaces;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param collateSpaces the indicator to collate spaces
-     */
-    public MakeindexGermanCollator(boolean collateSpaces) {
-
-        this.collateSpaces = collateSpaces;
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exindex.makeindex.normalizer.Collator#collate(java.lang.String)
      */
     public String collate(String in) {
 
-        String s = in;
-        if (collateSpaces) {
-            s = s.replaceAll("[ \t\n\r\f\b]", "");
-        }
-        return s.replaceAll("[\\\\]?\"[aA]", "ae").replaceAll("[\\\\]?\"[oO]",
-            "oe").replaceAll("[\\\\]?\"[uU]", "ue").replaceAll("\"s", "ss")
+        return in
+        //
+            .replaceAll("[\\\\]?\"[aA]", "ae")//
+            .replaceAll("[\\\\]?\"[oO]", "oe")//
+            .replaceAll("[\\\\]?\"[uU]", "ue")//
+            .replaceAll("\"s", "ss")//
             .replaceAll("\\\\ss ", "ss ");
     }
 }

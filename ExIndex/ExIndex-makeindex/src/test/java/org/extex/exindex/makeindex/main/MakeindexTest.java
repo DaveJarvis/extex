@@ -24,6 +24,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.Locale;
 
 import org.junit.Test;
 
@@ -31,7 +32,7 @@ import org.junit.Test;
  * This is a test suite for {@link Makeindex}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7808 $
+ * @version $Revision$
  */
 public class MakeindexTest extends AbstractTester {
 
@@ -74,6 +75,7 @@ public class MakeindexTest extends AbstractTester {
     public void test1() throws IOException {
 
         String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{f},
             f,
@@ -101,6 +103,7 @@ public class MakeindexTest extends AbstractTester {
     public void test1g() throws IOException {
 
         String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-g", f},
             f,
@@ -127,6 +130,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"target/t1"},
             "target/t1.idx",
             "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
@@ -152,6 +156,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test3() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"target/t1.idx"},
             "target/t1.idx",
             "\\indexentry{bbb}{2}\n" //
@@ -179,6 +184,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testEmptyArguments1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{}, //
             BANNER
@@ -197,6 +203,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testEmptyArguments2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{""}, //
             BANNER
@@ -215,6 +222,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testHelp1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{"--help"}, //
             BANNER
@@ -230,6 +238,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testStyle0() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s"}, //
             BANNER + "Missing argument for option -s\n", //
             "", -1);
@@ -243,6 +252,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testStyle1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s", "xyzzy"}, //
             BANNER + "Input style file xyzzy not found.\n", //
             "", -1);
@@ -256,6 +266,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testStyle2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{"-s", "src/test/resources/makeindex/empty.ist"}, //
             BANNER
@@ -276,6 +287,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testStyle3() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{"-style=src/test/resources/makeindex/empty.ist"}, //
             BANNER
@@ -296,6 +308,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testTranscript1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{"-t", "target/xyz.ilog"}, //
             BANNER
@@ -318,6 +331,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testTranscript2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(
             new String[]{"-transcript=target/xyz.ilog"}, //
             BANNER
@@ -340,6 +354,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testUnknownArgument1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-xyzzy"}, //
             BANNER + "Unknown option -xyzzy.\n", //
             "", -1);
@@ -353,6 +368,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testUnknownFile1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"target/xyzzy"}, //
             BANNER + "Input index file target/xyzzy not found.\n", //
             "", -1);
@@ -366,6 +382,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testUnknownFile2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-", "target/xyzzy"}, //
             BANNER + "Input index file target/xyzzy not found.\n", //
             "", -1);
@@ -379,6 +396,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testUnknownFile3() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--", "target/xyzzy"}, //
             BANNER + "Input index file target/xyzzy not found.\n", //
             "", -1);
@@ -392,6 +410,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testVersion1() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-V"}, BANNER, "", 1);
     }
 
@@ -403,6 +422,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testVersion2() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--V"}, BANNER, "", 1);
     }
 
@@ -414,6 +434,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testVersion3() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-Version"}, BANNER, "", 1);
     }
 
@@ -425,6 +446,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void testVersion4() throws IOException {
 
+        Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--Version"}, BANNER, "", 1);
     }
 

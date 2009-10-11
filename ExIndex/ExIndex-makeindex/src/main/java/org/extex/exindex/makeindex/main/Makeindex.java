@@ -31,6 +31,7 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.ConsoleHandler;
 import java.util.logging.FileHandler;
 import java.util.logging.Handler;
@@ -47,20 +48,79 @@ import org.extex.exindex.makeindex.Parameters;
 import org.extex.exindex.makeindex.exceptions.MissingSymbolException;
 import org.extex.exindex.makeindex.exceptions.StyleNotFoundException;
 import org.extex.exindex.makeindex.exceptions.UnknownOptionException;
+import org.extex.exindex.makeindex.normalizer.Collator;
+import org.extex.exindex.makeindex.normalizer.CollatorPipe;
 import org.extex.exindex.makeindex.normalizer.MakeindexCollator;
 import org.extex.exindex.makeindex.normalizer.MakeindexGermanCollator;
+import org.extex.exindex.makeindex.normalizer.SpaceCollator;
 import org.extex.exindex.makeindex.pages.MakeindexPageProcessor;
 import org.extex.exindex.makeindex.pages.PageProcessor;
 import org.extex.exindex.makeindex.parser.MakeindexParser;
 import org.extex.exindex.makeindex.parser.Parser;
 import org.extex.exindex.makeindex.writer.IndexWriter;
 import org.extex.exindex.makeindex.writer.MakeindexWriter;
+import org.extex.framework.configuration.Configuration;
+import org.extex.framework.configuration.ConfigurationFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.logging.LogFormatter;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This is the main program for an indexer a la Makeindex.
+ * This is the main program for an indexer a la <i>MakeIndex</i>.
+ * <p>
+ * Usage: <tt>java org.extex.exindex.makeindex.main.makeindex </tt>
+ * <i>&lt;options&gt; files</i>
+ * </p>
+ * <p>
+ * Read the files which contain the raw index and produce a sorted and formatted
+ * index. If no file is specified read from standard input.
+ * </p>
+ * <p>
+ * The following options are supported:
+ * </p>
+ * <dl>
+ * <dt><tt>-collateSpaces</tt></dt>
+ * <dd>Treat sequences of spaces as one space for comparison.</dd>
+ * <dt><tt>-german</tt></dt>
+ * <dd>Use the German sort order.</dd>
+ * <dt><tt>- &lt;file&gt;</tt></dt>
+ * <dt><tt>-input &lt;file&gt;</tt></dt>
+ * <dd>Take the argument as input file regardless of it starting with a minus.</dd>
+ * <dt><tt>-letterOrdering</tt></dt>
+ * <dd>Consider letters only when comparing.</dd>
+ * <dt><tt>-output &lt;output file&gt;</tt></dt>
+ * <dt><tt>-output=&lt;output file&gt;</tt></dt>
+ * <dd>Sent the output to an output file. The default is to use the extension
+ * <tt>.ind</tt> together with the first index file name.</dd>
+ * <dt><tt>-page &lt;page&gt;</tt></dt>
+ * <dt><tt>-page=&lt;page&gt;</tt></dt>
+ * <dd>The start page.</dd>
+ * <dt><tt>-quiet</tt></dt>
+ * <dd>Act quietly and suppress the logging to the console.</dd>
+ * <dt><tt>-r</tt></dt>
+ * <dd>...</dd>
+ * <dt><tt>-style &lt;style&gt;</tt></dt>
+ * <dt><tt>-style=&lt;style&gt;</tt></dt>
+ * <dd>Add the style to the styles to be applied.</dd>
+ * <dt><tt>-transcript &lt;transcript&gt;</tt></dt>
+ * <dt><tt>-transcript=&lt;transcript&gt;</tt></dt>
+ * <dd>Sent the transcript to the given file. This setting overwrites previous
+ * transcript file names. The default is to use the extension <tt>.ilg</tt>
+ * together with the first index file name.</dd>
+ * <dt><tt>-Version</tt></dt>
+ * <dd>Print the version and exit.</dd>
+ * <dt><tt>-help</tt></dt>
+ * <dd>Print a short usage and exit.</dd>
+ * </dl>
+ * <p>
+ * The options can be abbreviated up to a single letter.
+ * </p>
+ * <p>
+ * The default encoding for reading index files and styles and writing is utf-8.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:7779 $
@@ -83,6 +143,11 @@ public class Makeindex {
      * The field <tt>VERSION</tt> contains the version number.
      */
     public static final String VERSION = "0.1";
+
+    /**
+     * The field <tt>PROP_CONFIG</tt> contains the ...
+     */
+    private static final String PROP_CONFIG = "makeindex.config";
 
     /**
      * This is the command line interface to the indexer.
@@ -113,9 +178,9 @@ public class Makeindex {
     private boolean collateSpaces = false;
 
     /**
-     * The field <tt>comperator</tt> contains the comparator.
+     * The field <tt>comparator</tt> contains the comparator.
      */
-    private MakeindexComparator comperator = new MakeindexComparator();
+    private MakeindexComparator comparator = new MakeindexComparator();
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
@@ -188,13 +253,14 @@ public class Makeindex {
     private String styleEncoding = "utf-8";
 
     /**
-     * Creates a new object.
-     * 
+     * The field <tt>resourceFinder</tt> contains the ...
      */
-    public Makeindex() {
+    private ResourceFinder resourceFinder;
 
-        super();
-    }
+    /**
+     * The field <tt>properties</tt> contains the ...
+     */
+    private Properties properties = new Properties();
 
     /**
      * Add an index file.
@@ -214,7 +280,7 @@ public class Makeindex {
      */
     public void addStyle(String style) {
 
-        if (style == null) {
+        if (style == null || style.equals("")) {
             throw new IllegalArgumentException("style");
         }
         styles.add(style);
@@ -277,7 +343,6 @@ public class Makeindex {
             consoleHandler.setFormatter(new LogFormatter());
             consoleHandler.setLevel(Level.INFO);
             logger.addHandler(consoleHandler);
-
         }
         return logger;
     }
@@ -561,6 +626,21 @@ public class Makeindex {
                 }
             }
 
+            Configuration config =
+                    ConfigurationFactory.newInstance(//
+                        "makeindex/"
+                                + properties.getProperty(PROP_CONFIG,
+                                    "makeindex.xml"));
+
+            ResourceFinder finder =
+                    (resourceFinder != null
+                            ? resourceFinder
+                            : new ResourceFinderFactory().createResourceFinder(//
+                                config.getConfiguration("Resource"), //
+                                logger, //
+                                properties, //
+                                null));
+
             if (transcript == null && files.size() != 0 && files.get(0) != null) {
                 transcript = files.get(0).replaceAll("\\.idx$", "") + ".ilg";
             }
@@ -575,14 +655,14 @@ public class Makeindex {
             Index index = new Index();
 
             for (String s : styles) {
-                scanStyle(s, index.getParams());
+                scanStyle(s, finder, index.getParams());
             }
 
             if (files.size() == 0) {
-                scanInput(null, index);
+                scanInput(null, finder, index);
             } else {
                 for (String s : files) {
-                    scanInput(s, index);
+                    scanInput(s, finder, index);
                 }
             }
             writeOutput(index);
@@ -596,6 +676,9 @@ public class Makeindex {
             return -1;
         } catch (FileNotFoundException e) {
             log(LOCALIZER.format("FileNotFound", e.getMessage()));
+            return -1;
+        } catch (ConfigurationException e) {
+            log(e.getMessage());
             return -1;
         } catch (UnknownOptionException e) {
             log(e.getMessage());
@@ -620,13 +703,14 @@ public class Makeindex {
      * Load data into the index.
      * 
      * @param file the name of the input file
+     * @param finder the resource finder
      * @param index the index
      * 
      * @throws IOException in case of an I/O error
      * @throws RawIndexMissingCharException in case of an error
      * @throws RawIndexEofException in case of an error
      */
-    protected void scanInput(String file, Index index)
+    protected void scanInput(String file, ResourceFinder finder, Index index)
             throws IOException,
                 RawIndexEofException,
                 RawIndexMissingCharException {
@@ -661,10 +745,19 @@ public class Makeindex {
         try {
             info(fmt, fileName);
             Parser parser = new MakeindexParser();
-            int[] count = parser.load(reader, file, index, //
-                (collateGerman //
-                        ? new MakeindexGermanCollator(collateSpaces)
-                        : new MakeindexCollator(collateSpaces)));
+            Collator collator;
+            if (collateGerman) {
+                collator =
+                        (collateSpaces //
+                                ? new CollatorPipe(new SpaceCollator(),
+                                    new MakeindexGermanCollator())
+                                : new MakeindexGermanCollator());
+            } else {
+                collator = (collateSpaces //
+                        ? new SpaceCollator()
+                        : new MakeindexCollator());
+            }
+            int[] count = parser.load(reader, file, index, collator);
             info("ScanningInputDone", //
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {
@@ -676,6 +769,7 @@ public class Makeindex {
      * Merge a style into the one already loaded.
      * 
      * @param file the name of the resource
+     * @param finder the resource finder
      * @param params the parameters
      * 
      * @throws IOException in case of an I/O error
@@ -683,7 +777,8 @@ public class Makeindex {
      * @throws RawIndexEofException in case of an error
      * @throws MissingSymbolException in case of an error
      */
-    protected void scanStyle(String file, Parameters params)
+    protected void scanStyle(String file, ResourceFinder finder,
+            Parameters params)
             throws IOException,
                 MissingSymbolException,
                 RawIndexEofException,
@@ -846,8 +941,9 @@ public class Makeindex {
 
             info("Sorting");
             // comparisons = 0;
-            List<Entry> entries = index.sort(comperator, pageProcessor, warn);
-            info("SortingDone", Long.toString(comperator.getComparisons()));
+            List<Entry> entries =
+                    index.sort(comparator, pageProcessor, logger, warn);
+            info("SortingDone", Long.toString(comparator.getComparisons()));
             info(fmt, output);
 
             int[] count = indexWriter.write(entries, logger, startPage, //

@@ -19,28 +19,12 @@
 package org.extex.exindex.makeindex.normalizer;
 
 /**
- * This is the default collator for makeindex.
+ * This is the default collator for <i>MakeIndex</i>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6622 $
  */
 public class MakeindexCollator implements Collator {
-
-    /**
-     * The field <tt>collateSpaces</tt> contains the indicator for collating
-     * spaces.
-     */
-    private boolean collateSpaces;
-
-    /**
-     * Creates a new object.
-     * 
-     * @param collateSpaces the indicator to collate spaces
-     */
-    public MakeindexCollator(boolean collateSpaces) {
-
-        this.collateSpaces = collateSpaces;
-    }
 
     /**
      * {@inheritDoc}
@@ -49,6 +33,6 @@ public class MakeindexCollator implements Collator {
      */
     public String collate(String in) {
 
-        return (collateSpaces ? in.replaceAll("[ \t\n\r\f\b]", "") : in);
+        return in;
     }
 }
