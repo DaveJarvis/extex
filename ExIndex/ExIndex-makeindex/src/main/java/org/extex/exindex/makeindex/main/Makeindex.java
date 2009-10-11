@@ -81,37 +81,39 @@ import org.extex.resource.io.NamedInputStream;
  * The following options are supported:
  * </p>
  * <dl>
- * <dt><tt>-collateSpaces</tt></dt>
+ * <dt><tt>-c[ollateSpaces]</tt></dt>
  * <dd>Treat sequences of spaces as one space for comparison.</dd>
- * <dt><tt>-german</tt></dt>
+ * <dt><tt>-D&lt;key&gt;=&lt;value&gt;</tt></dt>
+ * <dd>Store a value for a key in the parameters.</dd>
+ * <dt><tt>-g[erman]</tt></dt>
  * <dd>Use the German sort order.</dd>
  * <dt><tt>- &lt;file&gt;</tt></dt>
- * <dt><tt>-input &lt;file&gt;</tt></dt>
+ * <dt><tt>-i[nput] &lt;file&gt;</tt></dt>
  * <dd>Take the argument as input file regardless of it starting with a minus.</dd>
- * <dt><tt>-letterOrdering</tt></dt>
+ * <dt><tt>-l[etterOrdering]</tt></dt>
  * <dd>Consider letters only when comparing.</dd>
- * <dt><tt>-output &lt;output file&gt;</tt></dt>
+ * <dt><tt>-o[utput] &lt;output file&gt;</tt></dt>
  * <dt><tt>-output=&lt;output file&gt;</tt></dt>
  * <dd>Sent the output to an output file. The default is to use the extension
  * <tt>.ind</tt> together with the first index file name.</dd>
- * <dt><tt>-page &lt;page&gt;</tt></dt>
+ * <dt><tt>-p[age] &lt;page&gt;</tt></dt>
  * <dt><tt>-page=&lt;page&gt;</tt></dt>
  * <dd>The start page.</dd>
- * <dt><tt>-quiet</tt></dt>
+ * <dt><tt>-q[uiet]</tt></dt>
  * <dd>Act quietly and suppress the logging to the console.</dd>
  * <dt><tt>-r</tt></dt>
  * <dd>...</dd>
- * <dt><tt>-style &lt;style&gt;</tt></dt>
+ * <dt><tt>-s[tyle] &lt;style&gt;</tt></dt>
  * <dt><tt>-style=&lt;style&gt;</tt></dt>
  * <dd>Add the style to the styles to be applied.</dd>
- * <dt><tt>-transcript &lt;transcript&gt;</tt></dt>
+ * <dt><tt>-t[ranscript] &lt;transcript&gt;</tt></dt>
  * <dt><tt>-transcript=&lt;transcript&gt;</tt></dt>
  * <dd>Sent the transcript to the given file. This setting overwrites previous
  * transcript file names. The default is to use the extension <tt>.ilg</tt>
  * together with the first index file name.</dd>
- * <dt><tt>-Version</tt></dt>
+ * <dt><tt>-V[ersion]</tt></dt>
  * <dd>Print the version and exit.</dd>
- * <dt><tt>-help</tt></dt>
+ * <dt><tt>-h[elp]</tt></dt>
  * <dd>Print a short usage and exit.</dd>
  * </dl>
  * <p>
