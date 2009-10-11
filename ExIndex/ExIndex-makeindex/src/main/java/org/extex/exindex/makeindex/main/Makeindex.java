@@ -144,9 +144,66 @@ public class Makeindex {
     public static final String VERSION = "0.1";
 
     /**
+     * The field <tt>PROP_COLLATE_GERMAN</tt> contains the ...
+     */
+    protected static final String PROP_COLLATE_GERMAN =
+            "makeindex.collate.german";
+
+    /**
+     * The field <tt>PROP_COLLATE_SPACES</tt> contains the ...
+     */
+    protected static final String PROP_COLLATE_SPACES =
+            "makeindex.collate.spaces";
+
+    /**
      * The field <tt>PROP_CONFIG</tt> contains the ...
      */
-    private static final String PROP_CONFIG = "makeindex.config";
+    protected static final String PROP_CONFIG = "makeindex.config";
+
+    /**
+     * The field <tt>PROP_INPUT_ENCODING</tt> contains the ...
+     */
+    protected static final String PROP_INPUT_ENCODING =
+            "makeindex.input.encoding";
+
+    /**
+     * The field <tt>PROP_LETTER_ORDERING</tt> contains the ...
+     */
+    protected static final String PROP_LETTER_ORDERING =
+            "makeindex.letter.ordering";
+
+    /**
+     * The field <tt>PROP_OUTPUT_ENCODING</tt> contains the ...
+     */
+    protected static final String PROP_OUTPUT_ENCODING =
+            "makeindex.output.encoding";
+
+    /**
+     * The field <tt>PROP_OUTPUT</tt> contains the ...
+     */
+    protected static final String PROP_OUTPUT = "makeindex.output";
+
+    /**
+     * The field <tt>PROP_PAGE_COMPRESSION</tt> contains the ...
+     */
+    protected static final String PROP_PAGE_COMPRESSION =
+            "makeindex.page.compression";
+
+    /**
+     * The field <tt>PROP_START_PAGE</tt> contains the ...
+     */
+    protected static final String PROP_START_PAGE = "makeindex.start.page";
+
+    /**
+     * The field <tt>PROP_STYLE_ENCODING</tt> contains the ...
+     */
+    protected static final String PROP_STYLE_ENCODING =
+            "makeindex.style.encoding";
+
+    /**
+     * The field <tt>PROP_TRANSCRIPT</tt> contains the ...
+     */
+    protected static final String PROP_TRANSCRIPT = "makeindex.transcript";
 
     /**
      * This is the command line interface to the indexer.
@@ -163,18 +220,6 @@ public class Makeindex {
      * be written.
      */
     private boolean banner = true;
-
-    /**
-     * The field <tt>collateGerman</tt> contains the indicator to recognize
-     * german.sty.
-     */
-    private boolean collateGerman = false;
-
-    /**
-     * The field <tt>collateSpaces</tt> contains the indicator to collate
-     * spaces.
-     */
-    private boolean collateSpaces = false;
 
     /**
      * The field <tt>comparator</tt> contains the comparator.
@@ -198,32 +243,9 @@ public class Makeindex {
     private List<String> files = new ArrayList<String>();
 
     /**
-     * The field <tt>letterOrdering</tt> contains the indicator for letter
-     * ordering.
-     */
-    private boolean letterOrdering = false;
-
-    /**
      * The field <tt>logger</tt> contains the logger for messages.
      */
     private Logger logger = null;
-
-    /**
-     * The field <tt>output</tt> contains the name of the output file or
-     * <code>null</code> for stdout.
-     */
-    private String output = null;
-
-    /**
-     * The field <tt>pageCompression</tt> contains the indicator for page range
-     * compression.
-     */
-    private boolean pageCompression = true;
-
-    /**
-     * The field <tt>startPage</tt> contains the start page specification.
-     */
-    private String startPage;
 
     /**
      * The field <tt>styles</tt> contains the style files.
@@ -231,35 +253,38 @@ public class Makeindex {
     private ArrayList<String> styles = new ArrayList<String>();
 
     /**
-     * The field <tt>log</tt> contains the name of the transcript file.
-     */
-    private String transcript;
-
-    /**
-     * The field <tt>inputEncoding</tt> contains the input encoding.
-     */
-    private String inputEncoding = "utf-8";
-
-    /**
-     * The field <tt>outputEncoding</tt> contains the output encoding.
-     */
-    private String outputEncoding = "utf-8";
-
-    /**
-     * The field <tt>styleEncoding</tt> contains the encoding for index style
-     * files.
-     */
-    private String styleEncoding = "utf-8";
-
-    /**
-     * The field <tt>resourceFinder</tt> contains the ...
+     * The field <tt>resourceFinder</tt> contains the resource finder.
      */
     private ResourceFinder resourceFinder;
 
     /**
-     * The field <tt>properties</tt> contains the ...
+     * The field <tt>properties</tt> contains the properties controlling the
+     * behavior.
      */
-    private Properties properties = new Properties();
+    private Properties properties;
+
+    /**
+     * Creates a new object.
+     */
+    public Makeindex() {
+
+        this(null);
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public Makeindex(Properties p) {
+
+        if (p == null) {
+            properties = new Properties();
+        } else {
+            properties = (Properties) p.clone();
+        }
+        provideDefault(PROP_INPUT_ENCODING, "utf-8");
+        provideDefault(PROP_OUTPUT_ENCODING, "utf-8");
+        provideDefault(PROP_STYLE_ENCODING, "utf-8");
+    }
 
     /**
      * Add an index file.
@@ -324,7 +349,7 @@ public class Makeindex {
      */
     public String getInputEncoding() {
 
-        return inputEncoding;
+        return properties.getProperty(PROP_INPUT_ENCODING);
     }
 
     /**
@@ -353,7 +378,7 @@ public class Makeindex {
      */
     public String getOutput() {
 
-        return output;
+        return properties.getProperty(PROP_OUTPUT);
     }
 
     /**
@@ -363,7 +388,7 @@ public class Makeindex {
      */
     public String getOutputEncoding() {
 
-        return outputEncoding;
+        return properties.getProperty(PROP_OUTPUT_ENCODING);
     }
 
     /**
@@ -373,7 +398,7 @@ public class Makeindex {
      */
     public String getStartPage() {
 
-        return startPage;
+        return properties.getProperty(PROP_START_PAGE);
     }
 
     /**
@@ -383,7 +408,7 @@ public class Makeindex {
      */
     public String getStyleEncoding() {
 
-        return styleEncoding;
+        return properties.getProperty(PROP_STYLE_ENCODING);
     }
 
     /**
@@ -403,7 +428,7 @@ public class Makeindex {
      */
     public String getTranscript() {
 
-        return transcript;
+        return properties.getProperty(PROP_TRANSCRIPT);
     }
 
     /**
@@ -424,7 +449,8 @@ public class Makeindex {
      */
     public boolean isCollateGerman() {
 
-        return collateGerman;
+        return Boolean
+            .parseBoolean(properties.getProperty(PROP_COLLATE_GERMAN));
     }
 
     /**
@@ -434,7 +460,8 @@ public class Makeindex {
      */
     public boolean isCollateSpaces() {
 
-        return collateSpaces;
+        return Boolean
+            .parseBoolean(properties.getProperty(PROP_COLLATE_SPACES));
     }
 
     /**
@@ -444,7 +471,8 @@ public class Makeindex {
      */
     public boolean isLetterOrdering() {
 
-        return letterOrdering;
+        return Boolean.parseBoolean(properties
+            .getProperty(PROP_LETTER_ORDERING));
     }
 
     /**
@@ -454,7 +482,8 @@ public class Makeindex {
      */
     public boolean isPageCompression() {
 
-        return pageCompression;
+        return Boolean.parseBoolean(properties
+            .getProperty(PROP_PAGE_COMPRESSION));
     }
 
     /**
@@ -530,6 +559,19 @@ public class Makeindex {
             }
         }
         return true;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param key
+     * @param value
+     */
+    private void provideDefault(String key, String value) {
+
+        if (properties.getProperty(key) == null) {
+            properties.setProperty(key, value);
+        }
     }
 
     /**
@@ -619,6 +661,15 @@ public class Makeindex {
                     log(LOCALIZER.format("Usage", "Indexer"));
                     return 1;
 
+                } else if (a.startsWith("-D")) {
+                    int eq = a.indexOf('=');
+                    if (eq < 0) {
+                        log(LOCALIZER.format("UnknownArgument", a));
+                        return -1;
+                    }
+                    properties.setProperty(a.substring(2, eq), //
+                        a.substring(eq + 1));
+
                 } else if (!processShortArguments(a)) {
                     log(LOCALIZER.format("UnknownArgument", a));
                     return -1;
@@ -639,6 +690,8 @@ public class Makeindex {
                                 logger, //
                                 properties, //
                                 null));
+
+            String transcript = properties.getProperty(PROP_TRANSCRIPT);
 
             if (transcript == null && files.size() != 0 && files.get(0) != null) {
                 transcript = files.get(0).replaceAll("\\.idx$", "") + ".ilg";
@@ -722,31 +775,34 @@ public class Makeindex {
 
         if (file == null) {
             fmt = "ScanningStandardInput";
-            reader = new InputStreamReader(System.in, inputEncoding);
+            reader = new InputStreamReader(System.in, //
+                properties.getProperty(PROP_INPUT_ENCODING));
         } else {
             NamedInputStream nis = finder.findResource(file, "idx");
             if (nis == null) {
                 throw new FileNotFoundException(file);
             }
-            reader = new InputStreamReader(nis, inputEncoding);
+            reader = new InputStreamReader(nis, //
+                properties.getProperty(PROP_INPUT_ENCODING));
             fmt = "ScanningInput";
 
-            if (output == null) {
-                output = nis.getName().replaceAll(".idx$", "") + ".ind";
+            if (properties.getProperty(PROP_OUTPUT) == null) {
+                properties.setProperty(PROP_OUTPUT, //
+                    nis.getName().replaceAll(".idx$", "") + ".ind");
             }
         }
         try {
             info(fmt, fileName);
             Parser parser = new MakeindexParser();
             Collator collator;
-            if (collateGerman) {
+            if (isCollateGerman()) {
                 collator =
-                        (collateSpaces //
+                        (isCollateSpaces() //
                                 ? new CollatorPipe(new SpaceCollator(),
                                     new MakeindexGermanCollator())
                                 : new MakeindexGermanCollator());
             } else {
-                collator = (collateSpaces //
+                collator = (isCollateSpaces() //
                         ? new SpaceCollator()
                         : new MakeindexCollator());
             }
@@ -783,7 +839,8 @@ public class Makeindex {
         if (nis == null) {
             throw new StyleNotFoundException(file);
         }
-        Reader reader = new InputStreamReader(nis, styleEncoding);
+        Reader reader = new InputStreamReader(nis, //
+            properties.getProperty(PROP_STYLE_ENCODING));
         info("ScanningStyle", file);
         try {
             int[] count =
@@ -802,7 +859,8 @@ public class Makeindex {
      */
     public void setCollateGerman(boolean collateGerman) {
 
-        this.collateGerman = collateGerman;
+        properties.setProperty(PROP_COLLATE_GERMAN, //
+            Boolean.toString(collateGerman));
     }
 
     /**
@@ -812,7 +870,8 @@ public class Makeindex {
      */
     public void setCollateSpaces(boolean collateSpaces) {
 
-        this.collateSpaces = collateSpaces;
+        properties.setProperty(PROP_COLLATE_SPACES, //
+            Boolean.toString(collateSpaces));
     }
 
     /**
@@ -822,7 +881,7 @@ public class Makeindex {
      */
     public void setInputEncoding(String inputEncoding) {
 
-        this.inputEncoding = inputEncoding;
+        properties.setProperty(PROP_INPUT_ENCODING, inputEncoding);
     }
 
     /**
@@ -832,7 +891,8 @@ public class Makeindex {
      */
     public void setLetterOrdering(boolean letterOrdering) {
 
-        this.letterOrdering = letterOrdering;
+        properties.setProperty(PROP_LETTER_ORDERING, //
+            Boolean.toString(letterOrdering));
     }
 
     /**
@@ -852,7 +912,7 @@ public class Makeindex {
      */
     public void setOutput(String output) {
 
-        this.output = output;
+        properties.setProperty(PROP_OUTPUT, output);
     }
 
     /**
@@ -862,7 +922,7 @@ public class Makeindex {
      */
     public void setOutputEncoding(String outputEncoding) {
 
-        this.outputEncoding = outputEncoding;
+        properties.setProperty(PROP_OUTPUT_ENCODING, outputEncoding);
     }
 
     /**
@@ -872,7 +932,8 @@ public class Makeindex {
      */
     public void setPageCompression(boolean pageCompression) {
 
-        this.pageCompression = pageCompression;
+        properties.setProperty(PROP_PAGE_COMPRESSION, //
+            Boolean.toString(pageCompression));
     }
 
     /**
@@ -882,7 +943,7 @@ public class Makeindex {
      */
     public void setStartPage(String startPage) {
 
-        this.startPage = startPage;
+        properties.setProperty(PROP_START_PAGE, startPage);
     }
 
     /**
@@ -892,7 +953,7 @@ public class Makeindex {
      */
     public void setStyleEncoding(String styleEncoding) {
 
-        this.styleEncoding = styleEncoding;
+        properties.setProperty(PROP_STYLE_ENCODING, styleEncoding);
     }
 
     /**
@@ -902,7 +963,7 @@ public class Makeindex {
      */
     public void setTranscript(String transcript) {
 
-        this.transcript = transcript;
+        properties.setProperty(PROP_TRANSCRIPT, transcript);
     }
 
     /**
@@ -916,13 +977,16 @@ public class Makeindex {
 
         Writer w;
         String fmt;
+        String output = properties.getProperty(PROP_OUTPUT);
+
         if (output == null) {
             fmt = "GeneratingOutput";
-            w = new OutputStreamWriter(System.out, outputEncoding);
+            w = new OutputStreamWriter(System.out, // 
+                properties.getProperty(PROP_OUTPUT_ENCODING));
         } else {
             fmt = "GeneratingOutputFile";
             w = new OutputStreamWriter(new FileOutputStream(output), //
-                outputEncoding);
+                properties.getProperty(PROP_OUTPUT_ENCODING));
         }
         try {
             Parameters params = index.getParams();
@@ -938,7 +1002,7 @@ public class Makeindex {
             info("SortingDone", Long.toString(comparator.getComparisons()));
             info(fmt, output);
 
-            int[] count = indexWriter.write(entries, logger, startPage, //
+            int[] count = indexWriter.write(entries, logger, getStartPage(), //
                 pageProcessor);
 
             info("GeneratingOutputDone", //
