@@ -660,10 +660,20 @@ public class Makeindex {
                     setPageCompression(false);
 
                 } else if ("-style".startsWith(a)) {
-                    addStyle(argument(args, ++i, a));
+                    String style = argument(args, ++i, a);
+                    if (style == null || style.equals("")) {
+                        log(LOCALIZER.format("EmptyStyle"));
+                        return -1;
+                    }
+                    addStyle(style);
 
                 } else if (a.startsWith("-style=")) {
-                    addStyle(a.substring(7));
+                    String style = a.substring(7);
+                    if (style.equals("")) {
+                        log(LOCALIZER.format("EmptyStyle"));
+                        return -1;
+                    }
+                    addStyle(style);
 
                 } else if ("-transcript".startsWith(a)) {
                     setTranscript(argument(args, ++i, a));

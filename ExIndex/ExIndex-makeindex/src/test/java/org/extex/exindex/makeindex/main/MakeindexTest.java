@@ -236,11 +236,39 @@ public class MakeindexTest extends AbstractTester {
      * @throws IOException in case of an error
      */
     @Test
-    public void testStyle0() throws IOException {
+    public void testStyle00() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s"}, //
             BANNER + "Missing argument for option -s\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> An empty argument for -style is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testStyle01() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-s", ""}, //
+            BANNER + "Empty style is not permitted.\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> A null argument for -style is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testStyle02() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-s", null}, //
+            BANNER + "Empty style is not permitted.\n", //
             "", -1);
     }
 
