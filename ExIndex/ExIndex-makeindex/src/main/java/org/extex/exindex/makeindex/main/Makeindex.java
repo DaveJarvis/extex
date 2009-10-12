@@ -123,6 +123,9 @@ import org.extex.resource.io.NamedInputStream;
  * The default encoding for reading index files and styles and writing is utf-8.
  * </p>
  * 
+ * <h2>Parameters</h2>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:7779 $
  */
@@ -146,64 +149,74 @@ public class Makeindex {
     public static final String VERSION = "0.1";
 
     /**
-     * The field <tt>PROP_COLLATE_GERMAN</tt> contains the ...
+     * The field <tt>PROP_COLLATE_GERMAN</tt> contains the key for the German
+     * property.
      */
     protected static final String PROP_COLLATE_GERMAN =
             "makeindex.collate.german";
 
     /**
-     * The field <tt>PROP_COLLATE_SPACES</tt> contains the ...
+     * The field <tt>PROP_COLLATE_SPACES</tt> contains the key for the collate
+     * property.
      */
     protected static final String PROP_COLLATE_SPACES =
             "makeindex.collate.spaces";
 
     /**
-     * The field <tt>PROP_CONFIG</tt> contains the ...
+     * The field <tt>PROP_CONFIG</tt> contains the key for the configuration
+     * property.
      */
     protected static final String PROP_CONFIG = "makeindex.config";
 
     /**
-     * The field <tt>PROP_INPUT_ENCODING</tt> contains the ...
+     * The field <tt>PROP_INPUT_ENCODING</tt> contains the key for the input
+     * encoding property.
      */
     protected static final String PROP_INPUT_ENCODING =
             "makeindex.input.encoding";
 
     /**
-     * The field <tt>PROP_LETTER_ORDERING</tt> contains the ...
+     * The field <tt>PROP_LETTER_ORDERING</tt> contains the key for the letter
+     * ordering property.
      */
     protected static final String PROP_LETTER_ORDERING =
             "makeindex.letter.ordering";
 
     /**
-     * The field <tt>PROP_OUTPUT_ENCODING</tt> contains the ...
+     * The field <tt>PROP_OUTPUT_ENCODING</tt> contains the key for the output
+     * encoding property.
      */
     protected static final String PROP_OUTPUT_ENCODING =
             "makeindex.output.encoding";
 
     /**
-     * The field <tt>PROP_OUTPUT</tt> contains the ...
+     * The field <tt>PROP_OUTPUT</tt> contains the key for the output property.
      */
     protected static final String PROP_OUTPUT = "makeindex.output";
 
     /**
-     * The field <tt>PROP_PAGE_COMPRESSION</tt> contains the ...
+     * The field <tt>PROP_PAGE_COMPRESSION</tt> contains the key for the page
+     * compression property.
      */
     protected static final String PROP_PAGE_COMPRESSION =
             "makeindex.page.compression";
 
     /**
-     * The field <tt>PROP_START_PAGE</tt> contains the ...
+     * The field <tt>PROP_START_PAGE</tt> contains the key for the start page
+     * property.
      */
     protected static final String PROP_START_PAGE = "makeindex.start.page";
 
     /**
-     * The field <tt>PROP_STYLE_ENCODING</tt> contains the ...
+     * The field <tt>PROP_STYLE_ENCODING</tt> contains the key for the style
+     * encoding property.
      */
     protected static final String PROP_STYLE_ENCODING =
             "makeindex.style.encoding";
 
     /**
-     * The field <tt>PROP_TRANSCRIPT</tt> contains the ...
+     * The field <tt>PROP_TRANSCRIPT</tt> contains the key for the transcript
+     * property.
      */
     protected static final String PROP_TRANSCRIPT = "makeindex.transcript";
 
@@ -275,6 +288,8 @@ public class Makeindex {
 
     /**
      * Creates a new object.
+     * 
+     * @param p the parameters
      */
     public Makeindex(Properties p) {
 
@@ -564,10 +579,11 @@ public class Makeindex {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Provide a default pro a property. If a value is defined already then
+     * nothing is done. Otherwise the value provided is stored for the key.
      * 
-     * @param key
-     * @param value
+     * @param key the key
+     * @param value the value
      */
     private void provideDefault(String key, String value) {
 
