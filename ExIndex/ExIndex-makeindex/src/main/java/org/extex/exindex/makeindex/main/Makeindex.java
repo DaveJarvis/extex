@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.io.UnsupportedEncodingException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
@@ -799,6 +800,9 @@ public class Makeindex {
             return -1;
         } catch (FileNotFoundException e) {
             log(LOCALIZER.format("FileNotFound", e.getMessage()));
+            return -1;
+        } catch (UnsupportedEncodingException e) {
+            log(LOCALIZER.format("UnsupportedEncoding", e.getMessage()));
             return -1;
         } catch (ConfigurationException e) {
             log(e.getMessage());
