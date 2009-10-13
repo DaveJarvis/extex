@@ -26,6 +26,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Locale;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -123,6 +124,34 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
+     * <testcase> An index can be sorted with option -gc. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void test1gc() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(
+            new String[]{"-gc", f},
+            f,
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            BANNER
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (1 comparisons).\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
+                    + "Transcript written in target/t1.ilg.\n", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
      * <testcase> An index can be sorted with option -l. </testcase>
      * 
      * @throws IOException in case of an error
@@ -142,6 +171,76 @@ public class MakeindexTest extends AbstractTester {
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
                     + "Transcript written in target/t1.ilg.\n", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An index can be sorted. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void test1m() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(
+            new String[]{"-", f},
+            f,
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            BANNER
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (1 comparisons).\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
+                    + "Transcript written in target/t1.ilg.\n", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An index can be sorted. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void test1q() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(new String[]{"-q", f}, f, "\\indexentry{bbb}{2}\n"
+                + "\\indexentry{aaa}{3}\n", //
+            "", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An index can be sorted. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void test1quiet() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(new String[]{"-quiet", f}, f, "\\indexentry{bbb}{2}\n"
+                + "\\indexentry{aaa}{3}\n", //
+            "", //
             "\\begin{theindex}\n" //
                     + "\n" //
                     + "  \\item aaa, 3\n" //
@@ -202,6 +301,62 @@ public class MakeindexTest extends AbstractTester {
                     + "  \\item bbb, 2, 4\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An index can be sorted with option -c. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test()
+    @Ignore
+    public void testCollateSpaces1() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(
+            new String[]{"-c", f},
+            f,
+            "\\indexentry{bb  b}{2}\n" + "\\indexentry{bb b}{3}\n", //
+            BANNER
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (1 comparisons).\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
+                    + "Transcript written in target/t1.ilg.\n", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item bb b, 2, 3\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An illegal argument for -D is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testD01() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-D"}, //
+            BANNER + "Unknown option -D.\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> An illegal argument for -D is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testD02() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-Dabc"}, //
+            BANNER + "Unknown option -Dabc.\n", //
+            "", -1);
     }
 
     /**
@@ -296,6 +451,20 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s", null}, //
+            BANNER + "Empty style is not permitted.\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> A null argument for -style is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testStyle03() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-style="}, //
             BANNER + "Empty style is not permitted.\n", //
             "", -1);
     }
