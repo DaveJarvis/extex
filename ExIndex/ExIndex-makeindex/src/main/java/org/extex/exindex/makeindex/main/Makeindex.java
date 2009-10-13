@@ -650,6 +650,23 @@ public class Makeindex {
                 } else if ("-collateSpaces".startsWith(a)) {
                     setCollateSpaces(true);
 
+                } else if ("-encoding".startsWith(a)) {
+                    String enc = argument(args, ++i, a);
+                    setInputEncoding(enc);
+                    setOutputEncoding(enc);
+                    setStyleEncoding(enc);
+
+                } else if (a.startsWith("-encoding=")) {
+                    if (a.length() <= 9) {
+                        throw new UnknownOptionException(LocalizerFactory
+                            .getLocalizer(getClass()).format("MissingArgument",
+                                a));
+                    }
+                    a = a.substring(9);
+                    setInputEncoding(a);
+                    setOutputEncoding(a);
+                    setStyleEncoding(a);
+
                 } else if ("-german".startsWith(a)) {
                     setCollateGerman(true);
 
