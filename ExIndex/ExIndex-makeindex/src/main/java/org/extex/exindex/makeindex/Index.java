@@ -20,10 +20,10 @@ package org.extex.exindex.makeindex;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.List;
 import java.util.logging.Logger;
 
+import org.extex.exindex.makeindex.main.MakeindexComparator;
 import org.extex.exindex.makeindex.pages.PageProcessor;
 
 /**
@@ -84,8 +84,8 @@ public class Index {
      * 
      * @return the sorted list of the entries
      */
-    public List<Entry> sort(Comparator<Entry> comperator, PageProcessor pp,
-            Logger logger, int[] warn) {
+    public List<Entry> sort(MakeindexComparator comperator, PageProcessor pp,
+            Logger logger, long[] warn) {
 
         int size = content.size();
         if (size <= 1) {
@@ -93,6 +93,7 @@ public class Index {
         }
         Entry[] entries = content.toArray(new Entry[size]);
         Arrays.sort(entries, comperator);
+        warn[1] = comperator.getComparisons();
 
         content = new ArrayList<Entry>();
 

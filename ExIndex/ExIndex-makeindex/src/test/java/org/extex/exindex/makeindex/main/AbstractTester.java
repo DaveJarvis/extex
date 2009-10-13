@@ -38,7 +38,7 @@ import java.io.Writer;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
- * @version $Revision: 7805 $
+ * @version $Revision$
  */
 public abstract class AbstractTester {
 
@@ -94,7 +94,8 @@ public abstract class AbstractTester {
             System.setErr(err);
             System.setOut(out);
         }
-        assertEquals(expectedErr, errStream.toString().replaceAll("\r", ""));
+        assertEquals(expectedErr, errStream.toString().replaceAll("\r", "")
+            .replace('\\', '/'));
         assertEquals(expectedOut, outStream.toString().replaceAll("\r", ""));
         assertEquals(exitCode, exit);
     }

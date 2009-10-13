@@ -81,15 +81,15 @@ public class MakeindexTest extends AbstractTester {
             f,
             "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
             BANNER
-                    + "Scanning input file target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
-                    + "Generating output file target/t1.ind...done (0 entries written, 0 warnings).\n"
-                    + "Output written in target/t1.ind.\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\item aaa, 3\n" //
-                    + "\\item bbb, 2\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -109,15 +109,43 @@ public class MakeindexTest extends AbstractTester {
             f,
             "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
             BANNER
-                    + "Scanning input file target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
-                    + "Generating output file target/t1.ind...done (0 entries written, 0 warnings).\n"
-                    + "Output written in target/t1.ind.\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\item aaa, 3\n" //
-                    + "\\item bbb, 2\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
+                    + "\n" //
+                    + "\\end{theindex}\n");
+    }
+
+    /**
+     * <testcase> An index can be sorted with option -l. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void test1l() throws IOException {
+
+        String f = "target/t1.idx";
+        Locale.setDefault(Locale.ENGLISH);
+        runOnFile(
+            new String[]{"-l", f},
+            f,
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            BANNER
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (1 comparisons).\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
+                    + "Transcript written in target/t1.ilg.\n", //
+            "\\begin{theindex}\n" //
+                    + "\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -135,15 +163,15 @@ public class MakeindexTest extends AbstractTester {
             "target/t1.idx",
             "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
             BANNER
-                    + "Scanning input file target/t1.idx...done (2 entries accepted, 0 rejected)\n"
+                    + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
-                    + "Generating output file target/t1.ind...done (0 entries written, 0 warnings).\n"
-                    + "Output written in target/t1.ind.\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\item aaa, 3\n" //
-                    + "\\item bbb, 2\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }
@@ -163,15 +191,15 @@ public class MakeindexTest extends AbstractTester {
                     + "\\indexentry{bbb}{4}\n" //
                     + "\\indexentry{aaa}{3}\n", //
             BANNER
-                    + "Scanning input file target/t1.idx...done (3 entries accepted, 0 rejected)\n"
+                    + "Scanning input file ./target/t1.idx...done (3 entries accepted, 0 rejected)\n"
                     + "Sorting...done (3 comparisons).\n"
-                    + "Generating output file target/t1.ind...done (0 entries written, 0 warnings).\n"
-                    + "Output written in target/t1.ind.\n"
+                    + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
+                    + "Output written in ./target/t1.ind.\n"
                     + "Transcript written in target/t1.ilg.\n", //
             "\\begin{theindex}\n" //
                     + "\n" //
-                    + "\\item aaa, 3\n" //
-                    + "\\item bbb, 2, 4\n" //
+                    + "  \\item aaa, 3\n" //
+                    + "  \\item bbb, 2, 4\n" //
                     + "\n" //
                     + "\\end{theindex}\n");
     }

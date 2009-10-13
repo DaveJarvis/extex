@@ -24,7 +24,7 @@ package org.extex.exindex.makeindex.normalizer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6622 $
  */
-public class MakeindexCollator implements Collator {
+public class EmptyCollator implements Collator {
 
     /**
      * {@inheritDoc}

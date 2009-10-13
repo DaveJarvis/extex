@@ -48,7 +48,8 @@ import org.extex.exindex.makeindex.exceptions.StyleNotFoundException;
 import org.extex.exindex.makeindex.exceptions.UnknownOptionException;
 import org.extex.exindex.makeindex.normalizer.Collator;
 import org.extex.exindex.makeindex.normalizer.CollatorPipe;
-import org.extex.exindex.makeindex.normalizer.MakeindexCollator;
+import org.extex.exindex.makeindex.normalizer.EmptyCollator;
+import org.extex.exindex.makeindex.normalizer.LettersOnlyCollator;
 import org.extex.exindex.makeindex.normalizer.MakeindexGermanCollator;
 import org.extex.exindex.makeindex.normalizer.SpaceCollator;
 import org.extex.exindex.makeindex.pages.MakeindexPageProcessor;
@@ -540,6 +541,31 @@ public class Makeindex {
     }
 
     /**
+     * Create a collator from the settings.
+     * 
+     * @return the collator
+     */
+    private Collator makeCollator() {
+
+        Collator collator = null;
+        if (isCollateGerman()) {
+            collator = new MakeindexGermanCollator();
+        }
+        if (isCollateSpaces()) {
+            collator = (collator != null //
+                    ? new CollatorPipe(new SpaceCollator(), collator)
+                    : new SpaceCollator());
+        }
+        if (isLetterOrdering()) {
+            collator = (collator != null //
+                    ? new CollatorPipe(new LettersOnlyCollator(), collator)
+                    : new LettersOnlyCollator());
+        }
+
+        return collator != null ? collator : new EmptyCollator();
+    }
+
+    /**
      * Process a combined command line argument consisting of several single
      * letter options.
      * 
@@ -799,7 +825,6 @@ public class Makeindex {
 
         Reader reader;
         String fmt;
-        String fileName = file;
 
         if (file == null) {
             fmt = "ScanningStandardInput";
@@ -810,30 +835,20 @@ public class Makeindex {
             if (nis == null) {
                 throw new FileNotFoundException(file);
             }
+            file = nis.getName();
             reader = new InputStreamReader(nis, //
                 properties.getProperty(PROP_INPUT_ENCODING));
             fmt = "ScanningInput";
 
             if (properties.getProperty(PROP_OUTPUT) == null) {
                 properties.setProperty(PROP_OUTPUT, //
-                    nis.getName().replaceAll(".idx$", "") + ".ind");
+                    file.replaceAll(".idx$", "") + ".ind");
             }
         }
         try {
-            info(fmt, fileName);
+            info(fmt, file);
             Parser parser = new MakeindexParser();
-            Collator collator;
-            if (isCollateGerman()) {
-                collator =
-                        (isCollateSpaces() //
-                                ? new CollatorPipe(new SpaceCollator(),
-                                    new MakeindexGermanCollator())
-                                : new MakeindexGermanCollator());
-            } else {
-                collator = (isCollateSpaces() //
-                        ? new SpaceCollator()
-                        : new MakeindexCollator());
-            }
+            Collator collator = makeCollator();
             int[] count = parser.load(reader, file, index, collator);
             info("ScanningInputDone", //
                 Integer.toString(count[0]), Integer.toString(count[1]));
@@ -1019,15 +1034,14 @@ public class Makeindex {
         try {
             Parameters params = index.getParams();
             IndexWriter indexWriter = new MakeindexWriter(w, params);
-            int[] warn = {0};
+            long[] warn = {0, 0};
             PageProcessor pageProcessor =
                     new MakeindexPageProcessor(params, logger);
 
             info("Sorting");
-            // comparisons = 0;
             List<Entry> entries =
                     index.sort(comparator, pageProcessor, logger, warn);
-            info("SortingDone", Long.toString(comparator.getComparisons()));
+            info("SortingDone", Long.toString(warn[1]));
             info(fmt, output);
 
             int[] count = indexWriter.write(entries, logger, getStartPage(), //
@@ -1035,7 +1049,7 @@ public class Makeindex {
 
             info("GeneratingOutputDone", //
                 Integer.toString(count[0]), //
-                Integer.toString(count[1] + warn[0]));
+                Long.toString(count[1] + warn[0]));
         } finally {
             w.close();
         }
