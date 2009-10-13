@@ -398,6 +398,62 @@ public class MakeindexTest extends AbstractTester {
     }
 
     /**
+     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testEnc00() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-enc", "xxx"}, //
+            BANNER + "Encoding xxx is not supported.\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testEnc01() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-enc"}, //
+            BANNER + "Missing argument for option -enc\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testEnc10() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-encoding="}, //
+            BANNER + "Missing argument for option -encoding=\n", //
+            "", -1);
+    }
+
+    /**
+     * <testcase> An illegal argument for -encoding is reported. </testcase>
+     * 
+     * @throws IOException in case of an error
+     */
+    @Test
+    public void testEncoding00() throws IOException {
+
+        Locale.setDefault(Locale.ENGLISH);
+        run(new String[]{"-encoding=xxx"}, //
+            BANNER + "Encoding xxx is not supported.\n", //
+            "", -1);
+    }
+
+    /**
      * <testcase> Help is provided upon request. </testcase>
      * 
      * @throws IOException in case of an error
