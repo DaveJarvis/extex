@@ -657,12 +657,12 @@ public class Makeindex {
                     setStyleEncoding(enc);
 
                 } else if (a.startsWith("-encoding=")) {
-                    if (a.length() <= 9) {
+                    if (a.length() <= 10) {
                         throw new UnknownOptionException(LocalizerFactory
                             .getLocalizer(getClass()).format("MissingArgument",
                                 a));
                     }
-                    a = a.substring(9);
+                    a = a.substring(10);
                     setInputEncoding(a);
                     setOutputEncoding(a);
                     setStyleEncoding(a);
