@@ -21,23 +21,23 @@ package org.extex.ant.latex.command;
 
 import java.io.File;
 
-import org.extex.ant.latex.LatexTask;
+import org.extex.ant.latex.Settings;
 
 public class Makeindex implements Command {
 
     /**
-     * The field <tt>task</tt> contains the task.
+     * The field <tt>settings</tt> contains the task.
      */
-    private LatexTask task;
+    private Settings settings;
 
     /**
      * Creates a new object.
      * 
-     * @param task
+     * @param settings
      */
-    public Makeindex(LatexTask task) {
+    public Makeindex(Settings settings) {
 
-        this.task = task;
+        this.settings = settings;
     }
 
     /**
@@ -45,11 +45,12 @@ public class Makeindex implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#execute(java.io.File)
      */
-    public void execute(File artifact) {
+    public boolean execute(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
 
         // TODO gene: execute unimplemented
+        return false;
     }
 
     /**
@@ -57,9 +58,10 @@ public class Makeindex implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
      */
-    public void simulate(File artifact) {
+    public boolean simulate(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
+        return false;
     }
 
     /**

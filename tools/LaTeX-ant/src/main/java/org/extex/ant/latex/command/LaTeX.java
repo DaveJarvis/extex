@@ -20,45 +20,109 @@
 package org.extex.ant.latex.command;
 
 import java.io.File;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.LineNumberReader;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.tools.ant.BuildException;
-import org.extex.ant.latex.LatexTask;
+import org.extex.ant.latex.MakeException;
+import org.extex.ant.latex.Settings;
 
+/**
+ * TODO gene: missing JavaDoc.
+ * 
+ * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @version $Revision: 5432 $
+ */
 public class LaTeX implements Command {
 
     /**
-     * The field <tt>task</tt> contains the task.
+     * The field <tt>settings</tt> contains the task.
      */
-    private LatexTask task;
+    private Settings settings;
 
     /**
      * Creates a new object.
      * 
-     * @param task the task for reference to logging an d parameters
+     * @param settings the task for reference to logging and parameters
      */
-    public LaTeX(LatexTask task) {
+    public LaTeX(Settings settings) {
 
-        this.task = task;
+        this.settings = settings;
     }
 
-    public void execute(File artifact) {
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param fls
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void analyzeFls(File fls) throws IOException {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        if (!fls.exists()) {
+            settings.log(fls.toString() + " not found\n");
+            return;
+        }
+        settings.log(fls.toString() + " found\n");
+
+        LineNumberReader r = new LineNumberReader(new FileReader(fls));
+
+        try {
+            for (String line = r.readLine(); line != null; line = r.readLine()) {
+                // System.err.println(line);
+                if (line.startsWith("INPUT ")) {
+                    line = line.substring(6);
+                }
+            }
+            // TODO gene: analyzeFls unimplemented
+        } finally {
+            r.close();
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ant.latex.command.Command#execute(java.io.File)
+     */
+    public boolean execute(File artifact) throws MakeException {
+
+        settings.log(toString() + " " + artifact.getName() + "\n");
 
         String base = artifact.getAbsolutePath();
 
-        ProcessBuilder latex = new ProcessBuilder(task.getLatexCommand(), //
-            "-output-format=" + task.getOutputFormat(), //
-            "-output-directory=" + task.getOutput(), //
-            "-recorder", //
-            base.replaceAll("[\\\\]", "\\\\"));
-        latex.directory(task.getWorkingDirectory());
-        latex.redirectErrorStream(true);
-        Process p = null;
+        String outputFormat = settings.get(Settings.OUTPUT_FORMAT, "pdf");
+        if (!"pdf".equals(outputFormat) && !"dvi".equals(outputFormat)) {
+            throw new MakeException("unknown output format: " + outputFormat);
+        }
+        String latexCommand = settings.get(Settings.LATEX_COMMAND, "latex");
+        List<String> commandLine = new ArrayList<String>();
+        commandLine.add(latexCommand);
+        commandLine.add("-output-format=" + outputFormat);
+        commandLine.add("-output-directory="
+                + settings.get(Settings.OUTPUT_DIRECTORY, "target"));
+        String rec = settings.get("latex.use.recorder", "true");
+        if (rec != null && Boolean.parseBoolean(rec)) {
+            commandLine.add("-recorder");
+        } else {
+            rec = null;
+        }
+        commandLine.add(base.replaceAll("[\\\\]", "\\\\"));
+        ProcessBuilder builder = new ProcessBuilder(commandLine);
+        File workingDirectory = settings.getWorkingDirectory();
+        builder.directory(workingDirectory);
+        builder.redirectErrorStream(true);
+        Process p;
         try {
-            p = latex.start();
+            p = builder.start();
+        } catch (IOException e) {
+            throw new BuildException(e.toString(), e);
+        }
+        try {
             p.getOutputStream().close();
             StringBuilder buffer = new StringBuilder();
             InputStream in = p.getInputStream();
@@ -70,21 +134,41 @@ public class LaTeX implements Command {
                 if (msg.contains("! Emergency stop.")) {
                     throw new BuildException(msg);
                 } else {
-                    task.log(msg);
+                    settings.log(msg);
                 }
             }
         } catch (IOException e) {
-            throw new BuildException(e);
+            throw new BuildException(e.toString(), e);
         } finally {
-            if (p != null) {
-                p.destroy();
+            p.destroy();
+        }
+        if (rec != null) {
+            File fls =
+                    new File(workingDirectory, latexCommand.replaceAll(
+                        "^.*[/\\\\]", "").replaceAll("\\.[a-zA-Z]*$", "")
+                            + ".fls");
+            try {
+                analyzeFls(fls);
+            } catch (IOException e) {
+                throw new BuildException(e.toString(), e);
+            } finally {
+                settings.log("removing " + fls.toString() + "\n");
+                fls.delete();
             }
         }
+
+        return false;
     }
 
-    public void simulate(File artifact) {
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
+     */
+    public boolean simulate(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
+        return false;
     }
 
     /**
@@ -95,7 +179,7 @@ public class LaTeX implements Command {
     @Override
     public String toString() {
 
-        return task.getLatexCommand();
+        return settings.get(Settings.LATEX_COMMAND, "latex");
     }
 
 }

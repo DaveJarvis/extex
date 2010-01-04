@@ -17,11 +17,7 @@
  *
  */
 
-package org.extex.ant.latex.command;
-
-import java.io.File;
-
-import org.extex.ant.latex.MakeException;
+package org.extex.ant.latex;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,22 +25,22 @@ import org.extex.ant.latex.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
  */
-public interface Command {
+public class MakeException extends Exception {
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param base
-     * 
-     * @throws MakeException in case of an error
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
-    boolean execute(File base) throws MakeException;
+    private static final long serialVersionUID = 2009L;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Creates a new object.
      * 
-     * @param base
+     * @param message the message
      */
-    boolean simulate(File base);
+    public MakeException(String message) {
+
+        super(message);
+    }
 
 }

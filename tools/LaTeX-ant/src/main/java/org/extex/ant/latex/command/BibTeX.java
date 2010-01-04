@@ -24,7 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import org.apache.tools.ant.BuildException;
-import org.extex.ant.latex.LatexTask;
+import org.extex.ant.latex.Settings;
 
 /**
  * This is an adaptor to run an external B<small>IB</small><span
@@ -37,18 +37,18 @@ import org.extex.ant.latex.LatexTask;
 public class BibTeX implements Command {
 
     /**
-     * The field <tt>task</tt> contains the task.
+     * The field <tt>settings</tt> contains the settings.
      */
-    private LatexTask task;
+    private Settings settings;
 
     /**
      * Creates a new object.
      * 
-     * @param task the task
+     * @param settings the settings
      */
-    public BibTeX(LatexTask task) {
+    public BibTeX(Settings settings) {
 
-        this.task = task;
+        this.settings = settings;
     }
 
     /**
@@ -56,20 +56,26 @@ public class BibTeX implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#execute(java.io.File)
      */
-    public void execute(File artifact) {
+    public boolean execute(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
 
         String base =
                 artifact.getAbsolutePath().replaceAll("\\.[a-zA-Z0-9]*$", "");
 
-        ProcessBuilder bibtex = new ProcessBuilder(task.getBibtexCommand(), //
-            base);
-        bibtex.directory(task.getWorkingDirectory());
-        bibtex.redirectErrorStream(true);
+        ProcessBuilder builder =
+                new ProcessBuilder(settings.get(Settings.BIBTEX_COMMAND,
+                    "bibtex"), //
+                    base);
+        builder.directory(settings.getWorkingDirectory());
+        builder.redirectErrorStream(true);
         Process p = null;
         try {
-            p = bibtex.start();
+            p = builder.start();
+        } catch (IOException e) {
+            throw new BuildException(e);
+        }
+        try {
             p.getOutputStream().close();
             StringBuilder buffer = new StringBuilder();
             InputStream in = p.getInputStream();
@@ -82,10 +88,9 @@ public class BibTeX implements Command {
         } catch (IOException e) {
             throw new BuildException(e);
         } finally {
-            if (p != null) {
-                p.destroy();
-            }
+            p.destroy();
         }
+        return false;
     }
 
     /**
@@ -93,9 +98,10 @@ public class BibTeX implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
      */
-    public void simulate(File artifact) {
+    public boolean simulate(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
+        return false;
     }
 
     /**

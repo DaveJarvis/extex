@@ -21,7 +21,7 @@ package org.extex.ant.latex.command;
 
 import java.io.File;
 
-import org.extex.ant.latex.LatexTask;
+import org.extex.ant.latex.Settings;
 
 /**
  * This is an adaptor to run an internal &epsilon;&chi;Bib to process the
@@ -33,18 +33,18 @@ import org.extex.ant.latex.LatexTask;
 public class ExBib implements Command {
 
     /**
-     * The field <tt>task</tt> contains the task.
+     * The field <tt>settings</tt> contains the task.
      */
-    private LatexTask task;
+    private Settings settings;
 
     /**
      * Creates a new object.
      * 
-     * @param task the task
+     * @param settings the settings
      */
-    public ExBib(LatexTask task) {
+    public ExBib(Settings settings) {
 
-        this.task = task;
+        this.settings = settings;
     }
 
     /**
@@ -52,12 +52,13 @@ public class ExBib implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#execute(java.io.File)
      */
-    public void execute(File artifact) {
+    public boolean execute(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
 
         String base = artifact.getName().replace('\\', '/');
 
+        return false;
     }
 
     /**
@@ -65,9 +66,10 @@ public class ExBib implements Command {
      * 
      * @see org.extex.ant.latex.command.Command#simulate(java.io.File)
      */
-    public void simulate(File artifact) {
+    public boolean simulate(File artifact) {
 
-        task.log(toString() + " " + artifact.getName() + "\n");
+        settings.log(toString() + " " + artifact.getName() + "\n");
+        return false;
     }
 
     /**

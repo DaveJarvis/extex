@@ -158,7 +158,12 @@ public class LatexTaskTest extends BuildFileTest {
             assertTrue("unexpected success", false);
         } catch (BuildException e) {
             assertEquals("message", //
-                "master file parameter missing", e.getMessage());
+                "master file argument missing", e.getMessage());
+        } finally {
+            new File("target", "abc.aux").delete();
+            new File("target", "abc.log").delete();
+            new File("target", "abc.bbl").delete();
+            new File("target", "abc.blg").delete();
         }
     }
 
@@ -177,6 +182,11 @@ public class LatexTaskTest extends BuildFileTest {
             assertEquals("message", //
                 "master file " + new File("target", fileName).getAbsoluteFile()
                         + " not found", e.getMessage());
+        } finally {
+            new File("target", "abc.aux").delete();
+            new File("target", "abc.log").delete();
+            new File("target", "abc.bbl").delete();
+            new File("target", "abc.blg").delete();
         }
     }
 
@@ -197,6 +207,10 @@ public class LatexTaskTest extends BuildFileTest {
             assertTrue(true);
         } finally {
             f.delete();
+            new File("target", "abc.aux").delete();
+            new File("target", "abc.log").delete();
+            new File("target", "abc.bbl").delete();
+            new File("target", "abc.blg").delete();
         }
     }
 
@@ -214,12 +228,17 @@ public class LatexTaskTest extends BuildFileTest {
                     + "\\end{document}\n");
         try {
             runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<Dependency/>" //
+                    + "<File/>" //
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue(e.toString().contains("I found no \\citation commands"));
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("I found no \\citation commands"));
         } finally {
             f.delete();
+            new File("target", "abc.aux").delete();
+            new File("target", "abc.log").delete();
+            new File("target", "abc.bbl").delete();
+            new File("target", "abc.blg").delete();
         }
     }
 
@@ -240,10 +259,105 @@ public class LatexTaskTest extends BuildFileTest {
                     + "\\end{document}\n");
         try {
             runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<Dependency/>" //
+                    + "<File/>" //
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue(e.toString().contains("I couldn't open database file "));
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("I couldn't open database file "));
+        } finally {
+            f.delete();
+            new File("target", "abc.aux").delete();
+            new File("target", "abc.log").delete();
+            new File("target", "abc.bbl").delete();
+            new File("target", "abc.blg").delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void testDependency01() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, //
+            "\\documentclass{article}\n" //
+                    + "\\begin{document}\n" //
+                    + "\\bibliography{abc}" //
+                    + "\\bibliographystyle{plain}" //
+                    + "\\nocite{*}" //
+                    + "\\end{document}\n");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "<file name=\"xyz\"/>" + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("unknown output format"));
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void testProp01() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, "");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "<property/>" //
+                    + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("property without name"));
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void testProp02() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, "");
+        try {
+            runTest("<LaTeX master=\"" + fileName + "\">" //
+                    + "<property name=\"abc\"/>" //
+                    + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("has no value"));
+        } finally {
+            f.delete();
+        }
+    }
+
+    /**
+     * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    public final void testProp03() throws IOException {
+
+        String fileName = "abc.tex";
+        File f = mkfile(fileName, "");
+        try {
+            runTest("<LaTeX master=\"" + fileName
+                    + "\">" //
+                    + "<property name=\"latex.output.format\" value=\"xxx\"/>"
+                    + "</LaTeX>", null);
+        } catch (BuildException e) {
+            assertTrue("Exception: " + e.toString(), //
+                e.toString().contains("unknown output format"));
         } finally {
             f.delete();
         }

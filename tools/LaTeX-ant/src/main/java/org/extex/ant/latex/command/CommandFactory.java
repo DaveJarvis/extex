@@ -19,9 +19,7 @@
 
 package org.extex.ant.latex.command;
 
-import java.io.File;
-
-import org.extex.ant.latex.MakeException;
+import org.extex.ant.latex.Settings;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -29,22 +27,47 @@ import org.extex.ant.latex.MakeException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
  */
-public interface Command {
+public class CommandFactory {
+
+    /**
+     * TODO gene: missing JavaDoc.
+     * 
+     */
+    public enum Type {
+        /**
+         * The field <tt>LATEX</tt> contains the ...
+         */
+        LATEX,
+        /**
+         * The field <tt>BIBTEX</tt> contains the ...
+         */
+        BIBTEX,
+        /**
+         * The field <tt>MAKEINDEX</tt> contains the ...
+         */
+        MAKEINDEX
+    }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param base
-     * 
-     * @throws MakeException in case of an error
+     * @param type
+     * @param settings
+     * @return
      */
-    boolean execute(File base) throws MakeException;
+    public static Command create(Type type, Settings settings) {
 
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param base
-     */
-    boolean simulate(File base);
-
+        switch (type) {
+            case LATEX:
+                return new LaTeX(settings);
+            case BIBTEX:
+                String command = settings.get("bibtex.command", "bibtex");
+                return (command.equals("&exbib")
+                        ? new ExBib(settings)
+                        : new BibTeX(settings));
+            case MAKEINDEX:
+                return new Makeindex(settings);
+        }
+        throw new RuntimeException("illegal type");
+    }
 }
