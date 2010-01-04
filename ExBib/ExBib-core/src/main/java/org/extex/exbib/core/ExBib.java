@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -63,7 +63,7 @@ import org.extex.resource.ResourceFinderFactory;
  * The parameters to &epsilon;&chi;Bib are passed in as {@link Properties}. The
  * keys and values in the properties are {@link String}s. See
  * {@link #setProperty(String, String)}. The names of some of the supported
- * parameters are provided as symbolic constants in this file:
+ * parameters are provided as symbolic constants in this class:
  * </p>
  * <ul>
  * <li> {@link #PROP_BIB_ENCODING}</li>
@@ -79,25 +79,25 @@ import org.extex.resource.ResourceFinderFactory;
  * 
  * <h2>Invocation</h2>
  * <p>
- * The tasks performed by this class can be applied with a fews lines of code:
+ * The tasks performed by this class can be applied with a few lines of code:
  * </p>
  * 
  * <pre>
- *  new ExBib(new Properties());
+ *  ExBib exbib = new ExBib(new Properties());
  *  exbib.setFile("abc.aux");
  *  exbib.run();
  * </pre>
  * 
  * <p>
- * This example used the built-in defaults to read the data from the given aux
+ * This example uses the built-in defaults to read the data from the given aux
  * file and process it.
  * </p>
  * 
  * <h2>Configuration</h2>
  * <p>
  * The method {@link #run()} reads part of the information needed for assembling
- * the application from a configuration file. The follow example illustrates how
- * such a configuration file looks like.
+ * the application from a configuration file. The following example illustrates
+ * how such a configuration file looks like.
  * </p>
  * 
  * <pre>
@@ -119,14 +119,14 @@ import org.extex.resource.ResourceFinderFactory;
  * </pre>
  * 
  * <p>
- * The configuration is sought on the classpath in the package
+ * The configuration is sought on the class path in the package
  * <tt>config/exbib</tt>.
  * </p>
  * 
  * <h2>Dot Files</h2>
  * <p>
- * This class does <em>not</em> try to load settings from a dot file. This
- * should be done before creating an instance of this class.
+ * This class does <em>not</em> try to load settings from a dot file. This could
+ * be done before creating an instance of this class.
  * </p>
  * 
  * 
@@ -177,7 +177,8 @@ public class ExBib {
 
     /**
      * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
-     * been started. This is fixed to be 2002 and should not be altered.
+     * been started. This is fixed to be 2002 and should not be altered under
+     * any circumstances.
      */
     public static final int INCEPTION_YEAR = 2002;
 
@@ -308,8 +309,6 @@ public class ExBib {
      */
     public ExBib(Properties properties) throws IOException {
 
-        super();
-
         useLanguage(Locale.getDefault());
         setProperties(properties);
         logger = Logger.getLogger(ExBib.class.getName());
@@ -431,8 +430,8 @@ public class ExBib {
     }
 
     /**
-     * Write a message to the logger. It is preceded by the banner if the banner
-     * has not been shown before.
+     * Write a severe message to the logger. It is preceded by the banner if the
+     * banner has not been shown before.
      * 
      * @param tag the resource tag of the message pattern
      * @param args the arguments
@@ -476,7 +475,9 @@ public class ExBib {
     }
 
     /**
-     * Attach a handler to the logger to direct messages to a log file.
+     * Attach a handler to the logger to direct messages to a log file. This is
+     * an extension point which could be implemented by derived classes. The
+     * default implementation simply does nothing in this method.
      * 
      * @param log the base name of the file
      * @param extension the extension
