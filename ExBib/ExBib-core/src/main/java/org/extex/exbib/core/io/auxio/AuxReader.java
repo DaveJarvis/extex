@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,12 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 
 /**
- * This interface describes the interpreter engine for ExBib.
+ * This interface describes the reader for aux files in &epsilon;&chi;Bib. The
+ * responsibility of the reader is to parse the aux file and store the
+ * information in a {@link ProcessorContainer}.
+ * <p>
+ * Some of the internal processing can be observed by registering an handler.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
