@@ -6,7 +6,7 @@
   <artifactId>ExBib-bst2gy</artifactId>
   <name>ExBib BST to Groovy Compiler</name>
   <description>
-    This is the ExBib BST to Groovy Compiler. It tages a BST files and
+    This is the ExBib BST to Groovy Compiler. It takes a BST files and
     produces an equivalent Groovy file which can be used for further
     development in a higher programming language.
   </description>
