@@ -2,7 +2,7 @@
 \SVN$Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -170,19 +170,91 @@ help of the build script. The build script is a wrapper around Ant. It
 can be invoked with the following command:
 
 \begin{lstlisting}{}
-# cd build
-# ant compile
-Buildfile: build.xml
-
-compile:
-
-BUILD SUCCESSFUL
-Total time: 1 second
-#
+# mvn compile
+[INFO] Scanning for projects...
+[INFO] Reactor build order: 
+[INFO]   The ExTeX Project
+[INFO]   ExTeX resource component
+[INFO]   ExBib
+[INFO]   ExBib core
+[INFO]   Command Line Interface
+[INFO]   ExBib command line interface
+[INFO]   Doc Tools
+[INFO]   ExTeX Developers Guide
+[INFO]   ExTeX Users Guide
+[INFO]   ExTeX Documentation
+[INFO]   ExBib BSF Adaptor
+[INFO]   ExBib groovy
+[INFO]   ExBib BST to Groovy Compiler
+[INFO]   ExBib jython
+[INFO]   ExBib Ant task
+[INFO]   ExBib Documentation
+[INFO]   ExBib texmf
+[INFO]   ExBib command line interface for the utility program
+[INFO]   ExBib install system
+[INFO]   ExIndex
+[INFO]   ExIndex lisp component
+[INFO]   ExIndex core component
+[INFO]   ExIndex main component
+[INFO]   ExIndex makeindex
+[INFO]   ExTeX
+[INFO]   ExTeX core components
+[INFO]   ExTeX Font System API
+[INFO]   ExTeX Scanner API
+[INFO]   ExTeX Typesetter API
+[INFO]   ExTeX Interpreter API
+[INFO]   ExTeX Scanner
+[INFO]   ExTeX Typesetter TeX
+[INFO]   ExTeX base
+[INFO]   ExTeX Backend Dump
+[INFO]   ExTeX Backend DVI
+[INFO]   ExTeX Backend DVIx
+[INFO]   ExTeX Backend PS
+[INFO]   ExTeX Backend RTF
+[INFO]   ExTeX Backend SVG
+[INFO]   ExTeX Backend Text
+[INFO]   ExTeX Backend XML
+[INFO]   ExTeX Unit TeX
+[INFO]   ExTeX Interpreter max
+[INFO]   ExTeX Unit Native
+[INFO]   ExTeX Base Ext
+[INFO]   ExTeX AFM Font System
+[INFO]   ExTeX TFM Font System
+[INFO]   ExTeX OTF Font System
+[INFO]   ExTeX Font Utilities
+[INFO]   ExTeX Unit eTeX
+[INFO]   ExTeX Unit Namespace
+[INFO]   ExTeX Unit ExTeX
+[INFO]   ExTeX Pdf API
+[INFO]   ExTeX Unit Pdftex
+[INFO]   ExTeX OCPware
+[INFO]   ExTeX Unit omega
+[INFO]   ExTeX Unit Color
+[INFO]   ExTeX Format Utility Program
+[INFO]   ExTeX TeX Main Program
+[INFO]   ExTeX Scanner 32
+[INFO]   ExTeX Typesetter core
+[INFO]   ExTeX Unit Image
+[INFO]   ExTeX texmf tree
+[INFO]   ExTeX tools
+[INFO] ------------------------------------------------------------------------
+[INFO] Building The ExTeX Project
+[INFO]    task-segment: [compile]
+...
+[INFO] ExTeX texmf tree ...................................... SUCCESS [0.000s]
+[INFO] ExTeX tools ........................................... SUCCESS [0.000s]
+[INFO] ------------------------------------------------------------------------
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 1 minute 11 seconds
+[INFO] Finished at: Sun Mar 21 09:59:51 CET 2010
+[INFO] Final Memory: 21M/41M
+[INFO] ------------------------------------------------------------------------
 \end{lstlisting}
 
-The generated files are placed in the sub-directory
-\Dir*{target}\Dir{classes}. Thus if this directory and the jars in
+The generated files are placed in various sub-directories
+\Dir*{target}\Dir{classes}. Thus if these directories and the jars in
 \Dir{lib} are on the class path then \ExTeX\ can be run immediately.
 
 

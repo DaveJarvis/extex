@@ -66,7 +66,7 @@ pre {
 
 <p>
  This module follows the Maven directory structure. The inputs for compilation
- are somewhere under the directory <tt>src</tt>. The compiled results can be
+ are somewhere under the directory <tt>src/main</tt>. The compiled results can be
  found in the directory <tt>target</tt>.
 </p>
 <pre class="directory">
@@ -84,23 +84,24 @@ pre {
 </pre>
 
 <p>
- Some common files are taken from a similar directory structure in the parent
- directory:
+ Some common files are taken from a similar directory structure in the
+ <em>parent</em> directory:
 </p>
 <pre class="directory">
- -+&mdash; src/
-       +&mdash; main/
-            +&mdash; bibtex/
-            |    +&mdash; references.bib
-            +&mdash; tex/
-            |    +&mdash; license/
-            |         +&mdash; ...
-            +&mdash; texinputs/
-                 +&mdash; bibtex/
-                 |    +&mdash; alpha.bst
-                 +&mdash; makeindex/
-                 |    +&mdash; doc.ist
-                 +&mdash; extex-doc.cls
+ -+&mdash; ../
+        -+&mdash; src/
+              +&mdash; main/
+                   +&mdash; bibtex/
+                   |    +&mdash; references.bib
+                   +&mdash; tex/
+                   |    +&mdash; license/
+                   |         +&mdash; ...
+                   +&mdash; texinputs/
+                        +&mdash; bibtex/
+                        |    +&mdash; alpha.bst
+                        +&mdash; makeindex/
+                        |    +&mdash; doc.ist
+                        +&mdash; extex-doc.cls
 </pre>
 
 
@@ -149,11 +150,12 @@ pre {
 
 <h2>License</h2>
 
-The &epsilon;&chi;Bib documentation is released under the 
-<a href="LICENSE.html">GNU Free Documentation License</a>.
+The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
+documentation is released under the <a href="LICENSE.html">GNU Free
+Documentation License</a>.
 
 <address>
-© 2008 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+© 2010 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
 </address>
 </body>
 </html>

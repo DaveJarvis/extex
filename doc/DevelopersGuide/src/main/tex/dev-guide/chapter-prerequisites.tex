@@ -2,7 +2,7 @@
 \SVN$Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -45,7 +45,7 @@ Java HotSpot(TM) Client VM (build 14.1-b02, mixed mode, sharing)
 
 Other Java implementations are currently not supported. They might
 work, but the last time we checked it, \+GCJ+ didn't suffice. We would
-be happy to have someone working on a compatibility layer for a other
+be happy to have someone working on a compatibility layer for other
 Java implementations.
 
 
@@ -89,11 +89,11 @@ separator is a colon (\verb|:|) under \+Unix+ and a semicolon
 
 \section{Subversion Client}\index{Subversion|(}
 
-\ExTeX{} uses Subversion (\url{http://subversion.tigris.org/}) as
-revision control system.\footnote{\ExTeX{} has used CVS\index{CVS} in
-  the beginning. Thus references to CVS might be left over.} Thus you
-need a Subversion client installed on your machine. In the simplest
-case this is the client integrated into the IDE Eclipse (see
+\ExTeX{} uses Subversion (\url{http://subversion.tigris.org/}) as revision
+control system.\footnote{\ExTeX{} has used CVS\index{CVS} in the beginning.
+  Thus references to CVS might be left over. They are outdated} Thus you need
+a Subversion client installed on your machine. In the simplest case this is
+the client integrated into the IDE Eclipse (see
 section~\ref{sec:eclipse.plugins}), or the command line version of
 \texttt{svn}.
 
@@ -113,7 +113,7 @@ The \+build system+ is based on Maven~2 (\url{http://maven.apache.org/}).
 Thus Maven~2 needs to be installed. To install Maven 
 
 \begin{itemize}
-\item load it down from its download site -- or a mirror close by,
+\item download it from its download site -- or a mirror close by,
 \item unpack the archive to a destination directory,
 \item define an environment variable
   \texttt{MAVEN\_HOME}\index{MAVEN_HOME@\texttt{\$MAVEN\_HOME}} to
@@ -126,15 +126,18 @@ directory \Dir{.m2}. The file \File{settings.xml} contains the overall
 configuration. Especially if a \+proxy+ is required it can be
 configured there.
 
-Usually the memory reserved for Maven should be sufficient.
-Unfortunately Maven runs out of memory for some operation like
-generating the Maven report site. For these tatsks it is necessary to
-enlarge the memory by setting the environment variable
-\verb|MAVEN_OPTS|\index{MAVEN\_OPTS|\texttt{MAVEN\_OPTS}}. On \+Unix+
-this can be achieved with the following statement
+Usually the memory reserved for Maven should be sufficient. Unfortunately
+Maven runs out of memory for some operation like generating the Maven report
+site. For these tatsks it is necessary to enlarge the memory by setting the
+environment variable
+\verb|MAVEN_OPTS|\index{MAVEN\_OPTS@\texttt{MAVEN\_OPTS}}. On \+Unix+ with a
+\index{bourne shell}Bourne shell or a derivative this can be achieved with the
+following statement
 \begin{lstlisting}{}
   export MAVEN_OPTS="-Xmx512m"
 \end{lstlisting}
+Execute it in the shell you are working in or put it in a configuration file
+for the shell -- like \File{\~/.profile}.
 \index{Maven|)}
 
 
@@ -146,7 +149,7 @@ on the path for special tasks. To install Ant for the use from the
 command line
 
 \begin{itemize}
-\item load it down from its download site -- or a mirror close by,
+\item download it from its download site -- or a mirror close by,
 \item unpack the archive to a destination directory,
 \item put \texttt{bin} in the new directory onto the path of
   executables.
@@ -168,6 +171,7 @@ at hand. On \+Unix+ this can be the (bourne\index{bourne shell},
 \+bash+, korn\index{korn shell}\ldots) shell. On \+Windows+ we
 recommend the \+Cygwin+ suite (http://cygwin.com/) which contains
 bash.  \index{Shell|)}
+
 
 \section{User Account at Berlios}\index{Berlios|(}
 
