@@ -189,7 +189,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\aa{");
 
-        assertEquals('å', r.read());
+        assertEquals('\u00e5', r.read());
         assertEquals('{', r.read());
         assertEquals(-1, r.read());
     }
@@ -258,7 +258,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\\"{a}");
 
-        assertEquals('ä', r.read());
+        assertEquals('\u00e4', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -273,7 +273,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\c c");
 
-        assertEquals('ç', r.read());
+        assertEquals('\u00e7', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -288,7 +288,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\c C");
 
-        assertEquals('Ç', r.read());
+        assertEquals('\u00c7', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -303,7 +303,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\AA ");
 
-        assertEquals('Å', r.read());
+        assertEquals('\u00c5', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -318,7 +318,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\AE ");
 
-        assertEquals('Æ', r.read());
+        assertEquals('\u00c6', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -333,7 +333,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\'a");
 
-        assertEquals('á', r.read());
+        assertEquals('\u00e1', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -348,7 +348,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\`a");
 
-        assertEquals('à', r.read());
+        assertEquals('\u00e0', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -363,7 +363,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\^a");
 
-        assertEquals('â', r.read());
+        assertEquals('\u00e2', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -378,7 +378,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\~n");
 
-        assertEquals('ñ', r.read());
+        assertEquals('\u00f1', r.read());
         assertEquals(-1, r.read());
     }
 
