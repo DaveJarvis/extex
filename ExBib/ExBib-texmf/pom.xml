@@ -77,7 +77,7 @@
             <configuration>
               <tasks>
                 <mkdir dir="${project.build.directory}/classes/META-INF" />
-                <touch file="${project.build.directory}/toc.index">
+                <touch file="${project.build.directory}/toc.index" />
                 <move  file="${project.build.directory}/toc.index"
                        todir="${project.build.directory}/classes/META-INF"/>
               </tasks>
