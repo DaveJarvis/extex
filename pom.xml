@@ -277,6 +277,10 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
+	<configuration>
+	  <aggregate>true</aggregate>
+	  <targetJdk>1.5</targetJdk>
+	</configuration>
       </plugin>
 
       <plugin>
