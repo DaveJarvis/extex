@@ -57,7 +57,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\ss  ");
 
-        assertEquals('ß', r.read());
+        assertEquals('\u00df', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -72,7 +72,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\ss{} ");
 
-        assertEquals('ß', r.read());
+        assertEquals('\u00df', r.read());
         assertEquals(' ', r.read());
         assertEquals(-1, r.read());
     }
@@ -105,7 +105,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\\"a");
 
-        assertEquals('ä', r.read());
+        assertEquals('\u00e4', r.read());
         assertEquals(-1, r.read());
     }
 
@@ -120,7 +120,7 @@ public class PlainTeXReaderTest extends TeXReaderTest {
 
         TeXReader r = makeReader("\\\"A");
 
-        assertEquals('Ä', r.read());
+        assertEquals('\u00c4', r.read());
         assertEquals(-1, r.read());
     }
 
