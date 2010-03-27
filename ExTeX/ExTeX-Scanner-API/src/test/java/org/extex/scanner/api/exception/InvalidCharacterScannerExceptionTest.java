@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,7 +24,6 @@ import static org.junit.Assert.assertEquals;
 import java.util.Locale;
 
 import org.extex.core.UnicodeChar;
-import org.extex.scanner.api.exception.InvalidCharacterScannerException;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -48,7 +47,8 @@ public class InvalidCharacterScannerExceptionTest {
 
     /**
      * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+     * .
      */
     @Test
     public final void testGetLocalizedMessage1() {
@@ -61,13 +61,14 @@ public class InvalidCharacterScannerExceptionTest {
 
     /**
      * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+     * .
      */
     @Test
     public final void testGetLocalizedMessage2() {
 
         Locale.setDefault(Locale.GERMAN);
-        assertEquals("Ungültiges Zeichen x erkannt",
+        assertEquals("Ung\u00fcltiges Zeichen x erkannt",
             new InvalidCharacterScannerException(UnicodeChar.get('x'))
                 .getLocalizedMessage());
     }
