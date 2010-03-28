@@ -35,7 +35,7 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6688 $
  */
-public class TestableIndexer extends Indexer {
+public class ATestableIndexer extends Indexer {
 
     /**
      * The field <tt>FINDER</tt> contains the resource finder.
@@ -79,7 +79,7 @@ public class TestableIndexer extends Indexer {
      * @throws InstantiationException in case of an error
      * @throws IllegalArgumentException in case of an error
      */
-    public TestableIndexer()
+    public ATestableIndexer()
             throws SecurityException,
                 LException,
                 NoSuchMethodException,
@@ -108,7 +108,7 @@ public class TestableIndexer extends Indexer {
      * @throws InstantiationException in case of an error
      * @throws IllegalArgumentException in case of an error
      */
-    public TestableIndexer(ResourceFinder rf)
+    public ATestableIndexer(ResourceFinder rf)
             throws SecurityException,
                 LException,
                 NoSuchMethodException,

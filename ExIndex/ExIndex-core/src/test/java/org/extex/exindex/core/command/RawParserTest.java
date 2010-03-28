@@ -220,7 +220,7 @@ public class RawParserTest {
 
         Locale.setDefault(Locale.ENGLISH);
 
-        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
 
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
@@ -249,7 +249,7 @@ public class RawParserTest {
     @Test
     public final void testFull01Ok() throws Exception {
 
-        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
@@ -267,7 +267,7 @@ public class RawParserTest {
     @Test
     public final void testFull02Ok() throws Exception {
 
-        Indexer indexer = new TestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
         indexer.run(null, rsc, null, TestUtils.makeLogger());
