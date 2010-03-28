@@ -133,8 +133,8 @@
     <site>
       <id>www.extex.org</id>
       <url>file://serv/www/extex/mvn</url>
-      <url>http://www.extex.org/maven2</url>
 <!--
+      <url>http://www.extex.org/maven2</url>
 -->
     </site>
   </distributionManagement>
