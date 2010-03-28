@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,8 +22,8 @@ package org.extex.language.hyphenation.impl;
 import static org.junit.Assert.assertTrue;
 
 import org.extex.interpreter.context.Context;
-import org.extex.interpreter.context.MockContext;
 import org.extex.language.Language;
+import org.extex.language.hyphenation.MockContext;
 import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 import org.extex.language.hyphenation.liang.LiangsHyphenationTable;
 import org.extex.scanner.api.exception.CatcodeException;
@@ -36,31 +36,15 @@ import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for LiangsHyphenationTable.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
 public class LiangsHyphenationTableTest {
 
     /**
-     * This mock implementation is for test purposes only.
-     *
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision:4527 $
-     */
-    private static class MyMockContext extends MockContext {
-
-        /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
-         * serialization.
-         */
-        private static final long serialVersionUID = 1L;
-
-    }
-
-    /**
      * The command line interface.
-     *
+     * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
@@ -70,12 +54,12 @@ public class LiangsHyphenationTableTest {
 
     /**
      * Translate a String into {@link Tokens}.
-     *
+     * 
      * @param s the string specification
      * @param context the context
-     *
+     * 
      * @return the tokens
-     *
+     * 
      * @throws CatcodeException in case of problems in token creation
      */
     private static Tokens makeTokens(String s, Context context)
@@ -95,13 +79,13 @@ public class LiangsHyphenationTableTest {
     /**
      * <testcase> This test case checks that the insertion of two different
      * pattern does not lead to an exception. </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void test1() throws Exception {
 
-        Context context = new MyMockContext();
+        Context context = new MockContext();
         Language table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a2b1c0", context));
@@ -112,13 +96,13 @@ public class LiangsHyphenationTableTest {
     /**
      * <testcase> This test case checks that the insertion of two different
      * pattern does not lead to an exception. </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void test2() throws Exception {
 
-        Context context = new MyMockContext();
+        Context context = new MockContext();
         LiangsHyphenationTable table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a1b0", context));
@@ -129,13 +113,13 @@ public class LiangsHyphenationTableTest {
     /**
      * <testcase> This test case tests that the addPattern() method with
      * identical arguments leads to an exception. </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     @Test(expected = DuplicateHyphenationException.class)
     public void testErr1() throws Exception {
 
-        Context context = new MyMockContext();
+        Context context = new MockContext();
         Language table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a2b1c0", context));
@@ -146,13 +130,13 @@ public class LiangsHyphenationTableTest {
      * <testcase> This test case tests that the addPattern() method with
      * identical arguments on the character positions leads to an exception.
      * </testcase>
-     *
+     * 
      * @throws Exception in case of an error
      */
     @Test(expected = DuplicateHyphenationException.class)
     public void testErr2() throws Exception {
 
-        Context context = new MyMockContext();
+        Context context = new MockContext();
         Language table = new LiangsHyphenationTable();
 
         table.addPattern(makeTokens("0a2b1c0", context));
