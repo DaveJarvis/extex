@@ -47,6 +47,8 @@ import org.extex.logging.LogFormatter;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
+import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextFactory;
 import org.extex.typesetter.tc.TypesettingContextImpl;
@@ -85,8 +87,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#getCountOption(
-         *      java.lang.String)
+         * @see org.extex.typesetter.TypesetterOptions#getCountOption(java.lang.String)
          */
         public FixedCount getCountOption(String name) {
 
@@ -109,8 +110,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(
-         *      java.lang.String)
+         * @see org.extex.typesetter.TypesetterOptions#getDimenOption(java.lang.String)
          */
         public FixedDimen getDimenOption(String name) {
 
@@ -133,8 +133,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(
-         *      java.lang.String)
+         * @see org.extex.typesetter.TypesetterOptions#getGlueOption(java.lang.String)
          */
         public FixedGlue getGlueOption(String name) {
 
@@ -147,8 +146,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#getLccode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.TypesetterOptions#getLccode(org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLccode(UnicodeChar uc) {
 
@@ -158,8 +156,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#getMuskip(
-         *      java.lang.String)
+         * @see org.extex.typesetter.TypesetterOptions#getMuskip(java.lang.String)
          */
         public Muskip getMuskip(String name) {
 
@@ -219,8 +216,8 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#setCountOption(
-         *      java.lang.String, long)
+         * @see org.extex.typesetter.TypesetterOptions#setCountOption(java.lang.String,
+         *      long)
          */
         public void setCountOption(String name, long value)
                 throws GeneralException {
@@ -231,8 +228,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.TypesetterOptions#setParshape(
-         *      org.extex.typesetter.paragraphBuilder.ParagraphShape)
+         * @see org.extex.typesetter.TypesetterOptions#setParshape(org.extex.typesetter.paragraphBuilder.ParagraphShape)
          */
         public void setParshape(ParagraphShape shape) {
 
@@ -324,8 +320,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getDepth(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
          */
         public FixedGlue getDepth(UnicodeChar uc) {
 
@@ -345,8 +340,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getEfCode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
          */
         public long getEfCode(UnicodeChar uc) {
 
@@ -406,8 +400,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getHeight(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
          */
         public FixedGlue getHeight(UnicodeChar uc) {
 
@@ -427,8 +420,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
          */
         public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
@@ -438,8 +430,8 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getKerning(
-         *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getKerning(org.extex.core.UnicodeChar,
+         *      org.extex.core.UnicodeChar)
          */
         public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -449,8 +441,8 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getLigature(
-         *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getLigature(org.extex.core.UnicodeChar,
+         *      org.extex.core.UnicodeChar)
          */
         public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
@@ -490,8 +482,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#getWidth(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
          */
         public FixedGlue getWidth(UnicodeChar uc) {
 
@@ -501,8 +492,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#hasGlyph(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
          */
         public boolean hasGlyph(UnicodeChar uc) {
 
@@ -512,8 +502,8 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#setEfCode(
-         *      org.extex.core.UnicodeChar, long)
+         * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
+         *      long)
          */
         public void setEfCode(UnicodeChar uc, long code) {
 
@@ -523,8 +513,8 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#setFontDimen(
-         *      java.lang.String, org.extex.core.dimen.Dimen)
+         * @see org.extex.typesetter.tc.font.Font#setFontDimen(java.lang.String,
+         *      org.extex.core.dimen.Dimen)
          */
         public void setFontDimen(String key, Dimen value) {
 
@@ -534,8 +524,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
          */
         public void setHyphenChar(UnicodeChar hyphen) {
 
@@ -545,8 +534,7 @@ public abstract class AbstractParagraphBuiderTester {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.tc.font.Font#setSkewChar(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
          */
         public void setSkewChar(UnicodeChar skew) {
 
@@ -558,8 +546,7 @@ public abstract class AbstractParagraphBuiderTester {
         tc.setLanguage(new Language() {
 
             /**
-             * The field <tt>serialVersionUID</tt> contains the version
-             * number.
+             * The field <tt>serialVersionUID</tt> contains the version number.
              */
             private static final long serialVersionUID = 1L;
 
@@ -692,7 +679,7 @@ public abstract class AbstractParagraphBuiderTester {
 
         for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-             if (c == ' ') {
+            if (c == ' ') {
                 nodes.add(new SpaceNode(new Glue(Dimen.ONE_PT)));
             } else if (c == '\\') {
                 Matcher m = pDisc.matcher(s.substring(i));
