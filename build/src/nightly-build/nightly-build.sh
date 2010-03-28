@@ -5,7 +5,7 @@
 # Assumption: The current directory when this script is run has to be
 #             the build directory in the ExTeX root (trunk)
 #
-# (c) 2003-2009 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# (c) 2003-2010 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
 if [ "$LOG" == "" ]; then
@@ -20,6 +20,8 @@ if [ "$INSTALLDIR" == "" ]; then
     echo "INSTALLDIR is undefined"
     exit 1
 fi
+
+export MAVEN_OPTS="-Xmx512m"
 
 cd ..
 
