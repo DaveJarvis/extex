@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -66,42 +66,14 @@ public class LigatureBuilderImplTest {
         }
 
         /**
-         * Determine whether the glyph for a given character is present in this
-         * font.
-         * 
-         * @param uc the character
-         * 
-         * @return <code>true</code> iff the glyph is present
-         * 
-         * @see org.extex.typesetter.tc.font.Font#hasGlyph(
-         *      org.extex.core.UnicodeChar)
-         */
-        @Override
-        public boolean hasGlyph(UnicodeChar uc) {
-
-            switch (uc.getCodePoint()) {
-                case 'a':
-                case 'f':
-                case 'l':
-                case CC_FF:
-                case CC_FL:
-                case CC_FFL:
-                    return true;
-                default:
-                    return false;
-            }
-
-        }
-
-        /**
          * Returns the ligature for two chars.
          * 
          * @param uc1 the first char
          * @param uc2 the second char
          * @return the ligature for two chars
          * 
-         * @see org.extex.typesetter.tc.font.Font#getLigature(
-         *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+         * @see org.extex.typesetter.tc.font.Font#getLigature(org.extex.core.UnicodeChar,
+         *      org.extex.core.UnicodeChar)
          */
         @Override
         public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
@@ -124,6 +96,33 @@ public class LigatureBuilderImplTest {
             return null;
         }
 
+        /**
+         * Determine whether the glyph for a given character is present in this
+         * font.
+         * 
+         * @param uc the character
+         * 
+         * @return <code>true</code> iff the glyph is present
+         * 
+         * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
+         */
+        @Override
+        public boolean hasGlyph(UnicodeChar uc) {
+
+            switch (uc.getCodePoint()) {
+                case 'a':
+                case 'f':
+                case 'l':
+                case CC_FF:
+                case CC_FL:
+                case CC_FFL:
+                    return true;
+                default:
+                    return false;
+            }
+
+        }
+
     }
 
     /**
@@ -134,7 +133,7 @@ public class LigatureBuilderImplTest {
     /**
      * The constant <tt>CC_FF</tt> contains the faked FF ligature.
      */
-    private static final int CC_FF = '§';
+    private static final int CC_FF = '/';
 
     /**
      * The constant <tt>CC_FFL</tt> contains the faked FFL ligature.
