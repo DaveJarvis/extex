@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -71,7 +71,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -83,7 +84,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -99,7 +101,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -120,7 +123,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -136,7 +140,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -157,7 +162,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -169,7 +175,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -181,7 +188,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -193,7 +201,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -205,7 +214,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -217,7 +227,8 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -229,55 +240,55 @@ public class LDefineAttributesTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testFull01Fail() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
         // TODO add more tests?
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testFull01Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testFull02Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,11 +42,11 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public final class TestUtils {
+public final class SomeTestUtilities {
 
     /**
-     * The field <tt>DIRECT_FINDER</tt> contains the resource finder which
-     * takes the name of the resource for its contents.
+     * The field <tt>DIRECT_FINDER</tt> contains the resource finder which takes
+     * the name of the resource for its contents.
      */
     public static final ResourceFinder DIRECT_FINDER = new ResourceFinder() {
 
@@ -129,7 +129,7 @@ public final class TestUtils {
     /**
      * Creates a new object.
      */
-    private TestUtils() {
+    private SomeTestUtilities() {
 
         // unused
     }

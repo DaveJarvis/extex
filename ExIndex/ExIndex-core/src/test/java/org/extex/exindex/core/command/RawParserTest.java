@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -51,19 +51,21 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void test01() throws Exception {
 
-        TestUtils.runTest("(define-attributes ())");
+        SomeTestUtilities.runTest("(define-attributes ())");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -71,7 +73,7 @@ public class RawParserTest {
     public final void test02() throws Exception {
 
         AttributesContainer def =
-                TestUtils.runTest("(define-attributes (\"abc\"))");
+                SomeTestUtilities.runTest("(define-attributes (\"abc\"))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -80,7 +82,8 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -88,7 +91,8 @@ public class RawParserTest {
     public final void test03() throws Exception {
 
         AttributesContainer def =
-                TestUtils.runTest("(define-attributes (\"abc\" \"def\"))");
+                SomeTestUtilities
+                    .runTest("(define-attributes (\"abc\" \"def\"))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -101,7 +105,8 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -109,7 +114,7 @@ public class RawParserTest {
     public final void test10() throws Exception {
 
         AttributesContainer def =
-                TestUtils.runTest("(define-attributes ((\"abc\")))");
+                SomeTestUtilities.runTest("(define-attributes ((\"abc\")))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -118,7 +123,8 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -126,7 +132,8 @@ public class RawParserTest {
     public final void test11() throws Exception {
 
         AttributesContainer def =
-                TestUtils.runTest("(define-attributes ((\"abc\" \"def\")))");
+                SomeTestUtilities
+                    .runTest("(define-attributes ((\"abc\" \"def\")))");
         Attribute att = def.lookupAttribute("abc");
         assertNotNull(att);
         assertEquals(0, att.getGroup());
@@ -139,74 +146,80 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        TestUtils.runTest("(define-attributes )");
+        SomeTestUtilities.runTest("(define-attributes )");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testError02() throws Exception {
 
-        TestUtils.runTest("(define-attributes \"abc\")");
+        SomeTestUtilities.runTest("(define-attributes \"abc\")");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testError03() throws Exception {
 
-        TestUtils.runTest("(define-attributes ((())))");
+        SomeTestUtilities.runTest("(define-attributes ((())))");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = SyntaxException.class)
     public final void testError04() throws Exception {
 
-        TestUtils.runTest("(define-attributes (123)");
+        SomeTestUtilities.runTest("(define-attributes (123)");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testError05() throws Exception {
 
-        TestUtils.runTest("(define-attributes (\"x\" \"x\"))");
+        SomeTestUtilities.runTest("(define-attributes (\"x\" \"x\"))");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testError06() throws Exception {
 
-        TestUtils.runTest("(define-attributes (\"x\" (\"x\")))");
+        SomeTestUtilities.runTest("(define-attributes (\"x\" (\"x\")))");
     }
 
     /**
@@ -220,7 +233,7 @@ public class RawParserTest {
 
         Locale.setDefault(Locale.ENGLISH);
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
 
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
@@ -228,7 +241,7 @@ public class RawParserTest {
         rsc
             .add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
         ByteArrayOutputStream log = new ByteArrayOutputStream();
-        Logger logger = TestUtils.makeLogger();
+        Logger logger = SomeTestUtilities.makeLogger();
         Handler handler = new StreamHandler(log, new LogFormatter());
         logger.setLevel(Level.INFO);
         handler.setLevel(Level.INFO);
@@ -241,36 +254,36 @@ public class RawParserTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testFull01Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
         indexer.load(new StringReader("(define-attributes ((\"none\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\" :attr \"none\")");
-        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(
-     * org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void testFull02Ok() throws Exception {
 
-        Indexer indexer = new ATestableIndexer(TestUtils.DIRECT_FINDER);
+        Indexer indexer = new ATestableIndexer(SomeTestUtilities.DIRECT_FINDER);
         List<String> rsc = new ArrayList<String>();
         rsc.add("(indexentry :key (\"abc\") :locref \"123\")");
-        indexer.run(null, rsc, null, TestUtils.makeLogger());
+        indexer.run(null, rsc, null, SomeTestUtilities.makeLogger());
     }
 
 }

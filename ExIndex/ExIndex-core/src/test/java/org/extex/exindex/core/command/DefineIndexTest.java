@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -47,7 +47,8 @@ public class DefineIndexTest {
     @Test
     public final void test01() throws Exception {
 
-        IndexContainer container = TestUtils.runTest("(define-index \"abc\")");
+        IndexContainer container =
+                SomeTestUtilities.runTest("(define-index \"abc\")");
         assertEquals(2, container.getSize());
     }
 
@@ -60,7 +61,7 @@ public class DefineIndexTest {
     public final void test02() throws Exception {
 
         IndexContainer container =
-                TestUtils.runTest("(define-index \"a\" :drop)");
+                SomeTestUtilities.runTest("(define-index \"a\" :drop)");
         StructuredIndex a = container.get("a");
         assertNotNull(a);
         assertTrue(a.isDropped());
@@ -75,7 +76,7 @@ public class DefineIndexTest {
     public final void test03() throws Exception {
 
         IndexContainer container =
-                TestUtils.runTest("(define-index \"a\")"
+                SomeTestUtilities.runTest("(define-index \"a\")"
                         + "(define-index \"b\" :merge-to \"a\")");
         StructuredIndex a = container.get("a");
         assertNotNull(a);
@@ -92,18 +93,19 @@ public class DefineIndexTest {
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        TestUtils.runTest("(define-index)");
+        SomeTestUtilities.runTest("(define-index)");
     }
 
     /**
-     * <testcase>Test that an undefined index in the merge-to leads to an error.</testcase>
+     * <testcase>Test that an undefined index in the merge-to leads to an
+     * error.</testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = UnknownIndexException.class)
     public final void testError02() throws Exception {
 
-        TestUtils.runTest("(define-index \"a\" :merge-to \"b\")");
+        SomeTestUtilities.runTest("(define-index \"a\" :merge-to \"b\")");
     }
 
     /**
@@ -114,7 +116,7 @@ public class DefineIndexTest {
     @Test(expected = IndexAliasLoopException.class)
     public final void testError03() throws Exception {
 
-        TestUtils.runTest("(define-index \"a\" :merge-to \"a\")");
+        SomeTestUtilities.runTest("(define-index \"a\" :merge-to \"a\")");
     }
 
     /**
@@ -125,20 +127,21 @@ public class DefineIndexTest {
     @Test(expected = IndexAliasLoopException.class)
     public final void testError04() throws Exception {
 
-        TestUtils.runTest("(define-index \"a\")"
+        SomeTestUtilities.runTest("(define-index \"a\")"
                 + "(define-index \"b\" :merge-to \"a\")"
                 + "(define-index \"a\" :merge-to \"b\")");
     }
 
     /**
-     * <testcase>Test that :drop and :merge-to can not be used together.</testcase>
+     * <testcase>Test that :drop and :merge-to can not be used
+     * together.</testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = InconsistentFlagsException.class)
     public final void testError05() throws Exception {
 
-        TestUtils.runTest("(define-index \"a\" :drop :merge-to \"b\")");
+        SomeTestUtilities.runTest("(define-index \"a\" :drop :merge-to \"b\")");
     }
 
 }

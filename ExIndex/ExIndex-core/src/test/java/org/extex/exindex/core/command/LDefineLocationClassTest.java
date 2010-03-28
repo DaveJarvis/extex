@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,39 +33,42 @@ public class LDefineLocationClassTest {
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test
     public final void test01() throws Exception {
 
-        TestUtils
+        SomeTestUtilities
             .runTest("(define-location-class \"abc\" (\"arabic-numbers\"))");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LMissingArgumentsException.class)
     public final void testError01() throws Exception {
 
-        TestUtils.runTest("(define-location-class )");
+        SomeTestUtilities.runTest("(define-location-class )");
     }
 
     /**
      * Test method for
-     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}.
+     * {@link org.extex.exindex.core.command.LDefineAttributes#eval(org.extex.exindex.lisp.LInterpreter, java.util.List)}
+     * .
      * 
      * @throws Exception in case of an error
      */
     @Test(expected = LException.class)
     public final void testError02() throws Exception {
 
-        TestUtils.runTest("(define-location-class \"abc\")");
+        SomeTestUtilities.runTest("(define-location-class \"abc\")");
     }
 
 }
