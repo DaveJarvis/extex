@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,8 +27,8 @@ import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.VirtualCharNode;
 
 /**
- * This is a factory for
- * {@link org.extex.typesetter.type.node.CharNode CharNode}s and virtual chars.
+ * This is a factory for {@link org.extex.typesetter.type.node.CharNode
+ * CharNode}s and virtual chars.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -53,15 +53,17 @@ public class SimpleNodeFactory implements NodeFactory {
      * 
      * @return the new character node
      * 
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(
-     *      org.extex.typesetter.tc.TypesettingContext,
+     * @see org.extex.typesetter.type.node.factory.NodeFactory#getNode(org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public Node getNode(TypesettingContext typesettingContext, UnicodeChar uc) {
 
+        if (typesettingContext == null) {
+            return null;
+        }
         Font font = typesettingContext.getFont();
 
-        if (!font.hasGlyph(uc)) {
+        if (font == null || !font.hasGlyph(uc)) {
             return null;
         }
 
@@ -71,8 +73,7 @@ public class SimpleNodeFactory implements NodeFactory {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.factory.NodeFactory#getVirtualCharNode(
-     *      org.extex.typesetter.tc.TypesettingContext,
+     * @see org.extex.typesetter.type.node.factory.NodeFactory#getVirtualCharNode(org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
     public VirtualCharNode getVirtualCharNode(
