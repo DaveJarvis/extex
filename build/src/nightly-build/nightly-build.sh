@@ -29,7 +29,7 @@ cd ..
 
 mvn -Dmaven.test.skip=true install
 
-mvn compile
+#mvn compile
 
 mvn site
 
