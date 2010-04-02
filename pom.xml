@@ -44,7 +44,12 @@
   <licenses>
     <license>
       <name>GNU Lesser General Public License</name>
-      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <url>http://www.gnu.org/licenses/lgpl.html</url>
+      <distribution>repo</distribution>
+    </license>
+    <license>
+      <name>Free Documentation License</name>
+      <url>http://www.gnu.org/copyleft/fdl.html</url>
       <distribution>repo</distribution>
     </license>
   </licenses>
@@ -133,9 +138,6 @@
     <site>
       <id>www.extex.org</id>
       <url>file://serv/www/extex/mvn</url>
-<!--
-      <url>http://www.extex.org/maven2</url>
--->
     </site>
   </distributionManagement>
 
@@ -240,6 +242,9 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-jxr-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+        </configuration>
       </plugin>
 
       <plugin>
@@ -257,6 +262,7 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <configuration>
           <configLocation>${basedir}/develop/eclipse/checkstyle42.cfg</configLocation>
+          <enableRulesSummary>false</enableRulesSummary>
         </configuration>
       </plugin>
 
@@ -296,14 +302,6 @@
       </plugin>
 
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-        <configuration>
-          <aggregate>true</aggregate>
-        </configuration>
-      </plugin>
-
-      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>emma-maven-plugin</artifactId>
         <inherited>true</inherited>
@@ -332,6 +330,10 @@
         </configuration>
       </plugin>
 -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
 
     </plugins>
 
