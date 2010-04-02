@@ -225,14 +225,14 @@ public class WidthTest {
     }
 
     /**
-     * <testcase> Test ".,-=)(/&%$§!". </testcase>
+     * <testcase> Test ".,-=)(/&%$\u00a7!". </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
     public void testWidth014() throws Exception {
 
-        testWidth(".,-=)(/&%$§!", 5334);
+        testWidth(".,-=)(/&%$\u00a7!", 5334);
     }
 
     /**
