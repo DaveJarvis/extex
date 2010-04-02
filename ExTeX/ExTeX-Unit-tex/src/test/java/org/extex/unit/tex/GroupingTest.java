@@ -19,10 +19,10 @@
 
 package org.extex.unit.tex;
 
+import org.extex.TestTeX;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
-import de.dante.tex.TestTeX;
 
 /**
  * Test for grouping.
