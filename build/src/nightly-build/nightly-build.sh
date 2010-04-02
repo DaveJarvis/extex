@@ -31,7 +31,7 @@ mvn -Dmaven.test.skip=true install
 
 #mvn compile
 
-mvn site
+mvn -Dmaven.test.skip=true site
 
 # (cd ExBib/ExBib-Installer; mvn package)
 
