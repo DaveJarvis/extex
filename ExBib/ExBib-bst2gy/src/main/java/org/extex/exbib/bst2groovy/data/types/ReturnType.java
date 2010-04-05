@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -152,6 +152,35 @@ public enum ReturnType {
         public String getArg() {
 
             return "''";
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "???";
+        }
+
+    },
+    /**
+     * The field <tt>MULTI</tt> contains the indicator for a multi-valued
+     * return.
+     */
+    MULTI {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.types.ReturnType#getArg()
+         */
+        @Override
+        public String getArg() {
+
+            return "[]";
         }
 
         /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -67,7 +67,8 @@ public class VarManager {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Rename variables to carry a new prefix by unifying them with appropriate
+     * values.
      * 
      * @param varList the variable list
      * @param prefix the variable name prefix

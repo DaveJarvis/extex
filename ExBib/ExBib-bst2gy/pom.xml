@@ -6,9 +6,13 @@
   <artifactId>ExBib-bst2gy</artifactId>
   <name>ExBib BST to Groovy Compiler</name>
   <description>
-    This is the ExBib BST to Groovy Compiler. It takes a BST files and
-    produces an equivalent Groovy file which can be used for further
-    development in a higher programming language.
+    This is the ExBib BST to Groovy Compiler. It takes a BST files and produces
+    an equivalent Groovy file which can be used for further refinement in the 
+    higher programming language Groovy.
+
+    Note that not all dirty tricks possible in the BST language are translated.
+    Passing code around on the stack and multiple return values are currently
+    not supported. They lead to an compile error.
   </description>
 
   <packaging>jar</packaging>

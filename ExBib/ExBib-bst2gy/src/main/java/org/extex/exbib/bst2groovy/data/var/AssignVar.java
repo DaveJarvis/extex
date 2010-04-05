@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -95,6 +95,14 @@ public class AssignVar extends GenericCode {
                 value = ((DeclareVar) code).getValue();
                 list.remove(index - 1);
                 return index;
+            }
+        } else if (index > 0) {
+            GCode code = list.get(index - 1);
+            if (code instanceof DeclareVar
+                    && var.eq(((DeclareVar) code).getVar())) {
+                ((DeclareVar) code).setValue(value);
+                list.remove(index);
+                return index - 1;
             }
         }
         return super.optimize(list, index);

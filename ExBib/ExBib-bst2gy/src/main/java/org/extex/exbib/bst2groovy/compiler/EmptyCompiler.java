@@ -72,8 +72,8 @@ public class EmptyCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer) throws IOException {
 
-            writer.write("\n\tboolean isEmpty(String s) {", //
-                "\n\t\treturn s == null || s.trim() == ''", //
+            writer.write("\n\tint isEmpty(String s) {", //
+                "\n\t\treturn s == null || s.trim() == '' ? 1 : 0", //
                 "\n\t}\n");
         }
     };

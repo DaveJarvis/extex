@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -789,7 +789,7 @@ public class MainTest {
     }
 
     /**
-     * <testcase> Test that ...</testcase>
+     * <testcase> Test that --version produces a version info line.</testcase>
      * 
      * @throws IOException in case of an I/O error
      */

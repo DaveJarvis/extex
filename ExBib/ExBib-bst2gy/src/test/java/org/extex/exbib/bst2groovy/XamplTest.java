@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -202,8 +202,6 @@ public class XamplTest {
                         ConfigurationFactory
                             .newInstance("config/path/testFinder"), logger,
                         System.getProperties(), null);
-            // finder.enableTracing(true);
-
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             // bst2Groovy.setParameter(ParameterType.OPTIMIZE, Parameter.FALSE);
             bst2Groovy.setResourceFinder(finder);

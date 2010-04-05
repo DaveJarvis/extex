@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -59,7 +59,22 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     public GCode optimize() {
 
         for (int i = 0; i < size();) {
-            i = get(i).optimize().optimize(this, i);
+            GCode a = get(i);
+            GCode ao = a.optimize();
+            if (a != ao) {
+                if (ao instanceof GCodeContainer) {
+                    int j = i;
+                    for (GCode code : (GCodeContainer) ao) {
+                        add(j++, code);
+                    }
+                    remove(j);
+                } else {
+                    set(i, ao);
+                    i = ao.optimize(this, i);
+                }
+            } else {
+                i = ao.optimize(this, i);
+            }
         }
         return this;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,7 +19,7 @@
 package org.extex.exbib.bst2groovy.parameters;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This enumeration contains the legal values for parameters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -27,17 +27,18 @@ package org.extex.exbib.bst2groovy.parameters;
 public enum ParameterType {
 
     /**
-     * The field <tt>OPTIMIZE</tt> contains the ...
+     * The field <tt>OPTIMIZE</tt> contains the indicator for the boolean
+     * parameter to turn on the optimization.
      */
     OPTIMIZE,
 
     /**
-     * The field <tt>STYLE_NAME</tt> contains the ...
+     * The field <tt>STYLE_NAME</tt> contains the name for the style name.
      */
     STYLE_NAME,
 
     /**
-     * The field <tt>TAB_SIZE</tt> contains the ...
+     * The field <tt>TAB_SIZE</tt> contains name for the tab size.
      */
     TAB_SIZE
 

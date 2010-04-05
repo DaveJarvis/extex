@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -208,7 +208,7 @@ public class GenericCode implements GCode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Print the postfix for arguments to the writer.
      * 
      * @param writer the writer
      * 
@@ -220,7 +220,7 @@ public class GenericCode implements GCode {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Print the prefix for arguments to the writer.
      * 
      * @param writer the writer
      * 
@@ -254,7 +254,8 @@ public class GenericCode implements GCode {
         try {
             print(new CodeWriter(writer), "\n");
         } catch (IOException e) {
-            //
+            // This can't happen since a StringWriter doesn't throw
+            // IOExceptions
         }
         return writer.toString();
     }

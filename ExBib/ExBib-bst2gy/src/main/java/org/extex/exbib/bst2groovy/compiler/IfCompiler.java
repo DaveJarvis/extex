@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -103,6 +103,14 @@ public class IfCompiler implements Compiler {
                 condition = ((GBoolean) condition).getCode();
             }
 
+            if (condition instanceof GIntegerConstant) {
+                if (((GIntegerConstant) condition).getValue() != 0) {
+                    return thenBranch.optimize();
+                } else {
+                    return elseBranch.optimize();
+                }
+            }
+
             thenBranch.optimize();
             elseBranch.optimize();
 
@@ -146,7 +154,7 @@ public class IfCompiler implements Compiler {
                 if (init.getValue() == null && var.eq(setThen.getVar())
                         && var.eq(setElse.getVar())) {
                     init.setValue(new IfInline(condition, setThen.getValue(),
-                        setElse.getValue()));
+                        setElse.getValue()).optimize());
                     list.remove(index);
                     return index;
                 }
@@ -205,10 +213,10 @@ public class IfCompiler implements Compiler {
     public static final class IfInline extends GenericCode {
 
         /**
-         * The field <tt>LINE_BREAKING_THESHOLD</tt> contains the line breaking
-         * theshold.
+         * The field <tt>LINE_BREAKING_THRESHOLD</tt> contains the line breaking
+         * threshold.
          */
-        private static final int LINE_BREAKING_THESHOLD = 40;
+        private static final int LINE_BREAKING_THRESHOLD = 40;
 
         /**
          * Creates a new object.
@@ -225,6 +233,25 @@ public class IfCompiler implements Compiler {
         /**
          * {@inheritDoc}
          * 
+         * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
+         */
+        @Override
+        public GCode optimize() {
+
+            super.optimize();
+            GCode a = getArg(0);
+            if (a instanceof GIntegerConstant) {
+                return ((GIntegerConstant) a).getValue() != 0
+                        ? getArg(1)
+                        : getArg(2);
+
+            }
+            return this;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.exbib.bst2groovy.data.GenericCode#print(org.extex.exbib.bst2groovy.io.CodeWriter,
          *      java.lang.String)
          */
@@ -234,11 +261,11 @@ public class IfCompiler implements Compiler {
             writer.write("( ");
             int col = writer.getColumn() - 1;
             getArg(0).print(writer, prefix);
-            if (writer.getColumn() >= LINE_BREAKING_THESHOLD) {
+            if (writer.getColumn() >= LINE_BREAKING_THRESHOLD) {
                 writer.nl(col);
             } else {
                 col = writer.getColumn() - 1;
-                if (col < LINE_BREAKING_THESHOLD) {
+                if (col < LINE_BREAKING_THRESHOLD) {
                     col = -1;
                 }
             }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -36,18 +36,18 @@ public class CodeWriter extends Writer {
     private Writer writer;
 
     /**
-     * The field <tt>tabSize</tt> contains the indentation.
+     * The field <tt>tabSize</tt> contains the number of spaces for indentation.
      */
     private int tabSize = 2;
 
     /**
-     * The field <tt>col</tt> contains the counter for the current column.
+     * The field <tt>column</tt> contains the counter for the current column.
      */
     private int column = 0;
 
     /**
-     * The field <tt>inLine</tt> contains the number of nl characters already
-     * encountered.
+     * The field <tt>inLine</tt> contains the number of newline characters
+     * already encountered. Initially it is 3 to suppress leading newlines.
      */
     private int inLine = 3;
 
@@ -94,18 +94,6 @@ public class CodeWriter extends Writer {
 
         flush();
         return column;
-    }
-
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param oldIn the old indentation
-     * 
-     * @return the new indentation
-     */
-    public String moreIn(String oldIn) {
-
-        return oldIn + "  ";
     }
 
     /**
@@ -194,27 +182,17 @@ public class CodeWriter extends Writer {
     /**
      * Write some strings.
      * 
-     * @param arg the arguments
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Override
-    public void write(String arg) throws IOException {
-
-        super.write(arg);
-    }
-
-    /**
-     * Write some strings.
-     * 
      * @param args the arguments
      * 
      * @throws IOException in case of an I/O error
      */
-    public void write(String... args) throws IOException {
+    public void write(String arg, String arg2, String... args)
+            throws IOException {
 
-        for (String arg : args) {
-            super.write(arg);
+        super.write(arg);
+        super.write(arg2);
+        for (String a : args) {
+            super.write(a);
         }
     }
 

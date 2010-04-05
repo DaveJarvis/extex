@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -27,7 +27,8 @@ package org.extex.exbib.bst2groovy.data.processor;
 public class VarInfo {
 
     /**
-     * The field <tt>readBeforeWrite</tt> contains the ...
+     * The field <tt>readBeforeWrite</tt> contains the indicator that the
+     * variable is read before it has a proper value.
      */
     private boolean readBeforeWrite = false;
 
@@ -96,8 +97,7 @@ public class VarInfo {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * Recognize that the variable is read.
      */
     public void reading() {
 

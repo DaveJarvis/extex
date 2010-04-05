@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,7 +22,6 @@ import java.io.IOException;
 
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.io.CodeWriter;
 
@@ -41,28 +40,6 @@ public final class And extends GenericCode {
     public And(GCode code1, GCode code2) {
 
         super(ReturnType.INT, "", code1, code2);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.bst2groovy.data.GenericCode#optimize()
-     */
-    @Override
-    public GCode optimize() {
-
-        GCode arg = getArg(0);
-        if (arg instanceof GIntegerConstant) {
-            return (((GIntegerConstant) arg).getValue() != 0
-                    ? getArg(1)
-                    : new GIntegerConstant(0));
-        }
-        arg = getArg(1);
-        if (arg instanceof GIntegerConstant
-                && ((GIntegerConstant) arg).getValue() != 0) {
-            return getArg(0);
-        }
-        return this;
     }
 
     /**

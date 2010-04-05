@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -27,22 +27,22 @@ package org.extex.exbib.bst2groovy.parameters;
 public class Parameter {
 
     /**
-     * The field <tt>TRUE</tt> contains the ...
+     * The field <tt>TRUE</tt> contains the boolean value true.
      */
     public static Parameter TRUE = new Parameter(true);
 
     /**
-     * The field <tt>FALSE</tt> contains the ...
+     * The field <tt>FALSE</tt> contains the boolean value false.
      */
     public static Parameter FALSE = new Parameter(false);
 
     /**
-     * The field <tt>ZERO</tt> contains the ...
+     * The field <tt>ZERO</tt> contains the numeric value zero.
      */
     public static Parameter ZERO = new Parameter(0);
 
     /**
-     * The field <tt>EMPTY</tt> contains the ...
+     * The field <tt>EMPTY</tt> contains the string value for the empty string.
      */
     public static Parameter EMPTY = new Parameter("");
 

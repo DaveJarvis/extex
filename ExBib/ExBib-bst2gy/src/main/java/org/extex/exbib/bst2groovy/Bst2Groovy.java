@@ -75,7 +75,6 @@ import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
-import org.extex.exbib.bst2groovy.data.processor.VarInfo;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
@@ -132,8 +131,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private StringBuilder comments = new StringBuilder();
 
     /**
-     * The field <tt>infos</tt> contains the infos on functions, fields, and
-     * variables.
+     * The field <tt>compilers</tt> contains the compilers for functions,
+     * fields, and variables.
      */
     private Map<String, Compiler> compilers = null;
 
@@ -681,7 +680,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         } else if (stack.size() == 1) {
             returnValue = stack.get(0);
             if (returnValue instanceof CodeBlock) {
-                // TODO gene: analyzeFunction unimplemented
+                // TODO gene: multi-value return unimplemented
                 throw new RuntimeException("unimplemented");
             }
         } else {
@@ -805,21 +804,22 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         write(writer);
     }
 
-    /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param varInfos
-     * @param function the function
-     */
-    private void saveVarInfo(Map<String, VarInfo> varInfos, GFunction function) {
-
-        System.err.println("--- In function " + function.getName());
-
-        for (VarInfo v : varInfos.values()) {
-            System.err.println(v.toString());
-        }
-        System.err.println();
-    }
+    // /**
+    // * TODO gene: missing JavaDoc
+    // *
+    // * @param varInfos
+    // * @param function the function
+    // */
+    // private void saveVarInfo(Map<String, VarInfo> varInfos, GFunction
+    // function) {
+    //
+    // System.err.println("--- In function " + function.getName());
+    //
+    // for (VarInfo v : varInfos.values()) {
+    // System.err.println(v.toString());
+    // }
+    // System.err.println();
+    // }
 
     /**
      * Setter for a parameter.
@@ -829,6 +829,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      */
     public void setParameter(ParameterType type, Parameter value) {
 
+        if (type == null) {
+            throw new NullPointerException("setParameter()");
+        }
         parameters.put(type, value);
     }
 

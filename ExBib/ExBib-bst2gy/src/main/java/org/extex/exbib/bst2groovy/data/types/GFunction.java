@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -37,6 +37,10 @@ import org.extex.exbib.bst2groovy.linker.LinkContainer;
 
 /**
  * This class represents a function.
+ * <p>
+ * A function <code>f(a,b,c)</code> is the result of translating the code
+ * <code>a b c f</code>. This means that the top of stack is the last argument.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,7 +19,6 @@
 package org.extex.exbib.bst2groovy.compiler;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.extex.exbib.bst2groovy.Compiler;
@@ -71,8 +70,7 @@ public class WriteCompiler implements Compiler {
             GCode next = list.get(index + 1);
             if (next instanceof Newline) {
                 list.remove(index + 1);
-                list.remove(index);
-                list.add(index, new Writeln(getArg(0)));
+                list.set(index, new Writeln(getArg(0)));
                 return index + 1;
             }
             if (!(next instanceof Write)) {
@@ -86,19 +84,15 @@ public class WriteCompiler implements Compiler {
             while (index < list.size()) {
                 next = list.get(index);
                 if (next instanceof Newline) {
-                    list.remove(index);
-                    // Collections.reverse(a);
-                    list.add(index, new Writeln(a.toArray(new GCode[]{})));
+                    list.set(index, new Writeln(a.toArray(new GCode[]{})));
                     return index + 1;
-                }
-                if (next instanceof Write) {
+                } else if (next instanceof Write) {
                     a.add(((Write) next).getArg(0));
                     list.remove(index);
                 } else {
                     break;
                 }
             }
-            Collections.reverse(a);
             list.add(index, new Write(a.toArray(new GCode[]{})));
             return index + 1;
         }

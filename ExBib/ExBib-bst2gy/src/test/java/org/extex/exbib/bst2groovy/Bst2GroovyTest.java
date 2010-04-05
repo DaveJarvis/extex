@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -39,6 +39,8 @@ import org.extex.exbib.bst2groovy.exception.UnknownFunctionException;
 import org.extex.exbib.bst2groovy.exception.UnknownVariableException;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
+import org.extex.exbib.bst2groovy.parameters.Parameter;
+import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.exbib.core.bst.exception.ExBibBstNotFoundException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
@@ -126,7 +128,7 @@ public class Bst2GroovyTest {
                     + "    this.bibProcessor = bibProcessor\n";
 
     /**
-     * The field <tt>POSTFIX</tt> contains the ...
+     * The field <tt>POSTFIX</tt> contains the post-fix string.
      */
     public static final String POSTFIX = HEAD + "  }\n" + RUN + POST_RUN;
 
@@ -165,7 +167,31 @@ public class Bst2GroovyTest {
                 ExBibException,
                 IOException {
 
+        run(input, output, false);
+    }
+
+    /**
+     * Run a test.
+     * 
+     * @param input the input
+     * @param output the output
+     * @param optimize indicator for the optimizer
+     * 
+     * @throws ExBibImpossibleException in case of an error
+     * @throws ExBibBstNotFoundException in case of an error
+     * @throws ExBibException in case of an error
+     * @throws IOException in case of an error
+     */
+    protected static void run(String input, String output, boolean optimize)
+            throws ExBibImpossibleException,
+                ExBibBstNotFoundException,
+                ExBibException,
+                IOException {
+
         Bst2Groovy bst2Groovy = new Bst2Groovy();
+        bst2Groovy.setParameter(ParameterType.OPTIMIZE, //
+            new Parameter(optimize));
+
         Logger logger = Logger.getLogger(Bst2GroovyTest.class.getName());
         logger.setLevel(Level.SEVERE);
         ConsoleHandler handler = new ConsoleHandler();
@@ -179,6 +205,26 @@ public class Bst2GroovyTest {
         bst2Groovy.run(w, "test");
         w.flush();
         assertEquals(output, w.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Run a test.
+     * 
+     * @param input the input
+     * @param output the output
+     * 
+     * @throws ExBibImpossibleException in case of an error
+     * @throws ExBibBstNotFoundException in case of an error
+     * @throws ExBibException in case of an error
+     * @throws IOException in case of an error
+     */
+    protected static void runOptimized(String input, String output)
+            throws ExBibImpossibleException,
+                ExBibBstNotFoundException,
+                ExBibException,
+                IOException {
+
+        run(input, output, true);
     }
 
     /**
@@ -367,6 +413,19 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"a\" \"b\" *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"a\" + \"b\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat2opt() throws Exception {
+
+        runOptimized("function{abc}{\"a\" \"b\" *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
                     + "    return \"ab\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -380,6 +439,19 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"\" \"b\" *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"\" + \"b\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat3opt() throws Exception {
+
+        runOptimized("function{abc}{\"\" \"b\" *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
                     + "    return \"b\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -392,6 +464,19 @@ public class Bst2GroovyTest {
     public void testConcat4() throws Exception {
 
         run("function{abc}{\"a\" \"\" *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"a\" + \"\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that * is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testConcat4opt() throws Exception {
+
+        runOptimized("function{abc}{\"a\" \"\" *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
                     + "    return \"a\"\n" + "  }\n" + RUN + POST_RUN);
     }
@@ -421,6 +506,20 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"2\" duplicate$ *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"2\" + \"2\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for duplicate$ is created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDuplicate2opt() throws Exception {
+
+        runOptimized("function{abc}{\"2\" duplicate$ *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
                     + "    return \"22\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -448,9 +547,9 @@ public class Bst2GroovyTest {
     public void testEmpty1() throws Exception {
 
         run("function{abc}{empty$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  boolean isEmpty(String s) {\n"
-                    + "    return s == null || s.trim() == ''\n" + "  }\n"
-                    + "\n" + "  int abc(p1) {\n"
+            PREFIX + HEAD + "  }\n" + "\n" + "  int isEmpty(String s) {\n"
+                    + "    return s == null || s.trim() == '' ? 1 : 0\n"
+                    + "  }\n" + "\n" + "  int abc(p1) {\n"
                     + "    return isEmpty(p1) ? 1 : 0\n" + "  }\n" + RUN
                     + POST_RUN);
     }
@@ -858,8 +957,43 @@ public class Bst2GroovyTest {
                 + "function{d}{\"A\" \"B\" b}", //
             PREFIX + HEAD + "  }\n\n" //
                     + "  void a(p1, p2) {\n" //
-                    + "    bibWriter.write(p1,\n" //
-                    + "                    p2)\n" //
+                    + "    bibWriter.write(p2)\n" //
+                    + "    bibWriter.write(p1)\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void b(p1, p2) {\n" //
+                    + "    a(p1,\n" //
+                    + "      p2)\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void c() {\n" //
+                    + "    a(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void d() {\n" //
+                    + "    b(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the function arguments are created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunction13opt() throws Exception {
+
+        runOptimized("function{a}{write$ write$}" //
+                + "function{b}{a}" //
+                + "function{c}{\"A\" \"B\" a}" //
+                + "function{d}{\"A\" \"B\" b}", //
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  void a(p1, p2) {\n" //
+                    + "    bibWriter.write(p2,\n" //
+                    + "                    p1)\n" //
                     + "  }\n" //
                     + "\n" //
                     + "  void b(p1, p2) {\n" //
@@ -885,10 +1019,9 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testFunctionA1() throws Exception {
 
-        run(
+        runOptimized(
             "STRINGS { s }\n" //
                     + "\n"
                     + "FUNCTION {output.nonnull}\n" //
@@ -920,32 +1053,23 @@ public class Bst2GroovyTest {
                     + HEAD
                     + "  }\n"
                     + "\n" //
+                    + "  int isEmpty(String s) {\n" //
+                    + "    return s == null || s.trim() == '' ? 1 : 0\n" //
+                    + "  }\n" //
+                    + "\n" //
                     + "  String addPeriod(String s) {\n"
                     + "    return s == null || s == '' ? '' : s.matches(\".*[.!?]\") ? s : s + \".\"\n"
                     + "  }\n" //
-                    + "\n"
-                    + "  boolean isEmpty(String s) {\n"
-                    + "    return s == null || s.trim() == ''\n" //
-                    + "  }\n" //
                     + "\n" //
-                    + "  String outputNonnull(v1, v2) {\n"
-                    + "    s = v1\n" //
-                    + "    if (1 == 2) {\n"
-                    + "      bibWriter.print(v2 + \", \")\n"
-                    + "    } else if (1 == 3) {\n"
-                    + "      bibWriter.println(addPeriod(v2))\n"
-                    + "      bibWriter.print(\"\\\\newblock \")\n"
-                    + "    } else if (1 == 4) {\n"
-                    + "      bibWriter.print(v2)\n"
-                    + "    } else {\n"
-                    + "      bibWriter.print(addPeriod(v2) + \" \")\n"
-                    + "    }\n" //
+                    + "  String outputNonnull(p1, p2) {\n"
+                    + "    s = p2\n" //
+                    + "    bibWriter.write(addPeriod(p1) + \" \")\n"
                     + "    return s\n" //
                     + "  }\n" //
                     + "\n" //
-                    + "  String output(v1, v2) {\n"
-                    + "    return ( isEmpty(v1) ? v1 : outputNonnull(v1,\n"
-                    + "                                              v2) )\n"
+                    + "  String output(p1, p2) {\n"
+                    + "    return ( isEmpty(p2) ? p1 : outputNonnull(p1,\n"
+                    + "                                              p2) )\n"
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -985,7 +1109,7 @@ public class Bst2GroovyTest {
                     + "  }\n" //
                     + "\n" //
                     + "  void f(p1, p2) {\n" //
-                    + "    if (1 == 2) {\n" //
+                    + "    if (1 == 2 ? 1 : 0) {\n" //
                     + "      t = p2\n" //
                     + "      s = p1\n" //
                     + "    } else {\n" //
@@ -1002,6 +1126,98 @@ public class Bst2GroovyTest {
                     + "  void h() {\n" //
                     + "    f(\"A\",\n" //
                     + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the parameters of a function and the call are in the
+     * correct order. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testFunctionA2opt() throws Exception {
+
+        runOptimized("STRINGS { s t }\n" //
+                + "\n" //
+                + "FUNCTION {f}\n" //
+                + "{ \n" //
+                + "  #1 #2 =\n" //
+                + "    { 't :=\n" //
+                + "      's :=\n" //
+                + "    }\n" //
+                + "    { 't :=\n" //
+                + "      's :=\n" //
+                + "    }\n" //
+                + "  if$\n" //
+                + "}\n" //
+                + "\n" //
+                + "FUNCTION {g}\n" //
+                + "{ 't :=\n" //
+                + "  's :=\n" //
+                + "}\n" //
+                + "\n" //
+                + "FUNCTION {h}\n" //
+                + "{ \n" //
+                + "  \"A\" \"B\" f\n" //
+                + "}\n", //
+            PREFIX + "\n\n  String s = ''" + "\n  String t = ''" + HEAD
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void f(p1, p2) {\n" //
+                    + "    t = p2\n" //
+                    + "    s = p1\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void g(p1, p2) {\n" //
+                    + "    t = p2\n" //
+                    + "    s = p1\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void h() {\n" //
+                    + "    f(\"A\",\n" //
+                    + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the parameters of a function and the call are in the
+     * correct order. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    // @Ignore
+    public void testFunctionA3() throws Exception {
+
+        runOptimized("" //
+                + "FUNCTION {aaa}\n" //
+                + "{ write$ write$\n"
+                + "}\n" //
+                + "\n" //
+                + "FUNCTION {output}\n"
+                + "{ duplicate$ empty$\n"
+                + "    'pop$\n" + "    'aaa\n" //
+                + "  if$\n" //
+                + "}\n", //
+            PREFIX
+                    + ""
+                    + HEAD
+                    + "  }\n"
+                    + "\n" //
+                    + "  int isEmpty(String s) {\n" //
+                    + "    return s == null || s.trim() == '' ? 1 : 0\n" //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void aaa(p1, p2) {\n" + "    bibWriter.write(p2,\n"
+                    + "                    p1)\n"
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void output(p1, p2) {\n"
+                    + "    if (! isEmpty(p2)) {\n" //
+                    + "      aaa(p1,\n" //
+                    + "          p2)\n" //
+                    + "    }\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1056,7 +1272,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ 'skip$ if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (0) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    if (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1065,11 +1281,24 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf02() throws Exception {
+    public void testIf01opt() throws Exception {
 
-        run("function{abc}{#1 {#2} {#3} if$}", //
+        runOptimized("function{abc}{#1 'skip$ 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf02opt() throws Exception {
+
+        runOptimized("function{abc}{#1 {#2} {#3} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    return ( 1 ? 2 : 3 )\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return 2\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1078,11 +1307,11 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf03() throws Exception {
+    public void testIf03opt() throws Exception {
 
-        run("function{abc}{#1 {pop$ #2} {} if$}", //
+        runOptimized("function{abc}{#1 {pop$ #2} {} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    return ( 1 ? 2 : p1 )\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return 2\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1091,11 +1320,11 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf04() throws Exception {
+    public void testIf04opt() throws Exception {
 
-        run("function{abc}{#1 {#2} 'skip$ if$}", //
+        runOptimized("function{abc}{#1 {#2} 'skip$ if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    return ( 1 ? 2 : p1 )\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return 2\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1122,8 +1351,9 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 'skip$ {newline$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (0) {\n" + "      bibWriter.newline()\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    if (1) {\n" + "    } else {\n"
+                    + "      bibWriter.newline()\n" + "    }\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -1147,11 +1377,11 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf08() throws Exception {
+    public void testIf08opt() throws Exception {
 
-        run("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (0) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
+        runOptimized("function{abc}{#1 {#1 'skip$ 'skip$ if$} 'skip$ if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -1160,11 +1390,11 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf09() throws Exception {
+    public void testIf09opt() throws Exception {
 
-        run("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    if (0) {\n" + "    }\n" + "  }\n" + RUN + POST_RUN);
+        runOptimized("function{abc}{#1 'skip$ {#1 'skip$ 'skip$ if$} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n" + "  }\n" + RUN
+                    + POST_RUN);
     }
 
     /**
@@ -1195,9 +1425,9 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf12() throws Exception {
+    public void testIf12opt() throws Exception {
 
-        run("function{abc}{{>} {#3} {#2} if$}", //
+        runOptimized("function{abc}{{>} {#3} {#2} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1, p2) {\n"
                     + "    return ( p1 > p2 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
@@ -1209,9 +1439,9 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf13() throws Exception {
+    public void testIf13opt() throws Exception {
 
-        run("function{abc}{#1 {>} {#3} {#2} if$}", //
+        runOptimized("function{abc}{#1 {>} {#3} {#2} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
                     + "    return ( p1 > 1 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
@@ -1223,9 +1453,9 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testIf14() throws Exception {
+    public void testIf14opt() throws Exception {
 
-        run("function{abc}{\"\" {=} {#3} {#2} if$}", //
+        runOptimized("function{abc}{\"\" {=} {#3} {#2} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
                     + "    return ( p1 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
@@ -1251,10 +1481,15 @@ public class Bst2GroovyTest {
     public void testIf16() throws Exception {
 
         run("function{a}{#1}function{abc}{{a} {} {newline$} if$}", //
-            PREFIX + HEAD + "  }\n" + "\n"
-                    + "  int a() {\n    return 1\n  }\n\n" + "  void abc() {\n"
-                    + "    if (! a()) {\n" + "      bibWriter.newline()\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n\n" //
+                    + "  int a() {\n" //
+                    + "    return 1\n"//
+                    + "  }\n\n" //
+                    + "  void abc() {\n" //
+                    + "    if (a()) {\n    } else {\n" //
+                    + "      bibWriter.newline()\n" //
+                    + "    }\n" //
+                    + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1284,9 +1519,10 @@ public class Bst2GroovyTest {
         run("function{abc}{{#1} {write$} {{#2} {write$} {write$} if$} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
                     + "    if (1) {\n" + "      bibWriter.write(p1)\n"
-                    + "    } else if (2) {\n" + "      bibWriter.write(p1)\n"
-                    + "    } else {\n" + "      bibWriter.write(p1)\n"
-                    + "    }\n" + "  }\n" + RUN + POST_RUN);
+                    + "    } else {\n      if (2) {\n"
+                    + "        bibWriter.write(p1)\n" + "      } else {\n"
+                    + "        bibWriter.write(p1)\n" + "      }\n"
+                    + "    }\n  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1298,11 +1534,64 @@ public class Bst2GroovyTest {
     public void testIf19() throws Exception {
 
         String s = "....,....,....,....,....,....";
-        run("function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
+        run(
+            "function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
+            PREFIX
+                    + HEAD
+                    + "  }\n"
+                    + "\n"
+                    + "  int abc(p1) {\n"
+                    + "    int v6\n"
+                    + "    if (\"....,....,....,....,....,....\" == \"\" ? 1 : 0) {\n"
+                    + "      v6 = 2\n" + "    } else {\n" + "      v6 = p1\n"
+                    + "    }\n" + "    return v6\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf19opt() throws Exception {
+
+        String s = "....,....,....,....,....,....";
+        runOptimized("function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    return ( \"" + s
-                    + "\" == \"\"\n             ? 2\n             : p1 )\n"
-                    + "  }\n" + RUN + POST_RUN);
+                    + "    return p1\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is treated properly when creating a conjunction.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf20opt() throws Exception {
+
+        runOptimized(
+            "function{abc}{duplicate$ #2 {>} {#9 {<} {newline$} {} if$} {} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    if (p1 > 2 && p1 < 9) {\n"
+                    + "      bibWriter.newline()\n" + "    }\n" + "  }\n" + RUN
+                    + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that if$ is treated properly when creating a conjunction.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testIf21opt() throws Exception {
+
+        runOptimized(
+            "function{abc}{#2 {>} {#1 #9 {<} {newline$} {} if$} {} if$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    if (p1 > 2) {\n" + "      bibWriter.newline()\n"
+                    + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1627,6 +1916,22 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{>} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(p1, p2) {\n" + "    if (p1 > p2 ? 1 : 0) {\n"
+                    + "    } else {\n" + "      x = 2\n" //
+                    + "    }\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot1opt() throws Exception {
+
+        runOptimized("integers{x} function{abc}{{>} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
                     + "  void abc(p1, p2) {\n"
                     + "    if (p1 >= p2) {\n      x = 2\n" //
                     + "    }\n" //
@@ -1643,6 +1948,22 @@ public class Bst2GroovyTest {
 
         run("integers{x} function{abc}{{<} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(p1, p2) {\n" + "    if (p1 < p2 ? 1 : 0) {\n" //
+                    + "    } else {\n" + "      x = 2\n" //
+                    + "    }\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot2opt() throws Exception {
+
+        runOptimized("integers{x} function{abc}{{<} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
                     + "  void abc(p1, p2) {\n" + "    if (p1 <= p2) {\n" //
                     + "      x = 2\n" //
                     + "    }\n" //
@@ -1658,6 +1979,21 @@ public class Bst2GroovyTest {
     public void testNot3() throws Exception {
 
         run("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
+            PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
+                    + "  void abc(p1, p2) {\n"
+                    + "    if (p1 == p2 ? 1 : 0) {\n" + "    } else {\n"
+                    + "      x = 2\n    }\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that not is treated properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testNot3opt() throws Exception {
+
+        runOptimized("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
                     + "  void abc(p1, p2) {\n"
                     + "    if (p1 != p2) {\n      x = 2\n    }\n" + "  }\n"
@@ -1849,12 +2185,27 @@ public class Bst2GroovyTest {
     }
 
     /**
+     * <testcase> Test that ' on an unknown function croaks. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void testQ1() throws Exception {
+
+        run("function{abc}{'a}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"\\\"\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
      * <testcase> Test that ' is treated properly. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    @Test(expected = RuntimeException.class)
-    public void testQ1() throws Exception {
+    @Test
+    @Ignore
+    public void testQ2() throws Exception {
 
         run("integers{a}function{abc}{'a}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
@@ -2077,6 +2428,19 @@ public class Bst2GroovyTest {
 
         run("function{abc}{\"1\" \"2\" swap$ *}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
+                    + "    return \"2\" + \"1\"\n" + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the code for swap$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSwap2opt() throws Exception {
+
+        runOptimized("function{abc}{\"1\" \"2\" swap$ *}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  String abc() {\n"
                     + "    return \"21\"\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2122,6 +2486,17 @@ public class Bst2GroovyTest {
                     + "    return TextPrefix.textPrefix(p1,\n"
                     + "                                 p2)\n" //
                     + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the function toString() works correctly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testToString() throws Exception {
+
+        assertEquals("<Bst2Groovy>", (new Bst2Groovy()).toString());
     }
 
     /**
@@ -2174,7 +2549,22 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#2 {#1 #1 =} {pop$ #12} while$ }", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    int v1 = 2\n" + "    while (1 == 1) {\n"
+                    + "    int v1 = 2\n" + "    while (1) {\n"
+                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile10opt() throws Exception {
+
+        runOptimized("function{abc}{#2 {#1 #1 =} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
+                    + "    int v1 = 2\n" + "    while (1) {\n"
                     + "      v1 = 12\n" + "    }\n" + "    return v1\n"
                     + "  }\n" + RUN + POST_RUN);
     }
@@ -2319,8 +2709,23 @@ public class Bst2GroovyTest {
 
         run("function{abc}{write$ write$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
-                    + "    bibWriter.write(p1,\n" //
-                    + "                    p2)\n" //
+                    + "    bibWriter.write(p2)\n" //
+                    + "    bibWriter.write(p1)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite2opt() throws Exception {
+
+        runOptimized("function{abc}{write$ write$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
+                    + "    bibWriter.write(p2,\n" //
+                    + "                    p1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2334,9 +2739,25 @@ public class Bst2GroovyTest {
 
         run("function{abc}{write$ write$ write$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2, p3) {\n"
-                    + "    bibWriter.write(p1,\n" //
+                    + "    bibWriter.write(p3)\n" //
+                    + "    bibWriter.write(p2)\n" //
+                    + "    bibWriter.write(p1)\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWrite3opt() throws Exception {
+
+        runOptimized("function{abc}{write$ write$ write$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2, p3) {\n"
+                    + "    bibWriter.write(p3,\n" //
                     + "                    p2,\n" //
-                    + "                    p3)\n" //
+                    + "                    p1)\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2366,6 +2787,21 @@ public class Bst2GroovyTest {
 
         run("function{abc}{write$ newline$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
+                    + "    bibWriter.write(p1)\n" //
+                    + "    bibWriter.newline()\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWriteNewline1opt() throws Exception {
+
+        runOptimized("function{abc}{write$ newline$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
                     + "    bibWriter.writeln(p1)\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2378,6 +2814,22 @@ public class Bst2GroovyTest {
     public void testWriteNewline2() throws Exception {
 
         run("function{abc}{write$ write$ newline$}", //
+            PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
+                    + "    bibWriter.write(p2)\n" //
+                    + "    bibWriter.write(p1)\n" //
+                    + "    bibWriter.newline()\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that write$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWriteNewline2opt() throws Exception {
+
+        runOptimized("function{abc}{write$ write$ newline$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1, p2) {\n"
                     + "    bibWriter.writeln(p2,\n" //
                     + "                      p1)\n" //
