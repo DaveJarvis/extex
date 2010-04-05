@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package org.extex.ant.latex.command;
 import org.extex.ant.latex.Settings;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This factory provides the different commands used to process a document.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -30,30 +30,33 @@ import org.extex.ant.latex.Settings;
 public class CommandFactory {
 
     /**
-     * TODO gene: missing JavaDoc.
-     * 
+     * This enumeration marks the kind od command requested.
      */
     public enum Type {
         /**
-         * The field <tt>LATEX</tt> contains the ...
+         * The field <tt>LATEX</tt> contains the value for the latex command.
          */
         LATEX,
         /**
-         * The field <tt>BIBTEX</tt> contains the ...
+         * The field <tt>BIBTEX</tt> contains the value for the bibtex command.
          */
         BIBTEX,
         /**
-         * The field <tt>MAKEINDEX</tt> contains the ...
+         * The field <tt>MAKEINDEX</tt> contains the value for the makeindex
+         * command.
          */
         MAKEINDEX
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a command.
      * 
-     * @param type
-     * @param settings
-     * @return
+     * @param type the type of the command requested
+     * @param settings the settings used to initialize the command
+     * 
+     * @return the command. It can not be <code>null</code>
+     * 
+     * @throws RuntimeException in case of an illegal type
      */
     public static Command create(Type type, Settings settings) {
 

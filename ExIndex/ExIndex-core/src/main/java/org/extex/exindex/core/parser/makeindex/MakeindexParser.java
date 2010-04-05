@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -185,21 +185,21 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <td>encap_prefix</td>
  * <td><tt>\\</tt></td>
  * <td>string</td>
- * <td>...</td>
+ * <td>The string to be inserted before encapsulations</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap-infix</td>
  * <td>encap_infix</td>
  * <td><tt>{</tt></td>
  * <td>string</td>
- * <td>...</td>
+ * <td>The string to be inserted between encapsulations</td>
  * </tr>
  * <tr>
  * <td>makeindex:encap-suffix</td>
  * <td>encap_suffix</td>
  * <td><tt>}</tt></td>
  * <td>string</td>
- * <td>...</td>
+ * <td>The string to be inserted after encapsulations</td>
  * </tr>
  * </table>
  * 
@@ -329,17 +329,17 @@ public class MakeindexParser implements RawIndexParser {
     private String index = "";
 
     /**
-     * The field <tt>encapPrefix</tt> contains the ...
+     * The field <tt>encapPrefix</tt> contains the encapsulation prefix.
      */
     private String encapPrefix;
 
     /**
-     * The field <tt>encapInfix</tt> contains the ...
+     * The field <tt>encapInfix</tt> contains the encapsulation infix.
      */
     private String encapInfix;
 
     /**
-     * The field <tt>encapSuffix</tt> contains the ...
+     * The field <tt>encapSuffix</tt> contains the encapsulation suffix.
      */
     private String encapSuffix;
 
@@ -448,24 +448,24 @@ public class MakeindexParser implements RawIndexParser {
      * <tr>
      * <td>makeindex:encap-prefix</td>
      * <td><tt>\\</tt></td>
-     * <td>...</td>
+     * <td>The string to be inserted before encapsulations</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap-infix</td>
      * <td><tt>{</tt></td>
-     * <td>...</td>
+     * <td>The string to be inserted between encapsulations</td>
      * </tr>
      * <tr>
      * <td>makeindex:encap-suffix</td>
      * <td><tt>}</tt></td>
-     * <td>...</td>
+     * <td>The string to be inserted after encapsulations</td>
      * </tr>
      * </table>
      * 
      * @param interpreter the interpreter to query for the parameters
      * 
      * @throws RawIndexException in case that the value from the interpreter has
-     * the wrong type
+     *         the wrong type
      */
     protected void configure(LInterpreter interpreter) throws RawIndexException {
 
@@ -558,7 +558,7 @@ public class MakeindexParser implements RawIndexParser {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create an entry.
      * 
      * @param idx the name of the index
      * @param keyArg the argument

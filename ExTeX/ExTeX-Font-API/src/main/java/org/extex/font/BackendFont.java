@@ -19,10 +19,8 @@
 
 package org.extex.font;
 
-import java.util.List;
-
 /**
- * Interface for a backend font.
+ * Interface for a back-end font.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -37,28 +35,6 @@ public interface BackendFont {
     FontKey getActualFontKey();
 
     /**
-     * Returns the afm data, or <code>null</code>, if not available.
-     * TODO mgn raus
-     * @return Returns the afm data, or <code>null</code>, if not available.
-     */
-    byte[] getAfm();
-
-    /**
-     * Returns the checksum of the font.
-     * TODO mgn raus
-     * @return the checksum.
-     */
-    int getCheckSum();
-
-    /**
-     * Returns the encoding vectors as list of string array (without a '/') or
-     * <code>null</code>, if no one exists.
-     * TODO mgn raus
-     * @return Returns the encoding vectors.
-     */
-    List<String[]> getEncodingVectors();
-
-    /**
      * Returns the internal name of the font.
      * 
      * @return the internal name of the font.
@@ -66,53 +42,33 @@ public interface BackendFont {
     String getName();
 
     /**
-     * Returns the pfa data, or <code>null</code>, if not available.
-     * TODO mgn raus
+     * Returns the pfa data, or <code>null</code>, if not available. TODO mgn
+     * raus
+     * 
      * @return Returns the pfa data, or <code>null</code>, if not available.
      */
     byte[] getPfa();
 
     /**
-     * Returns the pfb data, or <code>null</code>, if not available.
-     * TODO mgn raus
+     * Returns the pfb data, or <code>null</code>, if not available. TODO mgn
+     * raus
+     * 
      * @return Returns the pfb data, or <code>null</code>, if not available.
      */
     byte[] getPfb();
 
     /**
-     * Returns the xtf data, or <code>null</code>, if not available.
-     * TODO mgn raus
+     * Returns the xtf data, or <code>null</code>, if not available. TODO mgn
+     * raus
+     * 
      * @return Returns the xtf data, or <code>null</code>, if not available.
      */
     byte[] getXtf();
 
     /**
-     * Returns <code>true</code>, if the font has an encoding vector,
-     * otherwise <code>false</code>.
-     * TODO mgn raus
-     */
-    boolean hasEncodingVector();
-
-    /**
-     * If <code>true</code>, the font has more the one font in it.
-     * TODO mgn raus
-     * @return Returns <code>true</code>, if the font has more fonts in it.
-     */
-    boolean hasMultiFonts();
-
-    /**
-     * Returns the number of the encoding vector for the codepoint. If no
-     * enocding vector exists, -1 is returned.
-     * TODO mgn raus
-     * @param codepoint The codepoint of the char.
-     * @return Returns the number of the encoding vector for the codepoint.
-     */
-    int getEncodingForChar(int codepoint);
-
-    /**
-     * Returns <code>true</code>, if the font is a type 1 font (with
-     * afm/pfb), otherwise <code>false</code>.
-     * TODO mgn raus
+     * Returns <code>true</code>, if the font is a type 1 font (with afm/pfb),
+     * otherwise <code>false</code>. TODO mgn raus
+     * 
      * @return Returns <code>true</code>, if the font is a type 1 font (with
      *         afm/pfb), otherwise <code>false</code>.
      */
@@ -120,22 +76,11 @@ public interface BackendFont {
 
     /**
      * Returns <code>true</code>, if the font is a ttf/otf font, otherwise
-     * <code>false</code>.
-     * TODO mgn raus
+     * <code>false</code>. TODO mgn raus
+     * 
      * @return Returns <code>true</code>, if the font is a ttf/otf font,
      *         otherwise <code>false</code>.
      */
     boolean isXtf();
 
-    /**
-     * Tells the font, which character is used.
-     * TODO mgn raus
-     * @param bc The character.
-     */
-    void usedCharacter(BackendCharacter bc);
-    
-    
-    /**
-     * getType BackendFontType
-     */
 }

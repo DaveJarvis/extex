@@ -46,8 +46,8 @@ public class AfmParserTest extends TestCase {
 
         AfmHeader header = parser.getHeader();
 
-        assertEquals("LinLibertine", header.getFontname());
-        assertEquals("Linux Libertine", header.getFamilyname());
+        assertEquals("LinLibertine", header.getFontName());
+        assertEquals("Linux Libertine", header.getFamilyName());
         assertEquals(431, header.getXheight(), 0);
         assertEquals(-231, header.getDescender(), 0);
 

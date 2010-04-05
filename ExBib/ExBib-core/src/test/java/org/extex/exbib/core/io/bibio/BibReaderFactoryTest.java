@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,15 +54,14 @@ public class BibReaderFactoryTest {
     private Configuration cfg = new Configuration() {
 
         /**
-         * The field <tt>enc</tt> contains the ...
+         * The field <tt>enc</tt> contains the encoding.
          */
         private String enc = null;
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
          */
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -76,8 +75,8 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#findConfiguration(
-         *      java.lang.String, java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+         *      java.lang.String)
          */
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -88,8 +87,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getAttribute(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
          */
         public String getAttribute(String name) {
 
@@ -106,8 +104,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
          */
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -118,8 +115,8 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getConfiguration(
-         *      java.lang.String, java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+         *      java.lang.String)
          */
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -140,8 +137,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getValue(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
          */
         public String getValue(String key) throws ConfigurationException {
 
@@ -151,8 +147,8 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-         *      java.lang.String, int)
+         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+         *      int)
          */
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -163,8 +159,8 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.util.List, java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+         *      java.lang.String)
          */
         public void getValues(List<String> list, String key) {
 
@@ -174,8 +170,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#getValues(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
          */
         public List<String> getValues(String key) {
 
@@ -195,8 +190,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#iterator(
-         *      java.lang.String)
+         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
          */
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
@@ -207,8 +201,7 @@ public class BibReaderFactoryTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-         *      org.extex.framework.configuration.ConfigurationLoader)
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
@@ -247,7 +240,7 @@ public class BibReaderFactoryTest {
     };
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -263,7 +256,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -279,7 +272,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -295,7 +288,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -309,7 +302,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -320,7 +313,7 @@ public class BibReaderFactoryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> TOOD </testcase>
      * 
      * @throws Exception in case of an error
      */

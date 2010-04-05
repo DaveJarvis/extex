@@ -77,8 +77,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * 
          * @param glue the glue to add
          * 
-         * @see org.extex.typesetter.type.NodeList#addSkip(
-         *      org.extex.core.glue.FixedGlue)
+         * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
          */
         @Override
         public void addSkip(FixedGlue glue) {
@@ -106,8 +105,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
          * 
          * @throws GeneralException in case of an error
          * 
-         * @see org.extex.typesetter.type.Node#visit(
-         *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+         * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+         *      java.lang.Object)
          */
         @Override
         @SuppressWarnings("unchecked")
@@ -119,20 +118,19 @@ public class VirtualCharNode extends CharNode implements NodeList {
     }
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>d</tt> contains the depth for delayed initialization.
      */
-    private FixedDimen d;
+    private FixedDimen d = null;
 
     /**
      * The field <tt>h</tt> contains the height for delayed initialization.
      */
-    private FixedDimen h;
+    private FixedDimen h = null;
 
     /**
      * The field <tt>nodes</tt> contains the encapsulated node list.
@@ -142,7 +140,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
     /**
      * The field <tt>w</tt> contains the width for delayed initialization.
      */
-    private FixedDimen w;
+    private FixedDimen w = null;
 
     /**
      * Creates a new object.
@@ -186,8 +184,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param node the node to add
      * 
-     * @see org.extex.typesetter.type.NodeList#add(
-     *      org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.NodeList#add(org.extex.typesetter.type.Node)
      */
     public void add(Node node) {
 
@@ -200,8 +197,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param glue the glue to add
      * 
-     * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
      */
     public void addSkip(FixedGlue glue) {
 
@@ -213,8 +209,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param glue the glue to add to.
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#addWidthTo(
-     *      org.extex.core.glue.WideGlue)
+     * @see org.extex.typesetter.type.node.AbstractNode#addWidthTo(org.extex.core.glue.WideGlue)
      */
     @Override
     public void addWidthTo(WideGlue glue) {
@@ -268,8 +263,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if
-     *         index is out of bounds
+     * @return the node at position <i>index</i> of <code>null</code> if index
+     *         is out of bounds
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
@@ -426,8 +421,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param depth the node depth
      * 
-     * @see org.extex.typesetter.type.Node#setDepth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setDepth(org.extex.core.dimen.FixedDimen)
      */
     @Override
     public void setDepth(FixedDimen depth) {
@@ -444,8 +438,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param height the new height
      * 
-     * @see org.extex.typesetter.type.Node#setHeight(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setHeight(org.extex.core.dimen.FixedDimen)
      */
     @Override
     public void setHeight(FixedDimen height) {
@@ -464,8 +457,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param d the move value
      * 
-     * @see org.extex.typesetter.type.NodeList#setMove(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setMove(org.extex.core.dimen.FixedDimen)
      */
     public void setMove(FixedDimen d) {
 
@@ -479,8 +471,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param d the amount to be shifted
      * 
-     * @see org.extex.typesetter.type.NodeList#setShift(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setShift(org.extex.core.dimen.FixedDimen)
      */
     public void setShift(FixedDimen d) {
 
@@ -492,8 +483,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @param width the new width
      * 
-     * @see org.extex.typesetter.type.Node#setWidth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.Node#setWidth(org.extex.core.dimen.FixedDimen)
      */
     @Override
     public void setWidth(FixedDimen width) {
@@ -524,8 +514,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @param width the desired width
      * @param sum the total sum of the glues
      * 
-     * @see org.extex.typesetter.type.Node#spreadWidth(
-     *      org.extex.core.dimen.FixedDimen,
+     * @see org.extex.typesetter.type.Node#spreadWidth(org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
     @Override
@@ -567,8 +556,8 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @Override
     @SuppressWarnings("unchecked")

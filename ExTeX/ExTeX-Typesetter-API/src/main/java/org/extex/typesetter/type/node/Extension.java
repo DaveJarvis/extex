@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,78 +19,80 @@
 
 package org.extex.typesetter.type.node;
 
+import java.io.Serializable;
+
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 
 /**
  * This interface describes the capabilities for an extension object to be
  * inserted into an extension node.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
-public interface Extension {
-
-    /**
-     * Getter for the width of the node.
-     *
-     * @return the width
-     */
-    Dimen getWidth();
-
-    /**
-     * Getter for the height of the node.
-     *
-     * @return the height
-     */
-    Dimen getHeight();
+public interface Extension extends Serializable {
 
     /**
      * Getter for the depth of the node.
-     *
+     * 
      * @return the depth
      */
     Dimen getDepth();
 
     /**
-     * Setter for the width of the node.
-     *
-     * @param width the new width
+     * Getter for the height of the node.
+     * 
+     * @return the height
      */
-    void setWidth(FixedDimen width);
+    Dimen getHeight();
 
     /**
-     * Setter for the height of the node.
-     *
-     * @param height the new height
+     * Getter for the width of the node.
+     * 
+     * @return the width
      */
-    void setHeight(FixedDimen height);
+    Dimen getWidth();
 
     /**
      * Setter for the depth of the node.
-     *
+     * 
      * @param depth the nde depth
      */
     void setDepth(FixedDimen depth);
 
     /**
-     * This method puts the printable representation into the string buffer.
-     * This is meant to produce a short form only as it is used in error
-     * messages to the user.
-     *
-     * @param sb the output string buffer
-     * @param prefix the prefix string inserted at the beginning of each line
+     * Setter for the height of the node.
+     * 
+     * @param height the new height
      */
-    void toText(StringBuffer sb, String prefix);
+    void setHeight(FixedDimen height);
+
+    /**
+     * Setter for the width of the node.
+     * 
+     * @param width the new width
+     */
+    void setWidth(FixedDimen width);
 
     /**
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      */
     void toString(StringBuffer sb, String prefix);
+
+    /**
+     * This method puts the printable representation into the string buffer.
+     * This is meant to produce a short form only as it is used in error
+     * messages to the user.
+     * 
+     * @param sb the output string buffer
+     * @param prefix the prefix string inserted at the beginning of each line
+     */
+    void toText(StringBuffer sb, String prefix);
 
 }

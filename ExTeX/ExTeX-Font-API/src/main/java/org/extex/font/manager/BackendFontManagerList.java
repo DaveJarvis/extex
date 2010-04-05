@@ -209,9 +209,9 @@ public class BackendFontManagerList implements BackendFontManager {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Get the iterator for the manager infos.
      * 
-     * @return TODO
+     * @return the iterator for the manager infos
      */
     public Iterator<ManagerInfo> iterateManagerInfo() {
 

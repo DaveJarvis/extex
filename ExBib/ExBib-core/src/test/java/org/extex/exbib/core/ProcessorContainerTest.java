@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import org.extex.exbib.core.exceptions.ExBibMissingNumberException;
 import org.extex.exbib.core.exceptions.ExBibSorterNotFoundException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -45,8 +44,7 @@ public class ProcessorContainerTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test
-    @Ignore
+    @Test(expected = ExBibMissingNumberException.class)
     public final void test10() throws Exception {
 
         Configuration cfg = ConfigurationFactory.newInstance("exbib/exbib");

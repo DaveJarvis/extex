@@ -68,27 +68,27 @@ public class AfmHeader implements XMLWriterConvertible {
      * AdobeStandardEncoding - For all other names the font is treated as
      * symbolic.
      */
-    private String encodingscheme;
+    private String encodingScheme;
 
     /**
      * The family name of the font.
      */
-    private String familyname = "";
+    private String familyName = "";
 
     /**
      * The Postscript font name.
      */
-    private String fontname = "";
+    private String fontName = "";
 
     /**
      * The full name of the font.
      */
-    private String fullname = "";
+    private String fullName = "";
 
     /**
      * <code>true</code> if all the characters have the same width.
      */
-    private boolean isfixedpitch;
+    private boolean isFixedPitch;
 
     /**
      * The italic angle of the font, usually 0.0 or negative.
@@ -123,12 +123,12 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * The underline position.
      */
-    private float underlineposition;
+    private float underlinePosition;
 
     /**
      * The underline thickness.
      */
-    private float underlinethickness;
+    private float underlineThickness;
 
     /**
      * The lurx of the FontBox.
@@ -187,7 +187,7 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * Returns the ascender.
      * 
-     * @return Returns the ascender.
+     * @return the ascender
      */
     public float getAscender() {
 
@@ -195,9 +195,9 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the capheight.
+     * Returns the cap height.
      * 
-     * @return Returns the capheight.
+     * @return the cap height
      */
     public float getCapheight() {
 
@@ -205,9 +205,9 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the characterset.
+     * Returns the character set.
      * 
-     * @return Returns the characterset.
+     * @return the character set
      */
     public String getCharacterset() {
 
@@ -227,7 +227,7 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * Returns the descender.
      * 
-     * @return Returns the descender.
+     * @return the descender
      */
     public float getDescender() {
 
@@ -235,51 +235,51 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the encodingscheme.
+     * Returns the encoding scheme.
      * 
-     * @return Returns the encodingscheme.
+     * @return Returns the encoding scheme.
      */
-    public String getEncodingscheme() {
+    public String getEncodingScheme() {
 
-        return encodingscheme;
+        return encodingScheme;
     }
 
     /**
-     * Returns the familyname.
+     * Returns the family name.
      * 
-     * @return Returns the familyname.
+     * @return the family name
      */
-    public String getFamilyname() {
+    public String getFamilyName() {
 
-        return familyname;
+        return familyName;
     }
 
     /**
-     * Returns the fontname.
+     * Returns the font name.
      * 
-     * @return Returns the fontname.
+     * @return Returns the font name.
      */
-    public String getFontname() {
+    public String getFontName() {
 
-        return fontname;
+        return fontName;
     }
 
     /**
-     * Returns the fullname.
+     * Returns the full name.
      * 
-     * @return Returns the fullname.
+     * @return the full name
      */
-    public String getFullname() {
+    public String getFullName() {
 
-        return fullname;
+        return fullName;
     }
 
     /**
-     * Returns the italicangle.
+     * Returns the italic angle.
      * 
-     * @return Returns the italicangle.
+     * @return the italic angle
      */
-    public float getItalicangle() {
+    public float getItalicAngle() {
 
         return italicangle;
     }
@@ -335,29 +335,29 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the underlineposition.
+     * Returns the underline position.
      * 
-     * @return Returns the underlineposition.
+     * @return the underline position.
      */
     public float getUnderlineposition() {
 
-        return underlineposition;
+        return underlinePosition;
     }
 
     /**
-     * Returns the underlinethickness.
+     * Returns the underline thickness.
      * 
-     * @return Returns the underlinethickness.
+     * @return the underline thickness.
      */
     public float getUnderlinethickness() {
 
-        return underlinethickness;
+        return underlineThickness;
     }
 
     /**
      * Returns the urx.
      * 
-     * @return Returns the urx.
+     * @return the urx.
      */
     public float getUrx() {
 
@@ -367,7 +367,7 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * Returns the ury.
      * 
-     * @return Returns the ury.
+     * @return the ury.
      */
     public float getUry() {
 
@@ -377,7 +377,7 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * Returns the weight.
      * 
-     * @return Returns the weight.
+     * @return the weight
      */
     public String getWeight() {
 
@@ -387,7 +387,7 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * Returns the xheight.
      * 
-     * @return Returns the xheight.
+     * @return the xheight
      */
     public float getXheight() {
 
@@ -395,23 +395,13 @@ public class AfmHeader implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the isfixedpitch.
+     * Returns the fixed pitch indicator.
      * 
-     * @return Returns the isfixedpitch.
+     * @return the fixed pitch indicator
      */
-    public boolean isFixedpitch() {
+    public boolean isFixedPitch() {
 
-        return isfixedpitch;
-    }
-
-    /**
-     * Getter for isfixedpitch.
-     * 
-     * @return the isfixedpitch
-     */
-    public boolean isIsfixedpitch() {
-
-        return isfixedpitch;
+        return isFixedPitch;
     }
 
     /**
@@ -471,7 +461,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setEncodingscheme(String encoding) {
 
-        encodingscheme = encoding;
+        encodingScheme = encoding;
     }
 
     /**
@@ -481,7 +471,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setFamilyname(String fname) {
 
-        familyname = fname;
+        familyName = fname;
     }
 
     /**
@@ -491,7 +481,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setFixedpitch(boolean fixedpitch) {
 
-        isfixedpitch = fixedpitch;
+        isFixedPitch = fixedpitch;
     }
 
     /**
@@ -501,7 +491,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setFontname(String fname) {
 
-        fontname = fname;
+        fontName = fname;
     }
 
     /**
@@ -511,7 +501,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setFullname(String fname) {
 
-        fullname = fname;
+        fullName = fname;
     }
 
     /**
@@ -521,7 +511,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setIsfixedpitch(boolean isfixedpitch) {
 
-        this.isfixedpitch = isfixedpitch;
+        this.isFixedPitch = isfixedpitch;
     }
 
     /**
@@ -591,7 +581,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setUnderlineposition(float position) {
 
-        underlineposition = position;
+        underlinePosition = position;
     }
 
     /**
@@ -601,7 +591,7 @@ public class AfmHeader implements XMLWriterConvertible {
      */
     public void setUnderlinethickness(float thickness) {
 
-        underlinethickness = thickness;
+        underlineThickness = thickness;
     }
 
     /**
@@ -647,28 +637,27 @@ public class AfmHeader implements XMLWriterConvertible {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("header");
-        writer.writeAttribute("name", fontname);
-        writer.writeAttribute("fullname", fullname);
-        writer.writeAttribute("familyname", familyname);
+        writer.writeAttribute("name", fontName);
+        writer.writeAttribute("fullname", fullName);
+        writer.writeAttribute("familyname", familyName);
         writer.writeAttribute("comment", comment);
         writer.writeAttribute("notice", notice);
         writer.writeAttribute("weight", weight);
         writer.writeFormatAttribute("italicangle", italicangle);
-        writer.writeAttribute("isfixedpitch", isfixedpitch);
+        writer.writeAttribute("isfixedpitch", isFixedPitch);
         writer.writeAttribute("characterset", characterset);
         writer.writeFormatAttribute("llx", llx);
         writer.writeFormatAttribute("lly", lly);
         writer.writeFormatAttribute("urx", urx);
         writer.writeFormatAttribute("ury", ury);
-        writer.writeFormatAttribute("underlineposition", underlineposition);
-        writer.writeFormatAttribute("underlinethickness", underlinethickness);
-        writer.writeAttribute("encodingscheme", encodingscheme);
+        writer.writeFormatAttribute("underlineposition", underlinePosition);
+        writer.writeFormatAttribute("underlinethickness", underlineThickness);
+        writer.writeAttribute("encodingscheme", encodingScheme);
         writer.writeFormatAttribute("capheight", capheight);
         writer.writeFormatAttribute("xheight", xheight);
         writer.writeFormatAttribute("ascender", ascender);

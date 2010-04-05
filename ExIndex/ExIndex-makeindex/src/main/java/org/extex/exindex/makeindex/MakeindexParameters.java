@@ -496,11 +496,11 @@ public final class MakeindexParameters {
             } else if (c == '\'') {
                 int cc = locator.read();
                 if (cc < 0) {
-                    new RawIndexEofException(locator, '\'');
+                    throw new RawIndexEofException(locator, '\'');
                 } else if (cc == '\\') {
                     cc = locator.read();
                     if (cc < 0) {
-                        new RawIndexEofException(locator, '\'');
+                        throw new RawIndexEofException(locator, '\'');
                     } else if (cc == 'n') {
                         cc = '\n';
                     } else if (cc == 't') {

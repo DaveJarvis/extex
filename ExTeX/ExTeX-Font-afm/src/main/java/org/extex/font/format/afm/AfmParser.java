@@ -98,11 +98,16 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     private AfmHeader header;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
     private Localizer localizer =
             LocalizerFactory.getLocalizer(AfmParser.class);
+
+    /**
+     * The default encoding.
+     */
+    private String[] defaultEncodingVector = new String[256];
 
     /**
      * Create a new object.
@@ -216,11 +221,6 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * The default encoding.
-     */
-    private String[] defaultEncodingVector = new String[256];
-
-    /**
      * Create a reader and copy the font data.
      * 
      * @param in The input.
@@ -312,9 +312,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the ascender.
+     * 
+     * @return the ascender
      * 
      * @see org.extex.font.format.afm.AfmHeader#getAscender()
      */
@@ -324,9 +324,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the capital height.
+     * 
+     * @return the capital height
      * 
      * @see org.extex.font.format.afm.AfmHeader#getCapheight()
      */
@@ -336,9 +336,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the character set.
+     * 
+     * @return the character set
      * 
      * @see org.extex.font.format.afm.AfmHeader#getCharacterset()
      */
@@ -348,9 +348,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the comment.
+     * 
+     * @return the comment
      * 
      * @see org.extex.font.format.afm.AfmHeader#getComment()
      */
@@ -360,10 +360,20 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO missing JavaDoc
-     *
-     * @return TODO
-     *
+     * Getter for defaultEncodingVector.
+     * 
+     * @return the defaultEncodingVector
+     */
+    public String[] getDefaultEncodingVector() {
+
+        return defaultEncodingVector;
+    }
+
+    /**
+     * Getter for the descender.
+     * 
+     * @return the descender
+     * 
      * @see org.extex.font.format.afm.AfmHeader#getDescender()
      */
     public float getDescender() {
@@ -372,33 +382,33 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the encoding scheme.
      * 
-     * @see org.extex.font.format.afm.AfmHeader#getEncodingscheme()
+     * @return the encoding scheme
+     * 
+     * @see org.extex.font.format.afm.AfmHeader#getEncodingScheme()
      */
     public String getEncodingscheme() {
 
-        return header.getEncodingscheme();
+        return header.getEncodingScheme();
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the family name.
      * 
-     * @see org.extex.font.format.afm.AfmHeader#getFamilyname()
+     * @return the family name
+     * 
+     * @see org.extex.font.format.afm.AfmHeader#getFamilyName()
      */
     public String getFamilyname() {
 
-        return header.getFamilyname();
+        return header.getFamilyName();
     }
 
     /**
-     * Returns the font data.
+     * Getter for the font data.
      * 
-     * @return Returns the font data.
+     * @return the font data
      */
     public byte[] getFontData() {
 
@@ -406,33 +416,33 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the font name.
      * 
-     * @see org.extex.font.format.afm.AfmHeader#getFontname()
+     * @return the font name
+     * 
+     * @see org.extex.font.format.afm.AfmHeader#getFontName()
      */
     public String getFontname() {
 
-        return header.getFontname();
+        return header.getFontName();
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the full font name.
+     * 
+     * @return the full font name
      * 
      * @see org.extex.font.format.afm.AfmHeader#getFullname()
      */
     public String getFullname() {
 
-        return header.getFullname();
+        return header.getFullName();
     }
 
     /**
-     * Returns the header.
+     * Getter for the header.
      * 
-     * @return Returns the header.
+     * @return Returns the header
      */
     public AfmHeader getHeader() {
 
@@ -467,21 +477,21 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the italic angle.
      * 
-     * @see org.extex.font.format.afm.AfmHeader#getItalicangle()
+     * @return the italic angle
+     * 
+     * @see org.extex.font.format.afm.AfmHeader#getItalicAngle()
      */
     public float getItalicangle() {
 
-        return header.getItalicangle();
+        return header.getItalicAngle();
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the llx.
+     * 
+     * @return the llx
      * 
      * @see org.extex.font.format.afm.AfmHeader#getLlx()
      */
@@ -491,9 +501,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the lly.
+     * 
+     * @return the lly
      * 
      * @see org.extex.font.format.afm.AfmHeader#getLly()
      */
@@ -503,9 +513,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the notice.
+     * 
+     * @return the notice
      * 
      * @see org.extex.font.format.afm.AfmHeader#getNotice()
      */
@@ -515,9 +525,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * Returns the number of glyphs.
+     * Getter for the number of glyphs.
      * 
-     * @return Returns the number of glyphs.
+     * @return the number of glyphs
      */
     public int getNumberOfGlyphs() {
 
@@ -525,9 +535,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the stdhw.
+     * 
+     * @return the stdhw
      * 
      * @see org.extex.font.format.afm.AfmHeader#getStdhw()
      */
@@ -537,9 +547,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the stdvw.
+     * 
+     * @return the stdvw
      * 
      * @see org.extex.font.format.afm.AfmHeader#getStdvw()
      */
@@ -549,33 +559,33 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the underline position.
+     * 
+     * @return the underline position
      * 
      * @see org.extex.font.format.afm.AfmHeader#getUnderlineposition()
      */
-    public float getUnderlineposition() {
+    public float getUnderlinePosition() {
 
         return header.getUnderlineposition();
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the underline thickness.
+     * 
+     * @return the underline thickness
      * 
      * @see org.extex.font.format.afm.AfmHeader#getUnderlinethickness()
      */
-    public float getUnderlinethickness() {
+    public float getUnderlineThickness() {
 
         return header.getUnderlinethickness();
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the urx.
+     * 
+     * @return the urx
      * 
      * @see org.extex.font.format.afm.AfmHeader#getUrx()
      */
@@ -585,9 +595,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the ury.
+     * 
+     * @return the ury
      * 
      * @see org.extex.font.format.afm.AfmHeader#getUry()
      */
@@ -597,9 +607,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the weight.
+     * 
+     * @return the weight
      * 
      * @see org.extex.font.format.afm.AfmHeader#getWeight()
      */
@@ -609,9 +619,9 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the xheight.
+     * 
+     * @return the xheight
      * 
      * @see org.extex.font.format.afm.AfmHeader#getXheight()
      */
@@ -621,27 +631,15 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * TODO
-     *  
-     * @return TODO
+     * Getter for the fixed pitch.
      * 
-     * @see org.extex.font.format.afm.AfmHeader#isFixedpitch()
-     */
-    public boolean isFixedpitch() {
-
-        return header.isFixedpitch();
-    }
-
-    /**
-     * TODO
-     *  
-     * @return TODO
+     * @return the fixed pitch
      * 
-     * @see org.extex.font.format.afm.AfmHeader#isIsfixedpitch()
+     * @see org.extex.font.format.afm.AfmHeader#isFixedPitch()
      */
-    public boolean isIsfixedpitch() {
+    public boolean isFixedPitch() {
 
-        return header.isIsfixedpitch();
+        return header.isFixedPitch();
     }
 
     /**
@@ -792,8 +790,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     }
 
     /**
-     * Remove all ',' in the string, if the string is <code>null</code>, a
-     * empty string is returned.
+     * Remove all ',' in the string, if the string is <code>null</code>, a empty
+     * string is returned.
      * 
      * @param s the string
      * @return the string without a ','
@@ -812,7 +810,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("afm");
-        writer.writeAttribute("name", header.getFontname());
+        writer.writeAttribute("name", header.getFontName());
 
         header.writeXML(writer);
         for (int i = 0; i < afmCharMetrics.size(); i++) {
@@ -850,7 +848,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
                     writer.writeAttribute("height", "0");
                 }
             }
-            writer.writeFormatAttribute("italic", header.getItalicangle());
+            writer.writeFormatAttribute("italic", header.getItalicAngle());
 
             // kerning
             String glyphname = cm.getN();
@@ -883,16 +881,6 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         }
 
         writer.writeEndElement();
-    }
-
-    /**
-     * Getter for defaultEncodingVector.
-     * 
-     * @return the defaultEncodingVector
-     */
-    public String[] getDefaultEncodingVector() {
-
-        return defaultEncodingVector;
     }
 
 }

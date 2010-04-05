@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,8 @@ import org.junit.Test;
 public class EntryTest {
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that the locator is initially <code>null</code>.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -48,7 +49,8 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that the locator can be passed in with the constructor.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -61,7 +63,7 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that a getter uses the crossref field. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -74,7 +76,43 @@ public class EntryTest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that a getter uses the crossref field. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testGetStringDB2() throws Exception {
+
+        DBImpl db = new DBImpl();
+        Entry e = db.makeEntry("book", "xr", null);
+        e.set("abc", "XYZ");
+
+        Entry entry = new Entry(null);
+        entry.set("crossref", "xr");
+        assertEquals("\"XYZ\"", entry.get("abc", db).toString());
+    }
+
+    /**
+     * <testcase> Test that a getter uses the crossref field only if required.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testGetStringDB3() throws Exception {
+
+        DBImpl db = new DBImpl();
+        Entry e = db.makeEntry("book", "xr", null);
+        e.set("abc", "XYZ");
+
+        Entry entry = new Entry(null);
+        entry.set("crossref", "xr");
+        entry.set("abc", "ABC");
+        assertEquals("\"ABC\"", entry.get("abc", db).toString());
+    }
+
+    /**
+     * <testcase> Test that setters for type and key work. </testcase>
      * 
      * @throws Exception in case of an error
      */
