@@ -89,7 +89,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 0: Width=381194, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C0() throws Exception {
@@ -117,7 +117,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 1: Width=512718, Height=429378, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C1() throws Exception {
@@ -146,7 +146,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 10: Width=476065, Height=429378, Depth=0,
      * IC=31709
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C10() throws Exception {
@@ -175,7 +175,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 100: Width=319703, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C100() throws Exception {
@@ -204,7 +204,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 101: Width=285159, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C101() throws Exception {
@@ -233,7 +233,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 102: Width=303268, Height=436359,
      * Depth=122180, IC=67089
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C102() throws Exception {
@@ -263,7 +263,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 103: Width=294612, Height=270543,
      * Depth=122180, IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C103() throws Exception {
@@ -293,7 +293,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 104: Width=354175, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C104() throws Exception {
@@ -322,7 +322,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 105: Width=209893, Height=411945, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C105() throws Exception {
@@ -351,7 +351,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 106: Width=254542, Height=411945,
      * Depth=122180, IC=35350
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C106() throws Exception {
@@ -381,7 +381,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 107: Width=319994, Height=436359, Depth=0,
      * IC=21091
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C107() throws Exception {
@@ -410,7 +410,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 108: Width=183269, Height=436359, Depth=0,
      * IC=13818
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C108() throws Exception {
@@ -439,7 +439,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 109: Width=538171, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C109() throws Exception {
@@ -468,7 +468,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 11: Width=391338, Height=270543, Depth=0,
      * IC=4000
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C11() throws Exception {
@@ -497,7 +497,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 110: Width=367265, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C110() throws Exception {
@@ -526,7 +526,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 111: Width=295775, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C111() throws Exception {
@@ -555,7 +555,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 112: Width=308795, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C112() throws Exception {
@@ -585,7 +585,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 113: Width=272795, Height=270543,
      * Depth=122180, IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C113() throws Exception {
@@ -615,7 +615,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 114: Width=277268, Height=270543, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C114() throws Exception {
@@ -644,7 +644,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 115: Width=289814, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C115() throws Exception {
@@ -673,7 +673,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 116: Width=222177, Height=386491, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C116() throws Exception {
@@ -702,7 +702,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 117: Width=350175, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C117() throws Exception {
@@ -731,7 +731,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 118: Width=297449, Height=270543, Depth=0,
      * IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C118() throws Exception {
@@ -760,7 +760,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 119: Width=439810, Height=270543, Depth=0,
      * IC=16909
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C119() throws Exception {
@@ -789,7 +789,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 12: Width=347339, Height=436359,
      * Depth=122180, IC=34836
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C12() throws Exception {
@@ -819,7 +819,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 120: Width=349631, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C120() throws Exception {
@@ -848,7 +848,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 121: Width=299994, Height=270543,
      * Depth=122180, IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C121() throws Exception {
@@ -878,7 +878,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 122: Width=285813, Height=270543, Depth=0,
      * IC=27999
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C122() throws Exception {
@@ -907,7 +907,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 123: Width=196359, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C123() throws Exception {
@@ -936,7 +936,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 124: Width=237451, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C124() throws Exception {
@@ -966,7 +966,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 125: Width=391702, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C125() throws Exception {
@@ -996,7 +996,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 126: Width=307630, Height=447879, Depth=0,
      * IC=96653
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C126() throws Exception {
@@ -1025,7 +1025,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 127: Width=170906, Height=436359, Depth=0,
      * IC=246784
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C127() throws Exception {
@@ -1053,7 +1053,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 128: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C128() throws Exception {
@@ -1064,7 +1064,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 129: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C129() throws Exception {
@@ -1076,7 +1076,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 13: Width=319136, Height=270543,
      * Depth=122180, IC=34181
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C13() throws Exception {
@@ -1105,7 +1105,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 130: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C130() throws Exception {
@@ -1116,7 +1116,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 131: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C131() throws Exception {
@@ -1127,7 +1127,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 132: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C132() throws Exception {
@@ -1138,7 +1138,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 133: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C133() throws Exception {
@@ -1149,7 +1149,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 134: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C134() throws Exception {
@@ -1160,7 +1160,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 135: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C135() throws Exception {
@@ -1171,7 +1171,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 136: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C136() throws Exception {
@@ -1182,7 +1182,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 137: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C137() throws Exception {
@@ -1193,7 +1193,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 138: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C138() throws Exception {
@@ -1204,7 +1204,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 139: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C139() throws Exception {
@@ -1216,7 +1216,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 14: Width=272503, Height=436359, Depth=0,
      * IC=23563
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C14() throws Exception {
@@ -1244,7 +1244,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 140: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C140() throws Exception {
@@ -1255,7 +1255,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 141: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C141() throws Exception {
@@ -1266,7 +1266,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 142: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C142() throws Exception {
@@ -1277,7 +1277,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 143: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C143() throws Exception {
@@ -1288,7 +1288,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 144: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C144() throws Exception {
@@ -1299,7 +1299,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 145: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C145() throws Exception {
@@ -1310,7 +1310,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 146: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C146() throws Exception {
@@ -1321,7 +1321,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 147: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C147() throws Exception {
@@ -1332,7 +1332,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 148: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C148() throws Exception {
@@ -1343,7 +1343,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 149: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C149() throws Exception {
@@ -1355,7 +1355,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 15: Width=248432, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C15() throws Exception {
@@ -1383,7 +1383,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 150: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C150() throws Exception {
@@ -1394,7 +1394,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 151: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C151() throws Exception {
@@ -1405,7 +1405,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 152: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C152() throws Exception {
@@ -1416,7 +1416,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 153: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C153() throws Exception {
@@ -1427,7 +1427,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 154: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C154() throws Exception {
@@ -1438,7 +1438,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 155: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C155() throws Exception {
@@ -1449,7 +1449,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 156: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C156() throws Exception {
@@ -1460,7 +1460,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 157: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C157() throws Exception {
@@ -1471,7 +1471,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 158: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C158() throws Exception {
@@ -1482,7 +1482,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 159: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C159() throws Exception {
@@ -1494,7 +1494,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 16: Width=268722, Height=436359,
      * Depth=122180, IC=47455
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C16() throws Exception {
@@ -1523,7 +1523,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 160: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C160() throws Exception {
@@ -1534,7 +1534,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 161: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C161() throws Exception {
@@ -1545,7 +1545,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 162: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C162() throws Exception {
@@ -1556,7 +1556,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 163: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C163() throws Exception {
@@ -1567,7 +1567,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 164: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C164() throws Exception {
@@ -1578,7 +1578,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 165: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C165() throws Exception {
@@ -1589,7 +1589,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 166: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C166() throws Exception {
@@ -1600,7 +1600,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 167: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C167() throws Exception {
@@ -1611,7 +1611,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 168: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C168() throws Exception {
@@ -1622,7 +1622,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 169: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C169() throws Exception {
@@ -1634,7 +1634,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 17: Width=303558, Height=270543,
      * Depth=122180, IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C17() throws Exception {
@@ -1663,7 +1663,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 170: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C170() throws Exception {
@@ -1674,7 +1674,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 171: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C171() throws Exception {
@@ -1685,7 +1685,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 172: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C172() throws Exception {
@@ -1696,7 +1696,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 173: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C173() throws Exception {
@@ -1707,7 +1707,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 174: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C174() throws Exception {
@@ -1718,7 +1718,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 175: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C175() throws Exception {
@@ -1729,7 +1729,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 176: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C176() throws Exception {
@@ -1740,7 +1740,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 177: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C177() throws Exception {
@@ -1751,7 +1751,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 178: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C178() throws Exception {
@@ -1762,7 +1762,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 179: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C179() throws Exception {
@@ -1774,7 +1774,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 18: Width=286721, Height=436359, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C18() throws Exception {
@@ -1802,7 +1802,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 180: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C180() throws Exception {
@@ -1813,7 +1813,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 181: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C181() throws Exception {
@@ -1824,7 +1824,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 182: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C182() throws Exception {
@@ -1835,7 +1835,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 183: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C183() throws Exception {
@@ -1846,7 +1846,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 184: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C184() throws Exception {
@@ -1857,7 +1857,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 185: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C185() throws Exception {
@@ -1868,7 +1868,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 186: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C186() throws Exception {
@@ -1879,7 +1879,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 187: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C187() throws Exception {
@@ -1890,7 +1890,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 188: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C188() throws Exception {
@@ -1901,7 +1901,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 189: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C189() throws Exception {
@@ -1913,7 +1913,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 19: Width=217450, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C19() throws Exception {
@@ -1941,7 +1941,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 190: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C190() throws Exception {
@@ -1952,7 +1952,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 191: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C191() throws Exception {
@@ -1963,7 +1963,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 192: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C192() throws Exception {
@@ -1974,7 +1974,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 193: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C193() throws Exception {
@@ -1985,7 +1985,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 194: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C194() throws Exception {
@@ -1996,7 +1996,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 195: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C195() throws Exception {
@@ -2007,7 +2007,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 196: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C196() throws Exception {
@@ -2018,7 +2018,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 197: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C197() throws Exception {
@@ -2029,7 +2029,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 198: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C198() throws Exception {
@@ -2040,7 +2040,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 199: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C199() throws Exception {
@@ -2052,7 +2052,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 2: Width=470202, Height=429378, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C2() throws Exception {
@@ -2081,7 +2081,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 20: Width=354175, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C20() throws Exception {
@@ -2109,7 +2109,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 200: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C200() throws Exception {
@@ -2120,7 +2120,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 201: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C201() throws Exception {
@@ -2131,7 +2131,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 202: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C202() throws Exception {
@@ -2142,7 +2142,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 203: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C203() throws Exception {
@@ -2153,7 +2153,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 204: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C204() throws Exception {
@@ -2164,7 +2164,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 205: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C205() throws Exception {
@@ -2175,7 +2175,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 206: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C206() throws Exception {
@@ -2186,7 +2186,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 207: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C207() throws Exception {
@@ -2197,7 +2197,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 208: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C208() throws Exception {
@@ -2208,7 +2208,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 209: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C209() throws Exception {
@@ -2220,7 +2220,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 21: Width=358902, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C21() throws Exception {
@@ -2248,7 +2248,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 210: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C210() throws Exception {
@@ -2259,7 +2259,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 211: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C211() throws Exception {
@@ -2270,7 +2270,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 212: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C212() throws Exception {
@@ -2281,7 +2281,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 213: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C213() throws Exception {
@@ -2292,7 +2292,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 214: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C214() throws Exception {
@@ -2303,7 +2303,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 215: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C215() throws Exception {
@@ -2314,7 +2314,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 216: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C216() throws Exception {
@@ -2325,7 +2325,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 217: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C217() throws Exception {
@@ -2336,7 +2336,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 218: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C218() throws Exception {
@@ -2347,7 +2347,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 219: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C219() throws Exception {
@@ -2359,7 +2359,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 22: Width=370175, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C22() throws Exception {
@@ -2388,7 +2388,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 220: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C220() throws Exception {
@@ -2399,7 +2399,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 221: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C221() throws Exception {
@@ -2410,7 +2410,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 222: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C222() throws Exception {
@@ -2421,7 +2421,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 223: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C223() throws Exception {
@@ -2432,7 +2432,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 224: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C224() throws Exception {
@@ -2443,7 +2443,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 225: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C225() throws Exception {
@@ -2454,7 +2454,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 226: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C226() throws Exception {
@@ -2465,7 +2465,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 227: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C227() throws Exception {
@@ -2476,7 +2476,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 228: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C228() throws Exception {
@@ -2487,7 +2487,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 229: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C229() throws Exception {
@@ -2499,7 +2499,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 23: Width=303995, Height=270543, Depth=0,
      * IC=39636
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C23() throws Exception {
@@ -2527,7 +2527,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 230: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C230() throws Exception {
@@ -2538,7 +2538,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 231: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C231() throws Exception {
@@ -2549,7 +2549,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 232: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C232() throws Exception {
@@ -2560,7 +2560,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 233: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C233() throws Exception {
@@ -2571,7 +2571,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 234: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C234() throws Exception {
@@ -2582,7 +2582,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 235: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C235() throws Exception {
@@ -2593,7 +2593,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 236: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C236() throws Exception {
@@ -2604,7 +2604,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 237: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C237() throws Exception {
@@ -2615,7 +2615,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 238: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C238() throws Exception {
@@ -2626,7 +2626,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 239: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C239() throws Exception {
@@ -2638,7 +2638,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 24: Width=268722, Height=436359,
      * Depth=122180, IC=30364
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C24() throws Exception {
@@ -2667,7 +2667,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 240: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C240() throws Exception {
@@ -2678,7 +2678,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 241: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C241() throws Exception {
@@ -2689,7 +2689,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 242: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C242() throws Exception {
@@ -2700,7 +2700,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 243: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C243() throws Exception {
@@ -2711,7 +2711,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 244: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C244() throws Exception {
@@ -2722,7 +2722,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 245: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C245() throws Exception {
@@ -2733,7 +2733,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 246: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C246() throws Exception {
@@ -2744,7 +2744,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 247: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C247() throws Exception {
@@ -2755,7 +2755,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 248: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C248() throws Exception {
@@ -2766,7 +2766,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 249: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C249() throws Exception {
@@ -2778,7 +2778,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 25: Width=349012, Height=270543, Depth=0,
      * IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C25() throws Exception {
@@ -2806,7 +2806,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 250: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C250() throws Exception {
@@ -2817,7 +2817,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 251: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C251() throws Exception {
@@ -2828,7 +2828,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 252: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C252() throws Exception {
@@ -2839,7 +2839,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 253: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C253() throws Exception {
@@ -2850,7 +2850,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 254: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C254() throws Exception {
@@ -2861,7 +2861,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 255: not defined
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C255() throws Exception {
@@ -2873,7 +2873,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 26: Width=317340, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C26() throws Exception {
@@ -2903,7 +2903,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 27: Width=349703, Height=270543, Depth=0,
      * IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C27() throws Exception {
@@ -2932,7 +2932,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 28: Width=267195, Height=270543, Depth=0,
      * IC=70181
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C28() throws Exception {
@@ -2961,7 +2961,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 29: Width=331630, Height=270543, Depth=0,
      * IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C29() throws Exception {
@@ -2989,7 +2989,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 3: Width=427047, Height=429378, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C3() throws Exception {
@@ -3018,7 +3018,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 30: Width=364138, Height=436359,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C30() throws Exception {
@@ -3048,7 +3048,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 31: Width=385448, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C31() throws Exception {
@@ -3078,7 +3078,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 32: Width=399992, Height=436359,
      * Depth=122180, IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C32() throws Exception {
@@ -3108,7 +3108,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 33: Width=383120, Height=270543, Depth=0,
      * IC=22545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C33() throws Exception {
@@ -3137,7 +3137,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 34: Width=287922, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C34() throws Exception {
@@ -3166,7 +3166,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 35: Width=362611, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C35() throws Exception {
@@ -3195,7 +3195,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 36: Width=508283, Height=270543, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C36() throws Exception {
@@ -3224,7 +3224,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 37: Width=317340, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C37() throws Exception {
@@ -3254,7 +3254,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 38: Width=222540, Height=270543, Depth=61090,
      * IC=50545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C38() throws Exception {
@@ -3284,7 +3284,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 39: Width=403046, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C39() throws Exception {
@@ -3314,7 +3314,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 4: Width=457865, Height=429378, Depth=0,
      * IC=47690
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C4() throws Exception {
@@ -3343,7 +3343,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 40: Width=615261, Height=226775,
      * Depth=-87404, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C40() throws Exception {
@@ -3373,7 +3373,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 41: Width=615261, Height=226775,
      * Depth=-87404, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C41() throws Exception {
@@ -3403,7 +3403,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 42: Width=615261, Height=226775,
      * Depth=-87404, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C42() throws Exception {
@@ -3433,7 +3433,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 43: Width=615261, Height=226775,
      * Depth=-87404, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C43() throws Exception {
@@ -3463,7 +3463,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 44: Width=170906, Height=284942,
      * Depth=-29237, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C44() throws Exception {
@@ -3493,7 +3493,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 45: Width=170906, Height=284942,
      * Depth=-29237, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C45() throws Exception {
@@ -3523,7 +3523,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 46: Width=307630, Height=292362,
      * Depth=-21818, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C46() throws Exception {
@@ -3553,7 +3553,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 47: Width=307630, Height=292362,
      * Depth=-21818, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C47() throws Exception {
@@ -3583,7 +3583,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 48: Width=307630, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C48() throws Exception {
@@ -3612,7 +3612,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 49: Width=307630, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C49() throws Exception {
@@ -3641,7 +3641,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 5: Width=509774, Height=429378, Depth=0,
      * IC=48545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C5() throws Exception {
@@ -3670,7 +3670,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 50: Width=307630, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C50() throws Exception {
@@ -3699,7 +3699,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 51: Width=307630, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C51() throws Exception {
@@ -3729,7 +3729,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 52: Width=307630, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C52() throws Exception {
@@ -3759,7 +3759,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 53: Width=307630, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C53() throws Exception {
@@ -3789,7 +3789,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 54: Width=307630, Height=404942, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C54() throws Exception {
@@ -3818,7 +3818,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 55: Width=307630, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C55() throws Exception {
@@ -3848,7 +3848,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 56: Width=307630, Height=404942, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C56() throws Exception {
@@ -3877,7 +3877,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 57: Width=307630, Height=270543,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C57() throws Exception {
@@ -3906,7 +3906,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 58: Width=170906, Height=61090, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C58() throws Exception {
@@ -3935,7 +3935,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 59: Width=170906, Height=61090, Depth=122180,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C59() throws Exception {
@@ -3965,7 +3965,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 6: Width=481192, Height=429378, Depth=0,
      * IC=36836
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C6() throws Exception {
@@ -3994,7 +3994,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 60: Width=478536, Height=330936, Depth=16756,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C60() throws Exception {
@@ -4024,7 +4024,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 61: Width=307630, Height=471269,
      * Depth=157089, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C61() throws Exception {
@@ -4054,7 +4054,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 62: Width=478536, Height=330936, Depth=16756,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C62() throws Exception {
@@ -4084,7 +4084,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 63: Width=307630, Height=292362,
      * Depth=-21818, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C63() throws Exception {
@@ -4114,7 +4114,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 64: Width=324794, Height=436359, Depth=0,
      * IC=34181
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C64() throws Exception {
@@ -4143,7 +4143,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 65: Width=461228, Height=429378, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C65() throws Exception {
@@ -4172,7 +4172,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 66: Width=467410, Height=429378, Depth=0,
      * IC=31709
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C66() throws Exception {
@@ -4201,7 +4201,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 67: Width=440189, Height=429378, Depth=0,
      * IC=45126
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C67() throws Exception {
@@ -4230,7 +4230,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 68: Width=510843, Height=429378, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C68() throws Exception {
@@ -4259,7 +4259,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 69: Width=455447, Height=429378, Depth=0,
      * IC=36836
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C69() throws Exception {
@@ -4288,7 +4288,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 7: Width=358902, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C7() throws Exception {
@@ -4317,7 +4317,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 70: Width=398285, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C70() throws Exception {
@@ -4346,7 +4346,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 71: Width=485315, Height=429378, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C71() throws Exception {
@@ -4375,7 +4375,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 72: Width=509774, Height=429378, Depth=0,
      * IC=48545
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C72() throws Exception {
@@ -4404,7 +4404,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 73: Width=271360, Height=429378, Depth=0,
      * IC=49399
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C73() throws Exception {
@@ -4433,7 +4433,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 74: Width=340068, Height=429378, Depth=0,
      * IC=58181
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C74() throws Exception {
@@ -4462,7 +4462,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 75: Width=523447, Height=429378, Depth=0,
      * IC=45126
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C75() throws Exception {
@@ -4491,7 +4491,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 76: Width=418611, Height=429378, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C76() throws Exception {
@@ -4520,7 +4520,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 77: Width=595227, Height=429378, Depth=0,
      * IC=65636
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C77() throws Exception {
@@ -4549,7 +4549,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 78: Width=492684, Height=429378, Depth=0,
      * IC=65636
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C78() throws Exception {
@@ -4578,7 +4578,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 79: Width=470202, Height=429378, Depth=0,
      * IC=17090
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C79() throws Exception {
@@ -4606,7 +4606,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
     /**
      * test cmmi12 scaled 799 Char 8: Width=410174, Height=429378, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C8() throws Exception {
@@ -4635,7 +4635,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 80: Width=396576, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C80() throws Exception {
@@ -4664,7 +4664,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 81: Width=487293, Height=429378,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C81() throws Exception {
@@ -4694,7 +4694,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 82: Width=468311, Height=429378, Depth=0,
      * IC=5172
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C82() throws Exception {
@@ -4723,7 +4723,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 83: Width=378394, Height=429378, Depth=0,
      * IC=36581
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C83() throws Exception {
@@ -4752,7 +4752,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 84: Width=360611, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C84() throws Exception {
@@ -4781,7 +4781,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 85: Width=417862, Height=429378, Depth=0,
      * IC=65636
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C85() throws Exception {
@@ -4810,7 +4810,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 86: Width=358685, Height=429378, Depth=0,
      * IC=136724
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C86() throws Exception {
@@ -4839,7 +4839,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 87: Width=580863, Height=429378, Depth=0,
      * IC=85453
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C87() throws Exception {
@@ -4868,7 +4868,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 88: Width=510628, Height=429378, Depth=0,
      * IC=49399
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C88() throws Exception {
@@ -4897,7 +4897,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 89: Width=356976, Height=429378, Depth=0,
      * IC=136724
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C89() throws Exception {
@@ -4926,7 +4926,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 9: Width=375780, Height=429378, Depth=0,
      * IC=68575
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C9() throws Exception {
@@ -4955,7 +4955,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 90: Width=421121, Height=429378, Depth=0,
      * IC=45126
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C90() throws Exception {
@@ -4984,7 +4984,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 91: Width=239268, Height=471269, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C91() throws Exception {
@@ -5013,7 +5013,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 92: Width=239268, Height=436359,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C92() throws Exception {
@@ -5043,7 +5043,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 93: Width=239268, Height=436359,
      * Depth=122180, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C93() throws Exception {
@@ -5073,7 +5073,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 94: Width=615261, Height=224725,
      * Depth=-89454, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C94() throws Exception {
@@ -5103,7 +5103,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 95: Width=615261, Height=224725,
      * Depth=-89454, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C95() throws Exception {
@@ -5133,7 +5133,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 96: Width=258178, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C96() throws Exception {
@@ -5162,7 +5162,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 97: Width=322975, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C97() throws Exception {
@@ -5191,7 +5191,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 98: Width=261594, Height=436359, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C98() throws Exception {
@@ -5220,7 +5220,7 @@ public class FontFactoryImplCmmi12ScaledTest extends AbstractFontFactoryTester {
      * test cmmi12 scaled 799 Char 99: Width=264794, Height=270543, Depth=0,
      * IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testcmmi12C99() throws Exception {

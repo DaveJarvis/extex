@@ -83,7 +83,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 0: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C0() throws Exception {
@@ -111,7 +111,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 1: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C1() throws Exception {
@@ -139,7 +139,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 10: Width=213120, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C10() throws Exception {
@@ -167,7 +167,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 100: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C100() throws Exception {
@@ -195,7 +195,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 101: Width=342096, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C101() throws Exception {
@@ -223,7 +223,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 102: Width=235136, Height=541452, Depth=0, IC=54255
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C102() throws Exception {
@@ -251,7 +251,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 103: Width=384560, Height=338160, Depth=152559, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C103() throws Exception {
@@ -280,7 +280,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 104: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C104() throws Exception {
@@ -308,7 +308,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 105: Width=213120, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C105() throws Exception {
@@ -336,7 +336,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 106: Width=235136, Height=513927, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C106() throws Exception {
@@ -365,7 +365,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 107: Width=405792, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C107() throws Exception {
@@ -393,7 +393,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 108: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C108() throws Exception {
@@ -421,7 +421,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 109: Width=640935, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C109() throws Exception {
@@ -449,7 +449,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 11: Width=342096, Height=0, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C11() throws Exception {
@@ -477,7 +477,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 110: Width=427032, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C110() throws Exception {
@@ -505,7 +505,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 111: Width=384560, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C111() throws Exception {
@@ -533,7 +533,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 112: Width=427032, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C112() throws Exception {
@@ -562,7 +562,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 113: Width=405792, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C113() throws Exception {
@@ -591,7 +591,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 114: Width=298840, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C114() throws Exception {
@@ -619,7 +619,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 115: Width=303560, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C115() throws Exception {
@@ -647,7 +647,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 116: Width=298840, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C116() throws Exception {
@@ -675,7 +675,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 117: Width=427032, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C117() throws Exception {
@@ -703,7 +703,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 118: Width=405792, Height=338160, Depth=0, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C118() throws Exception {
@@ -731,7 +731,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 119: Width=556000, Height=338160, Depth=0, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C119() throws Exception {
@@ -759,7 +759,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 12: Width=169863, Height=0, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C12() throws Exception {
@@ -787,7 +787,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 120: Width=405792, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C120() throws Exception {
@@ -815,7 +815,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 121: Width=405792, Height=338160, Depth=152559, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C121() throws Exception {
@@ -844,7 +844,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 122: Width=342096, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C122() throws Exception {
@@ -872,7 +872,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 123: Width=393216, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C123() throws Exception {
@@ -901,7 +901,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 124: Width=217839, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C124() throws Exception {
@@ -930,7 +930,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 125: Width=393216, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C125() throws Exception {
@@ -959,7 +959,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 126: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C126() throws Exception {
@@ -987,7 +987,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 127: Width=256376, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C127() throws Exception {
@@ -1015,7 +1015,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 128: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C128() throws Exception {
@@ -1043,7 +1043,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 129: Width=577239, Height=541452, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C129() throws Exception {
@@ -1072,7 +1072,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 13: Width=213120, Height=76280, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C13() throws Exception {
@@ -1101,7 +1101,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 130: Width=556000, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C130() throws Exception {
@@ -1129,7 +1129,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 131: Width=556000, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C131() throws Exception {
@@ -1157,7 +1157,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 132: Width=587463, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C132() throws Exception {
@@ -1185,7 +1185,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 133: Width=523759, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C133() throws Exception {
@@ -1213,7 +1213,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 134: Width=523759, Height=541452, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C134() throws Exception {
@@ -1242,7 +1242,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 135: Width=603975, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C135() throws Exception {
@@ -1270,7 +1270,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 136: Width=480504, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C136() throws Exception {
@@ -1298,7 +1298,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 137: Width=536343, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C137() throws Exception {
@@ -1326,7 +1326,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 138: Width=448264, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C138() throws Exception {
@@ -1354,7 +1354,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 139: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C139() throws Exception {
@@ -1382,7 +1382,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 14: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C14() throws Exception {
@@ -1410,7 +1410,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 140: Width=577239, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C140() throws Exception {
@@ -1438,7 +1438,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 141: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C141() throws Exception {
@@ -1466,7 +1466,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 142: Width=598472, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C142() throws Exception {
@@ -1494,7 +1494,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 143: Width=566224, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C143() throws Exception {
@@ -1522,7 +1522,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 144: Width=566224, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C144() throws Exception {
@@ -1550,7 +1550,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 145: Width=427032, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C145() throws Exception {
@@ -1578,7 +1578,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 146: Width=427032, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C146() throws Exception {
@@ -1606,7 +1606,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 147: Width=427032, Height=541452, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C147() throws Exception {
@@ -1635,7 +1635,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 148: Width=556000, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C148() throws Exception {
@@ -1663,7 +1663,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 149: Width=556000, Height=541452, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C149() throws Exception {
@@ -1692,7 +1692,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 15: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C15() throws Exception {
@@ -1720,7 +1720,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 150: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C150() throws Exception {
@@ -1748,7 +1748,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 151: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C151() throws Exception {
@@ -1776,7 +1776,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 152: Width=577239, Height=690876, Depth=0, IC=18871
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C152() throws Exception {
@@ -1804,7 +1804,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 153: Width=470280, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C153() throws Exception {
@@ -1832,7 +1832,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 154: Width=470280, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C154() throws Exception {
@@ -1860,7 +1860,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 155: Width=470280, Height=720367, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C155() throws Exception {
@@ -1888,7 +1888,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 156: Width=673183, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C156() throws Exception {
@@ -1916,7 +1916,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 157: Width=277608, Height=720367, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C157() throws Exception {
@@ -1944,7 +1944,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 158: Width=427032, Height=541452, Depth=1568, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C158() throws Exception {
@@ -1973,7 +1973,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 159: Width=349167, Height=541452, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C159() throws Exception {
@@ -2002,7 +2002,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 16: Width=286256, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C16() throws Exception {
@@ -2030,7 +2030,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 160: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C160() throws Exception {
@@ -2058,7 +2058,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 161: Width=384560, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C161() throws Exception {
@@ -2087,7 +2087,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 162: Width=342096, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C162() throws Exception {
@@ -2115,7 +2115,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 163: Width=342096, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C163() throws Exception {
@@ -2143,7 +2143,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 164: Width=581168, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C164() throws Exception {
@@ -2171,7 +2171,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 165: Width=342096, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C165() throws Exception {
@@ -2199,7 +2199,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 166: Width=342096, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C166() throws Exception {
@@ -2228,7 +2228,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 167: Width=384560, Height=541452, Depth=152559, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C167() throws Exception {
@@ -2257,7 +2257,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 168: Width=213120, Height=753399, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C168() throws Exception {
@@ -2285,7 +2285,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 169: Width=347600, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C169() throws Exception {
@@ -2313,7 +2313,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 17: Width=286256, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C17() throws Exception {
@@ -2341,7 +2341,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 170: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C170() throws Exception {
@@ -2369,7 +2369,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 171: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C171() throws Exception {
@@ -2397,7 +2397,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 172: Width=427032, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C172() throws Exception {
@@ -2425,7 +2425,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 173: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C173() throws Exception {
@@ -2453,7 +2453,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 174: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C174() throws Exception {
@@ -2481,7 +2481,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 175: Width=298840, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C175() throws Exception {
@@ -2509,7 +2509,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 176: Width=298840, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C176() throws Exception {
@@ -2537,7 +2537,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 177: Width=303560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C177() throws Exception {
@@ -2565,7 +2565,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 178: Width=303560, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C178() throws Exception {
@@ -2593,7 +2593,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 179: Width=303560, Height=338160, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C179() throws Exception {
@@ -2622,7 +2622,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 18: Width=325576, Height=76280, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C18() throws Exception {
@@ -2651,7 +2651,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 180: Width=452984, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C180() throws Exception {
@@ -2679,7 +2679,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 181: Width=298840, Height=488760, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C181() throws Exception {
@@ -2708,7 +2708,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 182: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C182() throws Exception {
@@ -2736,7 +2736,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 183: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C183() throws Exception {
@@ -2764,7 +2764,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 184: Width=405792, Height=488760, Depth=152559, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C184() throws Exception {
@@ -2793,7 +2793,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 185: Width=342096, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C185() throws Exception {
@@ -2821,7 +2821,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 186: Width=342096, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C186() throws Exception {
@@ -2849,7 +2849,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 187: Width=342096, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C187() throws Exception {
@@ -2877,7 +2877,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 188: Width=448264, Height=513927, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C188() throws Exception {
@@ -2906,7 +2906,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 189: Width=213120, Height=393216, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C189() throws Exception {
@@ -2935,7 +2935,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 19: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C19() throws Exception {
@@ -2963,7 +2963,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 190: Width=363328, Height=393216, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C190() throws Exception {
@@ -2992,7 +2992,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 191: Width=545775, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C191() throws Exception {
@@ -3020,7 +3020,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 192: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C192() throws Exception {
@@ -3048,7 +3048,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 193: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C193() throws Exception {
@@ -3076,7 +3076,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 194: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C194() throws Exception {
@@ -3104,7 +3104,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 195: Width=577239, Height=720367, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C195() throws Exception {
@@ -3132,7 +3132,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 196: Width=577239, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C196() throws Exception {
@@ -3160,7 +3160,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 197: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C197() throws Exception {
@@ -3188,7 +3188,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 198: Width=694416, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C198() throws Exception {
@@ -3216,7 +3216,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 199: Width=556000, Height=541452, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C199() throws Exception {
@@ -3245,7 +3245,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 2: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C2() throws Exception {
@@ -3273,7 +3273,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 20: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C20() throws Exception {
@@ -3301,7 +3301,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 200: Width=523759, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C200() throws Exception {
@@ -3329,7 +3329,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 201: Width=523759, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C201() throws Exception {
@@ -3357,7 +3357,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 202: Width=523759, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C202() throws Exception {
@@ -3385,7 +3385,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 203: Width=523759, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C203() throws Exception {
@@ -3413,7 +3413,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 204: Width=277608, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C204() throws Exception {
@@ -3441,7 +3441,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 205: Width=277608, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C205() throws Exception {
@@ -3469,7 +3469,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 206: Width=277608, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C206() throws Exception {
@@ -3497,7 +3497,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 207: Width=277608, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C207() throws Exception {
@@ -3525,7 +3525,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 208: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C208() throws Exception {
@@ -3553,7 +3553,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 209: Width=577239, Height=720367, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C209() throws Exception {
@@ -3581,7 +3581,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 21: Width=384560, Height=338160, Depth=0, IC=21231
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C21() throws Exception {
@@ -3609,7 +3609,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 210: Width=598472, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C210() throws Exception {
@@ -3637,7 +3637,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 211: Width=598472, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C211() throws Exception {
@@ -3665,7 +3665,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 212: Width=598472, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C212() throws Exception {
@@ -3693,7 +3693,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 213: Width=598472, Height=720367, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C213() throws Exception {
@@ -3721,7 +3721,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 214: Width=598472, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C214() throws Exception {
@@ -3749,7 +3749,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 215: Width=780135, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C215() throws Exception {
@@ -3777,7 +3777,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 216: Width=598472, Height=582351, Depth=37744, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C216() throws Exception {
@@ -3806,7 +3806,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 217: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C217() throws Exception {
@@ -3834,7 +3834,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 218: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C218() throws Exception {
@@ -3862,7 +3862,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 219: Width=577239, Height=744744, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C219() throws Exception {
@@ -3890,7 +3890,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 22: Width=769911, Height=338160, Depth=0, IC=21231
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C22() throws Exception {
@@ -3918,7 +3918,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 220: Width=577239, Height=690876, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C220() throws Exception {
@@ -3946,7 +3946,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 221: Width=577239, Height=744744, Depth=0, IC=18871
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C221() throws Exception {
@@ -3974,7 +3974,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 222: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C222() throws Exception {
@@ -4002,7 +4002,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 223: Width=854064, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C223() throws Exception {
@@ -4030,7 +4030,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 224: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C224() throws Exception {
@@ -4058,7 +4058,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 225: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C225() throws Exception {
@@ -4086,7 +4086,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 226: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C226() throws Exception {
@@ -4114,7 +4114,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 227: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C227() throws Exception {
@@ -4142,7 +4142,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 228: Width=384560, Height=488760, Depth=31455, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C228() throws Exception {
@@ -4171,7 +4171,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 229: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C229() throws Exception {
@@ -4199,7 +4199,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 23: Width=0, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C23() throws Exception {
@@ -4226,7 +4226,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 230: Width=556000, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C230() throws Exception {
@@ -4254,7 +4254,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 231: Width=342096, Height=338160, Depth=133688, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C231() throws Exception {
@@ -4283,7 +4283,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 232: Width=342096, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C232() throws Exception {
@@ -4311,7 +4311,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 233: Width=342096, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C233() throws Exception {
@@ -4339,7 +4339,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 234: Width=342096, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C234() throws Exception {
@@ -4367,7 +4367,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 235: Width=342096, Height=488760, Depth=31455, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C235() throws Exception {
@@ -4396,7 +4396,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 236: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C236() throws Exception {
@@ -4424,7 +4424,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 237: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C237() throws Exception {
@@ -4452,7 +4452,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 238: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C238() throws Exception {
@@ -4480,7 +4480,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 239: Width=213120, Height=488760, Depth=31455, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C239() throws Exception {
@@ -4509,7 +4509,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 24: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C24() throws Exception {
@@ -4537,7 +4537,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 240: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C240() throws Exception {
@@ -4565,7 +4565,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 241: Width=427032, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C241() throws Exception {
@@ -4593,7 +4593,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 242: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C242() throws Exception {
@@ -4621,7 +4621,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 243: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C243() throws Exception {
@@ -4649,7 +4649,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 244: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C244() throws Exception {
@@ -4677,7 +4677,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 245: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C245() throws Exception {
@@ -4705,7 +4705,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 246: Width=384560, Height=488760, Depth=31455, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C246() throws Exception {
@@ -4734,7 +4734,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 247: Width=598472, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C247() throws Exception {
@@ -4762,7 +4762,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 248: Width=384560, Height=414051, Depth=76280, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C248() throws Exception {
@@ -4791,7 +4791,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 249: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C249() throws Exception {
@@ -4819,7 +4819,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 25: Width=213120, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C25() throws Exception {
@@ -4847,7 +4847,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 250: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C250() throws Exception {
@@ -4875,7 +4875,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 251: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C251() throws Exception {
@@ -4903,7 +4903,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 252: Width=427032, Height=488760, Depth=31455, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C252() throws Exception {
@@ -4932,7 +4932,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 253: Width=405792, Height=541452, Depth=152559, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C253() throws Exception {
@@ -4961,7 +4961,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 254: Width=393216, Height=393216, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C254() throws Exception {
@@ -4989,7 +4989,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 255: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C255() throws Exception {
@@ -5017,7 +5017,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 26: Width=235136, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C26() throws Exception {
@@ -5046,7 +5046,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 27: Width=449048, Height=541452, Depth=0, IC=54255
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C27() throws Exception {
@@ -5074,7 +5074,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 28: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C28() throws Exception {
@@ -5102,7 +5102,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 29: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C29() throws Exception {
@@ -5130,7 +5130,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 3: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C3() throws Exception {
@@ -5158,7 +5158,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 30: Width=640935, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C30() throws Exception {
@@ -5186,7 +5186,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 31: Width=640935, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C31() throws Exception {
@@ -5214,7 +5214,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 32: Width=456128, Height=0, Depth=157280, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C32() throws Exception {
@@ -5242,7 +5242,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 33: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C33() throws Exception {
@@ -5270,7 +5270,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 34: Width=286256, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C34() throws Exception {
@@ -5298,7 +5298,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 35: Width=640935, Height=541452, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C35() throws Exception {
@@ -5327,7 +5327,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 36: Width=384560, Height=582351, Depth=43248, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C36() throws Exception {
@@ -5356,7 +5356,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 37: Width=640935, Height=582351, Depth=43248, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C37() throws Exception {
@@ -5385,7 +5385,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 38: Width=598472, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C38() throws Exception {
@@ -5413,7 +5413,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 39: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C39() throws Exception {
@@ -5441,7 +5441,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 4: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C4() throws Exception {
@@ -5469,7 +5469,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 40: Width=298840, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C40() throws Exception {
@@ -5498,7 +5498,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 41: Width=298840, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C41() throws Exception {
@@ -5527,7 +5527,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 42: Width=384560, Height=582351, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C42() throws Exception {
@@ -5555,7 +5555,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 43: Width=598472, Height=448263, Depth=59768, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C43() throws Exception {
@@ -5584,7 +5584,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 44: Width=213120, Height=76280, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C44() throws Exception {
@@ -5613,7 +5613,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 45: Width=256376, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C45() throws Exception {
@@ -5641,7 +5641,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 46: Width=213120, Height=76280, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C46() throws Exception {
@@ -5669,7 +5669,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 47: Width=384560, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C47() throws Exception {
@@ -5698,7 +5698,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 48: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C48() throws Exception {
@@ -5726,7 +5726,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 49: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C49() throws Exception {
@@ -5754,7 +5754,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 5: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C5() throws Exception {
@@ -5782,7 +5782,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 50: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C50() throws Exception {
@@ -5810,7 +5810,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 51: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C51() throws Exception {
@@ -5838,7 +5838,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 52: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C52() throws Exception {
@@ -5866,7 +5866,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 53: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C53() throws Exception {
@@ -5894,7 +5894,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 54: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C54() throws Exception {
@@ -5922,7 +5922,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 55: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C55() throws Exception {
@@ -5950,7 +5950,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 56: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C56() throws Exception {
@@ -5978,7 +5978,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 57: Width=384560, Height=513927, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C57() throws Exception {
@@ -6006,7 +6006,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 58: Width=213120, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C58() throws Exception {
@@ -6034,7 +6034,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 59: Width=213120, Height=338160, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C59() throws Exception {
@@ -6063,7 +6063,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 6: Width=0, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C6() throws Exception {
@@ -6090,7 +6090,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 60: Width=598472, Height=414051, Depth=20439, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C60() throws Exception {
@@ -6119,7 +6119,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 61: Width=598472, Height=283112, Depth=-109312, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C61() throws Exception {
@@ -6148,7 +6148,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 62: Width=598472, Height=414051, Depth=20439, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C62() throws Exception {
@@ -6177,7 +6177,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 63: Width=363328, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C63() throws Exception {
@@ -6205,7 +6205,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 64: Width=598472, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C64() throws Exception {
@@ -6233,7 +6233,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 65: Width=577239, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C65() throws Exception {
@@ -6261,7 +6261,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 66: Width=544992, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C66() throws Exception {
@@ -6289,7 +6289,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 67: Width=556000, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C67() throws Exception {
@@ -6317,7 +6317,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 68: Width=587463, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C68() throws Exception {
@@ -6345,7 +6345,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 69: Width=523759, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C69() throws Exception {
@@ -6373,7 +6373,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 7: Width=384560, Height=488760, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C7() throws Exception {
@@ -6401,7 +6401,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 70: Width=501735, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C70() throws Exception {
@@ -6429,7 +6429,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 71: Width=603975, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C71() throws Exception {
@@ -6457,7 +6457,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 72: Width=577239, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C72() throws Exception {
@@ -6485,7 +6485,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 73: Width=277608, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C73() throws Exception {
@@ -6513,7 +6513,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 74: Width=395568, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C74() throws Exception {
@@ -6541,7 +6541,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 75: Width=598472, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C75() throws Exception {
@@ -6569,7 +6569,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 76: Width=480504, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C76() throws Exception {
@@ -6597,7 +6597,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 77: Width=705424, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C77() throws Exception {
@@ -6625,7 +6625,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 78: Width=577239, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C78() throws Exception {
@@ -6653,7 +6653,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 79: Width=598472, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C79() throws Exception {
@@ -6681,7 +6681,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 8: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C8() throws Exception {
@@ -6709,7 +6709,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 80: Width=523759, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C80() throws Exception {
@@ -6737,7 +6737,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 81: Width=598472, Height=541452, Depth=152559, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C81() throws Exception {
@@ -6766,7 +6766,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 82: Width=566224, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C82() throws Exception {
@@ -6794,7 +6794,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 83: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C83() throws Exception {
@@ -6822,7 +6822,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 84: Width=556000, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C84() throws Exception {
@@ -6850,7 +6850,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 85: Width=577239, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C85() throws Exception {
@@ -6878,7 +6878,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 86: Width=577239, Height=541452, Depth=0, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C86() throws Exception {
@@ -6906,7 +6906,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 87: Width=791144, Height=541452, Depth=0, IC=10215
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C87() throws Exception {
@@ -6934,7 +6934,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 88: Width=577239, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C88() throws Exception {
@@ -6962,7 +6962,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 89: Width=577239, Height=541452, Depth=0, IC=18871
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C89() throws Exception {
@@ -6990,7 +6990,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 9: Width=384560, Height=448263, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C9() throws Exception {
@@ -7018,7 +7018,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 90: Width=470280, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C90() throws Exception {
@@ -7046,7 +7046,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 91: Width=213120, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C91() throws Exception {
@@ -7075,7 +7075,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 92: Width=393216, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C92() throws Exception {
@@ -7104,7 +7104,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 93: Width=213120, Height=582351, Depth=196608, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C93() throws Exception {
@@ -7133,7 +7133,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 94: Width=384560, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C94() throws Exception {
@@ -7161,7 +7161,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 95: Width=314568, Height=31455, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C95() throws Exception {
@@ -7189,7 +7189,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 96: Width=213120, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C96() throws Exception {
@@ -7217,7 +7217,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 97: Width=384560, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C97() throws Exception {
@@ -7245,7 +7245,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 98: Width=427032, Height=541452, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C98() throws Exception {
@@ -7273,7 +7273,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * test aer12 Char 99: Width=342096, Height=338160, Depth=0, IC=0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testaer12C99() throws Exception {
@@ -7301,7 +7301,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * kerning test aer12 Kerning: V,: 0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testKerning1() throws Exception {
@@ -7318,7 +7318,7 @@ public class FontFactoryImplAer12VfTest extends AbstractFontFactoryTester {
     /**
      * kerning test aer12 Kerning: W.: 0
      * 
-     * @throws Exception ...
+     * @throws Exception in case of an error
      */
     @Test
     public void testKerning2() throws Exception {

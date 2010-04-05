@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,7 +43,7 @@ import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the string implementation of a token stream.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
@@ -56,9 +56,9 @@ public class TokenStreamStringImpl32Test {
     private static final int C32 = 32;
 
     /**
-     * The field <tt>fac</tt> contains the token factory to use.
+     * The field <tt>factory</tt> contains the token factory to use.
      */
-    private static TokenFactory fac;
+    private static TokenFactory factory;
 
     /**
      * The field <tt>tokenizer</tt> contains the tokenizer to use for
@@ -68,7 +68,7 @@ public class TokenStreamStringImpl32Test {
 
     /**
      * Command line interface.
-     *
+     * 
      * @param args the arguments
      */
     public static void main(String[] args) {
@@ -86,7 +86,7 @@ public class TokenStreamStringImpl32Test {
 
     /**
      * Create a stream of tokens fed from a string.
-     *
+     * 
      * @param line the input string
      * @return the new token stream
      * @throws IOException in case of an error
@@ -103,7 +103,7 @@ public class TokenStreamStringImpl32Test {
     @Before
     public void setUp() throws Exception {
 
-        fac = new TokenFactoryImpl();
+        factory = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
             public Catcode getCatcode(UnicodeChar c) {
@@ -149,143 +149,152 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * The digit 1 is parsed as other character and nothing more.
-     *
+     * <testcase> The digit 1 is parsed as other character and nothing more.
+     * </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void test1() throws Exception {
 
         TokenStream stream = makeStream("1");
-        assertEquals("the character 1", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * The digits 1 and 2 are parsed as other character and nothing more.
-     *
+     * <testcase> The digits 1 and 2 are parsed as other character and nothing
+     * more. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void test12() throws Exception {
 
         TokenStream stream = makeStream("12");
-        assertEquals("the character 1", stream.get(fac, tokenizer).toString());
-        assertEquals("the character 2", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 2", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCaret1() throws Exception {
 
         TokenStream stream = makeStream("^1");
-        assertEquals("superscript character ^", stream.get(fac, tokenizer)
+        assertEquals("superscript character ^", stream.get(factory, tokenizer)
             .toString());
-        assertEquals("the character 1", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCaretA() throws Exception {
 
         TokenStream stream = makeStream("^^41");
-        assertEquals("the letter A", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter A", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCaretA2() throws Exception {
 
         TokenStream stream = makeStream("^^A");
-        assertEquals("the character ^^A", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character ^^A", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCaretA3() throws Exception {
 
         TokenStream stream = makeStream("^^A;");
-        assertEquals("the character ^^A", stream.get(fac, tokenizer).toString());
-        assertEquals("the character ;", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character ^^A", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character ;", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCaretEnd() throws Exception {
 
         TokenStream stream = makeStream("^");
-        assertEquals("superscript character ^", stream.get(fac, tokenizer)
+        assertEquals("superscript character ^", stream.get(factory, tokenizer)
             .toString());
-        Token token = stream.get(fac, tokenizer);
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test cr1
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testCr1() throws Exception {
 
         TokenStream stream = makeStream("x\nx");
-        assertEquals("the letter x", stream.get(fac, tokenizer).toString());
-        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
-        assertEquals("the letter x", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter x", stream.get(factory, tokenizer).toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
+        assertEquals("the letter x", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test cr2
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -293,20 +302,20 @@ public class TokenStreamStringImpl32Test {
     public void testCr2() throws Exception {
 
         TokenStream stream = makeStream("x\n\n");
-        assertEquals("the letter x", stream.get(fac, tokenizer).toString());
-        Token t = stream.get(fac, tokenizer);
+        assertEquals("the letter x", stream.get(factory, tokenizer).toString());
+        Token t = stream.get(factory, tokenizer);
         assertEquals(C32, t.getChar().getCodePoint());
         assertNotNull(t);
         assertEquals("the control sequence \\par", t.toString());
-        Token token = stream.get(fac, tokenizer);
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test Cr3
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -314,15 +323,15 @@ public class TokenStreamStringImpl32Test {
     public void testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
-        assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-            .toString());
-        assertEquals("the letter x", stream.get(fac, tokenizer).toString());
-        assertNull(stream.get(fac, tokenizer));
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
+        assertEquals("the letter x", stream.get(factory, tokenizer).toString());
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test cr4
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -330,132 +339,137 @@ public class TokenStreamStringImpl32Test {
     public void testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
-        assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-            .toString());
-        assertEquals("the control sequence \\par", stream.get(fac, tokenizer)
-            .toString());
-        assertNull(stream.get(fac, tokenizer));
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
+        assertEquals("the control sequence \\par", stream.get(factory,
+            tokenizer).toString());
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * The empty string does not contain any characters
-     *
+     * <testcase> The empty string does not contain any characters </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testEmpty() throws Exception {
 
         TokenStream stream = makeStream("");
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test hex notation with '^^^^'
-     *
+     * <testcase> Test hex notation with '^^^^' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testHex1() throws Exception {
 
         TokenStream stream = makeStream("^^^^41 ");
-        assertEquals("the letter A", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter A", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
 
     }
 
     /**
-     * Test hex notation with '^^^^'
-     *
+     * <testcase> Test hex notation with '^^^^' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testHex2() throws Exception {
 
         TokenStream stream = makeStream("^^^^fffe");
-        Token t = stream.get(fac, tokenizer);
+        Token t = stream.get(factory, tokenizer);
         if (t instanceof OtherToken) {
             assertTrue(true);
         } else {
             assertTrue(false);
         }
-        Token token = stream.get(fac, tokenizer);
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test hex notation with '^^^^'
-     *
+     * <testcase> Test hex notation with '^^^^' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testHex3() throws Exception {
 
         TokenStream stream = makeStream("^^^^016e ");
-        Token to = stream.get(fac, tokenizer);
+        Token to = stream.get(factory, tokenizer);
         assertEquals(366, to.getChar().getCodePoint());
 
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testIgnore() throws Exception {
 
         TokenStream stream = makeStream("\f.");
-        Token token = stream.get(fac, tokenizer);
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals("the character .", token.toString());
-        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
-        assertNull(stream.get(fac, tokenizer));
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testLetter() throws Exception {
 
         TokenStream stream = makeStream("A");
-        assertEquals("the letter A", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter A", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * ...
-     *
+     * <testcase> TODO </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testMixed() throws Exception {
 
         TokenStream stream = makeStream("12 34");
-        assertEquals("the character 1", stream.get(fac, tokenizer).toString());
-        assertEquals("the character 2", stream.get(fac, tokenizer).toString());
-        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
-        assertEquals("the character 3", stream.get(fac, tokenizer).toString());
-        assertEquals("the character 4", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the character 1", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 2", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
+        assertEquals("the character 3", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("the character 4", stream.get(factory, tokenizer)
+            .toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * A single space at the beginning of the processing is skipped
-     *
+     * <testcase> A single space at the beginning of the processing is skipped
+     * </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -463,42 +477,45 @@ public class TokenStreamStringImpl32Test {
     public void testSpace() throws Exception {
 
         TokenStream stream = makeStream(" ");
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * The character period and space in sequence are parsed into appropriate
-     * tokens.
-     *
+     * <testcase> The character period and space in sequence are parsed into
+     * appropriate tokens. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testSpace2() throws Exception {
 
         TokenStream stream = makeStream(". ");
-        assertEquals("the character .", stream.get(fac, tokenizer).toString());
-        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
-        assertNull(stream.get(fac, tokenizer));
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * The character period and two spaces in sequence are parsed into
-     * appropriate tokens. The two spaces are collapsed into one.
-     *
+     * <testcase> The character period and two spaces in sequence are parsed
+     * into appropriate tokens. The two spaces are collapsed into one.
+     * </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testSpace3() throws Exception {
 
         TokenStream stream = makeStream(".  ");
-        assertEquals("the character .", stream.get(fac, tokenizer).toString());
-        assertEquals("blank space  ", stream.get(fac, tokenizer).toString());
-        assertNull(stream.get(fac, tokenizer));
+        assertEquals("the character .", stream.get(factory, tokenizer)
+            .toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Two spaces at the beginning are ignored.
-     *
+     * <testcase> Two spaces at the beginning are ignored. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -506,46 +523,46 @@ public class TokenStreamStringImpl32Test {
     public void testSpaces() throws Exception {
 
         TokenStream stream = makeStream("  ");
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
     }
 
     /**
-     * Test one Unicode name 'a'
-     *
+     * <testcase> Test one Unicode name 'a' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testUnicodeName1() throws Exception {
 
         TokenStream stream = makeStream("^^^LATIN SMALL LETTER A;");
-        assertEquals("the letter a", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter a", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
 
     }
 
     /**
-     * Test one Unicode name 'A'
-     *
+     * <testcase> Test one Unicode name 'A' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testUnicodeName2() throws Exception {
 
         TokenStream stream = makeStream("^^^LATIN CAPITAL LETTER A;");
-        assertEquals("the letter A", stream.get(fac, tokenizer).toString());
-        Token token = stream.get(fac, tokenizer);
+        assertEquals("the letter A", stream.get(factory, tokenizer).toString());
+        Token token = stream.get(factory, tokenizer);
         assertNotNull(token);
         assertEquals(C32, token.getChar().getCodePoint());
-        assertNull(stream.get(fac, tokenizer));
+        assertNull(stream.get(factory, tokenizer));
 
     }
 
     /**
-     * Test one Unicode name 'error'
-     *
+     * <testcase> Test one Unicode name 'error' </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
@@ -553,7 +570,8 @@ public class TokenStreamStringImpl32Test {
 
         TokenStream stream = makeStream("^^^LATIN ERROR LETTER A;");
         try {
-            assertEquals("the letter A", stream.get(fac, tokenizer).toString());
+            assertEquals("the letter A", stream.get(factory, tokenizer)
+                .toString());
             assertTrue(false);
         } catch (ScannerNoUnicodeNameException e) {
             assertTrue(true);

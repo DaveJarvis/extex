@@ -73,9 +73,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the byte-array as short for the object.
      * 
-     * @return TODO
+     * @return Returns the byte-array for the object.
      * 
      * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
      */
@@ -86,9 +86,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the value of the operator as double.
      * 
-     * @return TODO
+     * @return Returns the value of the operator as double.
      */
     public double getDouble() {
 
@@ -96,9 +96,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the value of the operator as int.
      * 
-     * @return TODO
+     * @return Returns the value of the operator as int.
      */
     public int getInteger() {
 
@@ -106,9 +106,9 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * TODO missing JavaDoc
+     * Returns the value of the operator.
      * 
-     * @return TODO
+     * @return Returns the value of the operator.
      * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#getValue()
      */
@@ -141,9 +141,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     }
 
     /**
-     * TODO missing JavaDoc
-     * 
-     * @return TODO
+     * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
      */
@@ -156,8 +154,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
     public void writeXML(XMLStreamWriter writer) throws IOException {
 

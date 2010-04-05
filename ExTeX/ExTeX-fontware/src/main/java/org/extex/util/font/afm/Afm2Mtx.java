@@ -175,7 +175,7 @@ public class Afm2Mtx extends AbstractFontUtil {
         writer.write("\\setint{italicslant}{" + ((int) parser.getItalicangle())
                 + "}\n");
         writer.write("\\setint{underlinethickness}{"
-                + ((int) parser.getUnderlinethickness()) + "}\n");
+                + ((int) parser.getUnderlineThickness()) + "}\n");
         writer.write("\\setint{maxheight}{" + ((int) parser.getUry()) + "}\n");
         writer.write("\\setint{maxdepth_neg}{" + ((int) parser.getLly())
                 + "}\n");
@@ -259,7 +259,7 @@ public class Afm2Mtx extends AbstractFontUtil {
         writer.write("\\setint{italicslant}{" + ((int) parser.getItalicangle())
                 + "}\n");
         writer.write("\\setint{underlinethickness}{"
-                + ((int) parser.getUnderlinethickness()) + "}\n");
+                + ((int) parser.getUnderlineThickness()) + "}\n");
         writer.write("\\setint{maxheight}{" + ((int) parser.getUry()) + "}\n");
         writer.write("\\setint{maxdepth_neg}{" + ((int) parser.getLly())
                 + "}\n");

@@ -59,213 +59,73 @@ import org.junit.runner.JUnitCore;
 public class DviDocumentWriterTest {
 
     /**
-     * The field <tt>documentWriter</tt> contains the document writer.
-     */
-    private DocumentWriter documentWriter = null;
-
-    /**
-     * The field <tt>nodeList</tt> contains the node list.
-     */
-    private NodeList nodeList = null;
-
-    /**
-     * The field <tt>documentWriterOptions</tt> contains the document writer
-     * options.
-     */
-    private MockDocumentWriterOptions documentWriterOptions = null;
-
-    /**
-     * The field <tt>configuration</tt> contains the configuration.
-     */
-    private Configuration configuration = null;
-
-    /**
-     * The field <tt>outputStream</tt> contains the output stream.
-     */
-    private OutputStream outputStream = null;
-
-    /**
-     * The if DviDocumentWriter throws the exception, if the node is added to
-     * the NodeList.
+     * TODO gene: missing JavaDoc.
      * 
-     * @param node a <code>Node</code> value
-     * @param exception a <code>Class</code> value
-     * @throws Exception if an error occurs
      */
-    private void checkException(Node node, Class<?> exception) throws Exception {
+    private class MockDocumentWriterOptions implements DocumentWriterOptions {
 
-        boolean gotException = false;
+        /**
+         * The field <tt>magnification</tt> contains the magnification.
+         */
+        private long magnification = 1000;
 
-        nodeList.add(node);
+        /**
+         * Creates a new object.
+         */
+        public MockDocumentWriterOptions() {
 
-        try {
-            FixedCount[] pageNo = null;
-            documentWriter.shipout(new PageImpl(nodeList, pageNo));
-        } catch (Exception e) {
-            if (exception.isInstance(e)) {
-                gotException = true;
-            } else {
-                throw e;
-            }
+            super();
         }
-        assertTrue(gotException);
-    }
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(java.lang.String)
+         */
+        public FixedCount getCountOption(String count) {
 
-        (new JUnitCore()).run(DviDocumentWriterTest.class);
-    }
-
-    /**
-     * Creates a new <code>DviDocumentWriterTest</code> instance.
-     */
-    public DviDocumentWriterTest() {
-
-        super();
-    }
-
-    /**
-     * Setup the fixtures. All class variables get threr value here. This is not
-     * done in the constructor so the variables get new values for each test.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Before
-    public void setUp() throws Exception {
-
-        // TODO: do not use null for configuration (TE)
-
-        documentWriterOptions = new MockDocumentWriterOptions();
-        documentWriter =
-                new DviDocumentWriter(configuration, documentWriterOptions);
-        nodeList = new VerticalListNode();
-        outputStream = new ByteArrayOutputStream();
-        ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
-    }
-
-    /**
-     * Test if {@link org.extex.backend.documentWriter.dvi.DviDocumentWriter
-     * DviDocumentWriter} throws a {@link
-     * org.extex.backend.documentWriter.exception.NoOutputStreamException
-     * NoOutputStreamException}, if there is no OutputStream set before {@link
-     * org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
-     * shipout()}.
-     * 
-     * @throws IOException if an error occurs
-     */
-    @Test
-    public void testNoOutputStream() throws IOException {
-
-        documentWriter =
-                new DviDocumentWriter(configuration, documentWriterOptions);
-        try {
-            FixedCount[] pageNo = null;
-            documentWriter.shipout(new PageImpl(nodeList, pageNo));
-        } catch (NoOutputStreamException e) {
-            assertTrue(true);
-        } catch (GeneralException e) {
-            assertTrue(false);
+            return new MockFixedCount(0);
         }
-    }
 
-    /**
-     * Test if the DviDocumentWriter throws new Exception if the node list is
-     * empty.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Test
-    public void testEmptyList() throws Exception {
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(java.lang.String)
+         */
+        public FixedDimen getDimenOption(String dimen) {
 
-        FixedCount[] pageNo = null;
-        documentWriter.shipout(new PageImpl(nodeList, pageNo));
-    }
-
-    /**
-     * Test if a mark node throws a panic Exception.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Test
-    public void testMarkNode() throws Exception {
-
-        checkException(new MarkNode(Tokens.EMPTY, "0"), PanicException.class);
-    }
-
-    /**
-     * Test if a insertion node throws a panic Exception.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Test
-    public void testInsertionNode() throws Exception {
-
-        checkException(new InsertionNode(42, null), PanicException.class);
-    }
-
-    /**
-     * Test valid nodes.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Test
-    public void testValidNodes() throws Exception {
-
-        // TODO: nodeList.add(new CharNode()); (TE)
-        nodeList.add(new ExplicitKernNode(new Dimen(12346), true));
-        nodeList.add(new GlueNode(new Glue(1234), true));
-        // TODO: nodeList.add(new LigatureNode()); (TE)
-        // TODO: nodeList.add(new SpecialNode("Test")); (TE)
-        // nodeList.add(new WhatsItNode("Test"));
-
-        FixedCount[] pageNo = null;
-        documentWriter.shipout(new PageImpl(nodeList, pageNo));
-    }
-
-    /**
-     * Check the specified magnification.
-     * 
-     * @param magnification for check
-     * 
-     * @throws Exception if an error occurs
-     */
-    private void checkMagnification(long magnification) throws Exception {
-
-        documentWriterOptions.setMagnification(magnification);
-        documentWriter =
-                new DviDocumentWriter(configuration, documentWriterOptions);
-        ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
-        FixedCount[] pageNo = null;
-        documentWriter.shipout(new PageImpl(nodeList, pageNo));
-    }
-
-    /**
-     * Test magnifications in the document writer options.
-     * 
-     * @throws Exception if an error occurs
-     */
-    @Test
-    public void testMagnification() throws Exception {
-
-        boolean gotRangeException = false;
-
-        checkMagnification(-1); // TODO
-        checkMagnification(10);
-        checkMagnification(100);
-        checkMagnification(1000);
-        checkMagnification((2L << 30) - 1); // test 2^30-1
-
-        try {
-            checkMagnification(2L << 30); // test 2^30
-        } catch (GeneralException e) {
-            gotRangeException = true;
+            return null;
         }
-        assertTrue(gotRangeException);
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
+         */
+        public long getMagnification() {
+
+            return magnification;
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
+         */
+        public String getTokensOption(String name) {
+
+            return null;
+        }
+
+        /**
+         * Setter for the magnification.
+         * 
+         * @param theMagnification the magnification
+         */
+        public void setMagnification(long theMagnification) {
+
+            magnification = theMagnification;
+        }
     }
 
     /**
@@ -274,7 +134,7 @@ public class DviDocumentWriterTest {
     private class MockFixedCount implements FixedCount {
 
         /**
-         * The field <tt>value</tt> contains the ...
+         * The field <tt>value</tt> contains the value.
          */
         private long value;
 
@@ -286,18 +146,6 @@ public class DviDocumentWriterTest {
         public MockFixedCount(long theValue) {
 
             value = theValue;
-        }
-
-        /**
-         * Getter for the value
-         * 
-         * @return the value
-         * 
-         * @see org.extex.core.count.FixedCount#getValue()
-         */
-        public long getValue() {
-
-            return value;
         }
 
         /**
@@ -320,6 +168,18 @@ public class DviDocumentWriterTest {
 
             // TODO ge unimplemented
             return false;
+        }
+
+        /**
+         * Getter for the value
+         * 
+         * @return the value
+         * 
+         * @see org.extex.core.count.FixedCount#getValue()
+         */
+        public long getValue() {
+
+            return value;
         }
 
         /**
@@ -378,73 +238,213 @@ public class DviDocumentWriterTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc.
+     * Command line interface.
      * 
+     * @param args the arguments
      */
-    private class MockDocumentWriterOptions implements DocumentWriterOptions {
+    public static void main(String[] args) {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getTokensOption(java.lang.String)
-         */
-        public String getTokensOption(String name) {
+        (new JUnitCore()).run(DviDocumentWriterTest.class);
+    }
 
-            return null;
+    /**
+     * The field <tt>documentWriter</tt> contains the document writer.
+     */
+    private DocumentWriter documentWriter = null;
+
+    /**
+     * The field <tt>nodeList</tt> contains the node list.
+     */
+    private NodeList nodeList = null;
+
+    /**
+     * The field <tt>documentWriterOptions</tt> contains the document writer
+     * options.
+     */
+    private MockDocumentWriterOptions documentWriterOptions = null;
+
+    /**
+     * The field <tt>configuration</tt> contains the configuration.
+     */
+    private Configuration configuration = null;
+
+    /**
+     * The field <tt>outputStream</tt> contains the output stream.
+     */
+    private OutputStream outputStream = null;
+
+    /**
+     * Creates a new <code>DviDocumentWriterTest</code> instance.
+     */
+    public DviDocumentWriterTest() {
+
+        super();
+    }
+
+    /**
+     * The if DviDocumentWriter throws the exception, if the node is added to
+     * the NodeList.
+     * 
+     * @param node a <code>Node</code> value
+     * @param exception a <code>Class</code> value
+     * @throws Exception if an error occurs
+     */
+    private void checkException(Node node, Class<?> exception) throws Exception {
+
+        boolean gotException = false;
+
+        nodeList.add(node);
+
+        try {
+            FixedCount[] pageNo = null;
+            documentWriter.shipout(new PageImpl(nodeList, pageNo));
+        } catch (Exception e) {
+            if (exception.isInstance(e)) {
+                gotException = true;
+            } else {
+                throw e;
+            }
         }
+        assertTrue(gotException);
+    }
 
-        /**
-         * The field <tt>magnification</tt> contains the magnification.
-         */
-        private long magnification = 1000;
+    /**
+     * Check the specified magnification.
+     * 
+     * @param magnification for check
+     * 
+     * @throws Exception if an error occurs
+     */
+    private void checkMagnification(long magnification) throws Exception {
 
-        /**
-         * Creates a new object.
-         */
-        public MockDocumentWriterOptions() {
+        documentWriterOptions.setMagnification(magnification);
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
+        ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
+        FixedCount[] pageNo = null;
+        documentWriter.shipout(new PageImpl(nodeList, pageNo));
+    }
 
-            super();
+    /**
+     * Setup the fixtures. All class variables get threr value here. This is not
+     * done in the constructor so the variables get new values for each test.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Before
+    public void setUp() throws Exception {
+
+        // TODO: do not use null for configuration (TE)
+
+        documentWriterOptions = new MockDocumentWriterOptions();
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
+        nodeList = new VerticalListNode();
+        outputStream = new ByteArrayOutputStream();
+        ((SingleDocumentStream) documentWriter).setOutputStream(outputStream);
+    }
+
+    /**
+     * Test if the DviDocumentWriter throws new Exception if the node list is
+     * empty.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Test
+    public void testEmptyList() throws Exception {
+
+        FixedCount[] pageNo = null;
+        documentWriter.shipout(new PageImpl(nodeList, pageNo));
+    }
+
+    /**
+     * Test if a insertion node throws a panic Exception.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Test
+    public void testInsertionNode() throws Exception {
+
+        checkException(new InsertionNode(42, null), PanicException.class);
+    }
+
+    /**
+     * Test magnifications in the document writer options.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Test
+    public void testMagnification() throws Exception {
+
+        boolean gotRangeException = false;
+
+        checkMagnification(-1); // TODO
+        checkMagnification(10);
+        checkMagnification(100);
+        checkMagnification(1000);
+        checkMagnification((2L << 30) - 1); // test 2^30-1
+
+        try {
+            checkMagnification(2L << 30); // test 2^30
+        } catch (GeneralException e) {
+            gotRangeException = true;
         }
+        assertTrue(gotRangeException);
+    }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getCountOption(java.lang.String)
-         */
-        public FixedCount getCountOption(String count) {
+    /**
+     * Test if a mark node throws a panic Exception.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Test
+    public void testMarkNode() throws Exception {
 
-            return new MockFixedCount(0);
+        checkException(new MarkNode(Tokens.EMPTY, "0"), PanicException.class);
+    }
+
+    /**
+     * Test if {@link org.extex.backend.documentWriter.dvi.DviDocumentWriter
+     * DviDocumentWriter} throws a
+     * {@link org.extex.backend.documentWriter.exception.NoOutputStreamException
+     * NoOutputStreamException}, if there is no OutputStream set before
+     * {@link org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
+     * shipout()}.
+     * 
+     * @throws IOException if an error occurs
+     */
+    @Test
+    public void testNoOutputStream() throws IOException {
+
+        documentWriter =
+                new DviDocumentWriter(configuration, documentWriterOptions);
+        try {
+            FixedCount[] pageNo = null;
+            documentWriter.shipout(new PageImpl(nodeList, pageNo));
+        } catch (NoOutputStreamException e) {
+            assertTrue(true);
+        } catch (GeneralException e) {
+            assertTrue(false);
         }
+    }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getDimenOption(java.lang.String)
-         */
-        public FixedDimen getDimenOption(String dimen) {
+    /**
+     * Test valid nodes.
+     * 
+     * @throws Exception if an error occurs
+     */
+    @Test
+    public void testValidNodes() throws Exception {
 
-            return null;
-        }
+        // TODO: nodeList.add(new CharNode()); (TE)
+        nodeList.add(new ExplicitKernNode(new Dimen(12346), true));
+        nodeList.add(new GlueNode(new Glue(1234), true));
+        // TODO: nodeList.add(new LigatureNode()); (TE)
+        // TODO: nodeList.add(new SpecialNode("Test")); (TE)
+        // nodeList.add(new WhatsItNode("Test"));
 
-        /**
-         * Setter for the magnification.
-         * 
-         * @param theMagnification the magnification
-         */
-        public void setMagnification(long theMagnification) {
-
-            magnification = theMagnification;
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.backend.documentWriter.DocumentWriterOptions#getMagnification()
-         */
-        public long getMagnification() {
-
-            return magnification;
-        }
+        FixedCount[] pageNo = null;
+        documentWriter.shipout(new PageImpl(nodeList, pageNo));
     }
 
 }

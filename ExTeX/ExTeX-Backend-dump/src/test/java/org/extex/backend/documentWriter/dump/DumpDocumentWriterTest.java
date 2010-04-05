@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,49 +39,8 @@ import org.junit.Test;
 public class DumpDocumentWriterTest {
 
     /**
-     * <testcase> Test that the default extension is <tt>out</tt>.
-     * </testcase>
-     */
-    @Test
-    public final void testGetExtension1() {
-
-        assertEquals("out", new DumpDocumentWriter(null).getExtension());
-    }
-
-    /**
-     * <testcase> Test that a <code>null</code> page is not shipped.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout1() throws Exception {
-
-        DumpDocumentWriter writer = new DumpDocumentWriter(null);
-        OutputStream out = new ByteArrayOutputStream();
-        writer.setOutputStream(out);
-        assertEquals(0, writer.shipout(null));
-    }
-
-    /**
-     * <testcase> Test that ...
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testShipout2() throws Exception {
-
-        DumpDocumentWriter writer = new DumpDocumentWriter(null);
-        OutputStream out = new ByteArrayOutputStream();
-        writer.setOutputStream(out);
-        Page page = new PageImpl(new VerticalListNode(), new Count[10]);
-        assertEquals(1, writer.shipout(page));
-    }
-
-    /**
-     * <testcase> Test that ...
-     * </testcase>
+     * <testcase> Test that a simple page produces a vbox with all dimensions at
+     * 0pt. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -95,6 +54,44 @@ public class DumpDocumentWriterTest {
         writer.close();
         String s = out.toString();
         assertEquals("\\vbox(0.0pt+0.0pt)x0.0pt\n", s);
+    }
+
+    /**
+     * <testcase> Test that the default extension is <tt>out</tt>. </testcase>
+     */
+    @Test
+    public final void testGetExtension1() {
+
+        assertEquals("out", new DumpDocumentWriter(null).getExtension());
+    }
+
+    /**
+     * <testcase> Test that a <code>null</code> page is not shipped. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testShipout1() throws Exception {
+
+        DumpDocumentWriter writer = new DumpDocumentWriter(null);
+        OutputStream out = new ByteArrayOutputStream();
+        writer.setOutputStream(out);
+        assertEquals(0, writer.shipout(null));
+    }
+
+    /**
+     * <testcase> Test that a simple page is shipped out. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testShipout2() throws Exception {
+
+        DumpDocumentWriter writer = new DumpDocumentWriter(null);
+        OutputStream out = new ByteArrayOutputStream();
+        writer.setOutputStream(out);
+        Page page = new PageImpl(new VerticalListNode(), new Count[10]);
+        assertEquals(1, writer.shipout(page));
     }
 
     // TODO implement more test cases
