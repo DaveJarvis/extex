@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,18 +40,33 @@ public class SiteBuilderTest {
      */
     private Handler handler = new Handler() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#close()
+         */
         @Override
         public void close() throws SecurityException {
 
             //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#flush()
+         */
         @Override
         public void flush() {
 
             //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
+         */
         @Override
         public void publish(LogRecord record) {
 
@@ -63,7 +78,7 @@ public class SiteBuilderTest {
     };
 
     /**
-     * TODO gene: missing JavaDoc
+     * Generate the site.
      * 
      * @throws Exception in case of an error
      */
@@ -82,7 +97,7 @@ public class SiteBuilderTest {
         // siteBuilder.setBaseDir(new File("../www/src/site/html"));
         // siteBuilder.setResourceDir(new File("../www/src/site/resources"));
         siteBuilder.setSiteMap(new File("target/site/sitemap.html"));
-        siteBuilder.omit("CVS");
+        siteBuilder.omit("CVS", ".svn");
         siteBuilder.lib("src/site/velocity/macros.vm");
         siteBuilder.run();
     }
