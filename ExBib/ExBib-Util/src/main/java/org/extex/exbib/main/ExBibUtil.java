@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -59,7 +59,7 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * ExBibUtil a bibliography.
+ * &epsilon;&chi;BibUtil a bibliography processor utility.
  * 
  * 
  * <p>
@@ -90,9 +90,9 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
- * <dd>Redirect the output to the file given. <br /> The file name - can be used
- * to redirect to stdout <br /> The empty file name can be used to discard the
- * output completely</dd>
+ * <dd>Redirect the output to the file given. <br />
+ * The file name - can be used to redirect to stdout <br />
+ * The empty file name can be used to discard the output completely</dd>
  * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lang;program&rang;</dt>
  * <dd>Set the program name for messages.</dd>
