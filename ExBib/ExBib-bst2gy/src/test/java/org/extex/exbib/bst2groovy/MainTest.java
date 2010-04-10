@@ -155,14 +155,9 @@ public class MainTest {
                 + "import org.extex.exbib.core.db.Entry\n"
                 + "import org.extex.exbib.core.io.Writer\n"
                 + "\n"
-                + "class Style {\n\n" //
-                + "  DB bibDB\n" //
-                + "  Writer bibWriter\n" //
-                + "  Processor bibProcessor\n\n"
+                + "class Style extends org.extex.exbib.groovy.Style {\n\n" //
                 + "  Style(bibDB, bibWriter, bibProcessor) {\n"
-                + "    this.bibDB = bibDB\n"
-                + "    this.bibWriter = bibWriter\n"
-                + "    this.bibProcessor = bibProcessor\n" + "  }\n\n"
+                + "    super(bibDB, bibWriter, bibProcessor)\n" + "  }\n\n"
                 + "  void run() {\n" + "  }\n\n" + "}\n\n"
                 + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
             CLI.EXIT_OK, "{file}");

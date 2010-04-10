@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -39,7 +39,7 @@ public class PreambleCompiler implements Compiler {
      * The field <tt>PREAMBLE</tt> contains the singleton instance.
      */
     private static final GCode PREAMBLE =
-            new GenericCode(ReturnType.STRING, "bibDB.getPreambleExpanded");
+            new GenericCode(ReturnType.STRING, "getDB().getPreambleExpanded");
 
     /**
      * {@inheritDoc}

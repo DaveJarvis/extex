@@ -52,7 +52,18 @@ public class WriteCompiler implements Compiler {
          */
         private Write(GCode... arg) {
 
-            super(ReturnType.VOID, "bibWriter.write", arg);
+            super(ReturnType.VOID, "write", arg);
+        }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
+         */
+        @Override
+        public boolean hasSideEffect() {
+
+            return true;
         }
 
         /**
@@ -112,7 +123,7 @@ public class WriteCompiler implements Compiler {
          */
         private Writeln(GCode... arg) {
 
-            super(ReturnType.VOID, "bibWriter.writeln", arg);
+            super(ReturnType.VOID, "writeln", arg);
         }
 
     }
@@ -128,6 +139,9 @@ public class WriteCompiler implements Compiler {
     public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
+        if (state.stackHasSideEffects()) {
+            throw new RuntimeException("unimplemented");
+        }
         state.add(new Write(state.pop()));
     }
 

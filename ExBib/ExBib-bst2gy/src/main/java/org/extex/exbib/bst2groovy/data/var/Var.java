@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -137,6 +137,17 @@ public final class Var implements GCode {
         }
         return ReturnType.UNKNOWN;
 
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
+     */
+    @Override
+    public boolean hasSideEffect() {
+
+        return false;
     }
 
     /**

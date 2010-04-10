@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -73,7 +73,7 @@ public class CallTypeCompiler implements Compiler {
                 "\n\t\tif (typeFunction == null) {", //
                 "\n\t\t\ttypeFunction = types['default.type']", //
                 "\n\t\t\tif (typeFunction == null) {", //
-                "\n\t\t\t\tbstProcessor.warning('missing default.type')", //
+                "\n\t\t\t\twarning('missing default.type')", //
                 "\n\t\t\t\treturn", //
                 "\n\t\t\t}", //
                 "\n\t\t}", //

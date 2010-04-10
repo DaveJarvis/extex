@@ -50,7 +50,8 @@ import org.junit.Test;
 /**
  * This is a test suite for the {@link BsfProcessor} with a Groovy
  * configuration. It compiles a bst into a groovy program and uses this groovy
- * program on xampl.bib.
+ * program on xampl.bib. Finally it compares the result with the result produced
+ * by BibTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -71,13 +72,15 @@ public class XamplTest {
         StringBuilder buffer = new StringBuilder();
         FileReader r = new FileReader(name);
 
-        for (int c = r.read(); c >= 0; c = r.read()) {
-            if (c != '\r') {
-                buffer.append((char) c);
+        try {
+            for (int c = r.read(); c >= 0; c = r.read()) {
+                if (c != '\r') {
+                    buffer.append((char) c);
+                }
             }
+        } finally {
+            r.close();
         }
-
-        r.close();
 
         return buffer.toString();
     }

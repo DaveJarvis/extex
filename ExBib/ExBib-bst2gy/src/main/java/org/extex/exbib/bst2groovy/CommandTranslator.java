@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -196,7 +196,7 @@ public class CommandTranslator {
                 throw new CommandWithArgumentsException("ITERATE", command
                     .toString());
             }
-            code.add(new GLoop("bibDB.each", state.getCode()));
+            code.add(new GLoop("getDB().each", state.getCode()));
         }
 
         /**
@@ -307,7 +307,7 @@ public class CommandTranslator {
                 throw new CommandWithArgumentsException("ITERATE", //
                     command.toString());
             }
-            code.add(new GLoop("bibDB.getEntries().reverse().each", state
+            code.add(new GLoop("getDB().getEntries().reverse().each", state
                 .getCode()));
         }
 
@@ -320,7 +320,7 @@ public class CommandTranslator {
         public void visitSort(Command command, Object... args) {
 
             ((GCodeContainer) args[0]).add(new GenericCode(ReturnType.VOID,
-                "bibDB.sort"));
+                "getDB().sort"));
         }
 
         /**

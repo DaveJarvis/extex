@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -42,6 +42,13 @@ public interface GCode {
     ReturnType getType();
 
     /**
+     * Check whether the code has a side effect on the output writer.
+     * 
+     * @return <code>true</code> iff something is written to the output writer
+     */
+    boolean hasSideEffect();
+
+    /**
      * Optimize this code. This optimization does involve the current node only.
      * See {@link #optimize(List, int)} for an optimization in the context.
      * 
@@ -79,5 +86,4 @@ public interface GCode {
      * @return <code>true</code> upon success
      */
     boolean unify(GCode other);
-
 }

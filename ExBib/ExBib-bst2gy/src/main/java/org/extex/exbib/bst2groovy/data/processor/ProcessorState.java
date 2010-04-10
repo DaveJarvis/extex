@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -74,7 +74,6 @@ public class ProcessorState {
      */
     public ProcessorState(VarManager varManager) {
 
-        super();
         this.varManager = varManager;
     }
 
@@ -245,6 +244,21 @@ public class ProcessorState {
     public int size() {
 
         return stack.size();
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @return
+     */
+    public boolean stackHasSideEffects() {
+
+        for (GCode code : stack) {
+            if (code.hasSideEffect()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

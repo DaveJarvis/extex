@@ -918,9 +918,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             "\n\n", //
             "  ", getParameter(ParameterType.STYLE_NAME).toString(),
             "(bibDB, bibWriter, bibProcessor) {\n", //
-            "    this.bibDB = bibDB\n", //
-            "    this.bibWriter = bibWriter\n", //
-            "    this.bibProcessor = bibProcessor\n");
+            "    super(bibDB, bibWriter, bibProcessor)\n");
 
         List<String> strings = this.getMacroNames();
         if (!strings.isEmpty()) {
@@ -931,10 +929,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 writer.write(": ", GStringConstant.translate(getMacro(s)),
                     ",\n");
             }
-            writer.write("\t\t].each { name, value ->\n", //
-                "\t\t\t", //
-                "bibDB.storeString(name, value)\n", //
-                "\t\t}\n");
+            writer
+                .write("\t\t].each { name, value -> defineString(name, value) }\n");
         }
 
         Map<String, Token> options = this.getOptions();
@@ -966,10 +962,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void writeHead(CodeWriter writer) throws IOException {
 
         writer.write("class ", getParameter(ParameterType.STYLE_NAME)
-            .toString(), " {\n\n", //
-            "  DB bibDB\n", //
-            "  Writer bibWriter\n", //
-            "  Processor bibProcessor\n", //
+            .toString(), " extends org.extex.exbib.groovy.Style {\n\n", //
             "\n");
 
         for (String name : getIntegers()) {

@@ -54,6 +54,22 @@ public class GCodeContainer extends ArrayList<GCode> implements GCode {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.exbib.bst2groovy.data.GCode#hasSideEffect()
+     */
+    @Override
+    public boolean hasSideEffect() {
+
+        for (GCode code : this) {
+            if (code.hasSideEffect()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.exbib.bst2groovy.data.GCode#optimize()
      */
     public GCode optimize() {

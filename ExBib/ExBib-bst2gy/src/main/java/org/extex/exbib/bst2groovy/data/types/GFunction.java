@@ -123,7 +123,7 @@ public class GFunction extends GCodeContainer implements Compiler {
         map.put("%volatile", "volatile");
         map.put("%while", "while");
 
-        map.put("%bibDB", "bibDB");
+        // map.put("%bibDB", "bibDB");
         map.put("%bibProcessor", "bibProcessor");
         map.put("%bibWriter", "bibWriter");
 
@@ -253,6 +253,11 @@ public class GFunction extends GCodeContainer implements Compiler {
                         ? ReturnType.VOID
                         : returnType, //
                     (entry.isUsed() ? entryRef.getName() : null), args);
+
+        if (state.stackHasSideEffects()) {
+            throw new RuntimeException("unimplemented");
+        }
+
         if (returnType == ReturnType.VOID || returnType == ReturnType.CODE) {
             state.add(cal);
         } else if (returnType == ReturnType.STRING
