@@ -917,8 +917,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         writer.write(
             "\n\n", //
             "  ", getParameter(ParameterType.STYLE_NAME).toString(),
-            "(bibDB, bibWriter, bibProcessor) {\n", //
-            "    super(bibDB, bibWriter, bibProcessor)\n");
+            "(bibDB, bibWriter, bibProcessor) {\n\n", //
+            "    super(bibDB, bibWriter, bibProcessor)\n\n");
 
         List<String> strings = this.getMacroNames();
         if (!strings.isEmpty()) {
@@ -926,7 +926,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             for (String s : strings) {
                 writer.write("\t\t\t");
                 writeMapKey(writer, s);
-                writer.write(": ", GStringConstant.translate(getMacro(s)),
+                writer.write(":\t", GStringConstant.translate(getMacro(s)),
                     ",\n");
             }
             writer

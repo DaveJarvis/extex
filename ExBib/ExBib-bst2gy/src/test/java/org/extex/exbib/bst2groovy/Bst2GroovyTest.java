@@ -122,8 +122,8 @@ public class Bst2GroovyTest {
      * The field <tt>HEAD</tt> contains the head of the style definition.
      */
     public static final String HEAD =
-            "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n"
-                    + "    super(bibDB, bibWriter, bibProcessor)\n";
+            "\n\n  Style(bibDB, bibWriter, bibProcessor) {\n\n"
+                    + "    super(bibDB, bibWriter, bibProcessor)\n\n";
 
     /**
      * The field <tt>POSTFIX</tt> contains the post-fix string.
@@ -1824,7 +1824,7 @@ public class Bst2GroovyTest {
             PREFIX
                     + HEAD
                     + "    [\n"
-                    + "      xxx: \"y y y\",\n"
+                    + "      xxx:  \"y y y\",\n"
                     + "    ].each { name, value -> defineString(name, value) }\n"
                     + "  }\n" + RUN + POST_RUN);
     }
@@ -1842,7 +1842,7 @@ public class Bst2GroovyTest {
             PREFIX
                     + HEAD
                     + "    [\n"
-                    + "      'x.x.x': \"y y y\",\n"
+                    + "      'x.x.x':  \"y y y\",\n"
                     + "    ].each { name, value -> defineString(name, value) }\n"
                     + "  }\n" + RUN + POST_RUN);
     }
