@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -23,7 +23,6 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
 
 import org.extex.exbib.core.bst.BstInterpreter099c;
 import org.extex.exbib.core.bst.BstProcessor;
@@ -35,11 +34,8 @@ import org.extex.exbib.core.bst.token.impl.TIntegerOption;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TStringOption;
 import org.extex.exbib.core.db.impl.DBImpl;
-import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
-import org.extex.exbib.core.io.StringBufferWriter;
-import org.extex.exbib.core.io.Writer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
@@ -56,7 +52,7 @@ public class BstReaderExtImplTest {
     /**
      * A resource finder for the tests.
      */
-    private final class RF implements ResourceFinder {
+    private static final class RF implements ResourceFinder {
 
         /**
          * The field <tt>content</tt> contains the content.
@@ -95,26 +91,6 @@ public class BstReaderExtImplTest {
             return new NamedInputStream(new ByteArrayInputStream(content
                 .getBytes()), "test");
         }
-    }
-
-    /**
-     * Run a test and compare the result.
-     * 
-     * @param processor the processor
-     * @param expected the expected result
-     * 
-     * @throws IOException in case of an error
-     * @throws ExBibException in case of an error
-     */
-    private void runTest(BstProcessor processor, String expected)
-            throws IOException,
-                ExBibException {
-
-        StringBuffer buffer = new StringBuffer();
-        Writer writer = new StringBufferWriter(buffer);
-        new BstPrinterImpl(writer).print(processor);
-        writer.close();
-        assertEquals(expected, buffer.toString().replaceAll("\r", ""));
     }
 
     /**
