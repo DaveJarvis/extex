@@ -365,6 +365,7 @@ public class Main extends CLI {
         if (verbose) {
             logBanner(Level.SEVERE);
         }
+        OutputStreamWriter w = null;
         try {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             bst2Groovy.setParameter(ParameterType.OPTIMIZE, new Parameter(
@@ -377,7 +378,7 @@ public class Main extends CLI {
             bst2Groovy.setResourceFinder(finder);
             bst2Groovy.addBibliographyStyle(in == null ? "" : in);
             bst2Groovy.load();
-            OutputStreamWriter w =
+            w =
                     new OutputStreamWriter(out == null || "-".equals(out)
                             ? System.out
                             : new FileOutputStream(out));
@@ -386,6 +387,14 @@ public class Main extends CLI {
         } catch (Exception e) {
             logger.severe(e.getLocalizedMessage() + "\n");
             return CLI.EXIT_FAIL;
+        } finally {
+            if (w != null && out != null && !"-".equals(out)) {
+                try {
+                    w.close();
+                } catch (IOException e) {
+                    logger.severe(e.getLocalizedMessage() + "\n");
+                }
+            }
         }
         return CLI.EXIT_OK;
     }
