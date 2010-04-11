@@ -18,6 +18,8 @@
 
 package org.extex.exbib.bst2groovy.data.processor;
 
+import java.io.Serializable;
+
 /**
  * This class represents a reference to an entry variable. Any access to the
  * name is recorded as use. Thus one can determine whether the entry is
@@ -26,7 +28,13 @@ package org.extex.exbib.bst2groovy.data.processor;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EntryRefernce {
+public class EntryRefernce implements Serializable {
+
+    /**
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
+     */
+    private static final long serialVersionUID = 2010L;
 
     /**
      * The field <tt>name</tt> contains the the name of the entry.
