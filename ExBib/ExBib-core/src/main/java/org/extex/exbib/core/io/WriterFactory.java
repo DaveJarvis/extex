@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -24,7 +24,6 @@ import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
 
 import org.extex.framework.AbstractFactory;
-import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
@@ -32,7 +31,7 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
 /**
  * This class provides some methods to get a new instance of some kind of
  * writer.
- *
+ * 
  * <h3>Configuration</h3>
  * <p>
  * The configuration of the factory is passed on to the writer created. Thus is
@@ -48,8 +47,8 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
  * If the attribute is not present then the default encoding of the current
  * platform is used.</dd>
  * </dl>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -62,9 +61,9 @@ public class WriterFactory extends AbstractFactory {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param config the configuration
-     *
+     * 
      * @throws UnsupportedEncodingException in case of an undefined encoding
      */
     public WriterFactory(Configuration config)
@@ -75,7 +74,7 @@ public class WriterFactory extends AbstractFactory {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.framework.AbstractFactory#configure(org.extex.framework.configuration.Configuration)
      */
     @Override
@@ -93,28 +92,28 @@ public class WriterFactory extends AbstractFactory {
 
     /**
      * Getter for a new writer without an argument.
-     *
+     * 
      * @return a new NullWriter
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     public Writer newInstance() throws ConfigurationException {
 
         Writer writer = new NullWriter();
-        if (writer instanceof Configurable) {
-            ((Configurable) writer).configure(getConfiguration());
-        }
+        // if (writer instanceof Configurable) {
+        // ((Configurable) writer).configure(getConfiguration());
+        // }
         return writer;
     }
 
     /**
      * Getter for a new writer from a PrintStream.
-     *
+     * 
      * @param stream the PrintStream to write to
-     *
+     * 
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
      *         stream is <code>null</code>
-     *
+     * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
@@ -126,20 +125,20 @@ public class WriterFactory extends AbstractFactory {
                 (stream == null
                         ? (Writer) new NullWriter()
                         : (Writer) new StreamWriter(stream, encoding));
-        if (writer instanceof Configurable) {
-            ((Configurable) writer).configure(getConfiguration());
-        }
+        // if (writer instanceof Configurable) {
+        // ((Configurable) writer).configure(getConfiguration());
+        // }
         return writer;
     }
 
     /**
      * Getter for a new writer from a file.
-     *
+     * 
      * @param file the name of the file to print to
-     *
+     * 
      * @return a new {@link StreamWriter} or a new {@link NullWriter} if the
      *         file is <code>null</code>
-     *
+     * 
      * @throws IOException in case that the file could not be opened
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
@@ -154,41 +153,41 @@ public class WriterFactory extends AbstractFactory {
         }
 
         Writer writer = new StreamWriter(file, encoding);
-        if (writer instanceof Configurable) {
-            ((Configurable) writer).configure(getConfiguration());
-        }
+        // if (writer instanceof Configurable) {
+        // ((Configurable) writer).configure(getConfiguration());
+        // }
         return writer;
     }
 
     /**
      * Getter for a new writer with a StringBuffer
-     *
+     * 
      * @param buffer the StringBuffer to fill
-     *
+     * 
      * @return a new StringBufferWriter
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     public Writer newInstance(StringBuffer buffer)
             throws ConfigurationException {
 
         Writer writer = new StringBufferWriter(buffer);
-        if (writer instanceof Configurable) {
-            ((Configurable) writer).configure(getConfiguration());
-        }
+        // if (writer instanceof Configurable) {
+        // ((Configurable) writer).configure(getConfiguration());
+        // }
         return writer;
     }
 
     /**
      * Getter for a new writer composed or two others.
-     *
+     * 
      * @param a the first writer
      * @param b the second writer
-     *
+     * 
      * @return a new multi writer if both writers are not <code>null</code>; one
      *         of the writers if the other one is <code>null</code>; a new
      *         {@link NullWriter} if both are <code>null</code>
-     *
+     * 
      * @throws UnsupportedEncodingException in case of an unknown encoding
      * @throws ConfigurationException in case of an configuration error
      */
@@ -227,10 +226,10 @@ public class WriterFactory extends AbstractFactory {
      * <dd>Sixteen-bit UCS Transformation Format, byte order identified by an
      * optional byte-order mark</dd>
      * </dl>
-     *
+     * 
      * @param encoding the encoding to set; it can be <code>null</code> to
      *        indicate the platform default encoding
-     *
+     * 
      * @throws UnsupportedEncodingException in case of an unsupported encoding
      *         name
      */
