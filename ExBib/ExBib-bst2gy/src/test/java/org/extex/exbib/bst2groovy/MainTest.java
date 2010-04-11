@@ -81,8 +81,8 @@ public class MainTest {
             System.setErr(err);
             System.out.close();
             System.setOut(out);
-            if (file != null) {
-                file.delete();
+            if (file != null && file.delete()) {
+                System.err.println(file.toString() + ": deleteion failed");
             }
         }
         if (expectedErr != null) {
@@ -719,7 +719,9 @@ public class MainTest {
                 "-O");
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            out.delete();
+            if (out.delete()) {
+                System.err.println(out.toString() + ": deleteion failed");
+            }
         }
     }
 
@@ -737,7 +739,9 @@ public class MainTest {
                 "-O=false");
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            out.delete();
+            if (out.delete()) {
+                System.err.println(out.toString() + ": deleteion failed");
+            }
         }
     }
 
@@ -766,7 +770,9 @@ public class MainTest {
             run("", "", "", CLI.EXIT_OK, "{file}", "-o", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            out.delete();
+            if (out.delete()) {
+                System.err.println(out.toString() + ": deleteion failed");
+            }
         }
     }
 
@@ -783,7 +789,9 @@ public class MainTest {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            out.delete();
+            if (out.delete()) {
+                System.err.println(out.toString() + ": deleteion failed");
+            }
         }
     }
 
@@ -802,7 +810,9 @@ public class MainTest {
                 "--out", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            out.delete();
+            if (out.delete()) {
+                System.err.println(out.toString() + ": deleteion failed");
+            }
         }
     }
 
