@@ -370,7 +370,7 @@ public class GFunction extends GCodeContainer implements Compiler {
         if (other instanceof Var) {
             return other.unify(this);
         } else if (!(other instanceof GFunction)
-                || ((GFunction) other).name != name) {
+                || !name.equals(((GFunction) other).name)) {
             return false;
         }
 

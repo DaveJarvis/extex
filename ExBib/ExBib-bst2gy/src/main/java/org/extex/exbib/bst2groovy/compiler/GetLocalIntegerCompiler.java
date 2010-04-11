@@ -39,7 +39,7 @@ public class GetLocalIntegerCompiler implements Compiler {
      * This inner class is the expression for a getter of a local String in the
      * target program.
      */
-    private class GetLocalInteger extends GenericCode {
+    private static class GetLocalInteger extends GenericCode {
 
         /**
          * Creates a new object.

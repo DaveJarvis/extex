@@ -38,7 +38,7 @@ public class GetStringCompiler implements Compiler {
      * This inner class is the expression for a getter of a global String in the
      * target program.
      */
-    private class GetString extends GenericCode {
+    private static class GetString extends GenericCode {
 
         /**
          * Creates a new object.

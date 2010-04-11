@@ -38,7 +38,7 @@ public class GetIntegerCompiler implements Compiler {
      * This inner class is the expression for a getter of a global integer in
      * the target program.
      */
-    private class GetInteger extends GenericCode {
+    private static class GetInteger extends GenericCode {
 
         /**
          * Creates a new object.

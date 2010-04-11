@@ -48,8 +48,8 @@ public class GetLocalStringCompiler implements Compiler {
          */
         public GetLocalString(String entry) {
 
-            super(ReturnType.STRING, entry + ".getLocalString", new GStringConstant(
-                name));
+            super(ReturnType.STRING, entry + ".getLocalString",
+                new GStringConstant(name));
         }
     }
 
