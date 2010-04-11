@@ -703,6 +703,9 @@ public class BstInterpreterCore extends BibliographyCore
         Locator locator = new Locator(getClass().getName() + "#reset()", 0);
 
         super.reset();
+        entryMax = 0x7fff;
+        globalMax = 0x7fff;
+
         theEntryIntegers = new ArrayList<String>();
         theEntryStrings = new ArrayList<String>();
         theIntegers = new ArrayList<String>();
