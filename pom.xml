@@ -182,6 +182,9 @@
   </properties>
 
   <build>
+
+    <defaultGoal>compile</defaultGoal>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
