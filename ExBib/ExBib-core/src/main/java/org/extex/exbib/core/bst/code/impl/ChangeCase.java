@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -92,9 +92,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * specification string (i.e., the first string) isn't one of the legal ones, it
  * merely pushes the second back onto the stack, after complaining. (Another
  * note: It ignores case differences in the specification string; for example,
- * the strings <code>t</code> and
- * <code>T<code> are equivalent for the purposes of this built-in
- *  function.)</dd>
+ * the strings <code>t</code> and <code>T</code> are equivalent for the purposes
+ * of this built-in function.)</dd>
  * </dl>
  * 
  * <dl>
