@@ -301,10 +301,10 @@ public class CommandTranslator {
                 throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new CommandWithReturnException("ITERATE", //
+                throw new CommandWithReturnException("REVERSE", //
                     command.toString());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("ITERATE", //
+                throw new CommandWithArgumentsException("REVERSE", //
                     command.toString());
             }
             code.add(new GLoop("getDB().getEntries().reverse().each", state
