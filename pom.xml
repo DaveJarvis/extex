@@ -193,6 +193,9 @@
         <configuration>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>true</downloadJavadocs>
+
+          <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
+
 <!--
           <additionalBuildcommands>
             <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
@@ -221,7 +224,7 @@
           <dependency>
             <groupId>org.extex</groupId>
             <artifactId>develop</artifactId>
-            <version>1.0</version>
+            <version>1.1</version>
           </dependency>
         </dependencies>
       </plugin>
@@ -289,6 +292,7 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
+	<version>2.3.1</version>
       </plugin>
 
       <plugin>
