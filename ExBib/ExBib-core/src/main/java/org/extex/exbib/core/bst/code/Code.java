@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -56,14 +56,14 @@ public interface Code {
             throws ExBibException;
 
     /**
-     * Getter for the name
+     * Getter for the name.
      * 
      * @return the name
      */
     String getName();
 
     /**
-     * Setter for the name
+     * Setter for the name.
      * 
      * @param name the new name
      */
