@@ -195,7 +195,6 @@
           <downloadJavadocs>true</downloadJavadocs>
 
           <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
-
 <!--
           <additionalBuildcommands>
             <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
@@ -280,8 +279,9 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.5</version>
         <configuration>
+
+          <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
 <!--
-          <configLocation>ExTeX/checkstyle.xml</configLocation>
           <headerLocation>ExTeX/LICENSE.txt</headerLocation>
 <! - -
           <enableRulesSummary>false</enableRulesSummary>
