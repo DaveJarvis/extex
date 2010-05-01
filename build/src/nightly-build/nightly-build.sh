@@ -25,6 +25,7 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
+(cd develop; mvn install)
 (cd tools/doc-tools; mvn install)
 
 mvn -Dmaven.test.skip=true install
