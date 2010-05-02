@@ -4,7 +4,7 @@
   <groupId>org.extex</groupId>
   <artifactId>develop</artifactId>
   <packaging>jar</packaging>
-  <version>1.1</version>
+  <version>1.2</version>
   <name>ExTeX development resources</name>
   <inceptionYear>2010</inceptionYear>
   <url>http://www.extex.org</url>
