@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,23 +36,23 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <h2>Name Components</h2>
  * 
  * <p>
- * B<small>IB</small>T<sub>E</sub>X uses four components for names. Any name
- * is analyzed and decomposed into the four parts. The following parts of names
- * are considered:
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X uses four components for names. Any name is analyzed and
+ * decomposed into the four parts. The following parts of names are considered:
  * </p>
  * <dl>
  * <dt>Last part</dt>
- * <dd> The last name or christian name of a person is usually the last major
- * component of a name. This is the only part which is not optional. </dd>
+ * <dd>The last name or christian name of a person is usually the last major
+ * component of a name. This is the only part which is not optional.</dd>
  * <dt>First parts</dt>
- * <dd> The first name or given name of a person is usually the first component
- * of a name. This part is optional. </dd>
+ * <dd>The first name or given name of a person is usually the first component
+ * of a name. This part is optional.</dd>
  * <dt>Von part</dt>
- * <dd> The von part of a name usually comes between first name and last name
- * and starts with lowercase letters. It is optional. </dd>
+ * <dd>The von part of a name usually comes between first name and last name and
+ * starts with lowercase letters. It is optional.</dd>
  * <dt>Junior part</dt>
- * <dd> The junior part of a name is an addition appended to the name. This part
- * is optional. </dd>
+ * <dd>The junior part of a name is an addition appended to the name. This part
+ * is optional.</dd>
  * </dl>
  * 
  * <p>
@@ -77,9 +77,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * 
  * <p>
- * The name parts <em>first</em> and <em>last</em> consist of words for
- * which the first letter is an uppercase letter. The name parts <em>von</em>
- * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * The name parts <em>first</em> and <em>last</em> consist of words for which
+ * the first letter is an uppercase letter. The name parts <em>von</em> and
+ * <em>jr</em> consist of words for which the first letter is a lowercase
  * letter.
  * </p>
  * <p>
@@ -114,9 +114,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * 
  * <p>
- * The name parts <em>first</em> and <em>last</em> consist of words for
- * which the first letter is an uppercase letter. The name parts <em>von</em>
- * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * The name parts <em>first</em> and <em>last</em> consist of words for which
+ * the first letter is an uppercase letter. The name parts <em>von</em> and
+ * <em>jr</em> consist of words for which the first letter is a lowercase
  * letter.
  * </p>
  * <p>
@@ -126,11 +126,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * <div style="margin-left:2em;"> <b>Lamport</b>, <span>Leslie</span><br />
  * <b>Knuth</b>, <span>Donald Ervin</span> <br />
- * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span>
- * <br />
+ * <b>Mozart</b>, <span>Johannes Chrysostomus Wolfgangus Theophilus</span> <br />
  * <b>Beethoven</b>, <span>Ludwig</span> <i>van</i> <br />
- * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span>
- * <br />
+ * <i>von</i> <b>Bismarck-Sch&ouml;nhausen</b>, <span>Otto Eduard Leopold</span> <br />
  * <i>de</i> <b>Cervantes Saavedra</b>, <span>Miguel</span> <br />
  * <span>Sammy</span> <b>Davis</b>, <u>Jr.</u> </div>
  * 
@@ -146,9 +144,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </pre>
  * 
  * <p>
- * The name parts <em>first</em> and <em>last</em> consist of words for
- * which the first letter is an uppercase letter. The name parts <em>von</em>
- * and <em>jr</em> consist of words for which the first letter is a lowercase
+ * The name parts <em>first</em> and <em>last</em> consist of words for which
+ * the first letter is an uppercase letter. The name parts <em>von</em> and
+ * <em>jr</em> consist of words for which the first letter is a lowercase
  * letter.
  * </p>
  * <p>
@@ -177,8 +175,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <p>
  * The following example is recognizes as two names:
  * </p>
- * <div style="margin-left:2em;"> <b>Barnes</b> <tt>and</tt> <b>Noble</b>
- * </div>
+ * <div style="margin-left:2em;"> <b>Barnes</b> <tt>and</tt> <b>Noble</b> </div>
  * <p>
  * The following example is recognized as a single name:
  * </p>

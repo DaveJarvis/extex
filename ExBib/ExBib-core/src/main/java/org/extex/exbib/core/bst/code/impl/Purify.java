@@ -33,14 +33,17 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>purify$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>purify$</code>
  * 
  * This function takes a string valued argument and performs the following
  * transformations:
  * 
  * <ul>
- * <li>Any known T<sub>E</sub>X macro at brace level 1 is expanded.</li>
- * <li>Any unknown T<sub>E</sub>X macro at brace level 1 is removed.</li>
+ * <li>Any known T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X macro at brace level 1 is expanded.</li>
+ * <li>Any unknown T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X macro at brace level 1 is removed.</li>
  * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
  * <tt>-</tt> are replaced by a single space character.</li>
  * <li>Any other non-alphanumeric characters are removed.</li>
@@ -79,7 +82,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal, removes non alphanumeric characters except
  * for white-space characters and hyphens and ties (these all get converted to a
@@ -89,7 +94,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>purify$</code> pops the top
  * (string) literal, removes non alphanumeric characters except for
  * <code>white_space</code> and <code>sep_char</code> characters (these get
@@ -147,8 +154,9 @@ public class Purify extends AbstractCode implements Configurable {
     private static Purify instance = null;
 
     /**
-     * Purify the string according to the definition of
-     * B<small>IB</small>T<sub>E</sub>X.
+     * Purify the string according to the definition of B<small>IB</small><span
+     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X.
      * 
      * @param s the argument to purify
      * 

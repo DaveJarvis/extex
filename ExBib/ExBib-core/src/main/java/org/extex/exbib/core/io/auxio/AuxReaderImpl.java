@@ -30,8 +30,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the core of the aux file reading. In addition to the one performed by
- * B<small>IB</small>T<sub>E</sub>X it supports multiple bibliographies via
- * optional arguments of the macros.
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X it supports multiple bibliographies via optional arguments of the
+ * macros.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -75,9 +76,8 @@ public class AuxReaderImpl extends AuxReader099cImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#load(
-     *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exbib.core.io.auxio.AuxReader#load(org.extex.exbib.core.ProcessorContainer,
+     *      java.lang.String, java.lang.String)
      */
     @Override
     public void load(ProcessorContainer bibliographies, String resource,

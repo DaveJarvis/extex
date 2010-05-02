@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>if$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>if$</code>
  * <p>
  * This function performs conditional processing. It takes three arguments from
  * the stack. The first argument is the else code. The second argument is the
@@ -58,11 +59,13 @@ import org.extex.exbib.core.io.Locator;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
- * <dd> Pops the top three literals (they are two function literals and an
+ * <dd>Pops the top three literals (they are two function literals and an
  * integer literal, in that order); if the integer is greater than 0, it
- * executes the second literal, else it executes the first. </dd>
+ * executes the second literal, else it executes the first.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -91,7 +94,7 @@ public class If extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)

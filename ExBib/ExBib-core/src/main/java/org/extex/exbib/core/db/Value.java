@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,8 +26,9 @@ import java.util.List;
 
 /**
  * The value is a list of {@link ValueItem ValueItem}s. According to the
- * definition of B<small>IB</small>T<sub>E</sub>X a
- * {@link ValueItem ValueItem} can be one of the following
+ * definition of B<small>IB</small><span style="margin-left: -0.15em;"
+ * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X a {@link ValueItem ValueItem} can be one of the following
  * <dl>
  * <dt>block</dt>
  * <dd>this is a sequence of characters enclosed in matching braces.
@@ -75,8 +76,7 @@ import java.util.List;
 public class Value implements Iterable<ValueItem> {
 
     /**
-     * The field <tt>value</tt> contains the list of items stored in the
-     * Value.
+     * The field <tt>value</tt> contains the list of items stored in the Value.
      */
     private List<ValueItem> value = new ArrayList<ValueItem>();
 

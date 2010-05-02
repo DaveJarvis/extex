@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>pop$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>pop$</code>
  * <p>
  * This function pops a string from the stack and prints it as a message to the
  * output stream.
@@ -50,15 +51,19 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
- * <dd> Pops the top of the stack but doesn't print it; this gets rid of an
- * unwanted stack literal. </dd>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:</dt>
+ * <dd>Pops the top of the stack but doesn't print it; this gets rid of an
+ * unwanted stack literal.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
- * <dd> The <code>built_in</code> function <code>pop$</code> pops the top of
- * the stack but doesn't print it. </dd>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:</dt>
+ * <dd>The <code>built_in</code> function <code>pop$</code> pops the top of the
+ * stack but doesn't print it.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -87,7 +92,7 @@ public class Pop extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)

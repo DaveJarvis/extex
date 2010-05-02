@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,7 +29,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>width$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>width$</code>
  * 
  * <p>
  * This function pops a string from the stack and tries to compute the width of
@@ -48,15 +49,18 @@ import org.extex.exbib.core.io.Locator;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal and pushes the integer that represents its
  * width in some relative units (currently, hundredths of a point, as specified
  * by the June 1987 version of the <i>cmr10</i> font; the only white-space
  * character with nonzero width is the space). This function takes the literal
  * literally; that is, it assumes each character in the string is to be printed
- * as is, regardless of whether the character has a special meaning to
- * T<sub>E</sub>X, except that ``special characters'' (even without their right
+ * as is, regardless of whether the character has a special meaning to T<span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X, except that ``special characters'' (even without their right
  * braces) are handled specially. This is meant to be used for comparing widths
  * of label strings.</dd>
  * </dl>
@@ -206,8 +210,9 @@ public class Width extends AbstractCode {
             };
 
     /**
-     * The constant <tt>SPECIAL</tt> contains the mapping of the special
-     * T<sub>E</sub>X sequences with positive width.
+     * The constant <tt>SPECIAL</tt> contains the mapping of the special T<span
+     * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
 

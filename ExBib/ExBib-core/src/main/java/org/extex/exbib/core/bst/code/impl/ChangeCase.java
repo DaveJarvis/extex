@@ -29,7 +29,8 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>change.case</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>change.case</code>
  * <p>
  * This function performs case conversion. It takes two arguments from the
  * stack. The first argument is the format and the second argument is the string
@@ -43,10 +44,12 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <ul>
  * <li>If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
  * converted to lower case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.</li>
+ * lowercase counterpart &ndash; even the letters in T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X macros.</li>
  * <li>If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
  * converted to upper case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in T<sub>E</sub>X macros.</li>
+ * lowercase counterpart &ndash; even the letters in T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X macros.</li>
  * <li>If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
  * converted to title case. This means that the first `letter' is translated to
  * upper case and the other letters are left unchanged.
@@ -75,7 +78,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:</dt>
  * <dd>Pops the top two (string) literals; it changes the case of the second
  * according to the specifications of the first, as follows. (Note: The word
  * `letters' in the next sentence refers only to those at brace-level 0, the
@@ -97,7 +102,9 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
  * <dd>
  * The <code>built_in</code> function <code>change.case$</code> pops the top two
  * (string) literals; it changes the case of the second according to the

@@ -31,7 +31,8 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.name.NameFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>num.names$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>num.names$</code>
  * <p>
  * This function takes a string argument from the stack and treats it as a list
  * of names. It pushes the number of names in the list as integer to the stack.
@@ -56,7 +57,9 @@ import org.extex.exbib.core.name.NameFactory;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal and pushes the number of names the string
  * represents---one plus the number of occurrences of the substring ``and''

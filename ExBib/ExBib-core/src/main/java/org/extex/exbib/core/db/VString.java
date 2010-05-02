@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -46,8 +46,10 @@ public class VString extends AbstractValueItem {
     }
 
     /**
-     * Return a String representation of the object suitable for a B<small>IB</small>T<sub>E</sub>X
-     * file.
+     * Return a String representation of the object suitable for a
+     * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+     * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X file.
      * 
      * @return the string representation
      */

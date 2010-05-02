@@ -330,8 +330,10 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * This is the top level of the BibT<sub>E</sub>X engine. When all
-     * parameters are present then this method can be invoked.
+     * This is the top level of the B<small>IB</small><span
+     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X engine. When all parameters are present then this method can
+     * be invoked.
      * 
      * @return <code>true</code> iff an error has occurred
      * 

@@ -63,7 +63,8 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This is the core implementation of an interpreter for the
- * B<small>IB</small>T<sub>E</sub>X language.
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X language.
  * <p>
  * The core implementation contains the full functionality of an interpreter.
  * But not functions, strings, integers etc are predefined. Thus usually this

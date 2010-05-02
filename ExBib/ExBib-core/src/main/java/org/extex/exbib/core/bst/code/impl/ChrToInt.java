@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,16 +29,20 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>char.to.int$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>char.to.int$</code>
  * <p>
  * This function translates a character to the corresponding integer code point.
  * It takes a string argument from the stack. This argument must contain exactly
  * one character.
  * </p>
  * <p>
- * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and
- * B<small>IB</small>T<sub>E</sub>X&nbsp;8 restrict the characters to 8~bit
- * characters. ExBib has expanded the definition to 16~bit Unicode characters.
+ * Note that B<small>IB</small><span style="margin-left: -0.15em;"
+ * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X&nbsp;0.99c and B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
+ * &epsilon;&chi;Bib has expanded the definition to 16~bit Unicode characters.
  * </p>
  * <img src="doc-files/chr.to.int.png"/>
  * <p>
@@ -52,13 +56,17 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:</dt>
  * <dd>Pops the top (string) literal, makes sure it's a single character,
  * converts it to the corresponding ASCII integer, and pushes this integer.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>chr.to.int$</code> pops the top
  * (string) literal, makes sure it's a single character, converts it to the
  * corresponding <code>ASCII_code</code> integer, and pushes this integer. If

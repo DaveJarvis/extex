@@ -26,11 +26,13 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>text.length$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>text.length$</code>
  * <p>
  * This function computes the length of a text. The length is the number of text
  * characters. Whitespace braces and brackets do not count as text characters. A
- * T<sub>E</sub>X control sequence counts as one character &ndash; no matter how
+ * T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X control sequence counts as one character &ndash; no matter how
  * long the name may be.
  * </p>
  * <img src="doc-files/text.length.png"/>
@@ -45,7 +47,9 @@ import org.extex.exbib.core.io.Locator;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal, and pushes the number of text characters
  * it contains, where an accented character (more precisely, a ``special
@@ -60,8 +64,9 @@ import org.extex.exbib.core.io.Locator;
 public class TextLength extends AbstractCode {
 
     /**
-     * Compute the text length like the B<small>IB</small>T<sub>E</sub>X
-     * built-in function <code>text.length$</code>.
+     * Compute the text length like the B<small>IB</small><span
+     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X built-in function <code>text.length$</code>.
      * 
      * @param s the input string
      * 

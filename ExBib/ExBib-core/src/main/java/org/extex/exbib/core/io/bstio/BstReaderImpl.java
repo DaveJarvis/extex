@@ -61,7 +61,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 /**
  * This class implements a reader for bst files.
  * <p>
- * The syntax follows the definition of B<small>IB</small>T<sub>E</sub>X 0.99c.
+ * The syntax follows the definition of B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X 0.99c.
  * </p>
  * 
  * <small>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -33,8 +33,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * The line breaking tries its best to achieve the given line length.
  * Nevertheless it is is not too eager. Thus a line might be longer of no proper
  * breaking point could be found. Especially it does <em>not</em> emulate the
- * B<small>IB</small>T<sub>E</sub>X behavior of inserting percent signs in the
- * output just to force a line break.
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X behavior of inserting percent signs in the output just to force a
+ * line break.
  * </p>
  * 
  * <p>

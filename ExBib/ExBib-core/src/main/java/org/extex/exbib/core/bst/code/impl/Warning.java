@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,8 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>warning$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>warning$</code>
  * <p>
  * This function pops a string from the stack and prints it as a warning to the
  * log stream. The message is terminated by a newline character. The line in the
@@ -51,19 +52,22 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
- * <dd> Pops the top (string) literal and prints it following a warning message.
- * This also increments a count of the number of warning messages issued. </dd>
+ * <dd>Pops the top (string) literal and prints it following a warning message.
+ * This also increments a count of the number of warning messages issued.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>warning$</code> pops the
- * top (string) literal and prints it following a warning message. This is
- * implemented as a special <code>built_in</code> function rather than using
- * the <code>top$</code> function so that it can <code>mark_warning</code>.
- * </dd>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
+ * <dd>The <code>built_in</code> function <code>warning$</code> pops the top
+ * (string) literal and prints it following a warning message. This is
+ * implemented as a special <code>built_in</code> function rather than using the
+ * <code>top$</code> function so that it can <code>mark_warning</code>.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -97,7 +101,7 @@ public class Warning extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)

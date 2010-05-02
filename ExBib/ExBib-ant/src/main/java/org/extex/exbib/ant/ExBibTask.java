@@ -234,7 +234,8 @@ import org.extex.logging.LogFormatter;
  * <dd>This parameter can be used to specify the configuration for assembling
  * &epsilon;&chi;Bib. The default value is <tt>exbib</tt>. The value
  * <tt>bibtex099</tt> can be used to switch to the compatibility mode for
- * B<small>IB</small>T<sub>E</sub>X 0.99c.
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X 0.99c.
  * 
  * <pre>
  *   &lt;<b>target</b> name="simple"

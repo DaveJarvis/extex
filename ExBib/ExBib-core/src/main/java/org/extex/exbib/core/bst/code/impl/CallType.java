@@ -30,7 +30,8 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>call.type$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>call.type$</code>
  * <p>
  * This function looks at the current entry and calls the function with the same
  * name as the type. The name is normalized; i.e. translated to lower case.
@@ -51,7 +52,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:</dt>
  * <dd>Executes the function whose name is the entry type of an entry. For
  * example if an entry is of type <code>book</code>, this function executes the
  * <code>book</code> function. When given as an argument to the
@@ -63,7 +66,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
  * <dd>The <i>built_in</i> function <code>call.type$</code> executes the
  * function specified in <code>type_list</code> for this entry unless it's
  * <code>undefined</code>, in which case it executes the default function

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -26,10 +26,11 @@ import java.util.List;
 import org.extex.exbib.core.db.Entry;
 
 /**
- * This class provides a Sorter compatible to the
- * B<small>IB</small>T<sub>E</sub>X 0.99c sorting routine. The sorting order is
- * determined by the byte order of the internal representation of the sorting
- * key. Thus accented characters are located behind all not accented characters.
+ * This class provides a Sorter compatible to the B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X 0.99c sorting routine. The sorting order is determined by the byte
+ * order of the internal representation of the sorting key. Thus accented
+ * characters are located behind all not accented characters.
  * 
  * <p>
  * Note: this comparator imposes orderings that are inconsistent with equals.

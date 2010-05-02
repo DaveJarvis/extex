@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -27,7 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function <code>substring$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>substring$</code>
  * <p>
  * This function computes the substring of a string. It takes three arguments
  * from the stack. The first argument is an integer denoting the maximal length
@@ -43,8 +44,10 @@ import org.extex.exbib.core.io.Locator;
  * The third argument is the string to take the substring from. The string is
  * interpreted taking blocks in braces into account. A block in braces counts as
  * one character unit. Thus it is guaranteed that blocks &ndash; which have a
- * special meaning in T<sub>E</sub>X and L<sup>A</sup>T<sub>E</sub>X &ndash; are
- * never broken.
+ * special meaning in T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X and L<span style="text-transform:uppercase;font-size:75%;vertical-align:0.45ex;margin-left:-0.3em;margin-right:-0.15em;"
+ * >A</span>T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X &ndash; are never broken.
  * </p>
  * <p>
  * The resulting substring is pushed back to the stack.
@@ -65,7 +68,9 @@ import org.extex.exbib.core.io.Locator;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top three literals (they are the two integers literals
  * <i>len</i> and <i>start</i>, and a string literal, in that order). It pushes
@@ -77,7 +82,9 @@ import org.extex.exbib.core.io.Locator;
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>substring$</code> pops the top
  * three literals (they are the two integers literals <code>pop_lit1</code> and
  * <code>pop_lit2</code> and a string literal, in that order). It pushes the
@@ -96,7 +103,9 @@ public class Substring extends AbstractCode {
 
     /**
      * Compute a substring according to the definition of
-     * B<small>IB</small>T<sub>E</sub>X.
+     * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+     * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X.
      * 
      * @param s the string
      * @param st the start index &ndash; 1 based

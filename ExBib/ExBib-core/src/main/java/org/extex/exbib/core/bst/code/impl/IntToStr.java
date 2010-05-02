@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,8 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>int.to.str$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>int.to.str$</code>
  * <p>
  * This function converts an integer to a string. It takes one integer argument
  * from the stack. It pushes the string consisting of the decimal representation
@@ -46,19 +46,23 @@ import org.extex.exbib.core.io.Locator;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
- * <dd> Pops the top (integer) literal, interpreted as the ASCII integer value
- * of a single character, converts it to the corresponding single-character
- * string, and pushes this string. </dd>
+ * <dd>Pops the top (integer) literal, interpreted as the ASCII integer value of
+ * a single character, converts it to the corresponding single-character string,
+ * and pushes this string.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>int.to.str$</code> pops the
- * top (integer) literal, converts it to its (unique) string equivalent, and
- * pushes this string. If the literal isn't an integer, it complains and pushes
- * the null string. </dd>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
+ * <dd>The <code>built_in</code> function <code>int.to.str$</code> pops the top
+ * (integer) literal, converts it to its (unique) string equivalent, and pushes
+ * this string. If the literal isn't an integer, it complains and pushes the
+ * null string.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -87,7 +91,7 @@ public class IntToStr extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)

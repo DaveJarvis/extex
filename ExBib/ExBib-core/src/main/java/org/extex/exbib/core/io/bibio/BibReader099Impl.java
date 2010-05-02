@@ -48,8 +48,11 @@ import org.extex.exbib.core.io.Locator;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * This is a class to implement a reader for B<small>IB</small>T<sub>E</sub>X
- * files. This reader is compatible with B<small>IB</small>T<sub>E</sub>X 0.99c.
+ * This is a class to implement a reader for B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X files. This reader is compatible with B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X 0.99c.
  * <p>
  * This incarnation is characterized as follows:
  * </p>

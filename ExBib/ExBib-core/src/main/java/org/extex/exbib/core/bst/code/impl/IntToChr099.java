@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,8 +30,8 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small>T<sub>E</sub>X built-in function
- * <code>int.to.chr$</code>
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X built-in function <code>int.to.chr$</code>
  * <p>
  * This function takes an integer code point from the stack and translates it
  * into a single character sting containing the character associated to the code
@@ -41,12 +41,15 @@ import org.extex.framework.i18n.LocalizerFactory;
  * This function limits its argument to the ASCII range 0-255.
  * </p>
  * <p>
- * Note that B<small>IB</small>T<sub>E</sub>X&nbsp;0.99c and B<small>IB</small>T<sub>E</sub>X&nbsp;8
- * restrict the characters to 8~bit characters. &epsilon;&chi;Bib has expanded
- * the definition to 16~bit Unicode characters. Thus in compatibility mode of
- * &epsilon;&chi;Bib\ the use of a number larger than 255 leads to an error. In
- * &epsilon;&chi;Bib\ native mode those numbers are treated correctly as larger
- * Unicode code points.
+ * Note that B<small>IB</small><span style="margin-left: -0.15em;"
+ * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X&nbsp;0.99c and B<small>IB</small><span
+ * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
+ * &epsilon;&chi;Bib has expanded the definition to 16~bit Unicode characters.
+ * Thus in compatibility mode of &epsilon;&chi;Bib\ the use of a number larger
+ * than 255 leads to an error. In &epsilon;&chi;Bib\ native mode those numbers
+ * are treated correctly as larger Unicode code points.
  * </p>
  * <img src="doc-files/int.to.chr.png"/>
  * <p>
@@ -60,20 +63,24 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <hr />
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X documentation:
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X documentation:
  * <dt>
- * <dd> Pops the top (integer) literal, interpreted as the ASCII integer value
- * of a single character, converts it to the corresponding single-character
- * string, and pushes this string. </dd>
+ * <dd>Pops the top (integer) literal, interpreted as the ASCII integer value of
+ * a single character, converts it to the corresponding single-character string,
+ * and pushes this string.</dd>
  * </dl>
  * 
  * <dl>
- * <dt>B<small>IB</small>T<sub>E</sub>X web documentation:</dt>
- * <dd> The <code>built_in</code> function <code>int.to.chr$</code> pops the
- * top (integer) literal, interpreted as the <code>ASCII_code</code> of a
- * single character, converts it to the corresponding single-character string,
- * and pushes this string. If the literal isn't an appropriate integer, it
- * complains and pushes the null string. </dd>
+ * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X web documentation:</dt>
+ * <dd>The <code>built_in</code> function <code>int.to.chr$</code> pops the top
+ * (integer) literal, interpreted as the <code>ASCII_code</code> of a single
+ * character, converts it to the corresponding single-character string, and
+ * pushes this string. If the literal isn't an appropriate integer, it complains
+ * and pushes the null string.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -102,7 +109,7 @@ public class IntToChr099 extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.bst.code.AbstractCode#execute( BstProcessor,
+     * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
     public void execute(BstProcessor processor, Entry entry, Locator locator)
