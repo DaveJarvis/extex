@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -101,16 +101,16 @@ public class Entry implements Iterable<String> {
      * is not found locally and the field crossref is present then the value is
      * requested from the entry stored under the crossref key in the database.
      * 
-     * @param key the key of the value
+     * @param entryKey the key of the value
      * @param db database context
      * 
      * @return the Value or <code>null</code> if none is found
      * 
      * @throws ExBibException in case of an error
      */
-    public Value get(String key, DB db) throws ExBibException {
+    public Value get(String entryKey, DB db) throws ExBibException {
 
-        Value val = values.get(key);
+        Value val = values.get(entryKey);
 
         if (val == null) {
             val = get("crossref");
@@ -123,7 +123,7 @@ public class Entry implements Iterable<String> {
                     throw new ExBibMissingEntryException(crossKey, getLocator());
                 }
 
-                val = entry.get(key);
+                val = entry.get(entryKey);
             }
         }
 
@@ -196,7 +196,7 @@ public class Entry implements Iterable<String> {
      * Getter for a local value. The local values are stored independently from
      * the normal values. This means that they have a name-space of their own.
      * 
-     * @param key the key of the local value
+     * @param name the key of the local value
      * 
      * @return the local value for key or <code>null</code> if it does not
      *         exist.
@@ -205,9 +205,9 @@ public class Entry implements Iterable<String> {
      *         defined
      * @throws ClassCastException in case that the local variable isn't a number
      */
-    public int getLocalInt(String key) {
+    public int getLocalInt(String name) {
 
-        ValueItem value = local.get(key);
+        ValueItem value = local.get(name);
         return ((VNumber) value).getValue();
     }
 
@@ -245,7 +245,7 @@ public class Entry implements Iterable<String> {
     public String getSortKey() {
 
         ValueItem val = (local.get("sort.key$"));
-        return (val == null ? null : val.getContent());
+        return val == null ? null : val.getContent();
     }
 
     /**
@@ -273,14 +273,14 @@ public class Entry implements Iterable<String> {
      * valued parameter is wrapped into a {@link Value Value} before it is
      * stored.
      * 
-     * @param key the key of the value
+     * @param name the key of the value
      * @param value the new value
      */
-    public void set(String key, String value) {
+    public void set(String name, String value) {
 
         Value val = new Value();
         val.add(new VString(value));
-        values.put(key, val);
+        values.put(name, val);
     }
 
     /**
