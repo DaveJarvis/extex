@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -225,11 +225,11 @@ public abstract class AbstractMain extends CLI {
             throws IOException {
 
         String logfile = getProperty(PROP_LOGFILE);
-        if (logfile == null && log != null && !log.equals("")
+        if (logfile == null && log != null && !"".equals(log)
                 && !log.equals("-")) {
             logfile = log + extension;
         }
-        if (logfile != null && !logfile.equals("")) {
+        if (logfile != null && !"".equals(logfile)) {
             Handler fileHandler = new FileHandler(logfile);
             fileHandler.setFormatter(new LogFormatter());
             fileHandler.setLevel(Level.FINE);
@@ -277,7 +277,7 @@ public abstract class AbstractMain extends CLI {
                 if (a.startsWith("-D")) {
                     String prop = a.substring(2);
                     properties.setProperty(prop, arg);
-                    if (prop.equals(PROP_LANG)) {
+                    if (PROP_LANG.equals(prop)) {
                         applyLanguage();
                     }
                     return CLI.EXIT_CONTINUE;

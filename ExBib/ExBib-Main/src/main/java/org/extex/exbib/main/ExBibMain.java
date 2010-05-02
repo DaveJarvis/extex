@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,9 +84,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * &lt;n&gt;</tt></dt>
  * <dd>Set the value for min.crossrefs. The default is 2.</dd>
  * <dt><tt>--o[utfile] | --outp[ut] | -o &lt;file&gt;</tt></dt>
- * <dd>Redirect the output to the file given. <br /> The file name - can be used
- * to redirect to stdout <br /> The empty file name can be used to discard the
- * output completely</dd>
+ * <dd>Redirect the output to the file given. <br />
+ * The file name - can be used to redirect to stdout <br />
+ * The empty file name can be used to discard the output completely</dd>
  * <dt><tt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lt;program&gt;</tt></dt>
  * <dd>Set the program name for messages.</dd>
@@ -349,7 +349,7 @@ public class ExBibMain extends AbstractMain {
     }
 
     /**
-     * Setter for the file name
+     * Setter for the file name.
      * 
      * @param arg the file name
      * 
