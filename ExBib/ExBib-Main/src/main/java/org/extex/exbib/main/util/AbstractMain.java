@@ -593,10 +593,10 @@ public abstract class AbstractMain extends CLI {
             log(Level.WARNING, "version", getProgramName(), version);
             int year = Calendar.getInstance().get(Calendar.YEAR);
             log(Level.SEVERE, "copyright", getProgramName(), //
-                (year <= inceptionYear //
+                year <= inceptionYear //
                         ? Integer.toString(inceptionYear)
                         : Integer.toString(inceptionYear) + "-"
-                                + Integer.toString(year)));
+                                + Integer.toString(year));
         }
         return EXIT_FAIL;
     }
