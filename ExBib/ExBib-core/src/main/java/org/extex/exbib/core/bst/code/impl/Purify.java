@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -263,7 +263,7 @@ public class Purify extends AbstractCode implements Configurable {
                         i++;
                     }
 
-                    String ctrl = (macro.get(sb.substring(j + 1, i)));
+                    String ctrl = macro.get(sb.substring(j + 1, i));
 
                     if (ctrl == null) {
                         sb.delete(j, i);
