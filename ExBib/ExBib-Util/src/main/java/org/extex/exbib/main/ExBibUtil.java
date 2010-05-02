@@ -358,10 +358,10 @@ public final class ExBibUtil extends AbstractMain {
                 writer =
                         new StreamWriter(System.out, getProperty(PROP_ENCODING));
                 info("output.to.stdout");
-            } else if (outfile.equals("")) {
+            } else if ("".equals(outfile)) {
                 info("output.discarted");
                 writer = new NullWriter();
-            } else if (outfile.equals("-")) {
+            } else if ("-".equals(outfile)) {
                 info("output.to.stdout");
                 writer =
                         new StreamWriter(System.out, getProperty(PROP_ENCODING));
