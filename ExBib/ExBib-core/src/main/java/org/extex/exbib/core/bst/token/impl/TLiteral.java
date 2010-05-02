@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -51,7 +51,7 @@ public class TLiteral extends AbstractToken {
 
         super(value, locator);
 
-        if (value == null || value.equals("")) {
+        if (value == null || "".equals(value)) {
             throw new ExBibEmptyFunctionNameException(locator);
         }
     }
@@ -99,7 +99,7 @@ public class TLiteral extends AbstractToken {
     public String expand(Processor processor) {
 
         String macro = processor.getMacro(getValue());
-        return (macro != null ? macro : "");
+        return macro != null ? macro : "";
     }
 
     /**

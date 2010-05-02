@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -35,7 +35,7 @@ import org.extex.exbib.core.io.Locator;
 public class TLocalLocator extends TLiteral {
 
     /**
-     * This enumeration denotes
+     * This enumeration denotes the fields at hand.
      */
     public enum LocatorField {
         /**
