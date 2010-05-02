@@ -39,7 +39,7 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link ExBibUtil}.
+ * This is a test suite for {@link ExBibUtilMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -543,7 +543,7 @@ public class ExBibUtilTest extends BibUtilTester {
         assertFalse(log.exists());
 
         try {
-            ExBibUtil exbib =
+            ExBibUtilMain exbib =
                     runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER,
                         "test.bib", "-log", log.toString());
             assertTrue(log.exists());
@@ -579,7 +579,7 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testOk1() throws Exception {
 
-        ExBibUtil exbib =
+        ExBibUtilMain exbib =
                 runTest(
                     "test",
                     "\\citation{*}\n"
@@ -620,7 +620,7 @@ public class ExBibUtilTest extends BibUtilTester {
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             System.setErr(new PrintStream(baos));
-            assertEquals(0, ExBibUtil.commandLine(args));
+            assertEquals(0, ExBibUtilMain.commandLine(args));
             assertEquals(BANNER, baos.toString().replaceAll("\r", ""));
         } finally {
             System.setErr(err);

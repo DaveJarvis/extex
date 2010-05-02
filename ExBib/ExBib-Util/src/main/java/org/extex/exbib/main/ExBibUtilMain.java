@@ -111,7 +111,7 @@ import org.extex.resource.ResourceFinderFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public final class ExBibUtil extends AbstractMain {
+public final class ExBibUtilMain extends AbstractMain {
 
     /**
      * The field <tt>LOG_EXTENSION</tt> contains the extension for the log file.
@@ -174,9 +174,9 @@ public final class ExBibUtil extends AbstractMain {
     public static int commandLine(String[] argv) {
 
         try {
-            return new ExBibUtil().processCommandLine(argv);
+            return new ExBibUtilMain().processCommandLine(argv);
         } catch (Exception e) {
-            Logger logger = Logger.getLogger(ExBibUtil.class.getName());
+            Logger logger = Logger.getLogger(ExBibUtilMain.class.getName());
             logger.setUseParentHandlers(false);
             logger.setLevel(Level.ALL);
             Handler consoleHandler = new ConsoleHandler();
@@ -210,7 +210,7 @@ public final class ExBibUtil extends AbstractMain {
      * 
      * @throws IOException in case of an I/O error while reading the dot file
      */
-    public ExBibUtil() throws IOException {
+    public ExBibUtilMain() throws IOException {
 
         this(System.getProperties());
     }
@@ -222,7 +222,7 @@ public final class ExBibUtil extends AbstractMain {
      * 
      * @throws IOException in case of an I/O error
      */
-    public ExBibUtil(Properties properties) throws IOException {
+    public ExBibUtilMain(Properties properties) throws IOException {
 
         super(PROGNAME, VERSION, INCEPTION_YEAR, ".exbib", properties);
         propertyDefault(PROP_CONFIG, "exbib");

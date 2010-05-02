@@ -33,7 +33,7 @@ import java.util.Locale;
 import org.extex.cli.CLI;
 
 /**
- * This is a tester for {@link ExBibUtil}.
+ * This is a tester for {@link ExBibUtilMain}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -75,13 +75,13 @@ public class BibUtilTester {
      * The field <tt>BANNER</tt> contains the default banner.
      */
     public static final String BANNER =
-            "This is exbibutil, Version " + ExBibUtil.VERSION + "\n";
+            "This is exbibutil, Version " + ExBibUtilMain.VERSION + "\n";
 
     /**
      * The field <tt>BANNER_DE</tt> contains the default banner.
      */
     public static final String BANNER_DE =
-            "Dies ist exbibutil, Version " + ExBibUtil.VERSION + "\n";
+            "Dies ist exbibutil, Version " + ExBibUtilMain.VERSION + "\n";
 
     /**
      * Creates a new object.
@@ -133,7 +133,7 @@ public class BibUtilTester {
      * 
      * @throws Exception in case of an error
      */
-    protected ExBibUtil runTest(String basename, String bibContents,
+    protected ExBibUtilMain runTest(String basename, String bibContents,
             int exitCode, Check checkOut, String out, String... args)
             throws Exception {
 
@@ -149,11 +149,11 @@ public class BibUtilTester {
 
         Locale.setDefault(Locale.ENGLISH);
         PrintStream err = System.err;
-        ExBibUtil exBibUtil = null;
+        ExBibUtilMain exBibUtil = null;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             System.setErr(new PrintStream(baos));
-            exBibUtil = new ExBibUtil();
+            exBibUtil = new ExBibUtilMain();
             int code = exBibUtil.processCommandLine(args);
             if (exBibUtil != null) {
                 exBibUtil.close();

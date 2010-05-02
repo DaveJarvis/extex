@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # This is the start script for ExBibUtil
 #------------------------------------------------------------------------------
-# Copyright (C) 2008 The ExTeX Group
+# Copyright (C) 2008-2010 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -56,6 +56,6 @@ esac
 
 exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS \
     -classpath "$LOCALCLASSPATH" \
-    org.extex.exbib.main.ExBibUtil --prog=`basename $0` $*
+    org.extex.exbib.main.ExBibUtilMain --prog=`basename $0` $*
 
 #
