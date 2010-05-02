@@ -47,7 +47,8 @@
  *     <th>Function Name</th>
  *     <th>Class</th>
  *     <th>Braces</th>
- *     <th>T<sub>E</sub>X</th>
+ *     <th>T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X</th>
  *     <th>Western</th>
  *   </tr>
  *   <tr>
