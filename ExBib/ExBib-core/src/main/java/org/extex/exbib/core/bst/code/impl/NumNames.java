@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -137,9 +137,9 @@ public class NumNames extends AbstractCode {
 
         String value = processor.popString(locator).getValue();
         int n = numNames(value, locator);
-        processor.push((n == 0 ? TokenFactory.T_ZERO : n == 1
+        processor.push(n == 0 ? TokenFactory.T_ZERO : n == 1
                 ? TokenFactory.T_ONE
-                : new TInteger(n, locator)));
+                : new TInteger(n, locator));
     }
 
 }
