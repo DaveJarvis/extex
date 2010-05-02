@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -281,7 +281,7 @@ public class BstInterpreterCore extends BibliographyCore
                 ExBibFunctionExistsException,
                 ExBibException {
 
-        if (name == null || name.equals("")) {
+        if (name == null || "".equals(name)) {
             throw new ExBibIllegalValueException("Illegal function name",
                 locator);
         }
@@ -305,7 +305,7 @@ public class BstInterpreterCore extends BibliographyCore
             throws ExBibIllegalValueException,
                 ExBibFunctionUndefinedException {
 
-        if (name == null || name.equals("")) {
+        if (name == null || "".equals(name)) {
             throw new ExBibIllegalValueException("Illegal function name",
                 locator);
         }
@@ -675,17 +675,17 @@ public class BstInterpreterCore extends BibliographyCore
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
-        if (name.equals("run")) {
+        if ("run".equals(name)) {
             runObservers.add(observer);
-        } else if (name.equals("step")) {
+        } else if ("step".equals(name)) {
             stepObservers.add(observer);
-        } else if (name.equals("push")) {
+        } else if ("push".equals(name)) {
             pushObservers.add(observer);
-        } else if (name.equals("pop")) {
+        } else if ("pop".equals(name)) {
             popObservers.add(observer);
-        } else if (name.equals("addFunction")) {
+        } else if ("addFunction".equals(name)) {
             addFunctionObservers.add(observer);
-        } else if (name.equals("changeFunction")) {
+        } else if ("changeFunction".equals(name)) {
             changeFunctionObservers.add(observer);
         } else {
             super.registerObserver(name, observer);
