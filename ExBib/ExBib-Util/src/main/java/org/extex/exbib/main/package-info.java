@@ -20,6 +20,6 @@ package org.extex.exbib.main;
 
 /**
  * This is the top-level package for command line interfaces to the
- B<small>IB</small>T<sub>E</sub>X Compatible Database.
+ * B<small>IB</small>T<sub>E</sub>X Compatible Database.
  *
  */
