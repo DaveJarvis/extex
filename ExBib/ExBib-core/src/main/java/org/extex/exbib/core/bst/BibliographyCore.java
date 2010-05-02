@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -409,15 +409,15 @@ public class BibliographyCore implements Bibliography, Observable {
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
-        if (name.equals("startParse")) {
+        if ("startParse".equals(name)) {
             startParseObservers.add(observer);
-        } else if (name.equals("parse")) {
+        } else if ("parse".equals(name)) {
             parseObservers.add(observer);
-        } else if (name.equals("endParse")) {
+        } else if ("endParse".equals(name)) {
             endParseObservers.add(observer);
-        } else if (name.equals("startRead")) {
+        } else if ("startRead".equals(name)) {
             startReadObservers.add(observer);
-        } else if (name.equals("setOption")) {
+        } else if ("setOption".equals(name)) {
             setOptionObservers.add(observer);
         } else {
             throw new NotObservableException(name);
