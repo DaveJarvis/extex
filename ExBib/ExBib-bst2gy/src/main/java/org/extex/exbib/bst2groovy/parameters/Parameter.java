@@ -29,22 +29,22 @@ public class Parameter {
     /**
      * The field <tt>TRUE</tt> contains the boolean value true.
      */
-    public static Parameter TRUE = new Parameter(true);
+    public static final Parameter TRUE = new Parameter(true);
 
     /**
      * The field <tt>FALSE</tt> contains the boolean value false.
      */
-    public static Parameter FALSE = new Parameter(false);
+    public static final Parameter FALSE = new Parameter(false);
 
     /**
      * The field <tt>ZERO</tt> contains the numeric value zero.
      */
-    public static Parameter ZERO = new Parameter(0);
+    public static final Parameter ZERO = new Parameter(0);
 
     /**
      * The field <tt>EMPTY</tt> contains the string value for the empty string.
      */
-    public static Parameter EMPTY = new Parameter("");
+    public static final Parameter EMPTY = new Parameter("");
 
     /**
      * The field <tt>intValue</tt> contains the value.
