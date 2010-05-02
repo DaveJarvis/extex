@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -65,7 +65,7 @@ public class TextPrefix extends AbstractCode {
 
     /**
      * Compute the text prefix like the B<small>IB</small>T<sub>E</sub>X
-     * built-in function <code>text.prefix$</code>
+     * built-in function <code>text.prefix$</code>.
      * 
      * @param s the input string
      * @param length the length of the prefix
