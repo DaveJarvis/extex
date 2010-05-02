@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -84,7 +84,7 @@ public abstract class AbstractFileReader implements Observable {
      */
     public boolean canRead() {
 
-        return (reader != null);
+        return reader != null;
     }
 
     /**
@@ -106,7 +106,7 @@ public abstract class AbstractFileReader implements Observable {
     }
 
     /**
-     * Getter for the line buffer
+     * Getter for the line buffer.
      * 
      * @return the line buffer
      */

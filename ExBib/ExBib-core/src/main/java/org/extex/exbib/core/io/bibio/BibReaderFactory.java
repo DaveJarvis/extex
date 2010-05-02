@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,8 +31,8 @@ import org.extex.resource.ResourceFinder;
  * {@link BibReader BibReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class
- * to be instantiated. Consider the following example of a configuration file:
+ * attribute <code>class</code>. This attribute holds the name of the class to
+ * be instantiated. Consider the following example of a configuration file:
  * 
  * <pre>
  *   &lt;BibReader
@@ -48,7 +48,7 @@ public class BibReaderFactory extends AbstractFactory {
 
     /**
      * The field <tt>encoding</tt> contains the encoding the encoding for
-     * reading or <code>null</code> for the platform default
+     * reading or <code>null</code> for the platform default.
      */
     private String encoding;
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -47,7 +47,9 @@ public class FuncallObserver implements Observer {
      */
     private static class Int {
 
-        /** The integer value */
+        /**
+         * The field <tt>value</tt> contains the integer value.
+         */
         private int value = 0;
 
         /**
@@ -71,7 +73,7 @@ public class FuncallObserver implements Observer {
         }
 
         /**
-         * Increment the currenrt value by 1.
+         * Increment the current value by 1.
          */
         public void inc() {
 
@@ -140,8 +142,8 @@ public class FuncallObserver implements Observer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.util.Observer#update(
-     *      org.extex.exbib.core.util.Observable, java.lang.Object)
+     * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,
+     *      java.lang.Object)
      */
     public void update(Observable source, Object o) {
 

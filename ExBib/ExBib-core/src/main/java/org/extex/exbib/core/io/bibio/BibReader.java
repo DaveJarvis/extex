@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,7 +73,7 @@ public interface BibReader extends ResourceAware {
                 ConfigurationException;
 
     /**
-     * Open a file for reading
+     * Open a file for reading.
      * 
      * @param file the file to open for reading
      * @param encoding the encoding

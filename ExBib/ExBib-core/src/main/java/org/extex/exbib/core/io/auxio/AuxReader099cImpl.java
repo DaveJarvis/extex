@@ -180,13 +180,13 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      *      java.lang.String)
      */
     public void load(ProcessorContainer bibliographies, String resource,
-            String encoding)
+            String enc)
             throws ConfigurationException,
                 IOException,
                 ExBibException {
 
-        this.encoding = encoding;
-        LineNumberReader reader = open(resource, "aux", encoding);
+        this.encoding = enc;
+        LineNumberReader reader = open(resource, "aux", enc);
         String name = getFilename();
 
         if (observer != null) {
@@ -221,10 +221,10 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * @see org.extex.exbib.core.io.auxio.AuxReader#register(
      *      org.extex.exbib.core.io.auxio.ResourceObserver)
      */
-    public ResourceObserver register(ResourceObserver observer) {
+    public ResourceObserver register(ResourceObserver resourceObserver) {
 
         ResourceObserver obs = this.observer;
-        this.observer = observer;
+        this.observer = resourceObserver;
         return obs;
     }
 

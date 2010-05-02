@@ -160,7 +160,7 @@ public class WriterFactory extends AbstractFactory {
     }
 
     /**
-     * Getter for a new writer with a StringBuffer
+     * Getter for a new writer with a StringBuffer.
      * 
      * @param buffer the StringBuffer to fill
      * 

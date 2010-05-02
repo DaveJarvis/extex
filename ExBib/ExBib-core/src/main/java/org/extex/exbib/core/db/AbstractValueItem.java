@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -68,7 +68,7 @@ public abstract class AbstractValueItem implements ValueItem {
     }
 
     /**
-     * Setter for the value
+     * Setter for the value.
      * 
      * @param content the new value
      */
@@ -78,8 +78,8 @@ public abstract class AbstractValueItem implements ValueItem {
     }
 
     /**
-     * Return a String representation of the object suitable for a B<small>IB</small>T<sub>E</sub>X
-     * file.
+     * Return a String representation of the object suitable for a
+     * B<small>IB</small>T<sub>E</sub>X file.
      * 
      * @return the string representation
      */

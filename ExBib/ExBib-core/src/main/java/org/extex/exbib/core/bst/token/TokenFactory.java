@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,7 +42,7 @@ public final class TokenFactory {
     /** The {@link TString TString} with the value "". */
     public static final TString T_EMPTY = new TString("", null);
 
-    /** the TString containing the quote character only */
+    /** The TString containing the quote character only. */
     public static final TString T_QUOTE = new TString("\"", null);
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,7 +31,9 @@ import java.util.List;
  */
 public class ObserverList implements Observer {
 
-    /** The internal list of observers */
+    /**
+     * The field <tt>list</tt> contains the internal list of observers.
+     */
     private List<Observer> list = new ArrayList<Observer>();
 
     /**
@@ -60,8 +62,7 @@ public class ObserverList implements Observer {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.util.Observer#update(
-     *      org.extex.exbib.core.util.Observable,java.lang.Object)
+     * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,java.lang.Object)
      */
     public void update(Observable source, Object object) {
 
