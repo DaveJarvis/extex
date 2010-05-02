@@ -369,7 +369,7 @@ public class ExBib {
     }
 
     /**
-     * Getter for a property
+     * Getter for a property.
      * 
      * @param key the key
      * 

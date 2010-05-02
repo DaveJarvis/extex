@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -40,7 +40,7 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This is a sorter which used a csf file to read a configuration from.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -108,7 +108,7 @@ public class CsfSorter
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param resource the name of the resource to read
      */
     public CsfSorter(String resource) {
@@ -119,7 +119,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.util.Comparator#compare(java.lang.Object, java.lang.Object)
      */
     public int compare(Entry a, Entry b) {
@@ -155,9 +155,9 @@ public class CsfSorter
     /**
      * Get the lower counterpart for a character. If a character has no such
      * counterpart the character itself is returned.
-     *
+     * 
      * @param c the character
-     *
+     * 
      * @return the lower case character
      */
     int getLower(char c) {
@@ -168,9 +168,9 @@ public class CsfSorter
     /**
      * Get the upper counterpart for a character. If a character has no such
      * counterpart the character itself is returned.
-     *
+     * 
      * @param c the character
-     *
+     * 
      * @return the uppercase character
      */
     int getUpper(char c) {
@@ -180,7 +180,7 @@ public class CsfSorter
 
     /**
      * Setter for the lower case counterpart of a upper case character.
-     *
+     * 
      * @param uc the upper case character
      * @param lc the lower case character
      */
@@ -191,7 +191,7 @@ public class CsfSorter
 
     /**
      * Setter for the order mapping.
-     *
+     * 
      * @param c the character
      * @param on the ordinal number
      */
@@ -202,7 +202,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties properties) {
@@ -212,7 +212,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder f) {
@@ -222,7 +222,7 @@ public class CsfSorter
 
     /**
      * Setter for the upper case counterpart of a lower case character.
-     *
+     * 
      * @param lc the lower case character
      * @param uc the upper case character
      */
@@ -233,7 +233,7 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exbib.core.db.sorter.Sorter#sort(java.util.List)
      */
     public void sort(List<Entry> list) throws ConfigurationException {
@@ -243,12 +243,12 @@ public class CsfSorter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exbib.core.db.sorter.Startable#start()
      */
     public void start() throws ExBibException {
 
-        if (resource == null || resource.equals("")) {
+        if (resource == null || "".equals(resource)) {
             return;
         }
 
@@ -274,9 +274,9 @@ public class CsfSorter
 
     /**
      * Translate a character to lower case.
-     *
+     * 
      * @param c the input character
-     *
+     * 
      * @return the lower-cased character or c itself if no counterpart is known
      */
     public char toLowerCase(char c) {
@@ -286,9 +286,9 @@ public class CsfSorter
 
     /**
      * Translate a character to upper case.
-     *
+     * 
      * @param c the input character
-     *
+     * 
      * @return the upper-cased character or c itself if no counterpart is known
      */
     public char toUpperCase(char c) {

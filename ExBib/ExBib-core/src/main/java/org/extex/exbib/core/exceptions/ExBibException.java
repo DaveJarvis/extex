@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -164,7 +164,7 @@ public class ExBibException extends Exception {
         Throwable cause = getCause();
 
         if (cause != null) {
-            return (message == null || message.equals("") ? "" : message + ": ")
+            return (message == null || "".equals(message) ? "" : message + ": ")
                     + cause.toString();
         }
 

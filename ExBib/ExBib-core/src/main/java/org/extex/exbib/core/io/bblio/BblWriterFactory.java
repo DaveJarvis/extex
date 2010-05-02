@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -119,10 +119,10 @@ public class BblWriterFactory extends AbstractFactory {
 
         Writer writer;
 
-        if (file == null || file.equals("")) {
+        if (file == null || "".equals(file)) {
             writer = writerFactory.newInstance();
             infoDiscarted();
-        } else if (file.equals("-")) {
+        } else if ("-".equals(file)) {
             writer = writerFactory.newInstance(System.out);
             infoStdout();
         } else {

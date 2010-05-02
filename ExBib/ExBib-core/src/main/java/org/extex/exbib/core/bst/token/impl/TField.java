@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -67,7 +67,7 @@ public class TField extends AbstractToken {
         if (result == null) {
             processor.push(new TEmptyField(field, entry.getKey(), locator));
             return;
-        } else if (field.equals("crossref")) {
+        } else if ("crossref".equals(field)) {
             // TODO: eliminate brain-dead compatibility code
             result = result.toLowerCase(Locale.ENGLISH);
         }

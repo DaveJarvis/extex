@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -26,7 +26,7 @@ import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class is a reader for a csf file.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -61,10 +61,10 @@ public class CsfReader {
     /**
      * Expect a certain character and complain if it is not found. Newline
      * characters are skipped.
-     *
+     * 
      * @param c the expected character
      * @param reader the reader to acquire characters from
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -85,11 +85,11 @@ public class CsfReader {
 
     /**
      * Parse an \lowercase, \lowupcase, or \ uppercase section.
-     *
+     * 
      * @param csf the transport object
      * @param reader the reader to acquire characters from
      * @param mode the mode of operation
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -149,10 +149,10 @@ public class CsfReader {
 
     /**
      * Parse an \order section.
-     *
+     * 
      * @param csf the transport object
      * @param reader the reader to acquire characters from
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
@@ -208,11 +208,11 @@ public class CsfReader {
 
     /**
      * Read the configuration from a csf.
-     *
+     * 
      * @param reader the reader to acquire characters from
-     *
+     * 
      * @return the sorter containing the configuration read
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a csf error
      */
@@ -223,12 +223,12 @@ public class CsfReader {
 
     /**
      * Read the configuration from a csf.
-     *
+     * 
      * @param reader the reader to acquire characters from
      * @param csf the CSF to store the read information in
-     *
+     * 
      * @return the sorter containing the configuration read
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a csf error
      */
@@ -239,13 +239,13 @@ public class CsfReader {
         Reader r = new BufferedReader(reader);
 
         for (String s = readToken(r); s != null; s = readToken(r)) {
-            if (s.equals("\\order")) {
+            if ("\\order".equals(s)) {
                 parseOrder(csf, r);
-            } else if (s.equals("\\uppercase")) {
+            } else if ("\\uppercase".equals(s)) {
                 parse(csf, r, Mode.UPPER);
-            } else if (s.equals("\\lowercase")) {
+            } else if ("\\lowercase".equals(s)) {
                 parse(csf, r, Mode.LOWER);
-            } else if (s.equals("\\lowupcase")) {
+            } else if ("\\lowupcase".equals(s)) {
                 parse(csf, r, Mode.LOW_UP);
             } else {
                 throw new CsfException(LocalizerFactory
@@ -258,11 +258,11 @@ public class CsfReader {
 
     /**
      * read a single character.
-     *
+     * 
      * @param reader the reader to acquire characters from
-     *
+     * 
      * @return the character read or -1 on EOF
-     *
+     * 
      * @throws IOException in case of an I/O error
      */
     private int readChar(Reader reader) throws IOException {
@@ -283,11 +283,11 @@ public class CsfReader {
 
     /**
      * Read a token started by backslash and consisting of letters.
-     *
+     * 
      * @param reader the reader to get characters from
-     *
+     * 
      * @return the token found or <code>null</code> ON eof
-     *
+     * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */

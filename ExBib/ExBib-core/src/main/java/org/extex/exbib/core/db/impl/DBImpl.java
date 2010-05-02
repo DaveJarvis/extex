@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -370,15 +370,15 @@ public class DBImpl implements DB, Configurable, Observable {
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
-        if (name.equals("makeAlias")) {
+        if ("makeAlias".equals(name)) {
             makeAliasHook.add(observer);
-        } else if (name.equals("makeMacro")) {
+        } else if ("makeMacro".equals(name)) {
             makeMacroHook.add(observer);
-        } else if (name.equals("makePreamble")) {
+        } else if ("makePreamble".equals(name)) {
             makePreambleHook.add(observer);
-        } else if (name.equals("makeEntry")) {
+        } else if ("makeEntry".equals(name)) {
             makeEntryHook.add(observer);
-        } else if (name.equals("makeString")) {
+        } else if ("makeEntry".equals(name)) {
             makeStringHook.add(observer);
         } else {
             throw new NotObservableException(name);

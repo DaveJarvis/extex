@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -171,12 +171,12 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      *   protected boolean handle(String tag, DB db, Processor processor,
      *                            String brace) throws ExBibException {
      *     if (super.handle(tag,db,processor,brace)) {
-     *     } else if (tag.equals("new_tag")) {
+     *     } else if ("new_tag".equals(tag)) {
      *       . . .
      *     }
      *   }
      * </pre
-     *
+     * 
      * @param tag the name of the item encountered. This String has been
      *        converted to lower case already.
      * @param db the database to store the information in
@@ -185,7 +185,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @param locator the locator
      * @return <code>true</code> iff the item is special and has been handled
      *         successfully.
-     *
+     * 
      * @throws ExBibException in case of an error
      * @throws ExBibEofException in case of an unexpected end of file
      * @throws ExBibSyntaxException in case of an syntax error
@@ -193,13 +193,13 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     protected boolean handle(String tag, DB db, String brace, Locator locator)
             throws ExBibException {
 
-        if (tag.equals("string")) {
+        if ("string".equals(tag)) {
             KeyValue pair = parseAssign();
             expect(brace);
             db.storeString(pair.getKey(), pair.getValue());
 
             return true;
-        } else if (tag.equals("preamble")) {
+        } else if ("preamble".equals(tag)) {
             Value pre = parseRHS();
             expect(brace);
             db.storePreamble(pre);
@@ -238,13 +238,13 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
         String tag = skipToAtTag(comment);
 
         while (tag != null) {
-            if (tag.equals("")) {
+            if ("".equals(tag)) {
                 throw new ExBibMissingEntryTypeException(null, getLocator());
             }
 
             String s = tag.toLowerCase(Locale.ENGLISH);
 
-            if (s.equals("comment")) {
+            if ("comment".equals(s)) {
                 handleComment(comment, tag);
             } else {
                 db.storeComment(comment.toString());
@@ -255,7 +255,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                 if (!handle(s, db, brace, getLocator())) {
                     String key = parseKey();
 
-                    if (key.equals("")) {
+                    if ("".equals(key)) {
                         throw new ExBibMissingKeyException("", getLocator());
                     }
 
@@ -327,7 +327,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
         String lhs = parseToken(LHS_PATTERN);
 
-        if (lhs.equals("")) {
+        if ("".equals(lhs)) {
             throw new ExBibMissingAttributeNameException(getLocator());
         }
 

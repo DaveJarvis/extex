@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -127,29 +127,29 @@ public class BibReaderImpl extends BibReader099Impl {
      *   protected boolean handle(String tag, DB db, Processor processor,
      *                            String brace) throws ExBibException {
      *     if (super.handle(tag,db,processor,brace)) {
-     *     } else if (tag.equals("new_tag")) {
+     *     } else if ("new_tag".equals(tag)) {
      *       . . .
      *     }
      *   }
      * </pre
-     *
-     * @param tag the name of the item encountered.
-     *            This String has been converted to lower case already.
+     * 
+     * @param tag the name of the item encountered. This String has been
+     *        converted to lower case already.
      * @param db the database to store the information in
      * @param brace the String expected as terminating brace, i.e. ')' or '}'
-     *              depending in the opening brace
+     *        depending in the opening brace
      * @param locator the locator
-     *              
+     * 
      * @return <code>true</code> iff the item is special and has been handled
      *         successfully.
-     *
+     * 
      * @throws ExBibException in case of an syntax error
      */
     @Override
     protected boolean handle(String tag, DB db, String brace, Locator locator)
             throws ExBibException {
 
-        if (tag.equals("include")) {
+        if ("include".equals(tag)) {
             String source = parseToken(filenamePattern);
             expect(brace);
             try {
@@ -159,17 +159,17 @@ public class BibReaderImpl extends BibReader099Impl {
             }
 
             return true;
-        } else if (tag.equals("alias")) {
+        } else if ("alias".equals(tag)) {
             KeyValue pair = parseAssign();
             expect(brace);
             db.storeAlias(pair.getKey(), pair.getValue().toString(),
                 getLocator());
 
             return true;
-        } else if (tag.equals("modify")) {
+        } else if ("modify".equals(tag)) {
             String key = parseKey();
 
-            if (key == null || key.equals("")) {
+            if (key == null || "".equals(key)) {
                 throw new ExBibMissingKeyException(null, getLocator());
             }
 

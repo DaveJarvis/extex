@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -792,11 +792,11 @@ public class BstReaderImpl extends AbstractFileReader
             if (token instanceof TChar) {
                 String val = token.getValue();
 
-                if (val.equals("}")) {
+                if ("}".equals(val)) {
                     return block;
-                } else if (val.equals("{")) {
+                } else if ("{".equals(val)) {
                     token = parseBlockEnd();
-                } else if (val.equals("'")) {
+                } else if ("'".equals(val)) {
                     token = nextToken();
 
                     if (!(token instanceof TLiteral)) {
@@ -875,7 +875,7 @@ public class BstReaderImpl extends AbstractFileReader
             throw new ExBibEofInLiteralListException(start);
         }
 
-        if (!(token instanceof TChar) || !token.getValue().equals("}")) {
+        if (!(token instanceof TChar) || !"}".equals(token.getValue())) {
             throw new ExBibUnexpectedException(")", token.toString(),
                 getLocator());
         }
