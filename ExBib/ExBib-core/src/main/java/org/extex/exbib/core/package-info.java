@@ -69,21 +69,24 @@
  *   <li>As implementation language Perl has been used for a first
  *     prototype. Then the implementation language has been switched to
  *     Java to make use of the Unicode features of this languages as
- *     well as to be closer to &epsilon;&chi;T<sub>E</sub>X.
+ *     well as to be closer to &epsilon;&chi;T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     >e</span>X.
  *   </li>
  *   <li>As much as possible the inherent knowledge about
- *     T<sub>E</sub>X shoud be eliminated. If not possible it should be
- *     encapsulated in separate components to be exchangable.
+ *     T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     >e</span>X should be eliminated. If not possible it should be
+ *     encapsulated in separate components to be exchangeable.
  *   </li>
- *   <li>&epsilon;&chi;Bib should be multilingual in the sense that all
+ *   <li>&epsilon;&chi;Bib should be multi-lingual in the sense that all
  *     messages produced by the system should be adaptable to a local
  *     language. As a proof of concept the languages English and German
  *     are supported right from the start.
  *   </li>
- *   <li>An easy update path sould be provided for
- *     B<small>IB</small>T<sub>E</sub>X users: Old documents should be
+ *   <li>An easy update path should be provided for
+ *     B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     >e</span>X users: Old documents should be
  *     processable with the same results. Migration scripts should be
- *     provided whenever neccesary.
+ *     provided whenever necessary.
  *   </li>
  * </ol>
  *   
@@ -121,7 +124,7 @@
  *   <li>No limit to some magical internal constants &ndash; like the
  *     line length.
  *   </li>
- *   <li>Bugfix: flush the output buffer at the end of the program and not only
+ *   <li>Bug fix: flush the output buffer at the end of the program and not only
  *     when <code>newline$</code> is encountered.
  *   </li>
  * </ol>
