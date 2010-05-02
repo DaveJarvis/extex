@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -32,7 +32,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 
 /**
  * This class implements a processor. The major features are configurable.
- *
+ * 
  * <h3>The Configuration</h3>
  * <p>
  * The configuration can be performed with the method
@@ -40,7 +40,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
  * function tags which are used to set up the functions of the processor. Each
  * one needs to have the attributes <tt>name</tt> and <tt>class</tt>.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -48,7 +48,7 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * Create a new object.
-     *
+     * 
      * @throws ExBibException in case of an error
      */
     public BstInterpreter() throws ExBibException {
@@ -58,9 +58,9 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
      */
     @Override
@@ -73,11 +73,11 @@ public class BstInterpreter extends BstInterpreterCore {
         while (iterator.hasNext()) {
             Configuration builtin = iterator.next();
             String name = builtin.getAttribute("name");
-            if (name == null || name.equals("")) {
+            if (name == null || "".equals(name)) {
                 throw new ConfigurationMissingException("name");
             }
             String className = builtin.getAttribute("class");
-            if (className == null || className.equals("")) {
+            if (className == null || "".equals(className)) {
                 throw new ConfigurationMissingException("class");
             }
             try {
@@ -101,7 +101,7 @@ public class BstInterpreter extends BstInterpreterCore {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.exbib.core.bst.Bibliography#reset()
      */
     @Override
