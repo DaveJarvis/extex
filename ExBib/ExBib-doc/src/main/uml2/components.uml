@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uml:Package xmi:version="2.1" xmlns:xmi="http://schema.omg.org/spec/XMI/2.1" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmi:id="_S6WPsFYuEd-elbc1lUxueQ" name="xxxx">
+  <elementImport xmi:id="_S7_OcFYuEd-elbc1lUxueQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Boolean"/>
+  </elementImport>
+  <elementImport xmi:id="_S7_OcVYuEd-elbc1lUxueQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#String"/>
+  </elementImport>
+  <elementImport xmi:id="_S7_OclYuEd-elbc1lUxueQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#UnlimitedNatural"/>
+  </elementImport>
+  <elementImport xmi:id="_S7_Oc1YuEd-elbc1lUxueQ">
+    <importedElement xmi:type="uml:PrimitiveType" href="pathmap://UML_LIBRARIES/UMLPrimitiveTypes.library.uml#Integer"/>
+  </elementImport>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_bsqSgFYxEd-elbc1lUxueQ" supplier="_m2VdAFYuEd-elbc1lUxueQ" client="_VosFQFYuEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_GqUlMFeyEd-elbc1lUxueQ" supplier="_LtCfAFYvEd-elbc1lUxueQ" client="_VosFQFYuEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Component" xmi:id="_OK4MkFeyEd-elbc1lUxueQ" name="ExBibAnt" clientDependency="_1U11MFezEd-elbc1lUxueQ _20zzIFezEd-elbc1lUxueQ">
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_VosFQFYuEd-elbc1lUxueQ" name="ExBibMain" clientDependency="_bsqSgFYxEd-elbc1lUxueQ _GqUlMFeyEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_m2VdAFYuEd-elbc1lUxueQ" name="AuxIO" clientDependency="_0WG8EFezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_LtCfAFYvEd-elbc1lUxueQ" name="ProcessorContainer" clientDependency="_E-xM4FezEd-elbc1lUxueQ _GpTcEFezEd-elbc1lUxueQ _xIxdYFezEd-elbc1lUxueQ _yX5i8FezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_H_bS4FYxEd-elbc1lUxueQ" name="BibIO" clientDependency="_DO2ucFezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_0tBcsFeyEd-elbc1lUxueQ" name="DB" clientDependency="_BTLE4FezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_6GbxYFeyEd-elbc1lUxueQ" name="Sorter"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_S0fmkFezEd-elbc1lUxueQ" name="BstProcessor" clientDependency="_qid3wFezEd-elbc1lUxueQ _r_czIFezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_Wqzw0FezEd-elbc1lUxueQ" name="BsfProcessor" clientDependency="_u0gUsFezEd-elbc1lUxueQ"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_dm288FezEd-elbc1lUxueQ" name="BblIO"/>
+    <nestedClassifier xmi:type="uml:Component" xmi:id="_hNiIsFezEd-elbc1lUxueQ" name="BstIO"/>
+  </packagedElement>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_BTLE4FezEd-elbc1lUxueQ" supplier="_6GbxYFeyEd-elbc1lUxueQ" client="_0tBcsFeyEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_DO2ucFezEd-elbc1lUxueQ" supplier="_0tBcsFeyEd-elbc1lUxueQ" client="_H_bS4FYxEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_E-xM4FezEd-elbc1lUxueQ" supplier="_0tBcsFeyEd-elbc1lUxueQ" client="_LtCfAFYvEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_GpTcEFezEd-elbc1lUxueQ" supplier="_H_bS4FYxEd-elbc1lUxueQ" client="_LtCfAFYvEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_qid3wFezEd-elbc1lUxueQ" supplier="_hNiIsFezEd-elbc1lUxueQ" client="_S0fmkFezEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_r_czIFezEd-elbc1lUxueQ" supplier="_dm288FezEd-elbc1lUxueQ" client="_S0fmkFezEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_u0gUsFezEd-elbc1lUxueQ" supplier="_dm288FezEd-elbc1lUxueQ" client="_Wqzw0FezEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_xIxdYFezEd-elbc1lUxueQ" supplier="_S0fmkFezEd-elbc1lUxueQ" client="_LtCfAFYvEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_yX5i8FezEd-elbc1lUxueQ" supplier="_Wqzw0FezEd-elbc1lUxueQ" client="_LtCfAFYvEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_0WG8EFezEd-elbc1lUxueQ" supplier="_LtCfAFYvEd-elbc1lUxueQ" client="_m2VdAFYuEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_1U11MFezEd-elbc1lUxueQ" supplier="_LtCfAFYvEd-elbc1lUxueQ" client="_OK4MkFeyEd-elbc1lUxueQ"/>
+  <packagedElement xmi:type="uml:Dependency" xmi:id="_20zzIFezEd-elbc1lUxueQ" supplier="_m2VdAFYuEd-elbc1lUxueQ" client="_OK4MkFeyEd-elbc1lUxueQ"/>
+</uml:Package>
