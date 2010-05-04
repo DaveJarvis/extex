@@ -5,7 +5,8 @@
 <module name="Checker">
 
   <module name="JavadocPackage">
-    <property name="allowLegacy" value="true"/>  
+    <property name="allowLegacy" value="true"/>
+    <property name="severity" value="warning"/>  
   </module>
 
   <module name="NewlineAtEndOfFile">
@@ -104,6 +105,7 @@
     <module name="LineLength">
       <property name="severity" value="warning"/>
       <property name="max" value="133"/>
+      <property name="ignorePattern" value="^ *\* "/>
     </module>
     <module name="MethodLength">
       <property name="max"        value="256"/>
