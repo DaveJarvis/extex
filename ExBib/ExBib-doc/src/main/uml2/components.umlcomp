@@ -180,7 +180,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_qinowFezEd-elbc1lUxueQ" type="4009" source="_S0owgFezEd-elbc1lUxueQ" target="_hN-0oFezEd-elbc1lUxueQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_qinoxFezEd-elbc1lUxueQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_qinoxVezEd-elbc1lUxueQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_qinoxVezEd-elbc1lUxueQ" x="6" y="10"/>
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_qinowVezEd-elbc1lUxueQ"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_qinowlezEd-elbc1lUxueQ" fontName="DejaVu Sans Condensed" bold="true"/>
@@ -191,7 +191,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_r_czIVezEd-elbc1lUxueQ" type="4009" source="_S0owgFezEd-elbc1lUxueQ" target="_dnTo4FezEd-elbc1lUxueQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_r_czJVezEd-elbc1lUxueQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_r_czJlezEd-elbc1lUxueQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_r_czJlezEd-elbc1lUxueQ" x="-18" y="12"/>
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_r_czIlezEd-elbc1lUxueQ"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_r_czI1ezEd-elbc1lUxueQ" fontName="DejaVu Sans Condensed" bold="true"/>
@@ -202,7 +202,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_u0peoFezEd-elbc1lUxueQ" type="4009" source="_WrGrwFezEd-elbc1lUxueQ" target="_dnTo4FezEd-elbc1lUxueQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_u0pepFezEd-elbc1lUxueQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_u0pepVezEd-elbc1lUxueQ" y="40"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_u0pepVezEd-elbc1lUxueQ" x="-25" y="8"/>
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_u0peoVezEd-elbc1lUxueQ"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_u0peolezEd-elbc1lUxueQ" fontName="DejaVu Sans Condensed" bold="true"/>
@@ -224,7 +224,7 @@
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_yYCs4FezEd-elbc1lUxueQ" type="4009" source="_LtfK8FYvEd-elbc1lUxueQ" target="_WrGrwFezEd-elbc1lUxueQ">
     <children xmi:type="notation:DecorationNode" xmi:id="_yYCs5FezEd-elbc1lUxueQ" type="6001">
-      <layoutConstraint xmi:type="notation:Location" xmi:id="_yYCs5VezEd-elbc1lUxueQ" x="5" y="10"/>
+      <layoutConstraint xmi:type="notation:Location" xmi:id="_yYCs5VezEd-elbc1lUxueQ" x="-22" y="-12"/>
     </children>
     <styles xmi:type="notation:RoutingStyle" xmi:id="_yYCs4VezEd-elbc1lUxueQ"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_yYCs4lezEd-elbc1lUxueQ" fontName="DejaVu Sans Condensed" bold="true"/>
