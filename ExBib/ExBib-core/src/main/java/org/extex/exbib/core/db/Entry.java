@@ -135,7 +135,7 @@ public class Entry implements Iterable<String> {
      * constituents. Macros are looked up in the database given and their values
      * are inserted.
      * 
-     * @param key the key of the "normal" value to expand
+     * @param name the key of the "normal" value to expand
      * @param db the database context
      * 
      * @return the expanded version of the value or <code>null</code> if it does
@@ -143,9 +143,9 @@ public class Entry implements Iterable<String> {
      * 
      * @throws ExBibException in case of an error
      */
-    public String getExpanded(String key, DB db) throws ExBibException {
+    public String getExpanded(String name, DB db) throws ExBibException {
 
-        Value val = get(key, db);
+        Value val = get(name, db);
         if (val == null) {
             return null;
         }
@@ -182,21 +182,21 @@ public class Entry implements Iterable<String> {
      * Getter for a local value. The local values are stored independently from
      * the normal values. This means that they have a name-space of their own.
      * 
-     * @param key the key of the local value
+     * @param name the key of the local value
      * 
      * @return the local value for key or <code>null</code> if it does not
      *         exist.
      */
-    public ValueItem getLocal(String key) {
+    public ValueItem getLocal(String name) {
 
-        return local.get(key);
+        return local.get(name);
     }
 
     /**
      * Getter for a local value. The local values are stored independently from
      * the normal values. This means that they have a name-space of their own.
      * 
-     * @param name the key of the local value
+     * @param name the name of the local value
      * 
      * @return the local value for key or <code>null</code> if it does not
      *         exist.
@@ -215,14 +215,14 @@ public class Entry implements Iterable<String> {
      * Getter for a local value. The local values are stored independently from
      * the normal values. This means that they have a name-space of their own.
      * 
-     * @param key the key of the local value
+     * @param name the name of the local value
      * 
      * @return the local value for key or <code>null</code> if it does not
      *         exist.
      */
-    public String getLocalString(String key) {
+    public String getLocalString(String name) {
 
-        return local.get(key).getContent();
+        return local.get(name).getContent();
     }
 
     /**
@@ -287,13 +287,13 @@ public class Entry implements Iterable<String> {
      * Setter for the Value stored under a given key in the Entry. An already
      * existing value is overwritten silently.
      * 
-     * @param key the key of the value
+     * @param name the key of the value
      * @param value the value
      */
-    public void set(String key, Value value) {
+    public void set(String name, Value value) {
 
-        values.put(key, value);
-        keys.add(key);
+        values.put(name, value);
+        keys.add(name);
     }
 
     /**
@@ -308,44 +308,45 @@ public class Entry implements Iterable<String> {
 
     /**
      * Setter for a local value. The local values are stored independently from
-     * the normal values. This means that they have a namespace of their own.
+     * the normal values. This means that they have a name space of their own.
      * <p>
-     * This method wraps its int argument into a VNumber before it is stored.
+     * This method wraps its integer argument into a VNumber before it is
+     * stored.
      * </p>
      * 
-     * @param key the key of the local value
+     * @param name the name of the local value
      * @param value the contents to be stored
      */
-    public void setLocal(String key, int value) {
+    public void setLocal(String name, int value) {
 
-        local.put(key, new VNumber(value, Integer.toString(value)));
+        local.put(name, new VNumber(value, Integer.toString(value)));
     }
 
     /**
      * Setter for a local value. The local values are stored independently from
-     * the normal values. This means that they have a namespace of their own.
+     * the normal values. This means that they have a name space of their own.
      * <p>
-     * This method wraps its int argument into a VString before it is stored.
+     * This method wraps its String argument into a VString before it is stored.
      * </p>
      * 
-     * @param key the key of the local value
+     * @param name the name of the local value
      * @param value the contents to be stored
      */
-    public void setLocal(String key, String value) {
+    public void setLocal(String name, String value) {
 
-        local.put(key, new VString(value));
+        local.put(name, new VString(value));
     }
 
     /**
      * Setter for a local value. The local values are stored independently from
      * the normal values. This means that they have a name-space of their own.
      * 
-     * @param key the key of the local value
+     * @param name the name of the local value
      * @param value the contents to be stored
      */
-    public void setLocal(String key, ValueItem value) {
+    public void setLocal(String name, ValueItem value) {
 
-        local.put(key, value);
+        local.put(name, value);
     }
 
     /**
