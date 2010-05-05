@@ -226,7 +226,7 @@ public abstract class AbstractMain extends CLI {
 
         String logfile = getProperty(PROP_LOGFILE);
         if (logfile == null && log != null && !"".equals(log)
-                && !log.equals("-")) {
+                && !"-".equals(log)) {
             logfile = log + extension;
         }
         if (logfile != null && !"".equals(logfile)) {
