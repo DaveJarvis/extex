@@ -55,26 +55,56 @@ import org.extex.exbib.editor.Activator;
  */
 public class ArgumentsTab extends AbstractLaunchConfigurationTab {
 
+    /**
+     * TODO gene: missing JavaDoc.
+     */
     private interface L extends ModifyListener, SelectionListener {
     }
 
+    /**
+     * The field <tt>BST_LAUNCH_MIN_CROSSREF</tt> contains the ...
+     */
     private static final String BST_LAUNCH_MIN_CROSSREF =
             "bst.launch.min.crossref";
 
+    /**
+     * The field <tt>BST_LAUNCH_TERSE</tt> contains the ...
+     */
     private static final String BST_LAUNCH_TERSE = "bst.launch.terse";
 
+    /**
+     * The field <tt>BST_LAUNCH_AUX_FILE</tt> contains the ...
+     */
     private static final String BST_LAUNCH_AUX_FILE = "bst.launch.aux.file";
 
+    /**
+     * The field <tt>BST_LAUNCH_EXECUTABLE</tt> contains the ...
+     */
     private static final String BST_LAUNCH_EXECUTABLE = "bst.launch.executable";
 
+    /**
+     * The field <tt>BST_LAUNCH_EXTERNAL</tt> contains the ...
+     */
     private static final String BST_LAUNCH_EXTERNAL = "bst.launch.external";
 
+    /**
+     * The field <tt>minCrossrefControl</tt> contains the ...
+     */
     private Text minCrossrefControl;
 
+    /**
+     * The field <tt>terseControl</tt> contains the ...
+     */
     private Button terseControl;
 
+    /**
+     * The field <tt>auxFileControl</tt> contains the ...
+     */
     private Text auxFileControl;
 
+    /**
+     * The field <tt>exbibFlag</tt> contains the ...
+     */
     private Button exbibFlag;
 
     /**
@@ -108,17 +138,32 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
      */
     private L modifyListener = new L() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.swt.events.ModifyListener#modifyText(org.eclipse.swt.events.ModifyEvent)
+         */
         public void modifyText(ModifyEvent evt) {
 
             updateLaunchConfigurationDialog();
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.swt.events.SelectionListener#widgetDefaultSelected(org.eclipse.swt.events.SelectionEvent)
+         */
         @Override
         public void widgetDefaultSelected(SelectionEvent e) {
 
             //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.eclipse.swt.events.SelectionListener#widgetSelected(org.eclipse.swt.events.SelectionEvent)
+         */
         @Override
         public void widgetSelected(SelectionEvent e) {
 

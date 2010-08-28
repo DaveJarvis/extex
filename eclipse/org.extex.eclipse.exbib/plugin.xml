@@ -165,6 +165,20 @@
          <perspective
                id="org.eclipse.ui.resourcePerspective">
          </perspective>
+         <contextualLaunch>
+            <contextLabel
+                  label="Run ExBib"
+                  mode="run">
+            </contextLabel>
+            <enablement>
+               <with
+                     variable="selection">
+                  <count
+                        value="1">
+                  </count>
+               </with>
+            </enablement>
+         </contextualLaunch>
       </shortcut>
    </extension>
 

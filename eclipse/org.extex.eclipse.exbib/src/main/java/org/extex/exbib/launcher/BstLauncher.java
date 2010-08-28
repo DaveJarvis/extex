@@ -47,7 +47,7 @@ public class BstLauncher extends LaunchConfigurationDelegate {
             ILaunch launch, IProgressMonitor monitor) throws CoreException {
 
         // TODO gene: launch unimplemented
-        System.err.println("We have a lift off");
+        System.err.println("We have a lift off " + mode);
     }
 
 }

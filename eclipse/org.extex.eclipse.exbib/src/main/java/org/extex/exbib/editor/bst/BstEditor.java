@@ -43,17 +43,17 @@ public class BstEditor extends TextEditor {
     private ColorManager colorManager;
 
     /**
-     * The field <tt>imageManager</tt> contains the ...
+     * The field <tt>imageManager</tt> contains the image manager.
      */
     private ImageManager imageManager;
 
     /**
-     * The field <tt>fOutlinePage</tt> contains the ...
+     * The field <tt>fOutlinePage</tt> contains the outline.
      */
     private BstEditorOutline outlinePage = null;
 
     /**
-     * The field <tt>model</tt> contains the ...
+     * The field <tt>model</tt> contains the model.
      */
     private BstModel model;
 
@@ -102,6 +102,8 @@ public class BstEditor extends TextEditor {
                 }
             }
             return outlinePage;
+        } else if (BstModel.class.equals(required)) {
+            return model;
         }
         return super.getAdapter(required);
     }

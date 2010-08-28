@@ -19,9 +19,14 @@
 
 package org.extex.exbib.launcher.ui;
 
+import org.eclipse.core.runtime.CoreException;
+import org.eclipse.debug.core.ILaunchConfiguration;
 import org.eclipse.debug.ui.ILaunchShortcut;
 import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.IEditorInput;
 import org.eclipse.ui.IEditorPart;
+import org.extex.exbib.editor.bst.model.BstModel;
 
 /**
  * TODO gene: missing JavaDoc.
@@ -31,27 +36,89 @@ import org.eclipse.ui.IEditorPart;
  */
 public class BstLaunchShortcut implements ILaunchShortcut {
 
-    /**
-     * Creates a new object.
-     * 
-     */
-    public BstLaunchShortcut() {
-
-        // TODO gene: BstLaunchShortcut constructor unimplemented
+    private interface IType {
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.debug.ui.ILaunchShortcut#launch(org.eclipse.ui.IEditorPart,
+     *      java.lang.String)
+     */
     @Override
     public void launch(IEditorPart editor, String mode) {
 
-        // TODO gene: launch unimplemented
-
+        IEditorInput input = editor.getEditorInput();
+        BstModel element = (BstModel) input.getAdapter(BstModel.class);
+        if (element != null) {
+            searchAndLaunch(new Object[]{element}, mode);
+        }
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.eclipse.debug.ui.ILaunchShortcut#launch(org.eclipse.jface.viewers.ISelection,
+     *      java.lang.String)
+     */
     @Override
     public void launch(ISelection selection, String mode) {
 
-        // TODO gene: launch unimplemented
+        if (selection instanceof IStructuredSelection) {
+            searchAndLaunch(((IStructuredSelection) selection).toArray(), mode);
+        }
+    }
 
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param type
+     * @param mode
+     */
+    protected void launch(IType type, String mode) {
+
+        try {
+            ILaunchConfiguration config = null;
+            // findLaunchConfiguration(type, mode);
+            if (config != null) {
+                config.launch(mode, null);
+            }
+        } catch (CoreException e) {
+            /* Handle exceptions */
+        }
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param search
+     * @param mode
+     */
+    protected void searchAndLaunch(Object[] search, String mode) {
+
+        IType[] types = null;
+        if (search != null) {
+            try {
+                types = new IType[0];
+                // AppletLaunchConfigurationUtils.findApplets(
+                // new ProgressMonitorDialog(getShell()), search);
+            } catch (Exception e) {
+                /* Handle exceptions */
+            }
+            IType type = null;
+            if (types.length == 0) {
+                // MessageDialog.openInformation(
+                // getShell(), "Applet Launch", "No applets found."};
+                return;
+                // } else if (types.length > 1) {
+                // type = chooseType(types, mode);
+            } else {
+                type = types[0];
+            }
+            if (type != null) {
+                launch(type, mode);
+            }
+        }
     }
 
 }

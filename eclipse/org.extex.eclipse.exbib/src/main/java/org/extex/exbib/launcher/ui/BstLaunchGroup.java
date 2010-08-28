@@ -33,14 +33,11 @@ import org.eclipse.debug.ui.ILaunchConfigurationTab;
 public class BstLaunchGroup extends AbstractLaunchConfigurationTabGroup {
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
      * 
+     * @see org.eclipse.debug.ui.ILaunchConfigurationTabGroup#createTabs(org.eclipse.debug.ui.ILaunchConfigurationDialog,
+     *      java.lang.String)
      */
-    public BstLaunchGroup() {
-
-        // TODO gene: BstLaunchGroup constructor unimplemented
-    }
-
     @Override
     public void createTabs(ILaunchConfigurationDialog dialog, String mode) {
 
