@@ -23,6 +23,8 @@ import java.io.IOException;
 
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.db.DB;
+import org.extex.exbib.core.db.VString;
+import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.io.Writer;
 
 /**
@@ -63,14 +65,14 @@ public class Style {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Define a new sting value.
      * 
-     * @param name
-     * @param value
+     * @param name the name
+     * @param value the value
      */
     public void defineString(String name, String value) {
 
-        bibDB.storeString(name, value);
+        bibDB.storeString(name, new Value(new VString(value)));
     }
 
     /**

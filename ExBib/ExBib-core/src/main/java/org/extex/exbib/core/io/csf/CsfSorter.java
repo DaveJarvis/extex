@@ -166,6 +166,18 @@ public class CsfSorter
     }
 
     /**
+     * Getter for order.
+     * 
+     * @param index the index in the range 0 &le; index &le; 255
+     * 
+     * @return the order
+     */
+    public int getOrder(int index) {
+
+        return ord[index];
+    }
+
+    /**
      * Get the upper counterpart for a character. If a character has no such
      * counterpart the character itself is returned.
      * 

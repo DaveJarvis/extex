@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -36,6 +36,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.ExBib.ExBibDebug;
+import org.extex.exbib.core.bst.code.StoringHandler;
 import org.junit.Test;
 
 /**
@@ -157,6 +158,18 @@ public class ExBibTest {
             new File(bbl).delete();
             // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
         }
+    }
+
+    /**
+     * <testcase> Run plain on xampl and test the SEARCH flag. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void test3() throws Exception {
+
+        ExBib exBib = new ExBib();
+        assertEquals(System.getProperties(), exBib.getProperties());
     }
 
     /**
@@ -302,6 +315,35 @@ public class ExBibTest {
     }
 
     /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testLog1() throws Exception {
+
+        ExBib exBib = new ExBib(new Properties());
+
+        Logger logger = Logger.getLogger(getClass().getName());
+        logger.setUseParentHandlers(false);
+        logger.setLevel(Level.WARNING);
+        for (Handler h : logger.getHandlers()) {
+            logger.removeHandler(h);
+        }
+        StoringHandler h = new StoringHandler();
+        h.setLevel(Level.ALL);
+        logger.addHandler(h);
+
+        try {
+            exBib.setLogger(logger);
+            assertFalse(exBib.log(Level.SEVERE, "xyzzy"));
+            assertEquals("???xyzzy???", h.toString());
+        } finally {
+            logger.removeHandler(h);
+        }
+    }
+
+    /**
      * <testcase> setFile() interacts with the properties. </testcase>
      * 
      * @throws Exception in case of an error
@@ -440,6 +482,18 @@ public class ExBibTest {
     }
 
     /**
+     * <testcase> ... </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public final void testSetLogger1() throws Exception {
+
+        ExBib exBib = new ExBib(new Properties());
+        exBib.setLogger(null);
+    }
+
+    /**
      * <testcase> Run plain on xampl and test the TRACE flag. </testcase>
      * 
      * @throws Exception in case of an error
@@ -559,5 +613,4 @@ public class ExBibTest {
             // assertTrue("Failed to delete " + aux, new File(aux).delete());
         }
     }
-
 }

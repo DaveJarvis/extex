@@ -38,7 +38,9 @@ import org.extex.exbib.core.io.bibio.options.Cased;
 
 /**
  * This class writes a bibliographic database to a writer. The format used is
- * BibTeX.
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -128,8 +130,8 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     /**
      * The field <tt>sections</tt> contains the sections.
      */
-    private Section[] sections =
-            new Section[]{Section.Preamble, Section.Strings, Section.Entries};
+    private Section[] sections = new Section[]{Section.Preamble,
+            Section.Strings, Section.Entries};
 
     /**
      * Creates a new object.
@@ -138,7 +140,6 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
      */
     public BibPrinterImpl(Writer writer) {
 
-        super();
         this.writer = writer;
     }
 
@@ -304,7 +305,8 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
 
     /**
      * Prints as database as B<small>IB</small><span
-     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style="margin-left: -0.15em;" >T</span><span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X file.
      * 
      * @param db the database context

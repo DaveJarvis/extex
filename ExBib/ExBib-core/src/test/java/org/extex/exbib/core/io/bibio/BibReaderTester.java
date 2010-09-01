@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,11 +29,19 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
+import org.extex.exbib.core.bst.exception.ExBibMissingEntryTypeException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.sorter.Sorter;
+import org.extex.exbib.core.exceptions.ExBibEofException;
+import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
+import org.extex.exbib.core.exceptions.ExBibEofInStringException;
 import org.extex.exbib.core.exceptions.ExBibException;
+import org.extex.exbib.core.exceptions.ExBibMissingAttributeNameException;
+import org.extex.exbib.core.exceptions.ExBibMissingKeyException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
+import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.Locator;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observer;
@@ -47,6 +55,18 @@ import org.junit.Test;
  * @version $Revision$
  */
 public abstract class BibReaderTester {
+
+    /**
+     * ´Creating an entry is ok.
+     */
+    protected class EntryMakingTestDB extends TestDB {
+
+        @Override
+        public Entry makeEntry(String type, String key, Locator locator) {
+
+            return new Entry(null);
+        }
+    }
 
     /**
      * A database implementation for testing.
@@ -176,7 +196,7 @@ public abstract class BibReaderTester {
          */
         public Entry makeEntry(String type, String key, Locator locator) {
 
-            assertTrue("unexpected makeEntry()", false);
+            assertTrue("unexpected makeEntry(" + type + "," + key + ")", false);
             return null;
         }
 
@@ -301,7 +321,6 @@ public abstract class BibReaderTester {
      */
     public BibReaderTester(boolean commentSpace) {
 
-        super();
         this.commentSpace = commentSpace;
     }
 
@@ -311,6 +330,23 @@ public abstract class BibReaderTester {
      * @return the test instance
      */
     protected abstract BibReader makeTestInstance();
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param content
+     * @return
+     * @throws FileNotFoundException
+     * @throws ConfigurationException
+     */
+    protected BibReader openTestInstance(String content)
+            throws FileNotFoundException,
+                ConfigurationException {
+
+        BibReader reader = makeTestInstance();
+        reader.open("test", new StringReader(content));
+        return reader;
+    }
 
     /**
      * <testcase> A {@code @book} is read in. </testcase>
@@ -471,6 +507,205 @@ public abstract class BibReaderTester {
             }
 
         });
+    }
+
+    /**
+     * <testcase> Test that a missing key leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingKeyException.class)
+    public void testError01() throws Exception {
+
+        openTestInstance("@book{,").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a missing entry type leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingEntryTypeException.class)
+    public void testError02() throws Exception {
+
+        openTestInstance("@{").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a missing attribute name leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibMissingAttributeNameException.class)
+    public void testError03() throws Exception {
+
+        openTestInstance("@book{abc,=").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF in a block leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEofInBlockException.class)
+    public void testError04() throws Exception {
+
+        openTestInstance("@book{abc,x={").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF in a block leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEofInBlockException.class)
+    public void testError04s() throws Exception {
+
+        openTestInstance("@book{abc, x={").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF in a string leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEofInStringException.class)
+    public void testError05() throws Exception {
+
+        openTestInstance("@book{abc,x=\"").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an invalid closing brace leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedEofException.class)
+    public void testError06() throws Exception {
+
+        openTestInstance("@book{abc,x={})").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF before an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEofException.class)
+    public void testError07() throws Exception {
+
+        openTestInstance("@book{abc,x=").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF before an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEofException.class)
+    public void testError07s() throws Exception {
+
+        openTestInstance("@book{abc,x= ").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedException.class)
+    public void testError08() throws Exception {
+
+        openTestInstance("@book{abc,x=#").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedException.class)
+    public void testError08a() throws Exception {
+
+        openTestInstance("@book{abc,x=(").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedException.class)
+    public void testError08b() throws Exception {
+
+        openTestInstance("@book{abc,x=}").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedException.class)
+    public void testError08c() throws Exception {
+
+        openTestInstance("@book{abc,x==").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedException.class)
+    public void testError08d() throws Exception {
+
+        openTestInstance("@book{abc,x=)").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedEofException.class)
+    public void testError09() throws Exception {
+
+        openTestInstance("@book{abc,x=123").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that a # instead of an attribute value leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedEofException.class)
+    public void testError09s() throws Exception {
+
+        openTestInstance("@book{abc,x=123 ").load(new EntryMakingTestDB());
+    }
+
+    /**
+     * <testcase> Test that an EOF after an assignment leads to an error.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibUnexpectedEofException.class)
+    public void testError10() throws Exception {
+
+        openTestInstance("@book{abc,x = a ").load(new EntryMakingTestDB());
     }
 
 }

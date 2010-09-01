@@ -23,9 +23,12 @@ import java.io.IOException;
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents an <tt>EXECUTE</tt> command.
@@ -51,10 +54,19 @@ public class BstExecute extends AbstractCommand {
      * 
      * @param value the value of this Command
      * @param locator the locator from the users perspective
+     * 
+     * @throws ExBibIllegalValueException in case of a <code>null</code> value
      */
-    public BstExecute(Token value, Locator locator) {
+    public BstExecute(Token value, Locator locator)
+            throws ExBibIllegalValueException {
 
         super(value, locator);
+
+        if (value == null) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(
+                localizer.format("empty.token"), locator);
+        }
     }
 
     /**

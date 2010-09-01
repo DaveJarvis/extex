@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -103,8 +103,8 @@ public final class NameFactory {
     private PipeItem[] pipe = new PipeItem[PIPE_SIZE];
 
     /**
-     * The field <tt>pp</tt> contains the pointer to the next insertion point
-     * in the pipe.
+     * The field <tt>pp</tt> contains the pointer to the next insertion point in
+     * the pipe.
      */
     private int pp = 0;
 
@@ -155,6 +155,34 @@ public final class NameFactory {
         }
 
         return names;
+    }
+
+    /**
+     * Reset the factory to get rid of cached names.
+     */
+    protected void reset() {
+
+        pipe = new PipeItem[PIPE_SIZE];
+        pp = 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder sb = new StringBuilder();
+        for (PipeItem pi : pipe) {
+            if (pi != null) {
+                sb.append(pi.toString());
+            } else {
+                sb.append("-\n");
+            }
+        }
+        return sb.toString();
     }
 
 }

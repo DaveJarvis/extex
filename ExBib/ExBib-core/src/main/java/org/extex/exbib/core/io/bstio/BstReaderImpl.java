@@ -62,7 +62,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This class implements a reader for bst files.
  * <p>
  * The syntax follows the definition of B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 0.99c.
  * </p>
  * 
@@ -192,7 +193,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </tr>
  * 
  * <tr>
- * <td><i>integers</i></td>
+ * <td><i>strings</i></td>
  * <td><tt>:==</tt></td>
  * <td>'STRINGS' '{' <i>stringnames</i> '}'</td>
  * </tr>
@@ -347,21 +348,21 @@ public class BstReaderImpl extends AbstractFileReader
      * The constant <tt>LITERAL_PATTERN</tt> contains the pattern for a literal
      * at the beginning.
      */
-    private static final Pattern LITERAL_PATTERN =
-            Pattern.compile("([^{}\\//\\\"\\' \t\n]+)");
+    private static final Pattern LITERAL_PATTERN = Pattern
+        .compile("([^{}\\//\\\"\\' \t\n]+)");
 
     /**
      * The constant <tt>NUMBER_PATTERN</tt> contains the pattern for numbers.
      */
-    private static final Pattern NUMBER_PATTERN =
-            Pattern.compile("#([+-]?[0-9]+)");
+    private static final Pattern NUMBER_PATTERN = Pattern
+        .compile("#([+-]?[0-9]+)");
 
     /**
      * The constant <tt>STRING_PATTERN</tt> contains the pattern for a string,
      * i.e. something enclosed in double quotes not containing a double quote.
      */
-    private static final Pattern STRING_PATTERN =
-            Pattern.compile("\"([^\\\"]*)\"");
+    private static final Pattern STRING_PATTERN = Pattern
+        .compile("\"([^\\\"]*)\"");
 
     /**
      * The field <tt>encoding</tt> contains the encoding for reading.
@@ -509,8 +510,8 @@ public class BstReaderImpl extends AbstractFileReader
 
                 String fname = parseLiteralArg().getValue();
                 TBlock body = parseBlock();
-                processor.addFunction(fname, new MacroCode(fname, body
-                    .getTokenList()), locator);
+                processor.addFunction(fname,
+                    new MacroCode(fname, body.getTokenList()), locator);
 
             }
         });

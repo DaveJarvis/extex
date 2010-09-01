@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -51,7 +51,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     private static String encodeXML(String s) {
 
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
 
         for (int i = sb.length() - 1; i > 0; i--) {
             switch (sb.charAt(i)) {
@@ -80,7 +80,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     private static String encodeXMLarg(String s) {
 
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
 
         for (int i = sb.length() - 1; i > 0; i--) {
             switch (sb.charAt(i)) {
@@ -112,7 +112,7 @@ public class BibPrinterXMLImpl implements BibPrinter, ValueVisitor {
      */
     private static String encodeXMLtag(String s) {
 
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
 
         for (int i = sb.length() - 1; i > 0; i--) {
             switch (sb.charAt(i)) {

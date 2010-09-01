@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,6 +22,7 @@ package org.extex.exbib.core.bst.command.impl;
 import static org.junit.Assert.assertEquals;
 
 import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.junit.Test;
 
@@ -34,13 +35,23 @@ import org.junit.Test;
 public class BstExecuteTest {
 
     /**
-     * Test method for
-     * {@link org.extex.exbib.core.bst.command.impl.BstExecute#toString()}.
+     * <testcase> Check that a null token leads to an error.</testcase>
      * 
      * @throws ExBibEmptyFunctionNameException in case of an error
      */
+    @Test(expected = ExBibIllegalValueException.class)
+    public final void test1() throws Exception {
+
+        new BstExecute(null, null);
+    }
+
+    /**
+     * <testcase> Check that the command prints properly.</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
     @Test
-    public final void testToString() throws ExBibEmptyFunctionNameException {
+    public final void testToString() throws Exception {
 
         assertEquals("EXECUTE { abc }", //
             new BstExecute(new TLiteral("abc", null), null).toString());

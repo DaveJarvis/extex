@@ -36,7 +36,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <h2>Name Components</h2>
  * 
  * <p>
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X uses four components for names. Any name is analyzed and
  * decomposed into the four parts. The following parts of names are considered:
  * </p>
@@ -468,7 +469,7 @@ public class Name {
             for (i++; i < len && type.get(i) == Type.FIRST; i++) {
                 type.set(i, Type.LAST);
             }
-            if (type.get(i - 1) != Type.LAST) {
+            if (type.get(i - 1) != Type.LAST || type.indexOf(Type.LAST) < 0) {
                 throw new ExBibNoNameException(name, locator);
             }
         } else {
@@ -529,6 +530,9 @@ public class Name {
         if (j && !l) {
             for (int i = index + 1; i < len; i++) {
                 type.set(i, Type.JR);
+            }
+            if (type.get(index - 1) != Type.FIRST) {
+                throw new ExBibNoNameException(name, locator);
             }
             type.set(index - 1, Type.LAST);
         } else {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,7 +38,7 @@ public interface AuxHandler {
      * 
      * @param arg the macro parameter argument
      * @param bibliographies the bibliography
-     * @param type the type
+     * @param type the type of the bibliography
      * @param auxReader the engine
      * @throws IOException in case of an I/O error
      * @throws ConfigurationException in case of an configuration error

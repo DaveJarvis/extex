@@ -24,10 +24,13 @@ import java.util.List;
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.command.AbstractCommand;
 import org.extex.exbib.core.bst.command.CommandVisitor;
+import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
+import org.extex.framework.i18n.Localizer;
+import org.extex.framework.i18n.LocalizerFactory;
 
 /**
  * This class represents a <tt>REVERSE</tt> command.
@@ -56,10 +59,19 @@ public class BstReverse extends AbstractCommand {
      * 
      * @param token the token
      * @param locator the locator
+     * 
+     * @throws ExBibIllegalValueException in case of an error
      */
-    public BstReverse(Token token, Locator locator) {
+    public BstReverse(Token token, Locator locator)
+            throws ExBibIllegalValueException {
 
         super(token, locator);
+
+        if (token == null) {
+            Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+            throw new ExBibIllegalValueException(
+                localizer.format("empty.token"), locator);
+        }
     }
 
     /**

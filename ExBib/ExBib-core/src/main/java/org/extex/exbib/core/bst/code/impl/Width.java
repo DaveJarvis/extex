@@ -29,7 +29,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>width$</code>
  * 
  * <p>
@@ -50,7 +51,8 @@ import org.extex.exbib.core.io.Locator;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal and pushes the integer that represents its
@@ -59,7 +61,8 @@ import org.extex.exbib.core.io.Locator;
  * character with nonzero width is the space). This function takes the literal
  * literally; that is, it assumes each character in the string is to be printed
  * as is, regardless of whether the character has a special meaning to T<span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X, except that ``special characters'' (even without their right
  * braces) are handled specially. This is meant to be used for comparing widths
  * of label strings.</dd>
@@ -211,7 +214,8 @@ public class Width extends AbstractCode {
 
     /**
      * The constant <tt>SPECIAL</tt> contains the mapping of the special T<span
-     * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
@@ -357,7 +361,10 @@ public class Width extends AbstractCode {
      * {@inheritDoc}
      * 
      * This implementation follows quite closely the section 451--453 of the
-     * BibTeX sources.
+     * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * >e</span>X sources.
      * 
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)

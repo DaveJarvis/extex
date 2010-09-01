@@ -29,7 +29,6 @@ import java.util.Map;
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.Entry;
-import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.db.sorter.CodepointIgnoreCaseSorter;
 import org.extex.exbib.core.db.sorter.Sorter;
@@ -48,7 +47,8 @@ import org.extex.framework.configuration.exception.ConfigurationMissingException
 
 /**
  * This is a simple implementation of a B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X compatible database.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -475,17 +475,6 @@ public class DBImpl implements DB, Configurable, Observable {
 
         preamble.add(pre);
         makePreambleHook.update(this, pre);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
-     *      java.lang.String)
-     */
-    public void storeString(String name, String value) {
-
-        storeString(name, new Value(new VString(value)));
     }
 
     /**

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,9 +30,24 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the core of the aux file reading. In addition to the one performed by
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X it supports multiple bibliographies via optional arguments of the
  * macros.
+ * <p>
+ * The following macros are recognized in addition to those of the super class:
+ * </p>
+ * <dl>
+ * <dt>\citation[type]{keys}</dt>
+ * <dd>pass a list of comma separated citation keys to the bibliography "type"</dd>
+ * <dt>\bibstyle[type]{styles}</dt>
+ * <dd>pass a list of comma separated bibliography styles to the bibliography
+ * "type"</dd>
+ * <dt>\bibdata[type]{databases}</dt>
+ * <dd>pass a comma separated database names to the bibliography "type"</dd>
+ * <dt>\biboption{option}</dt>
+ * <dd>pass an option to the bibliography processor.</dd>
+ * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -43,15 +58,15 @@ public class AuxReaderImpl extends AuxReader099cImpl {
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
-    protected static final Pattern PATTERN =
-            Pattern.compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
+    protected static final Pattern PATTERN = Pattern
+        .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The field <tt>OPT_PATTERN</tt> contains the pattern for the recognized
      * macros with optional arguments.
      */
-    private static final Pattern OPT_PATTERN =
-            Pattern.compile("^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}");
+    private static final Pattern OPT_PATTERN = Pattern
+        .compile("^\\\\([cb][a-z]+)\\[([^]]*)\\]\\{([^{}]*)\\}");
 
     /**
      * Creates a new object.

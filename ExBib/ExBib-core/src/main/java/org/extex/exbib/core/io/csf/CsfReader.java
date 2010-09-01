@@ -257,15 +257,16 @@ public class CsfReader {
     }
 
     /**
-     * read a single character.
+     * Read a single character.
      * 
      * @param reader the reader to acquire characters from
      * 
      * @return the character read or -1 on EOF
      * 
      * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a syntax error
      */
-    private int readChar(Reader reader) throws IOException {
+    private int readChar(Reader reader) throws IOException, CsfException {
 
         for (int c = reader.read(); c >= 0; c = reader.read()) {
             if (c == '%') {
@@ -273,12 +274,45 @@ public class CsfReader {
                     c = reader.read();
                 } while (c >= 0 && c != '\n');
                 return '\n';
+            } else if (c == '^') {
+                c = reader.read();
+                if (Character.isSpaceChar(c)) {
+                    return '^';
+                } else if (c != '^') {
+                    throw new CsfException(LocalizerFactory.getLocalizer(
+                        getClass()).format("illegal.character.escape"));
+                }
+                return readHexChar(reader) << 4 | readHexChar(reader);
             } else if (!Character.isSpaceChar(c) || c == '\n') {
                 return c;
             }
         }
 
         return -1;
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param reader the reader to acquire characters from
+     * 
+     * @return ...
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a syntax error
+     */
+    private int readHexChar(Reader reader) throws IOException, CsfException {
+
+        int c = reader.read();
+        if (c >= '0' && c <= '9') {
+            return c - '0';
+        } else if (c >= 'A' && c <= 'F') {
+            return c - 'A' + 10;
+        } else if (c >= 'a' && c <= 'f') {
+            return c - 'a' + 10;
+        }
+        throw new CsfException(LocalizerFactory.getLocalizer(getClass())
+            .format("illegal.character.escape"));
     }
 
     /**

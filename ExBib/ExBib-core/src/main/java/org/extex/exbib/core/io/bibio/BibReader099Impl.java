@@ -49,9 +49,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a class to implement a reader for B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X files. This reader is compatible with B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 0.99c.
  * <p>
  * This incarnation is characterized as follows:
@@ -77,22 +79,22 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * The constant <tt>LHS_PATTERN</tt> contains the pattern for a left hand
      * side of an assignment.
      */
-    private static final Pattern LHS_PATTERN =
-            Pattern.compile("[^= \t\n\r\b\f]*");
+    private static final Pattern LHS_PATTERN = Pattern
+        .compile("[^= \t\n\r\b\f]*");
 
     /**
      * The constant <tt>RECORD_PATTERN</tt> contains the pattern for the name of
      * a record.
      */
-    private static final Pattern RECORD_PATTERN =
-            Pattern.compile("[a-zA-Z_.:0-9-]*");
+    private static final Pattern RECORD_PATTERN = Pattern
+        .compile("[a-zA-Z_.:0-9-]*");
 
     /**
      * The constant <tt>KEY_PATTERN</tt> contains the pattern for the key of an
      * entry.
      */
-    private static final Pattern KEY_PATTERN =
-            Pattern.compile("[^ \t\n\r\f\b,(){}]*");
+    private static final Pattern KEY_PATTERN = Pattern
+        .compile("[^ \t\n\r\f\b,(){}]*");
 
     /**
      * Creates a new object.
@@ -279,13 +281,13 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
                     }
 
                     if (c != brace.charAt(0)) {
-                        if (c < 0) {
+                        if (c <= 0) {
                             throw new ExBibUnexpectedEofException(brace, null,
                                 getLocator());
                         }
 
-                        throw new ExBibUnexpectedEofException(brace, Character
-                            .toString(c), getLocator());
+                        throw new ExBibUnexpectedEofException(brace,
+                            Character.toString(c), getLocator());
                     }
                 }
             }
@@ -396,6 +398,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
     protected char parseNextNonSpace(boolean lookahead) {
 
         StringBuilder buffer = getBuffer();
+        if (buffer == null) {
+            return '\0';
+        }
 
         for (;;) {
             int i = 0;

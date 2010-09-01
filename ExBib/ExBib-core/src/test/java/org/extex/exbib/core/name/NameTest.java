@@ -488,6 +488,39 @@ public class NameTest {
      * 
      * @throws Exception in case of an error
      */
+    @Test(expected = ExBibNoNameException.class)
+    public final void testParseErr1() throws Exception {
+
+        Name.parse("von", null);
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibNoNameException.class)
+    public final void testParseErr2() throws Exception {
+
+        Name.parse("von von", null);
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibNoNameException.class)
+    public final void testParseErr3() throws Exception {
+
+        Name.parse("von, von", null);
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
     @Test
     public final void testToString1() throws Exception {
 
@@ -517,8 +550,8 @@ public class NameTest {
     @Test
     public final void testToString3() throws Exception {
 
-        assertEquals("Sammy Davis jr.", new Name("Sammy Davis jr.", null)
-            .toString());
+        assertEquals("Sammy Davis jr.",
+            new Name("Sammy Davis jr.", null).toString());
     }
 
 }

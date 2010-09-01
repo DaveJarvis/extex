@@ -102,7 +102,7 @@ public class BblWriterFactory extends AbstractFactory {
     }
 
     /**
-     * Allocates a new instance of a BblWriter.
+     * Allocates a new instance of a {@link BblWriter}.
      * 
      * @param file the name of the file
      * 

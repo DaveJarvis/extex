@@ -31,7 +31,7 @@ import org.extex.resource.ResourceAware;
  * responsibility of the reader is to parse the aux file and store the
  * information in a {@link ProcessorContainer}.
  * <p>
- * Some of the internal processing can be observed by registering an handler.
+ * Some of the internal processing can be observed by registering an observer.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -64,11 +64,12 @@ public interface AuxReader extends ResourceAware {
                 ExBibException;
 
     /**
-     * Register an observer for resource open events.
+     * Register an observer for resource open events. The old observer is
+     * overwritten.
      * 
-     * @param observer the observer
+     * @param observer the observer or <code>null</code> for none
      * 
-     * @return the old observer or <code>null</code>
+     * @return the old observer or <code>null</code> for none
      */
     ResourceObserver register(ResourceObserver observer);
 

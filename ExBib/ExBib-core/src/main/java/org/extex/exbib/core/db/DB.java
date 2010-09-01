@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -232,15 +232,6 @@ public interface DB extends Iterable<Entry> {
      * @param pre the preamble to store
      */
     void storePreamble(Value pre);
-
-    /**
-     * Store a string definition in the database.
-     * 
-     * @param name the name of the string definition. The name is not case
-     *        sensitive. Thus it is translated to lower case internally
-     * @param value the value of the string definition
-     */
-    void storeString(String name, String value);
 
     /**
      * Store a string definition in the database.

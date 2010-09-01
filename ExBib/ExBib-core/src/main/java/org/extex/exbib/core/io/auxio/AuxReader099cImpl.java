@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,7 +35,24 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 
 /**
- * This is the core of the aux file reading as performed by BibTeX.
+ * This is the core of the aux file reading as performed by
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X.
+ * <p>
+ * The following macros are recognized:
+ * </p>
+ * <dl>
+ * <dt>\citation{keys}</dt>
+ * <dd>pass a list of comma separated citation keys to the default bibliography</dd>
+ * <dt>\bibstyle{styles}</dt>
+ * <dd>pass a list of comma separated bibliography styles to the default
+ * bibliography</dd>
+ * <dt>\bibdata{databases}</dt>
+ * <dd>pass a comma separated database names to the default bibliography</dd>
+ * <dt>\@include{auxfile}</dt>
+ * <dd>process an additional aux file in the same way</dd>
+ * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -46,8 +63,8 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
-    protected static final Pattern PATTERN =
-            Pattern.compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
+    protected static final Pattern PATTERN = Pattern
+        .compile("^\\\\([@cb][a-z]+)\\{([^{}]*)\\}");
 
     /**
      * The constant <tt>DEFAULT_TYPE</tt> contains the default type.
@@ -66,8 +83,8 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     private ResourceObserver observer = null;
 
     /**
-     * The field <tt>encoding</tt> contains the encoding for transporting it
-     * to the registered handler.
+     * The field <tt>encoding</tt> contains the encoding for transporting it to
+     * the registered handler.
      */
     private String encoding;
 
@@ -78,7 +95,6 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      */
     public AuxReader099cImpl() throws ConfigurationException {
 
-        super();
         handlerMap = new HashMap<String, AuxHandler>();
         register("citation", new AuxHandler() {
 
@@ -175,9 +191,8 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#load(
-     *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
-     *      java.lang.String)
+     * @see org.extex.exbib.core.io.auxio.AuxReader#load(org.extex.exbib.core.ProcessorContainer,
+     *      java.lang.String, java.lang.String)
      */
     public void load(ProcessorContainer bibliographies, String resource,
             String enc)
@@ -218,8 +233,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.io.auxio.AuxReader#register(
-     *      org.extex.exbib.core.io.auxio.ResourceObserver)
+     * @see org.extex.exbib.core.io.auxio.AuxReader#register(org.extex.exbib.core.io.auxio.ResourceObserver)
      */
     public ResourceObserver register(ResourceObserver resourceObserver) {
 

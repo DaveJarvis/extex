@@ -45,7 +45,7 @@ public class Entry implements Iterable<String> {
     /**
      * The field <tt>locator</tt> contains the locator for error messages.
      */
-    private Locator locator = null;
+    private Locator locator;
 
     /**
      * The field <tt>values</tt> contains the hash of "normal" values.
@@ -80,7 +80,6 @@ public class Entry implements Iterable<String> {
      */
     public Entry(Locator locator) {
 
-        super();
         this.locator = locator;
     }
 

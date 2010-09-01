@@ -20,6 +20,7 @@
 package org.extex.exbib.core.io.bibio;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.io.StringBufferWriter;
@@ -390,7 +391,8 @@ public class BibPrinterImplTest {
 
     /**
      * Test method for
-     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}.
+     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}
+     * .
      * 
      * 
      * @throws Exception in case of an error
@@ -403,6 +405,23 @@ public class BibPrinterImplTest {
         new BibPrinterImpl(new StringBufferWriter(buffer)).print(db);
 
         assertEquals(RESULT_1, buffer.toString().replaceAll("\r", ""));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.exbib.core.io.bibio.BibPrinterImpl#print(org.extex.exbib.core.db.DB)}
+     * .
+     * 
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testPrint2() throws Exception {
+
+        DB db = BiblioTester.loadBib("src/test/resources/bibtex/base/xampl");
+        new BibPrinterImpl(null).print(db);
+
+        assertTrue(true);
     }
 
 }

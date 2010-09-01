@@ -334,12 +334,11 @@ public class ExBib {
      * @param e the cause
      * @param tag the tag of the resource bundle
      * 
-     * @return EXIT_FAILURE
+     * @return <code>false</code>
      */
     protected boolean error(Throwable e, String tag) {
 
-        errors++;
-        log(tag, e.getLocalizedMessage());
+        error(tag, e.getLocalizedMessage());
 
         if (debug.contains(ExBibDebug.MISC)) {
             logger.throwing("", "", e);
@@ -567,8 +566,8 @@ public class ExBib {
                                 logger, processor));
                         }
                     };
-            container.setSorterFactory(makeSorterFactory(finder, config
-                .getConfiguration("Sorter")));
+            container.setSorterFactory(makeSorterFactory(finder,
+                config.getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
             container.setResourceFinder(finder);
             container.registerObserver("startRead", new DBObserver(logger,
@@ -665,12 +664,10 @@ public class ExBib {
         } catch (ExBibException e) {
             return error("verbatim", e.getLocalizedMessage());
         } catch (ConfigurationWrapperException e) {
-            e.printStackTrace();
             return error(e.getCause(), "installation.error");
         } catch (ConfigurationException e) {
             return error("verbatim", e.getLocalizedMessage());
         } catch (NoClassDefFoundError e) {
-            e.printStackTrace();
             return error(e, "installation.error");
         } catch (NotObservableException e) {
             return error(e, "internal.error");
@@ -708,14 +705,14 @@ public class ExBib {
                         ? new FuncallObserver(logger)
                         : null);
 
-        container.registerObserver("step", new TracingObserver(logger, bundle
-            .getString("step_msg")));
+        container.registerObserver("step",
+            new TracingObserver(logger, bundle.getString("step_msg")));
 
-        container.registerObserver("run", new TracingObserver(logger, bundle
-            .getString("do_msg")));
+        container.registerObserver("run",
+            new TracingObserver(logger, bundle.getString("do_msg")));
         container.registerObserver("step", funcall);
-        container.registerObserver("push", new TracingObserver(logger, bundle
-            .getString("push_msg")));
+        container.registerObserver("push",
+            new TracingObserver(logger, bundle.getString("push_msg")));
         container.registerObserver("startParse", new TracingObserver(logger,
             bundle.getString("start_parse_msg")));
         container.registerObserver("endParse", new TracingObserver(logger,
