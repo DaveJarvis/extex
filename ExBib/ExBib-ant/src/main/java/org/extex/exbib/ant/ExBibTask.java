@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -123,7 +123,6 @@ import org.extex.logging.LogFormatter;
  *           description="This is a simple invocation of ExBib." &gt;
  *     &lt;ExBib file="file.aux"/&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>sort="&lang;sorter&rang;"</dt>
@@ -135,7 +134,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            sort="encoding:de" /&gt;
  * </pre>
- * 
  * 
  * <dt>encoding="&lang;enc&rang;"</dt>
  * <dd>This option can be used to specify the encoding for reading files. The
@@ -159,7 +157,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            bibEncoding="UTF-8" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>csf="&lang;csf&rang;"</dt>
@@ -172,7 +169,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            csf="german.csf" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>csfEncoding="&lang;enc&rang;"</dt>
@@ -187,7 +183,6 @@ import org.extex.logging.LogFormatter;
  *            csf="german.csf" 
  *            csfEncoding="UTF-8" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>minCrossrefs="&lang;number&rang;"</dt>
@@ -200,7 +195,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            minCrossrefs="3" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>output="&lang;file&rang;"</dt>
@@ -214,7 +208,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            output="file.bbl" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>logfile="&lang;file&rang;"]</dt>
@@ -227,14 +220,14 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            logfile="file.blg" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>config="&lang;config&rang;"</dt>
  * <dd>This parameter can be used to specify the configuration for assembling
  * &epsilon;&chi;Bib. The default value is <tt>exbib</tt>. The value
  * <tt>bibtex099</tt> can be used to switch to the compatibility mode for
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 0.99c.
  * 
  * <pre>
@@ -243,7 +236,6 @@ import org.extex.logging.LogFormatter;
  *     &lt;ExBib file="file.aux"
  *            config="bibtex099" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>load="&lang;file&rang;"</dt>
@@ -251,8 +243,8 @@ import org.extex.logging.LogFormatter;
  * Ant task. This attribute can be used to load dot files.
  * <p>
  * The value is the name of the parameter file to load. It can be relative to
- * the current directory or absolute. If the first letter is a <tt>~</tt> the
- * this is replaced with the user's home directory.
+ * the current directory or absolute. If the first letter is a <tt>~</tt> then
+ * it is replaced with the user's home directory.
  * </p>
  * <p>
  * This attribute can be given several times to load different dot files.
@@ -265,7 +257,6 @@ import org.extex.logging.LogFormatter;
  *            load="~/.exbib"
  *            load="./.exbib" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * <dt>debug="&lang;flags&rang;"</dt>
@@ -278,7 +269,6 @@ import org.extex.logging.LogFormatter;
  *            logfile="file.blg"
  *            debug="trace,search" /&gt;
  * </pre>
- * 
  * </dd>
  * 
  * </dl>
