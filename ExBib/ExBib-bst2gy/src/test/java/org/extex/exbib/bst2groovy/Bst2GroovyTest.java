@@ -99,8 +99,8 @@ public class Bst2GroovyTest {
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
-            return new NamedInputStream(new ByteArrayInputStream(content
-                .getBytes()), name);
+            return new NamedInputStream(new ByteArrayInputStream(
+                content.getBytes()), name);
         }
     }
 
@@ -108,9 +108,8 @@ public class Bst2GroovyTest {
      * The field <tt>POST_RUN</tt> contains the piece of code after the run
      * function.
      */
-    public static final String POST_RUN =
-            "  }\n" + "\n" + "}\n" + "\n"
-                    + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
+    public static final String POST_RUN = "  }\n" + "\n" + "}\n" + "\n"
+            + "new Style(bibDB, bibWriter, bibProcessor).run()\n";
 
     /**
      * The field <tt>RUN</tt> contains the piece of code starting the run
@@ -241,8 +240,7 @@ public class Bst2GroovyTest {
     @Test
     public void testAddPeriod1() throws Exception {
 
-        run(
-            "function{abc}{add.period$}", //
+        run("function{abc}{add.period$}", //
             PREFIX
                     + HEAD
                     + "  }\n\n"
@@ -283,8 +281,7 @@ public class Bst2GroovyTest {
     @Test
     public void testChrToInt1() throws Exception {
 
-        run(
-            "function{abc}{chr.to.int$}", //
+        run("function{abc}{chr.to.int$}", //
             PREFIX
                     + HEAD
                     + "  }\n"
@@ -837,17 +834,16 @@ public class Bst2GroovyTest {
     @Test
     public void testFunction07() throws Exception {
 
-        run(
-            "function{a.123}{pop$}function{v123}{pop$}function{aB_C}{a.123 v123}", //
-            PREFIX + HEAD + "  }\n\n" //
-                    + "  void a123(p1) {\n" //
-                    + "  }\n\n" //
-                    + "  void v123_(p1) {\n" //
-                    + "  }\n\n" //
-                    + "  void abC(p1, p2) {\n" //
-                    + "    a123(p2)\n" //
-                    + "    v123_(p1)\n" //
-                    + "  }\n" + RUN + POST_RUN);
+        run("function{a.123}{pop$}function{v123}{pop$}function{aB_C}{a.123 v123}", //
+        PREFIX + HEAD + "  }\n\n" //
+                + "  void a123(p1) {\n" //
+                + "  }\n\n" //
+                + "  void v123_(p1) {\n" //
+                + "  }\n\n" //
+                + "  void abC(p1, p2) {\n" //
+                + "    a123(p2)\n" //
+                + "    v123_(p1)\n" //
+                + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1048,12 +1044,12 @@ public class Bst2GroovyTest {
                     + HEAD
                     + "  }\n"
                     + "\n" //
-                    + "  int isEmpty(String s) {\n" //
-                    + "    return s == null || s.trim() == '' ? 1 : 0\n" //
-                    + "  }\n" //
-                    + "\n" //
                     + "  String addPeriod(String s) {\n"
                     + "    return s == null || s == '' ? '' : s.matches(\".*[.!?]\") ? s : s + \".\"\n"
+                    + "  }\n" //
+                    + "\n" //
+                    + "  int isEmpty(String s) {\n" //
+                    + "    return s == null || s.trim() == '' ? 1 : 0\n" //
                     + "  }\n" //
                     + "\n" //
                     + "  String outputNonnull(p1, p2) {\n"
@@ -1524,8 +1520,7 @@ public class Bst2GroovyTest {
     public void testIf19() throws Exception {
 
         String s = "....,....,....,....,....,....";
-        run(
-            "function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
+        run("function{abc}{\"" + s + "\" \"\" {=} {pop$ #2} {} if$}", //
             PREFIX
                     + HEAD
                     + "  }\n"
@@ -1819,8 +1814,7 @@ public class Bst2GroovyTest {
     @Test
     public void testMacro1() throws Exception {
 
-        run(
-            "macro{xxx}{\"y y y\"}", //
+        run("macro{xxx}{\"y y y\"}", //
             PREFIX
                     + HEAD
                     + "    [\n"
@@ -1837,8 +1831,7 @@ public class Bst2GroovyTest {
     @Test
     public void testMacro2() throws Exception {
 
-        run(
-            "macro{x.x.x}{\"y y y\"}", //
+        run("macro{x.x.x}{\"y y y\"}", //
             PREFIX
                     + HEAD
                     + "    [\n"
@@ -2042,8 +2035,7 @@ public class Bst2GroovyTest {
     @Test
     public void testOptionInteger2() throws Exception {
 
-        run(
-            "option integer {xxx}{#42}\n" + "function{abc}{#7 'xxx :=}", //
+        run("option integer {xxx}{#42}\n" + "function{abc}{#7 'xxx :=}", //
             PREFIX
                     + HEAD
                     + "    [\n"
