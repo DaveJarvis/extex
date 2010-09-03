@@ -383,7 +383,7 @@ public class Main extends CLI {
                             ? System.out
                             : new FileOutputStream(out));
             bst2Groovy.write(w);
-            w.close();
+            w.flush();
         } catch (Exception e) {
             logger.severe(e.getLocalizedMessage() + "\n");
             return CLI.EXIT_FAIL;
