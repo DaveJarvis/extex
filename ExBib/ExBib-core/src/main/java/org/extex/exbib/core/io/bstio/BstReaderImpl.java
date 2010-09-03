@@ -19,6 +19,7 @@
 package org.extex.exbib.core.io.bstio;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +48,7 @@ import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
 import org.extex.exbib.core.exceptions.ExBibEofInLiteralListException;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.exceptions.ExBibImpossibleException;
+import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
 import org.extex.exbib.core.exceptions.ExBibSyntaxException;
@@ -738,10 +740,18 @@ public class BstReaderImpl extends AbstractFileReader
             throw new ExBibBstNotFoundException(bst, null);
         }
 
-        for (Token token = nextToken(); token != null; token = nextToken()) {
-            if (!processCommand(token, processor)) {
-                throw new ExBibUnexpectedException(token.toString(), null,
-                    getLocator());
+        try {
+            for (Token token = nextToken(); token != null; token = nextToken()) {
+                if (!processCommand(token, processor)) {
+                    throw new ExBibUnexpectedException(token.toString(), null,
+                        getLocator());
+                }
+            }
+        } finally {
+            try {
+                close();
+            } catch (IOException e) {
+                throw new ExBibIoException(e);
             }
         }
     }
