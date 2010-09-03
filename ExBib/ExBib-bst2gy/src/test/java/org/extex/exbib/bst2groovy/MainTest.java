@@ -81,8 +81,9 @@ public class MainTest {
             System.setErr(err);
             System.out.close();
             System.setOut(out);
-            if (file != null && file.delete()) {
-                System.err.println(file.toString() + ": deletetion failed");
+            if (file != null && file.exists()) {
+                assertTrue(file.toString() + ": deletetion failed",
+                    file.delete());
             }
         }
         if (expectedErr != null) {
@@ -199,8 +200,7 @@ public class MainTest {
     @Test
     public void testCopying() throws IOException {
 
-        run(
-            null,
+        run(null,
             "",
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n"
                     + "                      Version 2.1, February 1999\n"
@@ -666,8 +666,7 @@ public class MainTest {
     @Test
     public void testHelp1() throws IOException {
 
-        run(
-            null,
+        run(null,
             "",
             "Usage: bst2groovy <options> file\n"
                     + "The following options are supported:\n"
@@ -719,8 +718,8 @@ public class MainTest {
                 "-O");
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            if (out.exists() && out.delete()) {
-                System.err.println(out.toString() + ": deletetion failed");
+            if (out.exists()) {
+                assertTrue(out.toString() + ": deletetion failed", out.delete());
             }
         }
     }
@@ -739,8 +738,8 @@ public class MainTest {
                 "-O=false");
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            if (out.exists() && out.delete()) {
-                System.err.println(out.toString() + ": deletetion failed");
+            if (out.exists()) {
+                assertTrue(out.toString() + ": deletetion failed", out.delete());
             }
         }
     }
@@ -770,8 +769,8 @@ public class MainTest {
             run("", "", "", CLI.EXIT_OK, "{file}", "-o", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            if (out.exists() && out.delete()) {
-                System.err.println(out.toString() + ": deletetion failed");
+            if (out.exists()) {
+                assertTrue(out.toString() + ": deletetion failed", out.delete());
             }
         }
     }
@@ -789,8 +788,8 @@ public class MainTest {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            if (out.exists() && out.delete()) {
-                System.err.println(out.toString() + ": deletetion failed");
+            if (out.exists()) {
+                assertTrue(out.toString() + ": deletetion failed", out.delete());
             }
         }
     }
@@ -810,8 +809,8 @@ public class MainTest {
                 "--out", out.toString());
         } finally {
             assertTrue(out.toString() + ": file does not exist", out.exists());
-            if (out.exists() && out.delete()) {
-                System.err.println(out.toString() + ": deletetion failed");
+            if (out.exists()) {
+                assertTrue(out.toString() + ": deletetion failed", out.delete());
             }
         }
     }
