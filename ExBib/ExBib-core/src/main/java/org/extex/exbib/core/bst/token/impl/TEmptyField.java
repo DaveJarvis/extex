@@ -57,6 +57,20 @@ public class TEmptyField extends TString {
     }
 
     /**
+     * Comparison is reduced to the comparison of the values.
+     * 
+     * @param that other string to compare to
+     * 
+     * @return <code>true</code> iff the values are equal
+     */
+    @Override
+    public boolean equals(Object that) {
+
+        return that instanceof TEmptyField
+                && getValue().equals(((TString) that).getValue());
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.exbib.core.bst.token.AbstractToken#expand(org.extex.exbib.core.Processor)
