@@ -23,6 +23,7 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.compiler.EqualsCompiler;
 import org.extex.exbib.bst2groovy.compiler.GreaterCompiler;
 import org.extex.exbib.bst2groovy.compiler.LessCompiler;
+import org.extex.exbib.bst2groovy.data.BinaryInfix;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
@@ -66,8 +67,9 @@ public final class Not extends GenericCode {
                 ((LessCompiler.Less) code).getArg(0),
                 ((LessCompiler.Less) code).getArg(1));
         } else if (code instanceof EqualsCompiler.Equals) {
-            return new EqualsCompiler.NotEquals(((EqualsCompiler.Equals) code)
-                .getArg(0), ((EqualsCompiler.Equals) code).getArg(1));
+            return new EqualsCompiler.NotEquals(
+                ((EqualsCompiler.Equals) code).getArg(0),
+                ((EqualsCompiler.Equals) code).getArg(1));
         } else if (code instanceof GIntegerConstant) {
             return (((GIntegerConstant) code).getValue() == 0
                     ? new GIntegerConstant(1)
@@ -85,8 +87,15 @@ public final class Not extends GenericCode {
     @Override
     public void print(CodeWriter writer, String prefix) throws IOException {
 
-        writer.write("! ");
-        getArg(0).print(writer, prefix);
+        GCode arg = getArg(0);
+        if (arg instanceof BinaryInfix) {
+            writer.write("! ( ");
+            arg.print(writer, prefix);
+            writer.write(" )");
+        } else {
+            writer.write("! ");
+            arg.print(writer, prefix);
+        }
     }
 
 }
