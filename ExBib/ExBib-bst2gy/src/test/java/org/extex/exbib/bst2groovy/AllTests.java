@@ -31,7 +31,8 @@ import org.junit.runners.Suite;
 @Suite.SuiteClasses({Bst2GroovyAlphaTest.class, //
         Bst2GroovyTest.class, //
         MainTest.class, //
-        XamplTest.class //
+        XamplTest.class, //
+        org.extex.exbib.bst2groovy.io.CodeWriterTest.class //
 })
 public final class AllTests {
 
