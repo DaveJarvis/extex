@@ -596,8 +596,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         setDB(new DBImpl());
         defaultParameters();
         configure(ConfigurationFactory.newInstance(getClass().getName()
-            .replace('.', '/')
-                + ".config"));
+            .replace('.', '/') + ".config"));
     }
 
     /**
@@ -804,23 +803,6 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         write(writer);
     }
 
-    // /**
-    // * TODO gene: missing JavaDoc
-    // *
-    // * @param varInfos
-    // * @param function the function
-    // */
-    // private void saveVarInfo(Map<String, VarInfo> varInfos, GFunction
-    // function) {
-    //
-    // System.err.println("--- In function " + function.getName());
-    //
-    // for (VarInfo v : varInfos.values()) {
-    // System.err.println(v.toString());
-    // }
-    // System.err.println();
-    // }
-
     /**
      * Setter for a parameter.
      * 
@@ -899,8 +881,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         if (comments.length() > 0) {
             w.write("// ");
-            w.write(comments.toString().replaceAll("\n", "\n// ").replaceAll(
-                "// % ", "// ").replaceFirst("^% ?", ""));
+            w.write(comments.toString().replaceAll("\n", "\n// ")
+                .replaceAll("// % ", "// ").replaceFirst("^% ?", ""));
             w.write('\n');
         }
     }
@@ -939,8 +921,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             for (String s : options.keySet()) {
                 writer.write("\t\t\t");
                 writeMapKey(writer, s);
-                writer.write(": ", GStringConstant.translate(getOption(s)
-                    .getValue()), ",\n");
+                writer.write(": ",
+                    GStringConstant.translate(getOption(s).getValue()), ",\n");
             }
             writer.write("\t\t].each { name, value ->\n",
                 "\t\t\t", //
