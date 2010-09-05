@@ -38,7 +38,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is a test suite for {@link BblWriterFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -92,10 +92,15 @@ public class BblWriterFactoryTest {
     }
 
     /**
-     * The field <tt>CFG</tt> contains the ...
+     * The field <tt>CFG</tt> contains the configuration.
      */
     private static final Configuration CFG = new Configuration() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         */
         @Override
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -106,6 +111,12 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
         @Override
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -113,6 +124,11 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
+         */
         @Override
         public String getAttribute(String name) {
 
@@ -123,6 +139,11 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
+         */
         @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -130,6 +151,12 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
         @Override
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -137,18 +164,34 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue()
+         */
         @Override
         public String getValue() throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
+         */
         @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+         *      int)
+         */
         @Override
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -156,23 +199,44 @@ public class BblWriterFactoryTest {
             return 0;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+         *      java.lang.String)
+         */
         @Override
         public void getValues(List<String> list, String key) {
 
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+         */
         @Override
         public List<String> getValues(String key) {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator()
+         */
         @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
+         */
         @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
@@ -180,6 +244,11 @@ public class BblWriterFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
+         */
         @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
@@ -187,22 +256,25 @@ public class BblWriterFactoryTest {
     };
 
     /**
-     * The field <tt>dis</tt> contains the ...
+     * The field <tt>dis</tt> contains the indicator that discarded output has
+     * been recognized.
      */
     private boolean dis;
 
     /**
-     * The field <tt>out</tt> contains the ...
+     * The field <tt>out</tt> contains the indicator that file output has been
+     * recognized
      */
     private boolean out;
 
     /**
-     * The field <tt>std</tt> contains the ...
+     * The field <tt>std</tt> contains the indicator that standard output has
+     * been recognized
      */
     private boolean std;
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> Test that a new instance can be obtained. </testcase>
      * 
      * @throws Exception in case of an error
      */
