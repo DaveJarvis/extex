@@ -28,7 +28,8 @@ import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.io.Writer;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class provides a base for derived implementations of a bibliography
+ * style.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -86,7 +87,7 @@ public class Style {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Produce a newline in the output.
      * 
      * @throws IOException in case of an error
      */
@@ -96,7 +97,7 @@ public class Style {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Issue a warning message.
      * 
      * @param message the message
      */
@@ -106,7 +107,9 @@ public class Style {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write some strings to the output stream.
+     * 
+     * @param values the arguments
      * 
      * @throws IOException in case of an error
      */
@@ -116,7 +119,7 @@ public class Style {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Write some strings to the output stream and terminate it with a newline.
      * 
      * @throws IOException in case of an error
      */
