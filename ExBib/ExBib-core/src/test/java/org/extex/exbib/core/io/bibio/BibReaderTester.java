@@ -332,12 +332,14 @@ public abstract class BibReaderTester {
     protected abstract BibReader makeTestInstance();
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a {@link BibReader} which read text provided as argument.
      * 
-     * @param content
-     * @return
-     * @throws FileNotFoundException
-     * @throws ConfigurationException
+     * @param content the content
+     * 
+     * @return the new instance
+     * 
+     * @throws FileNotFoundException in case of a missing file
+     * @throws ConfigurationException in case of a configuration error
      */
     protected BibReader openTestInstance(String content)
             throws FileNotFoundException,
