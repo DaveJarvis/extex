@@ -60,24 +60,25 @@ public class AddPeriodCompiler implements Compiler {
      * The field <tt>ADD_PERIOD</tt> contains the code for the add_period
      * method.
      */
-    private static final LinkingCode ADD_PERIOD = new LinkingCode() {
+    private static final LinkingCode ADD_PERIOD =
+            new LinkingCode("addPeriod()") {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
-         *      java.lang.String)
-         */
-        @Override
-        public void print(CodeWriter writer) throws IOException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.bst2groovy.data.GCode#print(CodeWriter,
+                 *      java.lang.String)
+                 */
+                @Override
+                public void print(CodeWriter writer) throws IOException {
 
-            writer.write("\n\tString addPeriod(String s) {", //
-                "\n\t\treturn s == null || s == '' ? '' "
-                        + ": s.matches(\".*[.!?]\") ? s : s + \".\"", //
-                "\n\t}\n");
-        }
+                    writer.write("\n\tString addPeriod(String s) {", //
+                        "\n\t\treturn s == null || s == '' ? '' "
+                                + ": s.matches(\".*[.!?]\") ? s : s + \".\"", //
+                        "\n\t}\n");
+                }
 
-    };
+            };
 
     /**
      * {@inheritDoc}

@@ -86,24 +86,25 @@ public class ChrToIntCompiler implements Compiler {
     /**
      * The field <tt>CHR_TO_INT</tt> contains the linker code.
      */
-    private static final LinkingCode CHR_TO_INT = new LinkingCode() {
+    private static final LinkingCode CHR_TO_INT =
+            new LinkingCode("chrToInt()") {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
-         */
-        @Override
-        public void print(CodeWriter writer) throws IOException {
+                /**
+                 * {@inheritDoc}
+                 * 
+                 * @see org.extex.exbib.bst2groovy.linker.LinkingCode#print(org.extex.exbib.bst2groovy.io.CodeWriter)
+                 */
+                @Override
+                public void print(CodeWriter writer) throws IOException {
 
-            writer
-                .write(
-                    "\n\tint chrToInt(String s) {",
-                    "\n\t\tif (s.length() != 1) {",
-                    "\n\t\t\tbibProcessor.warning(\"argument to chrToInt has wrong length\")",
-                    "\n\t\t}", "\n\t\treturn s.charAt(0)", "\n\t}\n");
-        }
-    };
+                    writer
+                        .write(
+                            "\n\tint chrToInt(String s) {",
+                            "\n\t\tif (s.length() != 1) {",
+                            "\n\t\t\tbibProcessor.warning(\"argument to chrToInt has wrong length\")",
+                            "\n\t\t}", "\n\t\treturn s.charAt(0)", "\n\t}\n");
+                }
+            };
 
     /**
      * {@inheritDoc}

@@ -45,7 +45,7 @@ public class OptionCompiler extends GIntegerConstant implements Compiler {
     /**
      * The field <tt>INIT</tt> contains the linking code.
      */
-    private final LinkingCode initCode = new LinkingCode() {
+    private final LinkingCode initCode = new LinkingCode("init") {
 
         /**
          * {@inheritDoc}

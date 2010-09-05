@@ -28,7 +28,33 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class LinkingCode {
+public abstract class LinkingCode implements Comparable<LinkingCode> {
+
+    /**
+     * The field <tt>key</tt> contains the key for sorting.
+     */
+    private String key;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param key the key for sorting
+     */
+    public LinkingCode(String key) {
+
+        this.key = key;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Comparable#compareTo(java.lang.Object)
+     */
+    @Override
+    public int compareTo(LinkingCode o) {
+
+        return key.compareTo(o.key);
+    }
 
     /**
      * Print the linking code.
@@ -36,7 +62,6 @@ public abstract class LinkingCode {
      * @param writer the writer
      * @throws IOException in case of an I/O error
      */
-    public abstract void print(CodeWriter writer)
-            throws IOException;
+    public abstract void print(CodeWriter writer) throws IOException;
 
 }

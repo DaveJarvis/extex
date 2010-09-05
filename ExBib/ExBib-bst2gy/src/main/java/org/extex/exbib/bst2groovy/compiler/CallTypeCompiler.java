@@ -58,7 +58,7 @@ public class CallTypeCompiler implements Compiler {
     /**
      * The field <tt>CALL_TYPE</tt> contains the linker code.
      */
-    private static final LinkingCode CALL_TYPE = new LinkingCode() {
+    private static final LinkingCode CALL_TYPE = new LinkingCode("callType()") {
 
         /**
          * {@inheritDoc}

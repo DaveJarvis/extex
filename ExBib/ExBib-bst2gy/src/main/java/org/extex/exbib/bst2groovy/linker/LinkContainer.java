@@ -87,10 +87,11 @@ public class LinkContainer {
      * @param writer the writer
      * @throws IOException in case of an I/O error
      */
-    public void writeMethods(CodeWriter writer)
-            throws IOException {
+    public void writeMethods(CodeWriter writer) throws IOException {
 
-        for (LinkingCode fct : linked) {
+        LinkingCode[] array = linked.toArray(new LinkingCode[0]);
+        Arrays.sort(array);
+        for (LinkingCode fct : array) {
             fct.print(writer);
         }
     }

@@ -61,7 +61,7 @@ public class EmptyCompiler implements Compiler {
     /**
      * The field <tt>IS_EMPTY</tt> contains the code for the is_empty method.
      */
-    private static final LinkingCode IS_EMPTY = new LinkingCode() {
+    private static final LinkingCode IS_EMPTY = new LinkingCode("isEmpty()") {
 
         /**
          * {@inheritDoc}

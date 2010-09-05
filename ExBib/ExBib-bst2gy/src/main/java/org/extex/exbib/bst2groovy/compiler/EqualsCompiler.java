@@ -51,7 +51,7 @@ public class EqualsCompiler implements Compiler {
          */
         public Equals(GCode a, GCode b) {
 
-            super(a, b, "==", 700);
+            super(b, a, "==", 700);
         }
 
         /**
