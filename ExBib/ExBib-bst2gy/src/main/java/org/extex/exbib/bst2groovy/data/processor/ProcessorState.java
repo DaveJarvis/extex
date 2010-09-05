@@ -247,9 +247,9 @@ public class ProcessorState {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Check whether the stack contains code with side effects.
      * 
-     * @return
+     * @return <code>true</code> iff the stack contains code with side effects
      */
     public boolean stackHasSideEffects() {
 
