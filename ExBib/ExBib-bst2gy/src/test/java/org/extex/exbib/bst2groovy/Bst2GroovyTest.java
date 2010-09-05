@@ -657,7 +657,7 @@ public class Bst2GroovyTest {
 
         run("function{abc}{#1 =}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    return p1 == 1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
+                    + "    return 1 == p1 ? 1 : 0\n" + "  }\n" + RUN + POST_RUN);
     }
 
     /**
@@ -1100,7 +1100,7 @@ public class Bst2GroovyTest {
                     + "  }\n" //
                     + "\n" //
                     + "  void f(p1, p2) {\n" //
-                    + "    if (1 == 2 ? 1 : 0) {\n" //
+                    + "    if (2 == 1 ? 1 : 0) {\n" //
                     + "      t = p2\n" //
                     + "      s = p1\n" //
                     + "    } else {\n" //
@@ -1445,7 +1445,7 @@ public class Bst2GroovyTest {
 
         runOptimized("function{abc}{\"\" {=} {#3} {#2} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    return ( p1 == \"\" ? 3 : 2 )\n" + "  }\n" + RUN
+                    + "    return ( \"\" == p1 ? 3 : 2 )\n" + "  }\n" + RUN
                     + POST_RUN);
     }
 
@@ -1527,7 +1527,7 @@ public class Bst2GroovyTest {
                     + "\n"
                     + "  int abc(p1) {\n"
                     + "    int v6\n"
-                    + "    if (\"....,....,....,....,....,....\" == \"\" ? 1 : 0) {\n"
+                    + "    if (\"\" == \"....,....,....,....,....,....\" ? 1 : 0) {\n"
                     + "      v6 = 2\n" + "    } else {\n" + "      v6 = p1\n"
                     + "    }\n" + "    return v6\n" + "  }\n" + RUN + POST_RUN);
     }
@@ -1558,7 +1558,7 @@ public class Bst2GroovyTest {
         runOptimized(
             "function{abc}{duplicate$ #2 {>} {#9 {<} {newline$} {} if$} {} if$}", //
             PREFIX + HEAD + "  }\n" + "\n" + "  void abc(p1) {\n"
-                    + "    if (p1 > 2 && p1 < 9) {\n" + "      newline()\n"
+                    + "    if (p1 < 9 && p1 > 2) {\n" + "      newline()\n"
                     + "    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1969,7 +1969,7 @@ public class Bst2GroovyTest {
         run("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
                     + "  void abc(p1, p2) {\n"
-                    + "    if (p1 == p2 ? 1 : 0) {\n" + "    } else {\n"
+                    + "    if (p2 == p1 ? 1 : 0) {\n" + "    } else {\n"
                     + "      x = 2\n    }\n" + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1984,7 +1984,7 @@ public class Bst2GroovyTest {
         runOptimized("integers{x} function{abc}{{=} {} {#2 'x :=} if$}", //
             PREFIX + "\n\n  int x = 0" + HEAD + "  }\n" + "\n"
                     + "  void abc(p1, p2) {\n"
-                    + "    if (p1 != p2) {\n      x = 2\n    }\n" + "  }\n"
+                    + "    if (p2 != p1) {\n      x = 2\n    }\n" + "  }\n"
                     + RUN + POST_RUN);
     }
 
