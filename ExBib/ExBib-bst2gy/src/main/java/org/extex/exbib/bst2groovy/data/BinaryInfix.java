@@ -69,19 +69,19 @@ public abstract class BinaryInfix extends GenericCode {
      * 
      * @param writer the target writer
      * @param prefix the prefix
-     * @param x the code
+     * @param arg the code
      * 
      * @throws IOException in case of an I/O error
      */
-    private void printSave(CodeWriter writer, String prefix, GCode x)
+    private void printSave(CodeWriter writer, String prefix, GCode arg)
             throws IOException {
 
-        if (x instanceof BinaryInfix && ((BinaryInfix) x).level <= level) {
+        if (arg instanceof BinaryInfix && ((BinaryInfix) arg).level <= level) {
             writer.write("(");
-            x.print(writer, prefix);
+            arg.print(writer, prefix);
             writer.write(")");
         } else {
-            x.print(writer, prefix);
+            arg.print(writer, prefix);
         }
     }
 }
