@@ -152,8 +152,13 @@ public class XamplTest {
         } finally {
             logger.removeHandler(handler);
             System.setErr(err);
-            aux.delete();
-            new File(aux.toString().replaceAll(".aux$", ".bbl")).delete();
+            if (aux.exists()) {
+                assertTrue(aux.toString() + ": deletion failed", aux.delete());
+            }
+            if (aux.exists()) {
+                File bbl = new File(aux.toString().replaceAll(".aux$", ".bbl"));
+                assertTrue(bbl.toString() + ": deletion failed", bbl.delete());
+            }
         }
     }
 
