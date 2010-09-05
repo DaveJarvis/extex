@@ -34,8 +34,8 @@ import org.junit.Test;
 public class LocatorTest {
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> Test that the constructor with three arguments store the
+     * values properly. </testcase>
      */
     @Test
     public void test1() {
@@ -47,8 +47,8 @@ public class LocatorTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> Test that the constructor with two arguments store the values
+     * properly. </testcase>
      */
     @Test
     public void test2() {
@@ -60,8 +60,8 @@ public class LocatorTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> Test that toString() produces the proper message for the
+     * German locale. </testcase>
      */
     @Test
     public void testToString1de() {
@@ -72,8 +72,8 @@ public class LocatorTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
+     * <testcase> Test that toString() produces the proper message for the
+     * English locale. </testcase>
      */
     @Test
     public void testToString1en() {
