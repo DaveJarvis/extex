@@ -35,7 +35,7 @@ public final class And extends BinaryInfix {
      */
     public And(GCode code1, GCode code2) {
 
-        super(code1, code2, " && ", 100);
+        super(code1, code2, "&&", 100);
     }
 
 }
