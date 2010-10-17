@@ -6,7 +6,7 @@
   <artifactId>ExBib-Installer</artifactId>
   <name>ExBib install system</name>
   <description>
-    This is the ExBib install system. It provides an GUI installer for ExBib and
+    This is the ExBib install system. It creates a GUI installer for ExBib and
     related packages after the Maven `package' phase. 
   </description>
 
