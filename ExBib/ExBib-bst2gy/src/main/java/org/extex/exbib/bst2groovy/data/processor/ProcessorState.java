@@ -68,13 +68,21 @@ public class ProcessorState {
     private VarManager varManager;
 
     /**
+     * The field <tt>extraSize</tt> contains the parameter for the extra stack
+     * size.
+     */
+    private final int extraSize;
+
+    /**
      * Creates a new object.
      * 
      * @param varManager the variable manager
+     * @param extraSize the extra stack size parameter
      */
-    public ProcessorState(VarManager varManager) {
+    public ProcessorState(VarManager varManager, int extraSize) {
 
         this.varManager = varManager;
+        this.extraSize = extraSize;
     }
 
     /**
@@ -135,6 +143,16 @@ public class ProcessorState {
     public GCodeContainer getCode() {
 
         return code;
+    }
+
+    /**
+     * Getter for the extra size.
+     * 
+     * @return the extra size
+     */
+    public int getExtraSize() {
+
+        return extraSize;
     }
 
     /**

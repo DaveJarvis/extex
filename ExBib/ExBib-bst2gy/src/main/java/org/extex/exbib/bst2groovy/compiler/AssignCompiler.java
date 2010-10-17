@@ -23,7 +23,7 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.GFunction;
@@ -55,7 +55,7 @@ import org.extex.exbib.core.bst.token.impl.TokenList;
 import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
- * This class implements the analyzer for the := built-in.
+ * This class implements the analyzer for the <code>:=</code> built-in.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -267,7 +267,7 @@ public final class AssignCompiler implements Compiler {
         public void visitField(TField field, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            EntryRefernce entry = (EntryRefernce) args[1];
+            EntryReference entry = (EntryReference) args[1];
             state.add(new SetField(entry.getName(), ((String) args[2]),
                 ((GCode) args[3])));
         }
@@ -319,7 +319,7 @@ public final class AssignCompiler implements Compiler {
         public void visitLocalInteger(TLocalInteger integer, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            EntryRefernce entry = (EntryRefernce) args[1];
+            EntryReference entry = (EntryReference) args[1];
             state.add(new SetLocalInteger(entry.getName(), ((String) args[2]),
                 ((GCode) args[3])));
         }
@@ -344,7 +344,7 @@ public final class AssignCompiler implements Compiler {
         public void visitLocalString(TLocalString string, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            EntryRefernce entry = (EntryRefernce) args[1];
+            EntryReference entry = (EntryReference) args[1];
             state.add(new SetLocalString(entry.getName(), ((String) args[2]),
                 ((GCode) args[3])));
         }
@@ -417,12 +417,12 @@ public final class AssignCompiler implements Compiler {
      * 
      * @throws ExBibException this should not happen
      * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entry, ProcessorState state,
+    public void evaluate(EntryReference entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) throws ExBibException {
 
         GCode q = state.pop();

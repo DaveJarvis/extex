@@ -22,13 +22,13 @@ import java.io.Serializable;
 
 /**
  * This class represents a reference to an entry variable. Any access to the
- * name is recorded as use. Thus one can determine whether the entry is
+ * name is recorded as use. Thus we can determine whether the entry is
  * effectively used somewhere in the invoked code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class EntryRefernce implements Serializable {
+public class EntryReference implements Serializable {
 
     /**
      * The field <tt>serialVersionUID</tt> contains the version number for
@@ -52,7 +52,7 @@ public class EntryRefernce implements Serializable {
      * 
      * @param name the name of the reference
      */
-    public EntryRefernce(String name) {
+    public EntryReference(String name) {
 
         this.name = name;
     }

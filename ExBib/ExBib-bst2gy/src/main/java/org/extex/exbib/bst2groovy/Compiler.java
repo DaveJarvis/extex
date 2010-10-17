@@ -18,7 +18,7 @@
 
 package org.extex.exbib.bst2groovy;
 
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.linker.LinkContainer;
@@ -37,14 +37,14 @@ public interface Compiler {
     /**
      * Evaluate in a certain context.
      * 
-     * @param entryRefernce the entry reference indicator
+     * @param entryReference the entry reference indicator
      * @param state the state
      * @param evaluator the evaluator
      * @param linkData the link data container
      * 
      * @throws ExBibException just in case
      */
-    void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    void evaluate(EntryReference entryReference, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) throws ExBibException;
 
 }

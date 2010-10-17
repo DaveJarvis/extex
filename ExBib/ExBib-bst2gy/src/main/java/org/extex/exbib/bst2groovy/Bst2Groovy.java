@@ -72,7 +72,7 @@ import org.extex.exbib.bst2groovy.compiler.WhileCompiler;
 import org.extex.exbib.bst2groovy.compiler.WidthCompiler;
 import org.extex.exbib.bst2groovy.compiler.WriteCompiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
@@ -156,10 +156,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         public void visitBlock(TBlock block, Object... args)
                 throws ExBibException {
 
-            EntryRefernce entryRefernce = (EntryRefernce) args[0];
+            EntryReference entryReference = (EntryReference) args[0];
             ProcessorState state = (ProcessorState) args[1];
             for (Token t : block) {
-                evaluatePartially(t, entryRefernce, state);
+                evaluatePartially(t, entryReference, state);
             }
         }
 
@@ -223,7 +223,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 throw new UnknownFunctionException(name);
             }
 
-            compiler.evaluate((EntryRefernce) args[0],
+            compiler.evaluate((EntryReference) args[0],
                 (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
@@ -276,7 +276,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 throw new UnknownFunctionException(name);
             }
 
-            compiler.evaluate((EntryRefernce) args[0],
+            compiler.evaluate((EntryReference) args[0],
                 (ProcessorState) args[1], (Evaluator) args[2], linkData);
         }
 
@@ -312,10 +312,10 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         public void visitTokenList(TokenList list, Object... args)
                 throws ExBibException {
 
-            EntryRefernce entryRefernce = (EntryRefernce) args[0];
+            EntryReference entryReference = (EntryReference) args[0];
             ProcessorState state = (ProcessorState) args[1];
             for (Token t : list) {
-                evaluatePartially(t, entryRefernce, state);
+                evaluatePartially(t, entryReference, state);
             }
         }
     };
@@ -400,7 +400,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                     }
 
                     compiler
-                        .evaluate((EntryRefernce) args[0],
+                        .evaluate((EntryReference) args[0],
                             (ProcessorState) args[1], (Evaluator) args[2],
                             linkData);
                 }
@@ -485,7 +485,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 public void visitTokenList(TokenList list, Object... args)
                         throws ExBibException {
 
-                    EntryRefernce entry = (EntryRefernce) args[0];
+                    EntryReference entry = (EntryReference) args[0];
                     ProcessorState state = (ProcessorState) args[1];
                     for (Token t : list) {
                         evaluatePartially(t, entry, state);
@@ -552,12 +552,12 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+             * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
              *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
              *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
              *      org.extex.exbib.bst2groovy.linker.LinkContainer)
              */
-            public void evaluate(EntryRefernce entryRefernce,
+            public void evaluate(EntryReference entryReference,
                     ProcessorState state, Evaluator evaluator,
                     LinkContainer linker) {
 
@@ -668,8 +668,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
             throws ExBibException {
 
         varManager.reset();
-        ProcessorState state = new ProcessorState(varManager);
-        EntryRefernce entry = new EntryRefernce("entry");
+        ProcessorState state = makeState(0);
+        EntryReference entry = new EntryReference("entry");
         evaluatePartially(body, entry, state);
 
         List<GCode> stack = state.getStack();
@@ -679,11 +679,19 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         } else if (stack.size() == 1) {
             returnValue = stack.get(0);
             if (returnValue instanceof CodeBlock) {
-                // TODO gene: multi-value return unimplemented
+                // TODO gene: code return unimplemented
                 throw new RuntimeException("unimplemented");
             }
         } else {
-            throw new ComplexFunctionException(name, stack.toString());
+            StringBuilder sb = new StringBuilder();
+            for (GCode c : stack) {
+                sb.append(" ");
+                sb.append(c.toString());
+            }
+            if (sb.length() > 0) {
+                sb.deleteCharAt(0);
+            }
+            throw new ComplexFunctionException(name, sb.toString());
         }
 
         List<Var> locals = state.getLocals();
@@ -698,7 +706,8 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         functionList.add(function);
         compilers.put(name, function);
-        if (function.needsEntry() && function.getType() == ReturnType.VOID) {
+        if (function.needsEntry() && function.getType() == ReturnType.VOID
+                && function.getParameters().size() == 0) {
             types.put(name, function);
         }
         // saveVarInfo(state.getVarInfo(), function);
@@ -720,13 +729,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * @throws ExBibException this should not happen
      * 
      * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluate(org.extex.exbib.core.bst.token.Token,
-     *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     *      org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
      */
-    public void evaluate(Token token, EntryRefernce entryRefernce,
+    public void evaluate(Token token, EntryReference entryReference,
             ProcessorState state) throws ExBibException {
 
-        token.visit(evaluateTokenVisitor, entryRefernce, state, this);
+        token.visit(evaluateTokenVisitor, entryReference, state, this);
     }
 
     /**
@@ -735,13 +744,13 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
      * @throws ExBibException this should not happen
      * 
      * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#evaluatePartially(org.extex.exbib.core.bst.token.Token,
-     *      org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     *      org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState)
      */
-    public void evaluatePartially(Token token, EntryRefernce entryRefernce,
+    public void evaluatePartially(Token token, EntryReference entryReference,
             ProcessorState state) throws ExBibException {
 
-        token.visit(evaluatePartiallyTokenVisitor, entryRefernce, state, this);
+        token.visit(evaluatePartiallyTokenVisitor, entryReference, state, this);
     }
 
     /**
@@ -776,11 +785,11 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#makeState()
+     * @see org.extex.exbib.bst2groovy.data.processor.Evaluator#makeState(int)
      */
-    public ProcessorState makeState() {
+    public ProcessorState makeState(int size) {
 
-        return new ProcessorState(varManager);
+        return new ProcessorState(varManager, size);
     }
 
     /**
@@ -842,7 +851,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 new GFunction(null, "run",
                     new ArrayList<Var>(), //
                     new CommandTranslator(this).translate(this),
-                    new EntryRefernce("entry"));
+                    new EntryReference("entry"));
         run.use();
         functionList.add(run);
 
@@ -1008,11 +1017,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                 writer.write("\n\t\t");
                 writeMapKey(writer, key);
                 writer.write(" : { entry -> ");
-                writer.write(function.getName(), "(entry");
-                for (Var x : function.getParameters()) {
-                    writer.write(", ", x.getType().getArg());
-                }
-                writer.write(")", " },");
+                writer.write(function.getName(), "(entry", ")", " },");
             }
             writer.write("\n\t]\n");
         }

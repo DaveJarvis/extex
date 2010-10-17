@@ -48,6 +48,16 @@ public class DeclareVar extends GenericCode {
      * Creates a new object.
      * 
      * @param var the variable
+     */
+    public DeclareVar(Var var) {
+
+        this(var, null);
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param var the variable
      * @param value the new value
      */
     public DeclareVar(Var var, GCode value) {

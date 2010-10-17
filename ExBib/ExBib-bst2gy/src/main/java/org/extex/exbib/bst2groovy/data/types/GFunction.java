@@ -27,7 +27,7 @@ import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.var.Var;
@@ -202,7 +202,7 @@ public class GFunction extends GCodeContainer implements Compiler {
     /**
      * The field <tt>entry</tt> contains the the entry.
      */
-    private EntryRefernce entry;
+    private EntryReference entry;
 
     /**
      * Creates a new object.
@@ -214,7 +214,7 @@ public class GFunction extends GCodeContainer implements Compiler {
      * @param entry the indicator whether an entry is needed
      */
     public GFunction(GCode returnValue, String name, List<Var> parameters,
-            GCodeContainer code, EntryRefernce entry) {
+            GCodeContainer code, EntryReference entry) {
 
         this.name = GFunction.translate(name);
         this.parameters = parameters;
@@ -234,12 +234,12 @@ public class GFunction extends GCodeContainer implements Compiler {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRef, ProcessorState state,
+    public void evaluate(EntryReference entryRef, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
         int size = parameters.size();

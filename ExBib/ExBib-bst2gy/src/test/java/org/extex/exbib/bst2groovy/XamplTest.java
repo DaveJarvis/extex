@@ -155,8 +155,8 @@ public class XamplTest {
             if (aux.exists()) {
                 assertTrue(aux.toString() + ": deletion failed", aux.delete());
             }
-            if (aux.exists()) {
-                File bbl = new File(aux.toString().replaceAll(".aux$", ".bbl"));
+            File bbl = new File(aux.toString().replaceAll(".aux$", ".bbl"));
+            if (bbl.exists()) {
                 assertTrue(bbl.toString() + ": deletion failed", bbl.delete());
             }
         }

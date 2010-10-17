@@ -17,7 +17,8 @@
  */
 /**
  * This package contains compilers for single pieces of code. Each built-in
- * instruction for the bst interpreter is represented as a compiler class.
+ * instruction for the bst interpreter is represented as a compiler class 
+ * implementing the interface {@link org.extex.exbib.bst2groovy.Compiler}.
  *
  */
 

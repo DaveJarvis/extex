@@ -33,31 +33,32 @@ public interface Evaluator {
      * Evaluate a token.
      * 
      * @param token the token to evaluate
-     * @param entryRefernce the entry reference
+     * @param entryReference the entry reference
      * @param state the state
      * 
      * @throws ExBibException just in case
      */
-    void evaluate(Token token, EntryRefernce entryRefernce, ProcessorState state)
-            throws ExBibException;
+    void evaluate(Token token, EntryReference entryReference,
+            ProcessorState state) throws ExBibException;
 
     /**
      * Partially evaluate a token.
      * 
      * @param token the token to evaluate
-     * @param entryRefernce the entry reference
+     * @param entryReference the entry reference
      * @param state the state
      * 
      * @throws ExBibException just in case
      */
-    void evaluatePartially(Token token, EntryRefernce entryRefernce,
+    void evaluatePartially(Token token, EntryReference entryReference,
             ProcessorState state) throws ExBibException;
 
     /**
      * Create a new processor state.
+     * @param size TODO
      * 
      * @return a new processor state
      */
-    ProcessorState makeState();
+    ProcessorState makeState(int size);
 
 }

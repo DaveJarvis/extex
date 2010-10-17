@@ -23,7 +23,7 @@ import java.io.IOException;
 import org.extex.exbib.bst2groovy.data.GCode;
 import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
@@ -181,20 +181,20 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = evaluator.makeState();
-            EntryRefernce entryRefernce = new EntryRefernce("it");
+            ProcessorState state = evaluator.makeState(0);
+            EntryReference entryReference = new EntryReference("it");
             try {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
-                    command.getLocator()), entryRefernce, state);
+                    command.getLocator()), entryReference, state);
             } catch (ExBibEmptyFunctionNameException e) {
                 throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new CommandWithReturnException("ITERATE", command
-                    .toString());
+                throw new CommandWithReturnException("ITERATE",
+                    command.toString());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("ITERATE", command
-                    .toString());
+                throw new CommandWithArgumentsException("ITERATE",
+                    command.toString());
             }
             code.add(new GLoop("getDB().each", state.getCode()));
         }
@@ -209,16 +209,16 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = evaluator.makeState();
-            EntryRefernce entryRefernce = new EntryRefernce("it");
-            evaluator.evaluate(literal, entryRefernce, state);
+            ProcessorState state = evaluator.makeState(0);
+            EntryReference entryReference = new EntryReference("it");
+            evaluator.evaluate(literal, entryReference, state);
             if (state.size() != 0) {
                 throw new CommandWithReturnException("EXECUTE", //
                     literal.getValue());
             } else if (state.getLocals().size() != 0) {
                 throw new CommandWithArgumentsException("EXECUTE", //
                     literal.getValue());
-            } else if (entryRefernce.isUsed()) {
+            } else if (entryReference.isUsed()) {
                 throw new CommandWithEntryException("EXECUTE", //
                     literal.getValue());
             }
@@ -292,11 +292,11 @@ public class CommandTranslator {
                 throws ExBibException {
 
             GCodeContainer code = (GCodeContainer) args[0];
-            ProcessorState state = evaluator.makeState();
-            EntryRefernce entryRefernce = new EntryRefernce("it");
+            ProcessorState state = evaluator.makeState(0);
+            EntryReference entryReference = new EntryReference("it");
             try {
                 evaluator.evaluate(new TLiteral(command.getValue().getValue(),
-                    command.getLocator()), entryRefernce, state);
+                    command.getLocator()), entryReference, state);
             } catch (ExBibEmptyFunctionNameException e) {
                 throw new WrappingException(e);
             }

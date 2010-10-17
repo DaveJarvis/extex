@@ -29,7 +29,7 @@ import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.bool.And;
 import org.extex.exbib.bst2groovy.data.bool.GBoolean;
 import org.extex.exbib.bst2groovy.data.bool.Not;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
@@ -77,9 +77,9 @@ public class IfCompiler implements Compiler {
         /**
          * Creates a new object.
          * 
-         * @param condition the condition
-         * @param thenBranch the then branch
-         * @param elseBranch the else branch
+         * @param condition the code of the condition
+         * @param thenBranch the code for the then branch
+         * @param elseBranch the code for the else branch
          */
         public If(GCode condition, GCodeContainer thenBranch,
                 GCodeContainer elseBranch) {
@@ -289,7 +289,7 @@ public class IfCompiler implements Compiler {
      * @param stack the stack
      * @param size the target size
      */
-    public static void adjustStackSize(ProcessorState stack, int size) {
+    private static void adjustStackSize(ProcessorState stack, int size) {
 
         List<GCode> ts = stack.getStack();
         List<GCode> diff = new ArrayList<GCode>();
@@ -309,7 +309,7 @@ public class IfCompiler implements Compiler {
      * 
      * @return the final size
      */
-    public static int adjustStackSize(ProcessorState tstack,
+    private static int adjustStackSize(ProcessorState tstack,
             ProcessorState estack) {
 
         int esize = estack.size();
@@ -324,25 +324,26 @@ public class IfCompiler implements Compiler {
     }
 
     /**
-     * Create a new processor state and evaluate some code in it.
+     * Create a new processor state and evaluate some code within its scope.
      * 
      * @param evaluator the evaluator
      * @param entry the entry reference
      * @param code the code to evaluate
+     * @param size the initial size of the stack
      * @param then is the error in the then clause?
      * 
-     * @return the processor state
+     * @return the new processor state
      * 
      * @throws ExBibException just in case
      */
     private ProcessorState compileBlock(Evaluator evaluator,
-            EntryRefernce entry, GCode code, boolean then)
+            EntryReference entry, GCode code, int size, boolean then)
             throws ExBibException {
 
         if (!(code instanceof CodeBlock)) {
             throw new IfSyntaxException(then);
         }
-        ProcessorState state = evaluator.makeState();
+        ProcessorState state = evaluator.makeState(size);
         evaluator.evaluate(((CodeBlock) code).getToken(), entry, state);
         return state;
     }
@@ -350,20 +351,21 @@ public class IfCompiler implements Compiler {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entry, ProcessorState state,
+    public void evaluate(EntryReference entry, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) throws ExBibException {
 
         GCode e = state.pop();
         GCode t = state.pop();
         GCode cond = state.pop();
+        int extra = state.size() + state.getExtraSize();
 
         if (cond instanceof CodeBlock) {
-            ProcessorState condState = evaluator.makeState();
+            ProcessorState condState = evaluator.makeState(extra);
             evaluator.evaluate(((CodeBlock) cond).getToken(), entry, condState);
             if (condState.size() != 1) {
                 throw new IfComplexException(true, "");
@@ -384,12 +386,14 @@ public class IfCompiler implements Compiler {
             state.mergeVarInfos(condState);
         }
 
-        ProcessorState thenState = compileBlock(evaluator, entry, t, true);
-        ProcessorState elseState = compileBlock(evaluator, entry, e, false);
+        ProcessorState thenState =
+                compileBlock(evaluator, entry, t, extra, true);
+        ProcessorState elseState =
+                compileBlock(evaluator, entry, e, extra, false);
         int size = adjustStackSize(thenState, elseState);
         state.fix(Var.unify(elseState.getLocals(), thenState.getLocals()));
 
-        ProcessorState os = evaluator.makeState();
+        ProcessorState os = evaluator.makeState(extra);
 
         if (size > 0) {
             thenState.eliminateSideEffects();

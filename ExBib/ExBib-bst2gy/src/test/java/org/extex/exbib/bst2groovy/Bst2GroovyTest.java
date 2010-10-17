@@ -923,10 +923,7 @@ public class Bst2GroovyTest {
 
         run("entry{x}{}{}" + "function{f}{x pop$ pop$}"
                 + "function{g}{x pop$ pop$ pop$}", //
-            PREFIX + "\n\n  Map types = [\n"
-                    + "    f : { entry -> f(entry, '') },\n"
-                    + "    g : { entry -> g(entry, '', '') },\n" + "  ]" + HEAD
-                    + "  }\n\n" //
+            PREFIX + HEAD + "  }\n\n" //
                     + "  void f(entry, p1) {\n" //
                     + "  }\n\n" //
                     + "  void g(entry, p1, p2) {\n" //
@@ -1000,6 +997,59 @@ public class Bst2GroovyTest {
                     + "  void d() {\n" //
                     + "    b(\"A\",\n" //
                     + "      \"B\")\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that the function arguments are created properly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore("This functionality is not implemented yet.")
+    public void testFunction20opt() throws Exception {
+
+        runOptimized(
+            "STRINGS { s t }\n" //
+                    + "INTEGERS { nameptr namesleft numnames }\n" //
+                    + "\n" //
+                    + "FUNCTION {format.names}\n" //
+                    + "{ 's :=\n" //
+                    + "  #1 'nameptr :=\n" //
+                    + "  s num.names$ 'numnames :=\n" //
+                    + "  numnames 'namesleft :=\n" //
+                    + "    { namesleft #0 > }\n" //
+                    + "    { s nameptr \"{ff~}{vv~}{ll}{, jj}\" format.name$ 't :=\n" //
+                    + "      nameptr #1 >\n" //
+                    + " { namesleft #1 >\n" //
+                    + "     { \", \" * t * }\n" //
+                    + "     { numnames #2 >\n" //
+                    + "     { \",\" * }\n" //
+                    + "     'skip$\n" //
+                    + "       if$\n" //
+                    + "       t \"others\" =\n" //
+                    + "     { \" et~al.\" * }\n" //
+                    + "     { \" and \" * t * }\n" //
+                    + "       if$\n" //
+                    + "     }\n" //
+                    + "   if$\n" //
+                    + " }\n" //
+                    + " 't\n" //
+                    + "      if$\n" //
+                    + "      nameptr #1 + 'nameptr :=\n" //
+                    + "      namesleft #1 - 'namesleft :=\n" //
+                    + "    }\n" //
+                    + "  while$\n" //
+                    + "}" //
+            , //
+            "import org.extex.exbib.core.Processor\n" //
+                    + "import org.extex.exbib.core.bst.code.impl.FormatName\n" //
+                    + "import org.extex.exbib.core.bst.code.impl.NumNames\n" //
+                    + "import org.extex.exbib.core.db.DB\n" //
+                    + "import org.extex.exbib.core.db.Entry\n" //
+                    + "import org.extex.exbib.core.io.Writer\n" //
+                    + HEAD + "  }\n\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1178,7 +1228,6 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    // @Ignore
     public void testFunctionA3() throws Exception {
 
         runOptimized("" //
@@ -2170,7 +2219,7 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
+    @Ignore("This functionality is not implemented yet.")
     public void testQ1() throws Exception {
 
         run("function{abc}{'a}", //
@@ -2513,11 +2562,135 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testWhile1() throws Exception {
+    public void testWhile01() throws Exception {
 
         run("function{abc}{{#1} 'skip$ while$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD //
+                    + "  }\n" //
+                    + "\n" //
+                    + "  void abc() {\n" //
+                    + "    while (1) {\n    }\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile02() throws Exception {
+
+        run("function{abc}{{#1} {} while$}", //
+            PREFIX + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  void abc() {\n" //
+                    + "    while (1) {\n    }\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileSyntaxException.class)
+    public void testWhile03() throws Exception {
+
+        run("function{abc}{{#1} #1 while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileComplexException.class)
+    public void testWhile04() throws Exception {
+
+        run("function{abc}{{#1} {#1} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileSyntaxException.class)
+    public void testWhile05() throws Exception {
+
+        run("function{abc}{\"\" {} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = WhileComplexException.class)
+    public void testWhile06() throws Exception {
+
+        run("function{abc}{{#1 #2} {} while$}", null);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile07() throws Exception {
+
+        run("function{abc}{#1 {} while$}", //
+            PREFIX + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  void abc() {\n" //
+                    + "    while (1) {\n    }\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile08() throws Exception {
+
+        run("function{abc}{{#1} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1\n" //
+                    + "    while (1) {\n" //
+                    + "      v1 = 12\n" //
+                    + "    }\n" + //
+                    "    return v1\n" //
+                    + "  }\n" + RUN + POST_RUN);
+    }
+
+    /**
+     * <testcase> Test that while$ is created properly. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testWhile09() throws Exception {
+
+        run("function{abc}{#2 {#1} {pop$ #12} while$ }", //
+            PREFIX + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1 = 2\n" //
+                    + "    while (1) {\n" //
+                    + "      v1 = 12\n" //
+                    + "    }\n" //
+                    + "    return v1\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -2529,10 +2702,15 @@ public class Bst2GroovyTest {
     public void testWhile10() throws Exception {
 
         run("function{abc}{#2 {#1 #1 =} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    int v1 = 2\n" + "    while (1) {\n"
-                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
-                    + "  }\n" + RUN + POST_RUN);
+            PREFIX + HEAD + "  }\n" + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1 = 2\n" //
+                    + "    while (1) {\n" //
+                    + "      v1 = 12\n" //
+                    + "    }\n" //
+                    + "    return v1\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -2544,9 +2722,14 @@ public class Bst2GroovyTest {
     public void testWhile10opt() throws Exception {
 
         runOptimized("function{abc}{#2 {#1 #1 =} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    int v1 = 2\n" + "    while (1) {\n"
-                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
+            PREFIX + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1 = 2\n" //
+                    + "    while (1) {\n" //
+                    + "      v1 = 12\n" //
+                    + "    }\n" //
+                    + "    return v1\n" //
                     + "  }\n" + RUN + POST_RUN);
     }
 
@@ -2556,55 +2739,29 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testWhile2() throws Exception {
+    public void testWhile11() throws Exception {
 
-        run("function{abc}{{#1} {} while$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = WhileSyntaxException.class)
-    public void testWhile3() throws Exception {
-
-        run("function{abc}{{#1} #1 while$}", null);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = WhileComplexException.class)
-    public void testWhile4() throws Exception {
-
-        run("function{abc}{{#1} {#1} while$}", null);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = WhileSyntaxException.class)
-    public void testWhile5() throws Exception {
-
-        run("function{abc}{\"\" {} while$}", null);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = WhileComplexException.class)
-    public void testWhile6() throws Exception {
-
-        run("function{abc}{{#1 #2} {} while$}", null);
+        run("integers{x}" //
+                + "function{abc}{\n" //
+                + " {x #10 <} {{x #0 >}{pop$ #42}{#12}if$} while$" //
+                + "}", //
+            PREFIX + "\n\n  int x = 0" //
+                    + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1\n" //
+                    + "    while (x < 10) {\n" //
+                    + "      int v3\n" //
+                    + "      if (x > 0 ? 1 : 0) {\n" //
+                    + "        v3 = 42\n" //
+                    + "      } else {\n" //
+                    + "        v3 = 12\n" //
+                    + "      }\n" //
+                    + "      v1 = v3\n" //
+                    + "    }\n" //
+                    + "    return v1\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
     }
 
     /**
@@ -2613,40 +2770,24 @@ public class Bst2GroovyTest {
      * @throws Exception in case of an error
      */
     @Test
-    public void testWhile7() throws Exception {
+    public void testWhile11opt() throws Exception {
 
-        run("function{abc}{#1 {} while$}", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  void abc() {\n"
-                    + "    while (1) {\n    }\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testWhile8() throws Exception {
-
-        run("function{abc}{{#1} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc(p1) {\n"
-                    + "    while (1) {\n" + "      p1 = 12\n" + "    }\n"
-                    + "    return p1\n" + "  }\n" + RUN + POST_RUN);
-    }
-
-    /**
-     * <testcase> Test that while$ is created properly. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testWhile9() throws Exception {
-
-        run("function{abc}{#2 {#1} {pop$ #12} while$ }", //
-            PREFIX + HEAD + "  }\n" + "\n" + "  int abc() {\n"
-                    + "    int v1 = 2\n" + "    while (1) {\n"
-                    + "      v1 = 12\n" + "    }\n" + "    return v1\n"
-                    + "  }\n" + RUN + POST_RUN);
+        runOptimized("integers{x}" //
+                + "function{abc}{\n" //
+                + " {x #10 <} {{x #0 >}{pop$ #42}{#12}if$} while$" //
+                + "}", //
+            PREFIX + "\n\n  int x = 0" //
+                    + HEAD + "  }\n" //
+                    + "\n" //
+                    + "  int abc() {\n" //
+                    + "    int v1\n" //
+                    + "    while (x < 10) {\n" //
+                    + "      int v3 = ( x > 0 ? 42 : 12 )\n" //
+                    + "      v1 = v3\n" //
+                    + "    }\n" //
+                    + "    return v1\n" //
+                    + "  }\n" //
+                    + RUN + POST_RUN);
     }
 
     /**

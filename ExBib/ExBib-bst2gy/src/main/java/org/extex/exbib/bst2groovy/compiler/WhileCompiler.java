@@ -23,16 +23,16 @@ import java.util.List;
 
 import org.extex.exbib.bst2groovy.Compiler;
 import org.extex.exbib.bst2groovy.data.GCode;
-import org.extex.exbib.bst2groovy.data.GCodeContainer;
 import org.extex.exbib.bst2groovy.data.GenericCode;
 import org.extex.exbib.bst2groovy.data.bool.GBoolean;
-import org.extex.exbib.bst2groovy.data.processor.EntryRefernce;
+import org.extex.exbib.bst2groovy.data.processor.EntryReference;
 import org.extex.exbib.bst2groovy.data.processor.Evaluator;
 import org.extex.exbib.bst2groovy.data.processor.ProcessorState;
 import org.extex.exbib.bst2groovy.data.types.CodeBlock;
 import org.extex.exbib.bst2groovy.data.types.GIntegerConstant;
 import org.extex.exbib.bst2groovy.data.types.ReturnType;
 import org.extex.exbib.bst2groovy.data.var.AssignVar;
+import org.extex.exbib.bst2groovy.data.var.DeclareVar;
 import org.extex.exbib.bst2groovy.data.var.Var;
 import org.extex.exbib.bst2groovy.exception.WhileComplexException;
 import org.extex.exbib.bst2groovy.exception.WhileSyntaxException;
@@ -44,7 +44,7 @@ import org.extex.exbib.core.bst.token.impl.TLocalInteger;
 import org.extex.exbib.core.exceptions.ExBibException;
 
 /**
- * This class implements the analyzer for a while instruction.
+ * This class implements the analyzer for the <code>while$</code> instruction.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -76,6 +76,12 @@ public class WhileCompiler implements Compiler {
         private While(GCode cond, GCode body) {
 
             super(ReturnType.VOID, "");
+            if (cond == null) {
+                throw new NullPointerException("null while condition found");
+            }
+            if (body == null) {
+                throw new NullPointerException("null while body found");
+            }
             this.cond = cond;
             this.body = body;
         }
@@ -89,12 +95,13 @@ public class WhileCompiler implements Compiler {
         @Override
         public int optimize(List<GCode> list, int index) {
 
-            if (cond instanceof GCodeContainer) {
-                ((GCodeContainer) cond).optimize();
+            cond.optimize();
+            if ((cond instanceof GIntegerConstant)
+                    && ((GIntegerConstant) cond).getValue() == 0) {
+                list.remove(index);
+                return index;
             }
-            if (body instanceof GCodeContainer) {
-                ((GCodeContainer) body).optimize();
-            }
+            body.optimize();
             return index + 1;
         }
 
@@ -120,20 +127,22 @@ public class WhileCompiler implements Compiler {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryRefernce,
+     * @see org.extex.exbib.bst2groovy.Compiler#evaluate(org.extex.exbib.bst2groovy.data.processor.EntryReference,
      *      org.extex.exbib.bst2groovy.data.processor.ProcessorState,
      *      org.extex.exbib.bst2groovy.data.processor.Evaluator,
      *      org.extex.exbib.bst2groovy.linker.LinkContainer)
      */
-    public void evaluate(EntryRefernce entryRefernce, ProcessorState state,
+    public void evaluate(EntryReference entryReference, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) throws ExBibException {
 
         GCode body = state.pop();
         GCode cond = state.pop();
+        int extra = state.getExtraSize() + state.size();
+        boolean strategy = false;
+        ProcessorState condState = evaluator.makeState(extra);
 
-        ProcessorState condState = evaluator.makeState();
         if (cond instanceof CodeBlock) {
-            evaluator.evaluate(((CodeBlock) cond).getToken(), entryRefernce,
+            evaluator.evaluate(((CodeBlock) cond).getToken(), entryReference,
                 condState);
         } else if (cond instanceof GIntegerConstant
                 || cond instanceof TLocalInteger || cond instanceof TInteger
@@ -147,9 +156,9 @@ public class WhileCompiler implements Compiler {
         }
         state.mergeVarInfos(condState);
         cond = condState.pop();
-        ProcessorState bodyState = evaluator.makeState();
+        ProcessorState bodyState = evaluator.makeState(extra);
         if (body instanceof CodeBlock) {
-            evaluator.evaluate(((CodeBlock) body).getToken(), entryRefernce,
+            evaluator.evaluate(((CodeBlock) body).getToken(), entryReference,
                 bodyState);
         } else {
             throw new WhileSyntaxException(false);
@@ -164,7 +173,24 @@ public class WhileCompiler implements Compiler {
         }
 
         List<Var> locals = Var.unify(condState.getLocals(), bodyLocals);
-        state.fix(locals);
+        if (strategy) {
+            state.fix(locals);
+        } else {
+
+            for (Var x : locals) {
+                if (extra > 0) {
+                    extra--;
+                    GCode v = state.pop();
+                    if (v instanceof Var) {
+                        ((Var) v).unify(x);
+                    } else {
+                        state.add(new DeclareVar(x, v));
+                    }
+                } else {
+                    state.add(new DeclareVar(x));
+                }
+            }
+        }
         state.add(condState.getCode());
         bodyState.getCode().add(condState.getCode());
 
@@ -174,7 +200,9 @@ public class WhileCompiler implements Compiler {
         }
 
         state.mergeVarInfos(bodyState);
+
         state.add(new While(cond, bodyState.getCode()));
+
         for (int i = bodyLocals.size() - 1; i >= 0; i--) {
             state.push(bodyLocals.get(i));
         }
