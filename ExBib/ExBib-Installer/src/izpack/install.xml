@@ -93,6 +93,8 @@
             targetdir="$INSTALL_PATH/lib"/>
       <file src="../../../ExBib-Main/target/ExBib-Main-0.1-SNAPSHOT.jar"
             targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../../CLI/target/CLI-0.1-SNAPSHOT.jar"
+            targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
     <pack name="ExBib Utility"
