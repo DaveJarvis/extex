@@ -1,8 +1,8 @@
 @echo off
 rem ---------------------------------------------------------------------------
-rem  This is the start script for EXBIB
+rem  This is the start script for ExBib
 rem ---------------------------------------------------------------------------
-rem  Copyright (C) 2008 The EXBIB Group
+rem  Copyright (C) 2008-2010 The ExTeX Group
 rem 
 rem  This library is free software; you can redistribute it and/or modify it
 rem  under the terms of the GNU Lesser General Public License as published by
@@ -44,7 +44,7 @@ for %%i in (%LIBDIR%\*.jar) do (
   set LOCALCLASSPATH=!LOCALCLASSPATH!;%%i
 )
 
-%JAVA_HOME%\bin\java %EXTEX_JAVA_OPTS% -classpath %LOCALCLASSPATH% org.extex.exbib.main.ExBibMain %*
+%JAVA_HOME%\bin\java %EXBIB_JAVA_OPTS% -classpath %LOCALCLASSPATH% org.extex.exbib.main.ExBibMain %*
 
 :end
 

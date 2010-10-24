@@ -2,7 +2,7 @@
 #------------------------------------------------------------------------------
 # This is the start script for ExBib
 #------------------------------------------------------------------------------
-# Copyright (C) 2008 The ExTeX Group
+# Copyright (C) 2008-2010 The ExTeX Group
 #
 # This library is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -54,7 +54,7 @@ case "`uname`" in
     ;;
 esac
 
-exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS \
+exec $JAVA_HOME/bin/java $EXBIB_JAVA_OPTS \
     -classpath "$LOCALCLASSPATH" \
     org.extex.exbib.main.ExBibMain --prog=`basename $0` $*
 
