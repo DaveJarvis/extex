@@ -15,13 +15,6 @@
    like Ant.
   </description>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>project</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-
   <organization>
     <name>The ExTeX Group</name>
     <url>http://www.extex.org</url>
@@ -99,8 +92,8 @@
       <url>file://${basedir}/target/snapshot</url>
     </snapshotRepository>
     <site>
-      <id>org.extex.exindex</id>
-      <name>ExBib Repository</name>
+      <id>org.extex.exbib</id>
+      <name>ExBib Site</name>
       <url>file://${basedir}/target/site</url>
     </site>
   </distributionManagement>
