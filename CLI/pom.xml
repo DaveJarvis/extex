@@ -11,16 +11,18 @@
     This is the ExTeX command line interface support component.
   </description>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>project</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
-
   <packaging>jar</packaging>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
+
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
 
 <!--
   <reporting>
