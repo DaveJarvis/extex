@@ -88,11 +88,11 @@ public class CreateClasspathArchive {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(CreateClasspathArchive.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(CreateClasspathArchive.class);
 
     /**
      * The field <tt>logger</tt> contains the logger currently in use.
@@ -226,8 +226,8 @@ public class CreateClasspathArchive {
         FileOutputStream tocIndexOut = new FileOutputStream(tocindex);
         basedir = new File(dir);
         collect(basedir);
-        tocIndexProps.store(tocIndexOut, getLocalizer().format(
-            "CreateClasspathArchive.created"));
+        tocIndexProps.store(tocIndexOut,
+            getLocalizer().format("CreateClasspathArchive.created"));
         tocIndexOut.close();
         return tocindex;
     }
@@ -247,10 +247,13 @@ public class CreateClasspathArchive {
 
         createJarFile(jarname, tocindex);
 
-        tocindex.delete();
+        if (!tocindex.delete()) {
+            getLogger().info(
+                getLocalizer().format("CreateClasspathArchive.not.deleted",
+                    tocindex.toString()));
+        }
         getLogger().info(
             getLocalizer().format("CreateClasspathArchive.finished", jarname));
-
     }
 
     /**
