@@ -35,7 +35,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>CLI</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
