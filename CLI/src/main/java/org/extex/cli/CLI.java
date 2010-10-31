@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -127,9 +127,11 @@ public class CLI {
     }
 
     /**
-     * Describe the command line arguments.
+     * Describe the command line arguments. The main information is coming from
+     * a resource bundle.
      * 
-     * @param bundle the resource bundle for the descriptions
+     * @param bundle the resource bundle for the descriptions or
+     *        <code>null</code>
      * @param tagBefore the tag of the resource bundle entry to be inserted at
      *        the beginning; it can be <code>null</code>; then nothing is
      *        inserted at the beginning
@@ -138,21 +140,22 @@ public class CLI {
      *        the end
      * @param args additional arguments for the before and after text
      * 
-     * @return the description
+     * @return the description or the empty string if the resource bundle is
+     *         <code>null</code>.
      */
     public String describeOptions(ResourceBundle bundle, String tagBefore,
             String tagAfter, Object... args) {
 
+        if (bundle == null) {
+            return "";
+        }
         StringBuilder buffer = new StringBuilder();
 
         Map<String, List<String>> variantsMap =
                 new HashMap<String, List<String>>();
         for (String s : options.keySet()) {
-            if (s == null) {
-                continue;
-            }
             Option opt = options.get(s);
-            if (opt == null || opt.getTag() == null) {
+            if (s == null || opt == null || opt.getTag() == null) {
                 continue;
             }
             String tag = opt.getTag();
@@ -165,12 +168,8 @@ public class CLI {
         }
 
         if (tagBefore != null) {
-            if (bundle == null) {
-                buffer.append(tagBefore);
-            } else {
-                buffer.append(MessageFormat.format(bundle.getString(tagBefore),
-                    args));
-            }
+            buffer.append(MessageFormat.format(bundle.getString(tagBefore),
+                args));
         }
         List<String> keys = new ArrayList<String>(variantsMap.keySet());
         Collections.sort(keys);
@@ -209,12 +208,8 @@ public class CLI {
             buffer.append('\n');
         }
         if (tagAfter != null) {
-            if (bundle == null) {
-                buffer.append(tagAfter);
-            } else {
-                buffer.append(MessageFormat.format(bundle.getString(tagAfter),
-                    args));
-            }
+            buffer
+                .append(MessageFormat.format(bundle.getString(tagAfter), args));
         }
         return buffer.toString();
     }
