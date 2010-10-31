@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,8 @@ import org.extex.cli.exception.MissingArgumentCliException;
 import org.extex.cli.exception.NonNumericArgumentCliException;
 
 /**
- * This class represents a base class for options with a number parameters.
+ * This class represents a base class for options with a number parameter. The
+ * value is stored in properties as a String.
  * <p>
  * This option can for instance be used to recognize command line parameters
  * with additional argument:
@@ -55,8 +56,8 @@ public class NumberPropertyOption extends Option {
     private String pname;
 
     /**
-     * The field <tt>properties</tt> contains the properties to store the
-     * value in.
+     * The field <tt>properties</tt> contains the properties to store the value
+     * in.
      */
     private Properties properties;
 
@@ -77,8 +78,7 @@ public class NumberPropertyOption extends Option {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.util.List)
+     * @see org.extex.cli.Option#run(java.lang.String, java.util.List)
      */
     @Override
     public int run(String a, List<String> arg)
@@ -94,8 +94,8 @@ public class NumberPropertyOption extends Option {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.cli.Option#run(java.lang.String,
-     *      java.lang.String, java.util.List)
+     * @see org.extex.cli.Option#run(java.lang.String, java.lang.String,
+     *      java.util.List)
      */
     @Override
     public int run(String a, String firstArg, List<String> arg)
