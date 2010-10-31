@@ -1153,7 +1153,6 @@ public class CLITest {
             protected int run(String a, String arg)
                     throws UnknownOptionCliException {
 
-                // TODO gene: run unimplemented
                 return 42;
             }
         }, "-y");
@@ -1405,7 +1404,8 @@ public class CLITest {
     }
 
     /**
-     * <testcase> ... </testcase>
+     * <testcase> The dafault for an yoption is <code>null</code> and this value
+     * can be overwritten. </testcase>
      * 
      * @throws Exception in case of an error
      */
