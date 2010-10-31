@@ -35,6 +35,17 @@ import org.extex.cli.exception.UnusedArgumentCliException;
  * This is a base class which is able to parse a command line specification.
  * Similar to the idea of SAX parsers handlers can be registered to be informed
  * on the different options encountered.
+ * <p>
+ * The intended use of this class is to create an instance of it and register
+ * handlers with the help of the method {@link #declareOption(String, Option)}.
+ * Finally the method {@link #run(String[])} is invoked to parse the command
+ * line parameters and invoke the proper handlers.
+ * </p>
+ * <p>
+ * One pattern to use this class is to derive the main class from this one. But
+ * this is not essential. It works equally well to create an instance of this
+ * class in the main() method and let it do it's task.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -128,7 +139,8 @@ public class CLI {
 
     /**
      * Describe the command line arguments. The main information is coming from
-     * a resource bundle.
+     * a resource bundle. Thus it is rather simple to produce internationalized
+     * usage information.
      * 
      * @param bundle the resource bundle for the descriptions or
      *        <code>null</code>
@@ -240,8 +252,22 @@ public class CLI {
     }
 
     /**
-     * Parse the options from a list of strings and run the callback handlers
+     * Parse the options from a list of strings and invoke the callback handlers
      * upon the options found.
+     * <p>
+     * When a handler returns {@link #EXIT_CONTINUE} then the next argument is
+     * processed. Otherwise the processing stops and the exit code of this
+     * handler is returned.
+     * </p>
+     * <p>
+     * When all options have been processed without an handler forcing the
+     * termination then the value {@link #EXIT_CONTINUE} is returned as exit
+     * code of this method.
+     * </p>
+     * <p>
+     * If no handler is found for the option name given then the handler for the
+     * key <code>null</code> is used as fallback &ndash; if it is defined.
+     * </p>
      * 
      * @param args the list of arguments
      * 
@@ -316,9 +342,9 @@ public class CLI {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
+     * This method describes the known options. The resource bundle with the
+     * name of the current class is used. Thus take care to define such a
+     * resource bundle if you intend to use this method.
      */
     @Override
     public String toString() {
