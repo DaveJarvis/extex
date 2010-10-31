@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,7 +27,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This class provides an Iterator over multiple Configurations.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -57,16 +57,15 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theConfigs the array of configurations to combine
      * @param theKey the name of the sub-configuration
-     *
+     * 
      * @throws ConfigurationException in case of an error in a sub-iterator
      */
-    public MultiConfigurationIterator(Configuration[] theConfigs,
-            String theKey) throws ConfigurationException {
+    public MultiConfigurationIterator(Configuration[] theConfigs, String theKey)
+            throws ConfigurationException {
 
-        super();
         this.configs = theConfigs;
         this.key = theKey;
 
@@ -79,9 +78,9 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
      * Returns <tt>true</tt> if the iteration has more elements. (In other
      * words, returns <tt>true</tt> if <tt>next</tt> would return an element
      * rather than throwing an exception.)
-     *
+     * 
      * @return <tt>true</tt> if the iterator has more elements.
-     *
+     * 
      * @see java.util.Iterator#hasNext()
      */
     public boolean hasNext() {
@@ -108,10 +107,10 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
 
     /**
      * Returns the next element in the iteration.
-     *
+     * 
      * @return the next element in the iteration.
      * @exception NoSuchElementException iteration has no more elements.
-     *
+     * 
      * @see java.util.Iterator#next()
      */
     public Configuration next() {
@@ -145,7 +144,7 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
 
     /**
      * This operation is not supported and leads to an exception.
-     *
+     * 
      * @see java.util.Iterator#remove()
      */
     public void remove() {

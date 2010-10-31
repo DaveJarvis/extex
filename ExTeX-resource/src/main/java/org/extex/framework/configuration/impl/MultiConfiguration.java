@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,9 +32,9 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
 /**
- * Container for several
- * {@link org.extex.framework.configuration.Configuration Configuration}
- * objects. They can be treated as if they where contained in one configuration.
+ * Container for several {@link org.extex.framework.configuration.Configuration
+ * Configuration} objects. They can be treated as if they where contained in one
+ * configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -45,7 +45,7 @@ public class MultiConfiguration implements Configuration {
      * The field <tt>configurations</tt> contains the internal array of
      * configurations.
      */
-    private Configuration[] configurations;
+    private List<Configuration> configurations;
 
     /**
      * The field <tt>loader</tt> contains the optional loader.
@@ -58,11 +58,10 @@ public class MultiConfiguration implements Configuration {
      * 
      * @throws ConfigurationException in case that the configuration is invalid
      */
-    public MultiConfiguration(Configuration[] parts)
+    public MultiConfiguration(List<Configuration> parts)
             throws ConfigurationException {
 
-        super();
-        this.configurations = parts.clone();
+        this.configurations = new ArrayList<Configuration>(parts);
     }
 
     /**
@@ -81,8 +80,7 @@ public class MultiConfiguration implements Configuration {
      * @throws ConfigurationIOException in case of an IO exception while reading
      *         the resource
      * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
     public Configuration findConfiguration(String key)
             throws ConfigurationInvalidResourceException,
@@ -92,8 +90,8 @@ public class MultiConfiguration implements Configuration {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configurations.length; i++) {
-            Configuration cfg = configurations[i].findConfiguration(key);
+        for (Configuration c : configurations) {
+            Configuration cfg = c.findConfiguration(key);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -106,7 +104,7 @@ public class MultiConfiguration implements Configuration {
                 return v.get(0);
             default:
                 try {
-                    return new MultiConfiguration((Configuration[]) v.toArray());
+                    return new MultiConfiguration(v);
                 } catch (ConfigurationException e) {
                     throw new RuntimeException("unexpected exception", e);
                 }
@@ -114,17 +112,16 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+     *      java.lang.String)
      */
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configurations.length; i++) {
-            Configuration cfg =
-                    configurations[i].findConfiguration(key, attribute);
+        for (Configuration c : configurations) {
+            Configuration cfg = c.findConfiguration(key, attribute);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -138,7 +135,7 @@ public class MultiConfiguration implements Configuration {
             return v.get(0);
         }
 
-        return new MultiConfiguration((Configuration[]) v.toArray());
+        return new MultiConfiguration(v);
     }
 
     /**
@@ -150,13 +147,12 @@ public class MultiConfiguration implements Configuration {
      * @return the value of the attribute or <code>null</code> if such an
      *         attribute is not present
      * 
-     * @see org.extex.framework.configuration.Configuration#getAttribute(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
     public String getAttribute(String name) {
 
-        for (int i = 0; i < configurations.length; i++) {
-            String att = configurations[i].getAttribute(name);
+        for (Configuration c : configurations) {
+            String att = c.getAttribute(name);
             if (att != null) {
                 return att;
             }
@@ -165,16 +161,15 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
      */
     public Configuration getConfiguration(String key)
             throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configurations.length; i++) {
-            Configuration cfg = configurations[i].findConfiguration(key);
+        for (Configuration c : configurations) {
+            Configuration cfg = c.findConfiguration(key);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -186,22 +181,21 @@ public class MultiConfiguration implements Configuration {
             case 1:
                 return v.get(0);
             default:
-                return new MultiConfiguration((Configuration[]) v.toArray());
+                return new MultiConfiguration(v);
         }
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+     *      java.lang.String)
      */
     public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationException {
 
         List<Configuration> v = new ArrayList<Configuration>();
 
-        for (int i = 0; i < configurations.length; i++) {
-            Configuration cfg =
-                    configurations[i].findConfiguration(key, attribute);
+        for (Configuration c : configurations) {
+            Configuration cfg = c.findConfiguration(key, attribute);
             if (cfg != null) {
                 v.add(cfg);
             }
@@ -214,7 +208,7 @@ public class MultiConfiguration implements Configuration {
             case 1:
                 return v.get(0);
             default:
-                return new MultiConfiguration((Configuration[]) v.toArray());
+                return new MultiConfiguration(v);
         }
     }
 
@@ -231,8 +225,8 @@ public class MultiConfiguration implements Configuration {
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < configurations.length; i++) {
-            String val = configurations[i].getValue();
+        for (Configuration c : configurations) {
+            String val = c.getValue();
             if (val != null) {
                 sb.append(val);
             }
@@ -246,8 +240,8 @@ public class MultiConfiguration implements Configuration {
      */
     public String getValue(String key) throws ConfigurationException {
 
-        for (int i = 0; i < configurations.length; i++) {
-            String val = configurations[i].getValue(key);
+        for (Configuration c : configurations) {
+            String val = c.getValue(key);
 
             if (val != null) {
                 return val;
@@ -258,14 +252,14 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-     *      java.lang.String, int)
+     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+     *      int)
      */
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
-        for (int i = 0; i < configurations.length; i++) {
-            int val = configurations[i].getValueAsInteger(key, defaultValue);
+        for (Configuration c : configurations) {
+            int val = c.getValueAsInteger(key, defaultValue);
 
             if (val != defaultValue) {
                 return val;
@@ -278,8 +272,8 @@ public class MultiConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#getValues(
-     *      java.util.List, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+     *      java.lang.String)
      */
     public void getValues(List<String> list, String key) {
 
@@ -303,7 +297,7 @@ public class MultiConfiguration implements Configuration {
      */
     public Iterator<Configuration> iterator() throws ConfigurationException {
 
-        return new MultiConfigurationIterator(configurations, null);
+        return iterator(null);
     }
 
     /**
@@ -320,14 +314,18 @@ public class MultiConfiguration implements Configuration {
     public Iterator<Configuration> iterator(String key)
             throws ConfigurationException {
 
-        return new MultiConfigurationIterator(configurations, key);
+        Configuration[] cfg = new Configuration[configurations.size()];
+        int i = 0;
+        for (Configuration c : configurations) {
+            cfg[i++] = c;
+        }
+        return new MultiConfigurationIterator(cfg, key);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-     *      org.extex.framework.configuration.ConfigurationLoader)
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
