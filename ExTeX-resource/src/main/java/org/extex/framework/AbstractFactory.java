@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,14 +45,13 @@ import org.extex.resource.ResourceFinder;
  * <ul>
  * <li>If the instantiated class implements the interface
  * {@link org.extex.framework.configuration.Configurable Configurable} then the
- * associated method is used to pass on the configuration to the new instance.
- * </li>
+ * associated method is used to pass on the configuration to the new instance.</li>
  * <li>If the instantiated class implements the interface
  * {@link org.extex.framework.logger.LogEnabled LogEnabled} then the associated
- * method is used to pass on the logger to the new instance. </li>
+ * method is used to pass on the logger to the new instance.</li>
  * </ul>
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -64,8 +63,8 @@ public abstract class AbstractFactory
             RegistrarObserver {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
-     * attribute used to get the class name.
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * used to get the class name.
      */
     protected static final String CLASS_ATTRIBUTE = "class";
 
@@ -76,19 +75,19 @@ public abstract class AbstractFactory
     protected static final String DEFAULT_ATTRIBUTE = "default";
 
     /**
-     * The constant <tt>SELECT_ATTRIBUTE</tt> contains the name of the
-     * attribute used to get the default configuration.
+     * The constant <tt>SELECT_ATTRIBUTE</tt> contains the name of the attribute
+     * used to get the default configuration.
      */
     protected static final String SELECT_ATTRIBUTE = "select";
 
     /**
      * Configure an instance if this instance supports configuration. If
      * configuration is not supported then nothing is done.
-     *
+     * 
      * @param instance the instance to configure
      * @param configuration the configuration to use. If this parameter is
      *        <code>null</code> then it is not passed to the instance.
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public static void configure(Object instance, Configuration configuration)
@@ -103,10 +102,10 @@ public abstract class AbstractFactory
      * Utility method to pass a logger to an object if it has a method to take
      * it. If the logger is <code>null</code> then this method simply does
      * nothing.
-     *
+     * 
      * @param instance the instance to pass the logger to
-     * @param logger the logger to pass. If the logger is <code>null</code>
-     *        then nothing is done.
+     * @param logger the logger to pass. If the logger is <code>null</code> then
+     *        nothing is done.
      */
     public static void enableLogging(Object instance, Logger logger) {
 
@@ -123,7 +122,7 @@ public abstract class AbstractFactory
 
     /**
      * The field <tt>logger</tt> contains the logger to pass to the new
-     * typesetters.
+     * instances created.
      */
     private Logger logger = null;
 
@@ -142,7 +141,7 @@ public abstract class AbstractFactory
 
     /**
      * Creates a new factory object.
-     *
+     * 
      * @param configuration the configuration object to consider
      */
     public AbstractFactory(Configuration configuration) {
@@ -153,13 +152,12 @@ public abstract class AbstractFactory
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param configuration the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
-     *
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * 
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration configuration)
             throws ConfigurationException {
@@ -169,11 +167,11 @@ public abstract class AbstractFactory
 
     /**
      * Get an instance.
-     *
+     * 
      * @param target the expected class or interface
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstance(Class<?> target)
@@ -187,12 +185,12 @@ public abstract class AbstractFactory
      * configuration. The selection is done with the help of a type String. If
      * the type is <code>null</code> or the empty string then the default from
      * the configuration is used.
-     *
+     * 
      * @param target the expected class or interface
      * @param arg the argument for the constructor
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstance(Class<?> target, Object arg)
@@ -204,12 +202,12 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration with an additional
      * argument for the constructor.
-     *
+     * 
      * @param type the type to use
      * @param target the expected class or interface
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstance(String type, Class<?> target)
@@ -221,14 +219,14 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration with an additional
      * argument for the constructor.
-     *
+     * 
      * @param type the type to use
      * @param target the expected class or interface
      * @param argClass the class of the argument
      * @param arg the argument
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstance(String type, Class<?> target,
@@ -240,15 +238,14 @@ public abstract class AbstractFactory
 
     /**
      * Create a new instance for a given configuration.
-     *
+     * 
      * @param config the configuration to use
      * @param target the expected class or interface
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
-    @SuppressWarnings("unchecked")
     protected Object createInstanceForConfiguration(Configuration config,
             Class<?> target) throws ConfigurationException {
 
@@ -276,7 +273,7 @@ public abstract class AbstractFactory
 
         try {
             for (Constructor<?> constructor : theClass.getConstructors()) {
-                Class[] args = constructor.getParameterTypes();
+                Class<?>[] args = constructor.getParameterTypes();
                 Object instance = null;
                 switch (args.length) {
                     case 0:
@@ -293,7 +290,7 @@ public abstract class AbstractFactory
                                     className, constructor, args[0], args[1]);
                         break;
                     default:
-                        // Consider the next constructor
+                        continue; // Consider the next constructor
                 }
                 if (instance != null) {
                     return instance;
@@ -322,14 +319,14 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration with an additional
      * argument for the constructor.
-     *
+     * 
      * @param config the configuration to use
      * @param target the expected class or interface
      * @param argClass the class of the argument
      * @param arg the argument
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstanceForConfiguration(Configuration config,
@@ -417,13 +414,13 @@ public abstract class AbstractFactory
 
     /**
      * Create a new instance for a given configuration.
-     *
+     * 
      * @param config the configuration to use
      * @param target the expected class or interface
      * @param arg the constructor argument
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      */
     protected Object createInstanceForConfiguration(Configuration config,
@@ -486,13 +483,13 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration using a constructor
      * without arguments.
-     *
+     * 
      * @param config the configuration to us
      * @param className the name of the class to instantiate
      * @param theClass the class to instantiate
-     *
+     * 
      * @return a new instance
-     *
+     * 
      * @throws InstantiationException in case of an instantiation error
      * @throws IllegalAccessException in case of an access error
      * @throws ConfigurationException in case of a configuration error
@@ -512,16 +509,16 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration using a constructor with
      * one argument.
-     *
+     * 
      * @param config the configuration to us
      * @param target the expected class or interface
      * @param className the name of the class to instantiate
      * @param constructor the constructor to use
      * @param arg the only argument for the constructor
-     *
-     * @return a new instance or <code>null</code> if the constructor is not
-     *         of a supported type
-     *
+     * 
+     * @return a new instance or <code>null</code> if the constructor is not of
+     *         a supported type
+     * 
      * @throws InstantiationException in case of an instantiation error
      * @throws IllegalAccessException in case of an access error
      * @throws InvocationTargetException in case of an invocation error
@@ -552,17 +549,17 @@ public abstract class AbstractFactory
     /**
      * Create a new instance for a given configuration using a constructor with
      * two arguments.
-     *
+     * 
      * @param config the configuration to us
      * @param target the expected class or interface
      * @param className the name of the class to instantiate
      * @param constructor the constructor to use
      * @param arg1 the first argument for the constructor
      * @param arg2 the second argument for the constructor
-     *
-     * @return a new instance or <code>null</code> if the constructor is not
-     *         of a supported type
-     *
+     * 
+     * @return a new instance or <code>null</code> if the constructor is not of
+     *         a supported type
+     * 
      * @throws InstantiationException in case of an instantiation error
      * @throws IllegalAccessException in case of an access error
      * @throws InvocationTargetException in case of an invocation error
@@ -589,8 +586,7 @@ public abstract class AbstractFactory
     }
 
     /**
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger theLogger) {
 
@@ -599,7 +595,7 @@ public abstract class AbstractFactory
 
     /**
      * Getter for configuration.
-     *
+     * 
      * @return the configuration.
      */
     public Configuration getConfiguration() {
@@ -609,7 +605,7 @@ public abstract class AbstractFactory
 
     /**
      * Getter for logger.
-     *
+     * 
      * @return the logger.
      */
     public Logger getLogger() {
@@ -619,7 +615,7 @@ public abstract class AbstractFactory
 
     /**
      * Getter for resourceFinder.
-     *
+     * 
      * @return the resourceFinder
      */
     public ResourceFinder getResourceFinder() {
@@ -649,11 +645,11 @@ public abstract class AbstractFactory
     /**
      * Select a sub-configuration with a given name. If this does not exist then
      * the attribute <tt>default</tt> is used to find an alternative.
-     *
+     * 
      * @param type the tag name for the sub-configuration to find
-     *
+     * 
      * @return the desired sub-configuration
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     protected Configuration selectConfiguration(String type)
@@ -696,11 +692,10 @@ public abstract class AbstractFactory
 
     /**
      * Setter for the resource finder.
-     *
+     * 
      * @param finder the resource finder
-     *
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * 
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 
