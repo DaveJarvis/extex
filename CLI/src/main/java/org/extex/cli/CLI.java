@@ -165,8 +165,12 @@ public class CLI {
         }
 
         if (tagBefore != null) {
-            buffer.append(MessageFormat.format(bundle.getString(tagBefore),
-                args));
+            if (bundle == null) {
+                buffer.append(tagBefore);
+            } else {
+                buffer.append(MessageFormat.format(bundle.getString(tagBefore),
+                    args));
+            }
         }
         List<String> keys = new ArrayList<String>(variantsMap.keySet());
         Collections.sort(keys);
@@ -205,8 +209,12 @@ public class CLI {
             buffer.append('\n');
         }
         if (tagAfter != null) {
-            buffer.append(MessageFormat
-                .format(bundle.getString(tagAfter), args));
+            if (bundle == null) {
+                buffer.append(tagAfter);
+            } else {
+                buffer.append(MessageFormat.format(bundle.getString(tagAfter),
+                    args));
+            }
         }
         return buffer.toString();
     }
