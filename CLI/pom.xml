@@ -6,9 +6,10 @@
   <groupId>org.extex</groupId>
   <artifactId>CLI</artifactId>
   <name>Command Line Interface</name>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <description>
-    This is the ExTeX command line interface support component.
+    This is the ExTeX command line interface support component. It provides
+    means to simplify the task of writing command line interpreters.
   </description>
 
   <packaging>jar</packaging>
@@ -19,24 +20,133 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
 
-<!--
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  </organization>
+
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/CLI/</url>
+  </scm>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
         <configuration>
-          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
+          <aggregate>true</aggregate>
         </configuration>
       </plugin>
-    </plugins>
-  </reporting>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+          <minmemory>32m</minmemory>
+          <maxmemory>512m</maxmemory>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+
+          <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
+          <headerLocation>ExTeX/LICENSE.txt</headerLocation>
+<! - -
+          <enableRulesSummary>false</enableRulesSummary>
+        </configuration>
+      </plugin>
 -->
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+	<version>2.3.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+	<configuration>
+	  <aggregate>true</aggregate>
+	  <targetJdk>1.5</targetJdk>
+	</configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>emma-maven-plugin</artifactId>
+        <inherited>true</inherited>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>@todo</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+
+    </plugins>
+
+  </reporting>
+
 
   <developers>
     <developer>
