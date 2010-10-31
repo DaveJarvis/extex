@@ -26,44 +26,42 @@ import java.util.List;
  * This class provides a means to reconnect an object to a managing factory
  * after it has been disconnected. The disconnection might happen during
  * serialization and deserialization.
- *
+ * 
  * <p>
- *  Whenever an object is deserialized Java tries to invoke the method
- *  <tt>readResolve()</tt>. This method can be used to get a hand
- *  on the object which has just been reconstructed. Here the object can be
- *  replaced by another one or some other action can be applied.
+ * Whenever an object is deserialized Java tries to invoke the method
+ * <tt>readResolve()</tt>. This method can be used to get a hand on the object
+ * which has just been reconstructed. Here the object can be replaced by another
+ * one or some other action can be applied.
  * </p>
  * <p>
- *  Any class which is serializable and wants to participate in the reconnection
- *  mechanism should implement the method <code>readResolve</code>. In this
- *  method the method <code>reconnect()</code> of the
- *  {@link Registrar Registrar} should be invoked. This is shown in the
- *  following example:
+ * Any class which is serializable and wants to participate in the reconnection
+ * mechanism should implement the method <code>readResolve</code>. In this
+ * method the method <code>reconnect()</code> of the {@link Registrar Registrar}
+ * should be invoked. This is shown in the following example:
  * </p>
- *
+ * 
  * <pre class="JavaSample">
  *  <b>protected</b> Object readResolve() <b>throws</b> ObjectStreamException {
  *
  *      <b>return</b> Registrar.reconnect(this);
  *  }
  * </pre>
- *
+ * 
  * <p>
- *  Any factory which  wants to participate in the reconnection mechanism should
- *  implement the interface
- *  {@link org.extex.framework.RegistrarObserver RegistrarObserver}.
+ * Any factory which wants to participate in the reconnection mechanism should
+ * implement the interface {@link org.extex.framework.RegistrarObserver
+ * RegistrarObserver}.
  * </p>
  * <p>
- *  Finally, before an object is deserialized, the interested parties should
- *  register an observer at the {@link Registrar Registrar}.
+ * Finally, before an object is deserialized, the interested parties should
+ * register an observer at the {@link Registrar Registrar}.
  * </p>
- * </p>
- *  Note that the registrar has to be implemented as a static singleton since
- *  readResolve() does not provide any means to pass a reference to some other
- *  object to it.
+ * </p> Note that the registrar has to be implemented as a static singleton
+ * since readResolve() does not provide any means to pass a reference to some
+ * other object to it.
  * <p>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -71,7 +69,7 @@ public final class Registrar {
 
     /**
      * This class provides a container for a pair of a class and an observer.
-     *
+     * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
@@ -89,7 +87,7 @@ public final class Registrar {
 
         /**
          * Creates a new object.
-         *
+         * 
          * @param observer the observer
          * @param type the interface or class to be observed
          */
@@ -102,7 +100,7 @@ public final class Registrar {
 
         /**
          * Getter for observer.
-         *
+         * 
          * @return the observer
          */
         public RegistrarObserver getObserver() {
@@ -112,7 +110,7 @@ public final class Registrar {
 
         /**
          * Getter for type.
-         *
+         * 
          * @return the type
          */
         public Class<?> getType() {
@@ -122,9 +120,9 @@ public final class Registrar {
 
         /**
          * Get the string representation of this object for debugging purposes.
-         *
+         * 
          * @return the string representation
-         *
+         * 
          * @see java.lang.Object#toString()
          */
         @Override
@@ -148,9 +146,9 @@ public final class Registrar {
 
     /**
      * Create a new registrar and activate it.
-     *
+     * 
      * @return the new registrar
-     *
+     * 
      * @throws RegistrarException in case of an error
      */
     public static Registrar activate() throws RegistrarException {
@@ -162,18 +160,19 @@ public final class Registrar {
 
     /**
      * Activate an existing registrar.
-     *
+     * 
      * @param registrar the registrar to activate
-     *
+     * 
      * @throws RegistrarException in case of an error
      */
-    public static void activate(Registrar registrar)
-            throws RegistrarException {
+    public static void activate(Registrar registrar) throws RegistrarException {
 
         if (active != null) {
             pipe.add(registrar);
             try {
-                registrar.wait();
+                for (;;) {
+                    registrar.wait();
+                }
             } catch (InterruptedException e) {
                 // ignored;
             }
@@ -183,9 +182,9 @@ public final class Registrar {
 
     /**
      * Deactivate a currently active registrar.
-     *
+     * 
      * @param registrar the registrar to deactivate
-     *
+     * 
      * @throws RegistrarException in case of an error
      */
     public static void deactivate(Registrar registrar)
@@ -205,15 +204,14 @@ public final class Registrar {
     /**
      * Find anyone interested in an object and let the object be integrated into
      * their views of the world.
-     *
+     * 
      * @param object the object to reconnect
-     *
+     * 
      * @return the object which should actually be used
-     *
+     * 
      * @throws RegistrarException in case of a problem with registration
      */
-    public static Object reconnect(Object object)
-            throws RegistrarException {
+    public static Object reconnect(Object object) throws RegistrarException {
 
         Object ob = object;
         List<Obs> observers = active.observers;
@@ -231,15 +229,14 @@ public final class Registrar {
      * This method registers an observer at the registrar. This observer is
      * invoked for each class which is deserialized and matches the class given.
      * The type argument can be an interface as well.
-     *
+     * 
      * @param observer the observer
      * @param type the interface or class to be observed
-     *
+     * 
      * @return a reference to an object which can be passed to unregister() for
-     *  removing the registered observer.
+     *         removing the registered observer.
      */
-    public static Object register(RegistrarObserver observer,
-            Class<?> type) {
+    public static Object register(RegistrarObserver observer, Class<?> type) {
 
         Obs obs = new Obs(observer, type);
         active.observers.add(obs);
@@ -248,9 +245,9 @@ public final class Registrar {
 
     /**
      * Unregister a registered observer.
-     *
+     * 
      * @param obs the reference obtained from register()
-     *
+     * 
      * @return <code>true</code> iff the removal succeeded
      */
     public static boolean unregister(Object obs) {
