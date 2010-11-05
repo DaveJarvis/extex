@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package org.extex.framework.configuration.exception;
 /**
  * This exception is thrown when a dynamically loaded class signals an
  * instantiation exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -31,23 +31,11 @@ public class ConfigurationInstantiationException extends ConfigurationException 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2010L;
 
     /**
      * Creates a new object.
-     *
-     * @param message the message text
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationInstantiationException(String message,
-            Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Creates a new object.
-     *
+     * 
      * @param cause the next Throwable in the list
      */
     public ConfigurationInstantiationException(Throwable cause) {
@@ -56,20 +44,22 @@ public class ConfigurationInstantiationException extends ConfigurationException 
     }
 
     /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationInstantiationException.Text</tt>. The
-     * argument {0} is replaced by the message of the embedded cause as passed
-     * to the constructor.
-     *
+     * Getter for the text prefix of this ConfigException. The text is taken
+     * from the resource bundle <tt>ConfigurationEception</tt> under the key
+     * <tt>ConfigurationInstantiationException.Text</tt>. The argument {0} is
+     * replaced by the message of the embedded cause as passed to the
+     * constructor.
+     * 
      * @return the text
      */
     @Override
     protected String getText() {
 
+        Throwable cause = getCause();
+        String localizedMessage =
+                (cause == null ? "" : cause.getLocalizedMessage());
         return getLocalizer().format(
-            "ConfigurationInstantiationException.Text",
-            getCause().getLocalizedMessage());
+            "ConfigurationInstantiationException.Text", localizedMessage);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,7 @@ package org.extex.framework.configuration.exception;
  * This Exception is thrown when a configuration is requested with the path
  * <code>null</code>> or the empty string. Alternatively it can be used when
  * some other kind of configuration information is missing.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -32,34 +32,13 @@ public class ConfigurationIOException extends ConfigurationException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
-
-    /**
-     * Create a new object.
-     *
-     * @param message the message string
-     */
-    public ConfigurationIOException(String message) {
-
-        super(message, (String) null);
-    }
-
-    /**
-     * Create a new object.
-     *
-     * @param message the message string
-     * @param location the location of the IO configuration item
-     */
-    public ConfigurationIOException(String message, String location) {
-
-        super(message, location);
-    }
+    private static final long serialVersionUID = 2010L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param message message the message string
-     * @param cause the next Throwable in the list
+     * @param cause the next {@link Throwable} in the list
      */
     public ConfigurationIOException(String message, Throwable cause) {
 
@@ -67,16 +46,20 @@ public class ConfigurationIOException extends ConfigurationException {
     }
 
     /**
-     * Getter for the text prefix of this Exception.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationIOException.Text</tt>.
-     *
+     * Getter for the text prefix of this Exception. The text is taken from the
+     * resource bundle <tt>ConfigurationEception</tt> under the key
+     * <tt>ConfigurationIOException.Text</tt>.
+     * 
      * @return the text
      */
     @Override
     protected String getText() {
 
-        return getLocalizer().format("ConfigurationIOException.Text");
+        Throwable cause = getCause();
+        String localizedMessage =
+                (cause == null ? "" : cause.getLocalizedMessage());
+        return getLocalizer().format("ConfigurationIOException.Text",
+            localizedMessage);
     }
 
 }

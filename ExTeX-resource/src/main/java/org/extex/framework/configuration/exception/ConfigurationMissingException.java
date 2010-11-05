@@ -21,8 +21,8 @@ package org.extex.framework.configuration.exception;
 
 /**
  * This Exception is thrown when a configuration is requested with the path
- * <code>null</code> or the empty string. Alternatively it can be used when
- * some other kind of configuration information is missing.
+ * <code>null</code> or the empty string. Alternatively it can be used when some
+ * other kind of configuration information is missing.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,8 +30,7 @@ package org.extex.framework.configuration.exception;
 public class ConfigurationMissingException extends ConfigurationException {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -60,17 +59,6 @@ public class ConfigurationMissingException extends ConfigurationException {
 
         super(null, location);
         item = message;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param message message the message string
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationMissingException(String message, Throwable cause) {
-
-        super(message, cause);
     }
 
     /**

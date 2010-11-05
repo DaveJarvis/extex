@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,7 @@ package org.extex.framework.configuration.exception;
  * This exception is thrown when some other kind of Exception has been
  * encountered during configuration. The original Exception is contained as
  * cause in this exception.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -32,11 +32,11 @@ public class ConfigurationWrapperException extends ConfigurationException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2010L;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param cause the Exception causing the error
      */
     public ConfigurationWrapperException(Throwable cause) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,7 @@ import org.extex.framework.configuration.Configuration;
 
 /**
  * This exception is thrown when a dynamically loaded class could not be found.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -32,47 +32,47 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2010L;
 
     /**
-     * The field <tt>classname</tt> contains the name of the class which
-     * could not be found.
+     * The field <tt>className</tt> contains the name of the class which could
+     * not be found.
      */
-    private String classname = null;
+    private String className = null;
 
     /**
      * Creates a new object.
-     *
-     * @param aClassName the name of the class which could not be found
+     * 
+     * @param className the name of the class which could not be found
      */
-    public ConfigurationClassNotFoundException(String aClassName) {
+    public ConfigurationClassNotFoundException(String className) {
 
         super(null);
-        this.classname = aClassName;
+        this.className = className;
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param className the name of the class which could not be found
      * @param config the configuration in which the problem occurred or
-     * <code>null</code>
+     *        <code>null</code>
      */
     public ConfigurationClassNotFoundException(String className,
             Configuration config) {
 
         super(null, config.toString());
-        this.classname = className;
+        this.className = className;
     }
 
     /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationClassNotFoundException.Text</tt>. The
-     * argument {0} is replaced by the name of the missing class as passed
-     * to the constructor, or the message of the cause if no class name is
-     * present, or the empty string as final fallback.
-     *
+     * Getter for the text prefix of this ConfigException. The text is taken
+     * from the resource bundle <tt>ConfigurationEception</tt> under the key
+     * <tt>ConfigurationClassNotFoundException.Text</tt>. The argument {0} is
+     * replaced by the name of the missing class as passed to the constructor,
+     * or the message of the cause if no class name is present, or the empty
+     * string as final fallback.
+     * 
      * @return the text
      */
     @Override
@@ -80,11 +80,7 @@ public class ConfigurationClassNotFoundException extends ConfigurationException 
 
         return getLocalizer().format(
             "ConfigurationClassNotFoundException.Text",
-            (classname != null //
-                    ? classname //
-                    : getCause() != null
-                            ? getCause().getLocalizedMessage()
-                            : ""));
+            (className != null ? className : ""));
     }
 
 }

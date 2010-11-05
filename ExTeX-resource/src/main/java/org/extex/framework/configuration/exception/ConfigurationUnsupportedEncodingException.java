@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package org.extex.framework.configuration.exception;
 /**
  * This Exception is thrown when a configuration tries to use an unsupported
  * encoding.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,11 +33,11 @@ public class ConfigurationUnsupportedEncodingException
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2010L;
 
     /**
      * Create a new object.
-     *
+     * 
      * @param message the message string
      * @param source the the name of the file for which this exception occurred
      */
@@ -48,22 +48,10 @@ public class ConfigurationUnsupportedEncodingException
     }
 
     /**
-     * Creates a new object.
-     *
-     * @param message message the message string
-     * @param cause the next Throwable in the list
-     */
-    public ConfigurationUnsupportedEncodingException(String message,
-            Throwable cause) {
-
-        super(message, cause);
-    }
-
-    /**
-     * Getter for the text prefix of this ConfigException.
-     * The text is taken from the resource bundle <tt>ConfigurationEception</tt>
-     * under the key <tt>ConfigurationUnsupportedEncodingException.Text</tt>.
-     *
+     * Getter for the text prefix of this ConfigException. The text is taken
+     * from the resource bundle <tt>ConfigurationEception</tt> under the key
+     * <tt>ConfigurationUnsupportedEncodingException.Text</tt>.
+     * 
      * @return the text
      */
     @Override
