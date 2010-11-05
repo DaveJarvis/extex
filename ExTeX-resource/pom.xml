@@ -16,6 +16,10 @@
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -204,4 +208,10 @@
     </developer>
   </developers>
 
+  <licenses>
+    <license>
+      <name>GNU Library General Public License</name>
+      <url>LICENSE.html</url>
+    </license>
+  </licenses>
 </project>
