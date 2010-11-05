@@ -6,32 +6,176 @@
   <groupId>org.extex</groupId>
   <artifactId>ExTeX-resource</artifactId>
   <name>ExTeX resource component</name>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <description>
     These is the ExTeX resource component.
+    It contains several general purpose classes for dealing with components and resources.
   </description>
 
   <packaging>jar</packaging>
   <inceptionYear>2003</inceptionYear>
   <url>http://www.extex.org</url>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>project</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <organization>
+    <name>The ExTeX Group</name>
+    <url>http://www.extex.org</url>
+  </organization>
+
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/ExTeX-resource/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>extex</name>
+      <post>extex@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-devel</name>
+      <post>extex-devel@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
+    </mailingList>
+
+    <mailingList>
+      <name>extex-build@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-svn@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-bugs@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
+    </mailingList>
+  </mailingLists>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
 
   <reporting>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jxr-plugin</artifactId>
         <configuration>
-          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
+          <aggregate>true</aggregate>
         </configuration>
       </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-javadoc-plugin</artifactId>
+        <configuration>
+          <aggregate>true</aggregate>
+          <minmemory>32m</minmemory>
+          <maxmemory>512m</maxmemory>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+
+          <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
+          <headerLocation>ExTeX/LICENSE.txt</headerLocation>
+<! - -
+          <enableRulesSummary>false</enableRulesSummary>
+        </configuration>
+      </plugin>
+-->
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>findbugs-maven-plugin</artifactId>
+	<version>2.3.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-pmd-plugin</artifactId>
+	<configuration>
+	  <aggregate>true</aggregate>
+	  <targetJdk>1.5</targetJdk>
+	</configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>emma-maven-plugin</artifactId>
+        <inherited>true</inherited>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>taglist-maven-plugin</artifactId>
+        <configuration>
+          <tags>
+            <tag>TODO</tag>
+            <tag>@todo</tag>
+            <tag>FIXME</tag>
+          </tags>
+        </configuration>
+      </plugin>
+
+<!--
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-changelog-plugin</artifactId>
+        <version>2.1</version>
+        <configuration>
+          <type>range</type>
+          <range>90</range>
+        </configuration>
+      </plugin>
+-->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>jdepend-maven-plugin</artifactId>
+      </plugin>
+
     </plugins>
+
   </reporting>
 
   <developers>
