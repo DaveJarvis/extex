@@ -144,9 +144,7 @@ public class ConfigurationInvalidClassExceptionTest {
     };
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -160,9 +158,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizer()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizer() {
@@ -174,9 +170,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationInvalidClassException#getMesssage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetMessage1() {
@@ -188,9 +182,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationInvalidClassException#getMesssage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetMessage2() {
@@ -202,9 +194,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource() {
@@ -216,9 +206,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText0() {
@@ -231,9 +219,7 @@ public class ConfigurationInvalidClassExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText1() {

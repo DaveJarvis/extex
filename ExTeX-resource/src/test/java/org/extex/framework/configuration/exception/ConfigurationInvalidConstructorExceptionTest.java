@@ -143,9 +143,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     };
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test(expected = NullPointerException.class)
     public void test1() {
@@ -154,9 +152,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage1() {
@@ -170,9 +166,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizer()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizer() {
@@ -183,9 +177,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource() {
@@ -196,9 +188,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationInvalidConstructorException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText1() {
@@ -211,9 +201,7 @@ public class ConfigurationInvalidConstructorExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationInvalidConstructorException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText2() {

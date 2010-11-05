@@ -144,9 +144,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     };
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test(expected = NullPointerException.class)
     public void test1() {
@@ -155,9 +153,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage0() {
@@ -169,9 +165,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage1() {
@@ -184,9 +178,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage4() {
@@ -199,9 +191,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizer()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizer() {
@@ -212,9 +202,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource() {
@@ -225,9 +213,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText1() {
@@ -239,9 +225,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText2() {
@@ -253,9 +237,7 @@ public class ConfigurationNoSuchMethodExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText3() {

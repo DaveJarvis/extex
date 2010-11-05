@@ -36,9 +36,7 @@ import org.junit.Test;
 public class ConfigurationWrapperExceptionTest {
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -51,9 +49,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizer()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizer() {
@@ -65,9 +61,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationWrapperException#getMesssage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetMessage1() {
@@ -79,9 +73,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationWrapperException#getMesssage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetMessage2() {
@@ -93,9 +85,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource1() {
@@ -107,9 +97,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource2() {
@@ -121,9 +109,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText1() {
@@ -135,9 +121,7 @@ public class ConfigurationWrapperExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText2() {

@@ -36,9 +36,7 @@ import org.junit.Test;
 public class ConfigurationInvalidResourceExceptionTest {
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizedMessage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizedMessage() {
@@ -52,9 +50,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getLocalizer()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetLocalizer() {
@@ -66,9 +62,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationInvalidResourceException#getMesssage()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetMessage() {
@@ -80,9 +74,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getSource()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetSource() {
@@ -94,9 +86,7 @@ public class ConfigurationInvalidResourceExceptionTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.configuration.exception.ConfigurationException#getText()}
-     * .
+     * <testcase> ... </testcase>
      */
     @Test
     public void testGetText() {
