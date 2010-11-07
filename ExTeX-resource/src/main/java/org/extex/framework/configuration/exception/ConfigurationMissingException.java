@@ -67,7 +67,7 @@ public class ConfigurationMissingException extends ConfigurationException {
      * from the resource bundle <tt>ConfigurationEception</tt> under the key
      * <tt>ConfigurationMissingException.Text</tt> or
      * <tt>ConfigurationMissingException.Text0</tt>. The latter is used if the
-     * item is <code>null<code>.
+     * item is <code>null</code>.
      * 
      * @return the text
      */
