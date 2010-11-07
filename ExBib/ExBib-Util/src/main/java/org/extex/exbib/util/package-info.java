@@ -22,5 +22,5 @@
  *
  */
 
-package org.extex.exbib.main;
+package org.extex.exbib.util;
 

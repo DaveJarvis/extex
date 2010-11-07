@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -44,15 +44,8 @@ public class ExBibI18NTest {
     private static final String STYLE_DIR = "src/test/resources/bibtex/base";
 
     /**
-     * Creates a new object.
-     */
-    public ExBibI18NTest() {
-
-        super();
-    }
-
-    /**
-     * <testcase> ... </testcase>
+     * <testcase> Check that some greek characters encoded as UTF-8 are
+     * processed correctly. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -60,12 +53,14 @@ public class ExBibI18NTest {
     public void testGreek() throws Exception {
 
         File data =
-                BibTester.makeFile("target/data.bib", "UTF-8", //
-                    "@Book{ aristotle,\n" //
-                            + "  author =       {Aριστoτέλης},\n"
-                            + "  title =        {title},\n"
-                            + "  publisher =    {publisher},\n"
-                            + "  year =         {year}\n" + "}\n" + "");
+                BibTester
+                    .makeFile("target/data.bib",
+                        "UTF-8", //
+                        "@Book{ aristotle,\n" //
+                                + "  author =       {A\u03c1\u03b9\u03c3\u03c4o\u03c4\u03ad\u03bb\u03b7\u03c2},\n"
+                                + "  title =        {title},\n"
+                                + "  publisher =    {publisher},\n"
+                                + "  year =         {year}\n" + "}\n" + "");
         File aux = BibTester.makeFile("test.aux", "ISO-8859-1", //
             "\\relax\n" //
                     + "\\citation{*}\n" //

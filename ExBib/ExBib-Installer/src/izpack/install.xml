@@ -23,7 +23,7 @@
 <installation version="1.0">
   <info>
     <appname>ExBib</appname>
-    <appversion>0.1-SNAPSHOT</appversion>
+    <appversion>0.1</appversion>
     <authors>
       <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
     </authors>
@@ -87,13 +87,13 @@
       <parsable targetfile="$INSTALL_PATH/bin/win32/exbib.bat"/>
       <executable targetfile="$INSTALL_PATH/bin/win32exbib.bat"/>
 
-      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.1-SNAPSHOT.jar"
+      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
-      <file src="../../../ExBib-core/target/ExBib-core-0.1-SNAPSHOT.jar"
+      <file src="../../../ExBib-core/target/ExBib-core-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
-      <file src="../../../ExBib-Main/target/ExBib-Main-0.1-SNAPSHOT.jar"
+      <file src="../../../ExBib-Main/target/ExBib-Main-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
-      <file src="../../../../CLI/target/CLI-0.1-SNAPSHOT.jar"
+      <file src="../../../../CLI/target/CLI-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -110,7 +110,7 @@
       <parsable targetfile="$INSTALL_PATH/bin/win32/exbibutil.bat"/>
       <executable targetfile="$INSTALL_PATH/bin/win32/exbibutil.bat"/>
 
-      <file src="../../../ExBib-Util/target/ExBib-Util-0.1-SNAPSHOT.jar"
+      <file src="../../../ExBib-Util/target/ExBib-Util-0.1.jar"
             targetdir="$INSTALL_PATH/doc"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -126,7 +126,7 @@
           id="exbib-styles"
           required="no">
       <description/>
-      <file src="../../../ExBib-texmf/target/ExBib-texmf-0.1-SNAPSHOT.jar"
+      <file src="../../../ExBib-texmf/target/ExBib-texmf-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -136,7 +136,7 @@
           preselected="no">
       <depends packname="ExBib Core"/>
       <description/>
-      <file src="../../../ExBib-ant/target/ExBib-ant-0.1-SNAPSHOT.jar"
+      <file src="../../../ExBib-ant/target/ExBib-ant-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -146,7 +146,7 @@
           preselected="no">
       <depends packname="ExBib Core"/>
       <description/>
-      <file    src="../../../ExBib-bsf/target/ExBib-bsf-0.1-SNAPSHOT.jar"
+      <file    src="../../../ExBib-bsf/target/ExBib-bsf-0.1.jar"
                targetdir="$INSTALL_PATH/lib"/>
       <fileset dir="../../../ExBib-bsf/target/dependency"
                targetdir="$INSTALL_PATH/lib"/>
@@ -158,11 +158,11 @@
           preselected="no">
       <depends packname="ExBib BSF"/>
       <description/>
-      <file    src="../../../ExBib-groovy/target/ExBib-groovy-0.1-SNAPSHOT.jar"
+      <file    src="../../../ExBib-groovy/target/ExBib-groovy-0.1.jar"
                targetdir="$INSTALL_PATH/lib"/>
       <fileset dir="../../../ExBib-groovy/target/dependency"
                targetdir="$INSTALL_PATH/lib"/>
-      <file    src="../../../ExBib-bst2gy/target/ExBib-bst2gy-0.1-SNAPSHOT.jar"
+      <file    src="../../../ExBib-bst2gy/target/ExBib-bst2gy-0.1.jar"
                targetdir="$INSTALL_PATH/lib"/>
     </pack>
     <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
@@ -172,7 +172,7 @@
           preselected="no">
       <depends packname="ExBib BSF"/>
       <description/>
-      <file    src="../../../ExBib-jython/target/ExBib-jython-0.1-SNAPSHOT.jar"
+      <file    src="../../../ExBib-jython/target/ExBib-jython-0.1.jar"
                targetdir="$INSTALL_PATH/lib"/>
       <fileset dir="../../../ExBib-jython/target/dependency"
                targetdir="$INSTALL_PATH/lib"/>

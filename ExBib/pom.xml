@@ -4,7 +4,7 @@
   <groupId>org.extex</groupId>
   <artifactId>ExBib</artifactId>
   <packaging>pom</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <name>ExBib</name>
   <inceptionYear>2007</inceptionYear>
   <url>http://www.extex.org</url>
@@ -20,6 +20,10 @@
     <url>http://www.extex.org</url>
   </organization>
 
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+  </properties>
+
   <scm>
     <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</connection>
     <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</developerConnection>
@@ -30,14 +34,6 @@
     <system>Berlios Bugs</system>
     <url>http://developer.berlios.de/bugs/?group_id=1915</url>
   </issueManagement>
-
-  <licenses>
-    <license>
-      <name>GNU Lesser General Public License</name>
-      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
 
   <mailingLists>
     <mailingList>
@@ -102,7 +98,7 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.8.1</version>
+      <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
@@ -119,6 +115,16 @@
         <artifactId>ExBib-Main</artifactId>
         <version>${project.version}</version>
       </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>CLI</artifactId>
+        <version>[0.1,)</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-resource</artifactId>
+        <version>[0.1,)</version>
+      </dependency>
     </dependencies>
   </dependencyManagement>
 
@@ -128,12 +134,15 @@
    <module>ExBib-bsf</module>
    <module>ExBib-groovy</module>
    <module>ExBib-bst2gy</module>
+   <module>ExBib-jacl</module>
    <module>ExBib-jython</module>
    <module>ExBib-ant</module>
 <!--   <module>ExBib-doc</module> -->
    <module>ExBib-texmf</module>
    <module>ExBib-Util</module>
    <module>ExBib-Installer</module>
+   <module>../CLI</module>
+   <module>../ExTeX-resource</module>
   </modules>
 
   <build>
@@ -179,6 +188,12 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-project-info-reports-plugin</artifactId>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>emma-maven-plugin</artifactId>
+        <inherited>true</inherited>
       </plugin>
 
       <plugin>
@@ -264,7 +279,16 @@
       </plugin>
 
     </plugins>
-
   </reporting>
 
+  <licenses>
+    <license>
+      <name>GNU Library General Public License</name>
+      <url>LICENSE.html</url>
+    </license>
+    <license>
+      <name>GNU Free Documentation License</name>
+      <url>ExBib-doc/LICENSE.html</url>
+    </license>
+  </licenses>
 </project>

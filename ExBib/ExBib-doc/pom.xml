@@ -6,10 +6,10 @@
   <artifactId>ExBib-doc</artifactId>
   <name>ExBib Documentation</name>
   <description>
-    This is the ExBib documentation. It contains the ExBiB Reference Manual.
+    This is the ExBib documentation. It contains the ExBib Reference Manual.
   </description>
 
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
@@ -22,7 +22,7 @@
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -30,7 +30,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
@@ -79,4 +79,10 @@
     </developer>
   </developers>
 
+  <licenses>
+    <license>
+      <name>GNU Free Documentation License</name>
+      <url>LICENSE.html</url>
+    </license>
+  </licenses>
 </project>

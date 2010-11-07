@@ -56,6 +56,6 @@ esac
 
 exec $JAVA_HOME/bin/java $EXTEX_JAVA_OPTS \
     -classpath "$LOCALCLASSPATH" \
-    org.extex.exbib.main.ExBibUtilMain --prog=`basename $0` $*
+    org.extex.exbib.util.ExBibUtilMain --prog=`basename $0` $*
 
 #

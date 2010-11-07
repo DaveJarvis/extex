@@ -19,7 +19,7 @@
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -32,6 +32,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
+      <version>0.1</version>
     </dependency>
 
     <dependency>

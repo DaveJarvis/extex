@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.exbib.main;
+package org.extex.exbib.util;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -31,6 +31,7 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import org.extex.cli.CLI;
+import org.extex.exbib.util.ExBibUtilMain;
 
 /**
  * This is a tester for {@link ExBibUtilMain}.

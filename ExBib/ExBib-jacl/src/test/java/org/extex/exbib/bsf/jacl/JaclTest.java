@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -38,6 +38,7 @@ import java.util.logging.StreamHandler;
 import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.core.ExBib;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -72,6 +73,7 @@ public class JaclTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test1() throws Exception {
 
         String tcl = "target/test.tcl";
@@ -107,8 +109,8 @@ public class JaclTest {
             System.err.flush();
             assertEquals("", errStream.toString().replaceAll("\r", ""));
             assertTrue("ExBib.run() failed", code);
-            assertEquals("[@book{abc,...}]\n", outStream.toString().replaceAll(
-                "\r", ""));
+            assertEquals("[@book{abc,...}]\n",
+                outStream.toString().replaceAll("\r", ""));
         } finally {
             System.setOut(out);
             new File(aux).delete();

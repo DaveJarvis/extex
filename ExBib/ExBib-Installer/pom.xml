@@ -7,10 +7,10 @@
   <name>ExBib install system</name>
   <description>
     This is the ExBib install system. It creates a GUI installer for ExBib and
-    related packages after the Maven `package' phase. 
+    related packages in the Maven `package' phase. 
   </description>
 
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
@@ -18,7 +18,7 @@
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
-    <version>0.1-SNAPSHOT</version>
+    <version>0.1</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 
@@ -27,43 +27,43 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Util</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-ant</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-bsf</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-groovy</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-jython</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
     </dependency>
 
     <dependency>
