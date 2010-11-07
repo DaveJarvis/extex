@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,9 +45,8 @@ import org.extex.resource.io.NamedInputStream;
  * present in a texmf tree. For this purpose the <tt>ls-R</tt> file databases
  * found are read and stored internally.
  * 
- * <h2>Configuration</h2>
- * The lsr finder can be configured to influence its actions. The following
- * example shows a configuration for a lsr finder:
+ * <h2>Configuration</h2> The lsr finder can be configured to influence its
+ * actions. The following example shows a configuration for a lsr finder:
  * 
  * <pre>
  * &lt;Finder class=&quot;de.dante.util.resource.LsrFinder&quot;
@@ -71,36 +70,34 @@ import org.extex.resource.io.NamedInputStream;
  * file databases have a fixed name <tt>ls-R</tt>.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case
- * the value is ignored and the value is taken from the property named in the
+ * <tt>path</tt> can carry the attribute <tt>property</tt>. In this case the
+ * value is ignored and the value is taken from the property named in the
  * attribute. Otherwise the value of the tag is taken as path. The value taken
  * from the property can contain several paths. They are separated by the
  * separator specified for the platform. For instance on windows the separator
  * <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
- * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the
- * value is ignored and the value is taken from the environment variable named
- * in the attribute. Otherwise the value of the tag is taken as path. The value
- * taken from the environment variable can contain several paths. They are
- * separated by the separator specified for the platform. For instance on
- * windows the separator <tt>;</tt> is used and on Unix the separator
- * <tt>:</tt> is used.
+ * <tt>path</tt> can carry the attribute <tt>env</tt>. In this case the value is
+ * ignored and the value is taken from the environment variable named in the
+ * attribute. Otherwise the value of the tag is taken as path. The value taken
+ * from the environment variable can contain several paths. They are separated
+ * by the separator specified for the platform. For instance on windows the
+ * separator <tt>;</tt> is used and on Unix the separator <tt>:</tt> is used.
  * </p>
  * <p>
  * To find a resource its type is used to find the appropriate parameters for
  * the search. If the sub-configuration with the name of the type exists then
  * this sub-configuration is used. For instance if the resource <tt>tex</tt>
- * with the type <tt>fmt</tt> is sought then the sub-configuration
- * <tt>fmt</tt> determines how to find this file.
+ * with the type <tt>fmt</tt> is sought then the sub-configuration <tt>fmt</tt>
+ * determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
  * <tt>default</tt> is used to find the default sub-configuration. In the
  * example given above this default configuration is called <tt>default</tt>.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is
- * mandatory.
+ * another existing configuration. The attribute <tt>default</tt> is mandatory.
  * </p>
  * <p>
  * Each sub-configuration takes the <tt>extension</tt> in arbitrary number.
@@ -112,17 +109,17 @@ import org.extex.resource.io.NamedInputStream;
  * input stream to this file is used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions
- * in the log file. The tracing is performed only if a logger is present when
+ * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
  * <tt>trace</tt> is optional.
  * </p>
  * <p>
- * The attribute <tt>capacity</tt> can be used to configure the initial
- * capacity of the internal cache for the file database. If this number is less
- * than one than an internal default is used. This value should be larger than
- * the number of files expected for best performance. The attribute
- * <tt>capacity</tt> is optional.
+ * The attribute <tt>capacity</tt> can be used to configure the initial capacity
+ * of the internal cache for the file database. If this number is less than one
+ * than an internal default is used. This value should be larger than the number
+ * of files expected for best performance. The attribute <tt>capacity</tt> is
+ * optional.
  * </p>
  * 
  * 
@@ -204,6 +201,8 @@ public class LsrFinder extends AbstractFinder
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
@@ -267,8 +266,8 @@ public class LsrFinder extends AbstractFinder
                             try {
                                 InputStream stream = new FileInputStream(file);
                                 trace("Found", file.toString(), null, null);
-                                return new NamedInputStream(stream, file
-                                    .toString());
+                                return new NamedInputStream(stream,
+                                    file.toString());
                             } catch (FileNotFoundException e) {
                                 // ignore unreadable files
                                 // this should not happen since it has been
@@ -363,13 +362,13 @@ public class LsrFinder extends AbstractFinder
                 if (c == '%') {
                     do {
                         c = in.read();
-                    } while (c >= 0 && c != 10 && c != 13);
+                    } while (c >= 0 && c != '\r' && c != '\n');
                 } else if (c >= ' ') {
                     StringBuilder line = new StringBuilder();
                     do {
                         line.append((char) c);
                         c = in.read();
-                    } while (c >= 0 && c != 10 && c != 13);
+                    } while (c >= 0 && c != '\r' && c != '\n');
                     int len = line.length();
                     if (len != 0) {
                         if (line.charAt(len - 1) == ':') {
@@ -432,7 +431,7 @@ public class LsrFinder extends AbstractFinder
         } catch (FileNotFoundException e) {
             throw new ConfigurationWrapperException(e);
         } catch (IOException e) {
-            throw new ConfigurationIOException(null, e);
+            throw new ConfigurationIOException(e);
         }
 
         trace("DatabaseLoaded", file.toString(), //
@@ -460,8 +459,7 @@ public class LsrFinder extends AbstractFinder
      * 
      * @param prop the new properties
      * 
-     * @see org.extex.resource.PropertyAware#setProperties(
-     *      java.util.Properties)
+     * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties prop) {
 

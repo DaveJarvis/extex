@@ -66,7 +66,7 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
     public MultiConfigurationIterator(Configuration[] theConfigs, String theKey)
             throws ConfigurationException {
 
-        this.configs = theConfigs;
+        this.configs = theConfigs.clone();
         this.key = theKey;
 
         if (theConfigs.length > 0) {

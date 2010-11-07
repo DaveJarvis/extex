@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,7 +52,6 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
      */
     public ResourceFinderList() {
 
-        super();
         this.parent = this;
     }
 
@@ -121,8 +120,7 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
      * 
      * @param theParent the parent finder for recursive invocation
      * 
-     * @see org.extex.resource.RecursiveFinder#setParent(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.RecursiveFinder#setParent(org.extex.resource.ResourceFinder)
      */
     public void setParent(ResourceFinder theParent) {
 
@@ -134,6 +132,8 @@ public class ResourceFinderList extends ArrayList<ResourceFinder>
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

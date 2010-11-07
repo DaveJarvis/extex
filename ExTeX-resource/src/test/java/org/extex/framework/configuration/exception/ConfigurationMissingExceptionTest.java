@@ -33,18 +33,31 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
  */
-public class ConfigurationIOExceptionTest {
+public class ConfigurationMissingExceptionTest {
 
     /**
      * <testcase> ... </testcase>
      */
     @Test
-    public void testGetLocalizedMessage() {
+    public void testGetLocalizedMessage1() {
 
-        ConfigurationIOException e =
-                new ConfigurationIOException(new Exception("abc"));
+        ConfigurationMissingException e =
+                new ConfigurationMissingException("abc", "def");
         Locale.setDefault(Locale.ENGLISH);
-        assertEquals("I/O error abc\n\tcaused by abc", e.getLocalizedMessage());
+        assertEquals("Missing configuration abc in def",
+            e.getLocalizedMessage());
+    }
+
+    /**
+     * <testcase> ... </testcase>
+     */
+    @Test
+    public void testGetLocalizedMessage2() {
+
+        ConfigurationMissingException e =
+                new ConfigurationMissingException("abc");
+        Locale.setDefault(Locale.ENGLISH);
+        assertEquals("Missing configuration abc", e.getLocalizedMessage());
     }
 
     /**
@@ -53,7 +66,8 @@ public class ConfigurationIOExceptionTest {
     @Test
     public void testGetLocalizer() {
 
-        ConfigurationIOException e = new ConfigurationIOException(null);
+        ConfigurationMissingException e =
+                new ConfigurationMissingException(null, "def");
         Locale.setDefault(Locale.ENGLISH);
         assertNotNull(e.getLocalizer());
     }
@@ -64,7 +78,8 @@ public class ConfigurationIOExceptionTest {
     @Test
     public void testGetMessage1() {
 
-        ConfigurationIOException e = new ConfigurationIOException(null);
+        ConfigurationMissingException e =
+                new ConfigurationMissingException(null, "def");
         Locale.setDefault(Locale.ENGLISH);
         assertNull(e.getMessage());
     }
@@ -75,8 +90,8 @@ public class ConfigurationIOExceptionTest {
     @Test
     public void testGetMessage2() {
 
-        ConfigurationIOException e =
-                new ConfigurationIOException(new Exception("abc"));
+        ConfigurationMissingException e =
+                new ConfigurationMissingException(null, "def");
         Locale.setDefault(Locale.ENGLISH);
         assertEquals(null, e.getMessage());
     }
@@ -85,23 +100,24 @@ public class ConfigurationIOExceptionTest {
      * <testcase> ... </testcase>
      */
     @Test
-    public void testGetSource1() {
+    public void testGetSource() {
 
-        ConfigurationIOException e = new ConfigurationIOException(null);
+        ConfigurationMissingException e =
+                new ConfigurationMissingException(null, "def");
         Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
+        assertEquals("def", e.getSource());
     }
 
     /**
      * <testcase> ... </testcase>
      */
     @Test
-    public void testGetSource2() {
+    public void testGetText0() {
 
-        ConfigurationIOException e =
-                new ConfigurationIOException(new Exception("abc"));
+        ConfigurationMissingException e =
+                new ConfigurationMissingException(null, "def");
         Locale.setDefault(Locale.ENGLISH);
-        assertNull(e.getSource());
+        assertEquals("Missing configuration", e.getText());
     }
 
     /**
@@ -110,21 +126,10 @@ public class ConfigurationIOExceptionTest {
     @Test
     public void testGetText1() {
 
-        ConfigurationIOException e = new ConfigurationIOException(null);
+        ConfigurationMissingException e =
+                new ConfigurationMissingException("abc", "def");
         Locale.setDefault(Locale.ENGLISH);
-        assertEquals("I/O error ", e.getText());
-    }
-
-    /**
-     * <testcase> ... </testcase>
-     */
-    @Test
-    public void testGetText2() {
-
-        ConfigurationIOException e =
-                new ConfigurationIOException(new Exception("abc"));
-        Locale.setDefault(Locale.ENGLISH);
-        assertEquals("I/O error abc", e.getText());
+        assertEquals("Missing configuration abc", e.getText());
     }
 
 }

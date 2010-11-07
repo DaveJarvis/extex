@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -56,9 +56,10 @@ import java.util.List;
  * Finally, before an object is deserialized, the interested parties should
  * register an observer at the {@link Registrar Registrar}.
  * </p>
- * </p> Note that the registrar has to be implemented as a static singleton
- * since readResolve() does not provide any means to pass a reference to some
- * other object to it.
+ * <p>
+ * Note that the registrar has to be implemented as a static singleton since
+ * readResolve() does not provide any means to pass a reference to some other
+ * object to it.
  * <p>
  * 
  * 
@@ -93,7 +94,6 @@ public final class Registrar {
          */
         public Obs(RegistrarObserver observer, Class<?> type) {
 
-            super();
             this.type = type;
             this.observer = observer;
         }

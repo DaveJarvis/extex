@@ -26,6 +26,8 @@ import static org.junit.Assert.assertNotNull;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
+import java.util.Iterator;
+import java.util.List;
 import java.util.Locale;
 
 import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
@@ -45,6 +47,114 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ConfigurationFactoryTest {
+
+    public class Xxx implements Configuration {
+
+        public Xxx() {
+
+            super();
+        }
+
+        public Xxx(String resource) {
+
+            super();
+        }
+
+        @Override
+        public Configuration findConfiguration(String key)
+                throws ConfigurationInvalidResourceException,
+                    ConfigurationNotFoundException,
+                    ConfigurationSyntaxException,
+                    ConfigurationIOException {
+
+            return null;
+        }
+
+        @Override
+        public Configuration findConfiguration(String key, String attribute)
+                throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public String getAttribute(String name) {
+
+            return null;
+        }
+
+        @Override
+        public Configuration getConfiguration(String key)
+                throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public Configuration getConfiguration(String key, String attribute)
+                throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public String getValue() throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public String getValue(String key) throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public int getValueAsInteger(String key, int defaultValue)
+                throws ConfigurationException {
+
+            return 0;
+        }
+
+        @Override
+        public void getValues(List<String> list, String key) {
+
+        }
+
+        @Override
+        public List<String> getValues(String key) {
+
+            return null;
+        }
+
+        @Override
+        public Iterator<Configuration> iterator() throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public Iterator<Configuration> iterator(String key)
+                throws ConfigurationException {
+
+            return null;
+        }
+
+        @Override
+        public void setConfigurationLoader(ConfigurationLoader loader) {
+
+        }
+    }
+
+    public class Yyy extends Xxx {
+
+        public Yyy(String resource) {
+
+            super(resource);
+            throw new NullPointerException();
+        }
+
+    }
 
     /**
      * Creates a new object.
@@ -91,7 +201,7 @@ public class ConfigurationFactoryTest {
      * <testcase> Test that an invalid configuration leads to an appropriate
      * error message. </testcase>
      * 
-     * Note: Redirecting the Error stream is neccesary to get rid of irritating
+     * Note: Redirecting the Error stream is necessary to get rid of irritating
      * messages on stderr.
      */
     @Test(expected = ConfigurationSyntaxException.class)
@@ -176,51 +286,42 @@ public class ConfigurationFactoryTest {
     }
 
     /**
+     * <testcase> Test that a valid configuration is loaded. </testcase>
+     * 
+     * @throws ConfigurationException in case of an error
+     */
+    @Test(expected = ConfigurationInvalidResourceException.class)
+    public void testNewInstance14() throws ConfigurationException {
+
+        System.setProperty("Util.Configuration.class",
+            XmlConfiguration.class.getName());
+        ConfigurationFactory.newInstance(null);
+    }
+
+    /**
      * <testcase> Test that an invalid class leads to an error. </testcase>
      * 
      * @throws ConfigurationException in case of an error
      */
     @Test(expected = ConfigurationInstantiationException.class)
-    public void testNewInstance14() throws ConfigurationException {
+    public void testNewInstance15() throws ConfigurationException {
 
-        class Xxx extends XmlConfiguration {
-
-            /**
-             * Creates a new object.
-             * 
-             * @param resource
-             * @throws ConfigurationInvalidResourceException
-             * @throws ConfigurationNotFoundException
-             * @throws ConfigurationSyntaxException
-             * @throws ConfigurationIOException
-             */
-            public Xxx(String resource)
-                    throws ConfigurationInvalidResourceException,
-                        ConfigurationNotFoundException,
-                        ConfigurationSyntaxException,
-                        ConfigurationIOException {
-
-                super(resource);
-                throw new NullPointerException();
-            }
-
-        }
         System.setProperty("Util.Configuration.class", Xxx.class.getName());
         ConfigurationFactory
             .newInstance("org/extex/framework/configuration/Configuration.xml");
     }
 
     /**
-     * <testcase> Test that a valid configuration is loaded. </testcase>
+     * <testcase> Test that an invalid class leads to an error. </testcase>
      * 
      * @throws ConfigurationException in case of an error
      */
-    @Test(expected = ConfigurationInvalidResourceException.class)
-    public void testNewInstance15() throws ConfigurationException {
+    @Test(expected = ConfigurationInstantiationException.class)
+    public void testNewInstance16() throws ConfigurationException {
 
-        System.setProperty("Util.Configuration.class",
-            XmlConfiguration.class.getName());
-        ConfigurationFactory.newInstance(null);
+        System.setProperty("Util.Configuration.class", Yyy.class.getName());
+        ConfigurationFactory
+            .newInstance("org/extex/framework/configuration/Configuration.xml");
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -223,6 +223,8 @@ public class UrlFinder extends AbstractFinder
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
@@ -372,6 +374,8 @@ public class UrlFinder extends AbstractFinder
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
     public void setProperties(Properties properties) {

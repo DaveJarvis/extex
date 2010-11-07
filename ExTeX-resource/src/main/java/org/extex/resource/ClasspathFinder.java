@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,8 +32,10 @@ import org.extex.resource.io.NamedInputStream;
  * path. Thus it is possible to find resources inside a jar archive.
  * 
  * <h2>Configuration</h2>
+ * <p>
  * The resource finder can be configured to influence its actions. The following
  * example shows a configuration for a resource finder:
+ * </p>
  * 
  * <pre>
  * &lt;Finder class="org.extex.util.resource.ClasspathFinder"
@@ -57,29 +59,27 @@ import org.extex.resource.io.NamedInputStream;
  * Whenever a resource is sought its type is used to find the appropriate
  * parameters for the search. If the sub-configuration with the name of the type
  * exists then this sub-configuration is used. For instance if the resource
- * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the
- * sub-configuration <tt>fmt</tt> determines how to find this file.
+ * <tt>tex</tt> with the type <tt>fmt</tt> is sought then the sub-configuration
+ * <tt>fmt</tt> determines how to find this file.
  * </p>
  * <p>
  * If no sub-configuration of the given type is present then the attribute
  * <tt>default</tt> is used to find the default sub-configuration. In the
  * example given above this default configuration is called <tt>default</tt>.
  * Nevertheless it would also be possible to point the default configuration to
- * another existing configuration. The attribute <tt>default</tt> is
- * mandatory.
+ * another existing configuration. The attribute <tt>default</tt> is mandatory.
  * </p>
  * <p>
- * Each sub-configuration takes the tag <tt>extension</tt> in arbitrary
- * number. <tt>extension</tt> contains the extension appended after the
- * resource name.
+ * Each sub-configuration takes the tag <tt>extension</tt> in arbitrary number.
+ * <tt>extension</tt> contains the extension appended after the resource name.
  * </p>
  * <p>
  * All combinations of resource name and extension are tried in turn. If one
  * combination leads to a readable input stream then it is used.
  * </p>
  * <p>
- * The attribute <tt>trace</tt> can be used to force a tracing of the actions
- * in the log file. The tracing is performed only if a logger is present when
+ * The attribute <tt>trace</tt> can be used to force a tracing of the actions in
+ * the log file. The tracing is performed only if a logger is present when
  * needed. The tracing flag can be overwritten at run-time. The attribute
  * <tt>trace</tt> is optional.
  * </p>
@@ -104,7 +104,9 @@ public class ClasspathFinder extends AbstractFinder {
     }
 
     /**
-     * @see org.extex.resource.ResourceFinder#findResource( java.lang.String,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
     public NamedInputStream findResource(String name, String type)

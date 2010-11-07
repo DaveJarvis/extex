@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package org.extex.resource;
 import java.util.Map;
 
 /**
- * This interface descries the ability to receive an environment.
+ * This interface describes the ability to receive an environment.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 6802 $
@@ -34,6 +34,6 @@ public interface EnvironmentAware {
      * 
      * @param environment the environment
      */
-    public void setEnvironment(Map<String, String> environment);
+    void setEnvironment(Map<String, String> environment);
 
 }

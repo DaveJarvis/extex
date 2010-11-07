@@ -51,6 +51,16 @@ public class ConfigurationNotFoundException extends ConfigurationException {
     }
 
     /**
+     * Getter for configName.
+     * 
+     * @return the configName
+     */
+    public String getConfigName() {
+
+        return configName;
+    }
+
+    /**
      * Getter for the text prefix of this
      * {@link org.extex.framework.configuration.exception.ConfigurationException
      * ConfigurationException}. The text is taken from the resource bundle

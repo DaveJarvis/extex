@@ -16,8 +16,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some classes and interfaces for dealing with
+ * This package contains some classes and interfaces for dealing with the
  * configuration of components.
  */
 
 package org.extex.framework.configuration;
+

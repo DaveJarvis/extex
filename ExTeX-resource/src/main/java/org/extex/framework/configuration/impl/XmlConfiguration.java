@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -68,14 +68,13 @@ public class XmlConfiguration implements Configuration {
          */
         protected ConfigIterator(Node node) {
 
-            super();
             this.node = node;
         }
 
         /**
          * Returns <tt>true</tt> if the iteration has more elements. (In other
-         * words, returns <tt>true</tt> if <tt>next</tt> would return an
-         * element rather than throwing an exception.)
+         * words, returns <tt>true</tt> if <tt>next</tt> would return an element
+         * rather than throwing an exception.)
          * 
          * @return <tt>true</tt> if the iterator has more elements.
          * 
@@ -143,10 +142,9 @@ public class XmlConfiguration implements Configuration {
     private static final String[] PATHS = {"config/", ""};
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2010L;
 
     /**
      * Recursively collect the Xpath from the root to the given node.
@@ -154,7 +152,7 @@ public class XmlConfiguration implements Configuration {
      * @param sb the output string buffer
      * @param node the node to start with
      */
-    private static void toString(StringBuffer sb, Node node) {
+    private static void toString(StringBuilder sb, Node node) {
 
         if (node == null) {
             return;
@@ -172,8 +170,8 @@ public class XmlConfiguration implements Configuration {
      */
     // private ConfigurationLoader loader = null;
     /**
-     * The field <tt>base</tt> contains the base of the resource name; i.e.
-     * the resource up to the last slash or the empty string if no slash is
+     * The field <tt>base</tt> contains the base of the resource name; i.e. the
+     * resource up to the last slash or the empty string if no slash is
      * contained.
      */
     private String base;
@@ -189,8 +187,7 @@ public class XmlConfiguration implements Configuration {
     private String resource;
 
     /**
-     * The field <tt>root</tt> contains the root element for this
-     * configuration.
+     * The field <tt>root</tt> contains the root element for this configuration.
      */
     private Element root;
 
@@ -204,7 +201,6 @@ public class XmlConfiguration implements Configuration {
      */
     private XmlConfiguration(Element root, String base, String resource) {
 
-        super();
         this.root = root;
         this.base = base;
         this.resource = resource;
@@ -244,7 +240,6 @@ public class XmlConfiguration implements Configuration {
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        super();
         readConfiguration(stream, resource, "");
     }
 
@@ -300,8 +295,6 @@ public class XmlConfiguration implements Configuration {
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        super();
-
         if (resource == null || resource.equals("")) {
             throw new ConfigurationInvalidResourceException();
         }
@@ -332,8 +325,8 @@ public class XmlConfiguration implements Configuration {
      * </pre>
      * 
      * <p>
-     * Then <tt>findConfiguration("abc")</tt> returns a new XMLConfig rooted
-     * at abc.
+     * Then <tt>findConfiguration("abc")</tt> returns a new XMLConfig rooted at
+     * abc.
      * </p>
      * <p>
      * If there are more than one tags with the same name then the first one is
@@ -357,8 +350,7 @@ public class XmlConfiguration implements Configuration {
      *         the resource
      * 
      * @see #getConfiguration(java.lang.String)
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
     public Configuration findConfiguration(String name)
             throws ConfigurationInvalidResourceException,
@@ -442,8 +434,9 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getAttribute(
-     *      java.lang.String)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
     public String getAttribute(String name) {
 
@@ -583,6 +576,8 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getValue()
      */
     public String getValue() throws ConfigurationException {
@@ -628,8 +623,10 @@ public class XmlConfiguration implements Configuration {
     }
 
     /**
-     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(
-     *      java.lang.String, int)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+     *      int)
      */
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
@@ -795,7 +792,7 @@ public class XmlConfiguration implements Configuration {
                     DocumentBuilderFactory.newInstance().newDocumentBuilder();
             root = builder.parse(stream).getDocumentElement();
         } catch (IOException e) {
-            throw new ConfigurationIOException(null, e);
+            throw new ConfigurationIOException(e);
         } catch (ParserConfigurationException e) {
             throw new ConfigurationSyntaxException(e.getLocalizedMessage(),
                 theResource);
@@ -811,8 +808,7 @@ public class XmlConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-     *      org.extex.framework.configuration.ConfigurationLoader)
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
      */
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
@@ -861,14 +857,14 @@ public class XmlConfiguration implements Configuration {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder buffer = new StringBuilder();
         if (resource != null) {
-            sb.append("document(\"");
-            sb.append(resource);
-            sb.append("\")");
+            buffer.append("document(\"");
+            buffer.append(resource);
+            buffer.append("\")");
         }
-        toString(sb, root);
-        return sb.toString();
+        toString(buffer, root);
+        return buffer.toString();
     }
 
 }

@@ -118,7 +118,7 @@ public abstract class AbstractFactory
      * The field <tt>configuration</tt> contains the configuration of the
      * factory which is also passed to the new instances.
      */
-    private Configuration configuration = null;
+    private Configuration configuration;
 
     /**
      * The field <tt>logger</tt> contains the logger to pass to the new
@@ -136,7 +136,7 @@ public abstract class AbstractFactory
      */
     public AbstractFactory() {
 
-        super();
+        this(null);
     }
 
     /**
@@ -146,7 +146,6 @@ public abstract class AbstractFactory
      */
     public AbstractFactory(Configuration configuration) {
 
-        super();
         configure(configuration);
     }
 
@@ -586,6 +585,8 @@ public abstract class AbstractFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger theLogger) {
@@ -624,6 +625,8 @@ public abstract class AbstractFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
     public Object reconnect(Object instance) throws RegistrarException {

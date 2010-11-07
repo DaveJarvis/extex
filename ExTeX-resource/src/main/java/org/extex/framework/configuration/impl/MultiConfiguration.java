@@ -112,6 +112,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
      *      java.lang.String)
      */
@@ -127,15 +129,14 @@ public class MultiConfiguration implements Configuration {
             }
         }
 
-        if (v.size() == 0) {
-            return null;
+        switch (v.size()) {
+            case 0:
+                return null;
+            case 1:
+                return v.get(0);
+            default:
+                return new MultiConfiguration(v);
         }
-
-        if (v.size() == 1) {
-            return v.get(0);
-        }
-
-        return new MultiConfiguration(v);
     }
 
     /**
@@ -161,6 +162,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
      */
     public Configuration getConfiguration(String key)
@@ -186,6 +189,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
      *      java.lang.String)
      */
@@ -236,6 +241,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
     public String getValue(String key) throws ConfigurationException {
@@ -252,6 +259,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
      *      int)
      */
@@ -283,6 +292,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
     public List<String> getValues(String key) {
@@ -293,6 +304,8 @@ public class MultiConfiguration implements Configuration {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
     public Iterator<Configuration> iterator() throws ConfigurationException {

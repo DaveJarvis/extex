@@ -42,7 +42,7 @@ import org.extex.framework.configuration.impl.XmlConfiguration;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ConfigurationFactory {
+public final class ConfigurationFactory {
 
     /**
      * The field <tt>classloader</tt> contains the class loader.

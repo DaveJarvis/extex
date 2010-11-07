@@ -37,12 +37,11 @@ public class ConfigurationIOException extends ConfigurationException {
     /**
      * Creates a new object.
      * 
-     * @param message message the message string
      * @param cause the next {@link Throwable} in the list
      */
-    public ConfigurationIOException(String message, Throwable cause) {
+    public ConfigurationIOException(Throwable cause) {
 
-        super(message, cause);
+        super(null, cause);
     }
 
     /**

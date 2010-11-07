@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,7 +49,7 @@ public final class LocalizerFactory {
          * The constant <tt>serialVersionUID</tt> contains the id for
          * serialization.
          */
-        private static final long serialVersionUID = 2006L;
+        private static final long serialVersionUID = 2010L;
 
         /**
          * The field <tt>bundle</tt> contains the resource bundle for this
@@ -70,7 +70,6 @@ public final class LocalizerFactory {
          */
         public BasicLocalizer(String name) {
 
-            super();
             bundleName = name;
         }
 
@@ -78,14 +77,13 @@ public final class LocalizerFactory {
          * Getter for the value of a format string associated to a given key.
          * 
          * @param key the key in the resource bundle to search for
-         * @return the resource string or the String <tt>???</tt><i>key</i><tt>???</tt>
-         *         if none is found
+         * @return the resource string or the String <tt>???</tt><i>key</i>
+         *         <tt>???</tt> if none is found
          */
         public String format(String key) {
 
             if (bundle == null) {
                 bundle = ResourceBundle.getBundle(bundleName);
-
             }
             try {
                 return bundle.getString(key);
@@ -210,6 +208,9 @@ public final class LocalizerFactory {
          */
         public String getFormat(String key) {
 
+            if (bundle == null) {
+                bundle = ResourceBundle.getBundle(bundleName);
+            }
             try {
                 return bundle.getString(key);
             } catch (MissingResourceException e) {
@@ -265,8 +266,7 @@ public final class LocalizerFactory {
          * Apply the given argument to the format string stored in the resource
          * bundle under the given key and print the result to a writer. The
          * argument object's value of toString() replaces the substring
-         * <tt>'{0}'</tt>, <tt>'{1}'</tt>, and <tt>'{2}'</tt> in the
-         * format.
+         * <tt>'{0}'</tt>, <tt>'{1}'</tt>, and <tt>'{2}'</tt> in the format.
          * 
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for

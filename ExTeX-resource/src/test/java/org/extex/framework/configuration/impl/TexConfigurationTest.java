@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -51,6 +52,56 @@ public class TexConfigurationTest {
     private InputStream makeStream(String s) {
 
         return new ByteArrayInputStream(s.getBytes());
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testGetConfiguration1() throws Exception {
+
+        TexConfiguration cfg =
+                new TexConfiguration(
+                    makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
+                    "");
+        assertNotNull(cfg.getConfiguration("x"));
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ConfigurationNotFoundException.class)
+    public final void testGetConfiguration2() throws Exception {
+
+        TexConfiguration cfg =
+                new TexConfiguration(
+                    makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
+                    "");
+        try {
+            cfg.getConfiguration("y");
+        } catch (ConfigurationNotFoundException e) {
+            assertEquals("y", e.getConfigName());
+            throw e;
+        }
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testGetValue1() throws Exception {
+
+        TexConfiguration cfg =
+                new TexConfiguration(
+                    makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
+                    "");
+        assertEquals(" ", cfg.getValue());
     }
 
     /**
@@ -110,6 +161,52 @@ public class TexConfigurationTest {
         iterator = cfg.iterator("abc");
         assertFalse(iterator.hasNext());
         assertNull(cfg.findConfiguration("x"));
+        assertNull(cfg.findConfiguration("x", "y"));
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testRead06() throws Exception {
+
+        TexConfiguration cfg =
+                new TexConfiguration(
+                    makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
+                    "");
+        assertEquals("123", cfg.getAttribute("xxx"));
+        assertEquals("def", cfg.getAttribute("abc"));
+        assertEquals("xyz", cfg.getName());
+        Iterator<Configuration> iterator = cfg.iterator();
+        assertTrue(iterator.hasNext());
+        iterator = cfg.iterator("abc");
+        assertFalse(iterator.hasNext());
+        assertNotNull(cfg.findConfiguration("x"));
+        assertNull(cfg.findConfiguration("x", "y"));
+    }
+
+    /**
+     * <testcase> </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testRead07() throws Exception {
+
+        TexConfiguration cfg =
+                new TexConfiguration(
+                    makeStream("  \\xyz [abc=def,xxx={123}] { \\x[name=42]{}} "),
+                    "");
+        assertEquals("123", cfg.getAttribute("xxx"));
+        assertEquals("def", cfg.getAttribute("abc"));
+        assertEquals("xyz", cfg.getName());
+        Iterator<Configuration> iterator = cfg.iterator();
+        assertTrue(iterator.hasNext());
+        iterator = cfg.iterator("abc");
+        assertFalse(iterator.hasNext());
+        assertNotNull(cfg.findConfiguration("x", "42"));
         assertNull(cfg.findConfiguration("x", "y"));
     }
 
@@ -406,7 +503,8 @@ public class TexConfigurationTest {
     }
 
     /**
-     * <testcase> A lonely backslash in the configuration raises an error.</testcase>
+     * <testcase> A lonely backslash in the configuration raises an
+     * error.</testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -417,7 +515,8 @@ public class TexConfigurationTest {
     }
 
     /**
-     * <testcase> A lonely backslash in the configuration raises an error.</testcase>
+     * <testcase> A lonely backslash in the configuration raises an
+     * error.</testcase>
      * 
      * @throws Exception in case of an error
      */

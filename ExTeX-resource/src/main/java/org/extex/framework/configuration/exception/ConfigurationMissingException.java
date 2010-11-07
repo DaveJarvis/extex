@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,12 +32,12 @@ public class ConfigurationMissingException extends ConfigurationException {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2010L;
 
     /**
      * The field <tt>item</tt> contains the name of the missing item.
      */
-    private String item = "";
+    private String item;
 
     /**
      * Create a new object.
@@ -47,32 +47,36 @@ public class ConfigurationMissingException extends ConfigurationException {
     public ConfigurationMissingException(String message) {
 
         super(message, (String) null);
+        this.item = null;
     }
 
     /**
      * Create a new object.
      * 
-     * @param message the message string
+     * @param item the message string
      * @param location the location of the missing configuration item
      */
-    public ConfigurationMissingException(String message, String location) {
+    public ConfigurationMissingException(String item, String location) {
 
         super(null, location);
-        item = message;
+        this.item = item;
     }
 
     /**
      * Getter for the text prefix of this ConfigException. The text is taken
      * from the resource bundle <tt>ConfigurationEception</tt> under the key
-     * <tt>ConfigurationMissingException.Text</tt>.
+     * <tt>ConfigurationMissingException.Text</tt> or
+     * <tt>ConfigurationMissingException.Text0</tt>. The latter is used if the
+     * item is <code>null<code>.
      * 
      * @return the text
      */
     @Override
     protected String getText() {
 
-        return getLocalizer()
-            .format("ConfigurationMissingException.Text", item);
+        return getLocalizer().format(
+            item == null
+                    ? "ConfigurationMissingException.Text0"
+                    : "ConfigurationMissingException.Text", item);
     }
-
 }
