@@ -17,14 +17,45 @@
   <properties>
     <doc.file>exbib-manual</doc.file>
     <doc.dir>manual</doc.dir>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
   </properties>
 
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>ExBib</artifactId>
-    <version>0.1</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
+  <scm>
+    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</connection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExBib/</developerConnection>
+    <url>http://svn.berlios.de/wsvn/extex/trunk/ExBib/</url>
+  </scm>
+
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
+
+  <mailingLists>
+    <mailingList>
+      <name>extex</name>
+      <post>extex@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-devel</name>
+      <post>extex-devel@dante.de</post>
+      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
+    </mailingList>
+
+    <mailingList>
+      <name>extex-build@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-svn@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
+    </mailingList>
+    <mailingList>
+      <name>extex-bugs@lists.berlios.de</name>
+      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
+    </mailingList>
+  </mailingLists>
 
   <dependencies>
     <dependency>
