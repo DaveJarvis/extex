@@ -5,7 +5,7 @@
 <project name="ExTeX CLI">
   <bannerRight>
     <name>ExTeX</name>
-    <src>../images/extex-256.png</src>
+    <src>images/ExTeX-165x50.png</src>
     <href>http://www.extex.org/</href>
   </bannerRight>
   <version position="right"/>
