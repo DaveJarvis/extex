@@ -152,16 +152,16 @@ public abstract class AbstractFactory
     /**
      * Configure an object according to a given Configuration.
      * 
-     * @param configuration the configuration object to consider
+     * @param conf the configuration object to consider
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration configuration)
+    public void configure(Configuration conf)
             throws ConfigurationException {
 
-        this.configuration = configuration;
+        this.configuration = conf;
     }
 
     /**
