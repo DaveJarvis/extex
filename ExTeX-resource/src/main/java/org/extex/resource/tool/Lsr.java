@@ -56,6 +56,57 @@ public class Lsr {
     private static final String LS_R = "ls-R";
 
     /**
+     * main.
+     * 
+     * @param args The command line. -excludeDir xxx -excludeRegExp xxx
+     * @throws IOException if an io-error occurs.
+     */
+    public static void main(String[] args) throws IOException {
+
+        if (args.length >= 1) {
+            Lsr lsr = new Lsr(new File(args[0]));
+            int p = 1;
+            while (p < args.length) {
+                if (args[p].equalsIgnoreCase("-excludeDir")) {
+                    if (p + 1 < args.length) {
+                        lsr.addExcludeDir(args[++p]);
+                        p++;
+                    } else {
+                        System.exit(printCommandLine(System.err));
+                    }
+                } else if (args[p].equalsIgnoreCase("-excludeRegExp")) {
+                    if (p + 1 < args.length) {
+                        lsr.addExcludeRegExp(args[++p]);
+                        p++;
+                    } else {
+                        System.exit(printCommandLine(System.err));
+                    }
+                } else {
+                    System.exit(printCommandLine(System.err));
+                }
+            }
+            lsr.printLsr(null);
+        } else {
+            System.exit(printCommandLine(System.err));
+        }
+        System.exit(0);
+    }
+
+    /**
+     * Print the command line.
+     * 
+     * @param err the output stream
+     * 
+     * @return the exit code
+     */
+    private static int printCommandLine(PrintStream err) {
+
+        err.println("java de.dante.util.resource.Lsr <directory> "
+                + "[-excludeDir xxx] [-excludeRegExp xxx] [...]");
+        return 1;
+    }
+
+    /**
      * The base directory for searching.
      */
     private File basedirectory;
@@ -117,6 +168,28 @@ public class Lsr {
      * Print the ls-R-information to the printStream.
      * 
      * @param printStream The result is written to the <code>PrintStream</code>.
+     * @throws IOException if an io-error occurs.
+     */
+    public void printLsr(PrintStream printStream) throws IOException {
+
+        Collections.sort(excludeDir);
+        PrintStream out = printStream;
+        if (out == null) {
+            out =
+                    new PrintStream(
+                        new FileOutputStream(basedirectory.getAbsolutePath()
+                                + File.separator + LS_R));
+        }
+
+        printLsr(out, basedirectory);
+
+        out.close();
+    }
+
+    /**
+     * Print the ls-R-information to the printStream.
+     * 
+     * @param printStream The result is written to the <code>PrintStream</code>.
      * @param directory The base directory for output.
      * @throws IOException if an io-error occurs.
      */
@@ -144,8 +217,8 @@ public class Lsr {
                     if (level == 1
                             && excludeDir.size() > 0
                             && pathname.isDirectory()
-                            && Collections.binarySearch(excludeDir, pathname
-                                .getName()) >= 0) {
+                            && Collections.binarySearch(excludeDir,
+                                pathname.getName()) >= 0) {
                         return false;
                     }
                     // exclude regexp
@@ -177,78 +250,5 @@ public class Lsr {
             }
             level--;
         }
-    }
-
-    /**
-     * Print the ls-R-information to the printStream.
-     * 
-     * @param printStream The result is written to the <code>PrintStream</code>.
-     * @throws IOException if an io-error occurs.
-     */
-    public void printLsr(PrintStream printStream) throws IOException {
-
-        Collections.sort(excludeDir);
-        PrintStream out = printStream;
-        if (out == null) {
-            out =
-                    new PrintStream(new FileOutputStream(basedirectory
-                        .getAbsolutePath()
-                            + File.separator + LS_R));
-        }
-
-        printLsr(out, basedirectory);
-
-        out.close();
-    }
-
-    /**
-     * main.
-     * 
-     * @param args The command line. -excludeDir xxx -excludeRegExp xxx
-     * @throws IOException if an io-error occurs.
-     */
-    public static void main(String[] args) throws IOException {
-
-        if (args.length >= 1) {
-            Lsr lsr = new Lsr(new File(args[0]));
-            int p = 1;
-            while (p < args.length) {
-                if (args[p].equalsIgnoreCase("-excludeDir")) {
-                    if (p + 1 < args.length) {
-                        lsr.addExcludeDir(args[++p]);
-                        p++;
-                    } else {
-                        System.exit(printCommandLine(System.err));
-                    }
-                } else if (args[p].equalsIgnoreCase("-excludeRegExp")) {
-                    if (p + 1 < args.length) {
-                        lsr.addExcludeRegExp(args[++p]);
-                        p++;
-                    } else {
-                        System.exit(printCommandLine(System.err));
-                    }
-                } else {
-                    System.exit(printCommandLine(System.err));
-                }
-            }
-            lsr.printLsr(null);
-        } else {
-            System.exit(printCommandLine(System.err));
-        }
-        System.exit(0);
-    }
-
-    /**
-     * print the command line
-     *
-     * @param err  the output stream
-     *
-     * @return the exit code
-     */
-    private static int printCommandLine(PrintStream err) {
-
-        err.println("java de.dante.util.resource.Lsr <directory> "
-                + "[-excludeDir xxx] [-excludeRegExp xxx] [...]");
-        return 1;
     }
 }
