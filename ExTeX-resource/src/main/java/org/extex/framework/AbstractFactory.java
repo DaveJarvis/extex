@@ -158,8 +158,7 @@ public abstract class AbstractFactory
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    public void configure(Configuration conf)
-            throws ConfigurationException {
+    public void configure(Configuration conf) throws ConfigurationException {
 
         this.configuration = conf;
     }
@@ -276,17 +275,16 @@ public abstract class AbstractFactory
                 Object instance = null;
                 switch (args.length) {
                     case 0:
-                        return createInstanceForConfiguration0(config,
-                            className, theClass);
+                        return createInstanceForConfiguration0(config, theClass);
                     case 1:
                         instance =
-                                createInstanceForConfiguration1(config, target,
-                                    className, constructor, args[0]);
+                                createInstanceForConfiguration1(config,
+                                    constructor, args[0]);
                         break;
                     case 2:
                         instance =
-                                createInstanceForConfiguration2(config, target,
-                                    className, constructor, args[0], args[1]);
+                                createInstanceForConfiguration2(config,
+                                    constructor, args[0], args[1]);
                         break;
                     default:
                         continue; // Consider the next constructor
@@ -484,7 +482,6 @@ public abstract class AbstractFactory
      * without arguments.
      * 
      * @param config the configuration to us
-     * @param className the name of the class to instantiate
      * @param theClass the class to instantiate
      * 
      * @return a new instance
@@ -494,7 +491,7 @@ public abstract class AbstractFactory
      * @throws ConfigurationException in case of a configuration error
      */
     private Object createInstanceForConfiguration0(Configuration config,
-            String className, Class<?> theClass)
+            Class<?> theClass)
             throws InstantiationException,
                 IllegalAccessException,
                 ConfigurationException {
@@ -510,8 +507,6 @@ public abstract class AbstractFactory
      * one argument.
      * 
      * @param config the configuration to us
-     * @param target the expected class or interface
-     * @param className the name of the class to instantiate
      * @param constructor the constructor to use
      * @param arg the only argument for the constructor
      * 
@@ -524,8 +519,7 @@ public abstract class AbstractFactory
      * @throws ConfigurationException in case of a configuration error
      */
     private Object createInstanceForConfiguration1(Configuration config,
-            Class<?> target, String className, Constructor<?> constructor,
-            Class<?> arg)
+            Constructor<?> constructor, Class<?> arg)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException,
@@ -550,8 +544,6 @@ public abstract class AbstractFactory
      * two arguments.
      * 
      * @param config the configuration to us
-     * @param target the expected class or interface
-     * @param className the name of the class to instantiate
      * @param constructor the constructor to use
      * @param arg1 the first argument for the constructor
      * @param arg2 the second argument for the constructor
@@ -564,8 +556,7 @@ public abstract class AbstractFactory
      * @throws InvocationTargetException in case of an invocation error
      */
     private Object createInstanceForConfiguration2(Configuration config,
-            Class<?> target, String className, Constructor<?> constructor,
-            Class<?> arg1, Class<?> arg2)
+            Constructor<?> constructor, Class<?> arg1, Class<?> arg2)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException {
