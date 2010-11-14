@@ -54,7 +54,7 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TexConfiguration implements Configuration {
+public class TeXConfiguration implements Configuration {
 
     /**
      * The field <tt>name</tt> contains the name of the configuration.
@@ -80,8 +80,8 @@ public class TexConfiguration implements Configuration {
     /**
      * The field <tt>configurations</tt> contains the configurations.
      */
-    private Map<String, List<TexConfiguration>> configurations =
-            new HashMap<String, List<TexConfiguration>>();
+    private Map<String, List<TeXConfiguration>> configurations =
+            new HashMap<String, List<TeXConfiguration>>();
 
     /**
      * The field <tt>loader</tt> contains the loader.
@@ -120,7 +120,7 @@ public class TexConfiguration implements Configuration {
      * @throws ConfigurationIOException in case of an IO exception while reading
      *         the resource.
      */
-    public TexConfiguration(InputStream stream, String resource)
+    public TeXConfiguration(InputStream stream, String resource)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
                 ConfigurationSyntaxException,
@@ -137,7 +137,7 @@ public class TexConfiguration implements Configuration {
      * 
      * @throws IOException in case of an I/O error
      */
-    private TexConfiguration(PushbackReader reader, String name)
+    private TeXConfiguration(PushbackReader reader, String name)
             throws IOException {
 
         parse(reader, name);
@@ -154,7 +154,7 @@ public class TexConfiguration implements Configuration {
                 ConfigurationSyntaxException,
                 ConfigurationIOException {
 
-        List<TexConfiguration> list = configurations.get(key);
+        List<TeXConfiguration> list = configurations.get(key);
         return (list == null || list.size() == 0 ? null : list.get(0));
     }
 
@@ -167,7 +167,7 @@ public class TexConfiguration implements Configuration {
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
 
-        List<TexConfiguration> list = configurations.get(key);
+        List<TeXConfiguration> list = configurations.get(key);
         if (list != null) {
             for (Configuration cfg : list) {
                 String n = cfg.getAttribute("name");
@@ -257,8 +257,8 @@ public class TexConfiguration implements Configuration {
         StringBuilder sb = new StringBuilder();
 
         for (Object obj : parts) {
-            if (obj instanceof TexConfiguration) {
-                sb.append(((TexConfiguration) obj).getValue());
+            if (obj instanceof TeXConfiguration) {
+                sb.append(((TeXConfiguration) obj).getValue());
             } else {
                 sb.append(obj.toString());
             }
@@ -275,9 +275,9 @@ public class TexConfiguration implements Configuration {
     public String getValue(String key) throws ConfigurationException {
 
         for (Object obj : parts) {
-            if (obj instanceof TexConfiguration
-                    && ((TexConfiguration) obj).getName().equals(key)) {
-                return ((TexConfiguration) obj).getValue();
+            if (obj instanceof TeXConfiguration
+                    && ((TeXConfiguration) obj).getName().equals(key)) {
+                return ((TeXConfiguration) obj).getValue();
             }
         }
 
@@ -312,7 +312,7 @@ public class TexConfiguration implements Configuration {
      */
     public void getValues(List<String> list, String key) {
 
-        for (TexConfiguration cfg : configurations.get(key)) {
+        for (TeXConfiguration cfg : configurations.get(key)) {
             list.add(cfg.getValue());
         }
     }
@@ -339,7 +339,7 @@ public class TexConfiguration implements Configuration {
         List<Configuration> list = new ArrayList<Configuration>();
 
         for (Object obj : parts) {
-            if (obj instanceof TexConfiguration) {
+            if (obj instanceof TeXConfiguration) {
                 list.add((Configuration) obj);
             }
         }
@@ -357,8 +357,8 @@ public class TexConfiguration implements Configuration {
         List<Configuration> list = new ArrayList<Configuration>();
 
         for (Object obj : parts) {
-            if (obj instanceof TexConfiguration
-                    && ((TexConfiguration) obj).getName().equals(key)) {
+            if (obj instanceof TeXConfiguration
+                    && ((TeXConfiguration) obj).getName().equals(key)) {
                 list.add((Configuration) obj);
             }
         }
@@ -399,11 +399,11 @@ public class TexConfiguration implements Configuration {
         }
         for (String key = parseText(reader); !key.equals("}"); key =
                 parseText(reader)) {
-            TexConfiguration cfg = new TexConfiguration(reader, key);
+            TeXConfiguration cfg = new TeXConfiguration(reader, key);
             parts.add(cfg);
-            List<TexConfiguration> al = configurations.get(key);
+            List<TeXConfiguration> al = configurations.get(key);
             if (al == null) {
-                al = new ArrayList<TexConfiguration>();
+                al = new ArrayList<TeXConfiguration>();
                 configurations.put(key, al);
             }
             al.add(cfg);

@@ -35,12 +35,12 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link TexConfiguration}.
+ * This is a test suite for the {@link TeXConfiguration}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TexConfigurationTest {
+public class TeXConfigurationTest {
 
     /**
      * Make an input stream reading from a string.
@@ -62,8 +62,8 @@ public class TexConfigurationTest {
     @Test
     public final void testGetConfiguration1() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
                     "");
         assertNotNull(cfg.getConfiguration("x"));
@@ -77,8 +77,8 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationNotFoundException.class)
     public final void testGetConfiguration2() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
                     "");
         try {
@@ -97,8 +97,8 @@ public class TexConfigurationTest {
     @Test
     public final void testGetValue1() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
                     "");
         assertEquals(" ", cfg.getValue());
@@ -112,7 +112,7 @@ public class TexConfigurationTest {
     @Test
     public final void testRead02() throws Exception {
 
-        TexConfiguration cfg = new TexConfiguration(makeStream("\\x{}"), "");
+        TeXConfiguration cfg = new TeXConfiguration(makeStream("\\x{}"), "");
         assertNotNull(cfg);
     }
 
@@ -124,8 +124,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead03() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(makeStream("  \\xyz { } "), "");
+        TeXConfiguration cfg =
+                new TeXConfiguration(makeStream("  \\xyz { } "), "");
         assertNotNull(cfg);
     }
 
@@ -137,8 +137,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead04() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(makeStream("  \\xyz [abc=def] { } "), "");
+        TeXConfiguration cfg =
+                new TeXConfiguration(makeStream("  \\xyz [abc=def] { } "), "");
         assertEquals("def", cfg.getAttribute("abc"));
     }
 
@@ -150,8 +150,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead05() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { } "), "");
         assertEquals("123", cfg.getAttribute("xxx"));
         assertEquals("def", cfg.getAttribute("abc"));
@@ -172,8 +172,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead06() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { \\x[a=42]{}} "),
                     "");
         assertEquals("123", cfg.getAttribute("xxx"));
@@ -195,8 +195,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead07() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream("  \\xyz [abc=def,xxx={123}] { \\x[name=42]{}} "),
                     "");
         assertEquals("123", cfg.getAttribute("xxx"));
@@ -218,8 +218,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead10() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(makeStream("  \\xyz { abc } "), "");
+        TeXConfiguration cfg =
+                new TeXConfiguration(makeStream("  \\xyz { abc } "), "");
         assertNotNull(cfg);
     }
 
@@ -231,8 +231,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead11() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(makeStream("  \\xyz { {abc}} "), "");
+        TeXConfiguration cfg =
+                new TeXConfiguration(makeStream("  \\xyz { {abc}} "), "");
         assertNotNull(cfg);
     }
 
@@ -244,8 +244,8 @@ public class TexConfigurationTest {
     @Test
     public final void testRead12() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(makeStream("  \\xyz [a= {{abc}}]{} "), "");
+        TeXConfiguration cfg =
+                new TeXConfiguration(makeStream("  \\xyz [a= {{abc}}]{} "), "");
         assertEquals("{abc}", cfg.getAttribute("a"));
     }
 
@@ -257,8 +257,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment01() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" % fff\n \\xyz [abc=def,xxx={123}] { } "), "");
         assertEquals("123", cfg.getAttribute("xxx"));
         assertEquals("def", cfg.getAttribute("abc"));
@@ -272,8 +272,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment02() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" \\xyz % fff\n [abc=def,xxx={123}] { } "), "");
         assertEquals("123", cfg.getAttribute("xxx"));
         assertEquals("def", cfg.getAttribute("abc"));
@@ -287,8 +287,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment03() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" \\xyz [abc % fff\n=def,xxx={123}] { } "), "");
         assertEquals("123", cfg.getAttribute("xxx"));
         assertEquals("def", cfg.getAttribute("abc"));
@@ -302,8 +302,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment04() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" \\xyz [abc = % fff\n def,xxx={123}] { } "), "");
         assertEquals("123", cfg.getAttribute("xxx"));
         assertEquals("def", cfg.getAttribute("abc"));
@@ -317,8 +317,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment05() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" \\xyz [abc = % fff\n def,xxx={123}] { abc } "),
                     "");
         assertEquals("123", cfg.getAttribute("xxx"));
@@ -333,8 +333,8 @@ public class TexConfigurationTest {
     @Test
     public final void testReadComment06() throws Exception {
 
-        TexConfiguration cfg =
-                new TexConfiguration(
+        TeXConfiguration cfg =
+                new TeXConfiguration(
                     makeStream(" \\xyz [abc = % fff\n def,xxx={123}] {\\qwertz {}} "),
                     "");
         assertEquals("123", cfg.getAttribute("xxx"));
@@ -350,7 +350,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationNotFoundException.class)
     public final void testReadError0() throws Exception {
 
-        new TexConfiguration(null, "");
+        new TeXConfiguration(null, "");
     }
 
     /**
@@ -361,7 +361,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError01() throws Exception {
 
-        new TexConfiguration(makeStream(""), "");
+        new TeXConfiguration(makeStream(""), "");
     }
 
     /**
@@ -373,7 +373,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError02() throws Exception {
 
-        new TexConfiguration(makeStream("  \t "), "");
+        new TeXConfiguration(makeStream("  \t "), "");
     }
 
     /**
@@ -384,7 +384,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError04() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx"), "");
+        new TeXConfiguration(makeStream("\\xxx"), "");
     }
 
     /**
@@ -395,7 +395,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError05() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx("), "");
+        new TeXConfiguration(makeStream("\\xxx("), "");
     }
 
     /**
@@ -407,7 +407,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError06() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx["), "");
+        new TeXConfiguration(makeStream("\\xxx["), "");
     }
 
     /**
@@ -419,7 +419,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError07() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a"), "");
+        new TeXConfiguration(makeStream("\\xxx[a"), "");
     }
 
     /**
@@ -431,7 +431,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError08() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a%=\n"), "");
+        new TeXConfiguration(makeStream("\\xxx[a%=\n"), "");
     }
 
     /**
@@ -443,7 +443,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError09() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a= %=\n"), "");
+        new TeXConfiguration(makeStream("\\xxx[a= %=\n"), "");
     }
 
     /**
@@ -455,7 +455,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError10() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a %=\na"), "");
+        new TeXConfiguration(makeStream("\\xxx[a %=\na"), "");
     }
 
     /**
@@ -466,7 +466,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError11() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a=x\n"), "");
+        new TeXConfiguration(makeStream("\\xxx[a=x\n"), "");
     }
 
     /**
@@ -477,7 +477,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError12() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a=x b"), "");
+        new TeXConfiguration(makeStream("\\xxx[a=x b"), "");
     }
 
     /**
@@ -488,7 +488,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError13() throws Exception {
 
-        new TexConfiguration(makeStream("\\xxx[a=x,a=y]"), "");
+        new TeXConfiguration(makeStream("\\xxx[a=x,a=y]"), "");
     }
 
     /**
@@ -499,7 +499,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError14() throws Exception {
 
-        new TexConfiguration(makeStream("\\"), "");
+        new TeXConfiguration(makeStream("\\"), "");
     }
 
     /**
@@ -511,7 +511,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError15() throws Exception {
 
-        new TexConfiguration(makeStream("\\a{\\"), "");
+        new TeXConfiguration(makeStream("\\a{\\"), "");
     }
 
     /**
@@ -523,7 +523,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError16() throws Exception {
 
-        new TexConfiguration(makeStream("\\={\\"), "");
+        new TeXConfiguration(makeStream("\\={\\"), "");
     }
 
     /**
@@ -535,7 +535,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError17() throws Exception {
 
-        new TexConfiguration(makeStream("\\a{\\="), "");
+        new TeXConfiguration(makeStream("\\a{\\="), "");
     }
 
     /**
@@ -546,7 +546,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError18() throws Exception {
 
-        new TexConfiguration(makeStream("\\a{"), "");
+        new TeXConfiguration(makeStream("\\a{"), "");
     }
 
     /**
@@ -557,7 +557,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError19() throws Exception {
 
-        new TexConfiguration(makeStream("a"), "");
+        new TeXConfiguration(makeStream("a"), "");
     }
 
     /**
@@ -569,7 +569,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError20() throws Exception {
 
-        new TexConfiguration(makeStream("\\a[x=y"), "");
+        new TeXConfiguration(makeStream("\\a[x=y"), "");
     }
 
     /**
@@ -581,7 +581,7 @@ public class TexConfigurationTest {
     @Test(expected = ConfigurationSyntaxException.class)
     public final void testReadError21() throws Exception {
 
-        new TexConfiguration(makeStream("\\a[x={y\\"), "");
+        new TeXConfiguration(makeStream("\\a[x={y\\"), "");
     }
 
 }
