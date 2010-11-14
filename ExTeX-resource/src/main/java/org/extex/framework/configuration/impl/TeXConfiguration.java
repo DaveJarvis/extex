@@ -200,9 +200,9 @@ public class TeXConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
-    public String getAttribute(String name) {
+    public String getAttribute(String attribute) {
 
-        return attributes.get(name);
+        return attributes.get(attribute);
     }
 
     /**
@@ -381,13 +381,14 @@ public class TeXConfiguration implements Configuration {
      * Parse a configuration from a file.
      * 
      * @param reader the reader
-     * @param name the tag name
+     * @param tagName the tag name
      * 
      * @throws IOException in case of an I/O error
      */
-    private void parse(PushbackReader reader, String name) throws IOException {
+    private void parse(PushbackReader reader, String tagName)
+            throws IOException {
 
-        this.name = name;
+        this.name = tagName;
         int c = parseChar(reader);
         if (c == '[') {
             parseAttributes(reader);
@@ -465,13 +466,13 @@ public class TeXConfiguration implements Configuration {
                 c = parseChar(reader);
             }
 
-            String name = parseAttributeName(c, reader);
-            if (attributes.containsKey(name)) {
+            String attribute = parseAttributeName(c, reader);
+            if (attributes.containsKey(attribute)) {
                 throw new ConfigurationSyntaxException(format(
-                    "DoubleAttribute", name), resource);
+                    "DoubleAttribute", attribute), resource);
             }
             String value = parseAttributeValue(reader);
-            attributes.put(name, value);
+            attributes.put(attribute, value);
         }
     }
 
@@ -638,8 +639,8 @@ public class TeXConfiguration implements Configuration {
      * Read the configuration from a stream.
      * 
      * @param stream the stream to read the configuration from.
-     * @param resource the name of the resource to be used; i.e. something like
-     *        the file name
+     * @param resourceName the name of the resource to be used; i.e. something
+     *        like the file name
      * @param base the new value for base
      * 
      * @throws ConfigurationNotFoundException in case that the configuration
@@ -648,15 +649,15 @@ public class TeXConfiguration implements Configuration {
      * @throws ConfigurationSyntaxException in case of a syntax error in the
      *         configuration XML
      */
-    protected void read(InputStream stream, String resource, String base)
+    protected void read(InputStream stream, String resourceName, String base)
             throws ConfigurationNotFoundException,
                 ConfigurationIOException,
                 ConfigurationSyntaxException {
 
         if (stream == null) {
-            throw new ConfigurationNotFoundException(resource, null);
+            throw new ConfigurationNotFoundException(resourceName, null);
         }
-        this.resource = resource;
+        this.resource = resourceName;
         // this.base = base;
 
         PushbackReader reader =
