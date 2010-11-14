@@ -738,7 +738,7 @@ public class XmlConfiguration implements Configuration {
 
     /**
      * Search for a configuration file taking into account a list of prefixes
-     * (path) and postfixes (ext)
+     * (path) and postfixes (ext).
      * 
      * @param name the base name of the configuration to find. The path elements
      *        and extensions are attached in turn to build the complete name.
@@ -851,6 +851,8 @@ public class XmlConfiguration implements Configuration {
      * Get the printable representation of this configuration. Something like an
      * XPath expression describing the configuration is produced for this
      * instance.
+     * 
+     * @return a string representation of the object.
      * 
      * @see java.lang.Object#toString()
      */
