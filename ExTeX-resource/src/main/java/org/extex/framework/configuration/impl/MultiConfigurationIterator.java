@@ -20,7 +20,6 @@
 package org.extex.framework.configuration.impl;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -106,10 +105,7 @@ public class MultiConfigurationIterator implements Iterator<Configuration> {
     }
 
     /**
-     * Returns the next element in the iteration.
-     * 
-     * @return the next element in the iteration.
-     * @exception NoSuchElementException iteration has no more elements.
+     * {@inheritDoc}
      * 
      * @see java.util.Iterator#next()
      */
