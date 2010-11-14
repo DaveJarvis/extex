@@ -220,10 +220,10 @@ public class TocIndex {
 
         for (int i = 0; i < argv.length; i++) {
             String arg = argv[i];
-            if ("".equals(arg)) {
-                // silently ignored
-            } else if (!arg.startsWith("-")) {
-                setBase(new File(arg));
+            if (!arg.startsWith("-")) {
+                if (!"".equals(arg)) {
+                    setBase(new File(arg));
+                }
             } else if ("-".equals(arg) || "--".equals(arg)) {
                 if (++i >= argv.length) {
                     throw new Exception(getMessage("MissingArgument", arg));
@@ -233,8 +233,8 @@ public class TocIndex {
                 try {
                     omit(arg.substring(6));
                 } catch (PatternSyntaxException e) {
-                    throw new Exception(getMessage("PatternProblem", arg
-                        .substring(6)));
+                    throw new Exception(getMessage("PatternProblem",
+                        arg.substring(6)));
                 }
             } else if ("-output".startsWith(arg) || "--output".startsWith(arg)) {
                 setOutFile(++i >= argv.length ? null : argv[i]);
