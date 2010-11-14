@@ -31,7 +31,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for the {@link LocalizerFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 5432 $
@@ -39,9 +39,8 @@ import org.junit.Test;
 public class LocalizerFactoryTest {
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a resource for a class is not found then an excetion is
+     * raised. </testcase>
      */
     @Test(expected = MissingResourceException.class)
     public void test01() {
@@ -50,9 +49,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks. </testcase>
      */
     @Test
     public void test02() {
@@ -64,9 +62,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and one argument is ignored. </testcase>
      */
     @Test
     public void test03() {
@@ -78,9 +75,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and two arguments are ignored. </testcase>
      */
     @Test
     public void test04() {
@@ -92,9 +88,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and three arguments are ignored. </testcase>
      */
     @Test
     public void test05() {
@@ -106,9 +101,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and four arguments are ignored. </testcase>
      */
     @Test
     public void test06() {
@@ -120,9 +114,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and five arguments are ignored. </testcase>
      */
     @Test
     public void test07() {
@@ -134,9 +127,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.String)}
-     * .
+     * <testcase> If a non-existing resource key is used then it is enclosed in
+     * question marks and a list of arguments is ignored. </testcase>
      */
     @Test
     public void test10() {
@@ -148,8 +140,8 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getFormat(String)} .
+     * <testcase> If a non-existing resource key is retrieved then
+     * <code>null</code> is returned. </testcase>
      */
     @Test
     public void testGetFormat1() {
@@ -159,8 +151,7 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getFormat(String)} .
+     * <testcase> TODO </testcase>
      */
     @Test
     public void testGetFormat2() {
@@ -172,9 +163,7 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.Class)}
-     * .
+     * <testcase> TODO </testcase>
      */
     @Test(expected = MissingResourceException.class)
     public void testGetLocalizer1() {
@@ -183,9 +172,7 @@ public class LocalizerFactoryTest {
     }
 
     /**
-     * Test method for
-     * {@link org.extex.framework.i18n.LocalizerFactory#getLocalizer(java.lang.Class)}
-     * .
+     * <testcase> TODO </testcase>
      */
     @Test
     public void testGetLocalizer2() {
