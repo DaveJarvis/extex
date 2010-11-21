@@ -28,7 +28,7 @@ import java.util.logging.LogRecord;
  * makes provisions that the line length of 80 characters is honored.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7599 $
+ * @version $Revision$
  */
 public class LogFormatter extends Formatter {
 

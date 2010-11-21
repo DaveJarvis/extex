@@ -48,7 +48,7 @@ public class MinusCompiler implements Compiler {
          */
         public Minus(GCode a, GCode b) {
 
-            super(a, b, "-", 500);
+            super(a, b, "-", FUNCTION_LEVEL);
         }
     }
 

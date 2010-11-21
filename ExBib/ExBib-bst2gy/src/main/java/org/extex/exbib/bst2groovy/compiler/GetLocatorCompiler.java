@@ -31,7 +31,7 @@ import org.extex.exbib.core.bst.token.impl.TLocalLocator.LocatorField;
  * This class implements the analyzer for a locator reader.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
+ * @version $Revision$
  */
 public class GetLocatorCompiler implements Compiler {
 

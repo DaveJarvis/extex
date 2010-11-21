@@ -32,6 +32,18 @@ import org.extex.exbib.bst2groovy.io.CodeWriter;
 public abstract class BinaryInfix extends GenericCode {
 
     /**
+     * The field <tt>RELATION_LEVEL</tt> contains the level value to be used for
+     * relations.
+     */
+    public static final int RELATION_LEVEL = 700;
+
+    /**
+     * The field <tt>FUNCTION_LEVEL</tt> contains the level value to be used for
+     * functions.
+     */
+    public static final int FUNCTION_LEVEL = 500;
+
+    /**
      * The field <tt>level</tt> contains the precedence.
      */
     private int level;

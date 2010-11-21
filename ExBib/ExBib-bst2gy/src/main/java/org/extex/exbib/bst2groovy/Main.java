@@ -252,6 +252,7 @@ public class Main extends CLI {
                     }
                 } catch (IOException e) {
                     // shit happens
+                    logger.severe(e.toString());
                 }
                 logger.severe(sb.toString());
                 return EXIT_FAIL;

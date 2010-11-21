@@ -82,9 +82,10 @@ public class LinkContainer {
     }
 
     /**
-     * Write the linked code
+     * Write the linked code.
      * 
      * @param writer the writer
+     * 
      * @throws IOException in case of an I/O error
      */
     public void writeMethods(CodeWriter writer) throws IOException {

@@ -50,7 +50,7 @@ public class LessCompiler implements Compiler {
          */
         public Less(GCode a, GCode b) {
 
-            super(a, b, "<", 700);
+            super(a, b, "<", BinaryInfix.RELATION_LEVEL);
         }
 
         /**
@@ -87,7 +87,7 @@ public class LessCompiler implements Compiler {
          */
         public LessEqual(GCode a, GCode b) {
 
-            super(a, b, "<=", 700);
+            super(a, b, "<=", BinaryInfix.RELATION_LEVEL);
         }
 
         /**

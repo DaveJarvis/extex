@@ -31,7 +31,7 @@ import org.junit.Test;
  * This is a test suite for {@link Not}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class NotTest {
 

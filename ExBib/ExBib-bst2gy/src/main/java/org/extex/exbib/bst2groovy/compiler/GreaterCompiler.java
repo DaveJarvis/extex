@@ -50,7 +50,7 @@ public class GreaterCompiler implements Compiler {
          */
         public Greater(GCode a, GCode b) {
 
-            super(a, b, ">", 700);
+            super(a, b, ">", BinaryInfix.RELATION_LEVEL);
         }
 
         /**
@@ -86,7 +86,7 @@ public class GreaterCompiler implements Compiler {
          */
         public GreaterEqual(GCode a, GCode b) {
 
-            super(a, b, ">=", 700);
+            super(a, b, ">=", BinaryInfix.RELATION_LEVEL);
         }
 
         /**

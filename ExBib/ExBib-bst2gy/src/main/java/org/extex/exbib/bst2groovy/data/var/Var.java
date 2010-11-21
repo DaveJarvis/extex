@@ -233,7 +233,7 @@ public final class Var implements GCode {
     public boolean unify(GCode other) {
 
         if (other == this) {
-            // nothing to do
+            return true;
         } else if (reference != null) {
             return reference.unify(other);
         } else if (other instanceof Var) {

@@ -22,7 +22,7 @@ package org.extex.exbib.bst2groovy.exception;
  * This exception signals that a constant is tried to be modified.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
+ * @version $Revision$
  */
 public class ImmutableException extends Bst2GroovyException {
 

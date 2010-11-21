@@ -55,7 +55,8 @@ public interface Evaluator {
 
     /**
      * Create a new processor state.
-     * @param size TODO
+     * 
+     * @param size the number of the internal stack items
      * 
      * @return a new processor state
      */

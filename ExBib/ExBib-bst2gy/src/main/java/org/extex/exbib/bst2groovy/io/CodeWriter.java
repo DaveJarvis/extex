@@ -182,7 +182,9 @@ public class CodeWriter extends Writer {
     /**
      * Write some strings.
      * 
-     * @param args the arguments
+     * @param arg the first arguments
+     * @param arg2 the second arguments
+     * @param args the remaining arguments
      * 
      * @throws IOException in case of an I/O error
      */

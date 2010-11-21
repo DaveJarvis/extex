@@ -51,7 +51,7 @@ public class EqualsCompiler implements Compiler {
          */
         public Equals(GCode a, GCode b) {
 
-            super(b, a, "==", 700);
+            super(b, a, "==", BinaryInfix.RELATION_LEVEL);
         }
 
         /**
@@ -92,7 +92,7 @@ public class EqualsCompiler implements Compiler {
          */
         public NotEquals(GCode a, GCode b) {
 
-            super(a, b, "!=", 700);
+            super(a, b, "!=", BinaryInfix.RELATION_LEVEL);
         }
     }
 

@@ -22,7 +22,7 @@ package org.extex.exbib.bst2groovy.exception;
  * This exception signals that the code passed to a command is not proper.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
+ * @version $Revision$
  */
 public class IfComplexException extends Bst2GroovyException {
 

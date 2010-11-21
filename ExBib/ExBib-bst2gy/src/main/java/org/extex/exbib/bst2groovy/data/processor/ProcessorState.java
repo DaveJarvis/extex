@@ -271,8 +271,8 @@ public class ProcessorState {
      */
     public boolean stackHasSideEffects() {
 
-        for (GCode code : stack) {
-            if (code.hasSideEffect()) {
+        for (GCode gcode : stack) {
+            if (gcode.hasSideEffect()) {
                 return true;
             }
         }

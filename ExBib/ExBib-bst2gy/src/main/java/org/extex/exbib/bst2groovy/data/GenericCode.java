@@ -270,8 +270,8 @@ public class GenericCode implements GCode {
         try {
             print(new CodeWriter(writer), "\n");
         } catch (IOException e) {
-            // This can't happen since a StringWriter doesn't throw
-            // IOExceptions
+            throw new RuntimeException(
+                "This can't happen since a StringWriter doesn't throw IOExceptions");
         }
         return writer.toString();
     }

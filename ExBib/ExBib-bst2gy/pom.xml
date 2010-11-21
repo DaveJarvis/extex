@@ -26,6 +26,11 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <properties>
+    <extex.directory>${basedir}/../..</extex.directory>
+    <exbib.directory>${basedir}/..</exbib.directory>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
@@ -44,6 +49,7 @@
       <version>0.1</version>
       <scope>test</scope>
     </dependency>
+    
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-bsf</artifactId>
