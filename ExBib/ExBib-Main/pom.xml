@@ -20,22 +20,25 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <properties>
+    <extex.directory>${basedir}/../..</extex.directory>
+    <exbib.directory>${basedir}/..</exbib.directory>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExBib-core</artifactId>
+      <artifactId>CLI</artifactId>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>CLI</artifactId>
-      <version>0.1</version>
+      <artifactId>ExBib-core</artifactId>
     </dependency>
   </dependencies>
 
