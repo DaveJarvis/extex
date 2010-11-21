@@ -24,9 +24,16 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
+import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.PrintStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.extex.exbib.core.db.impl.DBImpl;
@@ -42,6 +49,8 @@ import org.extex.framework.configuration.exception.ConfigurationInvalidResourceE
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
 import org.junit.Test;
 
 /**
@@ -500,9 +509,50 @@ public class BsfProcessorTest {
     }
 
     /**
+     * <testcase> TODO gene: missing testcase description </testcase>
+     * 
+     * @throws ExBibException in case of an error
+     */
+    @Test(expected = ExBibException.class)
+    public void testProcess3() throws ExBibException, IOException {
+
+        PrintStream err = System.err;
+        System.setErr(new PrintStream(new OutputStream() {
+
+            @Override
+            public void write(int b) throws IOException {
+
+            }
+        }, true, "UTF-8"));
+        try {
+            DBImpl db = new DBImpl();
+            BsfProcessor p = new BsfProcessor(db, null);
+            p.configure(new Cfg("", "", ""));
+            p.setResourceFinder(new ResourceFinder() {
+
+                @Override
+                public void enableTracing(boolean flag) {
+
+                }
+
+                @Override
+                public NamedInputStream findResource(String name, String type)
+                        throws ConfigurationException {
+
+                    return new NamedInputStream(new ByteArrayInputStream("zzz"
+                        .getBytes()), "xxx");
+                }
+            });
+            p.addBibliographyStyle("xyzzy");
+            p.process(null);
+        } finally {
+            System.setErr(err);
+        }
+    }
+
+    /**
      * <testcase> A warning is counted even if it is not logged since no logger
      * is present.</testcase>
-     * 
      */
     @Test
     public void testWarning0() {
@@ -510,6 +560,48 @@ public class BsfProcessorTest {
         BsfProcessor p = new BsfProcessor();
         p.warning("abc");
         assertEquals(1, p.getNumberOfWarnings());
+    }
+
+    /**
+     * <testcase> A warning is counted and logged.</testcase>
+     */
+    @Test
+    public void testWarning1() {
+
+        Logger logger = Logger.getLogger(getClass().getName());
+        logger.setUseParentHandlers(false);
+        for (Handler h : logger.getHandlers()) {
+            logger.removeHandler(h);
+        }
+        logger.setLevel(Level.WARNING);
+        final StringBuilder sb = new StringBuilder();
+        Handler logAdaptor = new Handler() {
+
+            @Override
+            public void close() throws SecurityException {
+
+            }
+
+            @Override
+            public void flush() {
+
+            }
+
+            @Override
+            public void publish(LogRecord record) {
+
+                sb.append(record.getMessage());
+            }
+        };
+        logger.addHandler(logAdaptor);
+        try {
+            BsfProcessor p = new BsfProcessor(new DBImpl(), logger);
+            p.warning("abc");
+            assertEquals(1, p.getNumberOfWarnings());
+        } finally {
+            logger.removeHandler(logAdaptor);
+        }
+        assertEquals("abc\n", sb.toString());
     }
 
 }
