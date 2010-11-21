@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -22,6 +22,7 @@ import java.io.BufferedInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -37,13 +38,16 @@ import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.io.Writer;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
 
 /**
  * This class provides a plug-in replacement for a bibliography processor. It is
- * based on the Bean Scripting Framework (BSF).
+ * based on the Bean Scripting Framework (BSF). Thus all programming languages
+ * for which BSF bindings exist can be used as extension language for writing
+ * &epsilon;&chi;Bib style files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -71,15 +75,15 @@ public class BsfProcessor extends BibliographyCore
     /**
      * The field <tt>finder</tt> contains the resource finder.
      */
-    private ResourceFinder finder;
+    private ResourceFinder finder = null;
 
     /**
      * Creates a new object without database and logger. Those have to be
-     * provided via setters.
+     * provided via setters (from the super class).
      */
     public BsfProcessor() {
 
-        super(null, null);
+        this(null, null);
     }
 
     /**
@@ -103,9 +107,20 @@ public class BsfProcessor extends BibliographyCore
 
         super.configure(config);
         script = config.getAttribute("script");
-        BSFManager.registerScriptingEngine(script, //
-            config.getAttribute("engine"), //
-            config.getAttribute("extensions").split(":"));
+        if (script == null) {
+            throw new ConfigurationMissingAttributeException("script", config);
+        }
+        String engine = config.getAttribute("engine");
+        if (engine == null) {
+            throw new ConfigurationMissingAttributeException("engine", config);
+        }
+        String extensions = config.getAttribute("extensions");
+        if (extensions == null) {
+            throw new ConfigurationMissingAttributeException("extensions",
+                config);
+        }
+        BSFManager.registerScriptingEngine(script, engine,
+            extensions.split(":"));
     }
 
     /**
@@ -115,7 +130,8 @@ public class BsfProcessor extends BibliographyCore
      */
     public List<String> getMacroNames() {
 
-        return getDB().getMacroNames();
+        DB db = getDB();
+        return db != null ? db.getMacroNames() : new ArrayList<String>();
     }
 
     /**
@@ -158,7 +174,7 @@ public class BsfProcessor extends BibliographyCore
      * @return the string representation of the resource
      * 
      * @throws IOException in case of an I/O error
-     * @throws ExBibBstNotFoundException
+     * @throws ExBibBstNotFoundException in case of a missing BST file
      */
     private String load(String sty)
             throws IOException,
@@ -168,12 +184,16 @@ public class BsfProcessor extends BibliographyCore
         if (is == null) {
             throw new ExBibBstNotFoundException(sty, null);
         }
-        InputStreamReader r =
-                new InputStreamReader(new BufferedInputStream(is), "UTF-8");
         StringBuilder sb = new StringBuilder();
+        BufferedInputStream bis = new BufferedInputStream(is);
         try {
-            for (int c = r.read(); c >= 0; c = r.read()) {
-                sb.append((char) c);
+            InputStreamReader r = new InputStreamReader(bis, "UTF-8");
+            try {
+                for (int c = r.read(); c >= 0; c = r.read()) {
+                    sb.append((char) c);
+                }
+            } finally {
+                r.close();
             }
         } finally {
             is.close();
@@ -186,9 +206,9 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#process(org.extex.exbib.core.io.Writer)
      */
-    public long process(Writer outWriter) throws ExBibException {
+    public long process(Writer outputWriter) throws ExBibException {
 
-        this.outWriter = outWriter;
+        this.outWriter = outputWriter;
 
         try {
             loadDatabases();
@@ -199,7 +219,7 @@ public class BsfProcessor extends BibliographyCore
         try {
             BSFManager manager = new BSFManager();
             manager.declareBean("bibDB", getDB(), DB.class);
-            manager.declareBean("bibWriter", outWriter, Writer.class);
+            manager.declareBean("bibWriter", outputWriter, Writer.class);
             manager.declareBean("bibProcessor", this, Processor.class);
 
             for (String style : getBibliographyStyles()) {
@@ -212,7 +232,7 @@ public class BsfProcessor extends BibliographyCore
         } catch (IOException e) {
             throw new ExBibIoException(e);
         }
-        return 0;
+        return warnings;
     }
 
     /**
@@ -220,9 +240,9 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
-        this.finder = finder;
+        this.finder = resourceFinder;
     }
 
     /**
