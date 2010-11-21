@@ -27,7 +27,8 @@ import java.util.List;
 /**
  * The value is a list of {@link ValueItem ValueItem}s. According to the
  * definition of B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X a {@link ValueItem ValueItem} can be one of the following
  * <dl>
  * <dt>block</dt>

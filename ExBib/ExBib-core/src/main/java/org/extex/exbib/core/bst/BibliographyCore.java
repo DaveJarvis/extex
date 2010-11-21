@@ -382,7 +382,7 @@ public class BibliographyCore implements Bibliography, Observable {
     }
 
     /**
-     * Load all databases named in the processor context in turn.
+     * Load all databases named into the processor context in turn.
      * 
      * @throws ExBibException in case that something went wrong
      * @throws ConfigurationException in case that the configuration is invalid

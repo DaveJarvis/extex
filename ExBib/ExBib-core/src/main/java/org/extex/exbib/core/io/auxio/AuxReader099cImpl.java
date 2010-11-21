@@ -60,6 +60,118 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
 
     /**
+     * This is the handler for bibdata.
+     */
+    private static final class BibdataHandler implements AuxHandler {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
+         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+         *      org.extex.exbib.core.io.auxio.AuxReader)
+         */
+        public void invoke(String arg, ProcessorContainer bibliographies,
+                String type, AuxReader engine)
+                throws ConfigurationException,
+                    ExBibException {
+
+            try {
+                bibliographies.findProcessor(type).addBibliographyDatabase(
+                    arg.split(","));
+            } catch (UnsupportedEncodingException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (CsfException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (IOException e) {
+                throw new ConfigurationWrapperException(e);
+            }
+        }
+    }
+
+    /**
+     * This is the handler for bibstyle.
+     */
+    private static final class BibstyleHandler implements AuxHandler {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
+         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+         *      org.extex.exbib.core.io.auxio.AuxReader)
+         */
+        public void invoke(String arg, ProcessorContainer bibliographies,
+                String type, AuxReader engine)
+                throws ConfigurationException,
+                    ExBibException {
+
+            try {
+                bibliographies.findProcessor(type).addBibliographyStyle(
+                    arg.split(","));
+            } catch (UnsupportedEncodingException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (CsfException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (IOException e) {
+                throw new ConfigurationWrapperException(e);
+            }
+        }
+    }
+
+    /**
+     * This is the handler for citation.
+     */
+    private static final class CitationHandler implements AuxHandler {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
+         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+         *      org.extex.exbib.core.io.auxio.AuxReader)
+         */
+        public void invoke(String arg, ProcessorContainer bibliographies,
+                String type, AuxReader engine)
+                throws ConfigurationException,
+                    ExBibException {
+
+            String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
+            try {
+                bibliographies.findProcessor(type).addCitation(citations);
+            } catch (UnsupportedEncodingException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (CsfException e) {
+                throw new ConfigurationWrapperException(e);
+            } catch (IOException e) {
+                throw new ConfigurationWrapperException(e);
+            }
+        }
+    }
+
+    /**
+     * This is the handler for include.
+     */
+    private final class IncludeHandler implements AuxHandler {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
+         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+         *      org.extex.exbib.core.io.auxio.AuxReader)
+         */
+        public void invoke(String arg, ProcessorContainer bibliographies,
+                String type, AuxReader engine)
+                throws ConfigurationException,
+                    IOException,
+                    ExBibException {
+
+            engine.load(bibliographies, arg, encoding);
+        }
+    }
+
+    /**
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
@@ -96,74 +208,10 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
     public AuxReader099cImpl() throws ConfigurationException {
 
         handlerMap = new HashMap<String, AuxHandler>();
-        register("citation", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                String[] citations = arg.replaceAll("[ \t\f]", "").split(",");
-                try {
-                    bibliographies.findProcessor(type).addCitation(citations);
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
-        register("bibstyle", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                try {
-                    bibliographies.findProcessor(type).addBibliographyStyle(
-                        arg.split(","));
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
-        register("bibdata", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                try {
-                    bibliographies.findProcessor(type).addBibliographyDatabase(
-                        arg.split(","));
-                } catch (UnsupportedEncodingException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (CsfException e) {
-                    throw new ConfigurationWrapperException(e);
-                } catch (IOException e) {
-                    throw new ConfigurationWrapperException(e);
-                }
-            }
-        });
-        register("@include", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer bibliographies,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        IOException,
-                        ExBibException {
-
-                engine.load(bibliographies, arg, encoding);
-            }
-        });
+        register("citation", new CitationHandler());
+        register("bibstyle", new BibstyleHandler());
+        register("bibdata", new BibdataHandler());
+        register("@include", new IncludeHandler());
     }
 
     /**

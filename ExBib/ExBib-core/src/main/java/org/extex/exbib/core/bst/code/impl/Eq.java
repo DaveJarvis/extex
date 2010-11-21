@@ -27,7 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>=</code>
  * <p>
  * This function pops two arguments from the stack and compares them. If the
@@ -59,10 +60,10 @@ import org.extex.exbib.core.io.Locator;
  * integer 1 they're equal, 0 otherwise. </i>
  * </p>
  * 
- * The <code>built_in</code> function <code>=<code> pops the top two
- * (integer or string) literals, compares them, and pushes the integer 1
- * if they're equal, 0 otherwise.  If they're not either both string or
- * both integer, it complains and pushes the integer 0.
+ * The <code>built_in</code> function <code>=</code> pops the top two (integer
+ * or string) literals, compares them, and pushes the integer 1 if they're
+ * equal, 0 otherwise. If they're not either both string or both integer, it
+ * complains and pushes the integer 0.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

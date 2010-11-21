@@ -42,7 +42,7 @@ public class FuncallObserver implements Observer {
     /**
      * The class Int provides an integer counter.
      * 
-     * @author $Author: gene $
+     * @author $Author$
      * @version $Revision$
      */
     private static class Int {

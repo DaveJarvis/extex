@@ -34,12 +34,15 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is a reader for B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X files. It extends the reader for the B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 0.99c format. The constructions supported roughly approximate the
  * features announced for B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 1.0 (which has net been published at the time of this writing
  * &ndash; and probably never will).
  * <p>

@@ -31,12 +31,14 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>change.case</code>
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:</dt>
  * <dd>Pops the top two (string) literals; it changes the case of the second
  * according to the specifications of the first, as follows. (Note: The word
@@ -54,14 +56,14 @@ import org.extex.framework.i18n.LocalizerFactory;
  * specification string (i.e., the first string) isn't one of the legal ones, it
  * merely pushes the second back onto the stack, after complaining. (Another
  * note: It ignores case differences in the specification string; for example,
- * the strings <code>t</code> and
- * <code>T<code> are equivalent for the purposes of this built-in
- *  function.)</dd>
+ * the strings <code>t</code> and <code>T</code> are equivalent for the purposes
+ * of this built-in function.)</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>
  * The <code>built_in</code> function <code>change.case$</code> pops the top two

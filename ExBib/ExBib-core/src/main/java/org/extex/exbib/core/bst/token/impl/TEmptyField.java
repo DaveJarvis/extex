@@ -81,4 +81,15 @@ public class TEmptyField extends TString {
         throw new ExBibUndefinedFieldException(name, entryName, getLocator());
     }
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.exbib.core.bst.token.impl.TString#hashCode()
+     */
+    @Override
+    public int hashCode() {
+
+        return super.hashCode();
+    }
+
 }

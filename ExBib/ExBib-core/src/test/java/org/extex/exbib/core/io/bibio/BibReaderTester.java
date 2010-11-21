@@ -288,17 +288,6 @@ public abstract class BibReaderTester {
          * {@inheritDoc}
          * 
          * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
-         *      java.lang.String)
-         */
-        public void storeString(String name, String value) {
-
-            assertTrue("unexpected storeString()", false);
-        }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.exbib.core.db.DB#storeString(java.lang.String,
          *      org.extex.exbib.core.db.Value)
          */
         public void storeString(String name, Value value) {

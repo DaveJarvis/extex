@@ -25,7 +25,7 @@ import org.junit.Test;
  * Test suite for {@link BibliographyCore}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
+ * @version $Revision$
  */
 public class BibliographyCoreTest {
 

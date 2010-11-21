@@ -80,7 +80,8 @@ public abstract class AbstractValueItem implements ValueItem {
     /**
      * Return a String representation of the object suitable for a
      * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
-     * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X file.
      * 
      * @return the string representation

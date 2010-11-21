@@ -30,7 +30,8 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>int.to.chr$</code>
  * <p>
  * This function takes an integer code point from the stack and translates it
@@ -42,9 +43,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * <p>
  * Note that B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;0.99c and B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
  * &epsilon;&chi;Bib has expanded the definition to 16~bit Unicode characters.
  * Thus in compatibility mode of &epsilon;&chi;Bib\ the use of a number larger
@@ -64,7 +67,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (integer) literal, interpreted as the ASCII integer value of
@@ -74,7 +78,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>int.to.chr$</code> pops the top
  * (integer) literal, interpreted as the <code>ASCII_code</code> of a single
@@ -87,6 +92,11 @@ import org.extex.framework.i18n.LocalizerFactory;
  * @version $Revision$
  */
 public class IntToChr099 extends AbstractCode {
+
+    /**
+     * The field <tt>CHAR_MAX</tt> contains the maximum allowed character value.
+     */
+    private static final int CHAR_MAX = 255;
 
     /**
      * Create a new object.
@@ -117,7 +127,7 @@ public class IntToChr099 extends AbstractCode {
 
         int arg = processor.popInteger(locator).getInt();
 
-        if (arg < 0 || arg > 255) {
+        if (arg < 0 || arg > CHAR_MAX) {
             Localizer localizer = LocalizerFactory.getLocalizer(getClass());
             throw new ExBibIllegalValueException(localizer.format(
                 "illegal.argument", Integer.toString(arg)), locator);

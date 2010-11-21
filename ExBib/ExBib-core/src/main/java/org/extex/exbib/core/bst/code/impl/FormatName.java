@@ -42,12 +42,14 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>format.name$</code>
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top three literals (they are a string, an integer, and a string
@@ -60,7 +62,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>format.name$</code> pops the top
  * three literals (they are a string, an integer, and a string literal, in that
@@ -68,14 +71,16 @@ import org.extex.framework.i18n.LocalizerFactory;
  * corresponding to a person), the integer literal specifies which name to pick
  * from this list, and the first string literal specifies how to format this
  * name, as described in the B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation. Finally, this function pushes the formatted name.
  * If any of the types is incorrect, it complains and pushes the null string.</dd>
  * </dl>
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>Here we output either the <code>.bst</code> given string if it exists, or
  * else the <code>.bib</code> <code>sep_char</code> if it exists, or else the
@@ -154,7 +159,8 @@ public class FormatName extends AbstractCode implements Serializable {
          * <p>
          * This function reimplements the function 418 of the
          * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
-         * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+         * style=
+         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
          * >e</span>X web sources.
          * </p>
          * 
@@ -298,8 +304,8 @@ public class FormatName extends AbstractCode implements Serializable {
 
             Localizer localizer =
                     LocalizerFactory.getLocalizer(FormatName.class);
-            throw new ExBibSyntaxException(localizer
-                .format("Missing.end.of.group"), locator);
+            throw new ExBibSyntaxException(
+                localizer.format("Missing.end.of.group"), locator);
         }
 
         /**
@@ -418,8 +424,8 @@ public class FormatName extends AbstractCode implements Serializable {
 
             Localizer localizer =
                     LocalizerFactory.getLocalizer(FormatName.class);
-            throw new ExBibSyntaxException(localizer
-                .format("Missing.end.of.item="), locator);
+            throw new ExBibSyntaxException(
+                localizer.format("Missing.end.of.item="), locator);
         }
 
         /**
@@ -534,8 +540,8 @@ public class FormatName extends AbstractCode implements Serializable {
         public boolean format(StringBuilder sb, Name name, Locator locator) {
 
             List<String> part = name.getFirst();
-            return fmtFull(sb, part, getMid(), " ", getPre(), getPost(), part
-                .size() - 1);
+            return fmtFull(sb, part, getMid(), " ", getPre(), getPost(),
+                part.size() - 1);
         }
     }
 
@@ -924,7 +930,8 @@ public class FormatName extends AbstractCode implements Serializable {
 
     /**
      * Format a name like the B<small>IB</small><span
-     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style="margin-left: -0.15em;" >T</span><span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X built-in function <code>format.name$</code>.
      * 
      * @param names the names string

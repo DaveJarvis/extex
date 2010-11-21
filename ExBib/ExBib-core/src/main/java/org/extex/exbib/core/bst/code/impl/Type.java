@@ -27,7 +27,8 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>type$</code>
  * <p>
  * If the function is executed in the context of a current entry the type of
@@ -53,7 +54,8 @@ import org.extex.exbib.core.io.Locator;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pushes the current entry's type (book, article, etc.), but pushes the

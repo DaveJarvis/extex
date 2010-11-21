@@ -33,16 +33,19 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>purify$</code>
  * 
  * This function takes a string valued argument and performs the following
  * transformations:
  * 
  * <ul>
- * <li>Any known T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * <li>Any known T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X macro at brace level 1 is expanded.</li>
- * <li>Any unknown T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * <li>Any unknown T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X macro at brace level 1 is removed.</li>
  * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
  * <tt>-</tt> are replaced by a single space character.</li>
@@ -83,7 +86,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top (string) literal, removes non alphanumeric characters except
@@ -95,7 +99,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>The <code>built_in</code> function <code>purify$</code> pops the top
  * (string) literal, removes non alphanumeric characters except for
@@ -124,23 +129,23 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * </p>
  * 
  * <pre>
- *  <function name="purify$"
+ *  &lt;function name="purify$"
  *           class="org.extex.exbib.core.bst.code.impl.Purify"
- *           clear="true">
- *    <map name="ae">ae</map>
- *    <map name="AE">AE</map>
- *    <map name="oe">oe</map>
- *    <map name="OE">OE</map>
- *    <map name="ss">ss</map>
- *    <map name="i">i</map>
- *    <map name="j">j</map>
- *    <map name="l">l</map>
- *    <map name="L">L</map>
- *    <map name="aa">a</map>
- *    <map name="AA">A</map>
- *    <map name="o">o</map>
- *    <map name="O">O</map>
- *  </function>
+ *           clear="true"&gt;
+ *    &lt;map name="ae"&gt;ae&lt;/map&gt;
+ *    &lt;map name="AE"&gt;AE&lt;/map&gt;
+ *    &lt;map name="oe"&gt;oe&lt;/map&gt;
+ *    &lt;map name="OE"&gt;OE&lt;/map&gt;
+ *    &lt;map name="ss"&gt;ss&lt;/map&gt;
+ *    &lt;map name="i"&gt;i&lt;/map&gt;
+ *    &lt;map name="j"&gt;j&lt;/map&gt;
+ *    &lt;map name="l"&gt;l&lt;/map&gt;
+ *    &lt;map name="L"&gt;L&lt;/map&gt;
+ *    &lt;map name="aa"&gt;a&lt;/map&gt;
+ *    &lt;map name="AA"&gt;A&lt;/map&gt;
+ *    &lt;map name="o"&gt;o&lt;/map&gt;
+ *    &lt;map name="O"&gt;O&lt;/map&gt;
+ *  &lt;/function&gt;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -155,7 +160,8 @@ public class Purify extends AbstractCode implements Configurable {
 
     /**
      * Purify the string according to the definition of B<small>IB</small><span
-     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style="margin-left: -0.15em;" >T</span><span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X.
      * 
      * @param s the argument to purify

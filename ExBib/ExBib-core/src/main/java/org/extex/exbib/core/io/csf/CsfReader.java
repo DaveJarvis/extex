@@ -292,11 +292,12 @@ public class CsfReader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Read a single hexadecimal character and return its integer value.
      * 
      * @param reader the reader to acquire characters from
      * 
-     * @return ...
+     * @return the value, i.e. 0 for '0' to 9 for '9'; 10 for 'a' or 'A' to 15
+     *         for 'f' or 'F'
      * 
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of a syntax error

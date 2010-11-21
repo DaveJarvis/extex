@@ -26,13 +26,14 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>text.prefix$</code>
  * <p>
  * This function extracts a prefix of a certain length from a text. The length
  * is the number of character units. Special characters in braces are counted as
  * a single unit. If closing braces are missing the missing characters are
- * provided automatically. Thus no unbalances braces are contained in the result
+ * provided automatically. Thus no unbalanced braces are contained in the result
  * of this function.
  * </p>
  * <img src="doc-files/text.prefix.png"/>
@@ -48,7 +49,8 @@ import org.extex.exbib.core.io.Locator;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:
  * <dt>
  * <dd>Pops the top two literals (the integer literal <i>len</i> and a string
@@ -68,7 +70,8 @@ public class TextPrefix extends AbstractCode {
 
     /**
      * Compute the text prefix like the B<small>IB</small><span
-     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style="margin-left: -0.15em;" >T</span><span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X built-in function <code>text.prefix$</code>.
      * 
      * @param s the input string

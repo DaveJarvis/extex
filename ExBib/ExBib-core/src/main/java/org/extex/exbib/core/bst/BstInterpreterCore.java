@@ -63,7 +63,8 @@ import org.extex.resource.ResourceFinder;
 
 /**
  * This is the core implementation of an interpreter for the
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X language.
  * <p>
  * The core implementation contains the full functionality of an interpreter.
@@ -118,6 +119,12 @@ public class BstInterpreterCore extends BibliographyCore
             ResourceAware,
             Iterable<Command>,
             FunctionContainer {
+
+    /**
+     * The field <tt>MAX_NUMBER</tt> contains the maximum number to be used as
+     * default for various paremeters.
+     */
+    private static final int MAX_NUMBER = 0x7fff;
 
     /**
      * The field <tt>commands</tt> contains the list of commands to process.
@@ -211,13 +218,13 @@ public class BstInterpreterCore extends BibliographyCore
      * This is an obsolete constant denoting the maximum size of an entry. The
      * value is read from the configuration or a default is used.
      */
-    private int entryMax = 0x7fff;
+    private int entryMax = MAX_NUMBER;
 
     /**
      * This is an obsolete constant denoting the maximum size of an string. The
      * value is read from the configuration or a default is used.
      */
-    private int globalMax = 0x7fff;
+    private int globalMax = MAX_NUMBER;
 
     /**
      * The field <tt>warnings</tt> contains the number of warnings.
@@ -633,8 +640,8 @@ public class BstInterpreterCore extends BibliographyCore
         this.outWriter = writer;
 
         BstReaderFactory bstReaderFactory =
-                new BstReaderFactory(configuration
-                    .getConfiguration("BstReader"), finder);
+                new BstReaderFactory(
+                    configuration.getConfiguration("BstReader"), finder);
         bstReaderFactory.newInstance().parse(this);
 
         for (Command command : commands) {
@@ -704,8 +711,8 @@ public class BstInterpreterCore extends BibliographyCore
         Locator locator = new Locator(getClass().getName() + "#reset()", 0);
 
         super.reset();
-        entryMax = 0x7fff;
-        globalMax = 0x7fff;
+        entryMax = MAX_NUMBER;
+        globalMax = MAX_NUMBER;
 
         theEntryIntegers = new ArrayList<String>();
         theEntryStrings = new ArrayList<String>();

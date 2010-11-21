@@ -25,7 +25,7 @@ import org.junit.runners.Suite;
  * Run all tests.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7609 $
+ * @version $Revision$
  */
 @RunWith(Suite.class)
 @Suite.SuiteClasses({BstExecuteTest.class, //

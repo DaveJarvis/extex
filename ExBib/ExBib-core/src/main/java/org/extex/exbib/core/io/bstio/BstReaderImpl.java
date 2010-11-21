@@ -150,7 +150,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * <td><i>namelist<i></td>
+ * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
@@ -159,7 +159,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * <td><i>namelist<i></td>
+ * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
@@ -168,7 +168,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * <td><i>namelist<i></td>
+ * <td><i>namelist</i></td>
  * </tr>
  * 
  * <tr>
@@ -179,7 +179,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * <td><i>name<i> <i>namelist<i></td>
+ * <td><i>name</i> <i>namelist</i></td>
  * </tr>
  * 
  * <tr>
@@ -250,7 +250,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <tr>
  * <td></td>
  * <td><tt>|</tt></td>
- * <td><i>bodyitem<i> <i>body<i></td>
+ * <td><i>bodyitem</i> <i>body</i></td>
  * </tr>
  * 
  * <tr>
@@ -328,10 +328,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * ITERATE{def}
  * REVERSE{def}
  * SORT
- *
  * </pre>
- * 
- * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -340,6 +337,42 @@ public class BstReaderImpl extends AbstractFileReader
         implements
             BstReader,
             Configurable {
+
+    /**
+     * This is the instruction for READ.
+     */
+    private static final class ReadInstruction implements Instruction {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
+         *      Locator)
+         */
+        public void parse(BstProcessor processor, Locator locator)
+                throws ExBibException {
+
+            processor.addCommand(new BstRead(locator));
+        }
+    }
+
+    /**
+     * This is the instruction for SORT.
+     */
+    private static final class SortInstruction implements Instruction {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
+         *      Locator)
+         */
+        public void parse(BstProcessor processor, Locator locator)
+                throws ExBibException {
+
+            processor.addCommand(new BstSort(locator));
+        }
+    }
 
     /**
      * The constant <tt>EMPTY_PATTERN</tt> contains the pattern for whitespace.
@@ -563,20 +596,7 @@ public class BstReaderImpl extends AbstractFileReader
                 processor.addMacro(mname, parseStringArg());
             }
         });
-        addInstruction("read", new Instruction() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
-             */
-            public void parse(BstProcessor processor, Locator locator)
-                    throws ExBibException {
-
-                processor.addCommand(new BstRead(locator));
-            }
-        });
+        addInstruction("read", new ReadInstruction());
         addInstruction("reverse", new Instruction() {
 
             /**
@@ -607,20 +627,7 @@ public class BstReaderImpl extends AbstractFileReader
                 processor.setStrings(parseLiteralList(), locator);
             }
         });
-        addInstruction("sort", new Instruction() {
-
-            /**
-             * {@inheritDoc}
-             * 
-             * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
-             *      Locator)
-             */
-            public void parse(BstProcessor processor, Locator locator)
-                    throws ExBibException {
-
-                processor.addCommand(new BstSort(locator));
-            }
-        });
+        addInstruction("sort", new SortInstruction());
     }
 
     /**

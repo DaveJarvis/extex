@@ -30,7 +30,8 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X built-in function <code>call.type$</code>
  * <p>
  * This function looks at the current entry and calls the function with the same
@@ -53,7 +54,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X documentation:</dt>
  * <dd>Executes the function whose name is the entry type of an entry. For
  * example if an entry is of type <code>book</code>, this function executes the
@@ -67,13 +69,14 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * 
  * <dl>
  * <dt>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
- * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X web documentation:</dt>
  * <dd>The <i>built_in</i> function <code>call.type$</code> executes the
  * function specified in <code>type_list</code> for this entry unless it's
  * <code>undefined</code>, in which case it executes the default function
  * <code>default.type</code> defined in the <i>.bst</i> file, or unless it's
- * <code>empty</code>, in which case it does nothing. </dd
+ * <code>empty</code>, in which case it does nothing.</dd>
  * </dl>
  * 
  * 
@@ -82,14 +85,14 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * The configuration can take an embedded element with the name <tt>default</tt>
  * . The text contained in this element is taken as the name of the function to
  * be called when no appropriate function is found. The default is
- * <tt>default.type</tt>.
+ * <code>default.type</code>.
  * </p>
  * 
  * <pre>
- *   <function name="call.type$"
- *             class="org.extex.exbib.core.bst.code.impl.CallType">
- *     <default>default.type</default>
- *   </function>
+ *   &lt;function name="call.type$"
+ *             class="org.extex.exbib.core.bst.code.impl.CallType"&gt;
+ *     &lt;default&gt;default.type&lt;/default&gt;
+ *   &lt;/function&gt;
  * </pre>
  * 
  * 

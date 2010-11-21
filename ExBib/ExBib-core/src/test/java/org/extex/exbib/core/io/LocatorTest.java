@@ -29,7 +29,7 @@ import org.junit.Test;
  * This is a test class for {@link Locator}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class LocatorTest {
 

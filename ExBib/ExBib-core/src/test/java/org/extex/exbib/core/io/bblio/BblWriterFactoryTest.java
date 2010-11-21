@@ -41,7 +41,7 @@ import org.junit.Test;
  * This class is a test suite for {@link BblWriterFactory}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class BblWriterFactoryTest {
 

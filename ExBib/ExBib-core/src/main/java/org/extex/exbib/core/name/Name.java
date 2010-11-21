@@ -563,21 +563,21 @@ public class Name {
             throws ExBibNoNameException,
                 ExBibImpossibleException {
 
-        int last = type.indexOf(Type.COMMA);
+        int previous = type.indexOf(Type.COMMA);
 
-        if (last < 0) {
+        if (previous < 0) {
             throw new ExBibImpossibleException(LocalizerFactory.getLocalizer(
                 getClass()).format("Comma.not.found"));
         } else if (type.get(type.size() - 1) == Type.COMMA) {
             throw new ExBibNoNameException(name, locator);
         }
 
-        for (int i = 0; i < last; i++) {
+        for (int i = 0; i < previous; i++) {
             Type t = type.get(i);
             type.set(i, t == Type.FIRST ? Type.LAST : Type.VON);
         }
 
-        for (int i = last + 1; type.get(i) != Type.COMMA; i++) {
+        for (int i = previous + 1; type.get(i) != Type.COMMA; i++) {
             type.set(i, Type.JR);
         }
     }
@@ -669,9 +669,9 @@ public class Name {
         int level = 0;
         int commas = 0;
 
-        for (start = 0; start < name.length()
-                && Character.isWhitespace(name.charAt(start)); start++) {
-            // skip spaces;
+        while (start < name.length()
+                && Character.isWhitespace(name.charAt(start))) {
+            start++; // skip spaces;
         }
 
         for (int i = start; i < name.length(); i++) {

@@ -55,6 +55,27 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 public class AuxReaderImpl extends AuxReader099cImpl {
 
     /**
+     * This is the handler for biboption.
+     */
+    private static final class BiboptionHandler implements AuxHandler {
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.exbib.core.io.auxio.AuxHandler#invoke(java.lang.String,
+         *      org.extex.exbib.core.ProcessorContainer, java.lang.String,
+         *      org.extex.exbib.core.io.auxio.AuxReader)
+         */
+        public void invoke(String arg, ProcessorContainer processors,
+                String type, AuxReader engine)
+                throws ConfigurationException,
+                    ExBibException {
+
+            processors.setOption(type, arg);
+        }
+    }
+
+    /**
      * The constant <tt>PATTERN</tt> contains the pattern for the recognized
      * macros.
      */
@@ -75,17 +96,7 @@ public class AuxReaderImpl extends AuxReader099cImpl {
      */
     public AuxReaderImpl() throws ConfigurationException {
 
-        super();
-        register("biboption", new AuxHandler() {
-
-            public void invoke(String arg, ProcessorContainer processors,
-                    String type, AuxReader engine)
-                    throws ConfigurationException,
-                        ExBibException {
-
-                processors.setOption(type, arg);
-            }
-        });
+        register("biboption", new BiboptionHandler());
     }
 
     /**

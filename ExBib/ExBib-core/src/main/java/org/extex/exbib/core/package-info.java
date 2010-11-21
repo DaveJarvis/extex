@@ -17,11 +17,14 @@
  */
 /**
  * &epsilon;&chi;Bib (or <tt>ExBib</tt> in pure ASCII) is a
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span 
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X-compatible database. It is an
  * attempt to provide an implementation of a bibliographic database to
- * be used with L<span style="text-transform:uppercase;font-size:75%;vertical-align: 0.45ex;margin-left: -0.36em;margin-right: -0.15em;"
- * >a</span>T<span style="text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
+ * be used with L<span 
+ * style="text-transform:uppercase;font-size:75%;vertical-align: 0.45ex;margin-left: -0.36em;margin-right: -0.15em;"
+ * >a</span>T<span 
+ * style="text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
  * >e</span>X and friends.
  *   
  * <p style="text-align:center;">
@@ -39,17 +42,20 @@
  * <ol>
  *   <li>The result of &epsilon;&chi;Bib in compatibility mode should
  *     imitate as much as possible the behavior of
- *     B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X &ndash; for runs without errors
  *     or warnings. This should be valid for the output file only.
  *     &epsilon;&chi;Bib should not be concerned about the exact
  *     reproduction of tracing messages or the contents of the log
  *     file.
  *   </li>
- *   <li>The compatibility mode should <emph>not</emph> be the default.
+ *   <li>The compatibility mode should <em>not</em> be the default.
  *     The default mode should be the &epsilon;&chi;Bib mode, where
  *     certain extensions are provided and some curious design
- *     decisions of B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     decisions of B<small>IB</small><span style="margin-left: -0.15em;"
+ *     >T</span><span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X are not imitated.
  *   </li>
  *   <li>One objective of &epsilon;&chi;Bib was to provide a clean
@@ -61,19 +67,24 @@
  *   <li>&epsilon;&chi;Bib should be configurable. This means that it should be
  *     possible to use different implementations of some of the core
  *     components. This could be used for example to mimic the
- *     behavior of B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     behavior of B<small>IB</small><span style="margin-left: -0.15em;"
+ *     >T</span><span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X 0.99c or
- *     B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     B<small>IB</small><span style="margin-left: -0.15em;" 
+ *     >T</span><span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X 1.0 (as described in a TUGboat article).
  *   </li>
  *   <li>As implementation language Perl has been used for a first
  *     prototype. Then the implementation language has been switched to
  *     Java to make use of the Unicode features of this languages as
- *     well as to be closer to &epsilon;&chi;T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     well as to be closer to &epsilon;&chi;T<span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X.
  *   </li>
- *   <li>As much as possible the inherent knowledge about
- *     T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *   <li>As much as possible the inherent knowledge about T<span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X should be eliminated. If not possible it should be
  *     encapsulated in separate components to be exchangeable.
  *   </li>
@@ -83,7 +94,8 @@
  *     are supported right from the start.
  *   </li>
  *   <li>An easy update path should be provided for
- *     B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     B<small>IB</small><span style="margin-left: -0.15em;">T</span><span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X users: Old documents should be
  *     processable with the same results. Migration scripts should be
  *     provided whenever necessary.
@@ -94,10 +106,14 @@
  *   
  * The following extensions can be envisaged:
  * <ol>
- *   <li>Implement the new features of B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *   <li>Implement the new features of B<small>IB</small><span 
+ *   style="margin-left: -0.15em;" >T</span><span 
+ *   style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X 1.0.</li>
  *   <li>Add new primitives to the BST language.</li>
- *   <li>Extend the syntax forB<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *   <li>Extend the syntax forB<small>IB</small><span 
+ *   style="margin-left: -0.15em;" >T</span><span 
+ *   style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X files
  *     <ul>
  *       <li>Allow structured description of names.</li>
@@ -106,13 +122,17 @@
  *         without <tt>crossref</tt></li>
  *     </ul>
  *   </li>
- *   <li>Implement the features of B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *   <li>Implement the features of B<small>IB</small><span 
+ *   style="margin-left:-0.15em;" >T</span><span 
+ *   style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  *     >e</span>X 8.</li>
  * </ol>
  * 
  * <h2>Bug Fixes</h2>
  *   
- * The following defects of B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * The following defects of B<small>IB</small><span 
+ * style="margin-left: -0.15em;">T</span><span 
+ * style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X should be cured:
  * <ol>
  *   <li>No restriction on the sequence of entries in the database. 

@@ -18,8 +18,9 @@
 /**
  * This package contains the classes for reading and writing bib files.
  * <p>
- *  Bib files have a fixed syntax in B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X. 
+ *  Bib files have a fixed syntax in B<small>IB</small><span 
+ *  style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *  >e</span>X. 
  *  This syntax is only one possible representation. 
  *  This package may contain several representation to be used for reading and
  *  writing.
@@ -82,7 +83,7 @@
  * </p>
  * <pre>
  * try {
- *     r.load(db); </pre>
+ *     r.load(db);
  * } finally {
  *     r.close();
  * } </pre>

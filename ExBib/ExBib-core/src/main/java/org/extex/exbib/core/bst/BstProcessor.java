@@ -41,7 +41,8 @@ import org.extex.exbib.core.util.Observer;
 /**
  * This interface describes the contract of BST processors, i.e. the central
  * class containing the interpreter for the B<small>IB</small><span
- * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * style="margin-left: -0.15em;" >T</span><span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X programming language.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -212,7 +213,7 @@ public interface BstProcessor extends Processor, Iterable<Command> {
      * Pop an element from the stack. If the stack is empty then
      * <code>null</code> is returned.
      * 
-     * @return the top of stack or <codeC>null</code>
+     * @return the top of stack or <code>null</code>
      */
     Token popUnchecked();
 

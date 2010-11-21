@@ -31,7 +31,8 @@
  *   </li>
  * </ul>
  * <p>
- *   I.e. they implement the interface {@link org.extex.exbib.core.bst.code.Code Code}.
+ *   I.e. they implement the interface
+ *   {@link org.extex.exbib.core.bst.code.Code Code}.
  * </p>
  * <p>
  *   The functions are either integrated in the processor statically like in 
@@ -39,16 +40,19 @@
  *   Alternatively they can be loaded dynamically according to a configuration
  *   file like in <code>{@link org.extex.exbib.core.bst.BstInterpreter BstInterpreter}</code>.
  * </p>
-
+ *
  * <h2>Dependencies of the functions and implementations</h2>
-
- * <table style="border-top-width:3px;border-bottom-width:3px;border-top-style:solid;border-bottom-style:solid;font-family:helvetica;font-size:9pt;margin-left:2pt;margin-right:2pt" align="center">
+ *
+ * <table 
+ * style="border-top-width:3px;border-bottom-width:3px;border-top-style:solid;border-bottom-style:solid;font-family:helvetica;font-size:9pt;margin-left:2pt;margin-right:2pt"
+ * align="center">
  *   <tr style="border-bottom-width:2px;border-bottom-stlye:solid;">
  *     <th>Function Name</th>
  *     <th>Class</th>
  *     <th>Braces</th>
- *     <th>T<span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X</th>
+ *     <th>T<span 
+ *     style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *     >e</span>X</th>
  *     <th>Western</th>
  *   </tr>
  *   <tr>

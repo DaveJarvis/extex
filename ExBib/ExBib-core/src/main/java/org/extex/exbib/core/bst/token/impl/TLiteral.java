@@ -65,9 +65,9 @@ public class TLiteral extends AbstractToken {
      * @param entry the current entry or <code>null</code>
      * @param locator the locator
      * 
-     * @throws ExBibException in case that something goes wrong
      * @throws ExBibFunctionUndefinedException in case that the function named
      *         in this object is not defined
+     * @throws ExBibException in case that something else goes wrong
      * 
      * @see org.extex.exbib.core.bst.code.Code#execute(org.extex.exbib.core.bst.BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
