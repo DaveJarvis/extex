@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-Util</artifactId>
-  <name>ExBib command line interface for the utility program</name>
+  <name>ExBib Utility Program</name>
   <description>
     This is the command line interface for the utility program.
   </description>
@@ -20,16 +20,19 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <properties>
+    <extex.directory>${basedir}/../..</extex.directory>
+    <exbib.directory>${basedir}/..</exbib.directory>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1</version>
     </dependency>
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
-      <version>0.1</version>
     </dependency>
   </dependencies>
 

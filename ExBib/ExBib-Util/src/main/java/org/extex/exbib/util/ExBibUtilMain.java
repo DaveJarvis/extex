@@ -48,7 +48,7 @@ import org.extex.exbib.core.io.bibio.BibPrinter;
 import org.extex.exbib.core.io.bibio.BibPrinterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.util.ResourceObserverImpl;
-import org.extex.exbib.main.util.AbstractMain;
+import org.extex.exbib.main.AbstractMain;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -150,7 +150,7 @@ public final class ExBibUtilMain extends AbstractMain {
      * The field <tt>PROP_CONFIG</tt> contains the name of the property to carry
      * the configuration.
      */
-    protected static final String PROP_CONFIG = "exbib.config";
+    public static final String PROP_CONFIG = "exbib.config";
 
     /**
      * The field <tt>PROP_TYPE</tt> contains the name for the property for the
@@ -339,7 +339,7 @@ public final class ExBibUtilMain extends AbstractMain {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.util.AbstractMain#run()
+     * @see org.extex.exbib.main.AbstractMain#run()
      */
     @Override
     protected int run() throws IOException {
@@ -384,15 +384,15 @@ public final class ExBibUtilMain extends AbstractMain {
                         configuration.getConfiguration("Resource"),
                         getLogger(), System.getProperties(), null);
             BibReaderFactory bibReaderFactory =
-                    new BibReaderFactory(configuration
-                        .getConfiguration("BibReader"), finder,
+                    new BibReaderFactory(
+                        configuration.getConfiguration("BibReader"), finder,
                         getProperty(PROP_BIB_ENCODING),
                         getProperty(PROP_ENCODING));
             ProcessorContainer container =
                     new ProcessorContainer(configuration, getLogger(),
                         getProperties());
-            container.setSorterFactory(makeSorterFactory(finder, configuration
-                .getConfiguration("Sorter")));
+            container.setSorterFactory(makeSorterFactory(finder,
+                configuration.getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
             container.setMinCrossrefs(Integer.MAX_VALUE);
 
@@ -416,9 +416,9 @@ public final class ExBibUtilMain extends AbstractMain {
                 String type = getProperty(PROP_TYPE);
                 try {
                     printer =
-                            new BibPrinterFactory(configuration
-                                .getConfiguration("BibPrinter")).newInstance(
-                                type, writer);
+                            new BibPrinterFactory(
+                                configuration.getConfiguration("BibPrinter"))
+                                .newInstance(type, writer);
                 } catch (ConfigurationNotFoundException e) {
                     return log("unknown.type", type);
                 }
@@ -448,7 +448,7 @@ public final class ExBibUtilMain extends AbstractMain {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.util.AbstractMain#setFile(java.lang.String)
+     * @see org.extex.exbib.main.AbstractMain#setFile(java.lang.String)
      */
     @Override
     protected int setFile(String arg) {
