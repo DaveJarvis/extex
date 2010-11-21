@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ====================================================================== -->
+<!--  $Id: site.xml,v 0.00 2009/08/16 13:53:52 gene Exp $                   -->
+<!-- ====================================================================== -->
+<project name="ExBib">
+  <bannerLeft>
+    <name>ExBib</name>
+    <src>images/ExBib-148x50.png</src>
+    <href>http://www.extex.org/exbib</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>ExTeX</name>
+    <src>images/ExTeX-165x50-transparent.png</src>
+    <href>http://www.extex.org</href>
+  </bannerRight>
+  <version position="left"/>
+  <publishDate position="navigation-bottom"/>
+  <poweredBy/>
+  <body>
+
+    <menu name="ExTeX Web Site">
+      <item name="ExTeX" href="http://www.extex.org/"/>
+    </menu>
+
+    <menu ref="modules" />
+    <menu ref="reports"/>
+
+  </body>
+</project>
+
+
