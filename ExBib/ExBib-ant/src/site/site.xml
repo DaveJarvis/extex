@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ====================================================================== -->
+<!--  $Id$                   -->
+<!-- ====================================================================== -->
+<project name="ExBib Ant">
+  <skin>
+    <groupId>org.extex</groupId>
+    <artifactId>ExTeX-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+  <bannerRight>
+    <name>ExTeX</name>
+    <src>images/ExTeX-165x50.png</src>
+    <href>http://www.extex.org/</href>
+  </bannerRight>
+  <version position="left"/>
+  <publishDate position="navigation-bottom"/>
+  <poweredBy/>
+  <body>
+
+    <menu ref="parent" />
+
+    <menu name="ExTeX Web Site">
+      <item name="ExTeX" href="http://www.extex.org/"/>
+    </menu>
+
+    <menu ref="reports"/>
+
+  </body>
+</project>
