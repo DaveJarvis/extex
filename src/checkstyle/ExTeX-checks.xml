@@ -98,12 +98,11 @@
 
         <!-- Checks for Size Violations.                    -->
         <!-- See http://checkstyle.sf.net/config_sizes.html -->
-<!--
-        <module name="FileLength">
+<!--        <module name="FileLength">
             <property name="max" value="4096"/>
-        </module> -->
+        </module>-->
         <module name="LineLength">
-            <property name="ignorePattern" value="^.*@see.*$"/>
+            <property name="ignorePattern" value="^(.*@see.*|[ ]*[*])$"/>
             <property name="max" value="128"/>
             <property name="tabWidth" value="8"/>
         </module>
@@ -173,18 +172,20 @@
         <module name="MissingSwitchDefault"/>
         <module name="RedundantThrows">
             <property name="allowUnchecked" value="true"/>
+            <property name="allowSubclasses" value="true"/>
         </module>
         <module name="SimplifyBooleanExpression"/>
         <module name="SimplifyBooleanReturn"/>
 
         <!-- Checks for class design                         -->
         <!-- See http://checkstyle.sf.net/config_design.html -->
-        <!-- <module name="DesignForExtension"/> -->
+        <module name="DesignForExtension">
+            <property name="severity" value="ignore"/>
+        </module>
         <module name="FinalClass"/>
         <module name="HideUtilityClassConstructor"/>
         <module name="InterfaceIsType"/>
         <module name="VisibilityModifier"/>
-
 
         <!-- Miscellaneous other checks.                   -->
         <!-- See http://checkstyle.sf.net/config_misc.html -->
