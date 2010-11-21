@@ -32,7 +32,7 @@ import org.extex.exbib.core.io.Writer;
  * style.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class Style {
 
@@ -120,6 +120,8 @@ public class Style {
 
     /**
      * Write some strings to the output stream and terminate it with a newline.
+     * 
+     * @param values the arguments to print
      * 
      * @throws IOException in case of an error
      */
