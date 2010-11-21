@@ -36,7 +36,6 @@ import org.extex.cli.StringPropertyOption;
 import org.extex.cli.exception.UnknownOptionCliException;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
-import org.extex.exbib.main.util.AbstractMain;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
@@ -92,7 +91,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * <dd>Set the program name for messages.</dd>
  * <dt><tt>--q[uiet] | --t[erse] | -q</tt></dt>
  * <dd>Act quietly; some informative messages are suppressed.</dd>
- * <dt><tt>--r[elease] | -r</dt>
+ * <dt><tt>--r[elease] | -r</tt></dt>
  * <dd>Print the release number and exit.</dd>
  * <dt><tt>--so[rter] | -s &lt;sort&gt;</tt></dt>
  * <dd>Use the specified sorter, e.g. <tt>locale:de</tt> or <tt>csf:ascii.</tt></dd>
@@ -331,7 +330,8 @@ public class ExBibMain extends AbstractMain {
 
     /**
      * This is the top level of the B<small>IB</small><span
-     * style="margin-left: -0.15em;" >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+     * style="margin-left: -0.15em;" >T</span><span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
      * >e</span>X engine. When all parameters are present then this method can
      * be invoked.
      * 
@@ -341,7 +341,7 @@ public class ExBibMain extends AbstractMain {
      * @throws ConfigurationException in case that the top-level configuration
      *         could not be found
      * 
-     * @see org.extex.exbib.main.util.AbstractMain#run()
+     * @see org.extex.exbib.main.AbstractMain#run()
      */
     @Override
     public int run() throws IOException, ConfigurationException {
@@ -366,7 +366,7 @@ public class ExBibMain extends AbstractMain {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.main.util.AbstractMain#useLanguage(java.util.Locale)
+     * @see org.extex.exbib.main.AbstractMain#useLanguage(java.util.Locale)
      */
     @Override
     protected void useLanguage(Locale locale) {

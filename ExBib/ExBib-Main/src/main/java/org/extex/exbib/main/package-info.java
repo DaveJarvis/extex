@@ -16,10 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This is the top-level package for command line interfaces to the
- * B<small>IB</small><span style="margin-left: -0.15em;"
- * >T</span><span style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X Compatible Database.
+ * This is the top-level package for command line interfaces to 
+ * &epsilon;&chi;Bib.
  *
  */
 
