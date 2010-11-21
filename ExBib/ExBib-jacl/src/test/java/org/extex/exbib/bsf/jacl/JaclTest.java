@@ -38,7 +38,6 @@ import java.util.logging.StreamHandler;
 import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.core.ExBib;
-import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -73,11 +72,12 @@ public class JaclTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
+    // @Ignore
     public void test1() throws Exception {
 
         String tcl = "target/test.tcl";
-        makeFile(tcl, "package require java\n"
+        makeFile(tcl, "package require java\n" //
+                + "puts \"DB:\"\n" //
                 + "puts [bsf bibDB getEntries ]\n");
         // TODO: this seems not to work yet
         String bib = "target/test.bib";
