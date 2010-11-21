@@ -1,0 +1,22 @@
+#banner {
+  background:#f4dcd5 url(../images/three-column-text.png) repeat;
+  vertical-align:center;
+  padding:6pt
+}
+#breadcrumbs {
+  background:#f9e5af url(../images/top-fade.png) repeat-x;
+}
+#leftColumn {
+  background-color:#f9ecc7;
+  min-width:170px;
+}
+#navcolumn img {
+  margin-top:8pt;
+  margin-bottom:8pt;
+}
+h1 {
+  background-color:#f9e5af;
+}
+h2,h3,h4,h5 {
+  background-color:#f9ecc7;
+}
