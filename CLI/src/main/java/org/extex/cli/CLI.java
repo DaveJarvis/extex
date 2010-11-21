@@ -345,6 +345,8 @@ public class CLI {
      * This method describes the known options. The resource bundle with the
      * name of the current class is used. Thus take care to define such a
      * resource bundle if you intend to use this method.
+     * 
+     * @return the string reprsentation
      */
     @Override
     public String toString() {

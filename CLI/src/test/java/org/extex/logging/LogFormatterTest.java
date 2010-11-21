@@ -31,7 +31,7 @@ import org.junit.runner.JUnitCore;
  * This class contains test cases for the log formatter.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 4784 $
+ * @version $Revision$
  */
 public class LogFormatterTest {
 

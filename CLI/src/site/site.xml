@@ -1,14 +1,20 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- ====================================================================== -->
-<!--  $Id: site.xml,v 0.00 2009/08/16 13:53:52 gene Exp $                   -->
+<!--  $Id$                   -->
 <!-- ====================================================================== -->
 <project name="ExTeX CLI">
+  <skin>
+    <groupId>org.extex</groupId>
+    <artifactId>ExTeX-skin</artifactId>
+    <version>1.0</version>
+  </skin>
+
   <bannerRight>
     <name>ExTeX</name>
     <src>images/ExTeX-165x50.png</src>
     <href>http://www.extex.org/</href>
   </bannerRight>
-  <version position="right"/>
+  <version position="left"/>
   <publishDate position="navigation-bottom"/>
   <poweredBy/>
   <body>
@@ -24,5 +30,3 @@
 
   </body>
 </project>
-
-

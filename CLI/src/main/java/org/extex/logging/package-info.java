@@ -17,7 +17,9 @@
  */
 /**
  *  This package contains support classes for logging.
- *  <logo>&epsilon;&chi;TeX</logo> uses the definition of logging introduced
+ *  &epsilon;&chi;<span style="margin-left: -0.15em;" >T</span><span 
+ *  style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ *  >e</span>X uses the definition of logging introduced
  *  in Java 1.4. Thus most of the required functionality is already provided
  *  by the Java programming language.
  *  
@@ -29,14 +31,13 @@
  *   used to distinguish the different cases.
  *  </p>
  *  <dl>
- *   <dt>Level.SEVERE</dt>
+ *   <dt><code>Level.SEVERE</code></dt>
  *   <dd>This level is used to signal a real problem. It should be
- *   logged to both streams</dd>
- *   <dt>Level.WARNING</dt>
- *   <dd>
+ *   logged to both streams.</dd>
+ *   <dt><code>Level.WARNING</code></dt>
+ *   <dd>This level is used to signal a warning.
  *   </dd>
  *  </dl>
- *
  */
 
 package org.extex.logging;
