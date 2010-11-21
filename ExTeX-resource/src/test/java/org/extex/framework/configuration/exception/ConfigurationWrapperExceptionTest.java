@@ -28,10 +28,10 @@ import java.util.Locale;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for {@link ConfigurationWrapperException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class ConfigurationWrapperExceptionTest {
 

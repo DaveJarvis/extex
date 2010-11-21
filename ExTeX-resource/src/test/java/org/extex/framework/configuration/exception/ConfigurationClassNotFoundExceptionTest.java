@@ -32,10 +32,10 @@ import org.extex.framework.configuration.ConfigurationLoader;
 import org.junit.Test;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is a test suite for {@link ConfigurationClassNotFoundException}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 5432 $
+ * @version $Revision$
  */
 public class ConfigurationClassNotFoundExceptionTest {
 
@@ -108,7 +108,6 @@ public class ConfigurationClassNotFoundExceptionTest {
         @Override
         public List<String> getValues(String key) {
 
-            // TODO gene: getValues unimplemented
             return null;
         }
 
