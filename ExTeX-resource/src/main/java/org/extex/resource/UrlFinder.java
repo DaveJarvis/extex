@@ -132,7 +132,7 @@ import org.extex.resource.io.NamedInputStream;
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 7167 $
+ * @version $Revision$
  */
 public class UrlFinder extends AbstractFinder
         implements

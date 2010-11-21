@@ -25,7 +25,7 @@ import java.util.Map;
  * This interface describes the ability to receive an environment.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 6802 $
+ * @version $Revision$
  */
 public interface EnvironmentAware {
 

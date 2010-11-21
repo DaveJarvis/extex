@@ -68,6 +68,16 @@ public class ConfigurationMissingAttributeException
     }
 
     /**
+     * Getter for attribute.
+     * 
+     * @return the attribute
+     */
+    public String getAttribute() {
+
+        return attribute;
+    }
+
+    /**
      * Getter for the text prefix of this ConfigException. The text is taken
      * from the resource bundle <tt>ConfigurationEception</tt> under the key
      * <tt>ConfigurationMissingAttributeException.Text</tt>. The argument {0} is
