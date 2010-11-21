@@ -27,13 +27,11 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-core</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
@@ -78,6 +76,7 @@
   <properties>
     <staging.dir>${project.build.directory}/staging</staging.dir>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <exbib.directory>${basedir}/..</exbib.directory>
   </properties>
 
   <build>
