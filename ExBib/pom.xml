@@ -22,6 +22,8 @@
 
   <properties>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <extex.directory>${basedir}/..</extex.directory>
+    <exbib.directory>${basedir}</exbib.directory>
   </properties>
 
   <scm>
@@ -107,6 +109,11 @@
     <dependencies>
       <dependency>
         <groupId>org.extex</groupId>
+        <artifactId>ExBib-bsf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
         <artifactId>ExBib-core</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -118,12 +125,12 @@
       <dependency>
         <groupId>org.extex</groupId>
         <artifactId>CLI</artifactId>
-        <version>[0.1,)</version>
+        <version>0.1</version>
       </dependency>
       <dependency>
         <groupId>org.extex</groupId>
         <artifactId>ExTeX-resource</artifactId>
-        <version>[0.1,)</version>
+        <version>0.1</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
@@ -206,21 +213,38 @@
         <artifactId>maven-javadoc-plugin</artifactId>
         <configuration>
           <aggregate>true</aggregate>
-          <stylesheetfile>${basedir}/src/javadoc/stylesheet.css</stylesheetfile>  
+          <stylesheetfile>${exbib.directory}/src/javadoc/stylesheet.css</stylesheetfile>  
+          <overview>${basedir}/src/javadoc/overview.html</overview>
           <groups>
+            <group>
+              <title>Main Packages</title>
+              <packages>org.extex.exbib.main*:org.extex.exbib.util*</packages>
+            </group>
             <group>
               <title>Core Packages</title>
               <packages>org.extex.exbib.core*</packages>
             </group>
             <group>
-              <title>Main Packages</title>
-              <packages>org.extex.exbib.main*</packages>
-            </group>
-            <group>
-              <title>Framework Packages</title>
+              <title>Framework and Resource Packages</title>
               <packages>org.extex.framework*:org.extex.resource*</packages>
             </group>
+            <group>
+              <title>Command Line Support Packages</title>
+              <packages>org.extex.cli*:org.extex.logging*</packages>
+            </group>
           </groups>
+          <links>
+            <link>http://java.sun.com/j2se/1.6.0/docs/api</link>
+          </links>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.5</version>
+        <configuration>
+          <configLocation>${extex.directory}/src/checkstyle/ExTeX-checks.xml</configLocation>
         </configuration>
       </plugin>
 
@@ -237,6 +261,7 @@
             <tag>TODO</tag>
             <tag>@todo</tag>
             <tag>FIXME</tag>
+            <tag>@Ignore</tag>
           </tags>
         </configuration>
       </plugin>
@@ -276,6 +301,10 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>findbugs-maven-plugin</artifactId>
+        <configuration>
+          <effort>Default</effort>
+          <threshold>Medium</threshold>
+        </configuration>
       </plugin>
 
     </plugins>
@@ -288,7 +317,7 @@
     </license>
     <license>
       <name>GNU Free Documentation License</name>
-      <url>ExBib-doc/LICENSE.html</url>
+      <url>${exbib.directory}/ExBib-doc/LICENSE.html</url>
     </license>
   </licenses>
 </project>
