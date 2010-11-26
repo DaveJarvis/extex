@@ -1,0 +1,559 @@
+%%*****************************************************************************
+%% Copyright (c) 2008-2010 Gerd Neugebauer
+%%
+%% Permission is granted to copy, distribute and/or modify this document
+%% under the terms of the GNU Free Documentation License, Version 1.2
+%% or any later version published by the Free Software Foundation;
+%% with no Invariant Sections, no Front-Cover Texts, and no Back-Cover Texts.
+%%
+%%*****************************************************************************
+%% $Id: bsf.tex 8314 2010-11-21 19:06:53Z gene $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+
+\newenvironment{methods}{\begin{description}\def\method##1{\item[##1]\ \\}%
+}{\end{description}}
+\definecolor{UMLclassColor}{rgb}{1,1,.72}
+\definecolor{UMLclassLineColor}{rgb}{.8,.25,.25}
+\newbox\UMLbox
+\newenvironment{UMLclass}[1]{\scriptsize
+  \arrayrulewidth=.75pt
+  \setbox\UMLbox=\hbox\bgroup\tt
+    \begin{tabular}{l}
+      \textbf{#1}\\\hline\hline
+}{%
+      \\
+    \end{tabular}\egroup
+    \begin{center}
+      \fboxrule 1pt \fboxsep=0pt
+      \fcolorbox{UMLclassLineColor}{UMLclassColor}{\usebox\UMLbox}%
+    \end{center}%
+}
+
+
+\section{Groovy as Style Language}
+
+An experimental feature of \ExBib{} is the replanceemnt of the BST
+language by some other language for writing styles. Here the Bean
+Scripting Framework (BSF) is used as adapter for other languages. Any
+language made available this way can be plugged in with minor effort
+as style language.
+
+As an example the language Groovy has been made available this way.
+
+
+\subsection{Invoking the Groovy-enhanced \ExBib}
+
+The property \Property{exbib.processor} determines which processor is
+used. The value of this property must be set to th value \verb|groovy|
+to activate the Groovy entension language. In the simplest case this
+is done on the command line as shown in the following example:
+
+\begin{lstlisting}[language=sh]
+# exbib -Dexbib.processor=groovy myDocument.aux
+\end{lstlisting}
+
+If you want to activate this property for any invocation of \ExBib\ in
+this directory then you can alternatively create a file named
+\File{.exbib} in the current directory. This file should contain the
+following line:
+
+\begin{lstlisting}
+exbib.processor=groovy
+\end{lstlisting}
+
+Then the usual invocation uses the Groovy extension instead of bst
+style files:
+
+\begin{lstlisting}[language=sh]
+# exbib myDocument.aux
+\end{lstlisting}
+
+See also section \ref{sec:dot.files} for details.
+
+
+\subsection{Specifying a Groovy Style}
+
+A Groovy style file can be specified in the same way a bst style file
+is given. In \LaTeX\ the command \Macro{bibliographystlye} writes the
+name of the style file is written to the aux file. The name of the
+style file is given without any extension -- like \verb|.gy| or
+\verb|.groovy| for Groovy files.
+
+
+\subsection{Accessing the Database in a Groovy Style}
+
+The databases specified in the aux file are automaticaly read at
+startup. The code contained in the Groovy style is executed after the
+database has been read in. The database can be accessed via the global
+variable \Var{bibDB}. This variable contains an object which
+implements the interface \texttt{org.extex.exbib.core.db.DB}. The full
+power of this Java interface is described in the Javadoc.
+
+
+\subsection{The Output}
+
+The global variable \Var{bibWriter} contains an instance of a class
+implementing the interface \texttt{org.extex.exbib.core.io.Writer}.
+This writer can be used to write to the output file.
+
+It has a method \Method{print} to print some strings:
+
+\begin{lstlisting}[language=Java]
+  bibWriter.print("{\em ", series, "\/}" )
+\end{lstlisting}
+
+It has a method \Method{println} to print some strings followed by a
+newline character:
+
+\begin{lstlisting}[language=Java]
+  bibWriter.println("\newcommand{\etalchar}[1]{$^{#1}$}" )
+\end{lstlisting}
+
+
+\subsection{The Processor Context}\label{sec:groovy.processor}
+
+The processor context is defined in the interface \texttt{Processor}.
+The processor can be accesed through the global variable
+\Var{bibProcessor}. This gives access to additional features like the
+log file.
+
+\begin{UMLclass}{Processor}
+  String getCite(String key)\\
+  DB getDB()\\
+  List<String> getEntries()\\
+  Logger getLogger()\\
+  String getMacro(String name)\\
+  List<String> getMacroNames()\\
+  long getNumberOfWarnings()\\
+  Writer getOutWriter()\\
+  boolean isKnown(String type)\\
+  void warning(String message)
+\end{UMLclass}
+
+\begin{methods}
+
+  \method{String getCite(String key)}\MethodIndex{getCite}%
+    Get the original cite key for a given key. I.e. the casing might be
+    different.
+
+  \method{DB getDB()}\MethodIndex{getDB}%
+    Getter for the database. The same database is accessible via the
+    global variable \Var{bibDB} as well for convenience.
+
+  \method{List<String> getEntries()}\MethodIndex{getEntries}%
+    Getter for the entries.
+
+  \method{Logger getLogger()}\MethodIndex{getLogger}%
+    Getter for the logger.
+
+  \method{String getMacro(String name)}\MethodIndex{getMacro}%
+    Getter for a certain macro. If the requested macro is not defined
+    \texttt{null} is returned.
+
+  \method{List<String> getMacroNames()}\MethodIndex{getMacroNames}%
+    Getter for the list of all defined macro names.
+
+  \method{long getNumberOfWarnings()}\MethodIndex{getNumberOfWarnings}%
+    Getter for the number of warnings issued.
+
+  \method{Writer getOutWriter()}\MethodIndex{getOutWriter}%
+    Getter for the output writer. This is the same value as the one
+    provided in the variable \Var{bibWriter}.
+
+  \method{boolean isKnown(String type)}\MethodIndex{isKnown}%
+    Check if the entry type is known.
+
+  \method{void warning(String message)}\MethodIndex{warning}%
+    This method can be used to issue a warning message.
+
+\end{methods}
+
+
+\subsection{Methods of a DB}\label{sec:groovy.db}
+
+The important methods of the DB provide reading access to the stored
+information. The DB is defined in the interface \texttt{org.extex.exbib.core.db.DB}.
+The important methods are described below.
+
+\begin{UMLclass}{DB}
+  Entry getEntry(String key)\\
+  String getExpandedMacro(String key)\\
+  Value getMacro(String name)\\
+  List<String> getMacroNames()\\
+  int getMinCrossrefs()\\
+  Value getPreamble()\\
+  String getPreambleExpanded()\\
+  void setMinCrossrefs(int minCrossref)\\
+  void sort() throws ConfigurationException
+\end{UMLclass}
+
+\begin{methods}
+  \method{Entry getEntry(String key)}\MethodIndex{getEntry}%
+    Get a single entry stored under the given reference key. The key
+    is normalized before the entry is sought, i.e. the search is case
+    insensitive.
+    
+    If no record is stored under the given key then <code>null</code>
+    is returned.
+
+  \method{String getExpandedMacro(String key)}\MethodIndex{getExpandedMacro} %
+    Compute the expanded representation of a macro. The expansion is
+    performed by recursively replacing macro names by the definitions
+    and concatenating the resulting list of values.
+    
+    For any macro which is not defined during the expansion the empty
+    string is used instead.
+    
+    If the named macro the expansion is started with does not exist
+    then \texttt{null} is returned.
+
+  \method{Value getMacro(String name)}\MethodIndex{getMacro}%
+    Retrieve the definition of a macro.
+
+  \method{List<String> getMacroNames()}\MethodIndex{getMacroNames}%
+    Retrieve the list of macro names.
+
+  \method{int getMinCrossrefs()}\MethodIndex{getMinCrossrefs}%
+    Getter for minCrossrefs.
+    
+    The parameter minCrossrefs determines when an entry which is
+    referenced by several entries should be collated into the
+    referencing entries. For example this can be the case for articles
+    in a collection. Here the collection is shown as separate entry
+    only if at least minCrossref entries in the result reference it.
+
+  \method{Value getPreamble()}\MethodIndex{getPreamble}%
+    Getter for the preamble.
+
+  \method{String getPreambleExpanded()}\MethodIndex{getPreambleExpanded}%
+    Getter for the preamble with all constituents expanded and combined into
+    one string.
+
+  \method{void setMinCrossrefs(int minCrossref)}\MethodIndex{setMinCrossrefs}%
+    Setter for minCrossrefs.
+
+  \method{void sort() throws ConfigurationException}\MethodIndex{sort}%
+    Sort the entries according to the configured sorter.
+    Initially the entries are in the order in which they are read in.
+
+\end{methods}
+
+\subsection{Methods of an Entry}\label{sec:groovy.entry}
+
+The entry is defined in the class
+\texttt{org.extex.exbib.core.db.Entry}. The entry describes an entry
+in the database, i.e. a dabase record. It has several properties and
+some fixed values.
+The important methods are described below.
+
+\begin{UMLclass}{Entry}
+  Value get(String key, DB db) throws ExBibException\\
+  String getExpanded(String key, DB db) throws ExBibException\\
+  String getKey()\\
+  List<String> getKeys()\\
+  ValueItem getLocal(String key)\\
+  int getLocalInt(String key)\\
+  String getLocalString(String key)\\
+  Locator getLocator()\\
+  String getSortKey()\\
+  String getType()\\
+  Iterator<String> iterator()\\
+  void set(String key, String value)\\
+  void set(String key, Value value)\\
+  setKey(String key)\\
+  void setLocal(String key, int value)\\
+  void setLocal(String key, String value)\\
+  void setLocal(String key, ValueItem value)\\
+  void setSortKey(String sortKey)\\
+  void setType(String t)\\
+  String toString()
+\end{UMLclass}
+
+\begin{methods}
+  \method{Value get(String key, DB db) throws ExBibException}\MethodIndex{get}%
+    Getter for the Value stored under a given key in the Entry. If the
+    value is not found locally and the field crossref is present then
+    the value is requested from the entry stored under the crossref key
+    in the database.
+
+  \method{String getExpanded(String key, DB db) throws ExBibException}\MethodIndex{getExpanded}%
+    This method searches for a normal value and concatenates all
+    expanded constituents. Macros are looked up in the database given and
+    their values are inserted.
+
+  \method{String getKey()}\MethodIndex{getKey}%
+    Getter for the reference key for this Entry.
+
+  \method{List<String> getKeys()}\MethodIndex{getKeys}%
+    Getter for the list of keys for "normal" values. Note that those keys may
+    lead to \texttt{null} values..
+
+  \method{ValueItem getLocal(String key)}\MethodIndex{getLocal}%
+    Getter for a local value. The local values are stored independently from
+    the normal values. This means that they have a name-space of their own.
+
+  \method{int getLocalInt(String key)}\MethodIndex{getLocalInt}%
+    Getter for a local value. The local values are stored independently from
+    the normal values. This means that they have a name-space of their own.
+
+  \method{String getLocalString(String key)}\MethodIndex{getLocalString}%
+    Getter for a local value. The local values are stored independently from
+    the normal values. This means that they have a name-space of their own.
+
+  \method{Locator getLocator()}\MethodIndex{geLocatort}%
+    Getter for the locator for this Entry. The locator allows you to
+    determine where this Entry is coming from.
+
+  \method{String getSortKey()}\MethodIndex{getSortKey}%
+    Getter for the sort key of this Entry. The sort key is stored as local
+    value under the key \texttt{sort.key\$}.
+
+  \method{String getType()}\MethodIndex{getType}%
+    Getter for the type of this Entry.
+
+  \method{Iterator<String> iterator()}\MethodIndex{iterator}%
+    Getter for an iterator over all keys of normal values.
+
+  \method{void set(String key, String value)}\MethodIndex{set}%
+    Setter for the Value stored under a given key in the Entry. The String
+    valued parameter is wrapped into a  Value before it is stored.
+
+  \method{void set(String key, Value value)}\MethodIndex{set}%
+    Setter for the Value stored under a given key in the Entry. An already
+    existing value is overwritten silently.
+
+  \method{setKey(String key)}\MethodIndex{setKey}%
+    Setter for the reference key for this Entry.
+
+  \method{void setLocal(String key, int value)}\MethodIndex{setLocal}%
+     Setter for a local value. The local values are stored independently from
+     the normal values. This means that they have a namespace of their own.
+
+    This method wraps its int argument into a VNumber before it is stored.
+
+  \method{void setLocal(String key, String value)}\MethodIndex{setLocal}%
+     Setter for a local value. The local values are stored independently from
+     the normal values. This means that they have a namespace of their own.
+
+     This method wraps its int argument into a VString before it is stored.
+
+  \method{void setLocal(String key, ValueItem value)}\MethodIndex{setLocal}%
+    Setter for a local value. The local values are stored independently
+    from the normal values. This means that they have a name-space of
+    their own.
+
+  \method{void setSortKey(String sortKey)}\MethodIndex{setSortKey}%
+    Setter for the sort key of this Entry. The sort key is stored as
+    local value under the key \texttt{sort.key\$}.
+
+  \method{void setType(String t)}\MethodIndex{setType}%
+    Setter for the type of this Entry.
+
+  \method{String toString()}%
+    Return a string representation of the object. Ths is for debugging
+    and for reading it back in.
+\end{methods}
+
+\subsection{Methods of a Value}\label{sec:groovy.value}
+
+The values are used as the right hand side of a entry item. It is a list of
+\texttt{ValueItem}s.
+
+\begin{UMLclass}{Value}
+  void add(Value item)\\
+  void add(ValueItem item)\\
+  String expand(DB db)\\
+  boolean isEmpty()\\
+  Iterator<ValueItem> iterator()  
+\end{UMLclass}
+
+\begin{methods}
+  \method{void add(Value item)}\MethodIndex{add}%
+    Add all value items contained in a value to the current value.
+
+  \method{void add(ValueItem item)}\MethodIndex{add}%
+    Add a new value item to the end of the value.
+
+  \method{String expand(DB db)}\MethodIndex{expand}%
+    Expand the whole value into a single String. All macros are replaced by
+    their values and delimiting braces or quotes are omitted.
+
+  \method{boolean isEmpty()}\MethodIndex{isEmpty}%
+    Tests whether the value is empty.
+
+  \method{Iterator<ValueItem> iterator()}\MethodIndex{iterator}%
+    Getter for an Iterator for all elements.
+\end{methods}
+
+
+\subsection{Methods of a ValueItem}\label{sec:groovy.valueitem}
+
+A ValueItem is an object stored as a part of a \texttt{Value}. It is an
+interface for which the implementations \texttt{VBlock}, \texttt{VMacro},
+\texttt{VNumber}, and \texttt{VString} are present. 
+
+\begin{UMLclass}{ValueItem}
+  void expand(StringBuilder sb, DB db)\\
+  String getContent()\\
+  void setContent(String value)
+\end{UMLclass}
+
+\begin{methods}
+
+  \method{void expand(StringBuilder sb, DB db)}\MethodIndex{expand}%
+    This method expands the ValueItem and appends the expansion to the given
+    StringBuilder. Macros are looked up in the database given and their
+    values are inserted.
+
+  \method{String getContent()}\MethodIndex{getContent}%
+    The getter for the content.
+
+  \method{void setContent(String value)}\MethodIndex{setContent}%
+    Setter for the content.
+
+\end{methods}
+
+
+\subsection{Methods of a Locator}\label{sec:groovy.locator}
+
+The locator is a means to determine where something is coming from.
+
+\begin{UMLclass}{Locator}
+  int getLineNumber()\\
+  int getLinePointer()\\
+  String getResourceName()
+\end{UMLclass}
+
+\begin{methods}
+
+  \method{int getLineNumber()}\MethodIndex{getLineNumber}%
+    Getter for the line number.
+
+  \method{int getLinePointer()}\MethodIndex{getLinePointer}%
+    Getter for the position in the line.
+
+  \method{String getResourceName()}\MethodIndex{getResourceName}%
+    Getter for the resource name. The resource can be a file or the content of
+    a URL or a member of an archive or something else. It is a general concept
+    whch can be used as needed.
+
+\end{methods}
+
+\subsection{Methods of a List}\label{sec:groovy.list}
+
+Lists are ordered containers of typed elements. This menay they
+contain for instance Strings or Entrries. Since the lists are just
+used as return values in the interface to \ExBib\ only the reading
+methods are described below.
+
+\begin{UMLclass}{List<ElementType>}
+  boolean isEmpty()\\
+  int size()\\
+  <\textit{ElementType}> get(int index)
+\end{UMLclass}
+
+\begin{methods}
+  \method{boolean isEmpty()}\MethodIndex{isEmpty}%
+    Getter for an indicator whethger or not the list is empty, i.e.
+    does not contain any element.
+  \method{int size()}\MethodIndex{size}%
+    Getter for the number of elements in the list.
+  \method{\textit{ElementType} get(int index)}\MethodIndex{get}%
+    Getter for a certain element in the list. The element is addressed
+    via an index. The index is 0-based. Thus the index needs to be in
+    the range $[0,size()-1]$. If an invalid index is used then an
+    Exception is thrown.
+\end{methods}
+
+\subsection{Methods of a Logger}\label{sec:groovy.logger}
+
+The logger is used to record log messages. The logger talkes care to
+put the messages to the appripriate place, i.e. it takes care to write
+them to a log file or present them on the console.
+
+The log messages are categorized with certain log levels. Based on
+these log levels the logger can be configured to suppress messages
+below a certain level for an output channel.
+
+\begin{UMLclass}{Logger}
+  void fine()\\
+  void finer()\\
+  void finest()\\
+  void info()\\
+  void warning()\\
+  void severe()
+\end{UMLclass}
+
+\begin{methods}
+  \method{void fine()}\MethodIndex{fine}%
+    Write a log message with the log level ``fine''. Usually any
+    message of this kind and below is suppressed.
+  \method{void finer()}\MethodIndex{finer}%
+    Write a log message with the log level ``finer''.
+  \method{void finest()}\MethodIndex{finest}%
+    Write a log message with the log level ``finest''. This is the
+    lowest level.
+  \method{void info()}\MethodIndex{info}%
+    Write a log message with the log level ``info''.
+  \method{void warning()}\MethodIndex{warning}%
+    Write a log message with the log level ``waring''.
+  \method{void severe()}\MethodIndex{severe}%
+    Write a log message with the log level ``severe''. This is the
+    highest level.
+\end{methods}
+
+\subsection{Methods of a Writer}\label{sec:groovy.writer}
+
+A writer provides means to write something to a destination. Thus the
+most important method is described below:
+
+\begin{methods}
+  \method{void write(String str)}\MethodIndex{write}%
+    Write the string to the output destination.
+\end{methods}
+
+
+\subsection{Accessing \BibTeX\ Functions}
+
+Sometimes it is desirable to have access to the original or enhanced
+function of the \BibTeX\ style language. There are two ways to access
+them. The complex functions -- which are likely to be needed this way
+-- are provided as static methods of implementing classes. All
+functions can be accesed via implementing function objects.
+
+The implementation classes described below can be found in a Java
+package This packege is \texttt{org.extex.exbib.core.bst.code.impl}.
+It must be used for the imports of the classes or for direct refernce.
+
+\begin{methods}
+
+  \method{String ChangeCase.changeCase(String type, String string)}\MethodIndex{changeCase}%
+  Apply the function \texttt{change.case\$}\fctIndex{change.case\$}.
+
+  \method{String FormatName.formatName(String names, int index, String format)}\MethodIndex{formatName}%
+  Apply the function \texttt{format.name\$}\fctIndex{format.name\$}.
+
+  \method{String NumNames.numNames(String names)}\MethodIndex{numNames}%
+  Apply the function \texttt{num.names\$}\fctIndex{num.names\$}.
+
+  \method{String Purify.purify(String string)}\MethodIndex{purify}%
+  Apply the function \texttt{purify\$}\fctIndex{purify\$}.
+
+  \method{String Substring.substring(String string, int startIndex, int endIndex)}\MethodIndex{substring}%
+  Apply the function \texttt{substring\$}\fctIndex{substring\$}.
+
+  \method{int TextLength.textLength(String string)}\MethodIndex{textLength}%
+  Apply the function \texttt{text.length\$}\fctIndex{text.length\$}.
+
+  \method{int Width.width(String string)}\MethodIndex{width}%
+  Apply the function \texttt{width\$}\fctIndex{width\$}.
+
+\end{methods}
+\endinput%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex 
+% TeX-master: "../exbib-manual"
+% End:
