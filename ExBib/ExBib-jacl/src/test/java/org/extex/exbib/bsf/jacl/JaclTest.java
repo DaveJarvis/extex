@@ -67,22 +67,20 @@ public class JaclTest {
     }
 
     /**
-     * <test> trivial test case </test>
+     * Run some Tcl code and compare the result.
      * 
-     * @throws Exception in case of an error
+     * @param tclCode the Tcl code to evaluate
+     * @param expected the expected result
+     * @param bibEntries TODO
+     * @throws IOException just in case
      */
-    @Test
-    // @Ignore
-    public void test1() throws Exception {
+    private void runTest(String tclCode, String expected, String bibEntries)
+            throws IOException {
 
         String tcl = "target/test.tcl";
-        makeFile(tcl, "package require java\n" //
-                + "puts \"DB:\"\n" //
-                + "puts [bsf bibDB getEntries ]\n");
-        // TODO: this seems not to work yet
+        makeFile(tcl, "package require java\n" + tclCode);
         String bib = "target/test.bib";
-        makeFile(bib,
-            "@book{abc,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
+        makeFile(bib, bibEntries);
         String aux = "target/test.aux";
         makeFile(aux, "\\citation{*}\n\\bibstyle{" + tcl
                 + "}\n\\bibdata{target/test.bib}\n");
@@ -109,8 +107,7 @@ public class JaclTest {
             System.err.flush();
             assertEquals("", errStream.toString().replaceAll("\r", ""));
             assertTrue("ExBib.run() failed", code);
-            assertEquals("[@book{abc,...}]\n",
-                outStream.toString().replaceAll("\r", ""));
+            assertEquals(expected, outStream.toString().replaceAll("\r", ""));
         } finally {
             System.setOut(out);
             new File(aux).delete();
@@ -119,4 +116,56 @@ public class JaclTest {
             new File(bib).delete();
         }
     }
+
+    /**
+     * <test>The parameter minCrossrefs from bibDB can be read.</test>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test1() throws Exception {
+
+        runTest(
+            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
+                    + "puts [$bibDB getMinCrossrefs]\n", //
+            "2\n",
+            "@book{abc,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
+    }
+
+    /**
+     * <test>The macro names from bibDB can be read.</test>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test2() throws Exception {
+
+        runTest(
+            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
+                    + "set x [$bibDB getMacroNames]\n" //
+                    + "puts [$x size]\n" //
+                    + "puts [[$x get 0] toString]\n", //
+            "1\nabc\n", //
+            "@string{abc={ABC}}" //
+                    + "@book{xyz,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
+    }
+
+    /**
+     * <test>The entries from bibDB can be read.</test>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test3() throws Exception {
+
+        runTest(
+            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
+                    + "set x [$bibDB getEntries]\n" //
+                    + "puts [$x size]\n" //
+                    + "puts [[$x get 0] toString]\n", //
+            "1\n@book{xyz,...}\n", //
+            "@string{abc={ABC}}" //
+                    + "@book{xyz,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
+    }
+
 }
