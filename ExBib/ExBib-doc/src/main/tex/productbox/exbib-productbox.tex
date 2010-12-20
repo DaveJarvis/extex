@@ -1,0 +1,154 @@
+%%*****************************************************************************
+%% $Id: z.tex,v 0.00 2010/11/27 16:46:49 gene Exp $
+%%*****************************************************************************
+%% Author: Gerd Neugebauer
+%%-----------------------------------------------------------------------------
+\documentclass[10pt,a4paper,landscape]{report}
+
+\usepackage{productbox}
+
+\providecommand*{\ExTeX}{\ifx\texorpdfstring\undefined
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.15em\TeX}%
+  \else\texorpdfstring{%
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.15em\TeX
+  }}{ExTeX}%
+  \fi
+}
+\providecommand*{\ExBib}{\ifx\texorpdfstring\undefined
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.1em Bib}%
+  \else\texorpdfstring{%
+  \textrm{% the logo comes always with serifs
+    \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
+    \kern-.1em Bib%
+  }}{ExBib}%
+  \fi
+}
+
+\pagestyle{empty}
+\hoffset=-3in
+
+\newdimen\xx
+
+\def\wave#1#2#3#4#5#6{
+  \xx=#1mm
+  \foreach \x in {95,90,85,80,75,70,65,60,55,50,45,40,35,30,25,20,15,10} {
+    \draw [yshift=#2\the\xx,red,line width=.7mm,draw opacity=.0\x]
+    (#3mm,#4mm) .. controls (#5mm,#4mm) and (#5mm,#6mm) .. (0mm,#6mm);
+    \global\advance\xx1mm
+  }
+}
+\makeatletter
+\makeatother
+
+\begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\enlargethispage{40mm}
+
+\pgfdeclareimage[width=20mm]{eli}{eli}
+\pgfdeclareimage[width=10mm]{eli10}{eli}
+
+\begin{ProductBox}%[fold]
+  %----------------------------------------------------------------------------
+  \begin{Front}\sf
+    \shade [top color=white!30!blue,bottom color=white]
+    (0mm,40mm) -- (88mm,40mm) -- (88mm,100mm) -- (0mm,100mm) -- cycle;
+    \shade [bottom color=white!20!yellow,top color=white]
+    (0mm,0mm) -- (88mm,0mm) -- (88mm,80mm) .. controls (40mm,80mm) and (40mm,60mm) .. (0mm,60mm) -- cycle;
+%    \shade [bottom color=white!20!red,top color=white]
+%    (88mm,70mm) -- (88mm,80mm) .. controls (40mm,80mm) and (40mm,60mm) .. (0mm,60mm)
+%    -- (0mm,56mm) .. controls (60mm,40mm) and (58mm,78mm) .. (88mm,70mm) -- cycle;
+
+    \wave1{}{88}{80}{40}{60}
+    \wave0-{88}{80}{40}{60}
+
+    \draw(44mm,90mm) node{{\Huge\bf\boldmath\ExBib}};
+
+    \draw(44mm,83mm) node{\sf The dis-integrated bibliography processor};
+
+    \shade [shading=ball,color=green!20!black!2!red,yshift=-42.5mm,yslant=.2mm] (75mm,90mm) circle (4mm);
+    \draw(75mm,90mm) node[color=white,rotate=45]{\large\bf\sf 1.0};
+
+    \fill[black] (60mm,0mm) -- (88mm,28mm) -- (88mm,18mm) -- (70mm,0mm) -- cycle;
+
+    \draw (77mm,12mm) node [color=white,rotate=45] {\small\bf\sf Open Source};
+
+    \draw (16mm,66mm) node {\pgfuseimage{eli}};
+
+    \draw(4mm,30mm) node[rotate=90]{\tiny Developed within the
+    \ExTeX\ project \texttt{http://www.extex.org/}};
+  \end{Front}
+  %----------------------------------------------------------------------------
+  \begin{Back}\sf
+    \shade [top color=white!30!blue,bottom color=white]
+    (0mm,40mm) -- (88mm,40mm) -- (88mm,100mm) -- (0mm,100mm) -- cycle;
+
+    \shade [bottom color=white!20!yellow,top color=white]
+    (0mm,0mm) -- (88mm,0mm) -- (88mm,80mm) .. controls (40mm,80mm) and (40mm,60mm) .. (0mm,60mm) -- cycle;
+
+    \wave1{}{88}{80}{40}{60}
+    \wave0-{88}{80}{40}{60}
+
+    \draw (16mm,66mm) node {\pgfuseimage{eli}};
+  \end{Back}
+  %----------------------------------------------------------------------------
+  \begin{Left}\sf
+    \shade [top color=white!30!blue,bottom color=white]
+    (0mm,40mm) -- (30mm,40mm) -- (30mm,100mm) -- (0mm,100mm) -- cycle;
+
+    \shade [bottom color=white!20!yellow,top color=white]
+    (0mm,0mm) -- (30mm,0mm) -- (30mm,60mm) .. controls (10mm,60mm) and (10mm,80mm) .. (0mm,80mm) -- cycle;
+
+    \wave1{}{30}{60}{10}{80}
+    \wave0-{30}{60}{10}{80}
+
+%    \shade [shading=ball,color=green!20!black!2!red,yshift=-42.5mm,yslant=.2mm] (15mm,90mm) circle (4mm);
+%    \draw(15mm,90mm) node[color=white,rotate=45]{\large\bf\sf 1.0};
+
+    \draw(15mm,90mm) node{{\Large\bf\boldmath\ExBib}};
+
+    \draw (10mm,80mm) node {\pgfuseimage{eli10}};
+  \end{Left}
+  %----------------------------------------------------------------------------
+  \begin{Right}\sf
+    \shade [top color=white!30!blue,bottom color=white]
+    (0mm,40mm) -- (30mm,40mm) -- (30mm,100mm) -- (0mm,100mm) -- cycle;
+
+    \shade [bottom color=white!20!yellow,top color=white]
+    (0mm,0mm) -- (30mm,0mm) -- (30mm,60mm) .. controls (10mm,60mm) and (10mm,80mm) .. (0mm,80mm) -- cycle;
+
+    \wave1{}{30}{60}{10}{80}
+    \wave0-{30}{60}{10}{80}
+
+%    \shade [shading=ball,color=green!20!black!2!red,yshift=-42.5mm,yslant=.2mm] (15mm,90mm) circle (4mm);
+%    \draw(15mm,90mm) node[color=white,rotate=45]{\large\bf\sf 1.0};
+
+    \draw(15mm,90mm) node{{\Large\bf\boldmath\ExBib}};
+
+    \draw (10mm,80mm) node {\pgfuseimage{eli10}};
+  \end{Right}
+  %----------------------------------------------------------------------------
+  \begin{Top}\sf
+    \shade [outer color=white!30!blue,inner color=white!75!blue]
+    (0mm,0mm) -- (88mm,0mm) -- (88mm,30mm) -- (0mm,30mm) -- cycle;
+
+    \draw(44mm,15mm) node{{\LARGE\bf\boldmath\ExBib}};
+  \end{Top}
+  %----------------------------------------------------------------------------
+  \begin{Bottom}\sf
+    \fill [color=white!99!black]
+    (0mm,0mm) -- (88mm,0mm) -- (88mm,30mm) -- (0mm,30mm) -- cycle;
+  \end{Bottom}
+  %----------------------------------------------------------------------------
+\end{ProductBox}
+
+\end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Local Variables: 
+% mode: latex
+% TeX-master: nil
+% End: 

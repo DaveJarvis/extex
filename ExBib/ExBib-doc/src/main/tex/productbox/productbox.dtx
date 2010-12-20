@@ -1,0 +1,1419 @@
+%%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%^^A $Id$
+%%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\iffalse
+%% Purpose:
+%%      productbox.dtx   provides  a  style  file   for  typesetting  a
+%%      three-diemnsional product box. This product box can be rendered
+%%      as it is standing on a surface and  some light is shed onto it.
+%%      Alternatively  it can be typeset as a wireframe  to be  cut out
+%%      and glued together. This will lead to a physical product box.
+%%
+%% Documentation:
+%%      The  documentation  can  be  generated  from the  original file
+%%      productbox.dtx  with  the  doc style/package.  LaTeX  the  file    
+%%      productbox.tex to get the full documentation in pdf format. 
+%%
+%% Prerequisite:
+%%      This package  needs  PGF and  TikZ  to be present  at least  in
+%%      version 2.0.
+%%
+%% Author: Gerd Neugebauer
+%%         Im Lerchelsb\"ohl 5
+%%         64521 Gro\ss-Gerau
+%% Mail:   gene@gerd-neugebauer.de
+%%
+%% Copyright (C) 2010 Gerd Neugebauer
+%%
+%%      productbox.dtx is distributed in the hope that it will be useful,
+%%      but  WITHOUT ANY WARRANTY.  No  author  or  distributor  accepts
+%%      responsibility to anyone for the consequences of using it or for
+%%      whether it serves any particular purpose or works at all, unless
+%%      he says so in writing.
+%% 
+%%      Everyone is granted permission to  copy, modify and redistribute
+%%      productbox.dtx, provided this copyright notice is preserved  and
+%%      any modifications are indicated.
+%% 
+%\fi
+%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \title{A \LaTeX\  Style for
+%    Typesetting a Three-Dimensional Product Box\thanks{This file%    
+%    documents \filename\ version \fileversion\ as of \filedate.}} 
+% \author{Gerd Neugebauer\\\small
+%	  Im Lerchelsb\"ohl 5\\\small
+%	  64521 Gro\ss-Gerau (Germany)\\\small
+%	  Email: \texttt{gene@gerd-neugebauer.de}}
+%
+% \date{{\footnotesize Documentation date: \docdate}}
+%
+% \maketitle
+%
+%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \changes{1.0}{2010/12/20}{First public release.}
+%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% \DoNotIndex{\ ,\",\',\.,\[,\\,\],\^,\`,\~,\@,\@dottedtocline}
+% \DoNotIndex{\@gobble,\@gobbletwo,\@highpenalty,\@ifnextchar,\@ifstar}
+% \DoNotIndex{\@ifundefined,\@namedef,\@nameuse,\@pnumwidth,\@startsection}
+% \DoNotIndex{\@starttoc,\@tempdima,\@thefnmark,\@undefined}
+% \DoNotIndex{\@ixpt,\@vpt,\@vipt,\@viipt,\@viiipt}
+% \DoNotIndex{\@xpt,\@xipt,\@xiipt,\@xivpt,\@xvii,\@xxpt,\@xxvpt}
+% \DoNotIndex{\AA,\AE}
+% \DoNotIndex{\CurrentOption,\DeclareOption,\H,\L,\LARGE,\LaTeX,\Large}
+% \DoNotIndex{\LoadClass,\O,\OE,\OptionNotUsed,\PassOptionsToClass}
+% \DoNotIndex{\ProcessOptions,\ProvidesClass,\RequirePackage,\TeX}
+% \DoNotIndex{\aa,\addcontentsline,\addpenalty,\advance,\addvspace,\ae}
+% \DoNotIndex{\ast,\arabic}
+% \DoNotIndex{\b,\baselineskip,\begin,\begingroup,\bf,\bgroup,\egroup}
+% \DoNotIndex{\bigskip,\box,\bullet}
+% \DoNotIndex{\c,\cal,\catcode,\chardef,\circ,\clearpage,\closein,\closeout}
+% \DoNotIndex{\clubpenalty,\csname}
+% \DoNotIndex{\d,\def,\dimen,\diamond,\divide,\documentclass,\dp}
+% \DoNotIndex{\else,\em,\empty,\end,\endcsname,\endgroup,\endinput,\endlist}
+% \DoNotIndex{\expandafter,\fbox,\fi,\footskip,\framebox,\frenchspacing}
+% \DoNotIndex{\futurelet,\gdef,\global,\gobble}
+% \DoNotIndex{\hangafter,\hangindent,\hbox,\headheight,\headsep,\hfil}
+% \DoNotIndex{\hfill,\hrule,\hskip,\hspace,\hss,\ht,\huge,\ifcat,\ifeof}
+% \DoNotIndex{\ifdim,\ifx,\ignorespaces,\immediate,\index,\input,\it}
+% \DoNotIndex{\itemindent,\itemsep,\jobname,\kern,\l,\labelsep,\labelwidth}
+% \DoNotIndex{\large,\leavevmode,\leftmark,\leftskip,\let,\list}
+% \DoNotIndex{\llap,\long,\lower}
+% \DoNotIndex{\m@th,\makebox,\magstep,\makeindex,\markboth,\mbox,\medskip}
+% \DoNotIndex{\newblock,\newcommand,\newcount,\newenvironment,\newfont}
+% \DoNotIndex{\newif,\newpage,\newread,\newwrite}
+% \DoNotIndex{\nobreak,\noindent,\normalsize,\null,\o,\oe}
+% \DoNotIndex{\openin,\openout,\or,\pagestyle,\par,\paragraph,\parbox}
+% \DoNotIndex{\parfillskip,\parindent,\parsep,\parskip,\partopsep}
+% \DoNotIndex{\penalty,\quad}
+% \DoNotIndex{\raggedbottom,\raise,\relax,\renewcommand,\renewenvironment}
+% \DoNotIndex{\rightskip,\rm,\rule}
+% \DoNotIndex{\sbox,\sc,\setcounter,\settowidth,\sf,\sfcode,\sl}
+% \DoNotIndex{\sloppy,\small,\space,\ss,\string,\symbol}
+% \DoNotIndex{\t,\tenex,\textstyle,\the,\thepage,\thispagestyle}
+% \DoNotIndex{\topmargin,\topsep,\tt,\typeout}
+% \DoNotIndex{\u,\unitlength,\usecounter,\v,\varepsilon,\vbox}
+% \DoNotIndex{\vfill,\vsize,\vskip,\vspace,\vss}
+% \DoNotIndex{\wd,\widowpenalty,\write,\xdef,\z@}
+% \DoNotIndex{\usetikzlibrary,\usepackage,\tikzfading,\setkeys}
+% \DoNotIndex{\setbox,\scalebox,\pgftransformyslant,\pgftransformyshift}
+% \DoNotIndex{\pgftransformyscale,\pgftransformxslant,\pgftransformxshift}
+% \DoNotIndex{\pgftransformxscale,\pgfsetcornersarced,\pgfpoint}
+% \DoNotIndex{\newbox,\ignorespacesafterend,\foreach,\filldraw}
+% \DoNotIndex{\fill,\errmessage,\draw,\define@key,\copy,\clip}
+% \DoNotIndex{\RecordChanges,\ProvidesPackage,\NeedsTeXFormat}
+% \DoNotIndex{\InputIfFileExists,\EnableCrossrefs,\DocInput}
+% \DoNotIndex{\DeleteShortVerb,\CodelineIndex}
+%
+%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \CheckSum{666}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%  \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%%
+%^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%    \begin{abstract}
+%      \textsf{productbox.dtx} provides a style file for typesetting a
+%      three-diemnsional product box. This product box can be rendered
+%      as it is standing on a surface and some light is shed onto it.
+%      Alternatively it can be typeset as a wireframe to be cut out and
+%      glued together. This will lead to a physical product box.
+%    \end{abstract}
+%
+%    \begin{center}%
+%      \def\PB(#1,#2)#3{
+%        \draw[xshift=-.2mm,yshift=.2mm] (#1,#2) node[white,opacity=.9]{#3};
+%        \draw[xshift=.2mm,yshift=-.2mm] (#1,#2) node[black,opacity=.9]{#3};
+%        \draw (#1,#2) node[blue]{#3};
+%      }%
+%    \begin{ProductBox}[mirror=true,flare=true,scale=.6]
+%      \begin{Front}
+%        \shade [top color=yellow!20!red,bottom color=yellow!80!red]
+%          rectangle (88mm,100mm);
+%        \PB(44mm,85mm){\Huge\bf Product Box}
+%        \draw (77mm,90mm) node[circle,fill=white,rotate=330]{\small\bf\fileversion};
+%        \draw (44mm,75mm) node{A \LaTeX\ package for just another kind of boxes};
+%    
+%        \foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16} {
+%          \count0=\x \multiply\count0 4
+%          \draw [red,line width=.2mm]
+%          (0mm,0 mm) .. controls (88mm,\the\count0 mm) and (\x mm,66mm) ..
+%          (88mm,\the\count0 mm);
+%          \draw [xshift=.4mm,white,line width=.2mm,opacity=.5]
+%          (0mm,0 mm) .. controls (88mm,\the\count0 mm) and (\x mm,66mm) ..
+%          (88mm,\the\count0 mm);
+%        }
+%    
+%        \clip (0mm,0mm) .. controls (88mm,64mm) and (16mm,66mm) ..
+%        (88mm,64mm) -- (88mm,100mm) -- (0mm,100mm) -- cycle;
+%        \draw (4mm,66mm) node [white!30!black,anchor=north west] {
+%          \begin{minipage}{160mm}\tt\tiny\raggedright
+%
+%    |\usepackage{productbox}|\\
+%    | |\\
+%    | |\\ 
+%    |\begin{ProductBox}[scale=.8]|\\
+%    |  \begin{Front}|\\
+%    |    \shade [top color=yellow!20!red,bottom color=yellow!80!red]|\\
+%    |      rectangle (88mm,100mm);|\\
+%    |    \PB(44mm,85mm){\Huge\bf Product Box}|\\
+%    |    \draw (77mm,90mm) node[circle,fill=white]{\small\bf\fileversion};|\\
+%    |    \draw (44mm,75mm) node{A \LaTeX\ package for just another kind of boxes};|\\
+%    ||\\
+%    |    \foreach \x in {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16} {|\\
+%    |      \count0=\x \multiply\count0 4|\\
+%    |      \draw [red,line width=.2mm]|\\
+%    |      (0mm,0 mm) .. controls (88mm,\the\count0 mm) and (\x mm,66mm) ..|\\
+%    |      (88mm,\the\count0 mm);|\\
+%    |      \draw [xshift=.4mm,white,line width=.2mm,opacity=.5]|\\
+%    |      (0mm,0 mm) .. controls (88mm,\the\count0 mm) and (\x mm,66mm) ..|\\
+%    |      (88mm,\the\count0 mm);|\\
+%    |    }|\\
+%    |    \clip (0mm,0mm) .. controls (88mm,64mm) and (16mm,66mm) ..|\\
+%    |    (88mm,64mm) -- (88mm,100mm) -- (0mm,100mm) -- cycle;|\\
+%    |  \end{Front}|\\
+%    |  \begin{Top}|\\
+%    |    \shade [outer color=yellow!20!red,inner color=yellow!80!red]|\\
+%    |      rectangle (88mm,30mm);|\\
+%    |    \PB(44mm,15mm){\huge\bf Product Box}|\\
+%    |  \end{Top}|\\
+%    |  \begin{Left}|\\
+%    |    \fill [top color=yellow!20!red,bottom color=yellow!80!red]|\\
+%    |      rectangle (30mm,100mm);|
+%          \end{minipage}};
+%      \end{Front}
+%      \begin{Top}
+%        \shade [outer color=yellow!20!red,inner color=yellow!80!red]
+%          rectangle (88mm,30mm);
+%        \PB(44mm,15mm){\huge\bf Product Box}
+%      \end{Top}
+%      \begin{Left}
+%        \fill [top color=yellow!20!red,bottom color=yellow!80!red]
+%          rectangle (30mm,100mm);
+%        \PB(15mm,90mm){
+%          \begin{minipage}{25mm}\centering
+%            \Large\bf Product Box
+%          \end{minipage}}
+%        \draw (15mm,25mm) node {
+%          \begin{minipage}{25mm}\sf\tiny\raggedright\parskip=.75ex
+%            Copyright (C) 2010 Gerd Neugebauer
+%    
+%            productbox.dtx is distributed in the hope that it will be useful,
+%            but  WITHOUT ANY WARRANTY.  No  author  or  distributor  accepts
+%            responsibility to anyone for the consequences of using it or for
+%            whether it serves any particular purpose or works at all, unless
+%            he says so in writing.
+%    
+%            Everyone is granted permission to  copy, modify and redistribute
+%            productbox.dtx, provided this copyright notice is preserved  and
+%            any modifications are indicated.
+%          \end{minipage}};
+%      \end{Left}
+%    \end{ProductBox}
+%    \end{center}
+%    
+%    \newpage
+%    \tableofcontents
+%    \newpage
+%
+%    \section{The User Interface}
+%
+%    This style is based on Ti\emph{k}Z and \textsc{pgf} at least in
+%    version 2.0. It is best used with a \LaTeX\ variant which is able
+%    to produce PDF. If no proper tool chain is used then some of the
+%    effects should not be used.
+%    
+%
+%    \DescribeEnv{ProductBox}
+%    The envrionment |ProductBox| provides the central means for
+%    producing a product box. The contents is used to define the
+%    appearance of the faces. Finally the selected type of output is
+%    produced. 
+%
+%    {\footnotesize\tt
+%    |\begin{ProductBox}|\\
+%    |  \begin{Front}|\\
+%    |    \shade [bottom color=white!30!blue,top color=white]|\\
+%    |      (0mm,0mm) rectangle (88mm,100mm);|\\
+%    |    \draw (44mm,50mm) node{{\Huge Product Box}};|\\
+%    |  \end{Front}|\\
+%    |  \begin{Back}|\\
+%    |    \shade [top color=yellow!30!red,bottom color=white]|\\
+%    |      (0mm,0mm) rectangle (88mm,100mm);|\\
+%    |    \draw (44mm,50mm) node{{\large Back}};|\\
+%    |  \end{Back}|\\
+%    |  \begin{Top}|\\
+%    |    \shade [outer color=white!30!red,inner color=white]|\\
+%    |      (0mm,0mm) rectangle (88mm,30mm);|\\
+%    |    \draw (44mm,15mm) node{{\large Top}};|\\
+%    |  \end{Top}|\\
+%    |  \begin{Bottom}|\\
+%    |    \fill [outer color=red,inner color=black]|\\
+%    |      (0mm,0mm) rectangle (88mm,30mm);|\\
+%    |    \draw (44mm,15mm) node{{\large Bottom}};|\\
+%    |  \end{Bottom}|\\
+%    |  \begin{Left}|\\
+%    |    \fill [left color=green,right color=yellow]|\\
+%    |      (0mm,0mm) rectangle (30mm,100mm);|\\
+%    |    \draw (15mm,50mm) node{{\large Left}};|\\
+%    |  \end{Left}|\\
+%    |  \begin{Right}|\\
+%    |    \fill [left color=white,right color=black]|\\
+%    |      (0mm,0mm) rectangle (30mm,100mm);|\\
+%    |    \draw (15mm,50mm) node{{\large Right}};|\\
+%    |  \end{Right}|\\
+%    |\end{ProductBox}|
+%    }
+%
+%    \def\sample[#1]{%
+%    \begin{ProductBox}[scale=.25,#1]
+%      \begin{Front}
+%        \shade [bottom color=white!30!blue,top color=white] (0mm,0mm) rectangle (88mm,100mm);
+%        \draw (44mm,50mm) node{{\Huge Product Box}};
+%      \end{Front}
+%      \begin{Back}
+%        \shade [top color=yellow!30!red,bottom color=white] (0mm,0mm) rectangle (88mm,100mm);
+%        \draw (44mm,50mm) node{{\large Back}};
+%      \end{Back}
+%      \begin{Top}
+%        \shade [outer color=white!30!red,inner color=white] (0mm,0mm) rectangle (88mm,30mm);
+%        \draw (44mm,15mm) node{{\large Top}};
+%      \end{Top}
+%      \begin{Bottom}
+%        \fill [outer color=red,inner color=black] (0mm,0mm) rectangle (88mm,30mm);
+%        \draw (44mm,15mm) node{{\large Bottom}};
+%      \end{Bottom}
+%      \begin{Left}
+%        \fill [left color=green,right color=yellow] (0mm,0mm) rectangle (30mm,100mm);
+%        \draw (15mm,50mm) node{{\large Left}};
+%      \end{Left}
+%      \begin{Right}
+%        \fill [left color=white,right color=black] (0mm,0mm) rectangle (30mm,100mm);
+%        \draw (15mm,50mm) node{{\large Right}};
+%      \end{Right}
+%    \end{ProductBox}%
+%    }
+%
+%    \newcommand\SampleEnv[1]{\noindent\par
+%    \fcolorbox{red!30!black}{yellow!30!white}{\begin{minipage}[b]{.98\textwidth}\footnotesize\tt
+%    \textcolor{blue}{\char92begin}\char123#1\char125\\
+%    \hspace*{2em}...\\
+%    \textcolor{blue}{\char92end}\char123#1\char125
+%    \end{minipage}}\par}
+%
+%    \subsection{Content of the Environment}
+%
+%    The content of the environment is simply evaluated. It can
+%    contain any code you like. Useful for the production of a product
+%    box are some inner environments. They are called \texttt{Front},
+%    \texttt{Back}, \texttt{Left}, \texttt{Right}, \texttt{Top}, and
+%    \texttt{Bottom}. They are defined inside the main 
+%    environment only. Those environments can be used to specify the
+%    contenzs of the respective faces of the box.
+%
+%    Note that in the three-dimensional rendering will show at most
+%    three of the faces. It doies not hurt to define all of them, even
+%    if they are not shown at all.
+%
+%    \DescribeEnv{Front}
+%    The environment \texttt{Front} is used to define the content of
+%    the font face. The environment prosesses its contents inside a
+%    \texttt{tikzpikture} of the default size 88mm$\times$100mm.
+%    Usually anything outside of this range is clipped.
+%
+%    \SampleEnv{Front}
+%
+%    \DescribeEnv{Back}
+%    The environment \texttt{Back} is used to define the content of
+%    the back face. The environment prosesses its contents inside a
+%    \texttt{tikzpikture} of the default size 88mm$\times$100mm.
+%    Usually anything outside of this range is clipped.
+%
+%    \SampleEnv{Back}
+%
+%    \DescribeEnv{Left}
+%    The environment \texttt{Left} is used to define the content of
+%    the left face, i.e. the face left to the front page. The
+%    environment prosesses its contents inside a \texttt{tikzpikture}
+%    of the default size 30mm$\times$100mm. Usually anything outside
+%    of this range is clipped.
+%
+%    \SampleEnv{Left}
+%
+%    \DescribeEnv{Right}
+%    The environment \texttt{Right} is used to define the content of
+%    the right face, i.e. the face right to the front page. The
+%    environment prosesses its contents inside a \texttt{tikzpikture}
+%    of the default size 30mm$\times$100mm. Usually anything outside of this
+%    range is clipped.
+%
+%    \SampleEnv{Right}
+%
+%    \DescribeEnv{Top}
+%    The environment \texttt{Top} is used to define the content of the
+%    top face. The environment prosesses its contents inside a
+%    \texttt{tikzpikture} of the default size 88mm$\times$30mm. Usually
+%    anything outside of this range is clipped.
+%
+%    \SampleEnv{Top}
+%
+%    \DescribeEnv{Bottom}
+%    The environment \texttt{Bottom} is used to define the content of the
+%    top face. The environment prosesses its contents inside a
+%    \texttt{tikzpikture} of the default size 88mm$\times$30mm. Usually
+%    anything outside of this range is clipped.
+%
+%    \SampleEnv{Bottom}
+%
+%
+%    \subsection{Settings and Options of the Environment}
+%
+%    The environment \texttt{ProductBox} can take some options to
+%    influence the appearance of the product box. Those options are
+%    comma separated.
+%
+%    \def\CODE#1{
+%    \noindent
+%    \fcolorbox{red!30!black}{yellow!30!white}{\begin{minipage}[b]{.98\textwidth}\footnotesize\tt
+%    #1
+%    \end{minipage}\medskip\par
+%    }}%
+%    \CODE{\textcolor{blue}{\char92begin}\char123ProductBox\char125[shape=3d]}
+%
+%    The settings are local to the environment. If an option is not
+%    set then the fallback from the global settings are used.
+%
+%    \DescribeMacro{\ProductBoxSet}
+%    The macro |\ProductBoxSet| modify the global setting of the
+%    product box style. The arguments are the same like the optional
+%    arguments of the environment \texttt{ProductBox} -- but enclosed
+%    in braces instead of brackets.
+%
+%    \CODE{\char92ProductBoxSet\char123shape=3d\char125 }
+%
+%    The following options can be used to influence the result of the product
+%    box.
+%
+%    \def\SAMPLE[#1]{
+%      \noindent
+%      \fcolorbox{red!30!black}{yellow!30!white}{\begin{minipage}[b]{.44\textwidth}\footnotesize\tt
+%      \def\x{#1}%
+%      \def\e{}%
+%      \textcolor{blue}{\char92begin}\char123ProductBox\char125 \ifx\x\e\else\textcolor{red}{[#1]}\fi\\
+%      \hspace*{2em}\textcolor{blue}{\char92begin}\char123Front\char125\\
+%      \hspace*{4em}...\\
+%      \hspace*{2em}\textcolor{blue}{\char92end}\char123Front\char125\\
+%      \hspace*{2em}\textcolor{blue}{\char92begin}\char123Left\char125\\
+%      \hspace*{4em}...\\
+%      \hspace*{2em}\textcolor{blue}{\char92end}\char123Left\char125\\
+%      \hspace*{2em}...\\
+%      \textcolor{blue}{\char92end}\char123ProductBox\char125
+%    \end{minipage}}\hfill
+%    \begin{minipage}[b]{.54\textwidth}\hfill
+%      \sample[#1]
+%    \end{minipage}\medskip\par
+%    }%
+%
+%
+%    \DescribeMacro{style}
+%    The box style determines, how the box is drawn. Several rendering
+%    functions are provided to produce different effects. Any value is
+%    accepted. Nevertheless unknown box styles will lead to an error message.
+%
+%    \SAMPLE[style=3D]
+%
+%    \DescribeMacro{3D}
+%    The box style \texttt{3D} is the default. It produces a
+%    three-dimensional box rendering with a drop shadow. The option
+%    \texttt{3D} is an abbreviation for \texttt{style=3D}. It can also be
+%    written as \texttt{3d} or \texttt{3D}.
+%
+%    \SAMPLE[]
+%
+%    \DescribeMacro{shadow}
+%    The option \texttt{shadow} controls the drawing of the drop shadow in the
+%    3D rendering. It is a boolean value taking the values |true| and
+%    |false|. The default value is  |true|.
+%
+%    The option \texttt{shadow} is the abbreviation for |shadow=true|.
+%
+%    \SAMPLE[shadow=false]
+%
+%    \DescribeMacro{mirror}
+%    The option \texttt{mirror} controls the rendering of the mirror effect in
+%    the 3D rendering. It is a boolean value taking the values |true| and
+%    |false|. The default value is  |false|.
+%
+%    The option \texttt{mirror} is the abbreviation for |mirror=true|.
+%
+%    \SAMPLE[mirror=true]
+%
+%    \DescribeMacro{flare}
+%    The option \texttt{flare} controls the rendering of the flare effect in
+%    the 3D rendering. It is a boolean value taking the values |true| and
+%    |false|. The default value is  |false|.
+%
+%    The option \texttt{flare} is the abbreviation for |flare=true|.
+%
+%    \SAMPLE[flare=true]
+%
+%    \DescribeMacro{fold}
+%    The option \texttt{fold} switches to the box style for rendering a
+%    complete wire frame with all faces in place. The option
+%    \texttt{fold} is an abbreviation for \texttt{style=fold}.
+%
+%    \SAMPLE[fold]
+%
+%    \DescribeMacro{front}
+%    The option \texttt{front} switches to the box style for rendering the
+%    front face only. The option \texttt{front} is an abbreviation for
+%    \texttt{style=front}.
+%
+%    \SAMPLE[front]
+%
+%    \DescribeMacro{back}
+%    The option \texttt{back} switches to the box style for rendering the
+%    back face only. The option \texttt{back} is an abbreviation for
+%    \texttt{style=back}.
+%
+%    \SAMPLE[back]
+%
+%    \DescribeMacro{left}
+%    The option \texttt{left} switches to the box style for rendering the
+%    back face only. The option \texttt{left} is an abbreviation for
+%    \texttt{style=left}.
+%
+%    \SAMPLE[left]
+%
+%    \DescribeMacro{right}
+%    The option \texttt{right} switches to the box style for rendering the
+%    back face only. The option \texttt{right} is an abbreviation for
+%    \texttt{style=right}.
+%
+%    \SAMPLE[right]
+%
+%    \DescribeMacro{top}
+%    The option \texttt{top} switches to the box style for rendering the
+%    back face only. The option \texttt{top} is an abbreviation for
+%    \texttt{style=top}.
+%
+%    \SAMPLE[top]
+%
+%    \DescribeMacro{bottom}
+%    The option \texttt{bottom} switches to the box style for rendering the
+%    back face only. The option \texttt{bottom} is an abbreviation for
+%    \texttt{style=bottom}.
+%
+%    \SAMPLE[bottom]
+%
+%    \DescribeMacro{scale}
+%    The option \texttt{scale} controlls the scaling of the whole rendering.
+%    It is a number where 1. represents the original size.\footnote{The
+%    examples on the right side are normally rendered with a scale of 0.25.}
+%
+%    \SAMPLE[scale=.1]
+%
+%    \DescribeMacro{view}
+%    The option |view| takes a name of a view definition and activates
+%    the appropriate settings. A few views are predefined. The default
+%    value is |1|.
+%
+%    \SAMPLE[view=1]
+%
+%    \SAMPLE[view=2]
+%
+%    \SAMPLE[view=3]
+%
+%    \DescribeMacro{width}
+%    The option |width| takes a dimension denoting the width of the box. The
+%    default value is 88mm.
+%
+%    \DescribeMacro{height}
+%    The option |height| takes a dimension denoting the height of the box. The
+%    default value is 100mm.
+%
+%    \DescribeMacro{depth}
+%    The option |depth| takes a dimension denoting the depth of the box. The
+%    default value is 30mm.
+%
+%    \DescribeMacro{clip}
+%    The option \texttt{clip} controls the clipping of the faces to their
+%    defined size. If it is turned off then the faces can be oversized
+%    leading to strange effects. It is a boolean value taking the
+%    values |true| and |false|. The default value is |true|.
+%
+%
+%    \newpage
+%    \section{The Documentation Driver}
+%
+%    The documentation driver changes \textsf{productbox.dtx} into a
+%    self-extracting documentation. Thus it is possible to run
+%    \LaTeX{} on \textsf{productbox.dtx} to produce the documentation.
+%
+%    The documentation can be adapted in a file named productbox.dcf
+%    (documentation configuration). This file can contain instructions
+%    for |docstrip|. Especially useful might be the instruction 
+%
+%    |\OnlyDescription|
+%
+%    which supresses the generation of the implementation description.
+%
+%    \begin{macrocode}
+%<*driver>
+\documentclass{ltxdoc}
+\InputIfFileExists{productbox.dcf}{}{}
+\usepackage{productbox}
+\usepackage{moreverb}
+\RecordChanges
+\EnableCrossrefs
+\CodelineIndex
+\setcounter{IndexColumns}2
+\parindent=0pt
+\parskip=1ex plus .5ex minus .25ex
+\begin{document}
+\DocInput{productbox.dtx}
+\end{document}
+%</driver>
+%    \end{macrocode}
+%
+%    \section{The Implementation}
+%
+%    The implementation contains the code of the style.
+%
+%    \subsection{The Version Information}
+%
+%    The following lines define the version information for the class
+%    file. 
+%
+%    \begin{macrocode}
+%<*class>
+\begingroup
+  \def\ProductBox@VC$#1: #2 #3${#2}
+  \xdef\fileversion{\ProductBox@VC$Revision: 1.0 $}
+  \xdef\filedate{\ProductBox@VC$Date: 2010/12/20 21:00:00 $}
+\endgroup
+\def\filename{productbox.dtx}
+\let\docversion=\fileversion
+\let\docdate=\filedate
+%</class>
+%    \end{macrocode}
+%
+%
+%    \subsection{Getting Started}
+%
+%    First we have to determine that the right kind of \LaTeX{} is
+%    running and identify style file.
+%    
+%    \begin{macrocode}
+%<*class>
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{productbox}[\filedate Another type of boxes...]
+%    \end{macrocode}
+%
+%   A bunch of packages is loaded to form the base of the work herein. 
+%    \begin{macrocode}
+\RequirePackage{keyval}
+\RequirePackage{pgf}
+\RequirePackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{fadings}
+%    \end{macrocode}
+%
+%    \subsection{Parameters}
+%
+%    The parameters are stored to be used later. Here the built-in defaults
+%    are defined.
+%
+%    The boolean \texttt{ProductBox@shadow} determines whether or not the
+%    shadow in the 3d rendering is shown.
+%    \begin{macrocode}
+\newif\ifProductBox@shadow\ProductBox@shadowtrue
+%    \end{macrocode}
+%
+%    The boolean \texttt{ProductBox@mirror} determines whether or not the
+%    mirror effect in the 3d rendering is shown.
+%    \begin{macrocode}
+\newif\ifProductBox@mirror
+%    \end{macrocode}
+%
+%    The boolean \texttt{ProductBox@flare} determines whether or not the
+%    flare effect in the 3d rendering is shown.
+%    \begin{macrocode}
+\newif\ifProductBox@flare
+%    \end{macrocode}
+%
+%    The boolean \texttt{ProductBox@clip} determines whether or not the
+%    additional clipping of the boxes should be enabled.
+%    \begin{macrocode}
+\newif\ifProductBox@clip\ProductBox@cliptrue
+%    \end{macrocode}
+%
+%   The edge color in the 3D rendering.
+%    \begin{macrocode}
+\newcommand\ProductBox@edgeColor{white}
+%    \end{macrocode}
+%
+%   The background color for the mirror effect.
+%    \begin{macrocode}
+\newcommand\ProductBox@bgColor{white}
+%    \end{macrocode}
+%
+%   The default style is the 3D rendering.
+%    \begin{macrocode}
+\newcommand\ProductBox@style{threeD}
+%    \end{macrocode}
+%
+%   A hook to add some code at the beginning.
+%    \begin{macrocode}
+\newcommand\ProductBox@startOptions{}
+%    \end{macrocode}
+%
+%   A hook to add some code at the end.
+%    \begin{macrocode}
+\newcommand\ProductBox@endOptions{}
+%    \end{macrocode}
+%
+%   The color of the additional lines in the fol rendering.
+%    \begin{macrocode}
+\newcommand\ProductBox@foldLine{white!80!black}
+%    \end{macrocode}
+%
+%   The diameter of the flare.
+%    \begin{macrocode}
+\newcommand\ProductBox@flareDiameter{24mm}
+%    \end{macrocode}
+%
+%   The width of the box.
+%    \begin{macrocode}
+\newcommand\ProductBox@x{88mm}
+%    \end{macrocode}
+%
+%   The height of the box.
+%    \begin{macrocode}
+\newcommand\ProductBox@y{100mm}
+%    \end{macrocode}
+%
+%   The depth of the box.
+%    \begin{macrocode}
+\newcommand\ProductBox@z{30mm}
+%    \end{macrocode}
+%
+%    Define the parameters for the keyval package.
+%    \begin{macrocode}
+\define@key{ProductBox}{flat}[true]{\def\ProductBox@style{flat}}
+\define@key{ProductBox}{fold}[true]{\def\ProductBox@style{fold}}
+\define@key{ProductBox}{3d}[true]{\def\ProductBox@style{threeD}}
+\define@key{ProductBox}{3D}[true]{\def\ProductBox@style{threeD}}
+\define@key{ProductBox}{threeD}[true]{\def\ProductBox@style{threeD}}
+\define@key{ProductBox}{top}[true]{\def\ProductBox@style{top}}
+\define@key{ProductBox}{bottom}[true]{\def\ProductBox@style{bottom}}
+\define@key{ProductBox}{front}[true]{\def\ProductBox@style{front}}
+\define@key{ProductBox}{back}[true]{\def\ProductBox@style{back}}
+\define@key{ProductBox}{left}[true]{\def\ProductBox@style{left}}
+\define@key{ProductBox}{right}[true]{\def\ProductBox@style{right}}
+\define@key{ProductBox}{style}{\def\ProductBox@style{#1}}
+\define@key{ProductBox}{shadow}[true]{%
+  \csname ProductBox@shadow#1\endcsname}
+\define@key{ProductBox}{mirror}[true]{%
+  \csname ProductBox@mirror#1\endcsname}
+\define@key{ProductBox}{flare}[true]{%
+  \csname ProductBox@flare#1\endcsname}
+\define@key{ProductBox}{edgeColor}{\def\productBox@edgeColor{#1}}
+\define@key{ProductBox}{backgroundColor}{\def\ProductBox@bgColor{#1}}
+\define@key{ProductBox}{scale}{\def\ProductBox@scale{#1}}
+\define@key{ProductBox}{width}{\def\ProductBox@x{#1}}
+\define@key{ProductBox}{height}{\def\ProductBox@y{#1}}
+\define@key{ProductBox}{depth}{\def\ProductBox@z{#1}}
+\define@key{ProductBox}{flareDiameter}{%
+  \def\ProductBox@flareDiameter{#1}}
+\define@key{ProductBox}{view}{\@nameuse{ProductBox@View@#1}}
+%    \end{macrocode}
+%
+%    \subsection{Internal Storage}
+%
+%    The box |\ProductBox@Front| contains the front material.
+%    \begin{macrocode}
+\newbox\ProductBox@Front
+%    \end{macrocode}
+%
+%    The box |\ProductBox@Left| contains the left material.
+%    \begin{macrocode}
+\newbox\ProductBox@Left
+%    \end{macrocode}
+%
+%    The box |\ProductBox@Top| contains the top material.
+%    \begin{macrocode}
+\newbox\ProductBox@Top
+%    \end{macrocode}
+%
+%    The box |\ProductBox@Right| contains the right material.
+%    \begin{macrocode}
+\newbox\ProductBox@Right
+%    \end{macrocode}
+%
+%    The box |\ProductBox@Bottom| contains the bottom material.
+%    \begin{macrocode}
+\newbox\ProductBox@Bottom
+%    \end{macrocode}
+%
+%    The box |\ProductBox@Back| contains the back material.
+%    \begin{macrocode}
+\newbox\ProductBox@Back
+%    \end{macrocode}
+%
+%    \subsection{Settings}
+%
+%    \begin{macro}{\ProductBoxSet}
+%    The macro |\ProductBoxSet| defines the global parameters used by
+%    the environment |ProductBox|. They can be overwritten either
+%    within a group or in the optional parameter of the environment.
+%    \begin{macrocode}
+\newcommand\ProductBoxSet[1]{\setkeys{ProductBox}{#1}}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsection{The Main Environment}
+%
+%    \begin{environment}{ProductBox}
+%    This is the central environment provided by this style. In the begin code
+%    only the local environments are initialized and the optional parameters
+%    are evaluated with the help of the package keyval.
+%    \begin{macrocode}
+\newenvironment{ProductBox}[1][]{%
+  \setkeys{ProductBox}{#1}%
+  %
+  \def\Left{\ProductBox@Start\ProductBox@Left
+    (\ProductBox@z,\ProductBox@y)}%
+  \let\endLeft\ProductBox@end
+  \def\Front{\ProductBox@Start\ProductBox@Front
+    (\ProductBox@x,\ProductBox@y)}%
+  \let\endFront\ProductBox@end
+  \def\Top{\ProductBox@Start\ProductBox@Top
+    (\ProductBox@x,\ProductBox@z)}%
+  \let\endTop\ProductBox@end
+  \def\Bottom{\ProductBox@Start\ProductBox@Bottom(
+    \ProductBox@x,\ProductBox@z)}%
+  \let\endBottom\ProductBox@end
+  \def\Back{\ProductBox@Start\ProductBox@Back
+    (\ProductBox@x,\ProductBox@y)}%
+  \let\endBack\ProductBox@end
+  \def\Right{\ProductBox@Start\ProductBox@Right
+    (\ProductBox@z,\ProductBox@y)}%
+  \let\endRight\ProductBox@end
+  \ignorespacesafterend
+}{%---
+%    \end{macrocode}
+%    The main activity is performed in the end code. Since the flexibility of
+%    the environment is one of its design goals, the expansion of the macro
+%    |\ProductBo@style| is used to invoke the macro storen in it.
+%    \begin{macrocode}
+  \@ifundefined{ProductBox@style@\ProductBox@style}{%
+    \errmessage{Style '\ProductBox@style' for ProductBox is unknown}%
+  }{%
+    \@ifundefined{ProductBox@scale}{%
+      \@nameuse{ProductBox@style@\ProductBox@style}}{%
+      \scalebox{\ProductBox@scale}%
+               {\@nameuse{ProductBox@style@\ProductBox@style}}
+    }}%
+  \ignorespacesafterend
+}
+%    \end{macrocode}
+%    \end{environment}
+%
+%    \begin{macro}{\ProductBox@Start}
+%    The macro |\ProductBox@Start| starts the environment storing a face.
+%    \begin{macrocode}
+\def\ProductBox@Start#1(#2){%
+  \global\setbox#1\hbox\bgroup\begin{tikzpicture}%
+    \ifProductBox@clip \clip (0,0) rectangle (#2); \fi
+    \ignorespaces
+  }%
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ProductBox@end}
+%    The macro |\ProductBox@end| ends the environment storing a face.
+%    \begin{macrocode}
+\def\ProductBox@end{\end{tikzpicture}\egroup \ignorespacesafterend}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsection{Box Styles}
+%
+%    \begin{macro}{\ProductBox@style@flat}
+%    This macro defines the sytle \emph{flat} for a product box.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@flat{%
+  \par\noindent
+  \hspace*{\ProductBox@z}\kern1mm \copy\ProductBox@Top\\[1ex]
+  \copy\ProductBox@Left\kern1mm \copy\ProductBox@Front\kern1mm
+  \copy\ProductBox@Right\kern1mm \copy\ProductBox@Back\\[1ex]
+  \hspace*{\ProductBox@z}\kern1mm \copy\ProductBox@Bottom\par
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{front}}
+%
+%    \begin{macro}{\ProductBox@style@front}
+%    This macro defines the sytle \emph{front} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@front{%
+  \copy\ProductBox@Front
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{back}}
+%
+%    \begin{macro}{\ProductBox@style@back}
+%    This macro defines the sytle \emph{back} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@back{%
+  \copy\ProductBox@Back
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{left}}
+%
+%    \begin{macro}{\ProductBox@style@left}
+%    This macro defines the sytle \emph{left} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@left{%
+  \copy\ProductBox@Left
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{right}}
+%
+%    \begin{macro}{\ProductBox@style@right}
+%    This macro defines the sytle \emph{right} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@right{%
+  \copy\ProductBox@Right
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{top}}
+%
+%    \begin{macro}{\ProductBox@style@top}
+%    This macro defines the sytle \emph{top} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@top{%
+  \copy\ProductBox@Top
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{bottom}}
+%
+%    \begin{macro}{\ProductBox@style@bottom}
+%    This macro defines the sytle \emph{bottom} for a product box. Only this
+%    one face of the box is shown.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@bottom{%
+  \copy\ProductBox@Bottom
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{fold}}
+%
+%    \begin{macro}{\ProductBox@style@fold}
+%    This macro defines the sytle \emph{fold} for a product box.
+%    \begin{macrocode}
+\newcommand\ProductBox@style@fold{%
+  \begin{tikzpicture}
+%    \end{macrocode}
+%    front
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z]
+      \clip (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@y);
+      \draw
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Front};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@y);
+    \end{scope}
+%    \end{macrocode}
+%    back
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@x,
+                  xshift=\ProductBox@z,
+                  xshift=\ProductBox@z]
+      \clip (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@y);
+      \draw
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Back};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@y);
+    \end{scope}
+%    \end{macrocode}
+%    top
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z,yshift=\ProductBox@y]
+      \clip (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@z);
+      \draw
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Top};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) rectangle (\ProductBox@x,\ProductBox@z);
+    \end{scope}
+%    \end{macrocode}
+%    left
+%    \begin{macrocode}
+    \begin{scope}
+      \clip (0mm,0mm) rectangle (\ProductBox@z,\ProductBox@y);
+      \draw 
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Left};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) rectangle (\ProductBox@z,\ProductBox@y);
+    \end{scope}
+%    \end{macrocode}
+%    right
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z,xshift=\ProductBox@x]
+      \clip (0mm,0mm) rectangle (\ProductBox@z,\ProductBox@y);
+      \draw 
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Right};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) rectangle (\ProductBox@z,\ProductBox@y);
+    \end{scope}
+%    \end{macrocode}
+%    bottom ear 3 front
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z,yshift=-\ProductBox@z]
+      \clip (0mm,\ProductBox@z) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) --
+        ($.5*(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm)+.5*(-\ProductBox@z,\ProductBox@z)$) --
+        (\ProductBox@x,\ProductBox@z) -- cycle;
+      \draw (\ProductBox@x,0mm) 
+        node[anchor=south east,
+             inner sep=0pt]{\copy\ProductBox@Bottom};
+      \draw [\ProductBox@foldLine]
+        (0mm,\ProductBox@z) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) --
+        ($.5*(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm)+.5*(-\ProductBox@z,\ProductBox@z)$) --
+        (\ProductBox@x,\ProductBox@z) -- cycle;
+      \draw ($.5*(\ProductBox@x,\ProductBox@z)-.25*(0mm,\ProductBox@z)$)
+        node[circle,fill=white!90!black]{\small\sf1};
+    \end{scope}
+%    \end{macrocode}
+%    bottom ear 1 back
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@x,
+                  xshift=\ProductBox@z,
+                  xshift=\ProductBox@z,
+                  yshift=-\ProductBox@z]
+      \clip (0mm,0mm) --
+        ($.5*(\ProductBox@z,0mm)$) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,-\ProductBox@z)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,0mm)$) --
+        (\ProductBox@x,0mm) -- (\ProductBox@x,\ProductBox@z) --
+        (0mm,\ProductBox@z) -- cycle; 
+      \draw (0mm,\ProductBox@z)
+         node[rotate=180,anchor=south east,
+              inner sep=0pt]{\copy\ProductBox@Bottom};
+       \draw[\ProductBox@foldLine]
+        (0mm,0mm) --
+        ($.5*(\ProductBox@z,0mm)$) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,-\ProductBox@z)$) --
+        ($(\ProductBox@x,0mm)-.5*(\ProductBox@z,0mm)$) --
+        (\ProductBox@x,0mm) -- (\ProductBox@x,\ProductBox@z) --
+        (0mm,\ProductBox@z) -- cycle; 
+      \draw ($.25*(\ProductBox@z,\ProductBox@z)$)
+        node[circle,fill=white!90!black]{\small\sf1};
+      \draw ($(\ProductBox@x,0mm)+.25*(-\ProductBox@z,\ProductBox@z)$)
+        node[circle,fill=white!90!black]{\small\sf1};
+    \end{scope}
+%    \end{macrocode}
+%    bottom ear 2 right
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z,yshift=-\ProductBox@z]
+      \clip
+        (\ProductBox@x,\ProductBox@z) --
+        ($(\ProductBox@x,\ProductBox@z)+(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm) + .5*(\ProductBox@z,\ProductBox@z)$) -- 
+        ($(\ProductBox@x,0mm) + .5*(\ProductBox@z,0mm)$) -- 
+        (\ProductBox@x,0mm) -- cycle; 
+      \begin{scope}[xshift=1mm,yshift=1mm]
+        \draw[xshift=\ProductBox@z,yshift=\ProductBox@z]
+          (\ProductBox@x,0mm)
+          node[rotate=90,anchor=south east]{\copy\ProductBox@Bottom};
+      \end{scope}
+      \draw[\ProductBox@foldLine]
+        (\ProductBox@x,\ProductBox@z) --
+        ($(\ProductBox@x,\ProductBox@z)+(\ProductBox@z,0mm)$) --
+        ($(\ProductBox@x,0mm) + .5*(\ProductBox@z,\ProductBox@z)$) -- 
+        ($(\ProductBox@x,0mm) + .5*(\ProductBox@z,0mm)$) -- 
+        (\ProductBox@x,0mm) -- cycle; 
+      \draw[xshift=\ProductBox@x]
+        ($.25*(\ProductBox@z,\ProductBox@z)$)
+        node[circle,fill=white!90!black]{\small\sf2};
+    \end{scope}
+%    \end{macrocode}
+%    bottom ear 2 left
+%    \begin{macrocode}
+    \begin{scope}[yshift=-\ProductBox@z]
+      \clip
+        (0mm,\ProductBox@z) -- (\ProductBox@z,\ProductBox@z) --
+        (\ProductBox@z,0mm) -- ($.5*(\ProductBox@z,0mm)$) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) -- cycle; 
+      \draw (0mm,\ProductBox@z)
+        node[rotate=270,anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Bottom};
+      \draw [\ProductBox@foldLine]
+        (0mm,\ProductBox@z) -- (\ProductBox@z,\ProductBox@z) --
+        (\ProductBox@z,0mm) -- ($.5*(\ProductBox@z,0mm)$) --
+        ($.5*(\ProductBox@z,\ProductBox@z)$) -- cycle; 
+      \draw ($(\ProductBox@z,0mm)+.25*(-\ProductBox@z,\ProductBox@z)$)
+        node[circle,fill=white!90!black]{\small\sf2};
+    \end{scope}
+%    \end{macrocode}
+%    glue ear
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@x,
+                  xshift=\ProductBox@x,
+                  xshift=\ProductBox@z,
+                  xshift=\ProductBox@z,\ProductBox@foldLine]
+      \clip
+        (0mm,0mm) -- (6mm,3mm) --
+        ($(6mm,\ProductBox@y)-(0mm,3mm)$) --
+        (0mm,\ProductBox@y) -- cycle;
+      \draw node[anchor=south west,
+                 inner sep=0pt]{\copy\ProductBox@Left};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) -- (6mm,3mm) --
+        ($(6mm,\ProductBox@y)-(0mm,3mm)$) --
+        (0mm,\ProductBox@y) -- cycle;
+    \end{scope}
+%    \end{macrocode}
+%    top ear left
+%    \begin{macrocode}
+    \begin{scope}[yshift=\ProductBox@y]
+      \clip
+        (0mm,0mm) -- (6mm,12mm) --
+        ($(\ProductBox@z,12mm)-(6mm,0mm)$)
+        -- (\ProductBox@z,0mm) -- cycle;
+      \draw
+        node[rotate=90,anchor=north west,
+              inner sep=0pt]{\copy\ProductBox@Top};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) -- (6mm,12mm) --
+        ($(\ProductBox@z,12mm)-(6mm,0mm)$)
+        -- (\ProductBox@z,0mm) -- cycle;
+    \end{scope}
+%    \end{macrocode}
+%    top ear right
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@x,
+                  xshift=\ProductBox@z,
+                  yshift=\ProductBox@y]
+      \clip
+        (0mm,0mm) -- (6mm,12mm) --
+        ($(\ProductBox@z,12mm)-(6mm,0mm)$)
+        -- (\ProductBox@z,0mm) -- cycle;
+      \draw
+          node[rotate=270,anchor=south east,
+              inner sep=0pt]{\copy\ProductBox@Top};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) -- (6mm,12mm) -- ($(\ProductBox@z,12mm)-(6mm,0mm)$)
+        -- (\ProductBox@z,0mm) -- cycle;
+    \end{scope}
+%    \end{macrocode}
+%    top ear back
+%    \begin{macrocode}
+    \begin{scope}[xshift=\ProductBox@z,
+                  yshift=\ProductBox@y,
+                  yshift=\ProductBox@z]
+      \clip
+        (0mm,0mm) -- (6mm,12mm) --
+        ($(\ProductBox@x,12mm)-(6mm,0mm)$) --
+        (\ProductBox@x,0mm) -- cycle;
+      \draw (0mm,\ProductBox@y)
+        node[rotate=180,anchor=south east,
+             inner sep=0pt]{\copy\ProductBox@Back};
+      \draw[\ProductBox@foldLine]
+        (0mm,0mm) -- (6mm,12mm) --
+        ($(\ProductBox@x,12mm)-(6mm,0mm)$) --
+        (\ProductBox@x,0mm) -- cycle;
+    \end{scope}
+  \end{tikzpicture}}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \subsubsection{Box Style \texttt{threeD}}
+%
+%    \begin{macro}{\ProductBox@style@threeD}
+%    This macro defines the sytle \emph{threeD} for a product box. The
+%    faces are placed such the illusion of a three-dimensional box
+%    appears. In addition a shadow is shown if not disabled. 
+%    \begin{macrocode}
+\newcommand\ProductBox@style@threeD{
+  \begin{tikzpicture}\ProductBox@startOptions
+    \ifProductBox@mirror \ProductBox@threeD@mirror \fi
+    \ifProductBox@shadow \ProductBox@threeD@shadow \fi
+
+    \begin{scope}
+      \fill[white,
+            yslant=\ProductBox@p@front@yslant,
+            xscale=\ProductBox@p@front@xscale,
+            anchor=south west]
+        rectangle (\ProductBox@x,\ProductBox@y);
+      \draw
+        node[yslant=\ProductBox@p@front@yslant,
+             xscale=\ProductBox@p@front@xscale,
+             anchor=south west,
+             inner sep=0pt] {\copy\ProductBox@Front};
+      \fill[black,
+            fill opacity=.025,
+            yslant=\ProductBox@p@front@yslant,
+            xscale=\ProductBox@p@front@xscale,
+            anchor=south west]
+        rectangle (\ProductBox@x,\ProductBox@y);
+        \ifProductBox@flare \ProductBox@threeD@flare \fi
+    \end{scope}
+    \begin{scope}[shift={($\ProductBox@p@left@yslant
+                             *\ProductBox@p@left@xscale
+                             *(0mm,\ProductBox@z)
+                          -\ProductBox@p@left@xscale
+                             *(\ProductBox@z,0mm)$)}]
+      \fill[white,
+            yslant=-\ProductBox@p@left@yslant,
+            xscale=\ProductBox@p@left@xscale,
+            anchor=south west]
+        rectangle (\ProductBox@z,\ProductBox@y);
+      \draw
+        node[yslant=-\ProductBox@p@left@yslant,
+             xscale=\ProductBox@p@left@xscale,
+             anchor=south west,
+             inner sep=0pt] {\copy\ProductBox@Left};
+      \fill[black,
+            fill opacity=.25,
+            yslant=-\ProductBox@p@left@yslant,
+            xscale=\ProductBox@p@left@xscale,
+            anchor=south west] rectangle (\ProductBox@z,\ProductBox@y);
+    \end{scope}
+    \begin{scope}[yshift=\ProductBox@y]
+      \fill [white,
+             xslant=-\ProductBox@p@top@xslant,
+             yslant=\ProductBox@p@top@yslant,
+             xscale=\ProductBox@p@top@xscale,
+             yscale=\ProductBox@p@top@yscale,
+             anchor=south west] rectangle (\ProductBox@x,\ProductBox@z);
+      \draw
+        node[xslant=-\ProductBox@p@top@xslant,
+             yslant=\ProductBox@p@top@yslant,
+             xscale=\ProductBox@p@top@xscale,
+             yscale=\ProductBox@p@top@yscale,
+             anchor=south west,
+             inner sep=0pt] {\copy\ProductBox@Top};
+      \fill [black,
+             fill opacity=.0025,
+             xslant=-\ProductBox@p@top@xslant,
+             yslant=\ProductBox@p@top@yslant,
+             xscale=\ProductBox@p@top@xscale,
+             yscale=\ProductBox@p@top@yscale,
+             anchor=south west] rectangle (\ProductBox@x,\ProductBox@z);
+    \end{scope}
+    \begin{scope}[shift={($\ProductBox@p@left@yslant
+                             *\ProductBox@p@left@xscale
+                             *(0mm,\ProductBox@z)
+                           -\ProductBox@p@left@xscale
+                             *(\ProductBox@z,0mm)$)}]
+      \draw [\ProductBox@edgeColor,
+             line width=.5mm,
+             draw opacity=.25,
+             yslant=-\ProductBox@p@left@yslant,
+             xscale=\ProductBox@p@left@xscale]
+        (\ProductBox@z,0mm) --
+        (\ProductBox@z,\ProductBox@y) --
+        (0mm,\ProductBox@y); 
+    \end{scope}
+    \draw [\ProductBox@edgeColor,
+           line width=.5mm,
+           draw opacity=.25,
+           yslant=\ProductBox@p@front@yslant,
+           xscale=\ProductBox@p@front@xscale,
+           anchor=south west]
+      (0mm,\ProductBox@y) --
+      (\ProductBox@x,\ProductBox@y); 
+      \ProductBox@endOptions
+  \end{tikzpicture}}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    Parameters
+%
+%    \begin{macrocode}
+\newcommand\ProductBox@Set@params[9]{%
+  \def\ProductBox@p@front@yslant{#1}
+  \def\ProductBox@p@front@xscale{#2}
+  \def\ProductBox@p@left@yslant{#3}
+  \def\ProductBox@p@left@xscale{#4}
+  \def\ProductBox@p@top@xslant{#5}
+  \def\ProductBox@p@top@yslant{#6}
+  \def\ProductBox@p@top@xscale{#7}
+  \def\ProductBox@p@top@yscale{#8}
+  \def\ProductBox@p@mirror@yscale{#9}
+}
+\@namedef{ProductBox@View@1}{
+  \ProductBox@Set@params
+    {.25}{.9090909}%
+    {.5}{.6666666}%
+    {2}{.1666666}{1.36363636}{.3333333}%
+    {.2}}
+\@namedef{ProductBox@View@2}{
+  \ProductBox@Set@params
+    {.15}{.9090909}%
+    {.6666666}{.5}%
+    {1.5}{.12}{1.11}{.333333}%
+    {.2}}
+\@namedef{ProductBox@View@3}{
+  \ProductBox@Set@params
+    {.05}{.95}%
+    {.25}{.4}%
+    {4}{.04}{1.133333}{.1}%
+    {.2}}
+\@nameuse{ProductBox@View@1}
+%    \end{macrocode}
+%
+%    \begin{macro}{\ProductBox@threeD@shadow}
+%    This macro defines the code to produce the shadow effect for the 3D rendering.
+%    \begin{macrocode}
+\newcommand\ProductBox@threeD@shadow{
+    \begin{scope}
+      \pgfsetcornersarced{\pgfpoint{2mm}{2mm}}
+      \foreach \x in {.5,1,1.5,2,2.5,3,4,5,6,8,10} {
+        \filldraw [black,
+                   line width=\x mm,
+                   opacity=.01,
+                   shift={(-1mm,1mm)}]
+          (0mm,0mm) --
+          (-\ProductBox@p@top@xslant
+           *\ProductBox@p@left@xscale
+           *\ProductBox@z,
+           \ProductBox@p@top@yscale
+           *\ProductBox@z) -- 
+          (0mm,
+           \ProductBox@p@top@yscale*\ProductBox@z +
+           \ProductBox@p@top@xslant
+           *\ProductBox@p@left@xscale
+           *\ProductBox@p@top@yslant
+           *\ProductBox@z) -- 
+          cycle;
+      }
+    \end{scope}
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    The following fading is used for the mirror effect in the 3D rendering.
+%    \begin{macrocode}
+\tikzfading[name=ProductBoxFade,
+            top color=transparent!0,
+            bottom color=transparent!60]
+%    \end{macrocode}
+%
+%    The following fading is used for the flare effect in the 3D rendering.
+%    \begin{macrocode}
+\tikzfading[name=ProductBoxFlare,
+            inner color=transparent!60,
+            outer color=transparent!100]
+%    \end{macrocode}
+%
+%    \begin{macro}{\ProductBox@threeD@mirror}
+%    This macro defines the code to produce the mirror effect.
+%    \begin{macrocode}
+\newcommand\ProductBox@threeD@mirror{%
+  \begin{pgflowlevelscope}{
+      \pgftransformyslant{\ProductBox@p@front@yslant}
+      \pgftransformyscale{-\ProductBox@p@mirror@yscale}
+      \pgftransformxscale{\ProductBox@p@front@xscale}}
+    \begin{scope}
+      \clip rectangle (\ProductBox@x,50mm);
+      \fill
+        node[anchor=south west,
+              inner sep=0pt]{\copy\ProductBox@Front};
+    \end{scope}
+    \fill [white,path fading=ProductBoxFade]
+      rectangle (\ProductBox@x,50.5mm);
+  \end{pgflowlevelscope}
+
+  \begin{pgflowlevelscope}{
+      \pgftransformxshift{-\ProductBox@p@left@xscale*\ProductBox@z}
+      \pgftransformyshift{\ProductBox@p@top@yscale*\ProductBox@z}
+      \pgftransformyslant{-\ProductBox@p@left@yslant}
+      \pgftransformxscale{\ProductBox@p@left@xscale}
+      \pgftransformyscale{-\ProductBox@p@mirror@yscale}}
+    \begin{scope}
+      \clip rectangle (\ProductBox@z,50mm);
+      \fill
+        node[anchor=south west,
+             inner sep=0pt]{\copy\ProductBox@Left};
+      \fill[opacity=.25] rectangle (\ProductBox@z,\ProductBox@y);
+    \end{scope}
+    \fill [white,path fading=ProductBoxFade]
+      rectangle (\ProductBox@z,50.5mm);
+  \end{pgflowlevelscope}
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macro}{\ProductBox@threeD@flare}
+%    This macro defines the code to produce the flare effect.
+%    \begin{macrocode}
+\newcommand\ProductBox@threeD@flare{
+  \fill [white,path fading=ProductBoxFlare]
+    (.8*\ProductBox@x,.9*\ProductBox@y)
+    circle(\ProductBox@flareDiameter); 
+}
+%    \end{macrocode}
+%    \end{macro}
+%
+%    \begin{macrocode}
+\@namedef{ProductBox@style@3D}{\ProductBox@style@threeD}
+%</class>
+%    \end{macrocode}
+%    That's all.
+%
+%    \newpage
+%    \PrintChanges
+%    \newpage
+%    \PrintIndex
+%    \Finale
+\endinput
+%
+% Local Variables: 
+% End: 
