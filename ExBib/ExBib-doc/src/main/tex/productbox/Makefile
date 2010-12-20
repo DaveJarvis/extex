@@ -1,5 +1,5 @@
 #******************************************************************************
-#* $Id: Makefile,v 0.00 2010/12/14 20:00:16 gene Exp $
+#* $Id$
 #******************************************************************************
 #* Author: Gerd Neugebauer
 #*=============================================================================
@@ -20,7 +20,13 @@ all: productbox.pdf
 %.idx: %.dtx
 	pdflatex -draftmode $*.dtx
 
-parducbox.tgz dist:
-	tar -cvzf parducbox.tgz productbox.dtx README Makefile productbox.pdf
+parductbox.tgz dist: productbox.pdf
+	tar -cvzf parductbox.tgz productbox.dtx README Makefile productbox.pdf
+
+clean:
+	rm productbox.aux productbox.ilg productbox.idx productbox.log productbox.toc
+
+distclean: clean
+	rm productbox.sty
 
 #

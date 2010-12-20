@@ -558,6 +558,8 @@
 %    values |true| and |false|. The default value is |true|.
 %
 %
+%    \StopEventually
+%
 %    \newpage
 %    \section{The Documentation Driver}
 %
@@ -604,8 +606,8 @@
 %<*class>
 \begingroup
   \def\ProductBox@VC$#1: #2 #3${#2}
-  \xdef\fileversion{\ProductBox@VC$Revision: 1.0 $}
-  \xdef\filedate{\ProductBox@VC$Date: 2010/12/20 21:00:00 $}
+  \xdef\fileversion{\ProductBox@VC$Revision$}
+  \xdef\filedate{\ProductBox@VC$Date$}
 \endgroup
 \def\filename{productbox.dtx}
 \let\docversion=\fileversion
