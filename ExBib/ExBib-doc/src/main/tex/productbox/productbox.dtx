@@ -107,7 +107,7 @@
 % \DoNotIndex{\DeleteShortVerb,\CodelineIndex}
 %
 %^^A%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% \CheckSum{666}
+% \CheckSum{791}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%  \CharacterTable
 %%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
@@ -606,10 +606,12 @@
 %<*class>
 \begingroup
   \def\ProductBox@VC$#1: #2 #3${#2}
-  \xdef\fileversion{\ProductBox@VC$Revision$}
-  \xdef\filedate{\ProductBox@VC$Date$}
+  \def\ProductBox@VCdate$#1: #2-#3-#4 #5${#2/#3/#4}
+  \xdef\fileversion{1.0}
+  \xdef\filerevision{\ProductBox@VC$Revision$}
+  \xdef\filedate{\ProductBox@VCdate$Date$}
+  \xdef\filename{productbox.dtx}
 \endgroup
-\def\filename{productbox.dtx}
 \let\docversion=\fileversion
 \let\docdate=\filedate
 %</class>

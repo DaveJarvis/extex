@@ -20,8 +20,8 @@ all: productbox.pdf
 %.idx: %.dtx
 	pdflatex -draftmode $*.dtx
 
-parductbox.tgz dist: productbox.pdf
-	tar -cvzf parductbox.tgz productbox.dtx README Makefile productbox.pdf
+productbox.tgz dist: productbox.pdf
+	tar -cvzf productbox.tgz productbox.dtx README Makefile productbox.pdf
 
 clean:
 	rm productbox.aux productbox.ilg productbox.idx productbox.log productbox.toc
