@@ -1,17 +1,17 @@
 Purpose:
-     productbox.dtx provides a style file for typesetting a
-     three-diemnsional product box. This product box can be rendered
-     as it is standing on a surface and some light is shed onto it.
-     Alternatively it can be typeset as a wireframe to be cut out
+     productbox.dtx   provides  a  style  file   for  typesetting  a
+     three-dimensional product box. This product box can be rendered
+     as it is standing on a surface and  some light is shed onto it.
+     Alternatively  it can be typeset  as a wireframe  to be cut out
      and glued together. This will lead to a physical product box.
 
 Documentation:
-     The documentation  can be generated from the original file
-     productbox.dtx with the doc style/package. LaTeX the file    
-     productbox.tex to get the full documentation in pdf format. 
+     The  documentation  can  be  generated  from the  original file
+     productbox.dtx  with  the  doc  style/package.  LaTeX  the file    
+     productbox.dtx to get the full documentation in pdf format. 
 
 Prerequisite:
-     This package needs PGF and TikZ to be present at least in
+     This  package  needs  PGF and  TikZ  to be present  at least in
      version 2.0.
 
 Author: Gerd Neugebauer

@@ -17,15 +17,15 @@
 %%
 %% Run this file through TeX or LaTeX to extract the files.
 %% You need the docstrip package as distributed with LaTeX2e.
-%% It is also available as seperate package from any CTAN site.
-%%
+%% It is also available as seperate package from any CTAN site
+%% (http://www.ctan.org).
 %%------------------------------------------------------------------
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% $Id$
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \input docstrip.tex \keepsilent \askonceonly
 
-\generate{\file{productbox.sty}{\from{productbox.dtx}{class}}
+\generate{\file{productbox.sty}{\from{productbox.dtx}{style}}
          }
 
 \Msg{****************************************************************}
@@ -36,7 +36,8 @@
 \Msg{* \space\space productbox.sty}
 \Msg{*}
 \Msg{* To produce the documentation run productbox.dtx through LaTeX,}
-\Msg{* makeindex, and LaTeX twice again.}
+\Msg{* BibTeX, makeindex (for index and glossary), and LaTeX twice }
+\Msg{* again.}
 \Msg{*}
 \Msg{* Happy TeXing}
 \Msg{****************************************************************}
