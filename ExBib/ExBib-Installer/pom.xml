@@ -98,7 +98,7 @@
               <tasks>
                 <copy todir="${staging.dir}"
                       encoding="ISO-8859-1">
-                  <fileset dir="${basedir}/src/izpack" />
+                  <fileset dir="${basedir}/src/main/izpack" />
                 </copy>
               </tasks>
             </configuration>
