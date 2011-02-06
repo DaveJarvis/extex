@@ -117,7 +117,7 @@ pre {
 <p>
  The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X developer's
  guide can be created in this directory with the help of <a
- href="http://maven.apache.org">Maven2</a>. As a prerequisite the Maven module 
+ href="http://maven.apache.org">Maven3</a>. As a prerequisite the Maven module 
  <tt>ExBib-Main</tt> needs to be accessible at least from the local repository.
  This is accomplished by
 </p>
@@ -126,13 +126,23 @@ pre {
   # <b>mvn install</b>
 </pre>
 <p>
- This command requires that <a
- href="http://maven.apache.org">Maven2</a> is properly installed on your system
+ The next prerequisite are the
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X doc
+ tools. You can put it into the local repository with
+</p>
+<pre>
+  # <b>cd ../../tools/doc-tools</b>
+  # <b>mvn install</b>
+</pre>
+<p>
+ These commands require that <a
+ href="http://maven.apache.org">Maven3</a> is properly installed on your system
  and the executable can be found on the search path. In addition an Internet
- connection is required to download all artifacts not present locally.
+ connection is required to download all artifacts which are not present locally.
 </p>
 <p>
- Then the PDF file can be generated with the following command:
+ If all prerequisites are satisfied then the PDF file can be
+ generated with the following command:
 </p>
 <pre>
   # <b>mvn compile</b>
@@ -155,7 +165,7 @@ documentation is released under the <a href="LICENSE.html">GNU Free
 Documentation License</a>.
 
 <address>
-© 2010 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+© 2011 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
 </address>
 </body>
 </html>

@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
       <scope>compile</scope>
     </dependency>
 
