@@ -2,7 +2,7 @@
 \SVN$Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2009 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -64,21 +64,29 @@ The documentation is contained in the directory \File{doc} in the
 
 \subsection{Preparation}
 
-The build system for the documentation is based on Maven.
+The build system for the documentation is based on Maven 3.
 
-\INCOMPLETE
+Some prerequisites are mandatory for the build to work. First we need
+the \verb|doc-tools|\index{doc-tools} in order to work. The
+|doc-tools| can be found in the directory \verb|tools/doc-tools|, Thus
+the following commands ensure that the doc tools are installed in the
+local repository:
 
 \begin{lstlisting}{}
-  # cd tool/doc_tools
+  # cd tools/doc_tools
   # mvn install
 \end{lstlisting}
 
-\INCOMPLETE
+Since \ExBib\index{\ExBib@ExBib} tries to use its own programs as far
+as possible we start with \ExBib. This can be installed with the
+following commands:
 
 \begin{lstlisting}{}
   # cd ExBib
   # mvn install
 \end{lstlisting}
+
+Now we are ready and all prerequisited are satisfied.
 
 
 \subsection{The \ExTeX\ User's Manual}\index{user's manual}

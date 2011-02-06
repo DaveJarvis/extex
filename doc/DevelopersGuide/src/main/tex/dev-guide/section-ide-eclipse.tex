@@ -2,7 +2,7 @@
 \SVN$Id$
 %%*****************************************************************************
 %%
-%% Copyright (C) 2005-2010 The ExTeX Group and individual authors listed below
+%% Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
 %%
 %% This library is free software; you can redistribute it and/or modify it
 %% under the terms of the GNU Lesser General Public License as published by the
@@ -46,10 +46,10 @@ Eclipse can be downloaded for free from \url{http://www.eclipse.org}.
 There you can get a file appropriate for your operating system
 containing the software development kit (SDK). For instance
 \begin{description}
-\item [eclipse-SDK-3.6-win32.zip]\ \\
-  for any decent \+Windows+ platform.
 \item [eclipse-SDK-3.6-linux-gtk.tar.gz]\ \\
   for \+Linux+ on Intel x86 (32 bit) with GTK.
+\item [eclipse-SDK-3.6-win32.zip]\ \\
+  for any decent \+Windows+ platform.
 \end{description}
 
 Note that we use and show here the classic
@@ -73,7 +73,7 @@ figure~\ref{fig:eclipse-workspace}. The
 workspace\index{Eclipse!workspace} is a directory where the projects
 live and where your preferences are stored. If you have chosen the
 workspace directory carefully, you can turn on the check mark in this
-dialog to be not asked again.
+dialog to be not be asked again.
 
 Note it is a good practice to have a separate workspace for \ExTeX{}
 and not mix it with other Eclipse projects. \ExTeX{} comes with a
@@ -276,7 +276,7 @@ This is an integrated Subversion\index{Subversion} client to Eclipse.
 You need additionally the connectors for Subclispe to connect to a Subversion
 server.\index{Eclipse!Plugins!Subversive connectors}
 \begin{description}
-\item [Update site:] \url{http://community.polarion.com/projects/subversive/download/eclipse/2.0/update-site/ - http://community.polarion.com/projects/subversive/download/eclipse/2.0/update-site/}
+\item [Update site:] \url{http://community.polarion.com/projects/subversive/download/eclipse/2.0/update-site/}
 \item [Component:] \menu{Subversive SVN Connectors}
 \end{description}
 
@@ -517,7 +517,12 @@ figure~\ref{fig:eclipse-recompile}).
   \caption{Recompiling a Project}\label{fig:eclipse-recompile}
 \end{figure}
 
-Another recompilation can be triggered via the Ant task \texttt{compile}.
+Another recompilation can be triggered via the Maven task
+\texttt{compile}: 
+
+\begin{lstlisting}{}
+# mvn compile
+\end{lstlisting}
 
 \subsection{Running \ExTeX}
 
