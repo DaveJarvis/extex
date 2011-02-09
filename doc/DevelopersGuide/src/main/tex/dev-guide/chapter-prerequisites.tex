@@ -135,7 +135,7 @@ environment variable
 \index{bourne shell}Bourne shell or a derivative this can be achieved with the
 following statement
 \begin{lstlisting}{}
-  export MAVEN_OPTS="-Xmx512m"
+  export MAVEN_OPTS="-Xmx640m -XX:MaxPermSize=256m"
 \end{lstlisting}
 Execute it in the shell you are working in or put it in a configuration file
 for the shell -- like \File{\~{}/.profile}.
