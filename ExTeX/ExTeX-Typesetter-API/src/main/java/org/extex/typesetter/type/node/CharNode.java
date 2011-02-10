@@ -202,7 +202,7 @@ public class CharNode extends AbstractNode {
      *      org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 

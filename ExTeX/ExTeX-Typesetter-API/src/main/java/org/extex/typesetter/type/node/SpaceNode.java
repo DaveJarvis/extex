@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -110,7 +110,7 @@ public class SpaceNode extends GlueNode implements Node {
      *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
      */
     @Override
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 

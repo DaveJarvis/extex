@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -109,7 +109,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(NodeVisitor visitor, Object value)
                 throws GeneralException {
 
@@ -560,7 +560,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      *      java.lang.Object)
      */
     @Override
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {
 
