@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,12 +42,6 @@ import org.extex.scanner.type.Namespace;
  * @version $Revision:4399 $
  */
 public class ControlSequenceToken extends AbstractToken implements CodeToken {
-
-    /**
-     * The constant <tt>HASH_FACTOR</tt> contains the factor used to construct
-     * the hash code.
-     */
-    private static final int HASH_FACTOR = 17;
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for
@@ -337,7 +331,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#visit(
      *      org.extex.scanner.type.token.TokenVisitor, java.lang.Object)
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 
         return visitor.visitEscape(this, arg1);
