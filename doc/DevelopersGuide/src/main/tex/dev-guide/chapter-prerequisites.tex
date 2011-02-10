@@ -110,8 +110,8 @@ client. \index{Subversion|)}
 
 \section{Maven}\index{Maven|(}
 
-The \+build system+ is based on Maven~2 (\url{http://maven.apache.org/}).
-Thus Maven~2 needs to be installed. To install Maven 
+The \+build system+ is based on Maven~3.* (\url{http://maven.apache.org/}).
+Thus Maven~3 needs to be installed. To install Maven 
 
 \begin{itemize}
 \item download it from its download site -- or a mirror close by,
@@ -122,13 +122,20 @@ Thus Maven~2 needs to be installed. To install Maven
 \item put \texttt{\$MAVEN\_HOME/bin} onto the path of executables.
 \end{itemize}
 
+Maven used a central repository to get the required libraries from. In
+addition to those libraries soem are not available in public libraries at all.
+For this case \ExTeX\ hosts its own repository at
+\verb|http://www.extex.org/maven|. A few libraries without a public
+counterpart can be found there. This repository can be added to the pom to
+make those libraries usable.
+
 Maven stores some information in the user's home directory in a
 directory \Dir{.m2}. The file \File{settings.xml} contains the overall
 configuration. Especially if a \+proxy+ is required it can be
 configured there.
 
 Usually the memory reserved for Maven should be sufficient. Unfortunately
-Maven runs out of memory for some operation like generating the Maven report
+Maven runs out of memory for some operations like generating the Maven report
 site. For these tatsks it is necessary to enlarge the memory by setting the
 environment variable
 \verb|MAVEN_OPTS|\index{MAVEN\_OPTS@\texttt{MAVEN\_OPTS}}. On \+Unix+ with a
