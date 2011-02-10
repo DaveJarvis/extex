@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -96,7 +96,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitAdjustedHboxGroup(arg);
@@ -141,7 +141,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitAlignGroup(arg);
@@ -186,7 +186,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitBottomLevelGroup(arg);
@@ -231,7 +231,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitDiscGroup(arg);
@@ -276,7 +276,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitHboxGroup(arg);
@@ -321,7 +321,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitInsertGroup(arg);
@@ -366,7 +366,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathChoiceGroup(arg);
@@ -411,7 +411,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathGroup(arg);
@@ -456,7 +456,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathLeftGroup(arg);
@@ -501,7 +501,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitMathShiftGroup(arg);
@@ -546,7 +546,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitNoAlignGroup(arg);
@@ -591,7 +591,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitOutputGroup(arg);
@@ -636,7 +636,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitSemiSimpleGroup(arg);
@@ -681,7 +681,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitSimpleGroup(arg);
@@ -726,7 +726,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVboxGroup(arg);
@@ -771,7 +771,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVcenterGroup(arg);
@@ -816,7 +816,7 @@ public abstract class GroupType implements Serializable {
          *      java.lang.Object)
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(GroupTypeVisitor visitor, Object arg) {
 
             return visitor.visitVtopGroup(arg);
@@ -842,7 +842,7 @@ public abstract class GroupType implements Serializable {
      *
      * @return some object
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"rawtypes"})
     public abstract Object visit(GroupTypeVisitor visitor,
             Object arg);
 
