@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -60,14 +60,14 @@ public class AbstractDocWriter {
      */
     protected void copy(String lang, String name) throws IOException {
 
-        InputStream stream =
-                new BufferedInputStream(getClass().getClassLoader()
-                    .getResourceAsStream(
-                        "org/extex/doc/writer/html/" + lang + "/" + name));
-        if (stream == null) {
+        InputStream is =
+                getClass().getClassLoader().getResourceAsStream(
+                    "org/extex/doc/writer/html/" + lang + "/" + name);
+        if (is == null) {
             throw new FileNotFoundException("org/extex/doc/writer/html/" + lang
                     + "/" + name);
         }
+        InputStream stream = new BufferedInputStream(is);
 
         try {
             OutputStream out = openOutputStream(name);
@@ -171,16 +171,14 @@ public class AbstractDocWriter {
             throws FileNotFoundException {
 
         String s =
-                getClass().getName().replaceAll("[^.]$", "").replaceAll("\\.",
-                    "/")
+                getClass().getName().replaceAll("[^.]$", "")
+                    .replaceAll("\\.", "/")
                         + lang + "/" + name;
-        InputStream stream =
-                new BufferedInputStream(getClass().getClassLoader()
-                    .getResourceAsStream(s));
+        InputStream stream = getClass().getClassLoader().getResourceAsStream(s);
         if (stream == null) {
             throw new FileNotFoundException(s);
         }
-        return stream;
+        return new BufferedInputStream(stream);
     }
 
     /**
