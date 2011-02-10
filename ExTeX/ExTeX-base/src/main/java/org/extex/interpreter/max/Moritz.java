@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -238,7 +238,7 @@ public class Moritz extends Max
     /**
      * The field <tt>parsers</tt> contains the list of registered parsers.
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"rawtypes"})
     private Map<Class, Parser> parsers = new HashMap<Class, Parser>();
 
     /**
@@ -870,7 +870,7 @@ public class Moritz extends Max
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
     public Object parse(Class c, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -1026,7 +1026,7 @@ public class Moritz extends Max
      * @see org.extex.interpreter.TokenSource#register(java.lang.Class,
      *      org.extex.interpreter.parser.Parser)
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
     public Parser register(Class c, Parser p) throws HelpingException {
 
         Parser old = parsers.put(c, p);
