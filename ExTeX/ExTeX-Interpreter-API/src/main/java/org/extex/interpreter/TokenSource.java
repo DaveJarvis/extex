@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -458,7 +458,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
     Object parse(Class c, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException;
 
@@ -502,7 +502,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * @throws HelpingException in case of an error
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
     Parser register(Class c, Parser p) throws HelpingException;
 
     /**
