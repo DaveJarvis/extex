@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -155,6 +155,7 @@ public class CharNode extends AbstractNode {
         Font font = typesettingContext.getFont();
         sb.append(getLocalizer().format("String.Format",
             (font == null ? "*" : font.getFontName()), character.toString()));
+        /*
         if (false) {
             sb.append(" (");
             sb.append(getHeight().toString());
@@ -163,6 +164,7 @@ public class CharNode extends AbstractNode {
             sb.append(")x");
             sb.append(getWidth().toString());
         }
+        */
     }
 
     /**
