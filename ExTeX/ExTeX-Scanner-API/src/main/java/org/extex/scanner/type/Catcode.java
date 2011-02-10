@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -90,7 +90,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case or an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -149,7 +149,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -207,7 +207,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -265,7 +265,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -323,7 +323,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -381,7 +381,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -440,7 +440,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -498,7 +498,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -557,7 +557,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -616,7 +616,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -674,7 +674,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -733,7 +733,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -791,7 +791,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -849,7 +849,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -907,7 +907,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -965,7 +965,7 @@ public abstract class Catcode implements Serializable {
          * @throws Exception in case of an error
          */
         @Override
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"unchecked", "rawtypes"})
         public Object visit(CatcodeVisitor visitor, Object arg1,
                 Object arg2, Object arg3) throws Exception {
 
@@ -1181,7 +1181,7 @@ public abstract class Catcode implements Serializable {
      *
      * @throws Exception in case of an error
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings("rawtypes")
     public abstract Object visit(CatcodeVisitor visitor,
             Object arg1, Object arg2, Object arg3)
             throws Exception;
