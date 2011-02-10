@@ -625,6 +625,7 @@ public class MacroPattern extends Tokens {
             return matchRaw(context, source, typesetter, notLong, observer);
         }
 
+        @SuppressWarnings("unused")
         Tokens[] args = new Tokens[arity];
         for (Matcher m : matcher) {
             m.match(args, context, source, typesetter, notLong, cs);
