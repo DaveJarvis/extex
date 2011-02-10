@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -760,7 +760,7 @@ public class IfTest extends ConditionalTester {
             return null;
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings({"rawtypes"})
         public Object parse(Class c, Context context, TokenSource source,
                 Typesetter typesetter)
                 throws HelpingException,
@@ -769,7 +769,7 @@ public class IfTest extends ConditionalTester {
             return null;
         }
 
-        @SuppressWarnings("unchecked")
+        @SuppressWarnings("rawtypes")
         public Parser register(Class c, Parser p) {
 
             return null;
