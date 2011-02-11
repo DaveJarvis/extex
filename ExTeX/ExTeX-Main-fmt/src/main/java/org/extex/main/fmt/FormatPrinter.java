@@ -447,7 +447,7 @@ public final class FormatPrinter {
             }
             return;
         } else if (obj instanceof List) {
-            List<Object> l = (List) obj;
+            List<Object> l = (List<Object>) obj;
             int size = l.size();
             if (size == 0) {
                 out.print("(list)");
