@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2010-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -62,7 +62,7 @@ import org.junit.Test;
 public class BsfProcessorTest {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * A built-in implementation of a Configuration for testing.
      */
     private static class Cfg implements Configuration {
 
@@ -224,7 +224,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> A null value for database and logger in the constructor is
+     * stored properly and can be retrieved. </testcase>
      * 
      */
     @Test
@@ -237,7 +238,8 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> A non-null value for database and logger in the constructor is
+     * stored properly and can be retrieved. </testcase>
      * 
      */
     @Test
@@ -435,18 +437,29 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
-     * 
+     * <testcase> The number of warnings is initially 0. </testcase>
      */
     @Test
-    public void testGetNumberOfWarnings() {
+    public void testGetNumberOfWarnings0() {
 
         BsfProcessor p = new BsfProcessor();
         assertEquals(0, p.getNumberOfWarnings());
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> The number of warnings is 1 after the first warning.
+     * </testcase>
+     */
+    @Test
+    public void testGetNumberOfWarnings1() {
+
+        BsfProcessor p = new BsfProcessor();
+        p.warning("");
+        assertEquals(1, p.getNumberOfWarnings());
+    }
+
+    /**
+     * <testcase> Initially the output writer is null. </testcase>
      * 
      */
     @Test
@@ -457,7 +470,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> The entry type "" is known for the BsfProcessor. </testcase>
      * 
      */
     @Test
@@ -468,7 +481,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> BsfProcessor.process(null returns 0. </testcase>
      * 
      * @throws ExBibException in case of an error
      */
@@ -480,7 +493,9 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> An unknown bibliography database leads to a
+     * ExBibFileNotFoundException if everything else is set up correctly.
+     * </testcase>
      * 
      * @throws ExBibException in case of an error
      */
