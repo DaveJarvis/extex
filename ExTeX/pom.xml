@@ -86,49 +86,49 @@
   </repositories> 
 
   <modules>
-   <module>ExTeX-Backend-dump</module>
-   <module>ExTeX-Backend-dvi</module>
-   <module>ExTeX-Backend-dvix</module>
+   <module>Backend/ExTeX-Backend-dump</module>
+   <module>Backend/ExTeX-Backend-dvi</module>
+   <module>Backend/ExTeX-Backend-dvix</module>
 <!--
-   <module>ExTeX-Backend-pdfbox</module>
-   <module>ExTeX-Backend-iText</module>
+   <module>Backend/ExTeX-Backend-pdfbox</module>
+   <module>Backend/ExTeX-Backend-iText</module>
 -->
-   <module>ExTeX-Backend-ps</module>
-   <module>ExTeX-Backend-rtf</module>
-   <module>ExTeX-Backend-svg</module>
-   <module>ExTeX-Backend-text</module>
-   <module>ExTeX-Backend-xml</module>
+   <module>Backend/ExTeX-Backend-ps</module>
+   <module>Backend/ExTeX-Backend-rtf</module>
+   <module>Backend/ExTeX-Backend-svg</module>
+   <module>Backend/ExTeX-Backend-text</module>
+   <module>Backend/ExTeX-Backend-xml</module>
    <module>ExTeX-base</module>
    <module>ExTeX-base-ext</module>
    <module>ExTeX-base-test</module>
    <module>ExTeX-core</module>
-   <module>ExTeX-Font-API</module>
-   <module>ExTeX-Font-tfm</module>
-   <module>ExTeX-Font-afm</module>
-   <module>ExTeX-Font-otf</module>
-   <module>ExTeX-Font-test</module>
-   <module>ExTeX-fontware</module>
-   <module>ExTeX-Interpreter-API</module>
-   <module>ExTeX-Interpreter-max</module>
+   <module>Font/ExTeX-Font-API</module>
+   <module>Font/ExTeX-Font-tfm</module>
+   <module>Font/ExTeX-Font-afm</module>
+   <module>Font/ExTeX-Font-otf</module>
+   <module>Font/ExTeX-Font-test</module>
+   <module>Font/ExTeX-fontware</module>
+   <module>Interpreter/ExTeX-Interpreter-API</module>
+   <module>Interpreter/ExTeX-Interpreter-max</module>
    <module>ExTeX-Main-fmt</module>
    <module>ExTeX-Main-tex</module>
    <module>ExTeX-ocpware</module>
    <module>ExTeX-Pdf-API</module>
-   <module>ExTeX-Scanner</module>
-   <module>ExTeX-Scanner32</module>
-   <module>ExTeX-Scanner-API</module>
-   <module>ExTeX-Typesetter-API</module>
-   <module>ExTeX-Typesetter-core</module>
-   <module>ExTeX-Typesetter-tex</module>
-   <module>ExTeX-Unit-color</module>
-   <module>ExTeX-Unit-etex</module>
-   <module>ExTeX-Unit-extex</module>
-   <module>ExTeX-Unit-image</module>
-   <module>ExTeX-Unit-namespace</module>
-   <module>ExTeX-Unit-native</module>
-   <module>ExTeX-Unit-omega</module>
-   <module>ExTeX-Unit-pdftex</module>
-   <module>ExTeX-Unit-tex</module>
+   <module>Scanner/ExTeX-Scanner</module>
+   <module>Scanner/ExTeX-Scanner32</module>
+   <module>Scanner/ExTeX-Scanner-API</module>
+   <module>Typesetter/ExTeX-Typesetter-API</module>
+   <module>Typesetter/ExTeX-Typesetter-core</module>
+   <module>Typesetter/ExTeX-Typesetter-tex</module>
+   <module>Unit/ExTeX-Unit-color</module>
+   <module>Unit/ExTeX-Unit-etex</module>
+   <module>Unit/ExTeX-Unit-extex</module>
+   <module>Unit/ExTeX-Unit-image</module>
+   <module>Unit/ExTeX-Unit-namespace</module>
+   <module>Unit/ExTeX-Unit-native</module>
+   <module>Unit/ExTeX-Unit-omega</module>
+   <module>Unit/ExTeX-Unit-pdftex</module>
+   <module>Unit/ExTeX-Unit-tex</module>
   </modules>
 
   <reporting>
