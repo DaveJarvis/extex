@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2010-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
+import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.framework.configuration.exception.ConfigurationException;
@@ -55,6 +56,19 @@ public class DBImplTest {
         assertEquals("", db.getPreambleExpanded());
 
         assertNull(db.getSorter());
+    }
+
+    /**
+     * <testcase> Storing an alias leads to an error when the referenced entry
+     * is missing . </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEntryUndefinedException.class)
+    public final void testStoreAlias() throws Exception {
+
+        DBImpl db = new DBImpl();
+        db.storeAlias("new", "old", null);
     }
 
     /**
