@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,6 +41,11 @@ public class CsfReaderTest {
      */
     private static final CsfReader READER = new CsfReader();
 
+    /**
+     * Verify a CSF for validity.
+     *
+     * @param csf the CSF
+     */
     private static void assertCsf(CsfSorter csf) {
 
         assertNotNull(csf);
@@ -59,7 +64,7 @@ public class CsfReaderTest {
     /**
      * Create a reader with the given content.
      * 
-     * @param content the content to be delivered by the reaer
+     * @param content the content to be delivered by the reader
      * 
      * @return the new reader
      */
