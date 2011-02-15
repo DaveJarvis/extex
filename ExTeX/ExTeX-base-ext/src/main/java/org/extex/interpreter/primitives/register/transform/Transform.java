@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -89,7 +89,6 @@ public class Transform implements Serializable {
      */
     public Transform() {
 
-        super();
         for (int i = 0; i < MAXVAL; i++) {
             val[i] = new Real(0);
         }
@@ -112,7 +111,6 @@ public class Transform implements Serializable {
                 ConfigurationException,
                 TypesetterException {
 
-        super();
         for (int i = 0; i < MAXVAL; i++) {
             val[i] = new Real(context, source, typesetter);
         }
@@ -131,7 +129,6 @@ public class Transform implements Serializable {
     public Transform(double v1, double v2, double v3, double v4, double v5,
             double v6) {
 
-        super();
         val[T1] = new Real(v1);
         val[T2] = new Real(v2);
         val[T3] = new Real(v3);
@@ -152,7 +149,6 @@ public class Transform implements Serializable {
      */
     public Transform(Real v1, Real v2, Real v3, Real v4, Real v5, Real v6) {
 
-        super();
         val[T1] = v1;
         val[T2] = v2;
         val[T3] = v3;

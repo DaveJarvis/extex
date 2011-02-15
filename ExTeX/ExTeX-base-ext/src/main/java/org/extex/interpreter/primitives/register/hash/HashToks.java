@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -55,7 +55,6 @@ public class HashToks implements Serializable {
      */
     public HashToks() {
 
-        super();
         map = new HashMap<String, Tokens>();
     }
 
@@ -74,7 +73,6 @@ public class HashToks implements Serializable {
             throws HelpingException,
                 TypesetterException {
 
-        super();
         map = new HashMap<String, Tokens>();
 
         // { {key1}{value1} {key2}{value2} }

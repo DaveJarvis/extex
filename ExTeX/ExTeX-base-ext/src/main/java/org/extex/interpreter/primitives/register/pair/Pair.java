@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,7 +64,6 @@ public class Pair implements Serializable {
      */
     public Pair() {
 
-        super();
         xval = new Real(0);
         yval = new Real(0);
     }
@@ -86,7 +85,6 @@ public class Pair implements Serializable {
                 ConfigurationException,
                 TypesetterException {
 
-        super();
         xval = new Real(context, source, typesetter);
         yval = new Real(context, source, typesetter);
     }
@@ -99,7 +97,6 @@ public class Pair implements Serializable {
      */
     public Pair(double x, double y) {
 
-        super();
         xval = new Real(x);
         yval = new Real(y);
     }
@@ -112,7 +109,6 @@ public class Pair implements Serializable {
      */
     public Pair(Real x, Real y) {
 
-        super();
         xval = x;
         yval = y;
     }
