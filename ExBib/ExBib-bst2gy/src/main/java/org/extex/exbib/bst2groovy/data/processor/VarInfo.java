@@ -49,7 +49,6 @@ public class VarInfo {
      */
     public VarInfo(String name) {
 
-        super();
         this.name = name;
     }
 
