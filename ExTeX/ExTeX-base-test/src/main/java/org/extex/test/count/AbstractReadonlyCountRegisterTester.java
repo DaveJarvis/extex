@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -59,7 +59,6 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
      */
     public AbstractReadonlyCountRegisterTester(String primitive, String defaultValue) {
 
-        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
     }
@@ -73,7 +72,6 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
     public AbstractReadonlyCountRegisterTester(String primitive, String argument,
             String defaultValue) {
 
-        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
         this.argument = argument;
@@ -89,7 +87,6 @@ public abstract class AbstractReadonlyCountRegisterTester extends ExTeXLauncher 
     public AbstractReadonlyCountRegisterTester(String primitive, String argument,
             String defaultValue, String prepare) {
 
-        super();
         this.primitive = primitive;
         this.defaultValue = defaultValue;
         this.argument = argument;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -79,7 +79,6 @@ public abstract class AbstractCountArrayTester extends ExTeXLauncher {
      */
     public AbstractCountArrayTester(String primitive, String args, String init) {
 
-        super();
         this.primitive = primitive;
         this.cs = "\\" + primitive;
         this.invocation = primitive + args;
