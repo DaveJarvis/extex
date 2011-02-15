@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -118,7 +118,6 @@ public class ActiveNode {
             long demerits, int lineNumber,
             PassiveNode breakNode) {
 
-        super();
         this.fitness = fitness;
         this.hyphenated = hyphenated;
         this.demerits = demerits;
