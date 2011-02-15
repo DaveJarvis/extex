@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,9 +26,9 @@ import org.extex.scanner.type.token.Token;
 
 /**
  * This class provides a reference implementation for a
- * {@link org.extex.interpreter.context.group.GroupInfo GroupInfo}.
- * It is a mere container with some getters.
- *
+ * {@link org.extex.interpreter.context.group.GroupInfo GroupInfo}. It is a mere
+ * container with some getters.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -54,31 +54,29 @@ public class GroupInfoImpl implements GroupInfo {
      */
     public GroupInfoImpl() {
 
-        super();
+        this(null, null, null);
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param locator the locator
      * @param groupType the group type
      * @param groupStart the starting token
      */
-    public GroupInfoImpl(Locator locator, GroupType groupType,
-            Token groupStart) {
+    public GroupInfoImpl(Locator locator, GroupType groupType, Token groupStart) {
 
-        super();
         this.locator = locator;
         this.groupType = groupType;
         this.groupStart = groupStart;
     }
 
     /**
-     * Getter for the starting token of the group.
-     * This value is null for the global group.
-     *
+     * Getter for the starting token of the group. This value is null for the
+     * global group.
+     * 
      * @return the token which started the group
-     *
+     * 
      * @see org.extex.interpreter.context.group.GroupInfo#getGroupStart()
      */
     public Token getGroupStart() {
@@ -88,9 +86,9 @@ public class GroupInfoImpl implements GroupInfo {
 
     /**
      * Getter for the group type.
-     *
+     * 
      * @return the group type
-     *
+     * 
      * @see org.extex.interpreter.context.group.GroupInfo#getGroupType()
      */
     public GroupType getGroupType() {
@@ -99,11 +97,11 @@ public class GroupInfoImpl implements GroupInfo {
     }
 
     /**
-     * Getter for the locator describing where the group started.
-     * This value can be null for the global group.
-     *
+     * Getter for the locator describing where the group started. This value can
+     * be null for the global group.
+     * 
      * @return the locator
-     *
+     * 
      * @see org.extex.interpreter.context.group.GroupInfo#getLocator()
      */
     public Locator getLocator() {
@@ -113,7 +111,7 @@ public class GroupInfoImpl implements GroupInfo {
 
     /**
      * Setter for groupStart.
-     *
+     * 
      * @param groupStart the groupStart to set
      */
     public void setGroupStart(Token groupStart) {
@@ -123,7 +121,7 @@ public class GroupInfoImpl implements GroupInfo {
 
     /**
      * Setter for groupType.
-     *
+     * 
      * @param type the groupType to set
      */
     public void setGroupType(GroupType type) {
@@ -133,7 +131,7 @@ public class GroupInfoImpl implements GroupInfo {
 
     /**
      * Setter for locator.
-     *
+     * 
      * @param locator the locator to set
      */
     public void setLocator(Locator locator) {
