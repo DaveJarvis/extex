@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -60,7 +60,6 @@ public class Glue implements Serializable, FixedGlue {
      */
     public Glue() {
 
-        super();
         this.length = new Dimen(0);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
@@ -73,7 +72,6 @@ public class Glue implements Serializable, FixedGlue {
      */
     public Glue(FixedDimen theLength) {
 
-        super();
         this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
@@ -88,7 +86,6 @@ public class Glue implements Serializable, FixedGlue {
      */
     public Glue(FixedGlue glue) {
 
-        super();
         if (glue != null) {
             this.length = new Dimen(glue.getLength());
             this.stretch = new GlueComponent(glue.getStretch());
@@ -110,7 +107,6 @@ public class Glue implements Serializable, FixedGlue {
     public Glue(FixedDimen theLength, FixedGlueComponent theStretch,
             FixedGlueComponent theShrink) {
 
-        super();
         this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(theStretch);
         this.shrink = new GlueComponent(theShrink);
@@ -126,7 +122,6 @@ public class Glue implements Serializable, FixedGlue {
     public Glue(FixedDimen theLength, FixedDimen theStretch,
             FixedDimen theShrink) {
 
-        super();
         this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(theStretch.getValue());
         this.shrink = new GlueComponent(theShrink.getValue());
@@ -139,7 +134,6 @@ public class Glue implements Serializable, FixedGlue {
      */
     public Glue(long theLength) {
 
-        super();
         this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);

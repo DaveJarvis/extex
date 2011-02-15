@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -83,8 +83,8 @@ import org.extex.framework.i18n.Localizer;
  * <li>If the character <tt>\</tt> is the last character of a line then the
  * format is continued in the next line. The leading white-space in the
  * continuing line is silently removed.</li>
- * <li>The character <tt>'</tt> also has a special meaning. This usually
- * means that you have to double a single quote in your format.</li>
+ * <li>The character <tt>'</tt> also has a special meaning. This usually means
+ * that you have to double a single quote in your format.</li>
  * </ul>
  * </p>
  * 
@@ -100,14 +100,13 @@ public class HelpingException extends GeneralException {
     private static final String DEFAULT_ARGUMENT = "?";
 
     /**
-     * The constant <tt>DEFAULT_TAG</tt> contains the tag to be used if none
-     * is given.
+     * The constant <tt>DEFAULT_TAG</tt> contains the tag to be used if none is
+     * given.
      */
     private static final String DEFAULT_TAG = "GeneralDetailedException.help";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -141,12 +140,7 @@ public class HelpingException extends GeneralException {
      */
     protected HelpingException() {
 
-        super();
-        this.tag = DEFAULT_TAG;
-        this.localizer = null;
-        this.arg1 = DEFAULT_ARGUMENT;
-        this.arg2 = DEFAULT_ARGUMENT;
-        this.arg3 = DEFAULT_ARGUMENT;
+        this(null, DEFAULT_TAG);
     }
 
     /**
@@ -234,7 +228,7 @@ public class HelpingException extends GeneralException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param cause the cause
      */
     protected HelpingException(Throwable cause) {

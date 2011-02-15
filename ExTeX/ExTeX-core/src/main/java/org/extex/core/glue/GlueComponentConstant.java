@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -78,7 +78,6 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      */
     public GlueComponentConstant() {
 
-        super();
         this.value = 0;
         this.order = 0;
     }
@@ -90,7 +89,6 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      */
     public GlueComponentConstant(FixedGlueComponent component) {
 
-        super();
         this.value = component.getValue();
         this.order = component.getOrder();
     }
@@ -102,7 +100,6 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      */
     public GlueComponentConstant(long theValue) {
 
-        super();
         this.value = theValue;
         this.order = 0;
     }
@@ -115,7 +112,6 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      */
     public GlueComponentConstant(long theValue, byte theOrder) {
 
-        super();
         this.value = theValue;
         this.order = theOrder;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -48,7 +48,6 @@ public class Mudimen implements Serializable {
      */
     public Mudimen() {
 
-        super();
     }
 
     /**
@@ -58,7 +57,6 @@ public class Mudimen implements Serializable {
      */
     public Mudimen(long len) {
 
-        super();
         length.set(len);
     }
 
