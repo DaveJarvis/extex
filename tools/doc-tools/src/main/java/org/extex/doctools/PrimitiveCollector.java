@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -112,7 +112,6 @@ public class PrimitiveCollector {
          */
         public Info(File name, Element root) {
 
-            super();
             this.name = name;
             this.root = root;
         }
@@ -619,7 +618,6 @@ public class PrimitiveCollector {
      */
     public PrimitiveCollector() throws ParserConfigurationException {
 
-        super();
         builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
 
