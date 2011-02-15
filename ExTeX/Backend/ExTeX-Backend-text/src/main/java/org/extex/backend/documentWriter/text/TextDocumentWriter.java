@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -55,10 +55,9 @@ import org.extex.typesetter.type.node.VirtualCharNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 import org.extex.typesetter.type.page.Page;
 
-
 /**
  * This is a text dummy implementation of a document writer (very simple).
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4704 $
  */
@@ -80,13 +79,12 @@ public class TextDocumentWriter
 
     /**
      * Creates a new object.
-     * @param cfg       the configuration
-     * @param options   the options
+     * 
+     * @param cfg the configuration
+     * @param options the options
      */
-    public TextDocumentWriter(Configuration cfg,
-            DocumentWriterOptions options) {
+    public TextDocumentWriter(Configuration cfg, DocumentWriterOptions options) {
 
-        super();
     }
 
     /**
@@ -120,11 +118,10 @@ public class TextDocumentWriter
      * @param nodes the node list
      * @throws DocumentWriterException if an error occurred.
      */
-    private void processNodes(NodeList nodes)
-            throws DocumentWriterException {
+    private void processNodes(NodeList nodes) throws DocumentWriterException {
 
         showNode(nodes);
-        for(Node n : nodes) {
+        for (Node n : nodes) {
             if (n instanceof NodeList) {
                 processNodes((NodeList) n);
             } else {
@@ -134,8 +131,7 @@ public class TextDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
      */
     public void setOutputStream(OutputStream outStream) {
 
@@ -143,18 +139,16 @@ public class TextDocumentWriter
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String,
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
      *      java.lang.String)
      */
     public void setParameter(String name, String value) {
 
-        //not supported
+        // not supported
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
     public int shipout(Page page) throws DocumentWriterException {
 
@@ -172,6 +166,7 @@ public class TextDocumentWriter
 
     /**
      * show node.
+     * 
      * @param node the node
      * @throws DocumentWriterException if an error occurred.
      */
@@ -194,7 +189,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitAdjust(AdjustNode value, Object value2) {
 
@@ -203,7 +198,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitAfterMath(AfterMathNode value, Object value2) {
 
@@ -212,17 +207,16 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitAlignedLeaders(AlignedLeadersNode value,
-            Object value2) {
+    public Object visitAlignedLeaders(AlignedLeadersNode value, Object value2) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitBeforeMath(BeforeMathNode node, Object value2) {
 
@@ -231,17 +225,16 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitCenteredLeaders(CenteredLeadersNode node,
-            Object value) {
+    public Object visitCenteredLeaders(CenteredLeadersNode node, Object value) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitChar(CharNode node, Object value) {
 
@@ -250,27 +243,25 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitDiscretionary(DiscretionaryNode node,
-            Object value) {
+    public Object visitDiscretionary(DiscretionaryNode node, Object value) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitExpandedLeaders(ExpandedLeadersNode node,
-            Object value) {
+    public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value) {
 
         return null;
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitGlue(GlueNode node, Object value) {
 
@@ -279,17 +270,16 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitHorizontalList(HorizontalListNode node,
-            Object value) {
+    public Object visitHorizontalList(HorizontalListNode node, Object value) {
 
         return "\n";
     }
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitInsertion(InsertionNode node, Object value) {
 
@@ -298,7 +288,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitKern(KernNode node, Object value) {
 
@@ -307,7 +297,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitLigature(LigatureNode node, Object value) {
 
@@ -316,7 +306,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitMark(MarkNode node, Object value) {
 
@@ -325,7 +315,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitPenalty(PenaltyNode node, Object value) {
 
@@ -334,7 +324,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitRule(RuleNode node, Object value) {
 
@@ -343,7 +333,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitSpace(SpaceNode node, Object value) {
 
@@ -352,19 +342,19 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
-    public Object visitVerticalList(VerticalListNode node,
-            Object value) {
+    public Object visitVerticalList(VerticalListNode node, Object value) {
 
         return null;
     }
 
     /**
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+     *      java.lang.Object)
      */
-    public Object visitVirtualChar(VirtualCharNode node,
-            Object value) throws GeneralException {
+    public Object visitVirtualChar(VirtualCharNode node, Object value)
+            throws GeneralException {
 
         // TODO visitVirtualChar unimplemented
         return null;
@@ -372,7 +362,7 @@ public class TextDocumentWriter
 
     /**
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
-     * java.lang.Object)
+     *      java.lang.Object)
      */
     public Object visitWhatsIt(WhatsItNode nde, Object value) {
 
