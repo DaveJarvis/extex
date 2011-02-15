@@ -524,7 +524,7 @@ public class BsfProcessorTest {
     }
 
     /**
-     * <testcase> TODO gene: missing testcase description </testcase>
+     * <testcase> An empty language leads to an exception. </testcase>
      * 
      * @throws ExBibException in case of an error
      */
