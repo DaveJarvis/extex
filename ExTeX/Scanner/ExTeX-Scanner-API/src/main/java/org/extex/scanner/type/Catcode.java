@@ -1147,7 +1147,6 @@ public abstract class Catcode implements Serializable {
      */
     private Catcode() {
 
-        super();
     }
 
     /**
