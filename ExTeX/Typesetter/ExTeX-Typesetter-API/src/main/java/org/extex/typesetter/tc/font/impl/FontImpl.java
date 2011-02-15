@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -66,8 +66,6 @@ public class FontImpl extends NullFont implements ModifiableFont {
      */
     public FontImpl() {
 
-        super();
-
         this.font = null;
         this.key = null;
     }
@@ -78,8 +76,6 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * @param font the font
      */
     public FontImpl(ExtexFont font) {
-
-        super();
 
         this.font = font;
         this.key = (font != null ? font.getFontKey() : null);

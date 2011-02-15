@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -74,7 +74,6 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      */
     public TypesettingContextImpl() {
 
-        super();
     }
 
     /**
@@ -85,7 +84,6 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      */
     public TypesettingContextImpl(Font theFont) {
 
-        super();
         this.font = theFont;
     }
 
@@ -96,7 +94,6 @@ public class TypesettingContextImpl implements ModifiableTypesettingContext {
      */
     public TypesettingContextImpl(TypesettingContext tc) {
 
-        super();
         if (tc != null) {
             this.font = tc.getFont();
             this.color = tc.getColor();

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -80,7 +80,6 @@ public class CmykColor implements Color {
     protected CmykColor(int cyan, int magenta, int yellow,
             int black, int alpha) {
 
-        super();
         this.cyan = (cyan < 0 ? 0 : cyan < MAX_VALUE ? cyan : MAX_VALUE);
         this.magenta = (magenta < 0 ? 0 : magenta < MAX_VALUE
                 ? magenta

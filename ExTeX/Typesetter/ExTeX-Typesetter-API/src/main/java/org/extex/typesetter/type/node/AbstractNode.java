@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -80,7 +80,6 @@ public abstract class AbstractNode implements Node {
      */
     public AbstractNode() {
 
-        super();
         width = new Glue();
         height = new Glue();
         depth = new Glue();
@@ -93,7 +92,6 @@ public abstract class AbstractNode implements Node {
      */
     public AbstractNode(FixedDimen aWidth) {
 
-        super();
         this.width = new Glue(aWidth);
         this.height = new Glue();
         this.depth = new Glue();
@@ -108,7 +106,6 @@ public abstract class AbstractNode implements Node {
      */
     public AbstractNode(FixedDimen aWidth, FixedDimen aHeight, FixedDimen aDepth) {
 
-        super();
         this.width = new Glue(aWidth);
         this.height = new Glue(aHeight);
         this.depth = new Glue(aDepth);

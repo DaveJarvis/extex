@@ -47,7 +47,6 @@ public class SpecialNode extends WhatsItNode implements Node {
      */
     public SpecialNode(String text) {
 
-        super();
         this.text = text;
     }
 

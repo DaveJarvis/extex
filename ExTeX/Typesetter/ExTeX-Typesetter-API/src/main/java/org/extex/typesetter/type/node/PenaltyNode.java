@@ -67,7 +67,6 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      */
     public PenaltyNode(long thePenalty) {
 
-        super();
         this.penalty = thePenalty;
     }
 

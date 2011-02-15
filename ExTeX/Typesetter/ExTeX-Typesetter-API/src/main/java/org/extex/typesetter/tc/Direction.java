@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,15 +38,18 @@ public class Direction implements Serializable {
      */
     public enum Dir {
         /**
-         * The field <tt>B</tt> contains the direction component for <i>bottom</i>.
+         * The field <tt>B</tt> contains the direction component for
+         * <i>bottom</i>.
          */
         B,
         /**
-         * The field <tt>L</tt> contains the direction component for <i>left</i>.
+         * The field <tt>L</tt> contains the direction component for
+         * <i>left</i>.
          */
         L,
         /**
-         * The field <tt>R</tt> contains the direction component for <i>right</i>.
+         * The field <tt>R</tt> contains the direction component for
+         * <i>right</i>.
          */
         R,
         /**
@@ -128,8 +131,7 @@ public class Direction implements Serializable {
     };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -157,7 +159,7 @@ public class Direction implements Serializable {
      */
     private Direction() {
 
-        super();
+        this(null, null, null);
     }
 
     /**
@@ -169,7 +171,6 @@ public class Direction implements Serializable {
      */
     public Direction(Dir beginningOfPage, Dir beginningOfLine, Dir topOfLine) {
 
-        super();
         this.beginningOfPage = beginningOfPage;
         this.beginningOfLine = beginningOfLine;
         this.topOfLine = topOfLine;

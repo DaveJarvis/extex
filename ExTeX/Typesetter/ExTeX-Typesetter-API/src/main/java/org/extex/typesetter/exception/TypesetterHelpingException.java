@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,7 @@ import org.extex.framework.i18n.Localizer;
 
 /**
  * This class provides an Exception with the possibility to provide additional
- * help on the error encoutered. Thus it has two levels of information: the
+ * help on the error encountered. Thus it has two levels of information: the
  * first level is the message and the second level is the additional help.
  * <p>
  * Both information strings are mapped via the
@@ -42,7 +42,7 @@ import org.extex.framework.i18n.Localizer;
  * abc.def.help = This is the help text. \
  *               It can even span several lines.
  * </pre>
- * Then the following instruction can savely be used:
+ * Then the following instruction can safely be used:
  * <pre>
  *     throw new HelpingException(localizer, "abc.def");
  * </pre>
@@ -72,7 +72,7 @@ import org.extex.framework.i18n.Localizer;
  * <li>If the character <tt>\</tt> is the last character of a line then the
  *  format is continued in the next line. The leading whitespace in the
  *  continuing line is silently removed.</li>
- * <li>The character <tt>'</tt> also has a special meaning. Thi usually means
+ * <li>The character <tt>'</tt> also has a special meaning. This usually means
  *  that you have to double a single quote in your format.</li>
  * </ul>
  * </p>
@@ -129,7 +129,6 @@ public class TypesetterHelpingException extends TypesetterException {
      */
     protected TypesetterHelpingException() {
 
-        super();
         this.tag = DEFAULT_TAG;
         this.localizer = null;
         this.arg1 = DEFAULT_ARGUMENT;
@@ -146,7 +145,6 @@ public class TypesetterHelpingException extends TypesetterException {
     public TypesetterHelpingException(Localizer theLocalizer,
             String messageTag) {
 
-        super();
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = DEFAULT_ARGUMENT;
@@ -164,7 +162,6 @@ public class TypesetterHelpingException extends TypesetterException {
     public TypesetterHelpingException(Localizer theLocalizer,
             String messageTag, String a1) {
 
-        super();
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;
@@ -183,7 +180,6 @@ public class TypesetterHelpingException extends TypesetterException {
     public TypesetterHelpingException(Localizer theLocalizer,
             String messageTag, String a1, String a2) {
 
-        super();
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;
@@ -204,7 +200,6 @@ public class TypesetterHelpingException extends TypesetterException {
             String messageTag, String a1, String a2,
             String a3) {
 
-        super();
         this.tag = messageTag;
         this.localizer = theLocalizer;
         this.arg1 = a1;

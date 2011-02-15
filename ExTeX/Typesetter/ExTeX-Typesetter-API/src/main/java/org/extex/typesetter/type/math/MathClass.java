@@ -644,7 +644,6 @@ public abstract class MathClass implements Serializable {
      */
     protected MathClass() {
 
-        super();
     }
 
     /**

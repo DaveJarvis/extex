@@ -70,7 +70,6 @@ public class InsertionNode extends AbstractNode implements Node {
      */
     public InsertionNode(long subtype, NodeList nodes) {
 
-        super();
         this.subtype = subtype;
         this.nodes = nodes;
         if (nodes != null) {

@@ -71,7 +71,6 @@ public class DiscretionaryNode extends AbstractNode implements Node {
     public DiscretionaryNode(NodeList pre, NodeList post,
             NodeList no) {
 
-        super();
         preBreak = pre;
         postBreak = post;
         noBreak = no;

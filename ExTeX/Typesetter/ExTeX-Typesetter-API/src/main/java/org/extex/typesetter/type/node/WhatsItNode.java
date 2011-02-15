@@ -44,7 +44,6 @@ public class WhatsItNode extends AbstractNode {
      */
     public WhatsItNode() {
 
-        super();
     }
 
     /**

@@ -53,7 +53,6 @@ public class AdjustNode extends AbstractNode implements Node {
      */
     public AdjustNode(NodeList nodes) {
 
-        super();
         this.nodes = nodes;
     }
 

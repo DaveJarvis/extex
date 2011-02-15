@@ -68,7 +68,6 @@ public class VirtualCharNode extends CharNode implements NodeList {
          */
         public NL() {
 
-            super();
         }
 
         /**

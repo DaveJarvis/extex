@@ -62,7 +62,6 @@ public class CharNode extends AbstractNode {
      */
     public CharNode(TypesettingContext context, UnicodeChar uc) {
 
-        super();
         typesettingContext = context;
         character = uc;
         Font font = context.getFont();

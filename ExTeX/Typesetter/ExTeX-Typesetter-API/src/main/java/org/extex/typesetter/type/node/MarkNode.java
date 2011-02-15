@@ -67,7 +67,6 @@ public class MarkNode extends AbstractNode implements Node {
      */
     public MarkNode(Tokens mark, String index) {
 
-        super();
         this.mark = mark;
         this.index = index;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,7 +73,6 @@ public class HsvColor implements Color {
     protected HsvColor(int thehue, int thesaturation,
             int thevalue, int theAlpha) {
 
-        super();
         this.hue = (thehue < 0 ? 0 : thehue < MAX_VALUE ? thehue : MAX_VALUE);
         this.saturation = (thesaturation < 0 ? 0 : thesaturation < MAX_VALUE
                 ? thesaturation

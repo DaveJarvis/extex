@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -73,7 +73,6 @@ public class RgbColor implements Color {
     protected RgbColor(int red, int green, int blue,
             int alpha) {
 
-        super();
         this.red = (red < 0 ? 0 : red < MAX_VALUE ? red : MAX_VALUE);
         this.green = (green < 0 ? 0 : green < MAX_VALUE ? green : MAX_VALUE);
         this.blue = (blue < 0 ? 0 : blue < MAX_VALUE ? blue : MAX_VALUE);

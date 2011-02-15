@@ -67,7 +67,6 @@ public class VerticalListNode extends GenericNodeList
      */
     public VerticalListNode() {
 
-        super();
     }
 
     /**
@@ -77,7 +76,6 @@ public class VerticalListNode extends GenericNodeList
      */
     public VerticalListNode(Node node) {
 
-        super();
         add(node);
     }
 

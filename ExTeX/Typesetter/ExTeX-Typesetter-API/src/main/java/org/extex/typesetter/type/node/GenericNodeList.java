@@ -87,7 +87,6 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     public GenericNodeList() {
 
-        super();
     }
 
     /**

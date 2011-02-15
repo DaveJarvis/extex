@@ -71,7 +71,6 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode() {
 
-        super();
     }
 
     /**
@@ -82,7 +81,6 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode(FixedDimen width) {
 
-        super();
         setTargetWidth(width);
     }
 
@@ -93,7 +91,6 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode(Node node) {
 
-        super();
         add(node);
     }
 
@@ -105,7 +102,6 @@ public class HorizontalListNode extends GenericNodeList
      */
     public HorizontalListNode(Node node1, Node node2) {
 
-        super();
         add(node1);
         add(node2);
     }
