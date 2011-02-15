@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -100,7 +100,6 @@ public class IndexContainer
      */
     public IndexContainer() throws SecurityException, NoSuchMethodException {
 
-        super();
         // the default index has no fallback
         currentIndex = new StructuredIndex(DEFAULT_INDEX, null);
         indexMap.put(null, currentIndex);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -59,7 +59,6 @@ public class Markup {
          */
         protected Position(int no, String name) {
 
-            super();
             this.no = no;
             this.name = name;
         }
@@ -140,7 +139,6 @@ public class Markup {
      */
     public Markup(String displayName, String... args) {
 
-        super();
         this.displayName = displayName;
         if (args.length > 0) {
             setDefault(args);
