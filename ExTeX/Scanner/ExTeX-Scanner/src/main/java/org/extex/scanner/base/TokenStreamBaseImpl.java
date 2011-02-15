@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,7 +64,6 @@ public class TokenStreamBaseImpl implements TokenStream {
      */
     public TokenStreamBaseImpl(boolean isFile) {
 
-        super();
         this.fileStream = isFile;
     }
 
@@ -77,7 +76,6 @@ public class TokenStreamBaseImpl implements TokenStream {
      */
     public TokenStreamBaseImpl(boolean isFile, Tokens tokens) {
 
-        super();
         this.fileStream = isFile;
 
         for (int i = tokens.length() - 1; i >= 0; i--) {
