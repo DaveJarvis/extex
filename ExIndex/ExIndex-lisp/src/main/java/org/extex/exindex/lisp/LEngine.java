@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,7 +40,6 @@ public class LEngine extends LInterpreter {
      */
     public LEngine() throws SecurityException, NoSuchMethodException {
 
-        super();
         defun("setq", new Setq("setq"));
         defun("quote", new Quote("quote"));
         defun("print", new Print("print"));
