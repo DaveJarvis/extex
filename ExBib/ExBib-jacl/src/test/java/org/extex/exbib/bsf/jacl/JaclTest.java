@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -71,7 +71,8 @@ public class JaclTest {
      * 
      * @param tclCode the Tcl code to evaluate
      * @param expected the expected result
-     * @param bibEntries TODO
+     * @param bibEntries the contents of the bib file
+     *
      * @throws IOException just in case
      */
     private void runTest(String tclCode, String expected, String bibEntries)
