@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,8 +31,7 @@ import org.junit.Test;
 public abstract class AbstractHyphenminTester extends ExTeXLauncher {
 
     /**
-     * The field <tt>primitive</tt> contains the name of the primitive to
-     * test.
+     * The field <tt>primitive</tt> contains the name of the primitive to test.
      */
     private String primitive;
 
@@ -48,25 +47,21 @@ public abstract class AbstractHyphenminTester extends ExTeXLauncher {
     private String init;
 
     /**
-     * The field <tt>prepare</tt> contains the prefix to be prepended before
-     * the code for the primitive.
+     * The field <tt>prepare</tt> contains the prefix to be prepended before the
+     * code for the primitive.
      */
     private String prepare;
 
     /**
      * Creates a new object.
+     * 
      * @param primitive the name of the integer register to test
      * @param args the arguments
      * @param init the initial value returned by the primitive
      */
-    public AbstractHyphenminTester(String primitive, String args,
-            String init) {
+    public AbstractHyphenminTester(String primitive, String args, String init) {
 
-        super();
-        this.primitive = primitive;
-        this.invocation = primitive + args;
-        this.init = init;
-        this.prepare = "";
+        this(null, primitive, args, init, "");
     }
 
     /**
@@ -78,10 +73,9 @@ public abstract class AbstractHyphenminTester extends ExTeXLauncher {
      * @param init the initial value returned by the primitive
      * @param prepare the preparation code
      */
-    public AbstractHyphenminTester(String arg, String primitive,
-            String args, String init, String prepare) {
+    public AbstractHyphenminTester(String arg, String primitive, String args,
+            String init, String prepare) {
 
-        super();
         this.primitive = primitive;
         this.invocation = primitive + args;
         this.init = init;

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -82,7 +82,6 @@ public class MacroPattern extends Tokens {
          */
         ArgumentMatcher(int no) {
 
-            super();
             this.no = no;
         }
 
@@ -148,7 +147,6 @@ public class MacroPattern extends Tokens {
          */
         CollectingMatcher(Token token, int no) {
 
-            super();
             this.token = token;
             this.no = no;
         }
@@ -205,7 +203,6 @@ public class MacroPattern extends Tokens {
          */
         ConstantMatcher(Token token) {
 
-            super();
             this.token = token;
         }
 
@@ -270,7 +267,6 @@ public class MacroPattern extends Tokens {
          */
         GroupMatcher(int no) {
 
-            super();
             this.no = no;
         }
 
@@ -512,7 +508,6 @@ public class MacroPattern extends Tokens {
      */
     protected MacroPattern(CodeToken cs) {
 
-        super();
         this.cs = cs;
     }
 
@@ -523,7 +518,6 @@ public class MacroPattern extends Tokens {
      */
     protected MacroPattern(Tokens tokens) {
 
-        super();
         add(tokens);
     }
 
