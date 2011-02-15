@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -28,7 +28,8 @@ package org.extex.font.format.pfb;
 public class PfbStartMarkerMissingException extends PfbException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -37,7 +38,6 @@ public class PfbStartMarkerMissingException extends PfbException {
      */
     public PfbStartMarkerMissingException() {
 
-        super();
     }
 
     /**

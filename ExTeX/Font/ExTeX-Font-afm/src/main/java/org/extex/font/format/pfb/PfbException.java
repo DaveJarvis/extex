@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,7 +22,7 @@ import org.extex.font.exception.FontException;
 
 /**
  * Exception for the pfb parser.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -30,7 +30,8 @@ import org.extex.font.exception.FontException;
 public class PfbException extends FontException {
 
     /**
-     * The field <tt>serialVersionUID</tt> ...
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 1L;
 
@@ -39,13 +40,12 @@ public class PfbException extends FontException {
      */
     public PfbException() {
 
-        super();
     }
 
     /**
      * Create a new object.
-     *
-     * @param message   the message
+     * 
+     * @param message the message
      */
     public PfbException(String message) {
 
