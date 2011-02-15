@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -67,7 +67,6 @@ public class GotoPageActionSpec extends GotoActionSpec {
     public GotoPageActionSpec(String file, long page,
             String text, Boolean newwin) {
 
-        super();
         this.file = file;
         this.page = page;
         this.text = text;
