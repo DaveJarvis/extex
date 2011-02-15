@@ -47,14 +47,13 @@ public class AbstractDocWriter {
      */
     public AbstractDocWriter() {
 
-        super();
     }
 
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param lang ...
-     * @param name ...
+     * @param lang the language id
+     * @param name the name
      * 
      * @throws IOException in case of an I/O error
      */
@@ -87,9 +86,9 @@ public class AbstractDocWriter {
     /**
      * TODO gene: missing JavaDoc
      * 
-     * @param lang ...
-     * @param name ...
-     * @param eh ...
+     * @param lang the language id
+     * @param name the name
+     * @param eh the handler for entities
      * 
      * @throws IOException in case of an I/O error
      */
@@ -182,9 +181,9 @@ public class AbstractDocWriter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Setter for the target.
      * 
-     * @param targetDir ...
+     * @param targetDir the target
      */
     public void setTarget(String targetDir) {
 
