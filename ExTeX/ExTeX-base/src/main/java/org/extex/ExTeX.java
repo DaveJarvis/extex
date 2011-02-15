@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -731,8 +731,6 @@ public class ExTeX {
      * @throws HelpingException in case of an error
      */
     public ExTeX(Properties theProperties) throws HelpingException {
-
-        super();
 
         this.properties = theProperties;
         propertyDefault(PROP_BANNER, System.getProperty("java.version"));

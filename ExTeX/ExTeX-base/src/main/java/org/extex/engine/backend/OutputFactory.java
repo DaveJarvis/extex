@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by
@@ -69,18 +69,7 @@ public class OutputFactory extends AbstractFactory
          */
         public Int(int val) {
 
-            super();
             this.value = val;
-        }
-
-        /**
-         * Getter for value.
-         * 
-         * @return the value
-         */
-        public int getValue() {
-
-            return this.value;
         }
 
         /**
@@ -159,7 +148,6 @@ public class OutputFactory extends AbstractFactory
      */
     public OutputFactory(String[] outdirs, String basename) {
 
-        super();
         this.outputDirectories = outdirs.clone();
         this.basename = basename;
     }

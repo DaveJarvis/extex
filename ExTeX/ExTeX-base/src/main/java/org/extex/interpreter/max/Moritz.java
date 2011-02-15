@@ -272,7 +272,6 @@ public class Moritz extends Max
      */
     public Moritz() {
 
-        super();
         try {
             register(Count.class, new ConstantCountParser());
             register(Dimen.class, new ConstantDimenParser());

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -84,7 +84,6 @@ public class PageImpl implements Page {
      */
     public PageImpl(NodeList nodes, FixedCount[] pageNo) {
 
-        super();
         if (nodes == null) {
             throw new IllegalArgumentException("nodes");
         }

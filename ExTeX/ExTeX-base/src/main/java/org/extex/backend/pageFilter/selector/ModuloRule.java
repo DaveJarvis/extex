@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -46,7 +46,6 @@ class ModuloRule implements Rule {
      */
     public ModuloRule(int mod, int rem) {
 
-        super();
         this.mod = mod;
         this.rem = rem;
     }
