@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -51,8 +51,6 @@ public class StreamWriter implements Writer {
     public StreamWriter(OutputStream stream, String encoding)
             throws UnsupportedEncodingException {
 
-        super();
-
         if (encoding == null) {
             writer = new OutputStreamWriter(stream);
         } else {
@@ -69,8 +67,6 @@ public class StreamWriter implements Writer {
      * @throws IOException in case of an I/O error
      */
     public StreamWriter(String file, String encoding) throws IOException {
-
-        super();
 
         if (encoding == null) {
             writer = new FileWriter(file);

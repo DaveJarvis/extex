@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -65,7 +65,6 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      */
     public AbstractToken(Locator locator) {
 
-        super();
         this.locator = locator;
         this.isNull = false;
         this.value = null;
@@ -79,7 +78,6 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      */
     public AbstractToken(String value, Locator locator) {
 
-        super();
         this.locator = locator;
 
         if (value == null) {

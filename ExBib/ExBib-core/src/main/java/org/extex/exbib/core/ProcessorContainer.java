@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -81,7 +81,6 @@ public class ProcessorContainer
          */
         public NamedObserver(String name, Observer observer) {
 
-            super();
             this.name = name;
             this.observer = observer;
         }
@@ -183,7 +182,6 @@ public class ProcessorContainer
     public ProcessorContainer(Configuration config, Logger logger,
             Properties properties) throws ExBibMissingNumberException {
 
-        super();
         configure(config);
         this.logger = logger;
         this.properties = properties;

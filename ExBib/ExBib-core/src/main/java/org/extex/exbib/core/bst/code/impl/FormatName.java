@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -123,7 +123,6 @@ public class FormatName extends AbstractCode implements Serializable {
          */
         public Format(String format, Locator locator) throws ExBibException {
 
-            super();
             parse(format, locator);
         }
 
@@ -581,7 +580,6 @@ public class FormatName extends AbstractCode implements Serializable {
          */
         public FormatItem(String id) {
 
-            super();
             this.id = id;
         }
 

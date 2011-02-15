@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -102,7 +102,6 @@ public class BstReaderExtImpl extends BstReaderImpl {
      */
     public BstReaderExtImpl() throws ConfigurationException {
 
-        super();
         clazz = getClass();
     }
 
