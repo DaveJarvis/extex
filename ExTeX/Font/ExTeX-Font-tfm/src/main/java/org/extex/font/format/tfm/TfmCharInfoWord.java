@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,26 +33,27 @@ import org.extex.util.file.random.RandomAccessR;
  * Each char_info_word contains six fields packed into four bytes as follows.
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table border="1">
+ * <thead>
  * <tr>
  * <td>byte</td>
  * <td>description</td>
  * </tr>
  * </thead>
  * <tr>
- * <td>first </td>
+ * <td>first</td>
  * <td>width_index (8 bits)</td>
  * </tr>
  * <tr>
- * <td>second </td>
+ * <td>second</td>
  * <td>height_index (4 bits) times 16, plus depth_index (4 bits)</td>
  * </tr>
  * <tr>
- * <td>third </td>
+ * <td>third</td>
  * <td>italic_index (6 bits) times 4, plus tag (2 bits)</td>
  * </tr>
  * <tr>
- * <td>fourth </td>
+ * <td>fourth</td>
  * <td>remainder (8 bits)</td>
  * </tr>
  * </table>
@@ -62,29 +63,30 @@ import org.extex.util.file.random.RandomAccessR;
  * field.
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table border="1">
+ * <thead>
  * <tr>
  * <td>tag</td>
  * <td>description</td>
  * </tr>
  * </thead>
  * <tr>
- * <td>0 </td>
+ * <td>0</td>
  * <td>no_tag: means that remainder is unused.</td>
  * </tr>
  * <tr>
- * <td>1 </td>
+ * <td>1</td>
  * <td>lig_tag: means that this character has a ligature/kerning program
  * starting at lig_kern[remainder].</td>
  * </tr>
  * <tr>
- * <td>2 </td>
+ * <td>2</td>
  * <td>list_tag: means that this character is part of a chain of characters of
  * ascending sizes, and not the largest in the chain. The remainder field gives
  * the character code of the next larger character.</td>
  * </tr>
  * <tr>
- * <td>3 </td>
+ * <td>3</td>
  * <td>ext_tag: means that this character code represents an extensible
  * character, i.e., a character that is built up of smaller pieces so that it
  * can be made arbitrarily large. The pieces are specified in exten[remainder].</td>
@@ -108,7 +110,8 @@ public class TfmCharInfoWord implements Serializable {
     private static final class Tag implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt>.
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -117,7 +120,6 @@ public class TfmCharInfoWord implements Serializable {
          */
         public Tag() {
 
-            super();
         }
     }
 
@@ -299,7 +301,6 @@ public class TfmCharInfoWord implements Serializable {
      */
     protected TfmCharInfoWord() {
 
-        super();
     }
 
     /**
@@ -425,8 +426,8 @@ public class TfmCharInfoWord implements Serializable {
                 if (lk instanceof TfmLigature) {
                     TfmLigature lig = (TfmLigature) lk;
 
-                    ligmap.put(new Integer(lig.getNextChar()), new Integer(lig
-                        .getAddingChar()));
+                    ligmap.put(new Integer(lig.getNextChar()),
+                        new Integer(lig.getAddingChar()));
 
                 } else if (lk instanceof TfmKerning) {
                     TfmKerning kern = (TfmKerning) lk;

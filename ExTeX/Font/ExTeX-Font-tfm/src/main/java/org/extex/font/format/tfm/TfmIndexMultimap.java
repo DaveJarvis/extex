@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,24 +23,24 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * TFMIndexMultimap can store and retrieve <code>int</code>
- * values associated to particular <code>int</code> key. There can be
- * more values associated to the same key.
- * TFtoPL[63]
- *
+ * TFMIndexMultimap can store and retrieve <code>int</code> values associated to
+ * particular <code>int</code> key. There can be more values associated to the
+ * same key. TFtoPL[63]
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public class TfmIndexMultimap implements Serializable {
 
     /**
-     * Class <code>Enum</code> provides the sequence of all values
-     * associated to particular key.
+     * Class <code>Enum</code> provides the sequence of all values associated to
+     * particular key.
      */
     public final class Enum implements Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> ...
+         * The field <tt>serialVersionUID</tt> contains the version number for
+         * serialization.
          */
         private static final long serialVersionUID = 1L;
 
@@ -56,12 +56,11 @@ public class TfmIndexMultimap implements Serializable {
 
         /**
          * Create a new object.
-         *
+         * 
          * @param k the key for which the values are required.
          */
         private Enum(int k) {
 
-            super();
             synchronized (data) {
                 key = k;
                 pos = search(key);
@@ -73,7 +72,7 @@ public class TfmIndexMultimap implements Serializable {
 
         /**
          * Tests if there is another associated value.
-         *
+         * 
          * @return Return <code>true</code> if next value is available,
          *         otherwise <code>false</code>.
          */
@@ -84,7 +83,7 @@ public class TfmIndexMultimap implements Serializable {
 
         /**
          * Gives the next value from the sequence of associated values.
-         *
+         * 
          * @return Return the next value.
          */
         public int next() {
@@ -108,12 +107,11 @@ public class TfmIndexMultimap implements Serializable {
      */
     public TfmIndexMultimap() {
 
-        super();
     }
 
     /**
      * Adds a new (key, value) pair.
-     *
+     * 
      * @param key the key of the new pair.
      * @param val the value of the new pair.
      */
@@ -130,7 +128,7 @@ public class TfmIndexMultimap implements Serializable {
 
     /**
      * (key, value) pair at given position.
-     *
+     * 
      * @param i the position of pair to be examined.
      * @return Return the pair at given position.
      */
@@ -141,7 +139,7 @@ public class TfmIndexMultimap implements Serializable {
 
     /**
      * Gives the sequence of all keys associated to the given key.
-     *
+     * 
      * @param key the given key.
      * @return Return the object representing the sequence of associated values.
      */
@@ -152,7 +150,7 @@ public class TfmIndexMultimap implements Serializable {
 
     /**
      * Insert a (key, value) pair at the given position.
-     *
+     * 
      * @param p the pair to be inserted.
      * @param i the position to be inserted to.
      */
@@ -162,9 +160,9 @@ public class TfmIndexMultimap implements Serializable {
     }
 
     /**
-     * Gives the position where a (key, value) pair with given key is
-     * stored or where it should be stored if there is no such pair.
-     *
+     * Gives the position where a (key, value) pair with given key is stored or
+     * where it should be stored if there is no such pair.
+     * 
      * @param key the key searched for.
      * @return Return the position.
      */
@@ -188,7 +186,7 @@ public class TfmIndexMultimap implements Serializable {
 
     /**
      * The number of (key, value) pairs kept.
-     *
+     * 
      * @return Returns the number of stored pairs.
      */
     public int size() {
