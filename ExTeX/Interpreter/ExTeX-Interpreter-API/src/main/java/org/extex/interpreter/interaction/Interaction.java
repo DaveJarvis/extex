@@ -380,7 +380,6 @@ public abstract class Interaction implements Serializable {
      */
     protected Interaction() {
 
-        super();
     }
 
     /**

@@ -831,7 +831,6 @@ public abstract class GroupType implements Serializable {
      */
     private GroupType() {
 
-        super();
     }
 
     /**
