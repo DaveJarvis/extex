@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -57,8 +57,6 @@ public class T2NumberFraction extends T2Number {
      */
     T2NumberFraction(RandomAccessR rar, int b0) throws IOException {
 
-        super();
-
         int b1 = rar.readUnsignedByte();
         int b2 = rar.readUnsignedByte();
         int b3 = rar.readUnsignedByte();
@@ -72,7 +70,6 @@ public class T2NumberFraction extends T2Number {
         bytes[2] = (short) b2;
         bytes[3] = (short) b3;
         bytes[4] = (short) b4;
-
     }
 
     /**

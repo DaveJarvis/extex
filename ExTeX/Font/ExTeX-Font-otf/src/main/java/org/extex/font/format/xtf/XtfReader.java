@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -114,7 +114,6 @@ public class XtfReader implements XMLWriterConvertible {
          */
         public Type() {
 
-            super();
         }
     }
 
@@ -624,7 +623,6 @@ public class XtfReader implements XMLWriterConvertible {
      */
     public XtfReader(RandomAccessR rar, Logger logger) throws IOException {
 
-        super();
         this.logger = logger;
         if (logger != null
                 && System.getProperty(EXTEX_TRACE_FONT_FILES, "false").equals(

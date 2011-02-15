@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -58,8 +58,6 @@ public abstract class T2HintCmd extends T2Hints {
      */
     protected T2HintCmd(List<T2CharString> stack, short[] id, CharString ch)
             throws IOException {
-
-        super();
 
         int n = stack.size();
         bytes = convertStackaddID(stack, id);

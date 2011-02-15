@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -96,8 +96,6 @@ public class T2Integer extends T2Number {
      * @throws IOException if an IO-error occurs.
      */
     T2Integer(RandomAccessR rar, int b0) throws IOException {
-
-        super();
 
         if (b0 >= R1 && b0 <= R2) {
             value = b0 - 139;

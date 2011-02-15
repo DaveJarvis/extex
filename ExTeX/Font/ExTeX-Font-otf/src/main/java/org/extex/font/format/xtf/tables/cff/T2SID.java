@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,8 +44,6 @@ public class T2SID extends T2Number {
      * @throws IOException if an IO-error occurs.
      */
     T2SID(RandomAccessR rar) throws IOException {
-
-        super();
 
         value = rar.readUnsignedShort();
     }

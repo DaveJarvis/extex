@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -51,8 +51,6 @@ public class T2Number16 extends T2Number {
      * @throws IOException if an IO-error occurs.
      */
     T2Number16(RandomAccessR rar, int b0) throws IOException {
-
-        super();
 
         int b1 = rar.readUnsignedByte();
         int b2 = rar.readUnsignedByte();

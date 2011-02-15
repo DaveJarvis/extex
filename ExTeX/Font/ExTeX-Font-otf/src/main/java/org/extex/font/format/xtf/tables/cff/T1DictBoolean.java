@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,8 +41,6 @@ public abstract class T1DictBoolean extends T1DictKey {
      */
     protected T1DictBoolean(List<T2Number> stack, short[] id)
             throws IOException {
-
-        super();
 
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
