@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -75,8 +75,6 @@ public class AbstractFontUtil {
      * @param loggerclass The class for the logger
      */
     public AbstractFontUtil(Class<?> loggerclass) {
-
-        super();
 
         // logger
         logger = Logger.getLogger(loggerclass.getName());
