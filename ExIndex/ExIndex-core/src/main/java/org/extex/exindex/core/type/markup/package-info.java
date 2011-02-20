@@ -17,9 +17,9 @@
  */
 /**
  * 
- *   This package contains utilities for alphabets.
+ *   This package contains containers for markup information.
  * 
  *
  */
 
-package org.extex.exindex.core.type.alphabet.util;
+package org.extex.exindex.core.type.markup;

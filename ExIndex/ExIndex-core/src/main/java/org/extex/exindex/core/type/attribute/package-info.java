@@ -17,9 +17,9 @@
  */
 /**
  * 
- *   This package contains utilities for alphabets.
+ *   This package contains definition and implementations for attributes.
  * 
  *
  */
 
-package org.extex.exindex.core.type.alphabet.util;
+package org.extex.exindex.core.type.attribute;

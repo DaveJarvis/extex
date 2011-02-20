@@ -16,10 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * 
- *   This package contains utilities for alphabets.
- * 
- *
+ *   This package contains the parser for raw index files used by ExIndex.
  */
 
-package org.extex.exindex.core.type.alphabet.util;
+package org.extex.exindex.core.parser.exindex;

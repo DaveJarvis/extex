@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,9 +17,13 @@
  */
 /**
  * 
- *   This package contains utilities for alphabets.
+ *   This package contains definition for types.
+ * 
+ *   <div style="float:right;">
+ *     <img src="doc-files/classes.png"/>
+ *   </div>
  * 
  *
  */
 
-package org.extex.exindex.core.type.alphabet.util;
+package org.extex.exindex.core.type;
