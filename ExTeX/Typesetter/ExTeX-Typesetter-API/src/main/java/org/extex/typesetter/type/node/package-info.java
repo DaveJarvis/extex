@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,8 +16,10 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the document writer
- * implementations.
+ * This package contains the basic data types for nodes as stored in boxed and 
+ * processed by the typesetter in &epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X.
  */
 
-package org.extex.backend.documentWriter.exception;
+package org.extex.typesetter.type.node;

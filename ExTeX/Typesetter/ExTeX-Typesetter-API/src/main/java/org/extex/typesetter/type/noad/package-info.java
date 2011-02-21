@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,8 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the document writer
- * implementations.
+ * This package contains the data structures for Noads.
+ *
+ * A {@link org.extex.typesetter.type.noad.Noad Noad} is the intermediate
+ * data strcuture which is used for processing mathamatical material. Finally
+ * Noads are translated into {@link org.extex.typesetter.type.Node Node}s.
  */
 
-package org.extex.backend.documentWriter.exception;
+package org.extex.typesetter.type.noad;

@@ -16,8 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the document writer
- * implementations.
+ * This package contains some classes for color support.
  */
 
-package org.extex.backend.documentWriter.exception;
+package org.extex.color;

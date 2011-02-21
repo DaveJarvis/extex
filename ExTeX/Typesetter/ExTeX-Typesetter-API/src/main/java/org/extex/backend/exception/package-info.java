@@ -16,8 +16,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the document writer
- * implementations.
+ * This package contains the backend exceptionss of &epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X.
  */
 
-package org.extex.backend.documentWriter.exception;
+package org.extex.backend.exception;

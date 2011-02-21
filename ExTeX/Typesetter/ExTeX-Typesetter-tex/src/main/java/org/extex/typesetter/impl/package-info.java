@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exception classes for the document writer
- * implementations.
+ * This package contains an implmentation of a typesetter and its associated
+ * classes.
  */
 
-package org.extex.backend.documentWriter.exception;
+package org.extex.typesetter.impl;
