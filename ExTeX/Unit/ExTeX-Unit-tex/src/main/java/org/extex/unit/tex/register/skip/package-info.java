@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,9 +16,12 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains node types used for handling delayed file operations.
- *  This means that non immediate operations place those nodes on the list and
- *  wait until shipping time to evaluate them.
+ * This package contains primitives for the manipulation of skip registers.
+ * Registers are the primary means to store parameters which influence the
+ * behavior of &epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X as well as variables used in macro programming. 
+ * The name of the registers can be a name or an number.
  */
 
-package org.extex.unit.tex.file.nodes;
+package org.extex.unit.tex.register.skip;

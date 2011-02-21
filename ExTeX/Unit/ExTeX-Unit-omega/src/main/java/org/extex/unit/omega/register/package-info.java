@@ -16,9 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains node types used for handling delayed file operations.
- *  This means that non immediate operations place those nodes on the list and
- *  wait until shipping time to evaluate them.
+ * This package contains primitives defined in Omega for analyzing registers.
  */
 
-package org.extex.unit.tex.file.nodes;
+package org.extex.unit.omega.register;
