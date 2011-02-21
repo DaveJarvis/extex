@@ -83,7 +83,7 @@ public class BackendDriverImpl
             } catch (GeneralException e) {
                 new BackendException(e);
             } catch (IOException e) {
-                new BackendException(e);
+                throw new BackendException(e);
             }
             documentWriter = null;
         }
