@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,9 +16,16 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the exceptions for the font system of &epsilon;&chi;T<span style=
+ * This package contains the definitions and implementations for the DVI
+ * handling in &epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X.
+ *
+ * <a name="DVIformat" />
+ * <h2>DVI Format</h2>
+ * <p>Definition of DVI format taken from DVItype 3.4 and<br />
+ * &quot;The TUG DVI driver standards committee: <a
+ *  href="doc-files/dvistd0.pdf">DVI driver standard, level 0</a>&quot;</p>
  */
 
-package org.extex.font.exception;
+package org.extex.font.format.dvi;
