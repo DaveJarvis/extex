@@ -108,18 +108,23 @@ import org.extex.typesetter.tc.font.ModifiableFont;
 import org.extex.typesetter.tc.font.impl.FontImpl;
 
 /**
- * This is the programmatic interface to the <logo>ExTeX</logo> functionality.
- * A program may use this functionality to perform all necessary actions without
- * the burden of the traditional <logo>TeX</logo> command line interface.
+ * This is the programmatic interface to the <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> functionality. A program may use this functionality to
+ * perform all necessary actions without the burden of the traditional
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> command line interface.
  * <p>
  * The programmatic interface provides the following features:
  * </p>
  * <ul>
- * <li>Specifying format, input file and <logo>TeX</logo> code in properties.</li>
+ * <li>Specifying format, input file and <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> code in properties.</li>
  * </ul>
  * 
- * <a name="settings"/>
- * <h3>Settings</h3>
+ * <a name="settings"/> <h3>Settings</h3>
  * 
  * <p>
  * Settings can be stored in properties files. Those settings are the fallback
@@ -137,139 +142,148 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * </p>
  * <dl>
  * <dt><a name="extex.code"/><tt>extex.code</tt></a></dt>
- * <dd> This parameter contains <logo>ExTeX</logo> code to be executed
- * directly. The execution is performed after any code specified in an input
- * file. on the command line the code has to start with a backslash. This
- * restriction does not hold for the property settings. </dd>
+ * <dd>This parameter contains <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> code to be executed directly. The execution is performed
+ * after any code specified in an input file. on the command line the code has
+ * to start with a backslash. This restriction does not hold for the property
+ * settings.</dd>
  * <dd>Command line: <tt>&lang;code&rang;</tt></dd>
  * 
  * <dt><a name="extex.color.converter"/><tt>extex.color.converter</tt></dt>
- * <dd> This parameter contains the name of the configuration resource to use
- * for the color converter. </dd>
+ * <dd>This parameter contains the name of the configuration resource to use for
+ * the color converter.</dd>
  * <dd>Default: <tt></tt></dd>
  * 
  * <dt><a name="extex.config"/><tt>extex.config</tt></dt>
- * <dd> This parameter contains the name of the configuration resource to use.
- * This configuration resource is sought on the class path. </dd>
+ * <dd>This parameter contains the name of the configuration resource to use.
+ * This configuration resource is sought on the class path.</dd>
  * <dd>Default: <tt>extex.xml</tt></dd>
  * 
  * <dt><a name="extex.encoding"/><tt>extex.encoding</tt></dt>
- * <dd> This parameter contains the name of the property for the standard
- * encoding to use. </dd>
+ * <dd>This parameter contains the name of the property for the standard
+ * encoding to use.</dd>
  * <dd>Default: <tt>ISO-8859-1</tt></dd>
  * 
  * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
- * <dd> This parameter contains the logical name of the error handler. </dd>
+ * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
  * <dt><a name="extex.error.handler"/><tt>extex.error.handler</tt></dt>
- * <dd> This parameter contains the logical name of the error handler. </dd>
+ * <dd>This parameter contains the logical name of the error handler.</dd>
  * 
  * <dt><a name="extex.fonts"/><tt>extex.fonts</tt></dt>
- * <dd> This parameter contains the name of the property indicating where to
- * find font files. The value is a path similar to extex.texinputs. </dd>
+ * <dd>This parameter contains the name of the property indicating where to find
+ * font files. The value is a path similar to extex.texinputs.</dd>
  * 
  * <dt><a name="extex.halt.on.error"/><tt>extex.halt.on.error</tt></dt>
- * <dd> This parameter contains the name of the property indicating whether the
- * processing should stop after the first error. </dd>
+ * <dd>This parameter contains the name of the property indicating whether the
+ * processing should stop after the first error.</dd>
  * 
  * <dt><a name="extex.file"><tt>extex.file</tt></a></dt>
- * <dd> This parameter contains the file to read from. It has no default </dd>
+ * <dd>This parameter contains the file to read from. It has no default</dd>
  * 
  * <dt><a name="extex.format"/><tt>extex.format</tt></dt>
- * <dd> This parameter contains the name of the format to read. An empty string
- * denotes that no format should be read. This is the default. </dd>
+ * <dd>This parameter contains the name of the format to read. An empty string
+ * denotes that no format should be read. This is the default.</dd>
  * 
  * <dt><a name="extex.ini"/><tt>extex.ini</tt></dt>
- * <dd> If set to <code>true</code> then act as initex. This command line
- * option is defined for compatibility to <logo>TeX</logo> only. In <logo>ExTeX</logo>
- * it has no effect at all. </dd>
+ * <dd>If set to <code>true</code> then act as initex. This command line option
+ * is defined for compatibility to <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> only. In <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> it has no effect at all.</dd>
  * 
  * <dt><a name="extex.interaction"/><tt>extex.interaction</tt></dt>
- * <dd> This parameter contains the interaction mode. possible values are the
+ * <dd>This parameter contains the interaction mode. possible values are the
  * numbers 0..3 and the symbolic names <tt>batchmode</tt> (0),
- * <tt>nonstopmode</tt> (1), <tt>scrollmode</tt> (2), and
- * <tt>errorstopmode</tt> (3). </dd>
+ * <tt>nonstopmode</tt> (1), <tt>scrollmode</tt> (2), and <tt>errorstopmode</tt>
+ * (3).</dd>
  * <dd>Default: <tt>3</tt></dd>
  * 
  * <dt><a name="extex.jobname"/><tt>extex.jobname</tt></dt>
- * <dd> This parameter contains the name of the job. It is overwritten if a file
+ * <dd>This parameter contains the name of the job. It is overwritten if a file
  * is given to read from. In this case the base name of the input file is used
- * instead. </dd>
+ * instead.</dd>
  * <dd>Default: <tt>texput</tt></dd>
  * 
  * <dt><a name="extex.jobname.master"/><tt>extex.jobname.master</tt></dt>
- * <dd> This parameter contains the name of the job to be used with high
- * priority. </dd>
+ * <dd>This parameter contains the name of the job to be used with high
+ * priority.</dd>
  * <dd>Default: <tt>texput</tt></dd>
  * 
  * <dt><a name="extex.lang"/><tt>extex.lang</tt></dt>
- * <dd> This parameter contains the name of the locale to be used for the
- * messages. </dd>
+ * <dd>This parameter contains the name of the locale to be used for the
+ * messages.</dd>
  * 
  * <dt><a name="extex.name"/><tt>extex.name</tt></dt>
- * <dd> This parameter contains the name of the program for messages. </dd>
+ * <dd>This parameter contains the name of the program for messages.</dd>
  * 
  * <dt><a name="extex.nobanner"/><tt>extex.nobanner</tt></dt>
- * <dd> This parameter contains a Boolean indicating that the banner should be
- * suppressed. </dd>
+ * <dd>This parameter contains a Boolean indicating that the banner should be
+ * suppressed.</dd>
  * 
  * <dt><a name="extex.output"/><tt>extex.output</tt></dt>
- * <dd> This parameter contains the output format. This logical name is resolved
- * via the configuration. </dd>
+ * <dd>This parameter contains the output format. This logical name is resolved
+ * via the configuration.</dd>
  * <dd>Default: <tt>pdf</tt></dd>
  * 
  * <dt><a name="extex.output.directories"/><tt>extex.output.directories</tt></dt>
- * <dd> This parameter contains a colon separated list of directories where
+ * <dd>This parameter contains a colon separated list of directories where
  * output files should be created. The directories are tried in turn until one
- * is found where the creation of the output file succeeds. </dd>
+ * is found where the creation of the output file succeeds.</dd>
  * <dd>Default: <tt>.</tt></dd>
  * 
  * <dt><a name="extex.paper"/><tt>extex.paper</tt></dt>
- * <dd> This parameter contains the default size of the paper. It can be one of
- * the symbolic names defined in <tt>paper/paper.xml</tt>. Otherwise the
- * value is interpreted as a pair of width and height separated by a space.
- * </dd>
+ * <dd>This parameter contains the default size of the paper. It can be one of
+ * the symbolic names defined in <tt>paper/paper.xml</tt>. Otherwise the value
+ * is interpreted as a pair of width and height separated by a space.</dd>
  * 
  * <dt><a name="extex.progname"/><tt>extex.progname</tt></dt>
- * <dd> This parameter can be used to overrule the name of the program shown in
- * the banner and the version information. </dd>
+ * <dd>This parameter can be used to overrule the name of the program shown in
+ * the banner and the version information.</dd>
  * <dd>Default: <tt>ExTeX</tt></dd>
  * 
- * <dt><a name="extex.stacktrace.on.internal.error"/><tt>extex.stacktrace.on.internal.error</tt></dt>
- * <dd> This boolean parameter contains indicator that a stack trace should be
- * written to the log stream on internal errors. </dd>
+ * <dt><a name="extex.stacktrace.on.internal.error"/>
+ * <tt>extex.stacktrace.on.internal.error</tt></dt>
+ * <dd>This boolean parameter contains indicator that a stack trace should be
+ * written to the log stream on internal errors.</dd>
  * 
  * <dt><a name="extex.texinputs"/><tt>extex.texinputs</tt></dt>
- * <dd> This parameter contains the additional directories for searching
- * <logo>TeX</logo> input files. </dd>
+ * <dd>This parameter contains the additional directories for searching
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> input files.</dd>
  * 
  * <dt><a name="extex.token.stream"/><tt>extex.token.stream</tt></dt>
- * <dd> This string parameter contains the logical name of the configuration to
- * use for the token stream. </dd>
+ * <dd>This string parameter contains the logical name of the configuration to
+ * use for the token stream.</dd>
  * 
  * <dt><a name="extex.trace.input.files"/><tt>extex.trace.input.files</tt></dt>
- * <dd> This Boolean parameter contains the indicator whether or not to trace
- * the search for input files. </dd>
+ * <dd>This Boolean parameter contains the indicator whether or not to trace the
+ * search for input files.</dd>
  * 
  * <dt><a name="extex.trace.font.files"/><tt>extex.trace.font.files</tt></dt>
- * <dd> This Boolean parameter contains the indicator whether or not to trace
- * the search for font files. </dd>
+ * <dd>This Boolean parameter contains the indicator whether or not to trace the
+ * search for font files.</dd>
  * 
  * <dt><a name="extex.trace.macros"/><tt>extex.trace.macros</tt></dt>
- * <dd> This Boolean parameter contains the indicator whether or not to trace
- * the execution of macros. </dd>
+ * <dd>This Boolean parameter contains the indicator whether or not to trace the
+ * execution of macros.</dd>
  * 
  * <dt><a name="extex.trace.tokenizer"/><tt>extex.trace.tokenizer</tt></dt>
- * <dd> This Boolean parameter contains the indicator whether or not to trace
- * the work of the tokenizer. </dd>
+ * <dd>This Boolean parameter contains the indicator whether or not to trace the
+ * work of the tokenizer.</dd>
  * 
  * <dt><a name="extex.typesetter"/><tt>extex.typesetter</tt></dt>
- * <dd> This parameter contains the name of the typesetter to use. If it is not
- * set then the default from the configuration file is used. </dd>
+ * <dd>This parameter contains the name of the typesetter to use. If it is not
+ * set then the default from the configuration file is used.</dd>
  * 
  * <dt><a name="extex.units"/><tt>extex.units</tt></dt>
- * <dd> This parameter contains a colon separated list of units to be loaded
- * into <logo>ExTeX</logo>. </dd>
+ * <dd>This parameter contains a colon separated list of units to be loaded into
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.</dd>
  * 
  * </dl>
  * 
@@ -281,27 +295,36 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * </p>
  * 
  * 
- * <a name="configuration"/>
- * <h3>Configuration Resources</h3>
+ * <a name="configuration"/> <h3>Configuration Resources</h3>
  * 
  * <p>
- * The configuration of <logo>ExTeX</logo> is controlled by several
- * configuration resources. The fallback for those configuration resources are
- * contained in the <logo>ExTeX</logo> jar file. In this section we will
- * describe how to overwrite the settings in the default configuration resource.
+ * The configuration of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is controlled by several configuration resources. The
+ * fallback for those configuration resources are contained in the
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> jar file. In this section we will describe how to overwrite
+ * the settings in the default configuration resource.
  * </p>
  * 
  * TODO gene: doc incomplete
  * 
  * 
- * <a name="running"/>
- * <h3>Programmatically Using <logo>ExTeX</logo></h3>
+ * <a name="running"/> <h3>Programmatically Using <logo>&epsilon;&chi;T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo></h3>
  * 
  * <p>
- * This class is the central point for using an instance of <logo>ExTeX</logo>
- * from within a program. For this purpose the class has been specially
- * designed. The class can be used as is. This is not the normal way to apply
- * <logo>ExTeX</logo>. The configuration via configuration files and properties
+ * This class is the central point for using an instance of
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> from within a program. For this purpose the class has been
+ * specially designed. The class can be used as is. This is not the normal way
+ * to apply <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. The configuration via configuration files and properties
  * can be used to influence the behavior of the instance. Nevertheless the fine
  * points in the live cycle can not be accessed this way. This can be achieved
  * via deriving another class from it and overwriting one of the protected
@@ -313,7 +336,9 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * insight into the live cycle of the class.
  * </p>
  * <div class="figure"> <img src="doc-files/ExTeX-start.png" title="Starting
- * ExTeX"/> <div class="caption"> Starting <logo>ExTeX</logo> </div> </div>
+ * ExTeX"/> <div class="caption"> Starting <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> </div> </div>
  * <p>
  * Mainly there are two steps in using this class. The first step is the
  * creation of a new instance. This phase is depicted in the figure above. Note
@@ -322,62 +347,72 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * </p>
  * <dl>
  * <dt>{@link #propertyDefault(String,String) propertyDefault()}</dt>
- * <dd> This method is invoked several times to provide the compiled-in defaults
- * for certain properties. </dd>
+ * <dd>This method is invoked several times to provide the compiled-in defaults
+ * for certain properties.</dd>
  * <dt>{@link #applyLanguage() applyLanguage()}</dt>
- * <dd> This method is invoked to adjust the setting for the language. </dd>
+ * <dd>This method is invoked to adjust the setting for the language.</dd>
  * <dt>{@link #applyInteraction() applyInteraction()}</dt>
- * <dd> This method is invoked to adjust the setting for the interaction mode.
- * </dd>
+ * <dd>This method is invoked to adjust the setting for the interaction mode.</dd>
  * </dl>
  * <p>
  * The major activities are carried out when the method {@link #run() run()} is
  * invoked. The methods used in this phase are shown in the figure below.
  * </p>
  * <div class="figure"> <img src="doc-files/ExTeX-run.png" title="Running
- * ExTeX"/> <div class="caption"> Running <logo>ExTeX</logo> </div> </div>
+ * ExTeX"/> <div class="caption"> Running <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> </div> </div>
  * <dl>
  * <dt>{@link #makeLogFile(String) makeLogFile()}</dt>
- * <dd> Creates the log file. </dd>
+ * <dd>Creates the log file.</dd>
  * <dt>{@link #makeLogHandler(File) makeLogHandler()}</dt>
- * <dd> Creates the log handler. </dd>
+ * <dd>Creates the log handler.</dd>
  * <dt>{@link #showBanner(Configuration,Level) showBanner()}</dt>
- * <dd> Presents the banner if necessary. </dd>
+ * <dd>Presents the banner if necessary.</dd>
  * <dt>{@link #makeOutputFactory(String,Configuration) makeOutputFactory()}</dt>
- * <dd> Creates the output factory. </dd>
+ * <dd>Creates the output factory.</dd>
  * <dt>{@link #makeResourceFinder(Configuration) makeResourceFinder()}</dt>
- * <dd> Creates the resource finder. </dd>
- * <dt>{@link #makeInterpreter(Configuration,OutputStreamFactory,ResourceFinder,String) makeInterpreter()}</dt>
- * <dd> Start to create the interpreter. In the course of this operation some
+ * <dd>Creates the resource finder.</dd>
+ * <dt>
+ * {@link #makeInterpreter(Configuration,OutputStreamFactory,ResourceFinder,String)
+ * makeInterpreter()}</dt>
+ * <dd>Start to create the interpreter. In the course of this operation some
  * more methods are invoked:
  * <dl>
  * <dt>{@link #makeFontFactory(Configuration,ResourceFinder) makeFontFactory()}</dt>
- * <dd> Creates the font factory. </dd>
+ * <dd>Creates the font factory.</dd>
  * <dt>{@link #makeTokenFactory(Configuration) makeTokenFactory()}</dt>
- * <dd> Creates the token factory. </dd>
- * <dt>{@link #makeContext(Configuration,TokenFactory,CoreFontFactory,Interpreter,ResourceFinder,String,OutputStreamFactory) makeContext()}</dt>
- * <dd> Creates the initial context and optionally loads a format:
+ * <dd>Creates the token factory.</dd>
+ * <dt>
+ * {@link #makeContext(Configuration,TokenFactory,CoreFontFactory,Interpreter,ResourceFinder,String,OutputStreamFactory)
+ * makeContext()}</dt>
+ * <dd>Creates the initial context and optionally loads a format:
  * <dl>
- * <dt>{@link #makeDefaultFont(Configuration,CoreFontFactory) makeDefaultFont()}</dt>
- * <dd> Creates the default font from the specification in the configuration.
- * </dd>
- * <dt>{@link #makeLanguageManager(Configuration,OutputStreamFactory,ResourceFinder) makeLanguageManager()}</dt>
- * <dd> Creates the language manager. </dd>
- * <dt>{@link #loadFormat(String,Interpreter,ResourceFinder,String,Configuration,OutputStreamFactory,TokenFactory) loadFormat()}</dt>
- * <dd> Loads a format if one is given. </dd>
+ * <dt>{@link #makeDefaultFont(Configuration,CoreFontFactory) makeDefaultFont()}
+ * </dt>
+ * <dd>Creates the default font from the specification in the configuration.</dd>
+ * <dt>
+ * {@link #makeLanguageManager(Configuration,OutputStreamFactory,ResourceFinder)
+ * makeLanguageManager()}</dt>
+ * <dd>Creates the language manager.</dd>
+ * <dt>
+ * {@link #loadFormat(String,Interpreter,ResourceFinder,String,Configuration,OutputStreamFactory,TokenFactory)
+ * loadFormat()}</dt>
+ * <dd>Loads a format if one is given.</dd>
  * </dl>
  * </dd>
  * <dt>{@link #initializeStreams(Interpreter,Properties) initializeStreams()}</dt>
- * <dd> Initialize the input and output streams. </dd>
- * <dt>{@link #makeTypesetter(Interpreter,Configuration,OutputStreamFactory,ResourceFinder,CoreFontFactory) makeTypesetter()}</dt>
- * <dd> Creates the typesetter. </dd>
+ * <dd>Initialize the input and output streams.</dd>
+ * <dt>
+ * {@link #makeTypesetter(Interpreter,Configuration,OutputStreamFactory,ResourceFinder,CoreFontFactory)
+ * makeTypesetter()}</dt>
+ * <dd>Creates the typesetter.</dd>
  * </dl>
  * </dd>
  * <dt>{@link org.extex.interpreter.Interpreter#run() run()}</dt>
- * <dd> Runs the processing loop of the interpreter until it reaches an end.
- * </dd>
+ * <dd>Runs the processing loop of the interpreter until it reaches an end.</dd>
  * <dt>{@link #logPages(BackendDriver) logPages()}</dt>
- * <dd> Do everything necessary to log the pages. </dd>
+ * <dd>Do everything necessary to log the pages.</dd>
  * </dl>
  * 
  * 
@@ -395,8 +430,8 @@ public class ExTeX {
     private static final String CONTEXT_TAG = "Context";
 
     /**
-     * The field <tt>DEFAULT_JOBNAME</tt> contains the default for the job
-     * name if none can be determined otherwise.
+     * The field <tt>DEFAULT_JOBNAME</tt> contains the default for the job name
+     * if none can be determined otherwise.
      */
     private static final String DEFAULT_JOBNAME = "texput";
 
@@ -437,8 +472,10 @@ public class ExTeX {
     protected static final String PROP_BANNER = "extex.banner";
 
     /**
-     * The constant <tt>PROP_CODE</tt> contains the name of the property for
-     * the <logo>TeX</logo> code to be inserted at the beginning of the job.
+     * The constant <tt>PROP_CODE</tt> contains the name of the property for the
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> code to be inserted at the beginning of the job.
      */
     protected static final String PROP_CODE = "extex.code";
 
@@ -456,8 +493,8 @@ public class ExTeX {
     protected static final String PROP_CONFIG = "extex.config";
 
     /**
-     * The constant <tt>PROP_ENCODING</tt> contains the name of the property
-     * for the standard encoding to use.
+     * The constant <tt>PROP_ENCODING</tt> contains the name of the property for
+     * the standard encoding to use.
      */
     protected static final String PROP_ENCODING = "extex.encoding";
 
@@ -469,14 +506,14 @@ public class ExTeX {
     protected static final String PROP_ERROR_HANDLER = "extex.error.handler";
 
     /**
-     * The constant <tt>PROP_FILE</tt> contains the name of the property for
-     * the input file to read.
+     * The constant <tt>PROP_FILE</tt> contains the name of the property for the
+     * input file to read.
      */
     protected static final String PROP_FILE = "extex.file";
 
     /**
-     * The constant <tt>PROP_FMT</tt> contains the name of the property for
-     * the name of the format file to use.
+     * The constant <tt>PROP_FMT</tt> contains the name of the property for the
+     * name of the format file to use.
      */
     protected static final String PROP_FMT = "extex.format";
 
@@ -488,15 +525,18 @@ public class ExTeX {
     protected static final String PROP_HALT_ON_ERROR = "extex.halt.on.error";
 
     /**
-     * The constant <tt>PROP_INI</tt> contains the name of the property for
-     * the Boolean value indicating that some kind of emulations for iniTeX
-     * should be provided. Currently this has no effect in <logo>ExTeX</logo>.
+     * The constant <tt>PROP_INI</tt> contains the name of the property for the
+     * Boolean value indicating that some kind of emulations for iniTeX should
+     * be provided. Currently this has no effect in <logo>&epsilon;&chi;T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      */
     protected static final String PROP_INI = "extex.ini";
 
     /**
-     * The constant <tt>PROP_INTERACTION</tt> contains the name of the
-     * property for the interaction mode.
+     * The constant <tt>PROP_INTERACTION</tt> contains the name of the property
+     * for the interaction mode.
      */
     protected static final String PROP_INTERACTION = "extex.interaction";
 
@@ -509,8 +549,8 @@ public class ExTeX {
     = "extex.stacktrace.on.internal.error";
 
     /**
-     * The constant <tt>PROP_JOBNAME</tt> contains the name of the property
-     * for the job name. The value can be overruled by the property named in
+     * The constant <tt>PROP_JOBNAME</tt> contains the name of the property for
+     * the job name. The value can be overruled by the property named in
      * <tt>PROP_JOBNAME_MASTER</tt>.
      */
     protected static final String PROP_JOBNAME = "extex.jobname";
@@ -522,14 +562,14 @@ public class ExTeX {
     protected static final String PROP_JOBNAME_MASTER = "extex.jobname.master";
 
     /**
-     * The constant <tt>PROP_LANG</tt> contains the name of the property for
-     * the language to use for messages.
+     * The constant <tt>PROP_LANG</tt> contains the name of the property for the
+     * language to use for messages.
      */
     protected static final String PROP_LANG = "extex.lang";
 
     /**
-     * The constant <tt>PROP_NAME</tt> contains the name of the property for
-     * the program name used in messages.
+     * The constant <tt>PROP_NAME</tt> contains the name of the property for the
+     * program name used in messages.
      */
     protected static final String PROP_NAME = "extex.name";
 
@@ -540,28 +580,28 @@ public class ExTeX {
     protected static final String PROP_NO_BANNER = "extex.nobanner";
 
     /**
-     * The constant <tt>PROP_OUTPUT_DIRS</tt> contains the name of the
-     * property for the output directory path.
+     * The constant <tt>PROP_OUTPUT_DIRS</tt> contains the name of the property
+     * for the output directory path.
      */
     protected static final String PROP_OUTPUT_DIRS = "extex.output.directories";
 
     /**
-     * The constant <tt>PROP_OUTPUT_TYPE</tt> contains the name of the
-     * property for the output driver. This value is resolved by the
+     * The constant <tt>PROP_OUTPUT_TYPE</tt> contains the name of the property
+     * for the output driver. This value is resolved by the
      * {@link org.extex.backend.documentWriter.DocumentWriterFactory
      * DocumentWriterFactory} to find the appropriate class.
      */
     protected static final String PROP_OUTPUT_TYPE = "extex.output";
 
     /**
-     * The constant <tt>PROP_PAGE</tt> contains the name of the property for
-     * the default page dimensions.
+     * The constant <tt>PROP_PAGE</tt> contains the name of the property for the
+     * default page dimensions.
      */
     protected static final String PROP_PAGE = "extex.page";
 
     /**
-     * The constant <tt>PROP_PROGNAME</tt> contains the name of the property
-     * for the program name used in format loading.
+     * The constant <tt>PROP_PROGNAME</tt> contains the name of the property for
+     * the program name used in format loading.
      */
     protected static final String PROP_PROGNAME = "extex.progname";
 
@@ -572,8 +612,8 @@ public class ExTeX {
     protected static final String PROP_TEXINPUTS = "extex.texinputs";
 
     /**
-     * The constant <tt>PROP_TOKEN_STREAM</tt> contains the name of the
-     * property for the token stream class to use.
+     * The constant <tt>PROP_TOKEN_STREAM</tt> contains the name of the property
+     * for the token stream class to use.
      */
     protected static final String PROP_TOKEN_STREAM = "extex.token.stream";
 
@@ -594,9 +634,9 @@ public class ExTeX {
             "extex.trace.input.files";
 
     /**
-     * The constant <tt>PROP_TRACE_MACROS</tt> contains the name of the
-     * property for the Boolean determining whether or not the execution of
-     * macros should produce tracing output.
+     * The constant <tt>PROP_TRACE_MACROS</tt> contains the name of the property
+     * for the Boolean determining whether or not the execution of macros should
+     * produce tracing output.
      */
     protected static final String PROP_TRACE_MACROS = "extex.trace.macros";
 
@@ -677,15 +717,15 @@ public class ExTeX {
     private InteractionObserver interactionObserver = null;
 
     /**
-     * The field <tt>iProvider</tt> contains the bridge from the resource
-     * finder to the context.
+     * The field <tt>iProvider</tt> contains the bridge from the resource finder
+     * to the context.
      */
     private ContextawareInteractionIndicator iProvider =
             new ContextawareInteractionIndicator();
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
     private Localizer localizer = LocalizerFactory.getLocalizer(ExTeX.class);
 
@@ -701,8 +741,8 @@ public class ExTeX {
     private boolean noBanner;
 
     /**
-     * The field <tt>outStream</tt> contains the output stream for the
-     * document writer.
+     * The field <tt>outStream</tt> contains the output stream for the document
+     * writer.
      */
     private OutputStream outStream = null;
 
@@ -722,7 +762,8 @@ public class ExTeX {
     /**
      * Creates a new object and supplies some properties for those keys which
      * are not contained in the properties already. A detailed list of the
-     * properties supported can be found in section <a href="#settings">Settings</a>.
+     * properties supported can be found in section <a
+     * href="#settings">Settings</a>.
      * 
      * @param theProperties the properties to start with. This object is used
      *        and modified. The caller should provide a new instance if this is
@@ -822,8 +863,8 @@ public class ExTeX {
 
         String interaction = properties.getProperty(PROP_INTERACTION);
         try {
-            interactionObserver.receiveInteractionChange(null, Interaction
-                .get(interaction));
+            interactionObserver.receiveInteractionChange(null,
+                Interaction.get(interaction));
         } catch (InteractionUnknownException e) {
             throw e;
         } catch (RuntimeException e) {
@@ -968,8 +1009,8 @@ public class ExTeX {
         if (filename != null && !filename.equals("")) {
 
             TokenStream stream =
-                    factory.getStream(filename, "tex", prop
-                        .getProperty(PROP_ENCODING));
+                    factory.getStream(filename, "tex",
+                        prop.getProperty(PROP_ENCODING));
             if (stream == null) {
                 logger.severe(localizer.format("TTP.FileNotFound", filename));
             } else {
@@ -1039,8 +1080,9 @@ public class ExTeX {
                     Registrar.register(new ResourceFinderInjector(finder),
                         ResourceAware.class);
             Object ref2 =
-                    Registrar.register(new FontInjector(context
-                        .getFontFactory()), ModifiableFont.class);
+                    Registrar.register(
+                        new FontInjector(context.getFontFactory()),
+                        ModifiableFont.class);
             try {
                 // TODO gene: provide adequate configuration names
                 interpreter.loadFormat(stream, format, "ExTeX", "ExTeX");
@@ -1176,8 +1218,8 @@ public class ExTeX {
         do {
             msg = t.getLocalizedMessage();
             if (msg != null && !"".equals(msg)) {
-                logException(logger, localizer.format("ExTeX.InternalError",
-                    msg), e);
+                logException(logger,
+                    localizer.format("ExTeX.InternalError", msg), e);
                 return;
             }
             t = t.getCause();
@@ -1296,8 +1338,9 @@ public class ExTeX {
         interpreter.setContext(context);
 
         context.setFontFactory(fontFactory);
-        context.set(makeDefaultFont(config.findConfiguration(TAG_FONT),
-            fontFactory), true);
+        context.set(
+            makeDefaultFont(config.findConfiguration(TAG_FONT), fontFactory),
+            true);
 
         context.setLanguageManager(makeLanguageManager(config, outFactory,
             finder));
@@ -1366,8 +1409,8 @@ public class ExTeX {
                         .getFontKey(defaultFont, new Dimen(
                             ((long) (Dimen.ONE * f))))));
         } catch (NumberFormatException e) {
-            throw new ConfigurationSyntaxException(attributeSize, config
-                .toString());
+            throw new ConfigurationSyntaxException(attributeSize,
+                config.toString());
         }
         return font;
     }
@@ -1484,8 +1527,8 @@ public class ExTeX {
         ErrorHandler errHandler = errorHandler;
         if (errHandler == null) {
             ErrorHandlerFactory errorHandlerFactory =
-                    new ErrorHandlerFactory(interpreterConfig
-                        .getConfiguration(TAG_ERRORHANDLER));
+                    new ErrorHandlerFactory(
+                        interpreterConfig.getConfiguration(TAG_ERRORHANDLER));
             errorHandlerFactory.enableLogging(logger);
             errHandler = errorHandlerFactory.newInstance(//
                 properties.getProperty(PROP_ERROR_HANDLER));
@@ -1597,12 +1640,12 @@ public class ExTeX {
             logger.addHandler(handler);
 
         } catch (SecurityException e) {
-            logger.severe(localizer.format("ExTeX.LogFileError", e
-                .getLocalizedMessage()));
+            logger.severe(localizer.format("ExTeX.LogFileError",
+                e.getLocalizedMessage()));
             handler = null;
         } catch (IOException e) {
-            logger.severe(localizer.format("ExTeX.LogFileError", e
-                .getLocalizedMessage()));
+            logger.severe(localizer.format("ExTeX.LogFileError",
+                e.getLocalizedMessage()));
             handler = null;
         }
         return handler;
@@ -1801,9 +1844,9 @@ public class ExTeX {
         factory.configure(config.getConfiguration("Typesetter"));
         factory.enableLogging(logger);
         Typesetter typesetter =
-                factory.newInstance(properties
-                    .getProperty(PROP_TYPESETTER_TYPE), context, backend,
-                    interpreter);
+                factory.newInstance(
+                    properties.getProperty(PROP_TYPESETTER_TYPE), context,
+                    backend, interpreter);
 
         return typesetter;
     }
@@ -1969,9 +2012,8 @@ public class ExTeX {
      * <tt>extex.nobanner</tt> can be used to suppress the banner.
      * 
      * @param configuration the configuration to use. The configuration may
-     *        contain a tag <tt>banner</tt>. If present then the value is
-     *        used. The configuration can be <code>null</code>. Then it is
-     *        ignored.
+     *        contain a tag <tt>banner</tt>. If present then the value is used.
+     *        The configuration can be <code>null</code>. Then it is ignored.
      * @param priority the log level
      */
     protected void showBanner(Configuration configuration, Level priority) {
