@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for analyzing conditionals.
+ * This package contains primitives to handle files in unit <tt>etex</tt>.
  */
 
-package main.java.org.extex.unit.etex.conditional.analyze;
+package org.extex.unit.etex.file;

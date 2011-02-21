@@ -16,7 +16,7 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for analyzing conditionals.
+ * This package contains primitives for colors.
  */
 
-package main.java.org.extex.unit.etex.conditional.analyze;
+package org.extex.unit.color;
