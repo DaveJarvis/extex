@@ -93,6 +93,7 @@
 
   <modules>
     <module>doc-tools</module>
+    <module>ExTeX-dev</module>
   </modules>
 
   <reporting>
