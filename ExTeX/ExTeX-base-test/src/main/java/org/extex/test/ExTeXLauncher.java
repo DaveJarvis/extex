@@ -85,8 +85,8 @@ import org.extex.test.font.LauncherFont;
  * should be logged.</dd>
  * 
  * <dt>extex.launcher.time</dt>
- * <dd>This property is a boolean value which indicates that the time elapsed
- * in the execution of the test code should be logged.</dd>
+ * <dd>This property is a boolean value which indicates that the time elapsed in
+ * the execution of the test code should be logged.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -120,8 +120,7 @@ public abstract class ExTeXLauncher {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.ErrorHandler#handleError(
-         *      org.extex.core.exception.GeneralException,
+         * @see org.extex.interpreter.ErrorHandler#handleError(org.extex.core.exception.GeneralException,
          *      org.extex.scanner.type.token.Token,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
@@ -136,8 +135,7 @@ public abstract class ExTeXLauncher {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.ErrorHandler#setEditHandler(
-         *      org.extex.interpreter.EditHandler)
+         * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
          */
         public void setEditHandler(EditHandler editHandler) {
 
@@ -146,31 +144,30 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * The constant <tt>DEFINE_BRACES</tt> contains the definition of the
-     * usual category codes for braces { and }.
+     * The constant <tt>DEFINE_BRACES</tt> contains the definition of the usual
+     * category codes for braces { and }.
      */
-    public static final String DEFINE_BRACES =
-            "\\catcode`\\{=1 " + "\\catcode`\\}=2\\relax ";
+    public static final String DEFINE_BRACES = "\\catcode`\\{=1 "
+            + "\\catcode`\\}=2\\relax ";
 
     /**
      * The constant <tt>DEFINE_CATCODES</tt> contains the definition of the
      * usual category codes for {, }, $, &, #, ^, _, and ^^10.
      */
-    public static final String DEFINE_CATCODES =
-            "\\catcode`\\{=1 " + "\\catcode`\\}=2 " + "\\catcode`\\$=3 "
-                    + "\\catcode`\\&=4 " + "\\catcode`\\#=6 "
-                    + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
-                    + "\\catcode`\\^^I=10 ";
+    public static final String DEFINE_CATCODES = "\\catcode`\\{=1 "
+            + "\\catcode`\\}=2 " + "\\catcode`\\$=3 " + "\\catcode`\\&=4 "
+            + "\\catcode`\\#=6 " + "\\catcode`\\^=7 " + "\\catcode`\\_=8 "
+            + "\\catcode`\\^^I=10 ";
 
     /**
-     * The constant <tt>DEFINE_HASH</tt> contains the definition of the
-     * category code for #.
+     * The constant <tt>DEFINE_HASH</tt> contains the definition of the category
+     * code for #.
      */
     public static final String DEFINE_HASH = "\\catcode`\\#=6 ";
 
     /**
-     * The constant <tt>DEFINE_MATH</tt> contains the definition of the
-     * catcode for math shift $.
+     * The constant <tt>DEFINE_MATH</tt> contains the definition of the catcode
+     * for math shift $.
      */
     public static final String DEFINE_MATH = "\\catcode`\\$=3 ";
 
@@ -251,8 +248,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * The field <tt>config</tt> contains the name of the configuration to
-     * use.
+     * The field <tt>config</tt> contains the name of the configuration to use.
      */
     private String config = "base-test.xml";
 
@@ -274,8 +270,7 @@ public abstract class ExTeXLauncher {
     private Properties props = null;
 
     /**
-     * The field <tt>setHsize</tt> contains the indicator to use a wider
-     * hsize.
+     * The field <tt>setHsize</tt> contains the indicator to use a wider hsize.
      */
     private boolean setHsize = true;;
 
@@ -329,7 +324,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>ExTeX</logo>.
+     * Run some code through <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
@@ -354,7 +351,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>ExTeX</logo>.
+     * Run some code through <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
@@ -388,8 +387,7 @@ public abstract class ExTeXLauncher {
         ExTeX extex = new ExTeX(properties) {
 
             /**
-             * @see org.extex.ExTeX#makeInterpreter(
-             *      org.extex.framework.configuration.Configuration,
+             * @see org.extex.ExTeX#makeInterpreter(org.extex.framework.configuration.Configuration,
              *      org.extex.backend.outputStream.OutputStreamFactory,
              *      org.extex.resource.ResourceFinder, java.lang.String)
              */
@@ -510,7 +508,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>ExTeX</logo>.
+     * Run some code through <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param code the code to expand
      * @param log the expected output on the log stream
@@ -529,7 +529,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>ExTeX</logo>.
+     * Run some code through <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param properties the properties to modify
      * @param code the code to expand
@@ -548,7 +550,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>ExTeX</logo>.
+     * Run some code through <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param code the code to expand
      * @param expect the expected output on the output stream
@@ -646,9 +650,10 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Format a log messages properly. This emulates the way <logo>TeX</logo>
-     * does it; i.e. prefix and postfix are appended and line breaking is
-     * applied.
+     * Format a log messages properly. This emulates the way <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> does it; i.e. prefix and postfix are appended and line
+     * breaking is applied.
      * 
      * @param message the message to format
      * 
@@ -660,7 +665,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run <logo>ExTeX</logo> on a file.
+     * Run <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> on a file.
      * 
      * @param file the name of the file to read from
      * 
@@ -674,7 +681,9 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run <logo>ExTeX</logo> on a file.
+     * Run <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> on a file.
      * 
      * @param file the name of the file to read from
      * @param properties properties to start with

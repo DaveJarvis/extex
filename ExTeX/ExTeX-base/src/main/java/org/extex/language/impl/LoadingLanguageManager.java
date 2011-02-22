@@ -45,17 +45,17 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 
 /**
- * This class manages the <code>Language</code>s. It is a container which can
- * be asked to provide an appropriate instance. This instance is either taken
- * from existing instances or a new instance is created. Since at the time of
+ * This class manages the <code>Language</code>s. It is a container which can be
+ * asked to provide an appropriate instance. This instance is either taken from
+ * existing instances or a new instance is created. Since at the time of
  * creation it can not be decided whether a new one should be used or an
  * existing one should be loaded a future object is returned which enables us to
  * postpone the operation until the decision can be made.
  * <p>
- * The future object invokes one of the methods of
- * {@link LanguageCreator LanguageCreator}. In this case we know whether to
- * create or load the language. Thus the appropriate operation is performed and
- * the resulting language is put into the map overwriting the future object.
+ * The future object invokes one of the methods of {@link LanguageCreator
+ * LanguageCreator}. In this case we know whether to create or load the
+ * language. Thus the appropriate operation is performed and the resulting
+ * language is put into the map overwriting the future object.
  * </p>
  * <p>
  * TODO gene: documentation incomplete
@@ -86,8 +86,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     private static final String NON_LOADABLE_LANGUAGE_PATTERN = "^\\d*$";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -98,8 +97,8 @@ public class LoadingLanguageManager extends BaseLanguageManager
     private static final String TABLE_EXTENSION = "lfm";
 
     /**
-     * The constant <tt>VERSION</tt> contains the version id to be written
-     * into the external file.
+     * The constant <tt>VERSION</tt> contains the version id to be written into
+     * the external file.
      */
     private static final String VERSION = "1.0";
 
@@ -128,8 +127,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @return the new instance of a language
      * 
-     * @see org.extex.language.impl.BaseLanguageManager#createLanguage(
-     *      java.lang.String)
+     * @see org.extex.language.impl.BaseLanguageManager#createLanguage(java.lang.String)
      */
     @Override
     protected Language createLanguage(String name) {
@@ -149,8 +147,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * @throws HyphenationException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(
-     *      java.lang.String)
+     * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(java.lang.String)
      */
     public Language createLanguageInstance(String name)
             throws HyphenationException {
@@ -171,8 +168,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @throws HyphenationException in case of an error
      * 
-     * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(
-     *      java.lang.String)
+     * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(java.lang.String)
      */
     public Language loadLanguageInstance(String name)
             throws HyphenationException {
@@ -268,8 +264,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * write the result to another place than the default output stream.
      * <p>
      * The table is not saved if the name is purely numeric. This guarantees the
-     * backward compatibility with TeX, since <logo>TeX</logo> uses numerical
-     * names for hyphenation tables only.
+     * backward compatibility with TeX, since <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses numerical names for hyphenation tables only.
      * </p>
      * 
      * @param name the name of the table
@@ -309,8 +306,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @param factory the output stream factory to use
      * 
-     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(
-     *      org.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
@@ -322,8 +318,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @param finder the resource finder
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     @Override
     public void setResourceFinder(ResourceFinder finder) {

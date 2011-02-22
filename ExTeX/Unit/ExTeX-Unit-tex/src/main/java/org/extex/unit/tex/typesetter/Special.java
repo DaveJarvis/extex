@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,20 +30,18 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.node.SpecialNode;
 
 /**
- * This class provides an implementation for the primitive <code>\special</code>.
+ * This class provides an implementation for the primitive <code>\special</code>
+ * .
  * 
- * <doc name="special">
- * <h3>The Primitive <tt>\special</tt></h3>
+ * <doc name="special"> <h3>The Primitive <tt>\special</tt></h3>
  * <p>
  * This primitive sends a string to the back-end driver. The argument is a
  * balanced block of text which is expanded and translated into a string. The
- * string is given in a
- * {@link org.extex.typesetter.type.node.SpecialNode SpecialNode} to the
- * typesetter for passing it down.
+ * string is given in a {@link org.extex.typesetter.type.node.SpecialNode
+ * SpecialNode} to the typesetter for passing it down.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;special&rang;
@@ -55,13 +53,15 @@ import org.extex.typesetter.type.node.SpecialNode;
  * 
  * <pre class="TeXSample">
  *    \special{hello world}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \special{ps: \abc}  </pre>
  * 
  * <p>
- * For several back-end drivers for <logo>TeX</logo> a quasi-standard has
- * emerged which uses a prefix ended by a colon to indicate the back-end driver
- * the special is targeted at.
+ * For several back-end drivers for <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> a quasi-standard has emerged which uses a prefix ended by a
+ * colon to indicate the back-end driver the special is targeted at.
  * </p>
  * </doc>
  * 
@@ -72,8 +72,7 @@ import org.extex.typesetter.type.node.SpecialNode;
 public class Special extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -90,8 +89,8 @@ public class Special extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

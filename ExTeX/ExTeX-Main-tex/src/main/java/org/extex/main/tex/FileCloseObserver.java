@@ -26,9 +26,10 @@ import org.extex.scanner.api.TokenStream;
 
 /**
  * This observer waits for update events when files are closed. According to the
- * reference in <logo>TeX</logo> a closing parenthesis is written to the log
- * file.
- *
+ * reference in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> a closing parenthesis is written to the log file.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4445 $
  */
@@ -41,7 +42,7 @@ public class FileCloseObserver implements StreamCloseObserver {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theLogger the logger for potential output
      */
     public FileCloseObserver(Logger theLogger) {
@@ -51,11 +52,10 @@ public class FileCloseObserver implements StreamCloseObserver {
 
     /**
      * This method is meant to be invoked just before a stream is closed.
-     *
+     * 
      * @param stream the stream to be closed
-     *
-     * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(
-     *      org.extex.scanner.api.TokenStream)
+     * 
+     * @see org.extex.interpreter.observer.streamClose.StreamCloseObserver#update(org.extex.scanner.api.TokenStream)
      */
     public void update(TokenStream stream) {
 

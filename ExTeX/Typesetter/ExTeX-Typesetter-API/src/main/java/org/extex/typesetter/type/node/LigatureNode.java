@@ -32,7 +32,9 @@ import org.extex.typesetter.type.NodeVisitor;
  * and how to build ligatures comes from the font. The original characters are
  * contained in this node to be restored when required.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [143]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [143]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -41,8 +43,7 @@ import org.extex.typesetter.type.NodeVisitor;
 public class LigatureNode extends CharNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -53,8 +54,7 @@ public class LigatureNode extends CharNode implements Node {
     private CharNode[] chars;
 
     /**
-     * The field <tt>left</tt> contains the first node combined in the
-     * ligature.
+     * The field <tt>left</tt> contains the first node combined in the ligature.
      */
     private CharNode left;
 
@@ -71,7 +71,9 @@ public class LigatureNode extends CharNode implements Node {
      * @param left the first node for the ligature
      * @param right the second node for the ligature
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [144]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [144]"
      */
     public LigatureNode(TypesettingContext context, UnicodeChar uc,
             CharNode left, CharNode right) {
@@ -94,8 +96,8 @@ public class LigatureNode extends CharNode implements Node {
      * This method determines the number of characters contained in a node.
      * <ul>
      * <li>A CharNode has a single character</li>
-     * <li>A LigatureNde has the number of characters which made up the
-     * ligature</li>
+     * <li>A LigatureNde has the number of characters which made up the ligature
+     * </li>
      * <li>A NodeList has the number of characters given by the sum of the
      * number of characters of its elements</li>
      * <li>Any other node types has no character</li>
@@ -154,8 +156,10 @@ public class LigatureNode extends CharNode implements Node {
      * @param breadth the breadth
      * @param depth the depth
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [193]"
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [193]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     @Override
@@ -170,8 +174,8 @@ public class LigatureNode extends CharNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

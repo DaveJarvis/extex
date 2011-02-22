@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,8 +37,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\gluestretchorder</code>.
  * 
- * <doc name="gluestretchorder">
- * <h3>The Primitive <tt>\gluestretchorder</tt></h3>
+ * <doc name="gluestretchorder"> <h3>The Primitive <tt>\gluestretchorder</tt></h3>
  * <p>
  * The primitive <tt>\gluestretchorder</tt> determines the order of the glue
  * stretch component of the following glue specification. A fixed,
@@ -47,12 +46,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * Note that the glue specification of 1&nbsp;fi returns also 1. This is due to
- * the compatibility with <logo>eTeX</logo> which does not have this unit. This
- * unit has been introduced by <logo>Omega</logo>.
+ * the compatibility with <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> which does not have this unit. This unit has been
+ * introduced by <logo>Omega</logo>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;gluestretchorder&rang;
@@ -80,8 +80,7 @@ public class Gluestretchorder extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -98,8 +97,7 @@ public class Gluestretchorder extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -113,8 +111,7 @@ public class Gluestretchorder extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -128,8 +125,7 @@ public class Gluestretchorder extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

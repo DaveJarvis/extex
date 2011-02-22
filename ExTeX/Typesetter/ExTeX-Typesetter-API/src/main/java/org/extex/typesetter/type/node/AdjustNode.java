@@ -27,9 +27,11 @@ import org.extex.typesetter.type.NodeVisitor;
 /**
  * The adjust node is used to insert material which should be pushed out the
  * enclosing vertical list.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [142]"
- *
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [142]"
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -48,7 +50,7 @@ public class AdjustNode extends AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param nodes the list of nodes contained
      */
     public AdjustNode(NodeList nodes) {
@@ -58,7 +60,7 @@ public class AdjustNode extends AbstractNode implements Node {
 
     /**
      * Getter for nodes.
-     *
+     * 
      * @return the nodes
      */
     public NodeList getNodes() {
@@ -70,22 +72,20 @@ public class AdjustNode extends AbstractNode implements Node {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [197]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [197]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
             getWidth().toString()));
@@ -96,10 +96,10 @@ public class AdjustNode extends AbstractNode implements Node {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
+     * 
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -111,16 +111,15 @@ public class AdjustNode extends AbstractNode implements Node {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

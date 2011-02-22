@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -72,7 +72,9 @@ public class ScaledNumberParser {
      * consider when producing a string representation of this type.
      * 
      * Attention: Do not change this value unless you have read and understood
-     * <logo>TeX</logo> the program!
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> the program!
      */
     private static final int FLOAT_DIGITS = 17;
 
@@ -209,8 +211,8 @@ public class ScaledNumberParser {
                         return val;
                     }
 
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(ScaledNumberParser.class),
+                    throw new HelpingException(
+                        LocalizerFactory.getLocalizer(ScaledNumberParser.class),
                         "MissingParenthesis", (t == null ? "null" : t
                             .toString()));
 
@@ -232,8 +234,7 @@ public class ScaledNumberParser {
                 } else if (code instanceof CountConvertible) {
                     long val =
                             ((CountConvertible) code).convertCount(context,
-                                source, typesetter)
-                                    * ScaledNumber.ONE;
+                                source, typesetter) * ScaledNumber.ONE;
                     source.skipSpace();
                     return val;
 
@@ -302,15 +303,12 @@ public class ScaledNumberParser {
             }
             t = source.scanNonSpace(context);
         }
-        if (t != null && !t.eq(Catcode.OTHER, ".")
-                && !t.eq(Catcode.OTHER, ",")) {
+        if (t != null && !t.eq(Catcode.OTHER, ".") && !t.eq(Catcode.OTHER, ",")) {
             source.push(t);
             val = ConstantCountParser.scanNumber(context, source, typesetter);
             t = source.getToken(context);
         }
-        if (t != null
-                && (t.eq(Catcode.OTHER, '.') || t
-                    .eq(Catcode.OTHER, ','))) {
+        if (t != null && (t.eq(Catcode.OTHER, '.') || t.eq(Catcode.OTHER, ','))) {
             // @see "TeX -- The Program [102]"
             int[] dig = new int[FLOAT_DIGITS];
             int k = 0;

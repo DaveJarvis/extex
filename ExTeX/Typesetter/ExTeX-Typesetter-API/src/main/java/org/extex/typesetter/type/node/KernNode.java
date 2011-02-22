@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,9 @@ import org.extex.typesetter.type.Node;
  * direction.
  * </p>
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [155]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [155]"
  * @see org.extex.typesetter.type.node.ImplicitKernNode
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

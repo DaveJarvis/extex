@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,8 +64,8 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\hbox"> Test case checking that <tt>\hbox</tt> on
-     * a non-empty box works. </testcase>
+     * <testcase primitive="\hbox"> Test case checking that <tt>\hbox</tt> on a
+     * non-empty box works. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -170,7 +170,9 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\hbox"> Test case checking that a hbox containing
      * "abc" in font cmtt12 has the width 18.52501pt. This value has been
-     * computed with <logo>TeX</logo>. </testcase>
+     * computed with <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. </testcase>
      * 
      * @throws Exception in case of an error
      */

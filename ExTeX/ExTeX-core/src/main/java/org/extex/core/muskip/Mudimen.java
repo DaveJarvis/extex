@@ -24,9 +24,9 @@ import java.io.Serializable;
 import org.extex.core.dimen.Dimen;
 
 /**
- * This class provides a dimen value with a length which is a multiple of
- * math units (mu).
- *
+ * This class provides a dimen value with a length which is a multiple of math
+ * units (mu).
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -43,8 +43,7 @@ public class Mudimen implements Serializable {
     private Dimen length = new Dimen(0);
 
     /**
-     * Creates a new object.
-     * All components are 0.
+     * Creates a new object. All components are 0.
      */
     public Mudimen() {
 
@@ -52,7 +51,7 @@ public class Mudimen implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param len the length
      */
     public Mudimen(long len) {
@@ -62,7 +61,7 @@ public class Mudimen implements Serializable {
 
     /**
      * Add some other length to the current value.
-     *
+     * 
      * @param value the value to add
      */
     public void add(long value) {
@@ -72,7 +71,7 @@ public class Mudimen implements Serializable {
 
     /**
      * Getter for length.
-     *
+     * 
      * @return the length
      */
     public Dimen getLength() {
@@ -82,7 +81,7 @@ public class Mudimen implements Serializable {
 
     /**
      * Check for a zero value.
-     *
+     * 
      * @return <code>true</code> iff the length is zero
      */
     public boolean isZero() {
@@ -93,9 +92,9 @@ public class Mudimen implements Serializable {
     /**
      * Multiply the value by an integer fraction.
      * <p>
-     *  <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
      * </p>
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -106,9 +105,11 @@ public class Mudimen implements Serializable {
 
     /**
      * Return the string representation of the instance.
-     *
+     * 
      * @return the string representation of this glue
-     * @see "<logo>TeX</logo> &ndash; The Program [???]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [???]"
      */
     @Override
     public String toString() {
@@ -120,7 +121,7 @@ public class Mudimen implements Serializable {
 
     /**
      * Append the string representation of the instance to a string buffer.
-     *
+     * 
      * @param sb the target string buffer
      */
     public void toString(StringBuffer sb) {

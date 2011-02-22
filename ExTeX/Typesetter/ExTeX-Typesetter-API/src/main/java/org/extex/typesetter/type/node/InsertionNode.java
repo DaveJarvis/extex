@@ -26,8 +26,10 @@ import org.extex.typesetter.type.NodeVisitor;
 
 /**
  * This node is meant to record an insertion.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [140]"
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [140]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -41,16 +43,20 @@ public class InsertionNode extends AbstractNode implements Node {
 
     /**
      * The field <tt>nodes</tt> contains the vertical list to be inserted.
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [140]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [140]"
      */
     private NodeList nodes;
 
     /**
      * The field <tt>floatCost</tt> contains the penalty which is used when the
      * insertion floats to the following page.
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [140]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [140]"
      */
     private long floatCost = 0;
 
@@ -62,11 +68,13 @@ public class InsertionNode extends AbstractNode implements Node {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param subtype the register number for the associated registers
      * @param nodes the nodes to be inserted
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [140]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [140]"
      */
     public InsertionNode(long subtype, NodeList nodes) {
 
@@ -80,25 +88,23 @@ public class InsertionNode extends AbstractNode implements Node {
     }
 
     /**
-     * This method returns the printable representation.
-     * This is meant to produce a exhaustive form as it is used in tracing
-     * output to the log file.
-     *
+     * This method returns the printable representation. This is meant to
+     * produce a exhaustive form as it is used in tracing output to the log
+     * file.
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [188]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [188]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format",
             Long.toString(subtype), //
@@ -111,9 +117,8 @@ public class InsertionNode extends AbstractNode implements Node {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

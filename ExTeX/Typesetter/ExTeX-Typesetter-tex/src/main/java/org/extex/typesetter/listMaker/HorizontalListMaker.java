@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -62,8 +62,10 @@ import org.extex.typesetter.type.node.SpaceNode;
 public class HorizontalListMaker extends AbstractListMaker {
 
     /**
-     * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value
-     * for the space factor. It is 1000 according to <logo>TeX</logo>.
+     * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value for
+     * the space factor. It is 1000 according to <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      */
     private static final int DEFAULT_SPACEFACTOR = 1000;
 
@@ -89,7 +91,9 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * The field <tt>spaceFactor</tt> contains the current space factor.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [212]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [212]"
      */
     private long spaceFactor = DEFAULT_SPACEFACTOR;
 
@@ -107,7 +111,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
     public void add(Node c) throws TypesetterException, ConfigurationException {
 
@@ -118,8 +122,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(
-     *      org.extex.typesetter.type.NodeList,
+     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public void addAndAdjust(NodeList list, TypesetterOptions options)
@@ -131,7 +134,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
      */
     public void add(FixedGlue g) throws TypesetterException {
 
@@ -142,8 +145,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext,
+     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
      */
     public void addSpace(TypesettingContext context, FixedCount sfCount)
@@ -186,8 +188,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#afterParagraph(
-     *      org.extex.typesetter.ParagraphObserver)
+     * @see org.extex.typesetter.ListMaker#afterParagraph(org.extex.typesetter.ParagraphObserver)
      */
     public void afterParagraph(ParagraphObserver observer) {
 
@@ -209,8 +210,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
@@ -265,8 +265,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
-     *      org.extex.core.UnicodeChar,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
@@ -362,8 +361,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
      */
     @Override
     public void setSpacefactor(FixedCount f)
@@ -380,7 +378,7 @@ public class HorizontalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#showlist( java.lang.StringBuffer,
+     * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
      *      long, long)
      */
     public void showlist(StringBuffer sb, long l, long m) {

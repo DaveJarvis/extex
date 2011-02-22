@@ -46,9 +46,13 @@ import org.extex.typesetter.Typesetter;
  * 
  * <h3>Tracing</h3>
  * <p>
- * Tracing is <logo>TeX</logo> is controlled by some count registers. The
- * implementation in <logo>ExTeX</logo> is based on observers. In the first
- * stage a {@link org.extex.interpreter.context.observer.count.CountObserver
+ * Tracing is <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is controlled by some count registers. The implementation
+ * in <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is based on observers. In the first stage a
+ * {@link org.extex.interpreter.context.observer.count.CountObserver
  * CountObserver} for the controlling count is registered. In this observer the
  * observer for the real event is registered if this as not been done before and
  * the value of the controlling count is greater than 0.
@@ -60,8 +64,8 @@ import org.extex.typesetter.Typesetter;
  * performance overhead.
  * </p>
  * 
- * <doc name="tracingonline" type="register">
- * <h3>The Count Parameter <tt>\tracingonline</tt></h3>
+ * <doc name="tracingonline" type="register"> <h3>The Count Parameter
+ * <tt>\tracingonline</tt></h3>
  * <p>
  * This count register <tt>\tracingonline</tt> determines whether the tracing
  * should go into the log file only or put on the standard output stream as
@@ -70,8 +74,8 @@ import org.extex.typesetter.Typesetter;
  * </p>
  * </doc>
  * 
- * <doc name="tracingcommands" type="register">
- * <h3>The Parameter <tt>\tracingcommands</tt></h3>
+ * <doc name="tracingcommands" type="register"> <h3>The Parameter
+ * <tt>\tracingcommands</tt></h3>
  * <p>
  * This count register determines whether the execution of commands should be
  * traced. If the value is less or equal than 0 then no tracing is performed. If
@@ -117,8 +121,7 @@ public class TexUnitInfo extends UnitInfo
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(
-         *      org.extex.interpreter.context.ContextInternals,
+         * @see org.extex.interpreter.context.observer.count.CountObserver#receiveCountChange(org.extex.interpreter.context.ContextInternals,
          *      java.lang.String, org.extex.core.count.Count)
          */
         public void receiveCountChange(ContextInternals context, String name,
@@ -168,14 +171,16 @@ public class TexUnitInfo extends UnitInfo
     private transient Logger logger;
 
     /**
-     * The field <tt>notRegistered</tt> contains the indicator that the
-     * observer for command events as not been registered yet.
+     * The field <tt>notRegistered</tt> contains the indicator that the observer
+     * for command events as not been registered yet.
      */
     private transient boolean notRegistered = true;
 
     /**
      * The field <tt>write18</tt> contains the indicator that the ancient
-     * \write18 feature of <logo>TeX</logo> should be enabled.
+     * \write18 feature of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> should be enabled.
      */
     private boolean write18 = false;
 
@@ -191,8 +196,7 @@ public class TexUnitInfo extends UnitInfo
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -205,8 +209,7 @@ public class TexUnitInfo extends UnitInfo
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -216,8 +219,7 @@ public class TexUnitInfo extends UnitInfo
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.unit.Loader#load(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.unit.Loader#load(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context context, TokenSource source, Typesetter typesetter)
@@ -241,8 +243,7 @@ public class TexUnitInfo extends UnitInfo
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.context.observer.load.LoadedObserver#receiveLoaded(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public void receiveLoaded(Context context, TokenSource source,

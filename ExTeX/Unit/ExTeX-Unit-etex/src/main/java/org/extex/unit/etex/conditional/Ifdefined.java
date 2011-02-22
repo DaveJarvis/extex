@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,22 +30,21 @@ import org.extex.unit.base.conditional.AbstractIf;
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
  * 
- * <doc name="ifdefined">
- * <h3>The Primitive <tt>&#x005c;unless</tt></h3>
+ * <doc name="ifdefined"> <h3>The Primitive <tt>&#x005c;unless</tt></h3>
  * 
  * <p>
- * <strong>Copied from the <logo>eTeX</logo> reference</strong>:
+ * <strong>Copied from the <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> reference</strong>:
  * </p>
  * <p>
  * <i> similar in effect to <tt>&#x005c;unless</tt> <tt>\ifx</tt>
- *  <tt>&#x005c;undefined</tt>,
- * but does not require <tt>&#x005c;undefined</tt> to actually be undefined,
- * since no explicit comparison is made with any particular control sequence.
- * </i>
+ * <tt>&#x005c;undefined</tt>, but does not require <tt>&#x005c;undefined</tt>
+ * to actually be undefined, since no explicit comparison is made with any
+ * particular control sequence. </i>
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifdefined&rang;
@@ -66,8 +65,7 @@ import org.extex.unit.base.conditional.AbstractIf;
 public class Ifdefined extends AbstractIf {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -84,8 +82,7 @@ public class Ifdefined extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

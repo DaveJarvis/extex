@@ -30,9 +30,9 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 
 /**
- * Observer for tracing the execution of tokens. The token is written to the
- * log file enclosed in braces.
- *
+ * Observer for tracing the execution of tokens. The token is written to the log
+ * file enclosed in braces.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -51,16 +51,18 @@ public class TraceCommandObserver implements CommandObserver {
     /**
      * The field <tt>prefix</tt> contains the indicator that the last token
      * encountered has been a prefix primitive. This is used to suppress the
-     * following trace output in <logo>TeX</logo> compatibility mode.
+     * following trace output in <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> compatibility mode.
      */
     private boolean prefix = false;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theLogger the logger for potential output
      * @param context the interpreter context for access to
-     *  <tt>\tracingonline</tt>
+     *        <tt>\tracingonline</tt>
      */
     public TraceCommandObserver(Logger theLogger, Context context) {
 
@@ -69,10 +71,10 @@ public class TraceCommandObserver implements CommandObserver {
     }
 
     /**
-     * This method is meant to be invoked just before a token is executed.
-     * A token following a prefix code is ignored if <tt>\tracingcommands</tt>
-     * is not positive.
-     *
+     * This method is meant to be invoked just before a token is executed. A
+     * token following a prefix code is ignored if <tt>\tracingcommands</tt> is
+     * not positive.
+     * 
      * @param token the token to be expanded
      */
     public void update(Token token) {
@@ -86,13 +88,13 @@ public class TraceCommandObserver implements CommandObserver {
         if (!prefix) {
             long online = context.getCount("tracingonline").getValue();
             logger.log((online > 0 ? Level.INFO : Level.FINE), //
-                    "{" + token.toText() + "}\n");
+                "{" + token.toText() + "}\n");
         }
 
         try {
             prefix = (tracing > 2 && //
                     token instanceof CodeToken && //
-            context.getCode((CodeToken) token) instanceof PrefixCode);
+                    context.getCode((CodeToken) token) instanceof PrefixCode);
         } catch (HelpingException e) {
             logger.warning(e.getMessage());
         }

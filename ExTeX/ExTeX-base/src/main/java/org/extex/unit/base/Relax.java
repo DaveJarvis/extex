@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,22 +31,22 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
  * 
- * <doc name="relax">
- * <h3>The Primitive <tt>\relax</tt></h3>
+ * <doc name="relax"> <h3>The Primitive <tt>\relax</tt></h3>
  * <p>
- * This primitive simply does nothing. It acts as a no-op for the <logo>TeX</logo>
- * macro language. <tt>\relax</tt> is not even expandable. in certain
- * circumstances it might be treated as if it where expandable and the expansion
- * is empty.
+ * This primitive simply does nothing. It acts as a no-op for the <logo>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> macro language. <tt>\relax</tt> is not even expandable. in
+ * certain circumstances it might be treated as if it where expandable and the
+ * expansion is empty.
  * </p>
  * <p>
  * <tt>\relax</tt> sometimes acts as terminating token. For instance when a
- * number is parsed <tt>\relax</tt> terminates the parsing even if the
- * following token is a digit.
+ * number is parsed <tt>\relax</tt> terminates the parsing even if the following
+ * token is a digit.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;relax&rang;
@@ -56,7 +56,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \relax  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \the\count123\relax456  </pre>
  * 
  * </doc>
@@ -68,8 +69,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Relax extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -86,8 +86,8 @@ public class Relax extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -98,11 +98,11 @@ public class Relax extends AbstractCode {
     }
 
     /**
-     * All instances of this class are treated as equal.
-     * This is needed for the comparison (\ifx) of tokens defined via \csname.
+     * All instances of this class are treated as equal. This is needed for the
+     * comparison (\ifx) of tokens defined via \csname.
      * 
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override
@@ -112,11 +112,11 @@ public class Relax extends AbstractCode {
     }
 
     /**
-     * All instances of this class are treated as equal.
-     * Thus all receive the same hash code.
+     * All instances of this class are treated as equal. Thus all receive the
+     * same hash code.
      * 
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#hashCode()
      */
     @Override

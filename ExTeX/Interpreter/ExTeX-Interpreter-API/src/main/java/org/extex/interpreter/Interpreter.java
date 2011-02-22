@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,7 +40,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * This interface represents the outside view on an interpreter. It contains
  * everything needed to set it up and make it run.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [1029]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [1029]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -157,8 +159,8 @@ public interface Interpreter extends TokenSource {
     Context setContext(Context context);
 
     /**
-     * Setter for the error handler. The value of <code>null</code> can be
-     * used to delete the error handler currently set.
+     * Setter for the error handler. The value of <code>null</code> can be used
+     * to delete the error handler currently set.
      * 
      * @param handler the new error handler
      * 

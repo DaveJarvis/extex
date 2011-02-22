@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,26 +22,31 @@ package org.extex.exindex.core.parser.reader;
 import java.io.IOException;
 import java.io.Reader;
 
-
 /**
  * Reader which translates ^^ notation on the fly into characters.
  * <p>
- * <logo>TeX</logo> translates ^^ notation into characters at a very early
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> translates ^^ notation into characters at a very early
  * stage of parsing. This behavior is imitated in this reader. In contrast to
- * <logo>TeX<logo> no category codes are involved.
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X<logo> no category codes are involved.
  * </p>
  * <p>
- * <logo>TeX</logo> defines the mapping of characters following ^^ according to
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> defines the mapping of characters following ^^ according to
  * the following rules:
  * </p>
  * <ul>
  * <li>If the next one or two letters make up a hexadecimal number build from
  * digits or lower-case letters, then this number is the code point to use
- * instead. </li>
+ * instead.</li>
  * <li>If the next character has a code point less than 64, then 64 is added to
- * the code point and the new value used instead. </li>
+ * the code point and the new value used instead.</li>
  * <li>Otherwise 64 is subtracted from the code point and the new value is used
- * instead. </li>
+ * instead.</li>
  * </ul>
  * 
  * <p>
@@ -59,8 +64,8 @@ import java.io.Reader;
  * <tr>
  * <td><tt>^^A</tt></td>
  * <td>1</td>
- * <td>The letter A has the code point 65 which gets subtracted 64 leading to
- * 1.</td>
+ * <td>The letter A has the code point 65 which gets subtracted 64 leading to 1.
+ * </td>
  * </tr>
  * <tr>
  * <td><tt>^^01</tt></td>

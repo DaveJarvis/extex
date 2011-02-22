@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,16 +27,16 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * This class manages the <code>HyphenationTable</code>s. It is a container
  * which can be asked to provide an appropriate instance. This instance is
  * either taken from existing instances or a new instance is created.
- *
+ * 
  * <h2>Configuration</h2>
- *
+ * 
  * This instance is configurable. The configuration is used to select the
  * appropriate class and optional parameters for a requested instance. In this
  * respect this class makes best use of the infrastructure of the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}.
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4737 $
@@ -46,27 +46,28 @@ public interface LanguageManager extends Serializable {
     /**
      * Return the <code>Language</code> for a given name.
      * <p>
-     *  If there is no language present with the given name then
-     *  a new one is created or loaded.
+     * If there is no language present with the given name then a new one is
+     * created or loaded.
      * </p>
      * <p>
-     *  The index in <logo>TeX</logo> is the language number as
-     *  <code>String</code>. This implementation does not have this restriction.
-     *  The name can be any string.
+     * The index in <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> is the language number as <code>String</code>. This
+     * implementation does not have this restriction. The name can be any
+     * string.
      * </p>
      * <p>
-     *  The proposal is to use a natural number for backward compatibility and
-     *  ISO language codes otherwise.
+     * The proposal is to use a natural number for backward compatibility and
+     * ISO language codes otherwise.
      * </p>
-     *
+     * 
      * @param index the name for which the language is requested
-     *
+     * 
      * @return the language for the given name
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
-     *
-     * @see org.extex.language.LanguageManager#getLanguage(
-     *      java.lang.String)
+     * 
+     * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
      */
     Language getLanguage(String index) throws ConfigurationException;
 

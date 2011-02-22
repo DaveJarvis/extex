@@ -43,12 +43,16 @@ import org.extex.typesetter.type.OrientedNodeList;
  * 
  * </p>
  * <p>
- * The <logo>TeX</logo> definition of a hlist states that a box is not variable
+ * The <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> definition of a hlist states that a box is not variable
  * neither in width nor in height. Thus this method is simply a noop.
  * </p>
  * 
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [135]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [135]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -59,15 +63,16 @@ public class HorizontalListNode extends GenericNodeList
             OrientedNodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object. The list is empty initially.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [136]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [136]"
      */
     public HorizontalListNode() {
 
@@ -111,9 +116,8 @@ public class HorizontalListNode extends GenericNodeList
      * a value of 0 to insert the node before the first existing node and goes
      * up to the length of the list to insert the new node at the end.
      * <p>
-     * If the node is <code>null</code> then it is silently ignored. This
-     * means that a horizontal list will never contain <code>null</code>
-     * values.
+     * If the node is <code>null</code> then it is silently ignored. This means
+     * that a horizontal list will never contain <code>null</code> values.
      * </p>
      * 
      * @param index the position of insertion
@@ -122,7 +126,7 @@ public class HorizontalListNode extends GenericNodeList
      * @throws IndexOutOfBoundsException in case that the index is negative or
      *         greater than the length of the list
      * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
     @Override
@@ -140,15 +144,13 @@ public class HorizontalListNode extends GenericNodeList
      * Add a node to the node list. The other attributes (width, height, depth)
      * are not modified.
      * <p>
-     * If the node is <code>null</code> then it is silently ignored. This
-     * means that a horizontal list will never contain <code>null</code>
-     * values.
+     * If the node is <code>null</code> then it is silently ignored. This means
+     * that a horizontal list will never contain <code>null</code> values.
      * </p>
      * 
      * @param node the node to add
      * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#add(
-     *      org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(org.extex.typesetter.type.Node)
      */
     @Override
     public void add(Node node) {
@@ -167,7 +169,7 @@ public class HorizontalListNode extends GenericNodeList
      * 
      * @param glue the glue to add
      * 
-     * @see org.extex.typesetter.type.NodeList#addSkip( FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(FixedGlue)
      */
     @Override
     public void addSkip(FixedGlue glue) {
@@ -304,7 +306,7 @@ public class HorizontalListNode extends GenericNodeList
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     @Override
@@ -322,7 +324,7 @@ public class HorizontalListNode extends GenericNodeList
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * 
-     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -344,8 +346,8 @@ public class HorizontalListNode extends GenericNodeList
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

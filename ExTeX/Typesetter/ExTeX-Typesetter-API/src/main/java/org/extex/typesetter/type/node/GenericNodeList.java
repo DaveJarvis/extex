@@ -71,8 +71,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     private Dimen targetDepth = null;
 
     /**
-     * The field <tt>targetHeight</tt> contains the requested height of the
-     * node list.
+     * The field <tt>targetHeight</tt> contains the requested height of the node
+     * list.
      */
     private Dimen targetHeight = null;
 
@@ -111,8 +111,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param node the node to add
      * 
-     * @see org.extex.typesetter.type.NodeList#add(
-     *      org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.NodeList#add(org.extex.typesetter.type.Node)
      */
     public void add(Node node) {
 
@@ -127,8 +126,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param glue the glue to add
      * 
-     * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
      */
     public void addSkip(FixedGlue glue) {
 
@@ -219,8 +217,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if
-     *         index is out of bounds
+     * @return the node at position <i>index</i> of <code>null</code> if index
+     *         is out of bounds
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
@@ -447,8 +445,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param d the move value
      * 
-     * @see org.extex.typesetter.type.NodeList#setMove(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setMove(org.extex.core.dimen.FixedDimen)
      */
     public void setMove(FixedDimen d) {
 
@@ -460,8 +457,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param depth the natural depth
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setDepth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#setDepth(org.extex.core.dimen.FixedDimen)
      */
     public void setNaturalDepth(FixedDimen depth) {
 
@@ -473,8 +469,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param height the natural height
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setHeight(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#setHeight(org.extex.core.dimen.FixedDimen)
      */
     public void setNaturalHeight(FixedDimen height) {
 
@@ -486,8 +481,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param width the natural width
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(org.extex.core.dimen.FixedDimen)
      */
     public void setNaturalWidth(FixedDimen width) {
 
@@ -501,8 +495,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @param d the amount to be shifted
      * 
-     * @see org.extex.typesetter.type.NodeList#setShift(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.NodeList#setShift(org.extex.core.dimen.FixedDimen)
      */
     public void setShift(FixedDimen d) {
 
@@ -560,8 +553,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#setWidth(org.extex.core.dimen.FixedDimen)
      */
     @Override
     public void setWidth(FixedDimen width) {
@@ -635,7 +627,9 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * Provides a string representation of the current instance.
      * 
      * @return the String representation of the object
-     * @see "<logo>TeX</logo> &ndash; The Program [182]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [182]"
      */
     public String toText() {
 
@@ -672,8 +666,8 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @SuppressWarnings({"rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)

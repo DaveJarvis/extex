@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,17 +41,19 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.math.MathDelimiter;
 
 /**
- * This class provides an implementation for the primitive <code>\delcode</code>.
+ * This class provides an implementation for the primitive <code>\delcode</code>
+ * .
  * 
- * <doc name="delcode">
- * <h3>The Math Primitive <tt>\delcode</tt></h3>
+ * <doc name="delcode"> <h3>The Math Primitive <tt>\delcode</tt></h3>
  * <p>
- * The primitive <tt>\delcode</tt> can be used to assign and query the
- * delimiter code for a character. The delimiter code determines, how a
- * character is typeset in math mode.
+ * The primitive <tt>\delcode</tt> can be used to assign and query the delimiter
+ * code for a character. The delimiter code determines, how a character is
+ * typeset in math mode.
  * </p>
  * <p>
- * The <logo>TeX</logo> encoding interprets the number as 27 bit hex number:
+ * The <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
  * <tt>"csyylxx</tt>. Here the digits have the following meaning:
  * <dl>
  * <dt>c</dt>
@@ -68,13 +70,12 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * </p>
  * <p>
  * The assigning a new value to a delimiter code acts in a group restricted way
- * unless declared differently. If the prefix <tt>\global</tt> is given then
- * the assignment is performed globally. The same effect can be achieved when
- * the count register <tt>\globaldefs</tt> is greater than 0.
+ * unless declared differently. If the prefix <tt>\global</tt> is given then the
+ * assignment is performed globally. The same effect can be achieved when the
+ * count register <tt>\globaldefs</tt> is greater than 0.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;delcode&rang;
@@ -94,23 +95,26 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * 
  * <pre class="TeXSample">
  *    \delcode`x="123456  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \global\delcode`x="123456  </pre>
  * 
  * <h4>Using as Count Register</h4>
  * <p>
- * The primitive <tt>\delcode</tt> can be used like a count register. This
- * means you can use it wherever a number is expected. In addition the value can
- * be advanced, multiplied, and divided. In any case the delimiter code is
- * translated according to the <logo>TeX</logo> encoding and processed as
- * number.
+ * The primitive <tt>\delcode</tt> can be used like a count register. This means
+ * you can use it wherever a number is expected. In addition the value can be
+ * advanced, multiplied, and divided. In any case the delimiter code is
+ * translated according to the <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> encoding and processed as number.
  * </p>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
  *    \count1=\delcode`x  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \advance\delcode`x by 42  </pre>
  * 
  * </doc>
@@ -127,8 +131,7 @@ public class Delcode extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -143,16 +146,16 @@ public class Delcode extends AbstractAssignment
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
+     * This method is called when the macro <tt>\advance</tt> has been seen. It
+     * performs the remaining tasks for the expansion.
      * 
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void advance(Flags prefix, Context context, TokenSource source,
@@ -171,18 +174,18 @@ public class Delcode extends AbstractAssignment
 
     /**
      * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}. This
+     * method is preferable to <tt>execute()</tt> since the <tt>execute()</tt>
+     * method provided in this class takes care of <tt>\afterassignment</tt> and
+     * <tt>\globaldefs</tt> as well.
      * 
      * @param prefix the prefix controlling the execution
      * @param context the interpreter context
      * @param source the token source
      * @param typesetter the typesetter
      * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -208,7 +211,9 @@ public class Delcode extends AbstractAssignment
      * @param context the interpreter context
      * @param source the token source
      * @param charCode the character to assign the delimiter code to
-     * @param value the delimiter code in <logo>TeX</logo> encoding
+     * @param value the delimiter code in <logo>T<span style=
+     *        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *        >e</span>X</logo> encoding
      * 
      * @throws HelpingException in case of an error
      */
@@ -220,8 +225,8 @@ public class Delcode extends AbstractAssignment
             prefix.setGlobal((globaldef > 0));
         }
 
-        context.setDelcode(charCode, AbstractTeXDelimiter
-            .newMathDelimiter(value), //
+        context.setDelcode(charCode,
+            AbstractTeXDelimiter.newMathDelimiter(value), //
             prefix.clearGlobal());
 
         Token afterassignment = context.getAfterassignment();
@@ -234,8 +239,7 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -250,8 +254,8 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -274,8 +278,8 @@ public class Delcode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -300,8 +304,7 @@ public class Delcode extends AbstractAssignment
      * 
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

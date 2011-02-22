@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,10 +20,9 @@
 package org.extex.core.count;
 
 /**
- * This interface describes the features of a
- * {@link org.extex.core.count.Count Count} which do not modify
- * the value.
- *
+ * This interface describes the features of a {@link org.extex.core.count.Count
+ * Count} which do not modify the value.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
@@ -31,89 +30,90 @@ public interface FixedCount {
 
     /**
      * Compare the value for equality.
-     *
+     * 
      * @param count the count to compare to
-     *
-     * @return <code>true</code> iff count has an equal value to the current
-     *  one
+     * 
+     * @return <code>true</code> iff count has an equal value to the current one
      */
     boolean eq(FixedCount count);
 
     /**
      * Compare the value for a greater or equal value.
-     *
+     * 
      * @param count the count to compare to
-     *
+     * 
      * @return <code>true</code> iff count has an value greater or equal to the
-     *  current one
+     *         current one
      */
     boolean ge(FixedCount count);
 
     /**
      * Getter for the value
-     *
+     * 
      * @return the value
      */
     long getValue();
 
     /**
      * Compare the value for a greater value.
-     *
+     * 
      * @param count the count to compare to
-     *
-     * @return <code>true</code> iff count has an value greater than the
-     *  current one
+     * 
+     * @return <code>true</code> iff count has an value greater than the current
+     *         one
      */
     boolean gt(FixedCount count);
 
     /**
      * Compare the value for a less or equal value.
-     *
+     * 
      * @param count the count to compare to
-     *
+     * 
      * @return <code>true</code> iff count has an value less or equal to the
-     *  current one
+     *         current one
      */
     boolean le(FixedCount count);
 
     /**
      * Compare the value for a lesser value.
-     *
+     * 
      * @param count the count to compare to
-     *
-     * @return <code>true</code> iff count has an value less than the
-     *  current one
+     * 
+     * @return <code>true</code> iff count has an value less than the current
+     *         one
      */
     boolean lt(FixedCount count);
 
     /**
      * Compare the value for non-equality.
-     *
+     * 
      * @param count the count to compare to
-     *
-     * @return <code>true</code> iff count has an value not equal to the
-     *  current one
+     * 
+     * @return <code>true</code> iff count has an value not equal to the current
+     *         one
      */
     boolean ne(FixedCount count);
 
     /**
-     * Determine the printable representation of the object.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Count.
-     *
+     * Determine the printable representation of the object. The value returned
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
+     * 
      * @return the printable representation
-     *
+     * 
      * @see #toString(StringBuffer)
      */
     String toString();
 
     /**
-     * Determine the printable representation of the object.
-     * The value returned is exactly the string which would be produced by
-     * <logo>TeX</logo> to print the Count.
-     *
+     * Determine the printable representation of the object. The value returned
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see #toString()
      */
     void toString(StringBuffer sb);

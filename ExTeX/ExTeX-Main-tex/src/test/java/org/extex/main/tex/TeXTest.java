@@ -40,7 +40,10 @@ import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
 /**
- * This class contains test cases for the command line interface of <logo>ExTeX</logo>.
+ * This class contains test cases for the command line interface of
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4708 $
@@ -50,27 +53,31 @@ public class TeXTest {
     /**
      * The constant <tt>BANNER</tt> contains the default banner.
      */
-    public static final String BANNER =
-            "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n";
+    public static final String BANNER = "This is ExTeX, Version "
+            + ExTeX.getVersion() + " (" + System.getProperty("java.version")
+            + ")\n";
 
     /**
      * The field <tt>BANNER_DE</tt> contains the default banner.
      */
-    public static final String BANNER_DE =
-            "Dies ist ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n";
+    public static final String BANNER_DE = "Dies ist ExTeX, Version "
+            + ExTeX.getVersion() + " (" + System.getProperty("java.version")
+            + ")\n";
 
     /**
-     * The constant <tt>BANNER_TEX</tt> contains the banner for TeX
-     * compatibility mode.
+     * The constant <tt>BANNER_TEX</tt> contains the banner for <logo>T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> compatibility mode.
      */
-    private static final String BANNER_TEX =
-            "This is ExTeX, Version " + ExTeX.getVersion()
-                    + " (TeX compatibility mode)\n";
+    private static final String BANNER_TEX = "This is ExTeX, Version "
+            + ExTeX.getVersion() + " (TeX compatibility mode)\n";
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty TeX file.
+     * The constant <tt>EMPTY_TEX</tt> contains the name of an empty
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> file.
      */
     private static final String EMPTY_TEX =
             "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
@@ -639,8 +646,8 @@ public class TeXTest {
     public void testHelp() throws Exception {
 
         String s = runSuccess(new String[]{"-help"}, null);
-        assertTrue(s + "\ndoes  not match", s
-            .startsWith("Usage: extex <options> file\n"));
+        assertTrue(s + "\ndoes  not match",
+            s.startsWith("Usage: extex <options> file\n"));
     }
 
     /**
@@ -653,8 +660,8 @@ public class TeXTest {
     public void testHelp2() throws Exception {
 
         String s = runSuccess(new String[]{"-prog=abc", "-help"}, null);
-        assertTrue(s + "\ndoes  not match", s
-            .startsWith("Usage: abc <options> file\n"));
+        assertTrue(s + "\ndoes  not match",
+            s.startsWith("Usage: abc <options> file\n"));
     }
 
     /**
@@ -911,7 +918,8 @@ public class TeXTest {
     @Test
     public void testMinus() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-"}, //
+        runSuccess(
+            new String[]{"-ini", "-"}, //
             BANNER_TEX + "**\n" + "*\n" + "No pages of output.\n"
                     + "Transcript written on "
                     + (new File(".", "texput.log")).toString() + ".\n");
@@ -1112,7 +1120,8 @@ public class TeXTest {
     @Test
     public void testProgname1() throws Exception {
 
-        runSuccess(new String[]{"-progname", "abc", "-version"},
+        runSuccess(
+            new String[]{"-progname", "abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1126,7 +1135,8 @@ public class TeXTest {
     @Test
     public void testProgname2() throws Exception {
 
-        runSuccess(new String[]{"-prog", "abc", "-version"},
+        runSuccess(
+            new String[]{"-prog", "abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1140,7 +1150,8 @@ public class TeXTest {
     @Test
     public void testProgname3() throws Exception {
 
-        runSuccess(new String[]{"-progname=abc", "-version"},
+        runSuccess(
+            new String[]{"-progname=abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1154,7 +1165,8 @@ public class TeXTest {
     @Test
     public void testProgname4() throws Exception {
 
-        runSuccess(new String[]{"-prog=abc", "-version"},
+        runSuccess(
+            new String[]{"-prog=abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1168,7 +1180,8 @@ public class TeXTest {
     @Test
     public void testPropertyName1() throws Exception {
 
-        runSuccess(new String[]{"--extex.name", "abc", "-version"},
+        runSuccess(
+            new String[]{"--extex.name", "abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1182,7 +1195,8 @@ public class TeXTest {
     @Test
     public void testPropertyName2() throws Exception {
 
-        runSuccess(new String[]{"--extex.name=abc", "-version"},
+        runSuccess(
+            new String[]{"--extex.name=abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1196,7 +1210,8 @@ public class TeXTest {
     @Test
     public void testPropertyName3() throws Exception {
 
-        runSuccess(new String[]{"--", "extex.name=abc", "-version"},
+        runSuccess(
+            new String[]{"--", "extex.name=abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
                     + System.getProperty("java.version") + ")\n");
     }
@@ -1480,8 +1495,8 @@ public class TeXTest {
     }
 
     /**
-     * <testcase> This test case validates that <tt>-ver</tt> prints the
-     * version number and exists with code 0. </testcase>
+     * <testcase> This test case validates that <tt>-ver</tt> prints the version
+     * number and exists with code 0. </testcase>
      * 
      * @throws Exception in case of an error
      */

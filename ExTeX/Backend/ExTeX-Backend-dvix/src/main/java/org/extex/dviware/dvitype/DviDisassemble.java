@@ -50,8 +50,8 @@ public class DviDisassemble implements DviProcessor {
     private static boolean condensed = true;
 
     /**
-     * The field <tt>hexLabel</tt> contains the indicator that the label
-     * should be presented as hex number.
+     * The field <tt>hexLabel</tt> contains the indicator that the label should
+     * be presented as hex number.
      */
     private static boolean hexLabel = true;
 
@@ -62,8 +62,8 @@ public class DviDisassemble implements DviProcessor {
     protected static final String PROP_CONFIG = "extex.config";
 
     /**
-     * The field <tt>showLabel</tt> contains the indicator that the label
-     * should be shown as labels.
+     * The field <tt>showLabel</tt> contains the indicator that the label should
+     * be shown as labels.
      */
     private static boolean showLabel = true;
 
@@ -115,10 +115,9 @@ public class DviDisassemble implements DviProcessor {
                     ConfigurationFactory.newInstance(properties
                         .getProperty(PROP_CONFIG));
             finder =
-                    new ResourceFinderFactory()
-                        .createResourceFinder(config
-                            .getConfiguration("Resource"), logger, properties,
-                            null);
+                    new ResourceFinderFactory().createResourceFinder(
+                        config.getConfiguration("Resource"), logger,
+                        properties, null);
             InputStream dvi = finder.findResource(arg, "dvi");
 
             if (dvi == null) {
@@ -518,7 +517,10 @@ public class DviDisassemble implements DviProcessor {
 
     /**
      * A DVI undefined instruction has been encountered. This callback is
-     * invoked for the op-codes 250&ndash;255 which are undefined in <logo>TeX</logo>.
+     * invoked for the op-codes 250&ndash;255 which are undefined in
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param off the current byte position
      * @param opcode the opcode encountered
@@ -590,9 +592,11 @@ public class DviDisassemble implements DviProcessor {
     }
 
     /**
-     * A DVI <tt>xxx</tt> instruction has been encountered. This instruction
-     * is used to pass some bytes uninterpreted to the DVI processor. In
-     * <logo>TeX</logo> this is accomplished with the primitive
+     * A DVI <tt>xxx</tt> instruction has been encountered. This instruction is
+     * used to pass some bytes uninterpreted to the DVI processor. In
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this is accomplished with the primitive
      * <tt>\special</tt>.
      * 
      * @param off the current byte position in the input stream

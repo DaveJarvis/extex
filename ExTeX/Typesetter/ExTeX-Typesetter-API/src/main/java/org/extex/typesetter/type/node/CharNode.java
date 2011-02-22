@@ -29,9 +29,11 @@ import org.extex.typesetter.type.NodeVisitor;
 
 /**
  * This is the Node which carries a single character.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [134]"
- *
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [134]"
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -44,8 +46,8 @@ public class CharNode extends AbstractNode {
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>character</tt> contains the single character represented
-     * by this node.
+     * The field <tt>character</tt> contains the single character represented by
+     * this node.
      */
     private UnicodeChar character;
 
@@ -56,7 +58,7 @@ public class CharNode extends AbstractNode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param context the typesetting context
      * @param uc the Unicode character
      */
@@ -76,9 +78,9 @@ public class CharNode extends AbstractNode {
 
     /**
      * This method determines the number of characters contained in a node.
-     *
+     * 
      * @return the number of characters contained
-     *
+     * 
      * @see org.extex.typesetter.type.Node#countChars()
      */
     @Override
@@ -89,7 +91,7 @@ public class CharNode extends AbstractNode {
 
     /**
      * Getter for character.
-     *
+     * 
      * @return the character.
      */
     public UnicodeChar getCharacter() {
@@ -99,9 +101,9 @@ public class CharNode extends AbstractNode {
 
     /**
      * Getter for the array of characters enclosed in this node.
-     *
+     * 
      * @return the array of characters
-     *
+     * 
      * @see org.extex.typesetter.type.Node#getChars()
      */
     @Override
@@ -112,17 +114,17 @@ public class CharNode extends AbstractNode {
 
     /**
      * Getter for the space factor.
-     *
+     * 
      * @return the space factor
      */
     public int getSpaceFactor() {
 
-        return 1000; //TODO gene: getSpaceFactor() incomplete
+        return 1000; // TODO gene: getSpaceFactor() incomplete
     }
 
     /**
-     * Getter for typesetting  context.
-     *
+     * Getter for typesetting context.
+     * 
      * @return the typesetting context.
      */
     public TypesettingContext getTypesettingContext() {
@@ -134,49 +136,43 @@ public class CharNode extends AbstractNode {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [174]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [174]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         Font font = typesettingContext.getFont();
         sb.append(getLocalizer().format("String.Format",
             (font == null ? "*" : font.getFontName()), character.toString()));
         /*
-        if (false) {
-            sb.append(" (");
-            sb.append(getHeight().toString());
-            sb.append("+");
-            sb.append(getDepth().toString());
-            sb.append(")x");
-            sb.append(getWidth().toString());
-        }
-        */
+         * if (false) { sb.append(" ("); sb.append(getHeight().toString());
+         * sb.append("+"); sb.append(getDepth().toString()); sb.append(")x");
+         * sb.append(getWidth().toString()); }
+         */
     }
 
     /**
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [174]"
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [174]"
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -189,16 +185,15 @@ public class CharNode extends AbstractNode {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

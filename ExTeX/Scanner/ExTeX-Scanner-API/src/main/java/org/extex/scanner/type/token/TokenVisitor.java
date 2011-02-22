@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,8 +33,9 @@ package org.extex.scanner.type.token;
 public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
 
     /**
-     * This visit method is invoked on an active token. In <logo>TeX</logo>
-     * this is e.g. ~.
+     * This visit method is invoked on an active token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this is e.g. ~.
      * 
      * @param token the active token to visit
      * @param arg the first argument to pass
@@ -59,8 +60,9 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitCr(CrToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on an escape token. In <logo>TeX</logo>
-     * this normally means a control sequence.
+     * This visit method is invoked on an escape token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally means a control sequence.
      * 
      * @param token the control sequence token to visit
      * @param arg the first argument to pass
@@ -98,8 +100,10 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitLetter(LetterToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a macro parameter token. In <logo>TeX</logo>
-     * this normally is a #.
+     * This visit method is invoked on a macro parameter token. In <logo>T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a #.
      * 
      * @param token the macro param token to visit
      * @param arg the first argument to pass
@@ -112,8 +116,10 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
             throws Exception;
 
     /**
-     * This visit method is invoked on a math shift token. In <logo>TeX</logo>
-     * this normally is a $.
+     * This visit method is invoked on a math shift token. In <logo>T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a $.
      * 
      * @param token the math shift token to visit
      * @param arg the first argument to pass
@@ -163,8 +169,9 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitSpace(SpaceToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a sub mark token. In <logo>TeX</logo>
-     * this normally is a _.
+     * This visit method is invoked on a sub mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a _.
      * 
      * @param token the sub mark token to visit
      * @param arg the first argument to pass
@@ -176,8 +183,9 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitSubMark(SubMarkToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a sup mark token. In <logo>TeX</logo>
-     * this normally is a ^.
+     * This visit method is invoked on a sup mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a ^.
      * 
      * @param token the sup mark token to visit
      * @param arg the first argument to pass
@@ -189,8 +197,9 @@ public interface TokenVisitor<RET_TYPE, ARG_TYPE> {
     RET_TYPE visitSupMark(SupMarkToken token, ARG_TYPE arg) throws Exception;
 
     /**
-     * This visit method is invoked on a tab mark token. In <logo>TeX</logo>
-     * this normally is a &.
+     * This visit method is invoked on a tab mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a &.
      * 
      * @param token the tab mark token to visit
      * @param arg the first argument to pass

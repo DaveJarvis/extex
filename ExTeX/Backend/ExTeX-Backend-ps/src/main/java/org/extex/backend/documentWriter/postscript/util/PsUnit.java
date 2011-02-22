@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,14 +34,14 @@ import org.extex.core.dimen.FixedDimen;
 public abstract class PsUnit {
 
     /**
-     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big
-     * points per inch.
+     * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
+     * per inch.
      */
     private static final int BP100_PER_IN = 7200;
 
     /**
-     * The constant <tt>CM100_PER_IN</tt> contains the number of 100
-     * centimeters per inch.
+     * The constant <tt>CM100_PER_IN</tt> contains the number of 100 centimeters
+     * per inch.
      */
     public static final int CM100_PER_IN = 254;
 
@@ -50,7 +50,9 @@ public abstract class PsUnit {
      * consider when producing a string representation of this type.
      * 
      * Attention: Do not change this value unless you have read and understood
-     * <logo>TeX</logo> the program!
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> the program!
      */
     private static final int FLOAT_DIGITS = 17;
 
@@ -254,7 +256,7 @@ public abstract class PsUnit {
      * @param strip indicator whether rounding to the next higher integral
      *        number is desirable
      */
-    public static void toPoint(FixedDimen d, PrintStream  out, boolean strip) {
+    public static void toPoint(FixedDimen d, PrintStream out, boolean strip) {
 
         StringBuilder sb = new StringBuilder();
         toPoint(d, sb, strip);

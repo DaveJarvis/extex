@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,8 +54,7 @@ import org.extex.unit.tex.math.delimiter.Delimiter;
 public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -65,14 +64,12 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     private static final int CHAR_MASK = 0xffff;
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximal number for a
-     * character.
+     * The field <tt>CHAR_MAX</tt> contains the maximal number for a character.
      */
     private static final int CHAR_MAX = 0xffff;
 
     /**
-     * The field <tt>CHAR_MIN</tt> contains the minimal number for a
-     * character.
+     * The field <tt>CHAR_MIN</tt> contains the minimal number for a character.
      */
     private static final int CHAR_MIN = 0;
 
@@ -120,8 +117,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitBinary(Object ignore, Object ignore2) {
 
@@ -131,8 +128,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitClosing(Object ignore, Object ignore2) {
 
@@ -142,8 +139,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitLarge(Object ignore, Object ignore2) {
 
@@ -153,8 +150,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOpening(Object ignore, Object ignore2) {
 
@@ -164,8 +161,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOrdinary(Object ignore, Object ignore2) {
 
@@ -175,8 +172,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitPunctation(Object ignore, Object ignore2) {
 
@@ -186,8 +183,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitRelation(Object ignore, Object ignore2) {
 
@@ -197,8 +194,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitVariable(Object ignore, Object ignore2) {
 
@@ -231,9 +228,10 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     /**
      * Creates a new MathDelimiter object from the <logo>Omega</logo> encoding.
      * <p>
-     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex
-     * number: <tt>"cssyyyyllxxxx</tt>. Here the digits have the following
-     * meaning:
+     * The <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
+     * <tt>"cssyyyyllxxxx</tt>. Here the digits have the following meaning:
      * <dl>
      * <dt>c</dt>
      * <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
@@ -277,7 +275,9 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Parse an extended <logo>ExTeX</logo> delimiter from a token source.
+     * Parse an extended <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> delimiter from a token source.
      * 
      * @param context the interpreter context
      * @param source the token source to read from
@@ -419,8 +419,8 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Translate the delimiter into a <logo>Omega</logo> encoded number or
-     * throw an exception if this is not possible.
+     * Translate the delimiter into a <logo>Omega</logo> encoded number or throw
+     * an exception if this is not possible.
      * 
      * @param del the delimiter to encode
      * 
@@ -464,7 +464,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param token the initial token for the primitive
      */
     public AbstractOmegaDelimiter(CodeToken token) {

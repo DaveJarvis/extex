@@ -36,8 +36,7 @@ import org.extex.scanner.type.Catcode;
 public class MacroParamToken extends AbstractToken implements Token {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -103,7 +102,9 @@ public class MacroParamToken extends AbstractToken implements Token {
      * 
      * @return the string representation
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [298]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [298]"
      */
     @Override
     public String toString() {
@@ -162,8 +163,8 @@ public class MacroParamToken extends AbstractToken implements Token {
      * 
      * @throws Exception in case of an error
      * 
-     * @see org.extex.scanner.type.token.Token#visit(
-     *      org.extex.scanner.type.token.TokenVisitor, java.lang.Object)
+     * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
+     *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(TokenVisitor visitor, Object arg1) throws Exception {

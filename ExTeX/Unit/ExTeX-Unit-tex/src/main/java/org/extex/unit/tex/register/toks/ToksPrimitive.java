@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,8 +38,7 @@ import org.extex.unit.base.register.toks.AbstractToks;
  * It sets the named tokens register to the value given, and as a side effect
  * all prefixes are zeroed.
  * 
- * <doc name="toks">
- * <h3>The Primitive <tt>\toks</tt></h3>
+ * <doc name="toks"> <h3>The Primitive <tt>\toks</tt></h3>
  * <p>
  * The primitive <tt>\toks</tt> provides access to the named tokens register.
  * token sequences can be stored in them for later use. This means that the
@@ -55,8 +54,7 @@ import org.extex.unit.base.register.toks.AbstractToks;
  * <tt>\afterassignment</tt> is applied.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;toks&rang;
@@ -69,22 +67,30 @@ import org.extex.unit.base.register.toks.AbstractToks;
  *        &lang;tokens&rang;}  </pre>
  * 
  * <p>
- * In <logo>TeX</logo> the register name is a number in the range 0 to 255.
- * Extensions to this are defined in <logo>eTeX</logo> and <logo>Omega</logo>
- * where the limitation of the range is raised. In <logo>ExTeX</logo> this
- * limit can be configured. In addition tokens can be used to address named
- * token registers.
+ * In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the register name is a number in the range 0 to 255.
+ * Extensions to this are defined in <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> and <logo>Omega</logo> where the limitation of the range is
+ * raised. In <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> this limit can be configured. In addition tokens can be
+ * used to address named token registers.
  * </p>
  * 
  * <h4>Examples</h4>
  * 
  * <pre class="TeXSample">
  *    \toks2={UTF-8}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \toks42={UTF-8}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \toks42=\toks0  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \toks{abc}={Hello world}  </pre>
  * 
  * </doc>
@@ -100,8 +106,7 @@ public class ToksPrimitive extends AbstractToks
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -118,8 +123,8 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -140,8 +145,7 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
@@ -154,8 +158,7 @@ public class ToksPrimitive extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

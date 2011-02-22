@@ -24,10 +24,14 @@ import org.extex.typesetter.type.NodeVisitor;
 
 /**
  * This node type represents the extension node from the perspective of
- * <logo>TeX</logo>.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [146]"
- *
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [146]"
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -50,37 +54,32 @@ public class WhatsItNode extends AbstractNode {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("(whatsit )");
     }
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

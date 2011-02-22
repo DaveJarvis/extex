@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,7 +42,7 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 /**
  * This is the base class for all math primitives using the Omega encoding. It
  * tries to ensure that the primitive is invoked in math mode only.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -66,26 +66,32 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
     private static final int SPECIAL_MATH_CODE = 0x8000000;
 
     /**
-     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the
-     * character value in the <logo>TeX</logo> encoding.
+     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
+     * value in the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int CHARACTER_MASK = 0xffff;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in
-     * the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int FAMILY_MASK = 0xff;
 
     /**
-     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family
-     * in the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
+     * the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int FAMILY_OFFSET = 16;
 
     /**
-     * The field <tt>VISITOR</tt> contains the visitor for mapping a math
-     * class to the integer representation used by Omega.
+     * The field <tt>VISITOR</tt> contains the visitor for mapping a math class
+     * to the integer representation used by Omega.
      */
     private static final MathClassVisitor<Long, Object, Object> VISITOR =
             new MathClassVisitor<Long, Object, Object>() {
@@ -165,11 +171,11 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Convert a {@link MathCode MathCode} to a number using the TeX encoding.
-     *
+     * 
      * @param mc the math code
-     *
+     * 
      * @return a TeX-encoded math code
-     *
+     * 
      * @throws HelpingException in case of an error
      */
     public static long mathCodeToLong(MathCode mc) throws HelpingException {
@@ -181,14 +187,15 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         MathGlyph mg = mc.getMathGlyph();
         long codePoint = mg.getCharacter().getCodePoint();
         if (codePoint > CHARACTER_MASK) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractOmegaMathCode.class),
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
                 "InvalidCharacterCode");
         }
         long mathFamily = mg.getFamily();
         if (mathFamily > FAMILY_MASK) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractOmegaMathCode.class), "InvalidFamilyCode");
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
+                "InvalidFamilyCode");
         }
         long cat = ((Long) mathClass.visit(VISITOR, null, null)).longValue();
         return (cat << CLASS_OFFSET) | (mathFamily << FAMILY_OFFSET)
@@ -198,14 +205,14 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Parse Math code according to TeX rules and extensions.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the invoking primitive
-     *
+     * 
      * @return the MathCode
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -228,8 +235,8 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
                 if (t == null) {
                     throw new EofException();
                 }
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractOmegaMathCode.class),
+                throw new HelpingException(
+                    LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
                     "MissingRightBrace");
             }
             return new MathCode(mc, new MathGlyph((int) family, c));
@@ -245,14 +252,14 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
         long code = source.parseInteger(context, source, typesetter);
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractOmegaMathCode.class),
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractOmegaMathCode.class),
                 "TTP.BadMathCharCode", Long.toString(code));
         } else if (code == SPECIAL_MATH_CODE) {
             return new MathCode(null, null);
         } else {
-            return new MathCode(MathClass
-                .getMathClass((int) (code >> CLASS_OFFSET)), //
+            return new MathCode(
+                MathClass.getMathClass((int) (code >> CLASS_OFFSET)), //
                 new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
                     UnicodeChar.get((int) (code & CHARACTER_MASK))));
         }
@@ -261,7 +268,7 @@ public abstract class AbstractOmegaMathCode extends AbstractMathCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param token the initial token for the primitive
      */
     public AbstractOmegaMathCode(CodeToken token) {

@@ -23,8 +23,8 @@ import org.extex.core.dimen.FixedDimen;
 
 /**
  * This class provides a means to store floating numbers with an order. If the
- * order is 0 then the length denotes a length in multiples of scaled points.
- * If the order is larger then it denotes some order of infinity.
+ * order is 0 then the length denotes a length in multiples of scaled points. If
+ * the order is larger then it denotes some order of infinity.
  * 
  * <p>
  * Examples
@@ -49,7 +49,9 @@ public class GlueComponent extends GlueComponentConstant {
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [101]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [101]"
      */
     public static final long ONE = 1 << 16;
 
@@ -62,14 +64,14 @@ public class GlueComponent extends GlueComponentConstant {
     /**
      * The constant <tt>ONE_FI</tt> contains the value of 1 fi.
      */
-    public static final FixedGlueComponent ONE_FI =
-            new GlueComponentConstant(ONE, (byte) 1);
+    public static final FixedGlueComponent ONE_FI = new GlueComponentConstant(
+        ONE, (byte) 1);
 
     /**
      * The constant <tt>ONE_FIL</tt> contains the value of 1 fil.
      */
-    public static final FixedGlueComponent ONE_FIL =
-            new GlueComponentConstant(ONE, (byte) 2);
+    public static final FixedGlueComponent ONE_FIL = new GlueComponentConstant(
+        ONE, (byte) 2);
 
     /**
      * The constant <tt>ONE_FIL</tt> contains the value of 1 fill.
@@ -78,8 +80,7 @@ public class GlueComponent extends GlueComponentConstant {
             new GlueComponentConstant(ONE, (byte) 3);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 

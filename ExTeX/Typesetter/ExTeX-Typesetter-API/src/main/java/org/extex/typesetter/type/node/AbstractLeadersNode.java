@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,7 +31,9 @@ import org.extex.typesetter.type.OrientedNode;
  * This node represents a leaders node as used by the primitives
  * <tt>\leaders</tt>, <tt>\cleaders</tt>, and <tt>\xleaders</tt>.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [149]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [149]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
@@ -42,8 +44,7 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
             SkipNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -76,9 +77,9 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
+     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
@@ -153,8 +154,10 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * @param breadth the breadth
      * @param depth the depth
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [190]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     @Override

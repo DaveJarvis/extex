@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,21 +32,23 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\color</code>.
  * 
- * <doc name="color">
- * <h3>The Primitive <tt>\color</tt></h3>
+ * <doc name="color"> <h3>The Primitive <tt>\color</tt></h3>
  * <p>
  * The primitive <tt>\color</tt> sets the current color value to the value
  * given. The value can be any color specification for one of the supported
  * color models.
  * </p>
  * <p>
- * The color models of <logo>ExTeX</logo> use components of two bytes. This
- * means that values from 0 to 65535 can be stored in each component. The
- * external representation is a floating point number in the range from 0.0 to
- * 1.0.
+ * The color models of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> use components of two bytes. This means that values from 0
+ * to 65535 can be stored in each component. The external representation is a
+ * floating point number in the range from 0.0 to 1.0.
  * </p>
  * <p>
- * The color models of <logo>ExTeX</logo> support an alpha channel.
+ * The color models of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> support an alpha channel.
  * </p>
  * 
  * <h4>The RGB Color Model</h4>
@@ -87,8 +89,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * value or ignore it at all.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;color&rang;
@@ -156,8 +157,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class ColorPrimitive extends AbstractColor {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -174,8 +174,8 @@ public class ColorPrimitive extends AbstractColor {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -202,8 +202,7 @@ public class ColorPrimitive extends AbstractColor {
      * 
      * @return the converted value
      * 
-     * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Color convertColor(Context context, TokenSource source,

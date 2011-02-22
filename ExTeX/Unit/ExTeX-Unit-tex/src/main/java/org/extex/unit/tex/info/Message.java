@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,22 +33,22 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\message</code>.
+ * This class provides an implementation for the primitive <code>\message</code>
+ * .
  * 
- * <doc name="message">
- * <h3>The Primitive <tt>\message</tt></h3>
+ * <doc name="message"> <h3>The Primitive <tt>\message</tt></h3>
  * <p>
  * The primitive <tt>\message</tt> takes as argument a list of tokens enclosed
  * in braces and writes them to output stream and into the log file.
  * </p>
  * <p>
- * If the keywords <tt>to log</tt> are given then the message is written to
- * the log file only. This is an extension not present in <logo>TeX</logo> and
- * friends.
+ * If the keywords <tt>to log</tt> are given then the message is written to the
+ * log file only. This is an extension not present in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> and friends.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;message&rang;
@@ -60,7 +60,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \message{Hello World!}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \message to log {Hello World!}  </pre>
  * 
  * 
@@ -73,8 +74,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Message extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -98,8 +98,7 @@ public class Message extends AbstractCode implements LogEnabled {
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -109,8 +108,8 @@ public class Message extends AbstractCode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

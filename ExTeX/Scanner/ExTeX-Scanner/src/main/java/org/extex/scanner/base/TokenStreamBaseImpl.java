@@ -31,7 +31,7 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This is the base implementation of a token stream. It has an internal stack
  * of tokens which can be enlarged with push() or reduced with pop().
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4725 $
@@ -58,9 +58,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Creates a new object.
-     *
-     * @param isFile indicator whether or not the token stream is assigned to
-     * a file
+     * 
+     * @param isFile indicator whether or not the token stream is assigned to a
+     *        file
      */
     public TokenStreamBaseImpl(boolean isFile) {
 
@@ -69,9 +69,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Creates a new object.
-     *
-     * @param isFile indicator whether or not the token stream is assigned to
-     * a file
+     * 
+     * @param isFile indicator whether or not the token stream is assigned to a
+     *        file
      * @param tokens the tokens to push to the stream initially
      */
     public TokenStreamBaseImpl(boolean isFile, Tokens tokens) {
@@ -85,9 +85,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Close this stream if it is a file stream.
-     *
+     * 
      * @return <code>true</code> if the closing was successful
-     *
+     * 
      * @see org.extex.scanner.api.TokenStream#closeFileStream()
      */
     public boolean closeFileStream() {
@@ -97,21 +97,19 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * Get the next token from the token stream.
-     * If tokens are on the push-back stack then those are delivered otherwise
-     * new tokens might be extracted utilizing the token factory and the
-     * tokenizer.
-     *
+     * Get the next token from the token stream. If tokens are on the push-back
+     * stack then those are delivered otherwise new tokens might be extracted
+     * utilizing the token factory and the tokenizer.
+     * 
      * @param factory the token factory
      * @param tokenizer the tokenizer
-     *
+     * 
      * @return the next Token or <code>null</code> if no more tokens are
-     * available
-     *
+     *         available
+     * 
      * @throws ScannerException in case of an error
-     *
-     * @see org.extex.scanner.api.TokenStream#get(
-     *      org.extex.scanner.type.token.TokenFactory,
+     * 
+     * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.api.Tokenizer)
      */
     public Token get(TokenFactory factory, Tokenizer tokenizer)
@@ -139,13 +137,12 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * Getter for the locator.
-     * The locator describes the place the tokens have been read from in terms
-     * of the user. This information is meant for the end user to track down
-     * problems.
-     *
+     * Getter for the locator. The locator describes the place the tokens have
+     * been read from in terms of the user. This information is meant for the
+     * end user to track down problems.
+     * 
      * @return the locator
-     *
+     * 
      * @see org.extex.scanner.api.TokenStream#getLocator()
      */
     public Locator getLocator() {
@@ -154,26 +151,26 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * Get the next token when the stack is empty.
-     * This method is meant to be overloaded by derived classes.
-     *
+     * Get the next token when the stack is empty. This method is meant to be
+     * overloaded by derived classes.
+     * 
      * @param factory the factory for new tokens
      * @param tokenizer the classifies for characters
-     *
+     * 
      * @return the next Token or <code>null</code>
      * @throws ScannerException in case of an error
      */
-    protected Token getNext(TokenFactory factory,
-            Tokenizer tokenizer) throws ScannerException {
+    protected Token getNext(TokenFactory factory, Tokenizer tokenizer)
+            throws ScannerException {
 
         return null;
     }
 
     /**
      * Test for end of file.
-     *
+     * 
      * @return <code>true</code> iff the stream is at its end
-     *
+     * 
      * @throws ScannerException in case of an error
      */
     public boolean isEof() throws ScannerException {
@@ -183,9 +180,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Check to see if the token stream is currently at the end of line.
-     *
+     * 
      * @return <code>true</code> if the stream is at end of line
-     *
+     * 
      * @see org.extex.scanner.api.TokenStream#isEol()
      */
     public boolean isEol() throws ScannerException {
@@ -195,9 +192,9 @@ public class TokenStreamBaseImpl implements TokenStream {
 
     /**
      * Check whether the current stream is associated with a file to read from.
-     *
+     * 
      * @return <code>true</code> if the stream is a file stream
-     *
+     * 
      * @see org.extex.scanner.api.TokenStream#isFileStream()
      */
     public boolean isFileStream() {
@@ -206,20 +203,20 @@ public class TokenStreamBaseImpl implements TokenStream {
     }
 
     /**
-     * Push back a token into the stream.
-     * If the token is <code>null</code> then nothing happens:
-     * a <code>null</code> token is not pushed!
+     * Push back a token into the stream. If the token is <code>null</code> then
+     * nothing happens: a <code>null</code> token is not pushed!
      * <p>
      * Note that it is up to the implementation to accept tokens not produced
      * with the token factory for push back. In general the behavior in such a
      * case is not defined and should be avoided.
      * </p>
-     *
+     * 
      * @param token the token to push back
-     * @see "<logo>TeX</logo> &ndash; The Program [325]"
-     *
-     * @see org.extex.scanner.api.TokenStream#put(
-     *      org.extex.scanner.type.token.Token)
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [325]"
+     * 
+     * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
      */
     public void put(Token token) {
 

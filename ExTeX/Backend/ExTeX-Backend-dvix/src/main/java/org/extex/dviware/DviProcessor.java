@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,53 +25,53 @@ import java.io.InputStream;
  * This interface describes a callback handler for DVI instructions. This refers
  * to an abstract machine which translates the DVI file into some kind of
  * printed representation.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface DviProcessor {
 
     /**
-     * A DVI <tt>bop</tt> instruction has been encountered.
-     * This instruction signals the beginning of a new page.
-     *
+     * A DVI <tt>bop</tt> instruction has been encountered. This instruction
+     * signals the beginning of a new page.
+     * 
      * @param off the current byte position in the input stream
-     * @param c the array of page number indicators. The array has length 10.
-     *  It is initialized from the count registers 0 to 9 at the time the page
-     *  is shipped out.
-     * @param p the pointer to the previous <tt>bop</tt> instruction or -1
-     *  for the first page
+     * @param c the array of page number indicators. The array has length 10. It
+     *        is initialized from the count registers 0 to 9 at the time the
+     *        page is shipped out.
+     * @param p the pointer to the previous <tt>bop</tt> instruction or -1 for
+     *        the first page
      */
     void bop(int off, int[] c, int p);
 
     /**
      * A DVI <tt>down</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>v &larr; v + &lang;a&rang;</i>
+     * <i>v &larr; v + &lang;a&rang;</i>
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param a the number of DVI units to move down. If negative then the
-     *  current position moves upwards.
+     *        current position moves upwards.
      */
     void down(int off, int a);
 
     /**
-     * A DVI <tt>eop</tt> instruction has been encountered.
-     * This instruction signals the end of a page.
-     *
+     * A DVI <tt>eop</tt> instruction has been encountered. This instruction
+     * signals the end of a page.
+     * 
      * @param off the current byte position in the input stream
      */
     void eop(int off);
 
     /**
      * A DVI <tt>fnt</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>f &larr; &lang;k&rang;</i>
+     * <i>f &larr; &lang;k&rang;</i>
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param k the new font number; this number is not negative
      */
@@ -79,7 +79,7 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>fntDef</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param k the number of the font
      * @param c length of the font area
@@ -90,28 +90,27 @@ public interface DviProcessor {
     void fntDef(int off, int k, int c, int s, int d, String n);
 
     /**
-     * A DVI <tt>nop</tt> instruction has been encountered.
-     * This instruction simply does nothing. It just occupies one byte in
-     * the input stream.
-     *
+     * A DVI <tt>nop</tt> instruction has been encountered. This instruction
+     * simply does nothing. It just occupies one byte in the input stream.
+     * 
      * @param off the current byte position in the input stream
      */
     void nop(int off);
 
     /**
      * A DVI <tt>pop</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  The registers h, b, w, x, y, z are popped from the stack.
+     * The registers h, b, w, x, y, z are popped from the stack.
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      */
     void pop(int off);
 
     /**
      * A DVI <tt>post</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param bop the index of the last BOP instruction
      * @param num the numerator
@@ -122,13 +121,13 @@ public interface DviProcessor {
      * @param sp stack depth
      * @param tp number of pages
      */
-    void post(int off, int bop, int num, int den, int mag, int l, int u, int sp,
-            int tp);
+    void post(int off, int bop, int num, int den, int mag, int l, int u,
+            int sp, int tp);
 
     /**
-     * Invoke the callback on a POST_POST instruction.
-     * This is the last instruction in a DVI file.
-     *
+     * Invoke the callback on a POST_POST instruction. This is the last
+     * instruction in a DVI file.
+     * 
      * @param off the offset in the file of this instruction
      * @param bop the index of the last BOP instruction
      * @param id the id of this DVI version. Usually this is 2.
@@ -137,7 +136,7 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>pre</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param id the id of this DVI version. Usually this is 2.
      * @param num the numerator
@@ -149,14 +148,14 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>push</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position in the input stream
      */
     void push(int off);
 
     /**
      * A DVI <tt>put_char</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position
      * @param c the number of the character to set
      */
@@ -164,7 +163,7 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>put_rule</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param a the width
      * @param b the height
@@ -173,16 +172,16 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>right</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>h &larr; h + &lang;b&rang;</i>
+     * <i>h &larr; h + &lang;b&rang;</i>
      * </p>
      * <p>
-     *  The argument b is added to the horizontal position h. If b is positive
-     *  then the horizontal position is moved rightward by the given number of
-     *  DVI units. If b is negative this means a movement leftwards.
+     * The argument b is added to the horizontal position h. If b is positive
+     * then the horizontal position is moved rightward by the given number of
+     * DVI units. If b is negative this means a movement leftwards.
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param b the distance to move in DVI units
      */
@@ -190,7 +189,7 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>set_char</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position
      * @param c the number of the character to set
      */
@@ -198,7 +197,7 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>set_rule</tt> instruction has been encountered.
-     *
+     * 
      * @param off the current byte position
      * @param a the width
      * @param b the height
@@ -206,10 +205,12 @@ public interface DviProcessor {
     void setRule(int off, int a, int b);
 
     /**
-     * A DVI undefined instruction has been encountered.
-     * This callback is invoked for the op-codes 250&ndash;255 which are
-     * undefined in <logo>TeX</logo>.
-     *
+     * A DVI undefined instruction has been encountered. This callback is
+     * invoked for the op-codes 250&ndash;255 which are undefined in
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param off the current byte position
      * @param opcode the opcode encountered
      * @param stream the input stream to read further bytes from
@@ -218,12 +219,12 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>w</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  The register w is assigned from the parameter of this instruction.
-     *  Afterwards the register w is added to the horizontal position h.
+     * The register w is assigned from the parameter of this instruction.
+     * Afterwards the register w is added to the horizontal position h.
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param b the distance to add in DVI units
      */
@@ -231,26 +232,26 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>w0</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>h &larr; h + w</i>
+     * <i>h &larr; h + w</i>
      * </p>
      * <p>
-     *  The register w is added to the horizontal position h.
+     * The register w is added to the horizontal position h.
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      */
     void w0(int off);
 
     /**
      * A DVI <tt>x</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>x &larr; &lang;b&rang;</i><br>
-     *  <i>h &larr; h + x</i>
+     * <i>x &larr; &lang;b&rang;</i><br>
+     * <i>h &larr; h + x</i>
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param b the distance to move in DVI units
      */
@@ -258,24 +259,26 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>x0</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>h &larr; h + x</i>
+     * <i>h &larr; h + x</i>
      * </p>
      * <p>
-     *  The register x is added to the horizontal position h.
+     * The register x is added to the horizontal position h.
      * </p>
-     *
+     * 
      * @param ptr the current byte position in the input stream
      */
     void x0(int ptr);
 
     /**
-     * A DVI <tt>xxx</tt> instruction has been encountered.
-     * This instruction is used to pass some bytes uninterpreted to the DVI
-     * processor. In <logo>TeX</logo> this is accomplished with the
-     * primitive <tt>\special</tt>.
-     *
+     * A DVI <tt>xxx</tt> instruction has been encountered. This instruction is
+     * used to pass some bytes uninterpreted to the DVI processor. In
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this is accomplished with the primitive
+     * <tt>\special</tt>.
+     * 
      * @param off the current byte position in the input stream
      * @param x the array of bytes carrying the content
      */
@@ -283,12 +286,12 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>y</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>y &larr; &lang;a&rang;</i><br>
-     *  <i>v &larr; v + y</i>
+     * <i>y &larr; &lang;a&rang;</i><br>
+     * <i>v &larr; v + y</i>
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param a the distance to move
      */
@@ -296,24 +299,24 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>y0</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  Set <i>v &larr; v + y</i>; thus the current position is moved down
-     *  <i>y</i> DVI units.
+     * Set <i>v &larr; v + y</i>; thus the current position is moved down
+     * <i>y</i> DVI units.
      * </p>
-     *
+     * 
      * @param ptr the current byte position in the input stream
      */
     void y0(int ptr);
 
     /**
      * A DVI <tt>z</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>z &larr; &lang;a&rang;</i><br>
-     *  <i>v &larr; v + z</i>
+     * <i>z &larr; &lang;a&rang;</i><br>
+     * <i>v &larr; v + z</i>
      * </p>
-     *
+     * 
      * @param off the current byte position in the input stream
      * @param b the distance to move
      */
@@ -321,11 +324,11 @@ public interface DviProcessor {
 
     /**
      * A DVI <tt>z0</tt> instruction has been encountered.
-     *
+     * 
      * <p>
-     *  <i>v &larr; v + z</i>
+     * <i>v &larr; v + z</i>
      * </p>
-     *
+     * 
      * @param ptr the current byte position in the input stream
      */
     void z0(int ptr);

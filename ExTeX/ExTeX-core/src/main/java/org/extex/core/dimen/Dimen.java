@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,7 +40,9 @@ public class Dimen extends DimenConstant {
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [101]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [101]"
      */
     public static final long ONE = GlueComponent.ONE;
 
@@ -48,8 +50,8 @@ public class Dimen extends DimenConstant {
      * The constant <tt>ONE_INCH</tt> contains the immutable dimen register
      * representing the length of 1&nbsp;in.
      */
-    public static final FixedDimen ONE_INCH =
-            new DimenConstant(ONE * 7227 / 100);
+    public static final FixedDimen ONE_INCH = new DimenConstant(
+        ONE * 7227 / 100);
 
     /**
      * The constant <tt>ONE_PT</tt> contains the immutable dimen register
@@ -64,8 +66,7 @@ public class Dimen extends DimenConstant {
     public static final FixedDimen ONE_SP = new DimenConstant(1);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -121,7 +122,8 @@ public class Dimen extends DimenConstant {
      * Add the value of the argument to the current value. This operation
      * modifies the instance.
      * 
-     * <p> |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+     * <p>
+     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
      * </p>
      * 
      * @param d the Dimen to add
@@ -135,7 +137,8 @@ public class Dimen extends DimenConstant {
      * Add the value of the argument to the current value. This operation
      * modifies the instance.
      * 
-     * <p> |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
+     * <p>
+     * |<i>this</i>| &rarr; |<i>this</i>| + |<i>d</i>|
      * </p>
      * 
      * @param d the value to add in sp
@@ -151,7 +154,8 @@ public class Dimen extends DimenConstant {
      * Divide the current value with a given number. This operation modifies
      * this instance.
      * 
-     * <p> |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
+     * <p>
+     * |<i>this</i>| &rarr; |<i>this</i>| / <i>denom</i>
      * </p>
      * 
      * @param denom denominator to divide by
@@ -229,7 +233,8 @@ public class Dimen extends DimenConstant {
      * Multiply the current value with a given number. This operation modifies
      * this instance.
      * 
-     * <p> |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
+     * <p>
+     * |<i>this</i>| &rarr; |<i>this</i>| * <i>factor</i>
      * </p>
      * 
      * @param factor the factor to multiply with
@@ -245,7 +250,8 @@ public class Dimen extends DimenConstant {
      * Negate the value of the argument to the current value. This operation
      * modifies the instance.
      * 
-     * <p> |<i>this</i>| &rarr; - |<i>this</i>|
+     * <p>
+     * |<i>this</i>| &rarr; - |<i>this</i>|
      * </p>
      */
     public void negate() {
@@ -277,7 +283,8 @@ public class Dimen extends DimenConstant {
      * Subtract the value of the argument from the current value. This operation
      * modifies the instance.
      * 
-     * <p> |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
+     * <p>
+     * |<i>this</i>| &rarr; |<i>this</i>| - |<i>d</i>|
      * </p>
      * 
      * @param d the Dimen to subtract

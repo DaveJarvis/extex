@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -65,11 +65,14 @@ public class InnerVerticalListMaker extends AbstractListMaker {
 
     /**
      * This value contains the previous depth for baseline calculations. In
-     * contrast to <logo>TeX</logo> the value null is used to indicate that the
-     * next box on the vertical list should be exempt from the baseline
-     * calculations.
+     * contrast to <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> the value null is used to indicate that the next box on
+     * the vertical list should be exempt from the baseline calculations.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [212]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [212]"
      */
     private Dimen prevDepth = null;
 
@@ -87,7 +90,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
     public void add(Node n) {
 
@@ -97,8 +100,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(
-     *      org.extex.typesetter.type.NodeList,
+     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public void addAndAdjust(NodeList list, TypesetterOptions options)
@@ -114,7 +116,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
      */
     public void add(FixedGlue g) throws TypesetterException {
 
@@ -124,8 +126,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext,
+     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
      */
     public void addSpace(TypesettingContext typesettingContext,
@@ -157,8 +158,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
@@ -203,8 +203,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
-     *      org.extex.core.UnicodeChar,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
@@ -256,8 +255,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
      */
     @Override
     public void setPrevDepth(FixedDimen pd) {
@@ -272,7 +270,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#showlist( java.lang.StringBuffer,
+     * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
      *      long, long)
      */
     public void showlist(StringBuffer sb, long l, long m) {

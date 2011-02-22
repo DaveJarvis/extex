@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -52,9 +52,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * With this method it is possible to load larger extensions of
- * <logo>ExTeX</logo> in one junk. There is no need to declare each single macro
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> in one junk. There is no need to declare each single macro
  * with <tt>\def</tt>. It is even possible to define extension macros in other
- * programming languages than the <logo>TeX</logo> language.
+ * programming languages than the <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> language.
  * </p>
  * 
  * <h4>Syntax</h4> The general form of this primitive is
@@ -82,6 +86,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * The following example illustrates the use of this primitive:
  * </p>
+ * 
  * <pre class="TeXSample">
  *   \nativeload{java}{my.unit.MyUnitLoader} </pre>
  * 

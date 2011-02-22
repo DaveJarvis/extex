@@ -21,7 +21,7 @@ package org.extex.core.scaled;
 
 /**
  * This class provides a fixed point number.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4404 $
  */
@@ -29,14 +29,17 @@ public class ScaledNumber {
 
     /**
      * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * @see "<logo>TeX</logo> &ndash; The Program [101]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [101]"
      */
     public static final long ONE = 1 << 16;
 
     /**
-     * Determine the printable representation of the object and append it to
-     * the given StringBuffer.
-     *
+     * Determine the printable representation of the object and append it to the
+     * given StringBuffer.
+     * 
      * @param sb the output string buffer
      * @param value the internal value in multiples of ONE
      */
@@ -87,7 +90,7 @@ public class ScaledNumber {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public ScaledNumber() {
 
@@ -96,7 +99,7 @@ public class ScaledNumber {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param value the initial value
      */
     public ScaledNumber(long value) {
@@ -106,7 +109,7 @@ public class ScaledNumber {
 
     /**
      * Add a number to the current one.
-     *
+     * 
      * @param scaled the number to add
      */
     public void add(long scaled) {
@@ -116,7 +119,7 @@ public class ScaledNumber {
 
     /**
      * Add a number to the current one.
-     *
+     * 
      * @param scaled the number to add
      */
     public void add(ScaledNumber scaled) {
@@ -126,7 +129,7 @@ public class ScaledNumber {
 
     /**
      * Divide the scaled value by a number.
-     *
+     * 
      * @param scaled the divisor
      */
     public void divide(long scaled) {
@@ -136,10 +139,10 @@ public class ScaledNumber {
 
     /**
      * Compares the current instance with another ScaledNumber for equality.
-     *
+     * 
      * @param d the other ScaledNumber to compare to. If this parameter is
-     * <code>null</code> then the comparison fails.
-     *
+     *        <code>null</code> then the comparison fails.
+     * 
      * @return <code>true</code> iff <i>|this| == |d|</i>
      */
     public boolean eq(ScaledNumber d) {
@@ -149,9 +152,9 @@ public class ScaledNumber {
 
     /**
      * Compares the current instance with another ScaledNumber.
-     *
+     * 
      * @param d the other ScaledNumber to compare to
-     *
+     * 
      * @return <code>true</code> iff this is greater or equal to d
      */
     public boolean ge(ScaledNumber d) {
@@ -161,7 +164,7 @@ public class ScaledNumber {
 
     /**
      * Getter for the value.
-     *
+     * 
      * @return the value
      */
     public long getValue() {
@@ -171,9 +174,9 @@ public class ScaledNumber {
 
     /**
      * Compares the current instance with another ScaledNumber.
-     *
+     * 
      * @param d the other ScaledNumber to compare to
-     *
+     * 
      * @return <code>true</code> iff this is less or equal to d
      */
     public boolean le(ScaledNumber d) {
@@ -183,9 +186,9 @@ public class ScaledNumber {
 
     /**
      * Compares the current instance with another ScaledNumber.
-     *
+     * 
      * @param d the other ScaledNumber to compare to
-     *
+     * 
      * @return <code>true</code> iff |this| &lt; |d|</i>
      */
     public boolean lt(ScaledNumber d) {
@@ -195,7 +198,7 @@ public class ScaledNumber {
 
     /**
      * Multiply the current value by a scaled number.
-     *
+     * 
      * @param scaled the multiplicant
      */
     public void multiply(long scaled) {
@@ -206,9 +209,9 @@ public class ScaledNumber {
     /**
      * Multiply the value by an integer fraction.
      * <p>
-     *  <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
+     * <i>length</i> = <i>length</i> * <i>nom</i> / <i>denom</i>
      * </p>
-     *
+     * 
      * @param nom nominator
      * @param denom denominator
      */
@@ -227,7 +230,7 @@ public class ScaledNumber {
 
     /**
      * Set the value to a new one
-     *
+     * 
      * @param scaled the new value
      */
     public void set(long scaled) {
@@ -237,7 +240,7 @@ public class ScaledNumber {
 
     /**
      * Setter for the value
-     *
+     * 
      * @param scaled the new value
      */
     public void set(ScaledNumber scaled) {
@@ -247,7 +250,7 @@ public class ScaledNumber {
 
     /**
      * Subtract a number from the current one.
-     *
+     * 
      * @param scaled the number to subtract
      */
     public void subtract(ScaledNumber scaled) {
@@ -257,7 +260,7 @@ public class ScaledNumber {
 
     /**
      * Determine the printable representation of the object.
-     *
+     * 
      * @return the printable representation
      */
     @Override

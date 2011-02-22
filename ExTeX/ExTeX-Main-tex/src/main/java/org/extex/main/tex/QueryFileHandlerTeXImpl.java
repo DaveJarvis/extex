@@ -28,13 +28,15 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class implements the <logo>TeX</logo> version of a query file handler.
- * It presents a prompt to the user (**) and reads a file name from the console.
+ * This class implements the <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> version of a query file handler. It presents a prompt to
+ * the user (**) and reads a file name from the console.
  * <p>
- *  If the file name starts with a backslash then it is prepended to the
- *  code to be executed. and no file name is returned.
+ * If the file name starts with a backslash then it is prepended to the code to
+ * be executed. and no file name is returned.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4708 $
  */
@@ -49,23 +51,21 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 
     /**
      * Read a line of characters from the standard input stream after a prompt
-     * has been shown.
-     * Leading spaces are ignored. At end of file an exception is thrown.
-     *
+     * has been shown. Leading spaces are ignored. At end of file an exception
+     * is thrown.
+     * 
      * @param localizer the localizer
      * @param logger the logger
      * @param prompt the prompt to present before the input is allowed
-     *
+     * 
      * @return the line read or <code>null</code> to signal EOF
-     *
+     * 
      * @throws IOException in case of an error during IO. This is rather
-     * unlikely
+     *         unlikely
      * @throws HelpingException in case of EOF on terminal
      */
-    protected String promptAndReadLine(Localizer localizer,
-            Logger logger, String prompt)
-            throws IOException,
-                HelpingException {
+    protected String promptAndReadLine(Localizer localizer, Logger logger,
+            String prompt) throws IOException, HelpingException {
 
         logger.severe(localizer.format(prompt));
 
@@ -88,20 +88,19 @@ public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 
     /**
      * Query the name of a input file.
-     *
+     * 
      * @param logger the logger stream for output messages
      * @param properties the properties
-     *
+     * 
      * @return the file name or <code>null</code> if none has been given
-     *
-     * @see org.extex.main.tex.QueryFileHandler#query(
-     *      java.util.logging.Logger,
+     * 
+     * @see org.extex.main.tex.QueryFileHandler#query(java.util.logging.Logger,
      *      java.util.Properties)
      */
     public String query(Logger logger, Properties properties) {
 
-        Localizer localizer = LocalizerFactory
-                .getLocalizer(QueryFileHandlerTeXImpl.class);
+        Localizer localizer =
+                LocalizerFactory.getLocalizer(QueryFileHandlerTeXImpl.class);
         String file;
         try {
             file = promptAndReadLine(localizer, logger, "TTP.PromptFile");

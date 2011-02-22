@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * not changed &ndash; even if the tokenizer might produce another result in the
  * meantime.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
@@ -42,79 +42,78 @@ public interface TokenStream {
 
     /**
      * Close this stream if it is a file stream.
-     *
+     * 
      * @return <code>true</code> if the closing was successful
      */
     boolean closeFileStream();
 
     /**
-     * Get the next token from the token stream.
-     * If tokens are on the push-back stack then those are delivered otherwise
-     * new tokens might be extracted utilizing the token factory and the
-     * tokenizer.
-     *
+     * Get the next token from the token stream. If tokens are on the push-back
+     * stack then those are delivered otherwise new tokens might be extracted
+     * utilizing the token factory and the tokenizer.
+     * 
      * @param factory the token factory
      * @param tokenizer the tokenizer
-     *
+     * 
      * @return the next Token or <code>null</code> if no more tokens are
-     * available
-     *
+     *         available
+     * 
      * @throws ScannerException in case of an error
      */
     Token get(TokenFactory factory, Tokenizer tokenizer)
             throws ScannerException;
 
     /**
-     * Getter for the locator.
-     * The locator describes the place the tokens have been read from in terms
-     * of the user. This information is meant for the end user to track down
-     * problems.
-     *
+     * Getter for the locator. The locator describes the place the tokens have
+     * been read from in terms of the user. This information is meant for the
+     * end user to track down problems.
+     * 
      * @return the locator
      */
     Locator getLocator();
 
     /**
      * Check to see if a further token can be acquired from the token stream.
-     *
+     * 
      * @return <code>true</code> if the stream is at its end
-     *
+     * 
      * @throws ScannerException in case that an error has been encountered.
-     *  Especially if an IO exceptions occurs it is delivered as chained
-     *  exception in a ScannerException.
+     *         Especially if an IO exceptions occurs it is delivered as chained
+     *         exception in a ScannerException.
      */
     boolean isEof() throws ScannerException;
 
     /**
      * Check to see if the token stream is currently at the end of line.
-     *
+     * 
      * @return <code>true</code> if the stream is at end of line
-     *
+     * 
      * @throws ScannerException in case that an error has been encountered.
-     *  Especially if an IO exceptions occurs it is delivered as chained
-     *  exception in a ScannerException.
+     *         Especially if an IO exceptions occurs it is delivered as chained
+     *         exception in a ScannerException.
      */
     boolean isEol() throws ScannerException;
 
     /**
      * Check whether the current stream is associated with a file to read from.
-     *
+     * 
      * @return <code>true</code> if the stream is a file stream
      */
     boolean isFileStream();
 
     /**
-     * Push back a token into the stream.
-     * If the token is <code>null</code> then nothing happens:
-     * a <code>null</code> token is not pushed!
+     * Push back a token into the stream. If the token is <code>null</code> then
+     * nothing happens: a <code>null</code> token is not pushed!
      * <p>
      * Note that it is up to the implementation to accept tokens not produced
      * with the token factory for push back. In general the behavior in such a
      * case is not defined and should be avoided.
      * </p>
-     *
+     * 
      * @param token the token to push back
-     * @see "<logo>TeX</logo> &ndash; The Program [325]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [325]"
      */
     void put(Token token);
 

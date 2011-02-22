@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -57,7 +57,9 @@ import org.extex.unit.base.Relax;
  * <p>
  * The primitive <tt>\dimenexpr</tt> provides a means to use a inline way of
  * writing mathematical expressions to be evaluated. Mathematical expressions
- * can be evaluated in <logo>ExTeX</logo> using <tt>\advance</tt>,
+ * can be evaluated in <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> using <tt>\advance</tt>,
  * <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
  * result in an assignment. This is not the case for <tt>\dimenexpr</tt>.
  * Here the intermediate results are not stored in dimen registers but kept

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,8 +45,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\righthyphenmin</code>.
  * 
- * <doc name="righthyphenmin">
- * <h3>The Primitive <tt>\righthyphenmin</tt></h3>
+ * <doc name="righthyphenmin"> <h3>The Primitive <tt>\righthyphenmin</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
@@ -70,9 +69,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * 
  * The value is stored in the <code>HyphernationTable</code>. Each
- * <code>HyphernationTable</code> is based on <code>\language</code> and has
- * its own <code>\righthyphenmin</code> value (other than the original
- * <logo>TeX</logo>).
+ * <code>HyphernationTable</code> is based on <code>\language</code> and has its
+ * own <code>\righthyphenmin</code> value (other than the original <logo>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>).
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -89,8 +90,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -105,16 +105,16 @@ public class RightHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
+     * This method is called when the macro <tt>\advance</tt> has been seen. It
+     * performs the remaining tasks for the expansion.
      * 
      * @param prefix the prefix for the command
      * @param context the processor context
      * @param source the token source to parse
      * @param typesetter the typesetter
      * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void advance(Flags prefix, Context context, TokenSource source,
@@ -156,8 +156,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -173,8 +172,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertDimen(Context context, TokenSource source,
@@ -190,8 +188,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void divide(Flags prefix, Context context, TokenSource source,
@@ -212,8 +210,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
         }
         long arg = source.parseInteger(context, source, typesetter);
         if (arg == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
         righthyphenmin /= arg;
 
@@ -238,8 +235,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -276,8 +273,8 @@ public class RightHyphenmin extends AbstractHyphenationCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void multiply(Flags prefix, Context context, TokenSource source,
@@ -325,8 +322,7 @@ public class RightHyphenmin extends AbstractHyphenationCode
      * 
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

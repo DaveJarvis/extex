@@ -96,10 +96,10 @@ import org.extex.resource.ResourceFinderFactory;
  * <dl>
  * <dt><a name="-style"/><tt>--style &lang;style-file&rang;</tt></dt>
  * <dd>This parameter contains the name of the style to use. The style contains
- * instructions which control the behavior of <logo>ExIndex</logo>. Several
- * styles are supported. The program can read makeindex styles (*.ist) as well
- * as xindy styles (*.xdy). The file name extension is used to select the
- * appropriate parser.</dd>
+ * instructions which control the behavior of <logo>&epsilon;&chi;Index</logo>.
+ * Several styles are supported. The program can read makeindex styles (*.ist)
+ * as well as xindy styles (*.xdy). The file name extension is used to select
+ * the appropriate parser.</dd>
  * 
  * <dt><tt>&lang;raw-file&rang;</tt></dt>
  * <dd>This parameter contains the file to read raw index data from. It may not
@@ -189,7 +189,7 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt><a name="-texinputs"/><tt>- -texinputs &lang;path&rang;</tt><br />
  * <tt>-texinputs=&lang;path&rang;</tt></dt>
  * <dd>This parameter contains the additional directories for searching
- * <logo>exindex</logo> input files.</dd>
+ * <logo>&epsilon;&chi;Index</logo> input files.</dd>
  * 
  * -->
  * 
@@ -216,8 +216,8 @@ import org.extex.resource.ResourceFinderFactory;
  * 
  * <p>
  * The direct invocation of the Java needs some settings to be preset. These
- * settings are needed for <logo>ExIndex</logo> to run properly. The following
- * premises are needed:
+ * settings are needed for <logo>&epsilon;&chi;Index</logo> to run properly. The
+ * following premises are needed:
  * </p>
  * <ul>
  * <li>Java needs to be installed (see section <a
@@ -229,8 +229,8 @@ import org.extex.resource.ResourceFinderFactory;
  * system for details.</li>
  * </ul>
  * <p>
- * Now <logo>ExIndex</logo> can be invoked with the same parameters as described
- * above:
+ * Now <logo>&epsilon;&chi;Index</logo> can be invoked with the same parameters
+ * as described above:
  * </p>
  * 
  * <pre class="CLIsyntax"> java org.extex.exindex.main.ExIndex
@@ -251,8 +251,8 @@ public class ExIndex extends Indexer {
     /**
      * The field <tt>LOCALIZER</tt> contains the the localizer.
      */
-    private static final Localizer LOCALIZER =
-            LocalizerFactory.getLocalizer(ExIndex.class);
+    private static final Localizer LOCALIZER = LocalizerFactory
+        .getLocalizer(ExIndex.class);
 
     /**
      * Log a {@link java.lang.Throwable Throwable} including its stack trace to
@@ -512,8 +512,8 @@ public class ExIndex extends Indexer {
             for (int i = 0; i < args.length; i++) {
                 String a = args[i];
                 if (a == null || "".equals(a)) {
-                    logger.log(Level.FINE, LOCALIZER
-                        .format("EmptyArgumentIgnored"));
+                    logger.log(Level.FINE,
+                        LOCALIZER.format("EmptyArgumentIgnored"));
                     continue;
                 }
 
@@ -599,8 +599,8 @@ public class ExIndex extends Indexer {
                     return 1;
 
                 } else if ("-help".startsWith(a) || "-?".equals(a)) {
-                    logger.log(Level.SEVERE, LOCALIZER.format("Usage",
-                        "ExIndex"));
+                    logger.log(Level.SEVERE,
+                        LOCALIZER.format("Usage", "ExIndex"));
                     return 1;
 
                 } else {
@@ -633,8 +633,8 @@ public class ExIndex extends Indexer {
             }
 
             if (transcript != null) {
-                logger.log(Level.INFO, LOCALIZER.format("Transcript",
-                    transcript));
+                logger.log(Level.INFO,
+                    LOCALIZER.format("Transcript", transcript));
             }
             if (fileHandler != null) {
                 fileHandler.flush();
@@ -643,8 +643,8 @@ public class ExIndex extends Indexer {
 
         } catch (FileNotFoundException e) {
             showBanner();
-            logger.log(Level.SEVERE, LOCALIZER.format("FileNotFound", e
-                .getMessage()));
+            logger.log(Level.SEVERE,
+                LOCALIZER.format("FileNotFound", e.getMessage()));
             logger.log(Level.FINE, "", e);
         } catch (MainException e) {
             showBanner();
@@ -656,8 +656,8 @@ public class ExIndex extends Indexer {
             logger.log(Level.FINE, "", e);
         } catch (Exception e) {
             showBanner();
-            logger.log(Level.SEVERE, LOCALIZER.format("SevereError", e
-                .toString()));
+            logger.log(Level.SEVERE,
+                LOCALIZER.format("SevereError", e.toString()));
             logger.log(Level.FINE, "", e);
             // e.printStackTrace();
         }
@@ -694,8 +694,8 @@ public class ExIndex extends Indexer {
         } else if ("3".equals(level) || "finest".equals(level)) {
             logger.setLevel(Level.FINEST);
         } else {
-            throw new MainException(LOCALIZER
-                .format("UndefinedLogLevel", level));
+            throw new MainException(
+                LOCALIZER.format("UndefinedLogLevel", level));
         }
 
         ResourceFinder finder = getResourceFinder();

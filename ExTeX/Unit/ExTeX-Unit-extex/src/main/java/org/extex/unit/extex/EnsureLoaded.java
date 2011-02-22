@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,18 +45,18 @@ import org.extex.typesetter.exception.TypesetterException;
  * This primitive initiates the loading of native code and implements the
  * primitive <tt>\ensureloaded</tt>.
  * 
- * <doc name="ensureloaded">
- * <h3>The Primitive <tt>\ensureloaded</tt></h3>
+ * <doc name="ensureloaded"> <h3>The Primitive <tt>\ensureloaded</tt></h3>
  * <p>
  * The primitive <tt>\ensureloaded</tt> dynamically requests that a unit of
- * <logo>ExTeX</logo> is loaded.
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is loaded.
  * </p>
  * <p>
  * A unit consists of primitives and some initializing actions.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The general form of this primitive is
+ * <h4>Syntax</h4> The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;ensureloaded&rang;
@@ -68,7 +68,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \ensureloaded{etex}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \ensureloaded\toks0  </pre>
  * 
  * </doc>
@@ -84,14 +85,13 @@ public class EnsureLoaded extends AbstractCode
             ResourceAware {
 
     /**
-     * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the path of
-     * the configuration.
+     * The constant <tt>CONFIG_UNIT</tt> contains the prefix for the path of the
+     * configuration.
      */
     private static final String CONFIG_UNIT = "config/unit/";
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -125,8 +125,7 @@ public class EnsureLoaded extends AbstractCode
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -136,8 +135,8 @@ public class EnsureLoaded extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -166,8 +165,7 @@ public class EnsureLoaded extends AbstractCode
      * 
      * @param factory the output stream factory to use
      * 
-     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(
-     *      org.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
@@ -177,8 +175,7 @@ public class EnsureLoaded extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     public void setResourceFinder(ResourceFinder finder) {
 

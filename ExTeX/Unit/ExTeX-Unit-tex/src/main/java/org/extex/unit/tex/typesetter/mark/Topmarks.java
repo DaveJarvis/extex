@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,52 +26,58 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This class provides an implementation for the primitive
  * <code>\topmarks</code>.
- *
- * <doc name="topmarks">
- * <h3>The Primitive <tt>\topmarks</tt></h3>
+ * 
+ * <doc name="topmarks"> <h3>The Primitive <tt>\topmarks</tt></h3>
  * <p>
- *  The primitive <tt>\topmarks</tt> provides access to the topmost mark of the
- *  given class encountered on the current page &ndash; when processing the page
- *  in the output routine.
+ * The primitive <tt>\topmarks</tt> provides access to the topmost mark of the
+ * given class encountered on the current page &ndash; when processing the page
+ * in the output routine.
  * </p>
  * <p>
- *  The primitive is a tokens register. It can be used wherever a tokens value
- *  is expected. The value is empty when no top mark of the class is available
- *  yet.
+ * The primitive is a tokens register. It can be used wherever a tokens value is
+ * expected. The value is empty when no top mark of the class is available yet.
  * </p>
  * <p>
- *  The primitive <tt>\topmark</tt> is an abbreviation for <tt>\topmarks0</tt>.
+ * The primitive <tt>\topmark</tt> is an abbreviation for <tt>\topmarks0</tt>.
  * </p>
  * <p>
- *  The class of the top mark is determined when the <tt>\marks</tt> primitive
- *  is used to insert a mark into the current list. In <logo>TeX</logo> the
- *  class used to be a number in the range 0&ndash;255; the limit has been
- *  raised in <logo>eTeX</logo> to 32767 and in <logo>ExTeX</logo> to allow
- *  any number or tokens value.
+ * The class of the top mark is determined when the <tt>\marks</tt> primitive is
+ * used to insert a mark into the current list. In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the class used to be a number in the range 0&ndash;255; the
+ * limit has been raised in <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> to 32767 and in <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> to allow any number or tokens value.
  * </p>
- *
- * <h4>Syntax</h4>
- *  The formal description of this primitive is the following:
- *  <pre class="syntax">
+ * 
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
+ * 
+ * <pre class="syntax">
  *    &lang;topmarks&rang;
  *      &rarr; <tt>\topmarks</tt> {@linkplain
  *        org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getKey(
  *        org.extex.interpreter.context.Context,
  *        org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;mark name&rang;}  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \topmarks42  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \topmarks{abc}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \topmarks\count0  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \toks0=\topmark3  </pre>
- *
+ * 
  * </doc>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
  */
@@ -84,7 +90,7 @@ public class Topmarks extends AbstractMarksCode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param token the initial token for the primitive
      */
     public Topmarks(CodeToken token) {
@@ -94,14 +100,14 @@ public class Topmarks extends AbstractMarksCode {
 
     /**
      * Get the value for this mark.
-     *
+     * 
      * @param context the interpreter context
      * @param key the key
-     *
+     * 
      * @return the value
-     *
-     * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(
-     *      org.extex.interpreter.context.Context, java.lang.String)
+     * 
+     * @see org.extex.unit.tex.typesetter.mark.AbstractMarksCode#getValue(org.extex.interpreter.context.Context,
+     *      java.lang.String)
      */
     @Override
     protected Tokens getValue(Context context, String key) {

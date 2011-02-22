@@ -35,9 +35,11 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This class tokenizes a list of nodes according to the rules of
- * <logo>TeX</logo>.
- *
+ * This class tokenizes a list of nodes according to the rules of <logo>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -57,7 +59,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
      * Add the characters extracted from a char node to the word container.
-     *
+     * 
      * @param node the character node to add to the word
      * @param word the container to add the node to
      */
@@ -77,18 +79,18 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
 
     /**
      * Collect all characters form a node list that make up a word.
-     *
+     * 
      * @param nodes the nodes to process
      * @param word the word with hyphenation marks
      * @param start the start index
      * @param lang the language in effect
-     *
+     * 
      * @return the index of the first node past the ones processed
-     *
+     * 
      * @throws HyphenationException in case of an error
      */
-    private int collectWord(NodeList nodes, UnicodeCharList word,
-            int start, Language lang) throws HyphenationException {
+    private int collectWord(NodeList nodes, UnicodeCharList word, int start,
+            Language lang) throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -126,14 +128,12 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see org.extex.language.word.WordTokenizer#findWord(
-     *      org.extex.typesetter.type.NodeList,
-     *      int,
-     *      org.extex.core.UnicodeCharList)
+     * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
+     *      int, org.extex.core.UnicodeCharList)
      */
     @Override
-    public int findWord(NodeList nodes, int start,
-            UnicodeCharList word) throws HyphenationException {
+    public int findWord(NodeList nodes, int start, UnicodeCharList word)
+            throws HyphenationException {
 
         int i = start;
         int size = nodes.size();
@@ -154,8 +154,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see org.extex.language.word.WordTokenizer#normalize(
-     *      org.extex.core.UnicodeCharList,
+     * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     @Override

@@ -61,8 +61,7 @@ import org.extex.unit.tex.macro.exceptions.EofInDefException;
  * This class provides an implementation for any macro code bound to a control
  * sequence or active character.
  * 
- * <doc name="macros" type="howto">
- * <h3>The Macro Code</h3>
+ * <doc name="macros" type="howto"> <h3>The Macro Code</h3>
  * <p>
  * TODO missing documentation
  * </p>
@@ -139,8 +138,7 @@ public class MacroCode extends AbstractCode
          * 
          * @throws ScannerException in case of an error
          * 
-         * @see org.extex.scanner.api.TokenStream#get(
-         *      org.extex.scanner.type.token.TokenFactory,
+         * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.api.Tokenizer)
          */
         public Token get(TokenFactory factory, Tokenizer tokenizer)
@@ -221,10 +219,11 @@ public class MacroCode extends AbstractCode
          * </p>
          * 
          * @param token the token to push back
-         * @see "<logo>TeX</logo> &ndash; The Program [325]"
+         * @see "<logo>T<span style=
+         *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+         *      >e</span>X</logo> &ndash; The Program [325]"
          * 
-         * @see org.extex.scanner.api.TokenStream#put(
-         *      org.extex.scanner.type.token.Token)
+         * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
          */
         public void put(Token token) {
 
@@ -249,14 +248,12 @@ public class MacroCode extends AbstractCode
     private static final Tokens[] NO_TOKENS = new Tokens[0];
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>body</tt> contains the tokens of the macro expansion
-     * text.
+     * The field <tt>body</tt> contains the tokens of the macro expansion text.
      */
     private Tokens body;
 
@@ -266,8 +263,8 @@ public class MacroCode extends AbstractCode
     private transient Logger logger;
 
     /**
-     * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag.
-     * This field indicates that no macros <tt>\par</tt> are allowed in macro
+     * The field <tt>notLong</tt> contains the negated <tt>\long</tt> flag. This
+     * field indicates that no macros <tt>\par</tt> are allowed in macro
      * parameter values.
      */
     private boolean notLong;
@@ -285,8 +282,7 @@ public class MacroCode extends AbstractCode
     private MacroPattern pattern;
 
     /**
-     * The field <tt>TRACER</tt> contains the observer for the argument
-     * parsing.
+     * The field <tt>TRACER</tt> contains the observer for the argument parsing.
      */
     private transient final ArgumentMatchingObserver TRACER =
             new ArgumentMatchingObserver() {
@@ -351,8 +347,7 @@ public class MacroCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ComparableCode#compare(
-     *      org.extex.scanner.type.token.Token,
+     * @see org.extex.interpreter.type.ComparableCode#compare(org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
     public boolean compare(Token token, Context context)
@@ -377,8 +372,7 @@ public class MacroCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger logger) {
 
@@ -388,8 +382,8 @@ public class MacroCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -448,8 +442,8 @@ public class MacroCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -492,8 +486,7 @@ public class MacroCode extends AbstractCode
      * @param context the interpreter context
      * 
      * @return the description of the primitive as list of Tokens
-     * @see org.extex.interpreter.type.Showable#show(
-     *      org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
      */
     public Tokens show(Context context) throws HelpingException {
 
@@ -549,8 +542,7 @@ public class MacroCode extends AbstractCode
                     toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
                         Namespace.DEFAULT_NAMESPACE));
                 }
-                toks
-                    .add(factory.toTokens(((ControlSequenceToken) t).getName()));
+                toks.add(factory.toTokens(((ControlSequenceToken) t).getName()));
             } else {
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
                     Namespace.DEFAULT_NAMESPACE));

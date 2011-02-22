@@ -50,18 +50,19 @@ import org.extex.typesetter.type.page.PageFactory;
  * the height <tt>\mediaheight</tt>.
  * </p>
  * <p>
- * The logical page is the area used by <logo>TeX</logo> to place material on.
- * It has a reference point which is in its upper left corner. This reference
- * point is 1&nbsp;in right and 1&nbsp;in down from the corner of the physical
- * page. The reference point can be shifted further by using the dimen registers
- * <tt>\hoffset</tt> and <tt>\voffset</tt>.
+ * The logical page is the area used by <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> to place material on. It has a reference point which is in
+ * its upper left corner. This reference point is 1&nbsp;in right and 1&nbsp;in
+ * down from the corner of the physical page. The reference point can be shifted
+ * further by using the dimen registers <tt>\hoffset</tt> and <tt>\voffset</tt>.
  * </p>
  * 
  * 
  * <h2>Parameters</h2>
  * 
- * <doc name="mediawidth" type="register">
- * <h3>The Dimen Parameter <tt>\mediawidth</tt></h3>
+ * <doc name="mediawidth" type="register"> <h3>The Dimen Parameter
+ * <tt>\mediawidth</tt></h3>
  * <p>
  * The dimen parameter <tt>\mediawidth</tt> contains the physical width of the
  * page. The logical page is usually smaller.
@@ -72,8 +73,7 @@ import org.extex.typesetter.type.page.PageFactory;
  * stored.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mediawidth&rang;
@@ -95,11 +95,11 @@ import org.extex.typesetter.type.page.PageFactory;
  * </doc>
  * 
  * 
- * <doc name="mediaheight" type="register">
- * <h3>The Dimen Parameter <tt>\mediaheight</tt></h3>
+ * <doc name="mediaheight" type="register"> <h3>The Dimen Parameter
+ * <tt>\mediaheight</tt></h3>
  * <p>
- * The dimen parameter <tt>\mediaheight</tt> contains the physical height of
- * the page. The logical page is usually smaller.
+ * The dimen parameter <tt>\mediaheight</tt> contains the physical height of the
+ * page. The logical page is usually smaller.
  * </p>
  * <p>
  * The value of this parameter is used when a page is shipped out and attached
@@ -107,8 +107,7 @@ import org.extex.typesetter.type.page.PageFactory;
  * stored.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mediaheight&rang;
@@ -130,8 +129,8 @@ import org.extex.typesetter.type.page.PageFactory;
  * </doc>
  * 
  * 
- * <doc name="hoffset" type="register">
- * <h3>The Dimen Parameter <tt>\hoffset</tt></h3>
+ * <doc name="hoffset" type="register"> <h3>The Dimen Parameter
+ * <tt>\hoffset</tt></h3>
  * <p>
  * The logical page is placed on the physical page such that the upper left
  * corner of the logical page is 1&nbsp;in down and 1&nbsp;in to the right of
@@ -147,8 +146,7 @@ import org.extex.typesetter.type.page.PageFactory;
  * stored.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hoffset&rang;
@@ -170,8 +168,8 @@ import org.extex.typesetter.type.page.PageFactory;
  * </doc>
  * 
  * 
- * <doc name="voffset" type="register">
- * <h3>The Dimen Parameter <tt>\voffset</tt></h3>
+ * <doc name="voffset" type="register"> <h3>The Dimen Parameter
+ * <tt>\voffset</tt></h3>
  * <p>
  * The logical page is placed on the physical page such that the upper left
  * corner of the logical page is 1&nbsp;in down and 1&nbsp;in to the right of
@@ -187,8 +185,7 @@ import org.extex.typesetter.type.page.PageFactory;
  * stored.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;voffset&rang;
@@ -219,8 +216,8 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      * The field <tt>x</tt> contains the static mapping from integers to the
      * corresponding index of the count register for the page number.
      */
-    private static final String[] NO =
-            {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"};
+    private static final String[] NO = {"0", "1", "2", "3", "4", "5", "6", "7",
+            "8", "9"};
 
     /**
      * The field <tt>visitor</tt> contains the node visitor to determine which
@@ -238,8 +235,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -253,8 +249,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      * @param pageContext the interpreter context
      * @param typesetter the typesetter
      * 
-     * @return the new instance or <code>null</code> if the page would be
-     *         empty
+     * @return the new instance or <code>null</code> if the page would be empty
      * 
      * @throws GeneralException in case of an error
      */

@@ -81,27 +81,26 @@ import org.extex.typesetter.type.node.GlueNode;
  * This is the list maker for the inline math formulae.
  * 
  * 
- * <doc name="mathsurround" type="register">
- * <h3>The Dimen Parameter <tt>\mathsurround</tt></h3>
+ * <doc name="mathsurround" type="register"> <h3>The Dimen Parameter
+ * <tt>\mathsurround</tt></h3>
  * <p>
- * The dimen parameter <tt>\mathsurround</tt> is used to put some spacing
- * around mathematical formulae. The value at the end of the formula is used
- * before and after the formula. This additional space will be discarded at the
- * end of a line.
+ * The dimen parameter <tt>\mathsurround</tt> is used to put some spacing around
+ * mathematical formulae. The value at the end of the formula is used before and
+ * after the formula. This additional space will be discarded at the end of a
+ * line.
  * </p>
  * 
  * </doc>
  * 
- * <doc name="everymath" type="register">
- * <h3>The Tokens Parameter <tt>\everymath</tt></h3>
+ * <doc name="everymath" type="register"> <h3>The Tokens Parameter
+ * <tt>\everymath</tt></h3>
  * <p>
  * The tokens parameter <tt>\everymath</tt> contains a list of tokens which is
  * inserted at the beginning of inline math. Those tokens take effect after the
  * math mode has been entered but before any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;everymath&rang;
@@ -120,16 +119,15 @@ import org.extex.typesetter.type.node.GlueNode;
  * 
  * </doc>
  * 
- * <doc name="everymathend" type="register">
- * <h3>The Tokens Parameter <tt>\everymathend</tt></h3>
+ * <doc name="everymathend" type="register"> <h3>The Tokens Parameter
+ * <tt>\everymathend</tt></h3>
  * <p>
  * The tokens parameter <tt>\everymathend</tt> contains a list of tokens which
  * is inserted at the end of inline math. Those tokens take effect just before
  * the math mode is ended but after any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *     &lang;everymathend&rang;
@@ -334,14 +332,14 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * The field <tt>closing</tt> contains the indicator that this list maker
-     * is in the mode of processing the terminal tokens.
+     * The field <tt>closing</tt> contains the indicator that this list maker is
+     * in the mode of processing the terminal tokens.
      */
     private boolean closing = false;
 
     /**
-     * The field <tt>insertionPoint</tt> contains the the MathList to which
-     * the next noads should be added.
+     * The field <tt>insertionPoint</tt> contains the the MathList to which the
+     * next noads should be added.
      */
     private MathList insertionPoint;
 
@@ -351,8 +349,8 @@ public class MathListMaker extends HorizontalListMaker
     private Logger logger = null;
 
     /**
-     * The field <tt>nodes</tt> contains the list of nodes encapsulated in
-     * this instance.
+     * The field <tt>nodes</tt> contains the list of nodes encapsulated in this
+     * instance.
      */
     private Noad noads;
 
@@ -381,7 +379,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
      */
     public void add(FixedDimen g) throws TypesetterException {
 
@@ -396,8 +394,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.typesetter.type.math.MathCode,
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(org.extex.typesetter.type.math.MathCode,
      *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void add(MathCode mc, TypesettingContext tc)
@@ -414,8 +411,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.typesetter.type.math.MathDelimiter,
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.typesetter.tc.TypesettingContext)
      */
     public void add(MathDelimiter delimiter, TypesettingContext tc)
@@ -433,8 +429,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.core.muskip.Mudimen)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(org.extex.core.muskip.Mudimen)
      */
     public void add(Mudimen skip) throws TypesetterException {
 
@@ -448,8 +443,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.core.muskip.Muskip)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(org.extex.core.muskip.Muskip)
      */
     public void add(Muskip glue) throws TypesetterException {
 
@@ -464,8 +458,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#add(org.extex.typesetter.type.noad.Noad)
      */
     public void add(Noad noad) throws TypesetterException {
 
@@ -482,7 +475,7 @@ public class MathListMaker extends HorizontalListMaker
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
     @Override
     public void add(Node node)
@@ -506,14 +499,14 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor
-     *        should be used.
+     *        <code>null</code> to indicate that the default space factor should
+     *        be used.
      * 
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext, FixedCount)
+     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
+     *      FixedCount)
      */
     @Override
     public void addSpace(TypesettingContext typesettingContext,
@@ -536,7 +529,9 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     * @see "<logo>TeX</logo> &ndash; The Program [719]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [719]"
      */
     @Override
     public NodeList complete(TypesetterOptions context)
@@ -578,8 +573,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.HorizontalListMaker#cr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.HorizontalListMaker#cr(org.extex.interpreter.context.Context,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
@@ -595,8 +589,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger log) {
 
@@ -702,8 +695,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#left(org.extex.typesetter.type.math.MathDelimiter)
      */
     public void left(MathDelimiter delimiter) throws TypesetterException {
 
@@ -729,8 +721,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.HorizontalListMaker#letter(
-     *      org.extex.core.UnicodeChar,
+     * @see org.extex.typesetter.listMaker.HorizontalListMaker#letter(org.extex.core.UnicodeChar,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
@@ -766,8 +757,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#mathShift(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#mathShift(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
@@ -800,8 +790,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#middle(org.extex.typesetter.type.math.MathDelimiter)
      */
     public void middle(MathDelimiter delimiter) throws TypesetterException {
 
@@ -827,7 +816,9 @@ public class MathListMaker extends HorizontalListMaker
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see org.extex.typesetter.ListMaker#par()
-     * @see "<logo>TeX</logo> &ndash; The Program [1047]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [1047]"
      */
     @Override
     public void par() throws TypesetterException, ConfigurationException {
@@ -855,8 +846,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(
-     *      org.extex.typesetter.type.math.MathDelimiter)
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#right(org.extex.typesetter.type.math.MathDelimiter)
      */
     public void right(MathDelimiter delimiter) throws TypesetterException {
 
@@ -905,8 +895,8 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#scanNoad(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      Token, org.extex.interpreter.context.group.GroupType)
      */
@@ -973,7 +963,7 @@ public class MathListMaker extends HorizontalListMaker
      * @param depth the depth of the list display
      * @param breadth the breadth of the list display
      * 
-     * @see org.extex.typesetter.ListMaker#showlist( java.lang.StringBuffer,
+     * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
      *      long, long)
      */
     @Override
@@ -985,8 +975,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#subscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#subscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -1014,8 +1003,7 @@ public class MathListMaker extends HorizontalListMaker
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#superscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#superscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
@@ -1054,8 +1042,7 @@ public class MathListMaker extends HorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(
-     *      org.extex.typesetter.type.math.MathDelimiter,
+     * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.core.dimen.FixedDimen,
      *      org.extex.typesetter.tc.TypesettingContext)

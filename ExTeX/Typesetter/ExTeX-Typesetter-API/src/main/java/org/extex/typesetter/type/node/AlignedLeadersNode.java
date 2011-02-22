@@ -32,15 +32,16 @@ import org.extex.typesetter.type.OrientedNode;
  * This node represents an aligned leaders node as used by the primitive
  * <tt>\leaders</tt>.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [149]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [149]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
 public class AlignedLeadersNode extends AbstractLeadersNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -58,10 +59,12 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
     /**
      * {@inheritDoc}
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [626]"
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(
-     *      long, org.extex.typesetter.type.Node, 
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [626]"
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillHorizontally(long,
+     *      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen)
      */
     @Override
     protected Node fillHorizontally(long total, Node node, FixedDimen posX,
@@ -99,9 +102,9 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(
-     *      long, org.extex.typesetter.type.Node,
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractLeadersNode#fillVertically(long,
+     *      org.extex.typesetter.type.Node, org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen)
      */
     @Override
     protected Node fillVertically(long total, Node node, FixedDimen posX,
@@ -139,8 +142,8 @@ public class AlignedLeadersNode extends AbstractLeadersNode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,7 @@ import org.extex.core.exception.helping.HelpingException;
 /**
  * This interface describes the container for all data of an interpreter
  * context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,47 +33,55 @@ public interface ContextDimen {
 
     /**
      * Get the current value of the dimen register with a given name.
-     *
+     * 
      * @param name the name or the number of the register
-     *
+     * 
      * @return the dimen register for the given name
-     *
+     * 
      * @see #setDimen(String, Dimen, boolean)
      * @see #setDimen(String, long, boolean)
      */
     Dimen getDimen(String name);
 
     /**
-     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
-     * register in all requested groups. Dimen registers are named, either with
-     * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
-     *
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
+     * requested groups. Dimen registers are named, either with a number or an
+     * arbitrary string. The numbered registers where limited to 256 in
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param name the name or the number of the register
      * @param value the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws HelpingException in case of problems in an observer
-     *
+     * 
      * @see #getDimen(String)
      */
     void setDimen(String name, Dimen value, boolean global)
             throws HelpingException;
 
     /**
-     * Setter for the {@link org.extex.core.dimen.Dimen Dimen}
-     * register in all requested groups. Dimen registers are named, either with
-     * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
-     *
+     * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
+     * requested groups. Dimen registers are named, either with a number or an
+     * arbitrary string. The numbered registers where limited to 256 in
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param name the name or the number of the register
      * @param value the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws HelpingException in case of problems in an observer
      */
     void setDimen(String name, long value, boolean global)

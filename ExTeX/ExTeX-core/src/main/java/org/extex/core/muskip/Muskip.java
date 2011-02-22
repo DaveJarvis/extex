@@ -35,8 +35,7 @@ import org.extex.core.glue.GlueComponent;
 public class Muskip extends Mudimen implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -230,7 +229,9 @@ public class Muskip extends Mudimen implements Serializable {
      * Return the string representation of the instance.
      * 
      * @return the string representation of this glue
-     * @see "<logo>TeX</logo> &ndash; The Program [???]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [???]"
      */
     @Override
     public String toString() {

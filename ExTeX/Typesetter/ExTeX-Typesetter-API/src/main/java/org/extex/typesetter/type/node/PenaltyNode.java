@@ -29,9 +29,11 @@ import org.extex.typesetter.type.NodeVisitor;
  * This class represents a Node which holds a penalty value. It is used during
  * the paragraph breaking or page breaking to control the algorithm. This node
  * should be ignored by the DocumentWriter.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [157]"
- *
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [157]"
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -50,10 +52,12 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param thePenalty the penalty value
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [158]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [158]"
      */
     public PenaltyNode(Count thePenalty) {
 
@@ -62,7 +66,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param thePenalty the penalty value
      */
     public PenaltyNode(long thePenalty) {
@@ -72,7 +76,7 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
      * Getter for penalty.
-     *
+     * 
      * @return the penalty.
      */
     public long getPenalty() {
@@ -81,25 +85,23 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
     }
 
     /**
-     * This method returns the printable representation.
-     * This is meant to produce a exhaustive form as it is used in tracing
-     * output to the log file.
-     *
+     * This method returns the printable representation. This is meant to
+     * produce a exhaustive form as it is used in tracing output to the log
+     * file.
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [194]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [194]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer()
             .format("String.Format", Long.toString(penalty)));
@@ -109,12 +111,11 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -125,16 +126,15 @@ public class PenaltyNode extends AbstractNode implements Node, Discardable {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

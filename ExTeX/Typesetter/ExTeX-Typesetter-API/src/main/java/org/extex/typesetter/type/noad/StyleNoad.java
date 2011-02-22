@@ -33,7 +33,9 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * processing.
  * 
  * <p>
- * <logo>TeX</logo> defined a set of variations to a style. They are defined in
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> defined a set of variations to a style. They are defined in
  * the following table:
  * </p>
  * <table>
@@ -139,8 +141,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * The family 2 contains the extended characters.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;textfont&rang;
@@ -159,11 +160,11 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * </doc>
  * 
  * 
- * <doc name="scriptfont" type="register">
- * <h3>The Font Parameter <tt>\scriptfont</tt></h3>
+ * <doc name="scriptfont" type="register"> <h3>The Font Parameter
+ * <tt>\scriptfont</tt></h3>
  * <p>
- * The font parameter <tt>\scriptfont</tt> contains font to be used in math
- * mode for script style typesetting.
+ * The font parameter <tt>\scriptfont</tt> contains font to be used in math mode
+ * for script style typesetting.
  * </p>
  * <p>
  * Three families are used for math typesetting. The family 0 contains the
@@ -171,8 +172,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * The family 2 contains the extended characters.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scriptfont&rang;
@@ -191,8 +191,8 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * </doc>
  * 
  * 
- * <doc name="scriptscriptfont" type="register">
- * <h3>The Font Parameter <tt>\scriptscriptfont</tt></h3>
+ * <doc name="scriptscriptfont" type="register"> <h3>The Font Parameter
+ * <tt>\scriptscriptfont</tt></h3>
  * <p>
  * The font parameter <tt>\scriptscriptfont</tt> contains font to be used in
  * math mode for script-script style typesetting.
@@ -203,8 +203,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * The family 2 contains the extended characters.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scriptscriptfont&rang;
@@ -246,16 +245,14 @@ public final class StyleNoad implements Noad {
     /**
      * The field <tt>CRAMPED</tt> contains the mapping to cramped styles.
      */
-    private static final StyleNoad[] CRAMPED =
-            {STYLE[1], STYLE[1], STYLE[3], STYLE[3], STYLE[5], STYLE[5],
-                    STYLE[7], STYLE[7]};
+    private static final StyleNoad[] CRAMPED = {STYLE[1], STYLE[1], STYLE[3],
+            STYLE[3], STYLE[5], STYLE[5], STYLE[7], STYLE[7]};
 
     /**
      * The field <tt>DENOM</tt> contains the mapping to denom styles.
      */
-    private static final StyleNoad[] DENOM =
-            {STYLE[5], STYLE[6], STYLE[7], STYLE[7], STYLE[7], STYLE[7],
-                    STYLE[7], STYLE[7]};
+    private static final StyleNoad[] DENOM = {STYLE[5], STYLE[6], STYLE[7],
+            STYLE[7], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
 
     /**
      * The constant <tt>DISPLAYSTYLE</tt> contains the value for the display
@@ -266,9 +263,8 @@ public final class StyleNoad implements Noad {
     /**
      * The field <tt>NUM</tt> contains the mapping to num styles.
      */
-    private static final StyleNoad[] NUM =
-            {STYLE[2], STYLE[3], STYLE[4], STYLE[5], STYLE[6], STYLE[6],
-                    STYLE[6], STYLE[7]};
+    private static final StyleNoad[] NUM = {STYLE[2], STYLE[3], STYLE[4],
+            STYLE[5], STYLE[6], STYLE[6], STYLE[6], STYLE[7]};
 
     /**
      * The constant <tt>SCRIPTSCRIPTSTYLE</tt> contains the value for the
@@ -285,16 +281,14 @@ public final class StyleNoad implements Noad {
     /**
      * The field <tt>SUB</tt> contains the mapping to sub styles.
      */
-    private static final StyleNoad[] SUB =
-            {STYLE[5], STYLE[5], STYLE[5], STYLE[5], STYLE[7], STYLE[7],
-                    STYLE[7], STYLE[7]};
+    private static final StyleNoad[] SUB = {STYLE[5], STYLE[5], STYLE[5],
+            STYLE[5], STYLE[7], STYLE[7], STYLE[7], STYLE[7]};
 
     /**
      * The field <tt>SUP</tt> contains the mapping to sup styles.
      */
-    private static final StyleNoad[] SUP =
-            {STYLE[4], STYLE[5], STYLE[4], STYLE[5], STYLE[6], STYLE[7],
-                    STYLE[6], STYLE[7]};
+    private static final StyleNoad[] SUP = {STYLE[4], STYLE[5], STYLE[4],
+            STYLE[5], STYLE[6], STYLE[7], STYLE[6], STYLE[7]};
 
     /**
      * The constant <tt>TEXTSTYLE</tt> contains the value for the text style.
@@ -307,8 +301,9 @@ public final class StyleNoad implements Noad {
     private String fontName;
 
     /**
-     * The field <tt>no</tt> contains the <logo>TeX</logo> encoding of the
-     * style.
+     * The field <tt>no</tt> contains the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding of the style.
      */
     private int no;
 
@@ -318,9 +313,10 @@ public final class StyleNoad implements Noad {
     private MathSpacing spacingClass = MathSpacing.UNDEF;
 
     /**
-     * The field <tt>style</tt> contains the <logo>TeX</logo> name for the
-     * style. It has the values <tt>textstyle</tt>, <tt>scriptstyle</tt>,
-     * or <tt>scriptscriptstyle</tt>.
+     * The field <tt>style</tt> contains the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> name for the style. It has the values
+     * <tt>textstyle</tt>, <tt>scriptstyle</tt>, or <tt>scriptscriptstyle</tt>.
      */
     private String style;
 
@@ -472,8 +468,7 @@ public final class StyleNoad implements Noad {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
-     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
      */
     public void setSpacingClass(MathSpacing spacingClass) {
 
@@ -485,8 +480,7 @@ public final class StyleNoad implements Noad {
      * 
      * @param subscript the subscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSubscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
      */
     public void setSubscript(Noad subscript) {
 
@@ -498,8 +492,7 @@ public final class StyleNoad implements Noad {
      * 
      * @param superscript the superscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
      */
     public void setSuperscript(Noad superscript) {
 
@@ -549,8 +542,7 @@ public final class StyleNoad implements Noad {
      * @param sb the string buffer
      * 
      * @see "TTP [694]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
 
@@ -563,8 +555,8 @@ public final class StyleNoad implements Noad {
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
      * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer,
+     *      int)
      */
     public void toString(StringBuffer sb, int depth) {
 
@@ -585,8 +577,7 @@ public final class StyleNoad implements Noad {
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,

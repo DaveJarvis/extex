@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,37 +36,38 @@ import org.extex.unit.base.register.CharCode;
 /**
  * This class provides an implementation for the primitive
  * <code>\hyphenation</code>.
- *
- * <doc name="hyphenation">
- * <h3>The Primitive <tt>\hyphenation</tt></h3>
+ * 
+ * <doc name="hyphenation"> <h3>The Primitive <tt>\hyphenation</tt></h3>
  * <p>
- *  The primitive <tt>\hyphenation</tt> can be used to add hyphenation
- *  exceptions to the current language. The argument is a list of white-space
- *  separated words enclosed in braces. The hyphenation points are indicated
- *  by including a hyphen character (-) at the appropriate places.
+ * The primitive <tt>\hyphenation</tt> can be used to add hyphenation exceptions
+ * to the current language. The argument is a list of white-space separated
+ * words enclosed in braces. The hyphenation points are indicated by including a
+ * hyphen character (-) at the appropriate places.
  * </p>
  * <p>
- *  When paragraph breaking needs to insert additional break points these
- *  hyphenation points are translated into discretionaries. The exceptions
- *  specified with the primitive <tt>\hyphenation</tt> have precedence before
- *  the hyphenation points found with the help of hyphenation patterns.
+ * When paragraph breaking needs to insert additional break points these
+ * hyphenation points are translated into discretionaries. The exceptions
+ * specified with the primitive <tt>\hyphenation</tt> have precedence before the
+ * hyphenation points found with the help of hyphenation patterns.
  * </p>
  * <p>
- *  One example which make use of this precedence is the hyphenation
- *  exception without any hyphen characters. This can be used to suppress any
- *  hyphenation in a single word.
+ * One example which make use of this precedence is the hyphenation exception
+ * without any hyphen characters. This can be used to suppress any hyphenation
+ * in a single word.
  * </p>
- *
+ * 
  * <h4>Extension</h4>
  * <p>
- *  In addition to the behavior of the original <logo>TeX</logo> definition
- *  this implementation can be used to insert words with hyphens as well. To
- *  specify the places where a hyphen occurs literally you just have to include
- *  two hyphens in the hyphenation list.
+ * In addition to the behavior of the original <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> definition this implementation can be used to insert words
+ * with hyphens as well. To specify the places where a hyphen occurs literally
+ * you just have to include two hyphens in the hyphenation list.
  * </p>
- *
+ * 
  * <h4>Syntax</h4>
- *  <pre class="syntax">
+ * 
+ * <pre class="syntax">
  *    &lang;hyphenation&rang;
  *     &rarr; <tt>\hyphenation</tt> {&lang;words&rang;}
  *     
@@ -74,16 +75,18 @@ import org.extex.unit.base.register.CharCode;
  *     &rarr; 
  *      |  &lang;word&rang;
  *      |  &lang;word&rang; &lang;spaces&rang; &lang;words&rang;  </pre>
- *
+ * 
  * <h4>Examples</h4>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *   \hyphenation{as-so-ciate as-so-ciates}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *   \hyphenation{Gro&szlig;--Ger-au}  </pre>
- *
+ * 
  * </doc>
- *
- *
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
@@ -97,7 +100,7 @@ public class Hyphenation extends HyphenationPrimitive {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param token the initial token for the primitive
      */
     public Hyphenation(CodeToken token) {
@@ -107,20 +110,19 @@ public class Hyphenation extends HyphenationPrimitive {
 
     /**
      * Collect all characters that make up a word.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param token the first token already read
-     *
+     * 
      * @return the first character not included into the word
-     *
+     * 
      * @throws CatcodeException in case of an exception in token creation
      * @throws HelpingException in case of an error
      */
     @Override
-    protected UnicodeCharList collectWord(Context context,
-            TokenSource source, Token token)
-            throws CatcodeException, HelpingException {
+    protected UnicodeCharList collectWord(Context context, TokenSource source,
+            Token token) throws CatcodeException, HelpingException {
 
         UnicodeCharList word = new UnicodeCharList();
         UnicodeChar uc;

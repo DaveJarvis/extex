@@ -39,16 +39,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\romannumeral</code>.
  * 
- * <doc name="romannumeral">
- * <h3>The Primitive <tt>\romannumeral</tt></h3>
+ * <doc name="romannumeral"> <h3>The Primitive <tt>\romannumeral</tt></h3>
  * <p>
- * The primitive <tt>\romannumeral</tt> takes a single argument of a number
- * and produces the representation of this number in lower case roman numerals.
- * If the number is less than one than nothing is produced at all.
+ * The primitive <tt>\romannumeral</tt> takes a single argument of a number and
+ * produces the representation of this number in lower case roman numerals. If
+ * the number is less than one than nothing is produced at all.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;romannumeral&rang;
@@ -60,13 +58,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \romannumeral\count1  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \romannumeral 2004  </pre>
  * 
  * </doc>
  * 
  * 
- * @see "<logo>TeX</logo> &ndash; the Program [69]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; the Program [69]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
@@ -74,15 +75,14 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Romannumeral extends AbstractCode implements ExpandableCode {
 
     /**
-     * The field <tt>magic</tt> contains the magical values used to compute
-     * the string representation.
+     * The field <tt>magic</tt> contains the magical values used to compute the
+     * string representation.
      */
-    private static final char[] MAGIC =
-            {'m', '2', 'd', '5', 'c', '2', 'l', '5', 'x', '2', 'v', '5', 'i'};
+    private static final char[] MAGIC = {'m', '2', 'd', '5', 'c', '2', 'l',
+            '5', 'x', '2', 'v', '5', 'i'};
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -99,8 +99,8 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -113,8 +113,8 @@ public class Romannumeral extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

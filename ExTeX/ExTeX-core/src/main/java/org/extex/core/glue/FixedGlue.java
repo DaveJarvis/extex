@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,8 +23,8 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 
 /**
- * This interface describes the features of a
- * {@link org.extex.core.glue.Glue Glue} which do not modify the value.
+ * This interface describes the features of a {@link org.extex.core.glue.Glue
+ * Glue} which do not modify the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
@@ -44,11 +44,10 @@ public interface FixedGlue {
     FixedGlue ZERO = new Glue(0);
 
     /**
-     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus
-     * 1fil.
+     * The constant <tt>SS</tt> contains the glue for 0pt plus 1fil minus 1fil.
      */
-    FixedGlue S_S =
-            new Glue(Dimen.ZERO, GlueComponent.ONE_FIL, GlueComponent.ONE_FIL);
+    FixedGlue S_S = new Glue(Dimen.ZERO, GlueComponent.ONE_FIL,
+        GlueComponent.ONE_FIL);
 
     /**
      * Make a copy of this object.
@@ -106,7 +105,9 @@ public interface FixedGlue {
      * Provide a string representation of this instance.
      * 
      * @return the string representation of this glue
-     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [178,177]"
      */
     String toString();
 

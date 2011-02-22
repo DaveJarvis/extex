@@ -22,7 +22,7 @@ package org.extex.core.count;
 /**
  * This class represents a long integer value. It is used for instance as count
  * register.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
@@ -36,26 +36,25 @@ public class Count extends CountConstant {
     public static final FixedCount ONE = new CountConstant(1);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The constant <tt>THOUSAND</tt> contains the count register with the
-     * value 1000. This count register is in fact immutable.
+     * The constant <tt>THOUSAND</tt> contains the count register with the value
+     * 1000. This count register is in fact immutable.
      */
     public static final FixedCount THOUSAND = new CountConstant(1000);
 
     /**
-     * The constant <tt>ZERO</tt> contains the count register with the value
-     * 0. This count register is in fact immutable.
+     * The constant <tt>ZERO</tt> contains the count register with the value 0.
+     * This count register is in fact immutable.
      */
     public static final FixedCount ZERO = new CountConstant(0);
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param count the reference to be copied
      */
     public Count(FixedCount count) {
@@ -65,7 +64,7 @@ public class Count extends CountConstant {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param value the value
      */
     public Count(long value) {
@@ -82,7 +81,7 @@ public class Count extends CountConstant {
 
     /**
      * Add a long to the value. This operation modifies the value.
-     *
+     * 
      * @param val the value to add to
      */
     public void add(long val) {
@@ -92,7 +91,7 @@ public class Count extends CountConstant {
 
     /**
      * Add a Count to the value. This operation modifies the value.
-     *
+     * 
      * @param val the value to add to
      */
     public void add(FixedCount val) {
@@ -102,9 +101,9 @@ public class Count extends CountConstant {
 
     /**
      * Divide the value by a long. This operation modifies the value.
-     *
+     * 
      * @param denom the denominator to divide by
-     *
+     * 
      * @throws ArithmeticException in case of a division by zero
      */
     public void divide(long denom) throws ArithmeticException {
@@ -118,9 +117,9 @@ public class Count extends CountConstant {
 
     /**
      * Divide the value by a denominator. This operation modifies the value.
-     *
+     * 
      * @param denom the denominator to divide by
-     *
+     * 
      * @throws ArithmeticException in case of a division by zero
      */
     public void divide(FixedCount denom) throws ArithmeticException {
@@ -136,8 +135,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#eq(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean eq(FixedCount count) {
@@ -148,8 +146,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#ge(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean ge(FixedCount count) {
@@ -159,7 +156,7 @@ public class Count extends CountConstant {
 
     /**
      * Getter for the value
-     *
+     * 
      * @return the value
      */
     @Override
@@ -171,8 +168,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#gt(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean gt(FixedCount count) {
@@ -183,8 +179,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#le(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean le(FixedCount count) {
@@ -195,8 +190,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#lt(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean lt(FixedCount count) {
@@ -206,7 +200,7 @@ public class Count extends CountConstant {
 
     /**
      * Multiply the value with a factor. This operation modifies the value.
-     *
+     * 
      * @param factor the factor to multiply with
      */
     public void multiply(long factor) {
@@ -216,7 +210,7 @@ public class Count extends CountConstant {
 
     /**
      * Multiply the value with a factor. This operation modifies the value.
-     *
+     * 
      * @param factor the factor to multiply with
      */
     public void multiply(FixedCount factor) {
@@ -227,8 +221,7 @@ public class Count extends CountConstant {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#ne(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
      */
     @Override
     public boolean ne(FixedCount count) {
@@ -238,9 +231,9 @@ public class Count extends CountConstant {
 
     /**
      * Setter for the value.
-     *
+     * 
      * @param l the new value
-     *
+     * 
      * @see #set(FixedCount)
      */
     public void set(long l) {
@@ -250,9 +243,9 @@ public class Count extends CountConstant {
 
     /**
      * Setter for the value.
-     *
+     * 
      * @param c the new value
-     *
+     * 
      * @see #set(long)
      */
     public void set(FixedCount c) {
@@ -262,11 +255,12 @@ public class Count extends CountConstant {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the Count.
-     *
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
+     * 
      * @return the printable representation
-     *
+     * 
      * @see #toString(StringBuffer)
      * @see org.extex.core.count.CountConstant#toString()
      */
@@ -278,11 +272,12 @@ public class Count extends CountConstant {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the Count.
-     *
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see #toString()
      * @see org.extex.core.count.CountConstant#toString(java.lang.StringBuffer)
      */

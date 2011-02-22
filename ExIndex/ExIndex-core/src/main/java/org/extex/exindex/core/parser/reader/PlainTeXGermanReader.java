@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,9 @@ import java.io.IOException;
 import java.io.Reader;
 
 /**
- * Read a file and map plain<logo>TeX</logo> as well as double-quote sequences
+ * Read a file and map plain<logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> as well as double-quote sequences
  * defined in <tt>german.sty</tt> to characters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

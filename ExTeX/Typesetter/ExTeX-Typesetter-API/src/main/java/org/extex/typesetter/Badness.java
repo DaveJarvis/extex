@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -54,7 +54,9 @@ public final class Badness {
      * <p>
      * 108. The next subroutine is used to compute the badness of glue, when a
      * total t is supposed to be made from amounts that sum to s. According to
-     * The <logo>TeX</logo>book, the badness of this situation is
+     * The <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>book, the badness of this situation is
      * 100(t/s)<sup>3</sup>; however, badness is simply a heuristic, so we need
      * not squeeze out the last drop of accuracy when computing it. All we
      * really want is an approximation that has similar properties.
@@ -63,9 +65,11 @@ public final class Badness {
      * The actual method used to compute the badness is easier to read from the
      * program than to describe in words. It produces an integer value that is a
      * reasonably close approximation to 100(t/s)<sup>3</sup>, and all
-     * implementations of <logo>TeX</logo> should use precisely this method. Any
-     * badness of 2<sup>13</sup> or more is treated as infinitely bad, and
-     * represented by 10000.
+     * implementations of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> should use precisely this method. Any badness of
+     * 2<sup>13</sup> or more is treated as infinitely bad, and represented by
+     * 10000.
      * </p>
      * <p>
      * It is not difficult to prove that

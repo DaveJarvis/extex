@@ -31,15 +31,14 @@ import java.io.Serializable;
 public class CountConstant implements FixedCount, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>value</tt> contains the value of the count register.
-     * Note:  This variable is protected to avoid that the derived class Count
-     * has to excessively use getters and setters.
+     * The field <tt>value</tt> contains the value of the count register. Note:
+     * This variable is protected to avoid that the derived class Count has to
+     * excessively use getters and setters.
      */
     protected long value;
 
@@ -74,7 +73,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#eq( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#eq(org.extex.core.count.FixedCount)
      */
     public boolean eq(FixedCount count) {
 
@@ -84,7 +83,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#ge( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#ge(org.extex.core.count.FixedCount)
      */
     public boolean ge(FixedCount count) {
 
@@ -104,7 +103,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#gt( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#gt(org.extex.core.count.FixedCount)
      */
     public boolean gt(FixedCount count) {
 
@@ -114,7 +113,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#le( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#le(org.extex.core.count.FixedCount)
      */
     public boolean le(FixedCount count) {
 
@@ -124,7 +123,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#lt( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#lt(org.extex.core.count.FixedCount)
      */
     public boolean lt(FixedCount count) {
 
@@ -134,7 +133,7 @@ public class CountConstant implements FixedCount, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.count.FixedCount#ne( org.extex.core.count.FixedCount)
+     * @see org.extex.core.count.FixedCount#ne(org.extex.core.count.FixedCount)
      */
     public boolean ne(FixedCount count) {
 
@@ -143,8 +142,9 @@ public class CountConstant implements FixedCount, Serializable {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the Count.
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
      * 
      * @return the printable representation
      * 
@@ -159,8 +159,9 @@ public class CountConstant implements FixedCount, Serializable {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the Count.
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the Count.
      * 
      * @param sb the target string buffer
      * 

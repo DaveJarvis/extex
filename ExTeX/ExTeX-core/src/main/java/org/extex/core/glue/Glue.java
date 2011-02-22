@@ -35,8 +35,7 @@ import org.extex.core.dimen.FixedDimen;
 public class Glue implements Serializable, FixedGlue {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -182,7 +181,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @return <code>true</code> iff they are the same
      * 
-     * @see org.extex.core.glue.FixedGlue#eq( org.extex.core.glue.FixedGlue)
+     * @see org.extex.core.glue.FixedGlue#eq(org.extex.core.glue.FixedGlue)
      */
     public boolean eq(FixedGlue glue) {
 
@@ -191,13 +190,13 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff
-     * the current length is greater or equal than the given length.
+     * Compare this value with a given glue and return <code>true</code> iff the
+     * current length is greater or equal than the given length.
      * 
      * @param x the value to compare to
      * 
-     * @return <code>true</code> iff the current length is greater or equal
-     *         than the given one
+     * @return <code>true</code> iff the current length is greater or equal than
+     *         the given one
      */
     public boolean ge(FixedDimen x) {
 
@@ -247,8 +246,8 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff
-     * the current length is greater than the given length.
+     * Compare this value with a given glue and return <code>true</code> iff the
+     * current length is greater than the given length.
      * 
      * @param x the value to compare to
      * 
@@ -261,8 +260,8 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff
-     * the current length is less or equal than the given length.
+     * Compare this value with a given glue and return <code>true</code> iff the
+     * current length is less or equal than the given length.
      * 
      * @param x the value to compare to
      * 
@@ -275,8 +274,8 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Compare this value with a given glue and return <code>true</code> iff
-     * the current length is less than the given length.
+     * Compare this value with a given glue and return <code>true</code> iff the
+     * current length is less than the given length.
      * 
      * @param x the value to compare to
      * 
@@ -346,7 +345,7 @@ public class Glue implements Serializable, FixedGlue {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.core.glue.FixedGlue#ne( org.extex.core.glue.FixedGlue)
+     * @see org.extex.core.glue.FixedGlue#ne(org.extex.core.glue.FixedGlue)
      */
     public boolean ne(FixedGlue glue) {
 
@@ -443,11 +442,14 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>TeX</logo> to
-     * print the skip register.
+     * is exactly the string which would be produced by <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> to print the skip register.
      * 
      * @return the string representation of this glue
-     * @see "<logo>TeX</logo> &ndash; The Program [178,177]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [178,177]"
      */
     @Override
     public String toString() {

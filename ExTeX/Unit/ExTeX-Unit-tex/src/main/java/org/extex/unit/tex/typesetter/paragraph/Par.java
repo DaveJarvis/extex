@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,26 +31,32 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\par</code>.
  * 
- * <doc name="par">
- * <h3>The Primitive <tt>\par</tt></h3>
+ * <doc name="par"> <h3>The Primitive <tt>\par</tt></h3>
  * <p>
- * The primitive <tt>\par</tt> signals the end of a paragraph. If <logo>ExTeX</logo>
- * is in a horizontal mode then the preceding material is typeset and the
- * paragraph is added to the vertical list. <logo>ExTeX</logo> goes into a
- * vertical mode afterwards.
+ * The primitive <tt>\par</tt> signals the end of a paragraph. If
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is in a horizontal mode then the preceding material is
+ * typeset and the paragraph is added to the vertical list.
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> goes into a vertical mode afterwards.
  * </p>
  * <p>
- * If <logo>ExTeX</logo> is in a vertical mode then this primitive is simply
+ * If <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> is in a vertical mode then this primitive is simply
  * ignored.
  * </p>
  * <p>
- * The scanner rules of <logo>TeX</logo> determine that the macro <tt>\par</tt>
- * is inserted for any number of subsequent empty lines. This means that in a
- * normal text there might be a lot of invocations of <tt>\par</tt> even if
- * none of them is written explicitly.
+ * The scanner rules of <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> determine that the macro <tt>\par</tt> is inserted for any
+ * number of subsequent empty lines. This means that in a normal text there
+ * might be a lot of invocations of <tt>\par</tt> even if none of them is
+ * written explicitly.
  * </p>
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;par&rang;
@@ -64,15 +70,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * </doc>
  * 
  * 
- * <doc name="parindent" type="register">
- * <h3>The Dimen Parameter <tt>\parindent</tt></h3>
+ * <doc name="parindent" type="register"> <h3>The Dimen Parameter
+ * <tt>\parindent</tt></h3>
  * <p>
  * The dimen parameter <tt>\parindent</tt> contains indentation to be applied
  * for each paragraph.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parindent&rang;
@@ -97,8 +102,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Par extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -115,8 +119,8 @@ public class Par extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

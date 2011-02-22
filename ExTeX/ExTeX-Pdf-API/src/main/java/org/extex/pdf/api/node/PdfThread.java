@@ -24,11 +24,12 @@ import org.extex.typesetter.type.node.RuleNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This node contains an PDF Object.
- * This node type represents the extension node from the perspective of
- * <logo>TeX</logo>.
- *
- *
+ * This node contains an PDF Object. This node type represents the extension
+ * node from the perspective of <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4791 $
  */
@@ -56,7 +57,7 @@ public class PdfThread extends WhatsItNode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param rule the rule
      * @param attr the attribute string. This can be <code>null</code>.
      * @param id the id
@@ -70,7 +71,7 @@ public class PdfThread extends WhatsItNode {
 
     /**
      * Getter for the attribute string.
-     *
+     * 
      * @return the attribute string
      */
     public String getAttr() {
@@ -80,7 +81,7 @@ public class PdfThread extends WhatsItNode {
 
     /**
      * Getter for id.
-     *
+     * 
      * @return the id
      */
     public IdSpec getId() {
@@ -90,7 +91,7 @@ public class PdfThread extends WhatsItNode {
 
     /**
      * Getter for rule.
-     *
+     * 
      * @return the rule
      */
     public RuleNode getRule() {
@@ -102,21 +103,17 @@ public class PdfThread extends WhatsItNode {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append("(pdfthread " + id + ")");
     }

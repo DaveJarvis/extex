@@ -26,18 +26,22 @@ import org.extex.typesetter.Discardable;
 import org.extex.typesetter.type.NodeVisitor;
 
 /**
- * This node represents a <logo>TeX</logo> "glue" node.
+ * This node represents a <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> "glue" node.
  * <p>
- * For the document writer it acts like a kerning node. The width contains
- * the distance to add.
+ * For the document writer it acts like a kerning node. The width contains the
+ * distance to add.
  * </p>
  * <p>
  * The stretchability is adjusted by the typesetter and the width is adjusted
  * accordingly.
  * </p>
- *
- * @see "<logo>TeX</logo> &ndash; The Program [149]"
- *
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [149]"
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -53,13 +57,11 @@ public class GlueNode extends AbstractExpandableNode
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * Creates a new object.
-     * The size is used to determine the width in horizontal mode and the height
-     * in vertical mode.
-     *
+     * Creates a new object. The size is used to determine the width in
+     * horizontal mode and the height in vertical mode.
+     * 
      * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal
-     *  mode
+     * @param horizontal indicator that the glue is used in horizontal mode
      */
     public GlueNode(FixedDimen size, boolean horizontal) {
 
@@ -67,13 +69,11 @@ public class GlueNode extends AbstractExpandableNode
     }
 
     /**
-     * Creates a new object.
-     * The size is used to determine the width in horizontal mode and the height
-     * in vertical mode.
-     *
+     * Creates a new object. The size is used to determine the width in
+     * horizontal mode and the height in vertical mode.
+     * 
      * @param size the actual size
-     * @param horizontal indicator that the glue is used in horizontal
-     *  mode
+     * @param horizontal indicator that the glue is used in horizontal mode
      */
     public GlueNode(FixedGlue size, boolean horizontal) {
 
@@ -84,22 +84,20 @@ public class GlueNode extends AbstractExpandableNode
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth (ignored)
      * @param depth the depth (ignored)
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [189]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [189]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", getSize().toString()));
     }
@@ -108,10 +106,10 @@ public class GlueNode extends AbstractExpandableNode
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
+     * 
      * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
@@ -123,16 +121,15 @@ public class GlueNode extends AbstractExpandableNode
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

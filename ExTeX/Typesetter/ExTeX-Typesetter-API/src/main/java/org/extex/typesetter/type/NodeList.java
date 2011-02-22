@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -87,8 +87,8 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * 
      * @param index the position
      * 
-     * @return the node at position <i>index</i> of <code>null</code> if
-     *         index is out of bounds
+     * @return the node at position <i>index</i> of <code>null</code> if index
+     *         is out of bounds
      */
     Node get(int index);
 
@@ -176,7 +176,9 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * Provides a string representation of the current instance.
      * 
      * @return the String representation of the object
-     * @see "<logo>TeX</logo> &ndash; The Program [182]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [182]"
      */
     String toText();
 

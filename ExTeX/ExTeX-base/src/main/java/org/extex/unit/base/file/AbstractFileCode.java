@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,7 +43,7 @@ import org.extex.unit.base.Relax;
 /**
  * This abstract class provides some common methods for primitives dealing with
  * files.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
@@ -78,33 +78,32 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Scan the input source for some tokens making up the key for an infile
      * register. Currently only numbers in a certain range are allowed.
-     *
-     *
-     * <doc name="infile name" type="syntax">
-     * <h3>The Infile Name</h3>
+     * 
+     * 
+     * <doc name="infile name" type="syntax"> <h3>The Infile Name</h3>
      * <p>
      * The infile name is a symbolic key to reference an input file. This is a
      * number in the range from 0 to 15.
      * </p>
-     *
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
-     *
+     * 
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
+     * 
      * <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key read in the form of a String
-     *
+     * 
      * @throws HelpingException in case of a failure
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -125,32 +124,31 @@ public abstract class AbstractFileCode extends AbstractCode
     /**
      * Scan the input source for some tokens making up the key for an outfile
      * register. Currently only numbers are allowed.
-     *
-     * <doc name="outfile name" type="syntax">
-     * <h3>The Outfile Name</h3>
+     * 
+     * <doc name="outfile name" type="syntax"> <h3>The Outfile Name</h3>
      * <p>
      * The outfile name is a symbolic key to reference an output file. This is a
      * number in the range from 0 to 15.
      * </p>
-     *
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
-     *
+     * 
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
+     * 
      * <pre class="syntax">
      *    &lang;infile&nbsp;name&rang;
      *      &rarr; {@linkplain
      *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
      *        &lang;number&rang;} </pre>
-     *
+     * 
      * </doc>
-     *
-     *
+     * 
+     * 
      * @param context the interpreter context
      * @param source the token source to read from
      * @param typesetter the typesetter
-     *
+     * 
      * @return the key read in the form of a String
-     *
+     * 
      * @throws HelpingException in case of a failure
      * @throws TypesetterException in case of an error in the typesetter
      */
@@ -163,14 +161,15 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * The field <tt>strictTeX</tt> contains the boolean indicating whether or
-     * not to adhere strictly to the rules of <logo>TeX</logo> for file name
-     * parsing.
+     * not to adhere strictly to the rules of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> for file name parsing.
      */
     private boolean strictTeX = false;
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param token the initial token for the primitive
      */
     public AbstractFileCode(CodeToken token) {
@@ -180,13 +179,12 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration to use
-     *
+     * 
      * @throws ConfigurationException in case of an error
-     *
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * 
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     public void configure(Configuration config) {
 
@@ -200,9 +198,9 @@ public abstract class AbstractFileCode extends AbstractCode
      * First of all, <code>\fileencoding</code> is used, if there is no value,
      * then the property <code>extex.encoding</code> is used, or
      * <code>ISO8859-1</code>, if no entry exists.
-     *
+     * 
      * @param context the context
-     *
+     * 
      * @return the encoding for the AbstractFileCodefile
      */
     protected String getEncoding(Context context) {
@@ -217,25 +215,25 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * Scan the file name.
-     *
+     * 
      * <doc type="syntax" name="filename"> This method parses the following
      * syntactic entity:
-     *
+     * 
      * <pre class="syntax">
      *   &lang;file name&rang; </pre>
-     *
+     * 
      * The scanning is performed in one of two ways:
      * <ul>
      * <li>If the first token is a left brace then a block is read until the
-     * matching right brace is found. On the way the tokens are expanded. </li>
-     * <li>Otherwise tokens are read until a space token is encountered. </li>
+     * matching right brace is found. On the way the tokens are expanded.</li>
+     * <li>Otherwise tokens are read until a space token is encountered.</li>
      * </ul>
-     *
+     * 
      * </doc>
-     *
+     * 
      * @param context the processing context
      * @param source the source for new tokens
-     *
+     * 
      * @return the file name as string
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter

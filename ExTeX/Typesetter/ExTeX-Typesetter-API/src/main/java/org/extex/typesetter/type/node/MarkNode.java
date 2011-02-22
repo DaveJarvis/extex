@@ -34,7 +34,9 @@ import org.extex.typesetter.type.NodeVisitor;
  * The document writer should ignore mark nodes.
  * </p>
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [141]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [141]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -42,15 +44,15 @@ import org.extex.typesetter.type.NodeVisitor;
 public class MarkNode extends AbstractNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>index</tt> contains the index of the mark node for eTeX.
-     * The index 0 corresponds to the original mark of <logo>TeX</logo>. I.e.
-     * \marks0 == \mark
+     * The index 0 corresponds to the original mark of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. I.e. \marks0 == \mark
      */
     private String index;
 
@@ -74,9 +76,9 @@ public class MarkNode extends AbstractNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(
-     *      org.extex.typesetter.PageContext, org.extex.typesetter.Typesetter,
-     *      org.extex.core.dimen.FixedDimen, org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.type.node.AbstractNode#atShipping(org.extex.typesetter.PageContext,
+     *      org.extex.typesetter.Typesetter, org.extex.core.dimen.FixedDimen,
+     *      org.extex.core.dimen.FixedDimen)
      */
     @Override
     public Node atShipping(PageContext context, Typesetter typesetter,
@@ -116,8 +118,10 @@ public class MarkNode extends AbstractNode implements Node {
      * @param breadth the breadth
      * @param depth the depth
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [196]"
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [196]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     @Override
@@ -129,7 +133,7 @@ public class MarkNode extends AbstractNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -141,8 +145,8 @@ public class MarkNode extends AbstractNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)

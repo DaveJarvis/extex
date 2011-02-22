@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,7 +45,9 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This abstract class adds the ability to translate
  * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s to and
- * from their <logo>TeX</logo> encoding as numbers to abstract math code.
+ * from their <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> encoding as numbers to abstract math code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
@@ -58,14 +60,12 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int CHAR_MASK = 0xff;
 
     /**
-     * The field <tt>CHAR_MAX</tt> contains the maximal number for a
-     * character.
+     * The field <tt>CHAR_MAX</tt> contains the maximal number for a character.
      */
     private static final int CHAR_MAX = 255;
 
     /**
-     * The field <tt>CHAR_MIN</tt> contains the minimal number for a
-     * character.
+     * The field <tt>CHAR_MIN</tt> contains the minimal number for a character.
      */
     private static final int CHAR_MIN = 0;
 
@@ -83,7 +83,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * The field <tt>CLASS_SHIFT</tt> contains the number of bits to shift the
-     * class rightwards in the <logo>TeX</logo> encoding of delimiters.
+     * class rightwards in the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding of delimiters.
      */
     private static final int CLASS_SHIFT = 24;
 
@@ -108,8 +110,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final Integer DEL_OPENING = new Integer(4);
 
     /**
-     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for
-     * ordinary.
+     * The field <tt>DEL_ORDINARY</tt> contains the delimiter code for ordinary.
      */
     private static final Integer DEL_ORDINARY = new Integer(0);
 
@@ -120,14 +121,12 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final Integer DEL_PUNCTATION = new Integer(6);
 
     /**
-     * The field <tt>DEL_RELATION</tt> contains the delimiter code for
-     * relation.
+     * The field <tt>DEL_RELATION</tt> contains the delimiter code for relation.
      */
     private static final Integer DEL_RELATION = new Integer(3);
 
     /**
-     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for
-     * variable.
+     * The field <tt>DEL_VARIABLE</tt> contains the delimiter code for variable.
      */
     private static final Integer DEL_VARIABLE = new Integer(7);
 
@@ -162,8 +161,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitBinary(Object ignore, Object ignore2) {
 
@@ -178,8 +177,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitClosing(Object ignore, Object ignore2) {
 
@@ -194,8 +193,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitLarge(Object ignore, Object ignore2) {
 
@@ -210,8 +209,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOpening(Object ignore, Object ignore2) {
 
@@ -226,8 +225,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOrdinary(Object ignore, Object ignore2) {
 
@@ -242,8 +241,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitPunctation(Object ignore, Object ignore2) {
 
@@ -258,8 +257,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitRelation(Object ignore, Object ignore2) {
 
@@ -274,8 +273,8 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
                  * 
                  * @return the result
                  * 
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitVariable(Object ignore, Object ignore2) {
 
@@ -284,8 +283,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
             };
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -302,12 +300,16 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int SMALL_CLASS_OFFSET = 20;
 
     /**
-     * Translate the delimiter into a <logo>TeX</logo> encoded number or throw
-     * an exception if this is not possible.
+     * Translate the delimiter into a <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoded number or throw an exception if this is not
+     * possible.
      * 
      * @param del the delimiter to encode
      * 
-     * @return the <logo>TeX</logo> encoded delimiter
+     * @return the <logo>T<span style=
+     *         "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *         >e</span>X</logo> encoded delimiter
      * 
      * @throws HelpingException in case of an error
      */
@@ -356,10 +358,14 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Creates a new MathDelimiter object from the <logo>TeX</logo> encoding.
+     * Creates a new MathDelimiter object from the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      * <p>
-     * The <logo>TeX</logo> encoding interprets the number as 27 bit hex
-     * number: <tt>"csyylxx</tt>. Here the digits have the following meaning:
+     * The <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
+     * <tt>"csyylxx</tt>. Here the digits have the following meaning:
      * <dl>
      * <dt>c</dt>
      * <dd>the math class of this delimiter. It has a range from 0 to 7.</dd>
@@ -374,7 +380,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
      * </dl>
      * </p>
      * 
-     * @param delcode the <logo>TeX</logo> encoding for the delimiter
+     * @param delcode the <logo>T<span style=
+     *        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *        >e</span>X</logo> encoding for the delimiter
      * 
      * @return a new MathDelimiter
      * 
@@ -403,7 +411,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Parse an extended <logo>ExTeX</logo> delimiter from a token source.
+     * Parse an extended <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> delimiter from a token source.
      * 
      * @param context the interpreter context
      * @param source the token source to read from

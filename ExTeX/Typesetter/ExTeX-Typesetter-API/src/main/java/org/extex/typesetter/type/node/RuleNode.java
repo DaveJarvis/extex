@@ -28,8 +28,10 @@ import org.extex.typesetter.type.OrientedNode;
 /**
  * The rule node represents a rectangular area on the page filled with some
  * color.
- *
- * @see "<logo>TeX</logo> &ndash; The Program [138]"
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [138]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -54,19 +56,20 @@ public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param width the width of the rule
      * @param height the height of the rule
      * @param depth the depth of the rule
      * @param theContext the typesetting context
-     * @param horizontal the indicator that this is a
-     *   horizontal rule; otherwise it is a vertical rule
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [139]"
+     * @param horizontal the indicator that this is a horizontal rule; otherwise
+     *        it is a vertical rule
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [139]"
      */
-    public RuleNode(FixedDimen width, FixedDimen height,
-            FixedDimen depth, TypesettingContext theContext,
-            boolean horizontal) {
+    public RuleNode(FixedDimen width, FixedDimen height, FixedDimen depth,
+            TypesettingContext theContext, boolean horizontal) {
 
         super(width, height, depth);
         this.context = theContext;
@@ -75,7 +78,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
      * Getter for the typesetting context.
-     *
+     * 
      * @return the typesetting context.
      */
     public TypesettingContext getTypesettingContext() {
@@ -85,7 +88,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
      * Getter for horizontal.
-     *
+     * 
      * @return the horizontal
      */
     public boolean isHorizontal() {
@@ -97,22 +100,20 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth
      * @param depth the depth
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [187]"
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [187]"
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         FixedDimen x = getHeight();
         String h = (x == null ? "*" : x.toString());
@@ -127,12 +128,11 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -149,16 +149,15 @@ public class RuleNode extends AbstractNode implements OrientedNode {
 
     /**
      * This method provides an entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to apply
      * @param value the argument for the visitor
-     *
+     * 
      * @return the result of the method invocation of the visitor
-     *
+     * 
      * @throws GeneralException in case of an error
-     *
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor,
+     * 
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})

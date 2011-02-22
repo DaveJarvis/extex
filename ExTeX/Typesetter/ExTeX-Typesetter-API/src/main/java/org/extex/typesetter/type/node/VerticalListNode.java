@@ -36,7 +36,9 @@ import org.extex.typesetter.type.OrientedNodeList;
 /**
  * This class provides an implementation for a vertical list.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [137]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [137]"
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -47,14 +49,13 @@ public class VerticalListNode extends GenericNodeList
             OrientedNodeList {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
-     * The field <tt>top</tt> contains the indicator that the adjustment
-     * should use the reference point of the fist box. This is the mode for
+     * The field <tt>top</tt> contains the indicator that the adjustment should
+     * use the reference point of the fist box. This is the mode for
      * <tt>\vtop</tt>. In contrast the last box is used. This is the mode for
      * <tt>\vbox</tt>.
      */
@@ -63,7 +64,9 @@ public class VerticalListNode extends GenericNodeList
     /**
      * Creates a new empty list.
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [136]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [136]"
      */
     public VerticalListNode() {
 
@@ -85,7 +88,7 @@ public class VerticalListNode extends GenericNodeList
      * @param index the position of insertion
      * @param node the node to add
      * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#add( int,
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
     @Override
@@ -126,8 +129,7 @@ public class VerticalListNode extends GenericNodeList
      * 
      * @param node the node to add
      * 
-     * @see org.extex.typesetter.type.node.GenericNodeList#add(
-     *      org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.type.node.GenericNodeList#add(org.extex.typesetter.type.Node)
      */
     @Override
     public void add(Node node) {
@@ -157,8 +159,7 @@ public class VerticalListNode extends GenericNodeList
      * 
      * @param glue the glue to add
      * 
-     * @see org.extex.typesetter.type.NodeList#addSkip(
-     *      org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
      */
     @Override
     public void addSkip(FixedGlue glue) {
@@ -190,10 +191,10 @@ public class VerticalListNode extends GenericNodeList
     }
 
     /**
-     * Getter for <tt>top</tt>. The field <tt>top</tt> contains the
-     * indicator that the adjustment should use the reference point of the fist
-     * box. This is the mode for <tt>\vtop</tt>. In contrast the last box is
-     * used. This is the mode for <tt>\vbox</tt>.
+     * Getter for <tt>top</tt>. The field <tt>top</tt> contains the indicator
+     * that the adjustment should use the reference point of the fist box. This
+     * is the mode for <tt>\vtop</tt>. In contrast the last box is used. This is
+     * the mode for <tt>\vbox</tt>.
      * 
      * @return the top indicator
      */
@@ -374,7 +375,7 @@ public class VerticalListNode extends GenericNodeList
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
      *      java.lang.String, int, int)
      */
     @Override
@@ -392,7 +393,7 @@ public class VerticalListNode extends GenericNodeList
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * 
-     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override
@@ -412,8 +413,8 @@ public class VerticalListNode extends GenericNodeList
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.typesetter.type.Node#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

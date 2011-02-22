@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -70,8 +70,7 @@ public abstract class AbstractMarksCode extends AbstractCode
      * 
      * @return the converted value
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
@@ -84,8 +83,8 @@ public abstract class AbstractMarksCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -98,8 +97,8 @@ public abstract class AbstractMarksCode extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -111,17 +110,18 @@ public abstract class AbstractMarksCode extends AbstractCode
     /**
      * Get the key for this mark.
      * 
-     * <doc type="syntax" name="mark name">
-     * <h3>A Mark Name</h3>
+     * <doc type="syntax" name="mark name"> <h3>A Mark Name</h3>
      * <p>
      * A mark name determines under which key a mark can be addressed. In
-     * <logo>TeX</logo> this used to be a positive number only. This has been
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this used to be a positive number only. This has been
      * extended to allow also a token list in braces.
      * </p>
      * <p>
      * The alternative is controlled by the count register
-     * <tt>\register.max</tt>. The following interpretation of the value of
-     * this count is used:
+     * <tt>\register.max</tt>. The following interpretation of the value of this
+     * count is used:
      * <ul>
      * <li>If the value of this count register is negative then a arbitrary
      * non-negative number is allowed as register name as well as any list of
@@ -132,13 +132,21 @@ public abstract class AbstractMarksCode extends AbstractCode
      * </ul>
      * </p>
      * <p>
-     * The value of the count register <tt>\register.max</tt> is set
-     * differently for various configurations of <logo>ExTeX</logo>:
+     * The value of the count register <tt>\register.max</tt> is set differently
+     * for various configurations of <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>:
      * <ul>
-     * <li><logo>TeX</logo> uses the value 255.</li>
-     * <li><logo>eTeX</logo> uses the value 32767.</li>
+     * <li><logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 255.</li>
+     * <li><logo>&epsilon;-T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 32767.</li>
      * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li><logo>ExTeX</logo> uses the value -1.</li>
+     * <li><logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value -1.</li>
      * </ul>
      * </p>
      * <p>

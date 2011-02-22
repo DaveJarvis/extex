@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -31,12 +31,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\dimendef</code>.
  * 
- * <doc name="dimendef">
- * <h3>The Primitive <tt>\dimendef</tt></h3>
+ * <doc name="dimendef"> <h3>The Primitive <tt>\dimendef</tt></h3>
  * <p>
- * The primitive <tt>\dimendef</tt> can be used to define a control sequence
- * as alias for a dimen register. The control sequence can be used wherever a
- * dimen register is expected afterwards.
+ * The primitive <tt>\dimendef</tt> can be used to define a control sequence as
+ * alias for a dimen register. The control sequence can be used wherever a dimen
+ * register is expected afterwards.
  * </p>
  * <p>
  * The primitive <tt>\dimendef</tt> is an assignment. Thus the settings of
@@ -48,8 +47,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * default.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;dimendef&rang;
@@ -69,33 +67,43 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \dimendef\abc=45  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \dimendef\abc 33  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \dimendef\abc={xyz}  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \dimendef\abc={xyz\the\count0}  </pre>
  * 
- * <h4>Differences to <logo>TeX</logo> and Friends</h4>
+ * <h4>Differences to <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> and Friends</h4>
  * <p>
- * In <logo>TeX</logo> the register name could consist of an integer in the
- * range from 0 to 255. In <logo>Omega</logo> this restriction has been relaxed
- * to allow integers from 0 to 32767. In <logo>ExTeX</logo> the restriction to
- * integers has been relaxed. The register name can either be a number &ndash;
- * positive or not and of any value &ndash; or alternatively any token sequence
- * enclosed in braces.
+ * In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the register name could consist of an integer in the range
+ * from 0 to 255. In <logo>Omega</logo> this restriction has been relaxed to
+ * allow integers from 0 to 32767. In <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the restriction to integers has been relaxed. The register
+ * name can either be a number &ndash; positive or not and of any value &ndash;
+ * or alternatively any token sequence enclosed in braces.
  * </p>
  * <p>
  * Note that the extended register names and the maximal number acceptable as
- * register names are a feature of <logo>ExTeX</logo> which is configurable via
- * the count register <tt>\max.register</tt>. This means that the feature can
- * be disabled in the compatibility modes.
+ * register names are a feature of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> which is configurable via the count register
+ * <tt>\max.register</tt>. This means that the feature can be disabled in the
+ * compatibility modes.
  * </p>
  * </doc>
  * 
  * 
- * To protect the built-in registers one might consider to use the key "#<i>name</i>"
- * or "dimen#<i>name</i>".
+ * To protect the built-in registers one might consider to use the key
+ * "#<i>name</i>" or "dimen#<i>name</i>".
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
@@ -103,8 +111,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Dimendef extends AbstractDimen {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -121,8 +128,8 @@ public class Dimendef extends AbstractDimen {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

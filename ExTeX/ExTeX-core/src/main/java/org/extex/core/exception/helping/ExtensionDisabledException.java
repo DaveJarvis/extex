@@ -22,9 +22,10 @@ package org.extex.core.exception.helping;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This exception is raised when an <logo>eTeX</logo> extension is used which
- * has been disabled.
- *
+ * This exception is raised when an <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> extension is used which has been disabled.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -37,13 +38,13 @@ public class ExtensionDisabledException extends HelpingException {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param macro the name of the macro which is disabled
      */
     public ExtensionDisabledException(String macro) {
 
         super(LocalizerFactory.getLocalizer(ExtensionDisabledException.class),
-                "ExtensionDisabled");
+            "ExtensionDisabled");
     }
 
 }

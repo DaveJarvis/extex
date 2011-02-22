@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,10 +31,10 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.register.CharCode;
 
 /**
- * This class provides an implementation for the primitive <code>\chardef</code>.
+ * This class provides an implementation for the primitive <code>\chardef</code>
+ * .
  * 
- * <doc name="chardef">
- * <h3>The Primitive <tt>\chardef</tt></h3>
+ * <doc name="chardef"> <h3>The Primitive <tt>\chardef</tt></h3>
  * <p>
  * The primitive <tt>\chardef</tt> allows you to define a control sequence or
  * active character to be equivalent to a character. This mean that the new
@@ -42,21 +42,24 @@ import org.extex.unit.base.register.CharCode;
  * </p>
  * <p>
  * A character is represented by a code point; i.e. a positive number denoting
- * the character position. In <logo>TeX</logo> only 8-bit number where allowed.
- * In <logo>ExTeX</logo> arbitrary positive numbers are valid as values.
+ * the character position. In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> only 8-bit number where allowed. In
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> arbitrary positive numbers are valid as values.
  * </p>
  * <p>
  * The definition is performed with respect to to group to keep it locally. The
- * prefix <tt>/global</tt> or the value of <tt>\globaldefs</tt> can
- * influence the scope.
+ * prefix <tt>/global</tt> or the value of <tt>\globaldefs</tt> can influence
+ * the scope.
  * </p>
  * <p>
  * This primitive is an assignment. All actions around assignments are
  * performed.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;chardef&rang;
@@ -72,7 +75,8 @@ import org.extex.unit.base.register.CharCode;
  * 
  * <pre class="TeXSample">
  *    \chardef\abc=45  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \chardef\abc 33  </pre>
  * 
  * </doc>
@@ -84,8 +88,7 @@ import org.extex.unit.base.register.CharCode;
 public class Chardef extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -102,8 +105,8 @@ public class Chardef extends AbstractAssignment {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -48,8 +48,7 @@ import org.extex.unit.tex.math.util.MathCodeConvertible;
 public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
@@ -65,33 +64,39 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
     private static final int SPECIAL_MATH_CODE = 0x8000;
 
     /**
-     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the
-     * character value in the <logo>TeX</logo> encoding.
+     * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
+     * value in the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int CHARACTER_MASK = 0xff;
 
     /**
-     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in
-     * the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int FAMILY_MASK = 0xf;
 
     /**
-     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family
-     * in the <logo>TeX</logo> encoding.
+     * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
+     * the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> encoding.
      */
     private static final int FAMILY_OFFSET = 8;
 
     /**
-     * The field <tt>VISITOR</tt> contains the visitor for mapping a math
-     * class to the integer representation used by TeX..
+     * The field <tt>VISITOR</tt> contains the visitor for mapping a math class
+     * to the integer representation used by TeX..
      */
     private static final MathClassVisitor<Integer, Object, Object> VISITOR =
             new MathClassVisitor<Integer, Object, Object>() {
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitBinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitBinary(Object arg, Object arg2) {
 
@@ -99,8 +104,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitClosing(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitClosing(Object arg, Object arg2) {
 
@@ -108,8 +113,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitLarge(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitLarge(Object arg, Object arg2) {
 
@@ -117,8 +122,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOpening(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOpening(Object arg, Object arg2) {
 
@@ -126,8 +131,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitOrdinary(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitOrdinary(Object arg, Object arg2) {
 
@@ -135,8 +140,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitPunctation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitPunctation(Object arg, Object arg2) {
 
@@ -144,8 +149,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitRelation(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitRelation(Object arg, Object arg2) {
 
@@ -153,8 +158,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(
-                 *      java.lang.Object, java.lang.Object)
+                 * @see org.extex.typesetter.type.math.MathClassVisitor#visitVariable(java.lang.Object,
+                 *      java.lang.Object)
                  */
                 public Integer visitVariable(Object arg, Object arg2) {
 
@@ -180,14 +185,15 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
         MathGlyph mg = mc.getMathGlyph();
         int codePoint = mg.getCharacter().getCodePoint();
         if (codePoint > CHARACTER_MASK) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractTeXMathCode.class),
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractTeXMathCode.class),
                 "InvalidCharacterCode");
         }
         int mathFamily = mg.getFamily();
         if (mathFamily > FAMILY_MASK) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractTeXMathCode.class), "InvalidFamilyCode");
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractTeXMathCode.class),
+                "InvalidFamilyCode");
         }
         return (((Integer) mathClass.visit(VISITOR, null, null)).intValue() << CLASS_OFFSET)
                 | (mathFamily << FAMILY_OFFSET) | codePoint;
@@ -226,8 +232,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
                 if (t == null) {
                     throw new EofException();
                 }
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(AbstractTeXMathCode.class),
+                throw new HelpingException(
+                    LocalizerFactory.getLocalizer(AbstractTeXMathCode.class),
                     "MissingRightBrace");
             }
             return new MathCode(mc, new MathGlyph((int) family, c));
@@ -243,14 +249,14 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
         long code = source.parseInteger(context, source, typesetter);
 
         if (code < 0 || code > SPECIAL_MATH_CODE) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(AbstractTeXMathCode.class),
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(AbstractTeXMathCode.class),
                 "TTP.BadMathCharCode", Long.toString(code));
         } else if (code == SPECIAL_MATH_CODE) {
             return new MathCode(null, null);
         } else {
-            return new MathCode(MathClass
-                .getMathClass((int) (code >> CLASS_OFFSET)), //
+            return new MathCode(
+                MathClass.getMathClass((int) (code >> CLASS_OFFSET)), //
                 new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
                     UnicodeChar.get((int) (code & CHARACTER_MASK))));
         }

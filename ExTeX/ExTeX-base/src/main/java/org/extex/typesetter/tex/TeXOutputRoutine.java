@@ -47,19 +47,22 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This class provides a link between the typesetter and the interpreter for the
- * output routine. In <logo>TeX</logo> the output routine is implemented in
- * <logo>TeX</logo>'s macro language. In <logo>ExTeX</logo> the output routine
- * is a Java class implementing a defined interface. This class implements the
- * interface required and forwards the request for processing to the appropriate
- * interpreter.
+ * output routine. In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the output routine is implemented in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>'s macro language. In <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the output routine is a Java class implementing a defined
+ * interface. This class implements the interface required and forwards the
+ * request for processing to the appropriate interpreter.
  * 
  * 
- * <doc name="output" type="register">
- * <h3>The Tokens Register <tt>\output</tt></h3>
+ * <doc name="output" type="register"> <h3>The Tokens Register <tt>\output</tt></h3>
  * <p>
- * The tokens register <tt>\output</tt> contains the program executed whenever
- * a page is completed. If it is not defined then the built-in output routine
- * will be used.
+ * The tokens register <tt>\output</tt> contains the program executed whenever a
+ * page is completed. If it is not defined then the built-in output routine will
+ * be used.
  * </p>
  * <p>
  * The box register 255 is used to pass in the current vertical list. This list
@@ -74,14 +77,13 @@ import org.extex.typesetter.type.page.Page;
  * The output routine is assumed to invoke
  * {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}. This does not
  * have to happen at each invocation of the output routine. The count register
- * <tt>\maxdeadcycles</tt> determines how many invocations are allowed which
- * do not call {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}.
- * The count register <tt>\deadcycles</tt> contains the number of dead cycles
+ * <tt>\maxdeadcycles</tt> determines how many invocations are allowed which do
+ * not call {@link org.extex.unit.tex.typesetter.output.Shipout \shipout}. The
+ * count register <tt>\deadcycles</tt> contains the number of dead cycles
  * encountered already.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;output&rang;
@@ -99,20 +101,19 @@ import org.extex.typesetter.type.page.Page;
  * </doc>
  * 
  * 
- * <doc name="deadcycles" type="register">
- * <h3>The Count Parameter <tt>\deadcycles</tt></h3>
+ * <doc name="deadcycles" type="register"> <h3>The Count Parameter
+ * <tt>\deadcycles</tt></h3>
  * <p>
  * The count register <tt>\deadcycles</tt> contains the number of attempts to
  * call the output routine without any material being shipped out. Usually the
  * output routine is expected to ship something out. Under some circumstances
  * the output is delayed. Thus a large number of dead cycles can indicate a
- * problem in the output routine. The register <tt>\deadcycles</tt> is
- * compared with the register <tt>\maxdeadcycles</tt> to decide when an
- * intervention seem appropriate.
+ * problem in the output routine. The register <tt>\deadcycles</tt> is compared
+ * with the register <tt>\maxdeadcycles</tt> to decide when an intervention seem
+ * appropriate.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;deadcycles&rang;
@@ -130,8 +131,8 @@ import org.extex.typesetter.type.page.Page;
  * </doc>
  * 
  * 
- * <doc name="maxdeadcycles" type="register">
- * <h3>The Count Parameter <tt>\maxdeadcycles</tt></h3>
+ * <doc name="maxdeadcycles" type="register"> <h3>The Count Parameter
+ * <tt>\maxdeadcycles</tt></h3>
  * <p>
  * The count register <tt>\maxdeadcycles</tt> contains the maximum number of
  * attempts to call the output routine without any material being shipped out.
@@ -142,8 +143,7 @@ import org.extex.typesetter.type.page.Page;
  * intervention seem appropriate.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;maxdeadcycles&rang;
@@ -189,8 +189,8 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
     private transient Token rightBrace;
 
     /**
-     * The field <tt>output</tt> contains the token <i>output</i> in the
-     * default name space.
+     * The field <tt>output</tt> contains the token <i>output</i> in the default
+     * name space.
      */
     private transient Token outputToken;
 
@@ -224,8 +224,7 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
      * @throws GeneralException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.typesetter.output.OutputRoutine#output(
-     *      org.extex.typesetter.type.page.Page,
+     * @see org.extex.typesetter.output.OutputRoutine#output(org.extex.typesetter.type.page.Page,
      *      org.extex.backend.BackendDriver)
      */
     public void output(Page page, BackendDriver backend)
@@ -250,9 +249,9 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
 
         Box box = context.getBox(OUTPUT_BOX);
         if (box != null && !box.isVoid()) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(TeXOutputRoutine.class), "TTP.NonEmptyOutBox",
-                context.esc("box"), OUTPUT_BOX);
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(TeXOutputRoutine.class),
+                "TTP.NonEmptyOutBox", context.esc("box"), OUTPUT_BOX);
         }
 
         interpreter.push(rightBrace);
@@ -264,17 +263,17 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
 
         box = context.getBox(OUTPUT_BOX);
         if (box != null && !box.isVoid()) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(TeXOutputRoutine.class),
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(TeXOutputRoutine.class),
                 "TTP.NonEmptyOutBoxAfter", context.esc("box"), OUTPUT_BOX);
         }
     }
 
     /**
      * Magic method for deserialization.
-     *
+     * 
      * @return the reconnection result
-     *
+     * 
      * @throws ObjectStreamException in case of an error
      */
     protected Object readResolve() throws ObjectStreamException {

@@ -42,20 +42,22 @@ public class PageImpl implements Page {
     /**
      * The field <tt>mediaHeight</tt> contains the height of the paper.
      */
-    private Dimen mediaHeight =
-            new Dimen(Dimen.ONE_INCH.getValue() * 2970 / 254);
+    private Dimen mediaHeight = new Dimen(
+        Dimen.ONE_INCH.getValue() * 2970 / 254);
 
     /**
      * The field <tt>mediaHOffset</tt> contains the horizontal offset of the
-     * upper left corner of the contents on the page. In <logo>TeX</logo> this
-     * value is defined to be 1 in.
+     * upper left corner of the contents on the page. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this value is defined to be 1 in.
      */
     private Dimen mediaHOffset = new Dimen(Dimen.ONE_INCH);
 
     /**
-     * The field <tt>mediaVOffset</tt> contains the vertical offset of the
-     * upper left corner of the contents on the page. In <logo>TeX</logo> this
-     * value is defined to be 1 in.
+     * The field <tt>mediaVOffset</tt> contains the vertical offset of the upper
+     * left corner of the contents on the page. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this value is defined to be 1 in.
      */
     private Dimen mediaVOffset = new Dimen(Dimen.ONE_INCH);
 
@@ -66,8 +68,8 @@ public class PageImpl implements Page {
             new Dimen(Dimen.ONE_INCH.getValue() * 2100 / 254);
 
     /**
-     * The field <tt>nodes</tt> contains the nodes describing the objects on
-     * the page.
+     * The field <tt>nodes</tt> contains the nodes describing the objects on the
+     * page.
      */
     private NodeList nodes;
 
@@ -178,7 +180,7 @@ public class PageImpl implements Page {
      * 
      * @param bg the background color
      * 
-     * @see org.extex.typesetter.type.page.Page#setColor( org.extex.color.Color)
+     * @see org.extex.typesetter.type.page.Page#setColor(org.extex.color.Color)
      */
     public void setColor(Color bg) {
 
@@ -200,8 +202,7 @@ public class PageImpl implements Page {
      * 
      * @param offset the media horizontal offset
      * 
-     * @see org.extex.typesetter.type.page.Page#setMediaHOffset(
-     *      org.extex.core.dimen.Dimen)
+     * @see org.extex.typesetter.type.page.Page#setMediaHOffset(org.extex.core.dimen.Dimen)
      */
     public void setMediaHOffset(Dimen offset) {
 
@@ -213,8 +214,7 @@ public class PageImpl implements Page {
      * 
      * @param offset the media vertical offset
      * 
-     * @see org.extex.typesetter.type.page.Page#setMediaVOffset(
-     *      org.extex.core.dimen.Dimen)
+     * @see org.extex.typesetter.type.page.Page#setMediaVOffset(org.extex.core.dimen.Dimen)
      */
     public void setMediaVOffset(Dimen offset) {
 
@@ -226,8 +226,7 @@ public class PageImpl implements Page {
      * 
      * @param width the mediaWidth to set
      * 
-     * @see org.extex.typesetter.type.page.Page#setMediaWidth(
-     *      org.extex.core.dimen.Dimen)
+     * @see org.extex.typesetter.type.page.Page#setMediaWidth(org.extex.core.dimen.Dimen)
      */
     public void setMediaWidth(Dimen width) {
 

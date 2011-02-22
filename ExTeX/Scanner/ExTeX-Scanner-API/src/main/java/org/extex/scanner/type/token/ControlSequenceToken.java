@@ -32,9 +32,10 @@ import org.extex.scanner.type.Namespace;
  * </p>
  * 
  * <p>
- * Note that in contrast to <logo>TeX</logo> the escape character leading to
- * this control sequence token is stored in the character code of the abstract
- * base class.
+ * Note that in contrast to <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the escape character leading to this control sequence token
+ * is stored in the character code of the abstract base class.
  * </p>
  * 
  * 
@@ -44,8 +45,7 @@ import org.extex.scanner.type.Namespace;
 public class ControlSequenceToken extends AbstractToken implements CodeToken {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -102,8 +102,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @return the new token
      * 
-     * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(
-     *      java.lang.String)
+     * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(java.lang.String)
      */
     public CodeToken cloneInNamespace(String theNamespace) {
 
@@ -123,8 +122,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @return <code>true</code> iff the tokens are equal
      * 
-     * @see org.extex.scanner.type.token.AbstractToken#eq(
-     *      org.extex.scanner.type.Catcode, char)
+     * @see org.extex.scanner.type.token.AbstractToken#eq(org.extex.scanner.type.Catcode,
+     *      char)
      */
     @Override
     public boolean eq(Catcode cc, char c) {
@@ -143,8 +142,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @return <code>true</code> iff the tokens are equal
      * 
-     * @see org.extex.scanner.type.token.Token#eq(
-     *      org.extex.scanner.type.Catcode, java.lang.String)
+     * @see org.extex.scanner.type.token.Token#eq(org.extex.scanner.type.Catcode,
+     *      java.lang.String)
      */
     @Override
     public boolean eq(Catcode cc, String s) {
@@ -172,8 +171,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * Indicates whether some other object is "equal to" this one.
      * 
      * @param other the reference object with which to compare.
-     * @return <code>true</code> if this object is the same as the obj
-     *         argument; <code>false</code> otherwise.
+     * @return <code>true</code> if this object is the same as the obj argument;
+     *         <code>false</code> otherwise.
      * 
      * @see java.lang.Object#equals(java.lang.Object)
      */
@@ -305,8 +304,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @return the printable representation
      * 
-     * @see org.extex.scanner.type.token.Token#toText(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.scanner.type.token.Token#toText(org.extex.core.UnicodeChar)
      */
     @Override
     public String toText(UnicodeChar esc) {
@@ -328,8 +326,8 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @throws Exception in case of an error
      * 
-     * @see org.extex.scanner.type.token.Token#visit(
-     *      org.extex.scanner.type.token.TokenVisitor, java.lang.Object)
+     * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
+     *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(TokenVisitor visitor, Object arg1) throws Exception {

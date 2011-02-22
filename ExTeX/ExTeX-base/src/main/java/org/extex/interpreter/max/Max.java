@@ -125,22 +125,25 @@ import org.extex.unit.base.register.count.IntegerCode;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
- * macro expander is the core engine driving <logo>ExTeX</logo>.
+ * macro expander is the core engine driving <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
  * 
  * 
- * <doc name="ignorevoid" type="register">
- * <h3>The Count Parameter <tt>\ignorevoid</tt></h3>
+ * <doc name="ignorevoid" type="register"> <h3>The Count Parameter
+ * <tt>\ignorevoid</tt></h3>
  * <p>
  * The count register <tt>\ignorevoid</tt> determines how an undefined active
  * character or control sequence is encountered. If the value is greater than 0
  * then undefined code is ignored. Otherwise it leads to an error message.
  * </p>
  * <p>
- * This count parameter has been introduced by <logo>ExTeX</logo>.
+ * This count parameter has been introduced by <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ignorevoid&rang;
@@ -157,15 +160,14 @@ import org.extex.unit.base.register.count.IntegerCode;
  * 
  * </doc>
  * 
- * <doc name="everyjob" type="register">
- * <h3>The Tokens Parameter <tt>\everyjob</tt></h3>
+ * <doc name="everyjob" type="register"> <h3>The Tokens Parameter
+ * <tt>\everyjob</tt></h3>
  * <p>
- * The tokens register <tt>\everyjob</tt> contains the tokens to be inserted
- * at the beginning of every job.
+ * The tokens register <tt>\everyjob</tt> contains the tokens to be inserted at
+ * the beginning of every job.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everyjob&rang;
@@ -213,14 +215,16 @@ public abstract class Max
 
     /**
      * The constant <tt>MAX_ERRORS_DEFAULT</tt> contains the default value for
-     * maximal allowed number of errors after which the <logo>ExTeX</logo> run
-     * is terminated automatically.
+     * maximal allowed number of errors after which the
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> run is terminated automatically.
      */
     private static final int MAX_ERRORS_DEFAULT = 100;
 
     /**
-     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes
-     * per hour.
+     * The constant <tt>MINUTES_PER_HOUR</tt> contains the number of minutes per
+     * hour.
      */
     private static final int MINUTES_PER_HOUR = 60;
 
@@ -326,8 +330,10 @@ public abstract class Max
             new TokenVisitor<Token, TokenSource>() {
 
                 /**
-                 * This visit method is invoked on an active token. In <logo>TeX</logo>
-                 * this is e.g. ~.
+                 * This visit method is invoked on an active token. In
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this is e.g. ~.
                  * 
                  * @param token the active token to visit
                  * @param arg the first argument to pass
@@ -336,8 +342,7 @@ public abstract class Max
                  * 
                  * @throws Exception in case of an error
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-                 *      org.extex.scanner.type.token.ActiveCharacterToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
                  *      java.lang.Object)
                  */
                 public Token visitActive(ActiveCharacterToken token,
@@ -349,8 +354,8 @@ public abstract class Max
                             arg, typesetter);
                         return null;
                     } else if (code == null) {
-                        throw new UndefinedControlSequenceException(token
-                            .toText());
+                        throw new UndefinedControlSequenceException(
+                            token.toText());
                     } else {
                         return token;
                     }
@@ -366,8 +371,8 @@ public abstract class Max
                  * 
                  * @throws Exception in case of an error
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-                 *      org.extex.scanner.type.token.CrToken, java.lang.Object)
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
+                 *      java.lang.Object)
                  */
                 public Token visitCr(CrToken token, TokenSource arg)
                         throws Exception {
@@ -376,8 +381,10 @@ public abstract class Max
                 }
 
                 /**
-                 * This visit method is invoked on an escape token. In <logo>TeX</logo>
-                 * this normally means a control sequence.
+                 * This visit method is invoked on an escape token. In
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally means a control sequence.
                  * 
                  * @param token the control sequence token to visit
                  * @param arg the first argument to pass
@@ -386,8 +393,7 @@ public abstract class Max
                  * 
                  * @throws Exception in case of an error
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
-                 *      org.extex.scanner.type.token.ControlSequenceToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
                  *      java.lang.Object)
                  */
                 public Token visitEscape(ControlSequenceToken token,
@@ -399,8 +405,8 @@ public abstract class Max
                             arg, typesetter);
                         return null;
                     } else if (code == null) {
-                        throw new UndefinedControlSequenceException(token
-                            .toText());
+                        throw new UndefinedControlSequenceException(
+                            token.toText());
                     } else {
                         return token;
                     }
@@ -415,8 +421,7 @@ public abstract class Max
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-                 *      org.extex.scanner.type.token.LeftBraceToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
                  *      java.lang.Object)
                  */
                 public Token visitLeftBrace(LeftBraceToken token,
@@ -433,8 +438,7 @@ public abstract class Max
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-                 *      org.extex.scanner.type.token.LetterToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
                  *      java.lang.Object)
                  */
                 public Token visitLetter(LetterToken token, TokenSource arg) {
@@ -444,15 +448,16 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a macro parameter token. In
-                 * <logo>TeX</logo> this normally is a #.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a #.
                  * 
                  * @param token the macro param token to visit
                  * @param arg the first argument to pass
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-                 *      org.extex.scanner.type.token.MacroParamToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
                  *      java.lang.Object)
                  */
                 public Token visitMacroParam(MacroParamToken token,
@@ -463,15 +468,16 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a math shift token. In
-                 * <logo>TeX</logo> this normally is a $.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a $.
                  * 
                  * @param token the math shift token to visit
                  * @param arg the first argument to pass
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-                 *      org.extex.scanner.type.token.MathShiftToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
                  *      java.lang.Object)
                  */
                 public Token visitMathShift(MathShiftToken token,
@@ -488,8 +494,7 @@ public abstract class Max
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-                 *      org.extex.scanner.type.token.OtherToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
                  *      java.lang.Object)
                  */
                 public Token visitOther(OtherToken token, TokenSource arg) {
@@ -505,8 +510,7 @@ public abstract class Max
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-                 *      org.extex.scanner.type.token.RightBraceToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
                  *      java.lang.Object)
                  */
                 public Token visitRightBrace(RightBraceToken token,
@@ -523,8 +527,7 @@ public abstract class Max
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
-                 *      org.extex.scanner.type.token.SpaceToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
                  *      java.lang.Object)
                  */
                 public Token visitSpace(SpaceToken token, TokenSource arg) {
@@ -534,15 +537,16 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a sub mark token. In
-                 * <logo>TeX</logo> this normally is a _.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a _.
                  * 
                  * @param token the sub mark token to visit
                  * @param arg the first argument to pass
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
-                 *      org.extex.scanner.type.token.SubMarkToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
                  *      java.lang.Object)
                  */
                 public Token visitSubMark(SubMarkToken token, TokenSource arg) {
@@ -552,15 +556,16 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a sup mark token. In
-                 * <logo>TeX</logo> this normally is a ^.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a ^.
                  * 
                  * @param token the sup mark token to visit
                  * @param arg the first argument to pass
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
-                 *      org.extex.scanner.type.token.SupMarkToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
                  *      java.lang.Object)
                  */
                 public Token visitSupMark(SupMarkToken token, TokenSource arg) {
@@ -570,15 +575,16 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a tab mark token. In
-                 * <logo>TeX</logo> this normally is a &.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a &.
                  * 
                  * @param token the tab mark token to visit
                  * @param arg the first argument to pass
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
-                 *      org.extex.scanner.type.token.TabMarkToken,
+                 * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
                  *      java.lang.Object)
                  */
                 public Token visitTabMark(TabMarkToken token, TokenSource arg) {
@@ -602,8 +608,7 @@ public abstract class Max
         registerObserver(new StartObserver() {
 
             /**
-             * @see org.extex.interpreter.observer.start.StartObserver#update(
-             *      org.extex.interpreter.Interpreter)
+             * @see org.extex.interpreter.observer.start.StartObserver#update(org.extex.interpreter.Interpreter)
              */
             public void update(Interpreter interpreter) throws HelpingException {
 
@@ -647,8 +652,7 @@ public abstract class Max
      * 
      * @param theLogger the new logger
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     public void enableLogging(Logger theLogger) {
 
@@ -662,8 +666,8 @@ public abstract class Max
      * 
      * @throws HelpingException in case of an error
      *         <ul>
-     *         <li> ErrorLimitException in case that the number of errors
-     *         exceeds the configured error limit</li>
+     *         <li>ErrorLimitException in case that the number of errors exceeds
+     *         the configured error limit</li>
      *         </ul>
      */
     private void execute(Switch onceMore) throws HelpingException {
@@ -688,8 +692,8 @@ public abstract class Max
     }
 
     /**
-     * @see org.extex.interpreter.TokenSource#execute(
-     *      org.extex.scanner.type.token.Token, Context, Typesetter)
+     * @see org.extex.interpreter.TokenSource#execute(org.extex.scanner.type.token.Token,
+     *      Context, Typesetter)
      */
     public void execute(Token token, Context theContext,
             Typesetter theTypesetter) throws HelpingException {
@@ -758,8 +762,7 @@ public abstract class Max
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.TokenSource#expand(
-     *      org.extex.scanner.type.token.Token,
+     * @see org.extex.interpreter.TokenSource#expand(org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
      */
@@ -796,8 +799,7 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration problem
      * 
-     * @see org.extex.interpreter.Interpreter#expand(
-     *      org.extex.scanner.type.tokens.Tokens,
+     * @see org.extex.interpreter.Interpreter#expand(org.extex.scanner.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
      */
     public Tokens expand(Tokens tokens, Typesetter typesetter)
@@ -999,11 +1001,10 @@ public abstract class Max
     /**
      * Initialize the date and time related primitives.
      * 
-     * <doc name="day" type="register">
-     * <h3>The Count Parameter <tt>\day</tt></h3>
+     * <doc name="day" type="register"> <h3>The Count Parameter <tt>\day</tt></h3>
      * <p>
-     * The count parameter <tt>\day</tt> is set automatically at the start of
-     * a job to the day of the current date. Thus it always is initialized to a
+     * The count parameter <tt>\day</tt> is set automatically at the start of a
+     * job to the day of the current date. Thus it always is initialized to a
      * value in the range of 1 to 31.
      * </p>
      * <p>
@@ -1016,8 +1017,8 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
      * 
      * <pre class="syntax">
      *    &lang;day&rang;
@@ -1034,12 +1035,12 @@ public abstract class Max
      * 
      * </doc>
      * 
-     * <doc name="month" type="register">
-     * <h3>The Count Parameter <tt>\month</tt></h3>
+     * <doc name="month" type="register"> <h3>The Count Parameter
+     * <tt>\month</tt></h3>
      * <p>
-     * The count parameter <tt>\month</tt> is set automatically at the start
-     * of a job to the month of the current date. Thus it always is initialized
-     * to a value in the range of 1 to 12.
+     * The count parameter <tt>\month</tt> is set automatically at the start of
+     * a job to the month of the current date. Thus it always is initialized to
+     * a value in the range of 1 to 12.
      * </p>
      * <p>
      * In the course of processing it can be used as any count register. This
@@ -1051,8 +1052,8 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
      * 
      * <pre class="syntax">
      *    &lang;month&rang;
@@ -1069,11 +1070,10 @@ public abstract class Max
      * 
      * </doc>
      * 
-     * <doc name="year" type="register">
-     * <h3>The Count Parameter <tt>\year</tt></h3>
+     * <doc name="year" type="register"> <h3>The Count Parameter <tt>\year</tt></h3>
      * <p>
-     * The count parameter <tt>\year</tt> is set automatically at the start of
-     * a job to the year of the current date.
+     * The count parameter <tt>\year</tt> is set automatically at the start of a
+     * job to the year of the current date.
      * </p>
      * <p>
      * In the course of processing it can be used as any count register. This
@@ -1085,8 +1085,8 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
      * 
      * <pre class="syntax">
      *    &lang;year&rang;
@@ -1103,11 +1103,10 @@ public abstract class Max
      * 
      * </doc>
      * 
-     * <doc name="time" type="register">
-     * <h3>The Count Parameter <tt>\time</tt></h3>
+     * <doc name="time" type="register"> <h3>The Count Parameter <tt>\time</tt></h3>
      * <p>
-     * The count parameter <tt>\time</tt> is set automatically at the start of
-     * a job to the time of the current date. The time is the number of minutes
+     * The count parameter <tt>\time</tt> is set automatically at the start of a
+     * job to the time of the current date. The time is the number of minutes
      * since 0:00. Thus you can extract the current hour by dividing it by 60
      * and the current minute by computing the remainder modulo 60.
      * </p>
@@ -1121,8 +1120,8 @@ public abstract class Max
      * value is overwritten when the format file is read back in.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * The formal description of this primitive is the following:
+     * <h4>Syntax</h4> The formal description of this primitive is the
+     * following:
      * 
      * <pre class="syntax">
      *    &lang;time&rang;
@@ -1145,9 +1144,9 @@ public abstract class Max
      * 
      * </doc>
      * 
-     * 
-     * @param calendar the time and date when <logo>ExTeX</logo> has been
-     *        started
+     * @param calendar the time and date when <logo>&epsilon;&chi;T<span style=
+     *        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *        >e</span>X</logo> has been started
      * 
      * @throws HelpingException in case of an error
      */
@@ -1173,7 +1172,7 @@ public abstract class Max
      * @throws IOException in case that an IO error occurs during the reading of
      *         the format
      * 
-     * @see org.extex.interpreter.Interpreter#loadFormat( java.io.InputStream,
+     * @see org.extex.interpreter.Interpreter#loadFormat(java.io.InputStream,
      *      java.lang.String, java.lang.String, java.lang.String)
      */
     public void loadFormat(InputStream stream, String fmt, String contextType,
@@ -1183,8 +1182,7 @@ public abstract class Max
         Object ref1 = Registrar.register(new RegistrarObserver() {
 
             /**
-             * @see org.extex.framework.RegistrarObserver#reconnect(
-             *      java.lang.Object)
+             * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
              */
             public Object reconnect(Object object) {
 
@@ -1326,8 +1324,7 @@ public abstract class Max
     }
 
     /**
-     * @see org.extex.interpreter.observer.load.LoadObservable#registerObserver(
-     *      org.extex.interpreter.observer.load.LoadObserver)
+     * @see org.extex.interpreter.observer.load.LoadObservable#registerObserver(org.extex.interpreter.observer.load.LoadObserver)
      */
     public void registerObserver(LoadObserver observer) {
 
@@ -1408,8 +1405,8 @@ public abstract class Max
             Localizer loc = getLocalizer();
             String endPrimitive = loc.format("TTP.EndPrimitive");
             HelpingException e =
-                    new HelpingException(loc, "TTP.EndGroup", context
-                        .esc(endPrimitive), Long.toString(groupLevel));
+                    new HelpingException(loc, "TTP.EndGroup",
+                        context.esc(endPrimitive), Long.toString(groupLevel));
             if (observersError != null) {
                 observersError.update(e);
             }
@@ -1441,8 +1438,7 @@ public abstract class Max
      * @throws ConfigurationException in case of a configuration error
      * @throws ErrorLimitException in case that the error limit has been reached
      * 
-     * @see org.extex.interpreter.Interpreter#run(
-     *      org.extex.scanner.api.TokenStream)
+     * @see org.extex.interpreter.Interpreter#run(org.extex.scanner.api.TokenStream)
      */
     public void run(TokenStream stream)
             throws HelpingException,
@@ -1459,8 +1455,7 @@ public abstract class Max
      * 
      * @param context the interpreter context
      * 
-     * @see org.extex.interpreter.Interpreter#setContext(
-     *      org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.Interpreter#setContext(org.extex.interpreter.context.Context)
      */
     public Context setContext(Context context) {
 
@@ -1470,13 +1465,12 @@ public abstract class Max
     }
 
     /**
-     * Setter for the error handler. The value of <code>null</code> can be
-     * used to delete the error handler currently set.
+     * Setter for the error handler. The value of <code>null</code> can be used
+     * to delete the error handler currently set.
      * 
      * @param handler the new error handler
      * 
-     * @see org.extex.interpreter.Interpreter#setErrorHandler(
-     *      org.extex.interpreter.ErrorHandler)
+     * @see org.extex.interpreter.Interpreter#setErrorHandler(org.extex.interpreter.ErrorHandler)
      */
     public void setErrorHandler(ErrorHandler handler) {
 
@@ -1488,8 +1482,7 @@ public abstract class Max
      * 
      * @param fontFactory the new font factory
      * 
-     * @see org.extex.interpreter.Interpreter#setFontFactory(
-     *      org.extex.font.CoreFontFactory)
+     * @see org.extex.interpreter.Interpreter#setFontFactory(org.extex.font.CoreFontFactory)
      */
     public void setFontFactory(CoreFontFactory fontFactory) {
 
@@ -1503,8 +1496,7 @@ public abstract class Max
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.interpreter.Interpreter#setInteraction(
-     *      org.extex.interpreter.interaction.Interaction)
+     * @see org.extex.interpreter.Interpreter#setInteraction(org.extex.interpreter.interaction.Interaction)
      */
     public void setInteraction(Interaction interaction) throws GeneralException {
 
@@ -1531,8 +1523,7 @@ public abstract class Max
      * 
      * @param factory the output stream factory to use
      * 
-     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(
-     *      org.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
@@ -1544,8 +1535,7 @@ public abstract class Max
      * 
      * @param typesetter the new typesetter
      * 
-     * @see org.extex.interpreter.Interpreter#setTypesetter(
-     *      org.extex.typesetter.Typesetter)
+     * @see org.extex.interpreter.Interpreter#setTypesetter(org.extex.typesetter.Typesetter)
      */
     public void setTypesetter(Typesetter typesetter) {
 
@@ -1553,8 +1543,9 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on an active token. In <logo>TeX</logo>
-     * this is e.g. ~.
+     * This visit method is invoked on an active token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this is e.g. ~.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1564,8 +1555,8 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitActive(
-     *      org.extex.scanner.type.token.ActiveCharacterToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
+     *      java.lang.Object)
      */
     public Object visitActive(ActiveCharacterToken token, Object ignore)
             throws Exception {
@@ -1598,22 +1589,23 @@ public abstract class Max
      * 
      * @throws InterpreterException in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitCr(
-     *      org.extex.scanner.type.token.CrToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
+     *      java.lang.Object)
      */
     public Object visitCr(CrToken token, Object ignore) throws Exception {
 
         if (prefix.isDirty()) {
             reportDirtyFlag(token);
         }
-        ((TokenDelegateListMaker) typesetter).cr(context, context
-            .getTypesettingContext(), token.getChar());
+        ((TokenDelegateListMaker) typesetter).cr(context,
+            context.getTypesettingContext(), token.getChar());
         return null;
     }
 
     /**
-     * This visit method is invoked on an escape token. In <logo>TeX</logo>
-     * this normally means a control sequence.
+     * This visit method is invoked on an escape token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally means a control sequence.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1623,8 +1615,8 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(
-     *      org.extex.scanner.type.token.ControlSequenceToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
+     *      java.lang.Object)
      */
     public Object visitEscape(ControlSequenceToken token, Object ignore)
             throws Exception {
@@ -1660,9 +1652,11 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [1063]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(
-     *      org.extex.scanner.type.token.LeftBraceToken, java.lang.Object)
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [1063]"
+     * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
+     *      java.lang.Object)
      */
     public Object visitLeftBrace(LeftBraceToken token, Object ignore)
             throws Exception {
@@ -1686,8 +1680,8 @@ public abstract class Max
      * 
      * @throws InterpreterException in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(
-     *      org.extex.scanner.type.token.LetterToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
+     *      java.lang.Object)
      */
     public Object visitLetter(LetterToken token, Object ignore)
             throws Exception {
@@ -1711,8 +1705,10 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a macro parameter token. In <logo>TeX</logo>
-     * this normally is a <tt>#</tt>.
+     * This visit method is invoked on a macro parameter token. In <logo>T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a <tt>#</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1721,8 +1717,8 @@ public abstract class Max
      * 
      * @throws GeneralException in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(
-     *      org.extex.scanner.type.token.MacroParamToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
+     *      java.lang.Object)
      */
     public Object visitMacroParam(MacroParamToken token, Object ignore)
             throws GeneralException {
@@ -1732,8 +1728,10 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a math shift token. In <logo>TeX</logo>
-     * this normally is a <tt>$</tt>.
+     * This visit method is invoked on a math shift token. In <logo>T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a <tt>$</tt>.
      * 
      * 
      * @param token the first argument to pass is the token to expand.
@@ -1744,9 +1742,11 @@ public abstract class Max
      * @throws InterpreterException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [1137]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(
-     *      org.extex.scanner.type.token.MathShiftToken, java.lang.Object)
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [1137]"
+     * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
+     *      java.lang.Object)
      */
     public Object visitMathShift(MathShiftToken token, Object ignore)
             throws Exception {
@@ -1770,8 +1770,8 @@ public abstract class Max
      * 
      * @throws InterpreterException in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitOther(
-     *      org.extex.scanner.type.token.OtherToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
+     *      java.lang.Object)
      */
     public Object visitOther(OtherToken token, Object ignore) throws Exception {
 
@@ -1795,9 +1795,11 @@ public abstract class Max
      * 
      * @throws InterpreterException in case of an error
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [1067]"
-     * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(
-     *      org.extex.scanner.type.token.RightBraceToken, java.lang.Object)
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [1067]"
+     * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
+     *      java.lang.Object)
      */
     public Object visitRightBrace(RightBraceToken token, Object ignore)
             throws Exception {
@@ -1823,8 +1825,8 @@ public abstract class Max
      * @throws GeneralException in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(
-     *      org.extex.scanner.type.token.SpaceToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
+     *      java.lang.Object)
      */
     public Object visitSpace(SpaceToken token, Object ignore)
             throws GeneralException {
@@ -1839,8 +1841,9 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sub mark token. In <logo>TeX</logo>
-     * this normally is a <tt>_</tt>.
+     * This visit method is invoked on a sub mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a <tt>_</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1849,8 +1852,8 @@ public abstract class Max
      * 
      * @throws InterpreterException in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(
-     *      org.extex.scanner.type.token.SubMarkToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
+     *      java.lang.Object)
      */
     public Object visitSubMark(SubMarkToken token, Object ignore)
             throws Exception {
@@ -1874,8 +1877,9 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sup mark token. In <logo>TeX</logo>
-     * this normally is a <tt>^</tt>.
+     * This visit method is invoked on a sup mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a <tt>^</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1884,8 +1888,8 @@ public abstract class Max
      * 
      * @throws Exception in case of an error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(
-     *      org.extex.scanner.type.token.SupMarkToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
+     *      java.lang.Object)
      */
     public Object visitSupMark(SupMarkToken token, Object ignore)
             throws Exception {
@@ -1909,8 +1913,9 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a tab mark token. In <logo>TeX</logo>
-     * this normally is a <tt>&amp;</tt>.
+     * This visit method is invoked on a tab mark token. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this normally is a <tt>&amp;</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1920,8 +1925,8 @@ public abstract class Max
      * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
-     * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(
-     *      org.extex.scanner.type.token.TabMarkToken, java.lang.Object)
+     * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
+     *      java.lang.Object)
      */
     public Object visitTabMark(TabMarkToken token, Object ignore)
             throws Exception {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,29 +36,28 @@ import org.extex.typesetter.exception.TypesetterException;
  * This primitive initiates the loading of Java code and implements the
  * primitive <tt>\javaload</tt>.
  * 
- * <doc name="javaload">
- * <h3>The Primitive <tt>\javaload</tt></h3>
+ * <doc name="javaload"> <h3>The Primitive <tt>\javaload</tt></h3>
  * <p>
  * The primitive <tt>\javaload</tt> loads a java class and invokes its
  * <tt>init()</tt> method. With this method it is possible to load larger
- * extensions of <logo>ExTeX</logo> in one junk. There is no need to declare
- * each single macro with <tt>\javadef</tt>.
+ * extensions of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> in one junk. There is no need to declare each single macro
+ * with <tt>\javadef</tt>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The general form of this primitive is
+ * <h4>Syntax</h4> The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;javaload&rang;
  *       &rarr; <tt>\javaload</tt> &lang;tokens&rang;  </pre>
  * 
  * <p>
- * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like
- * a constant list enclosed in braces or a token register. The value of these
+ * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like a
+ * constant list enclosed in braces or a token register. The value of these
  * tokens are taken and interpreted as the name of a Java class. This class is
  * loaded if needed, instantiated, and its method
- * {@link org.extex.unit.dynamic.java.Loadable#init(
- * org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter)
+ * {@link org.extex.unit.dynamic.java.Loadable#init(org.extex.interpreter.context.Context,org.extex.typesetter.Typesetter)
  * init()} is invoked. The instantiation requires the empty constructor to be
  * visible.
  * </p>
@@ -73,8 +72,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * For the loading of the Java class it is necessary that this Java class
- * implements the interface
- * {@link org.extex.unit.dynamic.java.Loadable Loadable}.
+ * implements the interface {@link org.extex.unit.dynamic.java.Loadable
+ * Loadable}.
  * 
  * <pre class="JavaSample">
  *   <b>package</b> my.package;
@@ -107,8 +106,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class JavaLoad extends AbstractCode implements Loader {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -134,8 +132,8 @@ public class JavaLoad extends AbstractCode implements Loader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -148,8 +146,7 @@ public class JavaLoad extends AbstractCode implements Loader {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.unit.Loader#load(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.unit.Loader#load(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void load(Context context, TokenSource source, Typesetter typesetter)

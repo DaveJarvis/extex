@@ -41,7 +41,10 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This class tokenizes a list of nodes according to the rules of <logo>ExTeX</logo>.
+ * This class tokenizes a list of nodes according to the rules of
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
@@ -49,8 +52,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
 public class ExTeXWords implements WordTokenizer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -58,8 +60,10 @@ public class ExTeXWords implements WordTokenizer {
      * Hyphenate subsequent char nodes from a ligature.
      * 
      * <p>
-     * Note that <logo>TeX</logo> only considers the first hyphenation point in
-     * a ligature. The others are ignored. Nevertheless the ligature builder is
+     * Note that <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> only considers the first hyphenation point in a
+     * ligature. The others are ignored. Nevertheless the ligature builder is
      * applied to the remaining characters. This might lead to other ligatures
      * than the ones encoded in the ligature node.
      * </p>
@@ -144,9 +148,11 @@ public class ExTeXWords implements WordTokenizer {
             i++;
         }
 
-        nodes.add(insertionPoint, new DiscretionaryNode(pre, hyphenate(post,
-            index + 1, hyphenNode.getTypesettingContext().getLanguage()),
-            new HorizontalListNode(node)));
+        nodes.add(
+            insertionPoint,
+            new DiscretionaryNode(pre, hyphenate(post, index + 1, hyphenNode
+                .getTypesettingContext().getLanguage()),
+                new HorizontalListNode(node)));
 
         return index + n;
     }
@@ -229,9 +235,8 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see org.extex.language.word.WordTokenizer#findWord(
-     *      org.extex.typesetter.type.NodeList, int,
-     *      org.extex.core.UnicodeCharList)
+     * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
+     *      int, org.extex.core.UnicodeCharList)
      */
     public int findWord(NodeList nodes, int start, UnicodeCharList word)
             throws HyphenationException {
@@ -255,9 +260,8 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see org.extex.language.word.WordTokenizer#insertShy(
-     *      org.extex.typesetter.type.NodeList, int, boolean[],
-     *      org.extex.typesetter.type.node.CharNode)
+     * @see org.extex.language.word.WordTokenizer#insertShy(org.extex.typesetter.type.NodeList,
+     *      int, boolean[], org.extex.typesetter.type.node.CharNode)
      */
     public void insertShy(NodeList nodes, int insertionPoint, boolean[] spec,
             CharNode hyphenNode) throws HyphenationException {
@@ -295,7 +299,8 @@ public class ExTeXWords implements WordTokenizer {
                     if (lig != null) {
                         nodes.remove(insertion--);
                         post =
-                                new HorizontalListNode(//
+                                new HorizontalListNode(
+                                    //
                                     new LigatureNode(((CharNode) prev)
                                         .getTypesettingContext(), lig,
                                         (CharNode) prev, hyphenNode));
@@ -336,8 +341,7 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
-     * @see org.extex.language.word.WordTokenizer#normalize(
-     *      org.extex.core.UnicodeCharList,
+     * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
     public UnicodeCharList normalize(UnicodeCharList word,

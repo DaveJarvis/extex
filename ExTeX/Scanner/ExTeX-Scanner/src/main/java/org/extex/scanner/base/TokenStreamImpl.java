@@ -156,8 +156,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             new CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar>() {
 
                 /**
-                 * This visit method is invoked on an active token. In <logo>TeX</logo>
-                 * this is e.g. ~.
+                 * This visit method is invoked on an active token. In
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this is e.g. ~.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -167,8 +169,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitActive(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitActive(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitActive(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -181,8 +183,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                 }
 
                 /**
-                 * This visit method is invoked on a comment token. In <logo>TeX</logo>
-                 * this normally is a %.
+                 * This visit method is invoked on a comment token. In
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a %.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -190,8 +194,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @return <code>null</code>
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitComment(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitComment(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitComment(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc) {
@@ -211,8 +215,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitCr(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitCr(TokenFactory factory, Tokenizer tokenizer,
                         UnicodeChar uchar) throws CatcodeException {
@@ -235,8 +239,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                 }
 
                 /**
-                 * This visit method is invoked on an escape token. In <logo>TeX</logo>
-                 * this normally means a control sequence.
+                 * This visit method is invoked on an escape token. In
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally means a control sequence.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -247,12 +253,13 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @throws CatcodeException in case of an error
                  * @throws ScannerException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitEscape(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uchar)
-                        throws CatcodeException, ScannerException {
+                        throws CatcodeException,
+                            ScannerException {
 
                     String namespace = tokenizer.getNamespace();
 
@@ -284,8 +291,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                             sb.append((char) (uc.getCodePoint()));
                         }
 
-                        return factory.createToken(Catcode.ESCAPE, uchar, sb
-                            .toString(), namespace);
+                        return factory.createToken(Catcode.ESCAPE, uchar,
+                            sb.toString(), namespace);
 
                     } else {
                         state = MID_LINE;
@@ -305,8 +312,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @return some value
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitIgnore(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc) {
@@ -325,8 +332,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws InvalidCharacterScannerException in any case
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitInvalid(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -348,8 +355,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitLeftBrace(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -372,8 +379,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitLetter(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -387,7 +394,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a macro parameter token. In
-                 * <logo>TeX</logo> this normally is a #.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a #.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -397,8 +406,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitMacroParam(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -412,7 +421,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a math shift token. In
-                 * <logo>TeX</logo> this normally is a $.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a $.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -422,8 +433,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitMathShift(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -446,8 +457,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitOther(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitOther(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitOther(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -470,8 +481,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitRightBrace(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -495,8 +506,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSpace(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  * @see "The TeXbook [Chapter 8, page 47]"
                  */
                 public Token visitSpace(TokenFactory factory,
@@ -514,7 +525,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a sub mark token. In
-                 * <logo>TeX</logo> this normally is a _.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a _.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -524,8 +537,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitSubMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -539,7 +552,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a sup mark token. In
-                 * <logo>TeX</logo> this normally is a ^.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a ^.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -549,8 +564,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitSupMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -564,7 +579,9 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a tab mark token. In
-                 * <logo>TeX</logo> this normally is a &.
+                 * <logo>T<span style=
+                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+                 * >e</span>X</logo> this normally is a &.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -574,8 +591,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * 
                  * @throws CatcodeException in case of an error
                  * 
-                 * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
                 public Token visitTabMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
@@ -743,8 +760,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @return the next Token or <code>null</code>
      * @throws ScannerException in case of an error
      * 
-     * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(
-     *      org.extex.scanner.type.token.TokenFactory,
+     * @see org.extex.scanner.base.TokenStreamBaseImpl#getNext(org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.api.Tokenizer)
      */
     @Override
@@ -773,8 +789,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     /**
      * Get the next character from the input line.
      * 
-     * @return the next raw character or <code>null</code> if none is
-     *         available.
+     * @return the next raw character or <code>null</code> if none is available.
      */
     protected UnicodeChar getRawChar() {
 

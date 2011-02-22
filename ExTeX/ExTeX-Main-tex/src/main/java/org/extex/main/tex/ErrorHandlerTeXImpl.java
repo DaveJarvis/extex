@@ -24,10 +24,13 @@ import java.util.logging.Logger;
 import org.extex.core.Locator;
 
 /**
- * This is the error handler in <logo>TeX</logo> compatibility mode: the message
- * is presented in a <logo>TeX</logo>-compatible way. The output is written out
- * via the Logger.
- *
+ * This is the error handler in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> compatibility mode: the message is presented in a
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>-compatible way. The output is written out via the Logger.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -42,17 +45,16 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
     /**
      * This method is invoked to present the current line causing the error.
-     *
+     * 
      * @param logger the logger to use for output
      * @param message the error message
      * @param locator the locator for the error position
-     *
-     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(
-     *      java.util.logging.Logger, java.lang.String, org.extex.core.Locator)
+     * 
+     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(java.util.logging.Logger,
+     *      java.lang.String, org.extex.core.Locator)
      */
     @Override
-    protected void showErrorLine(Logger logger, String message,
-            Locator locator) {
+    protected void showErrorLine(Logger logger, String message, Locator locator) {
 
         StringBuilder sb = new StringBuilder();
         String file = locator.getResourceName();

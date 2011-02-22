@@ -25,10 +25,11 @@ import java.util.logging.Logger;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
- * This observer reports that a certain file has been opened.
- * According to the behavior of <logo>TeX</logo> it logs an open brace and the
- * name of the file.
- *
+ * This observer reports that a certain file has been opened. According to the
+ * behavior of <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> it logs an open brace and the name of the file.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4708 $
  */
@@ -41,7 +42,7 @@ public class FileOpenObserver implements OpenFileObserver {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param theLogger the logger to use
      */
     public FileOpenObserver(Logger theLogger) {
@@ -52,19 +53,16 @@ public class FileOpenObserver implements OpenFileObserver {
     /**
      * This method is meant to be invoked just after a new file based stream has
      * been opened.
-     *
+     * 
      * @param filename the name of the file to be opened
      * @param filetype the type of the file to be opened. The type is resolved
-     *  via the configuration to a file name pattern
+     *        via the configuration to a file name pattern
      * @param stream the input stream to read from
-     *
-     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(
-     *      java.lang.String,
-     *      java.lang.String,
-     *      java.io.InputStream)
+     * 
+     * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(java.lang.String,
+     *      java.lang.String, java.io.InputStream)
      */
-    public void update(String filename, String filetype,
-            InputStream stream) {
+    public void update(String filename, String filetype, InputStream stream) {
 
         logger.info("(" + filename + " ");
     }

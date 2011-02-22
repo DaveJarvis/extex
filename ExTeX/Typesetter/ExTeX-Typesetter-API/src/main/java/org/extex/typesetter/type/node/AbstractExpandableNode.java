@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,7 +28,9 @@ import org.extex.core.glue.WideGlue;
 import org.extex.typesetter.type.OrientedNode;
 
 /**
- * This node represents a <logo>TeX</logo> "glue" node.
+ * This node represents a <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> "glue" node.
  * <p>
  * For the document writer it acts like a kerning node. The width contains the
  * distance to add.
@@ -47,8 +49,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
             OrientedNode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -110,8 +111,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * 
      * @param glue the glue to add to.
      * 
-     * @see org.extex.typesetter.type.Node#addDepthTo(
-     *      org.extex.core.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addDepthTo(org.extex.core.glue.WideGlue)
      */
     @Override
     public void addDepthTo(WideGlue glue) {
@@ -128,8 +128,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * 
      * @param glue the glue to add to.
      * 
-     * @see org.extex.typesetter.type.Node#addHeightTo(
-     *      org.extex.core.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addHeightTo(org.extex.core.glue.WideGlue)
      */
     @Override
     public void addHeightTo(WideGlue glue) {
@@ -146,8 +145,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * 
      * @param glue the glue to add to.
      * 
-     * @see org.extex.typesetter.type.Node#addWidthTo(
-     *      org.extex.core.glue.WideGlue)
+     * @see org.extex.typesetter.type.Node#addWidthTo(org.extex.core.glue.WideGlue)
      */
     @Override
     public void addWidthTo(WideGlue glue) {
@@ -195,8 +193,8 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @param height the desired height
      * @param sum the total sum of the glues
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(
-     *      org.extex.core.dimen.FixedDimen, FixedGlueComponent)
+     * @see org.extex.typesetter.type.node.AbstractNode#spreadHeight(org.extex.core.dimen.FixedDimen,
+     *      FixedGlueComponent)
      */
     @Override
     public void spreadHeight(FixedDimen height, FixedGlueComponent sum) {
@@ -219,8 +217,7 @@ public abstract class AbstractExpandableNode extends AbstractNode
      * @param width the desired with
      * @param sum the total sum of the glues
      * 
-     * @see org.extex.typesetter.type.Node#spreadWidth(
-     *      org.extex.core.dimen.FixedDimen,
+     * @see org.extex.typesetter.type.Node#spreadWidth(org.extex.core.dimen.FixedDimen,
      *      org.extex.core.glue.FixedGlueComponent)
      */
     @Override

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,23 +37,25 @@ import org.extex.unit.tex.conditional.Ifcase;
 /**
  * This class provides an implementation for the primitive <code>\if</code>.
  * 
- * <doc name="unless">
- * <h3>The Primitive <tt>&#x005c;unless</tt></h3>
+ * <doc name="unless"> <h3>The Primitive <tt>&#x005c;unless</tt></h3>
  * <p>
- * <strong>Copied of the <logo>eTeX</logo> reference</strong>.
+ * <strong>Copied of the <logo>&epsilon;-T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> reference</strong>.
  * </p>
  * <p>
- * <logo>TeX</logo> has, by design, a rather sparse set of conditional
- * primitives: <tt>\ifeof</tt>, <tt>\ifodd</tt>, <tt>\ifvoid</tt>,
- * etc., have no complementary counterparts. Whilst this normally poses no
- * problems since each accepts both a <tt>\then</tt> (implicit) and an
- * <tt>\else</tt> (explicit) part, they fall down when used as the final
- * <tt>\if</tt>... of a <tt>\loop</tt> ... <tt>\if</tt> ...
- * <tt>\repeat</tt> construct, since no <tt>\else</tt> is allowed after the
- * final <tt>\if</tt>.... <tt>&#x005c;unless</tt> allows the sense of all
- * Boolean conditionals to be inverted, and thus (for example)
- * <tt>&#x005c;unless</tt> <tt>\ifeof</tt> yields true iff end-of-file has
- * not yet been reached.
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> has, by design, a rather sparse set of conditional
+ * primitives: <tt>\ifeof</tt>, <tt>\ifodd</tt>, <tt>\ifvoid</tt>, etc., have no
+ * complementary counterparts. Whilst this normally poses no problems since each
+ * accepts both a <tt>\then</tt> (implicit) and an <tt>\else</tt> (explicit)
+ * part, they fall down when used as the final <tt>\if</tt>... of a
+ * <tt>\loop</tt> ... <tt>\if</tt> ... <tt>\repeat</tt> construct, since no
+ * <tt>\else</tt> is allowed after the final <tt>\if</tt>....
+ * <tt>&#x005c;unless</tt> allows the sense of all Boolean conditionals to be
+ * inverted, and thus (for example) <tt>&#x005c;unless</tt> <tt>\ifeof</tt>
+ * yields true iff end-of-file has not yet been reached.
  * </p>
  * <p>
  * The formal description of this primitive is the following:
@@ -95,8 +97,8 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -121,8 +123,8 @@ public class Unless extends AbstractCode implements ExpandableCode, PrefixCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,

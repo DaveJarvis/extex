@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,19 +38,20 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.base.Relax;
 
 /**
- * This class provides an implementation for the primitive <code>\numexpr</code>.
+ * This class provides an implementation for the primitive <code>\numexpr</code>
+ * .
  * 
- * <doc name="numexpr">
- * <h3>The Primitive <tt>\numexpr</tt></h3>
+ * <doc name="numexpr"> <h3>The Primitive <tt>\numexpr</tt></h3>
  * <p>
  * The primitive <tt>\numexpr</tt> provides a means to use a inline way of
  * writing mathematical expressions to be evaluated. Mathematical expressions
- * can be evaluated in <logo>ExTeX</logo> using <tt>\advance</tt>,
- * <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
- * result in an assignment. This is not the case for <tt>\numexpr</tt>. Here
- * the intermediate results are not stored in count registers but kept
- * internally. Also the application of <tt>\afterassignment</tt> and
- * <tt>\tracingassigns</tt> is suppressed.
+ * can be evaluated in <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> using <tt>\advance</tt>, <tt>\multiply</tt>, and
+ * <tt>\divide</tt>. Nevertheless those primitives result in an assignment. This
+ * is not the case for <tt>\numexpr</tt>. Here the intermediate results are not
+ * stored in count registers but kept internally. Also the application of
+ * <tt>\afterassignment</tt> and <tt>\tracingassigns</tt> is suppressed.
  * </p>
  * <p>
  * The mathematical expression to be evaluated can be made up of the basic
@@ -71,8 +72,7 @@ import org.extex.unit.base.Relax;
  * required. This includes assignments to count registers and comparisons.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;numexpr&rang;
@@ -96,12 +96,16 @@ import org.extex.unit.base.Relax;
  * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 23 \relax </pre>
+ * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 2 * 3 \relax </pre>
+ * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*\count2  </pre>
+ * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*(1+3)  </pre>
+ * 
  * <pre class="TeXSample">
  *   \count1=\numexpr 2*-\count0  </pre>
  * 
@@ -113,8 +117,7 @@ import org.extex.unit.base.Relax;
 public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -214,8 +217,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -331,8 +333,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

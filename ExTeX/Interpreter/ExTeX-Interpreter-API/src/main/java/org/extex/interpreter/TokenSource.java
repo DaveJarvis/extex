@@ -151,8 +151,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="box">
-     * <h3>A Box</h3>
+     * <doc type="syntax" name="box"> <h3>A Box</h3>
      * 
      * <pre class="syntax">
      *    &lang;box&rang;
@@ -191,8 +190,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="control sequence">
-     * <h3>A Control Sequence</h3>
+     * <doc type="syntax" name="control sequence"> <h3>A Control Sequence</h3>
      * 
      * <p>
      * A control sequence is either a active character or an escape sequence.
@@ -207,8 +205,8 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * category code.
      * </p>
      * 
-     * <h4>Syntax</h4>
-     * The formal description of this syntactic entity is the following:
+     * <h4>Syntax</h4> The formal description of this syntactic entity is the
+     * following:
      * 
      * <pre class="syntax">
      *    &lang;control sequence&rang;
@@ -252,8 +250,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="font">
-     * <h3>A Font</h3>
+     * <doc type="syntax" name="font"> <h3>A Font</h3>
      * 
      * <pre class="syntax">
      *    &lang;font&rang;
@@ -377,8 +374,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * This method corresponds to the following syntax specification:
      * </p>
      * 
-     * <doc type="syntax" name="token">
-     * <h3>A Token</h3>
+     * <doc type="syntax" name="token"> <h3>A Token</h3>
      * 
      * <pre class="syntax">
      *    &lang;token&rang;
@@ -397,22 +393,23 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * @throws HelpingException in case of an error
      * 
-     * @see "<logo>TeX</logo> &ndash; The Program [332]"
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [332]"
      */
     Token getToken(Context context) throws HelpingException;
 
     /**
      * Get the next tokens form the input streams between <code>{</code> and
-     * <code>}</code>. If the current input stream is at its end then the
-     * next one on the streamStack is used until a token could be read. If all
+     * <code>}</code>. If the current input stream is at its end then the next
+     * one on the streamStack is used until a token could be read. If all
      * streams are at the end then an exception is thrown.
      * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="replacement text">
-     * <h3>A Replacement Text</h3>
+     * <doc type="syntax" name="replacement text"> <h3>A Replacement Text</h3>
      * 
      * <p>
      * </p>
@@ -507,16 +504,15 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
 
     /**
      * Scan the input stream for tokens making up a character code, this is a
-     * sequence of digits with category code <tt>OTHER</tt>. The number can
-     * be preceded by optional white space. Alternate representations for an
+     * sequence of digits with category code <tt>OTHER</tt>. The number can be
+     * preceded by optional white space. Alternate representations for an
      * character code exist.
      * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="character">
-     * <h3>A Character Code</h3>
+     * <doc type="syntax" name="character"> <h3>A Character Code</h3>
      * 
      * <pre class="syntax">
      *    &lang;character code&rang;
@@ -568,17 +564,18 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * Scan the input streams for an entity to denote a register name. Upon EOF
      * <code>null</code> is returned.
      * 
-     * <doc type="syntax" name="register name">
-     * <h3>A Register Name</h3>
+     * <doc type="syntax" name="register name"> <h3>A Register Name</h3>
      * <p>
      * A register name determines under which key a register can be addressed.
-     * In <logo>TeX</logo> this used to be a positive number only. This has
-     * been extended to allow also a token list in braces.
+     * In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this used to be a positive number only. This has been
+     * extended to allow also a token list in braces.
      * </p>
      * <p>
      * The alternative is controlled by the integer register
-     * <tt>\maxregister</tt>. The following interpretation of the value of
-     * this count is used:
+     * <tt>\maxregister</tt>. The following interpretation of the value of this
+     * count is used:
      * <ul>
      * <li>If the value of this integer register is negative then a arbitrary
      * non-negative number is allowed as register name as well as any list of
@@ -590,12 +587,21 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * </p>
      * <p>
      * The value of the integer register <tt>\maxRegister</tt> is set
-     * differently for various configurations of <logo>ExTeX</logo>:
+     * differently for various configurations of <logo>&epsilon;&chi;T<span
+     * style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>:
      * <ul>
-     * <li><logo>TeX</logo> uses the value 255.</li>
-     * <li><logo>eTeX</logo> uses the value 32767.</li>
+     * <li><logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 255.</li>
+     * <li><logo>&epsilon;-T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 32767.</li>
      * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li><logo>ExTeX</logo> uses the value -1.</li>
+     * <li><logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value -1.</li>
      * </ul>
      * </p>
      * <p>
@@ -660,16 +666,15 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * Get the next expanded token form the input streams between <code>{</code>
      * and <code>}</code>. If the current input stream is at its end then the
      * next one on the streamStack is used until a token could be read. If all
-     * stream are at the end then <code>null</code> is returned. Nevertheless
-     * if some tokens could have been read before the end of file occurred then
+     * stream are at the end then <code>null</code> is returned. Nevertheless if
+     * some tokens could have been read before the end of file occurred then
      * those tokens are returned &ndash; even if no matching brace is found.
      * 
      * <p>
      * This method parses the following syntactic entity:
      * </p>
      * 
-     * <doc type="syntax" name="general text">
-     * <h3>A General text</h3>
+     * <doc type="syntax" name="general text"> <h3>A General text</h3>
      * 
      * <p>
      * 
@@ -703,9 +708,9 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
 
     /**
      * Get the next expanded tokens from the input streams between a left brace
-     * character (usually <code>{</code>) and a right brace character
-     * (usually <code>}</code>) and convert it to a <code>String</code>.
-     * If the end of file is reached then an Exception is raised.
+     * character (usually <code>{</code>) and a right brace character (usually
+     * <code>}</code>) and convert it to a <code>String</code>. If the end of
+     * file is reached then an Exception is raised.
      * 
      * @param context the interpreter context
      * @param primitive the name of the invoking primitive for error handling
@@ -721,10 +726,9 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
 
     /**
      * Get the next expanded tokens from the input streams between
-     * <code>{</code> and <code>}</code>. If the current input stream is at
-     * its end then the next one on the streamStack is used until a token could
-     * be read. If all stream are at the end then <code>null</code> is
-     * returned.
+     * <code>{</code> and <code>}</code>. If the current input stream is at its
+     * end then the next one on the streamStack is used until a token could be
+     * read. If all stream are at the end then <code>null</code> is returned.
      * <p>
      * Normally all expandable tokens are expanded. This method honors the
      * protected mark and does not try to expand protected code.
@@ -754,8 +758,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * This method corresponds to the following specification:
      * </p>
      * 
-     * <doc type="syntax" name="optional spaces">
-     * <h3>Optional Spaces</h3>
+     * <doc type="syntax" name="optional spaces"> <h3>Optional Spaces</h3>
      * 
      * <p>
      * This syntactic entity corresponds to an arbitrary number of white-space

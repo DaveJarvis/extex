@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,24 +33,22 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\setbox</code>.
  * 
- * <doc name="setbox">
- * <h3>The Primitive <tt>\setbox</tt></h3>
+ * <doc name="setbox"> <h3>The Primitive <tt>\setbox</tt></h3>
  * <p>
- * The primitive <tt>\setbox</tt> takes a key for a box register and assigns
- * the following box to this register.
+ * The primitive <tt>\setbox</tt> takes a key for a box register and assigns the
+ * following box to this register.
  * </p>
  * <p>
  * TODO missing documentation
  * </p>
  * <p>
  * The primitive is an assignment. This means that it respects
- * <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is
- * special The token stored for after assignment are inserted just after the box
- * as been opened.
+ * <tt>\globaldefs</tt>. The treatment of <tt>\afterassignment</tt> is special
+ * The token stored for after assignment are inserted just after the box as been
+ * opened.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;setbox&rang;
@@ -76,25 +74,25 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Setbox extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * Return the key (the number) for the box register.
      * 
-     * <doc type="syntax" name="box register name">
-     * <h3>A Box Register Name</h3>
+     * <doc type="syntax" name="box register name"> <h3>A Box Register Name</h3>
      * <p>
      * A box register name determines under which key a box register can be
-     * addressed. In <logo>TeX</logo> this used to be a positive number only.
-     * This has been extended to allow also a token list in braces.
+     * addressed. In <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this used to be a positive number only. This has been
+     * extended to allow also a token list in braces.
      * </p>
      * <p>
      * The alternative is controlled by the count register
-     * <tt>\register.max</tt>. The following interpretation of the value of
-     * this count is used:
+     * <tt>\register.max</tt>. The following interpretation of the value of this
+     * count is used:
      * <ul>
      * <li>If the value of this count register is negative then a arbitrary
      * non-negative number is allowed as register name as well as any list of
@@ -105,13 +103,21 @@ public class Setbox extends AbstractAssignment {
      * </ul>
      * </p>
      * <p>
-     * The value of the count register <tt>\register.max</tt> is set
-     * differently for various configurations of <logo>ExTeX</logo>:
+     * The value of the count register <tt>\register.max</tt> is set differently
+     * for various configurations of <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>:
      * <ul>
-     * <li><logo>TeX</logo> uses the value 255.</li>
-     * <li><logo>eTeX</logo> uses the value 32767.</li>
+     * <li><logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 255.</li>
+     * <li><logo>&epsilon;-T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value 32767.</li>
      * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li><logo>ExTeX</logo> uses the value -1.</li>
+     * <li><logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uses the value -1.</li>
      * </ul>
      * </p>
      * <p>
@@ -181,8 +187,8 @@ public class Setbox extends AbstractAssignment {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

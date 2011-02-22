@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -116,8 +116,8 @@ public interface Context
      * The escape character is retrieved from the count register
      * <tt>\escapechar</tt>.
      * This is a convenience method.
-     *
-     *
+     * 
+     * 
      * <doc name="escapechar" type="register">
      * <h3>The Count Parameter <tt>\escapechar</tt></h3>
      * <p>
@@ -136,7 +136,7 @@ public interface Context
      *  they should coincide, but some interesting effects can be achieved with
      *  controlled disagreement.
      * </p>
-     *
+     * 
      * <h4>Syntax</h4>
      *  The formal description of this primitive is the following:
      *  <pre class="syntax">
@@ -146,13 +146,13 @@ public interface Context
      *       &lang;equals&rang;} {@linkplain
      *       org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
      *       &lang;number&rang;} </pre>
-     *
+     * 
      * <h4>Examples</h4>
      *  <pre class="TeXSample">
      *    \escapechar=-1  </pre>
-     *
+     * 
      * </doc>
-     *
+     * 
      * @return the escape character
      */
     UnicodeChar escapechar();
@@ -181,8 +181,12 @@ public interface Context
     /**
      * Getter for the {@link org.extex.interpreter.type.box.Box box} register.
      * Box registers are named, either with a number or an arbitrary string. The
-     * numbered registers where limited to 256 in <logo>TeX</logo>. This
-     * restriction does no longer hold for <logo>ExTeX</logo>.
+     * numbered registers where limited to 256 in <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param name the name or number of the count register
      * 
@@ -219,8 +223,8 @@ public interface Context
      * 
      * @param name the name of the glue register to acquire.
      * 
-     * @return the value of the named glue register or <code>null</code> if
-     *         none is set
+     * @return the value of the named glue register or <code>null</code> if none
+     *         is set
      * 
      * @see #setGlue(String, Glue, boolean)
      */
@@ -540,7 +544,12 @@ public interface Context
      * Setter for the {@link org.extex.interpreter.type.box.Box box} register in
      * the current group. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>TeX</logo>. This restriction does no longer hold for <logo>ExTeX</logo>.
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -43,21 +43,22 @@ import org.extex.typesetter.tc.font.Font;
  * This class provides an implementation for the primitive
  * <code>\fontdimen</code>.
  * 
- * <doc name="fontdimen">
- * <h3>The Primitive <tt>\fontdimen</tt></h3>
+ * <doc name="fontdimen"> <h3>The Primitive <tt>\fontdimen</tt></h3>
  * <p>
- * The primitive <tt>\fontdimen</tt> can be used to set a font dimension
- * value. Each font has an arbitrary number of dimen values which are addressed
- * by an numerical index in <logo>TeX</logo>. In <logo>ExTeX</logo> this has
- * been extended to arbitrary strings.
+ * The primitive <tt>\fontdimen</tt> can be used to set a font dimension value.
+ * Each font has an arbitrary number of dimen values which are addressed by an
+ * numerical index in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. In <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> this has been extended to arbitrary strings.
  * </p>
  * <p>
  * The primitive expands to the value of the font dimension in a right hand
  * context.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;fontdimen&rang;
@@ -77,9 +78,11 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * <pre class="TeXSample">
  *    \fontdimen13\ff=5pt  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \the\fontdimen13\ff  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \the\fontdimen{em}\ff=8pt  </pre>
  * 
  * </doc>
@@ -95,8 +98,7 @@ public class Fontdimen extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -113,8 +115,8 @@ public class Fontdimen extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -130,8 +132,8 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public void expand(Flags prefix, Context context, TokenSource source,
@@ -141,10 +143,14 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * Get the key for the font dimen. According to <logo>TeX</logo> the key is
-     * an arbitrary number. In <logo>ExTeX</logo> this has been extended to
-     * take an expandable sequence of tokens enclosed in braces. The left brace
-     * acts as indicator that this extension is used.
+     * Get the key for the font dimen. According to <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> the key is an arbitrary number. In
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> this has been extended to take an expandable sequence
+     * of tokens enclosed in braces. The left brace acts as indicator that this
+     * extension is used.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -174,8 +180,7 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

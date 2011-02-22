@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,24 +32,27 @@ import org.extex.typesetter.type.node.MarkNode;
 /**
  * This class provides an implementation for the primitive <code>\marks</code>.
  * 
- * <doc name="marks">
- * <h3>The Primitive <tt>\marks</tt></h3>
+ * <doc name="marks"> <h3>The Primitive <tt>\marks</tt></h3>
  * <p>
- * The primitive <tt>\marks</tt> places a mark in the current list. The marks
- * on the last page can be retrieved when the page is mounted in the output
+ * The primitive <tt>\marks</tt> places a mark in the current list. The marks on
+ * the last page can be retrieved when the page is mounted in the output
  * routine. The text stored within the mark is a list of tokens.
  * </p>
  * <p>
- * The marks can be classified with an identifier. In <logo>eTeX</logo> the
- * identifier is a number. In <logo>ExTeX</logo> in addition arbitrary token
- * lists can be used as identifier.
+ * The marks can be classified with an identifier. In <logo>&epsilon;-T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the identifier is a number. In <logo>&epsilon;&chi;T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> in addition arbitrary token lists can be used as
+ * identifier.
  * </p>
  * <p>
  * The <tt>\marks0</tt> is equivalent to <tt>\mark</tt>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;marks&rang;
@@ -72,8 +75,7 @@ import org.extex.typesetter.type.node.MarkNode;
 public class Marks extends AbstractMarkCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -90,8 +92,8 @@ public class Marks extends AbstractMarkCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

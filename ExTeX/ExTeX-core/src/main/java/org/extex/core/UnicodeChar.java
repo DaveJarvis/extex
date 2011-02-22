@@ -67,16 +67,15 @@ public class UnicodeChar implements Serializable {
             new WeakHashMap<Integer, UnicodeChar>();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 1L;
 
     /**
      * The field <tt>BREAK_PERMITTED_HERE</tt> contains the optional break.
      */
-    public static final UnicodeChar BREAK_PERMITTED_HERE =
-            UnicodeChar.get(0x82);
+    public static final UnicodeChar BREAK_PERMITTED_HERE = UnicodeChar
+        .get(0x82);
 
     /**
      * The field <tt>NEXT_LINE</tt> contains the next line control character.
@@ -150,8 +149,8 @@ public class UnicodeChar implements Serializable {
     }
 
     /**
-     * The field <tt>code</tt> contains the code point of the Unicode
-     * character (32 bit).
+     * The field <tt>code</tt> contains the code point of the Unicode character
+     * (32 bit).
      */
     private int code;
 
@@ -272,7 +271,9 @@ public class UnicodeChar implements Serializable {
     /**
      * Returns the lowercase character of this object.
      * <p>
-     * (this method does not use the <logo>TeX</logo> lccode!)
+     * (this method does not use the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> lccode!)
      * </p>
      * 
      * @return character in lowercase
@@ -297,7 +298,9 @@ public class UnicodeChar implements Serializable {
     /**
      * Returns the uppercase character of this object.
      * <p>
-     * (this method does not use the <logo>TeX</logo> uccode!)
+     * (this method does not use the <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> uccode!)
      * </p>
      * 
      * @return character in uppercase

@@ -78,7 +78,9 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class implements the paragraph breaking algorithm as used in
- * <logo>TeX</logo>.
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>.
  * 
  * The implementation stared as a direct translation of the original sources to
  * Java. This includes the original comments. Thus most of the original comments
@@ -90,15 +92,23 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * </p>
  * <p>
  * We come now to what is probably the most interesting algorithm of
- * <logo>TeX</logo>: the mechanism for choosing the "best possible" breakpoints
- * that yield the individual lines of a paragraph. <logo>TeX</logo>'s
- * line-breaking algorithm takes a given horizontal list and converts it to a
- * sequence of boxes that are appended to the current vertical list. In the
- * course of doing this, it creates a special data structure containing three
- * kinds of records that are not used elsewhere in <logo>TeX</logo>. Such nodes
- * are created while a paragraph is being processed, and they are destroyed
- * afterwards; thus, the other parts of <logo>TeX</logo> do not need to know
- * anything about how line-breaking is done.
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>: the mechanism for choosing the "best possible" breakpoints
+ * that yield the individual lines of a paragraph. <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>'s line-breaking algorithm takes a given horizontal list and
+ * converts it to a sequence of boxes that are appended to the current vertical
+ * list. In the course of doing this, it creates a special data structure
+ * containing three kinds of records that are not used elsewhere in <logo>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. Such nodes are created while a paragraph is being
+ * processed, and they are destroyed afterwards; thus, the other parts of
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> do not need to know anything about how line-breaking is
+ * done.
  * </p>
  * <p>
  * The method used here is based on an approach devised by Michael F. Plass and
@@ -374,8 +384,8 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape =
-            new FixedParagraphShape(Dimen.ZERO_PT);
+    private FixedParagraphShape fixedParshape = new FixedParagraphShape(
+        Dimen.ZERO_PT);
 
     /**
      * The field <tt>hangingParshape</tt> contains the data object used to
@@ -383,8 +393,8 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape =
-            new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
+    private HangingParagraphShape hangingParshape = new HangingParagraphShape(
+        0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
      * <p>
@@ -631,9 +641,11 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * shrinkability as well as a natural width. If we were to compute
      * &alpha;(p) and &beta;(p) for each p, we would need multiple precision
      * arithmetic, and the multiprecise numbers would have to be kept in the
-     * active nodes. <logo>TeX</logo> avoids this problem by working entirely
-     * with relative differences or "deltas." Suppose, for example, that the
-     * active list contains a<sub>1</sub>&delta;<sub>1</sub>a<sub>2</sub>
+     * active nodes. <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> avoids this problem by working entirely with relative
+     * differences or "deltas." Suppose, for example, that the active list
+     * contains a<sub>1</sub>&delta;<sub>1</sub>a<sub>2</sub>
      * &delta;<sub>2</sub> a<sub>3</sub> , where the a's are active breakpoints
      * and the &delta;'s are delta nodes. Then
      * &delta;<sub>1</sub>=&alpha;(a<sub>1</sub>)-&alpha;(a<sub>2</sub> ) and
@@ -1348,8 +1360,10 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 867.
      * 
      * The code that passes over the characters of words in a paragraph is part
-     * of <logo>TeX</logo>'s inner loop, so it has been streamlined for speed.
-     * We use the fact that `\parfillskip' glue appears at the end of each
+     * of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>'s inner loop, so it has been streamlined for speed. We
+     * use the fact that `\parfillskip' glue appears at the end of each
      * paragraph; it is therefore unnecessary to check if link(cur_p)=null when
      * cur_p is a character node.
      * 
@@ -1485,10 +1499,12 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * the subarray cur_active_width[2 .. 5], in units of points, fil, fill, and
      * filll.
      * 
-     * The present section is part of <logo>TeX</logo>'s inner loop, and it is
-     * most often performed when the badness is infinite; therefore it is worth
-     * while to make a quick test for large width excess and small
-     * stretchability, before calling the badness subroutine.
+     * The present section is part of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>'s inner loop, and it is most often performed when the
+     * badness is infinite; therefore it is worth while to make a quick test for
+     * large width excess and small stretchability, before calling the badness
+     * subroutine.
      * 
      * This code is used in section 851.
      * 
@@ -1586,7 +1602,9 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
              * Since line_break is a rather lengthy procedure---sort of a small
              * world unto itself---we must build it up little by little,
              * somewhat more cautiously than we have done with the simpler
-             * procedures of <logo>TeX</logo>. Here is the general outline.
+             * procedures of <logo>T<span style=
+             * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+             * >e</span>X</logo>. Here is the general outline.
              */
             // label done,done1,done2,done3,done4,done5,continue;
             // var <<Local variables for line breaking 862>>
@@ -2813,8 +2831,9 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
         // type(q) <-- break_type;
         // total_demerits(q) <-- minimal_demerits[fit_class];
         ActiveNode an =
-                new ActiveNode(fitClass, breakType, minimalDemerits[fitClass
-                    .getOrder()], bestPlaceLine[fitClass.getOrder()] + 1, pn);
+                new ActiveNode(fitClass, breakType,
+                    minimalDemerits[fitClass.getOrder()],
+                    bestPlaceLine[fitClass.getOrder()] + 1, pn);
         // link(q) <-- r;
         // link(prev_r) <-- q;
         // prev_r <-- q;
@@ -3273,10 +3292,14 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * During the final pass, we dare not lose all active nodes, lest we lose
      * touch with the line breaks already found. The code shown here makes sure
      * that such a catastrophe does not happen, by permitting overfull boxes as
-     * a last resort. This particular part of <logo>TeX</logo> was a source of
-     * several subtle bugs before the correct program logic was finally
-     * discovered; readers who seek to "improve" <logo>TeX</logo> should
-     * therefore think thrice before daring to make any changes here.
+     * a last resort. This particular part of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> was a source of several subtle bugs before the correct
+     * program logic was finally discovered; readers who seek to "improve"
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> should therefore think thrice before daring to make any
+     * changes here.
      * 
      * This code is used in section 851.
      * 
@@ -3654,11 +3677,12 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 835.
      * </p>
      * <p>
-     * The first part of the following code is part of <logo>TeX</logo>'s inner
-     * loop, so we don't want to waste any time. The current active node, namely
-     * node r, contains the line number that will be considered next. At the end
-     * of the list we have arranged the data structure so that r=last_active and
-     * line_number(last_active) > old_l.
+     * The first part of the following code is part of <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>'s inner loop, so we don't want to waste any time. The
+     * current active node, namely node r, contains the line number that will be
+     * considered next. At the end of the list we have arranged the data
+     * structure so that r=last_active and line_number(last_active) > old_l.
      * </p>
      * <p>
      * This code is used in section 829.

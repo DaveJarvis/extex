@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,12 +34,11 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\export</code>.
  * 
- * <doc name="export">
- * <h3>The Primitive <tt>\export</tt></h3>
+ * <doc name="export"> <h3>The Primitive <tt>\export</tt></h3>
  * <p>
- * The primitive <tt>\export</tt> takes a list of tokens and saves them away
- * for an associated <tt>\import</tt>. The tokens in the list are either
- * control sequence tokens or active characters. All other tokens are ignored.
+ * The primitive <tt>\export</tt> takes a list of tokens and saves them away for
+ * an associated <tt>\import</tt>. The tokens in the list are either control
+ * sequence tokens or active characters. All other tokens are ignored.
  * </p>
  * <p>
  * The expansion text is empty. The primitive is an assignment. Thus
@@ -56,12 +55,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * This primitive is one building block for the use of name spaces in
- * <logo>ExTeX</logo>. The central primitive for this purpose is
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. The central primitive for this purpose is
  * <tt>\namespace</tt>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;export&rang;
@@ -90,8 +90,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Export extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -108,8 +107,8 @@ public class Export extends AbstractAssignment {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

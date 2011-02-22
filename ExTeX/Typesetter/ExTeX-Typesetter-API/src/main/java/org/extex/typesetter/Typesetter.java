@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,7 +35,9 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * node lists of the appropriate type and structure. The typesetter acts as
  * proxy. Most requests are simply forwarded to the current list maker.
  * 
- * @see "<logo>TeX</logo> &ndash; The Program [211]"
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [211]"
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -107,9 +109,8 @@ public interface Typesetter extends ListMaker {
      * ship-out mark to <code>false</code>. Initially the ship-out mark is
      * <code>false</code>.
      * 
-     * @return <code>true</code> iff there has been an invocation to the
-     *         method {@link #shipout(NodeList) shipout()} since the last
-     *         clearing
+     * @return <code>true</code> iff there has been an invocation to the method
+     *         {@link #shipout(NodeList) shipout()} since the last clearing
      * @see #clearShipoutMark()
      */
     boolean isShipoutMark();
@@ -195,11 +196,12 @@ public interface Typesetter extends ListMaker {
      * @param locator the locator
      * 
      * @return the new list maker
-     *
+     * 
      * @throws UnsupportedOperationException in case that the type is now known
      * @throws TypesetterException in case of an error in the typesetter
      */
     ListMaker pushListMaker(ListMakerType type, Locator locator)
-            throws UnsupportedOperationException, TypesetterException;
+            throws UnsupportedOperationException,
+                TypesetterException;
 
 }

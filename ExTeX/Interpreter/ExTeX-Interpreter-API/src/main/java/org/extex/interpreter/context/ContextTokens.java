@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,7 @@ import org.extex.scanner.type.tokens.Tokens;
 /**
  * This interface describes the container for all data of an interpreter
  * context.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
@@ -36,13 +36,17 @@ public interface ContextTokens {
      * Getter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>TeX</logo>.
-     * This restriction does no longer hold for <logo>ExTeX</logo>.
-     *
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param name the name or number of the token register
-     *
+     * 
      * @return the token register or a new one if it is not defined yet
-     *
+     * 
      * @see #getToksOrNull(String)
      * @see #setToks(String, Tokens, boolean)
      */
@@ -52,13 +56,17 @@ public interface ContextTokens {
      * Getter for the {@link org.extex.scanner.type.tokens.Tokens toks}
      * register. Tokens registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>TeX</logo>.
-     * This restriction does no longer hold for <logo>ExTeX</logo>.
-     *
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param name the name or number of the token register
-     *
+     * 
      * @return the token register or <code>null</code> if it is not defined
-     *
+     * 
      * @see #getToks(String)
      * @see #setToks(String, Tokens, boolean)
      */
@@ -68,16 +76,20 @@ public interface ContextTokens {
      * Setter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
-     *
+     * 256 in <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
+     * 
      * @param name the name or the number of the register
      * @param toks the new value of the register
      * @param global the indicator for the scope; <code>true</code> means all
-     *            groups; otherwise the current group is affected only
-     *
+     *        groups; otherwise the current group is affected only
+     * 
      * @throws HelpingException in case of a problem in an observer
-     *
+     * 
      * @see #getToks(String)
      * @see #getToksOrNull(String)
      */

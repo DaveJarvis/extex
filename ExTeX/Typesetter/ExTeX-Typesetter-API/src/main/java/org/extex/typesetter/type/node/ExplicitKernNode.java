@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,20 +24,21 @@ import org.extex.typesetter.Discardable;
 
 /**
  * This class represents an explicit kerning node for the typesetter.
- *
+ * 
  * From The TeXbook
  * <p>
- *  A kern_node has a width field to specify a (normally negative) amount of
- *  spacing. This spacing correction appears in horizontal lists between
- *  letters like A and V when the font designer said that it looks better to
- *  move them closer together or further apart. A kern node can also appear in
- *  a vertical list, when its `width' denotes additional spacing in the
- *  vertical direction.
+ * A kern_node has a width field to specify a (normally negative) amount of
+ * spacing. This spacing correction appears in horizontal lists between letters
+ * like A and V when the font designer said that it looks better to move them
+ * closer together or further apart. A kern node can also appear in a vertical
+ * list, when its `width' denotes additional spacing in the vertical direction.
  * </p>
- *
- * @see "<logo>TeX</logo> &ndash; The Program [155]"
+ * 
+ * @see "<logo>T<span style=
+ *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *      >e</span>X</logo> &ndash; The Program [155]"
  * @see org.extex.typesetter.type.node.ImplicitKernNode
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -51,11 +52,13 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param kern the natural size
      * @param horizontal the indicator that the kern works horizontally
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [156]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [156]"
      */
     public ExplicitKernNode(FixedDimen kern, boolean horizontal) {
 
@@ -66,21 +69,17 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", //
             getWidth().toString()));
@@ -90,13 +89,14 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a short form only as it is used in error
      * messages to the user.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [191]"
-     * @see org.extex.typesetter.type.Node#toText(
-     *      java.lang.StringBuffer,
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [191]"
+     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
      *      java.lang.String)
      */
     @Override

@@ -27,10 +27,10 @@ import org.extex.scanner.type.Catcode;
  * token classes.
  * <p>
  * This class has a protected constructor only. Use the factory
- * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}
- * to get an instance of this class.
+ * {@link org.extex.scanner.type.token.TokenFactory TokenFactory} to get an
+ * instance of this class.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4738 $
  */
@@ -43,7 +43,7 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param uc the actual value
      */
     protected OtherToken(UnicodeChar uc) {
@@ -53,9 +53,9 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Getter for the catcode.
-     *
+     * 
      * @return the catcode
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#getCatcode()
      */
     @Override
@@ -66,10 +66,12 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
-     * @see "<logo>TeX</logo> &ndash; The Program [298]"
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [298]"
      */
     @Override
     public String toString() {
@@ -79,9 +81,9 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Print the token into a StringBuffer.
-     *
+     * 
      * @param sb the target string buffer
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
      */
     public void toString(StringBuffer sb) {
@@ -91,9 +93,9 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Print the token into a StringBuilder.
-     *
+     * 
      * @param sb the target string builder
-     *
+     * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
      */
     public void toString(StringBuilder sb) {
@@ -103,20 +105,19 @@ public class OtherToken extends AbstractToken implements Token {
 
     /**
      * Invoke the appropriate visit method for the current class.
+     * 
      * @param visitor the calling visitor
      * @param arg1 the first argument to pass
-     *
+     * 
      * @return the result object
-     *
+     * 
      * @throws Exception in case of an error
-     *
-     * @see org.extex.scanner.type.token.Token#visit(
-     *      org.extex.scanner.type.token.TokenVisitor,
+     * 
+     * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
     @SuppressWarnings({"unchecked", "rawtypes"})
-    public Object visit(TokenVisitor visitor, Object arg1)
-            throws Exception {
+    public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 
         return visitor.visitOther(this, arg1);
     }

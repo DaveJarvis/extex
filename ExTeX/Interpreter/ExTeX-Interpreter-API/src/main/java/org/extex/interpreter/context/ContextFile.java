@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -56,11 +56,15 @@ public interface ContextFile {
     OutFile getOutFile(String name);
 
     /**
-     * Setter for the {@link org.extex.scanner.type.file.InFile InFile}
-     * register in all requested groups. InFile registers are named, either with
-     * a number or an arbitrary string. The numbered registers where limited to
-     * 16 in <logo>TeX</logo>. This restriction does no longer hold for
-     * <logo>ExTeX</logo>.
+     * Setter for the {@link org.extex.scanner.type.file.InFile InFile} register
+     * in all requested groups. InFile registers are named, either with a number
+     * or an arbitrary string. The numbered registers where limited to 16 in
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>. This restriction does no longer hold for
+     * <logo>&epsilon;&chi;T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>.
      * 
      * @param name the name or the number of the file register
      * @param file the input file descriptor

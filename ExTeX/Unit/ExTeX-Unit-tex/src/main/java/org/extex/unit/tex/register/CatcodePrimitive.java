@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,13 +36,15 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\catcode</code>.
+ * This class provides an implementation for the primitive <code>\catcode</code>
+ * .
  * 
- * <doc name="catcode">
- * <h3>The Primitive <tt>\catcode</tt></h3>
+ * <doc name="catcode"> <h3>The Primitive <tt>\catcode</tt></h3>
  * <p>
  * The primitive <tt>\catcode</tt> can be used to influence the tokenizer of
- * <logo>ExTeX</logo>. This is done by assigning category codes to single
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. This is done by assigning category codes to single
  * characters. Whenever characters are read tokens are generated and passed on.
  * Those tokens carry the category code into the interpreter. The interpreter
  * considers always tokens, i.e. characters and category codes. Thus the same
@@ -115,37 +117,37 @@ import org.extex.typesetter.exception.TypesetterException;
  * <tr>
  * <td>IGNORE</td>
  * <td>9</td>
- * <td>This character is ignored during paring. It is dropped silently. </td>
+ * <td>This character is ignored during paring. It is dropped silently.</td>
  * </tr>
  * <tr>
  * <td>SPACE</td>
  * <td>10</td>
  * <td>This character is a white-space character. It is treated as if a simple
- * space has been found. Under some circumstances it is ignored. </td>
+ * space has been found. Under some circumstances it is ignored.</td>
  * </tr>
  * <tr>
  * <td>LETTER</td>
  * <td>11</td>
- * <td>This character is a letter. As such it can be part of an escape
- * sequence.</td>
+ * <td>This character is a letter. As such it can be part of an escape sequence.
+ * </td>
  * </tr>
  * <tr>
  * <td>OTHER</td>
  * <td>12</td>
- * <td>This character is another simple character which is not a letter. </td>
+ * <td>This character is another simple character which is not a letter.</td>
  * </tr>
  * <tr>
  * <td>ACTIVE</td>
  * <td>13</td>
- * <td>This character is an active character. This means that some code could
- * be bound to it. Active characters do not need the leading escape symbol like
+ * <td>This character is an active character. This means that some code could be
+ * bound to it. Active characters do not need the leading escape symbol like
  * escape sequences.</td>
  * </tr>
  * <tr>
  * <td>COMMENT</td>
  * <td>14</td>
- * <td>This character signals the beginning of a comment. The comment reaches
- * to the end of the current line.</td>
+ * <td>This character signals the beginning of a comment. The comment reaches to
+ * the end of the current line.</td>
  * </tr>
  * <tr>
  * <td>INVALID</td>
@@ -154,8 +156,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </tr>
  * </table>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;catcode&rang;
@@ -175,7 +176,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * <pre class="TeXSample">
  *    \catcode `\%=12  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \global\catcode `\%=11  </pre>
  * 
  * <h4><tt>\catcode</tt> as a Count Value</h4>
@@ -198,8 +200,7 @@ public class CatcodePrimitive extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -216,8 +217,8 @@ public class CatcodePrimitive extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -242,8 +243,7 @@ public class CatcodePrimitive extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public long convertCount(Context context, TokenSource source,
@@ -264,8 +264,7 @@ public class CatcodePrimitive extends AbstractAssignment
      * 
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)

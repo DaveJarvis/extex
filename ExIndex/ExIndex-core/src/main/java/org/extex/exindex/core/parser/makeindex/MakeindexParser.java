@@ -88,18 +88,23 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * <p>
  * The original need to introduce the parameters is the flexibility of
- * <logo>TeX</logo>. In <logo>TeX</logo> the category codes of characters can be
- * redefined. Thus <logo>makeindex</logo> needs to be able to adjust its
- * behavior to cope with such a situation.
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>. In <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> the category codes of characters can be redefined. Thus
+ * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
+ * such a situation.
  * </p>
  * <p>
- * The following table shows the parameters with their <logo>ExIndex</logo>
- * name, its <logo>makeindex</logo> name and the default value.
+ * The following table shows the parameters with their
+ * <logo>&epsilon;&chi;Index</logo> name, its <logo>makeindex</logo> name and
+ * the default value.
  * </p>
  * 
  * <table>
  * <tr>
- * <th><logo>ExIndex</logo> parameter</th>
+ * <th><logo>&epsilon;&chi;Index</logo> parameter</th>
  * <th><logo>makeindex</logo> parameter</th>
  * <th>Fallback</th>
  * <th>Type</th>
@@ -205,7 +210,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * 
  * <p>
  * The following example shows how the default setting can be defined in a
- * <logo>ExIndex</logo> style file.
+ * <logo>&epsilon;&chi;Index</logo> style file.
  * </p>
  * 
  * <pre>
