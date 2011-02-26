@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -136,7 +136,6 @@ public abstract class AbstractFactory
      */
     public AbstractFactory() {
 
-        this(null);
     }
 
     /**
@@ -158,6 +157,7 @@ public abstract class AbstractFactory
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration conf) throws ConfigurationException {
 
         this.configuration = conf;
@@ -580,6 +580,7 @@ public abstract class AbstractFactory
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -620,6 +621,7 @@ public abstract class AbstractFactory
      * 
      * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
      */
+    @Override
     public Object reconnect(Object instance) throws RegistrarException {
 
         try {
@@ -691,6 +693,7 @@ public abstract class AbstractFactory
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.resourceFinder = finder;
