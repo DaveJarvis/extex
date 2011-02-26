@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,12 +19,15 @@
 
 package org.extex.font.format.tfm;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.IOException;
 import java.util.Map;
 import java.util.Properties;
 import java.util.logging.Logger;
-
-import junit.framework.TestCase;
 
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
@@ -32,6 +35,7 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+import org.junit.Test;
 
 /**
  * Test for the u2t factory.
@@ -39,7 +43,7 @@ import org.extex.resource.ResourceFinderFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class U2tFactoryTest extends TestCase {
+public class U2tFactoryTest {
 
     /**
      * The resource finder.
@@ -54,37 +58,36 @@ public class U2tFactoryTest extends TestCase {
     public U2tFactoryTest() throws ConfigurationException {
 
         if (finder == null) {
-            makeResourceFinder();
+            finder = makeResourceFinder();
         }
     }
 
     /**
      * Make a resource finder.
      * 
+     * @return
+     * 
      * @throws ConfigurationException from the configurations system.
      */
-    private void makeResourceFinder() throws ConfigurationException {
+    private ResourceFinder makeResourceFinder() throws ConfigurationException {
 
         Configuration config =
                 ConfigurationFactory.newInstance("U2tFactoryTest.xml");
 
-        Logger logger = Logger.getLogger("Test");
-        finder =
-                new ResourceFinderFactory().createResourceFinder(config
-                    .getConfiguration("Resource"), logger, new Properties(),
-                    null /* provider */);
-
+        return new ResourceFinderFactory().createResourceFinder(
+            config.getConfiguration("Resource"), Logger.getLogger("Test"),
+            new Properties(), null /* provider */);
     }
 
     /**
      * Test the u2t factory.
      */
+    @Test
     public void test01() {
 
         U2tFactory u2t = U2tFactory.getInstance();
 
         assertNotNull(u2t);
-
     }
 
     /**
@@ -94,6 +97,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test02()
             throws ConfigurationException,
                 NumberFormatException,
@@ -104,7 +108,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t(null, null);
         assertNull(map);
-
     }
 
     /**
@@ -114,6 +117,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test03()
             throws ConfigurationException,
                 NumberFormatException,
@@ -124,7 +128,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("xxx", null);
         assertNull(map);
-
     }
 
     /**
@@ -134,6 +137,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test04()
             throws ConfigurationException,
                 NumberFormatException,
@@ -145,7 +149,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("xxx_not_defined", finder);
         assertNull(map);
-
     }
 
     /**
@@ -155,6 +158,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test05()
             throws ConfigurationException,
                 NumberFormatException,
@@ -167,7 +171,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
         assertNotNull(map);
-
     }
 
     /**
@@ -177,6 +180,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test06()
             throws ConfigurationException,
                 NumberFormatException,
@@ -187,8 +191,8 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
+        assertNotNull(map);
         assertTrue(map.size() > 0);
-
     }
 
     /**
@@ -198,6 +202,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test07()
             throws ConfigurationException,
                 NumberFormatException,
@@ -208,10 +213,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
-
+        assertNotNull(map);
         Object val = map.get(null);
         assertNull(val);
-
     }
 
     /**
@@ -221,6 +225,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test08()
             throws ConfigurationException,
                 NumberFormatException,
@@ -231,10 +236,9 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
-
+        assertNotNull(map);
         Integer val = map.get(UnicodeChar.get(0xFFFF));
         assertNull(val);
-
     }
 
     /**
@@ -244,6 +248,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test09()
             throws ConfigurationException,
                 NumberFormatException,
@@ -254,11 +259,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
-
+        assertNotNull(map);
         Integer val = map.get(UnicodeChar.get(0x0041));
         assertNotNull(val);
         assertEquals(0x41, val.intValue());
-
     }
 
     /**
@@ -268,6 +272,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test10()
             throws ConfigurationException,
                 NumberFormatException,
@@ -278,11 +283,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
-
+        assertNotNull(map);
         Integer val = map.get(UnicodeChar.get(0x00b8));
         assertNotNull(val);
         assertEquals(0x18, val.intValue());
-
     }
 
     /**
@@ -292,6 +296,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void test11()
             throws ConfigurationException,
                 NumberFormatException,
@@ -302,11 +307,10 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(finder);
 
         Map<UnicodeChar, Integer> map = u2t.loadU2t("textext", finder);
-
+        assertNotNull(map);
         Integer val = map.get(UnicodeChar.get(0x0392));
         assertNotNull(val);
         assertEquals(0x42, val.intValue());
-
     }
 
     /**
@@ -316,6 +320,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u01()
             throws ConfigurationException,
                 NumberFormatException,
@@ -326,7 +331,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<Integer, UnicodeChar> map = u2t.loadT2u(null, null);
         assertNull(map);
-
     }
 
     /**
@@ -336,6 +340,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u02()
             throws ConfigurationException,
                 NumberFormatException,
@@ -346,7 +351,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<Integer, UnicodeChar> map = u2t.loadT2u("xxx", null);
         assertNull(map);
-
     }
 
     /**
@@ -356,6 +360,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u03()
             throws ConfigurationException,
                 NumberFormatException,
@@ -367,7 +372,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<Integer, UnicodeChar> map = u2t.loadT2u("xxx_not_defined", finder);
         assertNull(map);
-
     }
 
     /**
@@ -377,6 +381,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u04()
             throws ConfigurationException,
                 NumberFormatException,
@@ -388,7 +393,6 @@ public class U2tFactoryTest extends TestCase {
 
         Map<Integer, UnicodeChar> map = u2t.loadT2u("textext", finder);
         assertNotNull(map);
-
     }
 
     /**
@@ -398,6 +402,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u05()
             throws ConfigurationException,
                 NumberFormatException,
@@ -412,7 +417,6 @@ public class U2tFactoryTest extends TestCase {
 
         Object val = map.get(null);
         assertNull(val);
-
     }
 
     /**
@@ -422,6 +426,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u06()
             throws ConfigurationException,
                 NumberFormatException,
@@ -436,7 +441,6 @@ public class U2tFactoryTest extends TestCase {
 
         UnicodeChar uc = map.get(new Integer(0xFFFF));
         assertNull(uc);
-
     }
 
     /**
@@ -446,6 +450,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u07()
             throws ConfigurationException,
                 NumberFormatException,
@@ -462,7 +467,6 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(uc);
 
         assertEquals(0x41, uc.getCodePoint());
-
     }
 
     // ----------------------------------------------------
@@ -474,6 +478,7 @@ public class U2tFactoryTest extends TestCase {
      * @throws IOException if a io error occurred.
      * @throws NumberFormatException if a parse error occurred.
      */
+    @Test
     public void testT2u08()
             throws ConfigurationException,
                 NumberFormatException,
@@ -490,7 +495,6 @@ public class U2tFactoryTest extends TestCase {
         assertNotNull(uc);
 
         assertEquals(0x48, uc.getCodePoint());
-
     }
 
 }

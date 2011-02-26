@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,9 +19,11 @@
 
 package org.extex.font.format.tfm;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import org.extex.core.dimen.Dimen;
+import org.junit.Test;
 
 /**
  * Test for TfmFixWord.
@@ -29,12 +31,14 @@ import org.extex.core.dimen.Dimen;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmFixWordTest extends TestCase {
+public class TfmFixWordTest {
 
     /**
      * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+     * .
      */
+    @Test
     public void testToDimen01() {
 
         TfmFixWord fw = new TfmFixWord(0);
@@ -48,8 +52,10 @@ public class TfmFixWordTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+     * .
      */
+    @Test
     public void testToDimen02() {
 
         TfmFixWord fw = new TfmFixWord(0);
@@ -59,8 +65,10 @@ public class TfmFixWordTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+     * .
      */
+    @Test
     public void testToDimen03() {
 
         TfmFixWord fw = new TfmFixWord(1);
@@ -70,8 +78,10 @@ public class TfmFixWordTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+     * .
      */
+    @Test
     public void testToDimen04() {
 
         TfmFixWord fw = new TfmFixWord(12);
@@ -81,8 +91,10 @@ public class TfmFixWordTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.font.format.tfm.TfmFixWord#toDimen(org.extex.core.dimen.FixedDimen)}
+     * .
      */
+    @Test
     public void testToDimen05() {
 
         TfmFixWord fw = new TfmFixWord(1, 2);

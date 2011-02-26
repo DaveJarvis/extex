@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,11 +19,13 @@
 
 package org.extex.font.format.ofm;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import java.io.FileInputStream;
 
 import org.extex.font.format.tfm.TfmHeaderArray;
-
-import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
  * Test for the {@link OfmReader}.
@@ -31,7 +33,7 @@ import junit.framework.TestCase;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class OfmReaderTest extends TestCase {
+public class OfmReaderTest {
 
     /**
      * The reader.
@@ -57,6 +59,7 @@ public class OfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testExist01() throws Exception {
 
         assertNotNull(reader);
@@ -67,6 +70,7 @@ public class OfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeader01() throws Exception {
 
         assertNotNull(reader);
@@ -83,6 +87,7 @@ public class OfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeader02() throws Exception {
 
         assertNotNull(reader);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,17 +19,21 @@
 
 package org.extex.font.format.vf;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
+
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
-
-import junit.framework.TestCase;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.font.format.tfm.TfmReader;
 import org.extex.font.format.vf.command.VfCommandCharacterPackets;
 import org.extex.font.format.vf.command.VfCommandFontDef;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Test;
 
 /**
  * Test for the {@link VfFont}.
@@ -37,13 +41,14 @@ import org.extex.util.xml.XMLStreamWriter;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class VfFont01Test extends TestCase {
+public class VfFont01Test {
 
     /**
      * Font values.
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testChars01() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -83,6 +88,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontArgs01() throws Exception {
 
         try {
@@ -102,6 +108,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontExists01() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -116,6 +123,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontRead01() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -129,7 +137,6 @@ public class VfFont01Test extends TestCase {
 
         VfFont vfFont = new VfFont("aer12", new FileInputStream(vf), tfmReader);
         assertNotNull(vfFont);
-
     }
 
     /**
@@ -137,6 +144,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontValues01() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -153,7 +161,6 @@ public class VfFont01Test extends TestCase {
 
         assertEquals("aer12", vfFont.getFontname());
         assertNotNull(vfFont.getCmds());
-
     }
 
     /**
@@ -161,6 +168,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontValues02() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -198,7 +206,6 @@ public class VfFont01Test extends TestCase {
         fcmd = vfFont.getFont(4);
         assertNotNull(fcmd);
         assertEquals("cmu10", fcmd.getFontname());
-
     }
 
     /**
@@ -206,6 +213,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontValues03() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
@@ -255,7 +263,6 @@ public class VfFont01Test extends TestCase {
         assertEquals("cmu10", fcmd.getFontname());
         assertEquals("10.0pt", fcmd.getDesignsizeAsDimen().toString());
         assertEquals("1.0", fcmd.getScalefactor().toString());
-
     }
 
     /**
@@ -263,6 +270,7 @@ public class VfFont01Test extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testFontXml01() throws Exception {
 
         File vf = new File("../ExTeX-Font-tfm/src/font/aer12.vf");
