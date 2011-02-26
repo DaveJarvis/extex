@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -122,8 +122,10 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * <p>
  * The input file is sought in the current directory and other locations.
- * Details about searching can be found in <a href="#fileSearch">Searching TeX
- * Files</a>.
+ * Details about searching can be found in <a href="#fileSearch">Searching
+ * T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X Files</a>.
  * </p>
  * <p>
  * In general the syntax of invocation is as follows:
