@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,7 +45,7 @@ public class FontParameterTest {
      * The file.
      */
     private static final String file =
-            "../../texmf/src/texmf/fonts/afm/fxlr.fontinfo";
+            "../../../texmf/src/texmf/fonts/afm/fxlr.fontinfo";
 
     @Before
     public void setUp() throws Exception {
