@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,7 +36,55 @@ public class PfbParserTest extends TestCase {
      * The file for the test.
      */
     private static final String PFB_FILE =
-            "../texmf/src/texmf/fonts/afm/fxlr.pfb";
+            "../../../texmf/src/texmf/fonts/afm/fxlr.pfb";
+
+    /**
+     * Test the decoder.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testDecode01() throws Exception {
+
+        PfbParser parser = new PfbParser(PFB_FILE);
+        assertNotNull(parser);
+
+        String[] names = parser.getAllGylyphNames();
+        assertNotNull(names);
+
+        Arrays.sort(names);
+        try {
+            assertEquals("eng.sc", names[Arrays.binarySearch(names, "eng.sc")]);
+            assertTrue(Arrays.binarySearch(names, "not found") < 0);
+
+            assertEquals("uniE04F",
+                names[Arrays.binarySearch(names, "uniE04F")]);
+
+        } catch (Exception e) {
+            assertFalse(true);
+        }
+    }
+
+    /**
+     * Test for the parser.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    public void testEncoding() throws Exception {
+
+        PfbParser parser = new PfbParser(PFB_FILE);
+        assertNotNull(parser);
+
+        String[] enc = parser.getEncoding();
+        assertNotNull(enc);
+        assertEquals(256, enc.length);
+        assertEquals(".notdef", enc[0]);
+        assertEquals(".notdef", enc[1]);
+        assertEquals(".notdef", enc[31]);
+        assertEquals("space", enc[32]);
+        assertEquals("plus", enc[43]);
+        assertEquals("ydieresis", enc[255]);
+
+    }
 
     /**
      * Test, if the pfb file exists.
@@ -66,54 +114,6 @@ public class PfbParserTest extends TestCase {
         PfbParser parser = new PfbParser(file);
         assertNotNull(parser);
 
-    }
-
-    /**
-     * Test for the parser.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testEncoding() throws Exception {
-
-        PfbParser parser = new PfbParser(PFB_FILE);
-        assertNotNull(parser);
-
-        String[] enc = parser.getEncoding();
-        assertNotNull(enc);
-        assertEquals(256, enc.length);
-        assertEquals(".notdef", enc[0]);
-        assertEquals(".notdef", enc[1]);
-        assertEquals(".notdef", enc[31]);
-        assertEquals("space", enc[32]);
-        assertEquals("plus", enc[43]);
-        assertEquals("ydieresis", enc[255]);
-
-    }
-
-    /**
-     * Test the decoder.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    public void testDecode01() throws Exception {
-
-        PfbParser parser = new PfbParser(PFB_FILE);
-        assertNotNull(parser);
-
-        String[] names = parser.getAllGylyphNames();
-        assertNotNull(names);
-
-        Arrays.sort(names);
-        try {
-            assertEquals("eng.sc", names[Arrays.binarySearch(names, "eng.sc")]);
-            assertTrue(Arrays.binarySearch(names, "not found") < 0);
-
-            assertEquals("uniE04F",
-                names[Arrays.binarySearch(names, "uniE04F")]);
-
-        } catch (Exception e) {
-            assertFalse(true);
-        }
     }
 
     // /**
