@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,20 +19,23 @@
 
 package org.extex.font.format.tfm;
 
-import java.io.FileInputStream;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
-import junit.framework.TestCase;
+import java.io.FileInputStream;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
+import org.junit.Test;
 
 /**
- * Test for the TfmReader.
+ * Test cases for the {@link TfmReader}.
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TfmReaderTest extends TestCase {
+public class TfmReaderTest {
 
     /**
      * Dimen for 10pt
@@ -53,7 +56,7 @@ public class TfmReaderTest extends TestCase {
 
         reader =
                 new TfmReader(new FileInputStream(
-                    "../texmf/src/texmf/fonts/tfm/public/cm/cmr10.tfm"),
+                    "../../../texmf/src/texmf/fonts/tfm/public/cm/cmr10.tfm"),
                     "cmr10");
     }
 
@@ -62,6 +65,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth01() throws Exception {
 
         TfmFixWord d = reader.getDepth(-1);
@@ -73,6 +77,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth02() throws Exception {
 
         TfmFixWord d = reader.getDepth(0);
@@ -86,6 +91,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth03() throws Exception {
 
         TfmFixWord d = reader.getDepth(0x100);
@@ -98,6 +104,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testDepth04() throws Exception {
 
         TfmFixWord d = reader.getDepth(17);
@@ -115,6 +122,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGetParamString01() throws Exception {
 
         FixedDimen ex = reader.getParam("XHEIGHT");
@@ -128,6 +136,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGetParamString02() throws Exception {
 
         FixedDimen ex = reader.getParam("xheight");
@@ -141,6 +150,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGetParamString03() throws Exception {
 
         FixedDimen ex = reader.getParam("5");
@@ -154,6 +164,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGetParamString04() throws Exception {
 
         FixedDimen ex = reader.getParam("45");
@@ -167,6 +178,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testGetParamString05() throws Exception {
 
         FixedDimen ex = reader.getParam(null);
@@ -179,6 +191,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight01() throws Exception {
 
         TfmFixWord h = reader.getHeight(-1);
@@ -190,6 +203,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight02() throws Exception {
 
         TfmFixWord h = reader.getHeight(0);
@@ -203,6 +217,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testHeight03() throws Exception {
 
         TfmFixWord h = reader.getWidth(0x100);
@@ -215,6 +230,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic01() throws Exception {
 
         TfmFixWord i = reader.getItalicCorrection(-1);
@@ -226,6 +242,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic02() throws Exception {
 
         TfmFixWord i = reader.getItalicCorrection(0);
@@ -239,6 +256,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic03() throws Exception {
 
         TfmFixWord i = reader.getItalicCorrection(0x100);
@@ -251,6 +269,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testItalic04() throws Exception {
 
         TfmFixWord i = reader.getItalicCorrection(86);
@@ -264,6 +283,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testWidth01() throws Exception {
 
         TfmFixWord w = reader.getWidth(-1);
@@ -275,6 +295,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testWidth02() throws Exception {
 
         TfmFixWord w = reader.getWidth(0);
@@ -288,6 +309,7 @@ public class TfmReaderTest extends TestCase {
      * 
      * @throws Exception if an error occurred.
      */
+    @Test
     public void testWidth03() throws Exception {
 
         TfmFixWord w = reader.getWidth(0x100);
