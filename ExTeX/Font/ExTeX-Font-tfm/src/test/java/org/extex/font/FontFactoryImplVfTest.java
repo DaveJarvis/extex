@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,11 @@
  */
 
 package org.extex.font;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 
@@ -132,8 +137,8 @@ public class FontFactoryImplVfTest extends AbstractFontFactoryTester {
         try {
             factory.getInstance(key);
         } catch (CorruptFontException e) {
-            assertEquals("Font file is corrupt: empty\n", e
-                .getLocalizedMessage());
+            assertEquals("Font file is corrupt: empty\n",
+                e.getLocalizedMessage());
         }
 
     }

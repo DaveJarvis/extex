@@ -6,7 +6,7 @@
           default="default">
     <u2t>
       <extension>.u2t</extension>
-      <path>../texmf/src/texmf/fonts/u2t</path>
+      <path>../../texmf/src/texmf/fonts/u2t</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -15,7 +15,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path>.</path>
-      <path>../texmf/src/texmf/tex/plain/base</path>
+      <path>../../texmf/src/texmf/tex/plain/base</path>
       <extension></extension>
       <extension>.tex</extension>
     </tex>
@@ -39,7 +39,7 @@
     </pfa>
     <afm>
       <extension>.afm</extension>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
@@ -47,7 +47,7 @@
     </afm>
     <fontinfo>
       <extension>.fontinfo</extension>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
@@ -55,7 +55,7 @@
     </fontinfo>
     <ttf>
       <extension>.ttf</extension>
-      <path>../texmf/src/texmf/fonts/ttf</path>
+      <path>../../texmf/src/texmf/fonts/ttf</path>
       <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>
       <path property="extex.fonts"/>
@@ -63,17 +63,17 @@
     </ttf>
     <vf>
       <extension>.vf</extension>
-      <path>../ExTeX-Font-tfm/src/font</path>
+      <path>../../ExTeX-Font-tfm/src/font</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </vf>
     <tfm>
       <extension>.tfm</extension>
-      <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
-      <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
-      <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
-      <path>../texmf/src/texmf/fonts/tfm/public/mflogo</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/latex</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/misc</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/mflogo</path>
       <path>../ExTeX-Font-tfm/src/font</path>
       <path>../Test-Font-API/src/test/resources</path>
       <path>.</path>

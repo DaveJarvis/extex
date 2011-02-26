@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,10 @@
  */
 
 package org.extex.font;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
@@ -95,10 +99,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2048006)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2048006).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -120,10 +124,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -145,10 +149,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -170,10 +174,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -195,10 +199,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1456359)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1456359).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -221,10 +225,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1001250)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1001250).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(254865).eq(i));
     }
@@ -247,12 +251,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
 
@@ -273,10 +277,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -298,10 +302,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2188440)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2188440).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -324,12 +328,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1001250)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2188440)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1001250).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2188440).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -350,10 +354,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1729431)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1729431).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -375,10 +379,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -400,10 +404,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -426,10 +430,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1911475)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1911475).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(254865).eq(i));
     }
@@ -451,10 +455,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -476,10 +480,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -502,12 +506,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -529,12 +533,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1729425)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1729425).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -555,10 +559,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1283418)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1283418).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -580,10 +584,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1292518)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1292518).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -605,10 +609,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1274315)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2015493)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1274315).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2015493).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -630,10 +634,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -656,10 +660,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1729431)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1729431).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
@@ -682,10 +686,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
@@ -707,10 +711,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -732,10 +736,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1729431)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1729431).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -758,12 +762,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1729431)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1729431).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
 
@@ -784,10 +788,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1456359)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1456359).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -810,10 +814,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(91025).eq(i));
     }
@@ -836,10 +840,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(3276809)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(3276809).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(91025).eq(i));
     }
@@ -861,10 +865,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -886,10 +890,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2188440)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2188440).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -911,10 +915,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2188440)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2188440).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -958,10 +962,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1093,10 +1097,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1228,10 +1232,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1363,10 +1367,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1499,12 +1503,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1001250)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1001250).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -1635,10 +1639,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1770,10 +1774,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1905,10 +1909,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -1930,10 +1934,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2059381)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2059381).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2065,10 +2069,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2200,10 +2204,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1860490)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1860490).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2335,10 +2339,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2470,11 +2474,11 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1456359)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1456359).eq(w));
         assertTrue(Long.toString(h.getLength().getValue()), new Glue(0).eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(557509)
-            .eq(d));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(557509).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2605,10 +2609,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638409)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638409).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2696,10 +2700,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2721,10 +2725,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2747,12 +2751,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1729425)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(318581)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1729425).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(318581).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2773,10 +2777,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2958231)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2958231).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2798,10 +2802,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2275559)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2275559).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2823,10 +2827,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(3322318)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(3322318).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2849,12 +2853,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2398434)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(159290)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2398434).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(159290).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2875,10 +2879,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2900,10 +2904,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2925,10 +2929,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2951,12 +2955,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637150)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637150).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2978,12 +2982,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(182043)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(182043).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3005,12 +3009,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2730675)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(182043)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2730675).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(182043).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3031,10 +3035,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3056,10 +3060,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3081,10 +3085,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2184540)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2184540).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3107,12 +3111,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1274315)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(819200)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1274315).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(819200).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3134,12 +3138,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1274315)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(819200)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1274315).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(819200).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3160,10 +3164,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3186,12 +3190,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1911468)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(273068)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1911468).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(273068).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3213,12 +3217,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(345884)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(345884).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3239,10 +3243,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1092268)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1092268).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3264,10 +3268,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(345884)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(345884).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3290,12 +3294,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(819200)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(819200).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3316,10 +3320,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3341,10 +3345,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3366,10 +3370,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3391,10 +3395,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3416,10 +3420,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3441,10 +3445,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3466,10 +3470,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3491,10 +3495,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3516,10 +3520,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3541,10 +3545,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3566,10 +3570,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2111715)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2111715).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3591,10 +3595,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3617,12 +3621,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3643,10 +3647,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3669,12 +3673,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1638400)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1638400).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3696,12 +3700,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1202175)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-436225)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1202175).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-436225).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3723,12 +3727,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1547384)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1638400)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1547384).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1638400).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -3749,10 +3753,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1547384)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1547384).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3774,10 +3778,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3799,10 +3803,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3824,10 +3828,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2321075)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2321075).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3849,10 +3853,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3874,10 +3878,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2503118)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2503118).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3899,10 +3903,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2230050)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2230050).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3924,10 +3928,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3949,10 +3953,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2139031)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2139031).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3974,10 +3978,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2571384)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2571384).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -3999,10 +4003,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4024,10 +4028,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1183290)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1183290).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4049,10 +4053,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1683915)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1683915).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4074,10 +4078,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4099,10 +4103,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2048006)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2048006).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4124,10 +4128,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(3003740)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(3003740).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4149,10 +4153,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4174,10 +4178,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4199,10 +4203,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4224,10 +4228,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2230050)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2230050).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4250,12 +4254,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(637156)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(637156).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -4276,10 +4280,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2412093)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2412093).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4301,10 +4305,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4326,10 +4330,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2366584)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2366584).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4351,10 +4355,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4377,10 +4381,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
@@ -4403,10 +4407,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(3367831)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(3367831).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(45509).eq(i));
     }
@@ -4428,10 +4432,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4454,10 +4458,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2457606)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2457606).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(81918).eq(i));
     }
@@ -4479,10 +4483,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2548631)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2548631).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4504,10 +4508,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(2002493)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2239143)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(2002493).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2239143).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4530,12 +4534,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(819200)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(819200).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -4556,10 +4560,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4582,12 +4586,12 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2457600)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(819200)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2457600).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(819200).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -4608,10 +4612,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4633,10 +4637,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2188440)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2188440).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4658,10 +4662,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(910225)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(910225).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4683,10 +4687,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1638406)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1638406).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4708,10 +4712,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1820450)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(2275556)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1820450).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(2275556).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -4733,10 +4737,10 @@ public class FontFactoryImplGenCmr10At50PtTest
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(1456359)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(1410843)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(1456359).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(1410843).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }

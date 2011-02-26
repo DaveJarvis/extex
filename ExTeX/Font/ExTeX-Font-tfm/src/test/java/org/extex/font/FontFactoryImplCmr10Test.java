@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,12 @@
  */
 
 package org.extex.font;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
@@ -305,8 +311,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getHeight(UnicodeChar.get(0xEE00));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(447828).eq(w));
 
     }
 
@@ -321,8 +327,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getHeight(UnicodeChar.get(0x03a0));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(447828).eq(w));
 
     }
 
@@ -339,8 +345,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getHeight(UnicodeChar.get(65));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(447828)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(447828).eq(w));
 
     }
 
@@ -645,8 +651,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getWidth(UnicodeChar.get(0xEE00));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(409601)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(409601).eq(w));
 
     }
 
@@ -662,8 +668,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getWidth(UnicodeChar.get(0x03a0));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(491521).eq(w));
 
     }
 
@@ -678,8 +684,8 @@ public class FontFactoryImplCmr10Test extends AbstractFontFactoryTester {
         FixedGlue w = font.getWidth(UnicodeChar.get(65));
 
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(491521)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(491521).eq(w));
 
     }
 

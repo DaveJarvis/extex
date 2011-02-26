@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,10 @@
  */
 
 package org.extex.font;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
@@ -104,12 +108,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(196908)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(33068)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(196908).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(33068).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -1340,12 +1344,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(235706)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(71866)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(235706).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(71866).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2092,12 +2096,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(196908)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(33068)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(196908).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(33068).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2228,12 +2232,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(235706)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(71866)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(235706).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(71866).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2255,12 +2259,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(172944)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(129894)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-33946)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(172944).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(129894).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-33946).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2282,12 +2286,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(172944)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(129894)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-33946)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(172944).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(129894).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-33946).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2308,12 +2312,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(241211)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(227555)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(63715)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(241211).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(227555).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(63715).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2334,12 +2338,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(241211)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(227555)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(63715)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(241211).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(227555).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(63715).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2404,10 +2408,10 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(332235)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(223915)
-            .eq(h));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(332235).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(223915).eq(h));
         assertTrue(Long.toString(d.getLength().getValue()), new Glue(0).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
@@ -2429,12 +2433,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(332235)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(161565)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-2275)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(332235).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(161565).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-2275).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2466,12 +2470,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(299465)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(161565)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-2275)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(299465).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(161565).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-2275).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2492,12 +2496,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(304928)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(161565)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-2275)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(304928).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(161565).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-2275).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2585,12 +2589,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(309480)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(129894)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-33946)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(309480).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(129894).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-33946).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2612,12 +2616,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(446015)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(129894)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-33946)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(446015).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(129894).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-33946).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2649,12 +2653,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(196908)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(33068)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(196908).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(33068).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 
@@ -2675,12 +2679,12 @@ public class FontFactoryImplGenLasy5Test extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(354991)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(196908)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(33068)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(354991).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(196908).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(33068).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
     }
 

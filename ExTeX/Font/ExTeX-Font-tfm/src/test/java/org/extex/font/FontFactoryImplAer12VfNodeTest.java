@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -18,6 +18,11 @@
  */
 
 package org.extex.font;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -223,8 +228,8 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         assertNotNull(cmrfont);
         FixedGlue w = cmrfont.getWidth(UnicodeChar.get(Unicode.OFFSET + 23));
         assertNotNull(w);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(577257)
-            .eq(w));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(577257).eq(w));
 
         assertEquals(w.getLength().getValue(), hbox.getWidth().getValue());
 
@@ -250,9 +255,9 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         tc = tcFactory.newInstance(tc, tcfont);
 
         Node node =
-                ((CharNodeBuilder) font)
-                    .buildCharNode(UnicodeChar.get(014/* oct */), tc,
-                        new SimpleNodeFactory(), tcFactory);
+                ((CharNodeBuilder) font).buildCharNode(
+                    UnicodeChar.get(014/* oct */), tc, new SimpleNodeFactory(),
+                    tcFactory);
 
         assertNotNull("node", node);
         assertTrue("node class", node instanceof CharNode);
@@ -305,9 +310,9 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         tc = tcFactory.newInstance(tc, tcfont);
 
         Node node =
-                ((CharNodeBuilder) font)
-                    .buildCharNode(UnicodeChar.get(040/* oct */), tc,
-                        new SimpleNodeFactory(), tcFactory);
+                ((CharNodeBuilder) font).buildCharNode(
+                    UnicodeChar.get(040/* oct */), tc, new SimpleNodeFactory(),
+                    tcFactory);
 
         assertNotNull("node", node);
         assertTrue("node class", node instanceof CharNode);
@@ -385,9 +390,9 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         tc = tcFactory.newInstance(tc, tcfont);
 
         Node node =
-                ((CharNodeBuilder) font).buildCharNode(UnicodeChar
-                    .get(0200/* oct */), tc, new SimpleNodeFactory(),
-                    tcFactory);
+                ((CharNodeBuilder) font).buildCharNode(
+                    UnicodeChar.get(0200/* oct */), tc,
+                    new SimpleNodeFactory(), tcFactory);
 
         assertNotNull("node", node);
         assertTrue("node class", node instanceof CharNode);
@@ -428,8 +433,8 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
 
         // TODO mgn: A 65 A 913 ???
         assertEquals(
-            "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -5.87494pt\n" + ".A", hbox2
-                .toString());
+            "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -5.87494pt\n" + ".A",
+            hbox2.toString());
 
     }
 
@@ -453,9 +458,9 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         tc = tcFactory.newInstance(tc, tcfont);
 
         Node node =
-                ((CharNodeBuilder) font).buildCharNode(UnicodeChar
-                    .get(0201/* oct */), tc, new SimpleNodeFactory(),
-                    tcFactory);
+                ((CharNodeBuilder) font).buildCharNode(
+                    UnicodeChar.get(0201/* oct */), tc,
+                    new SimpleNodeFactory(), tcFactory);
 
         assertNotNull("node", node);
         assertTrue("node class", node instanceof CharNode);
@@ -503,12 +508,12 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
         assertNotNull(h);
         assertNotNull(d);
         assertNotNull(i);
-        assertTrue(Long.toString(w.getLength().getValue()), new Glue(170906)
-            .eq(w));
-        assertTrue(Long.toString(h.getLength().getValue()), new Glue(284942)
-            .eq(h));
-        assertTrue(Long.toString(d.getLength().getValue()), new Glue(-29237)
-            .eq(d));
+        assertTrue(Long.toString(w.getLength().getValue()),
+            new Glue(170906).eq(w));
+        assertTrue(Long.toString(h.getLength().getValue()),
+            new Glue(284942).eq(h));
+        assertTrue(Long.toString(d.getLength().getValue()),
+            new Glue(-29237).eq(d));
         assertTrue(Long.toString(i.getValue()), new Dimen(0).eq(i));
         // cmmi12 --------------------
 
@@ -548,8 +553,8 @@ public class FontFactoryImplAer12VfNodeTest extends AbstractFontFactoryTester {
 
         // TODO mgn: A 65 A 913 ???
         assertEquals("hbox: h+d+w",
-            "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -2.60782pt\n" + ".A", hbox2
-                .toString());
+            "\\hbox(8.2pt+0.0pt)x8.80824pt, moved -2.60782pt\n" + ".A",
+            hbox2.toString());
 
     }
 }
