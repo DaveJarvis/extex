@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.unit.color;
 
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\colordef</tt>.
@@ -32,100 +31,12 @@ import org.junit.runner.JUnitCore;
 public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(ColordefTest.class);
-    }
-
-    /**
      * Creates a new object.
      */
     public ColordefTest() {
 
         super("colordef", "\\x{.1 .2 .3}", "");
         setConfig("colorextex-test");
-    }
-
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> neds an argument. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError0() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\colordef",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
-
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs a control sequence as first argument.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\colordef rgb",
-            // --- log message ---
-            "Missing control sequence inserted");
-    }
-
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs a left brace after the control seqeunce.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\colordef\\x undef ",
-            // --- log message ---
-            "Missing left brace for color value");
-    }
-
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> needs enough numbers in the braces. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {1} ",
-            // --- log message ---
-            "Missing number, treated as zero");
-    }
-
-    /**
-     * <testcase primitive="colordef"> Test case checking that
-     * <tt>\colordef</tt> complains about too large values for the color
-     * components. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError4() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
-            // --- log message ---
-            "Illegal color value");
     }
 
     /**
@@ -239,6 +150,84 @@ public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
                     + "\\showthe\\x \\end",
             // --- log message ---
             "> cmyk {1.0 1.0 1.0 1.0}.\n");
+    }
+
+    /**
+     * <testcase primitive="colordef"> Test case checking that
+     * <tt>\colordef</tt> neds an argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError0() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\colordef",
+            // --- log message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="colordef"> Test case checking that
+     * <tt>\colordef</tt> needs a control sequence as first argument.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\colordef rgb",
+            // --- log message ---
+            "Missing control sequence inserted");
+    }
+
+    /**
+     * <testcase primitive="colordef"> Test case checking that
+     * <tt>\colordef</tt> needs a left brace after the control seqeunce.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\colordef\\x undef ",
+            // --- log message ---
+            "Missing left brace for color value");
+    }
+
+    /**
+     * <testcase primitive="colordef"> Test case checking that
+     * <tt>\colordef</tt> needs enough numbers in the braces. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError3() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\colordef\\x {1} ",
+            // --- log message ---
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase primitive="colordef"> Test case checking that
+     * <tt>\colordef</tt> complains about too large values for the color
+     * components. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError4() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\colordef\\x {1 2 3} ",
+            // --- log message ---
+            "Illegal color value");
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2006 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,9 @@
 
 package org.extex.unit.color;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.color.Color;
 import org.extex.color.model.GrayscaleColor;
@@ -27,7 +29,6 @@ import org.extex.color.model.RgbColor;
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\color</tt>.
@@ -58,22 +59,61 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     private static final int TEN_PERCENT = 6553;
 
     /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(ColorTest.class);
-    }
-
-    /**
      * Creates a new object.
      */
     public ColorTest() {
 
         super("color", "{.1 .2 .3}", "");
         setConfig("colorextex-test");
+    }
+
+    /**
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> in
+     * default mode returns a RGB color and the components make it to the
+     * output. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDefault1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\color {.1 .2 .3}",
+            // --- log message ---
+            "");
+        assertNotNull(interpreter);
+        Color color =
+                interpreter.getContext().getTypesettingContext().getColor();
+        assertTrue(color instanceof RgbColor);
+        RgbColor c = (RgbColor) color;
+        assertEquals(TEN_PERCENT, c.getRed());
+        assertEquals(TWENTY_PERCENT, c.getGreen());
+        assertEquals(THIRTY_PERCENT, c.getBlue());
+        assertEquals(0, c.getAlpha());
+    }
+
+    /**
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * digest an alpha channel value in default mode. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testDefault2() throws Exception {
+
+        Interpreter interpreter = assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\color alpha .5 {.1 .2 .3}",
+            // --- log message ---
+            "");
+        assertNotNull(interpreter);
+        Color color =
+                interpreter.getContext().getTypesettingContext().getColor();
+        assertTrue(color instanceof RgbColor);
+        RgbColor c = (RgbColor) color;
+        assertEquals(TEN_PERCENT, c.getRed());
+        assertEquals(TWENTY_PERCENT, c.getGreen());
+        assertEquals(THIRTY_PERCENT, c.getBlue());
+        assertEquals(FIFTY_PERCENT, c.getAlpha());
     }
 
     /**
@@ -89,6 +129,72 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
             "\\color ",
             // --- log message ---
             "Unexpected end of file while processing \\color");
+    }
+
+    /**
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an explicit gray scale color. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGray1() throws Exception {
+
+        Interpreter interpreter = assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\color gray {.1}",
+            // --- log message ---
+            "");
+        assertNotNull(interpreter);
+        Color color =
+                interpreter.getContext().getTypesettingContext().getColor();
+        assertTrue(color instanceof GrayscaleColor);
+        GrayscaleColor c = (GrayscaleColor) color;
+        assertEquals(TEN_PERCENT, c.getGray());
+        assertEquals(0, c.getAlpha());
+    }
+
+    /**
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an explicit gray scale color with an alpha channel. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGray2() throws Exception {
+
+        Interpreter interpreter = assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\color gray alpha .5 {.1}",
+            // --- log message ---
+            "");
+        assertNotNull(interpreter);
+        Color color =
+                interpreter.getContext().getTypesettingContext().getColor();
+        assertTrue(color instanceof GrayscaleColor);
+        GrayscaleColor c = (GrayscaleColor) color;
+        assertEquals(TEN_PERCENT, c.getGray());
+        assertEquals(FIFTY_PERCENT, c.getAlpha());
+    }
+
+    /**
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an alpha value with an explicit gray scale color. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testGray3() throws Exception {
+
+        Interpreter interpreter = assertSuccess(// --- input code ---
+            DEFINE_BRACES + "\\color alpha .5 gray {.1}",
+            // --- log message ---
+            "");
+        assertNotNull(interpreter);
+        Color color =
+                interpreter.getContext().getTypesettingContext().getColor();
+        assertTrue(color instanceof GrayscaleColor);
+        GrayscaleColor c = (GrayscaleColor) color;
+        assertEquals(TEN_PERCENT, c.getGray());
+        assertEquals(FIFTY_PERCENT, c.getAlpha());
     }
 
     /**
@@ -122,57 +228,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * in default mode returns a RGB color and the components make it to the
-     * output. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDefault1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\color {.1 .2 .3}",
-            // --- log message ---
-            "");
-        assertNotNull(interpreter);
-        Color color =
-                interpreter.getContext().getTypesettingContext().getColor();
-        assertTrue(color instanceof RgbColor);
-        RgbColor c = (RgbColor) color;
-        assertEquals(TEN_PERCENT, c.getRed());
-        assertEquals(TWENTY_PERCENT, c.getGreen());
-        assertEquals(THIRTY_PERCENT, c.getBlue());
-        assertEquals(0, c.getAlpha());
-    }
-
-    /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can digest an alpha channel value in default mode. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testDefault2() throws Exception {
-
-        Interpreter interpreter = assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\color alpha .5 {.1 .2 .3}",
-            // --- log message ---
-            "");
-        assertNotNull(interpreter);
-        Color color =
-                interpreter.getContext().getTypesettingContext().getColor();
-        assertTrue(color instanceof RgbColor);
-        RgbColor c = (RgbColor) color;
-        assertEquals(TEN_PERCENT, c.getRed());
-        assertEquals(TWENTY_PERCENT, c.getGreen());
-        assertEquals(THIRTY_PERCENT, c.getBlue());
-        assertEquals(FIFTY_PERCENT, c.getAlpha());
-    }
-
-    /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an explicit RGB color. </testcase>
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an explicit RGB color. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -195,8 +252,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an explicit RGB color with alpha channel. </testcase>
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an explicit RGB color with alpha channel. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -219,8 +276,8 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an alpha channel with an explicit RGB color. </testcase>
+     * <testcase primitive="\color"> Test case checking that <tt>\color</tt> can
+     * consume an alpha channel with an explicit RGB color. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -239,73 +296,6 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
         assertEquals(TEN_PERCENT, c.getRed());
         assertEquals(TWENTY_PERCENT, c.getGreen());
         assertEquals(THIRTY_PERCENT, c.getBlue());
-        assertEquals(FIFTY_PERCENT, c.getAlpha());
-    }
-
-    /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an explicit gray scale color. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGray1() throws Exception {
-
-        Interpreter interpreter = assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\color gray {.1}",
-            // --- log message ---
-            "");
-        assertNotNull(interpreter);
-        Color color =
-                interpreter.getContext().getTypesettingContext().getColor();
-        assertTrue(color instanceof GrayscaleColor);
-        GrayscaleColor c = (GrayscaleColor) color;
-        assertEquals(TEN_PERCENT, c.getGray());
-        assertEquals(0, c.getAlpha());
-    }
-
-    /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an explicit gray scale color with an alpha channel.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGray2() throws Exception {
-
-        Interpreter interpreter = assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\color gray alpha .5 {.1}",
-            // --- log message ---
-            "");
-        assertNotNull(interpreter);
-        Color color =
-                interpreter.getContext().getTypesettingContext().getColor();
-        assertTrue(color instanceof GrayscaleColor);
-        GrayscaleColor c = (GrayscaleColor) color;
-        assertEquals(TEN_PERCENT, c.getGray());
-        assertEquals(FIFTY_PERCENT, c.getAlpha());
-    }
-
-    /**
-     * <testcase primitive="\color"> Test case checking that <tt>\color</tt>
-     * can consume an alpha value with an explicit gray scale color. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testGray3() throws Exception {
-
-        Interpreter interpreter = assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\color alpha .5 gray {.1}",
-            // --- log message ---
-            "");
-        assertNotNull(interpreter);
-        Color color =
-                interpreter.getContext().getTypesettingContext().getColor();
-        assertTrue(color instanceof GrayscaleColor);
-        GrayscaleColor c = (GrayscaleColor) color;
-        assertEquals(TEN_PERCENT, c.getGray());
         assertEquals(FIFTY_PERCENT, c.getAlpha());
     }
 
