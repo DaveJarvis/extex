@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.interpreter;
+package org.extex.interpreter.max;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.test.ExTeXLauncher;
