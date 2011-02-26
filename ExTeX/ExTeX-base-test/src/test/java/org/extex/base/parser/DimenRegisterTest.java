@@ -30,7 +30,6 @@ import org.extex.interpreter.InterpreterFactory;
 import org.extex.language.hyphenation.MockContext;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for dimen registers.
@@ -39,16 +38,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision: 4766 $
  */
 public class DimenRegisterTest {
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(DimenRegisterTest.class);
-    }
 
     /**
      * Creates a new object.

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,6 @@ import static junit.framework.Assert.assertTrue;
 import java.util.Locale;
 
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * Test cases for the flags implementation.
@@ -36,16 +35,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision: 4784 $
  */
 public class FlagsImplTest {
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(FlagsImplTest.class);
-    }
 
     /**
      */
@@ -571,8 +560,8 @@ public class FlagsImplTest {
         f.setOuter();
         f.setProtected();
         f.setImmediate();
-        assertEquals("global, long, outer, immediate, and protected", f
-            .toText());
+        assertEquals("global, long, outer, immediate, and protected",
+            f.toText());
     }
 
     /**
