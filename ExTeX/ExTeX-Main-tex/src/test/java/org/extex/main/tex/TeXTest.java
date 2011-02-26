@@ -80,7 +80,7 @@ public class TeXTest {
      * >e</span>X</logo> file.
      */
     private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+            "../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
 
     /**
      * The constant <tt>EXIT_ERROR</tt> contains the exit code for an error.
@@ -296,7 +296,7 @@ public class TeXTest {
 
         runFailure(new String[]{"-conf=xyz"}, //
             BANNER + "**" + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `xyz' not found");
+                    + "Configuration problem: Configuration `xyz' not found.\n");
         new File(".", "texput.log").delete();
     }
 
@@ -311,7 +311,7 @@ public class TeXTest {
 
         runFailure(new String[]{"-conf", "xyz"}, //
             BANNER + "**" + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `xyz' not found");
+                    + "Configuration problem: Configuration `xyz' not found.\n");
         new File(".", "texput.log").delete();
     }
 
@@ -472,9 +472,10 @@ public class TeXTest {
     @Test
     public void testFile10() throws Exception {
 
-        runSuccess(new String[]{"-ini", EMPTY_TEX}, //
+        runSuccess(
+            new String[]{"-ini", EMPTY_TEX}, //
             BANNER_TEX
-                    + "(../ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
+                    + "(../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
                     + "*\n" + "No pages of output.\n" + transcript("empty"));
         new File(".", "empty.log").delete();
     }
@@ -981,7 +982,7 @@ public class TeXTest {
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+                    + "Configuration problem: Configuration `backend/undefined.xml\' not found.\n");
         new File(".", "texput.log").delete();
     }
 
@@ -999,7 +1000,7 @@ public class TeXTest {
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `backend/undefined.xml\' not found");
+                    + "Configuration problem: Configuration `backend/undefined.xml\' not found.\n");
         new File(".", "texput.log").delete();
     }
 
