@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<!--
+  -  Copyright (C) 2004-2007 The ExTeX Group
+  -
+  -  This library is free software; you can redistribute it and/or modify it
+  -  under the terms of the GNU Lesser General Public License as published by
+  -  the Free Software Foundation; either version 2.1 of the License, or (at
+  -  your option) any later version.
+  -
+  -  This library is distributed in the hope that it will be useful, but
+  -  WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
+  -  or FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public
+  -  License for more details.
+  -
+  -  You should have received a copy of the GNU Lesser General Public License
+  -  along with this library; if not, write to the Free Software Foundation,
+  -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  -
+  -->
+<Resource>
+  <Finder class="org.extex.resource.FileFinder"
+          default="default">
+    <u2t>
+      <extension>.u2t</extension>
+      <path>../../../texmf/src/texmf/fonts/u2t</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </u2t>
+    <tex>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <path>../../../texmf/src/texmf/tex/plain/base</path>
+      <extension></extension>
+      <extension>.tex</extension>
+    </tex>
+    <fmt>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path>.</path>
+      <extension>.fmt</extension>
+    </fmt>
+    <pfb>
+      <extension>.pfb</extension>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfb>
+    <pfa>
+      <extension>.pfa</extension>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </pfa>
+    <afm>
+      <extension>.afm</extension>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </afm>
+    <fontinfo>
+      <extension>.fontinfo</extension>
+      <path>.</path>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </fontinfo>
+    <ttf>
+      <extension>.ttf</extension>
+      <path>.</path>
+      <path>../../../texmf/src/texmf/fonts/ttf</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </ttf>
+    <vf>
+      <extension>.vf</extension>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </vf>
+    <tfm>
+      <extension>.tfm</extension>
+      <path>../../../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../../../texmf/src/texmf/fonts/tfm/public/latex</path>
+      <path>../../../texmf/src/texmf/fonts/tfm/public/misc</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </tfm>
+    <enc>
+      <extension>.enc</extension>
+      <path>../../../texmf/src/texmf/fonts/enc</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </enc>
+    <map>
+      <extension>.map</extension>
+      <path>../../../texmf/src/texmf/fonts/map</path>
+      <path>.</path>
+      <path property="extex.fonts"/>
+      <path property="texinputs"/>
+    </map>
+    <default>
+      <path property="extex.texinputs"/>
+      <path property="texinputs"/>
+      <path property="extex.fonts"/>
+      <path>.</path>
+      <extension></extension>
+      <extension>.{type}</extension>
+    </default>
+  </Finder>
+  <Finder class="org.extex.resource.FileFinderRPath"
+    trace="false" default="default">
+    <pfb>
+      <extension>.pfb</extension>
+      <path>../../../texmf/src/texmf/fonts/type1</path>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+    </pfb>
+    <afm>
+      <extension>.pfb</extension>
+      <path>../../../texmf/src/texmf/fonts/afm</path>
+    </afm>
+    <tfm>
+      <extension>.tfm</extension>
+      <path>../../../texmf/src/texmf/fonts/tfm</path>
+    </tfm>
+    <default>
+      <extension></extension>
+      <path>../../../texmf/src/texmf</path>
+    </default>
+  </Finder>
+</Resource>
