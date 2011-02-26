@@ -22,7 +22,7 @@
           default="default">
     <u2t>
       <extension>.u2t</extension>
-      <path>../texmf/src/texmf/fonts/u2t</path>
+      <path>../../texmf/src/texmf/fonts/u2t</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -31,7 +31,7 @@
       <path property="extex.texinputs"/>
       <path property="texinputs"/>
       <path>.</path>
-      <path>../texmf/src/texmf/tex/plain/base</path>
+      <path>../../texmf/src/texmf/tex/plain/base</path>
       <extension></extension>
       <extension>.tex</extension>
     </tex>
@@ -43,21 +43,21 @@
     </fmt>
     <pfb>
       <extension>.pfb</extension>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </pfb>
     <pfa>
       <extension>.pfa</extension>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </pfa>
     <afm>
       <extension>.afm</extension>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -65,14 +65,14 @@
     <fontinfo>
       <extension>.fontinfo</extension>
       <path>.</path>
-      <path>../texmf/src/texmf/fonts/afm</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </fontinfo>
     <ttf>
       <extension>.ttf</extension>
       <path>.</path>
-      <path>../texmf/src/texmf/fonts/ttf</path>
+      <path>../../texmf/src/texmf/fonts/ttf</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </ttf>
@@ -84,23 +84,23 @@
     </vf>
     <tfm>
       <extension>.tfm</extension>
-      <path>../texmf/src/texmf/fonts/tfm/public/cm</path>
-      <path>../texmf/src/texmf/fonts/tfm/public/latex</path>
-      <path>../texmf/src/texmf/fonts/tfm/public/misc</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/cm</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/latex</path>
+      <path>../../texmf/src/texmf/fonts/tfm/public/misc</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </tfm>
     <enc>
       <extension>.enc</extension>
-      <path>../texmf/src/texmf/fonts/enc</path>
+      <path>../../texmf/src/texmf/fonts/enc</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
     </enc>
     <map>
       <extension>.map</extension>
-      <path>../texmf/src/texmf/fonts/map</path>
+      <path>../../texmf/src/texmf/fonts/map</path>
       <path>.</path>
       <path property="extex.fonts"/>
       <path property="texinputs"/>
@@ -114,24 +114,24 @@
       <extension>.{type}</extension>
     </default>
   </Finder>
-  <Finder class="org.extex.resource.FileFinderRPathImpl"
-	  trace="false" default="default">
-	  <pfb>
-		  <extension>.pfb</extension>
-		  <path>../texmf/src/texmf/fonts/type1</path>
-		  <path>../texmf/src/texmf/fonts/afm</path>
-	  </pfb>
-	  <afm>
-		  <extension>.pfb</extension>
-		  <path>../texmf/src/texmf/fonts/afm</path>
-	  </afm>
-	  <tfm>
-		  <extension>.tfm</extension>
-		  <path>../texmf/src/texmf/fonts/tfm</path>
-	  </tfm>
-	  <default>
-		  <extension></extension>
-		  <path>../texmf/src/texmf</path>
-	  </default>
+  <Finder class="org.extex.resource.FileFinderRPath"
+    trace="false" default="default">
+    <pfb>
+      <extension>.pfb</extension>
+      <path>../../texmf/src/texmf/fonts/type1</path>
+      <path>../../texmf/src/texmf/fonts/afm</path>
+    </pfb>
+    <afm>
+      <extension>.pfb</extension>
+      <path>../../texmf/src/texmf/fonts/afm</path>
+    </afm>
+    <tfm>
+      <extension>.tfm</extension>
+      <path>../../texmf/src/texmf/fonts/tfm</path>
+    </tfm>
+    <default>
+      <extension></extension>
+      <path>../../texmf/src/texmf</path>
+    </default>
   </Finder>
 </Resource>
