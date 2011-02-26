@@ -122,8 +122,7 @@ public class FontParameter {
      * Returns the font dimen value, or <code>null</code>, if not found.
      * 
      * @param name The name of the value.
-     * @return Returns the font dimen value, or <code>null</code>, if not
-     *         found.
+     * @return Returns the font dimen value, or <code>null</code>, if not found.
      */
     public Integer getFontDimen(String name) {
 
@@ -185,11 +184,15 @@ public class FontParameter {
     /**
      * Parse the xml file.
      * 
-     * @param in The input.
+     * @param in the input stream
+     *
      * @throws IOException if an io-error occurred.
      */
     private void parseXml(InputStream in) throws IOException {
 
+        if (in == null) {
+            throw new NullPointerException();
+        }
         try {
 
             SAXParserFactory factory = SAXParserFactory.newInstance();
