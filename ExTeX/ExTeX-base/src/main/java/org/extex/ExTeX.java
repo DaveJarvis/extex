@@ -760,6 +760,11 @@ public class ExTeX {
     private boolean showBanner = true;
 
     /**
+     * The field <tt>consoleHandler</tt> contains the ...
+     */
+    private Handler consoleHandler;
+
+    /**
      * Creates a new object and supplies some properties for those keys which
      * are not contained in the properties already. A detailed list of the
      * properties supported can be found in section <a
@@ -812,7 +817,7 @@ public class ExTeX {
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
 
-        Handler consoleHandler = new ConsoleHandler();
+        consoleHandler = new ConsoleHandler();
         consoleHandler.setFormatter(new LogFormatter());
         consoleHandler.setLevel(Level.WARNING);
         logger.addHandler(consoleHandler);
@@ -900,6 +905,18 @@ public class ExTeX {
         }
 
         localizer = LocalizerFactory.getLocalizer(ExTeX.class);
+    }
+
+    /**
+     * Close the instance by detaching the console handler from the logger.
+     */
+    public void close() {
+
+        if (consoleHandler != null) {
+            consoleHandler.close();
+            logger.removeHandler(consoleHandler);
+            consoleHandler = null;
+        }
     }
 
     /**
