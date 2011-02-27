@@ -153,17 +153,24 @@ public class TeXTest {
      * @param args the array of command line arguments
      * @param expect the expected result on the error stream or
      *        <code>null</code>
+     * @param logfile the name of the log file. It will be deleted at the end
      * 
      * @return the result on the error stream
      * 
      * @throws HelpingException in case of an interpreter error
      * @throws IOException in case of an io error
      */
-    public static String runSuccess(String[] args, String expect)
+    public static String runSuccess(String[] args, String expect, String logfile)
             throws HelpingException,
                 IOException {
 
-        return runTest(args, makeProperties(), expect, EXIT_OK);
+        try {
+            return runTest(args, makeProperties(), expect, EXIT_OK);
+        } finally {
+            if (logfile != null) {
+                new File(".", logfile).delete();
+            }
+        }
     }
 
     /**
@@ -268,9 +275,10 @@ public class TeXTest {
     @Test
     public void testCode() throws Exception {
 
-        runSuccess(new String[]{"-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -283,9 +291,10 @@ public class TeXTest {
     public void testCommandInput1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
-        runSuccess(new String[]{"-ini"}, //
-            BANNER_TEX + "**\n*\nNo pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini"}, //
+            BANNER_TEX + "**\n*\nNo pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -327,7 +336,7 @@ public class TeXTest {
     @Test
     public void testCopying() throws Exception {
 
-        String s = runSuccess(new String[]{"-copying"}, null);
+        String s = runSuccess(new String[]{"-copying"}, null, null);
         assertTrue("No match:\n" + s, //
             s.indexOf("GNU LIBRARY GENERAL PUBLIC LICENSE") >= 0);
     }
@@ -349,7 +358,7 @@ public class TeXTest {
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n");
+                    + "switch -copying.\n", null);
     }
 
     /**
@@ -361,7 +370,7 @@ public class TeXTest {
     @Test
     public void testEmpty() throws Exception {
 
-        runSuccess(new String[]{"", "-version"}, BANNER);
+        runSuccess(new String[]{"", "-version"}, BANNER, null);
     }
 
     /**
@@ -410,8 +419,7 @@ public class TeXTest {
     public void testExternal1() throws Exception {
 
         runSuccess(new String[]{"-abc", "-init", "\\end"}, //
-            TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+            TRANSCRIPT_TEXPUT, "texput.log");
     }
 
     /**
@@ -425,15 +433,16 @@ public class TeXTest {
 
         String CFG = "p-p-p";
         File f = new File(".extex-" + CFG);
-        FileWriter w = new FileWriter(f);
-        w.write("extex.nobanner:true\n");
-        w.close();
+        try {
+            FileWriter w = new FileWriter(f);
+            w.write("extex.nobanner:true\n");
+            w.close();
 
-        runSuccess(new String[]{"-" + CFG, "-init", "\\end"}, //
-            TRANSCRIPT_TEXPUT);
-
-        new File(".", "texput.log").delete();
-        f.delete();
+            runSuccess(new String[]{"-" + CFG, "-init", "\\end"}, //
+                TRANSCRIPT_TEXPUT, "texput.log");
+        } finally {
+            f.delete();
+        }
     }
 
     /**
@@ -447,7 +456,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runSuccess(new String[]{"--extex.banner=xyz", "-version"},
-            "This is ExTeX, Version " + ExTeX.getVersion() + " (xyz)\n");
+            "This is ExTeX, Version " + ExTeX.getVersion() + " (xyz)\n", null);
     }
 
     /**
@@ -460,10 +469,11 @@ public class TeXTest {
     public void testFile1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runSuccess(new String[]{"-ini", "UndefinedFile"}, //
+        runSuccess(
+            new String[]{"-ini", "UndefinedFile"}, //
             BANNER_TEX + "I can\'t find file `UndefinedFile\'\n" + "*\n"
-                    + "No pages of output.\n" + transcript("UndefinedFile"));
-        new File(".", "UndefinedFile.log").delete();
+                    + "No pages of output.\n" + transcript("UndefinedFile"),
+            "UndefinedFile.log");
     }
 
     /**
@@ -479,8 +489,8 @@ public class TeXTest {
             new String[]{"-ini", EMPTY_TEX}, //
             BANNER_TEX
                     + "(../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
-                    + "*\n" + "No pages of output.\n" + transcript("empty"));
-        new File(".", "empty.log").delete();
+                    + "*\n" + "No pages of output.\n" + transcript("empty"),
+            "empty.log");
     }
 
     /**
@@ -494,10 +504,11 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream((EMPTY_TEX + "\n\\end\n")
             .getBytes()));
-        runSuccess(new String[]{"-ini"},//
+        runSuccess(
+            new String[]{"-ini"},//
             BANNER_TEX + "**(" + EMPTY_TEX + " )\n" + "*\n"
-                    + "No pages of output.\n" + transcript("empty"));
-        new File(".", "empty.log").delete();
+                    + "No pages of output.\n" + transcript("empty"),
+            "empty.log");
     }
 
     /**
@@ -509,10 +520,11 @@ public class TeXTest {
     @Test
     public void testFile2() throws Exception {
 
-        runSuccess(new String[]{"-ini", "UndefinedFile.tex"}, //
+        runSuccess(
+            new String[]{"-ini", "UndefinedFile.tex"}, //
             BANNER_TEX + "I can\'t find file `UndefinedFile.tex\'\n" + "*\n"
-                    + "No pages of output.\n" + transcript("UndefinedFile"));
-        new File(".", "UndefinedFile.log").delete();
+                    + "No pages of output.\n" + transcript("UndefinedFile"),
+            "UndefinedFile.log");
     }
 
     /**
@@ -524,10 +536,11 @@ public class TeXTest {
     @Test
     public void testFile3() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-", "-UndefinedFile"}, //
+        runSuccess(
+            new String[]{"-ini", "-", "-UndefinedFile"}, //
             BANNER_TEX + "I can\'t find file `-UndefinedFile\'\n" + "*\n"
-                    + "No pages of output.\n" + transcript("-UndefinedFile"));
-        new File(".", "-UndefinedFile.log").delete();
+                    + "No pages of output.\n" + transcript("-UndefinedFile"),
+            "-UndefinedFile.log");
     }
 
     /**
@@ -649,7 +662,7 @@ public class TeXTest {
     @Test
     public void testHelp() throws Exception {
 
-        String s = runSuccess(new String[]{"-help"}, null);
+        String s = runSuccess(new String[]{"-help"}, null, null);
         assertTrue(s + "\ndoes  not match",
             s.startsWith("Usage: extex <options> file\n"));
     }
@@ -663,7 +676,7 @@ public class TeXTest {
     @Test
     public void testHelp2() throws Exception {
 
-        String s = runSuccess(new String[]{"-prog=abc", "-help"}, null);
+        String s = runSuccess(new String[]{"-prog=abc", "-help"}, null, null);
         assertTrue(s + "\ndoes  not match",
             s.startsWith("Usage: abc <options> file\n"));
     }
@@ -773,7 +786,7 @@ public class TeXTest {
 
     /**
      * <testcase> This test case validates that the command line option
-     * -interaction= nedds an interaction mode. </testcase>
+     * -interaction= needs an interaction mode. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -840,8 +853,7 @@ public class TeXTest {
 
         runSuccess(new String[]{"-jobname=abc", "-ini",
                 "--extex.nobanner=true", "\\end"}, //
-            transcript("abc"));
-        new File(".", "abc.log").delete();
+            transcript("abc"), "abc.log");
     }
 
     /**
@@ -855,8 +867,7 @@ public class TeXTest {
 
         runSuccess(new String[]{"-jobname", "abc", "-ini",
                 "--extex.nobanner=true", "\\end"}, //
-            transcript("abc"));
-        new File(".", "abc.log").delete();
+            transcript("abc"), "abc.log");
     }
 
     /**
@@ -870,7 +881,7 @@ public class TeXTest {
     public void testLanguageVersion() throws Exception {
 
         runSuccess(new String[]{"-l=de", "-version"}, //
-            BANNER_DE);
+            BANNER_DE, "texput.log");
     }
 
     /**
@@ -884,7 +895,7 @@ public class TeXTest {
     public void testLanguageVersion2() throws Exception {
 
         runSuccess(new String[]{"-lan", "de", "-version"}, //
-            BANNER_DE);
+            BANNER_DE, "texput.log");
     }
 
     /**
@@ -926,8 +937,8 @@ public class TeXTest {
             new String[]{"-ini", "-"}, //
             BANNER_TEX + "**\n" + "*\n" + "No pages of output.\n"
                     + "Transcript written on "
-                    + (new File(".", "texput.log")).toString() + ".\n");
-        new File(".", "texput.log").delete();
+                    + (new File(".", "texput.log")).toString() + ".\n",
+            "texput.log");
     }
 
     /**
@@ -954,8 +965,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runSuccess(new String[]{"-ini", "--extex.nobanner=true"}, //
-            "**\n*" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+            "**\n*" + TRANSCRIPT_TEXPUT, "texput.log");
     }
 
     /**
@@ -1016,9 +1026,10 @@ public class TeXTest {
     @Test
     public void testOutputpath2() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-output-path=.", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-output-path=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1030,9 +1041,10 @@ public class TeXTest {
     @Test
     public void testOutputpath3() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-output-path", ".", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-output-path", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1044,10 +1056,10 @@ public class TeXTest {
     @Test
     public void testOutputpath4() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-output-path=.", "-output-dir=.",
-                "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-output-path=.", "-output-dir=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1073,9 +1085,10 @@ public class TeXTest {
     public void testParseFirstLine() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runSuccess(new String[]{"-ini", "-parse", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-parse", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1087,10 +1100,11 @@ public class TeXTest {
     @Test
     public void testParseFirstLine2() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-parse", EMPTY_TEX}, //
+        runSuccess(
+            new String[]{"-ini", "-parse", EMPTY_TEX}, //
             BANNER_TEX + "(" + EMPTY_TEX + " )\n" + "*\n"
-                    + "No pages of output.\n" + transcript("empty"));
-        new File(".", "empty.log").delete();
+                    + "No pages of output.\n" + transcript("empty"),
+            "empty.log");
     }
 
     /**
@@ -1111,8 +1125,7 @@ public class TeXTest {
                     + "parse1.tex \n"
                     + "Sorry, I can\'t find the format `undef.fmt\'; will try `tex.fmt\'.\n"
                     + ")\n" + "*\n" + "No pages of output.\n"
-                    + transcript("parse1"));
-        new File(".", "parse1.log").delete();
+                    + transcript("parse1"), "parse1.log");
     }
 
     /**
@@ -1127,7 +1140,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"-progname", "abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1142,7 +1155,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"-prog", "abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1157,7 +1170,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"-progname=abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1172,7 +1185,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"-prog=abc", "-version"},
             "This is ExTeX, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1187,7 +1200,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"--extex.name", "abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1202,7 +1215,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"--extex.name=abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1217,7 +1230,7 @@ public class TeXTest {
         runSuccess(
             new String[]{"--", "extex.name=abc", "-version"},
             "This is abc, Version " + ExTeX.getVersion() + " ("
-                    + System.getProperty("java.version") + ")\n");
+                    + System.getProperty("java.version") + ")\n", "texput.log");
     }
 
     /**
@@ -1230,10 +1243,11 @@ public class TeXTest {
     public void testStarStar1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("xyzzy\n".getBytes()));
-        runSuccess(new String[]{"-ini"}, //
+        runSuccess(
+            new String[]{"-ini"}, //
             BANNER_TEX + "**I can't find file `xyzzy'\n" + "*\n"
-                    + "No pages of output.\n" + transcript("xyzzy"));
-        new File(".", "xyzzy.log").delete();
+                    + "No pages of output.\n" + transcript("xyzzy"),
+            "xyzzy.log");
     }
 
     /**
@@ -1245,9 +1259,10 @@ public class TeXTest {
     @Test
     public void testTexinputs1() throws Exception {
 
-        runSuccess(new String[]{"-texinputs=.", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-texinputs=.", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1259,9 +1274,10 @@ public class TeXTest {
     @Test
     public void testTexinputs2() throws Exception {
 
-        runSuccess(new String[]{"-texinputs", ".", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-texinputs", ".", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1286,9 +1302,10 @@ public class TeXTest {
     @Test
     public void testTexmfoutputs2() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1300,9 +1317,10 @@ public class TeXTest {
     @Test
     public void testTexmfoutputs3() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1327,9 +1345,10 @@ public class TeXTest {
     @Test
     public void testTexoutputs2() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-texoutputs=.", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-texoutputs=.", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1341,9 +1360,10 @@ public class TeXTest {
     @Test
     public void testTexoutputs3() throws Exception {
 
-        runSuccess(new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1368,9 +1388,10 @@ public class TeXTest {
     @Test
     public void testTrace1() throws Exception {
 
-        runSuccess(new String[]{"-d=fFTM", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-d=fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1382,9 +1403,10 @@ public class TeXTest {
     @Test
     public void testTrace11() throws Exception {
 
-        runSuccess(new String[]{"-d", "fFTM", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-d", "fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1396,9 +1418,10 @@ public class TeXTest {
     @Test
     public void testTrace12() throws Exception {
 
-        runSuccess(new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1410,9 +1433,10 @@ public class TeXTest {
     @Test
     public void testTrace2() throws Exception {
 
-        runSuccess(new String[]{"-debug=fFTM", "-ini", "\\end"}, //
-            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        runSuccess(
+            new String[]{"-debug=fFTM", "-ini", "\\end"}, //
+            BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
+            "texput.log");
     }
 
     /**
@@ -1508,7 +1532,7 @@ public class TeXTest {
     public void testVer() throws Exception {
 
         runSuccess(new String[]{"-ver"}, //
-            BANNER);
+            BANNER, "texput.log");
     }
 
     /**
@@ -1521,7 +1545,7 @@ public class TeXTest {
     public void testVersion() throws Exception {
 
         runSuccess(new String[]{"-version"}, //
-            BANNER);
+            BANNER, "texput.log");
     }
 
 }
