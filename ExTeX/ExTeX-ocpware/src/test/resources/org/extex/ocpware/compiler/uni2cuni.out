@@ -4,18 +4,18 @@ states:
   MEDIAL,
   NUMERAL;
 aliases:
-  NOT_ARABIC_NUMBER=^(`0'-`9' | @"660-@"669 | @"6f0-@"6f9)
+  ACCENT=@"64b-@"652 | @"670
+  ALIF_LIKE=@"622 | @"623 | @"625 | @"627 | @"671-@"673
   ARABIC_LETTER={BIFORM} | {QUADRIFORM}
+  ARABIC_NUMBER=`0'-`9' | @"660-@"669 | @"6f0-@"6f9
+  BIFORM=@"622-@"625 | @"627 | @"629 | @"62f-@"632 | @"648 | @"649 | @"65d | @"65e | @"671-@"673 | @"675-@"677 | @"688-@"69a | @"6ba | @"6c0-@"6cb | @"6cd | @"6d2 | @"6d3 | @"6ff
+  LAM_LIKE=@"644 | @"6b5-@"6b7 | @"6fe
+  NOT_ARABIC_LETTER=^(@"621-@"65f | @"670-@"6d3)
+  NOT_ARABIC_NUMBER=^(`0'-`9' | @"660-@"669 | @"6f0-@"6f9)
+  NOT_ARABIC_OR_UNI={NOT_ARABIC_LETTER} | {UNIFORM}
+  QUADRIFORM=@"626 | @"628 | @"62a-@"62e | @"633-@"63a | @"640-@"647 | @"649 | @"64a | @"655-@"657 | @"65b | @"65c | @"678-@"687 | @"69a-@"6b7 | @"6bb-@"6bf | @"6cc | @"6ce | @"6d0 | @"6d1 | @"6fe
   SPECIAL=@"fdf2
   UNIFORM=@"621 | @"674 | @"66e | @"66f | @"6ef | @"63f
-  ALIF_LIKE=@"622 | @"623 | @"625 | @"627 | @"671-@"673
-  LAM_LIKE=@"644 | @"6b5-@"6b7 | @"6fe
-  BIFORM=@"622-@"625 | @"627 | @"629 | @"62f-@"632 | @"648 | @"649 | @"65d | @"65e | @"671-@"673 | @"675-@"677 | @"688-@"69a | @"6ba | @"6c0-@"6cb | @"6cd | @"6d2 | @"6d3 | @"6ff
-  NOT_ARABIC_LETTER=^(@"621-@"65f | @"670-@"6d3)
-  ARABIC_NUMBER=`0'-`9' | @"660-@"669 | @"6f0-@"6f9
-  ACCENT=@"64b-@"652 | @"670
-  QUADRIFORM=@"626 | @"628 | @"62a-@"62e | @"633-@"63a | @"640-@"647 | @"649 | @"64a | @"655-@"657 | @"65b | @"65c | @"678-@"687 | @"69a-@"6b7 | @"6bb-@"6bf | @"6cc | @"6ce | @"6d0 | @"6d1 | @"6fe
-  NOT_ARABIC_OR_UNI={NOT_ARABIC_LETTER} | {UNIFORM}
 
 expressions:
   {UNIFORM}@"651{ACCENT} => #(\1 + @"da00)#(\3 + @"da90);
