@@ -23,7 +23,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Main</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>0.1</version>
       <scope>compile</scope>
     </dependency>
 
@@ -58,8 +58,8 @@
                 <argument>-output</argument>
                 <argument>${project.build.directory}/generated</argument>
                 <argument>../../ExTeX/ExTeX-base</argument>
-                <argument>../../ExTeX/ExTeX-Unit-*</argument>
-                <argument>../../ExTeX/ExTeX-Typesetter-*</argument>
+                <argument>../../ExTeX/Unit/ExTeX-Unit-*</argument>
+                <argument>../../ExTeX/Typesetter/ExTeX-Typesetter-*</argument>
               </arguments>
               <workingDirectory>${basedir}</workingDirectory>
               <outputFile>${project.build.directory}/compile.out</outputFile>

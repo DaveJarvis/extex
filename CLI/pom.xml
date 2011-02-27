@@ -28,6 +28,12 @@
       <version>4.8.2</version>
       <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-dev</artifactId>
+      <version>1.0</version>
+    </dependency>
   </dependencies>
 
   <organization>
@@ -86,9 +92,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.5</version>
+        <version>2.6</version>
         <configuration>
-          <configLocation>${basedir}/../src/checkstyle/ExTeX-checks.xml</configLocation>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <configLocation>org/extex/checkstyle-extex.xml</configLocation>
         </configuration>
       </plugin>
 

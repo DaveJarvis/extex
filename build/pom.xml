@@ -50,9 +50,19 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
+        <version>2.6</version>
         <configuration>
-          <configLocation>${basedir}/../develop/eclipse/checkstyle42.cfg</configLocation>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <configLocation>org/extex/checkstyle-extex.xml</configLocation>
         </configuration>
+        <dependencies>
+          <dependency>
+            <groupId>org.extex</groupId>
+            <artifactId>ExTeX-dev</artifactId>
+            <version>1.0</version>
+          </dependency>
+        </dependencies>
       </plugin>
     </plugins>
   </reporting>
