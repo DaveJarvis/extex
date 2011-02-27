@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-base</artifactId>
   <name>ExTeX base</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX base component. It contains the interpreter and
     surrounding support.

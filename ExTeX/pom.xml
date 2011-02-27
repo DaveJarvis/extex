@@ -25,12 +25,14 @@
    as much as reasonable.
   </description>
 
+<!--
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>project</artifactId>
     <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
+-->
 
   <organization>
     <name>The ExTeX Group</name>
@@ -119,7 +121,9 @@
    <module>Scanner/ExTeX-Scanner</module>
    <module>Scanner/ExTeX-Scanner32</module>
    <module>Scanner/ExTeX-Scanner-API</module>
-   <module>Typesetter</module>
+   <module>Typesetter/ExTeX-Typesetter-API</module>
+   <module>Typesetter/ExTeX-Typesetter-core</module>
+   <module>Typesetter/ExTeX-Typesetter-tex</module>
    <module>Unit/ExTeX-Unit-color</module>
    <module>Unit/ExTeX-Unit-etex</module>
    <module>Unit/ExTeX-Unit-extex</module>

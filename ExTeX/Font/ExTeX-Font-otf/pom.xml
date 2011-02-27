@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-Font-otf</artifactId>
   <name>ExTeX OTF Font System</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX OTF font system.
   </description>

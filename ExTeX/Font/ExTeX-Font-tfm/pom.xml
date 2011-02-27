@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-Font-tfm</artifactId>
   <name>ExTeX TFM Font System</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX TFM font system.
   </description>

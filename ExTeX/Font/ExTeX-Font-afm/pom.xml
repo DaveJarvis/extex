@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-Font-afm</artifactId>
   <name>ExTeX AFM Font System</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX AFM font system.
   </description>

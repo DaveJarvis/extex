@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-fontware</artifactId>
   <name>ExTeX Font Utilities</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This are the ExTeX font utilities.
   </description>

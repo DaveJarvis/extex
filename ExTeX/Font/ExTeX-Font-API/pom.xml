@@ -4,6 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-Font-API</artifactId>
+  <version>0.1-SNAPSHOT</version>
   <name>ExTeX Font System API</name>
   <description>
     This is the ExTeX font system API.

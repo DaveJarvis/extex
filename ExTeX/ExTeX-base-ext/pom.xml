@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-base-ext</artifactId>
   <name>ExTeX Base Ext</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is an ExTeX extended base component.
   </description>

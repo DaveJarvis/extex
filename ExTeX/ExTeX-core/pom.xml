@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-core</artifactId>
   <name>ExTeX core components</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     These are the ExTeX core components.
   </description>

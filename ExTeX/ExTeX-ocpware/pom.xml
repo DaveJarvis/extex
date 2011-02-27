@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-ocpware</artifactId>
   <name>ExTeX OCPware</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is an ExTeX PDF API component.
   </description>

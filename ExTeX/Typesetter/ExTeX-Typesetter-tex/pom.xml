@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-Typesetter-tex</artifactId>
   <name>ExTeX Typesetter TeX</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX typesetter TeX.
   </description>

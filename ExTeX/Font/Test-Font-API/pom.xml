@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-Font-API-Test</artifactId>
   <name>ExTeX Font API Test</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is an ExTeX Font API test component.
   </description>
