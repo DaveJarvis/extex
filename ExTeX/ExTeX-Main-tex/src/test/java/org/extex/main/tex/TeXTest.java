@@ -186,7 +186,7 @@ public class TeXTest {
         Locale.setDefault(new Locale("en"));
         properties.setProperty("extex.config", "tex.xml");
 
-        TeX tex;
+        TeX tex = null;
         ByteArrayOutputStream outBuffer = new ByteArrayOutputStream();
         ByteArrayOutputStream errBuffer = new ByteArrayOutputStream();
         PrintStream stdout = System.out;
@@ -211,6 +211,9 @@ public class TeXTest {
             System.setOut(stdout);
             errBuffer.close();
             System.setErr(stderr);
+            if (tex != null) {
+                tex.close();
+            }
         }
         return result;
     }
