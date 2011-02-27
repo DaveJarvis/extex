@@ -22,6 +22,7 @@ package org.extex.ocpware.compiler.parser;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -47,11 +48,11 @@ import org.extex.ocpware.type.OcpProgram;
  * This class provides a compiler state to translate an otp file into an ocp.
  * <p>
  * The processing is done in two phases. In the first phase a parse tree is
- * build up. This happens within the method
- * {@link #parse(InputStream) parse(InputStream)} or
- * {@link #CompilerState(InputStream) CompilerState(InputStream)} In the second
- * phase the parse tree is traversed and code is generated. This happens within
- * the method {@link #compile() compile()}.
+ * build up. This happens within the method {@link #parse(InputStream)
+ * parse(InputStream)} or {@link #CompilerState(InputStream)
+ * CompilerState(InputStream)} In the second phase the parse tree is traversed
+ * and code is generated. This happens within the method {@link #compile()
+ * compile()}.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -60,8 +61,8 @@ import org.extex.ocpware.type.OcpProgram;
 public final class CompilerState {
 
     /**
-     * The constant <tt>INITIAL</tt> contains the symbolic name for the
-     * initial state.
+     * The constant <tt>INITIAL</tt> contains the symbolic name for the initial
+     * state.
      */
     private static final String INITIAL = "INITIAL";
 
@@ -102,8 +103,8 @@ public final class CompilerState {
     private Map<String, Integer> namedTables = new HashMap<String, Integer>();
 
     /**
-     * The field <tt>out</tt> contains the number of bytes in the output
-     * stream. The default is 2.
+     * The field <tt>out</tt> contains the number of bytes in the output stream.
+     * The default is 2.
      */
     private int out = 2;
 
@@ -667,7 +668,9 @@ public final class CompilerState {
         sb.append(";\n");
         if (tables != null && !tables.isEmpty()) {
             sb.append("tables:\n");
-            for (Table t : tables.values()) {
+            Table[] array = tables.values().toArray(new Table[0]);
+            Arrays.sort(array);
+            for (Table t : array) {
                 sb.append(t.toString());
             }
             sb.append("\n");
@@ -675,7 +678,11 @@ public final class CompilerState {
         if (namedStates.size() > 1) {
             sb.append("states:\n  ");
             boolean sep = false;
-            for (String s : namedStates.keySet()) {
+            String[] array =
+                    new ArrayList<String>(namedStates.keySet())
+                        .toArray(new String[0]);
+            Arrays.sort(array);
+            for (String s : array) {
                 if (!INITIAL.equals(s)) {
                     if (sep) {
                         sb.append(",\n  ");
@@ -689,7 +696,11 @@ public final class CompilerState {
         }
         if (!aliases.isEmpty()) {
             sb.append("aliases:\n");
-            for (String a : aliases.keySet()) {
+            String[] array =
+                    new ArrayList<String>(aliases.keySet())
+                        .toArray(new String[0]);
+            Arrays.sort(array);
+            for (String a : array) {
                 sb.append("  ");
                 sb.append(a);
                 sb.append("=");
