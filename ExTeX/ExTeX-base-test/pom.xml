@@ -5,6 +5,7 @@
 
   <artifactId>ExTeX-base-test</artifactId>
   <name>ExTeX base test</name>
+  <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX base test support component.
   </description>
@@ -62,6 +63,13 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-tex</artifactId>
       <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-max</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
