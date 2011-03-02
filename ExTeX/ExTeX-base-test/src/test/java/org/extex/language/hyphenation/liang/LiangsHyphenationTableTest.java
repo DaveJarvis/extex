@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -28,25 +28,14 @@ import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.token.TokenFactoryImpl;
 import org.extex.scanner.type.tokens.Tokens;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
- * This class contains soem test cases fro liang's hyphenation table.
+ * This class contains some test cases fro liang's hyphenation table.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4527 $
  */
 public class LiangsHyphenationTableTest {
-
-    /**
-     * The command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(LiangsHyphenationTableTest.class);
-    }
 
     /**
      * Create new tokens from a string. Letters and the period are LETTERs,
@@ -79,7 +68,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> TODO gene: missing JavaDoc </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -100,7 +89,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> TODO gene: missing JavaDoc </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -124,7 +113,7 @@ public class LiangsHyphenationTableTest {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * <testcase> TODO gene: missing JavaDoc </testcase>
      * 
      * @throws Exception in case of an error
      */
