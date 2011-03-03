@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,7 +39,6 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.typesetter.type.node.factory.SimpleNodeFactory;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for ExTeXWords.
@@ -83,8 +82,8 @@ public class ExTeXWordsTest {
     /**
      * The field <tt>hyphen</tt> contains the hyphen node.
      */
-    private static CharNode hyphen =
-            (CharNode) nf.getNode(tc, UnicodeChar.get('-'));
+    private static CharNode hyphen = (CharNode) nf.getNode(tc,
+        UnicodeChar.get('-'));
 
     /**
      * The field <tt>UC_F</tt> contains the character f.
@@ -127,21 +126,11 @@ public class ExTeXWordsTest {
     private static final UnicodeChar UC_FFL = UnicodeChar.get('\017');
 
     /**
-     * The main method.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(ExTeXWordsTest.class);
-    }
-
-    /**
      * Translate a string into a list of nodes.
      * 
      * @param s the characters to insert into the list
      * 
-     * @return a node list made of te characters
+     * @return a node list made of the characters
      */
     private static NodeList makeList(CharSequence s) {
 
@@ -200,32 +189,6 @@ public class ExTeXWordsTest {
     }
 
     /**
-     * <testcase> Test that the empty spec is accepted. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testInsertShy2() throws Exception {
-
-        NodeList nodes = makeList("a");
-        wt.insertShy(nodes, 0, new boolean[0], hyphen);
-        assertEquals(1, nodes.size());
-    }
-
-    /**
-     * <testcase> Test that the empty spec is accepted. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testInsertShy3() throws Exception {
-
-        NodeList nodes = makeList("a");
-        wt.insertShy(nodes, 1, new boolean[0], hyphen);
-        assertEquals(1, nodes.size());
-    }
-
-    /**
      * <testcase> Test that the one element spec is accepted. </testcase>
      * 
      * @throws Exception in case of an error
@@ -254,6 +217,19 @@ public class ExTeXWordsTest {
         assertEquals(2, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof CharNode);
+    }
+
+    /**
+     * <testcase> Test that the empty spec is accepted. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testInsertShy2() throws Exception {
+
+        NodeList nodes = makeList("a");
+        wt.insertShy(nodes, 0, new boolean[0], hyphen);
+        assertEquals(1, nodes.size());
     }
 
     /**
@@ -287,6 +263,19 @@ public class ExTeXWordsTest {
         assertTrue(nodes.get(1) instanceof CharNode);
         assertTrue(nodes.get(2) instanceof DiscretionaryNode);
         assertTrue(nodes.get(3) instanceof CharNode);
+    }
+
+    /**
+     * <testcase> Test that the empty spec is accepted. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testInsertShy3() throws Exception {
+
+        NodeList nodes = makeList("a");
+        wt.insertShy(nodes, 1, new boolean[0], hyphen);
+        assertEquals(1, nodes.size());
     }
 
     /**
