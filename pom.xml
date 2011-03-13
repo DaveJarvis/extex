@@ -166,13 +166,7 @@
   </dependencyManagement>
 
   <modules>
-<!--
-   <module>ExBib</module>
-   <module>ExIndex</module>
-   <module>ExTeX</module>
-   <module>CLI</module>
-   <module>ExTeX-resource</module>
--->
+   <module>build</module>
    <module>texmf</module>
    <module>tools</module>
    <module>doc</module>
