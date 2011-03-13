@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,6 +19,7 @@
 
 package org.extex.site;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
@@ -39,75 +40,59 @@ import org.apache.tools.ant.Task;
 public class TestSummary extends Task {
 
     /**
-     * The field <tt>verbose</tt> contains the verbosity indicator.
-     */
-    private static boolean verbose = false;
-
-    /**
-     * Produce HTML code for a bar.
-     * 
-     * @param stream the output stream
-     * @param value the width
-     * @param img the image to use
-     */
-    private static void bar(PrintStream stream, int value, String img) {
-
-        if (value > 0) {
-            stream.print("<img src=\"../image/s-" + img + ".png\" width=\"");
-            stream.print(value);
-            stream.print("\" height=\"24\"\n/>");
-        }
-    }
-
-    /**
-     * Get the substring for a certain sub-match.
-     * 
-     * @param sb the data to extract from
-     * @param m the matcher
-     * @param i the index of the sub-match
-     * 
-     * @return the value of the sub-match
-     */
-    private static String get(StringBuffer sb, Matcher m, int i) {
-
-        return sb.substring(m.start(i), m.end(i));
-    }
-
-    /**
      * Command line interface
      * 
      * @param args the command-line arguments
      */
     public static void main(String[] args) {
 
-        String in = "overview-summary.html";
-        String out = null;
+        TestSummary instance = new TestSummary();
+        instance.setInput("overview-summary.html");
 
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
             if (arg.length() < 2) {
                 System.err.println("Unknown argument: " + arg);
             } else if ("-verbose".startsWith(arg)) {
-                verbose = true;
+                instance.setVerbose(true);
             } else if ("-quiet".startsWith(arg)) {
-                verbose = false;
+                instance.setVerbose(false);
+            } else if ("-ignoreMissing".startsWith(arg)) {
+                instance.setIgnoreMissing(true);
             } else if ("-input".startsWith(arg)) {
-                i++;
-                in = args[i];
+                if (++i >= args.length) {
+                    System.err.println("Missing file name for " + arg);
+                    return;
+                }
+                instance.setInput(args[i]);
             } else if ("-output".startsWith(arg)) {
-                i++;
-                out = args[i];
+                if (++i >= args.length) {
+                    System.err.println("Missing file name for " + arg);
+                    return;
+                }
+                instance.setOutput(args[i]);
             } else {
                 System.err.println("Unknown argument: " + arg);
             }
         }
 
         try {
-            new TestSummary().process(in, out);
-        } catch (IOException e) {
+            instance.execute();
+        } catch (BuildException e) {
             System.err.println(e.getLocalizedMessage());
         }
     }
+
+    /**
+     * The field <tt>ignoreMissing</tt> contains the indicator tom ignore
+     * missing input files.
+     */
+    private boolean ignoreMissing = false;
+
+    /**
+     * The field <tt>verbose</tt> contains the verbosity indicator.
+     */
+    private boolean verbose = false;
 
     /**
      * The field <tt>input</tt> contains the input file name.
@@ -120,39 +105,28 @@ public class TestSummary extends Task {
     private String output = null;
 
     /**
+     * Produce HTML code for a bar.
+     * 
+     * @param stream the output stream
+     * @param value the width
+     * @param img the image to use
+     */
+    private void bar(PrintStream stream, int value, String img) {
+
+        if (value > 0) {
+            stream.print("<img src=\"../image/s-" + img + ".png\" width=\"");
+            stream.print(value);
+            stream.print("\" height=\"24\"\n/>");
+        }
+    }
+
+    /**
      * @see org.apache.tools.ant.Task#execute()
      */
     @Override
     public void execute() {
 
-        if (input == null) {
-            throw new BuildException("No input set.");
-        }
-        try {
-            process(input, output);
-        } catch (IOException e) {
-            throw new BuildException(e.getLocalizedMessage());
-        }
-    }
-
-    /**
-     * Process the input and produce the output.
-     * 
-     * @param in the input file name
-     * @param out the output file name
-     * 
-     * @throws IOException in case of an error
-     */
-    private void process(String in, String out) throws IOException {
-
-        StringBuffer sb = new StringBuffer();
-        Reader reader = new FileReader(in);
-        int c;
-        while ((c = reader.read()) >= 0) {
-            sb.append((char) c);
-        }
-        reader.close();
-
+        StringBuilder sb = readFile();
         int i = sb.indexOf("href=\"all-tests.html\"");
         if (i >= 0) {
             sb.delete(0, i - 1);
@@ -174,39 +148,87 @@ public class TestSummary extends Task {
         String rate = "0";
 
         if (m.matches()) {
-            no = get(sb, m, 1);
+            no = sb.substring(m.start(1), m.end(1));
             int n = Integer.parseInt(no);
-            int e = Integer.parseInt(get(sb, m, 2));
-            int f = Integer.parseInt(get(sb, m, 3));
-            rate = get(sb, m, 4);
+            int e1 = Integer.parseInt(sb.substring(m.start(2), m.end(2)));
+            int f = Integer.parseInt(sb.substring(m.start(3), m.end(3)));
+            rate = sb.substring(m.start(4), m.end(4));
 
-            g = (512 * (n - e - f)) / n;
+            g = (512 * (n - e1 - f)) / n;
             o = (512 * f) / n;
-            r = (512 * e) / n;
+            r = (512 * e1) / n;
         } else {
             log("No match");
         }
 
-        PrintStream stream = System.out;
-        if (out != null) {
-            stream = new PrintStream(new FileOutputStream(out));
+        try {
+            PrintStream stream = (output == null //
+                    ? System.out
+                    : new PrintStream(new FileOutputStream(output)));
+
+            stream.print("<div>Number of tests: " + no + "</div>\n");
+            stream.print("<div>Success rate: " + rate + "%</div>\n");
+            stream.print("<div>\n");
+
+            bar(stream, 1, "gray");
+            bar(stream, g, "green");
+            bar(stream, o, "orange");
+            bar(stream, r, "red");
+            bar(stream, 1, "gray");
+
+            stream.print("</div>");
+
+            if (stream != System.out) {
+                stream.close();
+            }
+        } catch (IOException e) {
+            throw new BuildException(e.getLocalizedMessage());
         }
+    }
 
-        stream.print("<div>Number of tests: " + no + "</div>\n");
-        stream.print("<div>Success rate: " + rate + "%</div>\n");
-        stream.print("<div>\n");
+    /**
+     * Read the contents of the file.
+     * 
+     * @return the buffer with the contents
+     */
+    private StringBuilder readFile() {
 
-        bar(stream, 1, "gray");
-        bar(stream, g, "green");
-        bar(stream, o, "orange");
-        bar(stream, r, "red");
-        bar(stream, 1, "gray");
-
-        stream.print("</div>");
-
-        if (stream != System.out) {
-            stream.close();
+        if (input == null) {
+            throw new BuildException("No input set.");
         }
+        StringBuilder sb = new StringBuilder();
+        Reader reader;
+        try {
+            reader = new FileReader(input);
+        } catch (FileNotFoundException e) {
+            if (ignoreMissing) {
+                if (verbose) {
+                    log("missing input file ignored");
+                }
+                return sb;
+            }
+            throw new BuildException(e.getLocalizedMessage());
+        }
+        try {
+            int c;
+            while ((c = reader.read()) >= 0) {
+                sb.append((char) c);
+            }
+            reader.close();
+        } catch (IOException e) {
+            throw new BuildException(e.getLocalizedMessage());
+        }
+        return sb;
+    }
+
+    /**
+     * Setter for ignoreMissing.
+     * 
+     * @param ignoreMissing the ignoreMissing to set
+     */
+    public void setIgnoreMissing(boolean ignoreMissing) {
+
+        this.ignoreMissing = ignoreMissing;
     }
 
     /**
@@ -227,6 +249,16 @@ public class TestSummary extends Task {
     public void setOutput(String output) {
 
         this.output = output;
+    }
+
+    /**
+     * Setter for verbose.
+     * 
+     * @param verbose the verbose to set
+     */
+    public void setVerbose(boolean verbose) {
+
+        this.verbose = verbose;
     }
 
 }
