@@ -85,7 +85,8 @@
 
     <mkdir dir="${target}" />
     <testSummary input="${overview-summary}"
-                 output="${target}/test-summary.html" />
+                 output="${target}/test-summary.html" 
+                 ignoreMissing="true" />
   </target>
 
   <!-- ==================================================================== -->
