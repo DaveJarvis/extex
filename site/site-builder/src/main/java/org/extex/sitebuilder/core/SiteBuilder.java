@@ -85,6 +85,7 @@ public class SiteBuilder {
      */
     private final FilenameFilter DIR_FILTER = new FilenameFilter() {
 
+        @Override
         public boolean accept(File dir, String name) {
 
             return !name.startsWith(".") && !name.equals("index.html")
@@ -97,6 +98,7 @@ public class SiteBuilder {
      */
     private final FilenameFilter FILTER = new FilenameFilter() {
 
+        @Override
         public boolean accept(File dir, String name) {
 
             return !name.startsWith(".") && !omit.contains(name);
@@ -632,7 +634,7 @@ public class SiteBuilder {
      * 
      * @param siteMap the siteMap to set
      */
-    protected void setSiteMap(File siteMap) {
+    public void setSiteMap(File siteMap) {
 
         this.siteMap = siteMap;
     }
