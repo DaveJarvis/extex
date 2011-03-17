@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,15 +19,13 @@
 
 package org.extex.sitebuilder.core;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class enhances {@link File} with some additional features.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -86,6 +84,7 @@ public class FileWrapper extends File implements FileFilter {
      * 
      * @see java.io.FileFilter#accept(java.io.File)
      */
+    @Override
     public boolean accept(File pathname) {
 
         if (pathname.isDirectory()) {
@@ -158,21 +157,36 @@ public class FileWrapper extends File implements FileFilter {
             return getName();
         }
         try {
-            Reader r = new BufferedReader(new FileReader(f));
+            ParsingReader r = new ParsingReader(new FileReader(f));
             try {
-                StringBuilder buffer = new StringBuilder();
-                for (int c = r.read(); c >= 0; c = r.read()) {
-                    buffer.append((char) c);
-                    if (c == '>'
-                            && buffer.substring(buffer.length() - 8).equals(
-                                "</title>")) {
-                        title =
-                                buffer.substring(buffer.indexOf("<title>") + 7,
-                                    buffer.length() - 8);
+                StringBuilder b;
 
-                        return title;
+                while (r.skipTo('<')) {
+                    b = new StringBuilder();
+                    if (!r.scanTo('>', b)) {
+                        // TODO eof
+                    }
+                    if (b.toString().equalsIgnoreCase("title")) {
+                        break;
                     }
                 }
+
+                StringBuilder buffer = new StringBuilder();
+
+                while (r.scanTo('<', buffer)) {
+                    b = new StringBuilder();
+                    if (!r.scanTo('>', b)) {
+                        // TODO eof
+                    }
+                    if (b.toString().equalsIgnoreCase("/title")) {
+                        title = buffer.toString().replaceAll("[\r\n]", "");
+                        return title;
+                    }
+                    buffer.append('<');
+                    buffer.append(b);
+                    buffer.append('>');
+                }
+
             } finally {
                 r.close();
             }

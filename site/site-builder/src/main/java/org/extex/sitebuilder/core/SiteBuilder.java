@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -475,14 +475,12 @@ public class SiteBuilder {
      * 
      * @param list the libs to add
      * 
-     * @throws Exception in case of an error
      * @throws ParseErrorException in case of an error
      * @throws ResourceNotFoundException in case of an error
      */
     public void lib(String... list)
             throws ResourceNotFoundException,
-                ParseErrorException,
-                Exception {
+                ParseErrorException {
 
         if (list != null) {
             for (String s : list) {
@@ -517,7 +515,7 @@ public class SiteBuilder {
     /**
      * Create a new engine and initialize it.
      * 
-     * @return the engine
+     * @return the Velocity engine
      * 
      * @throws Exception in case of an error
      */
