@@ -78,13 +78,31 @@ public class SiteBuilderMain {
     };
 
     /**
-     * TODO gene: missing JavaDoc
+     * This is the command line interface to the site builder. This method calls
+     * {@link System.exit()} to signal the result via the exit code.
      * 
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
+        System.exit(run(args));
+    }
+
+    /**
+     * This is the command line interface to the site builder.
+     * 
+     * @param args the command line arguments
+     * 
+     * @return the exit code; i.e. 0 for success and something else for failure
+     */
+    public static int run(String[] args) {
+
         SiteBuilder siteBuilder = new SiteBuilder();
+        siteBuilder.setSiteMap(new File("target/site/sitemap.html"));
+        siteBuilder.omit("CVS", ".svn");
+        siteBuilder.lib("src/site/velocity/macros.vm");
+        // siteBuilder.setBaseDir(new File("../www/src/site/html"));
+        // siteBuilder.setResourceDir(new File("../www/src/site/resources"));
 
         for (int i = 0; i < args.length; i++) {
             if ("".equals(args[i])) {
@@ -93,8 +111,12 @@ public class SiteBuilderMain {
 
             } else if ("-baseDirectory".startsWith(args[i])) {
                 siteBuilder.setBaseDir(new File(args[++i]));
+            } else if ("-library".startsWith(args[i])) {
+                siteBuilder.lib(args[++i]);
             } else if ("-outputDirectory".startsWith(args[i])) {
                 siteBuilder.setTargetdir(new File(args[++i]));
+            } else if ("-omit".startsWith(args[i])) {
+                siteBuilder.omit(args[++i]);
             } else if ("-resourceDirectory".startsWith(args[i])) {
                 siteBuilder.setResourceDir(new File(args[++i]));
             } else if ("-template".startsWith(args[i])) {
@@ -105,7 +127,7 @@ public class SiteBuilderMain {
                 System.err.println("\t-outputDirectory [dir]");
                 System.err.println("\t-resourceDirectory [dir]");
                 System.err.println("\t-template [template file]");
-                return;
+                return 0;
             }
         }
 
@@ -117,17 +139,13 @@ public class SiteBuilderMain {
             h.setLevel(Level.OFF);
         }
         logger.addHandler(handler);
-        // siteBuilder.setBaseDir(new File("../www/src/site/html"));
-        // siteBuilder.setResourceDir(new File("../www/src/site/resources"));
-        siteBuilder.setSiteMap(new File("target/site/sitemap.html"));
-        siteBuilder.omit("CVS", ".svn");
-        siteBuilder.lib("src/site/velocity/macros.vm");
         try {
             siteBuilder.run();
         } catch (Exception e) {
             logger.throwing(SiteBuilder.class.getName(), "run", e);
-            System.exit(-1);
+            return -1;
         }
+        return 0;
     }
 
 }
