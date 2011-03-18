@@ -43,12 +43,15 @@ public class ParsingReader extends BufferedReader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Scan the input up to a terminating character and collect the contents
+     * encountered while scanning in a buffer.
      * 
-     * @param term
-     * @param buffer
-     * @return
-     * @throws IOException
+     * @param term the terminating character
+     * @param buffer the buffer to store the characters in
+     * 
+     * @return <code>true</code> iff the terminating character has been found
+     * 
+     * @throws IOException in case of an error
      */
     public boolean scanTo(char term, StringBuilder buffer) throws IOException {
 
