@@ -323,6 +323,9 @@ public class SiteBuilder {
     private void copy(File dir, File outdir) throws IOException {
 
         if (omit.contains(dir.getName())) {
+            if (logger != null) {
+                logger.info(dir + " omitted");
+            }
             return;
         }
 
@@ -387,7 +390,7 @@ public class SiteBuilder {
     }
 
     /**
-     * Evaluate a file as >Velocity template.
+     * Evaluate a file as Velocity template.
      * 
      * @param infile the input file
      * @param tag the tag
@@ -473,7 +476,7 @@ public class SiteBuilder {
     /**
      * Adder for libs.
      * 
-     * @param list the libs to add
+     * @param list the libs to add or <code>null</code>
      * 
      * @throws ParseErrorException in case of an error
      * @throws ResourceNotFoundException in case of an error
@@ -544,7 +547,8 @@ public class SiteBuilder {
     /**
      * Add some strings to be omitted.
      * 
-     * @param list the list of omit; <code>null</code> is ignored
+     * @param list the list of omit; a <code>null</code> list is silently
+     *        ignored
      */
     public void omit(String... list) {
 
