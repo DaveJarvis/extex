@@ -19,6 +19,7 @@
 
 package org.extex.sitebuilder.core;
 
+import java.io.EOFException;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
@@ -115,7 +116,7 @@ public class FileWrapper extends File implements FileFilter {
     }
 
     /**
-     * TODO gene: missing JavaDoc
+     * Retrieve the the full name relative to the root.
      * 
      * @return the full name relative to the root
      */
@@ -164,7 +165,7 @@ public class FileWrapper extends File implements FileFilter {
                 while (r.skipTo('<')) {
                     b = new StringBuilder();
                     if (!r.scanTo('>', b)) {
-                        // TODO eof
+                        throw new EOFException();
                     }
                     if (b.toString().equalsIgnoreCase("title")) {
                         break;
@@ -176,7 +177,7 @@ public class FileWrapper extends File implements FileFilter {
                 while (r.scanTo('<', buffer)) {
                     b = new StringBuilder();
                     if (!r.scanTo('>', b)) {
-                        // TODO eof
+                        throw new EOFException();
                     }
                     if (b.toString().equalsIgnoreCase("/title")) {
                         title = buffer.toString().replaceAll("[\r\n]", "");
