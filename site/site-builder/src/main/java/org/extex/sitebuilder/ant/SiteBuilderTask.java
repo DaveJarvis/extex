@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -31,7 +31,7 @@ import org.apache.tools.ant.Task;
 import org.extex.sitebuilder.core.SiteBuilder;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the Ant task for the site builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,35 +39,33 @@ import org.extex.sitebuilder.core.SiteBuilder;
 public class SiteBuilderTask extends Task {
 
     /**
-     * The field <tt>basedir</tt> contains the ...
+     * The field <tt>basedir</tt> contains the base directory.
      */
     private File basedir = new File("src/site/html");
 
     /**
      * The field <tt>omit</tt> contains the list of omitted files and
      * directories.
-     * 
-     * @parameter
      */
     private String[] omit;
 
     /**
-     * The field <tt>resources</tt> contains the ...
+     * The field <tt>resources</tt> contains the resources directory.
      */
     private File resources = new File("src/site/resources");
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the output directory.
      */
     private File output = new File("target/site");
 
     /**
-     * The field <tt>template</tt> contains the ...
+     * The field <tt>template</tt> contains the template file.
      */
     private String template = null;
 
     /**
-     * The field <tt>handler</tt> contains the ...
+     * The field <tt>handler</tt> contains the log handler.
      */
     private Handler handler = new Handler() {
 
