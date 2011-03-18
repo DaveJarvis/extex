@@ -568,6 +568,8 @@ public class SiteBuilder {
 
         if (resourceDirectory.isDirectory()) {
             copy(resourceDirectory, targetDirectory);
+        } else if (resourceDirectory != null) {
+            throw new FileNotFoundException(resourceDirectory.toString());
         }
 
         VelocityEngine engine = makeEngine();
