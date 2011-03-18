@@ -84,8 +84,32 @@ public class SiteBuilderMain {
      */
     public static void main(String[] args) {
 
-        Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
         SiteBuilder siteBuilder = new SiteBuilder();
+
+        for (int i = 0; i < args.length; i++) {
+            if ("".equals(args[i])) {
+
+            } else if (!args[i].startsWith("-")) {
+
+            } else if ("-baseDirectory".startsWith(args[i])) {
+                siteBuilder.setBaseDir(new File(args[++i]));
+            } else if ("-outputDirectory".startsWith(args[i])) {
+                siteBuilder.setTargetdir(new File(args[++i]));
+            } else if ("-resourceDirectory".startsWith(args[i])) {
+                siteBuilder.setResourceDir(new File(args[++i]));
+            } else if ("-template".startsWith(args[i])) {
+                siteBuilder.setTemplate(args[++i]);
+            } else {
+                System.err.println("Arguments:");
+                System.err.println("\t-baseDirectory [dir]");
+                System.err.println("\t-outputDirectory [dir]");
+                System.err.println("\t-resourceDirectory [dir]");
+                System.err.println("\t-template [template file]");
+                return;
+            }
+        }
+
+        Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
         Logger logger = siteBuilder.getLogger();
         logger.setLevel(Level.WARNING);
         logger.setUseParentHandlers(false);
