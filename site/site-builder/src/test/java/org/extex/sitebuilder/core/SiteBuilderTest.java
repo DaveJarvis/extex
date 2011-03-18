@@ -20,6 +20,8 @@
 package org.extex.sitebuilder.core;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -78,11 +80,81 @@ public class SiteBuilderTest {
     };
 
     /**
+     * <testcase> An non existent library leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = Exception.class)
+    public void test001() throws Exception {
+
+        Logger.getLogger("org.apache.velocity").setLevel(Level.OFF);
+        SiteBuilder siteBuilder = new SiteBuilder();
+        Logger logger = siteBuilder.getLogger();
+        logger.setLevel(Level.OFF);
+        logger.setUseParentHandlers(false);
+        for (Handler h : logger.getHandlers()) {
+            h.setLevel(Level.OFF);
+        }
+        siteBuilder.lib("undefined.vm");
+        siteBuilder.run();
+    }
+
+    /**
+     * <testcase> An non existent target directory which can not be created
+     * because it is a file already leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = FileNotFoundException.class)
+    public void test002() throws Exception {
+
+        Logger.getLogger("org.apache.velocity").setLevel(Level.OFF);
+        SiteBuilder siteBuilder = new SiteBuilder();
+        Logger logger = siteBuilder.getLogger();
+        logger.setLevel(Level.OFF);
+        logger.setUseParentHandlers(false);
+        for (Handler h : logger.getHandlers()) {
+            h.setLevel(Level.OFF);
+        }
+        File targetdir = new File("target/undefined");
+        new FileWriter(targetdir).close(); // touch
+        siteBuilder.setTargetdir(targetdir);
+        try {
+            siteBuilder.run();
+        } finally {
+            targetdir.delete();
+        }
+    }
+
+    /**
+     * <testcase> An non existent resource directory leads to an exception.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = FileNotFoundException.class)
+    public void test003() throws Exception {
+
+        Logger.getLogger("org.apache.velocity").setLevel(Level.OFF);
+        SiteBuilder siteBuilder = new SiteBuilder();
+        Logger logger = siteBuilder.getLogger();
+        logger.setLevel(Level.OFF);
+        logger.setUseParentHandlers(false);
+        for (Handler h : logger.getHandlers()) {
+            h.setLevel(Level.OFF);
+        }
+        File targetdir = new File("target/undefined2");
+        siteBuilder.setTargetdir(targetdir);
+        siteBuilder.setResourceDir(new File("target/u_n_d_e_f"));
+        siteBuilder.run();
+    }
+
+    /**
      * Generate the site.
      * 
      * @throws Exception in case of an error
      */
-    @Test
+    // @Test
     public void test1() throws Exception {
 
         Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
