@@ -54,7 +54,6 @@ import org.apache.velocity.context.Context;
 import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
-import org.apache.velocity.runtime.log.JdkLogChute;
 import org.apache.velocity.runtime.log.LogChute;
 import org.xml.sax.SAXException;
 
@@ -88,8 +87,7 @@ public class SiteBuilder {
         @Override
         public boolean accept(File dir, String name) {
 
-            return !name.startsWith(".") && !name.equals("index.html")
-                    && !omit.contains(name);
+            return FILTER.accept(dir, name) && !name.equals("index.html");
         }
     };
 
@@ -130,7 +128,7 @@ public class SiteBuilder {
     /**
      * The field <tt>targetDirectory</tt> contains the target directory.
      */
-    private File targetDirectory = new File("target/site");
+    private File targetDirectory = new File("target/test-site");
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -181,7 +179,9 @@ public class SiteBuilder {
                 ParserConfigurationException,
                 SAXException {
 
-        outdir.mkdirs();
+        if (!outdir.exists() && !outdir.mkdirs()) {
+            throw new IOException("Creation of directory failed: " + outdir);
+        }
 
         File outfile = new File(outdir, infile.getName());
         if (logger != null) {
@@ -301,7 +301,7 @@ public class SiteBuilder {
                     new File(outdir, f.getName()), //
                     (relativePath.equals(".") ? ".." : relativePath + "/.."),
                     t, engine, context);
-            } else if (!omit.contains(f.getName())) {
+            } else {
                 context.put("relativePath", relativePath);
                 context.put("directory", dirlist);
                 context.put("navigation", nav);
@@ -322,19 +322,17 @@ public class SiteBuilder {
      */
     private void copy(File dir, File outdir) throws IOException {
 
-        if (omit.contains(dir.getName())) {
+        if (!FILTER.accept(dir.getParentFile(), dir.getName())) {
             if (logger != null) {
                 logger.info(dir + " omitted");
             }
             return;
         }
 
-        for (File f : dir.listFiles()) {
+        for (File f : dir.listFiles(FILTER)) {
 
             if (f.isDirectory()) {
                 copy(f, new File(outdir, f.getName()));
-                continue;
-            } else if (omit.contains(f.getName())) {
                 continue;
             } else if (!outdir.exists() && !outdir.mkdirs()) {
                 throw new FileNotFoundException(outdir.toString());
@@ -378,7 +376,10 @@ public class SiteBuilder {
         context.put("bodyContent", "");
         context.put("relativePath", ".");
         context.put("targetDirectory", new FileWrapper(targetDirectory, "."));
-        siteMap.getParentFile().mkdirs();
+        File dir = siteMap.getParentFile();
+        if (!dir.exists() && !dir.mkdirs()) {
+            throw new IOException("directory creation failed: " + dir);
+        }
         Writer writer = new BufferedWriter(new FileWriter(siteMap));
         try {
             Template t = engine.getTemplate(sitemapTempate);
@@ -485,10 +486,11 @@ public class SiteBuilder {
             throws ResourceNotFoundException,
                 ParseErrorException {
 
-        if (list != null) {
-            for (String s : list) {
-                lib.add(s);
-            }
+        if (list == null) {
+            return;
+        }
+        for (String s : list) {
+            lib.add(s);
         }
     }
 
@@ -526,7 +528,7 @@ public class SiteBuilder {
 
         VelocityEngine engine = new VelocityEngine();
         // engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, logChute);
-        engine.setProperty(JdkLogChute.RUNTIME_LOG_JDK_LOGGER, "xxx");
+        // engine.setProperty(JdkLogChute.RUNTIME_LOG_JDK_LOGGER, "xxx");
 
         Properties prop = new Properties();
         String name = getClass().getName().replace('.', '/') + ".properties";
@@ -552,10 +554,11 @@ public class SiteBuilder {
      */
     public void omit(String... list) {
 
-        if (list != null) {
-            for (String s : list) {
-                omit.add(s);
-            }
+        if (list == null) {
+            return;
+        }
+        for (String s : list) {
+            omit.add(s);
         }
     }
 
@@ -566,10 +569,11 @@ public class SiteBuilder {
      */
     public void run() throws Exception {
 
-        if (resourceDirectory.isDirectory()) {
+        if (resourceDirectory != null) {
+            if (!resourceDirectory.isDirectory()) {
+                throw new FileNotFoundException(resourceDirectory.toString());
+            }
             copy(resourceDirectory, targetDirectory);
-        } else if (resourceDirectory != null) {
-            throw new FileNotFoundException(resourceDirectory.toString());
         }
 
         VelocityEngine engine = makeEngine();

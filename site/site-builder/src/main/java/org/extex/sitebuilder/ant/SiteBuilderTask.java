@@ -33,54 +33,70 @@ import org.extex.sitebuilder.core.SiteBuilder;
 /**
  * This is the Ant task for the site builder.
  * 
+ * 
+ * TODO: The following does not work yet
+ * 
+ * <pre style="background:#eeeeee;">
+ *   &lt;taskdef name="SiteBuilder"
+ *            classname="org.extex.sitebuilder.ant.SiteBuilderTask" /&gt;
+ * 
+ *   &lt;SiteBuilder
+ *      target="<i>output/directory</i>" &gt;
+ *     &lt;SiteHTML
+ *        sources="<i>html/sources</i>"
+ *        template="<i>html/template/resource</i>" /&gt;
+ *     &lt;SiteResources
+ *        dir="<i>resources/directory</i>" /&gt;
+ *     &lt;SiteMap
+ *        output="<i>site/map/file</i>" /&gt;
+ *     &lt;SiteNews
+ *        output="<i>news/file</i>" /&gt;
+ *   &lt;/SiteBuilder&gt; </pre>
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class SiteBuilderTask extends Task {
 
     /**
-     * The field <tt>basedir</tt> contains the base directory.
+     * The field <tt>builder</tt> contains the instance of the site builder.
+     * This is needed due to the limitation of Java not supporting multiple
+     * inheritance.
      */
-    private File basedir = new File("src/site/html");
-
-    /**
-     * The field <tt>omit</tt> contains the list of omitted files and
-     * directories.
-     */
-    private String[] omit;
-
-    /**
-     * The field <tt>resources</tt> contains the resources directory.
-     */
-    private File resources = new File("src/site/resources");
-
-    /**
-     * The field <tt>output</tt> contains the output directory.
-     */
-    private File output = new File("target/site");
-
-    /**
-     * The field <tt>template</tt> contains the template file.
-     */
-    private String template = null;
+    private final SiteBuilder builder = new SiteBuilder();
 
     /**
      * The field <tt>handler</tt> contains the log handler.
      */
-    private Handler handler = new Handler() {
+    private final Handler handler = new Handler() {
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#close()
+         */
         @Override
         public void close() throws SecurityException {
 
             //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#flush()
+         */
         @Override
         public void flush() {
 
             //
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.util.logging.Handler#publish(java.util.logging.LogRecord)
+         */
         @Override
         public void publish(LogRecord record) {
 
@@ -107,13 +123,6 @@ public class SiteBuilderTask extends Task {
     @Override
     public void execute() throws BuildException {
 
-        SiteBuilder builder = new SiteBuilder();
-        builder.setBaseDir(basedir);
-        builder.setResourceDir(resources);
-        builder.setTemplate(template);
-        builder.setTargetdir(output);
-        builder.omit(omit);
-
         Logger logger = builder.getLogger();
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
@@ -123,7 +132,59 @@ public class SiteBuilderTask extends Task {
             builder.run();
         } catch (Exception e) {
             throw new BuildException("", e);
+        } finally {
+            logger.removeHandler(handler);
         }
+    }
+
+    /**
+     * Setter for basedir.
+     * 
+     * @param basedir the basedir to set
+     */
+    public void setBasedir(File basedir) {
+
+        builder.setBaseDir(basedir);
+    }
+
+    /**
+     * Setter for omit.
+     * 
+     * @param omit the omit to set
+     */
+    public void setOmit(String[] omit) {
+
+        builder.omit(omit);
+    }
+
+    /**
+     * Setter for output.
+     * 
+     * @param output the output to set
+     */
+    public void setOutput(File output) {
+
+        builder.setTargetdir(output);
+    }
+
+    /**
+     * Setter for resources.
+     * 
+     * @param resources the resources to set
+     */
+    public void setResources(File resources) {
+
+        builder.setResourceDir(resources);
+    }
+
+    /**
+     * Setter for template.
+     * 
+     * @param template the template to set
+     */
+    public void setTemplate(String template) {
+
+        builder.setTemplate(template);
     }
 
 }

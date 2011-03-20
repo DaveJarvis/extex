@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,6 +26,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.Reader;
 import java.io.Writer;
@@ -36,19 +37,19 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Properties;
 import java.util.Map.Entry;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.runtime.RuntimeConstants;
-import org.apache.velocity.runtime.RuntimeServices;
 import org.apache.velocity.runtime.log.LogChute;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This class is the news builder. It takes a directory and extracts all news
+ * items contained in XML files. A limited number of those is translated into an
+ * RSS 2.0 compatible file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -70,37 +71,8 @@ public class NewsBuilder {
     }
 
     /**
-     * The field <tt>ls</tt> contains the adapter for the logging.
-     */
-    private LogChute logChute = new LogChute() {
-
-        public void init(RuntimeServices rs) throws Exception {
-
-            //
-        }
-
-        public boolean isLevelEnabled(int level) {
-
-            return false;
-        }
-
-        public void log(int id, String message) {
-
-            Level l = levelMap.get(Integer.valueOf(id));
-            logger.log(l != null ? l : Level.FINER, message);
-        }
-
-        public void log(int id, String message, Throwable cause) {
-
-            Level l = levelMap.get(Integer.valueOf(id));
-            logger.log(l != null ? l : Level.FINER, message, cause);
-        }
-
-    };
-
-    /**
-     * The field <tt>baseDirectory</tt> contains the name of the base
-     * directory for the files to be transformed.
+     * The field <tt>baseDirectory</tt> contains the name of the base directory
+     * for the files to be transformed.
      */
     private File baseDirectory = new File("src/site/news");
 
@@ -116,9 +88,9 @@ public class NewsBuilder {
     private int max = 8;
 
     /**
-     * The field <tt>targetFile</tt> contains the target directory.
+     * The field <tt>outputFile</tt> contains the target file.
      */
-    private File targetFile = new File("target/site/rss/2.0/news.rss");
+    private File outputFile = new File("target/test-site/rss/2.0/news.rss");
 
     /**
      * The field <tt>template</tt> contains the name of the template.
@@ -155,15 +127,14 @@ public class NewsBuilder {
     private VelocityEngine makeEngine(VelocityContext context) throws Exception {
 
         VelocityEngine engine = new VelocityEngine();
-        engine.setProperty(RuntimeConstants.RUNTIME_LOG_LOGSYSTEM, logChute);
 
-        Properties prop = new Properties();
         String name = getClass().getName().replace('.', '/') + ".properties";
         InputStream stream =
                 getClass().getClassLoader().getResourceAsStream(name);
         if (stream == null) {
             throw new FileNotFoundException(name);
         }
+        Properties prop = new Properties();
         try {
             prop.load(stream);
         } finally {
@@ -184,14 +155,25 @@ public class NewsBuilder {
     public void run() throws Exception {
 
         if (!baseDirectory.isDirectory()) {
-            return;
+            throw new FileNotFoundException(baseDirectory.toString());
         }
 
-        targetFile.getParentFile().mkdirs();
+        if (!outputFile.getParentFile().exists()
+                && !outputFile.getParentFile().mkdirs()) {
+            throw new IOException("Directory creation failed: "
+                    + outputFile.getParentFile());
+        }
 
         int count = max;
         File[] files = baseDirectory.listFiles(new FilenameFilter() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see java.io.FilenameFilter#accept(java.io.File,
+             *      java.lang.String)
+             */
+            @Override
             public boolean accept(File dir, String name) {
 
                 return name.endsWith(".xml");
@@ -199,6 +181,7 @@ public class NewsBuilder {
         });
         Arrays.sort(files, new Comparator<File>() {
 
+            @Override
             public int compare(File o1, File o2) {
 
                 return o2.toString().compareTo(o1.toString());
@@ -209,7 +192,7 @@ public class NewsBuilder {
         StringBuilder buffer = new StringBuilder();
 
         for (File f : files) {
-            if (count-- < 0) {
+            if (count-- <= 0) {
                 break;
             }
             Reader in = new BufferedReader(new FileReader(f));
@@ -230,7 +213,7 @@ public class NewsBuilder {
         context.put("dateFormat", new SimpleDateFormat("d/m/yyyy",
             Locale.ENGLISH));
         VelocityEngine engine = makeEngine(context);
-        Writer writer = new BufferedWriter(new FileWriter(targetFile));
+        Writer writer = new BufferedWriter(new FileWriter(outputFile));
         try {
             engine.getTemplate(template).merge(context, writer);
         } finally {
@@ -243,7 +226,7 @@ public class NewsBuilder {
      * 
      * @param baseDirectory the baseDirectory to set
      */
-    protected void setBaseDirectory(File baseDirectory) {
+    public void setBaseDirectory(File baseDirectory) {
 
         this.baseDirectory = baseDirectory;
     }
@@ -253,7 +236,7 @@ public class NewsBuilder {
      * 
      * @param logger the logger to set
      */
-    protected void setLogger(Logger logger) {
+    public void setLogger(Logger logger) {
 
         this.logger = logger;
     }
@@ -263,19 +246,19 @@ public class NewsBuilder {
      * 
      * @param max the max to set
      */
-    protected void setMax(int max) {
+    public void setMax(int max) {
 
         this.max = max;
     }
 
     /**
-     * Setter for the target file.
+     * Setter for the output file.
      * 
-     * @param targetFile the target file to set
+     * @param outputFile the output file to set
      */
-    protected void setTargetFile(File targetFile) {
+    public void setOutputFile(File outputFile) {
 
-        this.targetFile = targetFile;
+        this.outputFile = outputFile;
     }
 
     /**
@@ -283,7 +266,7 @@ public class NewsBuilder {
      * 
      * @param template the template to set
      */
-    protected void setTemplate(String template) {
+    public void setTemplate(String template) {
 
         this.template = template;
     }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -17,34 +17,26 @@
  *
  */
 
-package org.extex.sitebuilder.core;
+package org.extex.sitebuilder;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-
-import org.junit.Test;
+import org.extex.sitebuilder.core.NewsBuilderTest;
+import org.extex.sitebuilder.core.SiteBuilderTest;
+import org.extex.sitebuilder.main.NewsBuilderMainTest;
+import org.junit.runner.RunWith;
+import org.junit.runners.Suite;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the test suite for this directory.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class NewsBuilderTest {
+@RunWith(Suite.class)
+@Suite.SuiteClasses({NewsBuilderTest.class, //
+        NewsBuilderMainTest.class, //
+        SiteBuilderTest.class})
+public class AllTests {
 
-    /**
-     * <testcase> Setting the logger to <code>null</code> sets it to
-     * <code>null</code>. Pretty logical. Isn't it? </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLogger1() throws Exception {
-
-        NewsBuilder builder = new NewsBuilder();
-        assertNotNull(builder.getLogger());
-        builder.setLogger(null);
-        assertNull(builder.getLogger());
-    }
+    // using annotations only
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,6 +32,9 @@
   vertical-align: 0.45ex;
   margin-left: -0.36em;
   margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
 }
 body {
   background-color:black;
@@ -169,16 +172,15 @@ table.head {
 }
 div.top {
   border:0pt;
+  border-bottom:1px solid #333333;
   padding:6pt 16pt 0px 16pt;
   margin:0pt;
   text-align:left;
-  /*
-  background: white url(../image/head.png) repeat-x;
-  */
+  background:#dddddd url("../image/head-line/bg.png");
   min-width:700px;
 }
 .logo {
-  float:right;
+  float:left;
   margin:10px;
 }
 iframe.ad {
@@ -193,47 +195,40 @@ div.ad {
 .tabs {
 }
 .tabOff,.tabOffL,.tabOffR,.tabOn,.tabOnL,.tabOnR {
-  height:1em;
-  border-bottom:1px solid #333333;
-  border-left-width:0pt;
-  border-right-width:0px;
-  border-top:0pt;
+  height:.9em;
+  border:0pt;
 }
 .tabOffL,.tabOffR,.tabOnL,.tabOnR {
   width:0px;
   font-size:1px;
   padding:20px 0pt 0pt 30px;
   margin:0pt;
-  border-top:1px solid black            ;
 }
 .tabOff,.tabOn {
   font-size:75%;
   font-weight:bold;
   margin:0pt;
-  padding:20px 0pt 4pt 0pt;
-  border-top:1px dashed #333333;
-  border-left:1px dashed #333333;
-  border-right:1px dashed #333333;
+  padding:20px 0pt 4px 0pt;
 }
 .tabOff {
   color:#333333;
-  background:#dddddd url("../image/head-line/tab.png") repeat-x;
+  background:url("../image/head-line/tab.png") repeat-x;
 }
 .tabOffL {
-  background:#dddddd url("../image/head-line/tab-l.png") no-repeat;
+  background:url("../image/head-line/tab-l.png") no-repeat;
 }
 .tabOffR {
-  background:#dddddd url("../image/head-line/tab-r.png") no-repeat;
+  background:url("../image/head-line/tab-r.png") no-repeat;
 }
 .tabOn {
   color:black;
-  background:#e9d965 url("../image/head-line/tab-off.png") repeat-x;
+  background:url("../image/head-line/tab-off.png") repeat-x;
 }
 .tabOnL {
-  background:#e9d965 url("../image/head-line/tab-off-l.png") no-repeat;
+  background:url("../image/head-line/tab-off-l.png") no-repeat;
 }
 .tabOnR {
-  background:#e9d965 url("../image/head-line/tab-off-r.png") no-repeat;
+  background:url("../image/head-line/tab-off-r.png") no-repeat;
 }
 .tabSep {
   height:2px;

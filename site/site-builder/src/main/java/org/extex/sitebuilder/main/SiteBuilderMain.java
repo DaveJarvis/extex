@@ -28,12 +28,12 @@ import java.util.logging.Logger;
 import org.extex.sitebuilder.core.SiteBuilder;
 
 /**
- * TODO gene: missing JavaDoc.
+ * This is the command line interface to the site builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteBuilderMain {
+public final class SiteBuilderMain {
 
     /**
      * The field <tt>handler</tt> contains the log handler.

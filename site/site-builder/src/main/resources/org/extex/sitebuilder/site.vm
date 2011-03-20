@@ -12,7 +12,7 @@
   $headContent
   <link rel="alternate" type="application/rss+xml"
         title="ExTeX News" href="http://www.extex.org/rss/2.0/ExTeX.rss" />
-  <meta name="date" content="Mar 3, 2011" />
+  <meta name="date" content="$currentDate" />
   <link rel="stylesheet" href="$relativePath/css/site.css" type="text/css" />
 </head>
 <body>

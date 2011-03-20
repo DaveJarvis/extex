@@ -13,8 +13,53 @@
   </description>
 
   <modules>
-    <module>extex-site-builder</module>
+    <module>site-builder</module>
   </modules>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>extex-site-builder</artifactId>
+      <version>1.0</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1.1</version>
+        <executions>
+          <execution>
+            <id>site</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>org.extex.sitebuilder.main.SiteBuilderMain</mainClass>
+              <commandLine>--target target/site
+                           --
+              </commandLine>
+            </configuration>
+          </execution>
+          <execution>
+            <id>news</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>java</goal>
+            </goals>
+            <configuration>
+              <mainClass>org.extex.sitebuilder.main.NewsBuilderMain</mainClass>
+              <commandLine>--output target/site/rss/2.0/news.rss</commandLine>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
   <developers>
     <developer>
