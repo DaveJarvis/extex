@@ -31,6 +31,7 @@
           <downloadJavadocs>true</downloadJavadocs>
           <configLocation>org/extex/checkstyle-extex.xml</configLocation>
         </configuration>
+        <!--
         <dependencies>
           <dependency>
             <groupId>org.extex</groupId>
@@ -38,6 +39,7 @@
             <version>1.0</version>
           </dependency>
         </dependencies>
+        -->
       </plugin>
 
     </plugins>
