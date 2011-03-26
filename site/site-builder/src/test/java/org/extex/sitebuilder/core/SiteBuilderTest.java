@@ -92,6 +92,7 @@ public class SiteBuilderTest {
         File targetdir = new File("target/undefined");
         new FileWriter(targetdir).close(); // touch
         siteBuilder.setTargetdir(targetdir);
+        siteBuilder.addBase(new File("src/test/resources/empty-site"));
         try {
             siteBuilder.run();
         } finally {
@@ -111,7 +112,7 @@ public class SiteBuilderTest {
 
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
-        siteBuilder.setResourceDir(new File("target/u_n_d_e_f"));
+        siteBuilder.addResourceDir(new File("target/u_n_d_e_f"));
         siteBuilder.run();
     }
 
@@ -126,7 +127,7 @@ public class SiteBuilderTest {
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
         siteBuilder.setTargetdir(new File("target/test-site"));
-        siteBuilder.setBaseDir(new File("target/u_n_d_e_f"));
+        siteBuilder.addBase(new File("src/test/resources/empty-site"));
         File siteMap = new File("target/sitemap.html");
         siteBuilder.setSiteMap(siteMap);
         if (siteMap.exists()) {

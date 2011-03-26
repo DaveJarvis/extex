@@ -118,8 +118,8 @@ public class SiteBuilderMojo extends AbstractMojo {
     public void execute() throws MojoExecutionException, MojoFailureException {
 
         SiteBuilder builder = new SiteBuilder();
-        builder.setBaseDir(basedir);
-        builder.setResourceDir(resources);
+        builder.addBase(basedir);
+        builder.addResourceDir(resources);
         builder.setTemplate(template);
         builder.setTargetdir(output);
         builder.omit(omit);

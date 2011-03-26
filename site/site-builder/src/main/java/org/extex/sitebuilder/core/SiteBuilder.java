@@ -114,16 +114,16 @@ public class SiteBuilder {
     private String template = "org/extex/sitebuilder/site.vm";
 
     /**
-     * The field <tt>baseDirectory</tt> contains the name of the base directory
-     * for the files to be transformed.
+     * The field <tt>bases</tt> contains the list of the base directories for
+     * the files to be transformed.
      */
-    private File baseDirectory = new File("src/site/html");
+    private List<File> bases = new ArrayList<File>();
 
     /**
-     * The field <tt>resourceDirectory</tt> contains the name of the resource
-     * directory for the files to be copied.
+     * The field <tt>resources</tt> contains the list of the resource
+     * directories for the files to be copied.
      */
-    private File resourceDirectory = new File("src/site/resources");
+    private List<File> resources = new ArrayList<File>();
 
     /**
      * The field <tt>targetDirectory</tt> contains the target directory.
@@ -157,6 +157,33 @@ public class SiteBuilder {
     public SiteBuilder() {
 
         logger = Logger.getLogger(SiteBuilder.class.getName());
+    }
+
+    /**
+     * Setter for the base directory.
+     * 
+     * @param basedir the base directory to set
+     */
+    public void addBase(File basedir) {
+
+        if (basedir == null) {
+            return;
+        }
+
+        this.bases.add(basedir);
+    }
+
+    /**
+     * Setter for the resource directory.
+     * 
+     * @param resourceDir the resource directory to set
+     */
+    public void addResourceDir(File resourceDir) {
+
+        if (resourceDir == null) {
+            return;
+        }
+        this.resources.add(resourceDir);
     }
 
     /**
@@ -569,39 +596,31 @@ public class SiteBuilder {
      */
     public void run() throws Exception {
 
-        if (resourceDirectory != null) {
-            if (!resourceDirectory.isDirectory()) {
-                throw new FileNotFoundException(resourceDirectory.toString());
+        for (File dir : resources) {
+            if (!dir.isDirectory()) {
+                throw new FileNotFoundException(dir.toString());
             }
-            copy(resourceDirectory, targetDirectory);
+            copy(dir, targetDirectory);
         }
 
         VelocityEngine engine = makeEngine();
         VelocityContext context = makeContext(engine);
 
-        if (baseDirectory.isDirectory()) {
-            applyTemplate(baseDirectory, //
-                targetDirectory, //
-                ".", //
-                engine.getTemplate(template), //
-                engine, //
-                context);
+        for (File dir : bases) {
+            if (dir.isDirectory()) {
+                applyTemplate(dir, //
+                    targetDirectory, //
+                    ".", //
+                    engine.getTemplate(template), //
+                    engine, //
+                    context);
+            } else {
+                throw new FileNotFoundException(dir.toString());
+            }
         }
 
         if (siteMap != null) {
             createSiteMap(engine, context);
-        }
-    }
-
-    /**
-     * Setter for the base directory.
-     * 
-     * @param basedir the base directory to set
-     */
-    public void setBaseDir(File basedir) {
-
-        if (basedir != null) {
-            this.baseDirectory = basedir;
         }
     }
 
@@ -623,18 +642,6 @@ public class SiteBuilder {
     public void setLogLevel(Level level) {
 
         logger.setLevel(level);
-    }
-
-    /**
-     * Setter for the resource directory.
-     * 
-     * @param resourcedir the resource directory to set
-     */
-    public void setResourceDir(File resourcedir) {
-
-        if (resourcedir != null) {
-            this.resourceDirectory = resourcedir;
-        }
     }
 
     /**

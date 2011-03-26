@@ -110,7 +110,7 @@ public final class SiteBuilderMain {
             } else if (!args[i].startsWith("-")) {
 
             } else if ("-baseDirectory".startsWith(args[i])) {
-                siteBuilder.setBaseDir(new File(args[++i]));
+                siteBuilder.addBase(new File(args[++i]));
             } else if ("-library".startsWith(args[i])) {
                 siteBuilder.lib(args[++i]);
             } else if ("-outputDirectory".startsWith(args[i])) {
@@ -118,7 +118,7 @@ public final class SiteBuilderMain {
             } else if ("-omit".startsWith(args[i])) {
                 siteBuilder.omit(args[++i]);
             } else if ("-resourceDirectory".startsWith(args[i])) {
-                siteBuilder.setResourceDir(new File(args[++i]));
+                siteBuilder.addResourceDir(new File(args[++i]));
             } else if ("-template".startsWith(args[i])) {
                 siteBuilder.setTemplate(args[++i]);
             } else {

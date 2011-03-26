@@ -20,6 +20,7 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
@@ -86,6 +87,20 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      * Test method for
      * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
      */
+    public final void t_est01() {
+
+        configureProject("src/test/build.xml");
+        Locale.setDefault(Locale.ENGLISH);
+        executeTarget("test.case.1");
+        // assertEquals("Message was logged but should not.",
+        // "Missing aux file parameter.\n" + "(There was 1 error)\n",//
+        // getLog().replaceAll("\\r", ""));
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
+     */
     public final void t_est02() {
 
         configureProject("src/test/resources/build.xml");
@@ -97,18 +112,23 @@ public class SiteBuilderTaskTest extends BuildFileTest {
             getLog().replaceAll("\\r", ""));
     }
 
-    /**
-     * Test method for
-     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
-     */
-    public final void test01() {
+    public final void test001() throws Exception {
 
-        configureProject("src/test/build.xml");
-        Locale.setDefault(Locale.ENGLISH);
-        executeTarget("test.case.1");
-        // assertEquals("Message was logged but should not.",
-        // "Missing aux file parameter.\n" + "(There was 1 error)\n",//
-        // getLog().replaceAll("\\r", ""));
+        try {
+            runTest("<SiteBuilder\n" //
+                    + "  template=\"~/file/which/does/not/exist\">\n"
+                    + "  <omit>RCS</omit>\n"
+                    + "  <SiteMap output=\"site/map/file\" />\n"
+                    + "  <SiteNews output=\"site/map/file\" max=\"3\"/>\n"
+                    + "  <SiteBase template=\"t_e_m_p_l_a_t_e\" "
+                    + "dir=\"site/map/file\"" + " />\n" + "</SiteBuilder>", //
+                null, //
+                "");
+            assertFalse(true);
+        } catch (BuildException e) {
+            assertTrue(e.getCause().toString(),
+                e.getCause() instanceof FileNotFoundException);
+        }
     }
 
     /**
@@ -130,5 +150,4 @@ public class SiteBuilderTaskTest extends BuildFileTest {
             assertTrue(cause instanceof ResourceNotFoundException);
         }
     }
-
 }
