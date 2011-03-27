@@ -99,7 +99,7 @@ public class SiteBuilder {
     /**
      * The field <tt>siteMapList</tt> contains the ...
      */
-    private List<SiteMap> siteMapList = new ArrayList<SiteMap>();
+    private List<SiteMapBuilder> siteMapList = new ArrayList<SiteMapBuilder>();
 
     /**
      * The field <tt>newsBuilderList</tt> contains the ...
@@ -216,7 +216,7 @@ public class SiteBuilder {
     }
 
     /**
-     * Factory method for the {@link SiteMap} class. The new instance is
+     * Factory method for the {@link SiteMapBuilder} class. The new instance is
      * integrated into the list of site maps to be produced.
      * 
      * @return the new site map
@@ -269,14 +269,14 @@ public class SiteBuilder {
     }
 
     /**
-     * Factory method for the {@link SiteMap} class. The new instance is
+     * Factory method for the {@link SiteMapBuilder} class. The new instance is
      * integrated into the list of site maps to be produced.
      * 
      * @return the new site map
      */
-    public SiteMap createSiteMap() {
+    public SiteMapBuilder createSiteMap() {
 
-        SiteMap map = new SiteMap();
+        SiteMapBuilder map = new SiteMapBuilder();
         map.setTarget(target);
         map.setLogger(logger);
         siteMapList.add(map);
@@ -346,7 +346,7 @@ public class SiteBuilder {
             base.generate();
         }
 
-        for (SiteMap map : siteMapList) {
+        for (SiteMapBuilder map : siteMapList) {
             map.generate();
         }
 
@@ -389,7 +389,7 @@ public class SiteBuilder {
         for (TreeBuilder base : bases) {
             base.setTarget(targetDir);
         }
-        for (SiteMap map : siteMapList) {
+        for (SiteMapBuilder map : siteMapList) {
             map.setTarget(targetDir);
         }
     }

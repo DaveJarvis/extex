@@ -36,7 +36,7 @@ import org.apache.velocity.app.VelocityEngine;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteMap extends TemplatingEngine {
+public class SiteMapBuilder extends TemplatingEngine {
 
     /**
      * The field <tt>logger</tt> contains the ...
