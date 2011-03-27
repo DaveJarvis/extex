@@ -287,36 +287,14 @@ public class TreeBuilder extends TemplatingEngine {
     }
 
     /**
-     * Traverse a directory tree and copy the files and directories.
+     * Copy a file to a new directory.
      * 
-     * @param dir the input directory
-     * @param outdir the output directory
+     * @param outdir the target directory
+     * @param file the file to be copied
      * 
-     * @throws IOException in case of an I/O error
+     * @throws FileNotFoundException in case of an error
+     * @throws IOException in case of an error
      */
-    private void copy(File dir, File outdir) throws IOException {
-
-        if (!FILTER.accept(dir.getParentFile(), dir.getName())) {
-            if (logger != null) {
-                logger.info(dir + " omitted");
-            }
-            return;
-        }
-
-        for (File f : dir.listFiles(FILTER)) {
-
-            if (f.isDirectory()) {
-                copy(f, new File(outdir, f.getName()));
-                continue;
-            } else if (!outdir.exists() && !outdir.mkdirs()) {
-                throw new FileNotFoundException(outdir.toString());
-            } else if (!outdir.isDirectory()) {
-                throw new FileNotFoundException(outdir.toString());
-            }
-            copyFile(outdir, f);
-        }
-    }
-
     private void copyFile(File outdir, File file)
             throws FileNotFoundException,
                 IOException {
@@ -385,7 +363,7 @@ public class TreeBuilder extends TemplatingEngine {
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Traverse the source tree and process all relevant files.
      * 
      * @throws Exception in case of an error
      */
