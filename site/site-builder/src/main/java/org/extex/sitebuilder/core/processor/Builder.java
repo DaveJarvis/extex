@@ -17,44 +17,29 @@
  *
  */
 
-package org.extex.sitebuilder.core;
+package org.extex.sitebuilder.core.processor;
 
-import java.util.logging.Logger;
+import java.io.File;
 
 /**
- * TODO gne: missing JavaDoc.
+ * This interface describes a build processor. This provides a function to
+ * translate a certain file type.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteMapBuilder {
+public interface Builder {
 
     /**
-     * The field <tt>logger</tt> contains the logger.
-     */
-    private Logger logger;
-
-    /**
-     * Getter for logger.
+     * TODO gne: missing JavaDoc
      * 
-     * @return the logger
-     */
-    public Logger getLogger() {
-
-        return logger;
-    }
-
-    public void run() {
-
-    }
-
-    /**
-     * Setter for logger.
+     * @param in the input file
      * 
-     * @param logger the logger to set
+     * @throws Exception in case of an error
      */
-    public void setLogger(Logger logger) {
+    void build(File in) throws Exception;
 
-        this.logger = logger;
-    }
+    void start() throws Exception;
+
+    void stop() throws Exception;
 }

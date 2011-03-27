@@ -24,6 +24,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.logging.Logger;
 
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
@@ -36,6 +37,11 @@ import org.apache.velocity.app.VelocityEngine;
  * @version $Revision$
  */
 public class SiteMap extends TemplatingEngine {
+
+    /**
+     * The field <tt>logger</tt> contains the ...
+     */
+    private Logger logger = null;
 
     /**
      * The field <tt>template</tt> contains the ...
@@ -86,6 +92,16 @@ public class SiteMap extends TemplatingEngine {
             writer.close();
             context.put("targetDirectory", null);
         }
+    }
+
+    /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
     }
 
     /**

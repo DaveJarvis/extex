@@ -20,13 +20,16 @@
 package org.extex.sitebuilder.core;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -46,20 +49,20 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.xml.sax.SAXException;
 
 /**
- * TODO gne: missing JavaDoc.
+ * This class is a builder for directory trees.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteBase extends TemplatingEngine {
+public class TreeBuilder extends TemplatingEngine {
 
     /**
-     * The field <tt>base</tt> contains the ...
+     * The field <tt>base</tt> contains the base directory.
      */
     private File base = null;
 
     /**
-     * The field <tt>target</tt> contains the ...
+     * The field <tt>target</tt> contains the target directory.
      */
     private File target = null;
 
@@ -69,7 +72,7 @@ public class SiteBase extends TemplatingEngine {
     private String template = "org/extex/sitebuilder/sitemap.vm";
 
     /**
-     * The field <tt>omitList</tt> contains the ...
+     * The field <tt>omitList</tt> contains the omit patterns.
      */
     private List<String> omitList = new ArrayList<String>();
 
@@ -113,9 +116,15 @@ public class SiteBase extends TemplatingEngine {
     private Logger logger;
 
     /**
-     * TODO gne: missing JavaDoc
+     * The field <tt>translateHtml</tt> contains the indicator whether or not
+     * the HTML files should be translated.
+     */
+    private boolean translateHtml = true;
+
+    /**
+     * Adder for an omit pattern.
      * 
-     * @param omit
+     * @param omit the new omit pattern
      */
     public void addOmit(String omit) {
 
@@ -264,14 +273,72 @@ public class SiteBase extends TemplatingEngine {
                     new File(outdir, f.getName()), //
                     (relativePath.equals(".") ? ".." : relativePath + "/.."),
                     t, engine, context);
-            } else {
+            } else if (translateHtml) {
                 context.put("relativePath", relativePath);
                 context.put("directory", dirlist);
                 context.put("navigation", nav);
                 context.put("info", info);
                 context.put("tabs", tabs);
                 apply(f, t, outdir, context, logger, engine);
+            } else {
+                copyFile(outdir, f);
             }
+        }
+    }
+
+    /**
+     * Traverse a directory tree and copy the files and directories.
+     * 
+     * @param dir the input directory
+     * @param outdir the output directory
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private void copy(File dir, File outdir) throws IOException {
+
+        if (!FILTER.accept(dir.getParentFile(), dir.getName())) {
+            if (logger != null) {
+                logger.info(dir + " omitted");
+            }
+            return;
+        }
+
+        for (File f : dir.listFiles(FILTER)) {
+
+            if (f.isDirectory()) {
+                copy(f, new File(outdir, f.getName()));
+                continue;
+            } else if (!outdir.exists() && !outdir.mkdirs()) {
+                throw new FileNotFoundException(outdir.toString());
+            } else if (!outdir.isDirectory()) {
+                throw new FileNotFoundException(outdir.toString());
+            }
+            copyFile(outdir, f);
+        }
+    }
+
+    private void copyFile(File outdir, File file)
+            throws FileNotFoundException,
+                IOException {
+
+        InputStream in = new BufferedInputStream(new FileInputStream(file));
+        try {
+            File outfile = new File(outdir, file.getName());
+            OutputStream out =
+                    new BufferedOutputStream(new FileOutputStream(outfile));
+            try {
+                if (logger != null) {
+                    logger.info(file + " --> " + outfile);
+                }
+
+                for (int c = in.read(); c >= 0; c = in.read()) {
+                    out.write(c);
+                }
+            } finally {
+                out.close();
+            }
+        } finally {
+            in.close();
         }
     }
 
@@ -321,7 +388,6 @@ public class SiteBase extends TemplatingEngine {
      * TODO gne: missing JavaDoc
      * 
      * @throws Exception in case of an error
-     * 
      */
     public void generate() throws Exception {
 
@@ -344,6 +410,16 @@ public class SiteBase extends TemplatingEngine {
             engine.getTemplate(template), //
             engine, //
             context);
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
     }
 
     /**
@@ -395,6 +471,16 @@ public class SiteBase extends TemplatingEngine {
     }
 
     /**
+     * Setter for logger.
+     * 
+     * @param logger the logger to set
+     */
+    public void setLogger(Logger logger) {
+
+        this.logger = logger;
+    }
+
+    /**
      * Setter for target.
      * 
      * @param target the target to set
@@ -412,6 +498,16 @@ public class SiteBase extends TemplatingEngine {
     public void setTemplate(String template) {
 
         this.template = template;
+    }
+
+    /**
+     * Setter for translateHtml.
+     * 
+     * @param translateHtml the translateHtml to set
+     */
+    public void setTranslateHtml(boolean translateHtml) {
+
+        this.translateHtml = translateHtml;
     }
 
 }

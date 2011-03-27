@@ -114,7 +114,7 @@ public class SiteBuilderTest {
 
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
-        siteBuilder.addResourceDir(new File("target/u_n_d_e_f"));
+        // siteBuilder.addResourceDir(new File("target/u_n_d_e_f"));
         siteBuilder.run();
     }
 

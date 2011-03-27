@@ -43,7 +43,7 @@ public class NewsTag {
      */
     public void run() throws Exception {
 
-        builder.run();
+        builder.generate();
     }
 
     /**
@@ -63,7 +63,7 @@ public class NewsTag {
      */
     public void setOutput(File output) {
 
-        builder.setOutputFile(output);
+        builder.setOutput(output);
     }
 
     /**

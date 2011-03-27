@@ -148,7 +148,7 @@ public final class NewsBuilderMain {
                     logger.severe("Missing argument for " + arg);
                     return -1;
                 }
-                builder.setOutputFile(new File(args[++i]));
+                builder.setOutput(new File(args[++i]));
             } else if ("-template".startsWith(arg)) {
                 if (i >= args.length - 1) {
                     logger.severe("Missing argument for " + arg);
@@ -188,7 +188,7 @@ public final class NewsBuilderMain {
             if (exit != 0) {
                 return exit;
             }
-            builder.run();
+            builder.generate();
         } catch (Exception e) {
             logger.throwing("NewsBuilderMain", "run", e);
             return -1;

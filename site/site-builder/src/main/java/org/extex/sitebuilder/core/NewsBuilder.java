@@ -106,53 +106,11 @@ public class NewsBuilder {
     }
 
     /**
-     * Getter for the logger.
-     * 
-     * @return the logger
-     */
-    public Logger getLogger() {
-
-        return logger;
-    }
-
-    /**
-     * Create a new engine and initialize it.
-     * 
-     * @param context the context
-     * 
-     * @return the engine
-     * 
-     * @throws Exception in case of an error
-     */
-    private VelocityEngine makeEngine(VelocityContext context) throws Exception {
-
-        VelocityEngine engine = new VelocityEngine();
-
-        String name = getClass().getName().replace('.', '/') + ".properties";
-        InputStream stream =
-                getClass().getClassLoader().getResourceAsStream(name);
-        if (stream == null) {
-            throw new FileNotFoundException(name);
-        }
-        Properties prop = new Properties();
-        try {
-            prop.load(stream);
-        } finally {
-            stream.close();
-        }
-        engine.init(prop);
-        for (Entry<Object, Object> kv : prop.entrySet()) {
-            context.put(kv.getKey().toString(), kv.getValue().toString());
-        }
-        return engine;
-    }
-
-    /**
      * Generate the target directory structure and populate it.
      * 
      * @throws Exception in case of an error
      */
-    public void run() throws Exception {
+    public void generate() throws Exception {
 
         if (!baseDirectory.isDirectory()) {
             throw new FileNotFoundException(baseDirectory.toString());
@@ -222,6 +180,48 @@ public class NewsBuilder {
     }
 
     /**
+     * Getter for the logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
+    }
+
+    /**
+     * Create a new engine and initialize it.
+     * 
+     * @param context the context
+     * 
+     * @return the engine
+     * 
+     * @throws Exception in case of an error
+     */
+    private VelocityEngine makeEngine(VelocityContext context) throws Exception {
+
+        VelocityEngine engine = new VelocityEngine();
+
+        String name = getClass().getName().replace('.', '/') + ".properties";
+        InputStream stream =
+                getClass().getClassLoader().getResourceAsStream(name);
+        if (stream == null) {
+            throw new FileNotFoundException(name);
+        }
+        Properties prop = new Properties();
+        try {
+            prop.load(stream);
+        } finally {
+            stream.close();
+        }
+        engine.init(prop);
+        for (Entry<Object, Object> kv : prop.entrySet()) {
+            context.put(kv.getKey().toString(), kv.getValue().toString());
+        }
+        return engine;
+    }
+
+    /**
      * Setter for the baseDirectory.
      * 
      * @param baseDirectory the baseDirectory to set
@@ -256,7 +256,7 @@ public class NewsBuilder {
      * 
      * @param outputFile the output file to set
      */
-    public void setOutputFile(File outputFile) {
+    public void setOutput(File outputFile) {
 
         this.outputFile = outputFile;
     }

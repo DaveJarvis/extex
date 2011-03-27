@@ -124,8 +124,6 @@ public final class SiteBuilderMain {
                 siteBuilder.setTarget(new File(args[++i]));
             } else if ("-omit".startsWith(args[i])) {
                 siteBuilder.omit(args[++i]);
-            } else if ("-resourceDirectory".startsWith(args[i])) {
-                siteBuilder.addResourceDir(new File(args[++i]));
             } else if ("-template".startsWith(args[i])) {
                 siteBuilder.setTemplate(args[++i]);
             } else {

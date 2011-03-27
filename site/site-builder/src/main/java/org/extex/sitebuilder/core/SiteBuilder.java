@@ -20,16 +20,12 @@
 package org.extex.sitebuilder.core;
 
 import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
-import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.util.ArrayList;
@@ -74,28 +70,10 @@ public class SiteBuilder {
     }
 
     /**
-     * The field <tt>FILTER</tt> contains the file filter for $directory.
-     */
-    private final FilenameFilter FILTER = new FilenameFilter() {
-
-        @Override
-        public boolean accept(File dir, String name) {
-
-            return !name.startsWith(".") && !omit.contains(name);
-        }
-    };
-
-    /**
      * The field <tt>bases</tt> contains the list of the base directories for
      * the files to be transformed.
      */
-    private List<SiteBase> bases = new ArrayList<SiteBase>();
-
-    /**
-     * The field <tt>resources</tt> contains the list of the resource
-     * directories for the files to be copied.
-     */
-    private List<File> resources = new ArrayList<File>();
+    private List<TreeBuilder> bases = new ArrayList<TreeBuilder>();
 
     /**
      * The field <tt>target</tt> contains the target directory.
@@ -119,14 +97,14 @@ public class SiteBuilder {
     private List<String> libraries = new ArrayList<String>();
 
     /**
-     * The field <tt>sitemapTempate</tt> contains the template for the site map.
-     */
-    private String sitemapTempate = "org/extex/sitebuilder/sitemap.vm";
-
-    /**
      * The field <tt>siteMapList</tt> contains the ...
      */
     private List<SiteMap> siteMapList = new ArrayList<SiteMap>();
+
+    /**
+     * The field <tt>newsBuilderList</tt> contains the ...
+     */
+    private List<NewsBuilder> newsBuilderList = new ArrayList<NewsBuilder>();
 
     /**
      * Creates a new object.
@@ -134,19 +112,6 @@ public class SiteBuilder {
     public SiteBuilder() {
 
         logger = Logger.getLogger(SiteBuilder.class.getName());
-    }
-
-    /**
-     * Setter for the resource directory.
-     * 
-     * @param resourceDir the resource directory to set
-     */
-    public void addResourceDir(File resourceDir) {
-
-        if (resourceDir == null) {
-            return;
-        }
-        this.resources.add(resourceDir);
     }
 
     /**
@@ -251,64 +216,34 @@ public class SiteBuilder {
     }
 
     /**
-     * Traverse a directory tree and copy the files and directories.
+     * Factory method for the {@link SiteMap} class. The new instance is
+     * integrated into the list of site maps to be produced.
      * 
-     * @param dir the input directory
-     * @param outdir the output directory
-     * 
-     * @throws IOException in case of an I/O error
+     * @return the new site map
      */
-    private void copy(File dir, File outdir) throws IOException {
+    public NewsBuilder createNewsBuilder() {
 
-        if (!FILTER.accept(dir.getParentFile(), dir.getName())) {
-            if (logger != null) {
-                logger.info(dir + " omitted");
-            }
-            return;
-        }
-
-        for (File f : dir.listFiles(FILTER)) {
-
-            if (f.isDirectory()) {
-                copy(f, new File(outdir, f.getName()));
-                continue;
-            } else if (!outdir.exists() && !outdir.mkdirs()) {
-                throw new FileNotFoundException(outdir.toString());
-            } else if (!outdir.isDirectory()) {
-                throw new FileNotFoundException(outdir.toString());
-            }
-            InputStream in = new BufferedInputStream(new FileInputStream(f));
-            try {
-                File outfile = new File(outdir, f.getName());
-                OutputStream out =
-                        new BufferedOutputStream(new FileOutputStream(outfile));
-                try {
-                    if (logger != null) {
-                        logger.info(f + " --> " + outfile);
-                    }
-
-                    for (int c = in.read(); c >= 0; c = in.read()) {
-                        out.write(c);
-                    }
-                } finally {
-                    out.close();
-                }
-            } finally {
-                in.close();
-            }
-        }
+        NewsBuilder news = new NewsBuilder();
+        // map.setTarget(target);
+        news.setLogger(logger);
+        newsBuilderList.add(news);
+        return news;
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Factory method for the {@link TreeBuilder} class. The new instance is
+     * integrated into the list of site maps to be produced.
      * 
-     * @param basedir
-     * @return
-     * @throws FileNotFoundException
+     * @param basedir the base directory
+     * 
+     * @return the new instance
+     * 
+     * @throws FileNotFoundException in case of an error
      */
-    public SiteBase createSiteBase(File basedir) throws FileNotFoundException {
+    public TreeBuilder createSiteBase(File basedir) throws FileNotFoundException {
 
-        SiteBase siteBase = new SiteBase();
+        TreeBuilder siteBase = new TreeBuilder();
+        siteBase.setLogger(logger);
         siteBase.setBase(basedir);
         siteBase.setTarget(target);
         for (String lib : libraries) {
@@ -319,26 +254,31 @@ public class SiteBuilder {
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Factory method for the {@link TreeBuilder} class. The new instance is
+     * integrated into the list of site maps to be produced.
      * 
-     * @param basedir
-     * @return
-     * @throws FileNotFoundException
+     * @param basedir the base directory
+     * 
+     * @return the new instance
+     * 
+     * @throws FileNotFoundException in case of an error
      */
-    public SiteBase createSiteBase(String basedir) throws FileNotFoundException {
+    public TreeBuilder createSiteBase(String basedir) throws FileNotFoundException {
 
         return createSiteBase(new File(basedir));
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Factory method for the {@link SiteMap} class. The new instance is
+     * integrated into the list of site maps to be produced.
      * 
-     * @return
+     * @return the new site map
      */
     public SiteMap createSiteMap() {
 
         SiteMap map = new SiteMap();
         map.setTarget(target);
+        map.setLogger(logger);
         siteMapList.add(map);
         return map;
     }
@@ -370,25 +310,28 @@ public class SiteBuilder {
         }
         for (String lib : list) {
             libraries.add(lib);
-            for (SiteBase base : bases) {
+            for (TreeBuilder base : bases) {
                 base.addLibrary(lib);
             }
         }
     }
 
     /**
-     * Add some strings to be omitted.
+     * Add some directory or file names to be omitted.
      * 
-     * @param list the list of omit; a <code>null</code> list is silently
+     * @param omits the list of omit; a <code>null</code> list is silently
      *        ignored
      */
-    public void omit(String... list) {
+    public void omit(String... omits) {
 
-        if (list == null) {
+        if (omits == null) {
             return;
         }
-        for (String s : list) {
+        for (String s : omits) {
             omit.add(s);
+            for (TreeBuilder base : bases) {
+                base.addOmit(s);
+            }
         }
     }
 
@@ -399,19 +342,16 @@ public class SiteBuilder {
      */
     public void run() throws Exception {
 
-        // for (File dir : resources) {
-        // if (!dir.isDirectory()) {
-        // throw new FileNotFoundException(dir.toString());
-        // }
-        // copy(dir, targetDirectory);
-        // }
-
-        for (SiteBase base : bases) {
+        for (TreeBuilder base : bases) {
             base.generate();
         }
 
         for (SiteMap map : siteMapList) {
             map.generate();
+        }
+
+        for (NewsBuilder news : newsBuilderList) {
+            news.generate();
         }
     }
 
@@ -446,7 +386,7 @@ public class SiteBuilder {
             throw new NullPointerException("Missing target directory");
         }
         target = targetDir;
-        for (SiteBase base : bases) {
+        for (TreeBuilder base : bases) {
             base.setTarget(targetDir);
         }
         for (SiteMap map : siteMapList) {

@@ -55,13 +55,6 @@ public class SiteBuilderMojo extends AbstractMojo {
     private String[] omit;
 
     /**
-     * The field <tt>resources</tt> contains the ...
-     * 
-     * @parameter expression="${project.outputDirectory}/../src/site/resources"
-     */
-    private File resources;
-
-    /**
      * The field <tt>output</tt> contains the ...
      * 
      * @parameter expression="${project.outputDirectory}/site"
@@ -126,7 +119,6 @@ public class SiteBuilderMojo extends AbstractMojo {
 
         try {
             builder.createSiteBase(basedir);
-            builder.addResourceDir(resources);
             builder.setTemplate(template);
             builder.setTarget(output);
             builder.omit(omit);

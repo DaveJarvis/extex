@@ -248,16 +248,6 @@ public class SiteBuilderTask extends Task {
     }
 
     /**
-     * Setter for resources.
-     * 
-     * @param resources the resources to set
-     */
-    public void setResources(File resources) {
-
-        builder.addResourceDir(resources);
-    }
-
-    /**
      * Setter for template.
      * 
      * @param template the template to set
