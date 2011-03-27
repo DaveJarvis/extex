@@ -20,6 +20,8 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -34,16 +36,17 @@ import org.extex.sitebuilder.core.SiteBuilder;
  * This is the Ant task for the site builder.
  * 
  * 
- * TODO: The following does not work yet
+ * TODO: The following does not work, yet
  * 
  * <pre style="background:#eeeeee;">
  *   &lt;taskdef name="SiteBuilder"
  *            classname="org.extex.sitebuilder.ant.SiteBuilderTask" /&gt;
  * 
  *   &lt;SiteBuilder
- *      target="<i>output/directory</i>" &gt;
- *     &lt;SiteHTML
- *        sources="<i>html/sources</i>"
+ *     target="<i>output/directory</i>" &gt;
+ *     &lt;omit&gt;<i>file pattern</i>&lt;/omit&gt;
+ *     &lt;SiteBase
+ *        dir="<i>html/sources</i>"
  *        template="<i>html/template/resource</i>" /&gt;
  *     &lt;SiteResources
  *        dir="<i>resources/directory</i>" /&gt;
@@ -116,6 +119,74 @@ public class SiteBuilderTask extends Task {
     };
 
     /**
+     * The field <tt>siteMapList</tt> contains the site map container.
+     */
+    private List<SiteMapTag> siteMapList = new ArrayList<SiteMapTag>();
+
+    /**
+     * The field <tt>siteNewsList</tt> contains the news container.
+     */
+    private List<NewsTag> siteNewsList = new ArrayList<NewsTag>();
+
+    /**
+     * The field <tt>siteBaseList</tt> contains the base container.
+     */
+    private List<BaseTag> siteBaseList = new ArrayList<BaseTag>();
+
+    /**
+     * The field <tt>omitList</tt> contains the omit container.
+     */
+    private List<OmitTag> omitList = new ArrayList<OmitTag>();
+
+    /**
+     * Factory method for the omit element.
+     * 
+     * @return the omit element
+     */
+    public OmitTag createOmit() {
+
+        OmitTag omit = new OmitTag();
+        omitList.add(omit);
+        return omit;
+    }
+
+    /**
+     * Factory method for the site base.
+     * 
+     * @return the site base
+     */
+    public BaseTag createSiteBase() {
+
+        BaseTag siteBase = new BaseTag();
+        siteBaseList.add(siteBase);
+        return siteBase;
+    }
+
+    /**
+     * Factory method for the site map
+     * 
+     * @return the site map
+     */
+    public SiteMapTag createSiteMap() {
+
+        SiteMapTag siteMap = new SiteMapTag();
+        siteMapList.add(siteMap);
+        return siteMap;
+    }
+
+    /**
+     * Factory method for the news element
+     * 
+     * @return the news element
+     */
+    public NewsTag createSiteNews() {
+
+        NewsTag siteNews = new NewsTag();
+        siteNewsList.add(siteNews);
+        return siteNews;
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.apache.tools.ant.Task#execute()
@@ -129,6 +200,12 @@ public class SiteBuilderTask extends Task {
         logger.addHandler(handler);
 
         try {
+            for (BaseTag base : siteBaseList) {
+                builder.addBase(base.getDir());
+            }
+            for (OmitTag om : omitList) {
+                builder.omit(om.getText());
+            }
             builder.run();
         } catch (Exception e) {
             throw new BuildException("", e);
@@ -144,7 +221,7 @@ public class SiteBuilderTask extends Task {
      */
     public void setBasedir(File basedir) {
 
-        builder.setBaseDir(basedir);
+        builder.addBase(basedir);
     }
 
     /**
@@ -174,7 +251,7 @@ public class SiteBuilderTask extends Task {
      */
     public void setResources(File resources) {
 
-        builder.setResourceDir(resources);
+        builder.addResourceDir(resources);
     }
 
     /**
@@ -186,5 +263,4 @@ public class SiteBuilderTask extends Task {
 
         builder.setTemplate(template);
     }
-
 }

@@ -27,7 +27,7 @@ import java.io.File;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteBase {
+public class BaseTag {
 
     /**
      * The field <tt>template</tt> contains the template file.

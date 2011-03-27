@@ -19,47 +19,39 @@
 
 package org.extex.sitebuilder.ant;
 
+import java.io.File;
+
 /**
  * TODO gne: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class Omit {
+public class SiteMapTag {
 
     /**
-     * The field <tt>text</tt> contains the contents.
+     * The field <tt>output</tt> contains the output file.
      */
-    private StringBuilder text = new StringBuilder();
+    private File output;
 
     /**
-     * Add some text to the contents.
+     * Getter for output file.
      * 
-     * @param text the text to add to the contents
+     * @return the output file
      */
-    public void addText(String text) {
+    public File getOutput() {
 
-        this.text.append(text);
+        return output;
     }
 
     /**
-     * Getter for the contents.
+     * Setter for output file.
      * 
-     * @return the contents
+     * @param output the output file to set
      */
-    public String getText() {
+    public void setOutput(File output) {
 
-        return text.toString();
+        this.output = output;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        return text.toString();
-    }
 }

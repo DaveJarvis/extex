@@ -29,7 +29,7 @@ import org.extex.sitebuilder.core.NewsBuilder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteNews {
+public class NewsTag {
 
     /**
      * The field <tt>builder</tt> contains the ...
