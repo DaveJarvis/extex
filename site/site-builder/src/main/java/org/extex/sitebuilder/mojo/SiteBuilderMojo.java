@@ -115,21 +115,22 @@ public class SiteBuilderMojo extends AbstractMojo {
      * 
      * @see org.apache.maven.plugin.Mojo#execute()
      */
+    @Override
     public void execute() throws MojoExecutionException, MojoFailureException {
 
         SiteBuilder builder = new SiteBuilder();
-        builder.addBase(basedir);
-        builder.addResourceDir(resources);
-        builder.setTemplate(template);
-        builder.setTargetdir(output);
-        builder.omit(omit);
-
         Logger logger = builder.getLogger();
         logger.setUseParentHandlers(false);
         logger.setLevel(Level.ALL);
         logger.addHandler(handler);
 
         try {
+            builder.createSiteBase(basedir);
+            builder.addResourceDir(resources);
+            builder.setTemplate(template);
+            builder.setTarget(output);
+            builder.omit(omit);
+
             builder.run();
         } catch (Exception e) {
             throw new MojoExecutionException("", e);

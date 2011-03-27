@@ -21,7 +21,6 @@ package org.extex.sitebuilder.core;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -33,15 +32,10 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.io.Writer;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -80,18 +74,6 @@ public class SiteBuilder {
     }
 
     /**
-     * The field <tt>DIR_FILTER</tt> contains the file filter for $directory.
-     */
-    private final FilenameFilter DIR_FILTER = new FilenameFilter() {
-
-        @Override
-        public boolean accept(File dir, String name) {
-
-            return FILTER.accept(dir, name) && !name.equals("index.html");
-        }
-    };
-
-    /**
      * The field <tt>FILTER</tt> contains the file filter for $directory.
      */
     private final FilenameFilter FILTER = new FilenameFilter() {
@@ -104,20 +86,10 @@ public class SiteBuilder {
     };
 
     /**
-     * The field <tt>siteMap</tt> contains the name of the site map file.
-     */
-    private File siteMap = null;
-
-    /**
-     * The field <tt>template</tt> contains the name of the template.
-     */
-    private String template = "org/extex/sitebuilder/site.vm";
-
-    /**
      * The field <tt>bases</tt> contains the list of the base directories for
      * the files to be transformed.
      */
-    private List<File> bases = new ArrayList<File>();
+    private List<SiteBase> bases = new ArrayList<SiteBase>();
 
     /**
      * The field <tt>resources</tt> contains the list of the resource
@@ -126,9 +98,9 @@ public class SiteBuilder {
     private List<File> resources = new ArrayList<File>();
 
     /**
-     * The field <tt>targetDirectory</tt> contains the target directory.
+     * The field <tt>target</tt> contains the target directory.
      */
-    private File targetDirectory = new File("target/test-site");
+    private File target = new File("target/test-site");
 
     /**
      * The field <tt>logger</tt> contains the logger.
@@ -142,9 +114,9 @@ public class SiteBuilder {
     private List<String> omit = new ArrayList<String>();
 
     /**
-     * The field <tt>lib</tt> contains the libraries to be loaded.
+     * The field <tt>libraries</tt> contains the libraries to be loaded.
      */
-    private List<String> lib = new ArrayList<String>();
+    private List<String> libraries = new ArrayList<String>();
 
     /**
      * The field <tt>sitemapTempate</tt> contains the template for the site map.
@@ -152,25 +124,16 @@ public class SiteBuilder {
     private String sitemapTempate = "org/extex/sitebuilder/sitemap.vm";
 
     /**
+     * The field <tt>siteMapList</tt> contains the ...
+     */
+    private List<SiteMap> siteMapList = new ArrayList<SiteMap>();
+
+    /**
      * Creates a new object.
      */
     public SiteBuilder() {
 
         logger = Logger.getLogger(SiteBuilder.class.getName());
-    }
-
-    /**
-     * Setter for the base directory.
-     * 
-     * @param basedir the base directory to set
-     */
-    public void addBase(File basedir) {
-
-        if (basedir == null) {
-            return;
-        }
-
-        this.bases.add(basedir);
     }
 
     /**
@@ -288,58 +251,6 @@ public class SiteBuilder {
     }
 
     /**
-     * Traverse a directory tree and process the files.
-     * 
-     * @param dir the input directory
-     * @param outdir the output directory
-     * @param relativePath the path to the top directory
-     * @param t the template
-     * @param engine the engine
-     * @param context the context
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws SAXException in case of an error
-     * @throws ParserConfigurationException in case of an error
-     */
-    private void applyTemplate(File dir, File outdir, String relativePath,
-            Template t, VelocityEngine engine, VelocityContext context)
-            throws IOException,
-                ParserConfigurationException,
-                SAXException {
-
-        if (omit.contains(dir.getName())) {
-            return;
-        }
-        File[] dirlist = dir.listFiles(DIR_FILTER);
-        Arrays.sort(dirlist);
-        context.put("relativePath", relativePath);
-        String info =
-                inheritSetting(dir, relativePath, engine, context, ".info");
-        String nav =
-                inheritSetting(dir, relativePath, engine, context,
-                    ".navigation");
-        String tabs =
-                inheritSetting(dir, relativePath, engine, context, ".tabs");
-
-        for (File f : dir.listFiles(FILTER)) {
-
-            if (f.isDirectory()) {
-                applyTemplate(f,
-                    new File(outdir, f.getName()), //
-                    (relativePath.equals(".") ? ".." : relativePath + "/.."),
-                    t, engine, context);
-            } else {
-                context.put("relativePath", relativePath);
-                context.put("directory", dirlist);
-                context.put("navigation", nav);
-                context.put("info", info);
-                context.put("tabs", tabs);
-                apply(f, t, outdir, context, logger, engine);
-            }
-        }
-    }
-
-    /**
      * Traverse a directory tree and copy the files and directories.
      * 
      * @param dir the input directory
@@ -389,74 +300,47 @@ public class SiteBuilder {
     }
 
     /**
-     * Create the site map.
+     * TODO gne: missing JavaDoc
      * 
-     * @param engine the engine
-     * @param context the context
-     * 
-     * @throws Exception in case of an error
+     * @param basedir
+     * @return
+     * @throws FileNotFoundException
      */
-    private void createSiteMap(VelocityEngine engine, VelocityContext context)
-            throws Exception {
+    public SiteBase createSiteBase(File basedir) throws FileNotFoundException {
 
-        context.put("headContent", "");
-        context.put("bodyContent", "");
-        context.put("relativePath", ".");
-        context.put("targetDirectory", new FileWrapper(targetDirectory, "."));
-        File dir = siteMap.getParentFile();
-        if (!dir.exists() && !dir.mkdirs()) {
-            throw new IOException("directory creation failed: " + dir);
+        SiteBase siteBase = new SiteBase();
+        siteBase.setBase(basedir);
+        siteBase.setTarget(target);
+        for (String lib : libraries) {
+            siteBase.addLibrary(lib);
         }
-        Writer writer = new BufferedWriter(new FileWriter(siteMap));
-        try {
-            Template t = engine.getTemplate(sitemapTempate);
-            t.merge(context, writer);
-        } finally {
-            writer.close();
-            context.put("targetDirectory", null);
-        }
+        bases.add(siteBase);
+        return siteBase;
     }
 
     /**
-     * Evaluate a file as Velocity template.
+     * TODO gne: missing JavaDoc
      * 
-     * @param infile the input file
-     * @param tag the tag
-     * @param engine the engine
-     * @param context the context
-     * 
-     * @return the evaluated file contents
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws ResourceNotFoundException in case of an error
-     * @throws MethodInvocationException in case of an error
-     * @throws ParseErrorException in case of an error
+     * @param basedir
+     * @return
+     * @throws FileNotFoundException
      */
-    private String evaluate(File infile, String tag, VelocityEngine engine,
-            Context context)
-            throws ParseErrorException,
-                MethodInvocationException,
-                ResourceNotFoundException,
-                IOException {
+    public SiteBase createSiteBase(String basedir) throws FileNotFoundException {
 
-        if (infile == null) {
-            return "";
-        }
+        return createSiteBase(new File(basedir));
+    }
 
-        InputStream stream =
-                new BufferedInputStream(new FileInputStream(infile));
-        StringBuilder buffer = new StringBuilder();
-        try {
-            for (int c = stream.read(); c >= 0; c = stream.read()) {
-                buffer.append((char) c);
-            }
-        } finally {
-            stream.close();
-        }
+    /**
+     * TODO gne: missing JavaDoc
+     * 
+     * @return
+     */
+    public SiteMap createSiteMap() {
 
-        Writer writer = new StringWriter();
-        engine.evaluate(context, writer, tag, buffer.toString());
-        return writer.toString();
+        SiteMap map = new SiteMap();
+        map.setTarget(target);
+        siteMapList.add(map);
+        return map;
     }
 
     /**
@@ -467,38 +351,6 @@ public class SiteBuilder {
     public Logger getLogger() {
 
         return logger;
-    }
-
-    /**
-     * Search for a file from the current directory up to the root and evaluate
-     * the first one found.
-     * 
-     * @param cwd the working directory
-     * @param relativePath the path for counting to top
-     * @param engine the engine
-     * @param context the context
-     * @param type the name of the file
-     * 
-     * @return the content of the file sought or the empty string if none was
-     *         found
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    private String inheritSetting(File cwd, String relativePath,
-            VelocityEngine engine, VelocityContext context, String type)
-            throws IOException {
-
-        int pathLength = relativePath.length();
-        File dir = cwd;
-
-        for (int i = pathLength == 1 ? 1 : pathLength + 2; i > 0; i -= 3) {
-            File f = new File(dir, type);
-            if (f.exists()) {
-                return evaluate(f, type, engine, context);
-            }
-            dir = dir.getParentFile();
-        }
-        return "";
     }
 
     /**
@@ -516,61 +368,12 @@ public class SiteBuilder {
         if (list == null) {
             return;
         }
-        for (String s : list) {
-            lib.add(s);
+        for (String lib : list) {
+            libraries.add(lib);
+            for (SiteBase base : bases) {
+                base.addLibrary(lib);
+            }
         }
-    }
-
-    /**
-     * Create and initialize a new context.
-     * 
-     * @param engine the engine
-     * 
-     * @return the new context
-     * 
-     * @throws Exception in case of an error
-     */
-    private VelocityContext makeContext(VelocityEngine engine) throws Exception {
-
-        VelocityContext context = new VelocityContext();
-        context.setAllowRendering(false);
-        for (String s : lib) {
-            engine.getTemplate(s).merge(context, null);
-        }
-        context.setAllowRendering(true);
-        context.put("currentDate", new Date());
-        context.put("dateFormat", new SimpleDateFormat("d/m/yyyy",
-            Locale.ENGLISH));
-        return context;
-    }
-
-    /**
-     * Create a new engine and initialize it.
-     * 
-     * @return the Velocity engine
-     * 
-     * @throws Exception in case of an error
-     */
-    private VelocityEngine makeEngine() throws Exception {
-
-        VelocityEngine engine = new VelocityEngine();
-        // engine.setProperty(VelocityEngine.RUNTIME_LOG_LOGSYSTEM, logChute);
-        // engine.setProperty(JdkLogChute.RUNTIME_LOG_JDK_LOGGER, "xxx");
-
-        Properties prop = new Properties();
-        String name = getClass().getName().replace('.', '/') + ".properties";
-        InputStream stream =
-                getClass().getClassLoader().getResourceAsStream(name);
-        if (stream == null) {
-            throw new FileNotFoundException(name);
-        }
-        try {
-            prop.load(stream);
-        } finally {
-            stream.close();
-        }
-        engine.init(prop);
-        return engine;
     }
 
     /**
@@ -596,31 +399,19 @@ public class SiteBuilder {
      */
     public void run() throws Exception {
 
-        for (File dir : resources) {
-            if (!dir.isDirectory()) {
-                throw new FileNotFoundException(dir.toString());
-            }
-            copy(dir, targetDirectory);
+        // for (File dir : resources) {
+        // if (!dir.isDirectory()) {
+        // throw new FileNotFoundException(dir.toString());
+        // }
+        // copy(dir, targetDirectory);
+        // }
+
+        for (SiteBase base : bases) {
+            base.generate();
         }
 
-        VelocityEngine engine = makeEngine();
-        VelocityContext context = makeContext(engine);
-
-        for (File dir : bases) {
-            if (dir.isDirectory()) {
-                applyTemplate(dir, //
-                    targetDirectory, //
-                    ".", //
-                    engine.getTemplate(template), //
-                    engine, //
-                    context);
-            } else {
-                throw new FileNotFoundException(dir.toString());
-            }
-        }
-
-        if (siteMap != null) {
-            createSiteMap(engine, context);
+        for (SiteMap map : siteMapList) {
+            map.generate();
         }
     }
 
@@ -645,24 +436,21 @@ public class SiteBuilder {
     }
 
     /**
-     * Setter for the siteMap.
-     * 
-     * @param siteMap the siteMap to set
-     */
-    public void setSiteMap(File siteMap) {
-
-        this.siteMap = siteMap;
-    }
-
-    /**
      * Setter for the target dir.
      * 
-     * @param targetdir the target dir to set
+     * @param targetDir the target dir to set
      */
-    public void setTargetdir(File targetdir) {
+    public void setTarget(File targetDir) {
 
-        if (targetdir != null) {
-            this.targetDirectory = targetdir;
+        if (targetDir == null) {
+            throw new NullPointerException("Missing target directory");
+        }
+        target = targetDir;
+        for (SiteBase base : bases) {
+            base.setTarget(targetDir);
+        }
+        for (SiteMap map : siteMapList) {
+            map.setTarget(targetDir);
         }
     }
 
@@ -673,9 +461,9 @@ public class SiteBuilder {
      */
     public void setTemplate(String template) {
 
-        if (template != null) {
-            this.template = template;
+        if (template == null) {
+            throw new NullPointerException("Missing template");
         }
+        // TODO
     }
-
 }

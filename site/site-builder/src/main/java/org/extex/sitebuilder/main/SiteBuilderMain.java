@@ -20,6 +20,7 @@
 package org.extex.sitebuilder.main;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -98,7 +99,8 @@ public final class SiteBuilderMain {
     public static int run(String[] args) {
 
         SiteBuilder siteBuilder = new SiteBuilder();
-        siteBuilder.setSiteMap(new File("target/site/sitemap.html"));
+        siteBuilder.createSiteMap().setOutput(
+            new File("target/site/sitemap.html"));
         siteBuilder.omit("CVS", ".svn");
         siteBuilder.lib("src/site/velocity/macros.vm");
         // siteBuilder.setBaseDir(new File("../www/src/site/html"));
@@ -110,11 +112,16 @@ public final class SiteBuilderMain {
             } else if (!args[i].startsWith("-")) {
 
             } else if ("-baseDirectory".startsWith(args[i])) {
-                siteBuilder.addBase(new File(args[++i]));
+                try {
+                    siteBuilder.createSiteBase(args[++i]);
+                } catch (FileNotFoundException e) {
+                    System.err.println(e.toString());
+                    return (-1);
+                }
             } else if ("-library".startsWith(args[i])) {
                 siteBuilder.lib(args[++i]);
             } else if ("-outputDirectory".startsWith(args[i])) {
-                siteBuilder.setTargetdir(new File(args[++i]));
+                siteBuilder.setTarget(new File(args[++i]));
             } else if ("-omit".startsWith(args[i])) {
                 siteBuilder.omit(args[++i]);
             } else if ("-resourceDirectory".startsWith(args[i])) {

@@ -20,6 +20,7 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Handler;
@@ -201,7 +202,7 @@ public class SiteBuilderTask extends Task {
 
         try {
             for (BaseTag base : siteBaseList) {
-                builder.addBase(base.getDir());
+                builder.createSiteBase(base.getDir());
             }
             for (OmitTag om : omitList) {
                 builder.omit(om.getText());
@@ -218,10 +219,12 @@ public class SiteBuilderTask extends Task {
      * Setter for basedir.
      * 
      * @param basedir the basedir to set
+     * 
+     * @throws FileNotFoundException in case of an error
      */
-    public void setBasedir(File basedir) {
+    public void setBasedir(File basedir) throws FileNotFoundException {
 
-        builder.addBase(basedir);
+        builder.createSiteBase(basedir);
     }
 
     /**
@@ -241,7 +244,7 @@ public class SiteBuilderTask extends Task {
      */
     public void setOutput(File output) {
 
-        builder.setTargetdir(output);
+        builder.setTarget(output);
     }
 
     /**
