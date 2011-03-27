@@ -39,22 +39,22 @@ import org.apache.velocity.app.VelocityEngine;
 public class SiteMapBuilder extends TemplatingEngine {
 
     /**
-     * The field <tt>logger</tt> contains the ...
+     * The field <tt>logger</tt> contains the logger.
      */
     private Logger logger = null;
 
     /**
-     * The field <tt>template</tt> contains the ...
+     * The field <tt>template</tt> contains the template.
      */
     private String template = "org/extex/sitebuilder/sitemap.vm";
 
     /**
-     * The field <tt>output</tt> contains the ...
+     * The field <tt>output</tt> contains the output file.
      */
     private File output = null;
 
     /**
-     * The field <tt>target</tt> contains the ...
+     * The field <tt>target</tt> contains the target directory.
      */
     private File target = null;
 
@@ -62,7 +62,6 @@ public class SiteMapBuilder extends TemplatingEngine {
      * Create the site map.
      * 
      * @throws Exception in case of an error
-     * 
      */
     public void generate() throws Exception {
 
@@ -71,6 +70,9 @@ public class SiteMapBuilder extends TemplatingEngine {
         }
         if (template == null) {
             throw new IllegalArgumentException("Missing template");
+        }
+        if (logger != null) {
+            logger.info("generating " + output);
         }
 
         VelocityEngine engine = makeEngine();
