@@ -48,6 +48,26 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
+     * Test method for
+     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void _testTemplate1() throws Exception {
+
+        try {
+            runTest("<SiteBuilder\n" //
+                    + "  template=\"~/file/which/does/not/exist\"/>\n", //
+                null, //
+                "");
+            assertTrue(false);
+        } catch (BuildException e) {
+            Throwable cause = e.getCause();
+            assertTrue(cause instanceof ResourceNotFoundException);
+        }
+    }
+
+    /**
      * Run a test.
      * 
      * @param invocation the invocation XML
@@ -128,26 +148,6 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         } catch (BuildException e) {
             assertTrue(e.getCause().toString(),
                 e.getCause() instanceof FileNotFoundException);
-        }
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    public final void testTemplate1() throws Exception {
-
-        try {
-            runTest("<SiteBuilder\n" //
-                    + "  template=\"~/file/which/does/not/exist\"/>\n", //
-                null, //
-                "");
-            assertTrue(false);
-        } catch (BuildException e) {
-            Throwable cause = e.getCause();
-            assertTrue(cause instanceof ResourceNotFoundException);
         }
     }
 }
