@@ -19,6 +19,7 @@
 
 package org.extex.sitebuilder;
 
+import org.extex.sitebuilder.ant.SiteBuilderTaskTest;
 import org.extex.sitebuilder.core.NewsBuilderTest;
 import org.extex.sitebuilder.core.SiteBuilderTest;
 import org.extex.sitebuilder.main.NewsBuilderMainTest;
@@ -34,7 +35,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({NewsBuilderTest.class, //
         NewsBuilderMainTest.class, //
-        SiteBuilderTest.class})
+        SiteBuilderTest.class, //
+        SiteBuilderTaskTest.class})
 public class AllTests {
 
     // using annotations only
