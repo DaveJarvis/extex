@@ -114,6 +114,8 @@ public final class NewsBuilderMain {
      * @param args the command line arguments
      * @param builder the news builder
      * @param logger the logger for messages
+     * 
+     * @return the exit code
      */
     private static int processCommandLine(String[] args, NewsBuilder builder,
             Logger logger) {

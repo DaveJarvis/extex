@@ -98,12 +98,13 @@ public final class SiteBuilderMain {
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Parse and process the command line arguments.
      * 
-     * @param args
-     * @param siteBuilder
-     * @param logger
-     * @return
+     * @param args the command line arguments
+     * @param builder the site builder
+     * @param logger the logger for messages
+     * 
+     * @return the exit code
      */
     public static int processCommandLine(String[] args,
             SiteBuilder siteBuilder, Logger logger) {
@@ -112,8 +113,6 @@ public final class SiteBuilderMain {
             new File("target/site/sitemap.html"));
         siteBuilder.omit("CVS", ".svn");
         siteBuilder.lib("src/site/velocity/macros.vm");
-        // siteBuilder.setBaseDir(new File("../www/src/site/html"));
-        // siteBuilder.setResourceDir(new File("../www/src/site/resources"));
 
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];
