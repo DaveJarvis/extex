@@ -36,10 +36,14 @@ import org.extex.sitebuilder.core.SiteBuilder;
  */
 public final class SiteBuilderMain {
 
+    public static final String HELP_INFO = "Arguments:\n"
+            + "\t-baseDirectory [dir]\n" + "\t-outputDirectory [dir]\n"
+            + "\t-resourceDirectory [dir]\n" + "\t-template [template file]";
+
     /**
-     * The field <tt>handler</tt> contains the log handler.
+     * The field <tt>HANDLER</tt> contains the log handler.
      */
-    private static final Handler handler = new Handler() {
+    private static final Handler HANDLER = new Handler() {
 
         /**
          * {@inheritDoc}
@@ -49,7 +53,7 @@ public final class SiteBuilderMain {
         @Override
         public void close() throws SecurityException {
 
-            //
+            flush();
         }
 
         /**
@@ -60,7 +64,7 @@ public final class SiteBuilderMain {
         @Override
         public void flush() {
 
-            //
+            System.err.flush();
         }
 
         /**
@@ -71,8 +75,12 @@ public final class SiteBuilderMain {
         @Override
         public void publish(LogRecord record) {
 
-            System.err.print(record.getLevel().toString());
-            System.err.print(" ");
+            Level level = record.getLevel();
+            if (level.equals(Level.SEVERE)) {
+                System.err.print("*** ");
+            } else if (!level.equals(Level.INFO)) {
+                System.err.print("--- ");
+            }
             System.err.println(record.getMessage());
         }
 
@@ -90,15 +98,16 @@ public final class SiteBuilderMain {
     }
 
     /**
-     * This is the command line interface to the site builder.
+     * TODO gne: missing JavaDoc
      * 
-     * @param args the command line arguments
-     * 
-     * @return the exit code; i.e. 0 for success and something else for failure
+     * @param args
+     * @param siteBuilder
+     * @param logger
+     * @return
      */
-    public static int run(String[] args) {
+    public static int processCommandLine(String[] args,
+            SiteBuilder siteBuilder, Logger logger) {
 
-        SiteBuilder siteBuilder = new SiteBuilder();
         siteBuilder.createSiteMap().setOutput(
             new File("target/site/sitemap.html"));
         siteBuilder.omit("CVS", ".svn");
@@ -107,43 +116,59 @@ public final class SiteBuilderMain {
         // siteBuilder.setResourceDir(new File("../www/src/site/resources"));
 
         for (int i = 0; i < args.length; i++) {
-            if ("".equals(args[i])) {
+            String arg = args[i];
+            if (arg.startsWith("--")) {
+                arg = arg.substring(1);
+            }
+            if ("".equals(arg)) {
 
-            } else if (!args[i].startsWith("-")) {
+            } else if (!arg.startsWith("-")) {
 
-            } else if ("-baseDirectory".startsWith(args[i])) {
+            } else if ("-baseDirectory".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
                 try {
                     siteBuilder.createSiteBase(args[++i]);
                 } catch (FileNotFoundException e) {
                     System.err.println(e.toString());
                     return (-1);
                 }
-            } else if ("-library".startsWith(args[i])) {
+            } else if ("-library".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
                 siteBuilder.lib(args[++i]);
-            } else if ("-outputDirectory".startsWith(args[i])) {
+            } else if ("-outputDirectory".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
                 siteBuilder.setTarget(new File(args[++i]));
-            } else if ("-omit".startsWith(args[i])) {
+            } else if ("-omit".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
                 siteBuilder.omit(args[++i]);
-            } else if ("-template".startsWith(args[i])) {
+            } else if ("-template".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
                 siteBuilder.setTemplate(args[++i]);
+            } else if ("-help".startsWith(arg)) {
+                logger.info(HELP_INFO);
+                return -111;
             } else {
-                System.err.println("Arguments:");
-                System.err.println("\t-baseDirectory [dir]");
-                System.err.println("\t-outputDirectory [dir]");
-                System.err.println("\t-resourceDirectory [dir]");
-                System.err.println("\t-template [template file]");
-                return 0;
+                logger.severe("Unknown option: " + arg);
+                return -2;
             }
         }
 
         Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
-        Logger logger = siteBuilder.getLogger();
-        logger.setLevel(Level.WARNING);
-        logger.setUseParentHandlers(false);
-        for (Handler h : logger.getHandlers()) {
-            h.setLevel(Level.OFF);
-        }
-        logger.addHandler(handler);
         try {
             siteBuilder.run();
         } catch (Exception e) {
@@ -151,6 +176,32 @@ public final class SiteBuilderMain {
             return -1;
         }
         return 0;
+    }
+
+    /**
+     * This is the command line interface to the site builder.
+     * 
+     * @param args the command line arguments
+     * 
+     * @return the exit code; i.e. 0 for success and something else for failure
+     */
+    public static int run(String[] args) {
+
+        Logger.getLogger("org.apache.velocity").setLevel(Level.WARNING);
+
+        SiteBuilder siteBuilder = new SiteBuilder();
+        Logger logger = siteBuilder.getLogger();
+        logger.setLevel(Level.INFO);
+        logger.setUseParentHandlers(false);
+        for (Handler h : logger.getHandlers()) {
+            h.setLevel(Level.OFF);
+        }
+        logger.addHandler(HANDLER);
+        try {
+            return processCommandLine(args, siteBuilder, logger);
+        } finally {
+            logger.removeHandler(HANDLER);
+        }
     }
 
 }
