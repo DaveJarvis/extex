@@ -23,6 +23,7 @@ import org.extex.sitebuilder.ant.SiteBuilderTaskTest;
 import org.extex.sitebuilder.core.NewsBuilderTest;
 import org.extex.sitebuilder.core.SiteBuilderTest;
 import org.extex.sitebuilder.main.NewsBuilderMainTest;
+import org.extex.sitebuilder.main.SiteBuilderMainTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
@@ -35,6 +36,7 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({NewsBuilderTest.class, //
         NewsBuilderMainTest.class, //
+        SiteBuilderMainTest.class, //
         SiteBuilderTest.class, //
         SiteBuilderTaskTest.class})
 public class AllTests {
