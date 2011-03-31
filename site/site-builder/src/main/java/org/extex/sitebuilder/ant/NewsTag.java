@@ -49,7 +49,7 @@ public class NewsTag {
     /**
      * Setter for the max value.
      * 
-     * @param output the max value to set
+     * @param max the max value to set
      */
     public void setMax(int max) {
 
