@@ -93,7 +93,7 @@ public final class NewsBuilderMain {
 
     /**
      * This is the command line interface to the site builder. This method calls
-     * {@link System.exit()} to signal the result via the exit code.
+     * {@link System#exit(int)} to signal the result via the exit code.
      * 
      * @param args the command line arguments
      */
@@ -196,6 +196,7 @@ public final class NewsBuilderMain {
             return -1;
         } finally {
             logger.removeHandler(HANDLER);
+            HANDLER.flush();
         }
         return 0;
     }

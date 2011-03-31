@@ -88,7 +88,7 @@ public final class SiteBuilderMain {
 
     /**
      * This is the command line interface to the site builder. This method calls
-     * {@link System.exit()} to signal the result via the exit code.
+     * {@link System#exit(int)} to signal the result via the exit code.
      * 
      * @param args the command line arguments
      */
@@ -101,7 +101,7 @@ public final class SiteBuilderMain {
      * Parse and process the command line arguments.
      * 
      * @param args the command line arguments
-     * @param builder the site builder
+     * @param siteBuilder the site builder
      * @param logger the logger for messages
      * 
      * @return the exit code
@@ -200,6 +200,7 @@ public final class SiteBuilderMain {
             return processCommandLine(args, siteBuilder, logger);
         } finally {
             logger.removeHandler(HANDLER);
+            HANDLER.flush();
         }
     }
 
