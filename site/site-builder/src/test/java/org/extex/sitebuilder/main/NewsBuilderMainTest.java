@@ -41,6 +41,30 @@ import org.junit.Test;
 public class NewsBuilderMainTest {
 
     /**
+     * Extract the contents of a file.
+     * 
+     * @param file the file to read
+     * @return the contents of the file
+     * @throws IOException in case of an error
+     */
+    private static String readFile(File file) throws IOException {
+
+        StringBuilder buffer = new StringBuilder();
+        LineNumberReader reader = new LineNumberReader(new FileReader(file));
+        try {
+            for (String s = reader.readLine(); s != null; s = reader.readLine()) {
+                buffer.append(s);
+                buffer.append("\n");
+            }
+        } finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
+        return buffer.toString();
+    }
+
+    /**
      * Run the news builder with a given command line.
      * 
      * @param args the command line arguments
@@ -62,26 +86,6 @@ public class NewsBuilderMainTest {
             return exit;
         } finally {
             System.setErr(err);
-        }
-    }
-
-    /**
-     * <testcase> An rss file is created if everything is all right. </testcase>
-     * 
-     */
-    @Test
-    public void test01() {
-
-        File file = new File("target/test-site/rss/2.0/news.rss");
-        if (file.exists()) {
-            assertTrue("deletion failed: " + file, file.delete());
-        }
-        try {
-            assertEquals(0, run(new String[]{}, null));
-            assertTrue("Expected file is missing: " + file.toString(),
-                file.exists());
-        } finally {
-            // assertTrue("deletion failed: " + file, file.delete());
         }
     }
 
@@ -144,6 +148,57 @@ public class NewsBuilderMainTest {
             assertFalse("Unexpected file: " + file.toString(), file.exists());
         } finally {
             file.deleteOnExit();
+        }
+    }
+
+    /**
+     * <testcase> An rss file is created if everything is all right. </testcase>
+     * 
+     * @throws IOException in case of an error
+     * 
+     */
+    @Test
+    public void testBase10() throws IOException {
+
+        File file = new File("target/test-site/rss/2.0/news.rss");
+        if (file.exists()) {
+            assertTrue("deletion failed: " + file, file.delete());
+        }
+        try {
+            assertEquals(0,
+                run(new String[]{"src/test/resources/news-1"}, null));
+            assertTrue("Expected file is missing: " + file.toString(),
+                file.exists());
+            assertEquals(
+                "<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n"
+                        + "<rss version=\"2.0\">\n"
+                        + "  <channel>\n"
+                        + "    <title>ExTeX News</title>\n"
+                        + "    <link>http://www.extex.org/</link>\n"
+                        + "    <description>ExTeX - Typesetting for the 21st Century</description>\n"
+                        + "    <language>en-us</language>\n"
+                        + "    <copyright>(c) 2011 The ExTeX Group</copyright>\n"
+                        + "    <pubDate/>\n"
+                        + "    <lastBuildDate/>\n"
+                        + "    <docs>http://blogs.law.harvard.edu/tech/rss</docs>\n"
+                        + "    <generator>ExTeX News Builder</generator>\n"
+                        + "    <managingEditor>gene@gerd-neugebauer.de</managingEditor>\n"
+                        + "    <webMaster>gene@gerd-neugebauer.de</webMaster>\n"
+                        + "    <ttl>1440</ttl>\n"
+                        + "    <image>\n"
+                        + "      <url>http://www.extex.org/rss/ExTeX.png</url>\n"
+                        + "      <title>ExTeX News</title>\n"
+                        + "      <link>http://www.extex.org/</link>\n"
+                        + "    </image>\n" + "\n" + "<item>\n"
+                        + "  <title>One Title</title>\n" + "  <description>\n"
+                        + "    One text.\n" + "  </description>\n"
+                        + "  <author>one.author</author>\n"
+                        + "  <link>one.link.url</link>\n" + "</item>\n" + "\n"
+                        + "  </channel>\n" + "</rss>\n", readFile(file)
+                    .replaceAll("<lastBuildDate>[^>]*>", "<lastBuildDate/>")
+                    .replaceAll("<pubDate>[^>]*>", "<pubDate/>"));
+        } finally {
+            // assertTrue("deletion failed: " + file, file.delete());
         }
     }
 
