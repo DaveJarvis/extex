@@ -20,11 +20,11 @@
 package org.extex.sitebuilder.main;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.Test;
@@ -36,6 +36,36 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class SiteBuilderMainTest {
+
+    /**
+     * Recursively delete a directory tree.
+     * 
+     * @param dir the directory
+     * 
+     * @throws IOException in case of an error
+     */
+    private static void rmdir(File dir) throws IOException {
+
+        if (!dir.isDirectory()) {
+            throw new IllegalArgumentException(dir.toString());
+        }
+        for (String f : dir.list()) {
+            File file = new File(dir, f);
+            if (file.isFile()) {
+                if (!file.delete()) {
+                    throw new IOException("deletion failed: " + file.toString());
+                }
+            } else if (file.isDirectory()) {
+                rmdir(file);
+            } else {
+                throw new IllegalStateException("strange file encountered: "
+                        + file.toString());
+            }
+        }
+        if (!dir.delete()) {
+            throw new IOException("deletion failed: " + dir.toString());
+        }
+    }
 
     /**
      * Run the news builder with a given command line.
@@ -60,6 +90,28 @@ public class SiteBuilderMainTest {
         } finally {
             System.setErr(err);
         }
+    }
+
+    /**
+     * <testcase> TODO </testcase>
+     * 
+     */
+    @Test
+    public void test01() {
+
+        File indexHtml = new File("target/test-site/index.html");
+        if (indexHtml.exists()) {
+            indexHtml.delete();
+        }
+        File sitemapHtml = new File("target/test-site/sitemap.html");
+        if (sitemapHtml.exists()) {
+            sitemapHtml.delete();
+        }
+
+        assertEquals(0,
+            run(new String[]{"-base", "src/test/resources/empty-site"}, null));
+        assertTrue("Missing index.html", indexHtml.exists());
+        assertTrue("Missing sitemap.html", sitemapHtml.exists());
     }
 
     /**
@@ -93,16 +145,7 @@ public class SiteBuilderMainTest {
     @Test
     public void testBase03() {
 
-        File file = new File("target/test-site/rss/2.0/news.rss");
-        if (file.exists()) {
-            assertTrue("deletion failed: " + file, file.delete());
-        }
-        try {
-            assertEquals(-1, run(new String[]{"-base", "target/xyzzy"}, null));
-            assertFalse("Unexpected file: " + file.toString(), file.exists());
-        } finally {
-            file.deleteOnExit();
-        }
+        assertEquals(-1, run(new String[]{"-base", "target/xyzzy"}, null));
     }
 
     /**
@@ -151,6 +194,19 @@ public class SiteBuilderMainTest {
 
         assertEquals(-1,
             run(new String[]{"-output"}, "*** Missing argument for -output\n"));
+    }
+
+    /**
+     * <testcase> A missing argument for the option <tt>-sitemap</tt> is
+     * recognized. </testcase>
+     * 
+     */
+    @Test
+    public void testSitemap01() {
+
+        assertEquals(
+            -1,
+            run(new String[]{"-sitemap"}, "*** Missing argument for -sitemap\n"));
     }
 
     /**

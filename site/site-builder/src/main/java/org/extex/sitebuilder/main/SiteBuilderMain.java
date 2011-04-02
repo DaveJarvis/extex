@@ -27,6 +27,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import org.extex.sitebuilder.core.SiteBuilder;
+import org.extex.sitebuilder.core.SiteMapBuilder;
 
 /**
  * This is the command line interface to the site builder.
@@ -109,8 +110,8 @@ public final class SiteBuilderMain {
     public static int processCommandLine(String[] args,
             SiteBuilder siteBuilder, Logger logger) {
 
-        siteBuilder.createSiteMap().setOutput(
-            new File("target/site/sitemap.html"));
+        SiteMapBuilder siteMap = siteBuilder.createSiteMap();
+        siteMap.setOutput(new File("target/test-site/sitemap.html"));
         siteBuilder.omit("CVS", ".svn");
         siteBuilder.lib("src/site/velocity/macros.vm");
 
@@ -145,13 +146,21 @@ public final class SiteBuilderMain {
                     logger.severe("Missing argument for " + arg);
                     return -1;
                 }
-                siteBuilder.setTarget(new File(args[++i]));
+                File targetDir = new File(args[++i]);
+                siteBuilder.setTarget(targetDir);
+                siteMap.setOutput(new File(targetDir, "sitemap.html"));
             } else if ("-omit".startsWith(arg)) {
                 if (i >= args.length - 1) {
                     logger.severe("Missing argument for " + arg);
                     return -1;
                 }
                 siteBuilder.omit(args[++i]);
+            } else if ("-sitemap".startsWith(arg)) {
+                if (i >= args.length - 1) {
+                    logger.severe("Missing argument for " + arg);
+                    return -1;
+                }
+                siteMap.setOutput(new File(args[++i]));
             } else if ("-template".startsWith(arg)) {
                 if (i >= args.length - 1) {
                     logger.severe("Missing argument for " + arg);
