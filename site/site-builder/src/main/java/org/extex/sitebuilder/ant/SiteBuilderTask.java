@@ -114,15 +114,15 @@ public class SiteBuilderTask extends Task {
         public void publish(LogRecord record) {
 
             Level level = record.getLevel();
-
+            String message = record.getMessage();
             if (level == Level.SEVERE) {
-                log(record.getMessage(), Project.MSG_ERR);
+                log(message, Project.MSG_ERR);
             } else if (level == Level.WARNING) {
-                log(record.getMessage(), Project.MSG_WARN);
+                log(message, Project.MSG_WARN);
             } else if (level == Level.INFO) {
-                log(record.getMessage(), Project.MSG_INFO);
+                log(message, Project.MSG_INFO);
             } else {
-                log(record.getMessage());
+                log(message);
             }
         }
 
@@ -236,7 +236,7 @@ public class SiteBuilderTask extends Task {
      */
     public void setLogLevel(String level) {
 
-        builder.getLogger().setLevel(Level.parse(level));
+        builder.getLogger().setLevel(Level.parse(level.toUpperCase()));
     }
 
     /**
