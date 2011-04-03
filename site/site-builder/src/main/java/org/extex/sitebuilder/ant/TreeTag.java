@@ -28,6 +28,17 @@ import org.extex.sitebuilder.core.TreeBuilder;
 /**
  * This class is a wrapper for the tree builder. It provides the setters needed
  * for the tree tag in an Ant build file.
+ * <p>
+ * Ant uses reflection for the definition of the arguments and the contents of
+ * an XML tag. Thus it is necessary to provide a class which exposes just the
+ * methods needed for Ant parsing.
+ * </p>
+ * 
+ * <pre style="background:#eeeeee;">
+ *  &lt;Tree
+ *    dir="<i>base/directory</i>"&gt;
+ *    processHtml="<i>value</i>"&gt;
+ *    template="<i>template/file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -42,7 +53,7 @@ public class TreeTag {
     /**
      * Creates a new object.
      * 
-     * @param treeBuilder
+     * @param treeBuilder the tree builder
      */
     public TreeTag(TreeBuilder treeBuilder) {
 
@@ -50,9 +61,9 @@ public class TreeTag {
     }
 
     /**
-     * Setter for dir.
+     * Setter for the base directory.
      * 
-     * @param dir the dir to set
+     * @param dir the base directory to set
      */
     public void setDir(File dir) {
 
