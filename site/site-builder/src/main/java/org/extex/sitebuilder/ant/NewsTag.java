@@ -83,9 +83,9 @@ public class NewsTag {
      * 
      * @param output the output file to set
      */
-    public void setTemplate(File template) {
+    public void setTemplate(String template) {
 
-        builder.setTemplate(template.toString());
+        builder.setTemplate(template);
     }
 
 }
