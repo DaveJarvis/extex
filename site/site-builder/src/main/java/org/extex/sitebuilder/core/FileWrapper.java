@@ -19,7 +19,6 @@
 
 package org.extex.sitebuilder.core;
 
-import java.io.EOFException;
 import java.io.File;
 import java.io.FileFilter;
 import java.io.FileReader;
@@ -37,7 +36,7 @@ public class FileWrapper extends File implements FileFilter {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 2008L;
+    private static final long serialVersionUID = 2011L;
 
     /**
      * The field <tt>relativePath</tt> contains the relative path to the top of
@@ -145,55 +144,37 @@ public class FileWrapper extends File implements FileFilter {
         if (title != null) {
             return title;
         }
-        File f;
+        File f = this;
         if (isDirectory()) {
             f = new File(this, "index.html");
             if (!f.exists()) {
-                return getName();
+                title = getName();
+                return title;
             }
 
         } else if (isFile()) {
             f = this;
         } else {
-            return getName();
+            title = getName();
+            return title;
         }
         try {
-            ParsingReader r = new ParsingReader(new FileReader(f));
+            ParsingReader reader = new ParsingReader(new FileReader(f));
             try {
-                StringBuilder b;
-
-                while (r.skipTo('<')) {
-                    b = new StringBuilder();
-                    if (!r.scanTo('>', b)) {
-                        throw new EOFException();
-                    }
-                    if (b.toString().equalsIgnoreCase("title")) {
-                        break;
-                    }
-                }
-
-                StringBuilder buffer = new StringBuilder();
-
-                while (r.scanTo('<', buffer)) {
-                    b = new StringBuilder();
-                    if (!r.scanTo('>', b)) {
-                        throw new EOFException();
-                    }
-                    if (b.toString().equalsIgnoreCase("/title")) {
+                if (reader.scanToTag("title")) {
+                    StringBuilder buffer = new StringBuilder();
+                    if (reader.scanToTag("/title", buffer)) {
                         title = buffer.toString().replaceAll("[\r\n]", "");
                         return title;
                     }
-                    buffer.append('<');
-                    buffer.append(b);
-                    buffer.append('>');
                 }
-
             } finally {
-                r.close();
+                reader.close();
             }
         } catch (IOException e) {
             // fall through
         }
-        return getName();
+        title = getName();
+        return title;
     }
 }

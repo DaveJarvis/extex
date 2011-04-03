@@ -17,43 +17,20 @@
  *
  */
 
-package org.extex.sitebuilder.ant;
-
-import org.extex.sitebuilder.core.SiteBuilder;
+package org.extex.sitebuilder.core;
 
 /**
- * This class is the container for the <tt>&lt;omit&gt;</tt> tag from the Ant
- * build file. the text contained is stored internally and passed to a site
- * builder upon request.
+ * This interface describes a class which can take the definition of a library.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OmitTag {
+public interface LibReceiver {
 
     /**
-     * The field <tt>text</tt> contains the contents.
-     */
-    private StringBuilder text = new StringBuilder();
-
-    /**
-     * Add some text to the contents.
+     * Adder for libs.
      * 
-     * @param text the text to add to the contents
+     * @param lib the lib to add or <code>null</code>
      */
-    public void addText(String text) {
-
-        this.text.append(text);
-    }
-
-    /**
-     * Propagate the valued contained in the text to a site builder.
-     * 
-     * @param builder the target object
-     */
-    public void propagate(SiteBuilder builder) {
-
-        builder.omit(text.toString());
-    }
-
+    void lib(String lib);
 }

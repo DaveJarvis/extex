@@ -43,6 +43,25 @@ public class ParsingReader extends BufferedReader {
     }
 
     /**
+     * Absorb all characters to a defined one.
+     * 
+     * @param term the last character
+     * 
+     * @return <code>true</code> iff the end has been found
+     * 
+     * @throws IOException in case of an error
+     */
+    public boolean scanTo(char term) throws IOException {
+
+        for (int c = read(); c >= 0; c = read()) {
+            if (c == term) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
      * Scan the input up to a terminating character and collect the contents
      * encountered while scanning in a buffer.
      * 
@@ -53,7 +72,7 @@ public class ParsingReader extends BufferedReader {
      * 
      * @throws IOException in case of an error
      */
-    public boolean scanTo(char term, StringBuilder buffer) throws IOException {
+    public boolean scanTo(char term, Appendable buffer) throws IOException {
 
         for (int c = read(); c >= 0; c = read()) {
             if (c == term) {
@@ -65,21 +84,54 @@ public class ParsingReader extends BufferedReader {
     }
 
     /**
-     * Absorb all characters to a defined one.
+     * Read to a certain XML tag.
      * 
-     * @param term the last character
+     * @param tag the name of the tag
      * 
-     * @return <code>true</code> iff the end has been found
+     * @return <code>true</code> iff the tag has been found
      * 
      * @throws IOException in case of an error
      */
-    public boolean skipTo(char term) throws IOException {
+    public boolean scanToTag(String tag) throws IOException {
 
-        for (int c = read(); c >= 0; c = read()) {
-            if (c == term) {
+        while (scanTo('<')) {
+            StringBuilder b = new StringBuilder();
+            if (!scanTo('>', b)) {
+                break;
+            }
+            if (b.toString().equalsIgnoreCase(tag)) {
                 return true;
             }
         }
         return false;
     }
+
+    /**
+     * Read to a certain XML tag and collect the characters found.
+     * 
+     * @param endtag the name of the end tag
+     * @param buffer the buffer to collect the contents in
+     * 
+     * @return <code>true</code> iff the tag has been found
+     * 
+     * @throws IOException in case of an error
+     */
+    public boolean scanToTag(String endtag, Appendable buffer)
+            throws IOException {
+
+        while (scanTo('<', buffer)) {
+            StringBuilder b = new StringBuilder();
+            if (!scanTo('>', b)) {
+                break;
+            }
+            if (b.toString().equalsIgnoreCase(endtag)) {
+                return true;
+            }
+            buffer.append('<');
+            buffer.append(b);
+            buffer.append('>');
+        }
+        return false;
+    }
+
 }

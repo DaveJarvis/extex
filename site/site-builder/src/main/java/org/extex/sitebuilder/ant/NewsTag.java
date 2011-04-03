@@ -24,7 +24,19 @@ import java.io.File;
 import org.extex.sitebuilder.core.NewsBuilder;
 
 /**
- * TODO gne: missing JavaDoc.
+ * This class is a wrapper for the news builder. It provides the setters needed
+ * for the news tag in an Ant build file.
+ * <p>
+ * Ant uses reflection for the definition of the arguments and the contents of
+ * an XML tag. Thus it is necessary to provide a class which exposes just the
+ * methods needed for Ant parsing.
+ * </p>
+ * 
+ * <pre style="background:#eeeeee;">
+ *  &lt;News
+ *    output="<i>file</i>"&gt;
+ *    max="<i>max value</i>"&gt;
+ *    template="<i>template file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -32,18 +44,18 @@ import org.extex.sitebuilder.core.NewsBuilder;
 public class NewsTag {
 
     /**
-     * The field <tt>builder</tt> contains the ...
+     * The field <tt>builder</tt> contains the encapsulated news builder.
      */
-    private NewsBuilder builder = new NewsBuilder();
+    private NewsBuilder builder;
 
     /**
-     * TODO gne: missing JavaDoc
+     * Creates a new object.
      * 
-     * @throws Exception
+     * @param newsBuilder the news builder receiving the arguments
      */
-    public void run() throws Exception {
+    public NewsTag(NewsBuilder newsBuilder) {
 
-        builder.generate();
+        builder = newsBuilder;
     }
 
     /**
@@ -67,12 +79,13 @@ public class NewsTag {
     }
 
     /**
-     * TODO gne: missing JavaDoc
+     * Setter for template file.
      * 
-     * @throws Exception in case of an error
+     * @param output the output file to set
      */
-    public void validate() throws Exception {
+    public void setTemplate(File template) {
 
+        builder.setTemplate(template.toString());
     }
 
 }

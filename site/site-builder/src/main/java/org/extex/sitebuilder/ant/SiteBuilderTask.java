@@ -20,7 +20,6 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Handler;
@@ -34,27 +33,37 @@ import org.apache.tools.ant.Task;
 import org.extex.sitebuilder.core.SiteBuilder;
 
 /**
- * This is the Ant task for the site builder.
- * 
- * 
- * TODO: The following does not work, yet
+ * This is the Ant task for the site builder. The following functionality is
+ * provided:
+ * <ul>
+ * <li>One common output directory is shared among all children.</li>
+ * <li>One child is a tree traversal function. It processes the HTML files found
+ * with the help of the templating engine &ndash; unless the templating is
+ * disabled. All other files are copied into the target directory.</li>
+ * <li>A sitemap file can be generated.</li>
+ * <li>News from a directory can be translated into an RSS file..</li>
+ * </ul>
  * 
  * <pre style="background:#eeeeee;">
  *   &lt;taskdef name="SiteBuilder"
  *            classname="org.extex.sitebuilder.ant.SiteBuilderTask" /&gt;
  * 
  *   &lt;SiteBuilder
+ *     logLevel="<i>level</i>"
  *     target="<i>output/directory</i>" &gt;
  *     &lt;omit&gt;<i>file pattern</i>&lt;/omit&gt;
- *     &lt;SiteBase
+ *     &lt;lib&gt;<i>library</i>&lt;/lib&gt;
+ *     &lt;Tree
  *        dir="<i>html/sources</i>"
+ *        processHtml="<i>boolean value</i>"
  *        template="<i>html/template/resource</i>" /&gt;
- *     &lt;SiteResources
- *        dir="<i>resources/directory</i>" /&gt;
- *     &lt;SiteMap
- *        output="<i>site/map/file</i>" /&gt;
- *     &lt;SiteNews
- *        output="<i>news/file</i>" /&gt;
+ *     &lt;Sitemap
+ *        output="<i>site/map/file</i>" 
+ *        template="<i>template/file</i>" /&gt;
+ *     &lt;News
+ *        output="<i>news/file</i>" 
+ *        max="<i>max value</i>"
+ *        template="<i>template/file</i>" /&gt;
  *   &lt;/SiteBuilder&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -120,24 +129,36 @@ public class SiteBuilderTask extends Task {
     };
 
     /**
-     * The field <tt>siteMapList</tt> contains the site map container.
-     */
-    private List<SiteMapTag> siteMapList = new ArrayList<SiteMapTag>();
-
-    /**
-     * The field <tt>siteNewsList</tt> contains the news container.
-     */
-    private List<NewsTag> siteNewsList = new ArrayList<NewsTag>();
-
-    /**
-     * The field <tt>siteBaseList</tt> contains the base container.
-     */
-    private List<BaseTag> siteBaseList = new ArrayList<BaseTag>();
-
-    /**
      * The field <tt>omitList</tt> contains the omit container.
      */
     private List<OmitTag> omitList = new ArrayList<OmitTag>();
+
+    /**
+     * The field <tt>libList</tt> contains the lib container.
+     */
+    private List<LibTag> libList = new ArrayList<LibTag>();
+
+    /**
+     * Factory method for the omit element.
+     * 
+     * @return the omit element
+     */
+    public LibTag createLib() {
+
+        LibTag tag = new LibTag();
+        libList.add(tag);
+        return tag;
+    }
+
+    /**
+     * Factory method for the news element
+     * 
+     * @return the news element
+     */
+    public NewsTag createNews() {
+
+        return new NewsTag(builder.createNewsBuilder());
+    }
 
     /**
      * Factory method for the omit element.
@@ -152,39 +173,23 @@ public class SiteBuilderTask extends Task {
     }
 
     /**
-     * Factory method for the site base.
-     * 
-     * @return the site base
-     */
-    public BaseTag createSiteBase() {
-
-        BaseTag siteBase = new BaseTag();
-        siteBaseList.add(siteBase);
-        return siteBase;
-    }
-
-    /**
-     * Factory method for the site map
+     * Factory method for the site map.
      * 
      * @return the site map
      */
-    public SiteMapTag createSiteMap() {
+    public SiteMapTag createSitemap() {
 
-        SiteMapTag siteMap = new SiteMapTag();
-        siteMapList.add(siteMap);
-        return siteMap;
+        return new SiteMapTag(builder.createSiteMap());
     }
 
     /**
-     * Factory method for the news element
+     * Factory method for the tree builder.
      * 
-     * @return the news element
+     * @return the site base
      */
-    public NewsTag createSiteNews() {
+    public TreeTag createTree() {
 
-        NewsTag siteNews = new NewsTag();
-        siteNewsList.add(siteNews);
-        return siteNews;
+        return new TreeTag(builder.createTreeBuilder());
     }
 
     /**
@@ -201,11 +206,11 @@ public class SiteBuilderTask extends Task {
         logger.addHandler(handler);
 
         try {
-            for (BaseTag base : siteBaseList) {
-                builder.createSiteBase(base.getDir());
+            for (OmitTag ot : omitList) {
+                ot.propagate(builder);
             }
-            for (OmitTag om : omitList) {
-                builder.omit(om.getText());
+            for (LibTag lt : libList) {
+                lt.propagate(builder);
             }
             builder.run();
         } catch (Exception e) {
@@ -216,44 +221,32 @@ public class SiteBuilderTask extends Task {
     }
 
     /**
-     * Setter for basedir.
+     * Setter for the log level.
+     * <p>
+     * The argument string may consist of either a level name or an integer
+     * value.
+     * <p>
+     * For example:
+     * <ul>
+     * <li>"SEVERE"
+     * <li>"1000"
+     * </ul>
      * 
-     * @param basedir the basedir to set
-     * 
-     * @throws FileNotFoundException in case of an error
+     * @param level the log level
      */
-    public void setBasedir(File basedir) throws FileNotFoundException {
+    public void setLogLevel(String level) {
 
-        builder.createSiteBase(basedir);
+        builder.getLogger().setLevel(Level.parse(level));
     }
 
     /**
-     * Setter for omit.
+     * Setter for the output directory.
      * 
-     * @param omit the omit to set
-     */
-    public void setOmit(String[] omit) {
-
-        builder.omit(omit);
-    }
-
-    /**
-     * Setter for output.
-     * 
-     * @param output the output to set
+     * @param output the output directory to set
      */
     public void setOutput(File output) {
 
         builder.setTarget(output);
     }
 
-    /**
-     * Setter for template.
-     * 
-     * @param template the template to set
-     */
-    public void setTemplate(String template) {
-
-        builder.setTemplate(template);
-    }
 }

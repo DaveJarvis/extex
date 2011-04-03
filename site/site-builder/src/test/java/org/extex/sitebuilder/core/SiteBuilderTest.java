@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
-import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -59,9 +58,6 @@ public class SiteBuilderTest {
 
         logger.setLevel(Level.OFF);
         logger.setUseParentHandlers(false);
-        for (Handler h : logger.getHandlers()) {
-            h.setLevel(Level.OFF);
-        }
     }
 
     /**
@@ -75,7 +71,7 @@ public class SiteBuilderTest {
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
         siteBuilder.lib("undefined.vm");
-        siteBuilder.createSiteBase("src/test/resources/empty-site");
+        siteBuilder.createTreeBuilder("src/test/resources/empty-site");
         siteBuilder.run();
     }
 
@@ -90,11 +86,10 @@ public class SiteBuilderTest {
 
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
-        siteBuilder.createSiteBase("src/test/resources/empty-site");
+        siteBuilder.createTreeBuilder("src/test/resources/empty-site");
         File targetdir = new File("target/undefined");
         new FileWriter(targetdir).close(); // touch
         siteBuilder.setTarget(targetdir);
-        siteBuilder.createSiteBase(new File("src/test/resources/empty-site"));
         try {
             siteBuilder.run();
         } finally {
@@ -129,7 +124,7 @@ public class SiteBuilderTest {
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
         siteBuilder.setTarget(new File("target/test-site"));
-        siteBuilder.createSiteBase("src/test/resources/empty-site");
+        siteBuilder.createTreeBuilder("src/test/resources/empty-site");
         File siteMap = new File("target/sitemap.html");
         siteBuilder.createSiteMap().setOutput(siteMap);
         if (siteMap.exists()) {
@@ -143,4 +138,44 @@ public class SiteBuilderTest {
             siteMap.deleteOnExit();
         }
     }
+
+    /**
+     * <testcase> A <code>null</code> value for lib is silently ignored.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLib01() throws Exception {
+
+        SiteBuilder siteBuilder = new SiteBuilder();
+        siteBuilder.lib(null);
+    }
+
+    /**
+     * <testcase> A <code>null</code> value for omit is silently ignored.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOmit01() throws Exception {
+
+        SiteBuilder siteBuilder = new SiteBuilder();
+        siteBuilder.omit(null);
+    }
+
+    /**
+     * <testcase> A <code>null</code> value for the argument of setTarget()
+     * leads to an exception. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testSetTarget01() throws Exception {
+
+        SiteBuilder siteBuilder = new SiteBuilder();
+        siteBuilder.setTarget(null);
+    }
+
 }

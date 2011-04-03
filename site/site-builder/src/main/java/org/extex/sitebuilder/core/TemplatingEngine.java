@@ -32,12 +32,12 @@ import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
 /**
- * TODO gne: missing JavaDoc.
+ * This class encapsulates the templating engine.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TemplatingEngine {
+public class TemplatingEngine implements LibReceiver {
 
     /**
      * The field <tt>lib</tt> contains the libraries to be loaded.
@@ -45,11 +45,12 @@ public class TemplatingEngine {
     private List<String> libraries = new ArrayList<String>();
 
     /**
-     * TODO gne: missing JavaDoc
+     * {@inheritDoc}
      * 
-     * @param lib
+     * @see org.extex.sitebuilder.core.LibReceiver#lib(java.lang.String)
      */
-    public void addLibrary(String lib) {
+    @Override
+    public void lib(String lib) {
 
         libraries.add(lib);
     }

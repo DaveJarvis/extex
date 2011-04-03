@@ -21,8 +21,21 @@ package org.extex.sitebuilder.ant;
 
 import java.io.File;
 
+import org.extex.sitebuilder.core.SiteMapBuilder;
+
 /**
- * TODO gne: missing JavaDoc.
+ * This class is a wrapper for the sitemap builder. It provides the setters
+ * needed for the sitemap tag in an Ant build file.
+ * <p>
+ * Ant uses reflection for the definition of the arguments and the contents of
+ * an XML tag. Thus it is necessary to provide a class which exposes just the
+ * methods needed for Ant parsing.
+ * </p>
+ * 
+ * <pre style="background:#eeeeee;">
+ *  &lt;Sitemap
+ *    output="<i>file</i>"&gt;
+ *    template="<i>template file</i>" /&gt; </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -30,18 +43,18 @@ import java.io.File;
 public class SiteMapTag {
 
     /**
-     * The field <tt>output</tt> contains the output file.
+     * The field <tt>builder</tt> contains the builder.
      */
-    private File output;
+    private SiteMapBuilder builder;
 
     /**
-     * Getter for output file.
+     * Creates a new object.
      * 
-     * @return the output file
+     * @param sitemapBuilder the builder
      */
-    public File getOutput() {
+    public SiteMapTag(SiteMapBuilder sitemapBuilder) {
 
-        return output;
+        builder = sitemapBuilder;
     }
 
     /**
@@ -51,7 +64,17 @@ public class SiteMapTag {
      */
     public void setOutput(File output) {
 
-        this.output = output;
+        builder.setOutput(output);
+    }
+
+    /**
+     * Setter for template file.
+     * 
+     * @param output the output file to set
+     */
+    public void setTemplate(File template) {
+
+        builder.setTemplate(template.toString());
     }
 
 }

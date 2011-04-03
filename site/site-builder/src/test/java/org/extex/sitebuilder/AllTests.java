@@ -21,7 +21,9 @@ package org.extex.sitebuilder;
 
 import org.extex.sitebuilder.ant.SiteBuilderTaskTest;
 import org.extex.sitebuilder.core.NewsBuilderTest;
+import org.extex.sitebuilder.core.ParsingReaderTest;
 import org.extex.sitebuilder.core.SiteBuilderTest;
+import org.extex.sitebuilder.core.SiteMapBuilderTest;
 import org.extex.sitebuilder.main.NewsBuilderMainTest;
 import org.extex.sitebuilder.main.SiteBuilderMainTest;
 import org.junit.runner.RunWith;
@@ -38,7 +40,9 @@ import org.junit.runners.Suite;
         NewsBuilderMainTest.class, //
         SiteBuilderMainTest.class, //
         SiteBuilderTest.class, //
-        SiteBuilderTaskTest.class})
+        SiteMapBuilderTest.class, //
+        SiteBuilderTaskTest.class, //
+        ParsingReaderTest.class})
 public class AllTests {
 
     // using annotations only

@@ -20,7 +20,6 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
@@ -30,10 +29,15 @@ import org.apache.tools.ant.BuildFileTest;
 import org.apache.velocity.exception.ResourceNotFoundException;
 
 /**
- * This is a test suite for the &epsilon;&chi;Bib ant task.
+ * This is a test suite for the sitebuilder Ant task.
+ * 
+ * <p>
+ * <b>Note:</b> the run() method creates a temporary Ant build file in target/.
+ * Thus all path names are relative to this directory!
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * @version $Revision: 8301 $
+ * @version $Revision$
  */
 public class SiteBuilderTaskTest extends BuildFileTest {
 
@@ -58,7 +62,6 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         try {
             runTest("<SiteBuilder\n" //
                     + "  template=\"~/file/which/does/not/exist\"/>\n", //
-                null, //
                 "");
             assertTrue(false);
         } catch (BuildException e) {
@@ -71,13 +74,11 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      * Run a test.
      * 
      * @param invocation the invocation XML
-     * @param aux the contents of the aux file
      * @param log the contents of the log stream
      * 
      * @throws IOException in case of an I/O error during writing a temp file
      */
-    private void runTest(String invocation, String aux, String log)
-            throws IOException {
+    private void runTest(String invocation, String log) throws IOException {
 
         File build = new File("target/build.xml");
         FileWriter w = new FileWriter(build);
@@ -99,55 +100,75 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         configureProject(build.toString());
         executeTarget("test.case");
-        assertEquals("Message was logged but should not.", log, //
-            getLog().replaceAll("\\r", ""));
+        if (log != null) {
+            assertEquals("Message was logged but should not.", log, //
+                getLog().replaceAll("\\r", ""));
+        }
     }
 
     /**
-     * Test method for
-     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
+     * <testcase> TODO </testcase>
+     * 
+     * @throws Exception in case of an error
      */
-    public final void t_est01() {
-
-        configureProject("src/test/build.xml");
-        Locale.setDefault(Locale.ENGLISH);
-        executeTarget("test.case.1");
-        // assertEquals("Message was logged but should not.",
-        // "Missing aux file parameter.\n" + "(There was 1 error)\n",//
-        // getLog().replaceAll("\\r", ""));
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
-     */
-    public final void t_est02() {
-
-        configureProject("src/test/resources/build.xml");
-        Locale.setDefault(Locale.ENGLISH);
-        executeTarget("test.case.2");
-        assertEquals("Message was logged but should not.",
-            "I couldn\'t open file file/which/does/not/exist.aux\n"
-                    + "(There was 1 error)\n",//
-            getLog().replaceAll("\\r", ""));
-    }
-
     public final void test001() throws Exception {
 
+        runTest("<SiteBuilder>\n" //
+                + "  <omit>RCS</omit>\n"
+                + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
+                + "  <News output=\"test-site/rss/2.0/news.rss\" "
+                + "        max=\"3\"/>\n"
+                + "  <Tree dir=\"../src/test/resources/empty-site\"/>\n" //
+                + "  <Tree dir=\"../src/test/resources/test-site-1\""
+                + "        processHtml=\"true\"/>\n" //
+                + "  <Sitemap output=\"test-site/sitemap.html\" />\n"
+                + "</SiteBuilder>", //
+            null);
+        assertTrue(new File("target/test-site").exists());
+        assertFalse(new File("target/test-site/RCS").exists());
+        assertTrue(new File("target/test-site/index.html").exists());
+        assertTrue(new File("target/test-site/sitemap.html").exists());
+        assertTrue(new File("target/test-site/robots.txt").exists());
+    }
+
+    /**
+     * <testcase> TODO </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void testFail001() throws Exception {
+
         try {
-            runTest("<SiteBuilder\n" //
-                    + "  template=\"~/file/which/does/not/exist\">\n"
+            runTest("<SiteBuilder>\n" //
                     + "  <omit>RCS</omit>\n"
-                    + "  <SiteMap output=\"site/map/file\" />\n"
-                    + "  <SiteNews output=\"site/map/file\" max=\"3\"/>\n"
-                    + "  <SiteBase template=\"t_e_m_p_l_a_t_e\" "
-                    + "dir=\"site/map/file\"" + " />\n" + "</SiteBuilder>", //
-                null, //
+                    + "  <News output=\"site/map/file\" max=\"3\"/>\n"
+                    + "  <Tree template=\"t_e_m_p_l_a_t_e\" "
+                    + "    dir=\"site/map/file\""
+                    + " />\n" //
+                    + "  <Sitemap output=\"site/map/file\" />\n"
+                    + "</SiteBuilder>", //
                 "");
-            assertFalse(true);
+            assertTrue("Unexpected success", false);
+        } catch (Exception e) {
+            // YES!
+        }
+    }
+
+    /**
+     * <testcase> TODO </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void testFail002() throws Exception {
+
+        try {
+            runTest("<SiteBuilder>\n" //
+                    + "  <Tree />\n" //
+                    + "</SiteBuilder>", //
+                null);
         } catch (BuildException e) {
-            assertTrue(e.getCause().toString(),
-                e.getCause() instanceof FileNotFoundException);
+            assertTrue(e.getCause().toString(), e.getCause().toString()
+                .contains("Missing base"));
         }
     }
 }

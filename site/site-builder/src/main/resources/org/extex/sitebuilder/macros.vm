@@ -1,0 +1,10 @@
+#macro ( ExTeX )<i>&epsilon;&chi;</i>T<span class="e">e</span>X#end
+#macro ( ExBib )<i>&epsilon;&chi;</i>Bib#end
+#macro ( ExIndex )<i>&epsilon;&chi;</i>Index#end
+#macro ( LaTeX )L<span class="a">a</span>T<span class="e">e</span>X#end
+#macro ( BibTeX )B<small>IB</small>T<span class="e">e</span>X#end
+#macro ( TeX )T<span class="e">e</span>X#end
+#macro ( eTeX )&epsilon;-T<span class="e">e</span>X#end
+#macro ( pdfTeX )pdfT<span class="e">e</span>X#end
+#macro ( Omega )&Omega;#end
+#macro ( NTS )<i>NTS</i>#end

@@ -112,7 +112,8 @@ public final class SiteBuilderMain {
 
         SiteMapBuilder siteMap = siteBuilder.createSiteMap();
         siteMap.setOutput(new File("target/test-site/sitemap.html"));
-        siteBuilder.omit("CVS", ".svn");
+        siteBuilder.omit("CVS");
+        siteBuilder.omit(".svn");
         siteBuilder.lib("src/site/velocity/macros.vm");
 
         for (int i = 0; i < args.length; i++) {
@@ -130,7 +131,7 @@ public final class SiteBuilderMain {
                     return -1;
                 }
                 try {
-                    siteBuilder.createSiteBase(args[++i]);
+                    siteBuilder.createTreeBuilder(args[++i]);
                 } catch (FileNotFoundException e) {
                     System.err.println(e.toString());
                     return (-1);
@@ -161,12 +162,6 @@ public final class SiteBuilderMain {
                     return -1;
                 }
                 siteMap.setOutput(new File(args[++i]));
-            } else if ("-template".startsWith(arg)) {
-                if (i >= args.length - 1) {
-                    logger.severe("Missing argument for " + arg);
-                    return -1;
-                }
-                siteBuilder.setTemplate(args[++i]);
             } else if ("-help".startsWith(arg)) {
                 logger.info(HELP_INFO);
                 return -111;
@@ -201,10 +196,8 @@ public final class SiteBuilderMain {
         Logger logger = siteBuilder.getLogger();
         logger.setLevel(Level.INFO);
         logger.setUseParentHandlers(false);
-        for (Handler h : logger.getHandlers()) {
-            h.setLevel(Level.OFF);
-        }
         logger.addHandler(HANDLER);
+
         try {
             return processCommandLine(args, siteBuilder, logger);
         } finally {

@@ -69,7 +69,7 @@ public class TreeBuilder extends TemplatingEngine {
     /**
      * The field <tt>template</tt> contains the template file.
      */
-    private String template = "org/extex/sitebuilder/sitemap.vm";
+    private String template = "org/extex/sitebuilder/site.vm";
 
     /**
      * The field <tt>omitList</tt> contains the omit patterns.
@@ -157,7 +157,7 @@ public class TreeBuilder extends TemplatingEngine {
 
         File outfile = new File(outdir, infile.getName());
         if (logger != null) {
-            logger.info(infile + " ==> " + outfile);
+            logger.info(infile + " ==> " + outfile + "\n");
         }
 
         InputStream stream =
@@ -252,9 +252,6 @@ public class TreeBuilder extends TemplatingEngine {
                 ParserConfigurationException,
                 SAXException {
 
-        if (omitList.contains(dir.getName())) {
-            return;
-        }
         File[] dirlist = dir.listFiles(DIR_FILTER);
         Arrays.sort(dirlist);
         context.put("relativePath", relativePath);
@@ -273,7 +270,8 @@ public class TreeBuilder extends TemplatingEngine {
                     new File(outdir, f.getName()), //
                     (relativePath.equals(".") ? ".." : relativePath + "/.."),
                     t, engine, context);
-            } else if (translateHtml) {
+                context.put("relativePath", relativePath);
+            } else if (translateHtml && f.getName().matches(".*\\.html$")) {
                 context.put("relativePath", relativePath);
                 context.put("directory", dirlist);
                 context.put("navigation", nav);
@@ -299,6 +297,9 @@ public class TreeBuilder extends TemplatingEngine {
             throws FileNotFoundException,
                 IOException {
 
+        if (!outdir.exists()) {
+            outdir.mkdirs();
+        }
         InputStream in = new BufferedInputStream(new FileInputStream(file));
         try {
             File outfile = new File(outdir, file.getName());
@@ -382,22 +383,15 @@ public class TreeBuilder extends TemplatingEngine {
         VelocityEngine engine = makeEngine();
         VelocityContext context = makeContext(engine);
 
-        applyTemplate(base, //
-            target, //
-            ".", //
-            engine.getTemplate(template), //
-            engine, //
-            context);
-    }
+        if (!omitList.contains(base.getName())) {
 
-    /**
-     * Getter for logger.
-     * 
-     * @return the logger
-     */
-    public Logger getLogger() {
-
-        return logger;
+            applyTemplate(base, //
+                target, //
+                ".", //
+                engine.getTemplate(template), //
+                engine, //
+                context);
+        }
     }
 
     /**
@@ -441,7 +435,7 @@ public class TreeBuilder extends TemplatingEngine {
      */
     public void setBase(File base) throws FileNotFoundException {
 
-        if (!base.isDirectory()) {
+        if (base != null && !base.isDirectory()) {
             throw new FileNotFoundException(base.toString());
         }
 
@@ -456,6 +450,7 @@ public class TreeBuilder extends TemplatingEngine {
     public void setLogger(Logger logger) {
 
         this.logger = logger;
+        logger.config("logger set\n");
     }
 
     /**
@@ -466,6 +461,7 @@ public class TreeBuilder extends TemplatingEngine {
     public void setTarget(File target) {
 
         this.target = target;
+        logger.config("target = " + target + "\n");
     }
 
     /**
@@ -476,6 +472,7 @@ public class TreeBuilder extends TemplatingEngine {
     public void setTemplate(String template) {
 
         this.template = template;
+        logger.config("template = " + template + "\n");
     }
 
     /**
@@ -486,6 +483,11 @@ public class TreeBuilder extends TemplatingEngine {
     public void setTranslateHtml(boolean translateHtml) {
 
         this.translateHtml = translateHtml;
+        logger.config("translate HTML = " + Boolean.toString(translateHtml)
+                + "\n");
+        // ResourceBundle bundle =
+        // ResourceBundle.getBundle(getClass().getName());
+        // bundle.getString("");
     }
 
 }

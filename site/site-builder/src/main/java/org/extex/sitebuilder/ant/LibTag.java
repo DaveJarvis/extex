@@ -19,17 +19,17 @@
 
 package org.extex.sitebuilder.ant;
 
-import org.extex.sitebuilder.core.SiteBuilder;
+import org.extex.sitebuilder.core.LibReceiver;
 
 /**
- * This class is the container for the <tt>&lt;omit&gt;</tt> tag from the Ant
- * build file. the text contained is stored internally and passed to a site
- * builder upon request.
+ * This class is the container for the <tt>&lt;lib&gt;</tt> tag from the Ant
+ * build file. the text contained is stored internally and passed to a receiver
+ * upon request.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class OmitTag {
+public class LibTag {
 
     /**
      * The field <tt>text</tt> contains the contents.
@@ -49,11 +49,11 @@ public class OmitTag {
     /**
      * Propagate the valued contained in the text to a site builder.
      * 
-     * @param builder the target object
+     * @param receiver the target object
      */
-    public void propagate(SiteBuilder builder) {
+    public void propagate(LibReceiver receiver) {
 
-        builder.omit(text.toString());
+        receiver.lib(text.toString());
     }
 
 }

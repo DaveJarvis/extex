@@ -17,29 +17,45 @@
  *
  */
 
-package org.extex.sitebuilder.core.processor;
+package org.extex.sitebuilder.core;
 
 import java.io.File;
 
+import org.junit.Test;
+
 /**
- * This interface describes a build processor. This provides a function to
- * translate a certain file type.
+ * This is a test suite for {@link SitemapBuilder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Builder {
+public class SiteMapBuilderTest {
 
     /**
-     * TODO gne: missing JavaDoc
-     * 
-     * @param in the input file
+     * <testcase>A <code>null</code> target leads to an error in
+     * generate().</testcase>
      * 
      * @throws Exception in case of an error
      */
-    void build(File in) throws Exception;
+    @Test(expected = IllegalArgumentException.class)
+    public void testTarget01() throws Exception {
 
-    void start() throws Exception;
+        SiteMapBuilder siteMapBuilder = new SiteMapBuilder();
+        siteMapBuilder.generate();
+    }
 
-    void stop() throws Exception;
+    /**
+     * <testcase>A <code>null</code> template leads to an error in
+     * generate().</testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = IllegalArgumentException.class)
+    public void testTemplate01() throws Exception {
+
+        SiteMapBuilder siteMapBuilder = new SiteMapBuilder();
+        siteMapBuilder.setTarget(new File("target/sitemap.html"));
+        siteMapBuilder.setTemplate(null);
+        siteMapBuilder.generate();
+    }
 }

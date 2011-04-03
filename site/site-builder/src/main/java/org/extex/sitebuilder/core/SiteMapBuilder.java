@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.logging.Logger;
 
-import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
 
@@ -41,7 +40,7 @@ public class SiteMapBuilder extends TemplatingEngine {
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private Logger logger = null;
+    private Logger logger = Logger.getLogger(SiteMapBuilder.class.getName());
 
     /**
      * The field <tt>template</tt> contains the template.
@@ -71,9 +70,7 @@ public class SiteMapBuilder extends TemplatingEngine {
         if (template == null) {
             throw new IllegalArgumentException("Missing template");
         }
-        if (logger != null) {
-            logger.info("generating " + output);
-        }
+        logger.info("generating " + output);
 
         VelocityEngine engine = makeEngine();
         VelocityContext context = makeContext(engine);
@@ -84,12 +81,12 @@ public class SiteMapBuilder extends TemplatingEngine {
         context.put("targetDirectory", new FileWrapper(target, "."));
         File dir = output.getParentFile();
         if (!dir.exists() && !dir.mkdirs()) {
+            logger.severe("directory creation failed: " + dir + "\n");
             throw new IOException("directory creation failed: " + dir);
         }
         Writer writer = new BufferedWriter(new FileWriter(output));
         try {
-            Template t = engine.getTemplate(template);
-            t.merge(context, writer);
+            engine.getTemplate(template).merge(context, writer);
         } finally {
             writer.close();
             context.put("targetDirectory", null);
@@ -114,6 +111,7 @@ public class SiteMapBuilder extends TemplatingEngine {
     public void setOutput(File output) {
 
         this.output = output;
+        logger.config("output = " + output + "\n");
     }
 
     /**
@@ -124,6 +122,7 @@ public class SiteMapBuilder extends TemplatingEngine {
     public void setTarget(File target) {
 
         this.target = target;
+        logger.config("target = " + target + "\n");
     }
 
     /**
@@ -134,6 +133,7 @@ public class SiteMapBuilder extends TemplatingEngine {
     public void setTemplate(String template) {
 
         this.template = template;
+        logger.config("template = " + template + "\n");
     }
 
 }

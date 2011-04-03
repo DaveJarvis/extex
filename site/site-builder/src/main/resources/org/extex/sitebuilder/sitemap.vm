@@ -3,15 +3,19 @@
                       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 #macro(scanDir $dir)
   <ul class="sitemap">
-  #foreach( $item in $dir.files() )
-    #if($item.isDirectory())
-    <li><a href="$item.getRelativeName()/index.html">$item.getTitle()</a>
-       #scanDir($item)
+    #if($dir.isDirectory())
+    <li><a href="$dir.getRelativeName()/index.html">$dir.getTitle()</a>
+      #foreach( $item in $dir.files() )
+        #if($item.isDirectory())
+        <li>#scanDir($item)
+        #else
+        <li><a href="$item.getRelativeName()">$item.getTitle()</a>
+        #end
+        </li>
+      #end
     #else
     <li><a href="$item.getRelativeName()">$item.getTitle()</a>
     #end
-    </li>
-  #end
   </ul>
 #end
 <head>

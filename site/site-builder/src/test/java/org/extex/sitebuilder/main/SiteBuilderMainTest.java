@@ -24,7 +24,6 @@ import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
 
 import org.junit.Test;
@@ -36,36 +35,6 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class SiteBuilderMainTest {
-
-    /**
-     * Recursively delete a directory tree.
-     * 
-     * @param dir the directory
-     * 
-     * @throws IOException in case of an error
-     */
-    private static void rmdir(File dir) throws IOException {
-
-        if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir.toString());
-        }
-        for (String f : dir.list()) {
-            File file = new File(dir, f);
-            if (file.isFile()) {
-                if (!file.delete()) {
-                    throw new IOException("deletion failed: " + file.toString());
-                }
-            } else if (file.isDirectory()) {
-                rmdir(file);
-            } else {
-                throw new IllegalStateException("strange file encountered: "
-                        + file.toString());
-            }
-        }
-        if (!dir.delete()) {
-            throw new IOException("deletion failed: " + dir.toString());
-        }
-    }
 
     /**
      * Run the news builder with a given command line.
@@ -207,20 +176,6 @@ public class SiteBuilderMainTest {
         assertEquals(
             -1,
             run(new String[]{"-sitemap"}, "*** Missing argument for -sitemap\n"));
-    }
-
-    /**
-     * <testcase> A missing argument for the option <tt>-template</tt> is
-     * recognized. </testcase>
-     * 
-     */
-    @Test
-    public void testTemplate01() {
-
-        assertEquals(
-            -1,
-            run(new String[]{"-template"},
-                "*** Missing argument for -template\n"));
     }
 
     /**

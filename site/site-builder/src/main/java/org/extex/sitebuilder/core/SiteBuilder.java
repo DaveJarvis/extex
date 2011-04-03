@@ -19,15 +19,8 @@
 
 package org.extex.sitebuilder.core;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -35,17 +28,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.apache.velocity.Template;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.context.Context;
-import org.apache.velocity.exception.MethodInvocationException;
 import org.apache.velocity.exception.ParseErrorException;
 import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.log.LogChute;
-import org.xml.sax.SAXException;
 
 /**
  * This is the site builder of &epsilon;&chi;TeX which utilizes Apache Velocity
@@ -54,7 +39,7 @@ import org.xml.sax.SAXException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SiteBuilder {
+public class SiteBuilder implements LibReceiver {
 
     /**
      * The field <tt>levelMap</tt> contains the mapping from Velocity error
@@ -115,107 +100,6 @@ public class SiteBuilder {
     }
 
     /**
-     * Apply a single template to a file.
-     * 
-     * @param infile the input file
-     * @param t the template
-     * @param outdir the output directory
-     * @param context the context
-     * @param logger the logger
-     * @param engine the engine
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws ParserConfigurationException in case of an error
-     * @throws SAXException in case of an error
-     */
-    public void apply(File infile, Template t, File outdir,
-            VelocityContext context, Logger logger, VelocityEngine engine)
-            throws IOException,
-                ParserConfigurationException,
-                SAXException {
-
-        if (!outdir.exists() && !outdir.mkdirs()) {
-            throw new IOException("Creation of directory failed: " + outdir);
-        }
-
-        File outfile = new File(outdir, infile.getName());
-        if (logger != null) {
-            logger.info(infile + " ==> " + outfile);
-        }
-
-        InputStream stream =
-                new BufferedInputStream(new FileInputStream(infile));
-        StringBuilder buffer = new StringBuilder();
-        try {
-            for (int c = stream.read(); c >= 0; c = stream.read()) {
-                buffer.append((char) c);
-            }
-        } finally {
-            stream.close();
-        }
-
-        context.put("relatvePath", ".");
-        context.put("headContent", "");
-        context.put("bodyContent", "");
-        String head = applyFindTag("head", engine, buffer, context);
-        String body = applyFindTag("body", engine, buffer, context);
-
-        context.put("headContent", head);
-        context.put("bodyContent", body);
-        Writer writer = new FileWriter(outfile);
-        try {
-            t.merge(context, writer);
-        } finally {
-            writer.close();
-        }
-    }
-
-    /**
-     * Extract the contents of an XML tag from a file. The method does not use
-     * an XML parser but uses a rough approximation which allows invalid XML to
-     * be processed.
-     * 
-     * @param tag the tag
-     * @param engine the engine
-     * @param buffer the buffer
-     * @param context the context
-     * 
-     * @return the value of the tagged node
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws ResourceNotFoundException in case of an error
-     * @throws MethodInvocationException in case of an error
-     * @throws ParseErrorException in case of an error
-     */
-    private String applyFindTag(String tag, VelocityEngine engine,
-            StringBuilder buffer, Context context)
-            throws ParseErrorException,
-                MethodInvocationException,
-                ResourceNotFoundException,
-                IOException {
-
-        int start = buffer.indexOf("<" + tag);
-        if (start < 0) {
-            throw new RuntimeException("missing <" + tag);
-        }
-        start = buffer.indexOf(">", start);
-        if (start < 0) {
-            throw new RuntimeException("missing > for " + tag);
-        }
-        start++;
-
-        int end = buffer.indexOf("</" + tag + ">", start);
-        if (end < 0) {
-            throw new RuntimeException("missing </" + tag + ">");
-        }
-
-        Writer writer = new StringWriter();
-        engine.evaluate(context, writer, tag, //
-            buffer.substring(start, end).trim());
-        return writer.toString();
-    }
-
-    /**
      * Factory method for the {@link SiteMapBuilder} class. The new instance is
      * integrated into the list of site maps to be produced.
      * 
@@ -228,44 +112,6 @@ public class SiteBuilder {
         news.setLogger(logger);
         newsBuilderList.add(news);
         return news;
-    }
-
-    /**
-     * Factory method for the {@link TreeBuilder} class. The new instance is
-     * integrated into the list of site maps to be produced.
-     * 
-     * @param basedir the base directory
-     * 
-     * @return the new instance
-     * 
-     * @throws FileNotFoundException in case of an error
-     */
-    public TreeBuilder createSiteBase(File basedir) throws FileNotFoundException {
-
-        TreeBuilder siteBase = new TreeBuilder();
-        siteBase.setLogger(logger);
-        siteBase.setBase(basedir);
-        siteBase.setTarget(target);
-        for (String lib : libraries) {
-            siteBase.addLibrary(lib);
-        }
-        bases.add(siteBase);
-        return siteBase;
-    }
-
-    /**
-     * Factory method for the {@link TreeBuilder} class. The new instance is
-     * integrated into the list of site maps to be produced.
-     * 
-     * @param basedir the base directory
-     * 
-     * @return the new instance
-     * 
-     * @throws FileNotFoundException in case of an error
-     */
-    public TreeBuilder createSiteBase(String basedir) throws FileNotFoundException {
-
-        return createSiteBase(new File(basedir));
     }
 
     /**
@@ -284,6 +130,45 @@ public class SiteBuilder {
     }
 
     /**
+     * Factory method for the {@link TreeBuilder} class. The new instance is
+     * integrated into the list of site maps to be produced.
+     * 
+     * @return the new instance
+     */
+    public TreeBuilder createTreeBuilder() {
+
+        TreeBuilder treeBuilder = new TreeBuilder();
+        treeBuilder.setLogger(logger);
+        treeBuilder.setTarget(target);
+        for (String lib : libraries) {
+            treeBuilder.lib(lib);
+        }
+        for (String om : omit) {
+            treeBuilder.addOmit(om);
+        }
+        bases.add(treeBuilder);
+        return treeBuilder;
+    }
+
+    /**
+     * Factory method for the {@link TreeBuilder} class. The new instance is
+     * integrated into the list of site maps to be produced.
+     * 
+     * @param basedir the base directory
+     * 
+     * @return the new instance
+     * 
+     * @throws FileNotFoundException in case of an error
+     */
+    public TreeBuilder createTreeBuilder(String basedir)
+            throws FileNotFoundException {
+
+        TreeBuilder treeBuilder = createTreeBuilder();
+        treeBuilder.setBase(new File(basedir));
+        return treeBuilder;
+    }
+
+    /**
      * Getter for the logger.
      * 
      * @return the logger
@@ -296,42 +181,41 @@ public class SiteBuilder {
     /**
      * Adder for libs.
      * 
-     * @param list the libs to add or <code>null</code>
+     * @param lib the lib to add or <code>null</code>
      * 
      * @throws ParseErrorException in case of an error
      * @throws ResourceNotFoundException in case of an error
      */
-    public void lib(String... list)
+    @Override
+    public void lib(String lib)
             throws ResourceNotFoundException,
                 ParseErrorException {
 
-        if (list == null) {
+        if (lib == null) {
             return;
         }
-        for (String lib : list) {
-            libraries.add(lib);
-            for (TreeBuilder base : bases) {
-                base.addLibrary(lib);
-            }
+        libraries.add(lib);
+        for (TreeBuilder base : bases) {
+            base.lib(lib);
         }
     }
 
     /**
-     * Add some directory or file names to be omitted.
+     * Add some directory or file names to be omitted. This information is kept
+     * for future tree builders and immediately propagated to already registered
+     * tree builders.
      * 
      * @param omits the list of omit; a <code>null</code> list is silently
      *        ignored
      */
-    public void omit(String... omits) {
+    public void omit(String om) {
 
-        if (omits == null) {
+        if (om == null) {
             return;
         }
-        for (String s : omits) {
-            omit.add(s);
-            for (TreeBuilder base : bases) {
-                base.addOmit(s);
-            }
+        omit.add(om);
+        for (TreeBuilder base : bases) {
+            base.addOmit(om);
         }
     }
 
@@ -366,16 +250,6 @@ public class SiteBuilder {
     }
 
     /**
-     * Setter for the log level.
-     * 
-     * @param level the new level
-     */
-    public void setLogLevel(Level level) {
-
-        logger.setLevel(level);
-    }
-
-    /**
      * Setter for the target dir.
      * 
      * @param targetDir the target dir to set
@@ -383,7 +257,7 @@ public class SiteBuilder {
     public void setTarget(File targetDir) {
 
         if (targetDir == null) {
-            throw new NullPointerException("Missing target directory");
+            throw new IllegalArgumentException("Missing target directory");
         }
         target = targetDir;
         for (TreeBuilder base : bases) {
@@ -394,16 +268,4 @@ public class SiteBuilder {
         }
     }
 
-    /**
-     * Setter for the template.
-     * 
-     * @param template the template to set
-     */
-    public void setTemplate(String template) {
-
-        if (template == null) {
-            throw new NullPointerException("Missing template");
-        }
-        // TODO
-    }
 }

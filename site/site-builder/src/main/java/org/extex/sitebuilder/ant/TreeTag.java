@@ -20,43 +20,33 @@
 package org.extex.sitebuilder.ant;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+
+import org.apache.tools.ant.BuildException;
+import org.extex.sitebuilder.core.TreeBuilder;
 
 /**
- * TODO gne: missing JavaDoc.
+ * This class is a wrapper for the tree builder. It provides the setters needed
+ * for the tree tag in an Ant build file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BaseTag {
+public class TreeTag {
 
     /**
-     * The field <tt>template</tt> contains the template file.
+     * The field <tt>builder</tt> contains the wrapped tree builder.
      */
-    private File template = null;
+    private TreeBuilder builder;
 
     /**
-     * The field <tt>dir</tt> contains the base directory.
-     */
-    private File dir = null;
-
-    /**
-     * Getter for dir.
+     * Creates a new object.
      * 
-     * @return the dir
+     * @param treeBuilder
      */
-    public File getDir() {
+    public TreeTag(TreeBuilder treeBuilder) {
 
-        return dir;
-    }
-
-    /**
-     * Getter for template.
-     * 
-     * @return the template
-     */
-    public File getTemplate() {
-
-        return template;
+        builder = treeBuilder;
     }
 
     /**
@@ -66,7 +56,21 @@ public class BaseTag {
      */
     public void setDir(File dir) {
 
-        this.dir = dir;
+        try {
+            builder.setBase(dir);
+        } catch (FileNotFoundException e) {
+            throw new BuildException(e.toString());
+        }
+    }
+
+    /**
+     * Setter for the processing flag.
+     * 
+     * @param onOff the value
+     */
+    public void setProcessHtml(boolean onOff) {
+
+        builder.setTranslateHtml(onOff);
     }
 
     /**
@@ -76,7 +80,7 @@ public class BaseTag {
      */
     public void setTemplate(File template) {
 
-        this.template = template;
+        builder.setTemplate(template.toString());
     }
 
 }
