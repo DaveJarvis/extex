@@ -107,21 +107,26 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> An invocation with all possible flags succeeds. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public final void test001() throws Exception {
+    public final void test01() throws Exception {
 
-        runTest("<SiteBuilder>\n" //
+        runTest("<SiteBuilder"
+                + "    output=\"test-site\""
+                + "    logLevel=\"WARNING\" >\n" //
                 + "  <omit>RCS</omit>\n"
                 + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
                 + "  <News output=\"test-site/rss/2.0/news.rss\" "
+                + "        template=\"org/extex/sitebuilder/news.vm\"\n" //
                 + "        max=\"3\"/>\n"
-                + "  <Tree dir=\"../src/test/resources/empty-site\"/>\n" //
+                + "  <Tree dir=\"../src/test/resources/empty-site\""
+                + "        template=\"org/extex/sitebuilder/site.vm\"/>\n" //
                 + "  <Tree dir=\"../src/test/resources/test-site-1\""
                 + "        processHtml=\"true\"/>\n" //
-                + "  <Sitemap output=\"test-site/sitemap.html\" />\n"
+                + "  <Sitemap output=\"test-site/sitemap.html\""
+                + "        template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
                 + "</SiteBuilder>", //
             null);
         assertTrue(new File("target/test-site").exists());
@@ -132,34 +137,40 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> An empty sitebuilder specification does no harm. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public final void testFail001() throws Exception {
+    public final void test02() throws Exception {
+
+        runTest("<SiteBuilder/>\n", "");
+    }
+
+    /**
+     * <testcase> An illegal base dir in a tree leads to an error. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    public final void testTree01() throws Exception {
 
         try {
             runTest("<SiteBuilder>\n" //
-                    + "  <omit>RCS</omit>\n"
-                    + "  <News output=\"site/map/file\" max=\"3\"/>\n"
-                    + "  <Tree template=\"t_e_m_p_l_a_t_e\" "
-                    + "    dir=\"site/map/file\""
-                    + " />\n" //
-                    + "  <Sitemap output=\"site/map/file\" />\n"
+                    + "  <Tree dir=\"site/base/dir\" />\n" //
                     + "</SiteBuilder>", //
                 "");
             assertTrue("Unexpected success", false);
         } catch (Exception e) {
-            // YES!
+            assertTrue(e.getMessage(),
+                e.getMessage().contains("java.io.FileNotFoundException"));
         }
     }
 
     /**
-     * <testcase> TODO </testcase>
+     * <testcase> a missing base dir for a tree leads to an error. </testcase>
      * 
      * @throws Exception in case of an error
      */
-    public final void testFail002() throws Exception {
+    public final void testTree02() throws Exception {
 
         try {
             runTest("<SiteBuilder>\n" //
