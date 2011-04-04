@@ -144,35 +144,32 @@ public class FileWrapper extends File implements FileFilter {
         if (title != null) {
             return title;
         }
-        File f = this;
+        File f = null;
         if (isDirectory()) {
-            f = new File(this, "index.html");
-            if (!f.exists()) {
-                title = getName();
-                return title;
+            File index = new File(this, "index.html");
+            if (index.exists()) {
+                f = index;
             }
-
         } else if (isFile()) {
             f = this;
-        } else {
-            title = getName();
-            return title;
         }
-        try {
-            ParsingReader reader = new ParsingReader(new FileReader(f));
+        if (f != null) {
             try {
-                if (reader.scanToTag("title")) {
-                    StringBuilder buffer = new StringBuilder();
-                    if (reader.scanToTag("/title", buffer)) {
-                        title = buffer.toString().replaceAll("[\r\n]", "");
-                        return title;
+                ParsingReader reader = new ParsingReader(new FileReader(f));
+                try {
+                    if (reader.scanToTag("title")) {
+                        StringBuilder buffer = new StringBuilder();
+                        if (reader.scanToTag("/title", buffer)) {
+                            title = buffer.toString().replaceAll("[\r\n]", "");
+                            return title;
+                        }
                     }
+                } finally {
+                    reader.close();
                 }
-            } finally {
-                reader.close();
+            } catch (IOException e) {
+                // fall through
             }
-        } catch (IOException e) {
-            // fall through
         }
         title = getName();
         return title;
