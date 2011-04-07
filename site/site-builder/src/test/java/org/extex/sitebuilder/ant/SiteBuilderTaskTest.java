@@ -26,10 +26,10 @@ import java.util.Locale;
 
 import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildFileTest;
-import org.apache.velocity.exception.ResourceNotFoundException;
+import org.extex.sitebuilder.CleanupUtil;
 
 /**
- * This is a test suite for the sitebuilder Ant task.
+ * This is a test suite for the site builder Ant task.
  * 
  * <p>
  * <b>Note:</b> the run() method creates a temporary Ant build file in target/.
@@ -49,25 +49,6 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     public SiteBuilderTaskTest(String name) {
 
         super(name);
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.SiteBuilder.ant.SiteBuilderTask#execute()}.
-     * 
-     * @throws Exception in case of an error
-     */
-    public final void _testTemplate1() throws Exception {
-
-        try {
-            runTest("<SiteBuilder\n" //
-                    + "  template=\"~/file/which/does/not/exist\"/>\n", //
-                "");
-            assertTrue(false);
-        } catch (BuildException e) {
-            Throwable cause = e.getCause();
-            assertTrue(cause instanceof ResourceNotFoundException);
-        }
     }
 
     /**
@@ -113,6 +94,10 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     public final void test01() throws Exception {
 
+        File siteDir = new File("target/test-site");
+        CleanupUtil.rmdir(siteDir);
+        assertFalse(siteDir.exists());
+
         runTest("<SiteBuilder"
                 + "    output=\"test-site\""
                 + "    logLevel=\"WARNING\" >\n" //
@@ -129,11 +114,11 @@ public class SiteBuilderTaskTest extends BuildFileTest {
                 + "        template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
                 + "</SiteBuilder>", //
             null);
-        assertTrue(new File("target/test-site").exists());
-        assertFalse(new File("target/test-site/RCS").exists());
-        assertTrue(new File("target/test-site/index.html").exists());
-        assertTrue(new File("target/test-site/sitemap.html").exists());
-        assertTrue(new File("target/test-site/robots.txt").exists());
+        assertTrue(siteDir.exists());
+        assertFalse(new File(siteDir, "RCS").exists());
+        assertTrue(new File(siteDir, "index.html").exists());
+        assertTrue(new File(siteDir, "sitemap.html").exists());
+        assertTrue(new File(siteDir, "robots.txt").exists());
     }
 
     /**
@@ -143,7 +128,11 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     public final void test02() throws Exception {
 
+        File siteDir = new File("target/test-site");
+        CleanupUtil.rmdir(siteDir);
+        assertFalse(siteDir.exists());
         runTest("<SiteBuilder/>\n", "");
+        assertFalse(siteDir.exists());
     }
 
     /**
