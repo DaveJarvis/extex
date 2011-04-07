@@ -21,6 +21,8 @@
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X site builder.
  * It provides an entry point for this well-defined of interface.
+ * 
+ * <img src="doc-files/overview.png" width="100%"/>
  */
 
 package org.extex.sitebuilder.ant;
