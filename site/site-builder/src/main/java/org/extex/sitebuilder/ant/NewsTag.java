@@ -67,6 +67,16 @@ public class NewsTag {
 
         builder.setMax(max);
     }
+    
+    /**
+     * Setter for the base directory.
+     * 
+     * @param base the base directory to set
+     */
+    public void setDir(File base) {
+
+        builder.setBaseDirectory(base);
+    }
 
     /**
      * Setter for the output file.
