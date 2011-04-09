@@ -31,28 +31,28 @@ import java.io.IOException;
 public class CleanupUtil {
 
     /**
-     * Recursively delete a directory tree.
+     * Recursively delete a file or a directory tree.
      * 
-     * @param dir the directory
+     * @param dir the file or directory
      * 
      * @throws IOException in case of an error
      */
     public static void rmdir(File dir) throws IOException {
 
-        if (!dir.isDirectory()) {
-            throw new IllegalArgumentException(dir.toString());
-        }
-        for (String f : dir.list()) {
-            File file = new File(dir, f);
-            if (file.isFile()) {
-                if (!file.delete()) {
-                    throw new IOException("deletion failed: " + file.toString());
+        if (dir.isDirectory()) {
+            for (String f : dir.list()) {
+                File file = new File(dir, f);
+                if (file.isFile()) {
+                    if (!file.delete()) {
+                        throw new IOException("deletion failed: "
+                                + file.toString());
+                    }
+                } else if (file.isDirectory()) {
+                    rmdir(file);
+                } else {
+                    throw new IllegalStateException(
+                        "strange file encountered: " + file.toString());
                 }
-            } else if (file.isDirectory()) {
-                rmdir(file);
-            } else {
-                throw new IllegalStateException("strange file encountered: "
-                        + file.toString());
             }
         }
         if (!dir.delete()) {
