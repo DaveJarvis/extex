@@ -12,7 +12,6 @@
   $headContent
   <link rel="alternate" type="application/rss+xml"
         title="ExTeX News" href="http://www.extex.org/rss/2.0/ExTeX.rss" />
-  <meta name="date" content="$currentDate" />
   <link rel="stylesheet" href="$relativePath/css/site.css" type="text/css" />
 </head>
 <body>
@@ -22,7 +21,7 @@
        width="172" height="63" border="0"
        title="ExTeX" alt="ExTeX"/></a>
  <div class="ad">
-   <iframe src="$relativePath/ad/extex.html" class="ad" name="ADframe"
+   <iframe src="$relativePath/ad/extex.htm" class="ad" name="ADframe"
            scrolling="no" marginheight="0" marginwidth="0" frameborder="0">
     <a href="http://www.extex.org/"
        title="ExTeX - Typesetting for the 21st century"
