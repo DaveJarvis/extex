@@ -9,7 +9,7 @@ body {
   font-family:sans-serif;
   margin-left:150px;
   margin-right:2em;
-  background: url(src/images/side.png) repeat-y;
+  background: url(../images/side.png) repeat-y;
 }
 .e {
   text-transform:uppercase;
@@ -56,11 +56,12 @@ pre {
   </style>
 </head>
 <body>
+<img class="left" src="../images/ExTeX-build-side.gif"/>
 
 <h1>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Build System </h1>
 
 <p>
- The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
+ The &epsilon;&chi;<pan class="t">T</span><span class="e">e</span>X
  build system is run on a regularily basis to regenerate all files
  presented on the &epsilon;&chi;<span class="t">T</span><span
  class="e">e</span>X Web site <a
@@ -73,17 +74,17 @@ pre {
 </p>
 <ul>
  <li>
-   The command <tt>svn</tt> needs to be present on the user&quot;s
+   The command <tt>svn</tt> needs to be present on the user's
    execution path. This is the case when Subversion has been installed
    properly.
  </li>
  <li>
-   The command <tt>make</tt> needs to be present on the user&quot;s
+   The command <tt>make</tt> needs to be present on the user's
    execution path. This is the case when the development tools on
    Linux have been installed.
  </li>
  <li>
-   The command <tt>perl</tt> needs to be present on the user&quot;s
+   The command <tt>perl</tt> needs to be present on the user's
    execution path.
  </li>
  <li>
@@ -92,12 +93,12 @@ pre {
  </li>
  <li>
    The command <tt>mvn</tt> needs to be present on the path. This is
-   the case after Maven has been installed. Currently the version 2.06
+   the case after Maven has been installed. Currently the version 3.0.3
    is used.
  </li>
  <li>
    The commands <tt>pdftex</tt> and <tt>makeindex</tt> need to be
-   present on the path.
+   present on the path (for the time being).
  </li>
 </ul>
 
@@ -160,7 +161,7 @@ source src/nightly-build/nightly-build.sh >>$LOG 2>&1
  To edit the cron configuration you can use <tt>crontab -e</tt>.
 </p>
 
-<h2> Buikd Host</h2>
+<h2> Build Host</h2>
 <p>
 Currently the build system for the nightly build is hosted by <a
 href="http://www.dante.de">DANTE e.V.</a> The host used is
@@ -169,7 +170,7 @@ comedy.dante.de.
 
 <address>
 <font face="helvetica,sans-serif" size="1">
-© 2006-2010 <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+© 2006-2011 <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
 </font>
 </address>
 </body>
