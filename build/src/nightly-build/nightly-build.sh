@@ -5,7 +5,7 @@
 # Assumption: The current directory when this script is run has to be
 #             the build directory in the ExTeX root (trunk)
 #
-# (c) 2003-2010 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# (c) 2003-2011 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
 if [ "$LOG" == "" ]; then
@@ -25,16 +25,19 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
-(cd develop; mvn install)
-(cd tools/doc-tools; mvn install)
+(cd develop;		mvn install)	|| true
+(cd tools/doc-tools;	mvn install)	|| true
+(cd ExBib;		mvn package)	|| true
+#(cd ExBib/ExBib-Installer; mvn package)		|| true
 
-mvn -Dmaven.test.skip=true install
+(cd ExTeX;		mvn package)	|| true
 
+mvn -Dmaven.test.skip=true install	|| true
 #mvn compile
 
-mvn -Dmaven.test.skip=true site
+(cd ExBib;		mvn site:stage site:deploy)	|| true
 
-# (cd ExBib/ExBib-Installer; mvn package)
+mvn -Dmaven.test.skip=true site		|| true
 
 
 #####################################################################
