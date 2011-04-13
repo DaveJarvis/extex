@@ -25,19 +25,19 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
-(cd develop;		mvn install)	|| true
-(cd tools/doc-tools;	mvn install)	|| true
-(cd ExBib;		mvn package)	|| true
+(cd develop;		mvn install)			|| true
+(cd tools/doc-tools;	mvn install)			|| true
+(cd ExBib;		mvn install)			|| true
 #(cd ExBib/ExBib-Installer; mvn package)		|| true
 
-(cd ExTeX;		mvn package)	|| true
+(cd ExTeX;		mvn package)			|| true
 
-mvn -Dmaven.test.skip=true install	|| true
+mvn -Dmaven.test.skip=true install			|| true
 #mvn compile
 
 (cd ExBib;		mvn site:stage site:deploy)	|| true
 
-mvn -Dmaven.test.skip=true site		|| true
+mvn -Dmaven.test.skip=true site				|| true
 
 
 #####################################################################
