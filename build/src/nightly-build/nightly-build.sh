@@ -46,8 +46,8 @@ echo '########## ExBib site ##########'
 (cd ExBib;		mvn site:stage site:deploy)	|| true
 
 echo '########## site ##########'
-mvn -Dmaven.test.skip=true site				|| true
-
+#mvn -Dmaven.test.skip=true site				|| true
+(cd site;               mvn compile)                    || true
 
 #####################################################################
 #if [ "$ANT_HOME" == "" ]; then
