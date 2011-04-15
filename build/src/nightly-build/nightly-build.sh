@@ -43,7 +43,7 @@ echo '########## install ##########'
 mvn -Dmaven.test.skip=true install			|| true
 
 echo '########## ExBib site ##########'
-(cd ExBib;		mvn site:stage site:deploy)	|| true
+(cd ExBib;		mvn site:site site:stage site:deploy)	|| true
 
 echo '########## site ##########'
 #mvn -Dmaven.test.skip=true site				|| true
