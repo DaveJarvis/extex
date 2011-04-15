@@ -29,10 +29,12 @@ echo '########## develop ##########'
 (cd develop;		mvn install)			|| true
 echo '########## tools/doc-tools ##########'
 (cd tools/doc-tools;	mvn install)			|| true
+echo '########## tools/ExTeX-skin ##########'
+(cd tools/ExTeX-skin;    mvn install)                   || true
 echo '########## ExBib ##########'
 (cd ExBib;		mvn install)			|| true
-#echo '########## ExBib-Installer ##########'
-#(cd ExBib/ExBib-Installer; mvn package)		|| true
+echo '########## ExBib-Installer ##########'
+(cd ExBib/ExBib-Installer; mvn package)   		|| true
 
 echo '########## ExTeX ##########'
 (cd ExTeX;		mvn -Dmaven.test.skip=true package)	|| true
