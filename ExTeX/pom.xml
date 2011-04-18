@@ -25,19 +25,14 @@
    as much as reasonable.
   </description>
 
-<!--
-  <parent>
-    <groupId>org.extex</groupId>
-    <artifactId>project</artifactId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
--->
-
   <organization>
     <name>The ExTeX Group</name>
     <url>http://www.extex.org</url>
   </organization>
+
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+  </properties>
 
   <scm>
     <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
