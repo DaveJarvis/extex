@@ -61,13 +61,12 @@ public class ExBibTaskTest extends BuildFileTest {
         File build = new File("target/build.xml");
         FileWriter w = new FileWriter(build);
         try {
-            w
-                .write("<project name=\"ant-test\">\n"
-                        + "  <taskdef name=\"ExBib\"\n"
-                        + "           classname=\"org.extex.exbib.ant.ExBibTask\"\n"
-                        + "           classpath=\"classes\" />\n"
-                        + "  <target name=\"test.case\"\n"
-                        + "          description=\"...\" >\n" + "");
+            w.write("<project name=\"ant-test\">\n"
+                    + "  <taskdef name=\"ExBib\"\n"
+                    + "           classname=\"org.extex.exbib.ant.ExBibTask\"\n"
+                    + "           classpath=\"classes\" />\n"
+                    + "  <target name=\"test.case\"\n"
+                    + "          description=\"...\" >\n" + "");
             w.write(invocation);
             w.write("  </target>\n");
             w.write("</project>\n");
@@ -86,8 +85,9 @@ public class ExBibTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         configureProject("target/build.xml");
         executeTarget("test.case");
-        assertEquals("Message was logged but should not.", log, //
-            getLog().replaceAll("\\r", ""));
+        assertEquals("Message was logged but should not.",
+            log.replaceAll("\\n", ""), //
+            getLog().replaceAll("\\r", "").replaceAll("\\n", ""));
         build.delete();
     }
 
