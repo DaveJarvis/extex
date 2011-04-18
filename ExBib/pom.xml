@@ -79,6 +79,11 @@
   </developers>
 
   <distributionManagement>
+    <site>
+      <id>org.extex.exbib</id>
+      <name>ExBib Site</name>
+      <url>file:///serv/extex-project/snapshot</url>
+    </site>
     <repository>
       <id>org.extex.exbib</id>
       <name>ExBib Repository</name>
@@ -89,11 +94,6 @@
       <name>ExBib Repository</name>
       <url>file://${basedir}/target/snapshot</url>
     </snapshotRepository>
-    <site>
-      <id>org.extex.exbib</id>
-      <name>ExBib Site</name>
-      <url>file://${basedir}/target/site</url>
-    </site>
   </distributionManagement>
 
   <dependencies>
@@ -192,7 +192,7 @@
 
       <plugin>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.0-beta-2</version>
+        <version>3.0-beta-3</version>
         <configuration>
           <reportPlugins>
 	    <plugin>
