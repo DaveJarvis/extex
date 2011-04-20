@@ -109,7 +109,7 @@
       <plugin>
         <groupId>org.codehaus.izpack</groupId>
         <artifactId>izpack-maven-plugin</artifactId>
-	<version>5.0.0-beta5</version>
+	<version>5.0.0-beta6</version>
         <configuration>
           <izpackBasedir>${staging.dir}</izpackBasedir>
           <kind>standard</kind>
