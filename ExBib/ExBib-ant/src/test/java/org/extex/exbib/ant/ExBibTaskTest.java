@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,7 @@ import org.apache.tools.ant.BuildException;
 import org.apache.tools.ant.BuildFileTest;
 
 /**
- * This is a test suite for the &epsilon;&chi;Bib ant task.
+ * This is a test suite for the &epsilon;&chi;Bib Ant task.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -100,8 +100,9 @@ public class ExBibTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         executeTarget("test.case.1");
         assertEquals("Message was logged but should not.",
-            "Missing aux file parameter.\n" + "(There was 1 error)\n",//
-            getLog().replaceAll("\\r", ""));
+            "Missing aux file parameter." //
+                    + "(There was 1 error)",//
+            getLog().replaceAll("[\\r\\n]", ""));
     }
 
     /**
@@ -113,9 +114,9 @@ public class ExBibTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         executeTarget("test.case.2");
         assertEquals("Message was logged but should not.",
-            "I couldn\'t open file file/which/does/not/exist.aux\n"
-                    + "(There was 1 error)\n",//
-            getLog().replaceAll("\\r", ""));
+            "I couldn\'t open file file/which/does/not/exist.aux"
+                    + "(There was 1 error)",//
+            getLog().replaceAll("[\\r\\n]", ""));
     }
 
     /**
