@@ -25,99 +25,28 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
-echo '########## develop ##########'
-(cd develop;		mvn install)			|| true
-echo '########## tools/doc-tools ##########'
-(cd tools/doc-tools;	mvn install)			|| true
-echo '########## tools/ExTeX-skin ##########'
-(cd tools/ExTeX-skin;    mvn install)                   || true
+echo '########## install ##########'
+mvn install	                           	|| echo "*** FAILURE ***"
+
 echo '########## ExBib ##########'
-(cd ExBib;		mvn install)			|| true
-echo '########## ExBib-Installer ##########'
-(cd ExBib/ExBib-Installer; mvn package)   		|| true
+(cd ExBib;		mvn install)		|| true
 
 echo '########## ExTeX ##########'
 (cd ExTeX;		mvn -Dmaven.test.skip=true package)	|| true
-
-echo '########## install ##########'
-mvn -Dmaven.test.skip=true install			|| true
 
 echo '########## ExBib site ##########'
 (cd ExBib;		mvn site:site site:stage site:deploy)	|| true
 
 echo '########## site ##########'
-#mvn -Dmaven.test.skip=true site				|| true
-(cd site;               mvn compile)                    || true
-
-#####################################################################
-#if [ "$ANT_HOME" == "" ]; then
-#    echo "ANT_HOME is undefined"
-#    exit 1
-#fi
-#$ANT_HOME/bin/ant               \
-#    -f nightly-build.xml        \
-#    -keep-going                 \
-#    -noinput                    \
-#    -Ddeploy.dir=$INSTALLDIR    \
-#    all deploy
-#####################################################################
+#mvn -Dmaven.test.skip=true site		|| true
+(cd site;               mvn compile)            || true
 
 ##--------------------------------------------------------------------
 ##
-#export PATH=${JAVA_HOME}/bin:$PATH
-#
-#mkdir -p $LOCALDIR $LOG $INSTALLDIR $INSTALLDIR/snapshot
-#
-##--------------------------------------------------------------------
-##
-#cd $LOCALDIR/ExTeX
-#echo > .extex-test<<EOF
-##
-#texinputs=develop/lib/texmf
-#extex.fonts=develop/test/font
-##
-#EOF
-#date >$LOG/installer.log
-#sh build installer >>$LOG/installer.log 2>&1
-#if [ -e target/ExTeX-setup.jar ]
-#then
-#    cp target/ExTeX-setup.jar $INSTALLDIR/snapshot
-#else
-#    cat $LOG/installer.log
-#fi
-#
-#
-##--------------------------------------------------------------------
-##
-#cd $LOCALDIR/ExTeX
-#date >$LOG/javadoc.log
-#sh build javadoc >>$LOG/javadoc.log 2>&1
-#cp -r target/javadoc $INSTALLDIR/snapshot
-#
-#
-##--------------------------------------------------------------------
-##
-#cd $LOCALDIR/ExTeX
-#date >$LOG/test.log
-#sh build clean junitreport >> $LOG/test.log 2>&1
-#cp -r target/www/reports $INSTALLDIR/
-#
-#
-##--------------------------------------------------------------------
-##
-#cd $LOCALDIR/ExTeX/doc/DevelopersGuide
-#date >$LOG/doc.log
-#make >> $LOG/doc.log 2>&1
-#cd $LOCALDIR/ExTeX/doc/UsersGuide
-#make >> $LOG/doc.log 2>&1
-#
-#
-##--------------------------------------------------------------------
-##
-#date >$LOG/www.log
-#cd $LOCALDIR/ExTeX/www
-#make >>$LOG/www.log 2>&1
-#cp -r ../target/www/* $INSTALLDIR/
+date >$LOG/www.log
+cd $LOCALDIR/ExTeX/www
+make >>$LOG/www.log 2>&1
+cp -r ../target/www/* $INSTALLDIR/
 #
 #
 #rm -r $LOCALDIR/ExTeX/target
