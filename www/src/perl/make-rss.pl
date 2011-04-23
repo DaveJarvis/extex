@@ -37,6 +37,7 @@ Gerd Neugebauer
 
 use strict;
 use File::Basename;
+use File::Path qw(make_path);
 use FileHandle;
 
 #------------------------------------------------------------------------------
@@ -66,7 +67,7 @@ GetOptions("h|help"	=> \&usage,
 	   "v|verbose"	=> \$verbose,
 	  );
 
-mkdir dirname($target);
+make_path(dirname($target));
 
 my $gendate = formatDate(localtime);
 my @t = localtime;

@@ -98,13 +98,14 @@ GetOptions("h|help"	=> \&usage,
 use File::Basename;
 use File::Find;
 use File::Copy;
+use File::Path qw(make_path);
 use FileHandle;
 
 $srcdir =~ s|/*$||;
 
 die "Missing source dir `$srcdir'" if not -d $srcdir;
 
-mkdir $destdir if ! -d $destdir;
+make_path($destdir) if ! -d $destdir;
 
 my $srclen = length($srcdir) + 1;
 my @dependencies = ();
