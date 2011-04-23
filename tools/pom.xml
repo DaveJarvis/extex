@@ -100,6 +100,7 @@
   <modules>
     <module>doc-tools</module>
     <module>ExTeX-dev</module>
+    <module>ExTeX-skin</module>
   </modules>
 
   <reporting>
