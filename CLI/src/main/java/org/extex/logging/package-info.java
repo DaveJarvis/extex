@@ -16,28 +16,28 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains support classes for logging.
- *  &epsilon;&chi;<span style="margin-left: -0.15em;" >T</span><span 
- *  style="text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- *  >e</span>X uses the definition of logging introduced
- *  in Java 1.4. Thus most of the required functionality is already provided
- *  by the Java programming language.
+ * This package contains support classes for logging.
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> uses the definition of logging introduced
+ * in Java 1.4. Thus most of the required functionality is already provided
+ * by the Java programming language.
  *  
- *  <h3>Logging and Log Levels</h3>
+ * <h3>Logging and Log Levels</h3>
  *
- *  <p>
- *   Log handlers can be used to redirect the log output to the
- *   destinations <em>log file</em> and <em>console</em>. Log levels are
- *   used to distinguish the different cases.
- *  </p>
- *  <dl>
- *   <dt><code>Level.SEVERE</code></dt>
- *   <dd>This level is used to signal a real problem. It should be
+ * <p>
+ *  Log handlers can be used to redirect the log output to the
+ *  destinations <em>log file</em> and <em>console</em>. Log levels are
+ *  used to distinguish the different cases.
+ * </p>
+ * <dl>
+ *  <dt><code>Level.SEVERE</code></dt>
+ *  <dd>This level is used to signal a real problem. It should be
  *   logged to both streams.</dd>
- *   <dt><code>Level.WARNING</code></dt>
- *   <dd>This level is used to signal a warning.
- *   </dd>
- *  </dl>
+ *  <dt><code>Level.WARNING</code></dt>
+ *  <dd>This level is used to signal a warning.
+ *  </dd>
+ * </dl>
  */
 
 package org.extex.logging;

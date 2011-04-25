@@ -17,10 +17,10 @@
  */
 /**
  *  This package contains support classes for the logging.
- *  &epsilon;&chi;T<span style=
+ *  <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X uses the definition of logging introduced in Java 1.4.
- *  Thus most of the required fuctionality is already provided by the Java
+ * >e</span>X</logo> uses the definition of logging introduced in Java 1.4.
+ *  Thus most of the required functionality is already provided by the Java
  *  programming language.
  *  
  *  <h3>Logging and Log Levels</h3>
@@ -41,3 +41,4 @@
  */
 
 package org.extex.logging;
+

@@ -6,7 +6,8 @@
   <artifactId>ExTeX-Backend-dvix</artifactId>
   <name>ExTeX Backend DVIx</name>
   <description>
-    This is an ExTeX dvi backend component.
+    This is an ExTeX dvi backend component. It produces files in the original
+    TeX's DeVice Independent file format.
   </description>
 
   <packaging>jar</packaging>

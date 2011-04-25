@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -33,20 +33,21 @@ import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
- * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
+ * <logo>B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span
+ * style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X built-in function <code>purify$</code>
+ * >e</span>X</logo> built-in function <code>purify$</code>
  * 
  * This function takes a string valued argument and performs the following
  * transformations:
  * 
  * <ul>
- * <li>Any known T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X macro at brace level 1 is expanded.</li>
- * <li>Any unknown T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X macro at brace level 1 is removed.</li>
+ * <li>Any known <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> macro at brace level 1 is expanded.</li>
+ * <li>Any unknown <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> macro at brace level 1 is removed.</li>
  * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
  * <tt>-</tt> are replaced by a single space character.</li>
  * <li>Any other non-alphanumeric characters are removed.</li>
@@ -218,6 +219,7 @@ public class Purify extends AbstractCode implements Configurable {
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         if (config == null) {
@@ -240,6 +242,7 @@ public class Purify extends AbstractCode implements Configurable {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

@@ -16,10 +16,9 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains some support classes for the &epsilon;&chi;T<span style=
+ * This package contains some support classes for the <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X main program. This
- * means Exceptions in this package. 
+ * >e</span>X</logo> main program. This means Exceptions in this package. 
  */
 
 package org.extex.main.tex.exception;

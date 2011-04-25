@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,8 +37,7 @@ import org.extex.unit.base.conditional.Fi;
 /**
  * This class provides an implementation for the primitive <code>\ifcase</code>.
  * 
- * <doc name="ifcase">
- * <h3>The Primitive <tt>\ifcase</tt></h3>
+ * <doc name="ifcase"> <h3>The Primitive <tt>\ifcase</tt></h3>
  * <p>
  * The primitive <tt>\ifcase</tt> provides a conditional switch on a numeric
  * value. The next tokens are used as a number. This number determines which
@@ -51,8 +50,7 @@ import org.extex.unit.base.conditional.Fi;
  * branch fits.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;ifcase&rang;
@@ -78,26 +76,25 @@ import org.extex.unit.base.conditional.Fi;
  */
 public class Ifcase extends AbstractIf {
 
-    /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
+    private enum Tag {
+        /**
+         * The constant <tt>OR</tt> contains the value indicating an \or.
+         */
+        OR,
+        /**
+         * The constant <tt>ELSE</tt> contains the value indicating an \else.
+         */
+        ELSE,
+        /**
+         * The constant <tt>FI</tt> contains the value indicating a \fi.
+         */
+        FI;
+    };
 
     /**
-     * The constant <tt>OR</tt> contains the value indicating an \or.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final Tag OR = new Tag();
-
-    /**
-     * The constant <tt>ELSE</tt> contains the value indicating an \else.
-     */
-    protected static final Tag ELSE = new Tag();
-
-    /**
-     * The constant <tt>FI</tt> contains the value indicating a \fi.
-     */
-    protected static final Tag FI = new Tag();
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * Creates a new object.
@@ -110,10 +107,32 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
+     * This method computes the boolean value of the conditional. If the result
+     * is <code>true</code> then the then branch is expanded and the else branch
+     * is skipped. Otherwise the then branch is skipped and the else branch is
+     * expanded.
+     * 
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
+     * @return the boolean value
+     * 
+     * @see org.extex.unit.base.conditional.AbstractIf#conditional(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @Override
+    public boolean conditional(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException {
+
+        throw new ImpossibleException("\\ifcase conditional");
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -131,13 +150,13 @@ public class Ifcase extends AbstractIf {
 
         for (long i = branch; i > 0;) {
             Tag tag = skipToOrOrElseOrFi(context, source);
-            if (tag == OR) {
+            if (tag == Tag.OR) {
                 i--;
-            } else if (tag == ELSE) {
+            } else if (tag == Tag.ELSE) {
                 context.pushConditional(source.getLocator(), true, this, -1,
                     false);
                 return;
-            } else if (tag == FI) {
+            } else if (tag == Tag.FI) {
                 return;
             } else {
                 throw new ImpossibleException("impossible tag encountered");
@@ -149,8 +168,8 @@ public class Ifcase extends AbstractIf {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.conditional.AbstractIf#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.unit.base.conditional.AbstractIf#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -161,8 +180,8 @@ public class Ifcase extends AbstractIf {
     }
 
     /**
-     * Skip to the next matching <tt>\fi</tt> or <tt>\or</tt> Token counting
-     * the intermediate <tt>\if</tt> s and <tt>\fi</tt>s.
+     * Skip to the next matching <tt>\fi</tt> or <tt>\or</tt> Token counting the
+     * intermediate <tt>\if</tt> s and <tt>\fi</tt>s.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -187,15 +206,15 @@ public class Ifcase extends AbstractIf {
                     && (code = context.getCode((CodeToken) t)) != null) {
                 if (code instanceof Fi) {
                     if (--n < 0) {
-                        return FI;
+                        return Tag.FI;
                     }
                 } else if (code instanceof Or) {
                     if (n <= 0) {
-                        return OR;
+                        return Tag.OR;
                     }
                 } else if (code instanceof Else) {
                     if (n <= 0) {
-                        return ELSE;
+                        return Tag.ELSE;
                     }
                 } else if (code.isIf()) {
                     n++;
@@ -204,42 +223,7 @@ public class Ifcase extends AbstractIf {
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
-            toText(context), Integer.toString(locator
-                .getLineNumber()));
-    }
-
-    /**
-     * This method computes the boolean value of the conditional. If the result
-     * is <code>true</code> then the then branch is expanded and the else
-     * branch is skipped. Otherwise the then branch is skipped and the else
-     * branch is expanded.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the boolean value
-     * 
-     * @see org.extex.unit.base.conditional.AbstractIf#conditional(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public boolean conditional(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException {
-
-        throw new ImpossibleException("\\ifcase conditional");
-    }
-
-    /**
-     * This is an internal class for type-safe values.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4439 $
-     */
-    protected static final class Tag {
-
-        //
+            toText(context), Integer.toString(locator.getLineNumber()));
     }
 
 }

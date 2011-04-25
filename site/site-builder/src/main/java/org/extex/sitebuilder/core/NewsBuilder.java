@@ -74,7 +74,7 @@ public class NewsBuilder {
      * The field <tt>baseDirectory</tt> contains the name of the base directory
      * for the files to be transformed.
      */
-    private File baseDirectory = new File("src/site/news");
+    private File baseDirectory = new File(".");
 
     /**
      * The field <tt>logger</tt> contains the logger.

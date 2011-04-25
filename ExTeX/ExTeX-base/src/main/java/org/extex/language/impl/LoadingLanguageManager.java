@@ -149,6 +149,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @see org.extex.language.impl.LanguageCreator#createLanguageInstance(java.lang.String)
      */
+    @Override
     public Language createLanguageInstance(String name)
             throws HyphenationException {
 
@@ -170,6 +171,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @see org.extex.language.impl.LanguageCreator#loadLanguageInstance(java.lang.String)
      */
+    @Override
     public Language loadLanguageInstance(String name)
             throws HyphenationException {
 
@@ -264,7 +266,9 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * write the result to another place than the default output stream.
      * <p>
      * The table is not saved if the name is purely numeric. This guarantees the
-     * backward compatibility with TeX, since <logo>T<span style=
+     * backward compatibility with <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo>, since <logo>T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      * >e</span>X</logo> uses numerical names for hyphenation tables only.
      * </p>
@@ -308,6 +312,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * 
      * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
+    @Override
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;

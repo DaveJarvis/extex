@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.PrintStream;
 
+import org.extex.sitebuilder.CleanupUtil;
 import org.junit.Test;
 
 /**
@@ -247,13 +248,15 @@ public class NewsBuilderMainTest {
     @Test
     public void testMax03() throws IOException {
 
-        File file = new File("target/test-site/rss/2.0/news.rss");
-        if (file.exists()) {
-            assertTrue("deletion failed: " + file, file.delete());
-        }
+        File file = new File("target/test-site/rss/2.0");
+        file.mkdirs();
+        file = new File(file, "news.rss");
+        CleanupUtil.rmdir(file);
         LineNumberReader r = null;
         try {
-            assertEquals(0, run(new String[]{"-max", "3"}, null));
+            assertEquals(0,
+                run(new String[]{"-base", "src/test/resources/news-3", //
+                        "-max", "3"}, null));
             assertTrue("Expected file is missing: " + file.toString(),
                 file.exists());
             r = new LineNumberReader(new FileReader(file));

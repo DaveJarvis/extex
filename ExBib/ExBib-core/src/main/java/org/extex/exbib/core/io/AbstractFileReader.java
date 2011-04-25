@@ -34,7 +34,8 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
 
 /**
- * This is the base class for all file reading classes in &epsilon;&chi;Bib.
+ * This is the base class for all file reading classes in
+ * <logo>&epsilon;&chi;Bib</logo>.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -237,6 +238,7 @@ public abstract class AbstractFileReader implements Observable {
      * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
      *      org.extex.exbib.core.util.Observer)
      */
+    @Override
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 

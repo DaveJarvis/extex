@@ -16,12 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the backends of &epsilon;&chi;T<span style=
+ * This package contains the backends of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X which are
- * responsible for writing the constructed pages to an appropriate
- * file. For instance a PDF writer and a PostScript writer are located
- * in a sub-package.
+ * >e</span>X</logo> which are responsible for writing the constructed pages to
+ * an appropriate file. For instance a PDF writer and a PostScript writer are
+ * located in a sub-package.
  *
  * <h3>Writing a DocumentWriter</h3>
  * <p>
@@ -109,3 +108,4 @@
  */
 
 package org.extex.backend.documentWriter;
+

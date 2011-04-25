@@ -3,39 +3,74 @@
    </div>
 
    <div class="navi">
-    <a href="$relativePath/development/index.html">Development</a><br />
+    <a href="$relativePath/development/index.html">De&shy;ve&shy;lop&shy;ment</a>
     <div class="navitems">
-     <a href="$relativePath/development/state.html">State of Development</a><br />
-     <a href="$relativePath/development/systems.html">#TeX() and Successors</a><br />
-     <a href="$relativePath/development/bug-tracking.html">Bug Tracking</a><br />
-     <a href="$relativePath/development/feature-requests.html">Feature Requests</a><br />
-     <a href="$relativePath/development/nightly-build.html">Nightly Build</a><br />
+     <div>
+      <a href="$relativePath/development/state.html">State of De&shy;ve&shy;lop&shy;ment</a>
+     </div>
+     <div>
+      <a href="$relativePath/development/systems.html">#TeX() and Successors</a>
+     </div>
+     <div>
+      <a href="$relativePath/development/bug-tracking.html">Bug Tracking</a>
+     </div>
+     <div>
+      <a href="$relativePath/development/feature-requests.html">Feature Re&shy;quests</a>
+     </div>
+     <div>
+      <a href="$relativePath/development/nightly-build.html">Night&shy;ly Build</a>
+     </div>
     </div>
 
-    <a href="$relativePath/documentation/index.html">Documentation</a><br />
+    <a href="$relativePath/documentation/index.html">Do&shy;cu&shy;men&shy;ta&shy;tion</a>
     <div class="navitems">
-     <a href="$relativePath/documentation/objectives.html">Objectives</a><br />
-     <a href="$relativePath/documentation/man/extex-users.pdf">#ExTeX() User's Guide (PDF)</a><br />
-     <a href="$relativePath/documentation/faq.html">FAQ</a><br />
-     <a href="$relativePath/snapshot/javadoc/">Javadoc (Snapshot)</a><br />
+     <div>
+      <a href="$relativePath/documentation/objectives.html">Objectives</a>
+     </div>
+     <div>
+      <a href="$relativePath/documentation/man/extex-users.pdf">#ExTeX() User's Guide (PDF)</a>
+     </div>
+     <div>
+      <a href="$relativePath/documentation/faq.html">FAQ</a>
+     </div>
+     <div>
+      <a href="$relativePath/snapshot/javadoc/">Javadoc (Snapshot)</a>
+     </div>
     </div>
  
-    <a href="$relativePath/sources/index.html">Download</a><br />
+    <a href="$relativePath/sources/index.html">Download</a>
     <div class="navitems">
-     <a href="$relativePath/snapshot/ExTeX-setup.jar">#ExTeX() Installer (Snapshot)</a><br />
-     <a href="$relativePath/sources/repository.html">Subversion Repository</a><br />
+     <div>
+      <a href="$relativePath/snapshot/ExTeX-setup.jar">#ExTeX() Installer (Snapshot)</a>
+     </div>
+     <div>
+      <a href="$relativePath/sources/repository.html">Sub&shy;version Re&shy;po&shy;si&shy;to&shy;ry</a>
+     </div>
     </div>
    </div>
 
    <div class="navi">
-    Sub-Project
+    <a href="$relativePath/subprojects.html">Sub-Projects</a>
     <div class="navitems">
-     <a href="$relativePath/ExBib/index.html">#ExBib()</a>
+     <div>
+      <a href="$relativePath/ExTeX/index.html">#ExTeX() &ndash; 
+      the Type&shy;set&shy;ter</a>
+     </div>
+     <div>
+      <a href="$relativePath/ExBib/index.html">#ExBib() &ndash; 
+      the Bib&shy;lio&shy;gra&shy;phy Pro&shy;ces&shy;sor</a>
+     </div>
+     <div>
+      <a href="$relativePath/ExIndex/index.html">#ExIndex() &ndash; 
+      the In&shy;dex Pro&shy;ces&shy;sor</a>
+     </div>
     </div>
    </div>
 
    <div class="navi" style="margin-top:2em;">
     <div class="navitems">
-     <a href="$relativePath/imprint.html">Imprint</a>
+     <div>
+      <a href="$relativePath/imprint.html">Im&shy;print</a>
+     </div>
     </div>
    </div>

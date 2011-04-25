@@ -55,7 +55,7 @@ public class CleanupUtil {
                 }
             }
         }
-        if (!dir.delete()) {
+        if (dir.exists() && !dir.delete()) {
             throw new IOException("deletion failed: " + dir.toString());
         }
     }

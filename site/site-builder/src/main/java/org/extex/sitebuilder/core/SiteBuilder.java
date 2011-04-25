@@ -33,7 +33,9 @@ import org.apache.velocity.exception.ResourceNotFoundException;
 import org.apache.velocity.runtime.log.LogChute;
 
 /**
- * This is the site builder of &epsilon;&chi;TeX which utilizes Apache Velocity
+ * This is the site builder of <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> which utilizes Apache Velocity
  * as templating engine.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -208,14 +210,14 @@ public class SiteBuilder implements LibReceiver {
      * @param omits the list of omit; a <code>null</code> list is silently
      *        ignored
      */
-    public void omit(String om) {
+    public void omit(String omits) {
 
-        if (om == null) {
+        if (omits == null) {
             return;
         }
-        omit.add(om);
+        omit.add(omits);
         for (TreeBuilder base : bases) {
-            base.addOmit(om);
+            base.addOmit(omits);
         }
     }
 

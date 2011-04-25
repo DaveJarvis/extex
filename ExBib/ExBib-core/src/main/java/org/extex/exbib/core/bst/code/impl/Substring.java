@@ -45,13 +45,13 @@ import org.extex.exbib.core.io.Locator;
  * The third argument is the string to take the substring from. The string is
  * interpreted taking blocks in braces into account. A block in braces counts as
  * one character unit. Thus it is guaranteed that blocks &ndash; which have a
- * special meaning in T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X and L<span style=
+ * special meaning in <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> and <logo>L<span style=
  * "text-transform:uppercase;font-size:75%;vertical-align:0.45ex;margin-left:-0.3em;margin-right:-0.15em;"
  * >A</span>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X &ndash; are never broken.
+ * >e</span>X</logo> &ndash; are never broken.
  * </p>
  * <p>
  * The resulting substring is pushed back to the stack.
@@ -167,6 +167,7 @@ public class Substring extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

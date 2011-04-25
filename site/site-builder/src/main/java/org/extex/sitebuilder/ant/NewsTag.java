@@ -34,6 +34,7 @@ import org.extex.sitebuilder.core.NewsBuilder;
  * 
  * <pre style="background:#eeeeee;">
  *  &lt;News
+ *    dir="<i>directory</i>"&gt;
  *    output="<i>file</i>"&gt;
  *    max="<i>max value</i>"&gt;
  *    template="<i>template file</i>" /&gt; </pre>
@@ -59,16 +60,6 @@ public class NewsTag {
     }
 
     /**
-     * Setter for the max value.
-     * 
-     * @param max the max value to set
-     */
-    public void setMax(int max) {
-
-        builder.setMax(max);
-    }
-    
-    /**
      * Setter for the base directory.
      * 
      * @param base the base directory to set
@@ -76,6 +67,16 @@ public class NewsTag {
     public void setDir(File base) {
 
         builder.setBaseDirectory(base);
+    }
+
+    /**
+     * Setter for the max value.
+     * 
+     * @param max the max value to set
+     */
+    public void setMax(int max) {
+
+        builder.setMax(max);
     }
 
     /**
@@ -91,7 +92,7 @@ public class NewsTag {
     /**
      * Setter for template file.
      * 
-     * @param output the output file to set
+     * @param template the template file to set
      */
     public void setTemplate(String template) {
 

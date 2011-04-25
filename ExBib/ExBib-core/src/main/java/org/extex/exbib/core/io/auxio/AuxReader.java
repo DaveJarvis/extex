@@ -27,9 +27,9 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceAware;
 
 /**
- * This interface describes the reader for aux files in &epsilon;&chi;Bib. The
- * responsibility of the reader is to parse the aux file and store the
- * information in a {@link ProcessorContainer}.
+ * This interface describes the reader for aux files in
+ * <logo>&epsilon;&chi;Bib</logo>. The responsibility of the reader is to parse
+ * the aux file and store the information in a {@link ProcessorContainer}.
  * <p>
  * Some of the internal processing can be observed by registering an observer.
  * </p>

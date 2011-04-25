@@ -4,10 +4,12 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-core</artifactId>
-  <name>ExTeX core components</name>
+  <name>ExTeX Core</name>
   <version>0.1-SNAPSHOT</version>
   <description>
-    These are the ExTeX core components.
+    ExTeX is a typesetter in the spirit of TeX.
+    The core component is contained in this module. The core component provides
+    the definition of registers and some fundamental support classes.
   </description>
 
   <packaging>jar</packaging>

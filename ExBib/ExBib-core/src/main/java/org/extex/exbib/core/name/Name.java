@@ -161,7 +161,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <h3>More Commas</h3>
  * <p>
  * More than two commas are not understood by the name parsing in
- * &epsilon;&chi;Bib.
+ * <logo>&epsilon;&chi;Bib</logo>.
  * </p>
  * 
  * <h2>Name Lists</h2>

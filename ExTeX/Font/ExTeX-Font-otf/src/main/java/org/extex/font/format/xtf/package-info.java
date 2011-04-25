@@ -17,11 +17,11 @@
  */
 /**
  * This package contains the definitions and implementations for the TTF/OTF font
- * handling in &epsilon;&chi;T<span style=
+ * handling in <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X.
+ * >e</span>X</logo>.
  *
- * <p> The TTF/OTF-Format is describend in:</p>
+ * <p> The TTF/OTF-Format is described in:</p>
  * <ul>
  *    <li><a href="http://www.microsoft.com/typography/TrueTypeFonts.mspx">
  *       TrueType 1.0 Font Files</a>
@@ -34,7 +34,7 @@
  *    <li><a href="http://www.microsoft.com/typography/otspec/">OpenType specification</a>
  *    </li>
  * </ul>
- * <p>The javadoc use intensely this documentation to descripe the classes...</p> 
+ * <p>The javadoc uses intensely this documentation to describe the classes...</p> 
  * <p> Some ideas of the following projects have inspired the code. </p>
  * <ul>
  *    <li> <a href="http://www.letterror.com/code/ttx/">TTX</a>
@@ -53,3 +53,4 @@
  */
 
 package org.extex.font.format.xtf;
+

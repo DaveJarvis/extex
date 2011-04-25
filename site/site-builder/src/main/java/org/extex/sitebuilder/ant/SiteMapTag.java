@@ -70,7 +70,7 @@ public class SiteMapTag {
     /**
      * Setter for template file.
      * 
-     * @param output the output file to set
+     * @param template the template file to set
      */
     public void setTemplate(String template) {
 

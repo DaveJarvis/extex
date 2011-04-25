@@ -60,12 +60,12 @@ import org.extex.exbib.core.io.Locator;
  * by the June 1987 version of the <i>cmr10</i> font; the only white-space
  * character with nonzero width is the space). This function takes the literal
  * literally; that is, it assumes each character in the string is to be printed
- * as is, regardless of whether the character has a special meaning to T<span
- * style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X, except that ``special characters'' (even without their right
- * braces) are handled specially. This is meant to be used for comparing widths
- * of label strings.</dd>
+ * as is, regardless of whether the character has a special meaning to
+ * <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo>, except that ``special characters'' (even without their
+ * right braces) are handled specially. This is meant to be used for comparing
+ * widths of label strings.</dd>
  * </dl>
  * 
  * 
@@ -213,10 +213,10 @@ public class Width extends AbstractCode {
             };
 
     /**
-     * The constant <tt>SPECIAL</tt> contains the mapping of the special T<span
-     * style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
-     * >e</span>X sequences with positive width.
+     * The constant <tt>SPECIAL</tt> contains the mapping of the special
+     * <logo>T<span style=
+     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     * >e</span>X</logo> sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
 
@@ -368,6 +368,7 @@ public class Width extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

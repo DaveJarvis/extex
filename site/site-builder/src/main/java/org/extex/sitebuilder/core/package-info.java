@@ -17,9 +17,9 @@
  */
 /**
  * This package contains the core classes for the
- * &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X site builder.
+ * <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> site builder.
  * <p>
  * The entry point is the class {@link org.extex.sitebuilder.core.SiteBuilder}.
  * </p>

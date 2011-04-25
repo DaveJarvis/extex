@@ -68,7 +68,9 @@ public class SiteBuilderMainTest {
     @Test
     public void test01() {
 
-        File indexHtml = new File("target/test-site/index.html");
+        File dir = new File("target/test-site");
+        dir.mkdirs();
+        File indexHtml = new File(dir, "index.html");
         if (indexHtml.exists()) {
             indexHtml.delete();
         }

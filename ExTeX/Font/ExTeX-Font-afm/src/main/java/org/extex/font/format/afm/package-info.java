@@ -17,9 +17,9 @@
  */
 /**
  * This package contains the definitions and implementations for the AFM
- * (Type1) font handling in &epsilon;&chi;T<span style=
+ * (Type1) font handling in <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X.
+ * >e</span>X</logo>.
  *
  * <a name="AFMformat" />
  * <h2>AFM format</h2>
@@ -27,3 +27,4 @@
  */
 
 package org.extex.font.format.afm;
+

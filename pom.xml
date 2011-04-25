@@ -171,6 +171,7 @@
    <module>tools</module>
    <module>doc</module>
    <module>develop</module>
+   <module>www</module>
   </modules>
 
   <properties>

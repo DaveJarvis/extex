@@ -16,8 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the classes for the database of &epsilon;&chi;Bib and
- * the entries stored in it.
+ * This package contains the classes for the database of 
+ * <logo>&epsilon;&chi;Bib</logo> and the entries stored in it.
  * 
  * <h2>The Database</h2>
  * <p>

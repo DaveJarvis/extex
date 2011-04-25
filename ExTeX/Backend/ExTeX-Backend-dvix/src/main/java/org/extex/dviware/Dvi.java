@@ -37,8 +37,7 @@ public class Dvi {
     public static final int BOP = 139;
 
     /**
-     * The field <tt>DOWN1</tt> contains the op-code for the DOWN1
-     * instruction.
+     * The field <tt>DOWN1</tt> contains the op-code for the DOWN1 instruction.
      */
     public static final int DOWN1 = 157;
 
@@ -48,13 +47,14 @@ public class Dvi {
     public static final int DVI_ID = 2;
 
     /**
-     * The field <tt>DVI_DEN</tt> contains the denominator for the dvi
-     * command.
+     * The field <tt>DVI_UNIT_DENOMINATOR</tt> contains the denominator for the
+     * dvi command.
      */
     public static final int DVI_UNIT_DENOMINATOR = 473628672;
 
     /**
-     * The field <tt>DVI_NUM</tt> contains the numerator for the dvi command.
+     * The field <tt>DVI_UNIT_NUMERATOR</tt> contains the numerator for the dvi
+     * command.
      */
     public static final int DVI_UNIT_NUMERATOR = 25400000;
 
@@ -119,8 +119,8 @@ public class Dvi {
     public static final int NOP = 138;
 
     /**
-     * The field <tt>PADDING_BYTE</tt> contains the byte added at the end of
-     * the stream to align the length to a multiple of four.
+     * The field <tt>PADDING_BYTE</tt> contains the byte added at the end of the
+     * stream to align the length to a multiple of four.
      */
     public static final int PADDING_BYTE = 223;
 

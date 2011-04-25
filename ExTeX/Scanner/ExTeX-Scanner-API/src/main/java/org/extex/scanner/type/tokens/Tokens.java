@@ -48,8 +48,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     public static final Tokens EMPTY = new ImmutableTokens();
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060415L;
 
@@ -140,6 +139,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * @return the i<sup>th</sup> token or <code>null</code> if i is out of
      *         bounds
      */
+    @Override
     public Token get(int i) {
 
         return (i >= 0 && i < tokens.size() ? tokens.get(i) : null);
@@ -178,6 +178,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * 
      * @see java.lang.Iterable#iterator()
      */
+    @Override
     public Iterator<Token> iterator() {
 
         return tokens.iterator();
@@ -189,16 +190,17 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * 
      * @return the number of elements in the token register
      */
+    @Override
     public int length() {
 
         return tokens.size();
     }
 
     /**
-     * Remove the first toke from the list and return it.
+     * Remove the first token from the list and return it.
      * 
-     * @return the token taken from the from the front of the list or
-     *         <code>null</code> if the list is empty
+     * @return the token taken from the front of the list or <code>null</code>
+     *         if the list is empty
      */
     public Token pop() {
 
@@ -268,8 +270,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
                     toks.add(factory.createToken(Catcode.OTHER, (char) (esc),
                         Namespace.DEFAULT_NAMESPACE));
                 }
-                toks
-                    .add(factory.toTokens(((ControlSequenceToken) t).getName()));
+                toks.add(factory.toTokens(((ControlSequenceToken) t).getName()));
             } else {
                 toks.add(factory.createToken(Catcode.OTHER, t.getChar(),
                     Namespace.DEFAULT_NAMESPACE));
@@ -291,11 +292,11 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     }
 
     /**
-     * Print the token into a StringBuilder.
+     * Print the token into a StringBuffer.
      * 
-     * @param sb the target string builder
+     * @param sb the target string buffer
      */
-    public void toString(StringBuilder sb) {
+    public void toString(StringBuffer sb) {
 
         for (int i = 0; i < tokens.size(); i++) {
             tokens.get(i).toString(sb);
@@ -304,11 +305,11 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     }
 
     /**
-     * Print the token into a StringBuffer.
+     * Print the token into a StringBuilder.
      * 
-     * @param sb the target string buffer
+     * @param sb the target string builder
      */
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         for (int i = 0; i < tokens.size(); i++) {
             tokens.get(i).toString(sb);
@@ -323,6 +324,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * 
      * @see org.extex.scanner.type.tokens.FixedTokens#toText()
      */
+    @Override
     public String toText() {
 
         StringBuffer sb = new StringBuffer();
@@ -348,6 +350,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
      * 
      * @see org.extex.scanner.type.tokens.FixedTokens#toText(UnicodeChar)
      */
+    @Override
     public String toText(UnicodeChar esc) {
 
         StringBuffer sb = new StringBuffer();

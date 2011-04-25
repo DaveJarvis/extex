@@ -247,7 +247,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     /**
      * This visit method is invoked on a tab mark token. In <logo>T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a &.
+     * >e</span>X</logo> this normally is an &amp;.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass

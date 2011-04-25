@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2010-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,7 +17,7 @@
  */
 /**
  * This is the top-level package for command line interfaces to the utility
- * for &epsilon;&chi;Bib.
+ * for <logo>&epsilon;&chi;Bib</logo>.
  *
  */
 

@@ -16,11 +16,12 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the scanner for &epsilon;&chi;T<span style=
+ * This package contains the scanner for <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X. Its main purpose is to extract 
+ * >e</span>X</logo>. Its main purpose is to extract 
  * tokens from an input stream. The input stream can one of several sources:
  * a token buffer, a string, a file or an arbitrary Reader.
  */
 
 package org.extex.scanner.api;
+

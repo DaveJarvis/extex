@@ -1,0 +1,151 @@
+<html>
+  <head>
+   <title>ExBib</title>
+   <meta name="copyright" content="
+   Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+
+   This library is free software; you can redistribute it and/or modify it
+   under the terms of the GNU Lesser General Public License as published by
+   the Free Software Foundation; either version 2.1 of the License, or (at
+   your option) any later version.
+
+   This library is distributed in the hope that it will be useful, but WITHOUT
+   ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+   FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+   for more details.
+
+   You should have received a copy of the GNU Lesser General Public License
+   along with this library; if not, write to the Free Software Foundation,
+   Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+  " />
+   <meta name="author" content="Gerd Neugebauer" />
+   <meta name="version" content="$Revision$" />
+  </head>
+  <body>
+    <logo>&epsilon;&chi;Bib</logo> is the <logo>B<small>IB</small>T<span style=
+    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+    >e</span>X</logo> Compatible Database.
+    It is an attempt to provide an implementation of a bibliographic database to
+    be used with <logo>L<span style=
+    "text-transform:uppercase;font-size:75%;vertical-align:0.45ex;margin-left:-0.3em;margin-right:-0.15em;"
+    >A</span>T<span style=
+    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+    >e</span>X</logo> and friends.
+    
+    <h2>Objectives</h2>
+    
+    The development of <logo>&epsilon;&chi;Bib</logo> has been lead by several objectives.
+    
+    <ol>
+      <li><logo>&epsilon;&chi;Bib</logo> is the attempt to provide a Bibliographic Database
+        which can be used as a plug-in replacement for 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> in its command line version.
+      </li>
+      <li>The result of <logo>&epsilon;&chi;Bib</logo> in compatibility mode should imitate
+        as much as possible the behavior of 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> &ndash; for runs without errors or 
+        warnings. This should be valid for the output file only. 
+        <logo>&epsilon;&chi;Bib</logo> should not be concerned about the exact reproduction 
+        of tracing messages or the contents of the log file.
+      </li>
+      <li>The compatibility mode should <emph>not</emph> be the default.
+        The default mode should be the <logo>&epsilon;&chi;Bib</logo> mode, where certain
+        extensions are provided and some curious design decisions of 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> are not imitated.
+      </li>
+      <li><logo>&epsilon;&chi;Bib</logo> should be configurable. This means that it should be
+        possible to use different implementations of some of the core components.
+        This could be used for example to mimic the behavior of 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> 0.99c or 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> 1.0 (as described in a TUGboat article).
+      </li>
+      <li>One objective of <logo>&epsilon;&chi;Bib</logo> is to provide a clean design which
+        makes it easy to understand and enhance the program. As a result the
+        whole program has to be structured into several components which are
+        tied together with interfaces and factories.
+      </li>
+      <li>As implementation language Perl has been used for a first prototype. 
+        Then the implementation language has been switched to Java to make use
+        of the Unicode features of this languages as well as to be closer to a
+        potential successor of <logo>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo>.
+      </li>
+      <li>The core components should provide a interface which make it possible
+        to use them from within a typesetting engine without the need to use
+        external aux files. Several passes within one run have to be taken into
+        account.
+      </li>
+      <li>As much as possible the inherent knowledge about <logo>T<span style=
+      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+      >e</span>X</logo> should be
+        eliminated.
+      </li>
+      <li>An easy update path should be provided for 
+        <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> users: Old documents should be
+        processable with the same results. Migration scripts should 
+        provided whenever necessary.
+      </li>
+    </ol>
+    
+    <h2>Extensions</h2>
+    
+    The following extensions can be envisaged:
+    <ol>
+      <li>Implement the new features of <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> 1.0.</li>
+      <li>Add new primitives to the BST language.</li>
+      <li>Extend the syntax for <logo>B<small>IB</small>T<span style=
+        "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+        >e</span>X</logo> files
+        <ul>
+          <li>Allow structured description of names.</li>
+          <li>Make provisions for multi-language entries</li>
+          <li>Allow structured documents: i.e. articles in journals &ndash;
+            without <tt>crossref</tt></li>
+        </ul>
+      </li>
+      <li>Integrate parsers for other bibliography formats
+        <ul>
+          <li>DocBook</li>
+          <li>refer</li>
+          <li>Endnote</li>
+        </ul>
+      </li>
+    </ol>
+    
+    <h2>Bugfixes</h2>
+    
+    The following defects of <logo>B<small>IB</small>T<span style=
+    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+    >e</span>X</logo> should be cured:
+    <ol>
+      <li>No restriction on the sequence of entries in the database. 
+        I.e. referenced entries may precede or follow the referencing entries.
+      </li>
+      <li>Better sorting has to be provided taking into account the various
+        national conventions for sorting.
+      </li>
+      <li>No limit to some magical internal constants &ndash; like the line length.</li>
+      <li>The line breaking should not insert percents (%) but break at whitespace
+        only.</li>
+      <li>Bugfix: flush the output buffer at the end of the program and not only
+        when <code>newline$</code> is encountered.
+      </li>
+    </ol>
+  </body>
+</html>
+  

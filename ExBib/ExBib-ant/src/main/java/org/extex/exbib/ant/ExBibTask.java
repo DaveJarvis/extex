@@ -38,16 +38,16 @@ import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.extex.logging.LogFormatter;
 
 /**
- * This class provides an interface from Ant to &epsilon;&chi;Bib.
+ * This class provides an interface from Ant to <logo>&epsilon;&chi;Bib</logo>.
  * 
- * <h2>The &epsilon;&chi;Bib Ant Task</h2>
+ * <h2>The <logo>&epsilon;&chi;Bib</logo> Ant Task</h2>
  * 
  * <h3>Invocation</h3>
  * 
  * <p>
- * &epsilon;&chi;Bib provides an integration into Apache Ant. This allows the
- * invocation of &epsilon;&chi;Bib from within Ant. For this purpose an Ant task
- * can be defined as follows.
+ * <logo>&epsilon;&chi;Bib</logo> provides an integration into Apache Ant. This
+ * allows the invocation of <logo>&epsilon;&chi;Bib</logo> from within Ant. For
+ * this purpose an Ant task can be defined as follows.
  * </p>
  * 
  * <pre>
@@ -56,9 +56,9 @@ import org.extex.logging.LogFormatter;
  * </pre>
  * 
  * <p>
- * This assumes that the jars from the &epsilon;&chi;Bib distribution are on the
- * class path. You can extend the class path for this definition with the
- * classpath attribute as shown below.
+ * This assumes that the jars from the <logo>&epsilon;&chi;Bib</logo>
+ * distribution are on the class path. You can extend the class path for this
+ * definition with the classpath attribute as shown below.
  * </p>
  * 
  * <pre>
@@ -80,8 +80,8 @@ import org.extex.logging.LogFormatter;
  * 
  * <p>
  * Note that a version of Ant is required. Ant is not not included in the
- * distribution. Thus it is possible to use the &epsilon;&chi;Bib ant task
- * together with the existing Ant installation.
+ * distribution. Thus it is possible to use the <logo>&epsilon;&chi;Bib</logo>
+ * Ant task together with the existing Ant installation.
  * </p>
  * 
  * 
@@ -224,8 +224,8 @@ import org.extex.logging.LogFormatter;
  * 
  * <dt>config="&lang;config&rang;"</dt>
  * <dd>This parameter can be used to specify the configuration for assembling
- * &epsilon;&chi;Bib. The default value is <tt>exbib</tt>. The value
- * <tt>bibtex099</tt> can be used to switch to the compatibility mode for
+ * <logo>&epsilon;&chi;Bib</logo>. The default value is <tt>exbib</tt>. The
+ * value <tt>bibtex099</tt> can be used to switch to the compatibility mode for
  * B<small>IB</small><span style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X 0.99c.

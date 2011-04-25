@@ -6,7 +6,8 @@
   <artifactId>ExTeX-Backend-rtf</artifactId>
   <name>ExTeX Backend RTF</name>
   <description>
-    This is an ExTeX RTF backend component.
+    This is an ExTeX RTF backend component. It produces documents in Rich Text
+    Format (RTF) from a Node stream.
   </description>
 
   <packaging>jar</packaging>

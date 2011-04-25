@@ -40,6 +40,13 @@
       <scope>test</scope>
     </dependency>
 
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-dev</artifactId>
+      <version>1.0</version>
+      <scope>reporting</scope>
+    </dependency>
+
   </dependencies>
 
   <properties>
@@ -52,40 +59,11 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
         </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>exec-maven-plugin</artifactId>
-        <version>1.1.1</version>
-        <executions>
-          <execution>
-            <id>site</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>org.extex.sitebuilder.main.SiteBuilderMain</mainClass>
-              <commandLine>--target target/site</commandLine>
-            </configuration>
-          </execution>
-          <execution>
-            <id>news</id>
-            <phase>prepare-package</phase>
-            <goals>
-              <goal>java</goal>
-            </goals>
-            <configuration>
-              <mainClass>org.extex.sitebuilder.main.NewsBuilderMain</mainClass>
-              <commandLine>--output target/site/rss/2.0/news.rss</commandLine>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
 
       <plugin>
@@ -107,13 +85,6 @@
           <downloadJavadocs>true</downloadJavadocs>
           <configLocation>org/extex/checkstyle-extex.xml</configLocation>
         </configuration>
-        <dependencies>
-          <dependency>
-            <groupId>org.extex</groupId>
-            <artifactId>ExTeX-dev</artifactId>
-            <version>1.0</version>
-          </dependency>
-        </dependencies>
       </plugin>
       
       <plugin>
@@ -129,7 +100,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.0-beta-2</version>
+        <version>3.0-beta-3</version>
         <configuration>
           <reportPlugins>
             <plugin>
@@ -159,24 +130,6 @@
                 <!-- 
                 <stylesheetfile>${exbib.directory}/src/javadoc/stylesheet.css</stylesheetfile>  
                 <overview>${basedir}/src/javadoc/overview.html</overview>
-                <groups>
-                  <group>
-                    <title>Main Packages</title>
-                    <packages>org.extex.exbib.main*:org.extex.exbib.util*</packages>
-                  </group>
-                  <group>
-                    <title>Core Packages</title>
-                    <packages>org.extex.exbib.core*</packages>
-                  </group>
-                  <group>
-                    <title>Framework and Resource Packages</title>
-                    <packages>org.extex.framework*:org.extex.resource*</packages>
-                  </group>
-                  <group>
-                    <title>Command Line Support Packages</title>
-                    <packages>org.extex.cli*:org.extex.logging*</packages>
-                  </group>
-                </groups>
                  -->
                 <links>
                   <link>http://java.sun.com/j2se/1.6.0/docs/api</link>
@@ -210,4 +163,10 @@
     </developer>
   </developers>
 
+  <licenses>
+    <license>
+      <name>GNU Library General Public License 2</name>
+      <url></url>
+    </license>
+  </licenses>
 </project>

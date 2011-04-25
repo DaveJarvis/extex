@@ -16,11 +16,13 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the Ant task for the
- * &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
- * >e</span>X site builder.
- * It provides an entry point for this well-defined of interface.
+ * This package contains the Ant task for the <logo>&epsilon;&chi;T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> site builder.
+ * It provides an entry point for this well-defined interface. The entry is the
+ * Ant tag defined by the class {@link org.extex.sitebuilder.ant.SiteBuilderTask}.
+ * This tag has some attributes and more internal tags. Those are reflected in
+ * the implementing classes as depicted in the following figure:
  * 
  * <img src="doc-files/overview.png" width="100%"/>
  */

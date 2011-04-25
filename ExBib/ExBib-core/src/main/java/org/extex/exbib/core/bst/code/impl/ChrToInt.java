@@ -45,7 +45,8 @@ import org.extex.framework.i18n.LocalizerFactory;
  * style="margin-left: -0.15em;" >T</span><span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
  * >e</span>X&nbsp;8 restrict the characters to 8~bit characters.
- * &epsilon;&chi;Bib has expanded the definition to 16~bit Unicode characters.
+ * <logo>&epsilon;&chi;Bib</logo> has expanded the definition to 16~bit Unicode
+ * characters.
  * </p>
  * <img src="doc-files/chr.to.int.png"/>
  * <p>
@@ -107,6 +108,7 @@ public class ChrToInt extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

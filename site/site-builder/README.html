@@ -76,10 +76,10 @@ templating engine.</p>
   <li>The RSS files</li>
 </ul>
 
-<h2>Creating the Site</h2>
+<h2>Compiling the Site Builder</h2>
 
 <p>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
-site can be created in this directory with the help of <a
+site builder can be compiled in this directory with the help of <a
   href="http://maven.apache.org">Maven</a>:</p>
 <pre>
   # <b>mvn package</b>
@@ -87,16 +87,12 @@ site can be created in this directory with the help of <a
 <p>This command requires that <a href="http://maven.apache.org">Maven3</a>
 is properly installed on your system and the executable can be found on
 the search path.</p>
-<p>After a successful completion of the command the site can be
-found in the directory <a href="target/site/"><tt>target/site</tt><a>.
+<p>After a successful completion of the command the jar can be
+found in the file <a href="target/extex-site-builder-1.0.jar"><tt>target/extex-site-builder-1.0.jar</tt><a>.
 </p>
 <p>If the build fails the verbose log messages of Maven can be used
 to determine the problem. Usually just reading the messages leads you
 into the right direction.</p>
-
-<h2>Organization of the Files</h2>
-
-The sources of the site can be found in <tt>src/site</tt>.
 
 
 <h2>License</h2>

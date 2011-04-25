@@ -30,7 +30,7 @@ import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
 
 /**
- * This is the basic object stored in a &epsilon;&chi;Bib database.
+ * This is the basic object stored in a <logo>&epsilon;&chi;Bib</logo> database.
  * 
  * <p>
  * Each {@link Entry} has a type and a key. The type classifies the
@@ -262,6 +262,7 @@ public class Entry implements Iterable<String> {
      * 
      * @see java.lang.Iterable#iterator()
      */
+    @Override
     public Iterator<String> iterator() {
 
         return keys.iterator();

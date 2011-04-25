@@ -5,54 +5,78 @@
 %%-----------------------------------------------------------------------------
 \documentclass{../texinputs/extex-doc}
 
-\usepackage[latin1]{inputenc}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usetikzlibrary{fadings}
+\newbox\splashbox
+\newdimen\splashwidth
+\newdimen\splashheight
 
-\newcommand\E[1]{%
-  \begin{pgfpicture}{0mm}{0mm}{128mm}{64mm}
-%    \pgfdeclarehorizontalshading{thisShading}{120mm}%
-%    {rgb(0mm)=(.65,.65,.65); color(160mm)=(white)}%
-    \pgfdeclarehorizontalshading{thisShading}{120mm}%
-    {rgb(0mm)=(.65,.65,.65); rgb(160mm)=(.65,.65,.65)}%
-
-    \pgfrect[fill]{\pgfpoint{0.5mm}{-0.5mm}}{\pgfpoint{128.5mm}{63.5mm}}
-
-    \begin{pgfscope}
-      \pgfmoveto{\pgforigin}
-      \pgflineto{\pgfpoint{0mm}{64mm}}
-      \pgflineto{\pgfpoint{128mm}{64mm}}
-      \pgflineto{\pgfpoint{128mm}{0mm}}
-      \pgfclosepath
-      \pgfclip
-      \pgfputat{\pgfpoint{64mm}{32mm}}{%
-        \begin{pgfrotateby}{\pgfdegree{340}}
-          \pgfbox[center,center]{\pgfuseshading{thisShading}}
-        \end{pgfrotateby}}
-    \end{pgfscope}
-    
-    \begin{pgfmagnify}{2}{2}
-      \pgfputat{\pgfpoint{27.85mm}{8.05mm}}{%
-        \pgfbox[center,center]{\color{white}#1}}
-      \pgfputat{\pgfpoint{28.15mm}{7.95mm}}{%
-        \pgfbox[center,center]{\color{white!25!black}#1}}
-      \pgfputat{\pgfpoint{28mm}{8mm}}{%
-        \pgfbox[center,center]{\color{white!80!black}#1}}
-    \end{pgfmagnify}
-    
-    %  \pgfrect[stroke]{\pgfpoint{0mm}{0mm}}{\pgfpoint{128mm}{64mm}}
-  \end{pgfpicture}%
+\tikzfading[name=Fade,
+            top color=black!95!white,
+            bottom color=black!68!white]
+\newcommand\SIDE[1]{\begingroup\LARGE%
+  \setbox\splashbox=\hbox{#1}%
+  \splashwidth=\wd\splashbox    \advance\splashwidth 1em
+  \splashheight=\ht\splashbox   \advance\splashheight 1em
+  \begin{tikzpicture}[inner sep=.5em]
+    \clip[xshift=-\splashheight/2,yshift=-\splashwidth/2]
+         (0,0) rectangle(\splashheight,\splashwidth); 
+    \fill[xshift=-.5*\splashheight,yshift=-.5*\splashwidth,path fading=Fade]
+         (0mm,0mm) rectangle(\splashheight,\splashwidth);
+    \foreach \x in {.02mm,.04mm,.06mm,.08mm,.1mm,.12mm,.14mm,.16mm,.18mm}
+      \draw (-\x,\x) node[rotate=90,color=white]{\copy\splashbox};
+    \foreach \x in {.02mm,.04mm,.06mm,.08mm,.1mm,.12mm,.14mm,.16mm,.18mm}
+      \draw (\x,-\x) node[rotate=90,color=white!25!black]{\copy\splashbox};
+    \draw (0mm,0mm) node[rotate=90,color=white!80!black]{\copy\splashbox};
+  \end{tikzpicture}\endgroup
 }
-
+\pagestyle{empty}
 \begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%
+%  * Scale the image to a width of 115 pixels.
+%  * Take the last line of pixels to repeat ad infinitum
+%
+5
+\iffalse
+\SIDE{\ExTeX~Backend \sc dump}
+\SIDE{\ExTeX~Backend \sc dvi}
+\SIDE{\ExTeX~Backend {\sc dvi}x}
+\SIDE{\ExTeX~Backend \sc ps}
+\SIDE{\ExTeX~Backend \sc rtf}
+\SIDE{\ExTeX~Backend \sc svg}
+\SIDE{\ExTeX~Backend \sc text}
+\SIDE{\ExTeX~Backend \sc xml}
+\fi
+\SIDE{\ExTeX~Backend \sc ps}
 
-\E{\Large\ExTeX~Site Builder}
+\SIDE{\ExTeX~Base}
+\SIDE{\ExTeX~Base ext}
+\SIDE{\ExTeX~Core}
 
-\E{\large\ExTeX~Developer's Guide}
+\SIDE{\ExTeX~Unit \TeX}
+\SIDE{\ExTeX~Unit e\TeX}
+\SIDE{\ExTeX~Unit \ExTeX}
+\SIDE{\ExTeX~Unit \textsc{pdf}\TeX}
+\SIDE{\ExTeX~Unit $\Omega$}
+\SIDE{\ExTeX~Unit Color}
+\SIDE{\ExTeX~Unit Image}
+\SIDE{\ExTeX~Unit Native}
+\SIDE{\ExTeX~Unit Namespace}
 
-\E{\Large
-  \textrm{% the logo comes always with serifs
+\iffalse
+\SIDE{\ExTeX}
+\SIDE{\ExTeX~CLI}
+\SIDE{\ExTeX~resource}
+\SIDE{\ExTeX~Site}
+\SIDE{\ExTeX~Site Builder}
+\SIDE{\ExTeX~Developer's Guide}
+\SIDE{\textrm{% the logo comes always with serifs
     \ensuremath{\textstyle\varepsilon_{\kern-0.15em\mathcal{X}}}%
     \kern-.1emIndex}%
 }
+\fi
 
 \end{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %

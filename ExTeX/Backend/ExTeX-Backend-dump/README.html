@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ExTeX Backend dump</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family: sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:90%;
+  vertical-align: -0.4ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:0;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+pre.output {
+  color:white;
+  background-color:#666666;
+  border: 1px solid #999999;
+  padding:.5em;
+}
+  </style>
+</head>
+<body>
+<img class="left" src="src/images/ExTeX-Backend-dump-side.png"/>
+
+<h1>The &epsilon;&chi;T<span class="e">e</span>X Backend dump</h1>
+
+<p>
+ This component contains a document writer which simply writes the nodes to an
+ output file. This is meant for debugging and testing. 
+</p>
+
+<h2>Compiling &epsilon;&chi;T</span><span class="e">e</span>X Backend dump</h2>
+
+<p>
+ The &epsilon;&chi;T<span class="e">e</span>X Backend dump component
+  can be created in this directory with the help of Maven:
+</p>
+<pre>
+  # <b>mvn package</b>
+</pre>
+<p>
+This command requires that <a
+href="http://maven.apache.org">Maven</a> is properly installed on
+your system and the executable can be found on the search path.
+</p>
+<pre class="output">
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ExTeX Backend Dump 0.1-SNAPSHOT
+[INFO]    task-segment: [package]
+[INFO] ------------------------------------------------------------------------
+...
+</pre>
+<p>
+After a successful completion of the command the jar can be found
+as the file <tt><a href="target/ExTeX-Backend-dump-0.1-SNAPSHOT.jar">target/ExTeX-Backend-dump-0.1-SNAPSHOT.jar</a></tt>.
+</p>
+<p>
+If the build fails the verbose log messages of Maven can be used to
+determine the problem. Usually just reading the messages leads you
+into the right direction.
+</p>
+
+<h2>License</h2>
+
+&epsilon;&chi;T</span><span class="e">e</span>X CLI is released under the 
+<a href="LICENSE.html">GNU Library General Public License</a>.
+
+<address>
+© 2011 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
+</body>
+</html>

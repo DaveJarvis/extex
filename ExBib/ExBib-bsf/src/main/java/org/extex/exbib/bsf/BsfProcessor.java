@@ -47,7 +47,7 @@ import org.extex.resource.io.NamedInputStream;
  * This class provides a plug-in replacement for a bibliography processor. It is
  * based on the Bean Scripting Framework (BSF). Thus all programming languages
  * for which BSF bindings exist can be used as extension language for writing
- * &epsilon;&chi;Bib style files.
+ * <logo>&epsilon;&chi;Bib</logo> style files.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -128,6 +128,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#getMacroNames()
      */
+    @Override
     public List<String> getMacroNames() {
 
         DB db = getDB();
@@ -139,6 +140,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#getNumberOfWarnings()
      */
+    @Override
     public long getNumberOfWarnings() {
 
         return warnings;
@@ -149,6 +151,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#getOutWriter()
      */
+    @Override
     public Writer getOutWriter() {
 
         return outWriter;
@@ -161,6 +164,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#isKnown(java.lang.String)
      */
+    @Override
     public boolean isKnown(String type) {
 
         return true;
@@ -206,6 +210,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.exbib.core.Processor#process(org.extex.exbib.core.io.Writer)
      */
+    @Override
     public long process(Writer outputWriter) throws ExBibException {
 
         this.outWriter = outputWriter;
@@ -240,6 +245,7 @@ public class BsfProcessor extends BibliographyCore
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;

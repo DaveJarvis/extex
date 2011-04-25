@@ -18,10 +18,11 @@
 /**
  * This package contains primitives for the manipulation of font registers.
  * Registers are the primary means to store parameters which influence the
- * behavior of &epsilon;&chi;T<span style=
+ * behavior of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X as well as variables used in macro programming. 
+ * >e</span>X</logo> as well as variables used in macro programming. 
  * The name of the registers can be a name or an number.
  */
 
 package org.extex.unit.base.register.font;
+

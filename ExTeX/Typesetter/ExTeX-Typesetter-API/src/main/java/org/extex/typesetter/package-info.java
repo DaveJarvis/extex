@@ -16,10 +16,10 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the typesetter definitions for &epsilon;&chi;T<span style=
+ * This package contains the typesetter definitions for <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X. The typesetter
- * has the aim of building lists of nodes and compute their optimal distribution.
+ * >e</span>X</logo>. The typesetter has the aim of building lists of nodes and
+ * compute their optimal distribution.
  *
  *  <h1>The Way to the Document Writer</h1>
  *  <p>In this section we want to see which instances are involved to
@@ -72,3 +72,4 @@
  */
 
 package org.extex.typesetter;
+

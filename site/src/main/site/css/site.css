@@ -260,6 +260,8 @@ div.ad {
   padding:4pt;
   margin-top:2pt;
   margin-bottom:2pt;
+  padding-left:2em;
+  text-indent:-1.5em;
 }
 .info {
   font-size:80%;

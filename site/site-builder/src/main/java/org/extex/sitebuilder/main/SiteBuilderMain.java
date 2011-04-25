@@ -114,7 +114,7 @@ public final class SiteBuilderMain {
         siteMap.setOutput(new File("target/test-site/sitemap.html"));
         siteBuilder.omit("CVS");
         siteBuilder.omit(".svn");
-        siteBuilder.lib("src/site/velocity/macros.vm");
+        // siteBuilder.lib("src/site/velocity/macros.vm");
 
         for (int i = 0; i < args.length; i++) {
             String arg = args[i];

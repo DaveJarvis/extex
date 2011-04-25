@@ -17,7 +17,7 @@
  */
 /**
  *  This package contains classes for the primitives which are mapped to
- *  Java code. Those primitives are implemented directly opposed to the
+ *  Java code. Those primitives are implemented directly &ndash; opposed to the
  *  implementation as macros.
  *  <p>
  *  The binding to the appropriate names is performed during
@@ -28,9 +28,9 @@
  *  <doc name="primitives" type="howto">
  *  <h3>Writing New Primitives</h3>
  *  <p>
- *   The core primitives of &epsilon;&chi;T<span style=
+ *   The core primitives of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X are written in Java and bound to
+ * >e</span>X</logo> are written in Java and bound to
  *   control sequences or active characters. In this section we will
  *   explain how to write new primitives in Java.
  *  </p>
@@ -139,9 +139,9 @@
  *  <h4>Registering New Macros</h4>
  *  <p>
  *   The primary way to register new macros is in the configuration file
- *   used by &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X. For example the default file is located
+ *   used by <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo>. For example the default file is located
  *   in the package <tt>config</tt> and named <tt>extex.xml</tt>. There you
  *   can find lines like the following one:
  *   <pre class="Sample">
@@ -149,35 +149,35 @@
  *              class="org.extex.interpreter.primitives.macro.Def"<b>/&gt;</b></pre>
  *  </p>
  *  <p>
- *   To add another primitive to &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X you should make a copy of this
+ *   To add another primitive to <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> you should make a copy of this
  *   configuration file under a different name and add a line like the
  *   one shown above:
  *   <pre class="Sample">
  *     <b>&lt;define</b> name="myPrim"
  *              class="my.package.MyPrimitive"<b>/&gt;</b></pre>
- *   Now you can invoke &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X on the command line with the parameter
+ *   Now you can invoke <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> on the command line with the parameter
  *   <tt>-configuration</tt> or add a line <tt>extex.config</tt> to your
- *   <tt>.extex</tt> file pointing &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X to your new configuration file:
+ *   <tt>.extex</tt> file pointing &<logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> to your new configuration file:
  *   <pre class="CLISample">
  *     extex -configuration config/myExTeX.xml</pre>
- *   This is enough. In the instance of &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X with these settings the
+ *   This is enough. In the instance of <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> with these settings the
  *   new macro <tt>\myPrim</tt> is defined and points to your code for
  *   execution.
  *  </p>
  *
  *  <h4>Registering New Macros Dynamically</h4>
  *  <p>
- *   One extension provided with &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X contains a dynamic definition of
+ *   One extension provided with <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> contains a dynamic definition of
  *   new macros. Those macros are defined at runtime. The assignment of
  *   the Java code to the macro name can be controlled with the help of
  *   a primitive. Check out whether the macro {@link
@@ -194,9 +194,9 @@
  *   or derived classes should not be used.
  *  </p>
  *  <p>
- *   &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X provides means for externalzing strings. Thus it should be
+ *   <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> provides means for externalizing strings. Thus it should be
  *   made easy to translate the messages to other languages. For this
  *   purpose the class {@link org.extex.framework.i18n.Localizer
  *   Localizer} is provided. See the documentation of this
@@ -205,9 +205,9 @@
  *
  *  <h4>Assignments</h4>
  *  <p>
- *   Assignments are a special kind of executable code. T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X defines
+ *   Assignments are a special kind of executable code. <logo>T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> defines
  *   that the parameter <tt>\globaldef</tt> is evaluated and the macro
  *   <tt>\afterassignment</tt> has some effect. To ease the development
  *   of assignments the abstract base class {@link
@@ -283,7 +283,7 @@
  *                             <b>final</b> TokenSource source,
  *                             <b>final</b> Typesetter typesetter
  *                            ) <b>throws</b> InterpreterException {
- *        <i>// implement the execution behaviour here</i>
+ *        <i>// implement the execution behavior here</i>
  *        <b>return</b> <b>true</b>;
  *      }
  *
@@ -292,29 +292,29 @@
  *                           <b>final</b> TokenSource source,
  *                           <b>final</b> Typesetter typesetter
  *                          ) <b>throws</b> InterpreterException {
- *        <i>// implement the evaluation behaviour here</i>
+ *        <i>// implement the evaluation behavior here</i>
  *      }
  *    }</pre>
- *   The parameters of <tt>evaluate()</tt> are ikdentical to those of
- *   <tt>execute()</tt>. But note, that the expected behaviour of
+ *   The parameters of <tt>evaluate()</tt> are identical to those of
+ *   <tt>execute()</tt>. But note, that the expected behavior of
  *   <tt>evaluate()</tt> is that it does <emph>not</emph> modify the
  *   context or the typesetter but exclusively modifies the token
- *   source. Usually it reads some tokens and piuts back its result to
+ *   source. Usually it reads some tokens and puts back its result to
  *   the token stream.
  *  </p>
  *
  *  <h4>Conditionals &ndash; Also Called Ifs</h4>
  *  <p>
  *   Conditionals are special because they modify the flow of control.
- *   In the macro programming language of T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X this may lead to a mode
+ *   In the macro programming language of <logo>T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> this may lead to a mode
  *   where tokens are absorbed at high speed. In this mode is necessary
- *   to identify conitionals to honor matching pairs of start and end
+ *   to identify conditionals to honor matching pairs of start and end
  *   tokens. 
  *  </p>
  *  <p>
- *   All neccesary actions are performed by the abstract base class
+ *   All necessary actions are performed by the abstract base class
  *   {@link org.extex.unit.base.conditional.AbstractIf AbstractIf}. The only
  *   thing to do is to implement the method <tt>conditional()</tt> which computes
  *   whether the then or the else branch should be considered relevant. This is
@@ -355,9 +355,9 @@
  *  
  *  <h4>Interaction With Other Macros</h4>
  *  <p>
- *   Several primitives of &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X are implemented generically. Let us
+ *   Several primitives of <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> are implemented generically. Let us
  *   consider for example the macro <tt>\the</tt>. This primitive simply
  *   gathers the next token and delegates the task of providing an
  *   appropriate definition for <tt>\the</tt> to the definition of this
@@ -370,9 +370,9 @@
  *   interface if it needs to be usable after <tt>\the</tt>.
  *  </p>
  *  <p>
- *   The following list contains some macros of &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X and the
+ *   The following list contains some macros of <logo>&epsilon;&chi;T<span style=
+ *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *   >e</span>X</logo> and the
  *   related interfaces: 
  *  </p>
  *  <table format="lll">
@@ -427,3 +427,4 @@
  */
 
 package org.extex.unit.tex;
+

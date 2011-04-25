@@ -17,9 +17,9 @@
  */
 /**
  * 
- * This package contains some support classes for the &epsilon;&chi;T<span style=
+ * This package contains some support classes for the <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X main program. This
+ * >e</span>X</logo> main program. This
  * includes Exception classes as well as ErrorHandler and Observers. 
  * <p>
  *  The whole interaction with the user is located in this package, if not
@@ -28,13 +28,15 @@
  *  be used to integrate the core engine into a graphical user interface.
  * </p>
  * 
- * <h1>Running &epsilon;&chi;T<span style=
+ * <h1>Running <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</h1>
+ * >e</span>X</logo></h1>
  * <p>
- *  &epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X can be run from the command line. The TeX-compatible command
+ *  <logo>&epsilon;&chi;T<span style=
+ *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *  >e</span>X</logo> can be run from the command line. The <logo>T<span style=
+ *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *  >e</span>X</logo>-compatible command
  *  line interface is available in the class {@link
  *  org.extex.main.tex.TeX TeX}.
  * </p>

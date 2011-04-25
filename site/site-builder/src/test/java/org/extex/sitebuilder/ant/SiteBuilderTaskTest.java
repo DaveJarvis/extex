@@ -32,8 +32,8 @@ import org.extex.sitebuilder.CleanupUtil;
  * This is a test suite for the site builder Ant task.
  * 
  * <p>
- * <b>Note:</b> the run() method creates a temporary Ant build file in target/.
- * Thus all path names are relative to this directory!
+ * <b>Note:</b> the {@link #run()} method creates a temporary Ant build file in
+ * <tt>target/</tt>. Thus all path names are relative to this directory!
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -69,9 +69,9 @@ public class SiteBuilderTaskTest extends BuildFileTest {
                     + "           classname=\"org.extex.sitebuilder.ant.SiteBuilderTask\"\n"
                     + "           classpath=\"classes\" />\n"
                     + "  <target name=\"test.case\"\n"
-                    + "          description=\"...\" >\n" + "");
+                    + "          description=\"The test case\" >\n    ");
             w.write(invocation);
-            w.write("  </target>\n");
+            w.write("\n  </target>\n");
             w.write("</project>\n");
         } finally {
             w.close();
@@ -94,31 +94,38 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     public final void test01() throws Exception {
 
+        String cwd =
+                new File(".").getAbsoluteFile().getCanonicalPath().toString()
+                    .replace('\\', '/');
+
         File siteDir = new File("target/test-site");
         CleanupUtil.rmdir(siteDir);
         assertFalse(siteDir.exists());
 
-        runTest("<SiteBuilder"
-                + "    output=\"test-site\""
-                + "    logLevel=\"WARNING\" >\n" //
-                + "  <omit>RCS</omit>\n"
-                + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
-                + "  <News output=\"test-site/rss/2.0/news.rss\" "
-                + "        template=\"org/extex/sitebuilder/news.vm\"\n" //
-                + "        max=\"3\"/>\n"
-                + "  <Tree dir=\"../src/test/resources/empty-site\""
-                + "        template=\"org/extex/sitebuilder/site.vm\"/>\n" //
-                + "  <Tree dir=\"../src/test/resources/test-site-1\""
-                + "        processHtml=\"true\"/>\n" //
-                + "  <Sitemap output=\"test-site/sitemap.html\""
-                + "        template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
-                + "</SiteBuilder>", //
+        runTest(
+            "<SiteBuilder"
+                    + "    output=\"target/test-site\""
+                    + "    logLevel=\"WARNING\" >\n" //
+                    + "  <omit>RCS</omit>\n"
+                    + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
+                    + "  <News    dir=\".\" "
+                    + "           output=\"target/test-site/rss/2.0/news.rss\" "
+                    + "           template=\"org/extex/sitebuilder/news.vm\"\n" //
+                    + "           max=\"3\"/>\n"
+                    + "  <Tree    dir=\"src/test/resources/empty-site\""
+                    + "           template=\"org/extex/sitebuilder/site.vm\"/>\n" //
+                    + "  <Tree    dir=\"src/test/resources/test-site-1\""
+                    + "           processHtml=\"true\"/>\n" //
+                    + "  <Sitemap output=\"target/test-site/sitemap.html\""
+                    + "           template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
+                    + "</SiteBuilder>", //
             null);
-        assertTrue(siteDir.exists());
+        assertTrue("Missing site dir: " + siteDir.toString(), siteDir.exists());
         assertFalse(new File(siteDir, "RCS").exists());
         assertTrue(new File(siteDir, "index.html").exists());
         assertTrue(new File(siteDir, "sitemap.html").exists());
         assertTrue(new File(siteDir, "robots.txt").exists());
+
     }
 
     /**

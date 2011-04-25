@@ -16,10 +16,11 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains backends of &epsilon;&chi;T<span style=
+ * This package contains backends of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X which just dump the information in
+ * >e</span>X</logo> which just dump the information in
  * a readable format to the output file.
  */
 
 package org.extex.backend.documentWriter.dump;
+

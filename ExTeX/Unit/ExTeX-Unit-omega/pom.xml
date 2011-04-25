@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-Unit-omega</artifactId>
-  <name>ExTeX Unit omega</name>
+  <name>ExTeX Unit Omega</name>
   <description>
     This is the ExTeX unit omega. It contains primitives for Omega-compatibility.
   </description>

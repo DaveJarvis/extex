@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-Unit-pdftex</artifactId>
-  <name>ExTeX Unit Pdftex</name>
+  <name>ExTeX Unit pdfTeX</name>
   <description>
     This is the ExTeX unit pdftex.
   </description>

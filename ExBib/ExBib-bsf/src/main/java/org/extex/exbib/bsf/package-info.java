@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -19,8 +19,9 @@
  * This package contains an adaptor class to use BSF-enabled languages to write
  * bibliography styles.
  * <p>
- * Note that this package might become obsolete when &epsilon;&chi;Bib is
- * migrated to Java 6 since JSR 223 is included therein.
+ *  Note that this package might become obsolete when 
+ *  <logo>&epsilon;&chi;Bib</logo> is finally migrated to Java 6 since JSR 223
+ *  is included therein.
  * </p>
  *
  */

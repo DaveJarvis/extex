@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>ExTeX-base</artifactId>
-  <name>ExTeX base</name>
+  <name>ExTeX Base</name>
   <version>0.1-SNAPSHOT</version>
   <description>
     This is the ExTeX base component. It contains the interpreter and

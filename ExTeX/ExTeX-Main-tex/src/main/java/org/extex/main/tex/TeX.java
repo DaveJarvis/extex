@@ -83,26 +83,27 @@ import org.extex.scanner.stream.observer.file.OpenFileObservable;
 import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
- * This is the command line interface to &epsilon;&chi;T<span style=
+ * This is the command line interface to <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X. It does all the horrible details necessary to interact with the
- * user of the command line in nearly the same way as T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
- * >e</span>X does.
+ * >e</span>X</logo>. It does all the horrible details necessary to interact
+ * with the user of the command line in nearly the same way as <logo>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> does.
  * <p>
  * The command line interface provides the following features:
  * </p>
  * <ul>
- * <li>Specifying format, input file, and T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align: -0.4ex;margin-left: -0.2em;margin-right: -0.1em;line-height: 0;"
- * >e</span>X code on the command line.</li>
+ * <li>Specifying format, input file, and <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> code on the command line.</li>
  * <li>Interacting with the user to get an input file.</li>
  * <li>Interacting with the user in case on an error</li>
  * </ul>
  * 
- * <doc type="cli"> <h3>&epsilon;&chi;T<span style=
+ * <doc type="cli"> <h3><logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X: Command Line Usage</h3>
+ * >e</span>X</logo>: Command Line Usage</h3>
  * 
  * <p>
  * This program is normally used through a wrapper which performs all necessary
@@ -123,9 +124,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <p>
  * The input file is sought in the current directory and other locations.
  * Details about searching can be found in <a href="#fileSearch">Searching
- * T<span style=
+ * <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X Files</a>.
+ * >e</span>X</logo> Files</a>.
  * </p>
  * <p>
  * In general the syntax of invocation is as follows:
@@ -142,11 +143,12 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * <dl>
  * <dt><tt>&lang;code&rang;</tt></dt>
- * <dd>This parameter contains &epsilon;&chi;T<span style=
+ * <dd>This parameter contains <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X code to be executed directly. The execution is performed after any
- * code specified in an input file. on the command line the code has to start
- * with a backslash. This restriction does not hold for the property settings.</dd>
+ * >e</span>X</logo> code to be executed directly. The execution is performed
+ * after any code specified in an input file. on the command line the code has
+ * to start with a backslash. This restriction does not hold for the property
+ * settings.</dd>
  * <dd>Property: <tt><a href="#extex.code">extex.code</a></tt></dd>
  * 
  * <dt><tt>&lang;file&rang;</tt></dt>
@@ -320,9 +322,9 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * <dt><a name="-texinputs"/><tt>-texinputs &lang;path&rang;</tt><br />
  * <tt>-texinputs=&lang;path&rang;</tt></dt>
  * <dd>This parameter contains the additional directories for searching
- * &epsilon;&chi;T<span style=
+ * <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X input files.</dd>
+ * >e</span>X</logo> input files.</dd>
  * <dd>Property: <tt><a href="#extex.texinputs">extex.texinputs</a></tt></dd>
  * 
  * <dt><a name="-texmfoutputs"/><tt>-texmfoutputs &lang;dir&rang;</tt><br />
@@ -397,11 +399,12 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * </p>
  * <dl>
  * <dt><a name="extex.code"/><tt>extex.code</tt></dt>
- * <dd>This parameter contains &epsilon;&chi;T<span style=
+ * <dd>This parameter contains <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X code to be executed directly. The execution is performed after any
- * code specified in an input file. on the command line the code has to start
- * with a backslash. This restriction does not hold for the property settings.</dd>
+ * >e</span>X</logo> code to be executed directly. The execution is performed
+ * after any code specified in an input file. on the command line the code has
+ * to start with a backslash. This restriction does not hold for the property
+ * settings.</dd>
  * <dd>Command line: <tt>&lang;code&rang;</tt></dd>
  * 
  * <dt><a name="extex.color.converter"/><tt>extex.color.converter</tt></dt>
@@ -447,11 +450,11 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * <dt><a name="extex.ini"/><tt>extex.ini</tt></dt>
  * <dd>If set to <code>true</code> then act as initex. This command line option
- * is defined for compatibility to T<span style=
+ * is defined for compatibility to <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X only. In &epsilon;&chi;T<span style=
+ * >e</span>X</logo> only. In <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X it has no effect at all.</dd>
+ * >e</span>X</logo> it has no effect at all.</dd>
  * <dd>Command line: <a href="#-ini"><tt>-ini</tt></a></dd>
  * 
  * <dt><a name="extex.interaction"/><tt>extex.interaction</tt></dt>
@@ -578,25 +581,25 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
  * 
  * <p>
  * The direct invocation of the Java needs some settings to be preset. These
- * settings are needed for &epsilon;&chi;T<span style=
+ * settings are needed for <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X to run properly. The following premises are needed:
+ * >e</span>X</logo> to run properly. The following premises are needed:
  * </p>
  * <ul>
  * <li>Java needs to be installed (see section <a
  * href="#installation">Installation</a>. The program <tt>java</tt> is assumed
  * to be on the path of executables.</li>
  * <li>Java must be configured to find the jar files from the
- * &epsilon;&chi;T<span style=
+ * <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X distribution. This can be accomplished by setting the environment
- * variable <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the documentation of
- * your Java system for details.</li>
+ * >e</span>X</logo> distribution. This can be accomplished by setting the
+ * environment variable <tt>CLASSPATH</tt> or <tt>JAVA_HOME</tt>. See the
+ * documentation of your Java system for details.</li>
  * </ul>
  * <p>
- * Now &epsilon;&chi;T<span style=
+ * Now <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X can be invoked with the same parameters described above:
+ * >e</span>X</logo> can be invoked with the same parameters described above:
  * </p>
  * 
  * <pre class="CLIsyntax">
@@ -654,6 +657,7 @@ public class TeX extends ExTeX {
          * @see org.extex.scanner.stream.observer.file.OpenFileObserver#update(java.lang.String,
          *      java.lang.String, java.io.InputStream)
          */
+        @Override
         public void update(String filename, String filetype, InputStream stream) {
 
             if ("tex".equals(filetype) && first) {
@@ -708,9 +712,9 @@ public class TeX extends ExTeX {
     /**
      * The field <tt>DOT_EXTEX</tt> contains the name of the user properties
      * file. This file contains property settings which are read when
-     * &epsilon;&chi;T<span style=
+     * <logo>&epsilon;&chi;T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X is started.
+     * >e</span>X</logo> is started.
      */
     private static final String DOT_EXTEX = ".extex";
 
@@ -777,9 +781,9 @@ public class TeX extends ExTeX {
 
     /**
      * This is the main method which is invoked to run the whole engine from the
-     * command line. It creates a new &epsilon;&chi;T<span style=
+     * command line. It creates a new <logo>&epsilon;&chi;T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X object and invokes
+     * >e</span>X</logo> object and invokes
      * <tt>{@link #run(java.lang.String[]) run()}</tt> on it.
      * <p>
      * The return value is used as the exit status.
@@ -801,9 +805,9 @@ public class TeX extends ExTeX {
 
     /**
      * This is the main method which is invoked to run the whole engine from the
-     * command line. It creates a new &epsilon;&chi;T<span style=
+     * command line. It creates a new <logo>&epsilon;&chi;T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X object and invokes
+     * >e</span>X</logo> object and invokes
      * <tt>{@link #run(java.lang.String[]) run()}</tt> on it.
      * <p>
      * The return value is the exit status. The value 0 indicates an successful
@@ -1075,6 +1079,7 @@ public class TeX extends ExTeX {
              * @see org.extex.backend.outputStream.OutputStreamObserver#update(java.lang.String,
              *      java.lang.String, java.io.OutputStream)
              */
+            @Override
             public void update(String name, String type, OutputStream stream) {
 
                 if (primaryFile != null) {
@@ -1251,11 +1256,11 @@ public class TeX extends ExTeX {
 
     /**
      * This method provides access to the whole functionality of
-     * &epsilon;&chi;T<span style=
+     * <logo>&epsilon;&chi;T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X on the command line. The exception is that this method does
-     * not call <code>{@link System#exit(int) System.exit()}</code> but returns
-     * the exit status as result.
+     * >e</span>X</logo> on the command line. The exception is that this method
+     * does not call <code>{@link System#exit(int) System.exit()}</code> but
+     * returns the exit status as result.
      * 
      * @param args the list of command line arguments
      * 

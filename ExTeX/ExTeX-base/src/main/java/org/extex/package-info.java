@@ -16,22 +16,22 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains &epsilon;&chi;T<span style=
+ * This package contains <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X &ndash; an implementation of a
- * typesetting engine based on the concepts of T<span style=
+ * >e</span>X</logo> &ndash; an implementation of a
+ * typesetting engine based on the concepts of <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X. The following
- * figure gives a impression of the top-level components of &epsilon;&chi;T<span style=
+ * >e</span>X</logo>. The following
+ * figure gives a impression of the top-level components of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X.
+ * >e</span>X</logo>.
  *
  * <div class="Figure">
  *  <img src="doc-files/components.png" width="90%"/>
  *  <br />
- *  <caption>The top-level components of &epsilon;&chi;T<span style=
+ *  <caption>The top-level components of <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</caption>
+ * >e</span>X</logo></caption>
  * </div>
  *
  * <dl>
@@ -39,9 +39,9 @@
  *  <dd>
  *   <p>
  *    The Main component encapsulates everything necessary to run
- *    &epsilon;&chi;T<span style=
+ *    <logo>&epsilon;&chi;T<span style=
  *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X from the command line. This includes the evaluation
+ *    >e</span>X</logo> from the command line. This includes the evaluation
  *    of the command line arguments as well as handling the interaction with
  *    the user &ndash; e.g. in case of an error. The remaining components
  *    should not know anything about were the input is coming from or where
@@ -56,9 +56,9 @@
  *   <p>
  *    The component called <b>ExTeX</b> is in fact just the glue which
  *    ties together all other components. It constitutes the entry
- *    point for any client using the &epsilon;&chi;T<span style=
- *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *   >e</span>X functionality.
+ *    point for any client using the <logo>&epsilon;&chi;T<span style=
+ *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *    >e</span>X</logo> functionality.
  *   </p>
  *   <p>
  *    This component is located in this package.
@@ -80,9 +80,9 @@
  *  <dd>
  *   <p>
  *    The component called <b>Interpreter Subsystem</b> provides an
- *    interpreter for the T<span style=
+ *    interpreter for the <logo>T<span style=
  *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- *    >e</span>X language. This includes an
+ *    >e</span>X</logo> language. This includes an
  *    engine to parse instructions &ndash; based on the tokens passed in
  *    from the input subsystem &ndash; and evaluate them.
  *   </p>
@@ -119,9 +119,9 @@
  *   <p>
  *    The component called <b>Backend Subsystem</b> provides means to
  *    translate the page description into an external format. The only
- *    format known by T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X is supported as well as some
+ *    format known by <logo>T<span style=
+ *    "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *    >e</span>X</logo> is supported as well as some
  *    others. This translation might involve some post-processing on the
  *    level of pages. For instance the selection or re-arranging of
  *    pages can be accomplished here.
@@ -145,3 +145,4 @@
  */
 
 package org.extex;
+

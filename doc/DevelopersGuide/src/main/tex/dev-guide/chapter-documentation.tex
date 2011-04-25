@@ -36,23 +36,76 @@ used -- with some extensions -- in \ExTeX\ development.
 \section{Javadoc}\index{Javadoc|(}
 
 The Javadoc conventions for comments make it possible to extract the
-relevant part of the documentation and generate several outut formats
-from it. The primary output format is \+HTML+.
+relevant part of the documentation and generate several output formats
+from it. The primary output format is \+HTML+ (ref. figure~\ref{fig:javadoc}).
 \begin{figure}[tbh]
   \centering
   \includegraphics[scale=.33]{image/javadoc}
-  \caption{Javadoc in the Browser}\label{fig:eclipse-javadoc}
+  \caption{Javadoc in the Browser}\label{fig:javadoc}
 \end{figure}
+
+Javadoc includes optionally the description of packages into the
+generated output -- if the appropriate input files are present. Here
+the \ExTeX\ team follows the convention to use the files names
+\File{package-info.java} since referenes contained herein are expanded
+to links\footnote{In contrast to the old fashioned files
+  \File{package.html}}.
+
+In each main package a file \File{package-info.java} should be
+present. This does not include test packages or resource packages.
 \index{Javadoc|)}
 
+
+\section{Documentation Files}
+
+The documentation of a component does not only consist of Javadoc.
+Each component resides in its own directory. For instance the
+component \texttt{CLI} lives in the directory \Dir{CLI}.
+
+The directory containing a component usually has a file \File{pom.xml}
+for compiling and packaging its contents. Besides a few files should
+also be present in each component directory:
+
+\begin{description}
+\item[\File{README.html}] contains a short description of the
+  component and instruction on compiling it. Images included in this
+  file are usually located in \Dir{src/images}.
+\item[LICENSE.html] contains the license on which the component is
+  distributed. Usually it should be the text of the GPL 2 or the FDL
+  for documentation modules.
+\end{description}
+
+\subsection{Side Bar for \texttt{README.html}}
+
+The files \File{README.html} have a common appearance. Part of this
+appearance is a gray side bar with a fading and the component name
+sideways from botton to top.
+
+The image for this side bar can be generated with the help of the file
+\File{doc/src/main/tex/splash.tex}. This \LaTeX\ file contains the
+definition to produce a PDF with the appropriate content. The next
+steps are as follows:
+
+\begin{itemize}
+\item Run pdflatex on \File{splash.tex} to obtain the PDF file.
+\item Extract the logo for the left side by opening the PDF file with
+  Gimp, clip the image to the needed portion, and scale the image to a
+  width of 115 pixels. Finally store the image as PNG in the
+  directory \Dir{src/images}. 
+\item Clip the image to contain just the last line of pixels and store
+  the result as another file in the directory \Dir{src/images}.
+\end{itemize}
+
+The first file obtained is used as logo for the left side. The second
+file contains the repeated image for the gray bar.
 
 \section{Documentation of Primitives}
 
 The documentation of the primitives is contained in the \+Javadoc+
 comments of the implementing Java classes. A script is used to extract
-the information from the sources for the \textit{User's Manual}. To
-make this happen, the documentation meant for the manual has to be
-marked and formatted specially.
+the information from the sources for the \textit{\ExTeX\ User's
+  Manual}. To make this happen, the documentation meant for the manual
+has to be marked and formatted specially.
 
 \INCOMPLETE
 
@@ -108,4 +161,5 @@ Maven task \texttt{compile} as shown below:
   # cd doc/DevelopersGuide
   # mvn compile
 \end{lstlisting}
+
 \index{documentation|)}

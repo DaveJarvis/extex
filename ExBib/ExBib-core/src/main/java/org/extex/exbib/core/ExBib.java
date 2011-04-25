@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -56,14 +56,14 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * This class contains the assembler for &epsilon;&chi;Bib.
+ * This class contains the assembler for <logo>&epsilon;&chi;Bib</logo>.
  * 
  * <h2>Parameters</h2>
  * <p>
- * The parameters to &epsilon;&chi;Bib are passed in as {@link Properties}. The
- * keys and values in the properties are {@link String}s. See
- * {@link #setProperty(String, String)}. The names of some of the supported
- * parameters are provided as symbolic constants in this class:
+ * The parameters to<logo>&epsilon;&chi;Bib</logo> are passed in as
+ * {@link Properties}. The keys and values in the properties are {@link String}
+ * s. See {@link #setProperty(String, String)}. The names of some of the
+ * supported parameters are provided as symbolic constants in this class:
  * </p>
  * <ul>
  * <li> {@link #PROP_BIB_ENCODING}</li>
@@ -490,8 +490,8 @@ public class ExBib {
     }
 
     /**
-     * This is the top level of the &epsilon;&chi;Bib engine. When all
-     * parameters are present then this method can be invoked.
+     * This is the top level of the <logo>&epsilon;&chi;Bib</logo> engine. When
+     * all parameters are present then this method can be invoked.
      * <p>
      * The following steps are performed:
      * </p>

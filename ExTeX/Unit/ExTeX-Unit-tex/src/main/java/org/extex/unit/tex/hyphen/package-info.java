@@ -16,11 +16,12 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains the primitives for hyphenations in &epsilon;&chi;T<span style=
+ * This package contains the primitives for hyphenations in <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X.
+ * >e</span>X</logo>.
  *  
  * @author <a href="m.g.n@gmx.de">Michael Niedermair</a>
  */
 
 package org.extex.unit.tex.hyphen;
+

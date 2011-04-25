@@ -19,6 +19,51 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <properties>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+  </properties>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>exec-maven-plugin</artifactId>
+        <version>1.1</version>
+        <executions>
+          <execution>
+            <id>make site</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>perl</executable>
+              <arguments>
+                <argument>src/perl/make.pl</argument>
+                <argument>-src=src/site</argument>
+                <argument>-dest=target/site</argument>
+              </arguments>
+            </configuration>
+          </execution>
+          <execution>
+            <id>make rss</id>
+            <phase>compile</phase>
+            <goals>
+              <goal>exec</goal>
+            </goals>
+            <configuration>
+              <executable>perl</executable>
+              <arguments>
+                <argument>src/perl/make-rss.pl</argument>
+                <argument>-out=target/site/rss/2.0/ExTeX.rss</argument>
+              </arguments>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
   <reporting>
     <plugins>
 

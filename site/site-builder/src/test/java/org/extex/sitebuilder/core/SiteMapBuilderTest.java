@@ -24,7 +24,7 @@ import java.io.File;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link SitemapBuilder}.
+ * This is a test suite for {@link SiteMapBuilder}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
