@@ -38,10 +38,17 @@
 
   <dependencies>
     <dependency>
+      <groupId>net.sourceforge.jeval</groupId>
+      <artifactId>jeval</artifactId>
+      <version>0.9.4</version>
+    </dependency>
+<!--
+    <dependency>
       <groupId>jeval</groupId>
       <artifactId>jeval</artifactId>
       <version>0.9.3</version>
     </dependency>
+-->
 
     <dependency>
       <groupId>org.extex</groupId>
