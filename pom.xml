@@ -124,7 +124,6 @@
       </configuration>
     <notifier>
   </ciManagement>
--->
 
   <repositories>
     <repository>
@@ -133,6 +132,7 @@
       <url>http://www.extex.org/maven2/</url>
     </repository>
   </repositories> 
+-->
 
   <distributionManagement>
     <site>
@@ -188,8 +188,6 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.6</version>
         <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>true</downloadJavadocs>
           <configLocation>org/extex/checkstyle-extex.xml</configLocation>
         </configuration>
         <dependencies>
@@ -256,11 +254,9 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.5</version>
         <configuration>
-
           <configLocation>ExTeX/checkstyle-extex.xml</configLocation>
 <!--
           <headerLocation>ExTeX/LICENSE.txt</headerLocation>
-<! - -
           <enableRulesSummary>false</enableRulesSummary>
 -->
         </configuration>
