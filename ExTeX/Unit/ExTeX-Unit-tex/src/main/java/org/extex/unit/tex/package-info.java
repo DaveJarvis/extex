@@ -161,7 +161,7 @@
  *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  *   >e</span>X</logo> on the command line with the parameter
  *   <tt>-configuration</tt> or add a line <tt>extex.config</tt> to your
- *   <tt>.extex</tt> file pointing &<logo>&epsilon;&chi;T<span style=
+ *   <tt>.extex</tt> file pointing <logo>&epsilon;&chi;T<span style=
  *   "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  *   >e</span>X</logo> to your new configuration file:
  *   <pre class="CLISample">
