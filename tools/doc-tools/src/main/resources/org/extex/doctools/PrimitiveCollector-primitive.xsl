@@ -371,7 +371,11 @@
   <!-- ===================================================================== -->
   <xsl:template match="pre[@class='configuration']">\begin{lstlisting}[language=XML]<xsl:copy-of select="text()|*"/>\end{lstlisting}</xsl:template>
   <!-- ===================================================================== -->
-  <xsl:template match="pre">\begin{verbatim}<xsl:copy-of select="text()|*"/>\begin{verbatim}</xsl:template>
+  <xsl:template match="pre">\begin{verbatim}<xsl:copy-of select="text()|*"/>\end{verbatim}</xsl:template>
+  <!-- ===================================================================== -->
+  <xsl:template match="small">{\small <xsl:apply-templates select="text()|*"/>}</xsl:template>
+  <!-- ===================================================================== -->
+  <xsl:template match="span">{<xsl:apply-templates select="text()|*"/>}</xsl:template>
   <!-- ===================================================================== -->
   <xsl:template match="tt" mode="syntax">\texttt{<xsl:apply-templates select="text()|*" mode="syntax"/>}</xsl:template>
   <!-- ===================================================================== -->
