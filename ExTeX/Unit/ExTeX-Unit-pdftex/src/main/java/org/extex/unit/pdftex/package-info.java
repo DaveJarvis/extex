@@ -19,7 +19,7 @@
  * This package contains primitives for <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X</logo>'s
- * <small>PDF</small><logo>T<span style=
+ * <span style="font-size:80%;">PDF</span><logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X</logo> mode.
  *
@@ -27,11 +27,11 @@
  * <h3>The Count Parameter <tt>\pdftexversion</tt></h3>
  * <p>
  *  The count register <tt>\pdftexversion</tt> contains the version
- *  number of<small>PDF</small>T<span style=
+ *  number of <span style="font-size:80%;">PDF</span>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X as an integer. The number is multiplied
  *  by 100 to show the fractional part. For instance the value 123 signals
- *  the version number 1.23 of <small>PDF</small>T<span style=
+ *  the version number 1.23 of <span style="font-size:80%;">PDF</span>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X.
  * </p>
@@ -56,10 +56,9 @@
  * <h3>The Tokens Parameter <tt>\pdftexrevision</tt></h3>
  * <p>
  *  The tokens register <tt>\pdftexrevision</tt> contains the revision
- *  of <small>PDF</small>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X in use. Usually this is something like a
- *  letter.
+ *  of <span style="font-size:80%;">PDF</span>T<span style=
+ *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ *  >e</span>X in use. Usually this is something like a letter.
  * </p>
  * <p>
  *  The revision number is a preassigned tokens register and can be used
