@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -38,7 +38,7 @@ public class UnknownArgumentException extends Exception {
     /**
      * Creates a new object.
      * 
-     * @param message
+     * @param message the message text
      */
     public UnknownArgumentException(String message) {
 
@@ -55,8 +55,8 @@ public class UnknownArgumentException extends Exception {
 
         ResourceBundle bundle = ResourceBundle.getBundle(getClass().getName());
 
-        return MessageFormat.format(bundle.getString("message"), super
-            .getMessage());
+        return MessageFormat.format(bundle.getString("message"),
+            super.getMessage());
     }
 
     /**
