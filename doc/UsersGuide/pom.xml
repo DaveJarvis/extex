@@ -58,8 +58,13 @@
                 <argument>-output</argument>
                 <argument>${project.build.directory}/generated</argument>
                 <argument>../../ExTeX/ExTeX-base</argument>
-                <argument>../../ExTeX/Unit/ExTeX-Unit-*</argument>
-                <argument>../../ExTeX/Typesetter/ExTeX-Typesetter-*</argument>
+                <argument>../../ExTeX/ExTeX-core</argument>
+                <argument>../../ExTeX/Unit/ExTeX-*</argument>
+                <argument>../../ExTeX/Typesetter/ExTeX-*</argument>
+                <argument>../../ExTeX/Backend/ExTeX-*</argument>
+                <argument>../../ExTeX/Interpreter/ExTeX-*</argument>
+                <argument>../../ExTeX/Scanner/ExTeX-*</argument>
+                <argument>../../ExTeX/Font/ExTeX-*</argument>
               </arguments>
               <workingDirectory>${basedir}</workingDirectory>
               <outputFile>${project.build.directory}/compile.out</outputFile>
