@@ -347,16 +347,12 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      *             &lang;optional spaces&rang;}
      *       |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
-     * <tt>
-     * =
-     * </tt>
-     * &lt;sub&gt;12&lt;/sub&gt; {@linkplain
+     *          <tt>=<sub>12</sub></tt> {@linkplain
      *             org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      * </pre>
      * 
      * </doc>
-     * 
      * 
      * @param context the interpreter context
      * 
