@@ -430,8 +430,8 @@ public class PrimitiveCollector {
     /**
      * The field <tt>TODO_PATTERN</tt> contains the pattern to recognize todos.
      */
-    private static final Pattern TODO_PATTERN =
-            Pattern.compile(".* TODO[: ].*");
+    private static final Pattern TODO_PATTERN = Pattern
+        .compile(".* TODO[: ].*");
 
     /**
      * The command line interface. The command line is processed. Finally
@@ -458,8 +458,9 @@ public class PrimitiveCollector {
             new PrimitiveCollector().run(args);
             return 0;
         } catch (Exception e) {
+            e.printStackTrace();
             System.err.println(e.toString());
-            return -1;
+            return -2;
         }
     }
 
@@ -640,10 +641,16 @@ public class PrimitiveCollector {
     /**
      * Traverse a directory tree and search for Java and package.html files.
      * 
+     * @return the docs encountered
+     * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    public void collectDocs() throws IOException, SyntaxException {
+    public Map<String, Info> collectDocs() throws IOException, SyntaxException {
+
+        if (docs != null) {
+            return docs;
+        }
 
         docs = new HashMap<String, Info>();
 
@@ -653,15 +660,22 @@ public class PrimitiveCollector {
                 traverseSource(dir);
             }
         }
+        return docs;
     }
 
     /**
      * Traverse a directory hierarchy and collect whatever is needed.
      * 
+     * @return the units encountered
+     * 
      * @throws IOException in case of an I/O error
      * @throws SyntaxException in case of a syntax error
      */
-    public void collectXml() throws IOException, SyntaxException {
+    public Map<String, Info> collectXml() throws IOException, SyntaxException {
+
+        if (units != null) {
+            return units;
+        }
 
         configs = new HashMap<String, Info>();
         units = new HashMap<String, Info>();
@@ -672,6 +686,8 @@ public class PrimitiveCollector {
                 traverse(dir);
             }
         }
+
+        return units;
     }
 
     /**
@@ -1231,10 +1247,7 @@ public class PrimitiveCollector {
                 TransformerException,
                 SyntaxException {
 
-        if (docs == null) {
-            collectDocs();
-        }
-        write(writer, docs, docTag);
+        write(writer, collectDocs(), docTag);
     }
 
     /**
@@ -1252,10 +1265,7 @@ public class PrimitiveCollector {
                 TransformerException,
                 SyntaxException {
 
-        if (units == null) {
-            collectXml();
-        }
-        write(writer, units, "unit");
+        write(writer, collectXml(), "unit");
     }
 
 }
