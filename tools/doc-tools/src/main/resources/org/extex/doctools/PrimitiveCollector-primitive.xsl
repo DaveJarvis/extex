@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <!-- 
- Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
 
  This library is free software; you can redistribute it and/or modify it
  under the terms of the GNU Lesser General Public License as published by the
@@ -309,9 +309,9 @@
     <xsl:otherwise>\texttt{<xsl:value-of select="$x"/>}</xsl:otherwise>
   </xsl:choose></xsl:template>
   <!-- ===================================================================== -->
-  <xsl:template match="sub">\ensuremath{_<xsl:apply-templates select="text()|*"/>}</xsl:template>
+  <xsl:template match="sub">\ensuremath{_{<xsl:apply-templates select="text()|*"/>}}</xsl:template>
   <!-- ===================================================================== -->
-  <xsl:template match="sup">\ensuremath{^<xsl:apply-templates select="text()|*"/>}</xsl:template>
+  <xsl:template match="sup">\ensuremath{^{<xsl:apply-templates select="text()|*"/>}}</xsl:template>
   <!-- ===================================================================== -->
   <xsl:template match="h1">\part{<xsl:apply-templates select="text()|*"/>}</xsl:template>
   <!-- ===================================================================== -->
