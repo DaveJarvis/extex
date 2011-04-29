@@ -210,9 +210,9 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * 
      * <pre class="syntax">
      *    &lang;control sequence&rang;
-     *      &rarr; &lt;i&gt;?&lt;sub&gt;13&lt;/sub&gt;&lt;/i&gt;
-     *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;/i&gt;
-     *       |  &lt;i&gt;?&lt;sub&gt;0&lt;/sub&gt;&lt;/i&gt;&lt;i&gt;?&lt;sub&gt;11&lt;/sub&gt;&lt;/i&gt;*
+     *      &rarr; <i>?<sub>13</sub></i>
+     *       |  <i>?<sub>0</sub></i><i>?</i>
+     *       |  <i>?<sub>0</sub></i><i>?<sub>11</sub></i>*
      * </pre>
      * 
      * <h4>Examples</h4>
