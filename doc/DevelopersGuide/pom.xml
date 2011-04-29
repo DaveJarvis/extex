@@ -30,7 +30,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>doc-tools</artifactId>
-      <version>1.1</version>
+      <version>1.2</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
