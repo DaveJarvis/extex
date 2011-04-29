@@ -7,6 +7,10 @@
   <name>ExTeX Unit TeX</name>
   <description>
     This is the ExTeX unit TeX.
+    A unit in ExTeX is a loadable module providing a set of primitives.
+    Those primitives are implemented as Java classes.
+    
+    The unit TeX provides most of the TeX primitives.
   </description>
 
   <packaging>jar</packaging>
@@ -49,7 +53,6 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
       <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
     </dependency>
 
     <dependency>
