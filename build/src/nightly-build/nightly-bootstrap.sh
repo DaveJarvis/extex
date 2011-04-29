@@ -1,6 +1,6 @@
 #!/bin/bash
 #--------------------------------------------------------------------
-# (c) 2003-2010 Gerd Neugebauer (gene@gerd-neugebauer.de)
+# (c) 2003-2011 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 #--------------------------------------------------------------------
 # LOCALDIR contains the location where the build resides.
@@ -24,7 +24,7 @@ LOG=$LOCALDIR/logs/build.log
 
 if test ! -e $JAVA_HOME/bin/java; then
     echo "Error: JAVA_HOME is not defined correctly." 1>&2
-    echo "       Create a symlink $JAVA_HOME ponting to the right location." 1>&2
+    echo "       Create a symlink $JAVA_HOME pointing to the right location." 1>&2
     exit 1
 fi
 
