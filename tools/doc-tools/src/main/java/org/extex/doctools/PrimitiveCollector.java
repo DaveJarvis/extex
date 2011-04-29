@@ -596,7 +596,7 @@ public class PrimitiveCollector {
 
     /**
      * The field <tt>unitsFileName</tt> contains the name of the file on which
-     * the unit are written.
+     * the units are written.
      */
     private String unitsFileName = "units.tex";
 
@@ -846,9 +846,7 @@ public class PrimitiveCollector {
         }
 
         StringBuilder buffer = new StringBuilder(XML_INIT);
-        buffer.append("<doc class=\"");
-        buffer.append(clazz);
-        buffer.append("\"");
+        buffer.append("<doc class=\"").append(clazz).append("\"");
         if (!start.contains(" type=")) {
             buffer.append(" type=\"" + defaultType + "\"");
         }
@@ -857,34 +855,46 @@ public class PrimitiveCollector {
 
         for (String s = reader.readLine(); s != null; s = reader.readLine()) {
             if (inJava) {
-                s.replaceAll("^ *\\*[ ]?", "");
+                s = s.replaceAll("^ *\\*[ ]?", "");
             }
             int i = s.indexOf("</doc>");
             if (i >= 0) {
-                s = s.substring(0, i + 6).replaceAll("^[ ]*\\*", "");
-                buffer.append(s);
-                Element root;
+                buffer.append(s.substring(0, i + 6));
+                s = buffer.toString();
+                s =
+                        s.replaceAll(
+                            "<logo>L<span[^<>]*>a</span><span[^<>]*>T</span><span[^<>]*>e</span>X</logo>",
+                            "<logo>LaTeX</logo>");
+                s =
+                        s.replaceAll(
+                            "<logo>&epsilon;&chi;T<span[^<>]*>e</span>X</logo>",
+                            "<logo>ExTeX</logo>");
+                s =
+                        s.replaceAll(
+                            "<logo>&epsilon;-T<span[^<>]*>e</span>X</logo>",
+                            "<logo>eTeX</logo>");
+                s =
+                        s.replaceAll("<logo>T<span[^<>]*>e</span>X</logo>",
+                            "<logo>TeX</logo>");
                 try {
-                    root =
-                            builder.parse(
-                                new StringInputStream(buffer.toString()))
-                                .getDocumentElement();
+                    Element root = builder.parse(new StringInputStream(s)) //
+                        .getDocumentElement();
+                    String name = root.getAttribute("name");
+                    if (!"".equals(name)) {
+                        docs.put(name + " " + clazz, new Info(f, root));
+                    }
                 } catch (SAXException e) {
                     throw new SyntaxException(f.toString(), //
                         e.getLocalizedMessage());
                 }
 
-                String name = root.getAttribute("name");
-                if (!"".equals(name)) {
-                    docs.put(name + " " + clazz, new Info(f, root));
-                }
                 return;
             } else if (TODO_PATTERN.matcher(s).matches()) {
                 buffer.append("<todo>");
                 buffer.append(s.substring(s.indexOf("TODO") + 5));
                 buffer.append("</todo>");
             } else {
-                buffer.append(s.replaceAll("^[ ]*\\*", ""));
+                buffer.append(s);
             }
             buffer.append('\n');
         }
