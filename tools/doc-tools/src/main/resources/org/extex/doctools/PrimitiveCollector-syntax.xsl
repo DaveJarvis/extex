@@ -307,7 +307,7 @@
     <xsl:when test="starts-with($x,'\')">\Macro{<xsl:value-of select="substring($x,2)"/>}</xsl:when>
     <xsl:when test="$x='{'">\texttt{\char`\{}</xsl:when>
     <xsl:when test="$x='}'">\texttt{\char`\}}</xsl:when>
-    <xsl:otherwise>\texttt{<xsl:value-of select="$x"/>}</xsl:otherwise>
+    <xsl:otherwise>\texttt{<xsl:apply-templates select="$x"/>}</xsl:otherwise>
   </xsl:choose></xsl:template>
   <!-- ===================================================================== -->
   <xsl:template match="sub">\ensuremath{_{<xsl:apply-templates select="text()|*"/>}}</xsl:template>
@@ -373,6 +373,10 @@
   <xsl:template match="pre[@class='configuration']">\begin{lstlisting}[language=XML]<xsl:copy-of select="text()|*"/>\end{lstlisting}</xsl:template>
   <!-- ===================================================================== -->
   <xsl:template match="pre">\begin{verbatim}<xsl:copy-of select="text()|*"/>\begin{verbatim}</xsl:template>
+  <!-- ===================================================================== -->
+  <xsl:template match="sub" mode="syntax">\ensuremath{_{<xsl:apply-templates select="text()|*"/>}}</xsl:template>
+  <!-- ===================================================================== -->
+  <xsl:template match="sup" mode="syntax">\ensuremath{^{<xsl:apply-templates select="text()|*"/>}}</xsl:template>
   <!-- ===================================================================== -->
   <xsl:template match="tt" mode="syntax">\texttt{<xsl:apply-templates select="text()|*" mode="syntax"/>}</xsl:template>
   <!-- ===================================================================== -->
