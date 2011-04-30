@@ -346,8 +346,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      *      &rarr; {@linkplain org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      *       |  {@linkplain org.extex.interpreter.TokenSource#skipSpace()
-     *             &lang;optional spaces&rang;}
-     *          <tt>=<sub>12</sub></tt> {@linkplain
+     *             &lang;optional spaces&rang;} <tt>=<sub>12</sub></tt> {@linkplain
      *             org.extex.interpreter.TokenSource#skipSpace()
      *             &lang;optional spaces&rang;}
      * </pre>
@@ -601,7 +600,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * </ul>
      * </p>
      * <p>
-     * Te integer register <tt>\maxRegister</tt> is defined in the name space
+     * The integer register <tt>\maxRegister</tt> is defined in the name space
      * <tt>system</tt>. Thus special actions have to be used to access it.
      * </p>
      * 
