@@ -19,7 +19,8 @@ fi
 #export ANT_HOME=/serv/extex-project/lib/ant/
 #--------------------------------------------------------------------
 #
-LOG=$LOCALDIR/logs/build.log
+LOGS=$LOCALDIR/logs
+BUILD_LOG=$LOGS/build.log
 #--------------------------------------------------------------------
 
 if test ! -e $JAVA_HOME/bin/java; then
@@ -35,27 +36,34 @@ export PATH=$JAVA_HOME/bin:$ANT_HOME/bin:$HOME/bin:$PATH
 if test ! -d $LOCALDIR; then
     mkdir -p $LOCALDIR
 fi
-if test ! -d $LOCALDIR/logs; then
-    mkdir -p $LOCALDIR/logs
+if test ! -d $LOGS; then
+    mkdir -p $LOGS
 fi
 
 cd $LOCALDIR
 
 if test ! -e trunk; then
-    svn co http://svn.berlios.de/svnroot/repos/extex/trunk >>$LOG 2>&1
+    svn co http://svn.berlios.de/svnroot/repos/extex/trunk >$BUILD_LOG 2>&1
+    cd $LOCALDIR/trunk
+else
+    cd $LOCALDIR/trunk
+    svn update >$BUILD_LOG 2>&1
 fi
 
-cd $LOCALDIR/trunk
-date >$LOG 2>&1
+if test -e $BUILD_LOG; then
+    echo "Nothing new on the western front" >> $BUILD_LOG
+    exit 0
+fi
 
-svn update >>$LOG 2>&1
+date >>$BUILD_LOG 2>&1
+
 
 cd build
-source src/nightly-build/nightly-build.sh >>$LOG 2>&1
+source src/nightly-build/nightly-build.sh >>$BUILD_LOG 2>&1
 
-if test -n "`grep '[ERROR] BUILD ERROR' $LOG`"; then
+if test -n "`grep '[ERROR] BUILD ERROR' $BUILD_LOG`"; then
 #    /usr/bin/mail -s 'ExTeX build failed' extex-build@lists.berlios.de < $LOG
-    /usr/bin/mail -s 'ExTeX build' gene@gerd-neugebauer.de < $LOG
+    /usr/bin/mail -s 'ExTeX build' gene@gerd-neugebauer.de < $BUILD_LOG
 fi
 
 #

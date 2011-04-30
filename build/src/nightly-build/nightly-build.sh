@@ -8,10 +8,10 @@
 # (c) 2003-2011 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
-if [ "$LOG" == "" ]; then
-    echo "LOG is undefined"
-    exit 1
-fi
+#if [ "$LOG" == "" ]; then
+#    echo "LOG is undefined"
+#    exit 1
+#fi
 if [ "$JAVA_HOME" == "" ]; then
     echo "JAVA_HOME is undefined"
     exit 1
@@ -25,29 +25,23 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
-echo '########## install ##########'
+echo '########## install ##########' `date`
 mvn install	                           	|| echo "*** FAILURE ***"
 
-echo '########## ExBib ##########'
+echo '########## ExBib ##########' `date`
 (cd ExBib;		mvn install)		|| true
 
-echo '########## ExTeX ##########'
+echo '########## ExTeX ##########' `date`
 (cd ExTeX;		mvn -Dmaven.test.skip=true package)	|| true
 
-echo '########## ExBib site ##########'
+echo '########## ExBib site ##########' `date`
 (cd ExBib;		mvn site:site site:stage site:deploy)	|| true
 
-echo '########## site ##########'
+echo '########## site ##########' `date`
 #mvn -Dmaven.test.skip=true site		|| true
 (cd site;               mvn compile)            || true
 
-##--------------------------------------------------------------------
-##
-date >$LOG/www.log
-cd $LOCALDIR/ExTeX/www
-make >>$LOG/www.log 2>&1
-cp -r ../target/www/* $INSTALLDIR/
-#
-#
-#rm -r $LOCALDIR/ExTeX/target
-##
+echo '########## www ##########' `date`
+(cd www; ant install )
+
+#--------------------------------------------------------------------
