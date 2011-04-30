@@ -2,7 +2,7 @@
   ############################################################################
   # This is the Ant build file for the ExTeX web site
   ############################################################################
-  # Copyright (C) 2006-2007 The ExTeX Group
+  # Copyright (C) 2006-2011 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by
@@ -26,6 +26,8 @@
     The ExTeX site is build from a set of templates.
   </description>
 
+  <property name="install.dir" location="/serv/www/extex" />
+
   <property name="target" location="target" />
   <property name="site" location="target/site" />
   <property name="overview-summary"
@@ -35,7 +37,6 @@
 
   <import file="build-unit.xml" />
 
-
   <!-- ==================================================================== -->
   <target name="all" description="Build everything" depends="site,rss,unit" />
 
@@ -43,14 +44,14 @@
   <target name="init" description="Compile the build Java files">
 
     <mkdir dir="target/classes" />
-    <javac srcdir="src/java"
+    <javac srcdir="src/main/java"
            destdir="target/classes"
            classpath="${ant.library.dir}/ant.jar"
            debug="on"
            deprecation="false" />
 
     <copy todir="target/classes">
-      <fileset dir="src/java" excludes="*.java" />
+      <fileset dir="src/main/resources" excludes="*.java" />
     </copy>
   </target>
 
@@ -87,6 +88,15 @@
     <testSummary input="${overview-summary}"
                  output="${target}/test-summary.html" 
                  ignoreMissing="true" />
+  </target>
+
+  <!-- ==================================================================== -->
+  <target name="install"
+  	  description="Install the generated files and directories."
+  	  depends="all">
+    <copy todir="${install.dir}">
+      <fileset dir="${site}" />
+    </copy>
   </target>
 
   <!-- ==================================================================== -->
