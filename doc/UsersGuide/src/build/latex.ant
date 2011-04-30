@@ -66,6 +66,7 @@
 
   <uptodate property="latex.not.required"
             targetfile="target/${doc.file}.${output.format}">
+    <srcfiles dir= "${project.build.directory}/generated" includes="**/*.tex"/>
     <srcfiles dir= "${doc.dir}" includes="**/*.tex"/>
     <srcfiles dir= "${doc.dir}" includes="**/*.png"/>
   </uptodate>
