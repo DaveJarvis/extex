@@ -16,7 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains an implmentation of a ligature builder.
+ * This package contains an implementation of a ligature builder.
  */
 
 package org.extex.language.ligature;
+
