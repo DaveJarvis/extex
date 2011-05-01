@@ -1,0 +1,22 @@
+ExTeX Maven Skin
+
+  The ExTeX Maven skin provides skinning for the sites of the ExTeX projects.
+  For this purpose a bunch of resources are provided in a jar.
+  
+  
+* Usage
+
+  Create a file <<<src/site/site.xml>>> and declare the use of the skin in it:
+  
+---
+<project>
+...
+<skin>
+  <groupId>org.extex</groupId>
+  <artifactId>ExTeX-skin</artifactId>
+  <version>1.0</version>
+</skin>
+...
+</project>
+---
+  
