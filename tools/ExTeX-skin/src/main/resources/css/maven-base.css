@@ -40,13 +40,16 @@ div.clear hr{
   float:right;
 }
 #banner {
-  padding: 0px;
+  background:#f4dcd5 url(../images/banner.png) repeat;
+  vertical-align:center;
+  padding:6pt
 }
 #banner img {
   border: none;
 }
 #breadcrumbs {
   padding: 3px 10px 3px 10px;
+  background:#eeeeee url(../images/breadcrumbs.png) repeat-x;
 }
 #leftColumn {
  width: 170px;
@@ -66,12 +69,10 @@ div.clear hr{
 #navcolumn h5 {
   margin: 0;
   padding: 0;
-  font-size: small;
 }
 #navcolumn ul {
   margin: 0;
   padding: 0;
-  font-size: small;
 }
 #navcolumn li {
   list-style-type: none;

@@ -16,23 +16,21 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-
 body {
   background-color: #fff;
   font-family: sans-serif;
   margin-left: auto;
   margin-right: auto;
   background-repeat: repeat-y;
-  font-size: 13px;
   padding: 0px;
 }
 td, select, input, li{
   font-family: sans-serif;
-  font-size: 12px;
+  font-size: 95%;
   color:#333333;
 }
 code{
-  font-size: 12px;
+  font-size: 90%;
 }
 a {
   text-decoration: none;
@@ -62,27 +60,31 @@ a.newWindow, a.newWindow:link, a.newWindow:visited, a.newWindow:active, a.newWin
   background: url(../images/newwindow.png) right center no-repeat;
   padding-right: 18px;
 }
-h2 {
-  font-size: 17px;
-  color: #333333;
+h3,h4,h5 {
+  background-color:#cccccc;
+}
+h1,h2 {
+  background-color:#666666;
+  padding: 4px 4px 4px 24px;
+  font-size: 144%;
+  color: white;
 }
 h3 {
   padding: 4px 4px 4px 24px;
   color: #666;
   background-color: #ccc;
   font-weight: bold;
-  font-size: 14px;
+  font-size: 120%;
   background-image: url(../images/h3.png);
   background-repeat: no-repeat;
   background-position: left bottom;
 }
 p {
   line-height: 1.3em;
-  font-size: 12px;
   color: #000;
 }
 #breadcrumbs {
-  height: 13px;
+  height: .8em;
   background-image: url(../images/breadcrumbs.jpg);
   padding: 5px 10px 14px 20px;
 }
@@ -102,9 +104,11 @@ p {
   border-bottom-width: 1px;
   padding-right: 5px;
   padding-left: 5px;
+  background-color:#eeeeee;
+  min-width:170px;
 }
 #navcolumn h5 {
-  font-size: smaller;
+  font-size:95%;
   border-bottom: 1px solid #aaaaaa;
   padding-top: 2px;
   padding-left: 9px;
@@ -112,6 +116,10 @@ p {
   background-image: url(../images/h5.png);
   background-repeat: no-repeat;
   background-position: left bottom;
+}
+#navcolumn img {
+  margin-top:8pt;
+  margin-bottom:8pt;
 }
 
 table.bodyTable th {
@@ -122,7 +130,7 @@ table.bodyTable th {
 }
 
 table.bodyTable th, table.bodyTable td {
-  font-size: 11px;
+  font-size:85%;
 }
 
 table.bodyTable tr.a {
@@ -134,11 +142,11 @@ table.bodyTable tr.b {
 }
 
 table.bodyTable tr.a:hover, table.bodyTable tr.b:hover {
-  background: #dfe3db;
+  background: red;
 }
 
 .source {
-  border: 1px solid #999;
+  border: 1pt solid #999;
   overflow:auto
 }
 dt {
@@ -146,20 +154,18 @@ dt {
   color: #333333;
   background-color: #ccc;
   font-weight: bold;
-  font-size: 14px;
   background-image: url(../images/h3.jpg);
   background-repeat: no-repeat;
   background-position: left bottom;
 }
 .subsectionTitle {
-  font-size: 13px;
+  font-size: 98%;
   font-weight: bold;
   color: #666;
-
 }
 
 table {
-  font-size: 10px;
+  font-size:90%;
 }
 .xright a:link, .xright a:visited, .xright a:active {
   color: #666;
@@ -168,7 +174,7 @@ table {
   color: #003300;
 }
 #banner {
-  height: 93px;
+  height:60px;
   background: url(../images/banner.jpg);
 }
 #navcolumn ul {
@@ -189,9 +195,8 @@ table {
   margin-left: 3px;
   color: #333333;
 }
-
 .subsection p {
-  font-size: 12px;
+  font-size: 95%;
 }
 #footer {
   padding: 10px;
@@ -214,4 +219,10 @@ table {
 
 .infomark {
   background-image: url(../images/icon_info_sml.gif);
+}
+
+pre {
+  margin:2pt solid #999999;
+  padding:.5em;
+  background-color:#eeeeee;
 }
