@@ -72,7 +72,7 @@ h3 {
   background-color: #ccc;
   font-weight: bold;
   font-size: 14px;
-  background-image: url(../images/h3.jpg);
+  background-image: url(../images/h3.png);
   background-repeat: no-repeat;
   background-position: left bottom;
 }
@@ -109,7 +109,7 @@ p {
   padding-top: 2px;
   padding-left: 9px;
   color: #49635a;
-  background-image: url(../images/h5.jpg);
+  background-image: url(../images/h5.png);
   background-repeat: no-repeat;
   background-position: left bottom;
 }
