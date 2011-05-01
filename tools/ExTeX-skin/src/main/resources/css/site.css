@@ -1,10 +1,10 @@
 #banner {
-  background:#f4dcd5 url(../images/three-column-text.png) repeat;
+  background:#f4dcd5 url(../images/banner.png) repeat;
   vertical-align:center;
   padding:6pt
 }
 #breadcrumbs {
-  background:#f9e5af url(../images/top-fade.png) repeat-x;
+  background:#f9e5af url(../images/breadcrumbs.png) repeat-x;
 }
 #leftColumn {
   background-color:#f9ecc7;
