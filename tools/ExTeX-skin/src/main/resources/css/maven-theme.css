@@ -30,7 +30,7 @@ td, select, input, li{
   color:#333333;
 }
 code{
-  font-size: 90%;
+  font-size: 98%;
 }
 a {
   text-decoration: none;
@@ -65,14 +65,16 @@ h3,h4,h5 {
 }
 h1,h2 {
   background-color:#666666;
+  border-bottom:3pt solid #333333;
   padding: 4px 4px 4px 24px;
   font-size: 144%;
-  color: white;
+  color: #eeeeee;
 }
 h3 {
   padding: 4px 4px 4px 24px;
   color: #666;
   background-color: #ccc;
+  border-bottom:2pt solid #666666;
   font-weight: bold;
   font-size: 120%;
   background-image: url(../images/h3.png);
@@ -93,26 +95,21 @@ p {
 }
 #leftColumn {
   margin: 10px 0 10px 0;
-  border-top-color: #ccc;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-right-color: #ccc;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-bottom-color: #ccc;
-  border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   padding-right: 5px;
   padding-left: 5px;
   background-color:#eeeeee;
-  min-width:170px;
+  min-width: 190px;
 }
 #navcolumn h5 {
-  font-size:95%;
+  font-size:80%;
   border-bottom: 1px solid #aaaaaa;
   padding-top: 2px;
   padding-left: 9px;
   color: #49635a;
+  background-color: #f3f3f3;
   background-image: url(../images/h5.png);
   background-repeat: no-repeat;
   background-position: left bottom;
@@ -130,7 +127,7 @@ table.bodyTable th {
 }
 
 table.bodyTable th, table.bodyTable td {
-  font-size:85%;
+  font-size:90%;
 }
 
 table.bodyTable tr.a {
@@ -142,12 +139,21 @@ table.bodyTable tr.b {
 }
 
 table.bodyTable tr.a:hover, table.bodyTable tr.b:hover {
-  background: red;
+  background: #fcfcfc;
 }
-
+pre {
+  border:1pt solid #999999;
+  padding:.5em;
+  margin-left:1em;
+  background-color:#f5f5f5;
+}
 .source {
+  background-color:#f5f5f5;
   border: 1pt solid #999;
   overflow:auto
+}
+.source pre {
+  border-width:0pt;
 }
 dt {
   padding: 4px 4px 4px 24px;
@@ -159,13 +165,11 @@ dt {
   background-position: left bottom;
 }
 .subsectionTitle {
-  font-size: 98%;
   font-weight: bold;
   color: #666;
 }
-
 table {
-  font-size:90%;
+  font-size:95%;
 }
 .xright a:link, .xright a:visited, .xright a:active {
   color: #666;
@@ -220,9 +224,11 @@ table {
 .infomark {
   background-image: url(../images/icon_info_sml.gif);
 }
-
-pre {
-  margin:2pt solid #999999;
-  padding:.5em;
-  background-color:#eeeeee;
+#banner {
+  background:#f4dcd5 url(../images/banner.png) repeat;
+  vertical-align:center;
+  padding:6pt
+}
+#breadcrumbs {
+  background:#eeeeee url(../images/breadcrumbs.png) repeat-x;
 }

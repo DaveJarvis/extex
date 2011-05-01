@@ -16,7 +16,7 @@ acronym {
   border-bottom: 1px dotted #feb;
 }
 table.bodyTable th, table.bodyTable td {
-  padding: 2px 4px 2px 4px;
+  padding: .25em .5em .25em .5em;
   vertical-align: top;
 }
 div.clear{
@@ -58,7 +58,7 @@ div.clear hr{
 }
 #bodyColumn {
   margin-right: 1.5em;
-  margin-left: 197px;
+  margin-left: 210px;
 }
 #legend {
   padding: 8px 0 8px 0;
@@ -79,10 +79,10 @@ div.clear hr{
   background-image: none;
   background-repeat: no-repeat;
   background-position: 0 0.4em;
-  padding-left: 16px;
+  padding-left: 1em;
   list-style-position: outside;
   line-height: 1.2em;
-  font-size: smaller;
+  font-size: 90%;
 }
 #navcolumn li.expanded {
   background-image: url(../images/expanded.gif);
@@ -100,6 +100,7 @@ div.clear hr{
 #poweredBy img {
   display:block;
   margin: 20px 0 20px 17px;
+  text-align: center;
 }
 #search img {
     margin: 0px;
