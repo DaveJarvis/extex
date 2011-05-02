@@ -82,7 +82,7 @@
     <site>
       <id>org.extex.exbib</id>
       <name>ExBib Site</name>
-      <url>file:///serv/www/extex/ExBib/snapshot</url>
+      <url>http:///www.extex.org/ExBib/snapshot</url>
     </site>
     <repository>
       <id>org.extex.exbib</id>
