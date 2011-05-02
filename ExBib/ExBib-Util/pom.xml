@@ -13,6 +13,14 @@
   <inceptionYear>2002</inceptionYear>
   <url>http://www.extex.org</url>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex.exbib.util</id>
+      <name>ExBib Ant Site</name>
+      <url>http:///www.extex.org/ExBib/snapshot/Exbib-util</url>
+    </site>
+  </distributionManagement>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>

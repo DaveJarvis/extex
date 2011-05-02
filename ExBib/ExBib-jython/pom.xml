@@ -14,6 +14,14 @@
   <inceptionYear>2002</inceptionYear>
   <url>http://www.extex.org</url>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex.exbib.jython</id>
+      <name>ExBib Jython Site</name>
+      <url>http:///www.extex.org/ExBib/snapshot/Exbib-jython</url>
+    </site>
+  </distributionManagement>
+
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
