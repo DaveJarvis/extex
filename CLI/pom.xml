@@ -19,9 +19,9 @@
 
   <distributionManagement>
     <site>
-      <id>org.extex.exbib</id>
-      <name>ExBib Site</name>
-      <url>file:///serv/extex-project/snapshot</url>
+      <id>org.extex.cli</id>
+      <name>CLI Site</name>
+      <url>http:///www.extex.org/snapshot/CLI</url>
     </site>
   </distributionManagement>
 
