@@ -18,9 +18,9 @@
 
   <distributionManagement>
     <site>
-      <id>org.extex.exbib</id>
-      <name>ExBib Site</name>
-      <url>file:///serv/extex-project/snapshot/</url>
+      <id>org.extex.resource</id>
+      <name>ExTeX resource Site</name>
+      <url>http:///www.extex.org/snapshot/ExTeX-resource</url>
     </site>
   </distributionManagement>
 
