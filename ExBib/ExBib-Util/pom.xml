@@ -17,7 +17,7 @@
     <site>
       <id>org.extex.exbib.util</id>
       <name>ExBib Ant Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-util</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-util</url>
     </site>
   </distributionManagement>
 

@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.doc</id>
       <name>ExBib Doc Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-doc</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-doc</url>
     </site>
   </distributionManagement>
 

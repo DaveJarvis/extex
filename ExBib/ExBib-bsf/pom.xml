@@ -20,7 +20,7 @@
     <site>
       <id>org.extex.exbib.bsf</id>
       <name>ExBib BSF Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-bsf</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-bsf</url>
     </site>
   </distributionManagement>
 

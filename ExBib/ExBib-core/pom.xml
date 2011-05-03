@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.core</id>
       <name>ExBib Core Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-core</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-core</url>
     </site>
   </distributionManagement>
 

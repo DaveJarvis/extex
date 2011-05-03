@@ -17,7 +17,7 @@
     <site>
       <id>org.extex.exbib.main</id>
       <name>ExBib Main Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-main</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-main</url>
     </site>
   </distributionManagement>
 

@@ -19,7 +19,7 @@
     <site>
       <id>org.extex.exbib.installer</id>
       <name>ExBib Installer Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-Installer</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-Installer</url>
     </site>
   </distributionManagement>
 

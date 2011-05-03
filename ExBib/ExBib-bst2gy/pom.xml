@@ -23,7 +23,7 @@
     <site>
       <id>org.extex.exbib.bst2gy</id>
       <name>ExBib BST 2 Groovy Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-bst2gy</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-bst2gy</url>
     </site>
   </distributionManagement>
 

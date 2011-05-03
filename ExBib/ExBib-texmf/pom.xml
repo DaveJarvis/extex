@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.texmf</id>
       <name>ExBib TeX MF Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-texmf</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-texmf</url>
     </site>
   </distributionManagement>
 

@@ -21,7 +21,7 @@
     <site>
       <id>org.extex.cli</id>
       <name>CLI Site</name>
-      <url>http:///www.extex.org/snapshot/CLI</url>
+      <url>file:///serv/www/extex/snapshot/CLI</url>
     </site>
   </distributionManagement>
 

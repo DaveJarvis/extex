@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.jython</id>
       <name>ExBib Jython Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-jython</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-jython</url>
     </site>
   </distributionManagement>
 

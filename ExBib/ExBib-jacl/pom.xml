@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.jacl</id>
       <name>ExBib JACL Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-jacl</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-jacl</url>
     </site>
   </distributionManagement>
 

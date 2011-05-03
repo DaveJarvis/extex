@@ -20,7 +20,7 @@
     <site>
       <id>org.extex.resource</id>
       <name>ExTeX resource Site</name>
-      <url>http:///www.extex.org/snapshot/ExTeX-resource</url>
+      <url>file:///serv/www/extex/snapshot/ExTeX-resource</url>
     </site>
   </distributionManagement>
 

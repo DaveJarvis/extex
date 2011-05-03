@@ -17,7 +17,7 @@
     <site>
       <id>org.extex.exbib.groovy</id>
       <name>ExBib Groovy Site</name>
-      <url>http:///www.extex.org/ExBib/snapshot/Exbib-groovy</url>
+      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-groovy</url>
     </site>
   </distributionManagement>
 
