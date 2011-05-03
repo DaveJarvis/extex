@@ -15,14 +15,10 @@
     <url>http://www.extex.org</url>
   </organization>
 
-<!--
-  <parent>
-    <artifactId>tools</artifactId>
-    <groupId>org.extex</groupId>
-    <version>0.1-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
-  </parent>
--->
+  <issueManagement>
+    <system>Berlios Bugs</system>
+    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
+  </issueManagement>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -36,6 +32,14 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
+
+  <distributionManagement>
+    <site>
+      <id>org.extex</id>
+      <name>ExTeX dev</name>
+      <url>file:///serv/www/extex/snapshot/ExTeX-dev</url>
+    </site>
+  </distributionManagement>
 
   <licenses>
     <license>

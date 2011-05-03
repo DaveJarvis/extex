@@ -66,6 +66,21 @@
           </dependency>
         </dependencies>
       </plugin>
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0-beta-3</version>
+        <configuration>
+          <reportPlugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.3.1</version>
+            </plugin>
+          </reportPlugins>
+        </configuration>
+      </plugin>
     </plugins>
   </build>
 
@@ -167,6 +182,14 @@
     </plugins>
 
   </reporting>
+
+  <distributionManagement>
+    <site>
+      <id>org.extex</id>
+      <name>ExTeX dev</name>
+      <url>file:///serv/www/extex/snapshot/doc-tools</url>
+    </site>
+  </distributionManagement>
 
   <licenses>
     <license>

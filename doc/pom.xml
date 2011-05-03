@@ -33,6 +33,14 @@
    <module>UsersGuide</module>
   </modules>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex</id>
+      <name>${project.artifactId}</name>
+      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
+    </site>
+  </distributionManagement>
+
   <developers>
     <developer>
       <id>gene</id>

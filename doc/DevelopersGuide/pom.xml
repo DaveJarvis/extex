@@ -91,6 +91,14 @@
     </plugins>
   </build>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex</id>
+      <name>ExTeX dev guide</name>
+      <url>file:///serv/www/extex/snapshot/doc/dev-guide</url>
+    </site>
+  </distributionManagement>
+
   <developers>
     <developer>
       <id>gene</id>

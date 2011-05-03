@@ -77,8 +77,9 @@
 
   <distributionManagement>
     <site>
-      <id>www.extex.org</id>
-      <url>http://www.extex.org/maven2</url>
+      <id>org.extex</id>
+      <name>${project.artifactId}</name>
+      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
     </site>
   </distributionManagement>
 

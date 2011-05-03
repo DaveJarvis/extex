@@ -18,6 +18,14 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex</id>
+      <name>ExTeX dev</name>
+      <url>file:///serv/www/extex/snapshot/ExTeX-texmf</url>
+    </site>
+  </distributionManagement>
+
   <developers>
     <developer>
       <id>gene</id>
