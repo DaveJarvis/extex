@@ -186,7 +186,7 @@
   <distributionManagement>
     <site>
       <id>org.extex</id>
-      <name>ExTeX dev</name>
+      <name>doc-tools</name>
       <url>file:///serv/www/extex/snapshot/doc-tools</url>
     </site>
   </distributionManagement>
