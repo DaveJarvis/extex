@@ -44,7 +44,7 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-dev</artifactId>
       <version>1.0</version>
-      <scope>reporting</scope>
+      <scope>compile</scope>
     </dependency>
 
   </dependencies>
