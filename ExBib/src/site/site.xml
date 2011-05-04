@@ -3,6 +3,11 @@
 <!--  $Id: site.xml,v 0.00 2009/08/16 13:53:52 gene Exp $                   -->
 <!-- ====================================================================== -->
 <project name="ExBib">
+  <skin>
+    <groupId>org.extex</groupId>
+    <artifactId>ExTeX-skin</artifactId>
+    <version>1.0</version>
+  </skin>
   <bannerLeft>
     <name>ExBib</name>
     <src>images/ExBib-148x50.png</src>
@@ -10,21 +15,20 @@
   </bannerLeft>
   <bannerRight>
     <name>ExTeX</name>
-    <src>images/ExTeX-165x50-transparent.png</src>
+    <src>images/ExTeX-transparent.png</src>
     <href>http://www.extex.org</href>
   </bannerRight>
   <version position="left"/>
   <publishDate position="navigation-bottom"/>
   <poweredBy/>
   <body>
-
     <menu name="ExTeX Web Site">
       <item name="ExTeX" href="http://www.extex.org/"/>
     </menu>
 
+    <menu ref="parent" />
     <menu ref="modules" />
     <menu ref="reports"/>
-
   </body>
 </project>
 
