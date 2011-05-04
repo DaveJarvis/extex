@@ -5,7 +5,7 @@
   <artifactId>tools</artifactId>
   <packaging>pom</packaging>
   <version>0.1-SNAPSHOT</version>
-  <name>ExTeX tools</name>
+  <name>ExTeX Tools</name>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
   <description>
@@ -99,7 +99,6 @@
   </dependencies>
 
   <modules>
-    <module>doc-tools</module>
     <module>ExTeX-dev</module>
     <module>ExTeX-skin</module>
   </modules>
