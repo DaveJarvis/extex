@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <artifactId>build</artifactId>
-  <name>ExTeX build system</name>
+  <name>ExTeX Build System</name>
   <description>
     This is the ExTeX build system -- at least those parts not migrated to Maven
     yet.
