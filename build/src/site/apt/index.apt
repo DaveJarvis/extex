@@ -1,0 +1,10 @@
+The ExTeX Build System
+
+  The ExTeX build system is based on Maven. The README.html files in the
+  Maven projects explain who they can be build.
+
+  In addition a nightly build is run to compile everything and produce the
+  ExTeX web site. Details can be found in '''src/nightly-build'''.
+
+  Some remainders of the old Ant-based build systems can be found here as well.
+
