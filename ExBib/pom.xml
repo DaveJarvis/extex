@@ -267,12 +267,28 @@
               <artifactId>taglist-maven-plugin</artifactId>
 	      <version>2.4</version>
               <configuration>
-		<tags>
-		  <tag>TODO</tag>
-		  <tag>@todo</tag>
-		  <tag>FIXME</tag>
-		  <tag>@Ignore</tag>
-		</tags>
+                <aggregate>true</aggregate>
+                <tagListOptions>
+                  <tagClasses>
+                    <tagClass>
+                      <displayName>Todo Work</displayName>
+                      <tags>
+                        <tag>
+                          <matchString>@ignore</matchString>
+                          <matchType>exact</matchType>
+                        </tag>
+                        <tag>
+                          <matchString>todo</matchString>
+                          <matchType>ignoreCase</matchType>
+                        </tag>
+                        <tag>
+                          <matchString>FIXME</matchString>
+                          <matchType>exact</matchType>
+                        </tag>
+                      </tags>
+                    </tagClass>
+                  </tagClasses>
+                </tagListOptions>
               </configuration>
 	    </plugin>
 
@@ -304,10 +320,6 @@
     <license>
       <name>GNU Library General Public License</name>
       <url>LICENSE.html</url>
-    </license>
-    <license>
-      <name>GNU Free Documentation License</name>
-      <url>${exbib.directory}/ExBib-doc/LICENSE.html</url>
     </license>
   </licenses>
 </project>
