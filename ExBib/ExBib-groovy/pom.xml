@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-groovy</artifactId>
-  <name>ExBib groovy</name>
+  <name>ExBib Groovy</name>
   <description>
     This is the ExBib groovy adaptor.
   </description>
@@ -42,7 +42,7 @@
     <dependency>
       <groupId>org.codehaus.groovy</groupId>
       <artifactId>groovy</artifactId>
-      <version>1.7.4</version>
+      <version>1.8.0</version>
     </dependency>
   </dependencies>
 
