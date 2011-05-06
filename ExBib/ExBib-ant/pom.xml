@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-ant</artifactId>
-  <name>ExBib Ant task</name>
+  <name>ExBib Ant Task</name>
   <description>
     This is the ExBib Ant task.
   </description>
