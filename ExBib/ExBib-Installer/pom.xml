@@ -4,12 +4,11 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-Installer</artifactId>
-  <name>ExBib install system</name>
+  <name>ExBib Installer</name>
   <description>
     This is the ExBib install system. It creates a GUI installer for ExBib and
     related packages in the Maven `package' phase. 
   </description>
-
   <version>0.1</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
