@@ -144,10 +144,8 @@
    <module>ExBib-jacl</module>
    <module>ExBib-jython</module>
    <module>ExBib-ant</module>
-<!--   <module>ExBib-doc</module> -->
    <module>ExBib-texmf</module>
    <module>ExBib-Util</module>
-   <module>ExBib-Installer</module>
    <module>../CLI</module>
    <module>../ExTeX-resource</module>
   </modules>
