@@ -87,6 +87,10 @@
     <exbib.directory>${basedir}/..</exbib.directory>
   </properties>
 
+  <modules>
+    <module>..</module>
+    <module>../ExBib-doc</module>
+  </modules>
   <build>
 
     <defaultGoal>package</defaultGoal>
