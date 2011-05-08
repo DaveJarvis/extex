@@ -118,11 +118,15 @@
       <plugin>
         <groupId>org.codehaus.izpack</groupId>
         <artifactId>izpack-maven-plugin</artifactId>
-	<version>5.0.0-beta6</version>
+<!-- 
+	<version>5.0.0-beta7</version>
+ -->
+        <version>1.0-alpha-5</version>
         <configuration>
           <izpackBasedir>${staging.dir}</izpackBasedir>
           <kind>standard</kind>
           <output>${project.build.directory}/${project.artifactId}-${project.version}.jar</output>
+          <installerFile>${project.build.directory}/${pom.artifactId}-${project.version}.jar</installerFile>
           <descriptorEncoding>ISO-8859-1</descriptorEncoding>
         </configuration>
         <executions>
@@ -135,6 +139,7 @@
           </execution>
         </executions>
       </plugin>
+
     </plugins>
   </build>
 
