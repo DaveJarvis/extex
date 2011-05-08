@@ -64,11 +64,10 @@ h3,h4,h5 {
   background-color:#cccccc;
 }
 h1,h2 {
-  background-color:#666666;
-  border-bottom:3pt solid #333333;
-  padding: 4px 4px 4px 24px;
+  background-color:#fcfcfc;
+  border-bottom:3pt solid #666666;
+  padding: .15em;
   font-size: 144%;
-  color: #eeeeee;
 }
 h3 {
   padding: 4px 4px 4px 24px;
