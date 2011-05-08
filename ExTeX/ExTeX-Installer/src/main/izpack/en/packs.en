@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- The English langpack -->
+<langpack>
+
+  <str id="exbib-core"
+       txt="ExBib Core"/>
+  <str id="exbib-core.description"
+       txt="The core engine includes a BibTeX compatible implementation of a bibliography processor."/>
+
+  <str id="exbib-util"
+       txt="ExBib utility"/>
+  <str id="exbib-util.description"
+       txt="The utility program for ExBib files."/>
+
+  <str id="exbib-styles"
+       txt="ExBib Styles"/>
+  <str id="exbib-styles.description"
+       txt="This package contains styles to be used with ExBiB."/>
+
+  <str id="exbib-docs"
+       txt="ExBib Documentation"/>
+  <str id="exbib-docs.description"
+       txt="The documentation package contains a description of ExBib."/>
+
+  <str id="exbib-ant"
+       txt="ExBib Ant Task"/>
+  <str id="exbib-ant.description"
+       txt="This package contains the definition of an Ant task for ExBib."/>
+
+  <str id="exbib-bsf"
+       txt="ExBib BSF"/>
+  <str id="exbib-bsf.description"
+       txt="This package contains the BSF adaptor for extension languages of ExBib."/>
+
+  <str id="exbib-groovy"
+       txt="ExBib Groovy"/>
+  <str id="exbib-groovy.description"
+       txt="This package contains Groovy as extension language for ExBib.
+This package requires the BSF adaptor as prerequisite."/>
+
+  <str id="exbib-jython"
+       txt="ExBib Jython"/>
+  <str id="exbib-jython.description"
+       txt="This package contains Python with the help of the jython implementation as extension language for ExBib.
+This package requires the BSF adaptor as prerequisite."/>
+
+  <str id="settings"
+       txt="User Settings"/>
+  <str id="settings.description"
+       txt="Some init files to start with.
+The files are installed in the user&apos;s home directory.
+If files are present already you are asked for confirmation."/>
+
+  <str id="src"
+       txt="Sources"/>
+  <str id="src.description"
+       txt="The Java sources of ExBib.
+They are useful if you plan to implement your own extensions."/>
+
+  <str id="texmf.intro"
+       txt="ExBib needs lots of additional files to work for a real document.
+Among those files are fonts and macro files. Those files are usually taken
+from a TeX distribution (as TeXlive). To make this work the environment variable
+TEXINPUTS has to point to one or more installation directories. Please check and
+correct the setting of extex.texinputs in .extex in the user's home directory."/>
+
+</langpack>

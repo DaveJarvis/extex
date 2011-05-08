@@ -77,7 +77,6 @@
       <version>4.3.2</version>
       <optional>true</optional>
     </dependency>
-
   </dependencies>
 
   <properties>
@@ -90,12 +89,11 @@
     <module>..</module>
     <module>../ExBib-doc</module>
   </modules>
+  
   <build>
-
     <defaultGoal>package</defaultGoal>
 
     <plugins>
-
       <plugin>
         <artifactId>maven-antrun-plugin</artifactId>
         <executions>
@@ -124,7 +122,7 @@
         <configuration>
           <izpackBasedir>${staging.dir}</izpackBasedir>
           <kind>standard</kind>
-          <installerFile>${project.build.directory}/${project.artifactId}-${project.version}.jar</installerFile>
+          <output>${project.build.directory}/${project.artifactId}-${project.version}.jar</output>
           <descriptorEncoding>ISO-8859-1</descriptorEncoding>
         </configuration>
         <executions>
@@ -137,7 +135,6 @@
           </execution>
         </executions>
       </plugin>
-
     </plugins>
   </build>
 

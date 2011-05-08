@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-Main</artifactId>
-  <name>ExBib command line interface</name>
+  <name>ExBib Command Line</name>
   <description>
     This is the command line interface for ExBib and associated tools.
   </description>

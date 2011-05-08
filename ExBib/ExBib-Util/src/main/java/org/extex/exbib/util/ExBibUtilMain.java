@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -59,9 +59,16 @@ import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 
 /**
- * &epsilon;&chi;BibUtil a bibliography processor utility.
- * 
- * 
+ * &epsilon;&chi;BibUtil a bibliography processor utility. This program read one
+ * or more <small>BIB</small> files and produces a combined output. It validates
+ * the syntax and optionally transforms it into one of the formats supported by
+ * &epsilon;&chi;Bib.
+ * <p>
+ * This program can also be fed with an aux file. In this case it reads all
+ * <small>BIB</small> files referenced and extracts only those entries cited.
+ * The program takes care to recursively consider aux files included within the
+ * aux file &ndash; usually produced by <tt>\include</tt>.
+ * </p>
  * <p>
  * The following options are supported:
  * </p>
@@ -83,15 +90,15 @@ import org.extex.resource.ResourceFinderFactory;
  * <dt>--h[elp] | -? | -h</dt>
  * <dd>Show a short list of command line arguments.</dd>
  * <dt>--la[nguage] | -L &lang;language&rang;</dt>
- * <dd>Use the named language for message.</dd>
- * <dt>\tThe argument is a two-letter ISO code.</dd>
+ * <dd>Use the named language for message. <br/>
+ * The argument is a two-letter ISO code.</dd>
  * <dt>--loa[d] &lang;file&rang;</dt>
  * <dd>Additionally load settings from the file given.</dd>
  * <dt>--l[ogfile] | -l &lang;file&rang;</dt>
  * <dd>Send the output to the log file named instead of the default one.</dd>
  * <dt>--o[utfile] | --outp[ut] | -o &lang;file&rang;</dt>
  * <dd>Redirect the output to the file given. <br />
- * The file name - can be used to redirect to stdout <br />
+ * The file name <tt>-</tt> can be used to redirect to stdout <br />
  * The empty file name can be used to discard the output completely</dd>
  * <dt>--p[rogname] | --progr[am-name] | --program.[name] | -p
  * &lang;program&rang;</dt>

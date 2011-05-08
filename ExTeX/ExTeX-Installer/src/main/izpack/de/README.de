@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML//3.2//EN">
+<html>
+<head>
+  <title>ExBib</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style type="text/css">
+.e {
+  text-transform:uppercase;
+  font-size:85%;
+  vertical-align: -0.5ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+  </style>
+</head>
+<body>
+
+<h1>Willkommen bei &epsilon;&chi;Bib</h1>
+<p>
+ &epsilon;&chi;Bib (oder <tt>ExBib</tt> in ASCII) ist ein Bibliographie-Prozessor.
+ &epsilon;&chi;Bib bietet einen Kompatibilit&auml;tsmodus zu
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X.
+ Als solches kann &epsilon;&chi;Bib an Stelle von 
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X 0.99c
+ oder B<small>IB</small><span class="t">T</span><span class="e">e</span>X8
+ verwendet werden.
+</p>
+<p>
+ &epsilon;&chi;Bib ist eine Neuimplementierung. Als solche enth&auml;lt
+ &epsilon;&chi;Bib einige Erweiterungen, gegen&uuml;ber 
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X. So sind 
+ beispielsweise M&ouml;glichkeiten, die f&uuml;r 
+ B<small>IB</small><span class="t">T</span><span class="e">e</span>X 1.0 
+ angek&uuml;ndigt sind bereits umgesetzt. Details sind in der Dokumentation zu
+ finden.
+</p>
+
+<h1>Homepage</h1>
+<p>
+&epsilon;&chi;Bib wird im Kontext des 
+&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X-Projektes
+entwickelt.
+&epsilon;&chi;<span class="t">T</span><span class="e">e</span>X ist im 
+Web pr&auml;sent. Auf der Homepage kann man
+zus&auml;tzliche Informationen finden:
+</p>
+<p>
+<a href="http://www.extex.org">http://www.extex.org</a>
+</p>
+
+<hr>
+
+<address>
+&copy; 2003-2010 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
+</body>
+</html>

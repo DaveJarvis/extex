@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExTeX-skin</artifactId>
-  <version>1.0</version>
+  <version>1.1</version>
   <packaging>jar</packaging>
   <name>ExTeX Maven Skin</name>
   <url>http://www.extex.org/snapshot/ExTeX-skin/</url>

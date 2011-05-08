@@ -1,0 +1,11 @@
+ExBibUtil
+
+  ExBibUtil a bibliography processor utility. This program read one
+  or more BIB files and produces a combined output. It validates
+  the syntax and optionally transforms it into one of the formats supported by
+  ExBib.
+
+  This program can also be fed with an aux file. In this case it reads all
+  BIB files referenced and extracts only those entries cited.
+  The program takes care to recursively consider aux files included within the
+  aux file -- usually produced by <<<\include>>>. 

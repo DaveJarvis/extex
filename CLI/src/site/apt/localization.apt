@@ -1,0 +1,44 @@
+Localization
+
+  Localization means that the module is capable to produce messages in different
+  languages. Per default the messages produced are in English. Right from the
+  start German has been supported as a second language. First to prove the
+  localization feature actually works and second because the programmers are
+  Germans.
+  
+  The localization utilizes the utilities of Java for this purpose. This means
+  that all messages are externalized into properties files. The locale at the
+  time of the program start determines which language to use. If a language
+  requested via the locale is not supported the fallback language English is
+  used instead.
+  
+* Supporting Additional Languages  
+  
+  The messages can be found in the directory <<<src/main/resources>>> and its
+  sub-directories. Each file named *<<<.properties>>> contains messages. If
+  the file name follows the pattern *<<<_>>><xy><<<.properties>>> then the
+  file used for the language <xy> where <xy> is the ISO two letter code for
+  a language. In addition the form <xy><<<_>>><ab> is supported where
+  <ab> denotes the dialect.
+  
+  Thus supporting an additional language means to add some properties files
+  containing the translations. The file must be in the same package as the
+  default language file and it must follow the naming scheme described above.
+  
+  The file format consists of key-value pairs separated by an equals sign.
+  The keys are the reference for the code. Thus they must not be altered.
+  The values should be translated. The file encoding is Latin-1.
+  
+  The values may contain parameters which are filled when the code renders the
+  message. The parameters are numbers enclosed in braces. For instance <<<\{0\}>>>
+  references the 0th parameter.
+  
+  If a message is rather long it can be split into several lines. For this
+  purpose the escape <<<\\n>>> can be used to embed a newline character
+
+  Since the value normally ends with the end of the line an escape is defined
+  which indicates that the value continues on the next line. If the last
+  character in the line is the backslash (<<<\\>>>) then the next line is
+  absorbed into the value as well.
+
+

@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-jython</artifactId>
-  <name>ExBib jython</name>
+  <name>ExBib Jython</name>
   <description>
     This is the ExBib jython adaptor. It allows to use Python as extension
     language for ExBib styles.

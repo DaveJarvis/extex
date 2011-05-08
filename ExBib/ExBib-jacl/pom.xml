@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExBib-jacl</artifactId>
-  <name>ExBib jacl</name>
+  <name>ExBib Jacl</name>
   <description>
     This is the ExBib jacl adaptor. It allows to use Tcl as extension language
     for ExBib styles.

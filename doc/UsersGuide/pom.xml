@@ -6,7 +6,8 @@
   <artifactId>ExTeX-Users-Guide</artifactId>
   <name>ExTeX Users Guide</name>
   <description>
-    This is the ExTeX Users Guide.
+    This is the ExTeX Users Guide. The content is partially static and
+    partially auto-generated from the source code.
   </description>
 
   <version>0.1-SNAPSHOT</version>

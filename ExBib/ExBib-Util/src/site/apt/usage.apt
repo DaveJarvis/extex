@@ -1,0 +1,32 @@
+Usage
+
+  ExBibUtil a bibliography processor utility. This program read one
+  or more BIB files and produces a combined output. It validates
+  the syntax and optionally transforms it into one of the formats supported by
+  ExBib.
+
+  This program can also be fed with an aux file. In this case it reads all
+  BIB files referenced and extracts only those entries cited.
+  The program takes care to recursively consider aux files included within the
+  aux file -- usually produced by <<<\include>>>. 
+
+  The following options are supported:
+
+[-\[-\] \<file\>] Use this argument as file name &ndash; even when it looks like an option.
+[--au\[xfile\] | --ex\[tract\] | -x \<file\>] Use this argument as file name of an aux file to get databases and citations from.
+[--b\[ib-encoding\] | --bib.\[encoding\] | -E \<enc\>] Use the given encoding for the bib files.
+[--c\[onfiguration\] | -c \<configuration\>] Use the configuration given. This is not a file!
+[--cop\[ying\]] Display the copyright conditions.
+[--e\[ncoding\] | -e \<enc\>] Use the given encoding for the output file.
+[--h\[elp\] | -? | -h] Show a short list of command line arguments.
+[--la\[nguage\] | -L \<language\>] Use the named language for message.\nThe argument is a two-letter ISO code.
+[--loa\[d\] \<file\>] Additionally load settings from the file given.
+[--l\[ogfile\] | -l \<file\>] Send the output to the log file named instead of the default one.
+[--o\[utfile\] | --outp\[ut\] | -o \<file\>] Redirect the output to the file given.\nThe file name <tt>-</tt> can be used to redirect to stdout\nThe empty file name can be used to discard the output completely
+[--p\[rogname\] | --progr\[am-name\] | --program.\[name\] | -p \<program\>] Set the program name for messages.
+[--q\[uiet\] | --t\[erse\] | -q] Act quietly; some informative messages are suppressed.
+[--r\[elease\]] Print the release number and exit.
+[--ty\[pe\] | -t \<type\>] Use the given type as output format (e.g. bib, xml).
+[--v\[erbose\] | -v] Act verbosely; some additional informational messages are displayed.
+[--vers\[ion\]] Print the version information and exit.
+

@@ -68,6 +68,18 @@ pre.output {
  B<small>IB</small><span class="t">T</span><span class="e">e</span>X.
  This component provides a command line interface for the utilities provided.
 </p>
+<p>
+ &epsilon;&chi;BibUtil a bibliography processor utility. This program read one
+ or more <small>BIB</small> files and produces a combined output. It validates
+ the syntax and optionally transforms it into one of the formats supported by
+ &epsilon;&chi;Bib.
+</p>
+<p>
+ This program can also be fed with an aux file. In this case it reads all
+ <small>BIB</small> files referenced and extracts only those entries cited.
+ The program takes care to recursively consider aux files included within the
+ aux file &ndash; usually produced by <tt>\include</tt>.
+</p>
 
 <h2>Compiling &epsilon;&chi;Bib Util</h2>
 

@@ -6,12 +6,12 @@
   <skin>
     <groupId>org.extex</groupId>
     <artifactId>ExTeX-skin</artifactId>
-    <version>1.0</version>
+    <version>1.1</version>
   </skin>
   <bannerLeft>
     <name>ExBib</name>
-    <src>images/ExBib-148x50.png</src>
-    <href>http://www.extex.org/exbib</href>
+    <src>images/ExBib.png</src>
+    <href>http://www.extex.org/ExBib</href>
   </bannerLeft>
   <bannerRight>
     <name>ExTeX</name>
@@ -25,7 +25,6 @@
     <menu name="ExTeX Web Site">
       <item name="ExTeX" href="http://www.extex.org/"/>
     </menu>
-
     <menu ref="parent" />
     <menu ref="modules" />
     <menu ref="reports"/>

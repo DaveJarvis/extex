@@ -5,11 +5,12 @@
 
   <groupId>org.extex</groupId>
   <artifactId>ExTeX-resource</artifactId>
-  <name>ExTeX Framework and Resource Component</name>
+  <name>ExTeX Resource and Framework</name>
   <version>0.1</version>
   <description>
     This is the ExTeX framework and resource component.
-    It contains several general purpose classes for dealing with components and resources.
+    It contains several general purpose classes for dealing with components and
+    resources.
   </description>
 
   <packaging>jar</packaging>

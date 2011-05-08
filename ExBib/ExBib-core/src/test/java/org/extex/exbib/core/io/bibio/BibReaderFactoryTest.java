@@ -54,15 +54,11 @@ public class BibReaderFactoryTest {
     private Configuration cfg = new Configuration() {
 
         /**
-         * The field <tt>enc</tt> contains the encoding.
-         */
-        private String enc = null;
-
-        /**
          * {@inheritDoc}
          * 
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
          */
+        @Override
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
                     ConfigurationNotFoundException,
@@ -78,6 +74,7 @@ public class BibReaderFactoryTest {
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
@@ -89,13 +86,14 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
          */
+        @Override
         public String getAttribute(String name) {
 
             if ("base".equals(name)) {
                 return null;
             }
             if ("encoding".equals(name)) {
-                return enc;
+                return null;
             }
             assertTrue(name, "class".equals(name));
             return BibReader099Impl.class.getName();
@@ -106,6 +104,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
          */
+        @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
@@ -118,6 +117,7 @@ public class BibReaderFactoryTest {
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
@@ -129,6 +129,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValue()
          */
+        @Override
         public String getValue() throws ConfigurationException {
 
             return null;
@@ -139,6 +140,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
          */
+        @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
@@ -150,6 +152,7 @@ public class BibReaderFactoryTest {
          * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
          *      int)
          */
+        @Override
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
 
@@ -162,6 +165,7 @@ public class BibReaderFactoryTest {
          * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
          *      java.lang.String)
          */
+        @Override
         public void getValues(List<String> list, String key) {
 
             // getValues unimplemented
@@ -172,6 +176,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
          */
+        @Override
         public List<String> getValues(String key) {
 
             return null;
@@ -182,6 +187,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#iterator()
          */
+        @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
@@ -192,6 +198,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
          */
+        @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
@@ -203,6 +210,7 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
          */
+        @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // setConfigurationLoader unimplemented
@@ -220,9 +228,10 @@ public class BibReaderFactoryTest {
          * 
          * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
          */
+        @Override
         public void enableTracing(boolean flag) {
 
-            // 
+            //
         }
 
         /**
@@ -231,6 +240,7 @@ public class BibReaderFactoryTest {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 

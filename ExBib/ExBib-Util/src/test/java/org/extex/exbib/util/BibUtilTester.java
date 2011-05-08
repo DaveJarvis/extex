@@ -31,7 +31,6 @@ import java.util.Calendar;
 import java.util.Locale;
 
 import org.extex.cli.CLI;
-import org.extex.exbib.util.ExBibUtilMain;
 
 /**
  * This is a tester for {@link ExBibUtilMain}.
@@ -69,20 +68,20 @@ public class BibUtilTester {
      * This might not be accurate for a long running test started just before
      * the end of the year.
      */
-    public static final String YEAR =
-            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
+    public static final String YEAR = Integer.toString(Calendar.getInstance()
+        .get(Calendar.YEAR));
 
     /**
      * The field <tt>BANNER</tt> contains the default banner.
      */
-    public static final String BANNER =
-            "This is exbibutil, Version " + ExBibUtilMain.VERSION + "\n";
+    public static final String BANNER = "This is exbibutil, Version "
+            + ExBibUtilMain.VERSION + "\n";
 
     /**
      * The field <tt>BANNER_DE</tt> contains the default banner.
      */
-    public static final String BANNER_DE =
-            "Dies ist exbibutil, Version " + ExBibUtilMain.VERSION + "\n";
+    public static final String BANNER_DE = "Dies ist exbibutil, Version "
+            + ExBibUtilMain.VERSION + "\n";
 
     /**
      * Creates a new object.
@@ -165,8 +164,8 @@ public class BibUtilTester {
                         assertEquals(out, s);
                         break;
                     case START:
-                        assertTrue("Fails to start with " + s, s
-                            .startsWith(out));
+                        assertTrue("Fails to start with " + s,
+                            s.startsWith(out));
                         break;
                     case REGEX:
                         assertTrue("Fails to match " + s, s.matches(out));
@@ -185,6 +184,7 @@ public class BibUtilTester {
             if (bib.exists() && !bib.delete()) {
                 assertTrue(bib.toString() + ": deletion failed", false);
             }
+            new File(basename + ".out").delete();
         }
         return exBibUtil;
     }

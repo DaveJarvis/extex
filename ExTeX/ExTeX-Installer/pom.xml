@@ -1,0 +1,121 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.extex</groupId>
+  <artifactId>ExTeX-Installer</artifactId>
+  <name>ExTeX install system</name>
+  <description>
+    This is the ExTeX install system. It creates a GUI installer for ExTeX and
+    related packages in the Maven `package' phase. 
+  </description>
+
+  <version>0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <inceptionYear>2011</inceptionYear>
+  <url>http://www.extex.org</url>
+
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>ExTeX</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+
+  <dependencies>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Main</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-base</artifactId>
+      <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.codehaus.izpack</groupId>
+      <artifactId>izpack-standalone-compiler</artifactId>
+      <version>4.3.2</version>
+      <optional>true</optional>
+    </dependency>
+
+  </dependencies>
+
+  <properties>
+    <staging.dir>${project.build.directory}/staging</staging.dir>
+    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
+    <exbib.directory>${basedir}/..</exbib.directory>
+  </properties>
+
+  <build>
+
+    <defaultGoal>package</defaultGoal>
+
+    <plugins>
+
+      <plugin>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>create-staging-area</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>run</goal>
+            </goals>
+            <configuration>
+              <tasks>
+                <copy todir="${staging.dir}"
+                      encoding="ISO-8859-1">
+                  <fileset dir="${basedir}/src/main/izpack" />
+                </copy>
+              </tasks>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.izpack</groupId>
+        <artifactId>izpack-maven-plugin</artifactId>
+	<version>5.0.0-beta5</version>
+        <configuration>
+          <izpackBasedir>${staging.dir}</izpackBasedir>
+          <kind>standard</kind>
+          <installerFile>${project.build.directory}/${project.artifactId}-${project.version}.jar</installerFile>
+          <descriptorEncoding>ISO-8859-1</descriptorEncoding>
+        </configuration>
+        <executions>
+          <execution>
+            <id>standard-installer</id>
+            <phase>package</phase>
+            <goals>
+              <goal>izpack</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de</url>
+      <roles>
+        <role>maintainer</role>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
+
+</project>

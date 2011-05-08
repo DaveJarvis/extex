@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="iso-8859-1" standalone="yes" ?>
+<!-- **************************************************************************
+ * This is the configuration for the IzPack installer of ExBib
+ ******************************************************************************
+ * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ *
+ * This library is free software; you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published by
+ * the Free Software Foundation; either version 2.1 of the License, or (at
+ * your option) any later version.
+ *
+ * This library is distributed in the hope that it will be useful, but WITHOUT
+ * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+ * FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License
+ * for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this library; if not, write to the Free Software Foundation,
+ * Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
+ *
+ ************************************************************************* -->
+
+<installation version="1.0">
+  <info>
+    <appname>ExBib</appname>
+    <appversion>0.1</appversion>
+    <authors>
+      <author name="Gerd Neugebauer" email="gene@gerd-neugebauer.de"/>
+    </authors>
+    <url>http://www.extex.org/</url>
+    <webdir>http://www.extex.org/download/exbib/</webdir>
+    <javaversion>1.6</javaversion>
+  </info>
+
+  <variables>
+    <variable name="basedir" value="../../.."/>
+    <variable name="extex.texinputs" value="${ENV[TEXINPUTS]}"/>
+    <variable name="texinputs" value="${ENV[TEXINPUTS]}"/>
+  </variables>
+
+  <guiprefs width="720"
+            height="440"
+            resizable="yes">
+    <modifier key="langDisplayType" value="native"/>
+  </guiprefs>
+
+  <locale>
+    <langpack iso3="eng"/>
+    <langpack iso3="deu"/>
+  </locale>
+
+  <resources>
+    <res id="HTMLLicencePanel.licence" src="LICENSE.html"/>
+    <res id="HTMLInfoPanel.info_eng" src="en/README.en"/>
+    <res id="HTMLInfoPanel.info_deu" src="de/README.de"/>
+    <res id="installer.langsel.img" src="images/ExBib-splash.png" />
+    <res id="Installer.image" src="images/ExBib-side.png" />
+    <res id="packsLang.xml_deu" src="de/packs.de" />
+    <res id="packsLang.xml_eng" src="en/packs.en" />
+    <res id="userInputLang.xml_deu" src="de/packs.de" />
+    <res id="userInputLang.xml_eng" src="en/packs.en" />
+  </resources>
+
+  <panels>
+    <panel classname="HTMLInfoPanel"/>
+    <panel classname="HTMLLicencePanel"/>
+    <panel classname="PacksPanel"/>
+    <panel classname="TargetPanel"/> 
+    <panel classname="InstallPanel"/>
+    <panel classname="FinishPanel"/>
+  </panels>
+
+  <packs>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Core"
+          id="exbib-core"
+          required="yes">
+      <description/>
+      <file src="LICENSE.html" targetdir="$INSTALL_PATH"/>
+
+      <file src="../../../ExBib-Main/src/bin/exbib"
+            targetdir="$INSTALL_PATH/bin/unix"/>
+      <executable targetfile="$INSTALL_PATH/bin/unix/exbib"/>
+
+      <file src="../../../ExBib-Main/src/bin/exbib.bat"
+            targetdir="$INSTALL_PATH/bin/win32"/>
+      <parsable targetfile="$INSTALL_PATH/bin/win32/exbib.bat"/>
+      <executable targetfile="$INSTALL_PATH/bin/win32exbib.bat"/>
+
+      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../ExBib-core/target/ExBib-core-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../ExBib-Main/target/ExBib-Main-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+      <file src="../../../../CLI/target/CLI-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Utility"
+          id="exbib-util"
+          required="no">
+      <description/>
+      <file src="../../../ExBib-Util/src/bin/exbibutil"
+            targetdir="$INSTALL_PATH/bin/unix"/>
+      <executable targetfile="$INSTALL_PATH/bin/unix/exbibutil"/>
+
+      <file src="../../../ExBib-Util/src/bin/exbibutil.bat"
+            targetdir="$INSTALL_PATH/bin/win32"/>
+      <parsable targetfile="$INSTALL_PATH/bin/win32/exbibutil.bat"/>
+      <executable targetfile="$INSTALL_PATH/bin/win32/exbibutil.bat"/>
+
+      <file src="../../../ExBib-Util/target/ExBib-Util-0.1.jar"
+            targetdir="$INSTALL_PATH/doc"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib docs"
+          id="exbib-docs"
+          required="no">
+      <description/>
+      <file src="../../../ExBib-doc/target/exbib-manual.pdf"
+            targetdir="$INSTALL_PATH/doc"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Styles"
+          id="exbib-styles"
+          required="no">
+      <description/>
+      <file src="../../../ExBib-texmf/target/ExBib-texmf-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Ant"
+          id="exbib-ant"
+          required="no"
+          preselected="no">
+      <depends packname="ExBib Core"/>
+      <description/>
+      <file src="../../../ExBib-ant/target/ExBib-ant-0.1.jar"
+            targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib BSF"
+          id="exbib-bsf"
+          required="no"
+          preselected="no">
+      <depends packname="ExBib Core"/>
+      <description/>
+      <file    src="../../../ExBib-bsf/target/ExBib-bsf-0.1.jar"
+               targetdir="$INSTALL_PATH/lib"/>
+      <fileset dir="../../../ExBib-bsf/target/dependency"
+               targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Groovy"
+          id="exbib-groovy"
+          required="no"
+          preselected="no">
+      <depends packname="ExBib BSF"/>
+      <description/>
+      <file    src="../../../ExBib-groovy/target/ExBib-groovy-0.1.jar"
+               targetdir="$INSTALL_PATH/lib"/>
+      <fileset dir="../../../ExBib-groovy/target/dependency"
+               targetdir="$INSTALL_PATH/lib"/>
+      <file    src="../../../ExBib-bst2gy/target/ExBib-bst2gy-0.1.jar"
+               targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+    <!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+    <pack name="ExBib Jython"
+          id="exbib-jython"
+          required="no"
+          preselected="no">
+      <depends packname="ExBib BSF"/>
+      <description/>
+      <file    src="../../../ExBib-jython/target/ExBib-jython-0.1.jar"
+               targetdir="$INSTALL_PATH/lib"/>
+      <fileset dir="../../../ExBib-jython/target/dependency"
+               targetdir="$INSTALL_PATH/lib"/>
+    </pack>
+  </packs>
+
+</installation>
