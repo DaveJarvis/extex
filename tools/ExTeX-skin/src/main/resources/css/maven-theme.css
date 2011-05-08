@@ -158,11 +158,8 @@ pre {
 dt {
   padding: 4px 4px 4px 24px;
   color: #333333;
-  background-color: #ccc;
+  background-color: #eeeeee;
   font-weight: bold;
-  background-image: url(../images/h3.jpg);
-  background-repeat: no-repeat;
-  background-position: left bottom;
 }
 .subsectionTitle {
   font-weight: bold;
