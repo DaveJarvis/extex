@@ -50,20 +50,20 @@ else
     svn update >$BUILD_LOG 2>&1
 fi
 
-if test -e $BUILD_LOG; then
+if test -n "`grep 'At revision' $BUILD_LOG`"; then
+    date >>$BUILD_LOG 2>&1
     echo "Nothing new on the western front" >> $BUILD_LOG
     exit 0
 fi
 
 date >>$BUILD_LOG 2>&1
 
-
 cd build
 source src/nightly-build/nightly-build.sh >>$BUILD_LOG 2>&1
 
 if test -n "`grep '[ERROR] BUILD ERROR' $BUILD_LOG`"; then
 #    /usr/bin/mail -s 'ExTeX build failed' extex-build@lists.berlios.de < $LOG
-    /usr/bin/mail -s 'ExTeX build' gene@gerd-neugebauer.de < $BUILD_LOG
+    cat $BUILD_LOG
 fi
 
 #
