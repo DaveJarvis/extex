@@ -52,7 +52,7 @@ fi
 
 if test -n "`grep 'At revision' $BUILD_LOG`"; then
     date >>$BUILD_LOG 2>&1
-    echo "Nothing new on the western front" >> $BUILD_LOG
+    echo "All quiet on the western front" >> $BUILD_LOG
     exit 0
 fi
 
