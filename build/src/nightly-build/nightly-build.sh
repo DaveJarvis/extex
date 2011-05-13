@@ -8,10 +8,6 @@
 # (c) 2003-2011 Gerd Neugebauer (gene@gerd-neugebauer.de)
 #
 
-#if [ "$LOG" == "" ]; then
-#    echo "LOG is undefined"
-#    exit 1
-#fi
 if [ "$JAVA_HOME" == "" ]; then
     echo "JAVA_HOME is undefined"
     exit 1
