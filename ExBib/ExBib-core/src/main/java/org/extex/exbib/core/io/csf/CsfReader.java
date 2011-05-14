@@ -25,7 +25,186 @@ import java.io.Reader;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class is a reader for a csf file.
+ * This class is a reader for a CSF &ndash; codepage and sort definition file.
+ * <p>
+ * The following description of the file format is taken from the
+ * B<small>IB</small>TeX8 implementation by Niel Kempson and Alejandro
+ * Aguilar-Sierra.
+ * </p>
+ * <h2>FILE FORMAT</h2>
+ * <p>
+ * The codepage and sorting order (CS) file defines how B<small>ib</small>T<span
+ * style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X will treat an 8-bit character set, specifically which characters
+ * are to be treated as letters, the upper/lower case relationships between
+ * characters, and the sorting order of characters.
+ * </p>
+ * <p>
+ * The CS file may contain a number of sections, each presented in the form of a
+ * T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height:0;"
+ * >e</span>X macro:
+ * </p>
+ * 
+ * <pre>
+ *    \section-name{
+ *        &lang;section definitions&rang;
+ *    }
+ * </pre>
+ * <p>
+ * Four sections are currently supported: \lowupcase, \lowercase,
+ * &#x5c;uppercase and \order. The syntax of the four supported sections is
+ * summarized below.
+ * </p>
+ * <p>
+ * 8-bit characters may be entered naturally, but to avoid problems with
+ * character set translation or corruption, they can also be entered using the
+ * T<span style= *
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * * >e</span>X-style portable notation for character codes, i.e. ^^XX, where XX
+ * is the hexadecimal value of the character code.
+ * </p>
+ * <p>
+ * Reading of the sections ends when the first '}' character is reached, so '}'
+ * can't be included in a section. You can't use ^^7d either.
+ * </p>
+ * <p>
+ * The percent sign ('%') is used to introduce a trailing comment - it and all
+ * remaining characters on a line are ignored. ^^25 has the same effect.
+ * </p>
+ * <h3>\lowupcase section</h3>
+ * <p>
+ * The \lowupcase section of the CS file is used to define the lower /upper and
+ * upper/lower case relationship of pairs of specified characters. It is only
+ * used if the relationship is symmetrical &ndash; use \lowercase or
+ * &#x5c;upcase if it isn't.
+ * </p>
+ * <p>
+ * The syntax of the \lowupcase section is:
+ * </p>
+ * 
+ * <pre>
+ *    \lowupcase{
+ *        &lang;LC<sub>1</sub>&rang; &lang;UC<sub>1</sub>&rang;   % Comment begins with a percent sign
+ *        &lang;LC<sub>2</sub>&rang; &lang;UC<sub>2</sub>&rang;
+ *        ...
+ *        &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang;
+ *    }
+ * </pre>
+ * <p>
+ * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
+ * defines that the upper case equivalent of &lang;LC<sub>n</sub>&rang; is
+ * &lang;UC<sub>n</sub>&rang; <b>and</b> the lower case equivalent of
+ * &lang;UC<sub>n</sub>&rang; is &lang;LC<sub>n</sub>&rang;.
+ * </p>
+ * <p>
+ * 
+ * You cannot redefine the lower or upper case equivalent of an ASCII character
+ * (code &lt; 128), so all instances of &lang;LC<sub>n</sub>&rang; and
+ * &lang;UC<sub>n</sub>&rang; (i.e. both sides of the relationship) must have
+ * codes &gt; 127.
+ * </p>
+ * <h3>\lowercase section</h3>
+ * <p>
+ * The \lowercase section of the CS file is used to define the lower case
+ * equivalent of specified characters. It should normally only be used if the
+ * relationship isn't symmetrical &ndash; use \lowupcase if it is.
+ * </p>
+ * <p>
+ * The syntax of the \lowercase section is:
+ * </p>
+ * 
+ * <pre>
+ *    \lowercase{
+ *        &lang;UC<sub>1</sub>&rang; &lang;LC<sub>1</sub>&rang;   % Comment begins with a percent sign
+ *        &lang;UC<sub>2</sub>&rang; &lang;LC<sub>2</sub>&rang;
+ *        ...
+ *        &lang;UC<sub>n</sub>&rang; &lang;LC<sub>n</sub>&rang;
+ *    }
+ * </pre>
+ * <p>
+ * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
+ * defines that the lower case equivalent of &lang;UC<sub>n</sub>&rang; is
+ * &lang;LC<sub>n</sub>&rang;.
+ * </p>
+ * <p>
+ * You cannot redefine the lower case equivalent of an ASCII character (code
+ * &lt; 128), so all instances of &lang;UC<sub>n</sub>&rang; (i.e. the left hand
+ * side of the relationship) must have codes &gt; 127.
+ * </p>
+ * <h3>&#x5c;uppercase section</h3>
+ * <p>
+ * The &#x5c;uppercase section of the CS file is used to define the upper case
+ * equivalent of specified characters. It should normally only be used if the
+ * relationship isn't symmetrical &ndash; use \lowupcase if it is.
+ * </p>
+ * <p>
+ * The syntax of the &#x5c;uppercase section is:
+ * </p>
+ * <re> &#x5c;uppercase{ &lang;LC<sub>1</sub>&rang; &lang;UC<sub>1</sub>&rang; %
+ * Comment begins with a percent sign &lang;LC<sub>2</sub>&rang;
+ * &lang;UC<sub>2</sub>&rang; ... &lang;LC<sub>n</sub>&rang;
+ * &lang;UC<sub>n</sub>&rang; } </pre>
+ * <p>
+ * Each &lang;LC<sub>n</sub>&rang; &lang;UC<sub>n</sub>&rang; pair of characters
+ * defines that the upper case case equivalent of &lang;LC<sub>n</sub>&rang; is
+ * &lang;UC<sub>n</sub>&rang;.
+ * </p>
+ * <p>
+ * You cannot redefine the upper case equivalent of an ASCII character (code
+ * &lt; 128), so all instances of &lang;LC<sub>n</sub>&rang; (i.e. the left hand
+ * side of the relationship) must have codes &gt; 127.
+ * </p>
+ * < <h3>\order section</h3>
+ * <p>
+ * The \order section of the CS file is used to define the order in which
+ * characters are sorted.
+ * </p>
+ * <p>
+ * The syntax of the \order section is:
+ * </p>
+ * 
+ * <pre>
+ *    \order{
+ *        &lang;char<sub>1</sub>&rang;                % Comment begins with a percent sign
+ *        &lang;char<sub>2</sub>&rang; &lang;char<sub>3</sub>&rang;       % whitespace between the chars
+ *        &lang;char<sub>4</sub>&rang; - &lang;char<sub>5</sub>&rang;     % a hyphen between the chars
+ *        &lang;char<sub>4</sub>&rang; _ &lang;char<sub>5</sub>&rang;     % an underscore between the chars
+ *        ...
+ *        &lang;char<sub>n</sub>&rang;
+ *    }
+ * </pre>
+ * <p>
+ * All characters on the same line are given the same sorting weight.
+ * </p>
+ * <p>
+ * The construct &lang;char<sub>1</sub>&rang; &lang;underscore&rang;
+ * &lang;char<sub>2</sub>&rang; is used to denote that all characters in the
+ * range &lang;char<sub>1</sub>&rang; to &lang;char<sub>2</sub>&rang; should be
+ * given the same sorting weight. For example, "A _ Z" would cause all ASCII
+ * upper case alphabetical characters to have the same sorting weight and would
+ * be equivalent to placing all 26 characters on the same line.
+ * </p>
+ * <p>
+ * The construct &lang;char<sub>1</sub>&rang; &lang;hyphen&rang;
+ * &lang;char<sub>2</sub>&rang; is used to denote that all characters in the
+ * range &lang;char<sub>1</sub>&rang; to &lang;char<sub>2</sub>&rang; should be
+ * given an ascending set of sorting weights, starting with
+ * &lang;char<sub>1</sub>&rang; and ending with &lang;char<sub>2</sub>&rang;.
+ * For example, "A - Z" would cause all upper case ASCII alphabetical characters
+ * to be sorted in ascending order and would be equivalent to placing 'A' on the
+ * first line, 'B' on the second, through to 'Z' on the 26<sup>th</sup> line.
+ * </p>
+ * <p>
+ * The characters at the beginning of the order section are given a lower
+ * sorting weight than characters occurring later. When sorting alphabetically,
+ * characters with the lowest weight come first.
+ * 
+ * All characters not in the \order section (including ASCII characters) are
+ * given the same very high sorting weight to ensure that they come last when
+ * sorting alphabetically.
+ * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -39,15 +218,64 @@ public class CsfReader {
         /**
          * The field <tt>LOWER</tt> contains the mode for \lowercase.
          */
-        LOWER,
+        LOWER {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             *      char, char)
+             */
+            @Override
+            void encounter(CsfSorter csf, char c, char d) {
+
+                csf.setLower(c, d);
+            }
+        },
         /**
          * The field <tt>UPPER</tt> contains the mode for \ uppercase.
          */
-        UPPER,
+        UPPER {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             *      char, char)
+             */
+            @Override
+            void encounter(CsfSorter csf, char c, char d) {
+
+                csf.setUpper(c, d);
+            }
+        },
         /**
          * The field <tt>LOW_UP</tt> contains the mode for \lowupcase.
          */
-        LOW_UP
+        LOW_UP {
+
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             *      char, char)
+             */
+            @Override
+            void encounter(CsfSorter csf, char c, char d) {
+
+                csf.setLower(d, c);
+                csf.setUpper(c, d);
+            }
+        };
+
+        /**
+         * Encounter a character mapping.
+         * 
+         * @param csf the sorter
+         * @param c the first character
+         * @param d the second character
+         */
+        abstract void encounter(CsfSorter csf, char c, char d);
     };
 
     /**
@@ -116,20 +344,8 @@ public class CsfReader {
                         getClass()).format("unexpected.nl"));
                 }
 
-                switch (mode) {
-                    case LOWER:
-                        csf.setLower((char) c, (char) d);
-                        break;
-                    case LOW_UP:
-                        csf.setLower((char) d, (char) c);
-                        csf.setUpper((char) c, (char) d);
-                        break;
-                    case UPPER:
-                        csf.setUpper((char) c, (char) d);
-                        break;
-                    default:
-                        // this can not happen
-                }
+                mode.encounter(csf, (char) c, (char) d);
+
                 c = readChar(reader);
                 if (c != '\n') {
                     if (c == '}') {
@@ -268,12 +484,7 @@ public class CsfReader {
     private int readChar(Reader reader) throws IOException, CsfException {
 
         for (int c = reader.read(); c >= 0; c = reader.read()) {
-            if (c == '%') {
-                do {
-                    c = reader.read();
-                } while (c >= 0 && c != '\n');
-                return '\n';
-            } else if (c == '^') {
+            if (c == '^') {
                 c = reader.read();
                 if (Character.isSpaceChar(c)) {
                     return '^';
@@ -281,12 +492,17 @@ public class CsfReader {
                     throw new CsfException(LocalizerFactory.getLocalizer(
                         getClass()).format("illegal.character.escape"));
                 }
-                return readHexChar(reader) << 4 | readHexChar(reader);
-            } else if (!Character.isSpaceChar(c) || c == '\n') {
+                c = readHexChar(reader) << 4 | readHexChar(reader);
+            }
+            if (c == '\n' || (c != '%' && !Character.isSpaceChar(c))) {
                 return c;
+            } else if (c == '%') {
+                do {
+                    c = reader.read();
+                } while (c >= 0 && c != '\n');
+                return '\n';
             }
         }
-
         return -1;
     }
 
