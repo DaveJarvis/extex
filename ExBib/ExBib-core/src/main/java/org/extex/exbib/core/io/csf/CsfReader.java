@@ -214,7 +214,7 @@ public class CsfReader {
     /**
      * This enumeration names the modes for casing sections.
      */
-    private enum Mode {
+    private enum Parser {
         /**
          * The field <tt>LOWER</tt> contains the mode for \lowercase.
          */
@@ -223,7 +223,7 @@ public class CsfReader {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
              *      char, char)
              */
             @Override
@@ -240,7 +240,7 @@ public class CsfReader {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
              *      char, char)
              */
             @Override
@@ -257,7 +257,7 @@ public class CsfReader {
             /**
              * {@inheritDoc}
              * 
-             * @see org.extex.exbib.core.io.csf.CsfReader.Mode#encounter(org.extex.exbib.core.io.csf.CsfSorter,
+             * @see org.extex.exbib.core.io.csf.CsfReader.Parser#encounter(org.extex.exbib.core.io.csf.CsfSorter,
              *      char, char)
              */
             @Override
@@ -276,14 +276,45 @@ public class CsfReader {
          * @param d the second character
          */
         abstract void encounter(CsfSorter csf, char c, char d);
+
+        /**
+         * Parse an &#x5c;lowercase, &#x5c;lowupcase, or &#x5c;uppercase
+         * section.
+         * 
+         * @param csf the transport object
+         * @param reader the reader to acquire characters from
+         * 
+         * @throws IOException in case of an I/O error
+         * @throws CsfException in case of an error
+         */
+        private void parse(CsfSorter csf, Reader reader)
+                throws IOException,
+                    CsfException {
+
+            expect('{', reader);
+
+            for (int c = readMandatoryChar(reader); c != '}'; c =
+                    readMandatoryChar(reader)) {
+                if (c != '\n') {
+                    int d = readMandatoryChar(reader);
+                    if (d == '\n') {
+                        throw makeException("unexpected.nl");
+                    }
+
+                    encounter(csf, (char) c, (char) d);
+
+                    c = readMandatoryChar(reader);
+                    if (c == '}') {
+                        return;
+                    } else if (c != '\n') {
+                        throw makeException("nl.missing",
+                            Character.toString((char) c));
+                    }
+                }
+            }
+        }
+
     };
-
-    /**
-     * Creates a new object.
-     */
-    public CsfReader() {
-
-    }
 
     /**
      * Expect a certain character and complain if it is not found. Newline
@@ -295,71 +326,109 @@ public class CsfReader {
      * @throws IOException in case of an I/O error
      * @throws CsfException in case of an error
      */
-    private void expect(char c, Reader reader) throws IOException, CsfException {
-
-        for (int cc = readChar(reader); cc >= 0; cc = readChar(reader)) {
-            if (cc == c) {
-                return;
-            } else if (cc != '\n') {
-                throw new CsfException(LocalizerFactory
-                    .getLocalizer(getClass()).format("unexpected",
-                        Character.toString(c), Character.toString((char) cc)));
-            }
-        }
-        throw new CsfException(LocalizerFactory.getLocalizer(getClass())
-            .format("unexpected.eof"));
-    }
-
-    /**
-     * Parse an &#x5c;lowercase, &#x5c;lowupcase, or &#x5c;uppercase section.
-     * 
-     * @param csf the transport object
-     * @param reader the reader to acquire characters from
-     * @param mode the mode of operation
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws CsfException in case of an error
-     */
-    private void parse(CsfSorter csf, Reader reader, Mode mode)
+    private static void expect(char c, Reader reader)
             throws IOException,
                 CsfException {
 
-        expect('{', reader);
-
-        for (int c = readChar(reader); c != '}'; c = readChar(reader)) {
-            if (c < 0) {
-                throw new CsfException(LocalizerFactory
-                    .getLocalizer(getClass()).format("unexpected.eof"));
-
-            } else if (c == '\n') {
-                continue;
-
-            } else {
-                int d = readChar(reader);
-                if (d < 0) {
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("unexpected.eof"));
-                } else if (d == '\n') {
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("unexpected.nl"));
-                }
-
-                mode.encounter(csf, (char) c, (char) d);
-
-                c = readChar(reader);
-                if (c != '\n') {
-                    if (c == '}') {
-                        return;
-                    } else if (c < 0) {
-                        throw new CsfException(LocalizerFactory.getLocalizer(
-                            getClass()).format("unexpected.eof"));
-                    }
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("nl.missing",
-                        Character.toString((char) c)));
-                }
+        for (int cc = readMandatoryChar(reader); cc != c; cc =
+                readMandatoryChar(reader)) {
+            if (cc != '\n') {
+                throw makeException("unexpected", Character.toString(c),
+                    Character.toString((char) cc));
             }
         }
+    }
+
+    /**
+     * Create a localized exception.
+     * 
+     * @param key the format key
+     * @param args the optional arguments
+     * 
+     * @return the exception
+     */
+    private static CsfException makeException(String key, String... args) {
+
+        return new CsfException(LocalizerFactory.getLocalizer(CsfReader.class)
+            .format(key, args));
+    }
+
+    /**
+     * Read a single character.
+     * 
+     * @param reader the reader to acquire characters from
+     * 
+     * @return the character read or -1 on EOF
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a syntax error
+     */
+    private static int readChar(Reader reader) throws IOException, CsfException {
+
+        for (int c = reader.read(); c >= 0; c = reader.read()) {
+            if (c == '^') {
+                c = reader.read();
+                if (Character.isSpaceChar(c)) {
+                    return '^';
+                } else if (c != '^') {
+                    throw makeException("illegal.character.escape");
+                }
+                c = readHexChar(reader) << 4 | readHexChar(reader);
+            }
+            if (c == '%') {
+                do {
+                    c = reader.read();
+                } while (c >= 0 && c != '\n');
+                return '\n';
+            }
+            if (c == '\n' || !Character.isSpaceChar(c)) {
+                return c;
+            }
+        }
+        return -1;
+    }
+
+    /**
+     * Read a single hexadecimal character and return its integer value.
+     * 
+     * @param reader the reader to acquire characters from
+     * 
+     * @return the value, i.e. 0 for '0' to 9 for '9'; 10 for 'a' or 'A' to 15
+     *         for 'f' or 'F'
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a syntax error
+     */
+    private static int readHexChar(Reader reader)
+            throws IOException,
+                CsfException {
+
+        int c = Character.digit(reader.read(), 16);
+        if (c < 0) {
+            throw makeException("illegal.character.escape");
+        }
+        return c;
+    }
+
+    /**
+     * Read a single character of throw an exception if none is available.
+     * 
+     * @param reader the reader to acquire characters from
+     * 
+     * @return the character read
+     * 
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of a syntax error
+     */
+    private static int readMandatoryChar(Reader reader)
+            throws IOException,
+                CsfException {
+
+        int c = readChar(reader);
+        if (c < 0) {
+            throw makeException("unexpected.eof");
+        }
+        return c;
     }
 
     /**
@@ -379,24 +448,18 @@ public class CsfReader {
         int ord = 1;
         expect('{', reader);
 
-        for (int c = readChar(reader); c != '}'; c = readChar(reader)) {
-            if (c < 0) {
-                throw new CsfException(LocalizerFactory
-                    .getLocalizer(getClass()).format("unexpected.eof"));
-
-            } else if (c == '\n') {
+        for (int c = readMandatoryChar(reader); c != '}'; c =
+                readMandatoryChar(reader)) {
+            if (c == '\n') {
                 ord++;
                 lastC = -1;
-
             } else if (lastC < 0) {
                 csf.setOrder((char) c, ord);
                 lastC = c;
-
             } else if (c == '-') {
                 c = readChar(reader);
                 if (c < 0) {
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("nl.missing"));
+                    throw makeException("nl.missing");
                 }
                 for (; lastC < c; lastC++) {
                     csf.setOrder((char) lastC, ord++);
@@ -404,11 +467,7 @@ public class CsfReader {
                 lastC = -1;
 
             } else if (c == '_') {
-                c = readChar(reader);
-                if (c < 0) {
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("unexpected.eof"));
-                }
+                c = readMandatoryChar(reader);
                 for (; lastC < c; lastC++) {
                     csf.setOrder((char) lastC, ord);
                 }
@@ -442,78 +501,17 @@ public class CsfReader {
             if ("\\order".equals(s)) {
                 parseOrder(csf, r);
             } else if ("\\uppercase".equals(s)) {
-                parse(csf, r, Mode.UPPER);
+                Parser.UPPER.parse(csf, r);
             } else if ("\\lowercase".equals(s)) {
-                parse(csf, r, Mode.LOWER);
+                Parser.LOWER.parse(csf, r);
             } else if ("\\lowupcase".equals(s)) {
-                parse(csf, r, Mode.LOW_UP);
+                Parser.LOW_UP.parse(csf, r);
             } else {
-                throw new CsfException(LocalizerFactory
-                    .getLocalizer(getClass()).format("unknown.section", s));
+                throw makeException("unknown.section", s);
             }
         }
 
         return csf;
-    }
-
-    /**
-     * Read a single character.
-     * 
-     * @param reader the reader to acquire characters from
-     * 
-     * @return the character read or -1 on EOF
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws CsfException in case of a syntax error
-     */
-    private int readChar(Reader reader) throws IOException, CsfException {
-
-        for (int c = reader.read(); c >= 0; c = reader.read()) {
-            if (c == '^') {
-                c = reader.read();
-                if (Character.isSpaceChar(c)) {
-                    return '^';
-                } else if (c != '^') {
-                    throw new CsfException(LocalizerFactory.getLocalizer(
-                        getClass()).format("illegal.character.escape"));
-                }
-                c = readHexChar(reader) << 4 | readHexChar(reader);
-            }
-            if (c == '\n' || (c != '%' && !Character.isSpaceChar(c))) {
-                return c;
-            } else if (c == '%') {
-                do {
-                    c = reader.read();
-                } while (c >= 0 && c != '\n');
-                return '\n';
-            }
-        }
-        return -1;
-    }
-
-    /**
-     * Read a single hexadecimal character and return its integer value.
-     * 
-     * @param reader the reader to acquire characters from
-     * 
-     * @return the value, i.e. 0 for '0' to 9 for '9'; 10 for 'a' or 'A' to 15
-     *         for 'f' or 'F'
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws CsfException in case of a syntax error
-     */
-    private int readHexChar(Reader reader) throws IOException, CsfException {
-
-        int c = reader.read();
-        if (c >= '0' && c <= '9') {
-            return c - '0';
-        } else if (c >= 'A' && c <= 'F') {
-            return c - 'A' + 10;
-        } else if (c >= 'a' && c <= 'f') {
-            return c - 'a' + 10;
-        }
-        throw new CsfException(LocalizerFactory.getLocalizer(getClass())
-            .format("illegal.character.escape"));
     }
 
     /**
@@ -540,9 +538,8 @@ public class CsfReader {
                 return sb.toString();
 
             } else if (c != '\n') {
-                throw new CsfException(LocalizerFactory
-                    .getLocalizer(getClass()).format("section.missing",
-                        Character.toString((char) c)));
+                throw makeException("section.missing",
+                    Character.toString((char) c));
             }
         }
 
