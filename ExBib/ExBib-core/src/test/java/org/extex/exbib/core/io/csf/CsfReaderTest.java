@@ -23,8 +23,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.Reader;
 
 import org.junit.Test;
 
@@ -43,7 +43,7 @@ public class CsfReaderTest {
 
     /**
      * Verify a CSF for validity.
-     *
+     * 
      * @param csf the CSF
      */
     private static void assertCsf(CsfSorter csf) {
@@ -62,16 +62,59 @@ public class CsfReaderTest {
     }
 
     /**
-     * Create a reader with the given content.
+     * Check that the sorter has an expected mapping when exactly one character
+     * is lowered.
      * 
-     * @param content the content to be delivered by the reader
-     * 
-     * @return the new reader
+     * @param csf the sorter
+     * @param x the lowered letter
+     * @param lowX the lower letter
      */
-    private static Reader makeReader(String content) {
+    private static void checkLower(CsfSorter csf, char x, char lowX) {
 
-        return new InputStreamReader(new ByteArrayInputStream(
-            content.getBytes()));
+        assertNotNull(csf);
+        for (int c = 0x00; c <= 0xff; c++) {
+            assertEquals((x == c ? lowX : c), csf.getLower((char) c));
+            assertEquals(c, csf.getUpper((char) c));
+        }
+    }
+
+    /**
+     * Check that the sorter has an expected mapping when exactly one character
+     * is uppered.
+     * 
+     * @param csf the sorter
+     * @param x the uppered letter
+     * @param upX the upper letter
+     */
+    private static void checkUpper(CsfSorter csf, char x, char upX) {
+
+        assertNotNull(csf);
+        for (char c = '\0'; c < 0xff; c++) {
+            assertEquals(c, csf.getLower(c));
+            assertEquals((x == c ? upX : c), csf.getUpper(c));
+        }
+    }
+
+    /**
+     * Run a reader on some content.
+     * 
+     * @param content the content
+     * @return the CSF
+     * @throws IOException in case of an I/O error
+     * @throws CsfException in case of an error
+     */
+    private CsfSorter runReader(String content)
+            throws IOException,
+                CsfException {
+
+        InputStreamReader r =
+                new InputStreamReader(new ByteArrayInputStream(
+                    content.getBytes()));
+        try {
+            return READER.read(r, new CsfSorter());
+        } finally {
+            r.close();
+        }
     }
 
     /**
@@ -82,7 +125,7 @@ public class CsfReaderTest {
     @Test
     public void test1() throws Exception {
 
-        assertCsf(READER.read(makeReader("")));
+        assertCsf(runReader(""));
     }
 
     /**
@@ -93,7 +136,7 @@ public class CsfReaderTest {
     @Test
     public void test2() throws Exception {
 
-        assertCsf(READER.read(makeReader("  ")));
+        assertCsf(runReader("  "));
     }
 
     /**
@@ -104,7 +147,7 @@ public class CsfReaderTest {
     @Test
     public void test3() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \n ")));
+        assertCsf(runReader(" \n "));
     }
 
     /**
@@ -115,7 +158,18 @@ public class CsfReaderTest {
     @Test
     public void test4() throws Exception {
 
-        assertCsf(READER.read(makeReader(" %abc \\xxx\n ")));
+        assertCsf(runReader(" %abc \\xxx\n "));
+    }
+
+    /**
+     * <testcase> The empty file with comments is ok. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void test5() throws Exception {
+
+        assertCsf(runReader(" ^^25abc \\xxx\n "));
     }
 
     /**
@@ -126,7 +180,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testError1() throws Exception {
 
-        READER.read(makeReader(" \\xyzzy "));
+        runReader(" \\xyzzy ");
     }
 
     /**
@@ -137,7 +191,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testError2() throws Exception {
 
-        READER.read(makeReader(" xyzzy "));
+        runReader(" xyzzy ");
     }
 
     /**
@@ -148,7 +202,7 @@ public class CsfReaderTest {
     @Test
     public void testLowercase1() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\lowercase{} \n ")));
+        assertCsf(runReader(" \\lowercase{} \n "));
     }
 
     /**
@@ -159,7 +213,7 @@ public class CsfReaderTest {
     @Test
     public void testLowercase2() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\lowercase \n {} \n ")));
+        assertCsf(runReader(" \\lowercase \n {} \n "));
     }
 
     /**
@@ -170,13 +224,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase3() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { A a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower('A'));
+        CsfSorter csf = runReader(" \\lowercase \n { A a \n} \n ");
+        checkLower(csf, 'A', 'a');
     }
 
     /**
@@ -188,13 +237,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase4() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { ^^41 a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower('A'));
+        CsfSorter csf = runReader(" \\lowercase \n { ^^41 a \n} \n ");
+        checkLower(csf, 'A', 'a');
     }
 
     /**
@@ -206,13 +250,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase5() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { ^^41 a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower('A'));
+        CsfSorter csf = runReader(" \\lowercase \n { ^^41 a \n} \n ");
+        checkLower(csf, 'A', 'a');
     }
 
     /**
@@ -224,13 +263,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase6() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { ^^4a a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower((char) 0x4a));
+        CsfSorter csf = runReader(" \\lowercase \n { ^^4a a \n} \n ");
+        checkLower(csf, (char) 0x4a, 'a');
     }
 
     /**
@@ -242,13 +276,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase7() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { ^^4A a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower((char) 0x4A));
+        CsfSorter csf = runReader(" \\lowercase \n { ^^4A a \n} \n ");
+        checkLower(csf, (char) 0x4A, 'a');
     }
 
     /**
@@ -260,13 +289,8 @@ public class CsfReaderTest {
     @Test
     public void testLowercase8() throws Exception {
 
-        CsfSorter csf =
-                READER.read(makeReader(" \\lowercase \n { ^ a \n} \n "));
-        assertNotNull(csf);
-        assertEquals('x', csf.getLower('x'));
-        assertEquals('X', csf.getUpper('X'));
-        assertEquals('a', csf.getUpper('a'));
-        assertEquals('a', csf.getLower('^'));
+        CsfSorter csf = runReader(" \\lowercase \n { ^ a \n} \n ");
+        checkLower(csf, '^', 'a');
     }
 
     /**
@@ -277,7 +301,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseCaret1() throws Exception {
 
-        READER.read(makeReader(" \\lowercase \n { ^a"));
+        runReader(" \\lowercase \n { ^a");
     }
 
     /**
@@ -288,7 +312,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseCaret2() throws Exception {
 
-        READER.read(makeReader(" \\lowercase \n { ^^x"));
+        runReader(" \\lowercase \n { ^^x");
     }
 
     /**
@@ -299,7 +323,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseCaret3() throws Exception {
 
-        READER.read(makeReader(" \\lowercase \n { ^^1x"));
+        runReader(" \\lowercase \n { ^^1x");
     }
 
     /**
@@ -310,7 +334,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseError0() throws Exception {
 
-        READER.read(makeReader(" \\lowercase"));
+        runReader(" \\lowercase");
     }
 
     /**
@@ -321,7 +345,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseError1() throws Exception {
 
-        READER.read(makeReader(" \\lowercase\n"));
+        runReader(" \\lowercase\n");
     }
 
     /**
@@ -332,7 +356,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseError2() throws Exception {
 
-        READER.read(makeReader(" \\lowercase x"));
+        runReader(" \\lowercase x");
     }
 
     /**
@@ -343,7 +367,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowercaseError3() throws Exception {
 
-        READER.read(makeReader(" \\lowercase {"));
+        runReader(" \\lowercase {");
     }
 
     /**
@@ -354,7 +378,7 @@ public class CsfReaderTest {
     @Test
     public void testLowupcase1() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\lowupcase{} \n ")));
+        assertCsf(runReader(" \\lowupcase{} \n "));
     }
 
     /**
@@ -365,7 +389,7 @@ public class CsfReaderTest {
     @Test
     public void testLowupcase2() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\lowupcase \n {} \n ")));
+        assertCsf(runReader(" \\lowupcase \n {} \n "));
     }
 
     /**
@@ -376,13 +400,12 @@ public class CsfReaderTest {
     @Test
     public void testLowupcase3() throws Exception {
 
-        CsfSorter ret =
-                READER.read(makeReader(" \\lowupcase \n { a A \n} \n "));
-        assertNotNull(ret);
-        assertEquals('x', ret.getLower('x'));
-        assertEquals('X', ret.getUpper('X'));
-        assertEquals('a', ret.getLower('A'));
-        assertEquals('A', ret.getUpper('a'));
+        CsfSorter csf = runReader(" \\lowupcase \n { a A \n} \n ");
+        assertNotNull(csf);
+        assertEquals('x', csf.getLower('x'));
+        assertEquals('X', csf.getUpper('X'));
+        assertEquals('a', csf.getLower('A'));
+        assertEquals('A', csf.getUpper('a'));
     }
 
     /**
@@ -393,7 +416,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testlowupcaseError0() throws Exception {
 
-        READER.read(makeReader(" \\lowupcase"));
+        runReader(" \\lowupcase");
     }
 
     /**
@@ -404,7 +427,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowupcaseError1() throws Exception {
 
-        READER.read(makeReader(" \\lowupcase\n"));
+        runReader(" \\lowupcase\n");
     }
 
     /**
@@ -415,7 +438,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowupcaseError2() throws Exception {
 
-        READER.read(makeReader(" \\lowupcase x"));
+        runReader(" \\lowupcase x");
     }
 
     /**
@@ -426,7 +449,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testLowupcaseError3() throws Exception {
 
-        READER.read(makeReader(" \\lowupcase {"));
+        runReader(" \\lowupcase {");
     }
 
     /**
@@ -437,7 +460,7 @@ public class CsfReaderTest {
     @Test
     public void testOrder1() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\order{} \n ")));
+        assertCsf(runReader(" \\order{} \n "));
     }
 
     /**
@@ -448,7 +471,7 @@ public class CsfReaderTest {
     @Test
     public void testOrder2() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\order \n {} \n ")));
+        assertCsf(runReader(" \\order \n {} \n "));
     }
 
     /**
@@ -459,7 +482,7 @@ public class CsfReaderTest {
     @Test
     public void testOrder3() throws Exception {
 
-        assertCsf(READER.read(makeReader(" \\order \n {\n} \n ")));
+        assertCsf(runReader(" \\order \n {\n} \n "));
     }
 
     /**
@@ -470,7 +493,7 @@ public class CsfReaderTest {
     @Test
     public void testOrder4() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\order \n {a b c\n} \n "));
+        CsfSorter ret = runReader(" \\order \n {a b c\n} \n ");
         assertNotNull(ret);
     }
 
@@ -482,7 +505,7 @@ public class CsfReaderTest {
     @Test
     public void testOrder5() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\order \n {a\nb\nc\n} \n "));
+        CsfSorter ret = runReader(" \\order \n {a\nb\nc\n} \n ");
         assertNotNull(ret);
     }
 
@@ -494,7 +517,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError0() throws Exception {
 
-        READER.read(makeReader(" \\order"));
+        runReader(" \\order");
     }
 
     /**
@@ -505,7 +528,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError1() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\order\n"));
+        CsfSorter ret = runReader(" \\order\n");
         assertNotNull(ret);
     }
 
@@ -517,7 +540,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError2() throws Exception {
 
-        READER.read(makeReader(" \\order x"));
+        runReader(" \\order x");
     }
 
     /**
@@ -528,7 +551,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError3() throws Exception {
 
-        READER.read(makeReader(" \\order {"));
+        runReader(" \\order {");
     }
 
     /**
@@ -539,7 +562,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError4() throws Exception {
 
-        READER.read(makeReader(" \\order { a-"));
+        runReader(" \\order { a-");
     }
 
     /**
@@ -550,7 +573,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testOrderError5() throws Exception {
 
-        READER.read(makeReader(" \\order { a_"));
+        runReader(" \\order { a_");
     }
 
     /**
@@ -561,7 +584,7 @@ public class CsfReaderTest {
     @Test
     public void testOrderRange10() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\order \n {a-c\n} \n "));
+        CsfSorter ret = runReader(" \\order \n {a-c\n} \n ");
         assertNotNull(ret);
     }
 
@@ -573,7 +596,7 @@ public class CsfReaderTest {
     @Test
     public void testOrderRange20() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\order \n {a_c\n} \n "));
+        CsfSorter ret = runReader(" \\order \n {a_c\n} \n ");
         assertNotNull(ret);
     }
 
@@ -585,8 +608,8 @@ public class CsfReaderTest {
     @Test
     public void testUppercase1() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\uppercase{} \n "));
-        assertCsf(ret);
+        CsfSorter csf = runReader(" \\uppercase{} \n ");
+        checkUpper(csf, '\0', '\0');
     }
 
     /**
@@ -597,8 +620,8 @@ public class CsfReaderTest {
     @Test
     public void testUppercase2() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\uppercase \n {} \n "));
-        assertCsf(ret);
+        CsfSorter csf = runReader(" \\uppercase \n {} \n ");
+        checkUpper(csf, '\0', '\0');
     }
 
     /**
@@ -609,8 +632,8 @@ public class CsfReaderTest {
     @Test
     public void testUppercase3() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\uppercase \n {\n\n} \n "));
-        assertCsf(ret);
+        CsfSorter csf = runReader(" \\uppercase \n {\n\n} \n ");
+        checkUpper(csf, '\0', '\0');
     }
 
     /**
@@ -621,9 +644,8 @@ public class CsfReaderTest {
     @Test
     public void testUppercase4() throws Exception {
 
-        CsfSorter ret =
-                READER.read(makeReader(" \\uppercase \n { a A \n} \n "));
-        assertNotNull(ret);
+        CsfSorter csf = runReader(" \\uppercase \n { a A \n} \n ");
+        checkUpper(csf, 'a', 'A');
     }
 
     /**
@@ -634,8 +656,8 @@ public class CsfReaderTest {
     @Test
     public void testUppercase5() throws Exception {
 
-        CsfSorter ret = READER.read(makeReader(" \\uppercase \n { a A } \n "));
-        assertNotNull(ret);
+        CsfSorter csf = runReader(" \\uppercase \n { a A } \n ");
+        checkUpper(csf, 'a', 'A');
     }
 
     /**
@@ -646,7 +668,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError0() throws Exception {
 
-        READER.read(makeReader(" \\uppercase"));
+        runReader(" \\uppercase");
     }
 
     /**
@@ -657,7 +679,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError1() throws Exception {
 
-        READER.read(makeReader(" \\uppercase\n"));
+        runReader(" \\uppercase\n");
     }
 
     /**
@@ -668,7 +690,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError2() throws Exception {
 
-        READER.read(makeReader(" \\uppercase x"));
+        runReader(" \\uppercase x");
     }
 
     /**
@@ -679,7 +701,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError3() throws Exception {
 
-        READER.read(makeReader(" \\uppercase {"));
+        runReader(" \\uppercase {");
     }
 
     /**
@@ -690,7 +712,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError4() throws Exception {
 
-        READER.read(makeReader(" \\uppercase { a A "));
+        runReader(" \\uppercase { a A ");
     }
 
     /**
@@ -701,7 +723,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError5() throws Exception {
 
-        READER.read(makeReader(" \\uppercase { a A b B"));
+        runReader(" \\uppercase { a A b B");
     }
 
     /**
@@ -712,7 +734,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError6() throws Exception {
 
-        READER.read(makeReader(" \\uppercase { a "));
+        runReader(" \\uppercase { a ");
     }
 
     /**
@@ -723,7 +745,7 @@ public class CsfReaderTest {
     @Test(expected = CsfException.class)
     public void testUppercaseError7() throws Exception {
 
-        READER.read(makeReader(" \\uppercase { a \n"));
+        runReader(" \\uppercase { a \n");
     }
 
 }

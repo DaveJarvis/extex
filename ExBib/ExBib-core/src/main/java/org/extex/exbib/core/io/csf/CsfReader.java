@@ -233,7 +233,7 @@ public class CsfReader {
             }
         },
         /**
-         * The field <tt>UPPER</tt> contains the mode for \ uppercase.
+         * The field <tt>UPPER</tt> contains the mode for &#x5c;uppercase.
          */
         UPPER {
 
@@ -311,7 +311,7 @@ public class CsfReader {
     }
 
     /**
-     * Parse an \lowercase, \lowupcase, or \ uppercase section.
+     * Parse an &#x5c;lowercase, &#x5c;lowupcase, or &#x5c;uppercase section.
      * 
      * @param csf the transport object
      * @param reader the reader to acquire characters from
@@ -419,21 +419,6 @@ public class CsfReader {
                 lastC = c;
             }
         }
-    }
-
-    /**
-     * Read the configuration from a csf.
-     * 
-     * @param reader the reader to acquire characters from
-     * 
-     * @return the sorter containing the configuration read
-     * 
-     * @throws IOException in case of an I/O error
-     * @throws CsfException in case of a csf error
-     */
-    public CsfSorter read(Reader reader) throws IOException, CsfException {
-
-        return read(reader, new CsfSorter());
     }
 
     /**
