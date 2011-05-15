@@ -9,9 +9,9 @@ body { background-color: #FFFFFF; color:#000000 }
 h1 { font-size: 145% }
 
 /* Table colors */
-.TableHeadingColor     { background: #CCCCFF; color:#000000 } /* Dark mauve */
-.TableSubHeadingColor  { background: #EEEEFF; color:#000000 } /* Light mauve */
-.TableRowColor         { background: #FFFFFF; color:#000000 } /* White */
+.TableHeadingColor     { background: #dddddd; color:#000000 }
+.TableSubHeadingColor  { background: #eeeeee; color:#000000 }
+.TableRowColor         { background: #ffffff; color:#000000 } /* White */
 
 /* Font used in left-hand frame lists */
 .FrameTitleFont   { font-size: 100%; font-family: sans-serif; color:#000000 }
