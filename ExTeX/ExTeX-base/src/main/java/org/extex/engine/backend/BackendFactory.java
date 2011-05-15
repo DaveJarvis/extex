@@ -51,32 +51,35 @@ import org.extex.resource.ResourceFinder;
  * </p>
  * <dl>
  * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.framework.configuration.Configuration Configuration} is
- * passed in with the interface method. </dd>
+ * passed in with the interface method.</dd>
  * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
- * <dd> If this interface is implemented then a
- * {@link java.util.logging.Logger Logger} is passed in with the interface
- * method. </dd>
+ * <dd>If this interface is implemented then a {@link java.util.logging.Logger
+ * Logger} is passed in with the interface method.</dd>
  * <dt>{@link org.extex.resource.ResourceAware ResourceAware}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
- * the interface method. </dd>
+ * the interface method.</dd>
  * <dt>{@link org.extex.resource.PropertyAware PropertyAware}</dt>
- * <dd> If this interface is implemented then a
- * {@link java.util.Properties Properties} instance is passed in with the
- * interface method. </dd>
+ * <dd>If this interface is implemented then a {@link java.util.Properties
+ * Properties} instance is passed in with the interface method.</dd>
  * <dt>{@link org.extex.color.ColorAware ColorAware}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.color.ColorConverter ColorConverter} instance is passed in
- * with the interface method. </dd>
+ * with the interface method.</dd>
  * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
-public class BackendFactory extends AbstractFactory {
+public class BackendFactory extends AbstractFactory<BackendDriver> {
+
+    /**
+     * The field <tt>options</tt> contains the document writer options.
+     */
+    private DocumentWriterOptions options;
 
     /**
      * Creates a new object.
@@ -84,11 +87,6 @@ public class BackendFactory extends AbstractFactory {
     public BackendFactory() {
 
     }
-
-    /**
-     * The field <tt>options</tt> contains the document writer options.
-     */
-    private DocumentWriterOptions options;
 
     /**
      * Acquire an instance of a back-end driver.
@@ -111,8 +109,7 @@ public class BackendFactory extends AbstractFactory {
             Properties properties, String creator, CoreFontFactory fontFactory,
             ColorConverter colorConverter) throws DocumentWriterException {
 
-        BackendDriver backend =
-                (BackendDriver) createInstance(BackendDriver.class);
+        BackendDriver backend = createInstance(BackendDriver.class);
         DocumentWriterFactory factory =
                 new DocumentWriterFactory(getConfiguration().getConfiguration(
                     "DocumentWriter"), getLogger());
@@ -124,7 +121,7 @@ public class BackendFactory extends AbstractFactory {
         } catch (BackendException e) {
             throw new DocumentWriterException(e); // this should not happen
         }
-        
+
         if (backend instanceof MultipleDocumentStream) {
             ((MultipleDocumentStream) backend)
                 .setOutputStreamFactory(outFactory);

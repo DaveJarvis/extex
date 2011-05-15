@@ -30,13 +30,15 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Logger;
 
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
 import org.extex.backend.documentWriter.exception.OutputStreamOpenException;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.backend.outputStream.OutputStreamObserver;
-import org.extex.framework.AbstractFactory;
+import org.extex.framework.AbstractConfigurable;
 import org.extex.framework.configuration.Configuration;
+import org.extex.framework.logger.LogEnabled;
 
 /**
  * This factory creates an output stream from a specification in the
@@ -45,8 +47,9 @@ import org.extex.framework.configuration.Configuration;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
-public class OutputFactory extends AbstractFactory
+public class OutputFactory extends AbstractConfigurable
         implements
+            LogEnabled,
             OutputStreamFactory {
 
     /**
@@ -84,8 +87,8 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * The field <tt>FORMAT_ATTRIBUTE</tt> contains the name of the attribute
-     * to get the format for the file name from.
+     * The field <tt>FORMAT_ATTRIBUTE</tt> contains the name of the attribute to
+     * get the format for the file name from.
      */
     private static final String FORMAT_ATTRIBUTE = "format";
 
@@ -107,8 +110,7 @@ public class OutputFactory extends AbstractFactory
     private boolean continuousNumbering = false;
 
     /**
-     * The field <tt>countMap</tt> contains the internal counter for file
-     * names.
+     * The field <tt>countMap</tt> contains the internal counter for file names.
      */
     private Map<String, Int> countMap = new HashMap<String, Int>();
 
@@ -118,9 +120,8 @@ public class OutputFactory extends AbstractFactory
     private String defaultExtension = null;
 
     /**
-     * The field <tt>defaultStream</tt> contains the default output stream to
-     * be delivered to the first request for an output stream of the default
-     * type.
+     * The field <tt>defaultStream</tt> contains the default output stream to be
+     * delivered to the first request for an output stream of the default type.
      */
     private OutputStream defaultStream = null;
 
@@ -153,6 +154,17 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    @Override
+    public void enableLogging(Logger logger) {
+
+        // TODO not used yet
+    }
+
+    /**
      * Create an output stream of a certain type. The creation is tried in a
      * number of directories. The first succeeding attempt is returned.
      * 
@@ -164,9 +176,10 @@ public class OutputFactory extends AbstractFactory
      * 
      * @throws DocumentWriterException in case of an error
      * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.outputStream.OutputStreamFactory#getOutputStream(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public OutputStream getOutputStream(String name, String type)
             throws DocumentWriterException {
 
@@ -299,9 +312,9 @@ public class OutputFactory extends AbstractFactory
      * 
      * @param observer the observers to register
      * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#register(
-     *      org.extex.backend.outputStream.OutputStreamObserver)
+     * @see org.extex.backend.outputStream.OutputStreamFactory#register(org.extex.backend.outputStream.OutputStreamObserver)
      */
+    @Override
     public void register(OutputStreamObserver observer) {
 
         if (observers == null) {
@@ -335,9 +348,9 @@ public class OutputFactory extends AbstractFactory
     }
 
     /**
-     * Setter for defaultStream.
+     * Setter for default stream.
      * 
-     * @param defaultStream the defaultStream to set
+     * @param defaultStream the default stream to set
      */
     public void setDefaultStream(OutputStream defaultStream) {
 
@@ -350,9 +363,9 @@ public class OutputFactory extends AbstractFactory
      * 
      * @param extension the default extension
      * 
-     * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(
-     *      java.lang.String)
+     * @see org.extex.backend.outputStream.OutputStreamFactory#setExtension(java.lang.String)
      */
+    @Override
     public void setExtension(String extension) {
 
         this.defaultExtension = extension;

@@ -36,9 +36,8 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
- * This is the factory for instances of
- * {@link org.extex.typesetter.Typesetter Typesetter}. This factory inherits
- * its properties from the
+ * This is the factory for instances of {@link org.extex.typesetter.Typesetter
+ * Typesetter}. This factory inherits its properties from the
  * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
  * support for configuration and logging.
  * 
@@ -77,7 +76,8 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}
+ * .
  * </p>
  * <p>
  * If the class implements the interface
@@ -90,7 +90,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4404 $
  */
-public class TypesetterFactory extends AbstractFactory {
+public class TypesetterFactory extends AbstractFactory<Object> {
 
     /**
      * Creates a new object.
@@ -126,8 +126,8 @@ public class TypesetterFactory extends AbstractFactory {
 
     /**
      * Make a new page builder according to the specification in the
-     * configuration. The sub-configuration <code>PageBuilder</code> is used
-     * to determine the requested properties.
+     * configuration. The sub-configuration <code>PageBuilder</code> is used to
+     * determine the requested properties.
      * 
      * @param config the configuration to use
      * @param context the interpreter context

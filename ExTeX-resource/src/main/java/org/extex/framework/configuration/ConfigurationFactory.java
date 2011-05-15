@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -30,7 +30,7 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
 import org.extex.framework.configuration.impl.XmlConfiguration;
 
 /**
- * This is the factory for configurations.
+ * This is the factory for {@link Configuration}s.
  * <p>
  * The class to be used for the configuration can be set with the
  * <tt>System.property</tt> named <tt>Util.Configuration.class</tt>. If this

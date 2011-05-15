@@ -28,9 +28,8 @@ import org.extex.interpreter.ErrorHandler;
 /**
  * This is the factory for instances of
  * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. This factory
- * inherits its properties from the
- * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
- * support for configuration and logging.
+ * inherits its properties from the {@link org.extex.framework.AbstractFactory
+ * AbstractFactory}. Among them the support for configuration and logging.
  * 
  * <h3>Configuration</h3>
  * 
@@ -56,12 +55,13 @@ import org.extex.interpreter.ErrorHandler;
  * </p>
  * <p>
  * The named class need to implement the interface
- * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. If this interface
- * is not implemented an error is raised.
+ * {@link org.extex.interpreter.ErrorHandler ErrorHandler}. If this interface is
+ * not implemented an error is raised.
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}
+ * .
  * </p>
  * <p>
  * If the class implements the interface
@@ -74,7 +74,7 @@ import org.extex.interpreter.ErrorHandler;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4757 $
  */
-public class ErrorHandlerFactory extends AbstractFactory {
+public class ErrorHandlerFactory extends AbstractFactory<ErrorHandler> {
 
     /**
      * Creates a new object.
@@ -108,11 +108,9 @@ public class ErrorHandlerFactory extends AbstractFactory {
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    public ErrorHandler newInstance(String type)
-            throws ConfigurationException {
+    public ErrorHandler newInstance(String type) throws ConfigurationException {
 
-        ErrorHandler errorHandler =
-                (ErrorHandler) createInstance(type, ErrorHandler.class);
+        ErrorHandler errorHandler = createInstance(type, ErrorHandler.class);
         Configuration cfg =
                 selectConfiguration(type).findConfiguration("EditHandler");
         if (cfg != null) {

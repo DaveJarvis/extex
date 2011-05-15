@@ -61,8 +61,7 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
 /**
  * This is the factory to provide an instance of a
  * {@link org.extex.scanner.api.TokenStream TokenStream}. Like any good factory
- * it is controlled by its configuration.
- * <h3>Configuration</h3>
+ * it is controlled by its configuration. <h3>Configuration</h3>
  * <p>
  * Mainly the configuration needs to specify which class to use for the
  * TokenStream. The name of the class is given as the argument
@@ -112,9 +111,9 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
  * 
  * </p>
  * <p>
- * Note that the attribute <tt>reader</tt> is optional. If none is given or
- * the value is the empty string then <tt>java.io.InputStreamReader</tt> is
- * used instead.
+ * Note that the attribute <tt>reader</tt> is optional. If none is given or the
+ * value is the empty string then <tt>java.io.InputStreamReader</tt> is used
+ * instead.
  * </p>
  * <h3>Observable Events</h3>
  * <p>
@@ -122,22 +121,22 @@ import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
  * </p>
  * <dl>
  * <dt><tt>file</tt></dt>
- * <dd>This event is triggered by the request for a TokenStream fed from a
- * file. It is deferred until the file has been found and opened. The name of
- * the file is passed as argument to the observer. </dd>
+ * <dd>This event is triggered by the request for a TokenStream fed from a file.
+ * It is deferred until the file has been found and opened. The name of the file
+ * is passed as argument to the observer.</dd>
  * <dt><tt>reader</tt></dt>
  * <dd>This event is triggered by the request for a TokenStream fed from an
- * arbitrary Reader. The reader is passed as argument to the observer. </dd>
+ * arbitrary Reader. The reader is passed as argument to the observer.</dd>
  * <dt><tt>string</tt></dt>
  * <dd>This event is triggered by the request for a TokenStream fed from a
- * String. The string is passed as argument to the observer. </dd>
+ * String. The string is passed as argument to the observer.</dd>
  * </dl>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:5563 $
  */
-public class TokenStreamFactory extends AbstractFactory
+public class TokenStreamFactory extends AbstractFactory<Object>
         implements
             OpenFileObservable,
             OpenStringObservable,
@@ -151,14 +150,14 @@ public class TokenStreamFactory extends AbstractFactory
     private static final String BUFFERSIZE_ATTRIBUTE = "buffersize";
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
-     * attribute used to get the class name.
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * used to get the class name.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The field <tt>bufferSize</tt> contains the buffer size. A value less
-     * than 1 indicates that the default should be used.
+     * The field <tt>bufferSize</tt> contains the buffer size. A value less than
+     * 1 indicates that the default should be used.
      */
     private int bufferSize;
 
@@ -187,20 +186,20 @@ public class TokenStreamFactory extends AbstractFactory
     private OpenFileObserver openFileObservers = null;
 
     /**
-     * The field <tt>openReaderObservers</tt> contains the observers
-     * registered for the "reader" event.
+     * The field <tt>openReaderObservers</tt> contains the observers registered
+     * for the "reader" event.
      */
     private OpenReaderObserver openReaderObservers = null;
 
     /**
-     * The field <tt>openStringObservers</tt> contains the observers
-     * registered for the "string" event.
+     * The field <tt>openStringObservers</tt> contains the observers registered
+     * for the "string" event.
      */
     private OpenStringObserver openStringObservers = null;
 
     /**
-     * The field <tt>openWriterObservers</tt> contains the observers
-     * registered for the "writer" event.
+     * The field <tt>openWriterObservers</tt> contains the observers registered
+     * for the "writer" event.
      */
     private OpenWriterObserver openWriterObservers;
 
@@ -216,8 +215,8 @@ public class TokenStreamFactory extends AbstractFactory
     private Constructor<?> readerConstructor;
 
     /**
-     * The field <tt>tag</tt> contains the tag name of the sub-configuration
-     * to use.
+     * The field <tt>tag</tt> contains the tag name of the sub-configuration to
+     * use.
      */
     private String tag;
 
@@ -247,8 +246,7 @@ public class TokenStreamFactory extends AbstractFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.AbstractFactory#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.AbstractFactory#configure(org.extex.framework.configuration.Configuration)
      */
     @Override
     public void configure(Configuration config) throws ConfigurationException {
@@ -477,9 +475,9 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(
-     *      org.extex.scanner.stream.observer.file.OpenFileObserver)
+     * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
+    @Override
     public void registerObserver(OpenFileObserver observer) {
 
         openFileObservers =
@@ -487,9 +485,9 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(
-     *      org.extex.scanner.stream.observer.reader.OpenReaderObserver)
+     * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
+    @Override
     public void registerObserver(OpenReaderObserver observer) {
 
         openReaderObservers =
@@ -497,9 +495,9 @@ public class TokenStreamFactory extends AbstractFactory
     }
 
     /**
-     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(
-     *      org.extex.scanner.stream.observer.string.OpenStringObserver)
+     * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
+    @Override
     public void registerObserver(OpenStringObserver observer) {
 
         openStringObservers =
@@ -509,9 +507,9 @@ public class TokenStreamFactory extends AbstractFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.scanner.stream.observer.writer.OpenWriterObservable#registerObserver(
-     *      org.extex.scanner.stream.observer.writer.OpenWriterObserver)
+     * @see org.extex.scanner.stream.observer.writer.OpenWriterObservable#registerObserver(org.extex.scanner.stream.observer.writer.OpenWriterObserver)
      */
+    @Override
     public void registerObserver(OpenWriterObserver observer) {
 
         openWriterObservers =

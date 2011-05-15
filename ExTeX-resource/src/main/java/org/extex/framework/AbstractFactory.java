@@ -25,12 +25,10 @@ import java.util.logging.Logger;
 
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
 import org.extex.framework.configuration.exception.ConfigurationInvalidClassException;
-import org.extex.framework.configuration.exception.ConfigurationInvalidConstructorException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationMissingException;
 import org.extex.framework.logger.LogEnabled;
@@ -52,12 +50,44 @@ import org.extex.resource.ResourceFinder;
  * </ul>
  * </p>
  * 
+ * <h2>Usage</h2>
+ * <p>
+ * To make use of this base class create a derived class and provide a method
+ * which creates a new instance. This method should make use of one of the
+ * utility methods defined in this class. This is illustrated in the following
+ * example:
+ * </p>
+ * 
+ * <pre class="JavaSample">
+ *  <b>class</b> MyFactory <b>extends</b> AbstractFactory<MyType> {
+ *  
+ *      <b>public</b> MyType newInstance() {
+ *      
+ *          <b>return</b> createInstance(MyType.class);
+ *      }
+ *  }
+ * </pre>
+ * <p>
+ * The class defined in this way is automatically {@link Configurable},
+ * {@link LogEnabled}, and {@link ResourceAware}. Thus appropriate objects
+ * should be passed in before a new instance is requested:
+ * </p>
+ * 
+ * <pre class="JavaSample">
+ *     ...
+ *     MyFactory factory = <b>new</b> MyFactory();
+ *     factory.configure(theConfiguration);
+ *     factory.enableLogging(theLogger);
+ *     ...
+ *     MyType t1 = factory.newInstance();
+ * </pre>
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public abstract class AbstractFactory
+public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
         implements
-            Configurable,
             LogEnabled,
             ResourceAware,
             RegistrarObserver {
@@ -69,34 +99,10 @@ public abstract class AbstractFactory
     protected static final String CLASS_ATTRIBUTE = "class";
 
     /**
-     * The constant <tt>DEFAULT_ATTRIBUTE</tt> contains the name of the
-     * attribute used to get the default configuration.
-     */
-    protected static final String DEFAULT_ATTRIBUTE = "default";
-
-    /**
      * The constant <tt>SELECT_ATTRIBUTE</tt> contains the name of the attribute
      * used to get the default configuration.
      */
     protected static final String SELECT_ATTRIBUTE = "select";
-
-    /**
-     * Configure an instance if this instance supports configuration. If
-     * configuration is not supported then nothing is done.
-     * 
-     * @param instance the instance to configure
-     * @param configuration the configuration to use. If this parameter is
-     *        <code>null</code> then it is not passed to the instance.
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    public static void configure(Object instance, Configuration configuration)
-            throws ConfigurationException {
-
-        if (configuration != null && instance instanceof Configurable) {
-            ((Configurable) instance).configure(configuration);
-        }
-    }
 
     /**
      * Utility method to pass a logger to an object if it has a method to take
@@ -115,12 +121,6 @@ public abstract class AbstractFactory
     }
 
     /**
-     * The field <tt>configuration</tt> contains the configuration of the
-     * factory which is also passed to the new instances.
-     */
-    private Configuration configuration;
-
-    /**
      * The field <tt>logger</tt> contains the logger to pass to the new
      * instances created.
      */
@@ -132,14 +132,15 @@ public abstract class AbstractFactory
     private ResourceFinder resourceFinder = null;
 
     /**
-     * Creates a new factory object.
+     * Creates a new factory object. No configuration is set yet. Thus the new
+     * instance must be configured before it can be used to create a new object.
      */
     public AbstractFactory() {
 
     }
 
     /**
-     * Creates a new factory object.
+     * Creates a new factory object and configure it.
      * 
      * @param configuration the configuration object to consider
      */
@@ -149,22 +150,36 @@ public abstract class AbstractFactory
     }
 
     /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param conf the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    @Override
-    public void configure(Configuration conf) throws ConfigurationException {
-
-        this.configuration = conf;
-    }
-
-    /**
-     * Get an instance.
+     * Get an instance from the configuration of this factory.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If the no-argument constructor is found then it is invoked. If the
+     * class is {@link LogEnabled} then the logger is passed in. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} then the logger of
+     * this factory is passed in upon creation. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} then the
+     * configuration parameter is passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} an a
+     * {@link Logger} &ndash; in either order &ndash; then the configuration
+     * parameter and the logger of this factory are passed in upon creation.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
      * @param target the expected class or interface
      * 
@@ -172,7 +187,7 @@ public abstract class AbstractFactory
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(Class<?> target)
+    protected final TYPE createInstance(Class<?> target)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(configuration, target);
@@ -183,6 +198,35 @@ public abstract class AbstractFactory
      * configuration. The selection is done with the help of a type String. If
      * the type is <code>null</code> or the empty string then the default from
      * the configuration is used.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If a one argument constructor with a proper argument type is found
+     * then it is invoked. If the class is {@link LogEnabled} then the logger is
+     * passed in. If the class is {@link Configurable} then the configuration is
+     * passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} and an additional
+     * argument of proper type then the logger of this factory and the argument
+     * are passed in upon creation. If the class is {@link Configurable} then
+     * the configuration from the factory is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration}and an
+     * additional argument of proper type then the configuration from the
+     * factory and the argument are passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
      * @param target the expected class or interface
      * @param arg the argument for the constructor
@@ -191,34 +235,96 @@ public abstract class AbstractFactory
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(Class<?> target, Object arg)
+    protected final TYPE createInstance(Class<?> target, Object arg)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(configuration, target, arg);
     }
 
     /**
-     * Create a new instance for a given configuration with an additional
-     * argument for the constructor.
+     * Create a new instance with an additional argument for selecting a
+     * sub-configuration. Thus the configuration of this class can contain
+     * several alternatives. The proper one is chosen with the first argument.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If the no-argument constructor is found then it is invoked. If the
+     * class is {@link LogEnabled} then the logger is passed in. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} then the logger of
+     * this factory is passed in upon creation. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} then the
+     * configuration parameter is passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} an a
+     * {@link Logger} &ndash; in either order &ndash; then the configuration
+     * parameter and the logger of this factory are passed in upon creation.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
-     * @param type the type to use
+     * 
+     * @param type the name of the sub-configuration to use
      * @param target the expected class or interface
      * 
      * @return a new instance
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(String type, Class<?> target)
+    protected final TYPE createInstance(String type, Class<?> target)
             throws ConfigurationException {
 
         return createInstanceForConfiguration(selectConfiguration(type), target);
     }
 
     /**
-     * Create a new instance for a given configuration with an additional
-     * argument for the constructor.
+     * Create a new instance with an additional argument for selecting a
+     * sub-configuration and one to be passed to the constructor. Thus the
+     * configuration of this class can contain several alternatives. The proper
+     * one is chosen with the first argument.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If a one argument constructor with a proper argument type is found
+     * then it is invoked. If the class is {@link LogEnabled} then the logger is
+     * passed in. If the class is {@link Configurable} then the selected
+     * configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} and an additional
+     * argument of proper type then the logger of this factory and the argument
+     * are passed in upon creation. If the class is {@link Configurable} then
+     * the selected configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration}and an
+     * additional argument of proper type then the selected configuration and
+     * the argument are passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
-     * @param type the type to use
+     * @param type the name of the sub-configuration to use
      * @param target the expected class or interface
      * @param argClass the class of the argument
      * @param arg the argument
@@ -227,7 +333,7 @@ public abstract class AbstractFactory
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstance(String type, Class<?> target,
+    protected final TYPE createInstance(String type, Class<?> target,
             Class<?> argClass, Object arg) throws ConfigurationException {
 
         return createInstanceForConfiguration(selectConfiguration(type),
@@ -235,7 +341,38 @@ public abstract class AbstractFactory
     }
 
     /**
-     * Create a new instance for a given configuration.
+     * Create a new instance for a given configuration. The name of the class to
+     * be instantiated is taken from the attribute <tt>class</tt> of the
+     * configuration.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If the no-argument constructor is found then it is invoked. If the
+     * class is {@link LogEnabled} then the logger is passed in. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} then the logger of
+     * this factory is passed in upon creation. If the class is
+     * {@link Configurable} then the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} then the
+     * configuration parameter is passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration} an a
+     * {@link Logger} &ndash; in either order &ndash; then the configuration
+     * parameter and the logger of this factory are passed in upon creation.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
      * @param config the configuration to use
      * @param target the expected class or interface
@@ -244,7 +381,7 @@ public abstract class AbstractFactory
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(Configuration config,
+    protected final TYPE createInstanceForConfiguration(Configuration config,
             Class<?> target) throws ConfigurationException {
 
         if (config == null) {
@@ -272,7 +409,7 @@ public abstract class AbstractFactory
         try {
             for (Constructor<?> constructor : theClass.getConstructors()) {
                 Class<?>[] args = constructor.getParameterTypes();
-                Object instance = null;
+                TYPE instance = null;
                 switch (args.length) {
                     case 0:
                         return createInstanceForConfiguration0(config, theClass);
@@ -315,18 +452,49 @@ public abstract class AbstractFactory
 
     /**
      * Create a new instance for a given configuration with an additional
-     * argument for the constructor.
+     * argument for the constructor. By specifying the class of the argument
+     * explicitly it is possible for the argument to be <code>null</code>.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If a one argument constructor with a proper argument type is found
+     * then it is invoked. If the class is {@link LogEnabled} then the logger is
+     * passed in. If the class is {@link Configurable} then the configuration is
+     * passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} and an additional
+     * argument of proper type then the logger of this factory and the argument
+     * are passed in upon creation. If the class is {@link Configurable} then
+     * the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration}and an
+     * additional argument of proper type then the configuration parameter and
+     * the argument are passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
      * @param config the configuration to use
      * @param target the expected class or interface
      * @param argClass the class of the argument
-     * @param arg the argument
+     * @param arg the argument or <code>null</code>
      * 
      * @return a new instance
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(Configuration config,
+    @SuppressWarnings("unchecked")
+    protected final TYPE createInstanceForConfiguration(Configuration config,
             Class<?> target, Class<?> argClass, Object arg)
             throws ConfigurationException {
 
@@ -354,14 +522,14 @@ public abstract class AbstractFactory
         }
 
         try {
-            Object instance = null;
+            TYPE instance = null;
 
             for (Constructor<?> constructor : theClass.getConstructors()) {
                 Class<?>[] args = constructor.getParameterTypes();
                 switch (args.length) {
                     case 1:
                         if (args[0].isAssignableFrom(argClass)) {
-                            instance = constructor.newInstance(arg);
+                            instance = (TYPE) constructor.newInstance(arg);
                             enableLogging(instance, logger);
                             configure(instance, config);
                             return instance;
@@ -372,13 +540,13 @@ public abstract class AbstractFactory
                         if (args[1].isAssignableFrom(argClass)) {
                             if (args[0].isAssignableFrom(Configuration.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructor.newInstance(//
+                                instance = (TYPE) constructor.newInstance(//
                                     config, arg);
                                 enableLogging(instance, logger);
                                 return instance;
                             } else if (args[0].isAssignableFrom(Logger.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = constructor.newInstance(//
+                                instance = (TYPE) constructor.newInstance(//
                                     config, arg);
                                 configure(instance, config);
                                 return instance;
@@ -410,76 +578,62 @@ public abstract class AbstractFactory
     }
 
     /**
-     * Create a new instance for a given configuration.
+     * Create a new instance for a given configuration with one additional
+     * argument.
+     * <p>
+     * For the class given an appropriate constructor is sought. The following
+     * constellations are considered:
+     * </p>
+     * <ul>
+     * <li>If a one argument constructor with a proper argument type is found
+     * then it is invoked. If the class is {@link LogEnabled} then the logger is
+     * passed in. If the class is {@link Configurable} then the configuration is
+     * passed in.</li>
+     * <li>If there is a constructor taking a {@link Logger} and an additional
+     * argument of proper type then the logger of this factory and the argument
+     * are passed in upon creation. If the class is {@link Configurable} then
+     * the configuration is passed in.</li>
+     * <li>If there is a constructor taking a {@link Configuration}and an
+     * additional argument of proper type then the configuration parameter and
+     * the argument are passed in upon creation. If the class is
+     * {@link LogEnabled} then the {@link Logger} of this factory is passed in.</li>
+     * </ul>
+     * <p>
+     * Note that for the comparison the assignability is used. Thus constructors
+     * taking one or two {@link Object}s may mistakenly be selected.
+     * </p>
+     * <p>
+     * If more than one proper constructor is present then it is undefined which
+     * one is used.
+     * </p>
+     * <p>
+     * If no proper constructor can be found then an exception is raised.
+     * </p>
      * 
      * @param config the configuration to use
      * @param target the expected class or interface
-     * @param arg the constructor argument
+     * @param arg the constructor argument. It can not be <code>null</code>
      * 
      * @return a new instance
      * 
      * @throws ConfigurationException in case of an configuration error
      */
-    protected Object createInstanceForConfiguration(Configuration config,
+    protected final TYPE createInstanceForConfiguration(Configuration config,
             Class<?> target, Object arg) throws ConfigurationException {
 
-        String className = config.getAttribute(CLASS_ATTRIBUTE);
-
-        if (className == null) {
-            throw new ConfigurationMissingAttributeException(CLASS_ATTRIBUTE,
-                config);
-        }
-
-        try {
-            Class<?> theClass = Class.forName(className);
-
-            if (!target.isAssignableFrom(theClass)) {
-                throw new ConfigurationInvalidClassException(
-                    theClass.getName(), target.getName(), config);
-            }
-
-            Object instance = null;
-
-            for (Constructor<?> constructor : theClass.getConstructors()) {
-                Class<?>[] args = constructor.getParameterTypes();
-                switch (args.length) {
-                    case 1:
-                        if (args[0].isAssignableFrom(arg.getClass())) {
-                            instance = constructor.newInstance(arg);
-                            enableLogging(instance, logger);
-                            configure(instance, config);
-                            return instance;
-                        }
-                        break;
-
-                    default: // Fall through to exception
-                }
-            }
-
-        } catch (ClassNotFoundException e) {
-            throw new ConfigurationClassNotFoundException(className, config);
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InvocationTargetException e) {
-            Throwable cause = e.getCause();
-            if (cause != null && cause instanceof ConfigurationException) {
-                throw (ConfigurationException) cause;
-            }
-            throw new ConfigurationInstantiationException(e);
-        }
-
-        throw new ConfigurationInvalidConstructorException(className, config);
+        return createInstanceForConfiguration(config, target, arg.getClass(),
+            arg);
     }
 
     /**
      * Create a new instance for a given configuration using a constructor
      * without arguments.
+     * <p>
+     * If the class is {@link LogEnabled} then the logger is passed in.
+     * </p>
+     * <p>
+     * If the class is {@link Configurable} then the configuration is passed in.
+     * </p>
      * 
      * @param config the configuration to us
      * @param theClass the class to instantiate
@@ -490,13 +644,14 @@ public abstract class AbstractFactory
      * @throws IllegalAccessException in case of an access error
      * @throws ConfigurationException in case of a configuration error
      */
-    private Object createInstanceForConfiguration0(Configuration config,
+    private TYPE createInstanceForConfiguration0(Configuration config,
             Class<?> theClass)
             throws InstantiationException,
                 IllegalAccessException,
                 ConfigurationException {
 
-        Object instance = theClass.newInstance();
+        @SuppressWarnings("unchecked")
+        TYPE instance = (TYPE) theClass.newInstance();
         enableLogging(instance, logger);
         configure(instance, config);
         return instance;
@@ -518,20 +673,21 @@ public abstract class AbstractFactory
      * @throws InvocationTargetException in case of an invocation error
      * @throws ConfigurationException in case of a configuration error
      */
-    private Object createInstanceForConfiguration1(Configuration config,
+    @SuppressWarnings("unchecked")
+    private TYPE createInstanceForConfiguration1(Configuration config,
             Constructor<?> constructor, Class<?> arg)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException,
                 ConfigurationException {
 
-        Object instance;
+        TYPE instance;
         if (arg.isAssignableFrom(Configuration.class)) {
-            instance = constructor.newInstance(config);
+            instance = (TYPE) constructor.newInstance(config);
             enableLogging(instance, logger);
             return instance;
         } else if (arg.isAssignableFrom(Logger.class)) {
-            instance = constructor.newInstance(logger);
+            instance = (TYPE) constructor.newInstance(logger);
             configure(instance, config);
             return instance;
         } else {
@@ -555,20 +711,21 @@ public abstract class AbstractFactory
      * @throws IllegalAccessException in case of an access error
      * @throws InvocationTargetException in case of an invocation error
      */
-    private Object createInstanceForConfiguration2(Configuration config,
+    @SuppressWarnings("unchecked")
+    private TYPE createInstanceForConfiguration2(Configuration config,
             Constructor<?> constructor, Class<?> arg1, Class<?> arg2)
             throws InstantiationException,
                 IllegalAccessException,
                 InvocationTargetException {
 
-        Object instance;
+        TYPE instance;
         if (arg1.isAssignableFrom(Configuration.class)
                 && arg2.isAssignableFrom(Logger.class)) {
-            instance = constructor.newInstance(config, logger);
+            instance = (TYPE) constructor.newInstance(config, logger);
             return instance;
         } else if (arg1.isAssignableFrom(Logger.class)
                 && arg2.isAssignableFrom(Configuration.class)) {
-            instance = constructor.newInstance(logger, config);
+            instance = (TYPE) constructor.newInstance(logger, config);
             return instance;
         } else {
             return null;
@@ -587,21 +744,11 @@ public abstract class AbstractFactory
     }
 
     /**
-     * Getter for configuration.
-     * 
-     * @return the configuration.
-     */
-    public Configuration getConfiguration() {
-
-        return this.configuration;
-    }
-
-    /**
      * Getter for logger.
      * 
      * @return the logger.
      */
-    public Logger getLogger() {
+    public final Logger getLogger() {
 
         return this.logger;
     }
@@ -611,7 +758,7 @@ public abstract class AbstractFactory
      * 
      * @return the resourceFinder
      */
-    public ResourceFinder getResourceFinder() {
+    public final ResourceFinder getResourceFinder() {
 
         return resourceFinder;
     }
@@ -639,57 +786,7 @@ public abstract class AbstractFactory
     }
 
     /**
-     * Select a sub-configuration with a given name. If this does not exist then
-     * the attribute <tt>default</tt> is used to find an alternative.
-     * 
-     * @param type the tag name for the sub-configuration to find
-     * 
-     * @return the desired sub-configuration
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    protected Configuration selectConfiguration(String type)
-            throws ConfigurationException {
-
-        if (this.configuration == null) {
-            throw new ConfigurationMissingException(this.getClass().getName());
-        }
-
-        String base = this.configuration.getAttribute("base");
-        if (base != null) {
-            String t = type;
-            if (t == null || t.equals("")) {
-                t = this.configuration.getAttribute(DEFAULT_ATTRIBUTE);
-                if (t == null) {
-                    throw new ConfigurationMissingAttributeException(
-                        DEFAULT_ATTRIBUTE, this.configuration);
-                }
-            }
-
-            return ConfigurationFactory.newInstance(base + t + ".xml");
-        }
-
-        Configuration config = this.configuration.findConfiguration(type);
-        if (config == null) {
-            String fallback =
-                    this.configuration.getAttribute(DEFAULT_ATTRIBUTE);
-            if (fallback == null) {
-                throw new ConfigurationMissingAttributeException(
-                    DEFAULT_ATTRIBUTE, configuration);
-            }
-            config = configuration.findConfiguration(fallback);
-            if (config == null) {
-                throw new ConfigurationMissingAttributeException(fallback,
-                    this.configuration);
-            }
-        }
-        return config;
-    }
-
-    /**
-     * Setter for the resource finder.
-     * 
-     * @param finder the resource finder
+     * {@inheritDoc}
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -65,21 +65,21 @@ import org.extex.resource.ResourceFinder;
  * </p>
  * <dl>
  * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.framework.configuration.Configuration Configuration} is
- * passed in with the interface method. </dd>
+ * passed in with the interface method.</dd>
  * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
- * <dd> If this interface is implemented then a
- * {@link java.util.logging.Logger Logger} is passed in with the interface
- * method. </dd>
+ * <dd>If this interface is implemented then a {@link java.util.logging.Logger
+ * Logger} is passed in with the interface method.</dd>
  * <dt>{@link org.extex.resource.ResourceAware ResourceAware}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.resource.ResourceFinder ResourceFinder} is passed in with
- * the interface method. </dd>
- * <dt>{@link org.extex.backend.outputStream.OutputStreamConsumer OutputStreamConsumer}</dt>
- * <dd> If this interface is implemented then a
- * {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
- * is passed in with the interface method. </dd>
+ * the interface method.</dd>
+ * <dt>{@link org.extex.backend.outputStream.OutputStreamConsumer
+ * OutputStreamConsumer}</dt>
+ * <dd>If this interface is implemented then a
+ * {@link org.extex.backend.outputStream.OutputStreamFactory
+ * OutputStreamFactory} is passed in with the interface method.</dd>
  * </dl>
  * 
  * 
@@ -89,14 +89,14 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4737 $
  */
-public class LanguageManagerFactory extends AbstractFactory {
+public class LanguageManagerFactory extends AbstractFactory<LanguageManager> {
 
     /**
-     * Get an instance of a
-     * {@link org.extex.language.LanguageManager LanguageManager}. This method
-     * selects one of the entries in the configuration. The selection is done
-     * with the help of a type String. If the type is <code>null</code> or the
-     * empty string then the default from the configuration is used.
+     * Get an instance of a {@link org.extex.language.LanguageManager
+     * LanguageManager}. This method selects one of the entries in the
+     * configuration. The selection is done with the help of a type String. If
+     * the type is <code>null</code> or the empty string then the default from
+     * the configuration is used.
      * 
      * @param type the type to use
      * @param outFactory the output stream factory to pass in
@@ -110,8 +110,7 @@ public class LanguageManagerFactory extends AbstractFactory {
             OutputStreamFactory outFactory, ResourceFinder finder)
             throws ConfigurationException {
 
-        LanguageManager manager =
-                (LanguageManager) createInstance(type, LanguageManager.class);
+        LanguageManager manager = createInstance(type, LanguageManager.class);
         if (manager instanceof OutputStreamConsumer) {
             ((OutputStreamConsumer) manager).setOutputStreamFactory(outFactory);
         }

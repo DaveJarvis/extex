@@ -23,7 +23,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.extex.core.dimen.FixedDimen;
-import org.extex.framework.AbstractFactory;
 
 /**
  * Factory for the {@link FontKey}.
@@ -31,7 +30,7 @@ import org.extex.framework.AbstractFactory;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class FontKeyFactory extends AbstractFactory {
+public class FontKeyFactory {
 
     /**
      * Fontkey for null.

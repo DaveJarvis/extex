@@ -58,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  *    &lang;nativedef&rang;
  *      &rarr; <tt>\nativedef</tt> &lang;type&rang; {@linkplain org.extex.interpreter.TokenSource#getControlSequence(Context, Typesetter)
  * &lang;control sequence&rang;} &lang;name&rang; </pre>
- *
+ * 
  * <p>
  * The <code>&lang;type&rang;</code> is any specification of a list of tokens
  * like a constant list enclosed in braces or a token register. The value of
@@ -67,8 +67,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * the <i>&lang;control sequence&rang;</i>.
  * </p>
  * <p>
- * The <code>&lang;control sequence&rang;</code> is any macro or active character.
- * If this token is missing or of the wrong type then an error is raised.
+ * The <code>&lang;control sequence&rang;</code> is any macro or active
+ * character. If this token is missing or of the wrong type then an error is
+ * raised.
  * </p>
  * <p>
  * The <code>&lang;name&rang;</code> is any specification of a list of tokens
@@ -159,7 +160,7 @@ public class NativeDef extends AbstractAssignment
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
-    protected static class Factory extends AbstractFactory {
+    protected static class Factory extends AbstractFactory<Definer> {
 
         /**
          * Create a new instance of the class given by the attribute
@@ -170,7 +171,7 @@ public class NativeDef extends AbstractAssignment
          */
         public Definer createLoad() throws ConfigurationException {
 
-            return (Definer) createInstance(Definer.class);
+            return createInstance(Definer.class);
         }
     }
 
@@ -242,6 +243,7 @@ public class NativeDef extends AbstractAssignment
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         for (Configuration cfg : config) {
@@ -256,6 +258,7 @@ public class NativeDef extends AbstractAssignment
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;

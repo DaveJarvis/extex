@@ -38,11 +38,11 @@ import org.extex.typesetter.tc.font.impl.NullFont;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4399 $
  */
-public class TypesettingContextFactory extends AbstractFactory {
+public class TypesettingContextFactory extends AbstractFactory<Object> {
 
     /**
-     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the
-     * attribute used to extract the class name from the given configuration.
+     * The constant <tt>CLASS_ATTRIBUTE</tt> contains the name of the attribute
+     * used to extract the class name from the given configuration.
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
@@ -52,9 +52,9 @@ public class TypesettingContextFactory extends AbstractFactory {
     private LanguageManager languageManager = null;
 
     /**
-     * The field <tt>theClass</tt> contains the class to instantiate. It is
-     * kept here to speed up the method
-     * <tt>{@link #newInstance() newInstance()}</tt>.
+     * The field <tt>theClass</tt> contains the class to instantiate. It is kept
+     * here to speed up the method <tt>{@link #newInstance() newInstance()}</tt>
+     * .
      */
     private Class<?> theClass;
 
@@ -67,9 +67,9 @@ public class TypesettingContextFactory extends AbstractFactory {
 
     /**
      * Configure the factory according to a given Configuration. The
-     * configuration must have the attribute <tt>class</tt> which names a
-     * fully qualified class name. This class is instantiated using its
-     * no-argument constructor.
+     * configuration must have the attribute <tt>class</tt> which names a fully
+     * qualified class name. This class is instantiated using its no-argument
+     * constructor.
      * 
      * <pre>
      *  &lt;typesettingContext class="the.class"/&gt;
@@ -88,8 +88,7 @@ public class TypesettingContextFactory extends AbstractFactory {
      *         class could not be loaded.</li>
      *         </ul>
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
     @Override
     public void configure(Configuration configuration)
@@ -111,6 +110,22 @@ public class TypesettingContextFactory extends AbstractFactory {
             throw new ConfigurationClassNotFoundException(classname,
                 configuration);
         }
+    }
+
+    /**
+     * Getter for the initial instance.
+     * 
+     * @return the initial instance
+     * 
+     * @throws ConfigurationException in case of an error
+     */
+    public TypesettingContext initial() {
+
+        ModifiableTypesettingContext tc = newInstance();
+        if (languageManager != null) {
+            tc.setLanguage(languageManager.getLanguage("0"));
+        }
+        return tc;
     }
 
     /**
@@ -136,6 +151,25 @@ public class TypesettingContextFactory extends AbstractFactory {
         }
 
         return context;
+    }
+
+    /**
+     * Create a new instance of a typesetting context. The typesetting context
+     * passed in as argument may not be under the control of this factory.
+     * 
+     * @param tc the typesetting context to take over
+     * 
+     * @return a typesetting context with the same attributes as the argument
+     * 
+     * @throws ConfigurationException in case of an error
+     */
+    public TypesettingContext newInstance(TypesettingContext tc) {
+
+        if (languageManager != null) {
+            return newInstance(tc,
+                languageManager.getLanguage(tc.getLanguage().getName()));
+        }
+        return tc;
     }
 
     /**
@@ -250,41 +284,6 @@ public class TypesettingContextFactory extends AbstractFactory {
     public void setLanguageManager(LanguageManager languageManager) {
 
         this.languageManager = languageManager;
-    }
-
-    /**
-     * Getter for the initial instance.
-     * 
-     * @return the initial instance
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    public TypesettingContext initial() {
-
-        ModifiableTypesettingContext tc = newInstance();
-        if (languageManager != null) {
-            tc.setLanguage(languageManager.getLanguage("0"));
-        }
-        return tc;
-    }
-
-    /**
-     * Create a new instance of a typesetting context. The typesetting context
-     * passed in as argument may not be under the control of this factory.
-     * 
-     * @param tc the typesetting context to take over
-     * 
-     * @return a typesetting context with the same attributes as the argument
-     * 
-     * @throws ConfigurationException in case of an error
-     */
-    public TypesettingContext newInstance(TypesettingContext tc) {
-
-        if (languageManager != null) {
-            return newInstance(tc, languageManager.getLanguage(tc.getLanguage()
-                .getName()));
-        }
-        return tc;
     }
 
 }

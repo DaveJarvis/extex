@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,9 +26,8 @@ import org.extex.scanner.type.token.TokenFactory;
 /**
  * This class provides a factory for a
  * {@link org.extex.scanner.type.token.TokenFactory TokenFactory}. This factory
- * inherits its properties from the
- * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them the
- * support for configuration and logging.
+ * inherits its properties from the {@link org.extex.framework.AbstractFactory
+ * AbstractFactory}. Among them the support for configuration and logging.
  * 
  * <h3>Configuration</h3>
  * 
@@ -49,7 +48,8 @@ import org.extex.scanner.type.token.TokenFactory;
  * </p>
  * <p>
  * The configuration is passed down to the new instance if it implements the
- * interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}
+ * .
  * </p>
  * <p>
  * If the class implements the interface
@@ -62,7 +62,7 @@ import org.extex.scanner.type.token.TokenFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public class TokenFactoryFactory extends AbstractFactory {
+public class TokenFactoryFactory extends AbstractFactory<TokenFactory> {
 
     /**
      * Instance delivering method.
@@ -73,7 +73,7 @@ public class TokenFactoryFactory extends AbstractFactory {
      */
     public TokenFactory createInstance() throws ConfigurationException {
 
-        return (TokenFactory) createInstance(TokenFactory.class);
+        return createInstance(TokenFactory.class);
     }
 
 }

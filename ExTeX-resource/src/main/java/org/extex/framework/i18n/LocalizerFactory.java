@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,7 +49,7 @@ public final class LocalizerFactory {
          * The constant <tt>serialVersionUID</tt> contains the id for
          * serialization.
          */
-        private static final long serialVersionUID = 2010L;
+        private static final long serialVersionUID = 2011L;
 
         /**
          * The field <tt>bundle</tt> contains the resource bundle for this
@@ -80,6 +80,7 @@ public final class LocalizerFactory {
          * @return the resource string or the String <tt>???</tt><i>key</i>
          *         <tt>???</tt> if none is found
          */
+        @Override
         public String format(String key) {
 
             if (bundle == null) {
@@ -102,6 +103,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object a) {
 
             return MessageFormat.format(format(fmt), new Object[]{a});
@@ -119,6 +121,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object a, Object b) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b});
@@ -137,6 +140,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object a, Object b, Object c) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c});
@@ -156,6 +160,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object a, Object b, Object c, Object d) {
 
             return MessageFormat.format(format(fmt), new Object[]{a, b, c, d});
@@ -176,6 +181,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object a, Object b, Object c,
                 Object d, Object e) {
 
@@ -194,6 +200,7 @@ public final class LocalizerFactory {
          * 
          * @return the expanded format string
          */
+        @Override
         public String format(String fmt, Object[] a) {
 
             return MessageFormat.format(format(fmt), a);
@@ -206,6 +213,7 @@ public final class LocalizerFactory {
          * 
          * @return the resource string or <code>null</code>
          */
+        @Override
         public String getFormat(String key) {
 
             if (bundle == null) {
@@ -225,6 +233,7 @@ public final class LocalizerFactory {
          * @param writer the target output writer
          * @param fmt the key in the resource bundle to search for
          */
+        @Override
         public void message(PrintStream writer, String fmt) {
 
             writer.println(format(fmt));
@@ -240,6 +249,7 @@ public final class LocalizerFactory {
          * @param fmt the key in the resource bundle to search for
          * @param a the Object used for the substring <tt>{0}</tt>
          */
+        @Override
         public void message(PrintStream writer, String fmt, Object a) {
 
             writer.println(MessageFormat.format(format(fmt), new Object[]{a}));
@@ -256,6 +266,7 @@ public final class LocalizerFactory {
          * @param a the Object used for the substring <tt>{0}</tt>
          * @param b the Object used for the substring <tt>{1}</tt>
          */
+        @Override
         public void message(PrintStream writer, String fmt, Object a, Object b) {
 
             writer.println(MessageFormat
@@ -274,6 +285,7 @@ public final class LocalizerFactory {
          * @param b the Object used for the substring <tt>{1}</tt>
          * @param c the Object used for the substring <tt>{2}</tt>
          */
+        @Override
         public void message(PrintStream writer, String fmt, Object a, Object b,
                 Object c) {
 

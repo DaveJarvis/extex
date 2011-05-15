@@ -30,7 +30,7 @@ import org.extex.typesetter.output.OutputRoutine;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4728 $
  */
-public class OutputRoutineFactory extends AbstractFactory {
+public class OutputRoutineFactory extends AbstractFactory<OutputRoutine> {
 
     /**
      * Creates a new object.
@@ -53,8 +53,7 @@ public class OutputRoutineFactory extends AbstractFactory {
     public OutputRoutine newInstance(Interpreter interpreter)
             throws ConfigurationException {
 
-        return (OutputRoutine) createInstanceForConfiguration(
-            getConfiguration(), OutputRoutine.class, Interpreter.class,
-            interpreter);
+        return createInstanceForConfiguration(getConfiguration(),
+            OutputRoutine.class, Interpreter.class, interpreter);
     }
 }

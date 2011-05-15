@@ -32,7 +32,7 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-resource</artifactId>
-      <version>0.1</version>
+      <version>0.2</version>
     </dependency> 
   </dependencies>
 

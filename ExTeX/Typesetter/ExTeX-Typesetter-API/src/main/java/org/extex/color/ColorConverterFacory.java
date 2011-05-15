@@ -31,7 +31,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ColorConverterFacory extends AbstractFactory {
+public class ColorConverterFacory extends AbstractFactory<ColorConverter> {
 
     /**
      * Creates a new object.
@@ -60,7 +60,7 @@ public class ColorConverterFacory extends AbstractFactory {
      */
     public ColorConverter newInstance(String type) {
 
-        return (ColorConverter) createInstance(type, ColorConverter.class);
+        return createInstance(type, ColorConverter.class);
     }
 
 }

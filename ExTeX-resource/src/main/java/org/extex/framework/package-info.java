@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -21,3 +21,4 @@
  */
 
 package org.extex.framework;
+

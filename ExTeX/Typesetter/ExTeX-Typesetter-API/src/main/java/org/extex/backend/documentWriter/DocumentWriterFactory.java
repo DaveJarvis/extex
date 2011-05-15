@@ -39,28 +39,28 @@ import org.extex.framework.configuration.exception.ConfigurationNotFoundExceptio
  * </p>
  * <dl>
  * <dt>{@link org.extex.framework.configuration.Configurable Configurable}</dt>
- * <dd> If this interface is implemented then a
+ * <dd>If this interface is implemented then a
  * {@link org.extex.framework.configuration.Configuration Configuration} is
- * passed in with the interface method. </dd>
+ * passed in with the interface method.</dd>
  * <dt>{@link org.extex.framework.logger.LogEnabled LogEnabled}</dt>
- * <dd> If this interface is implemented then a
- * {@link java.util.logging.Logger Logger} is passed in with the interface
- * method. </dd>
- * <dt>{@link org.extex.backend.documentWriter.SingleDocumentStream SingleDocumentStream}</dt>
- * <dd> If this interface is implemented then a
- * {@link java.io.OutputStream OutputStream} is passed in with the interface
- * method. </dd>
- * <dt>{@link org.extex.backend.documentWriter.MultipleDocumentStream MultipleDocumentStream}</dt>
- * <dd> If this interface is implemented then a
- * {@link org.extex.backend.outputStream.OutputStreamFactory OutputStreamFactory}
- * is passed in with the interface method. </dd>
+ * <dd>If this interface is implemented then a {@link java.util.logging.Logger
+ * Logger} is passed in with the interface method.</dd>
+ * <dt>{@link org.extex.backend.documentWriter.SingleDocumentStream
+ * SingleDocumentStream}</dt>
+ * <dd>If this interface is implemented then a {@link java.io.OutputStream
+ * OutputStream} is passed in with the interface method.</dd>
+ * <dt>{@link org.extex.backend.documentWriter.MultipleDocumentStream
+ * MultipleDocumentStream}</dt>
+ * <dd>If this interface is implemented then a
+ * {@link org.extex.backend.outputStream.OutputStreamFactory
+ * OutputStreamFactory} is passed in with the interface method.</dd>
  * </dl>
  * 
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5563 $
  */
-public class DocumentWriterFactory extends AbstractFactory {
+public class DocumentWriterFactory extends AbstractFactory<DocumentWriter> {
 
     /**
      * The field <tt>defaultType</tt> contains the default type from the
@@ -94,6 +94,25 @@ public class DocumentWriterFactory extends AbstractFactory {
     }
 
     /**
+     * Check that a given document writer type has a matching configuration.
+     * 
+     * @param type the document writer type
+     * 
+     * @return <code>true</code> iff a configuration exists
+     * 
+     * @throws ConfigurationException in case of an error; especially if the
+     *         configuration is not found
+     */
+    public boolean check(String type) throws ConfigurationException {
+
+        try {
+            return selectConfiguration(type) != null;
+        } catch (ConfigurationNotFoundException e) {
+            return false;
+        }
+    }
+
+    /**
      * Provide a new instance of a document writer. The new instance is
      * initiated with the sub-configuration describing it.
      * <p>
@@ -122,8 +141,8 @@ public class DocumentWriterFactory extends AbstractFactory {
         }
 
         DocumentWriter documentWriter =
-                (DocumentWriter) createInstance(outputType,
-                    DocumentWriter.class, DocumentWriterOptions.class, options);
+                createInstance(outputType, DocumentWriter.class,
+                    DocumentWriterOptions.class, options);
 
         outFactory.setExtension(documentWriter.getExtension());
 
@@ -136,25 +155,6 @@ public class DocumentWriterFactory extends AbstractFactory {
                 .setOutputStreamFactory(outFactory);
         }
         return documentWriter;
-    }
-
-    /**
-     * Check that a given document writer type has a matching configuration.
-     * 
-     * @param type the document writer type
-     * 
-     * @return <code>true</code> iff a configuration exists
-     * 
-     * @throws ConfigurationException in case of an error; especially if the
-     *         configuration is not found
-     */
-    public boolean check(String type) throws ConfigurationException {
-
-        try {
-            return selectConfiguration(type) != null;
-        } catch (ConfigurationNotFoundException e) {
-            return false;
-        }
     }
 
     /**

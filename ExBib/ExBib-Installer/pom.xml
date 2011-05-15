@@ -9,7 +9,7 @@
     This is the ExBib install system. It creates a GUI installer for ExBib and
     related packages in the Maven `package' phase. 
   </description>
-  <version>0.1</version>
+  <version>0.2</version>
   <packaging>pom</packaging>
   <inceptionYear>2008</inceptionYear>
   <url>http://www.extex.org</url>
@@ -25,7 +25,7 @@
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
-    <version>0.1</version>
+    <version>0.2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
 

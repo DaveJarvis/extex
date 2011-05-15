@@ -4,7 +4,7 @@
   <groupId>org.extex</groupId>
   <artifactId>ExBib</artifactId>
   <packaging>pom</packaging>
-  <version>0.1</version>
+  <version>0.2</version>
   <name>ExBib</name>
   <inceptionYear>2007</inceptionYear>
   <url>http://www.extex.org</url>
@@ -130,7 +130,7 @@
       <dependency>
         <groupId>org.extex</groupId>
         <artifactId>ExTeX-resource</artifactId>
-        <version>0.1</version>
+        <version>0.2</version>
       </dependency>
     </dependencies>
   </dependencyManagement>

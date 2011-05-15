@@ -48,7 +48,7 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class FontFactoryImpl extends AbstractFactory
+public class FontFactoryImpl extends AbstractFactory<Object>
         implements
             CoreFontFactory,
             ResourceAware,
@@ -60,7 +60,7 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * Loader for the abstract factory.
      */
-    private class Loader extends AbstractFactory {
+    private class Loader extends AbstractFactory<Object> {
 
         /**
          * Returns the loadable font.
@@ -77,12 +77,12 @@ public class FontFactoryImpl extends AbstractFactory
         }
 
         /**
-         * Returns the backend font manager.
+         * Returns the back-end font manager.
          * 
          * @param subcfg the configuration.
          * @param finder the resource finder.
-         * @param factory the backend font factory.
-         * @return the backend font manager.
+         * @param factory the back-end font factory.
+         * @return the back-end font manager.
          * @throws ConfigurationException from the configuration system.
          */
         public BackendFontManager getManager(Configuration subcfg,
@@ -106,11 +106,6 @@ public class FontFactoryImpl extends AbstractFactory
      * The null font
      */
     private static final NullExtexFont NULLFONT = new NullExtexFont();
-
-    /**
-     * Configuration for <tt>Type</tt>
-     */
-    private Configuration config;
 
     /**
      * the file finder
@@ -143,22 +138,9 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
-    @Override
-    public void configure(Configuration configuration)
-            throws ConfigurationException {
-
-        this.config = configuration;
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.CoreFontFactory#createManager(java.util.List)
      */
+    @Override
     public BackendFontManager createManager(List<String> fontTypes)
             throws ConfigurationException {
 
@@ -174,9 +156,9 @@ public class FontFactoryImpl extends AbstractFactory
         for (int i = 0, n = fontTypes.size(); i < n; i++) {
 
             Configuration cfg =
-                    config.findConfiguration("FontType", fontTypes.get(i));
+                    getConfiguration().findConfiguration("FontType",
+                        fontTypes.get(i));
             if (cfg != null) {
-
                 fmlist.add(new Loader().getManager(cfg, finder, this));
             }
         }
@@ -191,6 +173,7 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
+    @Override
     public void enableTracing(boolean flag) {
 
         finder.enableTracing(flag);
@@ -200,6 +183,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
@@ -211,6 +195,7 @@ public class FontFactoryImpl extends AbstractFactory
      * 
      * @see org.extex.font.BackendFontFactory#getBackendFont(org.extex.font.FontKey)
      */
+    @Override
     public BackendFont getBackendFont(FontKey key) throws FontException {
 
         if (key == null || key.getName() == null || key.getName().length() == 0) {
@@ -232,6 +217,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.font.CoreFontFactory#getFontKey(org.extex.font.FontKey,
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public FontKey getFontKey(FontKey fontKey, FixedDimen size) {
 
         return keyFactory.newInstance(fontKey, FontKey.SIZE, size);
@@ -242,6 +228,7 @@ public class FontFactoryImpl extends AbstractFactory
      * 
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String)
      */
+    @Override
     public FontKey getFontKey(String fontName) {
 
         return keyFactory.newInstance(fontName);
@@ -253,6 +240,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
      *      org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public FontKey getFontKey(String fontName, FixedDimen size) {
 
         FontKey key = keyFactory.newInstance(fontName);
@@ -265,6 +253,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
      *      org.extex.core.dimen.FixedDimen, java.util.Map)
      */
+    @Override
     public FontKey getFontKey(String fontName, FixedDimen size,
             Map<String, ?> map) {
 
@@ -279,6 +268,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @see org.extex.font.CoreFontFactory#getFontKey(java.lang.String,
      *      org.extex.core.dimen.FixedDimen, java.util.Map, java.util.List)
      */
+    @Override
     public FontKey getFontKey(String fontName, FixedDimen size,
             Map<String, ?> map, List<String> feature) {
 
@@ -305,6 +295,7 @@ public class FontFactoryImpl extends AbstractFactory
      * @throws ConfigurationException from the resource finder.
      * @throws FontException if a font-error occurred.
      */
+    @Override
     public ExtexFont getInstance(FontKey key)
             throws ConfigurationException,
                 FontException {
@@ -319,7 +310,7 @@ public class FontFactoryImpl extends AbstractFactory
             return font;
         }
 
-        Iterator<Configuration> it = config.iterator("Font");
+        Iterator<Configuration> it = getConfiguration().iterator("Font");
         while (it.hasNext()) {
             Configuration subcfg = it.next();
 
@@ -331,16 +322,13 @@ public class FontFactoryImpl extends AbstractFactory
 
                 font = new Loader().getInstance(subcfg);
                 if (font instanceof ResourceAware) {
-                    ResourceAware consumer = (ResourceAware) font;
-                    consumer.setResourceFinder(finder);
+                    ((ResourceAware) font).setResourceFinder(finder);
                 }
                 if (font instanceof LogEnabled) {
-                    LogEnabled logen = (LogEnabled) font;
-                    logen.enableLogging(getLogger());
+                    ((LogEnabled) font).enableLogging(getLogger());
                 }
                 if (font instanceof FontAware) {
-                    FontAware fa = (FontAware) font;
-                    fa.setFontFactory(this);
+                    ((FontAware) font).setFontFactory(this);
                 }
 
                 font.loadFont(in, this, key);
@@ -369,14 +357,14 @@ public class FontFactoryImpl extends AbstractFactory
     /**
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
+    @Override
     public void setProperties(Properties properties) {
 
         prop = properties;
     }
 
     /**
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     @Override
     public void setResourceFinder(ResourceFinder finder) {

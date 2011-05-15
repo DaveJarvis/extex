@@ -38,7 +38,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ContextFactory extends AbstractFactory {
+public class ContextFactory extends AbstractFactory<Context> {
 
     /**
      * Creates a new object.
@@ -69,7 +69,7 @@ public class ContextFactory extends AbstractFactory {
      */
     public Context newInstance(String type) throws ConfigurationException {
 
-        return (Context) createInstance(type, Context.class);
+        return createInstance(type, Context.class);
     }
 
 }

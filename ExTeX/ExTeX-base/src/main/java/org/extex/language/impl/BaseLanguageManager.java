@@ -54,20 +54,19 @@ import org.extex.language.word.WordTokenizer;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4757 $
  */
-public class BaseLanguageManager extends AbstractFactory
+public class BaseLanguageManager extends AbstractFactory<ModifiableLanguage>
         implements
             LanguageManager,
             Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>tables</tt> contains the mapping from index to
-     * hyphenation table.
+     * The field <tt>tables</tt> contains the mapping from index to hyphenation
+     * table.
      */
     private Map<String, Language> tables = new HashMap<String, Language>();
 
@@ -93,18 +92,15 @@ public class BaseLanguageManager extends AbstractFactory
 
         ModifiableLanguage lang;
         Configuration cfg = selectConfiguration(name);
-        lang = (ModifiableLanguage) createInstanceForConfiguration(cfg, //
-            ModifiableLanguage.class);
+        lang = createInstanceForConfiguration(cfg, ModifiableLanguage.class);
 
         Configuration config = cfg.findConfiguration("LigatureBuilder");
-        lang.setLigatureBuilder(//
-            (LigatureBuilder) createInstanceForConfiguration(config,
-                LigatureBuilder.class));
+        lang.setLigatureBuilder(createInstanceForConfiguration(config,
+            LigatureBuilder.class));
 
         config = cfg.findConfiguration("WordTokenizer");
-        lang.setWordTokenizer(//
-            (WordTokenizer) createInstanceForConfiguration(config,
-                WordTokenizer.class));
+        lang.setWordTokenizer(createInstanceForConfiguration(config,
+            WordTokenizer.class));
 
         lang.setName(name);
         tables.put(name, lang);
@@ -116,6 +112,7 @@ public class BaseLanguageManager extends AbstractFactory
      * 
      * @see org.extex.language.LanguageManager#getLanguage(java.lang.String)
      */
+    @Override
     public Language getLanguage(String name) {
 
         Language table = tables.get(name);

@@ -30,26 +30,25 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.PropertyAware;
 
 /**
- * This class provides a factory for
- * {@link org.extex.interpreter.Interpreter Interpreter}s.
- * The configuration and the logger are passed to the new instance if they are
- * present and required.
- *
+ * This class provides a factory for {@link org.extex.interpreter.Interpreter
+ * Interpreter}s. The configuration and the logger are passed to the new
+ * instance if they are present and required.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class InterpreterFactory extends AbstractFactory {
+public class InterpreterFactory extends AbstractFactory<Interpreter> {
 
     /**
      * Creates a new factory object.
-     *
+     * 
      * @param configuration the configuration for this factory
      * @param logger the logger
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration.
      */
-    public InterpreterFactory(Configuration configuration,
-            Logger logger) throws ConfigurationException {
+    public InterpreterFactory(Configuration configuration, Logger logger)
+            throws ConfigurationException {
 
         enableLogging(logger);
         configure(configuration);
@@ -58,19 +57,18 @@ public class InterpreterFactory extends AbstractFactory {
     /**
      * Get a instance for the interface
      * <tt>{@link org.extex.interpreter.Interpreter Interpreter}</tt>.
-     *
+     * 
      * @param properties the properties
      * @param outFactory the output stream factory
-     *
+     * 
      * @return a new instance for the interface Interpreter
-     *
+     * 
      * @throws ConfigurationException in case of an error in the configuration
      */
     public Interpreter newInstance(Properties properties,
             OutputStreamFactory outFactory) throws ConfigurationException {
 
-        Interpreter interpreter =
-                (Interpreter) createInstance(Interpreter.class);
+        Interpreter interpreter = createInstance(Interpreter.class);
 
         if (interpreter instanceof PropertyAware) {
             ((PropertyAware) interpreter).setProperties(properties);

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * Often it is desirable to have a generic way how objects can be configured.
  * This is accomplished by this interface.
  * </p>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -35,9 +35,9 @@ public interface Configurable {
 
     /**
      * Configure an object according to a given Configuration.
-     *
+     * 
      * @param config the configuration object to consider
-     *
+     * 
      * @throws ConfigurationException in case that something went wrong
      */
     void configure(Configuration config) throws ConfigurationException;

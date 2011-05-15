@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,11 +22,11 @@ package org.extex.framework.logger;
 import java.util.logging.Logger;
 
 /**
- * This interface describes the need of a component for a logger.
- * The logger is provided by the framework at start-up. Alternatively some other
+ * This interface describes the ability of a component to take a logger. The
+ * logger can be provided by the framework at start-up. Alternatively some other
  * means might be present to provide the logger before the component comes to
  * action.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -34,7 +34,7 @@ public interface LogEnabled {
 
     /**
      * Setter for the logger.
-     *
+     * 
      * @param logger the logger to use
      */
     void enableLogging(Logger logger);

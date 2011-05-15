@@ -70,7 +70,7 @@ import org.extex.unit.base.macro.LetCode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4770 $
  */
-public final class LoadUnit extends AbstractFactory {
+public final class LoadUnit extends AbstractFactory<Code> {
 
     /**
      * The field <tt>DEFINE_TAG</tt> contains the tag name used to find
@@ -154,8 +154,8 @@ public final class LoadUnit extends AbstractFactory {
                 Token t = export.get(i);
                 if (t instanceof CodeToken) {
                     if (context.getCode((CodeToken) t) == null) {
-                        throw new HelpingException(LocalizerFactory
-                            .getLocalizer(LoadUnit.class),
+                        throw new HelpingException(
+                            LocalizerFactory.getLocalizer(LoadUnit.class),
                             "Loader.Import.undef", t.toString());
                     }
                     context.setCode(
@@ -225,8 +225,7 @@ public final class LoadUnit extends AbstractFactory {
             String name = cfg.getAttribute(NAME_ATTRIBUTE);
             Token t = tokenFactory.createToken(Catcode.ESCAPE, //
                 UnicodeChar.get('\\'), name, Namespace.DEFAULT_NAMESPACE);
-            Code code =
-                    (Code) createInstanceForConfiguration(cfg, Code.class, t);
+            Code code = createInstanceForConfiguration(cfg, Code.class, t);
 
             String namespace = cfg.getAttribute(NAMESPACE_ATTRIBUTE);
             if (namespace == null) {

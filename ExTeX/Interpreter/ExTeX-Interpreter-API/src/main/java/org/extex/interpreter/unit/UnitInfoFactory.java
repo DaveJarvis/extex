@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -24,58 +24,59 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 
 /**
  * This is the factory for instances of
- * {@link org.extex.interpreter.unit.UnitInfo UnitInfo}.
- * This factory inherits its properties from the
- * {@link org.extex.framework.AbstractFactory AbstractFactory}. Among them
- * the support for configuration and logging.
- *
+ * {@link org.extex.interpreter.unit.UnitInfo UnitInfo}. This factory inherits
+ * its properties from the {@link org.extex.framework.AbstractFactory
+ * AbstractFactory}. Among them the support for configuration and logging.
+ * 
  * <h3>Configuration</h3>
- *
+ * 
  * <p>
- *  Mainly the configuration needs to specify which class to use for the
- *  ErrorHandler. The configuration provides a mapping from a type name to the
- *  sub-configuration to be used. The name of the class is given as the argument
- *  <tt>class</tt> of the sub-configuration as shown below.
- *  <pre>
+ * Mainly the configuration needs to specify which class to use for the
+ * ErrorHandler. The configuration provides a mapping from a type name to the
+ * sub-configuration to be used. The name of the class is given as the argument
+ * <tt>class</tt> of the sub-configuration as shown below.
+ * 
+ * <pre>
  *   &lt;unit class="org.extex.interpreter.unit.tex.Setup"&gt;
  *   . . .
  *   &lt;/unit&gt;
  *  </pre>
  * </p>
  * <p>
- *  The named class needs to implement the interface
- *  {@link org.extex.interpreter.unit.Loader Loader}. If
- *  this interface is not implemented an error is raised.
+ * The named class needs to implement the interface
+ * {@link org.extex.interpreter.unit.Loader Loader}. If this interface is not
+ * implemented an error is raised.
  * </p>
  * <p>
- *  The configuration is passed down to the new instance if it implements the
- *  interface {@link org.extex.framework.configuration.Configurable Configurable}.
+ * The configuration is passed down to the new instance if it implements the
+ * interface {@link org.extex.framework.configuration.Configurable Configurable}
+ * .
  * </p>
  * <p>
- *  If the class implements the interface
- *  {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger
- *  is passed to the new instance. For this purpose the factory itself is
- *  log enabled to receive the logger.
+ * If the class implements the interface
+ * {@link org.extex.framework.logger.LogEnabled LogEnabled} then a logger is
+ * passed to the new instance. For this purpose the factory itself is log
+ * enabled to receive the logger.
  * </p>
- *
- *
- *
+ * 
+ * 
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class UnitInfoFactory extends AbstractFactory {
+public class UnitInfoFactory extends AbstractFactory<UnitInfo> {
 
     /**
-     * Create a new instance of the class given by the attribute
-     * <tt>class</tt> of the configuration.
-     *
+     * Create a new instance of the class given by the attribute <tt>class</tt>
+     * of the configuration.
+     * 
      * @return the Code loaded
-     *
+     * 
      * @throws ConfigurationException in case of an error
      */
     public UnitInfo createUnitInfo() throws ConfigurationException {
 
-        return (UnitInfo) createInstance(UnitInfo.class);
+        return createInstance(UnitInfo.class);
     }
 
 }
