@@ -26,11 +26,13 @@
       <artifactId>ExTeX-Interpreter-API</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-ocpware</artifactId>
@@ -53,6 +55,14 @@
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
       <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Unit-tex</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
   </dependencies>
