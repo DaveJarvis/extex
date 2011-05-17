@@ -21,21 +21,22 @@ export MAVEN_OPTS="-Xmx640m"
 
 cd ..
 
-echo '########## install ##########' `date`
-mvn install	                           	|| echo "*** FAILURE ***"
+function run {
+    echo "########## $1 ##########" `date`
+    (cd $2; mvn ${@:3}) || echo "*** FAILURE ***"
+    echo "########## /$1 ##########" `date`
+}
 
-echo '########## ExBib ##########' `date`
-(cd ExBib;		mvn install)		|| true
+run install . install
 
-echo '########## ExTeX ##########' `date`
-(cd ExTeX;		mvn -Dmaven.test.skip=true package)	|| true
+#run ExBib ExBib install
+run ExBib ExBib/ExBib-Installer package
 
-echo '########## ExBib site ##########' `date`
-(cd ExBib;		mvn site:site site:stage site:deploy)	|| true
+run ExTeX ExTeX -Dmaven.test.skip=true package
 
-echo '########## site ##########' `date`
-#mvn -Dmaven.test.skip=true site		|| true
-(cd site;               mvn compile)            || true
+run 'ExBib site' ExBib site:site site:stage site:deploy
+
+run site site compile
 
 echo '########## www ##########' `date`
 (cd www; ant install )
