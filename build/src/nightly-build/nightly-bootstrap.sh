@@ -61,7 +61,7 @@ date >>$BUILD_LOG 2>&1
 cd build
 source src/nightly-build/nightly-build.sh >>$BUILD_LOG 2>&1
 
-if test -n "`grep '[ERROR] BUILD ERROR' $BUILD_LOG`"; then
+if test -n "`grep '\[ERROR\] [a-hj-z]' $BUILD_LOG`"; then
 #    /usr/bin/mail -s 'ExTeX build failed' extex-build@lists.berlios.de < $LOG
     cat $BUILD_LOG
 fi
