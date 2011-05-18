@@ -248,9 +248,14 @@ public class TocIndexTest {
     @Test
     public final void testOmit1() {
 
-        runTestEn("#\n", "",
-            "src/test/resources/org/extex/framework/resource/tool/empty",
-            "-omit=.*/\\.svn$");
+        File emptyDir =
+                new File(
+                    "src/test/resources/org/extex/framework/resource/tool/empty");
+        if (!emptyDir.exists()) {
+            // for fixing a bug in Mercurial
+            assertTrue(emptyDir.mkdirs());
+        }
+        runTestEn("#\n", "", emptyDir.getPath(), "-omit=.*/\\.svn$");
     }
 
     /**
