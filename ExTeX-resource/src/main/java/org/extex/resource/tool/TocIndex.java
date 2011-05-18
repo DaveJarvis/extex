@@ -25,6 +25,8 @@ import java.io.FileOutputStream;
 import java.io.PrintStream;
 import java.text.MessageFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -38,6 +40,20 @@ import java.util.regex.PatternSyntaxException;
  * @version $Revision$
  */
 public class TocIndex {
+
+    /**
+     * The field <tt>FILE_NAME_COMPARATOR</tt> contains the comparator for
+     * sorting files.
+     */
+    private static final Comparator<? super File> FILE_NAME_COMPARATOR =
+            new Comparator<File>() {
+
+                @Override
+                public int compare(File o1, File o2) {
+
+                    return o1.getName().compareToIgnoreCase(o2.getName());
+                }
+            };
 
     /**
      * The main program. The command line parameters are evaluated and the
@@ -119,7 +135,9 @@ public class TocIndex {
         }
 
         if (file.isDirectory()) {
-            for (File fi : file.listFiles()) {
+            File[] files = file.listFiles();
+            Arrays.sort(files, FILE_NAME_COMPARATOR);
+            for (File fi : files) {
                 count += collect(fi, out, strip);
             }
         } else if (file.isFile()) {
