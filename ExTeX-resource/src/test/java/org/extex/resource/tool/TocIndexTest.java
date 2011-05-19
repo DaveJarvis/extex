@@ -20,6 +20,7 @@
 package org.extex.resource.tool;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -248,14 +249,19 @@ public class TocIndexTest {
     @Test
     public final void testOmit1() {
 
-        File emptyDir =
-                new File(
-                    "src/test/resources/org/extex/framework/resource/tool/empty");
-        if (!emptyDir.exists()) {
-            // for fixing a bug in Mercurial
-            assertTrue(emptyDir.mkdirs());
+        File dir = new File("target/toc-index-test");
+        File file = new File(dir, "xxx");
+        assertFalse(dir.toString() + " exists. Make sure it is gone",
+            dir.exists());
+        assertTrue(dir.mkdirs());
+        assertTrue(file.mkdirs());
+
+        try {
+            runTestEn("#\n", "", dir.getPath(), "-omit=.*/xxx$");
+        } finally {
+            assertTrue(file.delete());
+            assertTrue(dir.delete());
         }
-        runTestEn("#\n", "", emptyDir.getPath(), "-omit=.*/\\.svn$");
     }
 
     /**
