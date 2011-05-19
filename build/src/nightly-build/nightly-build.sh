@@ -32,7 +32,10 @@ run install . install
 #run ExBib ExBib install
 run ExBib ExBib/ExBib-Installer package
 
-run ExTeX ExTeX -Dmaven.test.skip=true package
+run ExTeX ExTeX \
+         -Dmaven.test.failure.ignore=true \
+         -Dmaven.test.error.ignore=true   \
+         package
 
 run 'ExBib site' ExBib site:site site:stage site:deploy
 
