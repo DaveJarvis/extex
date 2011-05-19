@@ -29,8 +29,8 @@ import org.extex.resource.ResourceFinder;
  * {@link AuxReader AuxReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class
- * to be instantiated. Consider the following example of a configuration file:
+ * attribute <code>class</code>. This attribute holds the name of the class to
+ * be instantiated. Consider the following example of a configuration file:
  * 
  * <pre>
  *   &lt;AuxReader
@@ -43,7 +43,7 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AuxReaderFactory extends AbstractFactory {
+public class AuxReaderFactory extends AbstractFactory<AuxReader> {
 
     /**
      * Creates a new object.
@@ -67,7 +67,7 @@ public class AuxReaderFactory extends AbstractFactory {
     public AuxReader newInstance(ResourceFinder finder)
             throws ConfigurationException {
 
-        AuxReader engine = (AuxReader) createInstance(AuxReader.class);
+        AuxReader engine = createInstance(AuxReader.class);
         engine.setResourceFinder(finder);
         return engine;
     }

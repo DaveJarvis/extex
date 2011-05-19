@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -46,7 +46,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BblWriterFactory extends AbstractFactory {
+public class BblWriterFactory extends AbstractFactory<BblWriter> {
 
     /**
      * The field <tt>writerFactory</tt> contains the writer factory.
@@ -130,7 +130,7 @@ public class BblWriterFactory extends AbstractFactory {
             infoOutput(file);
         }
 
-        return (BblWriter) createInstance(BblWriter.class, writer);
+        return createInstance(BblWriter.class, writer);
     }
 
 }

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -52,7 +52,7 @@ import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncod
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class WriterFactory extends AbstractFactory {
+public class WriterFactory extends AbstractFactory<Writer> {
 
     /**
      * The field <tt>encoding</tt> contains the encoding to use for writing.
@@ -99,11 +99,7 @@ public class WriterFactory extends AbstractFactory {
      */
     public Writer newInstance() throws ConfigurationException {
 
-        Writer writer = new NullWriter();
-        // if (writer instanceof Configurable) {
-        // ((Configurable) writer).configure(getConfiguration());
-        // }
-        return writer;
+        return new NullWriter();
     }
 
     /**

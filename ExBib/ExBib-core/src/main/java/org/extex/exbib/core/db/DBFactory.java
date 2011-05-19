@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,8 +29,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * {@link DB DB}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class
- * to be instantiated. Consider the following example of a configuration file:
+ * attribute <code>class</code>. This attribute holds the name of the class to
+ * be instantiated. Consider the following example of a configuration file:
  * 
  * <pre>
  *   &lt;DB
@@ -42,7 +42,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class DBFactory extends AbstractFactory {
+public class DBFactory extends AbstractFactory<DB> {
 
     /**
      * Creates a new object.
@@ -68,7 +68,7 @@ public class DBFactory extends AbstractFactory {
     public DB newInstance(BibReaderFactory bibReaderFactory, int minCrossrefs)
             throws ConfigurationException {
 
-        DB db = (DB) createInstance(DB.class);
+        DB db = createInstance(DB.class);
         db.setBibReaderFactory(bibReaderFactory);
         db.setMinCrossrefs(minCrossrefs);
         return db;

@@ -29,8 +29,8 @@ import org.extex.resource.ResourceFinder;
  * {@link BstReader BstReader}.
  * <p>
  * The factory is controlled by a configuration. This configuration contains an
- * attribute <code>class</code>. This attribute holds the name of the class
- * to be instantiated. Consider the following example of a configuration file:
+ * attribute <code>class</code>. This attribute holds the name of the class to
+ * be instantiated. Consider the following example of a configuration file:
  * 
  * <pre>
  *   &lt;BstReader
@@ -42,7 +42,7 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BstReaderFactory extends AbstractFactory {
+public class BstReaderFactory extends AbstractFactory<BstReader> {
 
     /**
      * Creates a new object.
@@ -68,7 +68,7 @@ public class BstReaderFactory extends AbstractFactory {
      */
     public synchronized BstReader newInstance() throws ConfigurationException {
 
-        BstReader reader = (BstReader) createInstance(BstReader.class);
+        BstReader reader = createInstance(BstReader.class);
         reader.setResourceFinder(getResourceFinder());
         return reader;
     }

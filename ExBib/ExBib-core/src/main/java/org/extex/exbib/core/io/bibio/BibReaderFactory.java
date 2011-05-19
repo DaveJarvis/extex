@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,7 +44,7 @@ import org.extex.resource.ResourceFinder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class BibReaderFactory extends AbstractFactory {
+public class BibReaderFactory extends AbstractFactory<BibReader> {
 
     /**
      * The field <tt>encoding</tt> contains the encoding the encoding for
@@ -103,7 +103,7 @@ public class BibReaderFactory extends AbstractFactory {
             throws ConfigurationException,
                 FileNotFoundException {
 
-        BibReader bibReader = (BibReader) super.createInstance(BibReader.class);
+        BibReader bibReader = super.createInstance(BibReader.class);
         bibReader.setResourceFinder(getResourceFinder());
         bibReader.open(file, encoding);
 

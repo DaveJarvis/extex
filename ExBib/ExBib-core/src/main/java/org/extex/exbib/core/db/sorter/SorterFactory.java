@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -36,7 +36,9 @@ import org.extex.resource.ResourceAware;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class SorterFactory extends AbstractFactory implements PropertyAware {
+public class SorterFactory extends AbstractFactory<Sorter>
+        implements
+            PropertyAware {
 
     /**
      * The field <tt>properties</tt> contains the properties.
@@ -93,9 +95,9 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
 
         try {
             if (arg == null) {
-                sorter = (Sorter) createInstance(t, Sorter.class);
+                sorter = createInstance(t, Sorter.class);
             } else {
-                sorter = (Sorter) createInstance(t, //
+                sorter = createInstance(t, //
                     Sorter.class, String.class, arg);
             }
         } catch (ConfigurationNotFoundException e) {
@@ -119,6 +121,7 @@ public class SorterFactory extends AbstractFactory implements PropertyAware {
      * 
      * @see org.extex.resource.PropertyAware#setProperties(java.util.Properties)
      */
+    @Override
     public void setProperties(Properties properties) {
 
         this.properties = properties;
