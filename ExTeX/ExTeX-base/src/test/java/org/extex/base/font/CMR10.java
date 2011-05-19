@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.test.font;
+package org.extex.base.font;
 
 import java.io.Serializable;
 import java.util.HashMap;

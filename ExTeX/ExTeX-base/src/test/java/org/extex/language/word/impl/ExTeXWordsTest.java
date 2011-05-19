@@ -23,12 +23,12 @@ import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
+import org.extex.base.font.CMR10;
 import org.extex.core.UnicodeChar;
 import org.extex.language.hyphenation.base.BaseHyphenationTable;
 import org.extex.language.hyphenation.exception.HyphenationException;
 import org.extex.language.ligature.impl.LigatureBuilderImpl;
 import org.extex.language.word.WordTokenizer;
-import org.extex.test.font.CMR10;
 import org.extex.typesetter.tc.ModifiableTypesettingContext;
 import org.extex.typesetter.tc.TypesettingContextImpl;
 import org.extex.typesetter.type.NodeList;
