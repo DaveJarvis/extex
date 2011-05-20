@@ -29,6 +29,41 @@
 
     <dependency>
       <groupId>org.extex</groupId>
+      <artifactId>ExTeX-base-test</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Scanner</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-max</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Typesetter-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Backend-dump</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
@@ -39,6 +74,7 @@
       <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>

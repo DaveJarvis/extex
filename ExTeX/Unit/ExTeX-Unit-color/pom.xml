@@ -26,25 +26,58 @@
       <artifactId>ExTeX-Font-API</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-API</artifactId>
       <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
       <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Scanner</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-max</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Typesetter-core</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Backend-dump</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
     </dependency>
 
     <dependency>
@@ -53,6 +86,7 @@
       <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
