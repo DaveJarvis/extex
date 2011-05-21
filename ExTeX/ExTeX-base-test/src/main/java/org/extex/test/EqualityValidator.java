@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,8 +19,8 @@
 
 package org.extex.test;
 
-import static junit.framework.Assert.assertEquals;
-import static junit.framework.Assert.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Validator which compares for equality against a fixed string. The reference
@@ -63,6 +63,7 @@ public class EqualityValidator implements Validator {
      * 
      * @see org.extex.test.Validator#validate(java.lang.String)
      */
+    @Override
     public boolean validate(String s) {
 
         assertNotNull(comment, s);
