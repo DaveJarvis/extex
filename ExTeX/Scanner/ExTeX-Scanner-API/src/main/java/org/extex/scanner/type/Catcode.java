@@ -1009,7 +1009,7 @@ public enum Catcode implements Serializable {
      */
     public static int getCatcodeMax() {
 
-        return Catcode.values().length;
+        return Catcode.values().length - 1;
     }
 
     /**
