@@ -58,7 +58,6 @@
       <scope>test</scope>
     </dependency>
 
-
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
@@ -83,6 +82,13 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Backend-dump</artifactId>
+      <version>0.1-SNAPSHOT</version>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Font-tfm</artifactId>
       <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
