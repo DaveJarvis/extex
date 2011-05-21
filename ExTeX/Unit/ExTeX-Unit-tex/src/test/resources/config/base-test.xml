@@ -45,7 +45,7 @@
 
     <ColorConverter base="color/" default="basic"/>
 
-    <DocumentWriter base="backend/" default="dvix"/>
+    <DocumentWriter base="backend/" default="dump"/>
 
     <parameter name="Title" value=""/>
     <parameter name="Author" property="user.name"/>
