@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,7 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\jobname</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
@@ -41,39 +41,36 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\jobname">
-     *  Test case checking that <tt>\jobname</tt> delivers a decent default
-     *  value.
-     * </testcase>
-     *
+     * <testcase primitive="\jobname"> Test case checking that <tt>\jobname</tt>
+     * delivers a decent default value. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testJobname1() throws Exception {
 
-        assertSuccess(//--- input code ---
+        assertSuccess(// --- input code ---
             "\\jobname" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "texput" + TERM);
     }
 
     /**
-     * <testcase primitive="\jobname">
-     *  Test case checking that <tt>\jobname</tt> can be set properly.
-     * </testcase>
-     *
+     * <testcase primitive="\jobname"> Test case checking that <tt>\jobname</tt>
+     * can be set properly. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void testJobname2() throws Exception {
 
-        Properties properties = System.getProperties();
+        Properties properties = (Properties) System.getProperties().clone();
         properties.setProperty("extex.jobname", "job");
 
         assertSuccess(properties,
-        //--- input code ---
+        // --- input code ---
             "\\jobname" + "\\end ",
-            //--- output channel ---
+            // --- output channel ---
             "job" + TERM);
     }
 

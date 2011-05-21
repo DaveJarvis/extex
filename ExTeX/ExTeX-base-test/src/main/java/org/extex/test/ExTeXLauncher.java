@@ -125,6 +125,7 @@ public abstract class ExTeXLauncher {
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
          */
+        @Override
         public boolean handleError(GeneralException e, Token token,
                 TokenSource source, Context context) throws HelpingException {
 
@@ -137,6 +138,7 @@ public abstract class ExTeXLauncher {
          * 
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
          */
+        @Override
         public void setEditHandler(EditHandler editHandler) {
 
             // not supported
@@ -416,6 +418,7 @@ public abstract class ExTeXLauncher {
                     ((ExpandMacroObservable) interpreter)
                         .registerObserver(new ExpandMacroObserver() {
 
+                            @Override
                             public void update(Token token, Code code,
                                     Locator locator) {
 
@@ -613,7 +616,7 @@ public abstract class ExTeXLauncher {
     public Properties getProps() {
 
         if (props == null) {
-            props = System.getProperties();
+            props = (Properties) System.getProperties().clone();
 
             File file = new File(".extex-test");
             if (file.canRead()) {
