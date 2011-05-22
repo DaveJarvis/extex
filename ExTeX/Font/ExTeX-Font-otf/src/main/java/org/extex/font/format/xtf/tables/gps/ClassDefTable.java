@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.tables.gps;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.font.format.xtf.tables.XtfGlyphName;
@@ -279,6 +278,7 @@ public abstract class ClassDefTable implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("classdef");
@@ -290,10 +290,9 @@ public abstract class ClassDefTable implements XMLWriterConvertible {
             writer.writeComment("second glyph");
         }
         int[] sort = new int[classMap.size()];
-        Iterator<Integer> it = classMap.keySet().iterator();
         int i = 0;
-        while (it.hasNext()) {
-            sort[i++] = it.next();
+        for (Integer in : classMap.keySet()) {
+            sort[i++] = in;
         }
         Arrays.sort(sort);
         for (int k = 0; k < sort.length; k++) {

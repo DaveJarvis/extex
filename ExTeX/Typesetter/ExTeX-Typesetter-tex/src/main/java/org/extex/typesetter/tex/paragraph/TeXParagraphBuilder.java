@@ -889,6 +889,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAdjust(AdjustNode node, NodeList value) {
 
                     return null;
@@ -898,6 +899,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAfterMath(AfterMathNode node, NodeList value)
                         throws GeneralException {
 
@@ -910,6 +912,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
                         NodeList value) throws GeneralException {
 
@@ -921,6 +924,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitBeforeMath(BeforeMathNode node,
                         NodeList value) throws GeneralException {
 
@@ -933,6 +937,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
                         NodeList value) throws GeneralException {
 
@@ -944,6 +949,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitChar(CharNode node, NodeList value)
                         throws GeneralException {
 
@@ -959,6 +965,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
                         NodeList nodes) throws GeneralException {
 
@@ -1024,6 +1031,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
                         NodeList value) throws GeneralException {
 
@@ -1035,6 +1043,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitGlue(GlueNode glue, NodeList nodes)
                         throws GeneralException {
 
@@ -1098,6 +1107,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitHorizontalList(HorizontalListNode node,
                         NodeList value) throws GeneralException {
 
@@ -1109,6 +1119,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitInsertion(InsertionNode node, NodeList value)
                         throws GeneralException {
 
@@ -1119,6 +1130,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitKern(KernNode node, NodeList value)
                         throws GeneralException {
 
@@ -1137,6 +1149,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitLigature(LigatureNode node, NodeList value)
                         throws GeneralException {
 
@@ -1154,6 +1167,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitMark(MarkNode node, NodeList value)
                         throws GeneralException {
 
@@ -1164,6 +1178,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitPenalty(PenaltyNode node, NodeList value)
                         throws GeneralException {
 
@@ -1175,6 +1190,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitRule(RuleNode node, NodeList value)
                         throws GeneralException {
 
@@ -1186,6 +1202,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitSpace(SpaceNode node, NodeList value)
                         throws GeneralException {
 
@@ -1196,6 +1213,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVerticalList(VerticalListNode node,
                         NodeList value) throws GeneralException {
 
@@ -1207,6 +1225,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVirtualChar(VirtualCharNode node,
                         NodeList value) throws GeneralException {
 
@@ -1217,6 +1236,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                  * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitWhatsIt(WhatsItNode node, NodeList value)
                         throws GeneralException {
 
@@ -1561,6 +1581,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#build(org.extex.typesetter.type.node.HorizontalListNode)
      */
+    @Override
     public NodeList build(HorizontalListNode nodes) throws TypesetterException {
 
         if (nodes.size() == 0) {
@@ -2261,6 +2282,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -3344,7 +3366,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private void printFeasibleBreak(NodeList nodes, long d, long penalty,
             int badness) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         // begin if printed_node != cur_p then
         if (printedNode != curBreak) {
             // <<Print the list between printed_node and cur_p, then set
@@ -3429,7 +3451,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * @param sb the target string buffer
      * @param nodes the node list for the paragraph to break
      */
-    private void printList(StringBuffer sb, NodeList nodes) {
+    private void printList(StringBuilder sb, NodeList nodes) {
 
         // begin print_nl("");
         // if cur_p=null then
@@ -3462,7 +3484,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     private void printNewBreakNode(ActiveNode aNode) {
 
         // begin print_nl("@@");
-        StringBuffer sb = new StringBuffer("@@");
+        StringBuilder sb = new StringBuilder("@@");
         // print_int(serial(passive));
         PassiveNode passiveNode = passive.get(passive.size() - 1);
         sb.append(passiveNode.getSerial());
@@ -3657,6 +3679,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setNodefactory(org.extex.typesetter.type.node.factory.NodeFactory)
      */
+    @Override
     public void setNodefactory(NodeFactory factory) {
 
         this.nodeFactory = factory;
@@ -3667,6 +3690,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * 
      * @see org.extex.typesetter.paragraphBuilder.ParagraphBuilder#setOptions(org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void setOptions(TypesetterOptions options) {
 
         this.options = options;

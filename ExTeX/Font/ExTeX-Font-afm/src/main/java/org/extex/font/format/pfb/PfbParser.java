@@ -114,8 +114,8 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     /**
      * The record types in the pfb-file.
      */
-    private static final int[] PFB_RECORDS =
-            {ASCII_MARKER, BINARY_MARKER, ASCII_MARKER};
+    private static final int[] PFB_RECORDS = {ASCII_MARKER, BINARY_MARKER,
+            ASCII_MARKER};
 
     /**
      * the put string.
@@ -327,7 +327,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
         int size = 0;
         if (pos >= 0) {
             pos += ENCODING.length();
-            StringBuffer b = new StringBuffer();
+            StringBuilder b = new StringBuilder();
             char c;
             do {
                 c = s.charAt(pos++);
@@ -575,7 +575,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
             char ch = (char) (data[pos] & 0xff);
             if (ch == '/') {
                 // read until ' '
-                StringBuffer buf = new StringBuffer();
+                StringBuilder buf = new StringBuilder();
                 while ((ch = (char) (data[++pos] & 0xff)) != ' ') {
                     buf.append(ch);
                 }
@@ -615,7 +615,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
             int pos = text.indexOf("/lenIV");
             if (pos >= 0) {
                 String rest = text.substring(pos + 6, 10).trim();
-                StringBuffer ii = new StringBuffer();
+                StringBuilder ii = new StringBuilder();
                 for (int i = 0; i < 10; i++) {
                     char ch = rest.charAt(i);
                     if (ch == ' ') {
@@ -681,6 +681,7 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     /**
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("pfb");

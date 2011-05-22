@@ -106,9 +106,9 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < value.length; i++) {
-            buf.append(value[i].toString()).append(" ");
+            buf.append(value[i].toString()).append(' ');
         }
         return buf.toString();
     }
@@ -116,9 +116,9 @@ public abstract class T2TDOArray extends T2TopDICTOperator {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

@@ -118,15 +118,14 @@ public abstract class T2HintCmd extends T2Hints {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if (width != null) {
-            buf.append(width.toString()).append(" ");
+            buf.append(width.toString()).append(' ');
         }
         for (int i = 0; i < pairs.length; i++) {
-            buf.append(pairs[i].toString()).append(" ");
+            buf.append(pairs[i].toString()).append(' ');
         }
-        buf.append(getName());
-        return buf.toString();
+        return buf.append(getName()).toString();
     }
 
     /**
@@ -134,6 +133,7 @@ public abstract class T2HintCmd extends T2Hints {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

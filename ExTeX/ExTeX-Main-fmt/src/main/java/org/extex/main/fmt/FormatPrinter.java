@@ -30,7 +30,6 @@ import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.zip.GZIPInputStream;
@@ -81,8 +80,8 @@ public final class FormatPrinter {
     private static boolean deep = true;
 
     /**
-     * The field <tt>listLimit</tt> contains the limit to restrict the
-     * printing of lists.
+     * The field <tt>listLimit</tt> contains the limit to restrict the printing
+     * of lists.
      */
     private static int listLimit = Integer.MAX_VALUE;
 
@@ -107,6 +106,7 @@ public final class FormatPrinter {
     static {
         printerMap.put(String.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" \"");
@@ -116,6 +116,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Long.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -124,6 +125,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Short.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -132,6 +134,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Integer.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -140,6 +143,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Boolean.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -148,6 +152,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Count.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -156,6 +161,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Glue.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -164,6 +170,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Dimen.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" ");
@@ -172,6 +179,7 @@ public final class FormatPrinter {
         });
         printerMap.put(Character.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" '");
@@ -205,6 +213,7 @@ public final class FormatPrinter {
         });
         printerMap.put(UnicodeChar.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print(" \\u'");
@@ -214,6 +223,7 @@ public final class FormatPrinter {
         });
         printerMap.put(OtherToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(o '");
@@ -223,6 +233,7 @@ public final class FormatPrinter {
         });
         printerMap.put(LetterToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(l '");
@@ -232,6 +243,7 @@ public final class FormatPrinter {
         });
         printerMap.put(SpaceToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(s '");
@@ -241,6 +253,7 @@ public final class FormatPrinter {
         });
         printerMap.put(MacroParamToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(p '");
@@ -250,6 +263,7 @@ public final class FormatPrinter {
         });
         printerMap.put(MathShiftToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(m '");
@@ -259,6 +273,7 @@ public final class FormatPrinter {
         });
         printerMap.put(LeftBraceToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(lb '");
@@ -268,6 +283,7 @@ public final class FormatPrinter {
         });
         printerMap.put(RightBraceToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 out.print("(rb '");
@@ -277,6 +293,7 @@ public final class FormatPrinter {
         });
         printerMap.put(ControlSequenceToken.class, new PrintRoutine() {
 
+            @Override
             public void print(PrintStream out, Object obj) {
 
                 ControlSequenceToken cs = (ControlSequenceToken) obj;
@@ -428,9 +445,10 @@ public final class FormatPrinter {
             } else {
                 out.print(" (map ");
                 int limit = mapLimit;
-                Iterator<Object> iterator = m.keySet().iterator();
-                while (limit-- > 0 && iterator.hasNext()) {
-                    Object key = iterator.next();
+                for (Object key : m.keySet()) {
+                    if (limit-- <= 0) {
+                        break;
+                    }
                     out.print(pre);
                     print(out, pre, key);
                     out.print(" ");
@@ -455,9 +473,11 @@ public final class FormatPrinter {
                 out.print(pre);
                 out.print("(list ");
                 int limit = listLimit;
-                Iterator<Object> iterator = l.iterator();
-                while (limit-- > 0 && iterator.hasNext()) {
-                    print(out, pre2, iterator.next());
+                for (Object ob : l) {
+                    if (limit-- <= 0) {
+                        break;
+                    }
+                    print(out, pre2, ob);
                 }
                 if (limit <= 0) {
                     out.print(pre);

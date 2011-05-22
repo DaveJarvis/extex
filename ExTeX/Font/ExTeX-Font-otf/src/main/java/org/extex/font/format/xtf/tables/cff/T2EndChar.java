@@ -119,12 +119,11 @@ public class T2EndChar extends T2Operator {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if (width != null) {
-            buf.append(width.toString()).append(" ");
+            buf.append(width.toString()).append(' ');
         }
-        buf.append(getName());
-        return buf.toString();
+        return buf.append(getName()).toString();
     }
 
     /**
@@ -132,6 +131,7 @@ public class T2EndChar extends T2Operator {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

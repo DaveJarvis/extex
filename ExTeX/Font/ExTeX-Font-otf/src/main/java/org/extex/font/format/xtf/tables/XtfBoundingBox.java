@@ -166,7 +166,7 @@ public class XtfBoundingBox {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append("(").append(xMin).append(" ").append(yMin).append(") ");
         buf.append("(").append(xMax).append(" ").append(yMax).append(")");
         return buf.toString();

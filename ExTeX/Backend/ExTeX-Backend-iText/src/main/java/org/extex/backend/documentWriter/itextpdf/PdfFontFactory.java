@@ -48,11 +48,11 @@ public class PdfFontFactory {
     private static WeakHashMap<String, BaseFont> fonts;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private static Localizer localizer =
-            LocalizerFactory.getLocalizer(PdfFontFactory.class);
+    private static Localizer localizer = LocalizerFactory
+        .getLocalizer(PdfFontFactory.class);
 
     /**
      * The logger.
@@ -82,10 +82,11 @@ public class PdfFontFactory {
         FontKey key = backendfont.getActualFontKey();
         String encodingVectorKey = " encVec: -";
         int encpos = -1;
-        if (backendfont.hasMultiFonts() && uc != null) {
-            encpos = backendfont.getEncodingForChar(uc.getCodePoint());
-            encodingVectorKey = " encVec: " + String.valueOf(encpos);
-        }
+        // TODO gene: disabled to get it compile
+        // if (backendfont.hasMultiFonts() && uc != null) {
+        // encpos = backendfont.getEncodingForChar(uc.getCodePoint());
+        // encodingVectorKey = " encVec: " + String.valueOf(encpos);
+        // }
         BaseFont font = fonts.get(key.toString() + encodingVectorKey);
 
         if (font != null) {
@@ -100,13 +101,17 @@ public class PdfFontFactory {
                         .createFont(
                             key.getName() + ".ttf" /* name */,
                             BaseFont.IDENTITY_H /* BaseFont.CP1252 *//* encoding */,
-                            true /* embedded */, true /* cached */,
-                            data /* ttf,afm */, null /* pfb */);
-            logInfo(localizer.format("PdfFontFactory.useFont", "XTF", key
-                .getName()));
+                            true /* embedded */, true /* cached */, data /*
+                                                                          * ttf,afm
+                                                                          */,
+                            null /* pfb */);
+            logInfo(localizer.format("PdfFontFactory.useFont", "XTF",
+                key.getName()));
         }
         if (backendfont.isType1()) {
-            byte[] afmdata = backendfont.getAfm();
+            byte[] afmdata = null;
+            // TODO gene: disabled to get it compile
+            // afmdata = backendfont.getAfm();
             byte[] pfbdata = backendfont.getPfb();
 
             if (afmdata != null && pfbdata != null) {
@@ -118,10 +123,12 @@ public class PdfFontFactory {
                     // 'B' dividemultiply 0042
                     // 32 space 0020"
 
-                    List<String[]> enclist = backendfont.getEncodingVectors();
+                    List<String[]> enclist = null;
+                    // TODO gene: disabled to get it compile
+                    // enclist = backendfont.getEncodingVectors();
                     String enc[] = enclist.get(encpos);
                     if (enc != null) {
-                        StringBuffer buf = new StringBuffer("# full");
+                        StringBuilder buf = new StringBuilder("# full");
                         GlyphName glyphName = GlyphName.getInstance();
                         for (int i = 0; i < enc.length; i++) {
                             if (!enc[i].equals(".notdef")) {
@@ -146,19 +153,19 @@ public class PdfFontFactory {
                             encoding /* BaseFont.CP1252 *//* encoding */,
                             true /* embedded */, true /* cached */,
                             afmdata /* ttf,afm */, pfbdata /* pfb */);
-                logInfo(localizer.format("PdfFontFactory.useFont", "Type1", key
-                    .getName()));
+                logInfo(localizer.format("PdfFontFactory.useFont", "Type1",
+                    key.getName()));
             } else {
-                logSevere(localizer.format("PdfFontFactory.missingAfmPfb", key
-                    .getName()));
+                logSevere(localizer.format("PdfFontFactory.missingAfmPfb",
+                    key.getName()));
             }
         }
         if (font == null) {
             font =
                     BaseFont.createFont(BaseFont.HELVETICA, BaseFont.CP1252,
                         BaseFont.EMBEDDED);
-            logSevere(localizer.format("PdfFontFactory.defaultFont", key
-                .getName()));
+            logSevere(localizer.format("PdfFontFactory.defaultFont",
+                key.getName()));
         }
         // store it
         fonts.put(key.toString() + encodingVectorKey, font);

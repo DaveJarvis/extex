@@ -816,7 +816,7 @@ public class Dvi {
     private String read(int len) throws IOException {
 
         int c;
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         pointer += len;
         for (int i = 0; i < len; i++) {
             c = dvi.read();

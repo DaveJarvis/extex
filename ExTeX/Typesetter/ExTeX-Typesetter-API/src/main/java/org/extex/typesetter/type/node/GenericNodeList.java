@@ -98,6 +98,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(int index, Node node) {
 
         if (node != null) {
@@ -113,6 +114,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#add(org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node) {
 
         if (node != null) {
@@ -128,6 +130,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
      */
+    @Override
     public void addSkip(FixedGlue glue) {
 
         throw new UnsupportedOperationException(getClass().getName()
@@ -141,6 +144,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#clear()
      */
+    @Override
     public void clear() {
 
         list.clear();
@@ -183,6 +187,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#copy()
      */
+    @Override
     @SuppressWarnings("unchecked")
     public NodeList copy() {
 
@@ -222,6 +227,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
+    @Override
     public Node get(int index) {
 
         return list.get(index);
@@ -290,6 +296,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#getMove()
      */
+    @Override
     public Dimen getMove() {
 
         return move;
@@ -326,6 +333,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#getShift()
      */
+    @Override
     public Dimen getShift() {
 
         return shift;
@@ -382,6 +390,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @return <code>true</code>, if the <code>NodeList</code> is empty,
      *         otherwise <code>false</code>.
      */
+    @Override
     public boolean isEmpty() {
 
         return (list.size() == 0);
@@ -396,6 +405,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#iterator()
      */
+    @Override
     public Iterator<Node> iterator() {
 
         return list.iterator();
@@ -411,6 +421,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#remove(int)
      */
+    @Override
     public Node remove(int index) {
 
         return list.remove(index);
@@ -447,6 +458,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#setMove(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setMove(FixedDimen d) {
 
         move.set(d);
@@ -497,6 +509,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#setShift(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setShift(FixedDimen d) {
 
         shift.set(d);
@@ -566,6 +579,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * 
      * @return the size of the <code>NodeList</code>
      */
+    @Override
     public int size() {
 
         return list.size();
@@ -579,7 +593,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
         return sb.toString();
     }
@@ -587,11 +601,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.AbstractNode#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.node.AbstractNode#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append("(");
         sb.append(getHeight().toString());
@@ -631,9 +645,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      *      >e</span>X</logo> &ndash; The Program [182]"
      */
+    @Override
     public String toText() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toText(sb, "");
         return sb.toString();
     }
@@ -641,11 +656,11 @@ public class GenericNodeList extends AbstractNode implements NodeList {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(StringBuilder sb, String prefix) {
 
         String p = prefix + "  ";
 
@@ -669,6 +684,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

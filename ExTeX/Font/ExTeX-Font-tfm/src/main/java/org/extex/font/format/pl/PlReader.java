@@ -108,6 +108,7 @@ public class PlReader {
          * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
+        @Override
         public void execute(Reader reader) throws IOException {
 
             actual = new Chars();
@@ -132,6 +133,7 @@ public class PlReader {
          * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
+        @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -150,6 +152,7 @@ public class PlReader {
          * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
+        @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -171,6 +174,7 @@ public class PlReader {
          * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
+        @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -203,6 +207,7 @@ public class PlReader {
          * 
          * @see org.extex.font.format.pl.PlCommand#execute(java.io.Reader)
          */
+        @Override
         public void execute(Reader reader) throws IOException {
 
             param = readParameter(reader);
@@ -361,11 +366,11 @@ public class PlReader {
      */
     private String readCommand(Reader reader) throws IOException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
         boolean start = true;
         int c;
-        while ((c = readChar(reader)) != -1) {
+        while ((c = readChar(reader)) >= 0) {
             if (start && c == ' ') {
                 // ignore space before the command
                 continue;
@@ -425,7 +430,7 @@ public class PlReader {
      */
     private String readParameter(Reader reader) throws IOException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
         int level = 0;
         int c;

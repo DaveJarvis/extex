@@ -47,17 +47,18 @@ public abstract class DviCommand {
     private static final DviReadCommand SETCHAR = new DviReadCommand() {
 
         /**
-         * set_char_0: Typeset character number 0 from font <code>f</code>
-         * such that the reference point of the character is at
-         * <code>(h,v)</code>. Then increase <code>h</code> by the width of
-         * that character. Note that a character may have zero or negative
-         * width, so one cannot be sure that <code>h</code> will advance after
-         * this command; but <code>h</code> usually does increase.
+         * set_char_0: Typeset character number 0 from font <code>f</code> such
+         * that the reference point of the character is at <code>(h,v)</code>.
+         * Then increase <code>h</code> by the width of that character. Note
+         * that a character may have zero or negative width, so one cannot be
+         * sure that <code>h</code> will advance after this command; but
+         * <code>h</code> usually does increase.
          * 
          * 
-         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-         *      org.extex.util.file.random.RandomAccessR, int, int)
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+         *      int, int)
          */
+        @Override
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp)
                 throws IOException,
@@ -82,9 +83,10 @@ public abstract class DviCommand {
          * fnt_num_1 through fnt_num_63 (opcodes 172 to 234): Set
          * <code>f = 1</code>, ..., <code>f = 63</code>, respectively.
          * 
-         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-         *      org.extex.util.file.random.RandomAccessR, int, int)
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+         *      int, int)
          */
+        @Override
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp)
                 throws IOException,
@@ -107,9 +109,10 @@ public abstract class DviCommand {
          * 
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-         *      org.extex.util.file.random.RandomAccessR, int, int)
+         * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+         *      int, int)
          */
+        @Override
         public DviCommand read(final RandomAccessR rar, final int opcode,
                 final int sp) throws IOException, FontException {
 
@@ -125,11 +128,10 @@ public abstract class DviCommand {
             /**
              * set_char_0: Typeset character number 0 from font <code>f</code>
              * such that the reference point of the character is at
-             * <code>(h,v)</code>. Then increase <code>h</code> by the
-             * width of that character. Note that a character may have zero or
-             * negative width, so one cannot be sure that <code>h</code> will
-             * advance after this command; but <code>h</code> usually does
-             * increase.
+             * <code>(h,v)</code>. Then increase <code>h</code> by the width of
+             * that character. Note that a character may have zero or negative
+             * width, so one cannot be sure that <code>h</code> will advance
+             * after this command; but <code>h</code> usually does increase.
              */
             SETCHAR, /* 0 */
 
@@ -273,9 +275,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -287,20 +290,20 @@ public abstract class DviCommand {
 
             /**
              * set2 129, c[2]: Same as <code>set1</code>, except that
-             * <code>c</code> is two bytes long, so it is in the range 0 &lt;=
-             * c &lt; 65536. TeX82 never uses this command, which is intended
-             * for processors that deal with oriental languages; but a DVI
-             * processor should allow character codes greater than 255. The
-             * processor may then assume that these characters have the same
-             * width as the character whose respective codes are
-             * <code>c mod 256</code>.
+             * <code>c</code> is two bytes long, so it is in the range 0 &lt;= c
+             * &lt; 65536. TeX82 never uses this command, which is intended for
+             * processors that deal with oriental languages; but a DVI processor
+             * should allow character codes greater than 255. The processor may
+             * then assume that these characters have the same width as the
+             * character whose respective codes are <code>c mod 256</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -310,15 +313,16 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * set3 130, c[3]: Same as set1, except that <code>c</code> is
-             * three bytes long, so it can be as large as 2^24-1.
+             * set3 130, c[3]: Same as set1, except that <code>c</code> is three
+             * bytes long, so it can be as large as 2^24-1.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -335,9 +339,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -348,10 +353,10 @@ public abstract class DviCommand {
             },
             /**
              * set_rule 132, a[+4] b[+4]: Typeset a solid black rectangle of
-             * height <code>a</code> and width <code>b</code>, with its
-             * bottom left corner at <code>(h,v)</code>. Then set
-             * <code>h = h + b</code>. If either a &lt;= 0 or b &lt;= 0,
-             * nothing should be typeset. Note that if b &lt; 0, the value of
+             * height <code>a</code> and width <code>b</code>, with its bottom
+             * left corner at <code>(h,v)</code>. Then set
+             * <code>h = h + b</code>. If either a &lt;= 0 or b &lt;= 0, nothing
+             * should be typeset. Note that if b &lt; 0, the value of
              * <code>h</code> will decrease even though nothing else happens.
              * Programs that typeset from DVI files should be careful to make
              * the rules line up carefully with digitized characters, as
@@ -361,9 +366,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -373,19 +379,19 @@ public abstract class DviCommand {
                 }
             },
             /**
-             * put1 133, c[1]: Typeset character number <code>c</code> from
-             * font <code>f</code> such that the reference point of the
-             * character is at <code>(h,v)</code>. (The 'put' commands are
-             * exactly like the 'set' commands, except that they simply put out
-             * a character or a rule without moving the reference point
-             * afterwards.)
+             * put1 133, c[1]: Typeset character number <code>c</code> from font
+             * <code>f</code> such that the reference point of the character is
+             * at <code>(h,v)</code>. (The 'put' commands are exactly like the
+             * 'set' commands, except that they simply put out a character or a
+             * rule without moving the reference point afterwards.)
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -401,9 +407,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -419,9 +426,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -437,9 +445,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -450,15 +459,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * put_rule 137, a[+4] b[+4]: Same as <code>set_rule</code>,
-             * except that <code>h</code> is not changed.
+             * put_rule 137, a[+4] b[+4]: Same as <code>set_rule</code>, except
+             * that <code>h</code> is not changed.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -470,17 +480,18 @@ public abstract class DviCommand {
             },
 
             /**
-             * nop 138: No operation, do nothing. Any number of <code>nop</code>'s
-             * may occur between DVI commands, but a <code>nop</code> cannot
+             * nop 138: No operation, do nothing. Any number of <code>nop</code>
+             * 's may occur between DVI commands, but a <code>nop</code> cannot
              * be inserted between a command and its parameters or between two
              * parameters.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -492,22 +503,23 @@ public abstract class DviCommand {
 
             /**
              * bop 139, c_0[+4] c_1[+4] ... c_9[+4] p[+4]: Beginning of a page:
-             * Set <code>(h,v,w,x,y,z) = (0,0,0,0,0,0)</code> and set the
-             * stack empty. Set the current font <code>f</code> to an
-             * undefined value. The ten <code>c_i</code> parameters can be
-             * used to identify pages, if a user wants to print only part of a
-             * DVI file; TeX82 gives them the values of <code>count0</code>
-             * ... <code>count9</code> at the time <code>shipout</code> was
-             * invoked for this page. The parameter <code>p</code> points to
-             * the previous <code>bop</code> command in the file, where the
-             * first <code>bop</code> has <code>p=-1</code>.
+             * Set <code>(h,v,w,x,y,z) = (0,0,0,0,0,0)</code> and set the stack
+             * empty. Set the current font <code>f</code> to an undefined value.
+             * The ten <code>c_i</code> parameters can be used to identify
+             * pages, if a user wants to print only part of a DVI file; TeX82
+             * gives them the values of <code>count0</code> ...
+             * <code>count9</code> at the time <code>shipout</code> was invoked
+             * for this page. The parameter <code>p</code> points to the
+             * previous <code>bop</code> command in the file, where the first
+             * <code>bop</code> has <code>p=-1</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -529,9 +541,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -549,9 +562,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -571,9 +585,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -584,17 +599,18 @@ public abstract class DviCommand {
             },
 
             /**
-             * right1 143, b[+1]: Set <code>h = h + b</code>, i.e., move
-             * right <code>b</code> units. The parameter is a signed number in
-             * two's complement notation, -128 &lt;= b &lt; 128; if b &lt; 0,
-             * the reference point actually moves left.
+             * right1 143, b[+1]: Set <code>h = h + b</code>, i.e., move right
+             * <code>b</code> units. The parameter is a signed number in two's
+             * complement notation, -128 &lt;= b &lt; 128; if b &lt; 0, the
+             * reference point actually moves left.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -606,15 +622,16 @@ public abstract class DviCommand {
 
             /**
              * right2: 144, b[+2]: Same as <code>right1</code>, except that
-             * <code>b</code> is a two-byte quantity in the range -32768 &lt;=
-             * b &lt; 32768.
+             * <code>b</code> is a two-byte quantity in the range -32768 &lt;= b
+             * &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -626,15 +643,16 @@ public abstract class DviCommand {
 
             /**
              * right3 145, b[+3]: Same as <code>right1</code>, except that
-             * <code>b</code> is a three-byte quantity in the range -2^23
-             * &lt;= b &lt; 2^23.
+             * <code>b</code> is a three-byte quantity in the range -2^23 &lt;=
+             * b &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -646,15 +664,16 @@ public abstract class DviCommand {
 
             /**
              * right4 146, b[+4]: Same as <code>right1</code>, except that
-             * <code>b</code> is a four-byte quantity in the range -2^31 &lt;=
-             * b &lt; 2^31.
+             * <code>b</code> is a four-byte quantity in the range -2^31 &lt;= b
+             * &lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -666,17 +685,18 @@ public abstract class DviCommand {
 
             /**
              * w0 147: Set <code>h = h + w</code>; i.e., move right
-             * <code>w</code> units. With luck, this parameterless command
-             * will usually suffice, because the same kind of motion will occur
+             * <code>w</code> units. With luck, this parameterless command will
+             * usually suffice, because the same kind of motion will occur
              * several times in succession; the following commands explain how
              * <code>w</code> gets particular values.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -687,18 +707,19 @@ public abstract class DviCommand {
             },
 
             /**
-             * w1 148, b[+1]: Set <code>w = b</code> and
-             * <code>h = h + b</code>. The value of <code>b</code> is a
-             * signed quantity in two's complement notation, -128 &lt;= b /lt;
-             * 128. This command changes the current <code>w</code> spacing
-             * and moves right by <code>b</code>.
+             * w1 148, b[+1]: Set <code>w = b</code> and <code>h = h + b</code>.
+             * The value of <code>b</code> is a signed quantity in two's
+             * complement notation, -128 &lt;= b /lt; 128. This command changes
+             * the current <code>w</code> spacing and moves right by
+             * <code>b</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -709,15 +730,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * w2 149, b[+2]: Same as <code>w1</code>, but <code>b</code>
-             * is a two-byte-long parameter, -32768 &lt;= b &lt; 32768.
+             * w2 149, b[+2]: Same as <code>w1</code>, but <code>b</code> is a
+             * two-byte-long parameter, -32768 &lt;= b &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -728,15 +750,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * w3 150, b[+3]: Same as <code>w1</code>, but <code>b</code>
-             * is a three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
+             * w3 150, b[+3]: Same as <code>w1</code>, but <code>b</code> is a
+             * three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -747,15 +770,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * w4 151, b[+4]: Same as <code>w1</code>, but <code>b</code>
-             * is a four-byte-long parameter, -2^31 &lt;= b &lt; 2^31.
+             * w4 151, b[+4]: Same as <code>w1</code>, but <code>b</code> is a
+             * four-byte-long parameter, -2^31 &lt;= b &lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -767,16 +791,17 @@ public abstract class DviCommand {
 
             /**
              * x0 152: Set <code>h = h + x</code>; i.e., move right
-             * <code>x</code> units. The <code>x</code> commands are like
-             * the <code>w</code> commands except that they involve
-             * <code>x</code> instead of <code>w</code>.
+             * <code>x</code> units. The <code>x</code> commands are like the
+             * <code>w</code> commands except that they involve <code>x</code>
+             * instead of <code>w</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -787,18 +812,19 @@ public abstract class DviCommand {
             },
 
             /**
-             * x1 153, b[+1]: Set <code>x = b</code> and
-             * <code>h =  h + b</code>. The value of <code>b</code> is a
-             * signed quantity in two's complement notation, -128 &lt;= b &lt;
-             * 128. This command changes the current <code>x</code> spacing
-             * and moves right by <code>b</code>.
+             * x1 153, b[+1]: Set <code>x = b</code> and <code>h =  h + b</code>
+             * . The value of <code>b</code> is a signed quantity in two's
+             * complement notation, -128 &lt;= b &lt; 128. This command changes
+             * the current <code>x</code> spacing and moves right by
+             * <code>b</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -809,15 +835,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * x2 154, b[+2]: Same as <code>x1</code>, but <code>b</code>
-             * is a two-byte-long parameter, -32768 &lt;= b &lt; 32768.
+             * x2 154, b[+2]: Same as <code>x1</code>, but <code>b</code> is a
+             * two-byte-long parameter, -32768 &lt;= b &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -828,15 +855,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * x3 155, b[+3]: Same as <code>x1</code>, but <code>b</code>
-             * is a three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
+             * x3 155, b[+3]: Same as <code>x1</code>, but <code>b</code> is a
+             * three-byte-long parameter, -2^23 &lt;= b &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -847,15 +875,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * x4 156, b[+4]: Same as <code>x1</code>, but <code>b</code>
-             * is a four-byte-long parameter, -2^31 &lt;= b /lt; 2^31.
+             * x4 156, b[+4]: Same as <code>x1</code>, but <code>b</code> is a
+             * four-byte-long parameter, -2^31 &lt;= b /lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -874,9 +903,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -888,17 +918,18 @@ public abstract class DviCommand {
 
             /**
              * down2 158, a[+2]: Same as <code>down1</code>, except that
-             * <code>a</code> is a two-byte quantity in the range -32768 &lt;=
-             * a &lt; 32768.
+             * <code>a</code> is a two-byte quantity in the range -32768 &lt;= a
+             * &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -910,15 +941,16 @@ public abstract class DviCommand {
 
             /**
              * down3 159, a[+3]: Same as <code>down1</code>, except that
-             * <code>a</code> is a three-byte quantity in the range -2^23
-             * &lt;= a &lt; 2^23.
+             * <code>a</code> is a three-byte quantity in the range -2^23 &lt;=
+             * a &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -930,15 +962,16 @@ public abstract class DviCommand {
 
             /**
              * down4 160, a[+4]: Same as <code>down1</code>, except that
-             * <code>a</code> is a four-byte quantity in the range -2^31 &lt;=
-             * a &lt; 2^31.
+             * <code>a</code> is a four-byte quantity in the range -2^31 &lt;= a
+             * &lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -950,17 +983,18 @@ public abstract class DviCommand {
 
             /**
              * y0 161: Set <code>v = v + y</code>; i.e., move down
-             * <code>y</code> units. With luck, this parameterless command
-             * will usually suffice, because the same kind of motion will occur
+             * <code>y</code> units. With luck, this parameterless command will
+             * usually suffice, because the same kind of motion will occur
              * several times in succession; the following commands explain how
              * <code>y</code> gets particular values.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -971,18 +1005,19 @@ public abstract class DviCommand {
             },
 
             /**
-             * y1 162, a[+1]: Set <code>y = a</code> and
-             * <code>v = v + a</code>. The value of <code>a</code> is a
-             * signed quantity in two's complement notation, -128 &lt;= a &lt;
-             * 128. This command changes the current <code>y</code> spacing
-             * and moves down by <code>a</code>.
+             * y1 162, a[+1]: Set <code>y = a</code> and <code>v = v + a</code>.
+             * The value of <code>a</code> is a signed quantity in two's
+             * complement notation, -128 &lt;= a &lt; 128. This command changes
+             * the current <code>y</code> spacing and moves down by
+             * <code>a</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -993,15 +1028,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * y2 163, a[+2]: Same as <code>y1</code>, but <code>a</code>
-             * is a two-byte-long parameter, -32768 &lt;= a &lt; 32768.
+             * y2 163, a[+2]: Same as <code>y1</code>, but <code>a</code> is a
+             * two-byte-long parameter, -32768 &lt;= a &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1012,15 +1048,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * y3 164, a[+3]: Same as <code>y1</code>, but <code>a</code>
-             * is a three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
+             * y3 164, a[+3]: Same as <code>y1</code>, but <code>a</code> is a
+             * three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1031,15 +1068,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * y4 165, a[+4]: Same as <code>y1</code>, but <code>a</code>
-             * is a four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
+             * y4 165, a[+4]: Same as <code>y1</code>, but <code>a</code> is a
+             * four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1051,16 +1089,17 @@ public abstract class DviCommand {
 
             /**
              * z0 166: Set <code>v = v + z</code>; i.e., move down
-             * <code>z</code> units. The <code>z</code> commands are like
-             * the <code>y</code> commands except that they involve
-             * <code>z</code> instead of <code>y</code>.
+             * <code>z</code> units. The <code>z</code> commands are like the
+             * <code>y</code> commands except that they involve <code>z</code>
+             * instead of <code>y</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1071,18 +1110,19 @@ public abstract class DviCommand {
             },
 
             /**
-             * z1 167, a[+1]: Set <code>z = a</code> and
-             * <code>v = v + a</code>. The value of <code>a</code> is a
-             * signed quantity in two's complement notation, -128 &lt;= a &lt;
-             * 128. This command changes the current <code>z</code> spacing
-             * and moves down by <code>a</code>.
+             * z1 167, a[+1]: Set <code>z = a</code> and <code>v = v + a</code>.
+             * The value of <code>a</code> is a signed quantity in two's
+             * complement notation, -128 &lt;= a &lt; 128. This command changes
+             * the current <code>z</code> spacing and moves down by
+             * <code>a</code>.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1093,15 +1133,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * z2 168, a[+2]: Same as <code>z1</code>, but <code>a</code>
-             * is a two-byte-long parameter, -32768 &lt;= a &lt; 32768.
+             * z2 168, a[+2]: Same as <code>z1</code>, but <code>a</code> is a
+             * two-byte-long parameter, -32768 &lt;= a &lt; 32768.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1112,15 +1153,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * z3 169, a[+3]: Same as <code>z1</code>, but <code>a</code>
-             * is a three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
+             * z3 169, a[+3]: Same as <code>z1</code>, but <code>a</code> is a
+             * three-byte-long parameter, -2^23 &lt;= a &lt; 2^23.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1131,15 +1173,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * z4 170, a[+4]: Same as <code>z1</code>, but <code>a</code>
-             * is a four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
+             * z4 170, a[+4]: Same as <code>z1</code>, but <code>a</code> is a
+             * four-byte-long parameter, -2^31 &lt;= a &lt; 2^31.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1156,9 +1199,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1190,15 +1234,16 @@ public abstract class DviCommand {
             FNTNUM, /* 61 */FNTNUM, /* 62 */FNTNUM, /* 63 */
 
             /**
-             * fnt1 235, k[1]: Set <code>f = k</code>. TeX82 uses this
-             * command for font numbers in the range 64 &lt;= k &lt; 256.
+             * fnt1 235, k[1]: Set <code>f = k</code>. TeX82 uses this command
+             * for font numbers in the range 64 &lt;= k &lt; 256.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1210,8 +1255,8 @@ public abstract class DviCommand {
 
             /**
              * fnt2 236, k[2]: Same as <code>fnt1</code>, except that
-             * <code>k</code> is two bytes long, so it is in the range 0 &lt;=
-             * k &lt; 65536. TeX82 never generates this command, but large font
+             * <code>k</code> is two bytes long, so it is in the range 0 &lt;= k
+             * &lt; 65536. TeX82 never generates this command, but large font
              * numbers may prove useful for specifications of color or texture,
              * or they may be used for special fonts that have fixed numbers in
              * some external coding scheme.
@@ -1219,9 +1264,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1239,9 +1285,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1259,9 +1306,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1273,20 +1321,20 @@ public abstract class DviCommand {
 
             /**
              * xxx1 239, k[1] x[k]: This command is undefined in general; it
-             * functions as a <code>(k+2)</code>-byte <code>nop</code>
-             * unless special DVI-reading programs are being used. TeX82
-             * generates <code>xxx1</code> when a short enough
-             * <code>special</code> appears, setting <code>k</code> to the
-             * number of bytes being sent. It is recommended that $x$ be a
-             * string having the form of a keyword followed by possible
-             * parameters relevant to that keyword.
+             * functions as a <code>(k+2)</code>-byte <code>nop</code> unless
+             * special DVI-reading programs are being used. TeX82 generates
+             * <code>xxx1</code> when a short enough <code>special</code>
+             * appears, setting <code>k</code> to the number of bytes being
+             * sent. It is recommended that $x$ be a string having the form of a
+             * keyword followed by possible parameters relevant to that keyword.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1303,15 +1351,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx2 240, k[2] x[k]: Like <code>xxx1</code>, but 0 &lt;= k
-             * &lt; 65536.
+             * xxx2 240, k[2] x[k]: Like <code>xxx1</code>, but 0 &lt;= k &lt;
+             * 65536.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1328,15 +1377,16 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx3 241, k[3] x[k]: Like <code>xxx1</code>, but 0 &lt;= k
-             * &lt; 2^24.
+             * xxx3 241, k[3] x[k]: Like <code>xxx1</code>, but 0 &lt;= k &lt;
+             * 2^24.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1353,16 +1403,17 @@ public abstract class DviCommand {
             },
 
             /**
-             * xxx4 242, k[4] x[k]: Like <code>xxx1</code>, but
-             * <code>k</code> can be ridiculously large. TeX82 uses
-             * <code>xxx4</code> when <code>xxx1</code> would be incorrect.
+             * xxx4 242, k[4] x[k]: Like <code>xxx1</code>, but <code>k</code>
+             * can be ridiculously large. TeX82 uses <code>xxx4</code> when
+             * <code>xxx1</code> would be incorrect.
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1380,20 +1431,20 @@ public abstract class DviCommand {
 
             /**
              * fnt_def1 243, k[1] c[4] s[4] d[4] a[1] l[1] n[a+l]: Define font
-             * <code>k</code>, where 0 &lt;= k &lt; 256; font definitions
-             * will be explained shortly.
+             * <code>k</code>, where 0 &lt;= k &lt; 256; font definitions will
+             * be explained shortly.
              * <p>
              * The four-byte value <code>c</code> is the check sum.
              * 
-             * Parameter <code>s</code> contains a fixed-point scale factor
-             * that is applied to the character widths in font <code>k</code>;
-             * font dimensions in TFM files and other font files are relative to
-             * this quantity, which is always positive and less than 227. It is
-             * given in the same units as the other dimensions of the DVI file.
+             * Parameter <code>s</code> contains a fixed-point scale factor that
+             * is applied to the character widths in font <code>k</code>; font
+             * dimensions in TFM files and other font files are relative to this
+             * quantity, which is always positive and less than 227. It is given
+             * in the same units as the other dimensions of the DVI file.
              * 
-             * Parameter <code>d</code> is similar to <code>s</code>; it is
-             * the design size, and (like <code>s</code>) it is given in DVI
-             * units. Thus, font <code>k</code> is to be used at
+             * Parameter <code>d</code> is similar to <code>s</code>; it is the
+             * design size, and (like <code>s</code>) it is given in DVI units.
+             * Thus, font <code>k</code> is to be used at
              * <code>mag * s / (1000 * d)</code> times its normal size.
              * 
              * The remaining part of a font definition gives the external name
@@ -1408,9 +1459,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1422,8 +1474,8 @@ public abstract class DviCommand {
                     int d = rar.readInt();
                     int a = rar.readByteAsInt();
                     int l = rar.readByteAsInt();
-                    StringBuffer bufa = new StringBuffer();
-                    StringBuffer bufl = new StringBuffer();
+                    StringBuilder bufa = new StringBuilder();
+                    StringBuilder bufl = new StringBuilder();
                     for (int i = 0; i < a; i++) {
                         bufa.append((char) rar.readByteAsInt());
                     }
@@ -1431,8 +1483,8 @@ public abstract class DviCommand {
                         bufl.append((char) rar.readByteAsInt());
                     }
 
-                    return new DviFntDef(opcode, sp, k, c, s, d, bufa
-                        .toString(), bufl.toString());
+                    return new DviFntDef(opcode, sp, k, c, s, d,
+                        bufa.toString(), bufl.toString());
                 }
             },
 
@@ -1443,9 +1495,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1457,8 +1510,8 @@ public abstract class DviCommand {
                     int d = rar.readInt();
                     int a = rar.readByteAsInt();
                     int l = rar.readByteAsInt();
-                    StringBuffer bufa = new StringBuffer();
-                    StringBuffer bufl = new StringBuffer();
+                    StringBuilder bufa = new StringBuilder();
+                    StringBuilder bufl = new StringBuilder();
                     for (int i = 0; i < a; i++) {
                         bufa.append((char) rar.readByteAsInt());
                     }
@@ -1466,8 +1519,8 @@ public abstract class DviCommand {
                         bufl.append((char) rar.readByteAsInt());
                     }
 
-                    return new DviFntDef(opcode, sp, k, c, s, d, bufa
-                        .toString(), bufl.toString());
+                    return new DviFntDef(opcode, sp, k, c, s, d,
+                        bufa.toString(), bufl.toString());
                 }
             },
 
@@ -1478,9 +1531,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1492,8 +1546,8 @@ public abstract class DviCommand {
                     int d = rar.readInt();
                     int a = rar.readByteAsInt();
                     int l = rar.readByteAsInt();
-                    StringBuffer bufa = new StringBuffer();
-                    StringBuffer bufl = new StringBuffer();
+                    StringBuilder bufa = new StringBuilder();
+                    StringBuilder bufl = new StringBuilder();
                     for (int i = 0; i < a; i++) {
                         bufa.append((char) rar.readByteAsInt());
                     }
@@ -1501,8 +1555,8 @@ public abstract class DviCommand {
                         bufl.append((char) rar.readByteAsInt());
                     }
 
-                    return new DviFntDef(opcode, sp, k, c, s, d, bufa
-                        .toString(), bufl.toString());
+                    return new DviFntDef(opcode, sp, k, c, s, d,
+                        bufa.toString(), bufl.toString());
                 }
             },
 
@@ -1513,9 +1567,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1527,8 +1582,8 @@ public abstract class DviCommand {
                     int d = rar.readInt();
                     int a = rar.readByteAsInt();
                     int l = rar.readByteAsInt();
-                    StringBuffer bufa = new StringBuffer();
-                    StringBuffer bufl = new StringBuffer();
+                    StringBuilder bufa = new StringBuilder();
+                    StringBuilder bufl = new StringBuilder();
                     for (int i = 0; i < a; i++) {
                         bufa.append((char) rar.readByteAsInt());
                     }
@@ -1536,8 +1591,8 @@ public abstract class DviCommand {
                         bufl.append((char) rar.readByteAsInt());
                     }
 
-                    return new DviFntDef(opcode, sp, k, c, s, d, bufa
-                        .toString(), bufl.toString());
+                    return new DviFntDef(opcode, sp, k, c, s, d,
+                        bufa.toString(), bufl.toString());
                 }
             },
 
@@ -1546,35 +1601,36 @@ public abstract class DviCommand {
              * preamble; this must come at the very beginning of the file.
              * <p>
              * The <code>i</code> byte identifies DVI format. The next two
-             * parameters, <code>num</code> and <code>den</code>, are
-             * positive integers that define the units of measurement; they are
-             * the numerator and denominator of a fraction by which all
-             * dimensions in the DVI file could be multiplied in order to get
-             * lengths in units of 10^-7 meters. (For example, there are exactly
-             * 7227 TeX points in 254 centimeters, and TeX82 works with scaled
-             * points where there are 2^16 sp in a point, so TeX82 sets
-             * num=25400000 and den= 7227 * 2^16 =473628672.) The
-             * <code>mag</code> parameter is what TeX82 calls <code>mag</code>,
-             * i.e., 1000 times the desired magnification. The actual fraction
-             * by which dimensions are multiplied is therefore mn/1000d. Note
-             * that if a TeX source document does not call for any
-             * <code>true</code> dimensions, and if you change it only by
-             * specifying a different <code>mag</code> setting, the DVI file
-             * that TeX creates will be completely unchanged except for the
-             * value of mag in the preamble and postamble. (Fancy DVI-reading
-             * programs allow users to override the <code>mag</code> setting
-             * when a DVI file is being printed.) Finally, <code>k</code> and
-             * <code>x</code> allow the DVI writer to include a comment, which
-             * is not interpreted further. The length of comment <code>x</code>
-             * is <code>k</code>, where 0 &lt;= k &lt; 256.
+             * parameters, <code>num</code> and <code>den</code>, are positive
+             * integers that define the units of measurement; they are the
+             * numerator and denominator of a fraction by which all dimensions
+             * in the DVI file could be multiplied in order to get lengths in
+             * units of 10^-7 meters. (For example, there are exactly 7227 TeX
+             * points in 254 centimeters, and TeX82 works with scaled points
+             * where there are 2^16 sp in a point, so TeX82 sets num=25400000
+             * and den= 7227 * 2^16 =473628672.) The <code>mag</code> parameter
+             * is what TeX82 calls <code>mag</code>, i.e., 1000 times the
+             * desired magnification. The actual fraction by which dimensions
+             * are multiplied is therefore mn/1000d. Note that if a TeX source
+             * document does not call for any <code>true</code> dimensions, and
+             * if you change it only by specifying a different <code>mag</code>
+             * setting, the DVI file that TeX creates will be completely
+             * unchanged except for the value of mag in the preamble and
+             * postamble. (Fancy DVI-reading programs allow users to override
+             * the <code>mag</code> setting when a DVI file is being printed.)
+             * Finally, <code>k</code> and <code>x</code> allow the DVI writer
+             * to include a comment, which is not interpreted further. The
+             * length of comment <code>x</code> is <code>k</code>, where 0 &lt;=
+             * k &lt; 256.
              * </p>
              */
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1585,12 +1641,12 @@ public abstract class DviCommand {
                     int den = rar.readInt();
                     int mag = rar.readInt();
                     int k = rar.readByteAsInt();
-                    StringBuffer buf = new StringBuffer();
+                    StringBuilder buf = new StringBuilder();
                     for (int x = 0; x < k; x++) {
                         buf.append((char) rar.readByteAsInt());
                     }
-                    return new DviPre(opcode, sp, i, num, den, mag, buf
-                        .toString());
+                    return new DviPre(opcode, sp, i, num, den, mag,
+                        buf.toString());
                 }
             },
 
@@ -1602,10 +1658,10 @@ public abstract class DviCommand {
              * </pre>
              * 
              * <p>
-             * Here <code>p</code> is a pointer to the final <code>bop</code>
-             * in the file. The next three parameters, <code>num</code>,
-             * <code>den</code>, and <code>mag</code>, are duplicates of
-             * the quantities that appeared in the preamble. Parameters
+             * Here <code>p</code> is a pointer to the final <code>bop</code> in
+             * the file. The next three parameters, <code>num</code>,
+             * <code>den</code>, and <code>mag</code>, are duplicates of the
+             * quantities that appeared in the preamble. Parameters
              * <code>l</code> and <code>u</code> give respectively the
              * height-plus-depth of the tallest page and the width of the widest
              * page, in the same units as other dimensions of the file. These
@@ -1617,9 +1673,9 @@ public abstract class DviCommand {
              * is unwise to design DVI-to-printer software that attempts
              * cleverly to center the output; a fixed position of the upper left
              * corner is easiest for users to understand and to work with.
-             * Therefore <code>l</code> and <code>u</code> are often
-             * ignored. Parameter <code>s</code> is the maximum stack depth
-             * (i.e., the largest excess of <code>push</code> commands over
+             * Therefore <code>l</code> and <code>u</code> are often ignored.
+             * Parameter <code>s</code> is the maximum stack depth (i.e., the
+             * largest excess of <code>push</code> commands over
              * <code>pop</code> commands) needed to process this file. Then
              * comes <code>t</code>, the total number of pages (<code>bop</code>
              * commands) present.
@@ -1636,9 +1692,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,
@@ -1664,8 +1721,8 @@ public abstract class DviCommand {
              * <code>post_post</code> byte that signifies the end of the font
              * definitions, contains <code>q</code>, a pointer to the
              * <code>post</code> command that started the postamble. An
-             * identification byte, <code>i</code>, comes next; this
-             * currently equals 2, as in the preamble.
+             * identification byte, <code>i</code>, comes next; this currently
+             * equals 2, as in the preamble.
              * </p>
              * <p>
              * The <code>i</code> byte is followed by four or more bytes that
@@ -1681,9 +1738,10 @@ public abstract class DviCommand {
             new DviReadCommand() {
 
                 /**
-                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(
-                 *      org.extex.util.file.random.RandomAccessR, int, int)
+                 * @see org.extex.font.format.dvi.command.DviReadCommand#read(org.extex.util.file.random.RandomAccessR,
+                 *      int, int)
                  */
+                @Override
                 public DviCommand read(final RandomAccessR rar,
                         final int opcode, final int sp)
                         throws IOException,

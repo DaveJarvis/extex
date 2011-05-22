@@ -48,8 +48,8 @@ import org.extex.typesetter.type.node.VerticalListNode;
  * will never arrive at the DocumentWriter.
  * 
  * 
- * <doc name="scriptspace" type="register">
- * <h3>The Dimen Parameter <tt>\scriptspace</tt></h3>
+ * <doc name="scriptspace" type="register"> <h3>The Dimen Parameter
+ * <tt>\scriptspace</tt></h3>
  * <p>
  * The dimen parameter <tt>\scriptspace</tt> contains the amount of spacing
  * added to the width of subscripts.
@@ -101,7 +101,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @see "TTP [692]"
      */
-    protected static void toStringSubsidiaray(StringBuffer sb, Noad noad,
+    protected static void toStringSubsidiaray(StringBuilder sb, Noad noad,
             int depth, String prefix) {
 
         if (noad != null) {
@@ -148,6 +148,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @return the spacingClass
      */
+    @Override
     public MathSpacing getSpacingClass() {
 
         return this.spacingClass;
@@ -158,6 +159,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @return the subscript.
      */
+    @Override
     public Noad getSubscript() {
 
         return this.subscript;
@@ -168,6 +170,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @return the superscript.
      */
+    @Override
     public Noad getSuperscript() {
 
         return this.superscript;
@@ -335,6 +338,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @param spacingClass the spacingClass to set
      */
+    @Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -345,6 +349,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @param subscript the subscript to set.
      */
+    @Override
     public void setSubscript(Noad subscript) {
 
         this.subscript = subscript;
@@ -355,6 +360,7 @@ public abstract class AbstractNoad implements Noad {
      * 
      * @param superscript the superscript to set.
      */
+    @Override
     public void setSuperscript(Noad superscript) {
 
         this.superscript = superscript;
@@ -366,26 +372,26 @@ public abstract class AbstractNoad implements Noad {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, Integer.MAX_VALUE);
         return sb.toString();
     }
 
     /**
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         toString(sb, Integer.MAX_VALUE);
     }
 
     /**
      * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
-    public void toString(StringBuffer sb, int depth) {
+    @Override
+    public void toString(StringBuilder sb, int depth) {
 
         if (depth < 0) {
             sb.append(" {}");
@@ -403,7 +409,7 @@ public abstract class AbstractNoad implements Noad {
      * @param sb the target string buffer
      * @param depth the recursion depth
      */
-    protected void toStringAdd(StringBuffer sb, int depth) {
+    protected void toStringAdd(StringBuilder sb, int depth) {
 
         // default is to do nothing
     }

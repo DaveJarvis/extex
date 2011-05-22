@@ -19,7 +19,6 @@
 
 package org.extex.engine.backend;
 
-import java.util.Iterator;
 import java.util.Properties;
 
 import org.extex.backend.BackendDriver;
@@ -142,10 +141,7 @@ public class BackendFactory extends AbstractFactory<BackendDriver> {
         }
         backend.setParameter("Creator", creator);
 
-        Iterator<Configuration> iterator =
-                getConfiguration().iterator("parameter");
-        while (iterator.hasNext()) {
-            Configuration p = iterator.next();
+        for (Configuration p : getConfiguration()) {
             String name = p.getAttribute("name");
             String s = p.getAttribute("value");
             if (s != null) {

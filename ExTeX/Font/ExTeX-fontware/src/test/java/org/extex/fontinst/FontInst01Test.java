@@ -98,7 +98,7 @@ public class FontInst01Test extends ExTeXLauncher {
         File enc = new File("t1.enc");
         FileInputStream stream = new FileInputStream(enc);
         assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int c = stream.read(); c >= 0; c = stream.read()) {
             sb.append((char) c);
         }

@@ -190,7 +190,7 @@ public class XmlHandler extends DefaultHandler {
      */
     public String getFullName() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
         for (int i = 0, n = listElement.size(); i < n; i++) {
             buf.append("/");
@@ -231,8 +231,7 @@ public class XmlHandler extends DefaultHandler {
      * Check, if the parser is in the element.
      * 
      * @param name The name of the element.
-     * @return Returns <code>true</code>, if the parser parse the named
-     *         element.
+     * @return Returns <code>true</code>, if the parser parse the named element.
      */
     public boolean isInElement(String name) {
 
@@ -318,8 +317,8 @@ public class XmlHandler extends DefaultHandler {
 
         if (attributes != null) {
             for (int i = 0, cnt = attributes.getLength(); i < cnt; i++) {
-                writer.writeAttribute(attributes.getQName(i), attributes
-                    .getValue(i));
+                writer.writeAttribute(attributes.getQName(i),
+                    attributes.getValue(i));
             }
         }
 

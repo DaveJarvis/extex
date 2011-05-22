@@ -121,11 +121,11 @@ public class MarkNode extends AbstractNode implements Node {
      * @see "<logo>T<span style=
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      *      >e</span>X</logo> &ndash; The Program [196]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", mark.toString()));
     }
@@ -133,11 +133,11 @@ public class MarkNode extends AbstractNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(StringBuilder sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", mark.toString()));
     }
@@ -148,6 +148,7 @@ public class MarkNode extends AbstractNode implements Node {
      * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

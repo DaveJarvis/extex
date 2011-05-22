@@ -51,6 +51,36 @@ public class T2Double extends T2Number {
     static final int ID = 30;
 
     /**
+     * end marker.
+     */
+    private static final int END = 0xf;
+
+    /**
+     * nibble n1.
+     */
+    private static final int NIBBLE1 = 0xf0;
+
+    /**
+     * shift 4
+     */
+    private static final int SHIFT4 = 4;
+
+    /**
+     * max size
+     */
+    private static final int MAXSIZE = 100;
+
+    /**
+     * the bytes as short-array
+     */
+    private short[] bytes;
+
+    /**
+     * the value
+     */
+    private double value;
+
+    /**
      * Create a new object.
      * 
      * @param rar the input
@@ -60,7 +90,7 @@ public class T2Double extends T2Number {
     T2Double(RandomAccessR rar, int b0) throws IOException {
 
         byte[] data = readNibble(rar);
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         int i = 0;
         while (data[i] != END) {
             if (data[i] >= 0 && data[i] <= 9) {
@@ -98,24 +128,48 @@ public class T2Double extends T2Number {
     }
 
     /**
-     * end marker.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
      */
-    private static final int END = 0xf;
+    @Override
+    public short[] getBytes() {
+
+        return bytes;
+    }
 
     /**
-     * nibble n1.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
      */
-    private static final int NIBBLE1 = 0xf0;
+    @Override
+    public double getDouble() {
+
+        return value;
+    }
 
     /**
-     * shift 4
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
      */
-    private static final int SHIFT4 = 4;
+    @Override
+    public int getInteger() {
+
+        return (int) value;
+    }
 
     /**
-     * max size
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isDouble()
      */
-    private static final int MAXSIZE = 100;
+    @Override
+    public boolean isDouble() {
+
+        return true;
+    }
 
     /**
      * Read all nibbles until 0xf.
@@ -147,60 +201,6 @@ public class T2Double extends T2Number {
             bytes[c + 1] = sdata[c];
         }
         return data;
-    }
-
-    /**
-     * the bytes as short-array
-     */
-    private short[] bytes;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#getBytes()
-     */
-    @Override
-    public short[] getBytes() {
-
-        return bytes;
-    }
-
-    /**
-     * the value
-     */
-    private double value;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2CharString#isDouble()
-     */
-    @Override
-    public boolean isDouble() {
-
-        return true;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getDouble()
-     */
-    @Override
-    public double getDouble() {
-
-        return value;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Number#getInteger()
-     */
-    @Override
-    public int getInteger() {
-
-        return (int) value;
     }
 
     /**

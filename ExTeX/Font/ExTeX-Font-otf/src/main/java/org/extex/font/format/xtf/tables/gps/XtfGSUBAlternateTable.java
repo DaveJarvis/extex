@@ -194,13 +194,12 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
 
             for (int i = 0; glyphs != null && i < glyphs.length; i++) {
                 tmp[i][0] = getXtfGlyph().getGlyphName(glyphs[i]);
-                StringBuffer buf = new StringBuffer();
-
                 int[] aGlyphs = alternateSet[i].getGlyphs();
+                StringBuilder buf = new StringBuilder();
                 for (int k = 0; k < aGlyphs.length; k++) {
                     buf.append(getXtfGlyph().getGlyphName(aGlyphs[k]));
                     if (k < aGlyphs.length - 1) {
-                        buf.append(",");
+                        buf.append(',');
                     }
                 }
                 tmp[i][1] = buf.toString();
@@ -214,6 +213,7 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("alternatetable");
@@ -226,8 +226,8 @@ public abstract class XtfGSUBAlternateTable extends XtfLookupTable {
                 writer.writeStartElement("alternate");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("in", glyphs[i]);
-                writer.writeAttribute("inName", getXtfGlyph().getGlyphName(
-                    glyphs[i]));
+                writer.writeAttribute("inName",
+                    getXtfGlyph().getGlyphName(glyphs[i]));
 
                 int[] aGlyphs = alternateSet[i].getGlyphs();
                 for (int k = 0; k < aGlyphs.length; k++) {

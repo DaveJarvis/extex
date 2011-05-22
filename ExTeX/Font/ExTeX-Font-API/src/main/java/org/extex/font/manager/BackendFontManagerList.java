@@ -137,9 +137,9 @@ public class BackendFontManagerList implements BackendFontManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFontManager#iterate()
+     * @see org.extex.font.BackendFontManager#iterator()
      */
-    public Iterator<ManagerInfo> iterate() {
+    public Iterator<ManagerInfo> iterator() {
 
         return new Iterator<ManagerInfo>() {
 
@@ -174,7 +174,7 @@ public class BackendFontManagerList implements BackendFontManager {
                 }
 
                 while (++index < managers.size()) {
-                    iterator = managers.get(index).iterate();
+                    iterator = managers.get(index).iterator();
                     if (iterator.hasNext()) {
                         return true;
                     }
@@ -247,7 +247,7 @@ public class BackendFontManagerList implements BackendFontManager {
                 }
 
                 while (++index < managers.size()) {
-                    iterator = managers.get(index).iterate();
+                    iterator = managers.get(index).iterator();
                     if (iterator.hasNext()) {
                         return true;
                     }

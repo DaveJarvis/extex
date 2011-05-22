@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,7 +32,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -242,7 +241,7 @@ public class Afm2Enc extends AbstractFontUtil {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             // \DeclareTextGlyphX{fxl}{U}{fxle0}{AEacute}{0}
             buf.append("\\DeclareTextGlyphX{");
             buf.append(font);
@@ -437,11 +436,8 @@ public class Afm2Enc extends AbstractFontUtil {
                 new BufferedWriter(new FileWriter(getOutdir() + File.separator
                         + encname + ".inc"));
 
-        Iterator<String> it = glyphmap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
-            EncGlpyh eg = glyphmap.get(key);
-            out.write(eg.toString());
+        for (String key : glyphmap.keySet()) {
+            out.write(glyphmap.get(key).toString());
             out.newLine();
         }
         out.close();
@@ -510,8 +506,8 @@ public class Afm2Enc extends AbstractFontUtil {
                 readenc.add(name);
 
                 EncGlpyh eg =
-                        new EncGlpyh(encv.getFont(), encv.getFamily(), encv
-                            .getEncoding(), name, k);
+                        new EncGlpyh(encv.getFont(), encv.getFamily(),
+                            encv.getEncoding(), name, k);
 
                 glyphmap.put(eg.getGlyphname(), eg);
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -22,7 +22,6 @@ package org.extex.font.format.xtf.tables.gps;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -57,7 +56,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Array of ScriptRecords<br>
  * -listed alphabetically by ScriptTag</td>
  * </tr>
- * </table> <br/>
+ * </table>
+ * <br/>
  * <p>
  * ScriptRecord
  * </p>
@@ -77,7 +77,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <td>Script</td>
  * <td>Offset to Script table-from beginning of ScriptList</td>
  * </tr>
- * </table> <br/>
+ * </table>
+ * <br/>
  * <p>
  * Script Table and Language System Record
  * </p>
@@ -85,17 +86,17 @@ import org.extex.util.xml.XMLWriterConvertible;
  * A Script table identifies each language system that defines how to use the
  * glyphs in a script for a particular language. It also references a default
  * language system that defines how to use the script's glyphs in the absence of
- * language-specific knowledge.<br/> A Script table begins with an offset to
- * the Default Language System table (DefaultLangSys), which defines the set of
- * features that regulate the default behavior of the script. Next, Language
- * System Count (LangSysCount) defines the number of language systems (excluding
- * the DefaultLangSys) that use the script. In addition, an array of Language
- * System Records (LangSysRecord) defines each language system (excluding the
- * default) with an identification tag (LangSysTag) and an offset to a Language
- * System table (LangSys). The LangSysRecord array stores the records
- * alphabetically by LangSysTag.<br/> If no language-specific script behavior
- * is defined, the LangSysCount is set to zero (0), and no LangSysRecords are
- * allocated. <br/>
+ * language-specific knowledge.<br/>
+ * A Script table begins with an offset to the Default Language System table
+ * (DefaultLangSys), which defines the set of features that regulate the default
+ * behavior of the script. Next, Language System Count (LangSysCount) defines
+ * the number of language systems (excluding the DefaultLangSys) that use the
+ * script. In addition, an array of Language System Records (LangSysRecord)
+ * defines each language system (excluding the default) with an identification
+ * tag (LangSysTag) and an offset to a Language System table (LangSys). The
+ * LangSysRecord array stores the records alphabetically by LangSysTag.<br/>
+ * If no language-specific script behavior is defined, the LangSysCount is set
+ * to zero (0), and no LangSysRecords are allocated. <br/>
  * <p>
  * ScriptList table
  * </p>
@@ -225,11 +226,8 @@ public class XtfScriptList implements XMLWriterConvertible {
         public int getFeatureTag(FeatureTag featureName) {
 
             if (featureTagMap == null) {
-                // create the map
                 featureTagMap = new HashMap<String, Integer>();
-                for (Iterator<Integer> iterator = featureIndexList.iterator(); iterator
-                    .hasNext();) {
-                    Integer ii = iterator.next();
+                for (Integer ii : featureIndexList) {
                     String key = gsub.getFeatureTag(ii);
                     Integer value = featureIndexList.get(ii);
                     featureTagMap.put(key, value);
@@ -272,8 +270,8 @@ public class XtfScriptList implements XMLWriterConvertible {
          * Check, if is a feature index.
          * 
          * @param n the index
-         * @return Returns <code>true</code>, if is a feature index,
-         *         otherwise <code>false</code>
+         * @return Returns <code>true</code>, if is a feature index, otherwise
+         *         <code>false</code>
          */
         public boolean isFeatureIndexed(int n) {
 
@@ -288,11 +286,11 @@ public class XtfScriptList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer("LangSys\n");
+            StringBuilder buf = new StringBuilder("LangSys\n");
             buf.append("   feature count : ").append(featureCount).append("\n");
             for (int i = 0, n = featureIndexList.size(); i < n; i++) {
                 buf.append(i).append(" ").append(featureIndexList.get(i))
-                    .append("\n");
+                    .append('\n');
             }
             return buf.toString();
         }
@@ -302,6 +300,7 @@ public class XtfScriptList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("langsys");
@@ -314,8 +313,8 @@ public class XtfScriptList implements XMLWriterConvertible {
                 writer.writeStartElement("featureindex");
                 writer.writeAttribute("id", i);
                 writer.writeAttribute("feature", fil.intValue());
-                writer.writeAttribute("featuretag", gsub.getFeatureTag(fil
-                    .intValue()));
+                writer.writeAttribute("featuretag",
+                    gsub.getFeatureTag(fil.intValue()));
                 writer.writeEndElement();
             }
             writer.writeEndElement();
@@ -394,7 +393,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer("LangSysRecord\n");
+            StringBuilder buf = new StringBuilder("LangSysRecord\n");
             buf.append("   index  : ").append(index).append("\n");
             buf.append("   tag    : ").append(tag).append("\n");
             buf.append("   tag    : ").append(tag2String(tag)).append("\n");
@@ -407,6 +406,7 @@ public class XtfScriptList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("langsysrecord");
@@ -490,7 +490,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer("ScriptRecord : ");
+            StringBuilder buf = new StringBuilder("ScriptRecord : ");
             buf.append(recIndex).append("\n");
             buf.append("   tag    : ").append(tag).append("\n");
             buf.append("   tag    : ").append(tag2String(tag)).append("\n");
@@ -503,6 +503,7 @@ public class XtfScriptList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("record");
@@ -677,7 +678,7 @@ public class XtfScriptList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer("Script\n");
+            StringBuilder buf = new StringBuilder("Script\n");
             buf.append("   langSyscount : ").append(langSysCount).append("\n");
             return buf.toString();
         }
@@ -687,6 +688,7 @@ public class XtfScriptList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("script");
@@ -740,9 +742,10 @@ public class XtfScriptList implements XMLWriterConvertible {
      */
     public static String tag2String(int tag) {
 
-        return new StringBuffer().append((char) ((tag >> 24) & 0xff)).append(
-            (char) ((tag >> 16) & 0xff)).append((char) ((tag >> 8) & 0xff))
-            .append((char) ((tag) & 0xff)).toString();
+        return new StringBuilder().append((char) ((tag >> 24) & 0xff))
+            .append((char) ((tag >> 16) & 0xff))
+            .append((char) ((tag >> 8) & 0xff)).append((char) ((tag) & 0xff))
+            .toString();
     }
 
     /**
@@ -813,8 +816,7 @@ public class XtfScriptList implements XMLWriterConvertible {
      * 
      * @param tag The Tag for the script.
      * @param language The language.
-     * @return Find the LangSys in a script or <code>null</code>, if not
-     *         found.
+     * @return Find the LangSys in a script or <code>null</code>, if not found.
      */
     public LangSys findLangSys(ScriptTag tag, LanguageSystemTag language) {
 
@@ -888,8 +890,7 @@ public class XtfScriptList implements XMLWriterConvertible {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("ScriptList\n");
+        StringBuilder buf = new StringBuilder("ScriptList\n");
         buf.append("   count : " + String.valueOf(scriptCount) + '\n');
         for (int i = 0; i < getCount(); i++) {
             buf.append(getRecord(i).toString());
@@ -905,6 +906,7 @@ public class XtfScriptList implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("scriptlist");

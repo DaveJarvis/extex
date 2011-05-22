@@ -45,11 +45,11 @@ public class AbstractFontUtil {
     private Handler consoleHandler;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(AbstractFontUtil.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(AbstractFontUtil.class);
 
     /**
      * The field <tt>logger</tt> contains the logger currently in use.
@@ -162,7 +162,7 @@ public class AbstractFontUtil {
      */
     protected String removeExtensions(String n) {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
         boolean dotfound = false;
         for (int i = n.length() - 1; i >= 0; i--) {

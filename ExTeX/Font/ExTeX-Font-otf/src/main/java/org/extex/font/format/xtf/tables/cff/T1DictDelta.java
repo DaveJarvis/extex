@@ -59,8 +59,7 @@ public abstract class T1DictDelta extends T1DictKey {
      * @param id the operator-id for the value
      * @throws IOException if an IO.error occurs.
      */
-    protected T1DictDelta(List<T2Number> stack, short[] id)
-            throws IOException {
+    protected T1DictDelta(List<T2Number> stack, short[] id) throws IOException {
 
         if (stack.size() < 1) {
             throw new T2MissingNumberException();
@@ -120,7 +119,7 @@ public abstract class T1DictDelta extends T1DictKey {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < value.length; i++) {
             buf.append(value[i].toString()).append(" ");
         }
@@ -130,9 +129,9 @@ public abstract class T1DictDelta extends T1DictKey {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

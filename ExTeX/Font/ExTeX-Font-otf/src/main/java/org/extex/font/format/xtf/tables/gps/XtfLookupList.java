@@ -188,8 +188,7 @@ public class XtfLookupList implements XMLWriterConvertible {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("LookupList\n");
+        StringBuilder buf = new StringBuilder("LookupList\n");
         buf.append("   lookup count  : ").append(lookupCount).append('\n');
         return buf.toString();
     }
@@ -199,6 +198,7 @@ public class XtfLookupList implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("lookuplist");

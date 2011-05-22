@@ -76,8 +76,8 @@ public interface Node extends Serializable {
      * @param posX the horizontal position on the page
      * @param posY the vertical position on the page
      * @return the node to be used instead of the current one in the output
-     *         list. If the value is <code>null</code> then the node is
-     *         deleted. If the value is the node itself then it is preserved.
+     *         list. If the value is <code>null</code> then the node is deleted.
+     *         If the value is the node itself then it is preserved.
      * 
      * @throws GeneralException in case of an error
      */
@@ -88,8 +88,8 @@ public interface Node extends Serializable {
      * This method determines the number of characters contained in a node.
      * <ul>
      * <li>A CharNode has a single character</li>
-     * <li>A LigatureNde has the number of characters which made up the
-     * ligature</li>
+     * <li>A LigatureNde has the number of characters which made up the ligature
+     * </li>
      * <li>A NodeList has the number of characters given by the sum of the
      * number of characters of its elements</li>
      * <li>Any other node types has no character</li>
@@ -146,14 +146,14 @@ public interface Node extends Serializable {
      * box enclosing the bounding box and containing the base line (see figure).
      * <img src="doc-files/verticalSize.png" alt="" align="right"/>
      * <ul>
-     * <li> The vertical size is normally the sum of height and depth. This
-     * normal case applies if both height and depth are not negative. </li>
-     * <li> If height is positive and the depth is negative then the maximum of
-     * the height and the negated depth is used. </li>
-     * <li> If the height is negative and the depth is positive then the maximum
-     * of the negated height and the depth is used. </li>
-     * <li> If both height and depth are negative then the negated sum of both
-     * values is used. </li>
+     * <li>The vertical size is normally the sum of height and depth. This
+     * normal case applies if both height and depth are not negative.</li>
+     * <li>If height is positive and the depth is negative then the maximum of
+     * the height and the negated depth is used.</li>
+     * <li>If the height is negative and the depth is positive then the maximum
+     * of the negated height and the depth is used.</li>
+     * <li>If both height and depth are negative then the negated sum of both
+     * values is used.</li>
      * </ul>
      * 
      * @return the vertical size
@@ -216,7 +216,7 @@ public interface Node extends Serializable {
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      */
-    void toString(StringBuffer sb, String prefix, int breadth, int depth);
+    void toString(StringBuilder sb, String prefix, int breadth, int depth);
 
     /**
      * This method puts the printable representation into the string buffer.
@@ -226,7 +226,7 @@ public interface Node extends Serializable {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      */
-    void toText(StringBuffer sb, String prefix);
+    void toText(StringBuilder sb, String prefix);
 
     /**
      * This method provides an entry point for the visitor pattern.

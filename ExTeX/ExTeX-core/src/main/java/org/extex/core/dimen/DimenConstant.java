@@ -37,6 +37,22 @@ public class DimenConstant implements FixedDimen, Serializable {
     protected static final long serialVersionUID = 2007L;
 
     /**
+     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
+     * 
+     * @see "<logo>T<span style=
+     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+     *      >e</span>X</logo> &ndash; The Program [101]"
+     */
+    public static final long ONE = 1 << 16;
+
+    /**
+     * The field <tt>value</tt> contains the integer representation of the dimen
+     * register in sp if the order is 0. If the order is not 0 then the value
+     * holds the factor to the order in units of 2<sup>16</sup>.
+     */
+    protected long value;
+
+    /**
      * Creates a new object.
      * 
      * @param value the value to be stored
@@ -57,26 +73,11 @@ public class DimenConstant implements FixedDimen, Serializable {
     }
 
     /**
-     * The constant <tt>ONE</tt> contains the internal representation for 1pt.
-     * 
-     * @see "<logo>T<span style=
-     *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     *      >e</span>X</logo> &ndash; The Program [101]"
-     */
-    public static final long ONE = 1 << 16;
-
-    /**
-     * The field <tt>value</tt> contains the integer representation of the dimen
-     * register in sp if the order is 0. If the order is not 0 then the value
-     * holds the factor to the order in units of 2<sup>16</sup>.
-     */
-    protected long value;
-
-    /**
      * Create a copy of this instance with the same order and value.
      * 
      * @return a new copy of this instance
      */
+    @Override
     public FixedDimen copy() {
 
         return new DimenConstant(value);
@@ -91,6 +92,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * @return <code>true</code> iff <i>|this| == |d| and ord(this) ==
      *         ord(d)</i>
      */
+    @Override
     public boolean eq(FixedDimen d) {
 
         return (d != null && value == d.getValue());
@@ -103,6 +105,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff this is greater or equal to d
      */
+    @Override
     public boolean ge(FixedDimen d) {
 
         return (!lt(d));
@@ -113,6 +116,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return the value in internal units of scaled points (sp)
      */
+    @Override
     public long getValue() {
 
         return this.value;
@@ -125,6 +129,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff |this| &gt; |d|</i>
      */
+    @Override
     public boolean gt(FixedDimen d) {
 
         return (value > d.getValue());
@@ -137,6 +142,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>true</code> iff this is less or equal to d
      */
+    @Override
     public boolean le(FixedDimen d) {
 
         return !gt(d);
@@ -150,6 +156,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt;
      *         |d|</i> or <i>ord(this) &lt; ord(d)</i>
      */
+    @Override
     public boolean lt(FixedDimen d) {
 
         return (value < d.getValue());
@@ -163,6 +170,7 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return <code>false</code> iff <i>|this| == |d| </i>
      */
+    @Override
     public boolean ne(FixedDimen d) {
 
         return (d != null && (value != d.getValue()));
@@ -173,40 +181,41 @@ public class DimenConstant implements FixedDimen, Serializable {
      * 
      * @return the printable representation
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * 
      * @see #toString()
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         toString(sb, 'p', 't');
     }
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * @param c1 the first character for the length of order 0
      * @param c2 the second character for the length of order 0
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
-    public void toString(StringBuffer sb, char c1, char c2) {
+    public void toString(StringBuilder sb, char c1, char c2) {
 
         long val = getValue();
 

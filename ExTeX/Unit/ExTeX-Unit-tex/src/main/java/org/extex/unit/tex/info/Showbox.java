@@ -34,19 +34,17 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.register.box.Setbox;
 
 /**
- * This class provides an implementation for the primitive <code>\showbox</code>.
+ * This class provides an implementation for the primitive <code>\showbox</code>
+ * .
  * 
- * <doc name="showbox">
- * <h3>The Primitive <tt>\showbox</tt></h3>
+ * <doc name="showbox"> <h3>The Primitive <tt>\showbox</tt></h3>
  * <p>
- * The primitive <tt>\showbox</tt> produces a listing of the box register
- * given as parameter. The listing is restricted in breadth and depth by the
- * count registers <tt>\showboxbreadth</tt> and <tt>\showboxdepth</tt>
- * respectively.
+ * The primitive <tt>\showbox</tt> produces a listing of the box register given
+ * as parameter. The listing is restricted in breadth and depth by the count
+ * registers <tt>\showboxbreadth</tt> and <tt>\showboxdepth</tt> respectively.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showbox&rang;
@@ -62,15 +60,14 @@ import org.extex.unit.tex.register.box.Setbox;
  * </doc>
  * 
  * 
- * <doc name="showboxbreadth" type="register">
- * <h3>The Count Parameter <tt>\showboxbreadth</tt></h3>
+ * <doc name="showboxbreadth" type="register"> <h3>The Count Parameter
+ * <tt>\showboxbreadth</tt></h3>
  * <p>
- * The count register <tt>\showboxbreadth</tt> contains the breadth to which
- * the box produced by <tt>\showbox</tt> should be presented.
+ * The count register <tt>\showboxbreadth</tt> contains the breadth to which the
+ * box produced by <tt>\showbox</tt> should be presented.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showboxbreadth&rang;
@@ -88,15 +85,14 @@ import org.extex.unit.tex.register.box.Setbox;
  * </doc>
  * 
  * 
- * <doc name="showboxdepth" type="register">
- * <h3>The Count Parameter <tt>\showboxdepth</tt></h3>
+ * <doc name="showboxdepth" type="register"> <h3>The Count Parameter
+ * <tt>\showboxdepth</tt></h3>
  * <p>
- * The count register <tt>\showboxdepth</tt> contains the depth to which the
- * box produced by <tt>\showbox</tt> should be presented.
+ * The count register <tt>\showboxdepth</tt> contains the depth to which the box
+ * produced by <tt>\showbox</tt> should be presented.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showboxdepth&rang;
@@ -120,8 +116,7 @@ import org.extex.unit.tex.register.box.Setbox;
 public class Showbox extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -145,9 +140,9 @@ public class Showbox extends AbstractCode implements LogEnabled {
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;
@@ -156,8 +151,8 @@ public class Showbox extends AbstractCode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -173,7 +168,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
         } else {
             long depth = context.getCount("showboxdepth").getValue();
             long width = context.getCount("showboxbreadth").getValue();
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             sb.append(context.esc("box" + key));
             sb.append("=\n");
             b.getNodes().toString(sb, "", (int) depth, (int) width);

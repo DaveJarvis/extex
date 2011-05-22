@@ -60,11 +60,11 @@ public class VCenterNoad extends AbstractNucleusNoad {
      *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
-     *      java.lang.StringBuffer,
+     *      StringBuilder,
      *      int)
      */
     @Override
-    protected void toStringAdd(StringBuffer sb, int depth) {
+    protected void toStringAdd(StringBuilder sb, int depth) {
 
         sb.append("vcenter");
     }

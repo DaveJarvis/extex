@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007-2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import org.extex.font.format.xtf.tables.OtfTableCFF;
@@ -359,8 +358,8 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the {@link CharString} with the name or <code>null</code>, if
-     * not found.
+     * Returns the {@link CharString} with the name or <code>null</code>, if not
+     * found.
      * 
      * @param name The name of the charstring.
      * @return Returns the {@link CharString} with the name.
@@ -879,8 +878,8 @@ public class CffFont implements XMLWriterConvertible {
     }
 
     /**
-     * Returns the top dict index entry, if no entry found, <code>null</code>
-     * is returned.
+     * Returns the top dict index entry, if no entry found, <code>null</code> is
+     * returned.
      * 
      * @param name The name of the entry.
      * @return Returns the top dict index entry.
@@ -1087,9 +1086,7 @@ public class CffFont implements XMLWriterConvertible {
 
         T2Operator[] ops = new T2Operator[topDictIndex.size()];
         int opidx = 0;
-        Iterator<String> it = topDictIndex.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : topDictIndex.keySet()) {
             T2Operator op = topDictIndex.get(key);
             ops[opidx++] = op;
         }
@@ -1103,6 +1100,7 @@ public class CffFont implements XMLWriterConvertible {
              * @param o2 The value 2
              * @return Returns -1, 0, +1
              */
+            @Override
             public int compare(T2Operator o1, T2Operator o2) {
 
                 return o2.getInitPrio() < o1.getInitPrio() ? -1 : +1;
@@ -1125,9 +1123,9 @@ public class CffFont implements XMLWriterConvertible {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("font");
@@ -1137,9 +1135,7 @@ public class CffFont implements XMLWriterConvertible {
 
         // topdict index
         writer.writeStartElement("topdictindex");
-        Iterator<String> it = topDictIndex.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : topDictIndex.keySet()) {
             T2Operator op = topDictIndex.get(key);
             op.writeXML(writer);
         }

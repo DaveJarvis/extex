@@ -36,14 +36,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\showlists</code>.
  * 
- * <doc name="showlists">
- * <h3>The Primitive <tt>\showlists</tt></h3>
+ * <doc name="showlists"> <h3>The Primitive <tt>\showlists</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;showlists&rang;
@@ -62,8 +60,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Showlists extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -87,9 +84,9 @@ public class Showlists extends AbstractCode implements LogEnabled {
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;
@@ -98,8 +95,8 @@ public class Showlists extends AbstractCode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -108,7 +105,7 @@ public class Showlists extends AbstractCode implements LogEnabled {
 
         Count depth = context.getCount("showboxdepth");
         Count width = context.getCount("showboxbreadth");
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         typesetter.showlists(sb, depth.getValue(), width.getValue());
 

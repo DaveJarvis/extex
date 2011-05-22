@@ -24,7 +24,6 @@ import java.io.OutputStream;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -103,8 +102,8 @@ public class XMLDocumentWriter
     /**
      * format the output for decimal values.
      */
-    private static final NumberFormat FORMAT =
-            NumberFormat.getInstance(Locale.US);
+    private static final NumberFormat FORMAT = NumberFormat
+        .getInstance(Locale.US);
 
     /**
      * max fraction.
@@ -296,6 +295,7 @@ public class XMLDocumentWriter
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
     public void close() throws DocumentWriterException {
 
         if (out != null) {
@@ -317,51 +317,9 @@ public class XMLDocumentWriter
     }
 
     /**
-     * Write the information from the {@link BackendFontManager}.
-     * 
-     * @throws IOException if an IO-error occurred.
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
-    private void writeManager() throws IOException {
-
-        writer.writeStartElement("managerinfo");
-        Iterator<ManagerInfo> it = manager.iterate();
-        while (it.hasNext()) {
-            writer.writeStartElement("manager");
-            ManagerInfo info = it.next();
-            writer.writeAttribute("type", info.getManager().getClass()
-                .getName());
-            writer.writeAttribute("font", info.getFontKey().getName());
-            BackendFont backendfont = info.getBackendFont();
-            if (backendfont != null) {
-                writer.writeAttribute("isType1", info.getBackendFont()
-                    .isType1());
-                writer.writeAttribute("isXtf", info.getBackendFont().isXtf());
-                writer.writeAttribute("hasPfb",
-                    info.getBackendFont().getPfb() != null ? true : false);
-                writer.writeAttribute("hasPfa",
-                    info.getBackendFont().getPfa() != null ? true : false);
-                writer.writeAttribute("hasXtf",
-                    info.getBackendFont().getXtf() != null ? true : false);
-            }
-            writer
-                .writeAttribute("fontparameter", info.getFontKey().toString());
-            Iterator<BackendCharacter> chit = info.iterate();
-            while (chit.hasNext()) {
-                writer.writeStartElement("char");
-                BackendCharacter bc = chit.next();
-                writer.writeAttribute("id", bc.getId());
-                writer.writeAttribute("name", bc.getName());
-                writer.writeEndElement();
-            }
-            writer.writeEndElement();
-        }
-        writer.writeEndElement();
-    }
-
-    /**
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
-     */
+    @Override
     public void configure(Configuration cfg) throws ConfigurationException {
 
         if (cfg != null) {
@@ -407,6 +365,7 @@ public class XMLDocumentWriter
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
+    @Override
     public String getExtension() {
 
         return "xml";
@@ -421,9 +380,7 @@ public class XMLDocumentWriter
 
         StringBuilder buf = new StringBuilder();
         buf.append("\n");
-        Iterator<String> it = param.keySet().iterator();
-        while (it.hasNext()) {
-            String name = it.next();
+        for (String name : param.keySet()) {
             buf.append(name);
             buf.append("=");
             buf.append(param.get(name));
@@ -440,9 +397,7 @@ public class XMLDocumentWriter
     private void printParameterElement() throws IOException {
 
         writer.writeStartElement("parameter");
-        Iterator<String> it = param.keySet().iterator();
-        while (it.hasNext()) {
-            String name = it.next();
+        for (String name : param.keySet()) {
             writer.writeStartElement("param");
             writer.writeAttribute("name", name);
             String value = param.get(name);
@@ -458,7 +413,7 @@ public class XMLDocumentWriter
     /**
      * Set the Attribute for an element with sp, bp, mm.
      * 
-     * @param name the attribute-name
+     * @param name the attribute name
      * @param dimen the dimen
      * @throws IOException if an error occurs.
      */
@@ -472,8 +427,8 @@ public class XMLDocumentWriter
             writer.writeAttribute(name + "_sp", String.valueOf(d.getValue()));
         }
         if (usebp) {
-            writer.writeAttribute(name + "_bp", String.valueOf(Unit
-                .getDimenAsBP(d)));
+            writer.writeAttribute(name + "_bp",
+                String.valueOf(Unit.getDimenAsBP(d)));
         }
         if (usemm) {
             String s = FORMAT.format(Unit.getDimenAsMM(d));
@@ -483,9 +438,10 @@ public class XMLDocumentWriter
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
      */
+    @Override
     public void setFontFactory(CoreFontFactory factory) {
 
         corefactory = factory;
@@ -496,33 +452,29 @@ public class XMLDocumentWriter
         manager = corefactory.createManager(sl);
     }
 
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
-
     /**
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
      */
+    @Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public void setParameter(String name, String value) {
 
         param.put(name, value);
     }
 
     /**
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws GeneralException {
 
         NodeList nodes = page.getNodes();
@@ -584,6 +536,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitAdjust(AdjustNode node, Object value2)
             throws DocumentWriterException {
 
@@ -601,6 +554,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitAfterMath(AfterMathNode node, Object value2)
             throws DocumentWriterException {
 
@@ -618,6 +572,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitAlignedLeaders(AlignedLeadersNode node, Object value2)
             throws DocumentWriterException {
 
@@ -635,6 +590,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitBeforeMath(BeforeMathNode node, Object value2)
             throws DocumentWriterException {
 
@@ -652,6 +608,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
             throws DocumentWriterException {
 
@@ -669,6 +626,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitChar(CharNode node, Object value)
             throws DocumentWriterException {
 
@@ -707,6 +665,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitDiscretionary(DiscretionaryNode node, Object value)
             throws DocumentWriterException {
 
@@ -724,6 +683,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
             throws DocumentWriterException {
 
@@ -741,6 +701,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitGlue(GlueNode node, Object value)
             throws DocumentWriterException {
 
@@ -761,6 +722,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitHorizontalList(HorizontalListNode node, Object value)
             throws GeneralException {
 
@@ -789,6 +751,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitInsertion(InsertionNode node, Object value)
             throws DocumentWriterException {
 
@@ -806,6 +769,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitKern(KernNode node, Object value)
             throws DocumentWriterException {
 
@@ -823,6 +787,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
@@ -850,6 +815,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitMark(MarkNode node, Object value)
             throws DocumentWriterException {
 
@@ -867,6 +833,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitPenalty(PenaltyNode node, Object value)
             throws DocumentWriterException {
 
@@ -885,6 +852,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitRule(RuleNode node, Object value)
             throws DocumentWriterException {
 
@@ -902,6 +870,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitSpace(SpaceNode node, Object value)
             throws DocumentWriterException {
 
@@ -919,6 +888,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitVerticalList(VerticalListNode node, Object value)
             throws GeneralException {
 
@@ -945,9 +915,10 @@ public class XMLDocumentWriter
     }
 
     /**
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-     *      org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+     *      java.lang.Object)
      */
+    @Override
     public Object visitVirtualChar(VirtualCharNode node, Object value)
             throws GeneralException {
 
@@ -976,6 +947,7 @@ public class XMLDocumentWriter
      * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
      *      java.lang.Object)
      */
+    @Override
     public Object visitWhatsIt(WhatsItNode node, Object value)
             throws DocumentWriterException {
 
@@ -987,5 +959,43 @@ public class XMLDocumentWriter
             throw new DocumentWriterIOException(e);
         }
         return null;
+    }
+
+    /**
+     * Write the information from the {@link BackendFontManager}.
+     * 
+     * @throws IOException if an IO-error occurred.
+     */
+    private void writeManager() throws IOException {
+
+        writer.writeStartElement("managerinfo");
+        for (ManagerInfo info : manager) {
+            writer.writeStartElement("manager");
+            writer.writeAttribute("type", info.getManager().getClass()
+                .getName());
+            writer.writeAttribute("font", info.getFontKey().getName());
+            BackendFont backendfont = info.getBackendFont();
+            if (backendfont != null) {
+                writer.writeAttribute("isType1", info.getBackendFont()
+                    .isType1());
+                writer.writeAttribute("isXtf", info.getBackendFont().isXtf());
+                writer.writeAttribute("hasPfb",
+                    info.getBackendFont().getPfb() != null ? true : false);
+                writer.writeAttribute("hasPfa",
+                    info.getBackendFont().getPfa() != null ? true : false);
+                writer.writeAttribute("hasXtf",
+                    info.getBackendFont().getXtf() != null ? true : false);
+            }
+            writer
+                .writeAttribute("fontparameter", info.getFontKey().toString());
+            for (BackendCharacter bc : info) {
+                writer.writeStartElement("char");
+                writer.writeAttribute("id", bc.getId());
+                writer.writeAttribute("name", bc.getName());
+                writer.writeEndElement();
+            }
+            writer.writeEndElement();
+        }
+        writer.writeEndElement();
     }
 }

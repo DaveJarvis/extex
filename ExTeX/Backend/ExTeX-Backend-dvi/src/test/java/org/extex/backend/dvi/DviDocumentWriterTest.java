@@ -228,9 +228,9 @@ public class DviDocumentWriterTest {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.core.count.FixedCount#toString(java.lang.StringBuffer)
+         * @see org.extex.core.count.FixedCount#toString(StringBuilder)
          */
-        public void toString(StringBuffer buffer) {
+        public void toString(StringBuilder buffer) {
 
             buffer.append(toString());
         }

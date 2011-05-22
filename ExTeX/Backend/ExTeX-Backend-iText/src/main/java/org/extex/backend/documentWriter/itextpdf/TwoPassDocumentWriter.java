@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -72,7 +71,7 @@ public class TwoPassDocumentWriter
     /**
      * Loader for the target document writer.
      */
-    private class Loader extends AbstractFactory {
+    private class Loader extends AbstractFactory<DocumentWriter> {
 
         /**
          * Returns the document writer.
@@ -84,8 +83,8 @@ public class TwoPassDocumentWriter
         public DocumentWriter getInstance(Configuration subcfg)
                 throws ConfigurationException {
 
-            return (DocumentWriter) createInstanceForConfiguration(subcfg,
-                DocumentWriter.class, DocumentWriterOptions.class, options);
+            return createInstanceForConfiguration(subcfg, DocumentWriter.class,
+                DocumentWriterOptions.class, options);
         }
 
     }
@@ -106,11 +105,11 @@ public class TwoPassDocumentWriter
     private ResourceFinder finder;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(TwoPassDocumentWriter.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(TwoPassDocumentWriter.class);
 
     /**
      * The logger.
@@ -153,6 +152,11 @@ public class TwoPassDocumentWriter
     private Configuration config;
 
     /**
+     * The extension.
+     */
+    private String extension = "pdf";
+
+    /**
      * Creates a new object.
      * 
      * @param config The configurations.
@@ -167,10 +171,21 @@ public class TwoPassDocumentWriter
     }
 
     /**
+     * Check, if the target exists.
+     */
+    private void checkTarget() {
+
+        if (target == null) {
+            configure(config);
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
     public void close() throws GeneralException, IOException {
 
         createAfmEncodings();
@@ -189,34 +204,11 @@ public class TwoPassDocumentWriter
     }
 
     /**
-     * Create a dynamic afm encoding.
-     */
-    private void createAfmEncodings() {
-
-        Iterator<ManagerInfo> it = manager.iterate();
-        while (it.hasNext()) {
-            ManagerInfo info = it.next();
-            BackendFont backendfont = info.getBackendFont();
-            if (backendfont instanceof AfmMetricFont && backendfont.isType1()) {
-                Iterator<BackendCharacter> charIterator = info.iterate();
-                while (charIterator.hasNext()) {
-                    BackendCharacter bc = charIterator.next();
-                    backendfont.usedCharacter(bc);
-                }
-            }
-        }
-    }
-
-    /**
-     * The extension.
-     */
-    private String extension = "pdf";
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         if (config != null) {
@@ -230,8 +222,8 @@ public class TwoPassDocumentWriter
             }
 
             if (subcfg == null) {
-                throw new ConfigurationMissingException(localizer
-                    .format("2P.missingTarget"));
+                throw new ConfigurationMissingException(
+                    localizer.format("2P.missingTarget"));
             }
 
             target = new Loader().getInstance(subcfg);
@@ -252,10 +244,27 @@ public class TwoPassDocumentWriter
     }
 
     /**
+     * Create a dynamic afm encoding.
+     */
+    private void createAfmEncodings() {
+
+        for (ManagerInfo info : manager) {
+            BackendFont backendfont = info.getBackendFont();
+            if (backendfont instanceof AfmMetricFont && backendfont.isType1()) {
+                for (BackendCharacter bc : info) {
+                    // TODO gene: disabled to get it compile
+                    // backendfont.usedCharacter(bc);
+                }
+            }
+        }
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
@@ -267,6 +276,7 @@ public class TwoPassDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
+    @Override
     public String getExtension() {
 
         return extension;
@@ -277,6 +287,7 @@ public class TwoPassDocumentWriter
      * 
      * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
      */
+    @Override
     public void setFontFactory(CoreFontFactory factory) {
 
         corefactory = factory;
@@ -290,20 +301,11 @@ public class TwoPassDocumentWriter
     }
 
     /**
-     * Check, if the target exists.
-     */
-    private void checkTarget() {
-
-        if (target == null) {
-            configure(config);
-        }
-    }
-
-    /**
      * {@inheritDoc}
      * 
      * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
      */
+    @Override
     public void setOutputStream(OutputStream writer) {
 
         checkTarget();
@@ -319,6 +321,7 @@ public class TwoPassDocumentWriter
      * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public void setParameter(String name, String value) {
 
         param.put(name, value);
@@ -330,6 +333,7 @@ public class TwoPassDocumentWriter
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
@@ -340,6 +344,7 @@ public class TwoPassDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws GeneralException, IOException {
 
         checkTarget();

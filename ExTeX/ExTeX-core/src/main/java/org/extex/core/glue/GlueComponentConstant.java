@@ -122,6 +122,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @return a new copy of this instance
      */
+    @Override
     public FixedGlueComponent copy() {
 
         return new GlueComponentConstant(value, order);
@@ -136,6 +137,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * @return <code>true</code> iff <i>|this| == |d| and ord(this) ==
      *         ord(d)</i>
      */
+    @Override
     public boolean eq(FixedGlueComponent d) {
 
         return (d != null && //
@@ -149,6 +151,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @return <code>true</code> iff this is greater or equal to d
      */
+    @Override
     public boolean ge(FixedGlueComponent d) {
 
         return (!lt(d));
@@ -159,6 +162,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @see org.extex.core.glue.FixedGlueComponent#getOrder()
      */
+    @Override
     public byte getOrder() {
 
         return order;
@@ -169,6 +173,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @return the value in internal units of scaled points (sp)
      */
+    @Override
     public long getValue() {
 
         return this.value;
@@ -182,6 +187,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt;
      *         |d|</i> or <i>ord(this) &gt; ord(d)</i>
      */
+    @Override
     public boolean gt(FixedGlueComponent d) {
 
         return ((order == d.getOrder() && value > d.getValue()) || //
@@ -195,6 +201,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @return <code>true</code> iff this is less or equal to d
      */
+    @Override
     public boolean le(FixedGlueComponent d) {
 
         return (!gt(d));
@@ -208,6 +215,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt;
      *         |d|</i> or <i>ord(this) &lt; ord(d)</i>
      */
+    @Override
     public boolean lt(FixedGlueComponent d) {
 
         return ((order == d.getOrder() && value < d.getValue()) || //
@@ -223,6 +231,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * @return <code>false</code> iff <i>|this| == |d| and ord(this) ==
      *         ord(d)</i>
      */
+    @Override
     public boolean ne(FixedGlueComponent d) {
 
         return (d != null && (value != d.getValue() || order != d.getOrder()));
@@ -233,40 +242,41 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      * 
      * @return the printable representation
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * 
      * @see #toString()
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         toString(sb, 'p', 't');
     }
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * @param c1 the first character for the length of order 0
      * @param c2 the second character for the length of order 0
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
-    public void toString(StringBuffer sb, char c1, char c2) {
+    public void toString(StringBuilder sb, char c1, char c2) {
 
         long val = getValue();
 

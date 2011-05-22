@@ -78,9 +78,7 @@ public class DviZ extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("z").append(getOpcode() - Z0);
-        return buf.toString();
+        return new StringBuilder('z').append(getOpcode() - Z0).toString();
     }
 
     /**

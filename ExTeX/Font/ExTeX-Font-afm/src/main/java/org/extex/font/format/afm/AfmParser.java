@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -29,7 +29,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
@@ -89,8 +88,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     /**
      * Represents the section KerningPairs in the AFM file.
      */
-    private List<AfmKernPairs> afmKerningPairs =
-            new ArrayList<AfmKernPairs>(ARRAYLISTINITSIZE);
+    private List<AfmKernPairs> afmKerningPairs = new ArrayList<AfmKernPairs>(
+        ARRAYLISTINITSIZE);
 
     /**
      * The header container.
@@ -101,8 +100,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      * The field <tt>localizer</tt> contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(AfmParser.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(AfmParser.class);
 
     /**
      * The default encoding.
@@ -214,8 +213,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
 
         // metric close?
         if (isMetrics) {
-            throw new FontException(localizer
-                .format("AfmParser.MissingEndCharMetrics"));
+            throw new FontException(
+                localizer.format("AfmParser.MissingEndCharMetrics"));
         }
         return isMetrics;
     }
@@ -730,8 +729,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         }
         // metric not found
         if (!isMetrics) {
-            throw new FontException(localizer
-                .format("AfmParser.MissingStartCharMetrics"));
+            throw new FontException(
+                localizer.format("AfmParser.MissingStartCharMetrics"));
         }
 
         // create metric
@@ -754,8 +753,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             }
         }
         if (!isMetrics) {
-            throw new FontException(localizer
-                .format("AfmParser.MissingEndFontMetrics"));
+            throw new FontException(
+                localizer.format("AfmParser.MissingEndFontMetrics"));
         }
 
         // read KernPairs
@@ -784,8 +783,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             }
         }
         if (isMetrics) {
-            throw new FontException(localizer
-                .format("AfmParser.MissingEndKernPairs"));
+            throw new FontException(
+                localizer.format("AfmParser.MissingEndKernPairs"));
         }
     }
 
@@ -807,6 +806,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     /**
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("afm");
@@ -831,8 +831,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             } else {
                 // calculate with from bbox
                 if (cm.getBllx() != AfmHeader.NOTINIT) {
-                    writer.writeFormatAttribute("width", cm.getBllx()
-                            + cm.getBurx());
+                    writer.writeFormatAttribute("width",
+                        cm.getBllx() + cm.getBurx());
                 }
             }
 
@@ -866,9 +866,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
 
             // ligature
             if (cm.getL() != null) {
-                Iterator<String> iterator = cm.getL().keySet().iterator();
-                while (iterator.hasNext()) {
-                    String key = iterator.next();
+                for (String key : cm.getL().keySet()) {
                     writer.writeStartElement("ligature");
                     writer.writeAttribute("letter", key);
                     String value = cm.getL().get(key);

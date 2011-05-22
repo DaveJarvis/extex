@@ -27,7 +27,6 @@ import java.io.ObjectOutputStream;
 import java.io.ObjectStreamException;
 import java.io.OutputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.zip.GZIPInputStream;
@@ -88,7 +87,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2006L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * The field <tt>TABLE_EXTENSION</tt> contains the extension for language
@@ -249,13 +248,10 @@ public class LoadingLanguageManager extends BaseLanguageManager
     @Override
     protected Object readResolve() throws ObjectStreamException {
 
-        Iterator<Language> iterator = getTables().values().iterator();
-        while (iterator.hasNext()) {
-            Object lang = iterator.next();
+        for (Language lang : getTables().values()) {
             if (lang instanceof ManagedLanguage) {
                 ((ManagedLanguage) lang).setCreator(this);
             }
-
         }
 
         return Registrar.reconnect(this);
@@ -345,10 +341,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
                 DocumentWriterException {
 
         Map<String, Language> map = new HashMap<String, Language>();
-        Iterator<Entry<String, Language>> iter =
-                getTables().entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry<String, Language> e = iter.next();
+        for (Entry<String, Language> e : getTables().entrySet()) {
             String key = e.getKey();
             Language value = e.getValue();
             if (!saveTable(key, value)) {

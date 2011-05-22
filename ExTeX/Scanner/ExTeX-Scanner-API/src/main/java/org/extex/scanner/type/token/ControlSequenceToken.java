@@ -47,7 +47,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * The field <tt>value</tt> contains the string value.
@@ -85,6 +85,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @see org.extex.scanner.type.token.CodeToken#cloneInDefaultNamespace()
      */
+    @Override
     public CodeToken cloneInDefaultNamespace() {
 
         if (Namespace.DEFAULT_NAMESPACE.equals(namespace)) {
@@ -104,6 +105,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @see org.extex.scanner.type.token.CodeToken#cloneInNamespace(java.lang.String)
      */
+    @Override
     public CodeToken cloneInNamespace(String theNamespace) {
 
         if (theNamespace == null || namespace.equals(theNamespace)) {
@@ -209,6 +211,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @see org.extex.scanner.type.token.CodeToken#getName()
      */
+    @Override
     public String getName() {
 
         return name;
@@ -221,6 +224,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * 
      * @see org.extex.scanner.type.token.CodeToken#getNamespace()
      */
+    @Override
     public String getNamespace() {
 
         return namespace;
@@ -253,25 +257,13 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
     }
 
     /**
-     * Print the token into a StringBuffer.
-     * 
-     * @param sb the target string buffer
-     * 
-     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
-     */
-    public void toString(StringBuffer sb) {
-
-        sb.append(getLocalizer().format("ControlSequenceToken.Text",
-            getChar().toString(), name, namespace));
-    }
-
-    /**
      * Print the token into a StringBuilder.
      * 
      * @param sb the target string builder
      * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
      */
+    @Override
     public void toString(StringBuilder sb) {
 
         sb.append(getLocalizer().format("ControlSequenceToken.Text",
@@ -329,6 +321,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
      * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 

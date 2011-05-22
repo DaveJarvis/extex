@@ -65,7 +65,8 @@ import org.extex.util.xml.XMLStreamWriter;
  * 
  * <p>
  * Define font <code>k</code>, where 0 &lt;= k &lt; 2^24
- * </p>.
+ * </p>
+ * .
  * 
  * <pre>
  *    fnt_def4   246  k[4]  c[4]  s[4]  d[4]  a[1]  l[1]  n[a+l]
@@ -75,32 +76,30 @@ import org.extex.util.xml.XMLStreamWriter;
  * Define font <code>k</code>, where -2^31 &lt;= k &lt;= 2^31.
  * </p>
  * <p>
- * These font numbers <code>k</code> are 'local'; they have no relation to
- * font numbers defined in the DVI file that uses this virtual font. The
- * dimension <code>s</code>, which represents the scaled size of the local
- * font being defined, is a <code>fix_word</code> relative to the design size
- * of the virtual font. Thus if the local font is to be used at the same size as
- * the design size of the virtual font itself, <code>s</code> will be the
- * integer value 2^20. The value of <code>s</code> must be positive and less
- * than 2^24 (thus less than 16 when considered as a <code>fix_word</code>).
- * The dimension <code>d</code> is a <code>fix_word</code> in units of
- * printer's points; hence it is identical to the design size found in the
- * corresponding TFM file.
+ * These font numbers <code>k</code> are 'local'; they have no relation to font
+ * numbers defined in the DVI file that uses this virtual font. The dimension
+ * <code>s</code>, which represents the scaled size of the local font being
+ * defined, is a <code>fix_word</code> relative to the design size of the
+ * virtual font. Thus if the local font is to be used at the same size as the
+ * design size of the virtual font itself, <code>s</code> will be the integer
+ * value 2^20. The value of <code>s</code> must be positive and less than 2^24
+ * (thus less than 16 when considered as a <code>fix_word</code>). The dimension
+ * <code>d</code> is a <code>fix_word</code> in units of printer's points; hence
+ * it is identical to the design size found in the corresponding TFM file.
  * </p>
  * 
  * <p>
  * The four-byte value <code>c</code> is the check sum.
  * 
- * Parameter <code>s</code> contains a fixed-point scale factor that is
- * applied to the character widths in font <code>k</code>; font dimensions in
- * TFM files and other font files are relative to this quantity, which is always
- * positive and less than 227. It is given in the same units as the other
- * dimensions of the DVI file.
+ * Parameter <code>s</code> contains a fixed-point scale factor that is applied
+ * to the character widths in font <code>k</code>; font dimensions in TFM files
+ * and other font files are relative to this quantity, which is always positive
+ * and less than 227. It is given in the same units as the other dimensions of
+ * the DVI file.
  * 
- * Parameter <code>d</code> is similar to <code>s</code>; it is the design
- * size, and (like <code>s</code>) it is given in DVI units. Thus, font
- * <code>k</code> is to be used at mag <code>s</code>/1000d times its
- * normal size.
+ * Parameter <code>d</code> is similar to <code>s</code>; it is the design size,
+ * and (like <code>s</code>) it is given in DVI units. Thus, font <code>k</code>
+ * is to be used at mag <code>s</code>/1000d times its normal size.
  * 
  * The remaining part of a font definition gives the external name of the font,
  * which is an ASCII string of length <code>a</code> + <code>l</code>. The
@@ -270,7 +269,7 @@ public class VfCommandFontDef extends VfCommand {
         int l = rar.readByteAsInt();
 
         int len = a + l;
-        StringBuffer buf = new StringBuffer(len);
+        StringBuilder buf = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             buf.append((char) rar.readByteAsInt());
         }
@@ -282,6 +281,7 @@ public class VfCommandFontDef extends VfCommand {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("fontdef");

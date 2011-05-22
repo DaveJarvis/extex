@@ -122,21 +122,20 @@ public class T2RrCurveTo extends T2PathConstruction {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
         for (int i = 0; i < six.length; i++) {
-            buf.append(six[i].toString()).append(" ");
+            buf.append(six[i].toString()).append(' ');
         }
-        buf.append(getName());
-        return buf.toString();
+        return buf.append(getName()).toString();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

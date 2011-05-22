@@ -26,7 +26,7 @@ import java.io.Serializable;
  * <p>
  * Kerning instruction
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -44,11 +44,11 @@ public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
      * Create a new object.
-     *
-     * @param skip  the skip amount to the next instruction.
-     * @param next  the code of the next character.
-     * @param k     the amount of kerning between the current and
-     *              the next characters.
+     * 
+     * @param skip the skip amount to the next instruction.
+     * @param next the code of the next character.
+     * @param k the amount of kerning between the current and the next
+     *        characters.
      */
     public TfmKerning(int skip, short next, TfmFixWord k) {
 
@@ -58,7 +58,7 @@ public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see org.extex.font.format.tfm.TfmLigKern#getKern()
      */
     @Override
@@ -69,13 +69,13 @@ public class TfmKerning extends TfmLigKern implements Serializable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.append(" kern=").append(kern.toString());
         return buf.toString();
     }

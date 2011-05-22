@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.WeakHashMap;
@@ -59,13 +58,6 @@ public class U2tFactory {
     }
 
     /**
-     * Creates a new object only with getInstance().
-     */
-    private U2tFactory() {
-
-    }
-
-    /**
      * Map for caching (u2t).
      */
     private Map<String, Map<UnicodeChar, Integer>> cacheu2t =
@@ -76,6 +68,59 @@ public class U2tFactory {
      */
     private Map<String, Map<Integer, UnicodeChar>> cachet2u =
             new WeakHashMap<String, Map<Integer, UnicodeChar>>();
+
+    /**
+     * Creates a new object only with getInstance().
+     */
+    private U2tFactory() {
+
+    }
+
+    /**
+     * Returns the t2u map, or <code>null</code>, if the property file is not
+     * found.
+     * 
+     * @param name the name of the property.
+     * @param finder the resource finder.
+     * @return the t2u map, or <code>null</code>, if the property file is not
+     *         found.
+     * @throws IOException if a io error occurred.
+     * @throws ConfigurationException from the configuration system.
+     * @throws NumberFormatException if a parse error occurred.
+     */
+    public Map<Integer, UnicodeChar> loadT2u(String name, ResourceFinder finder)
+            throws IOException,
+                ConfigurationException,
+                NumberFormatException {
+
+        if (name == null || finder == null) {
+            return null;
+        }
+
+        // in cacheu2t?
+        Map<Integer, UnicodeChar> codepointmapt2u = cachet2u.get(name);
+
+        if (codepointmapt2u != null) {
+            return codepointmapt2u;
+        }
+
+        // load u2t map
+        Map<UnicodeChar, Integer> codepointmap = loadU2t(name, finder);
+
+        if (codepointmap != null) {
+
+            codepointmapt2u = new HashMap<Integer, UnicodeChar>();
+
+            for (UnicodeChar key : codepointmap.keySet()) {
+                codepointmapt2u.put(codepointmap.get(key), key);
+
+            }
+            cachet2u.put(name, codepointmapt2u);
+            return codepointmapt2u;
+        }
+
+        return null;
+    }
 
     /**
      * Returns the u2t map, or <code>null</code>, if the property file is not
@@ -126,55 +171,6 @@ public class U2tFactory {
             cacheu2t.put(name, codepointmap);
             return codepointmap;
         }
-        return null;
-    }
-
-    /**
-     * Returns the t2u map, or <code>null</code>, if the property file is not
-     * found.
-     * 
-     * @param name the name of the property.
-     * @param finder the resource finder.
-     * @return the t2u map, or <code>null</code>, if the property file is not
-     *         found.
-     * @throws IOException if a io error occurred.
-     * @throws ConfigurationException from the configuration system.
-     * @throws NumberFormatException if a parse error occurred.
-     */
-    public Map<Integer, UnicodeChar> loadT2u(String name, ResourceFinder finder)
-            throws IOException,
-                ConfigurationException,
-                NumberFormatException {
-
-        if (name == null || finder == null) {
-            return null;
-        }
-
-        // in cacheu2t?
-        Map<Integer, UnicodeChar> codepointmapt2u = cachet2u.get(name);
-
-        if (codepointmapt2u != null) {
-            return codepointmapt2u;
-        }
-
-        // load u2t map
-        Map<UnicodeChar, Integer> codepointmap = loadU2t(name, finder);
-
-        if (codepointmap != null) {
-
-            codepointmapt2u = new HashMap<Integer, UnicodeChar>();
-
-            Iterator<UnicodeChar> it = codepointmap.keySet().iterator();
-            while (it.hasNext()) {
-                UnicodeChar key = it.next();
-                Integer value = codepointmap.get(key);
-                codepointmapt2u.put(value, key);
-
-            }
-            cachet2u.put(name, codepointmapt2u);
-            return codepointmapt2u;
-        }
-
         return null;
     }
 

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -176,10 +176,10 @@ public class ExDocXml extends Traverser {
      * 
      * @throws Exception in case of an error
      * 
-     * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuffer)
+     * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuilder)
      */
     @Override
-    protected void out(String key, StringBuffer content) throws Exception {
+    protected void out(String key, StringBuilder content) throws Exception {
 
         Map<String, String> a = new HashMap<String, String>();
         try {
@@ -256,7 +256,7 @@ public class ExDocXml extends Traverser {
      * @param endTag the additional tag to insert at the end
      * @param k the name of resource where the original text came from
      */
-    protected void resolveLink(StringBuffer content, String start,
+    protected void resolveLink(StringBuilder content, String start,
             String startTag, String endTag, Key k) {
 
         for (int i = content.indexOf(start); i >= 0; i = content.indexOf(start)) {
@@ -352,8 +352,8 @@ public class ExDocXml extends Traverser {
      */
     protected Element scan(CharSequence cs) throws SAXException, IOException {
 
-        StringBuffer sb =
-                new StringBuffer(
+        StringBuilder sb =
+                new StringBuilder(
                     "<?xml version=\"1.0\" encoding=\"ISO-8859-1\" ?>"
                             + "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\""
                             + " \"http://www.w3.org/TR/html4/loose.dtd\">");
@@ -434,7 +434,7 @@ public class ExDocXml extends Traverser {
      * @throws IOException in case of an I/O error
      * @throws SAXException in case of a transformation error
      */
-    protected void shipout(Key key, StringBuffer content)
+    protected void shipout(Key key, StringBuilder content)
             throws IOException,
                 SAXException {
 

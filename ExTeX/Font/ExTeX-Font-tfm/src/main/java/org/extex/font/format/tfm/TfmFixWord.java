@@ -304,7 +304,7 @@ public class TfmFixWord implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         long v = value;
         int unity = 1 << POINTSHIFT;
         int mask = unity - 1;

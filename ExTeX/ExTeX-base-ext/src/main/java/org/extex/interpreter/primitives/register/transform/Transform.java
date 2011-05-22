@@ -160,8 +160,7 @@ public class Transform implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equals <code>null</code> or empty, the value is set to
-     * zero
+     * If the string equals <code>null</code> or empty, the value is set to zero
      * 
      * @param s the value as String
      * 
@@ -238,7 +237,7 @@ public class Transform implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (int i = 0; i < MAXVAL; i++) {
             sb.append(val[i].toString());

@@ -236,6 +236,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @throws ExBibException in case of an error
      * @throws ExBibSyntaxException in case that something goes wrong
      */
+    @Override
     public void load(DB db) throws ExBibException {
 
         StringBuilder comment = new StringBuilder();
@@ -309,6 +310,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @see org.extex.exbib.core.io.bibio.BibReader#open(java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public void open(String file, String encoding)
             throws ConfigurationException,
                 FileNotFoundException {
@@ -552,7 +554,7 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
 
     /**
      * Collect all characters up to the next at character (@) and the tag
-     * following. The characters before the @ are stored in the StringBuffer
+     * following. The characters before the @ are stored in the StringBuilder
      * given as argument.
      * 
      * @param comment the comment to add the ignored characters to

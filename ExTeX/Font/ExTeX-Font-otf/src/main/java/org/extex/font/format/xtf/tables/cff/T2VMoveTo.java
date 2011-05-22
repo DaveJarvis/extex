@@ -122,21 +122,20 @@ public class T2VMoveTo extends T2PathConstruction {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if (width != null) {
-            buf.append(width.toString()).append(" ");
+            buf.append(width.toString()).append(' ');
         }
-        buf.append(dy.toString()).append(" ");
-        buf.append(getName());
-        return buf.toString();
+        buf.append(dy.toString()).append(' ');
+        return buf.append(getName()).toString();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

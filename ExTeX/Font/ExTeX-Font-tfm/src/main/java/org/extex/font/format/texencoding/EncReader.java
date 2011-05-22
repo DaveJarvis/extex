@@ -57,11 +57,11 @@ public class EncReader implements Serializable {
     private Map<String, Integer> glyphlist = null;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private transient Localizer localizer =
-            LocalizerFactory.getLocalizer(EncReader.class);
+    private transient Localizer localizer = LocalizerFactory
+        .getLocalizer(EncReader.class);
 
     /**
      * encoding table.
@@ -80,7 +80,7 @@ public class EncReader implements Serializable {
             BufferedReader reader =
                     new BufferedReader(new InputStreamReader(in));
 
-            StringBuffer buf = new StringBuffer();
+            StringBuilder buf = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -90,7 +90,7 @@ public class EncReader implements Serializable {
                     if (pos >= 0) {
                         line = line.substring(0, pos - 1).trim();
                     }
-                    buf.append(line).append(" ");
+                    buf.append(line).append(' ');
                 }
             }
             reader.close();
@@ -100,8 +100,8 @@ public class EncReader implements Serializable {
             int first = buf.indexOf("[");
             int last = buf.lastIndexOf("]");
             if (fs < 0 || first < 0 || last < 0) {
-                throw new FontException(localizer
-                    .format("EncReader.WrongRange"));
+                throw new FontException(
+                    localizer.format("EncReader.WrongRange"));
 
             }
             String tablestring = buf.substring(first + 1, last).trim();

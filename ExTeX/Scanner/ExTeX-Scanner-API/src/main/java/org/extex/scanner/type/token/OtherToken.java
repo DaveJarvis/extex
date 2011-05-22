@@ -39,7 +39,7 @@ public class OtherToken extends AbstractToken implements Token {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * Creates a new object.
@@ -80,24 +80,13 @@ public class OtherToken extends AbstractToken implements Token {
     }
 
     /**
-     * Print the token into a StringBuffer.
-     * 
-     * @param sb the target string buffer
-     * 
-     * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuffer)
-     */
-    public void toString(StringBuffer sb) {
-
-        sb.append(getLocalizer().format("OtherToken.Text", super.toString()));
-    }
-
-    /**
      * Print the token into a StringBuilder.
      * 
      * @param sb the target string builder
      * 
      * @see org.extex.scanner.type.token.Token#toString(java.lang.StringBuilder)
      */
+    @Override
     public void toString(StringBuilder sb) {
 
         sb.append(getLocalizer().format("OtherToken.Text", super.toString()));
@@ -116,6 +105,7 @@ public class OtherToken extends AbstractToken implements Token {
      * @see org.extex.scanner.type.token.Token#visit(org.extex.scanner.type.token.TokenVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(TokenVisitor visitor, Object arg1) throws Exception {
 

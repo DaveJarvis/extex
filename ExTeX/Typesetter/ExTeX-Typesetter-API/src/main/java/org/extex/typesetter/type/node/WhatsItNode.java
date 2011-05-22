@@ -41,7 +41,7 @@ public class WhatsItNode extends AbstractNode {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * Creates a new object.
@@ -60,11 +60,11 @@ public class WhatsItNode extends AbstractNode {
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append("(whatsit )");
     }
@@ -82,6 +82,7 @@ public class WhatsItNode extends AbstractNode {
      * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

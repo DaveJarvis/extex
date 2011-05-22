@@ -38,8 +38,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
 public class MathGlyph implements Noad, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -97,6 +96,7 @@ public class MathGlyph implements Noad, Serializable {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
+    @Override
     public MathSpacing getSpacingClass() {
 
         return spacingClass;
@@ -109,6 +109,7 @@ public class MathGlyph implements Noad, Serializable {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
+    @Override
     public Noad getSubscript() {
 
         return null;
@@ -121,6 +122,7 @@ public class MathGlyph implements Noad, Serializable {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
+    @Override
     public Noad getSuperscript() {
 
         return null;
@@ -129,9 +131,9 @@ public class MathGlyph implements Noad, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
-     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
      */
+    @Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -142,9 +144,9 @@ public class MathGlyph implements Noad, Serializable {
      * 
      * @param subscript the subscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSubscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException("subscript");
@@ -155,9 +157,9 @@ public class MathGlyph implements Noad, Serializable {
      * 
      * @param superscript the superscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException("superscript");
@@ -173,20 +175,20 @@ public class MathGlyph implements Noad, Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, 1);
         return sb.toString();
     }
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
+     * Produce a printable representation of the noad in a StringBuilder.
      * 
      * @param sb the string buffer
      * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         toString(sb, 1);
     }
@@ -198,10 +200,10 @@ public class MathGlyph implements Noad, Serializable {
      * @param depth the depth to which the full information should be given
      * 
      * @see "TTP [691]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
-    public void toString(StringBuffer sb, int depth) {
+    @Override
+    public void toString(StringBuilder sb, int depth) {
 
         if (depth >= 0) {
             sb.append("\\fam");
@@ -230,13 +232,13 @@ public class MathGlyph implements Noad, Serializable {
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
+    @Override
     public void typeset(Noad previousNoad, NoadList noads, int index,
             NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,

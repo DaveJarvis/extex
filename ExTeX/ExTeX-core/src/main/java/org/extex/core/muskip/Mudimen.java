@@ -114,7 +114,7 @@ public class Mudimen implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
@@ -124,7 +124,7 @@ public class Mudimen implements Serializable {
      * 
      * @param sb the target string buffer
      */
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         length.toString(sb, 'm', 'u');
     }

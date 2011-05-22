@@ -43,9 +43,9 @@ import org.extex.util.xml.XMLStreamWriter;
  * <p>
  * Here <code>i</code> is the identification byte of VF, currently 202. The
  * string <code>x</code> is merely a comment, usually indicating the source of
- * the VF file. Parameters <code>cs</code> and <code>ds</code> are
- * respectively the check sum and the design size of the virtual font; they
- * should match the first two words in the header of the TFM file.
+ * the VF file. Parameters <code>cs</code> and <code>ds</code> are respectively
+ * the check sum and the design size of the virtual font; they should match the
+ * first two words in the header of the TFM file.
  * </p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -151,7 +151,7 @@ public class VfCommandPre extends VfCommand {
     private String readString(final RandomAccessR rar) throws IOException {
 
         int len = rar.readByteAsInt();
-        StringBuffer buf = new StringBuffer(len);
+        StringBuilder buf = new StringBuilder(len);
         for (int i = 0; i < len; i++) {
             buf.append((char) rar.readByteAsInt());
         }
@@ -163,6 +163,7 @@ public class VfCommandPre extends VfCommand {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("preamble");

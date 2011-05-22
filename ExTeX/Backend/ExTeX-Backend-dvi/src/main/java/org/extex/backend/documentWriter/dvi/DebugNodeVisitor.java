@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -51,7 +51,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
  * This is a implementation of a NodeVisitor for debugging.
- *
+ * 
  * @author <a href="mailto:sebastian.waschik@gmx.de">Sebastian Waschik</a>
  * @version $Revision:4704 $
  */
@@ -69,7 +69,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Creates a new instance.
-     *
+     * 
      * @param visitor <code>InspectableNodeVisitor</code> to inspect
      */
     public DebugNodeVisitor(InspectableNodeVisitor visitor) {
@@ -79,13 +79,12 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
     }
 
     /**
-     * Append information about a value to a <code>StringBuffer</code>.
-     *
+     * Append information about a value to a <code>StringBuilder</code>.
+     * 
      * @param buffer for appending information
      * @param value more information is added if this is a Node-object
      */
-    private void appendNodeInformation(StringBuffer buffer,
-            Object value) {
+    private void appendNodeInformation(StringBuilder buffer, Object value) {
 
         if (value instanceof Node) {
             Node node = (Node) value;
@@ -105,7 +104,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Convert dimen to String.
-     *
+     * 
      * @param dimen this value is not modified
      * @return a string representing dimen
      */
@@ -116,15 +115,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Write the debug message.
-     *
+     * 
      * @param mesg a <code>String</code>
      * @param node value for additional information
      * @param value value for additional information
      */
-    private void debugMessage(String mesg, Node node,
-            Object value) {
+    private void debugMessage(String mesg, Node node, Object value) {
 
-        StringBuffer buffer = new StringBuffer("DEBUG: ");
+        StringBuilder buffer = new StringBuilder("DEBUG: ");
 
         buffer.append(mesg);
         appendNodeInformation(buffer, node);
@@ -136,11 +134,11 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Visitor for nested nodes.
-     *
+     * 
      * @param visitor a <code>NodeVisitor</code> value
-     * @see
-     *   InspectableNodeVisitor#setVisitor(org.extex.typesetter.type.NodeVisitor)
+     * @see InspectableNodeVisitor#setVisitor(org.extex.typesetter.type.NodeVisitor)
      */
+    @Override
     public void setVisitor(NodeVisitor<Object, Object> visitor) {
 
         nodeVisitor.setVisitor(visitor);
@@ -152,13 +150,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitAdjust</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
+     *      Object)
      */
+    @Override
     public Object visitAdjust(AdjustNode node, Object value)
             throws GeneralException {
 
@@ -168,13 +168,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitAfterMath</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
+     *      Object)
      */
+    @Override
     public Object visitAfterMath(AfterMathNode node, Object value)
             throws GeneralException {
 
@@ -184,15 +186,17 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitAlignedLeaders</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
+     *      Object)
      */
-    public Object visitAlignedLeaders(AlignedLeadersNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitAlignedLeaders(AlignedLeadersNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitAlignedLeaders", node, value);
         return nodeVisitor.visitAlignedLeaders(node, value);
@@ -200,13 +204,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitBeforeMath</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
+     *      Object)
      */
+    @Override
     public Object visitBeforeMath(BeforeMathNode node, Object value)
             throws GeneralException {
 
@@ -216,15 +222,17 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitCenteredLeaders</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
+     *      Object)
      */
-    public Object visitCenteredLeaders(CenteredLeadersNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitCenteredLeaders(CenteredLeadersNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitCenteredLeaders", node, value);
         return nodeVisitor.visitCenteredLeaders(node, value);
@@ -232,13 +240,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitChar</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode, Object)
      */
+    @Override
     public Object visitChar(CharNode node, Object value)
             throws GeneralException {
 
@@ -248,7 +257,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitDiscretionary</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
@@ -256,8 +265,9 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
      *      Object)
      */
-    public Object visitDiscretionary(DiscretionaryNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitDiscretionary(DiscretionaryNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitDiscretionary", node, value);
         return nodeVisitor.visitDiscretionary(node, value);
@@ -265,7 +275,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitExpandedLeaders</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
@@ -273,8 +283,9 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
      *      Object)
      */
-    public Object visitExpandedLeaders(ExpandedLeadersNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitExpandedLeaders", node, value);
         return nodeVisitor.visitExpandedLeaders(node, value);
@@ -282,13 +293,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitGlue</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode, Object)
      */
+    @Override
     public Object visitGlue(GlueNode node, Object value)
             throws GeneralException {
 
@@ -298,7 +310,7 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitHorizontalList</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
@@ -306,8 +318,9 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
      * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
      *      Object)
      */
-    public Object visitHorizontalList(HorizontalListNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitHorizontalList(HorizontalListNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitHorizontalList", node, value);
         return nodeVisitor.visitHorizontalList(node, value);
@@ -315,13 +328,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitInsertion</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
+     *      Object)
      */
+    @Override
     public Object visitInsertion(InsertionNode node, Object value)
             throws GeneralException {
 
@@ -331,13 +346,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitKern</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode, Object)
      */
+    @Override
     public Object visitKern(KernNode node, Object value)
             throws GeneralException {
 
@@ -347,13 +363,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitLigature</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
+     *      Object)
      */
+    @Override
     public Object visitLigature(LigatureNode node, Object value)
             throws GeneralException {
 
@@ -363,13 +381,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitMark</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode, Object)
      */
+    @Override
     public Object visitMark(MarkNode node, Object value)
             throws GeneralException {
 
@@ -379,13 +398,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitPenalty</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
+     *      Object)
      */
+    @Override
     public Object visitPenalty(PenaltyNode node, Object value)
             throws GeneralException {
 
@@ -395,13 +416,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitRule</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode, Object)
      */
+    @Override
     public Object visitRule(RuleNode node, Object value)
             throws GeneralException {
 
@@ -411,13 +433,14 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitSpace</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
      * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode, Object)
      */
+    @Override
     public Object visitSpace(SpaceNode node, Object value)
             throws GeneralException {
 
@@ -427,25 +450,29 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitVerticalList</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
+     *      Object)
      */
-    public Object visitVerticalList(VerticalListNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitVerticalList(VerticalListNode node, Object value)
+            throws GeneralException {
 
         debugMessage("visitVerticalList", node, value);
         return nodeVisitor.visitVerticalList(node, value);
     }
 
     /**
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode, java.lang.Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
+     *      java.lang.Object)
      */
-    public Object visitVirtualChar(VirtualCharNode node,
-            Object value) throws GeneralException {
+    @Override
+    public Object visitVirtualChar(VirtualCharNode node, Object value)
+            throws GeneralException {
 
         // TODO visitVirtualChar unimplemented
         return null;
@@ -453,13 +480,15 @@ public class DebugNodeVisitor implements InspectableNodeVisitor {
 
     /**
      * Call the <code>visitWhatsIt</code> to inspect.
-     *
+     * 
      * @param node the first parameter for the visitor
      * @param value the second parameter for the visitor
      * @return the visitor specific value of inspecting visitor
      * @exception GeneralException if an error occurs
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode, Object)
+     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
+     *      Object)
      */
+    @Override
     public Object visitWhatsIt(WhatsItNode node, Object value)
             throws GeneralException {
 

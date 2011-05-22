@@ -38,8 +38,8 @@ import org.extex.util.file.random.RandomAccessR;
  * </tr>
  * <tr>
  * <td>header[1]</td>
- * <td>a fix word containing the design size of the font, in units of TEX
- * points (7227 TEX points =254 cm)</td>
+ * <td>a fix word containing the design size of the font, in units of TEX points
+ * (7227 TEX points =254 cm)</td>
  * </tr>
  * <tr>
  * <td>header[2..11]</td>
@@ -55,8 +55,8 @@ import org.extex.util.file.random.RandomAccessR;
  * two bytes that are ignored, and a fourth byte called the face.
  * <tr>
  * <td>header[18..(lh-1)]</td>
- * <td>might also be present: the individual words are simply called
- * header[18], header[19], etc., at the moment.</td>
+ * <td>might also be present: the individual words are simply called header[18],
+ * header[19], etc., at the moment.</td>
  * </tr>
  * </table>
  * 
@@ -280,7 +280,7 @@ public class TfmHeaderArray implements Serializable {
     private String readBCPL(RandomAccessR rar, int size) throws IOException {
 
         int len = rar.readByte();
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < size - 1; i++) {
             char c = Character.toUpperCase((char) rar.readByte());
             if (i < len) {

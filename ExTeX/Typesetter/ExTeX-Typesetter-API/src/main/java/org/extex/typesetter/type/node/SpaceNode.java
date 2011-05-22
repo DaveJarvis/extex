@@ -34,8 +34,7 @@ import org.extex.typesetter.type.NodeVisitor;
 public class SpaceNode extends GlueNode implements Node {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
@@ -71,11 +70,11 @@ public class SpaceNode extends GlueNode implements Node {
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         if (!DEVELOP || getWidth().eq(size.getLength())) {
             sb.append(getLocalizer().format("String.Format", //
@@ -94,11 +93,11 @@ public class SpaceNode extends GlueNode implements Node {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * 
-     * @see org.extex.typesetter.type.Node#toText( java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(StringBuilder sb, String prefix) {
 
         sb.append(getLocalizer().format("Text.Format", size.toString()));
     }
@@ -106,8 +105,8 @@ public class SpaceNode extends GlueNode implements Node {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.node.GlueNode#visit(
-     *      org.extex.typesetter.type.NodeVisitor, java.lang.Object)
+     * @see org.extex.typesetter.type.node.GlueNode#visit(org.extex.typesetter.type.NodeVisitor,
+     *      java.lang.Object)
      */
     @Override
     @SuppressWarnings({"unchecked", "rawtypes"})

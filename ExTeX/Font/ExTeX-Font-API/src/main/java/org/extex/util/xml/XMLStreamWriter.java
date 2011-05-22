@@ -180,8 +180,8 @@ public class XMLStreamWriter {
         /**
          * Check, if the element is in append mode.
          * 
-         * @return Returns <code>true</code>, if the elements have children
-         *         or text.
+         * @return Returns <code>true</code>, if the elements have children or
+         *         text.
          */
         public boolean isAppend() {
 
@@ -374,7 +374,7 @@ public class XMLStreamWriter {
         if (text == null) {
             return "null";
         }
-        StringBuffer buf = new StringBuffer(text.length());
+        StringBuilder buf = new StringBuilder(text.length());
 
         for (int i = 0, n = text.length(); i < n; i++) {
             char c = text.charAt(i);
@@ -473,7 +473,7 @@ public class XMLStreamWriter {
      * 
      * @param buf The string buffer.
      */
-    private void printIndent(StringBuffer buf) {
+    private void printIndent(StringBuilder buf) {
 
         if (beauty) {
             for (int i = 0, cnt = stack.size(); i < cnt; i++) {
@@ -593,12 +593,12 @@ public class XMLStreamWriter {
      */
     private String toHex(long val, int length) {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < length; i++) {
             buf.append("0");
         }
         buf.append(Long.toHexString(val));
-        StringBuffer hex = new StringBuffer();
+        StringBuilder hex = new StringBuilder();
         hex.append("0x");
         hex.append(buf.substring(buf.length() - length));
 
@@ -614,7 +614,7 @@ public class XMLStreamWriter {
      */
     private String toHexString(int value, int digits) {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < digits; i++) {
             buf.append("0");
         }
@@ -737,7 +737,7 @@ public class XMLStreamWriter {
      */
     public void writeByteArray(byte[] bytes) throws IOException {
 
-        StringBuffer buf = new StringBuffer(bytes.length * ENTRY_LENGTH);
+        StringBuilder buf = new StringBuilder(bytes.length * ENTRY_LENGTH);
         for (int i = 0; i < bytes.length; i++) {
             buf.append("0x").append(toHexString(bytes[i], 2)).append(" ");
             if (beauty && i % ENTRY_LINES == ENTRY_LINES - 1) {
@@ -941,7 +941,7 @@ public class XMLStreamWriter {
      */
     public void writeShortArray(short[] shorts) throws IOException {
 
-        StringBuffer buf = new StringBuffer(shorts.length * ENTRY_LENGTH);
+        StringBuilder buf = new StringBuilder(shorts.length * ENTRY_LENGTH);
 
         for (int i = 0; i < shorts.length; i++) {
             buf.append("0x").append(toHexString(shorts[i], SHORT_LENGTH))

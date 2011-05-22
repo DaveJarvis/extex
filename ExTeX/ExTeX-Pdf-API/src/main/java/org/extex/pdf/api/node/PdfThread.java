@@ -109,11 +109,11 @@ public class PdfThread extends WhatsItNode {
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append("(pdfthread " + id + ")");
     }

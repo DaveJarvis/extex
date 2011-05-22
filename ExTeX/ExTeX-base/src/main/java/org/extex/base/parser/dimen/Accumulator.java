@@ -22,9 +22,9 @@ package org.extex.base.parser.dimen;
 import org.extex.core.scaled.ScaledNumber;
 
 /**
- * This data type contains an accumulator which can contain values of
- * different kinds.
- *
+ * This data type contains an accumulator which can contain values of different
+ * kinds.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -56,22 +56,23 @@ public class Accumulator {
      * @param value the value
      */
     public Accumulator(long value) {
+
         this.sp = 0;
-        
+
         this.value = value;
     }
 
     /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
+     * 
+     * @return a string representation of the object.
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         ScaledNumber.toString(sb, value);
         if (sp != 0) {
             sb.append("sp");

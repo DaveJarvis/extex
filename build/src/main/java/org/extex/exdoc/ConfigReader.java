@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -247,7 +247,7 @@ public class ConfigReader {
         NodeList bannerElements = root.getElementsByTagName("banner");
         if (bannerElements.getLength() > 0) {
             Node item = bannerElements.item(0);
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             for (Node node = item.getFirstChild(); node != null; node =
                     node.getNextSibling()) {
                 sb.append(node.getNodeValue());

@@ -769,7 +769,7 @@ public class DumpDocumentWriter
         NodeList nodes = page.getNodes();
         try {
             if (tree) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 nodes.toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
                 out.write(sb.toString().getBytes());
                 out.write('\n');

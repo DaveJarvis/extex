@@ -20,8 +20,8 @@
 package org.extex.interpreter.primitives.register.hash;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.interpreter.TokenSource;
@@ -110,8 +110,7 @@ public class HashToks implements Serializable {
      * Contains the key
      * 
      * @param key the key
-     * @return <code>true</code> if the key exists, otherwise
-     *         <code>false</code>
+     * @return <code>true</code> if the key exists, otherwise <code>false</code>
      */
     public boolean containsKey(String key) {
 
@@ -162,11 +161,11 @@ public class HashToks implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
-        Iterator<String> it = map.keySet().iterator();
+        StringBuilder buf = new StringBuilder();
         buf.append("{\n");
-        while (it.hasNext()) {
-            String key = it.next();
+        String[] array = map.keySet().toArray(new String[map.size()]);
+        Arrays.sort(array);
+        for (String key : array) {
             buf.append('{' + key + '}');
             buf.append('{' + get(key).toText() + "}\n");
         }

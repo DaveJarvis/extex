@@ -36,7 +36,7 @@ public class Text2String {
      * main.
      * 
      * @param args The command line.
-     * @throws Exception if an error occuurred.
+     * @throws Exception if an error occurred.
      */
     public static void main(String[] args) throws Exception {
 

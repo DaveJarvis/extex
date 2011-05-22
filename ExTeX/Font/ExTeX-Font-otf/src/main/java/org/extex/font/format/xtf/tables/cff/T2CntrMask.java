@@ -155,12 +155,11 @@ public class T2CntrMask extends T2AbstractHintMask {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < val.length; i++) {
-            buf.append(val[i].toString()).append(" ");
+            buf.append(val[i].toString()).append(' ');
         }
-        buf.append(getName()).append(" ");
-        buf.append(T2HintMask.toBin(mask));
+        buf.append(getName()).append(' ').append(T2HintMask.toBin(mask));
         return buf.toString();
     }
 
@@ -169,13 +168,14 @@ public class T2CntrMask extends T2AbstractHintMask {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("mask", T2HintMask.toBin(mask));
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < val.length; i++) {
-            buf.append(" ").append(val[i]);
+            buf.append(' ').append(val[i]);
         }
         writer.writeAttribute("values", buf.toString().trim());
         writer.writeEndElement();

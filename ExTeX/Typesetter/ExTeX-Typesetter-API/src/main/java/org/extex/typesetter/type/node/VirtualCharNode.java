@@ -172,6 +172,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * @see org.extex.typesetter.type.NodeList#add(int,
      *      org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(int index, Node node) {
 
         this.nodes.add(index, node);
@@ -185,6 +186,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#add(org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node) {
 
         this.nodes.add(node);
@@ -198,6 +200,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#addSkip(org.extex.core.glue.FixedGlue)
      */
+    @Override
     public void addSkip(FixedGlue glue) {
 
         this.nodes.addSkip(glue);
@@ -223,6 +226,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#clear()
      */
+    @Override
     public void clear() {
 
         this.nodes.clear();
@@ -235,6 +239,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#copy()
      */
+    @Override
     public NodeList copy() {
 
         try {
@@ -267,6 +272,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#get(int)
      */
+    @Override
     public Node get(int index) {
 
         return this.nodes.get(index);
@@ -320,6 +326,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#getMove()
      */
+    @Override
     public Dimen getMove() {
 
         return this.nodes.getMove();
@@ -344,6 +351,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#getShift()
      */
+    @Override
     public Dimen getShift() {
 
         return this.nodes.getShift();
@@ -381,6 +389,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#isEmpty()
      */
+    @Override
     public boolean isEmpty() {
 
         return this.nodes.isEmpty();
@@ -395,6 +404,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#iterator()
      */
+    @Override
     public Iterator<Node> iterator() {
 
         return this.nodes.iterator();
@@ -410,6 +420,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#remove(int)
      */
+    @Override
     public Node remove(int index) {
 
         return this.nodes.remove(index);
@@ -458,6 +469,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#setMove(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setMove(FixedDimen d) {
 
         this.nodes.setMove(d);
@@ -472,6 +484,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#setShift(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setShift(FixedDimen d) {
 
         this.nodes.setShift(d);
@@ -501,6 +514,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#size()
      */
+    @Override
     public int size() {
 
         return this.nodes.size();
@@ -538,9 +552,10 @@ public class VirtualCharNode extends CharNode implements NodeList {
      * 
      * @see org.extex.typesetter.type.NodeList#toText()
      */
+    @Override
     public String toText() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toText(sb, "");
         return sb.toString();
     }

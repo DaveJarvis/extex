@@ -20,7 +20,6 @@
 package org.extex.exbib.core.util;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -63,12 +62,11 @@ public class ObserverList implements Observer {
      * 
      * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,java.lang.Object)
      */
+    @Override
     public void update(Observable source, Object object) {
 
-        Iterator<Observer> iterator = list.iterator();
-
-        while (iterator.hasNext()) {
-            ((iterator.next())).update(source, object);
+        for (Observer obs : list) {
+            obs.update(source, object);
         }
     }
 

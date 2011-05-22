@@ -32,7 +32,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The 'kern' table contains the values that adjust the intercharacter spacing
  * for glyphs in a font.
  * 
- * <table border="1"> <tbody>
+ * <table border="1">
+ * <tbody>
  * <tr>
  * <td><b>Type</b></td>
  * <td><b>Name</b></td>
@@ -42,14 +43,13 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>fixed32</td>
  * <td>version</td>
- * <td> The version number of the kerning table (0x00010000 for the current
+ * <td>The version number of the kerning table (0x00010000 for the current
  * version).</td>
  * </tr>
  * <tr>
  * <td>uint32</td>
  * <td>nTables</td>
- * </td>
- * The number of subtables included in the kerning table.</td>
+ * </td> The number of subtables included in the kerning table.</td>
  * </tr>
  * </table>
  * 
@@ -127,9 +127,9 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kerningpair");
@@ -206,7 +206,8 @@ public class TtfTableKERN extends AbstractXtfTable
      * OS/2.
      * </p>
      * 
-     * <table BORDER="1"> <tbody>
+     * <table BORDER="1">
+     * <tbody>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Field</b></td>
@@ -216,18 +217,18 @@ public class TtfTableKERN extends AbstractXtfTable
      * <tr>
      * <td>USHORT</td>
      * <td>nPairs</td>
-     * <td> This gives the number of kerning pairs in the table.</td>
+     * <td>This gives the number of kerning pairs in the table.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>searchRange</td>
-     * <td> The largest power of two less than or equal to the value of nPairs,
+     * <td>The largest power of two less than or equal to the value of nPairs,
      * multiplied by the size in bytes of an entry in the table.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>entrySelector</td>
-     * <td> <SUB>2</SUB> of the largest power of two less than or equal to the
+     * <td><SUB>2</SUB> of the largest power of two less than or equal to the
      * value of nPairs. This value indicates how many iterations of the search
      * loop will have to be made. (For example, in a list of eight items, there
      * would have to be three iterations of the loop).</td>
@@ -235,9 +236,9 @@ public class TtfTableKERN extends AbstractXtfTable
      * <tr>
      * <td>USHORT</td>
      * <td>rangeShift</td>
-     * <td> The value of nPairs minus the largest power of two less than or
-     * equal to nPairs, and then multiplied by the size in bytes of an entry in
-     * the table.</td>
+     * <td>The value of nPairs minus the largest power of two less than or equal
+     * to nPairs, and then multiplied by the size in bytes of an entry in the
+     * table.</td>
      * </tr>
      * </table>
      * 
@@ -246,8 +247,10 @@ public class TtfTableKERN extends AbstractXtfTable
      * following format:
      * </p>
      * 
-     * <table BORDER="1"> <tbody>
-     * <tr><b>Type</b></td>
+     * <table BORDER="1">
+     * <tbody>
+     * <tr>
+     * <b>Type</b></td>
      * <td><b>Field</b></td>
      * <td><b>Description</b></td>
      * </tr>
@@ -255,17 +258,17 @@ public class TtfTableKERN extends AbstractXtfTable
      * <tr>
      * <td>USHORT</td>
      * <td>left</td>
-     * <td> The glyph index for the left-hand glyph in the kerning pair.</td>
+     * <td>The glyph index for the left-hand glyph in the kerning pair.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>right</td>
-     * <td> The glyph index for the right-hand glyph in the kerning pair.</td>
+     * <td>The glyph index for the right-hand glyph in the kerning pair.</td>
      * </tr>
      * <tr>
      * <td>FWORD</td>
      * <td>value</td>
-     * <td> The kerning value for the above pair, in FUnits. If this value is
+     * <td>The kerning value for the above pair, in FUnits. If this value is
      * greater than zero, the characters will be moved apart. If this value is
      * less than zero, the character will be moved closer together.</td>
      * </tr>
@@ -374,9 +377,9 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
@@ -398,7 +401,8 @@ public class TtfTableKERN extends AbstractXtfTable
      * This subtable is a two-dimensional array of kerning values.
      * </p>
      * 
-     * <table BORDER="1"> <tbody>
+     * <table BORDER="1">
+     * <tbody>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Field</b></td>
@@ -408,22 +412,22 @@ public class TtfTableKERN extends AbstractXtfTable
      * <tr>
      * <td>USHORT</td>
      * <td>rowWidth</td>
-     * <td> The width, in bytes, of a row in the table.</td>
+     * <td>The width, in bytes, of a row in the table.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>leftClassTable</td>
-     * <td> Offset from beginning of this subtable to left-hand class table.</td>
+     * <td>Offset from beginning of this subtable to left-hand class table.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>rightClassTable</td>
-     * <td> Offset from beginning of this subtable to right-hand class table.</td>
+     * <td>Offset from beginning of this subtable to right-hand class table.</td>
      * </tr>
      * <tr>
      * <td>USHORT</td>
      * <td>array</td>
-     * <td> Offset from beginning of this subtable to the start of the kerning
+     * <td>Offset from beginning of this subtable to the start of the kerning
      * array.</td>
      * </tr>
      * </table>
@@ -432,7 +436,8 @@ public class TtfTableKERN extends AbstractXtfTable
      * Each class table has the following header:
      * </p>
      * 
-     * <table BORDER="1"> <tbody>
+     * <table BORDER="1">
+     * <tbody>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Field</b></td>
@@ -552,9 +557,9 @@ public class TtfTableKERN extends AbstractXtfTable
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-         *      org.extex.util.xml.XMLStreamWriter)
+         * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("kernsubtable");
@@ -624,16 +629,14 @@ public class TtfTableKERN extends AbstractXtfTable
      */
     private String createKey(int l, int r) {
 
-        StringBuffer buf = new StringBuffer(l);
-        buf.append(" ").append(r);
-        return buf.toString();
+        return new StringBuilder(l).append(' ').append(r).toString();
     }
 
     /**
      * Returns the kerning size.
      * 
      * @param l The left value (glyph position).
-     * @param r The rigth value (glyph position).
+     * @param r The right value (glyph position).
      * @return Returns the kerning size.
      */
     public int getKerning(int l, int r) {
@@ -666,6 +669,7 @@ public class TtfTableKERN extends AbstractXtfTable
      * 
      * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
      */
+    @Override
     public String getShortcut() {
 
         return "kern";
@@ -687,6 +691,7 @@ public class TtfTableKERN extends AbstractXtfTable
      * 
      * @return The table type
      */
+    @Override
     public int getType() {
 
         return XtfReader.KERN;
@@ -695,9 +700,9 @@ public class TtfTableKERN extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

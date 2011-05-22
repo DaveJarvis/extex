@@ -48,9 +48,10 @@ public abstract class AbstractValueItem implements ValueItem {
      * This is the default implementation of an expansion. It simply expands the
      * content of the object.
      * 
-     * @param sb the target StringBuffer
+     * @param sb the target StringBuilder
      * @param db the database context
      */
+    @Override
     public void expand(StringBuilder sb, DB db) {
 
         sb.append(content);
@@ -61,6 +62,7 @@ public abstract class AbstractValueItem implements ValueItem {
      * 
      * @return the value
      */
+    @Override
     public String getContent() {
 
         return content;
@@ -71,6 +73,7 @@ public abstract class AbstractValueItem implements ValueItem {
      * 
      * @param content the new value
      */
+    @Override
     public void setContent(String content) {
 
         this.content = content;
@@ -100,5 +103,6 @@ public abstract class AbstractValueItem implements ValueItem {
      * 
      * @throws IOException just in case
      */
+    @Override
     public abstract void visit(ValueVisitor visitor, DB db) throws IOException;
 }

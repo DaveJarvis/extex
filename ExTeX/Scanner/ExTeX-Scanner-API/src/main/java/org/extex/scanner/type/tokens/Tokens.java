@@ -292,19 +292,6 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     }
 
     /**
-     * Print the token into a StringBuffer.
-     * 
-     * @param sb the target string buffer
-     */
-    public void toString(StringBuffer sb) {
-
-        for (int i = 0; i < tokens.size(); i++) {
-            tokens.get(i).toString(sb);
-            sb.append("\n  ");
-        }
-    }
-
-    /**
      * Print the token into a StringBuilder.
      * 
      * @param sb the target string builder
@@ -327,7 +314,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     @Override
     public String toText() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int size = tokens.size();
         for (int i = 0; i < size; i++) {
@@ -353,7 +340,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     @Override
     public String toText(UnicodeChar esc) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         int size = tokens.size();
         for (int i = 0; i < size; i++) {

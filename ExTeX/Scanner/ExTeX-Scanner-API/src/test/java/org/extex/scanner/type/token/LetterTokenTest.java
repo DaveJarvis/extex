@@ -73,8 +73,8 @@ public class LetterTokenTest extends TokenTester {
     @Test
     public void testToString2() {
 
-        assertEquals("the letter ^^@", new LetterToken(UnicodeChar.get(0))
-            .toString());
+        assertEquals("the letter ^^@",
+            new LetterToken(UnicodeChar.get(0)).toString());
     }
 
     /**
@@ -82,8 +82,8 @@ public class LetterTokenTest extends TokenTester {
     @Test
     public void testToString3() {
 
-        assertEquals("the letter ^^A", new LetterToken(UnicodeChar.get(1))
-            .toString());
+        assertEquals("the letter ^^A",
+            new LetterToken(UnicodeChar.get(1)).toString());
     }
 
     /**
@@ -91,8 +91,8 @@ public class LetterTokenTest extends TokenTester {
     @Test
     public void testToString4() {
 
-        assertEquals("the letter ^^B", new LetterToken(UnicodeChar.get(2))
-            .toString());
+        assertEquals("the letter ^^B",
+            new LetterToken(UnicodeChar.get(2)).toString());
     }
 
     /**
@@ -100,18 +100,8 @@ public class LetterTokenTest extends TokenTester {
     @Test
     public void testToString5() {
 
-        assertEquals("the letter ^^?", new LetterToken(UnicodeChar.get(127))
-            .toString());
-    }
-
-    /**
-     */
-    @Test
-    public void testToStringBuffer2() {
-
-        StringBuffer sb = new StringBuffer();
-        new LetterToken(UnicodeChar.get(1)).toString(sb);
-        assertEquals("the letter ^^A", sb.toString());
+        assertEquals("the letter ^^?",
+            new LetterToken(UnicodeChar.get(127)).toString());
     }
 
     /**

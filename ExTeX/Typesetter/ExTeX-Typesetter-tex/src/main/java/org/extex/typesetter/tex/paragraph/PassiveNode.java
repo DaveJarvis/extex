@@ -21,7 +21,7 @@ package org.extex.typesetter.tex.paragraph;
 
 /**
  * The passive nodes constitute linked lists with break points.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -49,13 +49,12 @@ public class PassiveNode {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param curBreak the index of this break point
      * @param serial the serial number for printing
      * @param prevBreak the previous passive node
      */
-    public PassiveNode(int curBreak, int serial,
-            PassiveNode prevBreak) {
+    public PassiveNode(int curBreak, int serial, PassiveNode prevBreak) {
 
         this.curBreak = curBreak;
         this.serial = serial;
@@ -64,7 +63,7 @@ public class PassiveNode {
 
     /**
      * Getter for curBreak.
-     *
+     * 
      * @return the curBreak
      */
     public int getCurBreak() {
@@ -74,7 +73,7 @@ public class PassiveNode {
 
     /**
      * Getter for nextBreak.
-     *
+     * 
      * @return the nextBreak
      */
     public PassiveNode getNextBreak() {
@@ -84,7 +83,7 @@ public class PassiveNode {
 
     /**
      * Getter for prevBreak.
-     *
+     * 
      * @return the prevBreak
      */
     public PassiveNode getPrevBreak() {
@@ -94,7 +93,7 @@ public class PassiveNode {
 
     /**
      * Getter for serial.
-     *
+     * 
      * @return the serial
      */
     public int getSerial() {
@@ -104,7 +103,7 @@ public class PassiveNode {
 
     /**
      * Setter for the next break node.
-     *
+     * 
      * @param pn the next passive node
      */
     public void setNextBreak(PassiveNode pn) {
@@ -114,29 +113,27 @@ public class PassiveNode {
 
     /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object
-     *
+     * 
+     * @return a string representation of the object
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
 
     /**
      * Print the current object to a target string buffer.
-     *
+     * 
      * @param sb the target string buffer
      */
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
-        sb.append("<");
-        sb.append(curBreak);
-        sb.append(">");
+        sb.append('<').append(curBreak).append('>');
         if (nextBreak != null) {
             nextBreak.toString(sb);
         }

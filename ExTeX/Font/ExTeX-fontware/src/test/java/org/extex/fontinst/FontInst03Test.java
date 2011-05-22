@@ -46,191 +46,6 @@ public class FontInst03Test extends ExTeXLauncher {
     private static final String SEP = System.getProperty("path.separator", ":");
 
     /**
-     * Creates a new object.
-     */
-    public FontInst03Test() {
-
-        setConfig("fontinst-test.xml");
-
-        // delete temp files after the test
-        new File("texput.log").deleteOnExit();
-        new File("fxlr.mtx").deleteOnExit();
-        new File("fxlr.pl").deleteOnExit();
-        new File("fxlr8r.mtx").deleteOnExit();
-        new File("fxlr8r.pl").deleteOnExit();
-    }
-
-    /**
-     * Returns the properties for the test case.
-     * 
-     * @return Returns the properties for the test case.
-     */
-    private Properties getMyProps() {
-
-        Properties props = getProps();
-        props.setProperty("extex.texinputs", //
-            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
-                    "../texmf/src/texmf/fonts/afm/" + SEP + //
-                    "../texmf/src/texmf/fonts/enc/" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/misc" //
-        );
-        // props.setProperty("extex.launcher.trace", "true");
-        // props.setProperty("extex.launcher.time", "true");
-        return props;
-    }
-
-    /**
-     * Test for fontinst misc.
-     * 
-     * <pre>
-     * \input fontinst.sty
-     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
-     * \bye
-     * </pre>
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testTransformTestFXLRMTX() throws Exception {
-
-        setConfig("tex");
-        assertOutput(
-            getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
-                    + "\\bye",
-            // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
-                    + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
-                    + "Raw font written on fxlr8r.pl.\n",
-            // --- output channel ---
-            TERM);
-
-        // check the output file.
-        File mtx = new File("fxlr.mtx");
-        File mtxorg =
-                new File(
-                    "../ExTeX-fontware/src/test/resources/fxlr.mtx.tex.org");
-
-        assertTrue(mtx.canRead());
-        assertTrue(mtxorg.canRead());
-
-        BufferedReader in = new BufferedReader(new FileReader(mtx));
-        BufferedReader inorg = new BufferedReader(new FileReader(mtxorg));
-
-        String line, lineorg;
-        while ((lineorg = inorg.readLine()) != null) {
-            line = in.readLine();
-
-            assertEquals("generated mtx file", lineorg, line);
-        }
-        in.close();
-        inorg.close();
-    }
-
-    /**
-     * Test for fontinst misc.
-     * 
-     * <pre>
-     * \input fontinst.sty
-     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
-     * \bye
-     * </pre>
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testTransformTestFXLR8RMTX() throws Exception {
-
-        setConfig("tex");
-        assertOutput(
-            getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
-                    + "\\bye",
-            // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
-                    + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
-                    + "Raw font written on fxlr8r.pl.\n",
-            // --- output channel ---
-            TERM);
-
-        // check the output file.
-        File mtx = new File("fxlr8r.mtx");
-        File mtxorg =
-                new File(
-                    "../ExTeX-fontware/src/test/resources/fxlr8r.mtx.tex.org");
-
-        assertTrue(mtx.canRead());
-        assertTrue(mtxorg.canRead());
-
-        BufferedReader in = new BufferedReader(new FileReader(mtx));
-        BufferedReader inorg = new BufferedReader(new FileReader(mtxorg));
-
-        String line, lineorg;
-        while ((lineorg = inorg.readLine()) != null) {
-            line = in.readLine();
-
-            assertEquals("generated mtx file", lineorg, line);
-        }
-        in.close();
-        inorg.close();
-    }
-
-    /**
-     * Test for fontinst misc.
-     * 
-     * <pre>
-     * \input fontinst.sty
-     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
-     * \bye
-     * </pre>
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testTransformTestFXLR8RPL() throws Exception {
-
-        setConfig("tex");
-        assertOutput(
-            getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
-                    + "\\bye",
-            // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
-                    + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
-                    + "Raw font written on fxlr8r.pl.\n",
-            // --- output channel ---
-            TERM);
-
-        // check the output file.
-        File pl = new File("fxlr8r.pl");
-        FileInputStream stream = new FileInputStream(pl);
-        assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
-        for (int c = stream.read(); c >= 0; c = stream.read()) {
-            sb.append((char) c);
-        }
-        stream.close();
-        assertEquals("generated file", TEXT_FXLR8R_PL, sb.toString());
-
-    }
-
-    /**
      * The tex output (fxlr8r.pl)
      */
     private static final String TEXT_FXLR8R_PL =
@@ -963,4 +778,189 @@ public class FontInst03Test extends ExTeXLauncher {
                     + "   (CHARWD R 0.277)\n" + "   (CHARHT R 0.442)\n"
                     + "   (CHARDP R 0.213)\n" + "   (CHARIC R 0.000)\n"
                     + "   )\n" + "\n" + "(COMMENT END OF FILE fxlr8r.pl)\n";
+
+    /**
+     * Creates a new object.
+     */
+    public FontInst03Test() {
+
+        setConfig("fontinst-test.xml");
+
+        // delete temp files after the test
+        new File("texput.log").deleteOnExit();
+        new File("fxlr.mtx").deleteOnExit();
+        new File("fxlr.pl").deleteOnExit();
+        new File("fxlr8r.mtx").deleteOnExit();
+        new File("fxlr8r.pl").deleteOnExit();
+    }
+
+    /**
+     * Returns the properties for the test case.
+     * 
+     * @return Returns the properties for the test case.
+     */
+    private Properties getMyProps() {
+
+        Properties props = getProps();
+        props.setProperty("extex.texinputs", //
+            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
+                    "../texmf/src/texmf/fonts/afm/" + SEP + //
+                    "../texmf/src/texmf/fonts/enc/" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/misc" //
+        );
+        // props.setProperty("extex.launcher.trace", "true");
+        // props.setProperty("extex.launcher.time", "true");
+        return props;
+    }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * <pre>
+     * \input fontinst.sty
+     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
+     * \bye
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testTransformTestFXLR8RMTX() throws Exception {
+
+        setConfig("tex");
+        assertOutput(
+            getMyProps(), // --- input code ---
+            "\\input fontinst.sty " //
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+                    + "\\bye",
+            // --- log channel ---
+            "No file fontinst.rc.\n" //
+                    + "Metrics written on fxlr.mtx.\n"//
+                    + "Raw font written on fxlr.pl.\n" // +
+                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Raw font written on fxlr8r.pl.\n",
+            // --- output channel ---
+            TERM);
+
+        // check the output file.
+        File mtx = new File("fxlr8r.mtx");
+        File mtxorg =
+                new File(
+                    "../ExTeX-fontware/src/test/resources/fxlr8r.mtx.tex.org");
+
+        assertTrue(mtx.canRead());
+        assertTrue(mtxorg.canRead());
+
+        BufferedReader in = new BufferedReader(new FileReader(mtx));
+        BufferedReader inorg = new BufferedReader(new FileReader(mtxorg));
+
+        String line, lineorg;
+        while ((lineorg = inorg.readLine()) != null) {
+            line = in.readLine();
+
+            assertEquals("generated mtx file", lineorg, line);
+        }
+        in.close();
+        inorg.close();
+    }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * <pre>
+     * \input fontinst.sty
+     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
+     * \bye
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testTransformTestFXLR8RPL() throws Exception {
+
+        setConfig("tex");
+        assertOutput(
+            getMyProps(), // --- input code ---
+            "\\input fontinst.sty " //
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+                    + "\\bye",
+            // --- log channel ---
+            "No file fontinst.rc.\n" //
+                    + "Metrics written on fxlr.mtx.\n"//
+                    + "Raw font written on fxlr.pl.\n" // +
+                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Raw font written on fxlr8r.pl.\n",
+            // --- output channel ---
+            TERM);
+
+        // check the output file.
+        File pl = new File("fxlr8r.pl");
+        FileInputStream stream = new FileInputStream(pl);
+        assertNotNull(stream);
+        StringBuilder sb = new StringBuilder();
+        for (int c = stream.read(); c >= 0; c = stream.read()) {
+            sb.append((char) c);
+        }
+        stream.close();
+        assertEquals("generated file", TEXT_FXLR8R_PL, sb.toString());
+
+    }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * <pre>
+     * \input fontinst.sty
+     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
+     * \bye
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testTransformTestFXLRMTX() throws Exception {
+
+        setConfig("tex");
+        assertOutput(
+            getMyProps(), // --- input code ---
+            "\\input fontinst.sty " //
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+                    + "\\bye",
+            // --- log channel ---
+            "No file fontinst.rc.\n" //
+                    + "Metrics written on fxlr.mtx.\n"//
+                    + "Raw font written on fxlr.pl.\n" // +
+                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Raw font written on fxlr8r.pl.\n",
+            // --- output channel ---
+            TERM);
+
+        // check the output file.
+        File mtx = new File("fxlr.mtx");
+        File mtxorg =
+                new File(
+                    "../ExTeX-fontware/src/test/resources/fxlr.mtx.tex.org");
+
+        assertTrue(mtx.canRead());
+        assertTrue(mtxorg.canRead());
+
+        BufferedReader in = new BufferedReader(new FileReader(mtx));
+        BufferedReader inorg = new BufferedReader(new FileReader(mtxorg));
+
+        String line, lineorg;
+        while ((lineorg = inorg.readLine()) != null) {
+            line = in.readLine();
+
+            assertEquals("generated mtx file", lineorg, line);
+        }
+        in.close();
+        inorg.close();
+    }
 }

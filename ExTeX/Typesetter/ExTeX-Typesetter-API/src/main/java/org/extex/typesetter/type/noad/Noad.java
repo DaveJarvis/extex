@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -79,11 +79,11 @@ public interface Noad {
     void setSuperscript(Noad superscript);
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
+     * Produce a printable representation of the noad in a StringBuilder.
      * 
      * @param sb the string buffer
      */
-    void toString(StringBuffer sb);
+    void toString(StringBuilder sb);
 
     /**
      * Produce a printable representation to a certain depth of the noad.
@@ -91,7 +91,7 @@ public interface Noad {
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
      */
-    void toString(StringBuffer sb, int depth);
+    void toString(StringBuilder sb, int depth);
 
     /**
      * Translate a Noad into a NodeList.

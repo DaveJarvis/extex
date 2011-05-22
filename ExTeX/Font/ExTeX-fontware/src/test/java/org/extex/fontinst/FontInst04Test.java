@@ -90,18 +90,18 @@ public class FontInst04Test extends ExTeXLauncher {
     /**
      * The tex commands.
      */
-    private static final String TEX_CMDS =
-            "\\input fontinst.sty\n" + "\\recordtransforms{driver.recs}\n"
-                    + "\n" + "\\transformfont{fxlr-8r}{\\reencodefont{8r}{%\n"
-                    + "     \\fromafm{fxlr}}}\n" + "\n" + "\\installfonts\n"
-                    + "\\installfont{fxlr-t1}{fxlr-8r,newlatin}{t1}%\n"
-                    + "     {T1}{fxl}{m}{n}{}\n" + "\\endinstallfonts\n" + "\n"
-                    + "\\endrecordtransforms\n" + "\\input finstmsc.sty\n"
-                    + "\\resetstr{PSfontsuffix}{.pfb}\n"
-                    + "\\declarepsencoding{T1}{TeXBase1Encoding}%\n"
-                    + "    {\\download{8r.enc}}\n"
-                    + "\\adddriver{dvips}{libertine_t1.map}\n"
-                    + "\\input driver.recs\n" + "\\donedrivers\n" + "\\bye\n";
+    private static final String TEX_CMDS = "\\input fontinst.sty\n"
+            + "\\recordtransforms{driver.recs}\n" + "\n"
+            + "\\transformfont{fxlr-8r}{\\reencodefont{8r}{%\n"
+            + "     \\fromafm{fxlr}}}\n" + "\n" + "\\installfonts\n"
+            + "\\installfont{fxlr-t1}{fxlr-8r,newlatin}{t1}%\n"
+            + "     {T1}{fxl}{m}{n}{}\n" + "\\endinstallfonts\n" + "\n"
+            + "\\endrecordtransforms\n" + "\\input finstmsc.sty\n"
+            + "\\resetstr{PSfontsuffix}{.pfb}\n"
+            + "\\declarepsencoding{T1}{TeXBase1Encoding}%\n"
+            + "    {\\download{8r.enc}}\n"
+            + "\\adddriver{dvips}{libertine_t1.map}\n"
+            + "\\input driver.recs\n" + "\\donedrivers\n" + "\\bye\n";
 
     /**
      * The tex output (driver.recs)
@@ -120,17 +120,14 @@ public class FontInst04Test extends ExTeXLauncher {
     /**
      * The tex output (t1fxl.fd)
      */
-    private static final String TEXT_T1FXL_FD =
-            "%Filename: t1fxl.fd\n" + "%Created by: tex create\n"
-                    + "%Created using fontinst v1.929\n" + "\n"
-                    + "%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY\n"
-                    + "\n" + "\\ProvidesFile{t1fxl.fd}\n" + "   [" + _Y + "/"
-                    + _M + "/" + _D
-                    + " Fontinst v1.929 font definitions for T1/fxl.]\n" + "\n"
-                    + "\\DeclareFontFamily{T1}{fxl}{}\n" + "\n"
-                    + "\\DeclareFontShape{T1}{fxl}{m}{n}{\n"
-                    + "   <-> fxlr-t1\n" + "}{}\n" + "\n" + "\n"
-                    + "\\endinput\n";
+    private static final String TEXT_T1FXL_FD = "%Filename: t1fxl.fd\n"
+            + "%Created by: tex create\n" + "%Created using fontinst v1.929\n"
+            + "\n" + "%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY\n"
+            + "\n" + "\\ProvidesFile{t1fxl.fd}\n" + "   [" + _Y + "/" + _M
+            + "/" + _D + " Fontinst v1.929 font definitions for T1/fxl.]\n"
+            + "\n" + "\\DeclareFontFamily{T1}{fxl}{}\n" + "\n"
+            + "\\DeclareFontShape{T1}{fxl}{m}{n}{\n" + "   <-> fxlr-t1\n"
+            + "}{}\n" + "\n" + "\n" + "\\endinput\n";
 
     /**
      * Creates a new object.
@@ -240,7 +237,7 @@ public class FontInst04Test extends ExTeXLauncher {
         File pl = new File("t1fxl.fd");
         FileInputStream stream = new FileInputStream(pl);
         assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int c = stream.read(); c >= 0; c = stream.read()) {
             sb.append((char) c);
         }
@@ -282,7 +279,7 @@ public class FontInst04Test extends ExTeXLauncher {
         File pl = new File("libertine_t1.map");
         FileInputStream stream = new FileInputStream(pl);
         assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int c = stream.read(); c >= 0; c = stream.read()) {
             sb.append((char) c);
         }
@@ -324,7 +321,7 @@ public class FontInst04Test extends ExTeXLauncher {
         File pl = new File("driver.recs");
         FileInputStream stream = new FileInputStream(pl);
         assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int c = stream.read(); c >= 0; c = stream.read()) {
             sb.append((char) c);
         }

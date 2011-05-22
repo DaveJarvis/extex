@@ -78,15 +78,15 @@ public class TestPdfDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to
-     * use in the form of an anonymous inner class.
+     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * in the form of an anonymous inner class.
      */
     private NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
-                 * The field <tt>vmode</tt> contains the indicator that a
-                 * vlist is processed.
+                 * The field <tt>vmode</tt> contains the indicator that a vlist
+                 * is processed.
                  */
                 private boolean vmode = false;
 
@@ -109,10 +109,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-                 *      org.extex.typesetter.type.node.AdjustNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAdjust(AdjustNode node, Object oOut)
                         throws GeneralException {
 
@@ -123,10 +123,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-                 *      org.extex.typesetter.type.node.AfterMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAfterMath(AfterMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -139,10 +139,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-                 *      org.extex.typesetter.type.node.AlignedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -156,10 +156,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-                 *      org.extex.typesetter.type.node.BeforeMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitBeforeMath(BeforeMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -172,10 +172,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-                 *      org.extex.typesetter.type.node.CenteredLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -189,10 +189,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-                 *      org.extex.typesetter.type.node.CharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitChar(CharNode node, Object oOut)
                         throws GeneralException {
 
@@ -203,10 +203,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-                 *      org.extex.typesetter.type.node.DiscretionaryNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
                         Object oOut) throws GeneralException {
 
@@ -217,10 +217,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-                 *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -234,10 +234,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-                 *      org.extex.typesetter.type.node.GlueNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitGlue(GlueNode node, Object oOut)
                         throws GeneralException {
 
@@ -257,10 +257,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-                 *      org.extex.typesetter.type.node.HorizontalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitHorizontalList(HorizontalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -277,10 +277,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-                 *      org.extex.typesetter.type.node.InsertionNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitInsertion(InsertionNode node, Object oOut)
                         throws GeneralException {
 
@@ -290,10 +290,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-                 *      org.extex.typesetter.type.node.KernNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitKern(KernNode node, Object oOut)
                         throws GeneralException {
 
@@ -303,10 +303,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-                 *      org.extex.typesetter.type.node.LigatureNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitLigature(LigatureNode node, Object oOut)
                         throws GeneralException {
 
@@ -317,10 +317,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-                 *      org.extex.typesetter.type.node.MarkNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitMark(MarkNode node, Object oOut)
                         throws GeneralException {
 
@@ -330,10 +330,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-                 *      org.extex.typesetter.type.node.PenaltyNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitPenalty(PenaltyNode node, Object oOut)
                         throws GeneralException {
 
@@ -343,10 +343,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-                 *      org.extex.typesetter.type.node.RuleNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitRule(RuleNode node, Object oOut)
                         throws GeneralException {
 
@@ -357,10 +357,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-                 *      org.extex.typesetter.type.node.SpaceNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitSpace(SpaceNode node, Object oOut)
                         throws GeneralException {
 
@@ -371,10 +371,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-                 *      org.extex.typesetter.type.node.VerticalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVerticalList(VerticalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -391,10 +391,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-                 *      org.extex.typesetter.type.node.VirtualCharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVirtualChar(VirtualCharNode node, Object oOut)
                         throws GeneralException {
 
@@ -405,10 +405,10 @@ public class TestPdfDocumentWriter
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-                 *      org.extex.typesetter.type.node.WhatsItNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitWhatsIt(WhatsItNode node, Object oOut)
                         throws GeneralException {
 
@@ -477,6 +477,7 @@ public class TestPdfDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
     public void close() throws IOException {
 
         if (out != null) {
@@ -488,9 +489,9 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
@@ -499,8 +500,23 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
+     *      java.lang.String)
+     */
+    @Override
+    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
+            throws HelpingException {
+
+        // TODO gene: getAnnotation unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
+    @Override
     public String getExtension() {
 
         return "out";
@@ -509,9 +525,187 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
+     * @see org.extex.pdf.api.PdftexSupport#getObject(java.lang.String, boolean,
+     *      java.lang.String)
      */
+    @Override
+    public PdfObject getObject(String attr, boolean isStream, String text)
+            throws HelpingException {
+
+        // TODO gene: getObject unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getXForm(java.lang.String,
+     *      java.lang.String, org.extex.typesetter.type.NodeList)
+     */
+    @Override
+    public PdfXForm getXForm(String attr, String resources, NodeList list)
+            throws HelpingException {
+
+        // TODO gene: getXForm unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getXImage(java.lang.String,
+     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+     *      boolean)
+     */
+    @Override
+    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
+            long page, boolean immediate) throws HelpingException {
+
+        // TODO gene: getXImage unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
+     *      org.extex.pdf.api.action.ActionSpec)
+     */
+    @Override
+    public void pdfcatalog(String text, ActionSpec action) {
+
+        // TODO gene: pdfcatalog unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
+     */
+    @Override
+    public String pdffontname(Font font) {
+
+        // TODO gene: pdffontname unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
+     */
+    @Override
+    public long pdffontobjnum(Font font) {
+
+        // TODO gene: pdffontobjnum unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
+     *      java.lang.String)
+     */
+    @Override
+    public void pdfincludechars(Font font, String text) {
+
+        // TODO gene: pdfincludechars unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
+     */
+    @Override
+    public void pdfinfo(String text) {
+
+        // TODO gene: pdfinfo unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
+     */
+    @Override
+    public long pdflastannot() {
+
+        // TODO gene: pdflastannot unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
+     */
+    @Override
+    public long pdflastobj() {
+
+        // TODO gene: pdflastobj unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
+     */
+    @Override
+    public long pdflastxform() {
+
+        // TODO gene: pdflastxform unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
+     */
+    @Override
+    public long pdflastximage() {
+
+        // TODO gene: pdflastximage unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
+     */
+    @Override
+    public void pdfnames(String text) {
+
+        // TODO gene: pdfnames unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
+     *      long, java.lang.String)
+     */
+    @Override
+    public void pdfoutline(ActionSpec action, long count, String text) {
+
+        // TODO gene: pdfoutline unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
+     */
+    @Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
@@ -520,9 +714,10 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public void setParameter(String name, String value) {
 
         // not needed
@@ -541,15 +736,15 @@ public class TestPdfDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();
         try {
             if (tree) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 nodes.toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
                 out.write(sb.toString().getBytes());
                 out.write('\n');
@@ -566,184 +761,6 @@ public class TestPdfDocumentWriter
                     : new DocumentWriterException(e.getLocalizedMessage()));
         }
         return 1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.String)
-     */
-    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
-            throws HelpingException {
-
-        // TODO gene: getAnnotation unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getObject(
-     *      java.lang.String, boolean, java.lang.String)
-     */
-    public PdfObject getObject(String attr, boolean isStream, String text)
-            throws HelpingException {
-
-        // TODO gene: getObject unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXForm(
-     *      java.lang.String, java.lang.String,
-     *      org.extex.typesetter.type.NodeList)
-     */
-    public PdfXForm getXForm(String attr, String resources, NodeList list)
-            throws HelpingException {
-
-        // TODO gene: getXForm unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXImage(
-     *      java.lang.String, org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.String, long, boolean)
-     */
-    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
-            long page, boolean immediate) throws HelpingException {
-
-        // TODO gene: getXImage unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
-     *      org.extex.pdf.api.action.ActionSpec)
-     */
-    public void pdfcatalog(String text, ActionSpec action) {
-
-        // TODO gene: pdfcatalog unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
-     */
-    public String pdffontname(Font font) {
-
-        // TODO gene: pdffontname unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
-     */
-    public long pdffontobjnum(Font font) {
-
-        // TODO gene: pdffontobjnum unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
-     *      java.lang.String)
-     */
-    public void pdfincludechars(Font font, String text) {
-
-        // TODO gene: pdfincludechars unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
-     */
-    public void pdfinfo(String text) {
-
-        // TODO gene: pdfinfo unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
-     */
-    public long pdflastannot() {
-
-        // TODO gene: pdflastannot unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
-     */
-    public long pdflastobj() {
-
-        // TODO gene: pdflastobj unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
-     */
-    public long pdflastxform() {
-
-        // TODO gene: pdflastxform unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
-     */
-    public long pdflastximage() {
-
-        // TODO gene: pdflastximage unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
-     */
-    public void pdfnames(String text) {
-
-        // TODO gene: pdfnames unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
-     *      long, java.lang.String)
-     */
-    public void pdfoutline(ActionSpec action, long count, String text) {
-
-        // TODO gene: pdfoutline unimplemented
-
     }
 
 }

@@ -71,6 +71,7 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
      * 
      * @see org.extex.font.format.xtf.tables.cff.CharStringCalc#calculate(org.extex.font.format.xtf.tables.cff.CharString)
      */
+    @Override
     public void calculate(CharString ch) {
 
         for (int i = 0; i < pairs.length; i++) {
@@ -132,20 +133,19 @@ public class T2RLineTo extends T2PathConstruction implements CharStringCalc {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < pairs.length; i++) {
-            buf.append(pairs[i].toString()).append(" ");
+            buf.append(pairs[i].toString()).append(' ');
         }
-        buf.append(getName());
-        return buf.toString();
+        return buf.append(getName()).toString();
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

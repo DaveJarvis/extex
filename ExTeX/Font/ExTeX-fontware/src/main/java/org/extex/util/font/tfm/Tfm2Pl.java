@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Iterator;
 import java.util.SortedMap;
 import java.util.TreeMap;
 
@@ -84,6 +83,7 @@ public class Tfm2Pl extends AbstractFontUtil {
          * 
          * @see org.extex.font.format.tfm.TfmVisitor#end()
          */
+        @Override
         public void end() throws IOException {
 
         }
@@ -93,6 +93,7 @@ public class Tfm2Pl extends AbstractFontUtil {
          * 
          * @see org.extex.font.format.tfm.TfmVisitor#start()
          */
+        @Override
         public void start() throws IOException {
 
         }
@@ -102,6 +103,7 @@ public class Tfm2Pl extends AbstractFontUtil {
          * 
          * @see org.extex.font.format.tfm.TfmVisitor#visitTfmCharInfoArray(org.extex.font.format.tfm.TfmCharInfoArray)
          */
+        @Override
         public void visitTfmCharInfoArray(TfmCharInfoArray charinfo)
                 throws IOException {
 
@@ -147,15 +149,15 @@ public class Tfm2Pl extends AbstractFontUtil {
                                 if (lk instanceof TfmLigature) {
                                     TfmLigature lig = (TfmLigature) lk;
 
-                                    writer.plopen("LIG").addChar(
-                                        lig.getNextChar()).addChar(
-                                        lig.getAddingChar()).plclose();
+                                    writer.plopen("LIG")
+                                        .addChar(lig.getNextChar())
+                                        .addChar(lig.getAddingChar()).plclose();
                                 } else if (lk instanceof TfmKerning) {
                                     TfmKerning kern = (TfmKerning) lk;
 
-                                    writer.plopen("KRN").addChar(
-                                        kern.getNextChar()).addReal(
-                                        kern.getKern()).plclose();
+                                    writer.plopen("KRN")
+                                        .addChar(kern.getNextChar())
+                                        .addReal(kern.getKern()).plclose();
                                 }
                             }
                         }
@@ -173,6 +175,7 @@ public class Tfm2Pl extends AbstractFontUtil {
          * 
          * @see org.extex.font.format.tfm.TfmVisitor#visitTfmDepthArray(org.extex.font.format.tfm.TfmDepthArray)
          */
+        @Override
         public void visitTfmDepthArray(TfmDepthArray depth) throws IOException {
 
         }
@@ -182,6 +185,7 @@ public class Tfm2Pl extends AbstractFontUtil {
          * 
          * @see org.extex.font.format.tfm.TfmVisitor#visitTfmExtenArray(org.extex.font.format.tfm.TfmExtenArray)
          */
+        @Override
         public void visitTfmExtenArray(TfmExtenArray exten) throws IOException {
 
         }
@@ -189,9 +193,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderArray(
-         *      org.extex.font.format.tfm.TfmHeaderArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderArray(org.extex.font.format.tfm.TfmHeaderArray)
          */
+        @Override
         public void visitTfmHeaderArray(TfmHeaderArray header)
                 throws IOException {
 
@@ -206,9 +210,9 @@ public class Tfm2Pl extends AbstractFontUtil {
 
             if (header.getHeaderrest() != null) {
                 for (int i = 0; i < header.getHeaderrest().length; i++) {
-                    writer.plopen("HEADER").addDec(
-                        i + TfmHeaderArray.HEADER_REST_SIZE).addOct(
-                        header.getHeaderrest()[i]).plclose();
+                    writer.plopen("HEADER")
+                        .addDec(i + TfmHeaderArray.HEADER_REST_SIZE)
+                        .addOct(header.getHeaderrest()[i]).plclose();
                 }
             }
             if (header.getCodingscheme() != null) {
@@ -221,17 +225,17 @@ public class Tfm2Pl extends AbstractFontUtil {
             writer.addComment("OTHER SIZES ARE MULTIPLES OF DESIGNSIZE");
             writer.plopen("CHECKSUM").addOct(header.getChecksum()).plclose();
             if (header.isSevenBitSafe()) {
-                writer.plopen("SEVENBITSAFEFLAG").addBool(
-                    header.isSevenBitSafe()).plclose();
+                writer.plopen("SEVENBITSAFEFLAG")
+                    .addBool(header.isSevenBitSafe()).plclose();
             }
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderLengths(
-         *      org.extex.font.format.tfm.TfmHeaderLengths)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeaderLengths(org.extex.font.format.tfm.TfmHeaderLengths)
          */
+        @Override
         public void visitTfmHeaderLengths(TfmHeaderLengths lengths)
                 throws IOException {
 
@@ -240,9 +244,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeightArray(
-         *      org.extex.font.format.tfm.TfmHeightArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmHeightArray(org.extex.font.format.tfm.TfmHeightArray)
          */
+        @Override
         public void visitTfmHeightArray(TfmHeightArray height)
                 throws IOException {
 
@@ -251,9 +255,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmItalicArray(
-         *      org.extex.font.format.tfm.TfmItalicArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmItalicArray(org.extex.font.format.tfm.TfmItalicArray)
          */
+        @Override
         public void visitTfmItalicArray(TfmItalicArray italic)
                 throws IOException {
 
@@ -262,9 +266,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmKernArray(
-         *      org.extex.font.format.tfm.TfmKernArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmKernArray(org.extex.font.format.tfm.TfmKernArray)
          */
+        @Override
         public void visitTfmKernArray(TfmKernArray kern) throws IOException {
 
         }
@@ -272,9 +276,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmLigKernArray(
-         *      org.extex.font.format.tfm.TfmLigKernArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmLigKernArray(org.extex.font.format.tfm.TfmLigKernArray)
          */
+        @Override
         public void visitTfmLigKernArray(TfmLigKernArray ligkern)
                 throws IOException {
 
@@ -307,15 +311,17 @@ public class Tfm2Pl extends AbstractFontUtil {
                                     if (lk instanceof TfmLigature) {
                                         TfmLigature lig = (TfmLigature) lk;
 
-                                        writer.plopen("LIG").addChar(
-                                            lig.getNextChar()).addChar(
-                                            lig.getAddingChar()).plclose();
+                                        writer.plopen("LIG")
+                                            .addChar(lig.getNextChar())
+                                            .addChar(lig.getAddingChar())
+                                            .plclose();
                                     } else if (lk instanceof TfmKerning) {
                                         TfmKerning kerning = (TfmKerning) lk;
 
-                                        writer.plopen("KRN").addChar(
-                                            kerning.getNextChar()).addReal(
-                                            kerning.getKern()).plclose();
+                                        writer.plopen("KRN")
+                                            .addChar(kerning.getNextChar())
+                                            .addReal(kerning.getKern())
+                                            .plclose();
                                     }
                                 }
                             }
@@ -331,34 +337,29 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmParamArray(
-         *      org.extex.font.format.tfm.TfmParamArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmParamArray(org.extex.font.format.tfm.TfmParamArray)
          */
+        @Override
         public void visitTfmParamArray(TfmParamArray param) throws IOException {
 
             writer.plopen("FONTDIMEN");
 
             SortedMap<String, TfmFixWord> p =
                     new TreeMap<String, TfmFixWord>(param.getParam());
-            Iterator<String> it = p.keySet().iterator();
-
-            while (it.hasNext()) {
-                String key = it.next();
+            for (String key : p.keySet()) {
                 TfmFixWord value = param.getParam(key);
-
                 writer.plopen(key);
                 writer.addReal(value).plclose();
             }
             writer.plclose();
-
         }
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmReader(
-         *      org.extex.font.format.tfm.TfmReader)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmReader(org.extex.font.format.tfm.TfmReader)
          */
+        @Override
         public void visitTfmReader(TfmReader tfmReader) throws IOException {
 
         }
@@ -366,9 +367,9 @@ public class Tfm2Pl extends AbstractFontUtil {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmWidthArray(
-         *      org.extex.font.format.tfm.TfmWidthArray)
+         * @see org.extex.font.format.tfm.TfmVisitor#visitTfmWidthArray(org.extex.font.format.tfm.TfmWidthArray)
          */
+        @Override
         public void visitTfmWidthArray(TfmWidthArray width) throws IOException {
 
         }

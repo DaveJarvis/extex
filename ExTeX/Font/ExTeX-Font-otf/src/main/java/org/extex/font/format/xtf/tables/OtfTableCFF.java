@@ -44,15 +44,16 @@ import org.extex.util.xml.XMLWriterConvertible;
  * This table contains a compact representation of a PostScript Type 1, or
  * CIDFont and is structured according to <a
  * href="http://partners.adobe.com/asn/developer/pdfs/tn/5176.CFF.pdf"> Adobe
- * Technical Note #5176: " The Compact BaseFont Format Specification"</a> and
- * <a href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf">
- * Adobe Technical Note #5177: "Type 2 Charstring Format"</a>.
+ * Technical Note #5176: " The Compact BaseFont Format Specification"</a> and <a
+ * href="http://partners.adobe.com/asn/developer/pdfs/tn/5177.Type2.pdf"> Adobe
+ * Technical Note #5177: "Type 2 Charstring Format"</a>.
  * </p>
  * 
  * <p>
  * CFF Data Types
  * </p>
- * <table border="1"> <thead>
+ * <table border="1">
+ * <thead>
  * <tr>
  * <td>Name</td>
  * <td>Range</td>
@@ -62,27 +63,27 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>Card8</td>
  * <td>0 255</td>
- * <td> 1-byte unsigned number</td>
+ * <td>1-byte unsigned number</td>
  * </tr>
  * <tr>
  * <td>Card16</td>
  * <td>0 65535</td>
- * <td> 2-byte unsigned number</td>
+ * <td>2-byte unsigned number</td>
  * </tr>
  * <tr>
  * <td>Offset</td>
  * <td>varies</td>
- * <td> 1, 2, 3, or 4 byte offset (specified by OffSize field)</td>
+ * <td>1, 2, 3, or 4 byte offset (specified by OffSize field)</td>
  * </tr>
  * <tr>
  * <td>OffSize</td>
  * <td>1 - 4</td>
- * <td> 1-byte unsigned number specifies the size of an Offset field or fields</td>
+ * <td>1-byte unsigned number specifies the size of an Offset field or fields</td>
  * </tr>
  * <tr>
  * <td>SID</td>
  * <td>0 - 64999</td>
- * <td> 2-byte string identifier</td>
+ * <td>2-byte string identifier</td>
  * </tr>
  * </table>
  * 
@@ -90,7 +91,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * CFF Data Layout
  * </p>
  * 
- * <table border="1"> <thead>
+ * <table border="1">
+ * <thead>
  * <tr>
  * <td><b>Entry</b></td>
  * <td><b>Comments</b></td>
@@ -110,7 +112,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * <tr>
  * <td>String INDEX</td>
- * <td>->/td></tr>
+ * <td>->/td>
+ * </tr>
  * <tr>
  * <td>Global Subr INDEX</td>
  * <td>-</td>
@@ -145,7 +148,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * </tr>
  * <tr>
  * <td>Copyright and Trademark Notices</td>
- * <td>-/td></tr>
+ * <td>-/td>
+ * </tr>
  * </table>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -257,7 +261,7 @@ public class OtfTableCFF extends AbstractXtfTable
      */
     private String convertArrayToString(byte[] data) {
 
-        StringBuffer buf = new StringBuffer(data.length);
+        StringBuilder buf = new StringBuilder(data.length);
 
         for (int i = 0; i < data.length; i++) {
             buf.append((char) data[i]);
@@ -269,7 +273,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * Returns the font.
      * 
-     * @param number The font numer.
+     * @param number The font number.
      * @return Returns the font.
      */
     public CffFont getFont(int number) {
@@ -322,6 +326,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * 
      * @see org.extex.font.format.xtf.tables.XtfTable#getShortcut()
      */
+    @Override
     public String getShortcut() {
 
         return "cff";
@@ -354,6 +359,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * 
      * @return Returns the table type
      */
+    @Override
     public int getType() {
 
         return XtfReader.CFF;
@@ -425,8 +431,7 @@ public class OtfTableCFF extends AbstractXtfTable
      * 
      * @param glyphpos The glyph position
      * @param fontnumber The font number.
-     * @return Returns the name of the glpyh or <code>null</code>, if not
-     *         found.
+     * @return Returns the name of the glpyh or <code>null</code>, if not found.
      */
     public String mapGlyphPosToGlyphName(int glyphpos, int fontnumber) {
 
@@ -456,7 +461,8 @@ public class OtfTableCFF extends AbstractXtfTable
      * determined.
      * </p>
      * 
-     * <table border="1"> <thead>
+     * <table border="1">
+     * <thead>
      * <tr>
      * <td><b>Type</b></td>
      * <td><b>Name</b></td>
@@ -466,29 +472,28 @@ public class OtfTableCFF extends AbstractXtfTable
      * <tr>
      * <td>Card16</td>
      * <td>count</td>
-     * <td> Number of objects stored in INDEX. An empty INDEX is represented by
-     * a count field with a 0 value and no additional fields. Thus, the total
-     * size of an empty INDEX is 2 bytes.</td>
+     * <td>Number of objects stored in INDEX. An empty INDEX is represented by a
+     * count field with a 0 value and no additional fields. Thus, the total size
+     * of an empty INDEX is 2 bytes.</td>
      * </tr>
      * <tr>
      * <td>OffSize</td>
      * <td>offSize</td>
-     * <td> Offset array element size</td>
+     * <td>Offset array element size</td>
      * </tr>
      * <tr>
      * <td>Offset</td>
      * <td>offset [count+1]</td>
-     * <td> Offset array (from byte preceding object data). Offsets in the
-     * offset array are relative to the byte that precedes the object data.
-     * Therefore the first element of the offset array is always 1. (This
-     * ensures that every object has a corresponding offset which is always
-     * nonzero and permits the efficient implementation of dynamic object
-     * loading.) </td>
+     * <td>Offset array (from byte preceding object data). Offsets in the offset
+     * array are relative to the byte that precedes the object data. Therefore
+     * the first element of the offset array is always 1. (This ensures that
+     * every object has a corresponding offset which is always nonzero and
+     * permits the efficient implementation of dynamic object loading.)</td>
      * </tr>
      * <tr>
      * <td>Card8</td>
      * <td>data [&lt;varies&gt;]</td>
-     * <td> Object data</td>
+     * <td>Object data</td>
      * </tr>
      * </table>
      * 
@@ -581,12 +586,12 @@ public class OtfTableCFF extends AbstractXtfTable
      * <tr>
      * <td>Card8</td>
      * <td>major</td>
-     * <td>Format major version (starting at 1) </td>
+     * <td>Format major version (starting at 1)</td>
      * </tr>
      * <tr>
      * <td>Card8</td>
      * <td>minor</td>
-     * <td>Format minor version (starting at 0) </td>
+     * <td>Format minor version (starting at 0)</td>
      * </tr>
      * <tr>
      * <td>Card8</td>
@@ -772,9 +777,9 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);

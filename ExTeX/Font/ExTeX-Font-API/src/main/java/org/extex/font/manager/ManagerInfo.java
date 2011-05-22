@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -34,7 +34,7 @@ import org.extex.font.FontKey;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class ManagerInfo {
+public class ManagerInfo implements Iterable<BackendCharacter> {
 
     /**
      * The List for the characters.
@@ -116,7 +116,8 @@ public class ManagerInfo {
      * 
      * @return Returns the iterator for the {@link BackendCharacter}s.
      */
-    public Iterator<BackendCharacter> iterate() {
+    @Override
+    public Iterator<BackendCharacter> iterator() {
 
         return backendCharacterList.iterator();
     }

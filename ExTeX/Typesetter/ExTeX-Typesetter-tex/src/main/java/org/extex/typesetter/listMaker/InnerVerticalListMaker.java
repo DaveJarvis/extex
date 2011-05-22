@@ -90,8 +90,20 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
+     */
+    @Override
+    public void add(FixedGlue g) throws TypesetterException {
+
+        nodes.addSkip(g);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node n) {
 
         nodes.add(n);
@@ -103,6 +115,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void addAndAdjust(NodeList list, TypesetterOptions options)
             throws TypesetterException,
                 ConfigurationException {
@@ -116,19 +129,10 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-     */
-    public void add(FixedGlue g) throws TypesetterException {
-
-        nodes.addSkip(g);
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
      */
+    @Override
     public void addSpace(TypesettingContext typesettingContext,
             FixedCount spacefactor) {
 
@@ -140,6 +144,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
      */
+    @Override
     public void afterParagraph(ParagraphObserver observer) {
 
         afterParagraphObservers.add(observer);
@@ -150,6 +155,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context) {
 
         return nodes;
@@ -162,6 +168,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
             throws TypesetterException {
 
@@ -173,6 +180,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
+    @Override
     public Node getLastNode() {
 
         return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
@@ -208,6 +216,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
+    @Override
     public boolean letter(UnicodeChar symbol, TypesettingContext tc,
             Context context, TokenSource source, Locator locator)
             throws TypesetterException {
@@ -228,6 +237,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#par()
      */
+    @Override
     public void par() throws TypesetterException, ConfigurationException {
 
         try {
@@ -247,6 +257,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
+    @Override
     public void removeLastNode() {
 
         nodes.remove(nodes.size() - 1);
@@ -270,10 +281,9 @@ public class InnerVerticalListMaker extends AbstractListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
-     *      long, long)
+     * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
      */
-    public void showlist(StringBuffer sb, long l, long m) {
+    public void showlist(StringBuilder sb, long l, long m) {
 
         sb.append("prevdepth ");
         if (prevDepth == null) {

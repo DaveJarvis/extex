@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -141,7 +141,7 @@ public class ExDocHtml extends ExDocXml {
      * 
      * @param content the content to transform
      */
-    private void replaceTodo(StringBuffer content) {
+    private void replaceTodo(StringBuilder content) {
 
         for (int i = content.indexOf("TODO "); i >= 0; i =
                 content.indexOf("TODO ", i + 5)) {
@@ -250,10 +250,10 @@ public class ExDocHtml extends ExDocXml {
      * {@inheritDoc}
      * 
      * @see org.extex.exdoc.ExDocXml#shipout( org.extex.exdoc.util.Key,
-     *      java.lang.StringBuffer)
+     *      java.lang.StringBuilder)
      */
     @Override
-    protected void shipout(Key name, StringBuffer content)
+    protected void shipout(Key name, StringBuilder content)
             throws IOException,
                 SAXException {
 

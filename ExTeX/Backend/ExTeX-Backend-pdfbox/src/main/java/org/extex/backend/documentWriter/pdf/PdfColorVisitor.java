@@ -30,7 +30,7 @@ import org.pdfbox.pdmodel.edit.PDPageContentStream;
 
 /**
  * Color visitor for pdf.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -48,18 +48,21 @@ public class PdfColorVisitor implements ColorVisitor {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.color.ColorVisitor#visitCmyk(org.extex.color.model.CmykColor, java.lang.Object)
+     * 
+     * @see org.extex.color.ColorVisitor#visitCmyk(org.extex.color.model.CmykColor,
+     *      java.lang.Object)
      */
+    @Override
     public Object visitCmyk(CmykColor color, Object value)
             throws GeneralException {
 
         try {
 
             PDPageContentStream contentstream = (PDPageContentStream) value;
-            contentstream.setStrokingColor(color.getCyan() / DIVD, color
-                    .getMagenta()
-                    / DIVD, color.getYellow() / DIVD, color.getBlack() / DIVD);
+            // TODO gene: Support the CMYK color model
+            // contentstream.setStrokingColor(color.getCyan() / DIVD,
+            // color.getMagenta() / DIVD, color.getYellow() / DIVD,
+            // color.getBlack() / DIVD);
 
         } catch (Exception e) {
             throw new DocumentWriterPdfBoxColorException(e);
@@ -69,17 +72,20 @@ public class PdfColorVisitor implements ColorVisitor {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.color.ColorVisitor#visitGray(
-     *      org.extex.color.model.GrayscaleColor, java.lang.Object)
+     * 
+     * @see org.extex.color.ColorVisitor#visitGray(org.extex.color.model.GrayscaleColor,
+     *      java.lang.Object)
      */
+    @Override
     public Object visitGray(GrayscaleColor color, Object value)
             throws GeneralException {
 
         try {
 
             PDPageContentStream contentstream = (PDPageContentStream) value;
-            contentstream.setStrokingColor(color.getGray() / DIVD);
+            int intensity = color.getGray(); // TODO gene: provide proper
+                                             // scaling
+            contentstream.setStrokingColor(intensity, intensity, intensity);
 
         } catch (Exception e) {
             throw new DocumentWriterPdfBoxColorException(e);
@@ -89,10 +95,11 @@ public class PdfColorVisitor implements ColorVisitor {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.color.ColorVisitor#visitHsv(
-     *      org.extex.color.model.HsvColor, java.lang.Object)
+     * 
+     * @see org.extex.color.ColorVisitor#visitHsv(org.extex.color.model.HsvColor,
+     *      java.lang.Object)
      */
+    @Override
     public Object visitHsv(HsvColor color, Object value)
             throws GeneralException {
 
@@ -101,19 +108,19 @@ public class PdfColorVisitor implements ColorVisitor {
 
     /**
      * {@inheritDoc}
-     *
-     * @see org.extex.color.ColorVisitor#visitRgb(
-     *      org.extex.color.model.RgbColor, java.lang.Object)
+     * 
+     * @see org.extex.color.ColorVisitor#visitRgb(org.extex.color.model.RgbColor,
+     *      java.lang.Object)
      */
+    @Override
     public Object visitRgb(RgbColor color, Object value)
             throws GeneralException {
 
         try {
 
             PDPageContentStream contentstream = (PDPageContentStream) value;
-            contentstream.setStrokingColor(color.getRed() / DIV, color
-                    .getGreen()
-                    / DIV, color.getBlue() / DIV);
+            contentstream.setStrokingColor(color.getRed() / DIV,
+                color.getGreen() / DIV, color.getBlue() / DIV);
 
         } catch (Exception e) {
             throw new DocumentWriterPdfBoxColorException(e);

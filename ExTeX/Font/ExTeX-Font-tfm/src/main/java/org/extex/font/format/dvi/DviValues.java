@@ -23,20 +23,20 @@ package org.extex.font.format.dvi;
  * Values for dvi.
  * 
  * <p>
- * The values of <code>h</code>, <code>v</code>, <code>w</code>,
- * <code>x</code>, <code>y</code>, and <code>z</code> are signed
- * integers having up to 32 bits, including the sign.
+ * The values of <code>h</code>, <code>v</code>, <code>w</code>, <code>x</code>,
+ * <code>y</code>, and <code>z</code> are signed integers having up to 32 bits,
+ * including the sign.
  * </p>
  * 
  * <p>
  * Since they represent physical distances, there is a small unit of measurement
- * such that increasing <code>h</code> by 1 means moving a certain tiny
- * distance to the right. The actual unit of measurement is variable.
+ * such that increasing <code>h</code> by 1 means moving a certain tiny distance
+ * to the right. The actual unit of measurement is variable.
  * </p>
  * 
  * <p>
- * The current font <code>f</code> is an integer; this value is changed only
- * by <code>fnt</code> and <code>fnt_num</code> commands.
+ * The current font <code>f</code> is an integer; this value is changed only by
+ * <code>fnt</code> and <code>fnt_num</code> commands.
  * <p>
  * 
  * <p>
@@ -54,16 +54,16 @@ package org.extex.font.format.dvi;
  * 
  * <p>
  * The current spacing amounts are given by four numbers <code>w</code>,
- * <code>x</code>, <code>y</code>, and <code>z</code>, where
- * <code>w</code> and <code>x</code> are used for horizontal spacing and
- * where <code>y</code> and <code>z</code> are used for vertical spacing.
+ * <code>x</code>, <code>y</code>, and <code>z</code>, where <code>w</code> and
+ * <code>x</code> are used for horizontal spacing and where <code>y</code> and
+ * <code>z</code> are used for vertical spacing.
  * </p>
  * 
  * <p>
  * There is a stack containing <code>(h,v,w,x,y,z)</code> values; the DVI
  * commands <code>push</code> and <code>pop</code> are used to change the
- * current level of operation. Note that the current font <code>f</code> is
- * not pushed and popped; the stack contains only information about positioning.
+ * current level of operation. Note that the current font <code>f</code> is not
+ * pushed and popped; the stack contains only information about positioning.
  * <p>
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
@@ -321,7 +321,7 @@ public class DviValues {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append("f=").append(f);
         buf.append(" h=").append(h);
         buf.append(" v=").append(v);

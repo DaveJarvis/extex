@@ -78,9 +78,8 @@ public class DviW extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("w").append(getOpcode() - W0);
-        return buf.toString();
+        return new StringBuilder().append("w").append(getOpcode() - W0)
+            .toString();
     }
 
     /**

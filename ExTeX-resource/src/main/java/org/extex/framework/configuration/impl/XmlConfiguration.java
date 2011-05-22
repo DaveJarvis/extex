@@ -80,6 +80,7 @@ public class XmlConfiguration implements Configuration {
          * 
          * @see java.util.Iterator#hasNext()
          */
+        @Override
         public boolean hasNext() {
 
             if (node == null) {
@@ -102,6 +103,7 @@ public class XmlConfiguration implements Configuration {
          * 
          * @see java.util.Iterator#next()
          */
+        @Override
         public Configuration next() {
 
             if (node == null) {
@@ -122,6 +124,7 @@ public class XmlConfiguration implements Configuration {
          * 
          * @see java.util.Iterator#remove()
          */
+        @Override
         public void remove() {
 
             throw new UnsupportedOperationException();
@@ -352,6 +355,7 @@ public class XmlConfiguration implements Configuration {
      * @see #getConfiguration(java.lang.String)
      * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
+    @Override
     public Configuration findConfiguration(String name)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
@@ -415,6 +419,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @throws ConfigurationException in case of other errors.
      */
+    @Override
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
 
@@ -438,6 +443,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
+    @Override
     public String getAttribute(String name) {
 
         return (this.root.getAttributeNode(name) == null ? null : //
@@ -488,6 +494,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see #findConfiguration(String)
      */
+    @Override
     public Configuration getConfiguration(String name)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
@@ -543,6 +550,7 @@ public class XmlConfiguration implements Configuration {
      *         not correspond to one of the tags in the current configuration
      * @throws ConfigurationException in case of some other kind of error
      */
+    @Override
     public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationNotFoundException,
                 ConfigurationException {
@@ -564,14 +572,13 @@ public class XmlConfiguration implements Configuration {
      */
     private String getNodeValue(Node node) {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
 
         for (Node n = node.getFirstChild(); n != null; n = n.getNextSibling()) {
             if (n.getNodeType() == Node.TEXT_NODE) {
                 sb.append(n.getNodeValue());
             }
         }
-
         return sb.toString();
     }
 
@@ -580,6 +587,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getValue()
      */
+    @Override
     public String getValue() throws ConfigurationException {
 
         return getNodeValue(root);
@@ -610,6 +618,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @return the value of the tag or the empty string
      */
+    @Override
     public String getValue(String tag) {
 
         for (Node node = root.getFirstChild(); node != null; node =
@@ -628,6 +637,7 @@ public class XmlConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
      *      int)
      */
+    @Override
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
@@ -651,6 +661,7 @@ public class XmlConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
      *      java.lang.String)
      */
+    @Override
     public void getValues(List<String> list, String key) {
 
         if (list == null) {
@@ -675,6 +686,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
+    @Override
     public List<String> getValues(String tag) {
 
         List<String> result = new ArrayList<String>();
@@ -689,6 +701,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
+    @Override
     public Iterator<Configuration> iterator() {
 
         return new ConfigIterator(root.getFirstChild());
@@ -712,6 +725,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
+    @Override
     public Iterator<Configuration> iterator(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
@@ -810,6 +824,7 @@ public class XmlConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
      */
+    @Override
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
         // this.loader = loader;

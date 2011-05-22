@@ -59,9 +59,8 @@ public class DviDown extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("down").append(getOpcode() - DOWN1 + 1);
-        return buf.toString();
+        return new StringBuilder("down").append(getOpcode() - DOWN1 + 1)
+            .toString();
     }
 
     /**

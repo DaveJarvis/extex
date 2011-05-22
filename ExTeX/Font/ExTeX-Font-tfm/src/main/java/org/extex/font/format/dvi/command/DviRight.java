@@ -59,9 +59,8 @@ public class DviRight extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("right").append(getOpcode() - RIGHT1 + 1);
-        return buf.toString();
+        return new StringBuilder("right").append(getOpcode() - RIGHT1 + 1)
+            .toString();
     }
 
     /**

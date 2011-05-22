@@ -125,6 +125,21 @@ public interface Typesetter extends ListMaker {
     void push(ListMaker listMaker) throws TypesetterException;
 
     /**
+     * Push a list maker onto the stack and return the old value.
+     * 
+     * @param type the type of the list maker
+     * @param locator the locator
+     * 
+     * @return the new list maker
+     * 
+     * @throws UnsupportedOperationException in case that the type is now known
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    ListMaker pushListMaker(ListMakerType type, Locator locator)
+            throws UnsupportedOperationException,
+                TypesetterException;
+
+    /**
      * Setter for the back-end driver. The back-end driver is addressed whenever
      * a complete page has to be shipped out.
      * 
@@ -181,27 +196,12 @@ public interface Typesetter extends ListMaker {
 
     /**
      * This method produces a diagnostic representation of the current lists in
-     * a StringBuffer.
+     * a StringBuilder.
      * 
      * @param sb the target string buffer
      * @param depth the depth for the display
      * @param breadth the breadth of the display
      */
-    void showlists(StringBuffer sb, long depth, long breadth);
-
-    /**
-     * Push a list maker onto the stack and return the old value.
-     * 
-     * @param type the type of the list maker
-     * @param locator the locator
-     * 
-     * @return the new list maker
-     * 
-     * @throws UnsupportedOperationException in case that the type is now known
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    ListMaker pushListMaker(ListMakerType type, Locator locator)
-            throws UnsupportedOperationException,
-                TypesetterException;
+    void showlists(StringBuilder sb, long depth, long breadth);
 
 }

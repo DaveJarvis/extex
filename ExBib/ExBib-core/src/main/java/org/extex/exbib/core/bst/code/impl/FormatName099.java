@@ -218,7 +218,7 @@ public class FormatName099 extends FormatName {
             return new TString(s, null);
         }
 
-        StringBuffer sb = new StringBuffer(s);
+        StringBuilder sb = new StringBuilder(s);
 
         if (sb.charAt(i) == '~') {
             sb.setCharAt(i, ' ');

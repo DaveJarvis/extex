@@ -110,28 +110,27 @@ public class T2CallSubr extends T2Subroutine {
     /**
      * {@inheritDoc}
      * 
+     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
+     */
+    @Override
+    public String toText() {
+
+        return new StringBuilder(subr.toString()).append(' ').append(getName())
+            .toString();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());
         writer.writeAttribute("subr", subr.getInteger());
         writer.writeEndElement();
 
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
-     */
-    @Override
-    public String toText() {
-
-        StringBuffer buf = new StringBuffer();
-        buf.append(subr.toString()).append(" ");
-        buf.append(getName());
-        return buf.toString();
     }
 
 }

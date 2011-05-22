@@ -377,6 +377,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
+    @Override
     public MathSpacing getSpacingClass() {
 
         return spacingClass;
@@ -399,6 +400,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
+    @Override
     public Noad getSubscript() {
 
         return null;
@@ -411,6 +413,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
+    @Override
     public Noad getSuperscript() {
 
         return null;
@@ -470,6 +473,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
      */
+    @Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -482,6 +486,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException("subscript in style");
@@ -494,6 +499,7 @@ public final class StyleNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException("superscript in style");
@@ -537,14 +543,15 @@ public final class StyleNoad implements Noad {
     }
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
+     * Produce a printable representation of the noad in a StringBuilder.
      * 
      * @param sb the string buffer
      * 
      * @see "TTP [694]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         sb.append("\\" + style);
     }
@@ -555,10 +562,10 @@ public final class StyleNoad implements Noad {
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
      * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuffer,
-     *      int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
-    public void toString(StringBuffer sb, int depth) {
+    @Override
+    public void toString(StringBuilder sb, int depth) {
 
         toString(sb);
     }
@@ -583,6 +590,7 @@ public final class StyleNoad implements Noad {
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
+    @Override
     public void typeset(Noad previousNoad, NoadList noads, int index,
             NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,

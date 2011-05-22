@@ -20,8 +20,8 @@
 package org.extex.core.dimen;
 
 /**
- * This interface describes the features of a
- * {@link org.extex.core.dimen.Dimen Dimen} which do not modify the value.
+ * This interface describes the features of a {@link org.extex.core.dimen.Dimen
+ * Dimen} which do not modify the value.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4399 $
@@ -103,18 +103,19 @@ public interface FixedDimen {
      * 
      * @return the printable representation
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
+    @Override
     String toString();
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * 
      * @see #toString()
      */
-    void toString(StringBuffer sb);
+    void toString(StringBuilder sb);
 
 }

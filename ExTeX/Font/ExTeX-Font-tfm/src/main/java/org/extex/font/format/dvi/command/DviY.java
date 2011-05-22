@@ -78,9 +78,7 @@ public class DviY extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("y").append(getOpcode() - Y0);
-        return buf.toString();
+        return new StringBuilder("y").append(getOpcode() - Y0).toString();
     }
 
     /**

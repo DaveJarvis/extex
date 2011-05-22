@@ -138,8 +138,7 @@ public class Real implements Serializable {
     /**
      * Creates a new object.
      * <p>
-     * If the string equals <code>null</code> or empty, the value is set to
-     * zero
+     * If the string equals <code>null</code> or empty, the value is set to zero
      * 
      * @param s the value as String
      * 
@@ -292,7 +291,7 @@ public class Real implements Serializable {
             }
         }
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         if (neg) {
             sb.append('-');
         }

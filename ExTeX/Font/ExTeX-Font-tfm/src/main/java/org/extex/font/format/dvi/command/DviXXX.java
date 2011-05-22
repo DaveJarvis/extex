@@ -85,16 +85,16 @@ public class DviXXX extends DviCommand {
                 break;
             }
         }
+        StringBuilder buf = new StringBuilder(values.length);
         if (print) {
-            StringBuffer buf = new StringBuffer(values.length);
             for (int i = 0; i < values.length; i++) {
                 buf.append((char) values[i]);
             }
-            return buf.toString();
-        }
-        StringBuffer buf = new StringBuffer(values.length);
-        for (int i = 0; i < values.length; i++) {
-            buf.append("0x").append(Integer.toHexString(values[i])).append(" ");
+        } else {
+            for (int i = 0; i < values.length; i++) {
+                buf.append("0x").append(Integer.toHexString(values[i]))
+                    .append(' ');
+            }
         }
         return buf.toString();
     }

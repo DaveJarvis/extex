@@ -68,15 +68,15 @@ public class TestDocumentWriter
             Configurable {
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to
-     * use in the form of an anonymous inner class.
+     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * in the form of an anonymous inner class.
      */
     private NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
-                 * The field <tt>vmode</tt> contains the indicator that a
-                 * vlist is processed.
+                 * The field <tt>vmode</tt> contains the indicator that a vlist
+                 * is processed.
                  */
                 private boolean vmode = false;
 
@@ -97,10 +97,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-                 *      org.extex.typesetter.type.node.AdjustNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAdjust(AdjustNode node, Object oOut)
                         throws GeneralException {
 
@@ -109,10 +109,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-                 *      org.extex.typesetter.type.node.AfterMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAfterMath(AfterMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -123,10 +123,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-                 *      org.extex.typesetter.type.node.AlignedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -138,10 +138,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-                 *      org.extex.typesetter.type.node.BeforeMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitBeforeMath(BeforeMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -152,10 +152,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-                 *      org.extex.typesetter.type.node.CenteredLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -167,10 +167,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-                 *      org.extex.typesetter.type.node.CharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitChar(CharNode node, Object oOut)
                         throws GeneralException {
 
@@ -179,10 +179,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-                 *      org.extex.typesetter.type.node.DiscretionaryNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
                         Object oOut) throws GeneralException {
 
@@ -191,10 +191,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-                 *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -206,10 +206,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-                 *      org.extex.typesetter.type.node.GlueNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitGlue(GlueNode node, Object oOut)
                         throws GeneralException {
 
@@ -227,10 +227,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-                 *      org.extex.typesetter.type.node.HorizontalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitHorizontalList(HorizontalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -245,10 +245,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-                 *      org.extex.typesetter.type.node.InsertionNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitInsertion(InsertionNode node, Object oOut)
                         throws GeneralException {
 
@@ -256,10 +256,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-                 *      org.extex.typesetter.type.node.KernNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitKern(KernNode node, Object oOut)
                         throws GeneralException {
 
@@ -267,10 +267,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-                 *      org.extex.typesetter.type.node.LigatureNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitLigature(LigatureNode node, Object oOut)
                         throws GeneralException {
 
@@ -279,10 +279,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-                 *      org.extex.typesetter.type.node.MarkNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitMark(MarkNode node, Object oOut)
                         throws GeneralException {
 
@@ -290,10 +290,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-                 *      org.extex.typesetter.type.node.PenaltyNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitPenalty(PenaltyNode node, Object oOut)
                         throws GeneralException {
 
@@ -301,10 +301,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-                 *      org.extex.typesetter.type.node.RuleNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitRule(RuleNode node, Object oOut)
                         throws GeneralException {
 
@@ -313,10 +313,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-                 *      org.extex.typesetter.type.node.SpaceNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitSpace(SpaceNode node, Object oOut)
                         throws GeneralException {
 
@@ -325,10 +325,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-                 *      org.extex.typesetter.type.node.VerticalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVerticalList(VerticalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -343,10 +343,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-                 *      org.extex.typesetter.type.node.VirtualCharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVirtualChar(VirtualCharNode node, Object oOut)
                         throws GeneralException {
 
@@ -355,10 +355,10 @@ public class TestDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-                 *      org.extex.typesetter.type.node.WhatsItNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitWhatsIt(WhatsItNode node, Object oOut)
                         throws GeneralException {
 
@@ -427,6 +427,7 @@ public class TestDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
     public void close() throws IOException {
 
         if (out != null) {
@@ -438,9 +439,9 @@ public class TestDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
@@ -451,6 +452,7 @@ public class TestDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
+    @Override
     public String getExtension() {
 
         return "out";
@@ -459,9 +461,9 @@ public class TestDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
      */
+    @Override
     public void setOutputStream(OutputStream outStream) {
 
         out = outStream;
@@ -470,9 +472,10 @@ public class TestDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public void setParameter(String name, String value) {
 
         // nothing to do
@@ -491,15 +494,15 @@ public class TestDocumentWriter
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws DocumentWriterException {
 
         NodeList nodes = page.getNodes();
         try {
             if (tree) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 nodes.toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
                 out.write(sb.toString().getBytes());
                 out.write('\n');

@@ -69,7 +69,7 @@ public class DviFntNum extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if (getOpcode() < FNT1) {
             buf.append("fntnum").append(font);
         } else {

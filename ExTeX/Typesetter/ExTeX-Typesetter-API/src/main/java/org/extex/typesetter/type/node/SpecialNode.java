@@ -23,7 +23,7 @@ import org.extex.typesetter.type.Node;
 
 /**
  * This node contains text which should be passed to the back-end driver.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4739 $
@@ -42,7 +42,7 @@ public class SpecialNode extends WhatsItNode implements Node {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param text the text to pass to the backend driver
      */
     public SpecialNode(String text) {
@@ -52,7 +52,7 @@ public class SpecialNode extends WhatsItNode implements Node {
 
     /**
      * Getter for text.
-     *
+     * 
      * @return the text.
      */
     public String getText() {
@@ -64,21 +64,17 @@ public class SpecialNode extends WhatsItNode implements Node {
      * This method puts the printable representation into the string buffer.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
-     *
+     * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
-     *
-     * @see org.extex.typesetter.type.Node#toString(
-     *      java.lang.StringBuffer,
-     *      java.lang.String,
-     *      int,
-     *      int)
+     * 
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
+     *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix,
-            int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append("\\special{" + text + "}");
     }

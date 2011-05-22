@@ -125,6 +125,7 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * 
      * @return the iterator for all nodes in the list
      */
+    @Override
     Iterator<Node> iterator();
 
     /**
@@ -170,7 +171,7 @@ public interface NodeList extends Node, Iterable<Node>, Cloneable {
      * @param depth the depth limit for the pretty printing
      * @param width the width limit for the pretty printing
      */
-    void toString(StringBuffer sb, String prefix, int depth, int width);
+    void toString(StringBuilder sb, String prefix, int depth, int width);
 
     /**
      * Provides a string representation of the current instance.

@@ -22,14 +22,13 @@ package org.extex.language.hyphenation.liang;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 /**
  * This class implements Liang's algorithm for hyphenation with a compressed
  * hyphenation tree. Th hyphenation tree is compressed when the object is
  * serialized. Afterwards no more patterns can be added.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -43,7 +42,7 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
     /**
      * This compression method traverses the hyphenation tree and makes
      * provisions to use common instances for equal hyphenation codes.
-     *
+     * 
      * @param tree the tree to traverse
      * @param map the map of common codes
      */
@@ -57,9 +56,8 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
             tree.setCode(code);
         }
 
-        Iterator<HyphenTree> iter = tree.iterator();
-        while (iter.hasNext()) {
-            compress(iter.next(), map);
+        for (HyphenTree t : tree) {
+            compress(t, map);
         }
 
     }
@@ -67,9 +65,9 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
     /**
      * This method compresses the table upon dumping. It is one of the magic
      * methods invoked during serialization.
-     *
+     * 
      * @param out the output stream
-     *
+     * 
      * @throws IOException in case of an IO error
      */
     private void writeObject(ObjectOutputStream out) throws IOException {

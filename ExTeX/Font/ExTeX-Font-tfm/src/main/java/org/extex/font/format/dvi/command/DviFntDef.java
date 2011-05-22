@@ -153,9 +153,8 @@ public class DviFntDef extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("fntdef").append(getOpcode() - FNT_DEF1 + 1);
-        return buf.toString();
+        return new StringBuilder("fntdef").append(getOpcode() - FNT_DEF1 + 1)
+            .toString();
     }
 
     /**

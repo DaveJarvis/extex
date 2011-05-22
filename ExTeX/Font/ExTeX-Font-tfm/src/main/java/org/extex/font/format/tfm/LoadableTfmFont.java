@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,6 @@ import java.io.InputStream;
 import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -126,11 +125,11 @@ public class LoadableTfmFont
     private boolean loadPsFontMap = false;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(LoadableTfmFont.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(LoadableTfmFont.class);
 
     /**
      * The logger.
@@ -185,6 +184,7 @@ public class LoadableTfmFont
      *      org.extex.typesetter.type.node.factory.NodeFactory,
      *      org.extex.typesetter.tc.TypesettingContextFactory)
      */
+    @Override
     public CharNode buildCharNode(UnicodeChar uc, TypesettingContext tc,
             NodeFactory factory, TypesettingContextFactory tcFactory) {
 
@@ -241,8 +241,9 @@ public class LoadableTfmFont
 
                     if (fontfile.matches(".*\\.[pP][fF][bB]")) {
                         InputStream pfbin =
-                                finder.findResource(fontfile.replaceAll(
-                                    "\\.[pP][fF][bB]", ""), "pfb");
+                                finder.findResource(
+                                    fontfile.replaceAll("\\.[pP][fF][bB]", ""),
+                                    "pfb");
                         if (pfbin == null) {
                             logger.severe(localizer.format(
                                 "Tfm.pfbFontNotFound", fontfile));
@@ -253,9 +254,10 @@ public class LoadableTfmFont
                                 pfbdata = rar.getData();
                                 rar.close();
                             } catch (IOException e) {
-                                logger.severe(localizer
-                                    .format("Tfm.pfbReadError", e
-                                        .getLocalizedMessage()));
+                                logger
+                                    .severe(localizer.format(
+                                        "Tfm.pfbReadError",
+                                        e.getLocalizedMessage()));
                             }
                         }
                     } else {
@@ -285,11 +287,13 @@ public class LoadableTfmFont
                     xtf = true;
                     InputStream xtfin = null;
                     if (fontfile.matches(".*\\.[tT][tT][fF]")) {
-                        finder.findResource(fontfile.replaceAll(
-                            "\\.[tT][tT][fF]", ""), "ttf");
+                        finder.findResource(
+                            fontfile.replaceAll("\\.[tT][tT][fF]", ""), "ttf");
                     } else {
-                        finder.findResource(fontfile.replaceAll(
-                            "\\.[tToO][tT][fF]", ""), "otf");
+                        finder
+                            .findResource(
+                                fontfile.replaceAll("\\.[tToO][tT][fF]", ""),
+                                "otf");
                     }
                     if (xtfin == null) {
                         logger.severe(localizer.format("Tfm.xtfFontNotFound",
@@ -359,8 +363,8 @@ public class LoadableTfmFont
                 afmdata = out.toByteArray();
 
             } catch (Exception e) {
-                logger.severe(localizer.format("Tfm.afmWriteError", e
-                    .getLocalizedMessage()));
+                logger.severe(localizer.format("Tfm.afmWriteError",
+                    e.getLocalizedMessage()));
             }
 
         }
@@ -371,6 +375,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
@@ -382,6 +387,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
+    @Override
     public FontKey getActualFontKey() {
 
         return actualFontKey;
@@ -392,6 +398,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getActualSize()
      */
+    @Override
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen(FontKey.SIZE);
@@ -424,6 +431,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -439,6 +447,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getDesignSize()
      */
+    @Override
     public FixedDimen getDesignSize() {
 
         return reader.getDesignSize();
@@ -449,6 +458,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getEm()
      */
+    @Override
     public FixedDimen getEm() {
 
         return getFontDimen("QUAD");
@@ -486,6 +496,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getEx()
      */
+    @Override
     public FixedDimen getEx() {
 
         return getFontDimen("XHEIGHT");
@@ -496,6 +507,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
+    @Override
     public FixedDimen getFontDimen(String name) {
 
         TfmFixWord param = reader.getParamAsFixWord(name);
@@ -509,6 +521,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BaseFont#getFontKey()
      */
+    @Override
     public FontKey getFontKey() {
 
         return fontKey;
@@ -519,6 +532,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getFontName()
      */
+    @Override
     public String getFontName() {
 
         return reader.getFontname();
@@ -529,6 +543,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -544,6 +559,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -560,6 +576,7 @@ public class LoadableTfmFont
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         int cp1 = charPos(uc1);
@@ -577,6 +594,7 @@ public class LoadableTfmFont
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         int cp1 = charPos(uc1);
@@ -597,6 +615,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#getName()
      */
+    @Override
     public String getName() {
 
         return fontKey.getName();
@@ -607,6 +626,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#getPfa()
      */
+    @Override
     public byte[] getPfa() {
 
         checkType1();
@@ -633,6 +653,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#getPfb()
      */
+    @Override
     public byte[] getPfb() {
 
         checkType1();
@@ -644,6 +665,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
+    @Override
     public FixedCount getScaleFactor() {
 
         FixedCount actualscale = actualFontKey.getCount(FontKey.SCALE);
@@ -659,6 +681,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getSpace()
      */
+    @Override
     public FixedGlue getSpace() {
 
         return new Glue(getFontDimen("SPACE"), getFontDimen("STRETCH"),
@@ -679,11 +702,8 @@ public class LoadableTfmFont
 
             codepointmapreverse = new HashMap<Integer, UnicodeChar>();
 
-            Iterator<UnicodeChar> it = codepointmap.keySet().iterator();
-            while (it.hasNext()) {
-                UnicodeChar uc = it.next();
-                Integer value = codepointmap.get(uc);
-                codepointmapreverse.put(value, uc);
+            for (UnicodeChar uc : codepointmap.keySet()) {
+                codepointmapreverse.put(codepointmap.get(uc), uc);
             }
         }
 
@@ -696,6 +716,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -712,6 +733,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#getXtf()
      */
+    @Override
     public byte[] getXtf() {
 
         checkXtf();
@@ -738,6 +760,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
+    @Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         int cp = charPos(uc);
@@ -763,6 +786,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#isType1()
      */
+    @Override
     public boolean isType1() {
 
         checkType1();
@@ -774,6 +798,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.font.BackendFont#isXtf()
      */
+    @Override
     public boolean isXtf() {
 
         checkXtf();
@@ -786,6 +811,7 @@ public class LoadableTfmFont
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
      *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
+    @Override
     public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
             throws CorruptFontException,
                 ConfigurationException {
@@ -813,7 +839,8 @@ public class LoadableTfmFont
             actualFontKey =
                     factory.getFontKey(key, new Dimen(reader.getDesignSize()
                         .getValue()
-                            * key.getCount(FontKey.SCALE).getValue() / 1000));
+                            * key.getCount(FontKey.SCALE).getValue()
+                            / 1000));
         } else {
             actualFontKey = key;
         }
@@ -860,8 +887,8 @@ public class LoadableTfmFont
             } catch (FontException e) {
                 // map file is not available!
                 // not use any font file
-                logger.severe(localizer.format("Tfm.psfontmapError", e
-                    .getLocalizedMessage()));
+                logger.severe(localizer.format("Tfm.psfontmapError",
+                    e.getLocalizedMessage()));
                 type1 = false;
                 xtf = false;
             }
@@ -883,8 +910,8 @@ public class LoadableTfmFont
                         EncReader encReader = new EncReader(encin);
                         fontEncvec = encReader.getTableWithoutSlash();
                     } catch (FontException e) {
-                        logger.severe(localizer.format("Tfm.encReadError", e
-                            .getLocalizedMessage()));
+                        logger.severe(localizer.format("Tfm.encReadError",
+                            e.getLocalizedMessage()));
                     }
                 } else {
                     logger.severe(localizer.format("Tfm.encNotFound", encfile));
@@ -898,8 +925,8 @@ public class LoadableTfmFont
                     PfbParser pfbParser = new PfbParser(pfbdata);
                     fontEncvec = pfbParser.getEncoding();
                 } catch (FontException e) {
-                    logger.severe(localizer.format("Tfm.pfbReadError", e
-                        .getLocalizedMessage()));
+                    logger.severe(localizer.format("Tfm.pfbReadError",
+                        e.getLocalizedMessage()));
                 }
             }
         }
@@ -910,6 +937,7 @@ public class LoadableTfmFont
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;

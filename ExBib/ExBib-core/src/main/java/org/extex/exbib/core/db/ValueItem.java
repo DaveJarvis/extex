@@ -33,7 +33,7 @@ public interface ValueItem {
      * StringBuilder. Macros are looked up in the database given and their
      * values are inserted.
      * 
-     * @param sb the target StringBuffer
+     * @param sb the target StringBuilder
      * @param db the database context
      */
     void expand(StringBuilder sb, DB db);

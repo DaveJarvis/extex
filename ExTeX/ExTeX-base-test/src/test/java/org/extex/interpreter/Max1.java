@@ -498,11 +498,11 @@ public class Max1 {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
-         *      long, long)
+         * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long,
+         *      long)
          */
         @Override
-        public void showlist(StringBuffer s, long l, long m) {
+        public void showlist(StringBuilder s, long l, long m) {
 
             // not needed
         }
@@ -510,11 +510,11 @@ public class Max1 {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.typesetter.Typesetter#showlists(java.lang.StringBuffer,
-         *      long, long)
+         * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long,
+         *      long)
          */
         @Override
-        public void showlists(StringBuffer s, long l, long m) {
+        public void showlists(StringBuilder s, long l, long m) {
 
             // not needed
         }

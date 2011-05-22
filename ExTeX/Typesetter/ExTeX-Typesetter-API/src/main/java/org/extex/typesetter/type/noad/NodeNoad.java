@@ -65,6 +65,7 @@ public class NodeNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSpacingClass()
      */
+    @Override
     public MathSpacing getSpacingClass() {
 
         return spacingClass;
@@ -77,6 +78,7 @@ public class NodeNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSubscript()
      */
+    @Override
     public Noad getSubscript() {
 
         return null;
@@ -89,6 +91,7 @@ public class NodeNoad implements Noad {
      * 
      * @see org.extex.typesetter.type.noad.Noad#getSuperscript()
      */
+    @Override
     public Noad getSuperscript() {
 
         return null;
@@ -97,9 +100,9 @@ public class NodeNoad implements Noad {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(
-     *      org.extex.typesetter.type.noad.util.MathSpacing)
+     * @see org.extex.typesetter.type.noad.Noad#setSpacingClass(org.extex.typesetter.type.noad.util.MathSpacing)
      */
+    @Override
     public void setSpacingClass(MathSpacing spacingClass) {
 
         this.spacingClass = spacingClass;
@@ -111,9 +114,9 @@ public class NodeNoad implements Noad {
      * 
      * @param subscript the subscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSubscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSubscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSubscript(Noad subscript) {
 
         throw new UnsupportedOperationException();
@@ -125,23 +128,23 @@ public class NodeNoad implements Noad {
      * 
      * @param superscript the superscript to set.
      * 
-     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(
-     *      org.extex.typesetter.type.noad.Noad)
+     * @see org.extex.typesetter.type.noad.Noad#setSuperscript(org.extex.typesetter.type.noad.Noad)
      */
+    @Override
     public void setSuperscript(Noad superscript) {
 
         throw new UnsupportedOperationException();
     }
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
+     * Produce a printable representation of the noad in a StringBuilder.
      * 
      * @param sb the string buffer
      * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
-    public void toString(StringBuffer sb) {
+    @Override
+    public void toString(StringBuilder sb) {
 
         node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
@@ -152,10 +155,10 @@ public class NodeNoad implements Noad {
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
      * 
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
-    public void toString(StringBuffer sb, int depth) {
+    @Override
+    public void toString(StringBuilder sb, int depth) {
 
         node.toString(sb, "", Integer.MAX_VALUE, Integer.MAX_VALUE);
     }
@@ -174,13 +177,13 @@ public class NodeNoad implements Noad {
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
      * 
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
+     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
      *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
+    @Override
     public void typeset(Noad previousNoad, NoadList noads, int index,
             NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -176,7 +176,7 @@ public class Key {
         if (stringCache != null) {
             return stringCache;
         }
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(tuneKey(thePackage));
 
         if (theClass != null) {
@@ -206,7 +206,7 @@ public class Key {
      */
     public String getLocation() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(thePackage);
 
         if (theClass != null) {

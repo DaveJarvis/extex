@@ -42,7 +42,7 @@ import org.extex.typesetter.type.node.ImplicitKernNode;
 
 /**
  * This class provides a container for a mathematical character.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -60,7 +60,7 @@ public class CharNoad extends AbstractNoad {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param character the character representation
      * @param tc the typesetting context for the color
      */
@@ -72,7 +72,7 @@ public class CharNoad extends AbstractNoad {
 
     /**
      * Getter for the character.
-     *
+     * 
      * @return the character.
      */
     public MathGlyph getChar() {
@@ -81,44 +81,41 @@ public class CharNoad extends AbstractNoad {
     }
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * Produce a printable representation of the noad in a StringBuilder.
+     * 
      * @param sb the string buffer
-     *
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
     @Override
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         glyph.toString(sb);
     }
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param nodes the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList nodes,
-            MathContext mathContext, Logger logger)
+    @Override
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList nodes, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 
@@ -126,11 +123,11 @@ public class CharNoad extends AbstractNoad {
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
         Font font = context.getFont(MathFontParameter.key(context, //
-                style.getFontName(), Integer.toString(glyph.getFamily())));
+            style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font.getActualSize().eq(Dimen.ZERO)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                    "TTP.UndefinedFamily", style.getStyleName(), Integer
-                            .toString(glyph.getFamily()), c.toString()));
+                "TTP.UndefinedFamily", style.getStyleName(),
+                Integer.toString(glyph.getFamily()), c.toString()));
         }
 
         if (font.getWidth(c) == null) {
@@ -152,13 +149,13 @@ public class CharNoad extends AbstractNoad {
             }
         }
 
-        TypesettingContextFactory tcFactory = context
-                .getTypesettingContextFactory();
-        TypesettingContext tc = tcFactory.newInstance(context
-                .getTypesettingContext(), font);
+        TypesettingContextFactory tcFactory =
+                context.getTypesettingContextFactory();
+        TypesettingContext tc =
+                tcFactory.newInstance(context.getTypesettingContext(), font);
         tc = tcFactory.newInstance(tc, color);
         CharNode charNode = new CharNode(tc, c);
-        //font.getGlyph(c).getItalicCorrection();
+        // font.getGlyph(c).getItalicCorrection();
         FixedDimen delta = font.getItalicCorrection(c);
         Node scripts = makeScripts(charNode, mathContext, delta, logger);
 
@@ -168,8 +165,8 @@ public class CharNoad extends AbstractNoad {
             nodes.add(charNode);
         }
 
-        //see "TTP [755]"
-        //TODO gene: insert kern for italic correction if required
+        // see "TTP [755]"
+        // TODO gene: insert kern for italic correction if required
     }
 
 }

@@ -26,7 +26,7 @@ import java.io.Serializable;
  * <p>
  * Ligature instruction
  * </p>
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
@@ -38,9 +38,9 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Character code representing the ligature character to be added
-     * between the current and next character in the text if this
-     * instruction is activated.
+     * Character code representing the ligature character to be added between
+     * the current and next character in the text if this instruction is
+     * activated.
      */
     private short addingChar;
 
@@ -50,9 +50,9 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     private boolean keepLeft;
 
     /**
-     * If some of the following flags are not set, the corresponding
-     * character in the text is removed after inserting the ligature
-     * character (in the process of constituing of ligatures).
+     * If some of the following flags are not set, the corresponding character
+     * in the text is removed after inserting the ligature character (in the
+     * process of constituing of ligatures).
      */
 
     /**
@@ -61,25 +61,24 @@ public class TfmLigature extends TfmLigKern implements Serializable {
     private boolean keepRight;
 
     /**
-     * Tells how many characters from the current position in the text
-     * should be skiped over after performing this instruction.
+     * Tells how many characters from the current position in the text should be
+     * skiped over after performing this instruction.
      */
     private byte stepOver;
 
     /**
      * Create a new object.
-     *
-     * @param skip  the skip amount to the next instruction.
-     * @param next  the code of the next character.
-     * @param a     character code of ligature character to be inserted.
-     * @param l     indication that the current character should
-     *              not be removed.
-     * @param r     indication that the next character should not be removed.
-     * @param s     number of characters from the current one to be stepped
-     *              over after performing of this instruction.
+     * 
+     * @param skip the skip amount to the next instruction.
+     * @param next the code of the next character.
+     * @param a character code of ligature character to be inserted.
+     * @param l indication that the current character should not be removed.
+     * @param r indication that the next character should not be removed.
+     * @param s number of characters from the current one to be stepped over
+     *        after performing of this instruction.
      */
-    public TfmLigature(int skip, short next, short a,
-            boolean l, boolean r, byte s) {
+    public TfmLigature(int skip, short next, short a, boolean l, boolean r,
+            byte s) {
 
         super(skip, next);
         addingChar = a;
@@ -90,6 +89,7 @@ public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
      * Returns the addingChar.
+     * 
      * @return Returns the addingChar.
      */
     public short getAddingChar() {
@@ -99,6 +99,7 @@ public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
      * Returns the stepOver.
+     * 
      * @return Returns the stepOver.
      */
     public byte getStepOver() {
@@ -108,6 +109,7 @@ public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
      * Returns the keepLeft.
+     * 
      * @return Returns the keepLeft.
      */
     public boolean isKeepLeft() {
@@ -117,6 +119,7 @@ public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
      * Returns the keepRight.
+     * 
      * @return Returns the keepRight.
      */
     public boolean isKeepRight() {
@@ -126,13 +129,13 @@ public class TfmLigature extends TfmLigKern implements Serializable {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(super.toString());
+        StringBuilder buf = new StringBuilder(super.toString());
         buf.append(" addingchar=").append(addingChar);
         buf.append(" keepleft=").append(keepLeft);
         buf.append(" keepright=").append(keepRight);

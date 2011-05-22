@@ -122,7 +122,7 @@ public class DviChar extends DviCommand {
     @Override
     public String getName() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         if (getOpcode() >= MIN_SET_CHAR && getOpcode() <= MAX_SET_CHAR) {
             buf.append("setchar").append(getOpcode());
         } else if (getOpcode() >= MIN_SET && getOpcode() <= MAX_SET) {

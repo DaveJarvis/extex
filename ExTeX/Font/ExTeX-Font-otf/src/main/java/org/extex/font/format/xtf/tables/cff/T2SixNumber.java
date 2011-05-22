@@ -54,17 +54,6 @@ public class T2SixNumber {
     }
 
     /**
-     * Set the value.
-     * 
-     * @param t The number.
-     * @param idx The index.
-     */
-    public void setValue(T2Number t, int idx) {
-
-        val[idx] = t;
-    }
-
-    /**
      * Returns the number.
      * 
      * @param idx The index.
@@ -76,22 +65,6 @@ public class T2SixNumber {
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        StringBuffer buf = new StringBuffer();
-        for (int i = 0; i < val.length; i++) {
-            buf.append(" ").append(val[i].toString());
-        }
-
-        return buf.toString().trim();
-    }
-
-    /**
      * Getter for val.
      * 
      * @return the val
@@ -99,6 +72,34 @@ public class T2SixNumber {
     public T2Number[] getVal() {
 
         return val;
+    }
+
+    /**
+     * Set the value.
+     * 
+     * @param t The number.
+     * @param idx The index.
+     */
+    public void setValue(T2Number t, int idx) {
+
+        val[idx] = t;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        StringBuilder buf =
+                new StringBuilder(val.length > 0 ? val[0].toString() : "");
+        for (int i = 1; i < val.length; i++) {
+            buf.append(' ').append(val[i].toString());
+        }
+
+        return buf.toString();
     }
 
 }

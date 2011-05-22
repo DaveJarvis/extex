@@ -46,32 +46,32 @@ public class TokenTester {
     public static final CrToken CR_TOKEN = new CrToken(UnicodeChar.get('x'));
 
     /**
-     * The constant <tt>CONTROL_SEQUENCE_TOKEN</tt> contains a control
-     * seqeunce token.
+     * The constant <tt>CONTROL_SEQUENCE_TOKEN</tt> contains a control seqeunce
+     * token.
      */
     public static final ControlSequenceToken CONTROL_SEQUENCE_TOKEN =
             new ControlSequenceToken(UnicodeChar.get('x'), "abc",
                 Namespace.DEFAULT_NAMESPACE);
 
     /** The constant <tt>LEFT_BRACE_TOKEN</tt> contains a left brace token. */
-    public static final LeftBraceToken LEFT_BRACE_TOKEN =
-            new LeftBraceToken(UnicodeChar.get('x'));
+    public static final LeftBraceToken LEFT_BRACE_TOKEN = new LeftBraceToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>LETTER_TOKEN</tt> contains a letter token. */
-    public static final LetterToken LETTER_TOKEN =
-            new LetterToken(UnicodeChar.get('x'));
+    public static final LetterToken LETTER_TOKEN = new LetterToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>MACRO_PARAM_TOKEN</tt> contains a macro param token. */
     public static final MacroParamToken MACRO_PARAM_TOKEN =
             new MacroParamToken(UnicodeChar.get('x'));
 
     /** The constant <tt>MATH_SHIF_TOKEN</tt> contains a math shift token. */
-    public static final MathShiftToken MATH_SHIF_TOKEN =
-            new MathShiftToken(UnicodeChar.get('x'));
+    public static final MathShiftToken MATH_SHIF_TOKEN = new MathShiftToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>OTHER_TOKEN</tt> contains an other token. */
-    public static final OtherToken OTHER_TOKEN =
-            new OtherToken(UnicodeChar.get('x'));
+    public static final OtherToken OTHER_TOKEN = new OtherToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>RIGHT_BRACE_TOKEN</tt> contains a right brace token. */
     public static final RightBraceToken RIGHT_BRACE_TOKEN =
@@ -81,16 +81,16 @@ public class TokenTester {
     public static final SpaceToken SPACE_TOKEN = new SpaceToken(" ");
 
     /** The constant <tt>SUB_MARK_TOKEN</tt> contains a sub mark token. */
-    public static final SubMarkToken SUB_MARK_TOKEN =
-            new SubMarkToken(UnicodeChar.get('x'));
+    public static final SubMarkToken SUB_MARK_TOKEN = new SubMarkToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>SUP_MARK_TOKEN</tt> contains a super mark token. */
-    public static final SupMarkToken SUP_MARK_TOKEN =
-            new SupMarkToken(UnicodeChar.get('x'));
+    public static final SupMarkToken SUP_MARK_TOKEN = new SupMarkToken(
+        UnicodeChar.get('x'));
 
     /** The constant <tt>TAB_MARK_TOKEN</tt> contains a tab mark token. */
-    public static final TabMarkToken TAB_MARK_TOKEN =
-            new TabMarkToken(UnicodeChar.get('x'));
+    public static final TabMarkToken TAB_MARK_TOKEN = new TabMarkToken(
+        UnicodeChar.get('x'));
 
     /**
      * The constant <tt>TV</tt> contains the token visitor returning the
@@ -99,78 +99,91 @@ public class TokenTester {
     private static final TokenVisitor<Catcode, Object> TV =
             new TokenVisitor<Catcode, Object>() {
 
+                @Override
                 public Catcode visitActive(ActiveCharacterToken token,
                         Object arg) throws Exception {
 
                     return Catcode.ACTIVE;
                 }
 
+                @Override
                 public Catcode visitCr(CrToken token, Object arg)
                         throws Exception {
 
                     return Catcode.CR;
                 }
 
+                @Override
                 public Catcode visitEscape(ControlSequenceToken token,
                         Object arg) throws Exception {
 
                     return Catcode.ESCAPE;
                 }
 
+                @Override
                 public Catcode visitLeftBrace(LeftBraceToken token, Object arg)
                         throws Exception {
 
                     return Catcode.LEFTBRACE;
                 }
 
+                @Override
                 public Catcode visitLetter(LetterToken token, Object arg)
                         throws Exception {
 
                     return Catcode.LETTER;
                 }
 
+                @Override
                 public Catcode visitMacroParam(MacroParamToken token, Object arg)
                         throws Exception {
 
                     return Catcode.MACROPARAM;
                 }
 
+                @Override
                 public Catcode visitMathShift(MathShiftToken token, Object arg)
                         throws Exception {
 
                     return Catcode.MATHSHIFT;
                 }
 
+                @Override
                 public Catcode visitOther(OtherToken token, Object arg)
                         throws Exception {
 
                     return Catcode.OTHER;
                 }
 
+                @Override
                 public Catcode visitRightBrace(RightBraceToken token, Object arg)
                         throws Exception {
 
                     return Catcode.RIGHTBRACE;
                 }
 
+                @Override
                 public Catcode visitSpace(SpaceToken token, Object arg)
                         throws Exception {
 
                     return Catcode.SPACE;
                 }
 
+                @Override
                 public Catcode visitSubMark(SubMarkToken token, Object arg)
                         throws Exception {
 
                     return Catcode.SUBMARK;
                 }
 
+                @Override
                 public Catcode visitSupMark(SupMarkToken token, Object arg)
                         throws Exception {
 
                     return Catcode.SUPMARK;
                 }
 
+                @Override
                 public Catcode visitTabMark(TabMarkToken token, Object arg)
                         throws Exception {
 
@@ -180,8 +193,7 @@ public class TokenTester {
             };
 
     /**
-     * The field <tt>catcode</tt> contains the expected result for
-     * getCatcode().
+     * The field <tt>catcode</tt> contains the expected result for getCatcode().
      */
     private Catcode catcode;
 
@@ -196,8 +208,8 @@ public class TokenTester {
     private String text;
 
     /**
-     * The field <tt>token</tt> contains the default token to perform the
-     * tests on.
+     * The field <tt>token</tt> contains the default token to perform the tests
+     * on.
      */
     private Token token;
 
@@ -351,8 +363,8 @@ public class TokenTester {
     @Test
     public void testIsa12() {
 
-        assertEquals(catcode == Catcode.RIGHTBRACE, token
-            .isa(Catcode.RIGHTBRACE));
+        assertEquals(catcode == Catcode.RIGHTBRACE,
+            token.isa(Catcode.RIGHTBRACE));
     }
 
     /**
@@ -451,8 +463,8 @@ public class TokenTester {
     @Test
     public void testIsa9() {
 
-        assertEquals(catcode == Catcode.MACROPARAM, token
-            .isa(Catcode.MACROPARAM));
+        assertEquals(catcode == Catcode.MACROPARAM,
+            token.isa(Catcode.MACROPARAM));
     }
 
     /**
@@ -462,17 +474,6 @@ public class TokenTester {
     public void testToString0() {
 
         assertEquals(str, token.toString());
-    }
-
-    /**
-     * <testcase> Test that ... </testcase>
-     */
-    @Test
-    public void testToString1() {
-
-        StringBuffer sb = new StringBuffer();
-        token.toString(sb);
-        assertEquals(str, sb.toString());
     }
 
     /**

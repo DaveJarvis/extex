@@ -24,7 +24,7 @@ import org.extex.typesetter.type.node.RuleNode;
 
 /**
  * This is the fitr destination type for PDF.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4791 $
  */
@@ -43,7 +43,7 @@ public class FitrDestType extends DestType {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param rule the rule
      */
     public FitrDestType(RuleNode rule) {
@@ -52,10 +52,10 @@ public class FitrDestType extends DestType {
     }
 
     /**
-     * Getter for rule.
-     * The rule carries the width height, and depth. Nothing else.
-     * And even those parameters are optional; they might be <code>null</code>.
-     *
+     * Getter for rule. The rule carries the width height, and depth. Nothing
+     * else. And even those parameters are optional; they might be
+     * <code>null</code>.
+     * 
      * @return the rule
      */
     public RuleNode getRule() {
@@ -65,15 +65,15 @@ public class FitrDestType extends DestType {
 
     /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
+     * 
+     * @return a string representation of the object.
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer("fitr ");
+        StringBuilder sb = new StringBuilder("fitr ");
         FixedDimen x = rule.getWidth();
         if (x != null) {
             sb.append("width ");
@@ -94,13 +94,12 @@ public class FitrDestType extends DestType {
 
     /**
      * This method is the entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to call back
-     *
+     * 
      * @return an arbitrary return object
-     *
-     * @see org.extex.pdf.api.destination.DestType#visit(
-     *      org.extex.pdf.api.destination.DestinationVisitor)
+     * 
+     * @see org.extex.pdf.api.destination.DestType#visit(org.extex.pdf.api.destination.DestinationVisitor)
      */
     @Override
     public Object visit(DestinationVisitor visitor) {

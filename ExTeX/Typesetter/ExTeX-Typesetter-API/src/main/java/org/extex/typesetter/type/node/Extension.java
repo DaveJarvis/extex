@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -76,14 +76,14 @@ public interface Extension extends Serializable {
     void setWidth(FixedDimen width);
 
     /**
-     * This method puts the printable representation into the string buffer.
+     * This method puts the printable representation into the StringBuilder.
      * This is meant to produce a exhaustive form as it is used in tracing
      * output to the log file.
      * 
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      */
-    void toString(StringBuffer sb, String prefix);
+    void toString(StringBuilder sb, String prefix);
 
     /**
      * This method puts the printable representation into the string buffer.
@@ -93,6 +93,6 @@ public interface Extension extends Serializable {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      */
-    void toText(StringBuffer sb, String prefix);
+    void toText(StringBuilder sb, String prefix);
 
 }

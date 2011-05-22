@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2009 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.exbib.core.db;
 
 import java.io.IOException;
-import java.util.Iterator;
 
 /**
  * This class represents a variable {@link ValueItem ValueItem}. The value is
@@ -52,8 +51,8 @@ public class VMacro extends AbstractValueItem {
      * 
      * {@inheritDoc}
      * 
-     * @see org.extex.exbib.core.db.AbstractValueItem#expand(
-     *      java.lang.StringBuilder, org.extex.exbib.core.db.DB)
+     * @see org.extex.exbib.core.db.AbstractValueItem#expand(java.lang.StringBuilder,
+     *      org.extex.exbib.core.db.DB)
      */
     @Override
     public void expand(StringBuilder sb, DB db) {
@@ -64,10 +63,8 @@ public class VMacro extends AbstractValueItem {
             return;
         }
 
-        Iterator<ValueItem> iterator = val.iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next().expand(sb, db);
+        for (ValueItem item : val) {
+            item.expand(sb, db);
         }
     }
 

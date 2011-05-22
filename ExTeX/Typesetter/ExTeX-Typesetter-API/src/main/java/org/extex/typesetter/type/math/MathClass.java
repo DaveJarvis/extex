@@ -32,11 +32,6 @@ import java.io.Serializable;
 public abstract class MathClass implements Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 24012007L;
-
-    /**
      * This is a inner class for a binary operator.
      * 
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -70,7 +65,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("bin");
         }
@@ -127,7 +122,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("close");
         }
@@ -187,7 +182,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("large");
         }
@@ -247,7 +242,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("open");
         }
@@ -307,7 +302,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("ord");
         }
@@ -367,7 +362,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("punct");
         }
@@ -427,7 +422,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("rel");
         }
@@ -487,7 +482,7 @@ public abstract class MathClass implements Serializable {
          * @param sb the target string buffer
          */
         @Override
-        public void toString(StringBuffer sb) {
+        public void toString(StringBuilder sb) {
 
             sb.append("var");
         }
@@ -512,6 +507,11 @@ public abstract class MathClass implements Serializable {
             return visitor.visitVariable(arg, arg2);
         }
     }
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 24012007L;
 
     /**
      * The field <tt>BINARY</tt> contains the instance representing the binary
@@ -653,14 +653,6 @@ public abstract class MathClass implements Serializable {
     }
 
     /**
-     * Append the printable representation of the current instance to the string
-     * buffer.
-     * 
-     * @param sb the target string buffer
-     */
-    public abstract void toString(StringBuffer sb);
-
-    /**
      * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
@@ -668,10 +660,18 @@ public abstract class MathClass implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
+
+    /**
+     * Append the printable representation of the current instance to the string
+     * buffer.
+     * 
+     * @param sb the target string buffer
+     */
+    public abstract void toString(StringBuilder sb);
 
     /**
      * Call a method in the visitor depending on the type. This method is the

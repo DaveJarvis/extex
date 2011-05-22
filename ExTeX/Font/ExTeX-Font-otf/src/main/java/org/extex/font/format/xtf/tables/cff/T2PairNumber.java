@@ -97,8 +97,7 @@ public class T2PairNumber {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(a.toString());
-        buf.append(" ").append(b.toString());
-        return buf.toString();
+        return new StringBuilder(a.toString()).append(' ').append(b.toString())
+            .toString();
     }
 }

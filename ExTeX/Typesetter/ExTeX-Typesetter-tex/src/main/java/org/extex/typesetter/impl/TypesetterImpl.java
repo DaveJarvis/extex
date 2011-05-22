@@ -80,8 +80,8 @@ public class TypesetterImpl extends ListMakerFactory
             LogEnabled {
 
     /**
-     * The field <tt>backend</tt> contains the back-end driver for producing
-     * the output.
+     * The field <tt>backend</tt> contains the back-end driver for producing the
+     * output.
      */
     private BackendDriver backend = null;
 
@@ -103,14 +103,13 @@ public class TypesetterImpl extends ListMakerFactory
     private Logger logger = null;
 
     /**
-     * The field <tt>charNodeFactory</tt> contains the factory to produce
-     * glyph nodes.
+     * The field <tt>charNodeFactory</tt> contains the factory to produce glyph
+     * nodes.
      */
     private NodeFactory nodeFactory = new CachingNodeFactory();
 
     /**
-     * The field <tt>options</tt> contains the context for accessing
-     * parameters.
+     * The field <tt>options</tt> contains the context for accessing parameters.
      */
     private TypesetterOptions options;
 
@@ -160,8 +159,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.core.glue.FixedGlue)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
      */
+    @Override
     public void add(FixedGlue glue) throws TypesetterException {
 
         listMaker.add(glue);
@@ -177,8 +177,9 @@ public class TypesetterImpl extends ListMakerFactory
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#add( org.extex.typesetter.type.Node)
+     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
+    @Override
     public void add(Node node) throws TypesetterException {
 
         if (node == null) {
@@ -193,8 +194,8 @@ public class TypesetterImpl extends ListMakerFactory
                         || node instanceof HorizontalListNode //
                 || node instanceof VerticalListNode)) {
 
-            pageBuilder.inspectAndBuild((VerticalListNode) listMaker
-                .complete(options), this);
+            pageBuilder.inspectAndBuild(
+                (VerticalListNode) listMaker.complete(options), this);
         }
     }
 
@@ -208,10 +209,10 @@ public class TypesetterImpl extends ListMakerFactory
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(
-     *      org.extex.typesetter.type.NodeList,
+     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void addAndAdjust(NodeList list, TypesetterOptions options)
             throws TypesetterException {
 
@@ -223,16 +224,16 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param typesettingContext the typesetting context for the space
      * @param spacefactor the space factor to use for this space or
-     *        <code>null</code> to indicate that the default space factor
-     *        should be used.
+     *        <code>null</code> to indicate that the default space factor should
+     *        be used.
      * 
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#addSpace(
-     *      org.extex.typesetter.tc.TypesettingContext,
+     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
      */
+    @Override
     public void addSpace(TypesettingContext typesettingContext,
             FixedCount spacefactor) throws TypesetterException {
 
@@ -244,8 +245,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param observer the observer to register
      * 
-     * @see org.extex.typesetter.ListMaker#afterParagraph( ParagraphObserver)
+     * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
      */
+    @Override
     public void afterParagraph(ParagraphObserver observer) {
 
         listMaker.afterParagraph(observer);
@@ -260,9 +262,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.ListManager#buildParagraph(
-     *      org.extex.typesetter.type.node.HorizontalListNode)
+     * @see org.extex.typesetter.ListManager#buildParagraph(org.extex.typesetter.type.node.HorizontalListNode)
      */
+    @Override
     public NodeList buildParagraph(HorizontalListNode nodes)
             throws TypesetterException {
 
@@ -277,6 +279,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#clearShipoutMark()
      */
+    @Override
     public void clearShipoutMark() {
 
         shipoutMark = false;
@@ -298,9 +301,9 @@ public class TypesetterImpl extends ListMakerFactory
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.ListMaker#complete(
-     *      org.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public NodeList complete(TypesetterOptions context)
             throws TypesetterException {
 
@@ -312,11 +315,11 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
             throws TypesetterException {
 
@@ -328,9 +331,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param theLogger the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         logger = theLogger;
@@ -350,6 +353,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListManager#endParagraph()
      */
+    @Override
     public void endParagraph() throws TypesetterException {
 
         NodeList list = listMaker.complete(options);
@@ -376,9 +380,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.ListManager#ensureHorizontalMode(
-     *      org.extex.core.Locator)
+     * @see org.extex.typesetter.ListManager#ensureHorizontalMode(org.extex.core.Locator)
      */
+    @Override
     public ListMaker ensureHorizontalMode(Locator locator)
             throws TypesetterException {
 
@@ -398,6 +402,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#finish()
      */
+    @Override
     public void finish() throws TypesetterException {
 
         par();
@@ -415,6 +420,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#getBackendDriver()
      */
+    @Override
     public BackendDriver getBackendDriver() {
 
         return this.backend;
@@ -428,6 +434,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#getLastNode()
      */
+    @Override
     public Node getLastNode() {
 
         return listMaker.getLastNode();
@@ -440,6 +447,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#getListMaker()
      */
+    @Override
     public ListMaker getListMaker() {
 
         return listMaker;
@@ -452,6 +460,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#getLocator()
      */
+    @Override
     public Locator getLocator() {
 
         return listMaker.getLocator();
@@ -465,6 +474,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#getManager()
      */
+    @Override
     public ListManager getManager() {
 
         return this;
@@ -478,6 +488,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#getMode()
      */
+    @Override
     public Mode getMode() {
 
         return listMaker.getMode();
@@ -490,6 +501,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#getNodeFactory()
      */
+    @Override
     public NodeFactory getNodeFactory() {
 
         return nodeFactory;
@@ -502,6 +514,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListManager#getOptions()
      */
+    @Override
     public TypesetterOptions getOptions() {
 
         return options;
@@ -516,6 +529,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
+    @Override
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
         return this.listMaker.getPrevDepth();
@@ -530,6 +544,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
+    @Override
     public long getSpacefactor() throws TypesetterUnsupportedException {
 
         return this.listMaker.getSpacefactor();
@@ -540,6 +555,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#isShipoutMark()
      */
+    @Override
     public boolean isShipoutMark() {
 
         return shipoutMark;
@@ -549,6 +565,7 @@ public class TypesetterImpl extends ListMakerFactory
      * Notification method to deal the case that a left brace has been
      * encountered.
      */
+    @Override
     public void leftBrace() {
 
         listMaker.leftBrace();
@@ -557,12 +574,12 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(
-     *      org.extex.core.UnicodeChar,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
      */
+    @Override
     public boolean letter(UnicodeChar uc, TypesettingContext tc,
             Context context, TokenSource source, Locator locator)
             throws TypesetterException {
@@ -573,11 +590,11 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void mathShift(Context context, TokenSource source, Token t)
             throws TypesetterException,
                 HelpingException {
@@ -594,13 +611,14 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#par()
      */
+    @Override
     public void par() throws TypesetterException {
 
         listMaker.par();
 
         if (saveStack.size() == 0) {
-            pageBuilder.inspectAndBuild((VerticalListNode) listMaker
-                .complete(options), this);
+            pageBuilder.inspectAndBuild(
+                (VerticalListNode) listMaker.complete(options), this);
         }
     }
 
@@ -613,6 +631,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListManager#pop()
      */
+    @Override
     public TokenDelegateListMaker pop() throws TypesetterException {
 
         if (saveStack.isEmpty()) {
@@ -632,9 +651,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.ListManager#push(
-     *      org.extex.typesetter.ListMaker)
+     * @see org.extex.typesetter.ListManager#push(org.extex.typesetter.ListMaker)
      */
+    @Override
     public void push(ListMaker listMaker) throws TypesetterException {
 
         saveStack.add(this.listMaker);
@@ -645,9 +664,10 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.Typesetter#pushListMaker(
-     *      org.extex.typesetter.ListMakerType, org.extex.core.Locator)
+     * @see org.extex.typesetter.Typesetter#pushListMaker(org.extex.typesetter.ListMakerType,
+     *      org.extex.core.Locator)
      */
+    @Override
     public ListMaker pushListMaker(ListMakerType type, Locator locator)
             throws UnsupportedOperationException,
                 TypesetterException {
@@ -663,6 +683,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#removeLastNode()
      */
+    @Override
     public void removeLastNode() {
 
         if (listMaker != null) {
@@ -678,6 +699,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.ListMaker#rightBrace()
      */
+    @Override
     public void rightBrace() throws TypesetterException {
 
         listMaker.rightBrace();
@@ -688,6 +710,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
      */
+    @Override
     public void setBackend(BackendDriver driver) {
 
         backend = driver;
@@ -699,9 +722,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param nodeFactory the node factory
      * 
-     * @see org.extex.typesetter.Typesetter#setNodeFactory(
-     *      org.extex.typesetter.type.node.factory.NodeFactory)
+     * @see org.extex.typesetter.Typesetter#setNodeFactory(org.extex.typesetter.type.node.factory.NodeFactory)
      */
+    @Override
     public void setNodeFactory(NodeFactory nodeFactory) {
 
         this.nodeFactory = nodeFactory;
@@ -712,9 +735,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param options the options to use
      * 
-     * @see org.extex.typesetter.Typesetter#setOptions(
-     *      org.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.Typesetter#setOptions(org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void setOptions(TypesetterOptions options) {
 
         this.options = options;
@@ -726,9 +749,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param output the output routine
      * 
-     * @see org.extex.typesetter.Typesetter#setOutputRoutine(
-     *      org.extex.typesetter.output.OutputRoutine)
+     * @see org.extex.typesetter.Typesetter#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
      */
+    @Override
     public void setOutputRoutine(OutputRoutine output) {
 
         this.outputRoutine = output;
@@ -742,9 +765,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param pageBuilder the new page builder
      * 
-     * @see org.extex.typesetter.Typesetter#setPageBuilder(
-     *      org.extex.typesetter.pageBuilder.PageBuilder)
+     * @see org.extex.typesetter.Typesetter#setPageBuilder(org.extex.typesetter.pageBuilder.PageBuilder)
      */
+    @Override
     public void setPageBuilder(PageBuilder pageBuilder) {
 
         this.pageBuilder = pageBuilder;
@@ -760,6 +783,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @param parBuilder the paragraph builder to set.
      */
+    @Override
     public void setParagraphBuilder(ParagraphBuilder parBuilder) {
 
         paragraphBuilder = parBuilder;
@@ -775,9 +799,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterUnsupportedException in case of an error
      * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setPrevDepth(FixedDimen pd)
             throws TypesetterUnsupportedException {
 
@@ -792,9 +816,9 @@ public class TypesetterImpl extends ListMakerFactory
      * @throws TypesetterUnsupportedException in case of an error
      * @throws InvalidSpacefactorException in case of an invalid space factor
      * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
      */
+    @Override
     public void setSpacefactor(FixedCount sf)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
@@ -810,9 +834,9 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.Typesetter#shipout(
-     *      org.extex.typesetter.type.NodeList)
+     * @see org.extex.typesetter.Typesetter#shipout(org.extex.typesetter.type.NodeList)
      */
+    @Override
     public void shipout(NodeList nodes) throws TypesetterException {
 
         pageBuilder.shipout(nodes, this);
@@ -820,10 +844,10 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
-     * @see org.extex.typesetter.ListMaker#showlist(java.lang.StringBuffer,
-     *      long, long)
+     * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
      */
-    public void showlist(StringBuffer sb, long depth, long breadth) {
+    @Override
+    public void showlist(StringBuilder sb, long depth, long breadth) {
 
         listMaker.showlist(sb, depth, breadth);
     }
@@ -831,10 +855,9 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.Typesetter#showlists(java.lang.StringBuffer,
-     *      long, long)
+     * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long, long)
      */
-    public void showlists(StringBuffer sb, long depth, long breadth) {
+    public void showlists(StringBuilder sb, long depth, long breadth) {
 
         localizer = LocalizerFactory.getLocalizer(getClass());
 
@@ -855,11 +878,11 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void subscriptMark(Context context, TokenSource source,
             Typesetter typesetter, Token t)
             throws TypesetterException,
@@ -871,11 +894,11 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void superscriptMark(Context context, TokenSource source,
             Typesetter typesetter, Token t)
             throws TypesetterException,
@@ -887,11 +910,11 @@ public class TypesetterImpl extends ListMakerFactory
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void tab(Context context, TokenSource source, Token t)
             throws TypesetterException {
 

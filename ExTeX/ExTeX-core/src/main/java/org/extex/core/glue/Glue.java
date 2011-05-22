@@ -77,6 +77,36 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
+     * Creates a new object from the three components.
+     * 
+     * @param theLength the natural length
+     * @param theStretch the stretch specification
+     * @param theShrink the shrink specification
+     */
+    public Glue(FixedDimen theLength, FixedDimen theStretch,
+            FixedDimen theShrink) {
+
+        this.length = new Dimen(theLength);
+        this.stretch = new GlueComponent(theStretch.getValue());
+        this.shrink = new GlueComponent(theShrink.getValue());
+    }
+
+    /**
+     * Creates a new object from the three components.
+     * 
+     * @param theLength the natural length
+     * @param theStretch the stretch specification
+     * @param theShrink the shrink specification
+     */
+    public Glue(FixedDimen theLength, FixedGlueComponent theStretch,
+            FixedGlueComponent theShrink) {
+
+        this.length = new Dimen(theLength);
+        this.stretch = new GlueComponent(theStretch);
+        this.shrink = new GlueComponent(theShrink);
+    }
+
+    /**
      * Creates a new object as copy of another glue. if the given glue is
      * <code>null</code> then the new glue is initialized to the glue with
      * length 0 and no strechability and shrinkability.
@@ -97,36 +127,6 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Creates a new object from the three components.
-     * 
-     * @param theLength the natural length
-     * @param theStretch the stretch specification
-     * @param theShrink the shrink specification
-     */
-    public Glue(FixedDimen theLength, FixedGlueComponent theStretch,
-            FixedGlueComponent theShrink) {
-
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(theStretch);
-        this.shrink = new GlueComponent(theShrink);
-    }
-
-    /**
-     * Creates a new object from the three components.
-     * 
-     * @param theLength the natural length
-     * @param theStretch the stretch specification
-     * @param theShrink the shrink specification
-     */
-    public Glue(FixedDimen theLength, FixedDimen theStretch,
-            FixedDimen theShrink) {
-
-        this.length = new Dimen(theLength);
-        this.stretch = new GlueComponent(theStretch.getValue());
-        this.shrink = new GlueComponent(theShrink.getValue());
-    }
-
-    /**
      * Creates a new object from a fixed length.
      * 
      * @param theLength the natural length in scaled point
@@ -136,6 +136,17 @@ public class Glue implements Serializable, FixedGlue {
         this.length = new Dimen(theLength);
         this.stretch = new GlueComponent(0);
         this.shrink = new GlueComponent(0);
+    }
+
+    /**
+     * Add a dimen to this one glue. The addition is performed independently on
+     * the components.
+     * 
+     * @param g the glue to add
+     */
+    public void add(FixedDimen g) {
+
+        this.length.add(g);
     }
 
     /**
@@ -152,21 +163,11 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
-     * Add a dimen to this one glue. The addition is performed independently on
-     * the components.
-     * 
-     * @param g the glue to add
-     */
-    public void add(FixedDimen g) {
-
-        this.length.add(g);
-    }
-
-    /**
      * Make a copy of this object.
      * 
      * @return a new instance with the same internal values
      */
+    @Override
     public Glue copy() {
 
         return new Glue(length.copy(), stretch.copy(), shrink.copy());
@@ -183,6 +184,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @see org.extex.core.glue.FixedGlue#eq(org.extex.core.glue.FixedGlue)
      */
+    @Override
     public boolean eq(FixedGlue glue) {
 
         return length.eq(glue.getLength()) && stretch.eq(glue.getStretch())
@@ -212,6 +214,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @see org.extex.core.glue.FixedGlue#getLength()
      */
+    @Override
     public FixedDimen getLength() {
 
         return new Dimen(length.getValue());
@@ -226,6 +229,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @see org.extex.core.glue.FixedGlue#getShrink()
      */
+    @Override
     public FixedGlueComponent getShrink() {
 
         return shrink;
@@ -240,6 +244,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @see org.extex.core.glue.FixedGlue#getStretch()
      */
+    @Override
     public FixedGlueComponent getStretch() {
 
         return stretch;
@@ -347,6 +352,7 @@ public class Glue implements Serializable, FixedGlue {
      * 
      * @see org.extex.core.glue.FixedGlue#ne(org.extex.core.glue.FixedGlue)
      */
+    @Override
     public boolean ne(FixedGlue glue) {
 
         return length.ne(glue.getLength()) || stretch.ne(glue.getStretch())
@@ -417,6 +423,17 @@ public class Glue implements Serializable, FixedGlue {
     }
 
     /**
+     * Subtract a Glue component from this glue. The subtraction is performed on
+     * the length only.
+     * 
+     * @param g the glue to subtract
+     */
+    public void subtract(FixedDimen g) {
+
+        this.length.subtract(g);
+    }
+
+    /**
      * Subtract another glue to this one. The subtraction is performed
      * independently on the components.
      * 
@@ -427,17 +444,6 @@ public class Glue implements Serializable, FixedGlue {
         this.length.add(g.getLength());
         this.stretch.add(g.getStretch());
         this.shrink.add(g.getShrink());
-    }
-
-    /**
-     * Subtract a Glue component from this glue. The subtraction is performed on
-     * the length only.
-     * 
-     * @param g the glue to subtract
-     */
-    public void subtract(FixedDimen g) {
-
-        this.length.subtract(g);
     }
 
     /**
@@ -454,7 +460,7 @@ public class Glue implements Serializable, FixedGlue {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer(length.toString());
+        StringBuilder sb = new StringBuilder(length.toString());
         if (stretch.getValue() != 0) {
             sb.append(" plus ");
             sb.append(stretch.toString());

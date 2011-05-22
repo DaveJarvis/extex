@@ -73,11 +73,11 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
 
         assertNotNull(reader);
 
-        StringBuffer bufOut = new StringBuffer();
+        StringBuilder bufOut = new StringBuilder();
         for (int x = 0; out != null && x < out.length - 1; x++) {
             bufOut.append(out[x]);
             if (x < out.length - 2) {
-                bufOut.append(",");
+                bufOut.append(',');
             }
         }
 
@@ -89,8 +89,8 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
         assertNotNull(gsub);
 
         XtfLookup[] lookups =
-                gsub.findLookup(ScriptTag.getInstance("DFLT"), null, FeatureTag
-                    .getInstance(featureTag));
+                gsub.findLookup(ScriptTag.getInstance("DFLT"), null,
+                    FeatureTag.getInstance(featureTag));
         assertNotNull(lookups);
         assertEquals(1, lookups.length);
         assertEquals(1, lookups[0].getSubtableCount());

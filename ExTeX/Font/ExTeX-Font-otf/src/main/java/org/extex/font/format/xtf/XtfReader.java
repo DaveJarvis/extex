@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -54,6 +53,7 @@ import org.extex.font.format.xtf.tables.OtfTablePROP;
 import org.extex.font.format.xtf.tables.OtfTableTRAK;
 import org.extex.font.format.xtf.tables.OtfTableTYP1;
 import org.extex.font.format.xtf.tables.TtfTableCMAP;
+import org.extex.font.format.xtf.tables.TtfTableCMAP.Format;
 import org.extex.font.format.xtf.tables.TtfTableCVT;
 import org.extex.font.format.xtf.tables.TtfTableEBDT;
 import org.extex.font.format.xtf.tables.TtfTableEBLC;
@@ -61,6 +61,7 @@ import org.extex.font.format.xtf.tables.TtfTableEBSC;
 import org.extex.font.format.xtf.tables.TtfTableFPGM;
 import org.extex.font.format.xtf.tables.TtfTableGASP;
 import org.extex.font.format.xtf.tables.TtfTableGLYF;
+import org.extex.font.format.xtf.tables.TtfTableGLYF.Descript;
 import org.extex.font.format.xtf.tables.TtfTableHDMX;
 import org.extex.font.format.xtf.tables.TtfTableHEAD;
 import org.extex.font.format.xtf.tables.TtfTableHHEA;
@@ -83,8 +84,6 @@ import org.extex.font.format.xtf.tables.XtfGlyph;
 import org.extex.font.format.xtf.tables.XtfTable;
 import org.extex.font.format.xtf.tables.XtfTableDirectory;
 import org.extex.font.format.xtf.tables.XtfTableMap;
-import org.extex.font.format.xtf.tables.TtfTableCMAP.Format;
-import org.extex.font.format.xtf.tables.TtfTableGLYF.Descript;
 import org.extex.font.format.xtf.tables.gps.OtfTableGPOS;
 import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
 import org.extex.font.format.xtf.tables.gps.XtfScriptList.LangSys;
@@ -445,7 +444,8 @@ public class XtfReader implements XMLWriterConvertible {
      */
     public static String convertIntToBinaryString(int value) {
 
-        StringBuffer buf = new StringBuffer("00000000000000000000000000000000");
+        StringBuilder buf =
+                new StringBuilder("00000000000000000000000000000000");
         buf.append(Integer.toBinaryString(value));
         return buf.substring(buf.length() - XtfConstants.SHIFT32).toString();
     }
@@ -458,7 +458,7 @@ public class XtfReader implements XMLWriterConvertible {
      */
     public static String convertIntToHexString(int value) {
 
-        StringBuffer buf = new StringBuffer("00000000");
+        StringBuilder buf = new StringBuilder("00000000");
         buf.append(Integer.toHexString(value));
         return "0x"
                 + buf.substring(buf.length() - XtfConstants.SHIFT8).toString();
@@ -941,9 +941,9 @@ public class XtfReader implements XMLWriterConvertible {
      */
     public XtfGlyph getGlyph(int i) {
 
-        return (glyf.getDescription(i) != null) ? new XtfGlyph(glyf
-            .getDescription(i), hmtx.getLeftSideBearing(i), hmtx
-            .getAdvanceWidth(i)) : null;
+        return (glyf.getDescription(i) != null) ? new XtfGlyph(
+            glyf.getDescription(i), hmtx.getLeftSideBearing(i),
+            hmtx.getAdvanceWidth(i)) : null;
     }
 
     /**
@@ -1281,9 +1281,7 @@ public class XtfReader implements XMLWriterConvertible {
                 int glyphposLeft = format.mapCharCode(charcodeLeft);
                 int glyphcodeRight = format.mapCharCode(charcodeRigth);
 
-                for (Iterator<String> iterator = feature.iterator(); iterator
-                    .hasNext();) {
-                    String tag = iterator.next();
+                for (String tag : feature) {
                     LangSys langsys =
                             gsub.findLangSys(ScriptTag.getInstance(tag),
                                 LanguageSystemTag.getInstance(language));
@@ -1398,6 +1396,7 @@ public class XtfReader implements XMLWriterConvertible {
              * @see java.util.Comparator#compare(java.lang.Object,
              *      java.lang.Object)
              */
+            @Override
             public int compare(XtfTable arg0, XtfTable arg1) {
 
                 if (arg0.getInitOrder() > arg1.getInitOrder()) {
@@ -1431,9 +1430,9 @@ public class XtfReader implements XMLWriterConvertible {
     }
 
     /**
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("font");

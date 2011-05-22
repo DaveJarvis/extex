@@ -81,25 +81,24 @@ public class T2Return extends T2Subroutine {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
-     */
-    public void writeXML(XMLStreamWriter writer) throws IOException {
-
-        writer.writeStartElement(getName());
-        writer.writeEndElement();
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
      * @see org.extex.font.format.xtf.tables.cff.T2Operator#toText()
      */
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append(getName());
-        return buf.toString();
+        return getName();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
+     */
+    @Override
+    public void writeXML(XMLStreamWriter writer) throws IOException {
+
+        writer.writeStartElement(getName());
+        writer.writeEndElement();
     }
 
 }

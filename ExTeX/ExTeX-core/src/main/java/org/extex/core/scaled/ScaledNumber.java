@@ -38,12 +38,12 @@ public class ScaledNumber {
 
     /**
      * Determine the printable representation of the object and append it to the
-     * given StringBuffer.
+     * given StringBuilder.
      * 
      * @param sb the output string buffer
      * @param value the internal value in multiples of ONE
      */
-    public static void toString(StringBuffer sb, long value) {
+    public static void toString(StringBuilder sb, long value) {
 
         long val = value;
 
@@ -266,7 +266,7 @@ public class ScaledNumber {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, this.value);
         return sb.toString();
     }

@@ -24,7 +24,7 @@ import org.extex.typesetter.tc.TypesettingContext;
 
 /**
  * This abstract noad represents a Noad with a nucleus.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -42,7 +42,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param nucleus the nucleus of inner noads
      * @param tc the typesetting context for the color
      */
@@ -54,7 +54,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * Getter for color.
-     *
+     * 
      * @return the color
      */
     public Color getColor() {
@@ -64,7 +64,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * Getter for nucleus.
-     *
+     * 
      * @return the nucleus
      */
     public Noad getNucleus() {
@@ -74,7 +74,7 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * Getter for the typesetting context.
-     *
+     * 
      * @return the typesetting context
      */
     protected TypesettingContext getTypesettingContext() {
@@ -84,16 +84,15 @@ public abstract class AbstractNucleusNoad extends AbstractNoad {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
+     * 
      * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
     @Override
-    public void toString(StringBuffer sb, int depth) {
+    public void toString(StringBuilder sb, int depth) {
 
         if (depth < 0) {
             sb.append(" {}");

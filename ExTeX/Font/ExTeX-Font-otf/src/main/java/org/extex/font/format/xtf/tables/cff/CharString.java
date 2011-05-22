@@ -394,7 +394,7 @@ public class CharString implements XMLWriterConvertible {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         buf.append(getName()).append(" (").append(idx).append(")\n");
         for (int i = 0, n = t2Ops.size(); i < n; i++) {
             buf.append(t2Ops.get(i).toText()).append("\n");
@@ -408,6 +408,7 @@ public class CharString implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("chars");

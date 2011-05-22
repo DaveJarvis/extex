@@ -79,8 +79,8 @@ public class MultiDumpDocumentWriter
     private String extension = "out";
 
     /**
-     * The field <tt>nodeVisitor</tt> contains the node visitor instance to
-     * use in the form of an anonymous inner class.
+     * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
+     * in the form of an anonymous inner class.
      */
     private NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
@@ -120,10 +120,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(
-                 *      org.extex.typesetter.type.node.AdjustNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(org.extex.typesetter.type.node.AdjustNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAdjust(AdjustNode node, Object oOut)
                         throws GeneralException {
 
@@ -133,8 +133,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when an
-                 * {@link org.extex.typesetter.type.node.AfterMathNode AfterMathNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.AfterMathNode
+                 * AfterMathNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -144,10 +144,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(
-                 *      org.extex.typesetter.type.node.AfterMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(org.extex.typesetter.type.node.AfterMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAfterMath(AfterMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -158,10 +158,10 @@ public class MultiDumpDocumentWriter
                 }
 
                 /**
-                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(
-                 *      org.extex.typesetter.type.node.AlignedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(org.extex.typesetter.type.node.AlignedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitAlignedLeaders(AlignedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -174,8 +174,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.BeforeMathNode BeforeMathNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.BeforeMathNode
+                 * BeforeMathNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -185,10 +185,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(
-                 *      org.extex.typesetter.type.node.BeforeMathNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(org.extex.typesetter.type.node.BeforeMathNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitBeforeMath(BeforeMathNode node, Object oOut)
                         throws GeneralException {
 
@@ -200,8 +200,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.CenteredLeadersNode CenteredLeadersNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.CenteredLeadersNode
+                 * CenteredLeadersNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -211,10 +211,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(
-                 *      org.extex.typesetter.type.node.CenteredLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(org.extex.typesetter.type.node.CenteredLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitCenteredLeaders(CenteredLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -238,10 +238,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(
-                 *      org.extex.typesetter.type.node.CharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitChar(org.extex.typesetter.type.node.CharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitChar(CharNode node, Object oOut)
                         throws GeneralException {
 
@@ -251,8 +251,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.DiscretionaryNode DiscretionaryNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.DiscretionaryNode
+                 * DiscretionaryNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -262,10 +262,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(
-                 *      org.extex.typesetter.type.node.DiscretionaryNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(org.extex.typesetter.type.node.DiscretionaryNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitDiscretionary(DiscretionaryNode node,
                         Object oOut) throws GeneralException {
 
@@ -275,8 +275,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when an
-                 * {@link org.extex.typesetter.type.node.ExpandedLeadersNode ExpandedLeadersNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.ExpandedLeadersNode
+                 * ExpandedLeadersNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -286,10 +286,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(
-                 *      org.extex.typesetter.type.node.ExpandedLeadersNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(org.extex.typesetter.type.node.ExpandedLeadersNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitExpandedLeaders(ExpandedLeadersNode node,
                         Object oOut) throws GeneralException {
 
@@ -313,10 +313,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(
-                 *      org.extex.typesetter.type.node.GlueNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitGlue(org.extex.typesetter.type.node.GlueNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitGlue(GlueNode node, Object oOut)
                         throws GeneralException {
 
@@ -335,8 +335,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.HorizontalListNode HorizontalListNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.HorizontalListNode
+                 * HorizontalListNode} has been encountered.
                  * 
                  * @param list the first parameter for the visitor is the node
                  *        visited
@@ -346,10 +346,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(
-                 *      org.extex.typesetter.type.node.HorizontalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(org.extex.typesetter.type.node.HorizontalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitHorizontalList(HorizontalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -365,8 +365,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when an
-                 * {@link org.extex.typesetter.type.node.InsertionNode InsertionNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.InsertionNode
+                 * InsertionNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -374,10 +374,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @return <code>null</code>
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(
-                 *      org.extex.typesetter.type.node.InsertionNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(org.extex.typesetter.type.node.InsertionNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitInsertion(InsertionNode node, Object oOut) {
 
                     return null;
@@ -396,10 +396,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(
-                 *      org.extex.typesetter.type.node.KernNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitKern(KernNode node, Object oOut)
                         throws GeneralException {
 
@@ -408,8 +408,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.LigatureNode LigatureNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.LigatureNode
+                 * LigatureNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -419,10 +419,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(
-                 *      org.extex.typesetter.type.node.LigatureNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitLigature(org.extex.typesetter.type.node.LigatureNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitLigature(LigatureNode node, Object oOut)
                         throws GeneralException {
 
@@ -441,10 +441,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @return <code>null</code>
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(
-                 *      org.extex.typesetter.type.node.MarkNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitMark(org.extex.typesetter.type.node.MarkNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitMark(MarkNode node, Object oOut) {
 
                     return null;
@@ -452,8 +452,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.PenaltyNode PenaltyNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.PenaltyNode
+                 * PenaltyNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -461,10 +461,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @return <code>null</code>
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(
-                 *      org.extex.typesetter.type.node.PenaltyNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(org.extex.typesetter.type.node.PenaltyNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitPenalty(PenaltyNode node, Object oOut) {
 
                     return null;
@@ -483,10 +483,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(
-                 *      org.extex.typesetter.type.node.RuleNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitRule(org.extex.typesetter.type.node.RuleNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitRule(RuleNode node, Object oOut)
                         throws GeneralException {
 
@@ -507,10 +507,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(
-                 *      org.extex.typesetter.type.node.SpaceNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitSpace(org.extex.typesetter.type.node.SpaceNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitSpace(SpaceNode node, Object oOut)
                         throws GeneralException {
 
@@ -520,8 +520,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.VerticalListNode
+                 * VerticalListNode} has been encountered.
                  * 
                  * @param list the first parameter for the visitor is the node
                  *        visited
@@ -531,10 +531,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(
-                 *      org.extex.typesetter.type.node.VerticalListNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(org.extex.typesetter.type.node.VerticalListNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVerticalList(VerticalListNode list,
                         Object oOut) throws GeneralException {
 
@@ -561,10 +561,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(
-                 *      org.extex.typesetter.type.node.VirtualCharNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitVirtualChar(VirtualCharNode node, Object oOut)
                         throws GeneralException {
 
@@ -574,8 +574,8 @@ public class MultiDumpDocumentWriter
 
                 /**
                  * This method is called when a
-                 * {@link org.extex.typesetter.type.node.WhatsItNode WhatsItNode}
-                 * has been encountered.
+                 * {@link org.extex.typesetter.type.node.WhatsItNode
+                 * WhatsItNode} has been encountered.
                  * 
                  * @param node the first parameter for the visitor is the node
                  *        visited
@@ -585,10 +585,10 @@ public class MultiDumpDocumentWriter
                  * 
                  * @throws GeneralException in case of an error
                  * 
-                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(
-                 *      org.extex.typesetter.type.node.WhatsItNode,
+                 * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
+                @Override
                 public Object visitWhatsIt(WhatsItNode node, Object oOut)
                         throws GeneralException {
 
@@ -661,6 +661,7 @@ public class MultiDumpDocumentWriter
     /**
      * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
     public void close() {
 
         // nothing to do
@@ -673,9 +674,9 @@ public class MultiDumpDocumentWriter
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
@@ -694,6 +695,7 @@ public class MultiDumpDocumentWriter
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
      */
+    @Override
     public String getExtension() {
 
         return extension;
@@ -704,9 +706,9 @@ public class MultiDumpDocumentWriter
      * 
      * @param writerFactory the output stream
      * 
-     * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
-     *      org.extex.backend.outputStream.OutputStreamFactory)
+     * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
+    @Override
     public void setOutputStreamFactory(OutputStreamFactory writerFactory) {
 
         outputStreamFactory = writerFactory;
@@ -720,9 +722,10 @@ public class MultiDumpDocumentWriter
      * @param name the name of the parameter
      * @param value the value of the parameter
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public void setParameter(String name, String value) {
 
         // not supported yet
@@ -741,20 +744,20 @@ public class MultiDumpDocumentWriter
      * 
      * @throws DocumentWriterException in case of an error
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws DocumentWriterException {
 
         if (page == null) {
             return 0;
         }
-        
+
         NodeList nodes = page.getNodes();
         out = outputStreamFactory.getOutputStream(null, null);
         try {
             if (tree) {
-                StringBuffer sb = new StringBuffer();
+                StringBuilder sb = new StringBuilder();
                 nodes.toString(sb, "\n", Integer.MAX_VALUE, Integer.MAX_VALUE);
                 out.write(sb.toString().getBytes());
                 out.write('\n');

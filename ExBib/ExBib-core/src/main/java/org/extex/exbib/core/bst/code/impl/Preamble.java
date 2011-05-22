@@ -19,8 +19,6 @@
 
 package org.extex.exbib.core.bst.code.impl;
 
-import java.util.Iterator;
-
 import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.token.impl.TString;
@@ -82,15 +80,13 @@ public class Preamble extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.AbstractCode#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 
         StringBuilder sb = new StringBuilder();
-        Iterator<ValueItem> iterator =
-                processor.getDB().getPreamble().iterator();
-
-        while (iterator.hasNext()) {
-            iterator.next().expand(sb, processor.getDB());
+        for (ValueItem item : processor.getDB().getPreamble()) {
+            item.expand(sb, processor.getDB());
         }
 
         processor.push(new TString(sb.toString(), locator));

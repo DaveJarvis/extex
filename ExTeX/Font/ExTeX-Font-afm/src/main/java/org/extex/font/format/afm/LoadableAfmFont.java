@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -137,11 +136,11 @@ public class LoadableAfmFont
     private UnicodeChar lastUsedUc = null;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(LoadableAfmFont.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(LoadableAfmFont.class);
 
     /**
      * The logger.
@@ -190,6 +189,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
@@ -213,6 +213,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BaseFont#getActualFontKey()
      */
+    @Override
     public FontKey getActualFontKey() {
 
         return actualFontKey;
@@ -223,6 +224,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getActualSize()
      */
+    @Override
     public FixedDimen getActualSize() {
 
         return actualFontKey.getDimen("size");
@@ -239,12 +241,12 @@ public class LoadableAfmFont
     }
 
     /**
-     * Returns the char metric for a Unicode char, or <code>null</code>, if
-     * not found.
+     * Returns the char metric for a Unicode char, or <code>null</code>, if not
+     * found.
      * 
      * @param uc the Unicode char.
-     * @return the char metric for a Unicode char, or <code>null</code>, if
-     *         not found.
+     * @return the char metric for a Unicode char, or <code>null</code>, if not
+     *         found.
      */
     private AfmCharMetric getCharMetric(UnicodeChar uc) {
 
@@ -287,6 +289,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getDepth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
@@ -301,6 +304,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getDesignSize()
      */
+    @Override
     public FixedDimen getDesignSize() {
 
         return fontKey.getDimen("size");
@@ -311,6 +315,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getEm()
      */
+    @Override
     public FixedDimen getEm() {
 
         return actualFontKey.getDimen("size");
@@ -346,6 +351,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getEx()
      */
+    @Override
     public FixedDimen getEx() {
 
         FixedDimen val = fontDimen.get("XHEIGHT");
@@ -361,6 +367,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getFontDimen(java.lang.String)
      */
+    @Override
     public FixedDimen getFontDimen(String name) {
 
         FixedDimen val = fontDimen.get(name);
@@ -375,6 +382,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BaseFont#getFontKey()
      */
+    @Override
     public FontKey getFontKey() {
 
         return fontKey;
@@ -385,6 +393,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getFontName()
      */
+    @Override
     public String getFontName() {
 
         return fontKey.getName();
@@ -395,6 +404,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getHeight(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
@@ -409,6 +419,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getItalicCorrection(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         // TODO mgn: getItalicCorrection unimplemented
@@ -421,6 +432,7 @@ public class LoadableAfmFont
      * @see org.extex.font.ExtexFont#getKerning(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         if (nokerning) {
@@ -447,6 +459,7 @@ public class LoadableAfmFont
      * @see org.extex.font.ExtexFont#getLigature(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
+    @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         if (noligature) {
@@ -482,6 +495,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#getName()
      */
+    @Override
     public String getName() {
 
         return actualFontKey.getName();
@@ -492,6 +506,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#getPfa()
      */
+    @Override
     public byte[] getPfa() {
 
         return pfadata;
@@ -502,6 +517,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#getPfb()
      */
+    @Override
     public byte[] getPfb() {
 
         if (pfbdata == null) {
@@ -509,8 +525,8 @@ public class LoadableAfmFont
             InputStream pfbin =
                     finder.findResource(actualFontKey.getName(), "pfb");
             if (pfbin == null) {
-                logger.severe(localizer.format("Afm.missingPfb", actualFontKey
-                    .getName()));
+                logger.severe(localizer.format("Afm.missingPfb",
+                    actualFontKey.getName()));
             } else {
                 try {
                     PfbParser pfbParser = new PfbParser(pfbin);
@@ -531,6 +547,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getScaleFactor()
      */
+    @Override
     public FixedCount getScaleFactor() {
 
         return Count.ONE;
@@ -541,6 +558,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getSpace()
      */
+    @Override
     public FixedGlue getSpace() {
 
         FixedDimen val = fontDimen.get("SPACE");
@@ -560,6 +578,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#getWidth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         AfmCharMetric cm = getCharMetric(uc);
@@ -574,6 +593,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#getXtf()
      */
+    @Override
     public byte[] getXtf() {
 
         return null;
@@ -595,6 +615,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.ExtexFont#hasGlyph(org.extex.core.UnicodeChar)
      */
+    @Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         return getCharMetric(uc) != null ? true : false;
@@ -615,6 +636,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#isType1()
      */
+    @Override
     public boolean isType1() {
 
         return true;
@@ -625,6 +647,7 @@ public class LoadableAfmFont
      * 
      * @see org.extex.font.BackendFont#isXtf()
      */
+    @Override
     public boolean isXtf() {
 
         return false;
@@ -636,6 +659,7 @@ public class LoadableAfmFont
      * @see org.extex.font.LoadableFont#loadFont(java.io.InputStream,
      *      org.extex.font.CoreFontFactory, org.extex.font.FontKey)
      */
+    @Override
     public void loadFont(InputStream in, CoreFontFactory factory, FontKey key)
             throws CorruptFontException {
 
@@ -690,13 +714,10 @@ public class LoadableAfmFont
 
         if (param != null) {
             Map<String, Integer> fd = param.getFontDimen();
-            Iterator<String> it = fd.keySet().iterator();
-            while (it.hasNext()) {
-                String key = it.next();
+            for (String key : fd.keySet()) {
                 Integer val = fd.get(key);
                 if (val != null) {
-                    int value = val.intValue();
-                    fontDimen.put(key, floatToDimen(value));
+                    fontDimen.put(key, floatToDimen(val.intValue()));
                 }
             }
         }
@@ -705,9 +726,9 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setResourceFinder(ResourceFinder finder) {
 
         this.finder = finder;
@@ -716,8 +737,7 @@ public class LoadableAfmFont
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFont#usedCharacter(
-     *      org.extex.font.BackendCharacter)
+     * @see org.extex.font.BackendFont#usedCharacter(org.extex.font.BackendCharacter)
      */
     public void usedCharacter(BackendCharacter bc) {
 
@@ -756,8 +776,8 @@ public class LoadableAfmFont
                 }
 
             } catch (IOException e) {
-                logger.severe(localizer.format("Afm.errorGlyphName", e
-                    .getLocalizedMessage()));
+                logger.severe(localizer.format("Afm.errorGlyphName",
+                    e.getLocalizedMessage()));
             }
         }
     }

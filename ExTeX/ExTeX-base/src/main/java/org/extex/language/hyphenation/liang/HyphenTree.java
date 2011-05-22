@@ -30,44 +30,43 @@ import org.extex.language.hyphenation.exception.DuplicateHyphenationException;
 
 /**
  * <h2>Data Structures for Liang's Algorithm</h2>
- *
+ * 
  * <p>
- *  The basic data structure to store hyphenation patterns is a tree with
- *  arbitrary branching factor. The path from the root to a node determines the
- *  word under which a hyphenation code is stored.
+ * The basic data structure to store hyphenation patterns is a tree with
+ * arbitrary branching factor. The path from the root to a node determines the
+ * word under which a hyphenation code is stored.
  * </p>
  * <p>
- *  The hyphenation code is a vector of characters. They are used as a means to
- *  store short numbers.
+ * The hyphenation code is a vector of characters. They are used as a means to
+ * store short numbers.
  * </p>
  * <p>
- *  The code stored in a node of the hyphen tree represents the superposition of
- *  all codes having an initial sequence in common with the current sequence.
- *  Thus the superposition has to be stores when a new pattern is added. At
- *  run time it is only necessary to retrieve a single code sequence for each
- *  position of the word.
+ * The code stored in a node of the hyphen tree represents the superposition of
+ * all codes having an initial sequence in common with the current sequence.
+ * Thus the superposition has to be stores when a new pattern is added. At run
+ * time it is only necessary to retrieve a single code sequence for each
+ * position of the word.
  * </p>
- *
+ * 
  * TODO gene: missing JavaDoc (incomplete).
- *
- * The value <code>null</code> as character is interpreted as the left
- * or right word boundary.
- *
+ * 
+ * The value <code>null</code> as character is interpreted as the left or right
+ * word boundary.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4757 $
  */
-class HyphenTree implements Serializable {
+class HyphenTree implements Iterable<HyphenTree>, Serializable {
 
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
-     * Superimpose two hyphenation code arrays.
-     * The target array is modified. It is considered from a starting position
-     * onwards. The target array has to be long enough such that the source
-     * array fits into it entirely.
+     * Superimpose two hyphenation code arrays. The target array is modified. It
+     * is considered from a starting position onwards. The target array has to
+     * be long enough such that the source array fits into it entirely.
      * <p>
      * At any position considered the maximum value of target and source is
      * stored in the target. The comparison of the array is performed at the
@@ -78,13 +77,12 @@ class HyphenTree implements Serializable {
      * <p>
      * If source is <code>null</code> then nothing is done.
      * </p>
-     *
+     * 
      * @param code the target array to modify
      * @param start the start index in code
      * @param source the reference array to read from
      */
-    public static void superimpose(char[] code, int start,
-            char[] source) {
+    public static void superimpose(char[] code, int start, char[] source) {
 
         if (source != null) {
             int j = start;
@@ -99,8 +97,8 @@ class HyphenTree implements Serializable {
     }
 
     /**
-     * The field <tt>hc</tt> contains the hyphenation code for the position
-     * left of the character represented by this instance.
+     * The field <tt>hc</tt> contains the hyphenation code for the position left
+     * of the character represented by this instance.
      */
     private char[] hc;
 
@@ -111,7 +109,7 @@ class HyphenTree implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param hc the hyphenation code to start with
      */
     public HyphenTree(char[] hc) {
@@ -121,7 +119,7 @@ class HyphenTree implements Serializable {
 
     /**
      * This method dumps a hyphenation tree to a logger.
-     *
+     * 
      * @param logger the target logger
      * @param prefix the initial string prepended before any line of output
      */
@@ -131,14 +129,14 @@ class HyphenTree implements Serializable {
     }
 
     /**
-     * Traverse the tree and return the appropriate hyphenation code vector.
-     * If none is found then <code>null</code> is returned.
-     * The hyphenation code vector returned is the longest vector stored for
-     * any sequence of characters starting with the given word.
-     *
+     * Traverse the tree and return the appropriate hyphenation code vector. If
+     * none is found then <code>null</code> is returned. The hyphenation code
+     * vector returned is the longest vector stored for any sequence of
+     * characters starting with the given word.
+     * 
      * @param chars the array of characters to analyze
      * @param start the start index in chars to begin with
-     *
+     * 
      * @return the hyphenation code found or <code>null</code>
      */
     public char[] get(UnicodeChar[] chars, int start) {
@@ -166,7 +164,7 @@ class HyphenTree implements Serializable {
 
     /**
      * Getter for hyphenation code.
-     *
+     * 
      * @return the hyphenation code
      */
     public char[] getHyphenationCode() {
@@ -176,9 +174,9 @@ class HyphenTree implements Serializable {
 
     /**
      * Getter for the next tree.
-     *
+     * 
      * @param uc the Unicode character to get the tree for
-     *
+     * 
      * @return the next tree
      */
     public HyphenTree getNext(UnicodeChar uc) {
@@ -189,19 +187,19 @@ class HyphenTree implements Serializable {
     }
 
     /**
-     * Create a new branch in the HyphenTree for a given character.
-     * The hyphenation code is stored if the branch is new. If the branch exists
+     * Create a new branch in the HyphenTree for a given character. The
+     * hyphenation code is stored if the branch is new. If the branch exists
      * already then the hyphenation code is stored in the branch after it has
      * been checked for an existing value. An existing value leads to an
      * exception.
-     *
+     * 
      * @param uc the Unicode character to insert
      * @param hyph the hyphenation code to insert
-     *
+     * 
      * @return the next branch associated with the character
-     *
-     * @throws DuplicateHyphenationException in case that the hyphen code
-     *  is already set
+     * 
+     * @throws DuplicateHyphenationException in case that the hyphen code is
+     *         already set
      */
     public HyphenTree insert(UnicodeChar uc, char[] hyph)
             throws DuplicateHyphenationException {
@@ -221,9 +219,10 @@ class HyphenTree implements Serializable {
 
     /**
      * Getter for the iterator for the children.
-     *
+     * 
      * @return the iterator for the children
      */
+    @Override
     public Iterator<HyphenTree> iterator() {
 
         return nextTree.values().iterator();
@@ -231,7 +230,7 @@ class HyphenTree implements Serializable {
 
     /**
      * Setter for hyphenation code.
-     *
+     * 
      * @param code the hyphenation code to set
      */
     public void setCode(char[] code) {
@@ -241,11 +240,11 @@ class HyphenTree implements Serializable {
 
     /**
      * Setter for the hyphenation code with duplicate check.
-     *
+     * 
      * @param code the hyphenation code to set
-     *
-     * @throws DuplicateHyphenationException in case that the hyphen code
-     *  is already set
+     * 
+     * @throws DuplicateHyphenationException in case that the hyphen code is
+     *         already set
      */
     public void setHyphenationCode(char[] code)
             throws DuplicateHyphenationException {
@@ -261,7 +260,7 @@ class HyphenTree implements Serializable {
     /**
      * Superimpose a hyphenation code vector onto the current node and all
      * descendants.
-     *
+     * 
      * @param code the hyphenation code vector to superimpose
      */
     public void superimposeAll(char[] code) {
@@ -269,9 +268,7 @@ class HyphenTree implements Serializable {
         if (nextTree == null) {
             return;
         }
-        Iterator<HyphenTree> iterator = nextTree.values().iterator();
-        while (iterator.hasNext()) {
-            HyphenTree t = iterator.next();
+        for (HyphenTree t : nextTree.values()) {
             if (t.hc != null) {
                 superimpose(t.hc, 0, code);
             }
@@ -285,27 +282,24 @@ class HyphenTree implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb, "");
         return sb.toString();
     }
 
     /**
-     * Create a printable representation of the tree in a StringBuffer.
-     *
+     * Create a printable representation of the tree in a StringBuilder.
+     * 
      * @param sb the target string buffer
      * @param prefix the prefix for each line
      */
-    protected void toString(StringBuffer sb, String prefix) {
+    protected void toString(StringBuilder sb, String prefix) {
 
         if (nextTree == null) {
             return;
         }
         String p = prefix + "  ";
-        Iterator<UnicodeChar> iter = nextTree.keySet().iterator();
-
-        while (iter.hasNext()) {
-            UnicodeChar key = iter.next();
+        for (UnicodeChar key : nextTree.keySet()) {
             HyphenTree t = nextTree.get(key);
             sb.append(prefix);
             sb.append("'");

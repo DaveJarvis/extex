@@ -261,7 +261,7 @@ public class Count extends CountConstant {
      * 
      * @return the printable representation
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      * @see org.extex.core.count.CountConstant#toString()
      */
     @Override
@@ -279,10 +279,10 @@ public class Count extends CountConstant {
      * @param sb the target string buffer
      * 
      * @see #toString()
-     * @see org.extex.core.count.CountConstant#toString(java.lang.StringBuffer)
+     * @see org.extex.core.count.CountConstant#toString(StringBuilder)
      */
     @Override
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         sb.append(value);
     }

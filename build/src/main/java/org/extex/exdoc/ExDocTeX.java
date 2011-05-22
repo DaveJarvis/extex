@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -409,7 +409,7 @@ public class ExDocTeX extends ExDocXml {
      * @param from the string to be replaced
      * @param to the new string to be inserted
      */
-    private void replace(StringBuffer content, String from, String to) {
+    private void replace(StringBuilder content, String from, String to) {
 
         int length = from.length();
 
@@ -426,7 +426,7 @@ public class ExDocTeX extends ExDocXml {
      * @param content the content to transform
      * @param name the name of the resource currently processed
      */
-    private void replaceEntities(StringBuffer content, Key name) {
+    private void replaceEntities(StringBuilder content, Key name) {
 
         int j;
         for (int i = content.indexOf("&"); i >= 0; i = content.indexOf("&", j)) {
@@ -459,7 +459,7 @@ public class ExDocTeX extends ExDocXml {
      * 
      * @param content the content to transform
      */
-    private void replaceTodo(StringBuffer content) {
+    private void replaceTodo(StringBuilder content) {
 
         for (int i = content.indexOf("TODO "); i >= 0; i =
                 content.indexOf("TODO ", i + 5)) {
@@ -513,10 +513,10 @@ public class ExDocTeX extends ExDocXml {
      * @throws IOException in case of an I/O error
      * 
      * @see org.extex.exdoc.ExDocXml#shipout(org.extex.exdoc.util.Key,
-     *      java.lang.StringBuffer)
+     *      java.lang.StringBuilder)
      */
     @Override
-    protected void shipout(Key key, StringBuffer content) throws IOException {
+    protected void shipout(Key key, StringBuilder content) throws IOException {
 
         File file = new File(getOutput(), key + ".tex");
         FileOutputStream out = new FileOutputStream(file);

@@ -44,6 +44,15 @@ import org.extex.typesetter.type.NodeList;
 public interface ListMaker {
 
     /**
+     * Add a glue node to the list.
+     * 
+     * @param g the glue to add
+     * 
+     * @throws TypesetterException in case of an error
+     */
+    void add(FixedGlue g) throws TypesetterException;
+
+    /**
      * Add an arbitrary node to the internal list of nodes gathered so far. The
      * node should not be one of the special nodes treated by methods of their
      * own.
@@ -68,15 +77,6 @@ public interface ListMaker {
     void addAndAdjust(NodeList list, TypesetterOptions options)
             throws TypesetterException,
                 ConfigurationException;
-
-    /**
-     * Add a glue node to the list.
-     * 
-     * @param g the glue to add
-     * 
-     * @throws TypesetterException in case of an error
-     */
-    void add(FixedGlue g) throws TypesetterException;
 
     /**
      * Add a space node to the list.
@@ -217,6 +217,6 @@ public interface ListMaker {
      * @param depth the depth of the list display
      * @param breadth the breadth of the list display
      */
-    void showlist(StringBuffer sb, long depth, long breadth);
+    void showlist(StringBuilder sb, long depth, long breadth);
 
 }

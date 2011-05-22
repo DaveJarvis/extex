@@ -39,14 +39,14 @@ import org.extex.util.xml.XMLWriterConvertible;
  * tables (FeatureList) that enumerate all the features in a font. Features in a
  * particular FeatureList are not limited to any single script. A FeatureList
  * contains the entire list of either the GSUB or GPOS features that are used to
- * render the glyphs in all the scripts in the font. <br/> The FeatureList table
- * enumerates features in an array of records (FeatureRecord) and specifies the
- * total number of features (FeatureCount). Every feature must have a
- * FeatureRecord, which consists of a FeatureTag that identifies the feature and
- * an offset to a Feature table (described next). The FeatureRecord array is
- * arranged alphabetically by FeatureTag names. <br/> Note: The values stored in
- * the FeatureIndex array of a LangSys table are used to locate records in the
- * FeatureRecord array of a FeatureList table.
+ * render the glyphs in all the scripts in the font. <br/>
+ * The FeatureList table enumerates features in an array of records
+ * (FeatureRecord) and specifies the total number of features (FeatureCount).
+ * Every feature must have a FeatureRecord, which consists of a FeatureTag that
+ * identifies the feature and an offset to a Feature table (described next). The
+ * FeatureRecord array is arranged alphabetically by FeatureTag names. <br/>
+ * Note: The values stored in the FeatureIndex array of a LangSys table are used
+ * to locate records in the FeatureRecord array of a FeatureList table.
  * </p>
  * <p>
  * FeatureList table
@@ -252,10 +252,9 @@ public class XtfFeatureList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer();
-            buf.append("Feature\n");
-            buf.append("   featureparams  : ").append(featureParams).append(
-                '\n');
+            StringBuilder buf = new StringBuilder("Feature\n");
+            buf.append("   featureparams  : ").append(featureParams)
+                .append('\n');
             buf.append("   lookupcount    : ").append(lookupCount).append('\n');
             return buf.toString();
         }
@@ -265,6 +264,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("feature");
@@ -280,8 +280,8 @@ public class XtfFeatureList implements XMLWriterConvertible {
                 XtfLookupList lookuplist = gsub.getLookupList();
                 if (lookuplist != null) {
                     XtfLookup lookup = lookuplist.getLookup(lli);
-                    writer.writeAttribute("lookuptype", lookup
-                        .getTypeAsString());
+                    writer.writeAttribute("lookuptype",
+                        lookup.getTypeAsString());
                 }
                 writer.writeEndElement();
             }
@@ -371,8 +371,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
         @Override
         public String toString() {
 
-            StringBuffer buf = new StringBuffer();
-            buf.append("FeatureRecord\n");
+            StringBuilder buf = new StringBuilder("FeatureRecord\n");
             buf.append("   tag    : ").append(tag).append('\n');
             buf.append("   offset : ").append(offset).append('\n');
             return buf.toString();
@@ -383,6 +382,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
          * 
          * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
          */
+        @Override
         public void writeXML(XMLStreamWriter writer) throws IOException {
 
             writer.writeStartElement("record");
@@ -511,8 +511,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("FeatureList\n");
+        StringBuilder buf = new StringBuilder("FeatureList\n");
         buf.append("   feature count : " + String.valueOf(featureCount) + '\n');
         return buf.toString();
     }
@@ -522,6 +521,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("featurelist");

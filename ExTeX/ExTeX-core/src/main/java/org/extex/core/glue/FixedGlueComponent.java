@@ -19,12 +19,11 @@
 
 package org.extex.core.glue;
 
-
 /**
  * This interface describes the features of a
- * {@link org.extex.core.glue.GlueComponent GlueComponent}
- * which do not modify the value.
- *
+ * {@link org.extex.core.glue.GlueComponent GlueComponent} which do not modify
+ * the value.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4726 $
  */
@@ -32,101 +31,103 @@ public interface FixedGlueComponent {
 
     /**
      * Create a copy of this instance with the same order and value.
-     *
+     * 
      * @return a new copy of this instance
      */
     FixedGlueComponent copy();
 
     /**
      * Compares the current instance with another GlueComponent for equality.
-     *
+     * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     * <code>null</code> then the comparison fails.
-     *
-     * @return <code>true</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
+     *        <code>null</code> then the comparison fails.
+     * 
+     * @return <code>true</code> iff <i>|this| == |d| and ord(this) ==
+     *         ord(d)</i>
      */
     boolean eq(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
-     *
+     * 
      * @param d the other GlueComponent to compare to
-     *
+     * 
      * @return <code>true</code> iff this is greater or equal to d
      */
     boolean ge(FixedGlueComponent d);
 
     /**
      * Getter for order.
-     *
+     * 
      * @return the order.
      */
     byte getOrder();
 
     /**
      * Getter for the value in scaled points (sp).
-     *
+     * 
      * @return the value in internal units of scaled points (sp)
      */
     long getValue();
 
     /**
      * Compares the current instance with another GlueComponent.
-     *
+     * 
      * @param d the other GlueComponent to compare to
-     *
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt; |d|</i>
-     * or <i>ord(this) &gt; ord(d)</i>
+     * 
+     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &gt;
+     *         |d|</i> or <i>ord(this) &gt; ord(d)</i>
      */
     boolean gt(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
-     *
+     * 
      * @param d the other GlueComponent to compare to
-     *
+     * 
      * @return <code>true</code> iff this is less or equal to d
      */
     boolean le(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent.
-     *
+     * 
      * @param d the other GlueComponent to compare to
-     *
-     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt; |d|</i>
-     * or <i>ord(this) &lt; ord(d)</i>
+     * 
+     * @return <code>true</code> iff <i>ord(this) == ord(d) && |this| &lt;
+     *         |d|</i> or <i>ord(this) &lt; ord(d)</i>
      */
     boolean lt(FixedGlueComponent d);
 
     /**
      * Compares the current instance with another GlueComponent for equality.
-     *
+     * 
      * @param d the other GlueComponent to compare to. If this parameter is
-     * <code>null</code> then the comparison fails.
-     *
-     * @return <code>false</code> iff <i>|this| == |d| and ord(this) == ord(d)</i>
+     *        <code>null</code> then the comparison fails.
+     * 
+     * @return <code>false</code> iff <i>|this| == |d| and ord(this) ==
+     *         ord(d)</i>
      */
     boolean ne(FixedGlueComponent d);
 
     /**
      * Determine the printable representation of the object.
-     *
+     * 
      * @return the printable representation
-     *
-     * @see #toString(StringBuffer)
+     * 
+     * @see #toString(StringBuilder)
      */
+    @Override
     String toString();
 
     /**
-     * Determine the printable representation of the object and append it to
-     * the given StringBuffer.
-     *
+     * Determine the printable representation of the object and append it to the
+     * given StringBuilder.
+     * 
      * @param sb the output string buffer
-     *
+     * 
      * @see #toString()
      */
-    void toString(StringBuffer sb);
-
+    void toString(StringBuilder sb);
 
 }

@@ -119,7 +119,7 @@ public abstract class Tag {
      */
     protected Tag(RandomAccessR rar) throws IOException {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < 4; i++) {
             buf.append((char) rar.readUnsignedByte());
         }

@@ -91,6 +91,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * 
      * @return the horizontal
      */
+    @Override
     public boolean isHorizontal() {
 
         return this.horizontal;
@@ -109,11 +110,11 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * @see "<logo>T<span style=
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      *      >e</span>X</logo> &ndash; The Program [187]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         FixedDimen x = getHeight();
         String h = (x == null ? "*" : x.toString());
@@ -132,11 +133,11 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * 
-     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(StringBuilder sb, String prefix) {
 
         FixedDimen x = getHeight();
         String h = (x == null ? "*" : x.toString());
@@ -160,6 +161,7 @@ public class RuleNode extends AbstractNode implements OrientedNode {
      * @see org.extex.typesetter.type.Node#visit(org.extex.typesetter.type.NodeVisitor,
      *      java.lang.Object)
      */
+    @Override
     @SuppressWarnings({"unchecked", "rawtypes"})
     public Object visit(NodeVisitor visitor, Object value)
             throws GeneralException {

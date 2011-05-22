@@ -76,11 +76,11 @@ public class MiddleNoad extends LeftNoad {
      * @param depth the recursion depth
      *
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
-     *      java.lang.StringBuffer,
+     *      StringBuilder,
      *      int)
      */
     @Override
-    public void toStringAdd(StringBuffer sb, int depth) {
+    public void toStringAdd(StringBuilder sb, int depth) {
 
         sb.append("middle");
         delimiter.toString(sb);

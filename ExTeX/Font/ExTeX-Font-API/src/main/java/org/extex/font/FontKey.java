@@ -38,8 +38,7 @@ import org.extex.core.glue.Glue;
  * 
  * <p>
  * Font key is a collection several attributes. The central attribute is the
- * name. If the name is <code>null</code>, then the special null font is
- * meant.
+ * name. If the name is <code>null</code>, then the special null font is meant.
  * </p>
  * 
  * <p>
@@ -48,7 +47,7 @@ import org.extex.core.glue.Glue;
  * <ul>
  * <li>size: The size of the font</li>
  * <li>scale: The scaling factor of the font. If the scale factor is set, then
- * the size-parameter is ignored! </li>
+ * the size-parameter is ignored!</li>
  * <li>letterspaced: ...</li>
  * <li>language: The language for the font (e.g. for OpenType)</li>
  * <li>ligatures: If <code>true</code>, the ligature information are used.</li>
@@ -200,41 +199,31 @@ public class FontKey implements Serializable {
             return false;
         }
 
-        Iterator<String> it = dimenMap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : dimenMap.keySet()) {
             if (!getDimen(key).eq(k.getDimen(key))) {
                 return false;
             }
         }
 
-        it = countMap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : countMap.keySet()) {
             if (!getCount(key).eq(k.getCount(key))) {
                 return false;
             }
         }
 
-        it = booleanMap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : booleanMap.keySet()) {
             if (getBoolean(key) != k.getBoolean(key)) {
                 return false;
             }
         }
 
-        it = glueMap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : glueMap.keySet()) {
             if (!getGlue(key).eq(k.getGlue(key))) {
                 return false;
             }
         }
 
-        it = stringMap.keySet().iterator();
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : stringMap.keySet()) {
             if (!getString(key).equals(k.getString(key))) {
                 return false;
             }
@@ -244,21 +233,18 @@ public class FontKey implements Serializable {
         if (k.getTags().size() != tags.size()) {
             return false;
         }
-        it = tags.iterator();
-        while (it.hasNext()) {
-            String feat = it.next();
+        for (String feat : tags) {
             if (!k.getTags().contains(feat)) {
                 return false;
             }
         }
 
         return true;
-
     }
 
     /**
-     * Returns the value for the key or <code>false</code>, if no key exists
-     * in the map.
+     * Returns the value for the key or <code>false</code>, if no key exists in
+     * the map.
      * 
      * @param key The key.
      * @return Returns the value for the key.
@@ -283,8 +269,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists
-     * in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists in
+     * the map.
      * 
      * @param key The key.
      * @return Returns the value for the key.
@@ -305,8 +291,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists
-     * in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists in
+     * the map.
      * 
      * @param key The key.
      * @return Returns the value for the key.
@@ -327,8 +313,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists
-     * in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists in
+     * the map.
      * 
      * @param key The key.
      * @return Returns the value for the key.
@@ -359,8 +345,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value for the key or <code>null</code>, if no key exists
-     * in the map.
+     * Returns the value for the key or <code>null</code>, if no key exists in
+     * the map.
      * 
      * @param key The key.
      * @return Returns the value for the key.
@@ -558,8 +544,8 @@ public class FontKey implements Serializable {
     }
 
     /**
-     * Returns the value of the <code>FontKey</code> as <code>String</code>.
-     * If a value is <code>null</code>, then the text 'null' is returned.
+     * Returns the value of the <code>FontKey</code> as <code>String</code>. If
+     * a value is <code>null</code>, then the text 'null' is returned.
      * 
      * @return the printable representation for this instance
      * 
@@ -568,7 +554,7 @@ public class FontKey implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer(getName());
+        StringBuilder buf = new StringBuilder(getName());
 
         Iterator<String> it = dimenMap.keySet().iterator();
         while (it.hasNext()) {

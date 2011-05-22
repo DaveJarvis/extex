@@ -28,9 +28,9 @@ import org.extex.typesetter.type.noad.util.MathContext;
 
 /**
  * This class provides a container for Noads and Nodes.
- *
+ * 
  * @see "TTP [???]"
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
@@ -51,7 +51,7 @@ public class MathList extends AbstractNoad {
 
     /**
      * Add an arbitrary knot to the list.
-     *
+     * 
      * @param noad the noad to add
      */
     public void add(Noad noad) {
@@ -61,9 +61,9 @@ public class MathList extends AbstractNoad {
 
     /**
      * Test whether the node list is empty.
-     *
-     * @return <code>true</code>, if the list is empty,
-     *  otherwise <code>false</code>.
+     * 
+     * @return <code>true</code>, if the list is empty, otherwise
+     *         <code>false</code>.
      */
     public boolean empty() {
 
@@ -72,11 +72,11 @@ public class MathList extends AbstractNoad {
 
     /**
      * Getter for a node at a given position.
-     *
+     * 
      * @param index the position
-     *
+     * 
      * @return the node at position <i>index</i> of <code>null</code> if index
-     *  is out of bounds
+     *         is out of bounds
      */
     public Noad get(int index) {
 
@@ -85,7 +85,7 @@ public class MathList extends AbstractNoad {
 
     /**
      * Getter for the last noad previously stored.
-     *
+     * 
      * @return the last noad or <code>null</code> if none is available
      */
     public Noad getLastNoad() {
@@ -95,9 +95,9 @@ public class MathList extends AbstractNoad {
 
     /**
      * Remove an element at a given position.
-     *
+     * 
      * @param index the position
-     *
+     * 
      * @return the element previously located at position <i>index</i>
      */
     public Noad remove(int index) {
@@ -107,7 +107,7 @@ public class MathList extends AbstractNoad {
 
     /**
      * Return the size of the <code>MathList</code>.
-     *
+     * 
      * @return the size of the <code>MathList</code>
      */
     public int size() {
@@ -117,29 +117,28 @@ public class MathList extends AbstractNoad {
 
     /**
      * Get the string representation of this object for debugging purposes.
-     *
+     * 
      * @return the string representation
-     *
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
 
     /**
-     * Produce a printable representation of the noad in a StringBuffer.
-     *
+     * Produce a printable representation of the noad in a StringBuilder.
+     * 
      * @param sb the string buffer
-     *
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer)
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
     @Override
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         for (int i = 0; i < nucleus.size(); i++) {
             nucleus.get(i).toString(sb);
@@ -148,15 +147,14 @@ public class MathList extends AbstractNoad {
 
     /**
      * Produce a printable representation to a certain depth of the noad.
-     *
+     * 
      * @param sb the string buffer
      * @param depth the depth to which the full information should be given
-     *
-     * @see org.extex.typesetter.type.noad.Noad#toString(
-     *      java.lang.StringBuffer, int)
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
      */
     @Override
-    public void toString(StringBuffer sb, int depth) {
+    public void toString(StringBuilder sb, int depth) {
 
         if (depth < 0) {
             sb.append("{}");
@@ -169,29 +167,27 @@ public class MathList extends AbstractNoad {
 
     /**
      * Translate a Noad into a NodeList.
-     *
+     * 
      * @param previousNoad the previous noad
      * @param noads the list of noads currently processed
      * @param index the index of the current node in the list
      * @param list the list to add the nodes to. This list contains the Nodes
-     *  previously typeset. Thus it can be used to look back
+     *        previously typeset. Thus it can be used to look back
      * @param mathContext the context to consider
      * @param logger the logger for debugging and tracing information
-     *
+     * 
      * @throws TypesetterException in case of a problem
      * @throws ConfigurationException in case of a configuration problem
-     *
-     * @see org.extex.typesetter.type.noad.Noad#typeset(
-     *      org.extex.typesetter.type.noad.Noad,
-     *      org.extex.typesetter.type.noad.NoadList,
-     *      int,
+     * 
+     * @see org.extex.typesetter.type.noad.Noad#typeset(org.extex.typesetter.type.noad.Noad,
+     *      org.extex.typesetter.type.noad.NoadList, int,
      *      org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.type.noad.util.MathContext,
      *      java.util.logging.Logger)
      */
-    public void typeset(Noad previousNoad, NoadList noads,
-            int index, NodeList list,
-            MathContext mathContext, Logger logger)
+    @Override
+    public void typeset(Noad previousNoad, NoadList noads, int index,
+            NodeList list, MathContext mathContext, Logger logger)
             throws TypesetterException,
                 ConfigurationException {
 

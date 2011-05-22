@@ -29,7 +29,7 @@ import org.extex.typesetter.type.noad.MathGlyph;
 /**
  * This class represents a mathematical character. It consists of a class, a
  * family and a character code.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -70,7 +70,32 @@ public class MathCode implements Serializable {
 
     /**
      * Creates a new object.
-     *
+     * 
+     * @param code the integer to analyze for the desired field values
+     * 
+     * @throws HelpingException in case of an error
+     */
+    public MathCode(long code) throws HelpingException {
+
+        if (code < 0 || code > 0x8000) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(MathCode.class),
+                "TTP.InvalidCode", //
+                Long.toString(code));
+        } else if (code == 0x8000) {
+            mathClass = null;
+            mathGlyph = null;
+        } else {
+            mathClass = MathClass.getMathClass((int) (code >> CLASS_SHIFT));
+            mathGlyph =
+                    new MathGlyph((int) (code >> 8) & FAMILY_MASK,
+                        UnicodeChar.get((int) (code & CHAR_MASK)));
+        }
+    }
+
+    /**
+     * Creates a new object.
+     * 
      * @param mathClass the class
      * @param mathGlyph the glyph
      */
@@ -81,47 +106,23 @@ public class MathCode implements Serializable {
     }
 
     /**
-     * Creates a new object.
-     *
-     * @param code the integer to analyze for the desired field values
-     *
-     * @throws HelpingException in case of an error
-     */
-    public MathCode(long code) throws HelpingException {
-
-        if (code < 0 || code > 0x8000) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(MathCode.class), "TTP.InvalidCode", //
-                Long.toString(code));
-        } else if (code == 0x8000) {
-            mathClass = null;
-            mathGlyph = null;
-        } else {
-            mathClass = MathClass.getMathClass((int) (code >> CLASS_SHIFT));
-            mathGlyph =
-                    new MathGlyph((int) (code >> 8) & FAMILY_MASK, UnicodeChar
-                        .get((int) (code & CHAR_MASK)));
-        }
-    }
-
-    /**
-     * Getter for mathGlyph.
-     *
-     * @return the mathGlyph
-     */
-    public MathGlyph getMathGlyph() {
-
-        return this.mathGlyph;
-    }
-
-    /**
      * Getter for mathClass.
-     *
+     * 
      * @return the mathClass.
      */
     public MathClass getMathClass() {
 
         return mathClass;
+    }
+
+    /**
+     * Getter for mathGlyph.
+     * 
+     * @return the mathGlyph
+     */
+    public MathGlyph getMathGlyph() {
+
+        return this.mathGlyph;
     }
 
     /**
@@ -134,11 +135,11 @@ public class MathCode implements Serializable {
     }
 
     /**
-     * Print the instance to a StringBuffer.
-     *
+     * Print the instance to a StringBuilder.
+     * 
      * @param sb the target string buffer
      */
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         mathClass.toString(sb);
         sb.append(' ');

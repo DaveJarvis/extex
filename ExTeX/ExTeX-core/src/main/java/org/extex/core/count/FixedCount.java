@@ -102,7 +102,7 @@ public interface FixedCount {
      * 
      * @return the printable representation
      * 
-     * @see #toString(StringBuffer)
+     * @see #toString(StringBuilder)
      */
     String toString();
 
@@ -116,6 +116,6 @@ public interface FixedCount {
      * 
      * @see #toString()
      */
-    void toString(StringBuffer sb);
+    void toString(StringBuilder sb);
 
 }

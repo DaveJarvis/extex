@@ -85,17 +85,6 @@ public class Muskip extends Mudimen implements Serializable {
     }
 
     /**
-     * Creates a new object. Strechablity and shrinkability are 0.
-     * 
-     * @param theLength the natural length
-     */
-    public Muskip(long theLength) {
-
-        super(theLength);
-        this.kill = false;
-    }
-
-    /**
      * Creates a new object.
      * 
      * @param theLength the natural length
@@ -130,6 +119,17 @@ public class Muskip extends Mudimen implements Serializable {
         this.stretch = new GlueComponent(theStretch);
         this.shrink = new GlueComponent(theShrink);
         this.kill = kill;
+    }
+
+    /**
+     * Creates a new object. Strechablity and shrinkability are 0.
+     * 
+     * @param theLength the natural length
+     */
+    public Muskip(long theLength) {
+
+        super(theLength);
+        this.kill = false;
     }
 
     /**
@@ -236,7 +236,7 @@ public class Muskip extends Mudimen implements Serializable {
     @Override
     public String toString() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         toString(sb);
         return sb.toString();
     }
@@ -247,7 +247,7 @@ public class Muskip extends Mudimen implements Serializable {
      * @param sb the target string buffer
      */
     @Override
-    public void toString(StringBuffer sb) {
+    public void toString(StringBuilder sb) {
 
         super.toString(sb);
         if (stretch.ne(GlueComponent.ZERO)) {

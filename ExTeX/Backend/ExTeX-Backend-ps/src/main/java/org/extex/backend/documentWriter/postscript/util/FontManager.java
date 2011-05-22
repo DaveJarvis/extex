@@ -158,11 +158,11 @@ public class FontManager implements Iterable<ManagerInfo> {
      * @return the iterator for all recognized back-end font as
      *         {@link ManagerInfo}.
      * 
-     * @see org.extex.font.BackendFontManager#iterate()
+     * @see org.extex.font.BackendFontManager#iterator()
      */
     public Iterator<ManagerInfo> iterator() {
 
-        return manager.iterate();
+        return manager.iterator();
     }
 
     /**

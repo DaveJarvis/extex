@@ -70,11 +70,11 @@ public class RightNoad extends AbstractNoad {
      *
      * @see "TTP [696]"
      * @see org.extex.typesetter.type.noad.AbstractNoad#toStringAdd(
-     *      java.lang.StringBuffer,
+     *      StringBuilder,
      *      int)
      */
     @Override
-    public void toStringAdd(StringBuffer sb, int depth) {
+    public void toStringAdd(StringBuilder sb, int depth) {
 
         sb.append("right");
         delimiter.toString(sb);

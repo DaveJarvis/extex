@@ -45,161 +45,6 @@ public class FontInst02Test extends ExTeXLauncher {
     private static final String SEP = System.getProperty("path.separator", ":");
 
     /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(FontInst02Test.class);
-    }
-
-    /**
-     * Creates a new object.
-     */
-    public FontInst02Test() {
-
-        setConfig("fontinst-test.xml");
-
-        // delete temp files after the test
-        new File("texput.log").deleteOnExit();
-        new File("fxlr.mtx").deleteOnExit();
-        new File("fxlr.pl").deleteOnExit();
-        new File("fxlr8r.mtx").deleteOnExit();
-        new File("fxlr8r.pl").deleteOnExit();
-    }
-
-    /**
-     * Returns the properties for the test case.
-     * 
-     * @return Returns the properties for the test case.
-     */
-    private Properties getMyProps() {
-
-        Properties props = getProps();
-        props.setProperty("extex.texinputs", //
-            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
-                    "../texmf/src/texmf/fonts/afm/" + SEP + //
-                    "../texmf/src/texmf/fonts/enc/" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/misc" //
-        );
-        // props.setProperty("extex.launcher.trace", "true");
-        // props.setProperty("extex.launcher.time", "true");
-        return props;
-    }
-
-    /**
-     * Test from fontinst.
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    @Ignore
-    public void test1() throws Exception {
-
-        setConfig("tex");
-        assertOutput(getMyProps(), // --- input code ---
-            DEFINE_CATCODES //
-                    // + "\\tracingmacros=1 " //
-                    + "\\def\\m#1#2#3\\fi#4{\n" + "   \\fi\n"
-                    + "   #4\n"
-                    + "   \\ifnum 1#3<1000\n" + "      .\n" //
-                    + "   \\else\n" //
-                    + "      \\m#2#3\n" //
-                    + "   \\fi\n" //
-                    + "}\n" //
-                    + "\\edef\\a{\\iftrue \\m 1000\\fi\n 1000 }\n" //
-                    + "\\a\n" //
-                    + "\\end\n",
-            // --- log channel ---
-            "",
-            // --- output channel ---
-            "1 . 000" + TERM);
-    }
-
-    /**
-     * Test for fontinst misc.
-     * 
-     * <pre>
-     * \input fontinst.sty
-     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
-     * \bye
-     * </pre>
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    @Ignore
-    public void testTransformTestOutput() throws Exception {
-
-        setConfig("tex");
-        assertOutput(
-            getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
-                    + "\\bye",
-            // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
-                    + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
-                    + "Raw font written on fxlr8r.pl.\n",
-            // --- output channel ---
-            TERM);
-
-    }
-
-    /**
-     * Test for fontinst misc.
-     * 
-     * <pre>
-     * \input fontinst.sty
-     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
-     * \bye
-     * </pre>
-     * 
-     * @throws Exception if an error occurred.
-     */
-    @Test
-    public void testTransformTestFXLRPL() throws Exception {
-
-        setConfig("tex");
-        assertOutput(
-            getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
-                    + "\\bye",
-            // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
-                    + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
-                    + "Raw font written on fxlr8r.pl.\n",
-            // --- output channel ---
-            TERM);
-
-        // check the output file.
-        File pl = new File("fxlr.pl");
-        FileInputStream stream = new FileInputStream(pl);
-        assertNotNull(stream);
-        StringBuffer sb = new StringBuffer();
-        for (int c = stream.read(); c >= 0; c = stream.read()) {
-            sb.append((char) c);
-        }
-        stream.close();
-        assertEquals("generated file", TEXT_FXLR_PL, sb.toString());
-
-        pl.delete();
-    }
-
-    /**
      * The tex output (fxlr.pl)
      */
     private static final String TEXT_FXLR_PL =
@@ -788,4 +633,159 @@ public class FontInst02Test extends ExTeXLauncher {
                     + "   (CHARWD R 0.509)\n" + "   (CHARHT R 0.618)\n"
                     + "   (CHARDP R 0.230)\n" + "   (CHARIC R 0.000)\n"
                     + "   )\n" + "\n" + "(COMMENT END OF FILE fxlr.pl)\n";
+
+    /**
+     * Method for running the tests standalone.
+     * 
+     * @param args command line parameter
+     */
+    public static void main(String[] args) {
+
+        (new JUnitCore()).run(FontInst02Test.class);
+    }
+
+    /**
+     * Creates a new object.
+     */
+    public FontInst02Test() {
+
+        setConfig("fontinst-test.xml");
+
+        // delete temp files after the test
+        new File("texput.log").deleteOnExit();
+        new File("fxlr.mtx").deleteOnExit();
+        new File("fxlr.pl").deleteOnExit();
+        new File("fxlr8r.mtx").deleteOnExit();
+        new File("fxlr8r.pl").deleteOnExit();
+    }
+
+    /**
+     * Returns the properties for the test case.
+     * 
+     * @return Returns the properties for the test case.
+     */
+    private Properties getMyProps() {
+
+        Properties props = getProps();
+        props.setProperty("extex.texinputs", //
+            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
+                    "../texmf/src/texmf/fonts/afm/" + SEP + //
+                    "../texmf/src/texmf/fonts/enc/" + SEP + //
+                    "../ExTeX-fontware/src/texmf/tex/misc" //
+        );
+        // props.setProperty("extex.launcher.trace", "true");
+        // props.setProperty("extex.launcher.time", "true");
+        return props;
+    }
+
+    /**
+     * Test from fontinst.
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    @Ignore
+    public void test1() throws Exception {
+
+        setConfig("tex");
+        assertOutput(getMyProps(), // --- input code ---
+            DEFINE_CATCODES //
+                    // + "\\tracingmacros=1 " //
+                    + "\\def\\m#1#2#3\\fi#4{\n" + "   \\fi\n"
+                    + "   #4\n"
+                    + "   \\ifnum 1#3<1000\n" + "      .\n" //
+                    + "   \\else\n" //
+                    + "      \\m#2#3\n" //
+                    + "   \\fi\n" //
+                    + "}\n" //
+                    + "\\edef\\a{\\iftrue \\m 1000\\fi\n 1000 }\n" //
+                    + "\\a\n" //
+                    + "\\end\n",
+            // --- log channel ---
+            "",
+            // --- output channel ---
+            "1 . 000" + TERM);
+    }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * <pre>
+     * \input fontinst.sty
+     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
+     * \bye
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    public void testTransformTestFXLRPL() throws Exception {
+
+        setConfig("tex");
+        assertOutput(
+            getMyProps(), // --- input code ---
+            "\\input fontinst.sty " //
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+                    + "\\bye",
+            // --- log channel ---
+            "No file fontinst.rc.\n" //
+                    + "Metrics written on fxlr.mtx.\n"//
+                    + "Raw font written on fxlr.pl.\n" // +
+                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Raw font written on fxlr8r.pl.\n",
+            // --- output channel ---
+            TERM);
+
+        // check the output file.
+        File pl = new File("fxlr.pl");
+        FileInputStream stream = new FileInputStream(pl);
+        assertNotNull(stream);
+        StringBuilder sb = new StringBuilder();
+        for (int c = stream.read(); c >= 0; c = stream.read()) {
+            sb.append((char) c);
+        }
+        stream.close();
+        assertEquals("generated file", TEXT_FXLR_PL, sb.toString());
+
+        pl.delete();
+    }
+
+    /**
+     * Test for fontinst misc.
+     * 
+     * <pre>
+     * \input fontinst.sty
+     * \transformfont{fxlr8r}{\reencodefont{8r}{\fromafm{fxlr}}}
+     * \bye
+     * </pre>
+     * 
+     * @throws Exception if an error occurred.
+     */
+    @Test
+    @Ignore
+    public void testTransformTestOutput() throws Exception {
+
+        setConfig("tex");
+        assertOutput(
+            getMyProps(), // --- input code ---
+            "\\input fontinst.sty " //
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+                    + "\\bye",
+            // --- log channel ---
+            "No file fontinst.rc.\n" //
+                    + "Metrics written on fxlr.mtx.\n"//
+                    + "Raw font written on fxlr.pl.\n" // +
+                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Raw font written on fxlr8r.pl.\n",
+            // --- output channel ---
+            TERM);
+
+    }
 }

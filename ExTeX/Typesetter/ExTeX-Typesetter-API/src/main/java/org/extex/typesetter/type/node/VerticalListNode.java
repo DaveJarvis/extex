@@ -185,6 +185,7 @@ public class VerticalListNode extends GenericNodeList
      * 
      * @see org.extex.typesetter.type.OrientedNode#isHorizontal()
      */
+    @Override
     public boolean isHorizontal() {
 
         return false;
@@ -375,11 +376,11 @@ public class VerticalListNode extends GenericNodeList
      * @param breadth the breadth of the nodes to display
      * @param depth the depth of the nodes to display
      * 
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append("\\vbox");
         super.toString(sb, prefix, breadth, depth);
@@ -393,11 +394,11 @@ public class VerticalListNode extends GenericNodeList
      * @param sb the output string buffer
      * @param prefix the prefix string inserted at the beginning of each line
      * 
-     * @see org.extex.typesetter.type.Node#toText(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toText(StringBuilder,
      *      java.lang.String)
      */
     @Override
-    public void toText(StringBuffer sb, String prefix) {
+    public void toText(StringBuilder sb, String prefix) {
 
         sb.append("(vlist ");
         super.toText(sb, prefix);

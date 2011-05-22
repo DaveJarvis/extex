@@ -23,10 +23,10 @@ import java.util.List;
 
 /**
  * This class group entries in a list.
- *
+ * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 5476 $
- *
+ * 
  */
 public class GroupEntries {
 
@@ -45,8 +45,8 @@ public class GroupEntries {
 
     /**
      * Create a new object.
-     *
-     * @param size  The initialize size of the list.
+     * 
+     * @param size The initialize size of the list.
      */
     public GroupEntries(int size) {
 
@@ -55,18 +55,8 @@ public class GroupEntries {
 
     /**
      * Add the entry if it not exists in the list.
-     * @param val   The entry.
-     */
-    public void add(Object val) {
-
-        if (!list.contains(val)) {
-            list.add(val);
-        }
-    }
-
-    /**
-     * Add the entry if it not exists in the list.
-     * @param val   The entry.
+     * 
+     * @param val The entry.
      */
     public void add(int val) {
 
@@ -77,17 +67,21 @@ public class GroupEntries {
     }
 
     /**
-     * Returns the size of the list.
-     * @return Returns the size of the list.
+     * Add the entry if it not exists in the list.
+     * 
+     * @param val The entry.
      */
-    public int size() {
+    public void add(Object val) {
 
-        return list.size();
+        if (!list.contains(val)) {
+            list.add(val);
+        }
     }
 
     /**
      * Returns the entry at position 'idx'.
-     * @param idx   The index.
+     * 
+     * @param idx The index.
      * @return Returns the entry at position 'idx'.
      */
     public Object get(int idx) {
@@ -96,7 +90,18 @@ public class GroupEntries {
     }
 
     /**
+     * Returns the size of the list.
+     * 
+     * @return Returns the size of the list.
+     */
+    public int size() {
+
+        return list.size();
+    }
+
+    /**
      * Returns the list as array.
+     * 
      * @return Returns the list as array.
      */
     public Object[] toArray() {
@@ -107,8 +112,9 @@ public class GroupEntries {
     }
 
     /**
-     * Returns the list as a int-array.
-     * If a value can not be convert, the value set to -1.
+     * Returns the list as a int-array. If a value can not be convert, the value
+     * set to -1.
+     * 
      * @return Returns the list as a int-array.
      */
     public int[] toIntArray() {
@@ -126,13 +132,14 @@ public class GroupEntries {
 
     /**
      * Returns the entries as a string.
+     * 
      * @return Returns the entries as a string.
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0, n = list.size(); i < n; i++) {
             buf.append(get(i));
             if (i < n - 1) {

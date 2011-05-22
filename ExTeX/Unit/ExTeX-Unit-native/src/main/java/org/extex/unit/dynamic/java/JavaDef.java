@@ -39,16 +39,14 @@ import org.extex.unit.dynamic.Definer;
  * This primitive provides a binding of a macro or active character to Java
  * code. This code implements the primitive <tt>\javadef</tt>.
  * 
- * <doc name="javadef">
- * <h3>The Primitive <tt>\javadef</tt></h3>
+ * <doc name="javadef"> <h3>The Primitive <tt>\javadef</tt></h3>
  * <p>
  * The primitive <tt>\javadef</tt> attaches a definition to a macro or active
  * character. This is done in a similar way as <tt>\def</tt> works. The
  * difference is that the definition has to be provided in form of a Java class.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The general form of this primitive is
+ * <h4>Syntax</h4> The general form of this primitive is
  * 
  * <pre class="syntax">
  *   &lang;javadef&rang;
@@ -61,8 +59,8 @@ import org.extex.unit.dynamic.Definer;
  * this token is missing or of the wrong type then an error is raised.
  * </p>
  * <p>
- * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like
- * a constant list enclosed in braces or a tokens register. The value of these
+ * The <i>&lang;tokens&rang;</i> is any specification of a list of tokens like a
+ * constant list enclosed in braces or a tokens register. The value of these
  * tokens are taken and interpreted as the name of a Java class. This class is
  * loaded if needed and instantiated. The instance is bound as code to the
  * <i>&lang;control sequence&rang;</i>.
@@ -76,9 +74,9 @@ import org.extex.unit.dynamic.Definer;
  * </p>
  * <p>
  * The primitive <tt>\javadef</tt> is local to the enclosing group as is
- * <tt>\def</tt>. And similar to <tt>\def</tt> the modifier
- * <tt>\global</tt> can be used to make the definition in all groups instead
- * of the current group only. This is shown in the following example:
+ * <tt>\def</tt>. And similar to <tt>\def</tt> the modifier <tt>\global</tt> can
+ * be used to make the definition in all groups instead of the current group
+ * only. This is shown in the following example:
  * 
  * <pre class="TeXSample">
  *   \global\javadef\abc{org.extex.interpreter.primitive.Relax}
@@ -97,9 +95,9 @@ import org.extex.unit.dynamic.Definer;
  * <h4>Java Implementation</h4>
  * <p>
  * Now we come to the Java side of the definition. The class given as
- * <i>&lang;tokens&rang;</i> must implement the interface {@link
- * org.extex.interpreter.type.Code Code}. The easiest way to achieve this is by
- * declaring a class derived from
+ * <i>&lang;tokens&rang;</i> must implement the interface
+ * {@link org.extex.interpreter.type.Code Code}. The easiest way to achieve this
+ * is by declaring a class derived from
  * {@link org.extex.interpreter.type.AbstractCode AbstractCode}.
  * 
  * <pre class="JavaSample">
@@ -142,8 +140,7 @@ import org.extex.unit.dynamic.Definer;
 public class JavaDef extends AbstractAssignment implements Definer {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -168,8 +165,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -186,6 +183,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void define(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -196,8 +194,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
         } catch (EofException e) {
             throw new EofInToksException(toText(context));
         }
-        if ("".equals(classname)) {
-            throw new HelpingException(getLocalizer(), "ClassNotFound",
+        if ("".equals(classname) || classname.matches(".*[^a-zA-Z0-9_.$].*")) {
+            throw new HelpingException(getLocalizer(), "InvalidClassName",
                 classname);
         }
 
@@ -217,7 +215,8 @@ public class JavaDef extends AbstractAssignment implements Definer {
         } catch (InvocationTargetException e) {
             throw new NoHelpException(e);
         } catch (NoSuchMethodException e) {
-            throw new NoHelpException(e);
+            throw new HelpingException(getLocalizer(), "MethodNotFound",
+                e.getMessage());
         } catch (ClassNotFoundException e) {
             throw new HelpingException(getLocalizer(), "ClassNotFound",
                 classname);

@@ -51,120 +51,140 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
     private static final NodeVisitor<Node, Boolean> VISITOR =
             new NodeVisitor<Node, Boolean>() {
 
+                @Override
                 public Node visitAdjust(AdjustNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitAfterMath(AfterMathNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitAlignedLeaders(AlignedLeadersNode node,
                         Boolean value) throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitBeforeMath(BeforeMathNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitCenteredLeaders(CenteredLeadersNode node,
                         Boolean value) throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitChar(CharNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitDiscretionary(DiscretionaryNode node,
                         Boolean value) throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitExpandedLeaders(ExpandedLeadersNode node,
                         Boolean value) throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitGlue(GlueNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitHorizontalList(HorizontalListNode node,
                         Boolean value) throws GeneralException {
 
                     return node;
                 }
 
+                @Override
                 public Node visitInsertion(InsertionNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitKern(KernNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitLigature(LigatureNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitMark(MarkNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitPenalty(PenaltyNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitRule(RuleNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitSpace(SpaceNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitVerticalList(VerticalListNode node,
                         Boolean value) throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitVirtualChar(VirtualCharNode node, Boolean value)
                         throws GeneralException {
 
                     return null;
                 }
 
+                @Override
                 public Node visitWhatsIt(WhatsItNode node, Boolean value)
                         throws GeneralException {
 
@@ -217,7 +237,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#addSkip(org.extex.core.glue.FixedGlue)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#addSkip(org.extex.core.glue.FixedGlue)}
+     * .
      */
     @Test
     public final void testAddSkip0() {
@@ -229,7 +250,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#addSkip(org.extex.core.glue.FixedGlue)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#addSkip(org.extex.core.glue.FixedGlue)}
+     * .
      */
     @Test
     public final void testAddSkip1() {
@@ -241,7 +263,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode()}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode()}
+     * .
      */
     @Test
     public final void testHorizontalListNode() {
@@ -254,7 +277,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHorizontalListNodeFixedDimen() {
@@ -265,7 +289,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}
+     * .
      */
     @Test
     public final void testHorizontalListNodeNode1() {
@@ -276,7 +301,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node)}
+     * .
      */
     @Test
     public final void testHorizontalListNodeNode2() {
@@ -289,7 +315,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node, org.extex.typesetter.type.Node)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#HorizontalListNode(org.extex.typesetter.type.Node, org.extex.typesetter.type.Node)}
+     * .
      */
     @Test
     public final void testHorizontalListNodeNodeNode() {
@@ -317,7 +344,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen0() {
@@ -329,7 +357,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen1() {
@@ -341,7 +370,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen2() {
@@ -353,7 +383,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen3() {
@@ -366,7 +397,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen4() {
@@ -383,7 +415,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#hpack(org.extex.core.dimen.FixedDimen)}
+     * .
      */
     @Test
     public final void testHpackFixedDimen5() {
@@ -412,7 +445,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#spreadWidth(org.extex.core.dimen.FixedDimen, org.extex.core.glue.FixedGlueComponent)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#spreadWidth(org.extex.core.dimen.FixedDimen, org.extex.core.glue.FixedGlueComponent)}
+     * .
      */
     @Test
     public final void testSpreadWidth() {
@@ -440,8 +474,8 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
         NodeList list = makeList();
         list.setShift(Dimen.ONE_PT);
-        assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt, shifted 1.0pt", list
-            .toString());
+        assertEquals("\\hbox(0.0pt+0.0pt)x0.0pt, shifted 1.0pt",
+            list.toString());
     }
 
     /**
@@ -482,11 +516,12 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(java.lang.StringBuffer, java.lang.String, int, int)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(Appendable, java.lang.String, int, int)}
+     * .
      */
     @Test
     @Ignore
-    public final void testToStringStringBufferStringIntInt() {
+    public final void testToStringStringBuilderStringIntInt() {
 
         fail("Not yet implemented"); // TODO
     }
@@ -504,26 +539,28 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(java.lang.StringBuffer, java.lang.String)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(StringBuilder, java.lang.String)}
+     * .
      */
     @Test
-    public final void testToTextStringBufferString0() {
+    public final void testToTextStringBuilderString0() {
 
         NodeList list = makeList();
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         list.toText(sb, "..");
         assertEquals("\n..(hlist )", sb.toString());
     }
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(java.lang.StringBuffer, java.lang.String)}.
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toText(StringBuilder, java.lang.String)}
+     * .
      */
     @Test
-    public final void testToTextStringBufferString1() {
+    public final void testToTextStringBuilderString1() {
 
         HorizontalListNode list = new HorizontalListNode(new PenaltyNode(123));
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         list.toText(sb, "..");
         assertEquals("\n..(hlist [])", sb.toString());
     }

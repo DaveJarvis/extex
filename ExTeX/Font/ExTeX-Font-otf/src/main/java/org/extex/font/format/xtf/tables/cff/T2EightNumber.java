@@ -97,9 +97,9 @@ public class T2EightNumber {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < val.length; i++) {
-            buf.append(" ").append(val[i].toString());
+            buf.append(' ').append(val[i].toString());
         }
 
         return buf.toString().trim();

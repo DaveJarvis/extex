@@ -79,6 +79,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#getRecognizedCharId()
      */
+    @Override
     public BackendCharacter getRecognizedCharId() {
 
         return recognizedCharcterId;
@@ -89,6 +90,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#getRecognizedFont()
      */
+    @Override
     public BackendFont getRecognizedFont() {
 
         return recognizedFont;
@@ -99,6 +101,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#isNewRecongnizedFont()
      */
+    @Override
     public boolean isNewRecongnizedFont() {
 
         return newRecongnizedFont;
@@ -107,9 +110,10 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.font.BackendFontManager#iterate()
+     * @see org.extex.font.BackendFontManager#iterator()
      */
-    public Iterator<ManagerInfo> iterate() {
+    @Override
+    public Iterator<ManagerInfo> iterator() {
 
         return new Iterator<ManagerInfo>() {
 
@@ -127,15 +131,15 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
                 TreeSet<FontKey> sort =
                         new TreeSet<FontKey>(new Comparator<FontKey>() {
 
+                            @Override
                             public int compare(FontKey o1, FontKey o2) {
 
                                 return o1.getName().compareTo(o2.getName());
                             }
 
                         });
-                Iterator<FontKey> tmpit = keySet.iterator();
-                while (tmpit.hasNext()) {
-                    sort.add(tmpit.next());
+                for (FontKey key : keySet) {
+                    sort.add(key);
                 }
 
                 it = sort.iterator();
@@ -146,6 +150,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
              * 
              * @see java.util.Iterator#hasNext()
              */
+            @Override
             public boolean hasNext() {
 
                 if (fontList != null && it == null) {
@@ -162,6 +167,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
              * 
              * @see java.util.Iterator#next()
              */
+            @Override
             public ManagerInfo next() {
 
                 if (fontList != null && it == null) {
@@ -179,6 +185,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
              * 
              * @see java.util.Iterator#remove()
              */
+            @Override
             public void remove() {
 
                 throw new UnsupportedOperationException();
@@ -191,6 +198,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#reset()
      */
+    @Override
     public void reset() {
 
         newRecongnizedFont = false;
@@ -205,6 +213,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      * 
      * @see org.extex.font.BackendFontManager#setBackendFontFactory(org.extex.font.BackendFontFactory)
      */
+    @Override
     public void setBackendFontFactory(BackendFontFactory f) {
 
         this.factory = f;

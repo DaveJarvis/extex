@@ -39,7 +39,8 @@ import org.extex.util.xml.XMLWriterConvertible;
  * The format of the Lookup Table header is as follows:
  * </p>
  * 
- * <table border="1"> <tbody>
+ * <table border="1">
+ * <tbody>
  * <tr>
  * <th>Type</th>
  * <th>Name</th>
@@ -49,13 +50,13 @@ import org.extex.util.xml.XMLWriterConvertible;
  * <tr>
  * <td>uint16</td>
  * <td>format</td>
- * <td> Format of this lookup table. There are five lookup table formats, each
+ * <td>Format of this lookup table. There are five lookup table formats, each
  * with a format number.</td>
  * </tr>
  * <tr>
  * <td>variable</td>
  * <td>fsHeader</td>
- * <td> Format-specific header (each of these is described in the following
+ * <td>Format-specific header (each of these is described in the following
  * sections), followed by the actual lookup data. The details of the fsHeader
  * structure are given with the different formats.</td>
  * </tr>
@@ -193,17 +194,16 @@ public class XtfLookup implements XMLWriterConvertible {
     /**
      * The name of the lookup types (GPOS).
      */
-    public static final String[] LOOKUP_TYPE_NAMES_GPOS =
-            {"Single", "Pair", "Cursive", "MarkToBase", "MarkToLigature",
-                    "MarkToMark", "Context", "Chained", "Extension"};
+    public static final String[] LOOKUP_TYPE_NAMES_GPOS = {"Single", "Pair",
+            "Cursive", "MarkToBase", "MarkToLigature", "MarkToMark", "Context",
+            "Chained", "Extension"};
 
     /**
      * The name of the lookup types (GSUB).
      */
-    public static final String[] LOOKUP_TYPE_NAMES_GSUB =
-            {"Single", "Multiple", "Alternate", "Ligature", "Context",
-                    "Chaining Context", "Extension Substitution",
-                    "Reverse chaining context single"};
+    public static final String[] LOOKUP_TYPE_NAMES_GSUB = {"Single",
+            "Multiple", "Alternate", "Ligature", "Context", "Chaining Context",
+            "Extension Substitution", "Reverse chaining context single"};
 
     /**
      * flag
@@ -349,8 +349,7 @@ public class XtfLookup implements XMLWriterConvertible {
     @Override
     public String toString() {
 
-        StringBuffer buf = new StringBuffer();
-        buf.append("Lookup\n");
+        StringBuilder buf = new StringBuilder("Lookup\n");
         buf.append("   type   : ").append(type).append('\n');
         return buf.toString();
     }
@@ -360,6 +359,7 @@ public class XtfLookup implements XMLWriterConvertible {
      * 
      * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement("lookup");
@@ -371,12 +371,12 @@ public class XtfLookup implements XMLWriterConvertible {
         writer.writeAttribute("flag", flag, 4);
         writer.writeAttribute("RightToLeft",
             checkFlag(flag, FLAG_RIGHT_TO_LEFT));
-        writer.writeAttribute("IgnoreBaseGlyphs", checkFlag(flag,
-            FLAG_IGNORE_BASE_GLYPHS));
-        writer.writeAttribute("IgnoreBaseLigature", checkFlag(flag,
-            FLAG_IGNORE_BASE_LIGATURES));
-        writer.writeAttribute("IgnoreMarks", checkFlag(flag,
-            FLAG_IGNORE_BASE_MARKS));
+        writer.writeAttribute("IgnoreBaseGlyphs",
+            checkFlag(flag, FLAG_IGNORE_BASE_GLYPHS));
+        writer.writeAttribute("IgnoreBaseLigature",
+            checkFlag(flag, FLAG_IGNORE_BASE_LIGATURES));
+        writer.writeAttribute("IgnoreMarks",
+            checkFlag(flag, FLAG_IGNORE_BASE_MARKS));
 
         for (int i = 0; i < subTables.length; i++) {
             XtfLookupTable st = subTables[i];

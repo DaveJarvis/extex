@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,7 +41,7 @@ import org.extex.font.manager.ManagerInfo;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public interface BackendFontManager {
+public interface BackendFontManager extends Iterable<ManagerInfo> {
 
     /**
      * Get the char info for the most recently recognized pair of font and
@@ -87,7 +87,8 @@ public interface BackendFontManager {
      * @return the iterator for all recognized back-end font as
      *         {@link ManagerInfo}.
      */
-    Iterator<ManagerInfo> iterate();
+    @Override
+    Iterator<ManagerInfo> iterator();
 
     /**
      * Take a character and a font and see if they can be managed by this
@@ -98,8 +99,8 @@ public interface BackendFontManager {
      * @param uc the Unicode character at hand
      * @throws FontException if a font error occurred.
      * 
-     * @return <code>true</code> iff the character is defined in the font
-     *         given and a font of a requested format can be delivered.
+     * @return <code>true</code> iff the character is defined in the font given
+     *         and a font of a requested format can be delivered.
      */
     boolean recognize(FontKey fontKey, UnicodeChar uc) throws FontException;
 

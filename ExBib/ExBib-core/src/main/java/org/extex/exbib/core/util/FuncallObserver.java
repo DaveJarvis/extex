@@ -23,7 +23,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -126,10 +125,7 @@ public class FuncallObserver implements Observer {
         List<String> list = new ArrayList<String>(stat.keySet());
         Collections.sort(list);
 
-        Iterator<String> it = list.iterator();
-
-        while (it.hasNext()) {
-            String key = it.next();
+        for (String key : list) {
             int count = ((stat.get(key))).getValue();
             funcalls += count;
             logger.fine(count + "\t-- " + key);
@@ -144,6 +140,7 @@ public class FuncallObserver implements Observer {
      * @see org.extex.exbib.core.util.Observer#update(org.extex.exbib.core.util.Observable,
      *      java.lang.Object)
      */
+    @Override
     public void update(Observable source, Object o) {
 
         String name = o.toString();

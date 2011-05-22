@@ -157,11 +157,11 @@ public abstract class AbstractLeadersNode extends AbstractExpandableNode
      * @see "<logo>T<span style=
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      *      >e</span>X</logo> &ndash; The Program [190]"
-     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuffer,
+     * @see org.extex.typesetter.type.Node#toString(java.lang.StringBuilder,
      *      java.lang.String, int, int)
      */
     @Override
-    public void toString(StringBuffer sb, String prefix, int breadth, int depth) {
+    public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format", getSize().toString()));
         node.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);

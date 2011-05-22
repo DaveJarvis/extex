@@ -151,12 +151,12 @@ public class T2RcurveLine extends T2PathConstruction {
     @Override
     public String toText() {
 
-        StringBuffer buf = new StringBuffer();
+        StringBuilder buf = new StringBuilder();
 
-        buf.append(dxd.toString()).append(" ");
-        buf.append(dyd.toString()).append(" ");
+        buf.append(dxd.toString()).append(' ');
+        buf.append(dyd.toString()).append(' ');
         for (int i = 0; i < eight.length; i++) {
-            buf.append(eight[i].toString()).append(" ");
+            buf.append(eight[i].toString()).append(' ');
         }
         buf.append(getName());
         return buf.toString();
@@ -165,9 +165,9 @@ public class T2RcurveLine extends T2PathConstruction {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(
-     *      org.extex.util.xml.XMLStreamWriter)
+     * @see org.extex.util.xml.XMLWriterConvertible#writeXML(org.extex.util.xml.XMLStreamWriter)
      */
+    @Override
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writer.writeStartElement(getName());

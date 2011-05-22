@@ -33,7 +33,8 @@ public class CountConstantTest {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#Count(org.extex.core.count.FixedCount)}.
+     * {@link org.extex.core.count.Count#Count(org.extex.core.count.FixedCount)}
+     * .
      */
     @Test
     @SuppressWarnings("boxing")
@@ -281,12 +282,12 @@ public class CountConstantTest {
 
     /**
      * Test method for
-     * {@link org.extex.core.count.Count#toString(java.lang.StringBuffer)}.
+     * {@link org.extex.core.count.Count#toString(StringBuilder)}.
      */
     @Test
-    public final void testToStringStringBuffer() {
+    public final void testToStringStringBuilder() {
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         new CountConstant(-123).toString(sb);
         assertEquals("-123", sb.toString());
     }

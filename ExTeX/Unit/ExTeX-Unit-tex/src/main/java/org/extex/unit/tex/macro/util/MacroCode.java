@@ -120,6 +120,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
+        @Override
         public boolean closeFileStream() {
 
             return false;
@@ -141,6 +142,7 @@ public class MacroCode extends AbstractCode
          * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.api.Tokenizer)
          */
+        @Override
         public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
 
@@ -156,6 +158,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#getLocator()
          */
+        @Override
         public Locator getLocator() {
 
             Locator loc = new Locator(name, -1, null, -1);
@@ -175,6 +178,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#isEof()
          */
+        @Override
         public boolean isEof() throws ScannerException {
 
             return tokens.length() == 0;
@@ -191,6 +195,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#isEol()
          */
+        @Override
         public boolean isEol() throws ScannerException {
 
             return false;
@@ -204,6 +209,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
+        @Override
         public boolean isFileStream() {
 
             return false;
@@ -225,6 +231,7 @@ public class MacroCode extends AbstractCode
          * 
          * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
          */
+        @Override
         public void put(Token token) {
 
             tokens.push(token);
@@ -250,7 +257,7 @@ public class MacroCode extends AbstractCode
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * The field <tt>body</tt> contains the tokens of the macro expansion text.
@@ -287,6 +294,7 @@ public class MacroCode extends AbstractCode
     private transient final ArgumentMatchingObserver TRACER =
             new ArgumentMatchingObserver() {
 
+                @Override
                 public void observeArgument(int index, Tokens value,
                         CodeToken cs) {
 
@@ -350,6 +358,7 @@ public class MacroCode extends AbstractCode
      * @see org.extex.interpreter.type.ComparableCode#compare(org.extex.scanner.type.token.Token,
      *      org.extex.interpreter.context.Context)
      */
+    @Override
     public boolean compare(Token token, Context context)
             throws HelpingException {
 
@@ -374,6 +383,7 @@ public class MacroCode extends AbstractCode
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger logger) {
 
         this.logger = logger;
@@ -446,6 +456,7 @@ public class MacroCode extends AbstractCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -488,10 +499,11 @@ public class MacroCode extends AbstractCode
      * @return the description of the primitive as list of Tokens
      * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
      */
+    @Override
     public Tokens show(Context context) throws HelpingException {
 
         try {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             boolean sep = false;
             if (!notLong) {
                 sb.append(context.esc(getLocalizer().format("TTP.long")));
@@ -504,8 +516,7 @@ public class MacroCode extends AbstractCode
             if (sep) {
                 sb.append(" ");
             }
-            sb.append(getLocalizer().format("TTP.macro"));
-            sb.append(":\n");
+            sb.append(getLocalizer().format("TTP.macro")).append(":\n");
             Tokens toks = context.getTokenFactory().toTokens(sb);
             if (pattern != null) {
                 show(pattern, context, toks);
