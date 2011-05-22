@@ -17,7 +17,7 @@
  *
  */
 
-package de.dante.extex.interpreter.primitives.hyphen;
+package org.extex.baseext.primitives.hyphen;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.NoHelpException;
@@ -39,10 +39,10 @@ import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
  * This class provides an implementation for the primitive
  * <code>\hyphenactive</code>.
  * <p>
- * The value are stored in the <code>HyphernationTable</code>. Each
- * <code>HyphernationTable</code> are based on <code>\language</code> and
- * have its own <code>\hyphenactive</code>-value.
- * 
+ * The value is stored in the <code>HyphernationTable</code>. Each
+ * <code>HyphernationTable</code> is based on <code>\language</code> and has its
+ * own <code>\hyphenactive</code> value.
+ * </p>
  * <p>
  * Example:
  * </p>
@@ -59,8 +59,7 @@ import org.extex.unit.tex.hyphen.AbstractHyphenationCode;
 public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -112,10 +111,10 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
      * @return the description of the primitive as list of Tokens
      * @throws CatcodeException in case of an error in token creation
      * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
