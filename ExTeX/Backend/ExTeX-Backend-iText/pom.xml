@@ -30,28 +30,32 @@
 
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Pdf-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <artifactId>ExTeX-resource</artifactId>
     </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Pdf-API</artifactId>
+    </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

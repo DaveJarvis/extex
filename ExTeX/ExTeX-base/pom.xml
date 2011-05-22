@@ -26,33 +26,32 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-API</artifactId>
+      <version>${project.version}</version>
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
@@ -60,13 +59,12 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-tex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
   </dependencies>

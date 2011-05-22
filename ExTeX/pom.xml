@@ -45,6 +45,7 @@
       <id>gene</id>
       <name>Gerd Neugebauer</name>
       <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de/</url>
       <roles>
         <role>developer</role>
         <role>build manager</role>
@@ -88,10 +89,8 @@
    <module>Backend/ExTeX-Backend-dump</module>
    <module>Backend/ExTeX-Backend-dvi</module>
    <module>Backend/ExTeX-Backend-dvix</module>
-<!--
-   <module>Backend/ExTeX-Backend-pdfbox</module>
    <module>Backend/ExTeX-Backend-iText</module>
--->
+   <module>Backend/ExTeX-Backend-pdfbox</module>
    <module>Backend/ExTeX-Backend-ps</module>
    <module>Backend/ExTeX-Backend-rtf</module>
    <module>Backend/ExTeX-Backend-svg</module>
@@ -139,6 +138,226 @@
     </dependency>
   </dependencies>
 
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-resource</artifactId>
+        <version>0.2</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>CLI</artifactId>
+        <version>0.1</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-dump</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-dvi</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-dvix</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-iText</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-pdfbox</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-ps</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-rtf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-svg</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-text</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Backend-xml</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-base</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-base-ext</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-base-test</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Font-API</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Font-afm</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Font-otf</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Font-test</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Font-tfm</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-fontware</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Interpreter-API</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Interpreter-max</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Main-fmt</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Main-tex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-ocpware</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Pdf-API</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Scanner</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Scanner-API</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Scanner32</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Typesetter-API</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Typesetter-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Typesetter-tex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-color</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-etex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-extex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-image</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-namespace</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-native</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-omega</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-pdftex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-Unit-tex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <reporting>
     <plugins>
       <plugin>
@@ -157,6 +376,7 @@
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.6</version>
         <configuration>
+          <aggregate>true</aggregate>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>true</downloadJavadocs>
           <configLocation>org/extex/checkstyle-extex.xml</configLocation>

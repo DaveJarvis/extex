@@ -6,7 +6,8 @@
   <artifactId>ExTeX-Scanner</artifactId>
   <name>ExTeX Scanner</name>
   <description>
-    This is the ExTeX scanner component.
+    This is the ExTeX scanner component. It provides means to read tokens form
+    some input stream.
   </description>
 
   <packaging>jar</packaging>
@@ -24,7 +25,6 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

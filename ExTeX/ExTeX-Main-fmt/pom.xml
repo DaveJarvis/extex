@@ -6,7 +6,8 @@
   <artifactId>ExTeX-Main-fmt</artifactId>
   <name>ExTeX Format Utility Program</name>
   <description>
-    This is the ExTeX format utility.
+    This is the ExTeX format utility. It can print the contents of a format file
+    in readable form (lisp-like)
   </description>
 
   <packaging>jar</packaging>
@@ -24,57 +25,56 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Backend-dvix</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-etex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-extex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-pdftex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-omega</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-native</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-namespace</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-color</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
 

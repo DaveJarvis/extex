@@ -42,101 +42,80 @@
       <artifactId>jeval</artifactId>
       <version>0.9.4</version>
     </dependency>
-<!--
-    <dependency>
-      <groupId>jeval</groupId>
-      <artifactId>jeval</artifactId>
-      <version>0.9.3</version>
-    </dependency>
--->
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-max</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Backend-dump</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-native</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Backend-dvix</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
   </dependencies>

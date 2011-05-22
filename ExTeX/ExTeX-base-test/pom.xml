@@ -25,58 +25,51 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-core</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Font-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Typesetter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
+
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>0.1-SNAPSHOT</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>
-      <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Typesetter-tex</artifactId>
-      <version>0.1-SNAPSHOT</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Interpreter-max</artifactId>
-      <version>0.1-SNAPSHOT</version>
       <scope>test</scope>
     </dependency>
 
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Typesetter-tex</artifactId>
+      <scope>test</scope>
     </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Interpreter-max</artifactId>
+      <scope>test</scope>
+    </dependency>
+
   </dependencies>
 
   <build>
