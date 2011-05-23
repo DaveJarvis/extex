@@ -593,7 +593,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     public Bst2Groovy() throws ExBibImpossibleException {
 
         this.linkData = new LinkContainer();
-        setDB(new DBImpl());
+        setDb(new DBImpl());
         defaultParameters();
         configure(ConfigurationFactory.newInstance(getClass().getName()
             .replace('.', '/') + ".config"));

@@ -104,7 +104,7 @@ public class BstReaderExtImplTest {
     public final void testOption01() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option "));
@@ -122,7 +122,7 @@ public class BstReaderExtImplTest {
     public final void testOption02() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option abc"));
@@ -140,7 +140,7 @@ public class BstReaderExtImplTest {
     public final void testOption03() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option 123"));
@@ -158,7 +158,7 @@ public class BstReaderExtImplTest {
     public final void testOptionInteger1() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option integer {abc}{def}"));
@@ -177,7 +177,7 @@ public class BstReaderExtImplTest {
     public final void testOptionInteger2() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option integer {abc}{#123}"));
@@ -203,7 +203,7 @@ public class BstReaderExtImplTest {
     public final void testOptionString1() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderExtImpl();
         r.setResourceFinder(new RF("option string {abc}{def}"));

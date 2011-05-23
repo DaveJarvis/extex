@@ -166,7 +166,7 @@ public interface Processor extends Bibliography, Configurable {
      * 
      * @param db the database to use
      */
-    void setDB(DB db);
+    void setDb(DB db);
 
     /**
      * Setter for the logger.

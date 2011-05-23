@@ -70,7 +70,7 @@ public class ProcessorFactory extends AbstractFactory<Processor> {
             throws ConfigurationException {
 
         Processor processor = createInstance(type, Processor.class);
-        processor.setDB(db);
+        processor.setDb(db);
         return processor;
     }
 }

@@ -1292,7 +1292,7 @@ public class BstPrinterImplTest {
     public final void test0() throws Exception {
 
         BstProcessor processor = new BstInterpreterCore();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         runTest(processor, "ENTRY {\n" + "  } {} {}\n\n\n\n");
     }
 
@@ -1306,7 +1306,7 @@ public class BstPrinterImplTest {
     public final void test1() throws Exception {
 
         BstProcessor processor = new BstInterpreter099c();
-        processor.setDB(new DBImpl());
+        processor.setDb(new DBImpl());
         processor.addBibliographyStyle("test");
         BstReader r = new BstReaderImpl();
         r.setResourceFinder(new ResourceFinder() {

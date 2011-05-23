@@ -149,6 +149,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(java.lang.String[])
      */
+    @Override
     public void addBibliographyDatabase(String... sa) {
 
         for (String s : sa) {
@@ -164,6 +165,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#addBibliographyStyle(java.lang.String[])
      */
+    @Override
     public void addBibliographyStyle(String... style) {
 
         for (String s : style) {
@@ -179,6 +181,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#addCitation(java.lang.String[])
      */
+    @Override
     public void addCitation(String... sa) {
 
         for (String s : sa) {
@@ -250,6 +253,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#countBibliographyStyles()
      */
+    @Override
     public int countBibliographyStyles() {
 
         return bibliographyStyles.size();
@@ -260,6 +264,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#countCitations()
      */
+    @Override
     public int countCitations() {
 
         return citations.size();
@@ -270,6 +275,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#countDatabases()
      */
+    @Override
     public int countDatabases() {
 
         return bibliographyDatabases.size();
@@ -283,6 +289,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#getBibliographyStyles()
      */
+    @Override
     public List<String> getBibliographyStyles() {
 
         return bibliographyStyles;
@@ -375,6 +382,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @return the options
      */
+    @Override
     public Map<String, Token> getOptions() {
 
         return options;
@@ -405,6 +413,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
      *      org.extex.exbib.core.util.Observer)
      */
+    @Override
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
@@ -428,6 +437,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @see org.extex.exbib.core.bst.Bibliography#reset()
      */
+    @Override
     public void reset() {
 
         citations = new HashMap<String, String>();
@@ -442,9 +452,9 @@ public class BibliographyCore implements Bibliography, Observable {
      * 
      * @param db the database to be used
      */
-    public void setDB(DB db) {
+    public void setDb(DB database) {
 
-        this.db = db;
+        this.db = database;
     }
 
     /**
@@ -463,6 +473,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public boolean setOption(String name, String value)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
@@ -483,6 +494,7 @@ public class BibliographyCore implements Bibliography, Observable {
      * @throws ExBibIllegalValueException in case of an illegal value
      * @throws ExBibFunctionExistsException in case of a redefinition
      */
+    @Override
     public boolean setOption(String name, Token value)
             throws ExBibIllegalValueException,
                 ExBibFunctionExistsException {
