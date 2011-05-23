@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.typesetter.type.node;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
@@ -33,7 +32,6 @@ import org.extex.core.glue.GlueComponent;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -520,10 +518,13 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
      * .
      */
     @Test
-    @Ignore
     public final void testToStringStringBuilderStringIntInt() {
 
-        fail("Not yet implemented"); // TODO
+        NodeList list = makeList(new CharNode(TC, UnicodeChar.get('A')));
+
+        StringBuilder sb = new StringBuilder();
+        list.toString(sb, ":", 0, 0);
+        assertEquals("\\hbox(72.26999pt+0.00002pt)x8.0pt", sb.toString());
     }
 
     /**
