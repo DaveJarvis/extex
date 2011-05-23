@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or
  * modify it under the terms of the GNU Lesser General Public
@@ -27,8 +27,6 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.util.Properties;
 
-import junit.framework.Assert;
-
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configuration;
@@ -40,6 +38,7 @@ import org.extex.interpreter.InterpreterFactory;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.Token;
+import org.junit.Assert;
 
 /**
  * Test for ExTeX.
@@ -51,9 +50,15 @@ import org.extex.scanner.type.token.Token;
 public final class TestTeX {
 
     /**
-     * TODO missing JavaDoc.
+     * The field <tt>DATA_DIR</tt> contains the location of the data directory.
      */
-    private static class AssertFailErrorHandler implements ErrorHandler {
+    private static final String DATA_DIR = "/src/test/resources/data/";
+
+    /**
+     * The field <tt>ERROR_HANDLER</tt> contains the error handler which always
+     * fails.
+     */
+    private static final ErrorHandler ERROR_HANDLER = new ErrorHandler() {
 
         /**
          * {@inheritDoc}
@@ -63,6 +68,7 @@ public final class TestTeX {
          *      org.extex.interpreter.TokenSource,
          *      org.extex.interpreter.context.Context)
          */
+        @Override
         public boolean handleError(GeneralException e, Token token,
                 TokenSource source, Context context) throws HelpingException {
 
@@ -76,21 +82,12 @@ public final class TestTeX {
          * 
          * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
          */
+        @Override
         public void setEditHandler(EditHandler editHandler) {
 
             // noop
         }
-    }
-
-    /**
-     * The field <tt>DATA_DIR</tt> contains the location of the data directory.
-     */
-    private static final String DATA_DIR = "/src/test/resources/data/";
-
-    /**
-     * TODO missing JavaDoc.
-     */
-    private static ErrorHandler errorHandler = new AssertFailErrorHandler();
+    };
 
     /**
      * Make an <code>Interpreter</code>.
@@ -185,7 +182,7 @@ public final class TestTeX {
         pro.setProperty("extex.interaction", "0");
 
         ExTeX extex = new ExTeX(pro, ".extex-test");
-        extex.setErrorHandler(errorHandler);
+        extex.setErrorHandler(ERROR_HANDLER);
         extex.setOutStream(output);
 
         extex.run();
@@ -209,11 +206,10 @@ public final class TestTeX {
 
             Assert.assertNotNull("Left-over: " + linetesttxt, linetesttxt);
 
-            new File(texfile + ".log").delete();
-
         } finally { // gene: to assure that the resources are freed
             intxt.close();
             intesttxt.close();
+            new File(texfile + ".log").delete();
         }
     }
 
