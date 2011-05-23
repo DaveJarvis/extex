@@ -22,7 +22,6 @@ package org.extex.typesetter.type.node;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
@@ -33,7 +32,6 @@ import org.extex.core.glue.GlueComponent;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -513,10 +511,13 @@ public class GenericListNodeTest extends AbstractNodeListTester {
      * .
      */
     @Test
-    @Ignore
     public final void testToStringStringBuilderStringIntInt() {
 
-        fail("Not yet implemented"); // TODO
+        NodeList list = makeList(new CharNode(TC, UnicodeChar.get('A')));
+
+        StringBuilder sb = new StringBuilder();
+        list.toString(sb, ":", 0, 0);
+        assertEquals("(0.0pt+0.0pt)x0.0pt", sb.toString());
     }
 
     /**
