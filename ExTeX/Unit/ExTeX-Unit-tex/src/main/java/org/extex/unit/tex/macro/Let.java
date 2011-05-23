@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,6 +26,7 @@ import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.interpreter.type.Code;
+import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
@@ -35,8 +36,7 @@ import org.extex.unit.base.macro.LetCode;
 /**
  * This class provides an implementation for the primitive <code>\let</code>.
  * 
- * <doc name="let">
- * <h3>The Primitive <tt>\let</tt></h3>
+ * <doc name="let"> <h3>The Primitive <tt>\let</tt></h3>
  * <p>
  * The primitive <tt>\let</tt> defined a control sequence or active character.
  * The value is taken from the meaning of another token. If the token is a
@@ -44,8 +44,7 @@ import org.extex.unit.base.macro.LetCode;
  * definition is changed the newly defined binding remains intact.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;let&rang;
@@ -71,10 +70,31 @@ import org.extex.unit.base.macro.LetCode;
 public class Let extends AbstractAssignment {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
+
+    /**
+     * Assign a new meaning to a control sequence. This is the core of the
+     * primitive <code>\let</code>.
+     * 
+     * @param prefix the flags to consider
+     * @param context the processor context
+     * @param cs the control sequence token to bind
+     * @param t the new meaning of the control sequence token. If this parameter
+     *        is <code>null</code> then an exception is thrown.
+     * 
+     * @throws HelpingException in case of an error
+     */
+    public static void let(Flags prefix, Context context, CodeToken cs, Token t)
+            throws HelpingException {
+
+        Code code =
+                (t instanceof CodeToken
+                        ? context.getCode((CodeToken) t)
+                        : new LetCode(t));
+        context.setCode(cs, code, prefix.clearGlobal());
+    }
 
     /**
      * Creates a new object.
@@ -98,35 +118,15 @@ public class Let extends AbstractAssignment {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         CodeToken cs = source.getControlSequence(context, typesetter);
-        source.getOptionalEquals(context);
-        Token t = source.getToken(context);
 
+        Token t = source.getNonSpace(context);
+        if (t != null && t.eq(Catcode.OTHER, '=')) {
+            t = source.getToken(context);
+        }
         if (t == null) {
             throw new EofException(toText());
         }
 
         let(prefix, context, cs, t);
-    }
-
-    /**
-     * Assign a new meaning to a control sequence. This is the core of the
-     * primitive <code>\let</code>.
-     * 
-     * @param prefix the flags to consider
-     * @param context the processor context
-     * @param cs the control sequence token to bind
-     * @param t the new meaning of the control sequence token. If this parameter
-     *        is <code>null</code> then an exception is thrown.
-     * 
-     * @throws HelpingException in case of an error
-     */
-    public static void let(Flags prefix, Context context, CodeToken cs, Token t)
-            throws HelpingException {
-
-        Code code =
-                (t instanceof CodeToken
-                        ? context.getCode((CodeToken) t)
-                        : new LetCode(t));
-        context.setCode(cs, code, prefix.clearGlobal());
     }
 }
