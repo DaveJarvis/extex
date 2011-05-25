@@ -72,9 +72,9 @@ public class TokenStreamStringImplTest {
          * 
          * @return the category code of a character
          * 
-         * @see org.extex.scanner.api.Tokenizer#getCatcode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
          */
+        @Override
         public Catcode getCatcode(UnicodeChar c) {
 
             if (c.isLetter()) {
@@ -124,6 +124,7 @@ public class TokenStreamStringImplTest {
          * 
          * @see org.extex.scanner.api.Tokenizer#getNamespace()
          */
+        @Override
         public String getNamespace() {
 
             return "";
@@ -200,6 +201,23 @@ public class TokenStreamStringImplTest {
     }
 
     /**
+     * <testcase> Test that ~ is recognized as active character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testActive() throws Exception {
+
+        TokenStream stream = makeStream("~");
+        assertEquals("the active character ~", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
      * <testcase> The character ^ is parsed as superscript character if followed
      * by a small number. </testcase>
      * 
@@ -230,23 +248,6 @@ public class TokenStreamStringImplTest {
 
         TokenStream stream = makeStream("^^41");
         assertEquals("the letter A", stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>The character ^^ is parsed as character escape if followed by a
-     * sufficiently large number, e.g. 4f for the letter O. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCaretO() throws Exception {
-
-        TokenStream stream = makeStream("^^4f");
-        assertEquals("the letter O", stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
@@ -349,6 +350,51 @@ public class TokenStreamStringImplTest {
     }
 
     /**
+     * <testcase>The character ^^ is parsed as character escape if followed by a
+     * sufficiently large number, e.g. 4f for the letter O. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCaretO() throws Exception {
+
+        TokenStream stream = makeStream("^^4f");
+        assertEquals("the letter O", stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> Test that % acts as comment characters and eats up anything to
+     * EOF if no newline is contained. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testComment1() throws Exception {
+
+        TokenStream stream = makeStream("%abc");
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> Test that % acts as comment characters and eats up anything to
+     * EOF if no newline is contained. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testComment2() throws Exception {
+
+        TokenStream stream = makeStream("%abc\nx");
+        Token t = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(t);
+        assertEquals(120, t.getChar().getCodePoint());
+    }
+
+    /**
      * <testcase> This test case validates that a single newline translates into
      * a space. </testcase>
      * 
@@ -365,6 +411,24 @@ public class TokenStreamStringImplTest {
         assertNotNull(token);
         assertEquals(SPACE, token.getChar().getCodePoint());
         assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase>A single newline character is translated into a space.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCR1() throws Exception {
+
+        TokenStream stream = makeStream("a\nc");
+        assertEquals("the letter a", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token t = stream.get(FACTORY, TOKENIZER);
+        assertEquals("blank space  ", t.toString());
+        assertEquals("the letter c", //
+            stream.get(FACTORY, TOKENIZER).toString());
     }
 
     /**
@@ -389,18 +453,40 @@ public class TokenStreamStringImplTest {
     }
 
     /**
+     * <testcase>A single newline character is translated into a space. The
+     * following space is absorbed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCR2() throws Exception {
+
+        TokenStream stream = makeStream("a\n c");
+        assertEquals("the letter a", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token t = stream.get(FACTORY, TOKENIZER);
+        assertEquals("blank space  ", t.toString());
+        assertEquals("the letter c", //
+            stream.get(FACTORY, TOKENIZER).toString());
+    }
+
+    /**
      * <testcase> ... </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
-        assertEquals("the control sequence \\par", stream.get(FACTORY,
-            TOKENIZER).toString());
+        assertEquals("the control sequence \\par",
+            stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("the letter a", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("the letter a", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("the letter a", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
         assertEquals("the letter x", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
@@ -410,115 +496,16 @@ public class TokenStreamStringImplTest {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
+    @Ignore("gene: the double \\par at the beginning is curious")
     public void testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
-        assertEquals("the control sequence \\par", stream.get(FACTORY,
-            TOKENIZER).toString());
-        assertEquals("the control sequence \\par", stream.get(FACTORY,
-            TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> The empty string does not contain any characters </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEmpty() throws Exception {
-
-        TokenStream stream = makeStream("");
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>An ignored character does not appear in the token stream.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testIgnore() throws Exception {
-
-        TokenStream stream = makeStream("\f.");
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>An invalid character does not appear in the token stream.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testInvalid() throws Exception {
-
-        TokenStream stream = makeStream("\b.");
-        try {
-            stream.get(FACTORY, TOKENIZER);
-            assertFalse(true);
-        } catch (ScannerException e) {
-            assertTrue(true);
-        }
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>A letter is parsed as letter; e.g. the letter A. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetter() throws Exception {
-
-        TokenStream stream = makeStream("A");
-        assertEquals("the letter A", stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>The hash mark is parsed as macro parameter character.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testHash() throws Exception {
-
-        TokenStream stream = makeStream("#");
-        assertEquals("macro parameter character #", //
+        assertEquals("the control sequence \\par",
             stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>An ampersand is pared as alignment tab character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testTab() throws Exception {
-
-        TokenStream stream = makeStream("&");
-        assertEquals("alignment tab character &", //
+        assertEquals("the control sequence \\par",
             stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertEquals("the letter x", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
@@ -540,142 +527,14 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase>An underscore is parsed as subscript character. </testcase>
+     * <testcase> The empty string does not contain any characters </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testUnderscore() throws Exception {
+    public void testEmpty() throws Exception {
 
-        TokenStream stream = makeStream("_");
-        assertEquals("subscript character _", //
-            stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>A { is parsed as left brace character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLeftBrace() throws Exception {
-
-        TokenStream stream = makeStream("{");
-        assertEquals("begin-group character {", //
-            stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase>A } is parsed as left brace character. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testRightBrace() throws Exception {
-
-        TokenStream stream = makeStream("}");
-        assertEquals("end-group character }", //
-            stream.get(FACTORY, TOKENIZER).toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> An embedded space between letters is treated correctly.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMixed() throws Exception {
-
-        TokenStream stream = makeStream("12 34");
-        assertEquals("the character 1", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("the character 2", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertEquals("the character 3", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("the character 4", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        Token token = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(token);
-        assertEquals(SPACE, token.getChar().getCodePoint());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> A single space at the beginning of the processing is skipped
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSpace() throws Exception {
-
-        TokenStream stream = makeStream(" .");
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> The character period and space in sequence are parsed into
-     * appropriate tokens. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSpace2() throws Exception {
-
-        TokenStream stream = makeStream(". ");
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> The character period and two spaces in sequence are parsed
-     * into appropriate tokens. The two spaces are collapsed into one.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSpace3() throws Exception {
-
-        TokenStream stream = makeStream(".  ");
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
-     * <testcase> Two spaces at the beginning are ignored. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testSpaces() throws Exception {
-
-        TokenStream stream = makeStream("  .");
-        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
-            .toString());
-        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        TokenStream stream = makeStream("");
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
@@ -790,15 +649,16 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that ~ is recognized as active character. </testcase>
+     * <testcase>The hash mark is parsed as macro parameter character.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testActive() throws Exception {
+    public void testHash() throws Exception {
 
-        TokenStream stream = makeStream("~");
-        assertEquals("the active character ~", //
+        TokenStream stream = makeStream("#");
+        assertEquals("macro parameter character #", //
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -807,31 +667,41 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that % acts as comment characters and eats up anything to
-     * EOF if no newline is contained. </testcase>
+     * <testcase>An ignored character does not appear in the token stream.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testComment1() throws Exception {
+    public void testIgnore() throws Exception {
 
-        TokenStream stream = makeStream("%abc");
+        TokenStream stream = makeStream("\f.");
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
     /**
-     * <testcase> Test that % acts as comment characters and eats up anything to
-     * EOF if no newline is contained. </testcase>
+     * <testcase>An invalid character does not appear in the token stream.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testComment2() throws Exception {
+    public void testInvalid() throws Exception {
 
-        TokenStream stream = makeStream("%abc\nx");
-        Token t = stream.get(FACTORY, TOKENIZER);
-        assertNotNull(t);
-        assertEquals(120, t.getChar().getCodePoint());
+        TokenStream stream = makeStream("\b.");
+        try {
+            stream.get(FACTORY, TOKENIZER);
+            assertFalse(true);
+        } catch (ScannerException e) {
+            assertTrue(true);
+        }
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
     /**
@@ -866,71 +736,6 @@ public class TokenStreamStringImplTest {
     }
 
     /**
-     * <testcase> Test that getLocator() returns something sensible. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLocator() throws Exception {
-
-        TokenStream stream = makeStream("abc");
-        Locator locator = stream.getLocator();
-        assertNotNull(locator);
-        assertEquals("test:0:", locator.toString());
-        assertNotNull(stream.get(FACTORY, TOKENIZER));
-        assertEquals("test:0:", locator.toString());
-    }
-
-    /**
-     * <testcase>A single newline character is translated into a space.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCR1() throws Exception {
-
-        TokenStream stream = makeStream("a\nc");
-        assertEquals("the letter a", //
-            stream.get(FACTORY, TOKENIZER).toString());
-        Token t = stream.get(FACTORY, TOKENIZER);
-        assertEquals("blank space  ", t.toString());
-        assertEquals("the letter c", //
-            stream.get(FACTORY, TOKENIZER).toString());
-    }
-
-    /**
-     * <testcase>A single newline character is translated into a space. The
-     * following space is absorbed. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCR2() throws Exception {
-
-        TokenStream stream = makeStream("a\n c");
-        assertEquals("the letter a", //
-            stream.get(FACTORY, TOKENIZER).toString());
-        Token t = stream.get(FACTORY, TOKENIZER);
-        assertEquals("blank space  ", t.toString());
-        assertEquals("the letter c", //
-            stream.get(FACTORY, TOKENIZER).toString());
-    }
-
-    /**
-     * <testcase>Attempts to read past the end of file do no harm. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testReread() throws Exception {
-
-        TokenStream stream = makeStream("");
-        assertNull(stream.get(FACTORY, TOKENIZER));
-        assertNull(stream.get(FACTORY, TOKENIZER));
-    }
-
-    /**
      * <testcase>The method isEol() returns false if something is left to read.
      * </testcase>
      * 
@@ -958,6 +763,191 @@ public class TokenStreamStringImplTest {
     }
 
     /**
+     * <testcase>A { is parsed as left brace character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLeftBrace() throws Exception {
+
+        TokenStream stream = makeStream("{");
+        assertEquals("begin-group character {", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase>A letter is parsed as letter; e.g. the letter A. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLetter() throws Exception {
+
+        TokenStream stream = makeStream("A");
+        assertEquals("the letter A", stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> Test that getLocator() returns something sensible. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLocator() throws Exception {
+
+        TokenStream stream = makeStream("abc");
+        Locator locator = stream.getLocator();
+        assertNotNull(locator);
+        assertEquals("test:0:", locator.toString());
+        assertNotNull(stream.get(FACTORY, TOKENIZER));
+        assertEquals("test:0:", locator.toString());
+    }
+
+    /**
+     * <testcase> An embedded space between letters is treated correctly.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMixed() throws Exception {
+
+        TokenStream stream = makeStream("12 34");
+        assertEquals("the character 1", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("the character 2", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertEquals("the character 3", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("the character 4", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase>Attempts to read past the end of file do no harm. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testReread() throws Exception {
+
+        TokenStream stream = makeStream("");
+        assertNull(stream.get(FACTORY, TOKENIZER));
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase>A } is parsed as left brace character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRightBrace() throws Exception {
+
+        TokenStream stream = makeStream("}");
+        assertEquals("end-group character }", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> A single space at the beginning of the processing is skipped
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSpace() throws Exception {
+
+        TokenStream stream = makeStream(" .");
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> The character period and space in sequence are parsed into
+     * appropriate tokens. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSpace2() throws Exception {
+
+        TokenStream stream = makeStream(". ");
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> The character period and two spaces in sequence are parsed
+     * into appropriate tokens. The two spaces are collapsed into one.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSpace3() throws Exception {
+
+        TokenStream stream = makeStream(".  ");
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase> Two spaces at the beginning are ignored. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testSpaces() throws Exception {
+
+        TokenStream stream = makeStream("  .");
+        assertEquals("the character .", stream.get(FACTORY, TOKENIZER)
+            .toString());
+        assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
+     * <testcase>An ampersand is pared as alignment tab character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testTab() throws Exception {
+
+        TokenStream stream = makeStream("&");
+        assertEquals("alignment tab character &", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
+    }
+
+    /**
      * <testcase>The method toString() retorts the file, the line and the
      * column. </testcase>
      * 
@@ -968,6 +958,23 @@ public class TokenStreamStringImplTest {
 
         TokenStream stream = makeStream("abc");
         assertEquals("test:0[1]:", stream.toString());
+    }
+
+    /**
+     * <testcase>An underscore is parsed as subscript character. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testUnderscore() throws Exception {
+
+        TokenStream stream = makeStream("_");
+        assertEquals("subscript character _", //
+            stream.get(FACTORY, TOKENIZER).toString());
+        Token token = stream.get(FACTORY, TOKENIZER);
+        assertNotNull(token);
+        assertEquals(SPACE, token.getChar().getCodePoint());
+        assertNull(stream.get(FACTORY, TOKENIZER));
     }
 
 }
