@@ -44,8 +44,8 @@ import org.junit.runner.JUnitCore;
 /**
  * Test cases for the string implementation of a token stream.
  * 
- * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
+ * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4770 $
  */
 public class TokenStreamStringImpl32Test {
@@ -105,6 +105,7 @@ public class TokenStreamStringImpl32Test {
         factory = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
+            @Override
             public Catcode getCatcode(UnicodeChar c) {
 
                 if (c.isLetter()) {
@@ -139,6 +140,7 @@ public class TokenStreamStringImpl32Test {
                 return Catcode.OTHER;
             }
 
+            @Override
             public String getNamespace() {
 
                 return "";
@@ -318,13 +320,15 @@ public class TokenStreamStringImpl32Test {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testCr3() throws Exception {
 
         TokenStream stream = makeStream("\naaa\n  x");
-        assertEquals("the control sequence \\par", stream.get(factory,
-            tokenizer).toString());
+        assertEquals("the letter a", stream.get(factory, tokenizer).toString());
+        assertEquals("the letter a", stream.get(factory, tokenizer).toString());
+        assertEquals("the letter a", stream.get(factory, tokenizer).toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertEquals("the letter x", stream.get(factory, tokenizer).toString());
+        assertEquals("blank space  ", stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
 
@@ -338,10 +342,10 @@ public class TokenStreamStringImpl32Test {
     public void testCr4() throws Exception {
 
         TokenStream stream = makeStream("\n\nx");
-        assertEquals("the control sequence \\par", stream.get(factory,
-            tokenizer).toString());
-        assertEquals("the control sequence \\par", stream.get(factory,
-            tokenizer).toString());
+        assertEquals("the control sequence \\par",
+            stream.get(factory, tokenizer).toString());
+        assertEquals("the control sequence \\par",
+            stream.get(factory, tokenizer).toString());
         assertNull(stream.get(factory, tokenizer));
     }
 
@@ -472,7 +476,6 @@ public class TokenStreamStringImpl32Test {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testSpace() throws Exception {
 
         TokenStream stream = makeStream(" ");
@@ -518,7 +521,6 @@ public class TokenStreamStringImpl32Test {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testSpaces() throws Exception {
 
         TokenStream stream = makeStream("  ");
