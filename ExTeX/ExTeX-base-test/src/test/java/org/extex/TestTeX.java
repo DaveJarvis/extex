@@ -186,6 +186,7 @@ public final class TestTeX {
         extex.setOutStream(output);
 
         extex.run();
+        extex.close();
 
         // compare
 
@@ -198,7 +199,7 @@ public final class TestTeX {
             String linetesttxt;
             while ((linetxt = intxt.readLine()) != null) {
                 linetesttxt = intesttxt.readLine();
-
+                Assert.assertNotNull(linetesttxt); // gene
                 Assert.assertEquals(linetesttxt, linetxt);
             }
 
