@@ -90,6 +90,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @see org.extex.scanner.api.TokenStream#closeFileStream()
      */
+    @Override
     public boolean closeFileStream() {
 
         stack = new Tokens();
@@ -112,6 +113,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
      *      org.extex.scanner.api.Tokenizer)
      */
+    @Override
     public Token get(TokenFactory factory, Tokenizer tokenizer)
             throws ScannerException {
 
@@ -145,6 +147,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @see org.extex.scanner.api.TokenStream#getLocator()
      */
+    @Override
     public Locator getLocator() {
 
         return new Locator(null, 0, null, 0);
@@ -173,6 +176,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @throws ScannerException in case of an error
      */
+    @Override
     public boolean isEof() throws ScannerException {
 
         return (stack.length() == 0);
@@ -185,6 +189,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @see org.extex.scanner.api.TokenStream#isEol()
      */
+    @Override
     public boolean isEol() throws ScannerException {
 
         return (stack.length() == 0);
@@ -197,6 +202,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @see org.extex.scanner.api.TokenStream#isFileStream()
      */
+    @Override
     public boolean isFileStream() {
 
         return fileStream;
@@ -218,6 +224,7 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
      */
+    @Override
     public void put(Token token) {
 
         if (token != null) {
