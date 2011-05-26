@@ -46,8 +46,19 @@ public class Accumulator {
      */
     public Accumulator() {
 
-        this.sp = 0;
         this.value = 0;
+        this.sp = 0;
+    }
+
+    /**
+     * Creates a new object.
+     * 
+     * @param value the value
+     */
+    public Accumulator(Accumulator value) {
+
+        this.value = value.value;
+        this.sp = value.sp;
     }
 
     /**
@@ -57,9 +68,8 @@ public class Accumulator {
      */
     public Accumulator(long value) {
 
-        this.sp = 0;
-
         this.value = value;
+        this.sp = 0;
     }
 
     /**

@@ -48,10 +48,52 @@ import org.extex.typesetter.exception.TypesetterException;
 public class ConstantMuskipParser implements Parser<Muskip> {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
+
+    /**
+     * Scan a math unit.
+     * 
+     * @param context the processor context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
+     * @return the number of scaled points for the mu
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    private static GlueComponent scanMuOrFill(Context context,
+            TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
+
+        Token t = source.getToken(context);
+        if (t == null) {
+            throw new EofException("mu");
+        }
+        long value =
+                ScaledNumberParser.scanFloat(context, source, typesetter, t,
+                    false);
+        if (source.getKeyword(context, "mu")) {
+            return new GlueComponent(value);
+        } else if (source.getKeyword(context, "fillll")) {
+            return new GlueComponent(value, (byte) 5);
+        } else if (source.getKeyword(context, "filll")) {
+            return new GlueComponent(value, (byte) 4);
+        } else if (source.getKeyword(context, "fill")) {
+            return new GlueComponent(value, (byte) 3);
+        } else if (source.getKeyword(context, "fil")) {
+            return new GlueComponent(value, (byte) 2);
+        } else if (source.getKeyword(context, "fi")) {
+            return new GlueComponent(value, (byte) 1);
+        }
+        throw new HelpingException(
+            LocalizerFactory.getLocalizer(ConstantMuskipParser.class),
+            "TTP.IllegalMu");
+
+    }
 
     /**
      * Creates a new object and fills it from a token stream.
@@ -65,6 +107,7 @@ public class ConstantMuskipParser implements Parser<Muskip> {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
+    @Override
     public Muskip parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -95,10 +138,12 @@ public class ConstantMuskipParser implements Parser<Muskip> {
         }
 
         long value =
-                ScaledNumberParser.scanFloat(context, source, typesetter, t);
+                ScaledNumberParser.scanFloat(context, source, typesetter, t,
+                    false);
         if (!source.getKeyword(context, "mu")) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(ConstantMuskipParser.class), "TTP.IllegalMu");
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(ConstantMuskipParser.class),
+                "TTP.IllegalMu");
         }
         Dimen len = new Dimen(value);
         GlueComponent stretch = null;
@@ -113,47 +158,6 @@ public class ConstantMuskipParser implements Parser<Muskip> {
         source.skipSpace();
 
         return new Muskip(len, stretch, shrink);
-    }
-
-    /**
-     * Scan a math unit.
-     * 
-     * @param context the processor context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the number of scaled points for the mu
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private static GlueComponent scanMuOrFill(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        Token t = source.getToken(context);
-        if (t == null) {
-            throw new EofException("mu");
-        }
-        long value =
-                ScaledNumberParser.scanFloat(context, source, typesetter, t);
-        if (source.getKeyword(context, "mu")) {
-            return new GlueComponent(value);
-        } else if (source.getKeyword(context, "fillll")) {
-            return new GlueComponent(value, (byte) 5);
-        } else if (source.getKeyword(context, "filll")) {
-            return new GlueComponent(value, (byte) 4);
-        } else if (source.getKeyword(context, "fill")) {
-            return new GlueComponent(value, (byte) 3);
-        } else if (source.getKeyword(context, "fil")) {
-            return new GlueComponent(value, (byte) 2);
-        } else if (source.getKeyword(context, "fi")) {
-            return new GlueComponent(value, (byte) 1);
-        }
-        throw new HelpingException(LocalizerFactory
-            .getLocalizer(ConstantMuskipParser.class), "TTP.IllegalMu");
-
     }
 
 }

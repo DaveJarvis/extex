@@ -88,6 +88,7 @@ public class ScaledNumberParser {
          * 
          * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
             return arg1 - arg2;
@@ -104,6 +105,7 @@ public class ScaledNumberParser {
          * 
          * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
@@ -121,6 +123,7 @@ public class ScaledNumberParser {
          * 
          * @see org.extex.base.parser.ScaledNumberParser.BinOp#apply(long, long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
             return arg2;
@@ -219,7 +222,7 @@ public class ScaledNumberParser {
                 } else if (t.eq(Catcode.OTHER, '-')) {
                     return -parse(context, source, typesetter);
                 } else {
-                    return scanFloat(context, source, typesetter, t);
+                    return scanFloat(context, source, typesetter, t, false);
                 }
 
             } else if (t instanceof CodeToken) {
@@ -275,6 +278,7 @@ public class ScaledNumberParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param start the initial token to start with
+     * @param negate negate the value found
      * 
      * @return the fixed point representation of the floating number in units of
      *         2<sup>-16</sup>.
@@ -283,11 +287,11 @@ public class ScaledNumberParser {
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static long scanFloat(Context context, TokenSource source,
-            Typesetter typesetter, Token start)
+            Typesetter typesetter, Token start, boolean negate)
             throws HelpingException,
                 TypesetterException {
 
-        boolean neg = false;
+        boolean neg = negate;
         long val = 0;
         int post = 0;
         Token t = start;

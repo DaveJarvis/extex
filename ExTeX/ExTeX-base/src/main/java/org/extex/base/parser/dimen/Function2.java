@@ -34,9 +34,10 @@ interface Function2 {
      *
      * @param arg1 the first argument
      * @param arg2 the second argument
+     * @return TODO
      *
      * @throws HelpingException in case of an error
      */
-    void apply(Accumulator arg1, Accumulator arg2) throws HelpingException;
+    Accumulator apply(Accumulator arg1, Accumulator arg2) throws HelpingException;
 
 }

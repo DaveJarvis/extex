@@ -34,9 +34,10 @@ public interface Function1 {
      * and return in the accumulator overwriting the value stored therein.
      *
      * @param accumulator the accumulator to receive the result
+     * @return TODO
      *
      * @throws HelpingException in case of an error
      */
-    void apply(Accumulator accumulator) throws HelpingException;
+    Accumulator apply(Accumulator accumulator) throws HelpingException;
 
 }

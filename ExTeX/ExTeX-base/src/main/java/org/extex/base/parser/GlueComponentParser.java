@@ -39,8 +39,11 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides a means to store floating numbers with an order.
- *
- * <p>Examples</p>
+ * 
+ * <p>
+ * Examples
+ * </p>
+ * 
  * <pre>
  * 123 pt
  * -123 pt
@@ -50,7 +53,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * -.456pt
  * +456pt
  * </pre>
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
@@ -86,89 +89,25 @@ public class GlueComponentParser {
     private static final int PT_PER_PC = 12;
 
     /**
-     * Getter for the localizer.
-     * The localizer is associated with the name of the class GlueComponent.
-     *
-     * @return the localizer
-     */
-    protected static Localizer getMyLocalizer() {
-
-        return LocalizerFactory.getLocalizer(GlueComponentParser.class);
-    }
-
-    /**
-     * Creates a new object.
-     *
-     * @param context the interpreter context
-     * @param source the source for the tokens to be read
-     * @param typesetter the typesetter
-     * @param fixed if <code>true</code> then no glue order is allowed
-     *
-     * @return a new instance with the value from the input stream
-     *
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    public static GlueComponent parse(Context context,
-            TokenSource source, Typesetter typesetter,
-            boolean fixed) throws HelpingException, TypesetterException {
-
-        long value = 0;
-
-        Token t;
-        for (;;) {
-            t = source.getNonSpace(context);
-            if (t == null) {
-                throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
-            } else if (t instanceof CodeToken) {
-                Code code = context.getCode((CodeToken) t);
-                if (code instanceof DimenConvertible) {
-                    value =
-                            ((DimenConvertible) code).convertDimen(context,
-                                source, typesetter);
-                    return new GlueComponent(value);
-                } else if (code instanceof ExpandableCode) {
-                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
-                        typesetter);
-                } else {
-                    break;
-                }
-            } else {
-                break;
-            }
-        }
-
-        value = ScaledNumberParser.scanFloat(context, source, typesetter, t);
-
-        GlueComponent gc =
-                attachUnit(value, context, source, typesetter, fixed);
-        if (gc == null) {
-            // cf. TTP [459]
-            throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
-        }
-        return gc;
-    }
-
-    /**
      * Convert a value by scanning a unit and storing its converted value in a
      * GlueComponent.
-     *
+     * 
      * @param context the interpreter context
      * @param source the source for the tokens to be read
      * @param typesetter the typesetter
      * @param fixed if <code>true</code> then no glue order is allowed
      * @param value the value to encapsulate
-     *
-     * @return the value converted into a GlueComponent or <code>null</code>
-     *  if no suitable unit could be found
-     *
+     * 
+     * @return the value converted into a GlueComponent or <code>null</code> if
+     *         no suitable unit could be found
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static GlueComponent attachUnit(long value,
-            Context context, TokenSource source,
-            Typesetter typesetter, boolean fixed)
-            throws HelpingException, TypesetterException {
+    public static GlueComponent attachUnit(long value, Context context,
+            TokenSource source, Typesetter typesetter, boolean fixed)
+            throws HelpingException,
+                TypesetterException {
 
         Token t;
         long v = value;
@@ -346,20 +285,86 @@ public class GlueComponentParser {
     }
 
     /**
-     * Creates a new object from a TokenStream.
-     *
-     * @param source the source for new tokens
+     * Getter for the localizer. The localizer is associated with the name of
+     * the class GlueComponent.
+     * 
+     * @return the localizer
+     */
+    protected static Localizer getMyLocalizer() {
+
+        return LocalizerFactory.getLocalizer(GlueComponentParser.class);
+    }
+
+    /**
+     * Creates a new object.
+     * 
      * @param context the interpreter context
+     * @param source the source for the tokens to be read
      * @param typesetter the typesetter
-     *
+     * @param fixed if <code>true</code> then no glue order is allowed
+     * 
      * @return a new instance with the value from the input stream
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static GlueComponent parse(TokenSource source,
-            Context context, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+    public static GlueComponent parse(Context context, TokenSource source,
+            Typesetter typesetter, boolean fixed)
+            throws HelpingException,
+                TypesetterException {
+
+        long value = 0;
+
+        Token t;
+        for (;;) {
+            t = source.getNonSpace(context);
+            if (t == null) {
+                throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
+            } else if (t instanceof CodeToken) {
+                Code code = context.getCode((CodeToken) t);
+                if (code instanceof DimenConvertible) {
+                    value =
+                            ((DimenConvertible) code).convertDimen(context,
+                                source, typesetter);
+                    return new GlueComponent(value);
+                } else if (code instanceof ExpandableCode) {
+                    ((ExpandableCode) code).expand(Flags.NONE, context, source,
+                        typesetter);
+                } else {
+                    break;
+                }
+            } else {
+                break;
+            }
+        }
+
+        value =
+                ScaledNumberParser.scanFloat(context, source, typesetter, t,
+                    false);
+
+        GlueComponent gc =
+                attachUnit(value, context, source, typesetter, fixed);
+        if (gc == null) {
+            // cf. TTP [459]
+            throw new HelpingException(getMyLocalizer(), "TTP.IllegalUnit");
+        }
+        return gc;
+    }
+
+    /**
+     * Creates a new object from a TokenStream.
+     * 
+     * @param source the source for new tokens
+     * @param context the interpreter context
+     * @param typesetter the typesetter
+     * 
+     * @return a new instance with the value from the input stream
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    public static GlueComponent parse(TokenSource source, Context context,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         return parse(context, source, typesetter, false);
     }
@@ -368,6 +373,7 @@ public class GlueComponentParser {
      * Creates a new object.
      */
     private GlueComponentParser() {
+
         // never used
     }
 

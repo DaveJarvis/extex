@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,8 +42,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class ConstantMudimenParser implements Parser<Mudimen> {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -73,7 +72,8 @@ public class ConstantMudimenParser implements Parser<Mudimen> {
             }
         }
         long value =
-                ScaledNumberParser.scanFloat(context, source, typesetter, t);
+                ScaledNumberParser.scanFloat(context, source, typesetter, t,
+                    false);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(
                 //
@@ -109,12 +109,12 @@ public class ConstantMudimenParser implements Parser<Mudimen> {
      * @throws TypesetterException in case of an error in the typesetter
      * 
      * 
-     * {@inheritDoc}
+     *         {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.Parser#parse(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.Parser#parse(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Mudimen parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

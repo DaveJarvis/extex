@@ -65,14 +65,18 @@ public final class LengthParser {
     private static final Function2 ASSIGN = new Function2() {
 
         /**
-         * @see org.extex.base.parser.dimen.Function2#apply(
-         *      org.extex.base.parser.dimen.Accumulator,
+         * @see org.extex.base.parser.dimen.Function2#apply(org.extex.base.parser.dimen.Accumulator,
          *      org.extex.base.parser.dimen.Accumulator)
          */
-        public void apply(Accumulator arg1, Accumulator arg2) {
+        @Override
+        public Accumulator apply(Accumulator arg1, Accumulator arg2) {
 
+            if (arg1 == null) {
+                return new Accumulator(arg2);
+            }
             arg1.value = arg2.value;
             arg1.sp = arg2.sp;
+            return arg1;
         }
     };
 
@@ -89,20 +93,24 @@ public final class LengthParser {
     private static final Function2 MINUS = new Function2() {
 
         /**
-         * @see org.extex.base.parser.dimen.Function2#apply(
-         *      org.extex.base.parser.dimen.Accumulator,
+         * @see org.extex.base.parser.dimen.Function2#apply(org.extex.base.parser.dimen.Accumulator,
          *      org.extex.base.parser.dimen.Accumulator)
          */
-        public void apply(Accumulator arg1, Accumulator arg2)
+        @Override
+        public Accumulator apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
+            if (arg1 == null) {
+                return arg2;
+            }
             if (arg1.sp != arg2.sp) {
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(LengthParser.class), "IncompatibleUnit", "-",
-                    "sp^" + Integer.toString(arg1.sp), "sp^"
-                            + Integer.toString(arg2.sp));
+                throw new HelpingException(
+                    LocalizerFactory.getLocalizer(LengthParser.class),
+                    "IncompatibleUnit", "-", "sp^" + Integer.toString(arg1.sp),
+                    "sp^" + Integer.toString(arg2.sp));
             }
             arg1.value -= arg2.value;
+            return arg1;
         }
     };
 
@@ -112,20 +120,24 @@ public final class LengthParser {
     private static final Function2 PLUS = new Function2() {
 
         /**
-         * @see org.extex.base.parser.dimen.Function2#apply(
-         *      org.extex.base.parser.dimen.Accumulator,
+         * @see org.extex.base.parser.dimen.Function2#apply(org.extex.base.parser.dimen.Accumulator,
          *      org.extex.base.parser.dimen.Accumulator)
          */
-        public void apply(Accumulator arg1, Accumulator arg2)
+        @Override
+        public Accumulator apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
+            if (arg1 == null) {
+                return arg2;
+            }
             if (arg1.sp != arg2.sp) {
-                throw new HelpingException(LocalizerFactory
-                    .getLocalizer(LengthParser.class), "IncompatibleUnit", "+",
-                    "sp^" + Integer.toString(arg1.sp), "sp^"
-                            + Integer.toString(arg2.sp));
+                throw new HelpingException(
+                    LocalizerFactory.getLocalizer(LengthParser.class),
+                    "IncompatibleUnit", "+", "sp^" + Integer.toString(arg1.sp),
+                    "sp^" + Integer.toString(arg2.sp));
             }
             arg1.value += arg2.value;
+            return arg1;
         }
     };
 
@@ -135,9 +147,9 @@ public final class LengthParser {
             /**
              * Compute the absolute value by eliminating the sign if present.
              * 
-             * @see org.extex.base.parser.dimen.Function1#apply(
-             *      org.extex.base.parser.dimen.Accumulator)
+             * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
+            @Override
             public void apply(Accumulator accumulator) throws HelpingException {
 
                 if (accumulator.value < 0) {
@@ -156,18 +168,19 @@ public final class LengthParser {
              * @param source the source for new tokens
              * @param typesetter the typesetter
              */
-            public void apply(Accumulator accumulator, Context context,
+            @Override
+            public Accumulator apply(Accumulator accumulator, Context context,
                     TokenSource source, Typesetter typesetter)
                     throws HelpingException,
                         TypesetterException {
 
                 Token t;
-                evalExpr(accumulator, context, source, typesetter);
+                accumulator =
+                        evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
-                    Accumulator x = new Accumulator();
-                    evalExpr(x, context, source, typesetter);
+                    Accumulator x = evalExpr(null, context, source, typesetter);
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
@@ -180,6 +193,7 @@ public final class LengthParser {
                     }
                 }
                 source.push(t);
+                return accumulator;
             }
         });
 
@@ -195,18 +209,19 @@ public final class LengthParser {
              *      org.extex.interpreter.TokenSource,
              *      org.extex.typesetter.Typesetter)
              */
-            public void apply(Accumulator accumulator, Context context,
+            @Override
+            public Accumulator apply(Accumulator accumulator, Context context,
                     TokenSource source, Typesetter typesetter)
                     throws HelpingException,
                         TypesetterException {
 
                 Token t;
-                evalExpr(accumulator, context, source, typesetter);
+                accumulator =
+                        evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
-                    Accumulator x = new Accumulator();
-                    evalExpr(x, context, source, typesetter);
+                    Accumulator x = evalExpr(null, context, source, typesetter);
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
@@ -219,6 +234,7 @@ public final class LengthParser {
                     }
                 }
                 source.push(t);
+                return accumulator;
             }
         });
 
@@ -228,10 +244,11 @@ public final class LengthParser {
              * Compute the sign i.e. return 1 for positive values, 0 for zero
              * values and -1 for negative values.
              * 
-             * @see org.extex.base.parser.dimen.Function1#apply(
-             *      org.extex.base.parser.dimen.Accumulator)
+             * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
-            public void apply(Accumulator accumulator) throws HelpingException {
+            @Override
+            public Accumulator apply(Accumulator accumulator)
+                    throws HelpingException {
 
                 if (accumulator.value > 0) {
                     accumulator.value = 1;
@@ -241,6 +258,7 @@ public final class LengthParser {
                     accumulator.value = 0;
                 }
                 accumulator.sp = 0;
+                return accumulator;
             }
         });
 
@@ -249,10 +267,11 @@ public final class LengthParser {
             /**
              * Compute the cos value.
              * 
-             * @see org.extex.base.parser.dimen.Function1#apply(
-             *      org.extex.base.parser.dimen.Accumulator)
+             * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
-            public void apply(Accumulator accumulator) throws HelpingException {
+            @Override
+            public Accumulator apply(Accumulator accumulator)
+                    throws HelpingException {
 
                 if (accumulator.sp != 0) {
                     throw new HelpingException(LocalizerFactory
@@ -261,6 +280,7 @@ public final class LengthParser {
                 }
                 double x = ((double) accumulator.value) / ScaledNumber.ONE;
                 accumulator.value = (long) (ScaledNumber.ONE * Math.cos(x));
+                return accumulator;
             }
         });
 
@@ -269,10 +289,11 @@ public final class LengthParser {
             /**
              * Compute the sin value.
              * 
-             * @see org.extex.base.parser.dimen.Function1#apply(
-             *      org.extex.base.parser.dimen.Accumulator)
+             * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
-            public void apply(Accumulator accumulator) throws HelpingException {
+            @Override
+            public Accumulator apply(Accumulator accumulator)
+                    throws HelpingException {
 
                 if (accumulator.sp != 0) {
                     throw new HelpingException(LocalizerFactory
@@ -281,6 +302,7 @@ public final class LengthParser {
                 }
                 double x = ((double) accumulator.value) / ScaledNumber.ONE;
                 accumulator.value = (long) (ScaledNumber.ONE * Math.sin(x));
+                return accumulator;
             }
         });
 
@@ -289,10 +311,11 @@ public final class LengthParser {
             /**
              * Compute the tan value.
              * 
-             * @see org.extex.base.parser.dimen.Function1#apply(
-             *      org.extex.base.parser.dimen.Accumulator)
+             * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
-            public void apply(Accumulator accumulator) throws HelpingException {
+            @Override
+            public Accumulator apply(Accumulator accumulator)
+                    throws HelpingException {
 
                 if (accumulator.sp != 0) {
                     throw new HelpingException(LocalizerFactory
@@ -301,6 +324,7 @@ public final class LengthParser {
                 }
                 double x = ((double) accumulator.value) / ScaledNumber.ONE;
                 accumulator.value = (long) (ScaledNumber.ONE * Math.tan(x));
+                return accumulator;
             }
         });
 
@@ -311,6 +335,7 @@ public final class LengthParser {
              * 
              * @param accumulator the accumulator to receive the result
              */
+            @Override
             public void apply(Accumulator accumulator) throws HelpingException {
 
                 accumulator.sp = 0;
@@ -327,61 +352,60 @@ public final class LengthParser {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
+     * @return the accumulator
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    private static void evalExpr(Accumulator accumulator, Context context,
-            TokenSource source, Typesetter typesetter)
+    private static Accumulator evalExpr(Accumulator accumulator,
+            Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {
 
         Token t;
         Function2 op = ASSIGN;
-        Accumulator val = new Accumulator();
-        evalTerm(val, context, source, typesetter);
+        Accumulator acc = evalTerm(null, context, source, typesetter);
 
         for (t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
             if (t.eq(Catcode.OTHER, '*')) {
-                Accumulator x = new Accumulator();
-                evalTerm(x, context, source, typesetter);
-                val.value *= x.value;
+                Accumulator x = evalTerm(null, context, source, typesetter);
+                acc.value *= x.value;
                 if (x.sp == 0) {
-                    val.value /= ScaledNumber.ONE;
+                    acc.value /= ScaledNumber.ONE;
                 } else {
-                    val.value /= Dimen.ONE;
-                    val.sp += x.sp;
+                    acc.value /= Dimen.ONE;
+                    acc.sp += x.sp;
                 }
 
             } else if (t.eq(Catcode.OTHER, '/')) {
-                Accumulator x = new Accumulator();
-                evalTerm(x, context, source, typesetter);
+                Accumulator x = evalTerm(null, context, source, typesetter);
                 if (x.value == 0) {
                     throw new ArithmeticOverflowException("");
                 }
                 if (x.sp == 0) {
-                    val.value *= ScaledNumber.ONE;
+                    acc.value *= ScaledNumber.ONE;
                 } else {
-                    val.value *= Dimen.ONE;
-                    val.sp -= x.sp;
+                    acc.value *= Dimen.ONE;
+                    acc.sp -= x.sp;
                 }
-                val.value /= x.value;
+                acc.value /= x.value;
 
             } else if (t.eq(Catcode.OTHER, '+')) {
-                op.apply(accumulator, val);
-                evalTerm(val, context, source, typesetter);
+                accumulator = op.apply(accumulator, acc);
+                acc = evalTerm(acc, context, source, typesetter);
                 op = PLUS;
 
             } else if (t.eq(Catcode.OTHER, '-')) {
-                op.apply(accumulator, val);
-                evalTerm(val, context, source, typesetter);
+                accumulator = op.apply(accumulator, acc);
+                acc = evalTerm(acc, context, source, typesetter);
                 op = MINUS;
 
             } else {
                 source.push(t);
-                op.apply(accumulator, val);
-                return;
+                accumulator = op.apply(accumulator, acc);
+                return accumulator;
             }
         }
 
@@ -391,16 +415,19 @@ public final class LengthParser {
     /**
      * Evaluate a terminal.
      * 
-     * @param accumulator the accumulator to receive the result
+     * @param accumulator the accumulator to receive the result or
+     *        <code>null</code> for an undefined value
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
+     * @return the accumulator
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static void evalTerm(Accumulator accumulator, Context context,
-            TokenSource source, Typesetter typesetter)
+    public static Accumulator evalTerm(Accumulator accumulator,
+            Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {
 
@@ -409,21 +436,23 @@ public final class LengthParser {
 
             if (t instanceof OtherToken) {
                 if (t.eq(Catcode.OTHER, '(')) {
-                    evalExpr(accumulator, context, source, typesetter);
+                    accumulator =
+                            evalExpr(accumulator, context, source, typesetter);
                     t = source.getNonSpace(context);
-                    if (t != null && t.eq(Catcode.OTHER, ')')) {
-                        return;
+                    if (t == null || !t.eq(Catcode.OTHER, ')')) {
+                        throw new HelpingException(
+                            LocalizerFactory.getLocalizer(LengthParser.class),
+                            "MissingParenthesis", (t == null
+                                    ? "null"
+                                    : t.toString()));
                     }
-
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(LengthParser.class),
-                        "MissingParenthesis", (t == null ? "null" : t
-                            .toString()));
+                    return accumulator;
 
                 } else if (t.eq(Catcode.OTHER, '-')) {
-                    evalTerm(accumulator, context, source, typesetter);
+                    accumulator =
+                            evalTerm(accumulator, context, source, typesetter);
                     accumulator.value = -accumulator.value;
-                    return;
+                    return accumulator;
 
                 } else if (t.eq(Catcode.OTHER, '+')) {
                     // continue
@@ -431,11 +460,13 @@ public final class LengthParser {
 
                     long value =
                             ScaledNumberParser.scanFloat(context, source,
-                                typesetter, t);
-
+                                typesetter, t, false);
                     GlueComponent gc =
                             GlueComponentParser.attachUnit(value, context,
                                 source, typesetter, false);
+                    if (accumulator == null) {
+                        accumulator = new Accumulator(ScaledNumber.ONE);
+                    }
                     if (gc == null) {
                         accumulator.value *= value;
                         accumulator.value /= ScaledNumber.ONE;
@@ -446,26 +477,35 @@ public final class LengthParser {
                         accumulator.sp = 1;
                     }
 
-                    return;
+                    return accumulator;
                 }
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
-                    accumulator.value *=
+                    if (accumulator == null) {
+                        accumulator = new Accumulator(ScaledNumber.ONE);
+                    }
+                    accumulator.value =
                             ((DimenConvertible) code).convertDimen(context,
                                 source, typesetter);
-                    accumulator.value /= ScaledNumber.ONE;
+                    // accumulator.value /= ScaledNumber.ONE;
                     accumulator.sp += 1;
-                    return;
+                    return accumulator;
 
                 } else if (code instanceof ScaledConvertible) {
-                    accumulator.value *=
+                    if (accumulator == null) {
+                        accumulator = new Accumulator(ScaledNumber.ONE);
+                    }
+                    accumulator.value =
                             ((ScaledConvertible) code).convertScaled(context,
                                 source, typesetter);
-                    accumulator.value /= ScaledNumber.ONE;
+                    // accumulator.value /= ScaledNumber.ONE;
 
                 } else if (code instanceof CountConvertible) {
-                    accumulator.value *=
+                    if (accumulator == null) {
+                        accumulator = new Accumulator(ScaledNumber.ONE);
+                    }
+                    accumulator.value =
                             ((CountConvertible) code).convertCount(context,
                                 source, typesetter);
 
@@ -489,40 +529,48 @@ public final class LengthParser {
                 Object f = functions.get(name);
                 if (f == null) {
                     source.push(tokens);
+                    if (accumulator == null) {
+                        accumulator = new Accumulator();
+                    }
                     GlueComponent gc =
                             GlueComponentParser.attachUnit(accumulator.value,
                                 context, source, typesetter, false);
+                    if (gc == null) {
+                        throw new HelpingException(
+                            LocalizerFactory.getLocalizer(LengthParser.class),
+                            "SyntaxError", t.toString());
+                    }
                     accumulator.value = gc.getValue();
                     accumulator.sp++;
-                    return;
+                    return accumulator;
                 }
                 if (f instanceof Function0) {
                     ((Function0) f).apply(accumulator);
-                    return;
+                    return accumulator;
                 }
                 if (f instanceof Function1) {
-                    evalTerm(accumulator, context, source, typesetter);
-                    ((Function1) f).apply(accumulator);
-                    return;
+                    return ((Function1) f).apply(evalTerm(accumulator, context,
+                        source, typesetter));
                 }
                 t = source.getNonSpace(context);
                 if (t == null) {
                     throw new EofException();
                 } else if (!t.eq(Catcode.OTHER, '(')) {
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(LengthParser.class),
+                    throw new HelpingException(
+                        LocalizerFactory.getLocalizer(LengthParser.class),
                         "MissingOpenParenthesis", name, t.toString());
                 }
                 if (f instanceof Function2) {
-                    Accumulator arg2 = new Accumulator();
-                    evalExpr(accumulator, context, source, typesetter);
+                    accumulator =
+                            evalExpr(accumulator, context, source, typesetter);
                     skipComma(context, source);
-                    evalExpr(arg2, context, source, typesetter);
-                    ((Function) f).apply(accumulator, context, source,
-                        typesetter);
+                    Accumulator arg2 =
+                            evalExpr(null, context, source, typesetter);
+                    accumulator = ((Function2) f).apply(accumulator, arg2);
                 } else if (f instanceof Function) {
-                    ((Function) f).apply(accumulator, context, source,
-                        typesetter);
+                    accumulator =
+                            ((Function) f).apply(accumulator, context, source,
+                                typesetter);
                 } else {
                     break;
                 }
@@ -531,12 +579,12 @@ public final class LengthParser {
                 if (t == null) {
                     throw new EofException();
                 } else if (!t.eq(Catcode.OTHER, ')')) {
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(LengthParser.class),
+                    throw new HelpingException(
+                        LocalizerFactory.getLocalizer(LengthParser.class),
                         "MissingParenthesis", t.toString());
                 }
                 source.skipSpace();
-                return;
+                return accumulator;
 
             } else {
                 break;
@@ -561,13 +609,17 @@ public final class LengthParser {
     public static Dimen parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
-        evalTerm(accumulator, context, source, typesetter);
+        Accumulator accumulator = evalTerm(null, context, source, typesetter);
+        if (accumulator == null) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(LengthParser.class),
+                "UnboundResult");
+        }
         if (accumulator.sp != 1) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(LengthParser.class), (accumulator.sp == 0
-                    ? "MissingUnit"
-                    : "IllegalUnit"), "sp^" + Integer.toString(accumulator.sp));
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(LengthParser.class),
+                (accumulator.sp == 0 ? "MissingUnit" : "IllegalUnit"), "sp^"
+                        + Integer.toString(accumulator.sp));
         }
         source.skipSpace();
         return new Dimen(accumulator.value);
@@ -633,8 +685,9 @@ public final class LengthParser {
         if (t == null) {
             throw new EofException();
         } else if (!t.eq(Catcode.OTHER, ',')) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(LengthParser.class), "MissingComma", t.toString());
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(LengthParser.class),
+                "MissingComma", t.toString());
         }
         source.skipSpace();
     }
