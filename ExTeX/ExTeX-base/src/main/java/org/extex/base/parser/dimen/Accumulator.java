@@ -84,6 +84,16 @@ public class Accumulator {
     }
 
     /**
+     * Return the ord in a printable form.
+     * 
+     * @return the ord in a printable form
+     */
+    public String ordToString() {
+
+        return "sp^" + Integer.toString(sp);
+    }
+
+    /**
      * Returns a string representation of the object.
      * 
      * @return a string representation of the object.

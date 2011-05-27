@@ -106,12 +106,24 @@ public final class LengthParser {
             if (arg1.sp != arg2.sp) {
                 throw new HelpingException(
                     LocalizerFactory.getLocalizer(LengthParser.class),
-                    "IncompatibleUnit", "-", "sp^" + Integer.toString(arg1.sp),
-                    "sp^" + Integer.toString(arg2.sp));
+                    "IncompatibleUnit", "-", arg1.ordToString(),
+                    arg2.ordToString());
             }
             arg1.value -= arg2.value;
             return arg1;
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "minus";
+        }
+
     };
 
     /**
@@ -133,12 +145,24 @@ public final class LengthParser {
             if (arg1.sp != arg2.sp) {
                 throw new HelpingException(
                     LocalizerFactory.getLocalizer(LengthParser.class),
-                    "IncompatibleUnit", "+", "sp^" + Integer.toString(arg1.sp),
-                    "sp^" + Integer.toString(arg2.sp));
+                    "IncompatibleUnit", "+", arg1.ordToString(),
+                    arg2.ordToString());
             }
             arg1.value += arg2.value;
             return arg1;
         }
+
+        /**
+         * {@inheritDoc}
+         * 
+         * @see java.lang.Object#toString()
+         */
+        @Override
+        public String toString() {
+
+            return "plus";
+        }
+
     };
 
     static {
@@ -186,9 +210,8 @@ public final class LengthParser {
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
-                            "IncompatibleUnit", "max", "sp^"
-                                    + Integer.toString(accumulator.sp), "sp^"
-                                    + Integer.toString(x.sp));
+                            "IncompatibleUnit", "max", accumulator
+                                .ordToString(), x.ordToString());
                     }
                     if (accumulator.value < x.value) {
                         accumulator.value = x.value;
@@ -227,9 +250,8 @@ public final class LengthParser {
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
-                            "IncompatibleUnit", "min", "sp^"
-                                    + Integer.toString(accumulator.sp), "sp^"
-                                    + Integer.toString(x.sp));
+                            "IncompatibleUnit", "min", accumulator
+                                .ordToString(), x.ordToString());
                     }
                     if (accumulator.value > x.value) {
                         accumulator.value = x.value;
@@ -604,8 +626,8 @@ public final class LengthParser {
         if (accumulator.sp != 1) {
             throw new HelpingException(
                 LocalizerFactory.getLocalizer(LengthParser.class),
-                (accumulator.sp == 0 ? "MissingUnit" : "IllegalUnit"), "sp^"
-                        + Integer.toString(accumulator.sp));
+                (accumulator.sp == 0 ? "MissingUnit" : "IllegalUnit"),
+                accumulator.ordToString());
         }
         source.skipSpace();
         return new Dimen(accumulator.value);
