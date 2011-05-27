@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.tex.typesetter.insert;
 
 import org.extex.test.NoFlagsPrimitiveTester;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\insert</tt>.
@@ -31,21 +30,12 @@ import org.junit.runner.JUnitCore;
 public class InsertTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(InsertTest.class);
-    }
-
-    /**
-     * Constructor for InsertTest.
+     * Constructor for InsertTest. The prepare code contains an "x" just to
+     * enter hmode.
      */
     public InsertTest() {
 
-        super("insert", "42{abc}");
+        super("insert", "42{abc}", "x");
     }
 
     // TODO implement primitive specific test cases
