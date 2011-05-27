@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,8 +27,8 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This interface describes a function object which is able to parse its
- * arguments from a toke stream.
- *
+ * arguments from a token stream.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4404 $
  */
@@ -36,17 +36,19 @@ public interface Function {
 
     /**
      * Acquire arguments and compute a function.
-     *
+     * 
      * @param accumulator the accumulator to receive the result
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @return TODO
-     *
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    Accumulator apply(Accumulator accumulator, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException;
+    Accumulator apply(Accumulator accumulator, Context context,
+            TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException;
 
 }

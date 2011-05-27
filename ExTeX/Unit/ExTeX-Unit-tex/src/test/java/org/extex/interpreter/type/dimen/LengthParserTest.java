@@ -49,6 +49,23 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
+     * <testcase> Test case showing that a fraction incremented by a dimen
+     * variable is parsed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    @Ignore
+    public void testAdd2() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=2pt" + "\\dimen0=(1.23pt+\\dimen1)"
+                    + "\\the\\dimen0\\end",
+            //
+            "3.23pt" + TERM);
+    }
+
+    /**
      * <testcase> Test case showing that a count variable is parsed. </testcase>
      * 
      * @throws Exception in case of an error
@@ -323,6 +340,36 @@ public class LengthParserTest extends ExTeXLauncher {
     }
 
     /**
+     * <testcase> Test case showing that negation of a variable is parsed.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMinus1() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=1.23pt" + "\\dimen0=-\\dimen1 " + "\\the\\dimen0\\end",
+            //
+            "-1.23pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that double negation of a variable is
+     * parsed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMinus2() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=1.23pt" + "\\dimen0=--\\dimen1 " + "\\the\\dimen0\\end",
+            //
+            "1.23pt" + TERM);
+    }
+
+    /**
      * <testcase> Test case showing that a integer multiplied dimen variable is
      * parsed. </testcase>
      * 
@@ -384,6 +431,51 @@ public class LengthParserTest extends ExTeXLauncher {
             "\\dimen1=2pt" + "\\dimen0=(\\dimen1*1.23)" + "\\the\\dimen0\\end",
             //
             "2.45999pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that the function pi() is parsed.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPi1() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=(pi pt)" + "\\the\\dimen1\\end",
+            //
+            "3.14159pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that a positive sign of a variable is
+     * parsed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPlus1() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=1.23pt" + "\\dimen0=+\\dimen1 " + "\\the\\dimen0\\end",
+            //
+            "1.23pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that double positive sign of a variable is
+     * parsed. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testPlus2() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=1.23pt" + "\\dimen0=++\\dimen1 " + "\\the\\dimen0\\end",
+            //
+            "1.23pt" + TERM);
     }
 
     /**

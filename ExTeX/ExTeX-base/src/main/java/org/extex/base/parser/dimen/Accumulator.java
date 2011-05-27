@@ -73,6 +73,17 @@ public class Accumulator {
     }
 
     /**
+     * Negate the value.
+     * 
+     * @return the current instance
+     */
+    public Accumulator negate() {
+
+        this.value = -this.value;
+        return this;
+    }
+
+    /**
      * Returns a string representation of the object.
      * 
      * @return a string representation of the object.

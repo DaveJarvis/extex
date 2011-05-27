@@ -142,7 +142,7 @@ public final class LengthParser {
     };
 
     static {
-        functions.put("abs", new Function0() {
+        functions.put("abs", new Function1() {
 
             /**
              * Compute the absolute value by eliminating the sign if present.
@@ -150,11 +150,13 @@ public final class LengthParser {
              * @see org.extex.base.parser.dimen.Function1#apply(org.extex.base.parser.dimen.Accumulator)
              */
             @Override
-            public void apply(Accumulator accumulator) throws HelpingException {
+            public Accumulator apply(Accumulator accumulator)
+                    throws HelpingException {
 
                 if (accumulator.value < 0) {
                     accumulator.value = -accumulator.value;
                 }
+                return accumulator;
             }
         });
 
@@ -332,14 +334,11 @@ public final class LengthParser {
 
             /**
              * Compute the value of pi.
-             * 
-             * @param accumulator the accumulator to receive the result
              */
             @Override
-            public void apply(Accumulator accumulator) throws HelpingException {
+            public Accumulator apply() throws HelpingException {
 
-                accumulator.sp = 0;
-                accumulator.value = 205887;
+                return new Accumulator(205887);
             }
         });
     }
@@ -364,13 +363,13 @@ public final class LengthParser {
 
         Token t;
         Function2 op = ASSIGN;
-        Accumulator acc = evalTerm(null, context, source, typesetter);
+        Accumulator acc = evalTerminal(context, source, typesetter);
 
         for (t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
             if (t.eq(Catcode.OTHER, '*')) {
-                Accumulator x = evalTerm(null, context, source, typesetter);
+                Accumulator x = evalTerminal(context, source, typesetter);
                 acc.value *= x.value;
                 if (x.sp == 0) {
                     acc.value /= ScaledNumber.ONE;
@@ -380,7 +379,7 @@ public final class LengthParser {
                 }
 
             } else if (t.eq(Catcode.OTHER, '/')) {
-                Accumulator x = evalTerm(null, context, source, typesetter);
+                Accumulator x = evalTerminal(context, source, typesetter);
                 if (x.value == 0) {
                     throw new ArithmeticOverflowException("");
                 }
@@ -394,16 +393,24 @@ public final class LengthParser {
 
             } else if (t.eq(Catcode.OTHER, '+')) {
                 accumulator = op.apply(accumulator, acc);
-                acc = evalTerm(acc, context, source, typesetter);
+                acc = evalTerminal(context, source, typesetter);
                 op = PLUS;
 
             } else if (t.eq(Catcode.OTHER, '-')) {
                 accumulator = op.apply(accumulator, acc);
-                acc = evalTerm(acc, context, source, typesetter);
+                acc = evalTerminal(context, source, typesetter);
                 op = MINUS;
 
             } else {
                 source.push(t);
+                GlueComponent gc =
+                        GlueComponentParser.attachUnit(acc.value, context,
+                            source, typesetter, false);
+                if (gc != null) {
+                    acc.value = gc.getValue();
+                    acc.sp++;
+                    return acc;
+                }
                 accumulator = op.apply(accumulator, acc);
                 return accumulator;
             }
@@ -415,27 +422,25 @@ public final class LengthParser {
     /**
      * Evaluate a terminal.
      * 
-     * @param accumulator the accumulator to receive the result or
-     *        <code>null</code> for an undefined value
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * 
-     * @return the accumulator
+     * @return the accumulator the accumulator to receive the result or
+     *         <code>null</code> for an undefined value
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    public static Accumulator evalTerm(Accumulator accumulator,
-            Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
+    public static Accumulator evalTerminal(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
             if (t instanceof OtherToken) {
                 if (t.eq(Catcode.OTHER, '(')) {
+                    Accumulator accumulator = null;
                     accumulator =
                             evalExpr(accumulator, context, source, typesetter);
                     t = source.getNonSpace(context);
@@ -449,10 +454,7 @@ public final class LengthParser {
                     return accumulator;
 
                 } else if (t.eq(Catcode.OTHER, '-')) {
-                    accumulator =
-                            evalTerm(accumulator, context, source, typesetter);
-                    accumulator.value = -accumulator.value;
-                    return accumulator;
+                    return evalTerminal(context, source, typesetter).negate();
 
                 } else if (t.eq(Catcode.OTHER, '+')) {
                     // continue
@@ -464,9 +466,7 @@ public final class LengthParser {
                     GlueComponent gc =
                             GlueComponentParser.attachUnit(value, context,
                                 source, typesetter, false);
-                    if (accumulator == null) {
-                        accumulator = new Accumulator(ScaledNumber.ONE);
-                    }
+                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
                     if (gc == null) {
                         accumulator.value *= value;
                         accumulator.value /= ScaledNumber.ONE;
@@ -482,29 +482,22 @@ public final class LengthParser {
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
-                    if (accumulator == null) {
-                        accumulator = new Accumulator(ScaledNumber.ONE);
-                    }
+                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
                     accumulator.value =
                             ((DimenConvertible) code).convertDimen(context,
                                 source, typesetter);
-                    // accumulator.value /= ScaledNumber.ONE;
                     accumulator.sp += 1;
                     return accumulator;
 
                 } else if (code instanceof ScaledConvertible) {
-                    if (accumulator == null) {
-                        accumulator = new Accumulator(ScaledNumber.ONE);
-                    }
+                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
                     accumulator.value =
                             ((ScaledConvertible) code).convertScaled(context,
                                 source, typesetter);
                     // accumulator.value /= ScaledNumber.ONE;
 
                 } else if (code instanceof CountConvertible) {
-                    if (accumulator == null) {
-                        accumulator = new Accumulator(ScaledNumber.ONE);
-                    }
+                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
                     accumulator.value =
                             ((CountConvertible) code).convertCount(context,
                                 source, typesetter);
@@ -529,9 +522,7 @@ public final class LengthParser {
                 Object f = functions.get(name);
                 if (f == null) {
                     source.push(tokens);
-                    if (accumulator == null) {
-                        accumulator = new Accumulator();
-                    }
+                    Accumulator accumulator = new Accumulator();
                     GlueComponent gc =
                             GlueComponentParser.attachUnit(accumulator.value,
                                 context, source, typesetter, false);
@@ -540,17 +531,16 @@ public final class LengthParser {
                             LocalizerFactory.getLocalizer(LengthParser.class),
                             "SyntaxError", t.toString());
                     }
-                    accumulator.value = gc.getValue();
+                    accumulator.value = gc.getValue() * ScaledNumber.ONE;
                     accumulator.sp++;
                     return accumulator;
                 }
                 if (f instanceof Function0) {
-                    ((Function0) f).apply(accumulator);
-                    return accumulator;
+                    return ((Function0) f).apply();
                 }
                 if (f instanceof Function1) {
-                    return ((Function1) f).apply(evalTerm(accumulator, context,
-                        source, typesetter));
+                    return ((Function1) f).apply(evalTerminal(context, source,
+                        typesetter));
                 }
                 t = source.getNonSpace(context);
                 if (t == null) {
@@ -560,16 +550,16 @@ public final class LengthParser {
                         LocalizerFactory.getLocalizer(LengthParser.class),
                         "MissingOpenParenthesis", name, t.toString());
                 }
+                Accumulator accumulator = null;
                 if (f instanceof Function2) {
-                    accumulator =
-                            evalExpr(accumulator, context, source, typesetter);
+                    accumulator = evalExpr(null, context, source, typesetter);
                     skipComma(context, source);
                     Accumulator arg2 =
                             evalExpr(null, context, source, typesetter);
                     accumulator = ((Function2) f).apply(accumulator, arg2);
                 } else if (f instanceof Function) {
                     accumulator =
-                            ((Function) f).apply(accumulator, context, source,
+                            ((Function) f).apply(null, context, source,
                                 typesetter);
                 } else {
                     break;
@@ -609,12 +599,8 @@ public final class LengthParser {
     public static Dimen parse(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Accumulator accumulator = evalTerm(null, context, source, typesetter);
-        if (accumulator == null) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(LengthParser.class),
-                "UnboundResult");
-        }
+        Accumulator accumulator = evalTerminal(context, source, typesetter);
+
         if (accumulator.sp != 1) {
             throw new HelpingException(
                 LocalizerFactory.getLocalizer(LengthParser.class),
