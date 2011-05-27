@@ -396,35 +396,38 @@ pre.output {
   <code>\year</code>
 </p>
 
-<h2>Compiling the &epsilon;&chi;T<span class="e">e</span>X Unit T<span class="e">e</span>X</h2>
+<h2>Compiling and Packaging the &epsilon;&chi;T<span class="e">e</span>X Unit T<span class="e">e</span>X</h2>
 
 <p>
  The &epsilon;&chi;T<span class="e">e</span>X Unit T<span class="e">e</span>X
- can be created in this directory with the help of Maven.
+ can be created in this directory with the help of Maven. To resolve all
+ dependencies it is best to compile in to parent directory:
 </p>
 <pre>
-  # <b>mvn package</b>
+  # <b>(cd ..; mvn compile)</b>
 </pre>
 <p>
- This command requires that <a href="http://maven.apache.org">Maven</a>
+Or the following command to compile and package:
+</p>
+<pre>
+  # <b>(cd ..; mvn package)</b>
+</pre>
+<p>
+ These commands require that <a href="http://maven.apache.org">Maven</a>
  is properly installed on your system and the executable can be found on
  the search path of the shell.
 </p>
-<p>
- It also requires that all dependent modules have been installed in your local
- Maven repository (with <tt>mvn install</tt>).
-</p>
 <pre class="output">
 [INFO] Scanning for projects...
-[INFO]                                                                         
+...                                                                         
 [INFO] ------------------------------------------------------------------------
 [INFO] Building ExTeX Unit TeX 0.1-SNAPSHOT
 [INFO] ------------------------------------------------------------------------
 ...
 </pre>
 <p>
- After a successful completion of the command the documentation can be found
- as the file <tt><a href="target/ExTeX-Unit-tex-0.1-SNAPSHOT.jar">target/ExTeX-Unit-tex-0.1-SNAPSHOT.jar</a></tt>.
+ After a successful completion of the command the jar can be found as the file
+ <tt><a href="target/ExTeX-Unit-tex-0.1-SNAPSHOT.jar">target/ExTeX-Unit-tex-0.1-SNAPSHOT.jar</a></tt>.
 </p>
 <p>
 If the build fails the verbose log messages of Maven can be used to
