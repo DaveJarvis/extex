@@ -726,6 +726,7 @@ public class FontInst02Test extends ExTeXLauncher {
      * @throws Exception if an error occurred.
      */
     @Test
+    @Ignore("FIXME")
     public void testTransformTestFXLRPL() throws Exception {
 
         setConfig("tex");
