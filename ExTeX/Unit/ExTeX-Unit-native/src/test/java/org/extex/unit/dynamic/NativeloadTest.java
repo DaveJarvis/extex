@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -27,7 +27,7 @@ import org.junit.Test;
 
 /**
  * This is a test suite for the primitive <tt>\nativeload</tt>.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -43,86 +43,78 @@ public class NativeloadTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\nativeload">
-     *  Test case checking that <tt>\nativeload</tt> produces a proper error
-     *  message if an invalid type is specified.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError1() throws Exception {
-
-        assertFailure(
-        //--- input code ---
-            DEFINE_BRACES
-                    + "\\nativeload{undefined type}"
-                    + "{org.extex.unit.dynamic.NativeloadSensor}"
-                    + " \\end",
-            //--- error message ---
-            "I don't know how to load native type `undefined type'");
-        assertFalse(NativeloadSensor.isSensed());
-    }
-
-    /**
-     * <testcase primitive="\nativeload">
-     *  Test case checking that <tt>\nativeload</tt> produces a proper error
-     *  message if an undefined class is specified.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError2() throws Exception {
-
-        assertFailure(
-        //--- input code ---
-            DEFINE_BRACES + "\\nativeload{java}" + "{un.de.fined.Class}"
-                    + " \\end",
-            //--- error message ---
-            "Class not found: un.de.fined.Class");
-    }
-
-    /**
-     * <testcase primitive="\nativeload">
-     *  Test case checking that <tt>\nativeload</tt> produces a proper error
-     *  message if an invalid class is specified.
-     * </testcase>
-     *
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testError3() throws Exception {
-
-        assertFailure(
-        //--- input code ---
-            DEFINE_BRACES + "\\nativeload{java}" + "{java.lang.String}"
-                    + " \\end",
-            //--- error message ---
-            "The class java.lang.String does not implement "
-            + "the required interface\norg.extex.unit.dynamic.java.Loadable.");
-    }
-
-    /**
-     * <testcase primitive="\nativeload">
-     *  Test case checking that <tt>\nativeload</tt> properly invokes a correct
-     *  loader.
-     * </testcase>
-     *
+     * <testcase primitive="\nativeload"> Test case checking that
+     * <tt>\nativeload</tt> properly invokes a correct loader. </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     public void test1() throws Exception {
 
         assertSuccess(
-        //--- input code ---
-            DEFINE_BRACES
-                    + "\\nativeload{java}"
-                    + "{org.extex.unit.dynamic.NativeloadSensor}"
-                    + " \\end",
-            //--- log message ---
+        // --- input code ---
+            DEFINE_BRACES + "\\nativeload{java}"
+                    + "{org.extex.unit.dynamic.NativeloadSensor}" + " \\end",
+            // --- log message ---
             "");
         assertTrue(NativeloadSensor.isSensed());
+    }
+
+    /**
+     * <testcase primitive="\nativeload"> Test case checking that
+     * <tt>\nativeload</tt> produces a proper error message if an invalid type
+     * is specified. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError1() throws Exception {
+
+        NativeloadSensor.setSensed(false);
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\nativeload{undefined type}"
+                    + "{org.extex.unit.dynamic.NativeloadSensor}" + " \\end",
+            // --- error message ---
+            "I don't know how to load native type `undefined type'");
+        assertFalse(NativeloadSensor.isSensed());
+    }
+
+    /**
+     * <testcase primitive="\nativeload"> Test case checking that
+     * <tt>\nativeload</tt> produces a proper error message if an undefined
+     * class is specified. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError2() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\nativeload{java}" + "{un.de.fined.Class}"
+                    + " \\end",
+            // --- error message ---
+            "Class not found: un.de.fined.Class");
+    }
+
+    /**
+     * <testcase primitive="\nativeload"> Test case checking that
+     * <tt>\nativeload</tt> produces a proper error message if an invalid class
+     * is specified. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testError3() throws Exception {
+
+        assertFailure(
+        // --- input code ---
+            DEFINE_BRACES + "\\nativeload{java}" + "{java.lang.String}"
+                    + " \\end",
+            // --- error message ---
+            "The class java.lang.String does not implement "
+                    + "the required interface\norg.extex.unit.dynamic.java.Loadable.");
     }
 
 }
