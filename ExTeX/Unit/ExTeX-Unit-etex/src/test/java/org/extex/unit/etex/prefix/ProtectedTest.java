@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,9 +21,7 @@ package org.extex.unit.etex.prefix;
 
 import org.extex.scanner.type.Catcode;
 import org.extex.unit.tex.prefix.PrefixTester;
-import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\protected</tt>.
@@ -32,16 +30,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision: 4306 $
  */
 public class ProtectedTest extends PrefixTester {
-
-    /**
-     * Method for running the tests standalone.
-     * 
-     * @param args command line parameter
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(ProtectedTest.class);
-    }
 
     /**
      * Constructor for RelaxTest.
@@ -53,33 +41,12 @@ public class ProtectedTest extends PrefixTester {
     }
 
     /**
-     * Try a prefix which is assumed to be not applicable.
-     * 
-     * @param prefix the prefix code
-     * @param tag the character to be assigned
-     * @param catcode the category
-     * @param longName the name of tag
-     * 
-     * @throws Exception in case of an error
-     */
-    private void tryFlag(String prefix, String tag, Catcode catcode,
-            String longName) throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
-                    + " " + tag + "\\end",
-            // --- log message ---
-            "You can\'t use the prefix `\\" + prefix + "\' with " + longName);
-    }
-
-    /**
      * <testcase primitive="\protected"> Test case checking that
      * <tt>\protected</tt> sets the flag. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void test10() throws Exception {
 
         assertOutput(showPrefixProperties(),
@@ -98,7 +65,6 @@ public class ProtectedTest extends PrefixTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void test11() throws Exception {
 
         assertOutput(showPrefixProperties(),
@@ -117,7 +83,6 @@ public class ProtectedTest extends PrefixTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void test12() throws Exception {
 
         assertOutput(showPrefixProperties(),
@@ -131,15 +96,66 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an alignment tab character.
+     * <tt>\protected</tt> can not be used before a begin-group character.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testTabNoProtectedFlag() throws Exception {
+    public void testBegingroupNoProtectedFlag() throws Exception {
 
-        tryFlag("protected", "&", Catcode.TABMARK, "alignment tab character &");
+        tryFlag("protected", "{", Catcode.LEFTBRACE, "begin-group character {");
+    }
+
+    /**
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before an end-group character.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testEndgroupNoProtectedFlag() throws Exception {
+
+        tryFlag("protected", "}", Catcode.RIGHTBRACE, "end-group character }");
+    }
+
+    /**
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a letter. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testLetterNoProtectedFlag() throws Exception {
+
+        tryFlag("protected", "A", Catcode.LETTER, "the letter A");
+    }
+
+    /**
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before a math shift character.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMathshiftNoProtectedFlag() throws Exception {
+
+        tryFlag("protected", "$", Catcode.MATHSHIFT, "math shift character $");
+    }
+
+    /**
+     * <testcase primitive="\protected"> Test case checking that
+     * <tt>\protected</tt> can not be used before an other character.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testOtherNoProtectedFlag() throws Exception {
+
+        tryFlag("protected", "1", Catcode.OTHER, "the character 1");
     }
 
     /**
@@ -170,66 +186,35 @@ public class ProtectedTest extends PrefixTester {
 
     /**
      * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a letter. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testLetterNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "A", Catcode.LETTER, "the letter A");
-    }
-
-    /**
-     * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an other character.
+     * <tt>\protected</tt> can not be used before an alignment tab character.
      * </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testOtherNoProtectedFlag() throws Exception {
+    public void testTabNoProtectedFlag() throws Exception {
 
-        tryFlag("protected", "1", Catcode.OTHER, "the character 1");
+        tryFlag("protected", "&", Catcode.TABMARK, "alignment tab character &");
     }
 
     /**
-     * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a math shift character.
-     * </testcase>
+     * Try a prefix which is assumed to be not applicable.
+     * 
+     * @param prefix the prefix code
+     * @param tag the character to be assigned
+     * @param catcode the category
+     * @param longName the name of tag
      * 
      * @throws Exception in case of an error
      */
-    @Test
-    public void testMathshiftNoProtectedFlag() throws Exception {
+    private void tryFlag(String prefix, String tag, Catcode catcode,
+            String longName) throws Exception {
 
-        tryFlag("protected", "$", Catcode.MATHSHIFT, "math shift character $");
-    }
-
-    /**
-     * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before a begin-group character.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testBegingroupNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "{", Catcode.LEFTBRACE, "begin-group character {");
-    }
-
-    /**
-     * <testcase primitive="\protected"> Test case checking that
-     * <tt>\protected</tt> can not be used before an end-group character.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testEndgroupNoProtectedFlag() throws Exception {
-
-        tryFlag("protected", "}", Catcode.RIGHTBRACE, "end-group character }");
+        assertFailure(// --- input code ---
+            "\\catcode`\\" + tag + "=" + catcode.getCode() + " \\" + prefix
+                    + " " + tag + "\\end",
+            // --- log message ---
+            "You can\'t use the prefix `\\" + prefix + "\' with " + longName);
     }
 
 }
