@@ -87,6 +87,12 @@
 
     <dependency>
       <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Unit-extex</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
       <version>${project.version}</version>
       <classifier>tests</classifier>
