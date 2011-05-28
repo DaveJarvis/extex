@@ -43,15 +43,6 @@ public class Accumulator {
 
     /**
      * Creates a new object.
-     */
-    public Accumulator() {
-
-        this.value = 0;
-        this.sp = 0;
-    }
-
-    /**
-     * Creates a new object.
      * 
      * @param value the value
      */
@@ -73,6 +64,18 @@ public class Accumulator {
     }
 
     /**
+     * Creates a new object.
+     * 
+     * @param value the value
+     * @param sp the order
+     */
+    public Accumulator(long value, int sp) {
+
+        this.value = value;
+        this.sp = sp;
+    }
+
+    /**
      * Negate the value.
      * 
      * @return the current instance
@@ -91,6 +94,27 @@ public class Accumulator {
     public String ordToString() {
 
         return "sp^" + Integer.toString(sp);
+    }
+
+    /**
+     * Scale this instance by multiplying the value and norming it. In addition
+     * the order is adjusted:
+     * <p>
+     * <i>value</i> = <i>value</i> * <i>factor</i> / <i>divisor</i>
+     * </p>
+     * <p>
+     * <i>sp</i> = <i>sp</i> + <i>order</i>
+     * </p>
+     * 
+     * @param factor the factor
+     * @param divisor the divisor
+     * @param order the adjustment for the order
+     */
+    public void scale(long factor, long divisor, int order) {
+
+        value *= factor;
+        value /= divisor;
+        sp += order;
     }
 
     /**

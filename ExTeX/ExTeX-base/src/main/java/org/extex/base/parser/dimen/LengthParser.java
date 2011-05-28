@@ -60,7 +60,9 @@ public final class LengthParser {
 
     /**
      * The field <tt>ASSIGN</tt> contains the operation to assign the second
-     * argument to the first one.
+     * argument to the first one and return it. The way this class is used
+     * ensures that the first argument is always <code>null</code>. Thus simply
+     * a copy of the second argument is returned.
      */
     private static final Function2 ASSIGN = new Function2() {
 
@@ -71,12 +73,7 @@ public final class LengthParser {
         @Override
         public Accumulator apply(Accumulator arg1, Accumulator arg2) {
 
-            if (arg1 == null) {
-                return new Accumulator(arg2);
-            }
-            arg1.value = arg2.value;
-            arg1.sp = arg2.sp;
-            return arg1;
+            return new Accumulator(arg2);
         }
     };
 
@@ -88,7 +85,8 @@ public final class LengthParser {
             new HashMap<String, Object>();
 
     /**
-     * The field <tt>MINUS</tt> contains the subtracter.
+     * The field <tt>MINUS</tt> contains the subtracter. The way this class is
+     * used ensures that both arguments are never <code>null</code>.
      */
     private static final Function2 MINUS = new Function2() {
 
@@ -100,9 +98,6 @@ public final class LengthParser {
         public Accumulator apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
-            if (arg1 == null) {
-                return arg2;
-            }
             if (arg1.sp != arg2.sp) {
                 throw new HelpingException(
                     LocalizerFactory.getLocalizer(LengthParser.class),
@@ -112,22 +107,11 @@ public final class LengthParser {
             arg1.value -= arg2.value;
             return arg1;
         }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "minus";
-        }
-
     };
 
     /**
-     * The field <tt>PLUS</tt> contains the adder.
+     * The field <tt>PLUS</tt> contains the adder. The way this class is used
+     * ensures that both arguments are never <code>null</code>.
      */
     private static final Function2 PLUS = new Function2() {
 
@@ -139,9 +123,6 @@ public final class LengthParser {
         public Accumulator apply(Accumulator arg1, Accumulator arg2)
                 throws HelpingException {
 
-            if (arg1 == null) {
-                return arg2;
-            }
             if (arg1.sp != arg2.sp) {
                 throw new HelpingException(
                     LocalizerFactory.getLocalizer(LengthParser.class),
@@ -151,18 +132,6 @@ public final class LengthParser {
             arg1.value += arg2.value;
             return arg1;
         }
-
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
-        @Override
-        public String toString() {
-
-            return "plus";
-        }
-
     };
 
     static {
@@ -199,13 +168,12 @@ public final class LengthParser {
                     throws HelpingException,
                         TypesetterException {
 
-                Accumulator accumulator =
-                        evalExpr(null, context, source, typesetter);
+                Accumulator accumulator = evalExpr(context, source, typesetter);
                 Token t;
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
-                    Accumulator x = evalExpr(null, context, source, typesetter);
+                    Accumulator x = evalExpr(context, source, typesetter);
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
@@ -238,13 +206,12 @@ public final class LengthParser {
                     throws HelpingException,
                         TypesetterException {
 
-                Accumulator accumulator =
-                        evalExpr(null, context, source, typesetter);
+                Accumulator accumulator = evalExpr(context, source, typesetter);
                 Token t;
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
-                    Accumulator x = evalExpr(null, context, source, typesetter);
+                    Accumulator x = evalExpr(context, source, typesetter);
                     if (accumulator.sp != x.sp) {
                         throw new HelpingException(LocalizerFactory
                             .getLocalizer(LengthParser.class),
@@ -300,8 +267,9 @@ public final class LengthParser {
                         .getLocalizer(LengthParser.class), "NonScalar", "cos",
                         accumulator.toString());
                 }
-                double x = ((double) accumulator.value) / ScaledNumber.ONE;
-                accumulator.value = (long) (ScaledNumber.ONE * Math.cos(x));
+                accumulator.value =
+                        (long) (Math.cos(((double) accumulator.value)
+                                / ScaledNumber.ONE) * ScaledNumber.ONE);
                 return accumulator;
             }
         });
@@ -322,8 +290,9 @@ public final class LengthParser {
                         .getLocalizer(LengthParser.class), "NonScalar", "sin",
                         accumulator.toString());
                 }
-                double x = ((double) accumulator.value) / ScaledNumber.ONE;
-                accumulator.value = (long) (ScaledNumber.ONE * Math.sin(x));
+                accumulator.value =
+                        (long) (Math.sin(((double) accumulator.value)
+                                / ScaledNumber.ONE) * ScaledNumber.ONE);
                 return accumulator;
             }
         });
@@ -344,8 +313,9 @@ public final class LengthParser {
                         .getLocalizer(LengthParser.class), "NonScalar", "tan",
                         accumulator.toString());
                 }
-                double x = ((double) accumulator.value) / ScaledNumber.ONE;
-                accumulator.value = (long) (ScaledNumber.ONE * Math.tan(x));
+                accumulator.value =
+                        (long) (Math.tan(((double) accumulator.value)
+                                / ScaledNumber.ONE) * ScaledNumber.ONE);
                 return accumulator;
             }
         });
@@ -366,7 +336,6 @@ public final class LengthParser {
     /**
      * Evaluate an expression.
      * 
-     * @param accumulator the accumulator to receive the result
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
@@ -376,19 +345,27 @@ public final class LengthParser {
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    private static Accumulator evalExpr(Accumulator accumulator,
-            Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
+    private static Accumulator evalExpr(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Token t;
+        Accumulator accumulator = null;
         Function2 op = ASSIGN;
         Accumulator acc = evalTerminal(context, source, typesetter);
 
-        for (t = source.getNonSpace(context); t != null; t =
+        for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
-            if (t.eq(Catcode.OTHER, '*')) {
+            if (t.eq(Catcode.OTHER, '+')) {
+                accumulator = op.apply(accumulator, acc);
+                acc = evalTerminal(context, source, typesetter);
+                op = PLUS;
+
+            } else if (t.eq(Catcode.OTHER, '-')) {
+                accumulator = op.apply(accumulator, acc);
+                acc = evalTerminal(context, source, typesetter);
+                op = MINUS;
+
+            } else if (t.eq(Catcode.OTHER, '*')) {
                 Accumulator x = evalTerminal(context, source, typesetter);
                 acc.scale(x.value, ScaledNumber.ONE, x.sp);
 
@@ -398,16 +375,6 @@ public final class LengthParser {
                     throw new ArithmeticOverflowException("");
                 }
                 acc.scale(ScaledNumber.ONE, x.value, -x.sp);
-
-            } else if (t.eq(Catcode.OTHER, '+')) {
-                accumulator = op.apply(accumulator, acc);
-                acc = evalTerminal(context, source, typesetter);
-                op = PLUS;
-
-            } else if (t.eq(Catcode.OTHER, '-')) {
-                accumulator = op.apply(accumulator, acc);
-                acc = evalTerminal(context, source, typesetter);
-                op = MINUS;
 
             } else {
                 source.push(t);
@@ -424,7 +391,7 @@ public final class LengthParser {
             }
         }
 
-        throw new MissingNumberException();
+        throw new EofException();
     }
 
     /**
@@ -449,7 +416,7 @@ public final class LengthParser {
             if (t instanceof OtherToken) {
                 if (t.eq(Catcode.OTHER, '(')) {
                     Accumulator accumulator =
-                            evalExpr(null, context, source, typesetter);
+                            evalExpr(context, source, typesetter);
                     t = source.getNonSpace(context);
                     if (t == null || !t.eq(Catcode.OTHER, ')')) {
                         throw new HelpingException(
@@ -540,10 +507,9 @@ public final class LengthParser {
                 }
                 Accumulator accumulator = null;
                 if (f instanceof Function2) {
-                    accumulator = evalExpr(null, context, source, typesetter);
+                    accumulator = evalExpr(context, source, typesetter);
                     expectComma(context, source);
-                    Accumulator arg2 =
-                            evalExpr(null, context, source, typesetter);
+                    Accumulator arg2 = evalExpr(context, source, typesetter);
                     accumulator = ((Function2) f).apply(accumulator, arg2);
                 } else if (f instanceof Function) {
                     accumulator =
@@ -612,10 +578,22 @@ public final class LengthParser {
         Accumulator accumulator = evalTerminal(context, source, typesetter);
 
         if (accumulator.sp != 1) {
+            if (accumulator.sp == 0) {
+                GlueComponent gc =
+                        GlueComponentParser.attachUnit(accumulator.value
+                                * ScaledNumber.ONE, context, source,
+                            typesetter, false);
+                if (gc != null) {
+                    source.skipSpace();
+                    return new Dimen(gc.getValue());
+                }
+                throw new HelpingException(
+                    LocalizerFactory.getLocalizer(LengthParser.class),
+                    "MissingUnit", accumulator.ordToString());
+            }
             throw new HelpingException(
                 LocalizerFactory.getLocalizer(LengthParser.class),
-                (accumulator.sp == 0 ? "MissingUnit" : "IllegalUnit"),
-                accumulator.ordToString());
+                "IllegalUnit", accumulator.ordToString());
         }
         source.skipSpace();
         return new Dimen(accumulator.value);

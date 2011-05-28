@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,19 +23,20 @@ import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes a function object with a single argument.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public interface Function1 {
 
     /**
-     * Compute the function value for the argument stored in the accumulator
-     * and return in the accumulator overwriting the value stored therein.
-     *
-     * @param accumulator the accumulator to receive the result
-     * @return TODO
-     *
+     * Compute the function value for the argument stored in the accumulator and
+     * return in the accumulator overwriting the value stored therein.
+     * 
+     * @param accumulator the accumulator argument
+     * 
+     * @return the accumulator containing the result
+     * 
      * @throws HelpingException in case of an error
      */
     Accumulator apply(Accumulator accumulator) throws HelpingException;

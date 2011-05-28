@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,21 +23,24 @@ import org.extex.core.exception.helping.HelpingException;
 
 /**
  * This interface describes a binary function.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-interface Function2 {
+public interface Function2 {
 
     /**
      * Apply the operation on the arguments.
-     *
-     * @param arg1 the first argument
-     * @param arg2 the second argument
-     * @return TODO
-     *
+     * 
+     * @param arg1 the first argument. It m,ight be altered by the function and
+     *        returned
+     * @param arg2 the second argument. It will not be altered in any way
+     * 
+     * @return the function's result
+     * 
      * @throws HelpingException in case of an error
      */
-    Accumulator apply(Accumulator arg1, Accumulator arg2) throws HelpingException;
+    Accumulator apply(Accumulator arg1, Accumulator arg2)
+            throws HelpingException;
 
 }

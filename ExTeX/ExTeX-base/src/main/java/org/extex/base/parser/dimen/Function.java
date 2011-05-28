@@ -36,18 +36,17 @@ public interface Function {
 
     /**
      * Acquire arguments and compute a function.
-     * 
-     * @param accumulator the accumulator to receive the result
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
+     * 
      * @return TODO
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
-    Accumulator apply(Accumulator accumulator, Context context,
-            TokenSource source, Typesetter typesetter)
+    Accumulator apply(Context context, TokenSource source,
+            Typesetter typesetter)
             throws HelpingException,
                 TypesetterException;
 
