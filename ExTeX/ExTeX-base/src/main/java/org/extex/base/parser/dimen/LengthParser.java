@@ -88,7 +88,7 @@ public final class LengthParser {
             new HashMap<String, Object>();
 
     /**
-     * The field <tt>MINUS</tt> contains the subtractor.
+     * The field <tt>MINUS</tt> contains the subtracter.
      */
     private static final Function2 MINUS = new Function2() {
 
@@ -189,20 +189,19 @@ public final class LengthParser {
             /**
              * Compute the maximum of an arbitrary number of arguments.
              * 
-             * @param accumulator the accumulator to receive the result
              * @param context the interpreter context
              * @param source the source for new tokens
              * @param typesetter the typesetter
              */
             @Override
-            public Accumulator apply(Accumulator accumulator, Context context,
-                    TokenSource source, Typesetter typesetter)
+            public Accumulator apply(Context context, TokenSource source,
+                    Typesetter typesetter)
                     throws HelpingException,
                         TypesetterException {
 
+                Accumulator accumulator =
+                        evalExpr(null, context, source, typesetter);
                 Token t;
-                accumulator =
-                        evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
@@ -229,20 +228,19 @@ public final class LengthParser {
              * 
              * {@inheritDoc}
              * 
-             * @see org.extex.base.parser.dimen.Function#apply(org.extex.base.parser.dimen.Accumulator,
-             *      org.extex.interpreter.context.Context,
+             * @see org.extex.base.parser.dimen.Function#apply(org.extex.interpreter.context.Context,
              *      org.extex.interpreter.TokenSource,
              *      org.extex.typesetter.Typesetter)
              */
             @Override
-            public Accumulator apply(Accumulator accumulator, Context context,
-                    TokenSource source, Typesetter typesetter)
+            public Accumulator apply(Context context, TokenSource source,
+                    Typesetter typesetter)
                     throws HelpingException,
                         TypesetterException {
 
+                Accumulator accumulator =
+                        evalExpr(null, context, source, typesetter);
                 Token t;
-                accumulator =
-                        evalExpr(accumulator, context, source, typesetter);
                 for (t = source.getNonSpace(context); t != null
                         && t.eq(Catcode.OTHER, ','); t =
                         source.getNonSpace(context)) {
@@ -392,26 +390,14 @@ public final class LengthParser {
 
             if (t.eq(Catcode.OTHER, '*')) {
                 Accumulator x = evalTerminal(context, source, typesetter);
-                acc.value *= x.value;
-                if (x.sp == 0) {
-                    acc.value /= ScaledNumber.ONE;
-                } else {
-                    acc.value /= Dimen.ONE;
-                    acc.sp += x.sp;
-                }
+                acc.scale(x.value, ScaledNumber.ONE, x.sp);
 
             } else if (t.eq(Catcode.OTHER, '/')) {
                 Accumulator x = evalTerminal(context, source, typesetter);
                 if (x.value == 0) {
                     throw new ArithmeticOverflowException("");
                 }
-                if (x.sp == 0) {
-                    acc.value *= ScaledNumber.ONE;
-                } else {
-                    acc.value *= Dimen.ONE;
-                    acc.sp -= x.sp;
-                }
-                acc.value /= x.value;
+                acc.scale(ScaledNumber.ONE, x.value, -x.sp);
 
             } else if (t.eq(Catcode.OTHER, '+')) {
                 accumulator = op.apply(accumulator, acc);
@@ -462,9 +448,8 @@ public final class LengthParser {
 
             if (t instanceof OtherToken) {
                 if (t.eq(Catcode.OTHER, '(')) {
-                    Accumulator accumulator = null;
-                    accumulator =
-                            evalExpr(accumulator, context, source, typesetter);
+                    Accumulator accumulator =
+                            evalExpr(null, context, source, typesetter);
                     t = source.getNonSpace(context);
                     if (t == null || !t.eq(Catcode.OTHER, ')')) {
                         throw new HelpingException(
@@ -481,48 +466,32 @@ public final class LengthParser {
                 } else if (t.eq(Catcode.OTHER, '+')) {
                     // continue
                 } else {
-
                     long value =
                             ScaledNumberParser.scanFloat(context, source,
                                 typesetter, t, false);
                     GlueComponent gc =
                             GlueComponentParser.attachUnit(value, context,
                                 source, typesetter, false);
-                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
-                    if (gc == null) {
-                        accumulator.value *= value;
-                        accumulator.value /= ScaledNumber.ONE;
-                        accumulator.sp = 0;
-                    } else {
-                        accumulator.value *= gc.getValue();
-                        accumulator.value /= ScaledNumber.ONE;
-                        accumulator.sp = 1;
-                    }
-
-                    return accumulator;
+                    return gc == null
+                            ? new Accumulator(value)
+                            : new Accumulator(gc.getValue(), 1);
                 }
             } else if (t instanceof CodeToken) {
                 Code code = context.getCode((CodeToken) t);
                 if (code instanceof DimenConvertible) {
-                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
-                    accumulator.value =
-                            ((DimenConvertible) code).convertDimen(context,
-                                source, typesetter);
-                    accumulator.sp += 1;
-                    return accumulator;
+                    return new Accumulator(
+                        ((DimenConvertible) code).convertDimen(context, source,
+                            typesetter), 1);
 
                 } else if (code instanceof ScaledConvertible) {
-                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
-                    accumulator.value =
-                            ((ScaledConvertible) code).convertScaled(context,
-                                source, typesetter);
-                    // accumulator.value /= ScaledNumber.ONE;
+                    return new Accumulator(
+                        ((ScaledConvertible) code).convertScaled(context,
+                            source, typesetter));
 
                 } else if (code instanceof CountConvertible) {
-                    Accumulator accumulator = new Accumulator(ScaledNumber.ONE);
-                    accumulator.value =
-                            ((CountConvertible) code).convertCount(context,
-                                source, typesetter);
+                    return new Accumulator(
+                        ((CountConvertible) code).convertCount(context, source,
+                            typesetter));
 
                 } else if (code instanceof ExpandableCode) {
                     ((ExpandableCode) code).expand(Flags.NONE, context, source,
@@ -544,18 +513,15 @@ public final class LengthParser {
                 Object f = functions.get(name);
                 if (f == null) {
                     source.push(tokens);
-                    Accumulator accumulator = new Accumulator();
                     GlueComponent gc =
-                            GlueComponentParser.attachUnit(accumulator.value,
+                            GlueComponentParser.attachUnit(ScaledNumber.ONE,
                                 context, source, typesetter, false);
                     if (gc == null) {
                         throw new HelpingException(
                             LocalizerFactory.getLocalizer(LengthParser.class),
                             "SyntaxError", t.toString());
                     }
-                    accumulator.value = gc.getValue() * ScaledNumber.ONE;
-                    accumulator.sp++;
-                    return accumulator;
+                    return new Accumulator(gc.getValue(), 1);
                 }
                 if (f instanceof Function0) {
                     return ((Function0) f).apply();
@@ -575,14 +541,13 @@ public final class LengthParser {
                 Accumulator accumulator = null;
                 if (f instanceof Function2) {
                     accumulator = evalExpr(null, context, source, typesetter);
-                    skipComma(context, source);
+                    expectComma(context, source);
                     Accumulator arg2 =
                             evalExpr(null, context, source, typesetter);
                     accumulator = ((Function2) f).apply(accumulator, arg2);
                 } else if (f instanceof Function) {
                     accumulator =
-                            ((Function) f).apply(null, context, source,
-                                typesetter);
+                            ((Function) f).apply(context, source, typesetter);
                 } else {
                     break;
                 }
@@ -604,6 +569,29 @@ public final class LengthParser {
         }
 
         throw new MissingNumberException();
+    }
+
+    /**
+     * Find the next comma after any white-space and discard it and the
+     * white-space afterwards.
+     * 
+     * @param context the interpreter context
+     * @param source the source for new tokens
+     * 
+     * @throws HelpingException in case of an error
+     */
+    private static void expectComma(Context context, TokenSource source)
+            throws HelpingException {
+
+        Token t = source.getNonSpace(context);
+        if (t == null) {
+            throw new EofException();
+        } else if (!t.eq(Catcode.OTHER, ',')) {
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(LengthParser.class),
+                "MissingComma", t.toString());
+        }
+        source.skipSpace();
     }
 
     /**
@@ -638,10 +626,12 @@ public final class LengthParser {
      * 
      * @param name the name of the function
      * @param function the function
+     * 
+     * @return the previously registered function or <code>null</code> for none
      */
-    public static void register(String name, Function function) {
+    public static Object register(String name, Function function) {
 
-        functions.put(name, function);
+        return functions.put(name, function);
     }
 
     /**
@@ -649,10 +639,12 @@ public final class LengthParser {
      * 
      * @param name the name of the function
      * @param function the function
+     * 
+     * @return the previously registered function or <code>null</code> for none
      */
-    public static void register(String name, Function0 function) {
+    public static Object register(String name, Function0 function) {
 
-        functions.put(name, function);
+        return functions.put(name, function);
     }
 
     /**
@@ -660,10 +652,12 @@ public final class LengthParser {
      * 
      * @param name the name of the function
      * @param function the function
+     * 
+     * @return the previously registered function or <code>null</code> for none
      */
-    public static void register(String name, Function1 function) {
+    public static Object register(String name, Function1 function) {
 
-        functions.put(name, function);
+        return functions.put(name, function);
     }
 
     /**
@@ -671,33 +665,24 @@ public final class LengthParser {
      * 
      * @param name the name of the function
      * @param function the function
+     * 
+     * @return the previously registered function or <code>null</code> for none
      */
-    public static void register(String name, Function2 function) {
+    public static Object register(String name, Function2 function) {
 
-        functions.put(name, function);
+        return functions.put(name, function);
     }
 
     /**
-     * Find the next comma after any white-space and discard it and the
-     * white-space afterwards.
+     * Unregister a function.
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
+     * @param name the name of the function
      * 
-     * @throws HelpingException in case of an error
+     * @return the previously registered function or <code>null</code> for none
      */
-    private static void skipComma(Context context, TokenSource source)
-            throws HelpingException {
+    public static Object unregister(String name) {
 
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            throw new EofException();
-        } else if (!t.eq(Catcode.OTHER, ',')) {
-            throw new HelpingException(
-                LocalizerFactory.getLocalizer(LengthParser.class),
-                "MissingComma", t.toString());
-        }
-        source.skipSpace();
+        return functions.remove(name);
     }
 
     /**

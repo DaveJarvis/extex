@@ -19,6 +19,12 @@
 
 package org.extex.interpreter.type.dimen;
 
+import org.extex.base.parser.dimen.Accumulator;
+import org.extex.base.parser.dimen.Function0;
+import org.extex.base.parser.dimen.Function2;
+import org.extex.base.parser.dimen.LengthParser;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.core.scaled.ScaledNumber;
 import org.extex.test.ExTeXLauncher;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -30,6 +36,49 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class LengthParserTest extends ExTeXLauncher {
+
+    /**
+     * <testcase> Test case showing that abs on a positive value results in this
+     * value. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAbs1() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=1.2pt" + "\\dimen0=abs(\\dimen1)" + "\\the\\dimen0\\end",
+            //
+            "1.2pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that abs on a negative value results in the
+     * negated value. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAbs2() throws Exception {
+
+        assertSuccess(//
+            "\\dimen1=-1.2pt" + "\\dimen0=abs(\\dimen1)" + "\\the\\dimen0\\end",
+            //
+            "1.2pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that abs() needs a closing brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testAbs3() throws Exception {
+
+        assertFailure("\\dimen0=abs(4pt ", //
+            "Missing number, treated as zero");
+    }
 
     /**
      * <testcase> Test case showing that a dimen variable incremented by a
@@ -149,6 +198,90 @@ public class LengthParserTest extends ExTeXLauncher {
     public void testError3() throws Exception {
 
         assertFailure("\\dimen0=(1pt", //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase> Test case showing that min() needs a closing brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testErrorMin3() throws Exception {
+
+        assertFailure(//
+            "\\dimen0=min(4pt, 2pt, 3pt :",
+            //
+            "Missing ) inserted for expression");
+    }
+
+    /**
+     * <testcase> Test case showing that min() needs a closing brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testErrorMin4() throws Exception {
+
+        assertFailure(//
+            "\\dimen0=min(4pt, 2pt, 3pt ",
+            //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase> Test case showing that expansion during the parsing works.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExpand1() throws Exception {
+
+        assertSuccess(//
+            DEFINE_BRACES + "\\def\\xxx{1.2pt}" + "\\dimen0=\\xxx "
+                    + "\\the\\dimen0\\end", //
+            "1.2pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that an expression needs a proper
+     * expression. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExprError1() throws Exception {
+
+        assertFailure("\\dimen0= ", //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase> Test case showing that an expression needs a closing brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExprError2() throws Exception {
+
+        assertFailure("\\dimen0=(4pt ", //
+            "Missing number, treated as zero");
+    }
+
+    /**
+     * <testcase> Test case showing that an expression needs a closing brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testExprError3() throws Exception {
+
+        assertFailure("\\dimen0=(4pt", //
             "Missing number, treated as zero");
     }
 
@@ -550,6 +683,101 @@ public class LengthParserTest extends ExTeXLauncher {
             "\\dimen0=-.45pt\\the\\dimen0\\end",
             //
             "-0.45pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that a registered function is called.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRegister0() throws Exception {
+
+        LengthParser.register("f", new Function0() {
+
+            @Override
+            public Accumulator apply() throws HelpingException {
+
+                return new Accumulator(1234 * ScaledNumber.ONE / 100);
+            }
+        });
+        assertSuccess(//
+            "\\dimen0=(f pt) " + "\\the\\dimen0\\end",
+            //
+            "12.34pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that a registered function is called.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRegister2() throws Exception {
+
+        LengthParser.register("h", new Function2() {
+
+            @Override
+            public Accumulator apply(Accumulator arg1, Accumulator arg2)
+                    throws HelpingException {
+
+                return new Accumulator(3456 * ScaledNumber.ONE / 100, 1);
+            }
+        });
+        assertSuccess(//
+            "\\dimen0=(h(1pt,2pt)) " + "\\the\\dimen0\\end",
+            //
+            "34.56pt" + TERM);
+    }
+
+    /**
+     * <testcase> Test case showing that a binary function needs a comma as
+     * argument separator. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRegister3() throws Exception {
+
+        LengthParser.register("h", new Function2() {
+
+            @Override
+            public Accumulator apply(Accumulator arg1, Accumulator arg2)
+                    throws HelpingException {
+
+                return new Accumulator(3456 * ScaledNumber.ONE / 100, 1);
+            }
+        });
+        assertFailure(//
+            "\\dimen0=(h(1pt:2pt)) " + "\\the\\dimen0\\end",
+            //
+            "Missing , instead of the character :");
+    }
+
+    /**
+     * <testcase> Test case showing that a binary function needs a comma as
+     * argument separator. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testRegister4() throws Exception {
+
+        LengthParser.register("h", new Function2() {
+
+            @Override
+            public Accumulator apply(Accumulator arg1, Accumulator arg2)
+                    throws HelpingException {
+
+                return new Accumulator(3456 * ScaledNumber.ONE / 100, 1);
+            }
+        });
+        assertFailure(//
+            "\\dimen0=(h(1pt ",
+            //
+            "Missing number, treated as zero");
     }
 
     /**
