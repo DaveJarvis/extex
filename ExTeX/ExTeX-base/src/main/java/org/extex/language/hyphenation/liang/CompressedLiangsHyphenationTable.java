@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -26,7 +26,7 @@ import java.util.Map;
 
 /**
  * This class implements Liang's algorithm for hyphenation with a compressed
- * hyphenation tree. Th hyphenation tree is compressed when the object is
+ * hyphenation tree. Thê hyphenation tree is compressed when the object is
  * serialized. Afterwards no more patterns can be added.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -37,7 +37,7 @@ public class CompressedLiangsHyphenationTable extends LiangsHyphenationTable {
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2005L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * This compression method traverses the hyphenation tree and makes
