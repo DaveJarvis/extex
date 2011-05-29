@@ -1,0 +1,171 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ExTeX Unit pdfTeX</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family: sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:90%;
+  vertical-align: -0.4ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:0;
+  width:115;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+pre.output {
+  color:white;
+  background-color:#666666;
+  border: 1px solid #999999;
+  padding:.5em;
+}
+  </style>
+</head>
+<body>
+<img class="left" src="src/images/ExTeX-Unit-pdftex-side.png"/>
+
+<h1>The &epsilon;&chi;T<span class="e">e</span>X Unit 
+<span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X</h1>
+
+<p>
+ The &epsilon;&chi;T<span class="e">e</span>X Unit <span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X 
+ provides a loadable &epsilon;&chi;T<span class="e">e</span>X module defining
+ a set of primitives and registers. The primitives defined are mainly those
+ present in <span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X:
+</p>
+<p style="font-size:70%;">
+  <code>\efcode</code>,
+  <code>\font</code>,
+  <code>\pdfadjustspacing</code>,
+  <code>\pdfannot</code>,
+  <code>\pdfcatalog</code>,
+  <code>\pdfcompresslevel</code>,
+  <code>\pdfdecimaldigits</code>,
+  <code>\pdfdest</code>,
+  <code>\pdfendlink</code>,
+  <code>\pdfendthread</code>,
+  <code>\pdffontname</code>,
+  <code>\pdffontobjnum</code>,
+  <code>\pdfhorigin</code>,
+  <code>\pdfimageresolution</code>,
+  <code>\pdfincludechars</code>,
+  <code>\pdfinfo</code>,
+  <code>\pdflastannot</code>,
+  <code>\pdflastobj</code>,
+  <code>\pdflastxform</code>,
+  <code>\pdflastximage</code>,
+  <code>\pdflinkmargin</code>,
+  <code>\pdfliteral</code>,
+  <code>\pdfmovechars</code>,
+  <code>\pdfnames</code>,
+  <code>\pdfobj</code>,
+  <code>\pdfoutline</code>,
+  <code>\pdfoutput</code>,
+  <code>\pdfpageattr</code>,
+  <code>\pdfpageheight</code>,
+  <code>\pdfpagesattr</code>,
+  <code>\pdfpagewidth</code>,
+  <code>\pdfpkresolution</code>,
+  <code>\pdfrefobj</code>,
+  <code>\pdfrefxform</code>,
+  <code>\pdfrefximage</code>,
+  <code>\pdfstartlink</code>,
+  <code>\pdftexrevision</code>,
+  <code>\pdftexversion</code>,
+  <code>\pdfthread</code>,
+  <code>\pdfthreadhoffset</code>,
+  <code>\pdfthreadmargin</code>,
+  <code>\pdfthreadvoffset</code>,
+  <code>\pdfvorigin</code>,
+  <code>\pdfxform</code>,
+  <code>\pdfximage</code>
+</p>
+
+<h2>Compiling and Packaging the &epsilon;&chi;T<span class="e">e</span>X Unit 
+<span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X</h2>
+
+<p>
+ The &epsilon;&chi;T<span class="e">e</span>X Unit 
+ <span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X
+ can be created in this directory with the help of Maven. To resolve all
+ dependencies it is best to compile in to parent directory:
+</p>
+<pre>
+  # <b>(cd ..; mvn compile)</b>
+</pre>
+<p>
+Or the following command to compile and package:
+</p>
+<pre>
+  # <b>(cd ..; mvn package)</b>
+</pre>
+<p>
+ These commands require that <a href="http://maven.apache.org">Maven</a>
+ is properly installed on your system and the executable can be found on
+ the search path of the shell.
+</p>
+<pre class="output">
+[INFO] Scanning for projects...
+...                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ExTeX Unit pdfTeX 0.1-SNAPSHOT
+[INFO] ------------------------------------------------------------------------
+...
+</pre>
+<p>
+ After a successful completion of the command the jar can be found as the file
+ <tt><a href="target/ExTeX-Unit-pdftex-0.1-SNAPSHOT.jar">target/ExTeX-Unit-pdftex-0.1-SNAPSHOT.jar</a></tt>.
+</p>
+<p>
+If the build fails the verbose log messages of Maven can be used to
+determine the problem. Usually just reading the messages leads you
+into the right direction.
+</p>
+
+<h2>License</h2>
+
+The &epsilon;&chi;T<span class="e">e</span>X Unit <span style="text-variant:small-caps;">pdf</span>T<span class="e">e</span>X
+is released under the <a href="LICENSE.html">GNU Library General Public
+License</a>.
+
+<address>
+© 2011 <a href="mailto:extex@dante.de">The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Group</a>
+</address>
+</body>
+</html>
