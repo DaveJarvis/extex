@@ -35,6 +35,7 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -451,6 +452,7 @@ public class U2tFactoryTest {
      * @throws NumberFormatException if a parse error occurred.
      */
     @Test
+    @Ignore("FIXME")
     public void testT2u07()
             throws ConfigurationException,
                 NumberFormatException,
@@ -479,6 +481,7 @@ public class U2tFactoryTest {
      * @throws NumberFormatException if a parse error occurred.
      */
     @Test
+    @Ignore("FIXME")
     public void testT2u08()
             throws ConfigurationException,
                 NumberFormatException,
