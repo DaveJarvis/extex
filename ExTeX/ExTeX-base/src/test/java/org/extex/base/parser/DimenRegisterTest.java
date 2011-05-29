@@ -27,7 +27,6 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.InterpreterFactory;
-import org.extex.interpreter.context.MockContext;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.junit.Test;
 
