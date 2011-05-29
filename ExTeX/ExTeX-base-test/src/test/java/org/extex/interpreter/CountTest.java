@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.unit.tex;
+package org.extex.interpreter;
 
 import org.extex.TestTeX;
 import org.junit.Ignore;
