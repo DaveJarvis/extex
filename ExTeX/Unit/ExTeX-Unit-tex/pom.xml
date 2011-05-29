@@ -86,6 +86,7 @@
       <scope>test</scope>
     </dependency>
 
+<!-- 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
@@ -93,6 +94,7 @@
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
+ -->
   </dependencies>
 
   <build>

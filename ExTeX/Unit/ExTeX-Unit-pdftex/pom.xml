@@ -43,6 +43,7 @@
       <scope>test</scope>
     </dependency>
 
+<!-- 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
@@ -50,6 +51,7 @@
       <classifier>tests</classifier>
       <scope>test</scope>
     </dependency>
+ -->
 
     <dependency>
       <groupId>org.extex</groupId>
@@ -99,6 +101,7 @@
       <scope>test</scope>
     </dependency>
 
+<!-- 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Unit-tex</artifactId>
@@ -106,6 +109,7 @@
       <version>${project.version}</version>
       <scope>test</scope>
     </dependency>
+ -->
   </dependencies>
 
   <build>
