@@ -20,10 +20,9 @@
     <relativePath>../../pom.xml</relativePath>
   </parent>
 
-
   <dependencies>
     <dependency>
-      <groupId>itext</groupId>
+      <groupId>com.lowagie</groupId>
       <artifactId>itext</artifactId>
       <version>1.3.1</version>
     </dependency>
