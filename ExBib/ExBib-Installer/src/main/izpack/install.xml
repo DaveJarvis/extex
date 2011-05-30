@@ -87,7 +87,7 @@
       <parsable targetfile="$INSTALL_PATH/bin/win32/exbib.bat"/>
       <executable targetfile="$INSTALL_PATH/bin/win32exbib.bat"/>
 
-      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.1.jar"
+      <file src="../../../../ExTeX-resource/target/ExTeX-resource-0.2.jar"
             targetdir="$INSTALL_PATH/lib"/>
       <file src="../../../ExBib-core/target/ExBib-core-0.1.jar"
             targetdir="$INSTALL_PATH/lib"/>
