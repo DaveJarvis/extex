@@ -17,7 +17,7 @@ if [ "$INSTALLDIR" == "" ]; then
     exit 1
 fi
 
-export MAVEN_OPTS="-Xmx640m"
+export MAVEN_OPTS="-Xmx720m"
 
 cd ..
 
