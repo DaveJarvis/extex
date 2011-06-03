@@ -514,7 +514,7 @@ public class HorizontalListNodeTest extends AbstractNodeListTester {
 
     /**
      * Test method for
-     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(Appendable, java.lang.String, int, int)}
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#toString(StringBuilder, java.lang.String, int, int)}
      * .
      */
     @Test
