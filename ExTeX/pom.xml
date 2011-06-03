@@ -34,6 +34,14 @@
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
   </properties>
 
+  <distributionManagement>
+    <site>
+      <id>org.extex.extex</id>
+      <name>ExTeX Site</name>
+      <url>file:///serv/www/extex/snapshot/ExTeX</url>
+    </site>
+  </distributionManagement>
+
   <scm>
     <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
     <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExTeX</developerConnection>
