@@ -450,7 +450,7 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * Setter for the database.
      * 
-     * @param db the database to be used
+     * @param database the database to be used
      */
     public void setDb(DB database) {
 
