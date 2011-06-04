@@ -22,7 +22,7 @@ export MAVEN_OPTS="-Xmx720m"
 cd ..
 
 function run {
-    echo "########## $1 ##########" `date`
+    echo "\n########## $1 ##########" `date`
     (cd $2; mvn ${@:3}) || echo "*** FAILURE ***"
     echo "########## /$1 ##########" `date`
 }
@@ -39,11 +39,12 @@ run ExTeX ExTeX \
          -Dmaven.test.error.ignore=true   \
          package
 
-run 'ExBib site' ExBib site:site site:stage site:deploy
+run 'ExBib site' ExBib site:stage-deploy
 
 run site site compile
 
-echo '########## www ##########' `date`
+echo "\n########## www ##########" `date`
 (cd www; ant install )
+echo '########## /www ##########' `date`
 
 #--------------------------------------------------------------------
