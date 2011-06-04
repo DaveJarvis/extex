@@ -36,9 +36,9 @@
 
   <distributionManagement>
     <site>
-      <id>org.extex.extex</id>
+      <id>org.extex.${artifactId}</id>
       <name>ExTeX Site</name>
-      <url>file:///serv/www/extex/snapshot/ExTeX</url>
+      <url>file:///serv/www/extex/snapshot/${artifactId}</url>
     </site>
   </distributionManagement>
 
