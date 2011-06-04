@@ -46,6 +46,12 @@
       <artifactId>ExTeX-Unit-tex</artifactId>
     </dependency>
 
+    <dependency>
+      <groupId>org.extex</groupId>
+      <artifactId>ExTeX-Unit-tex</artifactId>
+      <scope>test</scope>
+    </dependency>
+
 <!-- 
     <dependency>
       <groupId>org.extex</groupId>
