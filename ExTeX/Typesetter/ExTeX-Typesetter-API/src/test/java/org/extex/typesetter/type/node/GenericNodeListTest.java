@@ -26,6 +26,7 @@ import static org.junit.Assert.assertTrue;
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
+import org.extex.core.exception.ImpossibleException;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
 import org.extex.core.glue.GlueComponent;
@@ -546,6 +547,19 @@ public class GenericNodeListTest extends AbstractNodeListTester {
         StringBuilder sb = new StringBuilder();
         list.toText(sb, "..");
         assertEquals("[])", sb.toString());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.typesetter.type.node.HorizontalListNode#visit(NodeVisitor, Object)
+     * )} .
+     * 
+     * @throws GeneralException in case of an error
+     */
+    @Test(expected = ImpossibleException.class)
+    public final void testVisit1() throws GeneralException {
+
+        makeList().visit(VISITOR, null);
     }
 
 }
