@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,7 +33,6 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is the test suite for a horizontal list node.
@@ -41,7 +40,7 @@ import org.junit.runner.JUnitCore;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class GenericListNodeTest extends AbstractNodeListTester {
+public class GenericNodeListTest extends AbstractNodeListTester {
 
     /**
      * The constant <tt>VISITOR</tt> contains the a node visitor which return a
@@ -191,16 +190,6 @@ public class GenericListNodeTest extends AbstractNodeListTester {
                     return null;
                 }
             };
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(GenericListNodeTest.class);
-    }
 
     /**
      * {@inheritDoc}
