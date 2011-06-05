@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,7 +35,6 @@ import org.extex.font.CoreFontFactory;
 import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.font.exception.FontException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationIOException;
 import org.extex.framework.logger.LogEnabled;
 import org.extex.interpreter.Flags;
@@ -57,8 +56,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
 /**
  * This class provides an implementation for the primitive <code>\font</code>.
  * 
- * <doc name="font">
- * <h3>The Primitive <tt>\font</tt></h3>
+ * <doc name="font"> <h3>The Primitive <tt>\font</tt></h3>
  * <p>
  * The primitive <tt>\font</tt> can be used to load a font with some specified
  * properties and assign it to a control sequence. The primary option is the
@@ -79,8 +77,7 @@ import org.extex.typesetter.tc.font.impl.FontImpl;
  * This primitive is an assignment.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;font&rang;
@@ -169,8 +166,7 @@ public class FontPrimitive extends AbstractAssignment
             LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -196,19 +192,10 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -306,20 +293,14 @@ public class FontPrimitive extends AbstractAssignment
     }
 
     /**
-     * Convert some primitive value into a font.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the converted value
-     * 
-     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.font.FontConvertible#convertFont(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Font convertFont(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+            Typesetter typesetter) {
 
         return context.getTypesettingContext().getFont();
     }
@@ -329,9 +310,9 @@ public class FontPrimitive extends AbstractAssignment
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         if (DEBUG) {

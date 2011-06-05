@@ -270,6 +270,8 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.hyphenation.Hyphenator#hyphenate(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions, org.extex.core.UnicodeChar,
      *      int, boolean, org.extex.typesetter.type.node.factory.NodeFactory)
@@ -308,6 +310,8 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.hyphenation.base.BaseHyphenationTable#hyphenateOne(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions, int,
      *      org.extex.core.UnicodeCharList,

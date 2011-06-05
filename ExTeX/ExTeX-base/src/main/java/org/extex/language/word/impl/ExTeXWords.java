@@ -235,9 +235,12 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
      *      int, org.extex.core.UnicodeCharList)
      */
+    @Override
     public int findWord(NodeList nodes, int start, UnicodeCharList word)
             throws HyphenationException {
 
@@ -260,9 +263,12 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.word.WordTokenizer#insertShy(org.extex.typesetter.type.NodeList,
      *      int, boolean[], org.extex.typesetter.type.node.CharNode)
      */
+    @Override
     public void insertShy(NodeList nodes, int insertionPoint, boolean[] spec,
             CharNode hyphenNode) throws HyphenationException {
 
@@ -341,9 +347,12 @@ public class ExTeXWords implements WordTokenizer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public UnicodeCharList normalize(UnicodeCharList word,
             TypesetterOptions options) throws HyphenationException {
 

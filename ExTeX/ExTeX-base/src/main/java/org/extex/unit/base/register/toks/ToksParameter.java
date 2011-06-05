@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -61,8 +61,7 @@ public class ToksParameter extends AbstractToks
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
@@ -111,13 +110,35 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @Override
+    public void assign(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        String k = getKey(context, source, typesetter);
+        source.getOptionalEquals(context);
+        Tokens tokens;
+        try {
+            tokens = source.getTokens(context, source, typesetter);
+        } catch (EofException e) {
+            throw new EofInToksException(toText());
+        }
+        context.setToks(k, tokens, prefix.clearGlobal());
+    }
+
+    /**
      * Configure an object according to a given Configuration.
      * 
      * @param config the configuration object to consider
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) {
 
         String k = config.getAttribute("key");
@@ -129,8 +150,40 @@ public class ToksParameter extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.base.register.toks.AbstractToks#getKey(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @Override
+    public Tokens convertTokens(Context context, TokenSource source,
+            Typesetter typesetter) throws HelpingException, TypesetterException {
+
+        String k = getKey(context, source, typesetter);
+        return context.getToks(k);
+    }
+
+    /**
+     * Scan the tokens between <code>{</code> and <code>}</code> and store them
+     * in the named tokens register.
+     * 
+     * @param prefix the prefix flags
+     * @param context the interpreter context
+     * @param source the token source
+     * @param typesetter the typesetter
+     * @param k the key
+     * 
+     * @throws GeneralException in case of an error
+     */
+    protected void expand(Flags prefix, Context context, TokenSource source,
+            Typesetter typesetter, String k) throws GeneralException {
+
+        Tokens toks = source.getTokens(context, source, typesetter);
+        context.setToks(k, toks, prefix.clearGlobal());
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.unit.base.register.toks.AbstractToks#getKey(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -146,9 +199,10 @@ public class ToksParameter extends AbstractToks
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.InitializableCode#init(
-     *      org.extex.interpreter.context.Context, TokenSource, Typesetter)
+     * @see org.extex.interpreter.type.InitializableCode#init(org.extex.interpreter.context.Context,
+     *      TokenSource, Typesetter)
      */
+    @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {
@@ -165,67 +219,14 @@ public class ToksParameter extends AbstractToks
     }
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    public void assign(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        source.getOptionalEquals(context);
-        Tokens tokens;
-        try {
-            tokens = source.getTokens(context, source, typesetter);
-        } catch (EofException e) {
-            throw new EofInToksException(toText());
-        }
-        context.setToks(key, tokens, prefix.clearGlobal());
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    public Tokens convertTokens(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
-
-        String key = getKey(context, source, typesetter);
-        return context.getToks(key);
-    }
-
-    /**
-     * Scan the tokens between <code>{</code> and <code>}</code> and store
-     * them in the named tokens register.
-     * 
-     * @param prefix the prefix flags
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @param key the key
-     * 
-     * @throws GeneralException in case of an error
-     */
-    protected void expand(Flags prefix, Context context, TokenSource source,
-            Typesetter typesetter, String key) throws GeneralException {
-
-        Tokens toks = source.getTokens(context, source, typesetter);
-        context.setToks(key, toks, prefix.clearGlobal());
-    }
-
-    /**
      * Return the register value as <code>Tokens</code> for <code>\the</code>.
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

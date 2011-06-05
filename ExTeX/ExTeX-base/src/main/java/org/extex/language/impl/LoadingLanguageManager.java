@@ -317,14 +317,14 @@ public class LoadingLanguageManager extends BaseLanguageManager
     /**
      * Setter for the resource finder.
      * 
-     * @param finder the resource finder
+     * @param resourceFinder the resource finder
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
     @Override
-    public void setResourceFinder(ResourceFinder finder) {
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
-        this.finder = finder;
+        this.finder = resourceFinder;
     }
 
     /**

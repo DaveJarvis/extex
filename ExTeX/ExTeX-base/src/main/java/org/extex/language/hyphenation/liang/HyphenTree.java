@@ -277,6 +277,8 @@ class HyphenTree implements Iterable<HyphenTree>, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

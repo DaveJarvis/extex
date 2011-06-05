@@ -345,6 +345,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitActive(ActiveCharacterToken token,
                         TokenSource arg) throws Exception {
 
@@ -374,6 +375,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitCr(CrToken token, TokenSource arg)
                         throws Exception {
 
@@ -396,6 +398,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitEscape(ControlSequenceToken token,
                         TokenSource arg) throws Exception {
 
@@ -424,6 +427,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitLeftBrace(LeftBraceToken token,
                         TokenSource arg) {
 
@@ -441,6 +445,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitLetter(LetterToken token, TokenSource arg) {
 
                     return token;
@@ -460,6 +465,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitMacroParam(MacroParamToken token,
                         TokenSource arg) {
 
@@ -480,6 +486,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitMathShift(MathShiftToken token,
                         TokenSource arg) {
 
@@ -497,6 +504,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitOther(OtherToken token, TokenSource arg) {
 
                     return token;
@@ -513,6 +521,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitRightBrace(RightBraceToken token,
                         TokenSource arg) {
 
@@ -530,6 +539,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitSpace(SpaceToken token, TokenSource arg) {
 
                     return token;
@@ -549,6 +559,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitSubMark(SubMarkToken token, TokenSource arg) {
 
                     return token;
@@ -568,6 +579,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitSupMark(SupMarkToken token, TokenSource arg) {
 
                     return token;
@@ -587,6 +599,7 @@ public abstract class Max
                  * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
                  *      java.lang.Object)
                  */
+                @Override
                 public Token visitTabMark(TabMarkToken token, TokenSource arg) {
 
                     return token;
@@ -610,6 +623,7 @@ public abstract class Max
             /**
              * @see org.extex.interpreter.observer.start.StartObserver#update(org.extex.interpreter.Interpreter)
              */
+            @Override
             public void update(Interpreter interpreter) throws HelpingException {
 
                 try {
@@ -654,6 +668,7 @@ public abstract class Max
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -692,9 +707,12 @@ public abstract class Max
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.TokenSource#execute(org.extex.scanner.type.token.Token,
      *      Context, Typesetter)
      */
+    @Override
     public void execute(Token token, Context theContext,
             Typesetter theTypesetter) throws HelpingException {
 
@@ -715,6 +733,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.TokenSource#executeGroup()
      */
+    @Override
     public void executeGroup() throws HelpingException {
 
         Switch b = new Switch(true);
@@ -766,6 +785,7 @@ public abstract class Max
      *      org.extex.interpreter.context.Context,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public Token expand(Token token, Context context, Typesetter typesetter)
             throws HelpingException,
                 ConfigurationException,
@@ -802,6 +822,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#expand(org.extex.scanner.type.tokens.Tokens,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens expand(Tokens tokens, Typesetter typesetter)
             throws InterpreterException,
                 HelpingException {
@@ -880,6 +901,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.max.Moritz#getContext()
      */
+    @Override
     public Context getContext() {
 
         return context;
@@ -891,6 +913,7 @@ public abstract class Max
      * 
      * @return the error handler currently registered
      */
+    @Override
     public ErrorHandler getErrorHandler() {
 
         return errorHandler;
@@ -901,6 +924,7 @@ public abstract class Max
      * 
      * @return the interaction mode
      */
+    @Override
     public Interaction getInteraction() {
 
         return context.getInteraction();
@@ -930,8 +954,11 @@ public abstract class Max
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.Interpreter#getTypesetter()
      */
+    @Override
     public Typesetter getTypesetter() {
 
         return this.typesetter;
@@ -1175,6 +1202,7 @@ public abstract class Max
      * @see org.extex.interpreter.Interpreter#loadFormat(java.io.InputStream,
      *      java.lang.String, java.lang.String, java.lang.String)
      */
+    @Override
     public void loadFormat(InputStream stream, String fmt, String contextType,
             String languageType) throws IOException, LoaderException {
 
@@ -1184,6 +1212,7 @@ public abstract class Max
             /**
              * @see org.extex.framework.RegistrarObserver#reconnect(java.lang.Object)
              */
+            @Override
             public Object reconnect(Object object) {
 
                 ((LogEnabled) object).enableLogging(logger);
@@ -1263,6 +1292,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#loadUnit(String, ResourceFinder)
      */
+    @Override
     public void loadUnit(String name, ResourceFinder resourceFinder) {
 
         Configuration unitConfig =
@@ -1285,6 +1315,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(CommandObserver observer) {
 
         observersCommand =
@@ -1296,6 +1327,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(ErrorObserver observer) {
 
         observersError = ErrorObserverList.register(observersError, observer);
@@ -1306,6 +1338,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(ExpandMacroObserver observer) {
 
         observersMacro =
@@ -1317,6 +1350,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(ExpandObserver observer) {
 
         observersExpand =
@@ -1324,8 +1358,11 @@ public abstract class Max
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.observer.load.LoadObservable#registerObserver(org.extex.interpreter.observer.load.LoadObserver)
      */
+    @Override
     public void registerObserver(LoadObserver observer) {
 
         observersLoad = LoadObserverList.register(observersLoad, observer);
@@ -1336,6 +1373,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(StartObserver observer) {
 
         observersStart = StartObserverList.register(observersStart, observer);
@@ -1346,6 +1384,7 @@ public abstract class Max
      * 
      * @param observer the observer to add
      */
+    @Override
     public void registerObserver(StopObserver observer) {
 
         observersStop = StopObserverList.register(observersStop, observer);
@@ -1366,16 +1405,11 @@ public abstract class Max
     }
 
     /**
-     * Process the current token streams by repeatedly reading a single token
-     * and processing it until no token is left. The visitor pattern is used to
-     * branch to the appropriate method for processing a single token.
-     * 
-     * @throws ConfigurationException in case of a configuration error
-     * @throws ErrorLimitException in case that the error limit has been reached
-     * @throws HelpingException in case of another error
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.Interpreter#run()
      */
+    @Override
     public void run() throws HelpingException, TypesetterException {
 
         if (typesetter == null) {
@@ -1432,14 +1466,11 @@ public abstract class Max
     }
 
     /**
-     * Add a token stream and start processing it.
-     * 
-     * @param stream the input stream to consider
-     * @throws ConfigurationException in case of a configuration error
-     * @throws ErrorLimitException in case that the error limit has been reached
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.Interpreter#run(org.extex.scanner.api.TokenStream)
      */
+    @Override
     public void run(TokenStream stream)
             throws HelpingException,
                 TypesetterException {
@@ -1449,14 +1480,11 @@ public abstract class Max
     }
 
     /**
-     * Setter for the context. Use with care!
-     * 
-     * @return the old context
-     * 
-     * @param context the interpreter context
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.Interpreter#setContext(org.extex.interpreter.context.Context)
      */
+    @Override
     public Context setContext(Context context) {
 
         Context c = this.context;
@@ -1472,6 +1500,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#setErrorHandler(org.extex.interpreter.ErrorHandler)
      */
+    @Override
     public void setErrorHandler(ErrorHandler handler) {
 
         errorHandler = handler;
@@ -1484,6 +1513,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#setFontFactory(org.extex.font.CoreFontFactory)
      */
+    @Override
     public void setFontFactory(CoreFontFactory fontFactory) {
 
         context.setFontFactory(fontFactory);
@@ -1498,6 +1528,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#setInteraction(org.extex.interpreter.interaction.Interaction)
      */
+    @Override
     public void setInteraction(Interaction interaction) throws GeneralException {
 
         context.setInteraction(interaction);
@@ -1512,6 +1543,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#setJobname(java.lang.String)
      */
+    @Override
     public void setJobname(String jobname) throws GeneralException {
 
         context.setToks("jobname", //
@@ -1525,6 +1557,7 @@ public abstract class Max
      * 
      * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
+    @Override
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
@@ -1537,6 +1570,7 @@ public abstract class Max
      * 
      * @see org.extex.interpreter.Interpreter#setTypesetter(org.extex.typesetter.Typesetter)
      */
+    @Override
     public void setTypesetter(Typesetter typesetter) {
 
         this.typesetter = typesetter;
@@ -1552,12 +1586,13 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitActive(ActiveCharacterToken token, Object ignore)
             throws Exception {
 
@@ -1587,11 +1622,12 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitCr(CrToken token, Object ignore) throws Exception {
 
         if (prefix.isDirty()) {
@@ -1612,12 +1648,13 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitEscape(ControlSequenceToken token, Object ignore)
             throws Exception {
 
@@ -1649,7 +1686,7 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see "<logo>T<span style=
@@ -1658,6 +1695,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitLeftBrace(LeftBraceToken token, Object ignore)
             throws Exception {
 
@@ -1678,11 +1716,12 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitLetter(LetterToken token, Object ignore)
             throws Exception {
 
@@ -1720,6 +1759,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitMacroParam(MacroParamToken token, Object ignore)
             throws GeneralException {
 
@@ -1739,7 +1779,7 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * @throws ConfigurationException in case of an configuration error
      * 
      * @see "<logo>T<span style=
@@ -1748,6 +1788,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitMathShift(MathShiftToken token, Object ignore)
             throws Exception {
 
@@ -1768,11 +1809,12 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitOther(OtherToken token, Object ignore) throws Exception {
 
         if (prefix.isDirty()) {
@@ -1793,7 +1835,7 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * 
      * @see "<logo>T<span style=
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
@@ -1801,6 +1843,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitRightBrace(RightBraceToken token, Object ignore)
             throws Exception {
 
@@ -1828,6 +1871,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitSpace(SpaceToken token, Object ignore)
             throws GeneralException {
 
@@ -1850,11 +1894,12 @@ public abstract class Max
      * 
      * @return <code>null</code>
      * 
-     * @throws InterpreterException in case of an error
+     * @throws Exception in case of an error
      * 
      * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitSubMark(SubMarkToken token, Object ignore)
             throws Exception {
 
@@ -1891,6 +1936,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitSupMark(SupMarkToken token, Object ignore)
             throws Exception {
 
@@ -1928,6 +1974,7 @@ public abstract class Max
      * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
      *      java.lang.Object)
      */
+    @Override
     public Object visitTabMark(TabMarkToken token, Object ignore)
             throws Exception {
 

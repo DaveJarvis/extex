@@ -163,18 +163,18 @@ public class PageFactoryNodeVisitor
     /**
      * Reset the internal to start with a new page.
      * 
-     * @param page the page
-     * @param context the context
-     * @param typesetter the typesetter
+     * @param p the page
+     * @param c the context
+     * @param t the typesetter
      */
-    public void reset(Page page, Context context, Typesetter typesetter) {
+    public void reset(Page p, Context c, Typesetter t) {
 
-        this.context = context;
-        this.page = page;
-        this.typesetter = typesetter;
+        this.context = c;
+        this.page = p;
+        this.typesetter = t;
         this.posH.set(0L);
         this.posV.set(0L);
-        context.startMarks();
+        c.startMarks();
     }
 
     /**

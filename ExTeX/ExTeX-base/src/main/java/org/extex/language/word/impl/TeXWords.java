@@ -128,6 +128,8 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.word.WordTokenizer#findWord(org.extex.typesetter.type.NodeList,
      *      int, org.extex.core.UnicodeCharList)
      */
@@ -154,6 +156,8 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.language.word.WordTokenizer#normalize(org.extex.core.UnicodeCharList,
      *      org.extex.typesetter.TypesetterOptions)
      */
@@ -163,10 +167,10 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
 
         UnicodeCharList list = new UnicodeCharList();
         int size = word.size();
-        UnicodeChar c, uc;
+        UnicodeChar c;
 
         for (int i = 0; i < size; i++) {
-            uc = word.get(i);
+            UnicodeChar uc = word.get(i);
             c = options.getLccode(uc);
             list.add(c == null ? uc : c);
         }

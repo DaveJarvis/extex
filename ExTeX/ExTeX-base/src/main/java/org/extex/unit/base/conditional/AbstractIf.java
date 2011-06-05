@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -41,9 +41,9 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * If you want to implement an if-like primitive you should derive it from this
  * class. All you have to do is to implement the method
- * {@link #conditional(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter) conditional()}.
- * Here you define the expression evaluated to determine whether the if or the
- * else branch should be taken.
+ * {@link #conditional(org.extex.interpreter.context.Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
+ * conditional()}. Here you define the expression evaluated to determine whether
+ * the if or the else branch should be taken.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -55,8 +55,7 @@ public abstract class AbstractIf extends AbstractCode
             PrefixCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 24012007L;
 
@@ -71,8 +70,8 @@ public abstract class AbstractIf extends AbstractCode
     }
 
     /**
-     * Skip to the next matching <tt>\fi</tt> or <tt>\else</tt> Token
-     * counting the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
+     * Skip to the next matching <tt>\fi</tt> or <tt>\else</tt> Token counting
+     * the intermediate <tt>\if</tt>s and <tt>\fi</tt>s.
      * 
      * <p>
      * This method implements the absorption of tokens at high speed.
@@ -82,9 +81,9 @@ public abstract class AbstractIf extends AbstractCode
      * @param source the source for new tokens
      * @param primitive the name of the invoking primitive
      * 
-     * @return <code>true</code> if a matching <tt>\else</tt> has been
-     *         found; otherwise return <code>false</code> if a matching
-     *         <tt>\fi</tt> has been found
+     * @return <code>true</code> if a matching <tt>\else</tt> has been found;
+     *         otherwise return <code>false</code> if a matching <tt>\fi</tt>
+     *         has been found
      * 
      * @throws HelpingException in case of en error
      */
@@ -121,7 +120,7 @@ public abstract class AbstractIf extends AbstractCode
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
-            context.esc(primitive), // 
+            context.esc(primitive), //
             locator != null ? Integer.toString(locator.getLineNumber()) : "");
     }
 
@@ -137,9 +136,9 @@ public abstract class AbstractIf extends AbstractCode
 
     /**
      * This method computes the boolean value of the conditional. If the result
-     * is <code>true</code> then the then branch is expanded and the else
-     * branch is skipped. Otherwise the then branch is skipped and the else
-     * branch is expanded.
+     * is <code>true</code> then the then branch is expanded and the else branch
+     * is skipped. Otherwise the then branch is skipped and the else branch is
+     * expanded.
      * 
      * @param context the interpreter context
      * @param source the source for new tokens
@@ -157,8 +156,8 @@ public abstract class AbstractIf extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -175,10 +174,11 @@ public abstract class AbstractIf extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -193,6 +193,8 @@ public abstract class AbstractIf extends AbstractCode
      * The ifs are characterized by the return value <code>true</code> of this
      * method. Thus the overwritten method returning the constant is provided in
      * this abstract base class.
+     * 
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
