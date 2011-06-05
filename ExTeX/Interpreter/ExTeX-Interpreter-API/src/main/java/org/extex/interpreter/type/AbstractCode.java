@@ -46,14 +46,13 @@ import org.extex.typesetter.exception.TypesetterException;
 public abstract class AbstractCode implements Code, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>localizer</tt> contains the localizer or
-     * <code>null</code> if none has been set yet.
+     * The field <tt>localizer</tt> contains the localizer or <code>null</code>
+     * if none has been set yet.
      */
     private transient Localizer localizer = null;
 
@@ -75,10 +74,11 @@ public abstract class AbstractCode implements Code, Serializable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Code#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Code#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -100,8 +100,11 @@ public abstract class AbstractCode implements Code, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#getName()
      */
+    @Override
     public String getName() {
 
         return token == null ? "" : token.getName();
@@ -112,22 +115,29 @@ public abstract class AbstractCode implements Code, Serializable {
      * 
      * @return the token
      */
+    @Override
     public CodeToken getToken() {
 
         return token;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#isIf()
      */
+    @Override
     public boolean isIf() {
 
         return false;
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.type.Code#isOuter()
      */
+    @Override
     public boolean isOuter() {
 
         return false;
@@ -146,6 +156,8 @@ public abstract class AbstractCode implements Code, Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

@@ -58,21 +58,29 @@ import org.extex.typesetter.type.node.VerticalListNode;
 public class Box implements BoxOrRule, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2005L;
 
     /**
-     * The field <tt>nodes</tt> contains the node list stored in this box.
-     * Thus is either a
-     * {@link org.extex.typesetter.type.node.HorizontalListNode HorizontalListNode}
-     * or a
+     * The field <tt>nodes</tt> contains the node list stored in this box. Thus
+     * is either a {@link org.extex.typesetter.type.node.HorizontalListNode
+     * HorizontalListNode} or a
      * {@link org.extex.typesetter.type.node.VerticalListNode VerticalListNode}
-     * or it is <code>null</code>. In case of a <code>null</code> value the
-     * box is void.
+     * or it is <code>null</code>. In case of a <code>null</code> value the box
+     * is void.
      */
     private NodeList nodes = null;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param box the box to copy (shallow)
+     */
+    public Box(Box box) {
+
+        nodes = (box == null ? null : box.getNodes());
+    }
 
     /**
      * Creates a new object.
@@ -82,8 +90,8 @@ public class Box implements BoxOrRule, Serializable {
      * @param typesetter the typesetter stack
      * @param isHorizontal indicator whether a <tt>\hbox</tt> should be
      *        constructed. The alternative is a <tt>\vbox</tt>.
-     * @param insert tokens to insert at the beginning or <code>null</code>
-     *        for none
+     * @param insert tokens to insert at the beginning or <code>null</code> for
+     *        none
      * @param groupType the type of the group just entered
      * @param startToken the token which started the group
      * 
@@ -130,16 +138,6 @@ public class Box implements BoxOrRule, Serializable {
     public Box(NodeList list) {
 
         nodes = list;
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param box the box to copy (shallow)
-     */
-    public Box(Box box) {
-
-        nodes = (box == null ? null : box.getNodes());
     }
 
     /**
@@ -339,18 +337,6 @@ public class Box implements BoxOrRule, Serializable {
     }
 
     /**
-     * @see java.lang.Object#toString()
-     */
-    @Override
-    public String toString() {
-
-        if (nodes == null) {
-            return "void";
-        }
-        return nodes.toString();
-    }
-
-    /**
      * Adjust the width of the box if it is not void.
      * 
      * @param spread the length to add to the width
@@ -362,6 +348,20 @@ public class Box implements BoxOrRule, Serializable {
             x.add(spread);
             setWidth(x);
         }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+
+        if (nodes == null) {
+            return "void";
+        }
+        return nodes.toString();
     }
 
     /**
