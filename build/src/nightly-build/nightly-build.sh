@@ -30,11 +30,11 @@ function run {
 
 run install . install
 
-run 'clean ExBib' ExBib clean
+#run 'clean ExBib' ExBib clean
 #run ExBib ExBib install
 run ExBib ExBib/ExBib-Installer package
 
-run 'clean ExTeX' ExTeX clean
+#run 'clean ExTeX' ExTeX clean
 run ExTeX ExTeX \
          -Dmaven.test.failure.ignore=true \
          -Dmaven.test.error.ignore=true   \
