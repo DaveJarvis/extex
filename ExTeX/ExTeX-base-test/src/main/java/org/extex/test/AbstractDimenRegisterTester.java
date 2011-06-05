@@ -17,9 +17,8 @@
  *
  */
 
-package org.extex.unit.tex.register.dimen;
+package org.extex.test;
 
-import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**

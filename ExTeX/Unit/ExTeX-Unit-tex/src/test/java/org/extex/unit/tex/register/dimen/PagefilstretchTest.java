@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.register.dimen;
 
+import org.extex.test.AbstractDimenRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
