@@ -56,11 +56,11 @@ public class Right {
      * 
      * @param cs the compiler state
      * @param withOffset use push back instead of output
-     *
+     * 
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
      * @throws IOException in case of an I/O error
-     * @throws StateNotDefinedException
+     * @throws StateNotDefinedException in case of an error
      * @throws TableNotDefinedException in case that no matching table is known
      *         for a symbolic table reference
      */

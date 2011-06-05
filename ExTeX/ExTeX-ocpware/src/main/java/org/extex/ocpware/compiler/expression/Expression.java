@@ -251,8 +251,8 @@ public class Expression {
     }
 
     /**
-     * The field <tt>leftState</tt> contains the left state or
-     * <code>null</code>.
+     * The field <tt>leftState</tt> contains the left state or <code>null</code>
+     * .
      */
     String leftState;
 
@@ -268,8 +268,8 @@ public class Expression {
     private Right right;
 
     /**
-     * The field <tt>rightState</tt> contains the optional right state to
-     * switch to.
+     * The field <tt>rightState</tt> contains the optional right state to switch
+     * to.
      */
     private RightState rightState;
 
@@ -302,7 +302,7 @@ public class Expression {
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
      * @throws IOException in case of an I/O error
-     * @throws StateNotDefinedException
+     * @throws StateNotDefinedException in case of an error
      * @throws TableNotDefinedException in case that no matching table is known
      *         for a symbolic table reference
      * @throws IllegalOpcodeException in case of an illegal op code
@@ -323,7 +323,7 @@ public class Expression {
             right.compile(cs, false);
         }
         if (pushBack != null) {
-            for(Expr ex: pushBack) {
+            for (Expr ex : pushBack) {
                 ex.outRight(cs, true);
             }
         }
@@ -466,7 +466,7 @@ public class Expression {
     /**
      * Setter for the right state.
      * 
-     * @param rightState
+     * @param rightState the right state
      */
     private void setRightState(RightState rightState) {
 

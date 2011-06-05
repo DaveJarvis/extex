@@ -46,19 +46,20 @@ public class BeginningLeft implements Left {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.ocpware.compiler.left.Left#genLeft(
-     *      org.extex.ocpware.compiler.parser.State, CompilerState)
+     * @see org.extex.ocpware.compiler.left.Left#genLeft(org.extex.ocpware.compiler.parser.State,
+     *      CompilerState)
      */
+    @Override
     public List<Integer> genLeft(State state, CompilerState cs)
             throws IOException,
                 ArgmentTooBigException {
 
         int ptr = state.putInstruction(OcpCode.OP_GOTO_BEG, 0);
         List<Integer> holes = new ArrayList<Integer>();
-        holes.add(Integer.valueOf(ptr -1));
+        holes.add(Integer.valueOf(ptr - 1));
         ptr = state.putInstruction(OcpCode.OP_GOTO, 0);
         List<Integer> falseHoles = new ArrayList<Integer>();
-        falseHoles.add(Integer.valueOf(ptr -1));
+        falseHoles.add(Integer.valueOf(ptr - 1));
         state.fillIn(holes);
         return falseHoles;
     }

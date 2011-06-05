@@ -30,7 +30,6 @@ import java.util.Map;
 import org.extex.ocpware.compiler.exception.AliasDefinedException;
 import org.extex.ocpware.compiler.exception.AliasNotDefinedException;
 import org.extex.ocpware.compiler.exception.ArgmentTooBigException;
-import org.extex.ocpware.compiler.exception.IllegalOpcodeException;
 import org.extex.ocpware.compiler.exception.MissingExpressionsException;
 import org.extex.ocpware.compiler.exception.StateDefinedException;
 import org.extex.ocpware.compiler.exception.StateNotDefinedException;
@@ -512,7 +511,6 @@ public final class CompilerState {
      * @return the index of the next free position in the instruction array
      * 
      * @throws IOException in case of an I/O error
-     * @throws IllegalOpcodeException in case of an illegal op code
      */
     public int putInstruction(int opCode) throws IOException {
 
@@ -530,7 +528,6 @@ public final class CompilerState {
      * @throws IOException in case of an I/O error
      * @throws ArgmentTooBigException if the argument of the instruction exceeds
      *         the 16 bit value
-     * @throws IllegalOpcodeException in case of an illegal op code
      */
     public int putInstruction(int opCode, int n)
             throws IOException,
@@ -551,7 +548,6 @@ public final class CompilerState {
      * @throws IOException in case of an I/O error
      * @throws ArgmentTooBigException if the argument of the instruction exceeds
      *         the 16 bit value
-     * @throws IllegalOpcodeException in case of an illegal op code
      */
     public int putInstruction(int opCode, int n, int a)
             throws IOException,

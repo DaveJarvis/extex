@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,7 +42,7 @@ public interface RightState {
      * @throws ArgmentTooBigException in case that an argument is encountered
      *         which does not fit into two bytes
      * @throws IOException in case of an error
-     * @throws StateNotDefinedException
+     * @throws StateNotDefinedException in case of an error
      */
     void compile(CompilerState cs, boolean withOffset)
             throws ArgmentTooBigException,
