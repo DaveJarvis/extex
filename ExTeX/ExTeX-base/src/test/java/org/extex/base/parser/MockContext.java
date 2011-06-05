@@ -753,6 +753,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#popConditional()
      */
     @Override
@@ -762,6 +764,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#popDirection()
      */
     @Override
@@ -771,6 +775,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#pushConditional(org.extex.core.Locator,
      *      boolean, org.extex.interpreter.type.Code, long, boolean)
      */
@@ -782,6 +788,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#pushDirection(org.extex.typesetter.tc.Direction)
      */
     @Override
@@ -791,6 +799,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(org.extex.color.Color,
      *      boolean)
      */
@@ -801,6 +811,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.Direction,
      *      boolean)
      */
@@ -811,6 +823,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.font.Font,
      *      boolean)
      */
@@ -821,6 +835,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(org.extex.language.Language,
      *      boolean)
      */
@@ -831,6 +847,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(java.lang.Object,
      *      java.lang.Object, java.lang.Object, boolean)
      */
@@ -841,6 +859,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#set(org.extex.typesetter.tc.TypesettingContext,
      *      boolean)
      */
@@ -851,6 +871,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#setAfterassignment(org.extex.scanner.type.token.Token)
      */
     @Override
@@ -860,6 +882,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.Context#setBox(java.lang.String,
      *      org.extex.interpreter.type.box.Box, boolean)
      */
@@ -1180,6 +1204,8 @@ public class MockContext implements Context, TypesetterOptions {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.context.ContextTokens#setToks(java.lang.String,
      *      org.extex.scanner.type.tokens.Tokens, boolean)
      */
