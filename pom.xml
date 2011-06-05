@@ -166,11 +166,11 @@
   </dependencyManagement>
 
   <modules>
+   <module>develop</module>
    <module>build</module>
    <module>texmf</module>
    <module>tools</module>
    <module>doc</module>
-   <module>develop</module>
    <!-- 
    <module>www</module>
     -->
