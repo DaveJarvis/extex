@@ -187,6 +187,8 @@ public class TokenStreamBaseImpl implements TokenStream {
      * 
      * @return <code>true</code> if the stream is at end of line
      * 
+     *         {@inheritDoc}
+     * 
      * @see org.extex.scanner.api.TokenStream#isEol()
      */
     @Override

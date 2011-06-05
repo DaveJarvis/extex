@@ -19,7 +19,11 @@
 
 package org.extex.scanner.base;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+import static org.junit.Assert.assertTrue;
 
 import org.extex.core.Locator;
 import org.extex.scanner.type.Catcode;
@@ -43,25 +47,6 @@ public class TokenStreamBaseImplTest {
     }
 
     /**
-     * <testcase> This test case validates that the constructor injects a token
-     * list with one element. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testTokenStreamBaseImplBooleanTokens() throws Exception {
-
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
-            Catcode.LETTER, 'a', "");
-        TokenStreamBaseImpl stream =
-                new TokenStreamBaseImpl(true, new Tokens(token));
-        assertEquals(token, stream.get(TokenStreamStringImplTest.FACTORY,
-            TokenStreamStringImplTest.TOKENIZER));
-        assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
-            TokenStreamStringImplTest.TOKENIZER));
-    }
-
-    /**
      * <testcase> This test case validates that closeFileStream() succeeds on an
      * empty file stream. </testcase>
      */
@@ -69,23 +54,6 @@ public class TokenStreamBaseImplTest {
     public void testCloseFileStream1() {
 
         assertTrue(new TokenStreamBaseImpl(true).closeFileStream());
-    }
-
-    /**
-     * <testcase> This test case validates that closeFileStream() discards any
-     * remaining characters. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testCloseFileStream2() throws Exception {
-
-        TokenStreamBaseImpl stream = new TokenStreamBaseImpl(true);
-        stream.put(TokenStreamStringImplTest.FACTORY.createToken(
-            Catcode.LETTER, 'a', ""));
-        assertTrue(stream.closeFileStream());
-        assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
-            TokenStreamStringImplTest.TOKENIZER));
     }
 
     /**
@@ -111,6 +79,23 @@ public class TokenStreamBaseImplTest {
         stream.put(TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', ""));
         assertFalse(stream.closeFileStream());
+        assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
+            TokenStreamStringImplTest.TOKENIZER));
+    }
+
+    /**
+     * <testcase> This test case validates that closeFileStream() discards any
+     * remaining characters. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testCloseFileStream2() throws Exception {
+
+        TokenStreamBaseImpl stream = new TokenStreamBaseImpl(true);
+        stream.put(TokenStreamStringImplTest.FACTORY.createToken(
+            Catcode.LETTER, 'a', ""));
+        assertTrue(stream.closeFileStream());
         assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
             TokenStreamStringImplTest.TOKENIZER));
     }
@@ -329,6 +314,25 @@ public class TokenStreamBaseImplTest {
         stream.put(space);
         stream.put(space);
         stream.skipSpaces();
+        assertEquals(token, stream.get(TokenStreamStringImplTest.FACTORY,
+            TokenStreamStringImplTest.TOKENIZER));
+        assertNull(stream.get(TokenStreamStringImplTest.FACTORY,
+            TokenStreamStringImplTest.TOKENIZER));
+    }
+
+    /**
+     * <testcase> This test case validates that the constructor injects a token
+     * list with one element. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testTokenStreamBaseImplBooleanTokens() throws Exception {
+
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+            Catcode.LETTER, 'a', "");
+        TokenStreamBaseImpl stream =
+                new TokenStreamBaseImpl(true, new Tokens(token));
         assertEquals(token, stream.get(TokenStreamStringImplTest.FACTORY,
             TokenStreamStringImplTest.TOKENIZER));
         assertNull(stream.get(TokenStreamStringImplTest.FACTORY,

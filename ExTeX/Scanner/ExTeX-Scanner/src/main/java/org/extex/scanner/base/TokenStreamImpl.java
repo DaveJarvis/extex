@@ -172,6 +172,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitActive(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitActive(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -197,6 +198,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitComment(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitComment(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc) {
 
@@ -218,6 +220,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitCr(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitCr(TokenFactory factory, Tokenizer tokenizer,
                         UnicodeChar uchar) throws CatcodeException {
 
@@ -256,6 +259,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitEscape(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitEscape(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uchar)
                         throws CatcodeException,
@@ -315,6 +319,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitIgnore(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitIgnore(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc) {
 
@@ -335,6 +340,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitInvalid(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitInvalid(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws InvalidCharacterScannerException {
@@ -358,6 +364,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitLeftBrace(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitLeftBrace(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -382,6 +389,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitLetter(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitLetter(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -409,6 +417,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitMacroParam(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitMacroParam(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -436,6 +445,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitMathShift(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitMathShift(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -460,6 +470,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitOther(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitOther(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -484,6 +495,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitRightBrace(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitRightBrace(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -510,6 +522,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  *      java.lang.Object, java.lang.Object)
                  * @see "The TeXbook [Chapter 8, page 47]"
                  */
+                @Override
                 public Token visitSpace(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -540,6 +553,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitSubMark(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitSubMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -567,6 +581,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitSupMark(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitSupMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -594,6 +609,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                  * @see org.extex.scanner.type.CatcodeVisitor#visitTabMark(java.lang.Object,
                  *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public Token visitTabMark(TokenFactory factory,
                         Tokenizer tokenizer, UnicodeChar uc)
                         throws CatcodeException {
@@ -879,7 +895,8 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             return false;
         }
         try {
-            if ((line = in.readLine()) == null) {
+            line = in.readLine();
+            if (line == null) {
                 in.close();
                 in = null;
                 return false;
