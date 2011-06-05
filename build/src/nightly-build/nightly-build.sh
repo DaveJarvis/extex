@@ -17,7 +17,7 @@ if [ "$INSTALLDIR" == "" ]; then
     exit 1
 fi
 
-export MAVEN_OPTS="-Xmx720m"
+export MAVEN_OPTS="-Xmx720m -XX:MaxPermSize=256m"
 
 cd ..
 
