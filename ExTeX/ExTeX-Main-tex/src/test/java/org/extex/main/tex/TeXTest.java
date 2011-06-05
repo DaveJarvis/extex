@@ -431,14 +431,14 @@ public class TeXTest {
     @Test
     public void testExternal2() throws Exception {
 
-        String CFG = "p-p-p";
-        File f = new File(".extex-" + CFG);
+        String cfg = "p-p-p";
+        File f = new File(".extex-" + cfg);
         try {
             FileWriter w = new FileWriter(f);
             w.write("extex.nobanner:true\n");
             w.close();
 
-            runSuccess(new String[]{"-" + CFG, "-init", "\\end"}, //
+            runSuccess(new String[]{"-" + cfg, "-init", "\\end"}, //
                 TRANSCRIPT_TEXPUT, "texput.log");
         } finally {
             f.delete();
@@ -505,7 +505,7 @@ public class TeXTest {
         System.setIn(new ByteArrayInputStream((EMPTY_TEX + "\n\\end\n")
             .getBytes()));
         runSuccess(
-            new String[]{"-ini"},//
+            new String[]{"-ini"}, //
             BANNER_TEX + "**(" + EMPTY_TEX + " )\n" + "*\n"
                     + "No pages of output.\n" + transcript("empty"),
             "empty.log");

@@ -85,9 +85,9 @@ public class ResourceFinderImpl
      * 
      * @param theLogger the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
@@ -100,6 +100,7 @@ public class ResourceFinderImpl
      * 
      * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
      */
+    @Override
     public void enableTracing(boolean flag) {
 
         // not supported
@@ -116,9 +117,10 @@ public class ResourceFinderImpl
      * 
      * @throws ConfigurationException in case of an exception
      * 
-     * @see org.extex.resource.ResourceFinder#findResource( java.lang.String,
+     * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
      *      java.lang.String)
      */
+    @Override
     public NamedInputStream findResource(String name, String type)
             throws ConfigurationException {
 
@@ -184,14 +186,14 @@ public class ResourceFinderImpl
     /**
      * Setter for the interaction provider.
      * 
-     * @param provider the provider
+     * @param interactionProvider the provider
      * 
-     * @see org.extex.resource.InteractionAware#setInteractionProvider(
-     *      org.extex.resource.InteractionIndicator)
+     * @see org.extex.resource.InteractionAware#setInteractionProvider(org.extex.resource.InteractionIndicator)
      */
-    public void setInteractionProvider(InteractionIndicator provider) {
+    @Override
+    public void setInteractionProvider(InteractionIndicator interactionProvider) {
 
-        this.provider = provider;
+        this.provider = interactionProvider;
     }
 
     /**
@@ -199,9 +201,9 @@ public class ResourceFinderImpl
      * 
      * @param parent the parent resource finder
      * 
-     * @see org.extex.resource.RecursiveFinder#setParent(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.RecursiveFinder#setParent(org.extex.resource.ResourceFinder)
      */
+    @Override
     public void setParent(ResourceFinder parent) {
 
         this.parent = parent;
