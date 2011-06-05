@@ -15,7 +15,7 @@
   <poweredBy/>
   <bannerLeft>
     <name>${project.name}</name>
-    <src>images/${project.name}.png</src>
+    <src>images/${project.artifactId}.png</src>
     <href>/</href>
   </bannerLeft>
   <body>

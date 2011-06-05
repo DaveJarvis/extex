@@ -122,7 +122,6 @@ public class ConfigReader {
      */
     public ConfigReader() throws ParserConfigurationException {
 
-        super();
         builder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
     }
 

@@ -45,29 +45,19 @@
     </repository>
   </repositories>
 
-  <reporting>
+  <build>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-checkstyle-plugin</artifactId>
-        <version>2.6</version>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>true</downloadJavadocs>
-          <configLocation>org/extex/checkstyle-extex.xml</configLocation>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
-<!--
-        <dependencies>
-          <dependency>
-            <groupId>org.extex</groupId>
-            <artifactId>ExTeX-dev</artifactId>
-            <version>1.0</version>
-          </dependency>
-        </dependencies>
--->
       </plugin>
     </plugins>
-  </reporting>
+  </build>
 
   <developers>
     <developer>

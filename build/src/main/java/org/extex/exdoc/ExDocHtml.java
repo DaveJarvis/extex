@@ -104,7 +104,6 @@ public class ExDocHtml extends ExDocXml {
                 TransformerFactoryConfigurationError,
                 IOException {
 
-        super();
         InputStream xslt =
                 getClass().getClassLoader().getResourceAsStream(XSLT);
         if (xslt == null) {

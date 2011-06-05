@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group
+ * Copyright (C) 2004-2011 The ExTeX Group
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -92,91 +92,14 @@ public class PdfDocumentWriter
     private DocumentWriterOptions docoptions;
 
     /**
-     * Creates a new object.
-     * 
-     * @param cfg the configuration
-     * @param options the options
-     */
-    public PdfDocumentWriter(Configuration cfg, DocumentWriterOptions options) {
-
-        super();
-        docoptions = options;
-
-        // if (cfg != null) {
-        // String tmp = cfg.getAttribute("encoding");
-        // if (tmp != null && !tmp.equals("")) {
-        // encoding = tmp;
-        // }
-        // }
-    }
-
-    /**
      * the PDFDocument.
      */
     private PDDocument document = null;
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws DocumentWriterException {
-
-        if (out != null) {
-            try {
-                if (document != null) {
-                    System.err.println("\nSAVE\n");
-                    document.save(out);
-                    document.close();
-                }
-                out.close();
-            } catch (IOException e) {
-                new DocumentWriterIOException(e);
-            } catch (COSVisitorException e) {
-                new DocumentWriterPdfException(e);
-            }
-            out = null;
-        } else {
-            throw new DocumentWriterClosedChannelException("closed channel");
-        }
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    public String getExtension() {
-
-        return "pdf";
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(
-     *      java.io.OutputStream)
-     */
-    public void setOutputStream(OutputStream outStream) {
-
-        out = outStream;
-    }
-
-    /**
      * map for the parameters.
      */
     private Map<String, String> param = new HashMap<String, String>();
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
-     */
-    public void setParameter(String name, String value) {
-
-        param.put(name, value);
-    }
 
     /**
      * paper width.
@@ -209,11 +132,282 @@ public class PdfDocumentWriter
     private PdfNodeVisitor nodeVisitor;
 
     /**
+     * Creates a new object.
+     * 
+     * @param cfg the configuration
+     * @param options the options
+     */
+    public PdfDocumentWriter(Configuration cfg, DocumentWriterOptions options) {
+
+        docoptions = options;
+
+        // if (cfg != null) {
+        // String tmp = cfg.getAttribute("encoding");
+        // if (tmp != null && !tmp.equals("")) {
+        // encoding = tmp;
+        // }
+        // }
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
+     * @see org.extex.backend.documentWriter.DocumentWriter#close()
      */
+    @Override
+    public void close() throws DocumentWriterException {
+
+        if (out != null) {
+            try {
+                if (document != null) {
+                    System.err.println("\nSAVE\n");
+                    document.save(out);
+                    document.close();
+                }
+                out.close();
+            } catch (IOException e) {
+                new DocumentWriterIOException(e);
+            } catch (COSVisitorException e) {
+                new DocumentWriterPdfException(e);
+            }
+            out = null;
+        } else {
+            throw new DocumentWriterClosedChannelException("closed channel");
+        }
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
+     *      java.lang.String)
+     */
+    @Override
+    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
+            throws HelpingException {
+
+        // TODO getAnnotation unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
+     */
+    @Override
+    public String getExtension() {
+
+        return "pdf";
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getObject(java.lang.String, boolean,
+     *      java.lang.String)
+     */
+    @Override
+    public PdfObject getObject(String attr, boolean isStream, String text)
+            throws HelpingException {
+
+        // TODO getObject unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getXForm(java.lang.String,
+     *      java.lang.String, org.extex.typesetter.type.NodeList)
+     */
+    @Override
+    public PdfXForm getXForm(String attr, String resources, NodeList list)
+            throws HelpingException {
+
+        // TODO gene: getXForm unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#getXImage(java.lang.String,
+     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
+     *      boolean)
+     */
+    @Override
+    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
+            long page, boolean immediate) throws HelpingException {
+
+        // TODO getXImage unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
+     *      org.extex.pdf.api.action.ActionSpec)
+     */
+    @Override
+    public void pdfcatalog(String text, ActionSpec action) {
+
+        // TODO pdfcatalog unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
+     */
+    @Override
+    public String pdffontname(Font font) {
+
+        // TODO pdffontname unimplemented
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
+     */
+    @Override
+    public long pdffontobjnum(Font font) {
+
+        // TODO pdffontobjnum unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
+     *      java.lang.String)
+     */
+    @Override
+    public void pdfincludechars(Font font, String text) {
+
+        // TODO pdfincludechars unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
+     */
+    @Override
+    public void pdfinfo(String text) {
+
+        // TODO pdfinfo unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
+     */
+    @Override
+    public long pdflastannot() {
+
+        // TODO pdflastannot unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
+     */
+    @Override
+    public long pdflastobj() {
+
+        // TODO pdflastobj unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
+     */
+    @Override
+    public long pdflastxform() {
+
+        // TODO pdflastxform unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
+     */
+    @Override
+    public long pdflastximage() {
+
+        // TODO pdflastximage unimplemented
+        return 0;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfnames(java.lang.String)
+     */
+    @Override
+    public void pdfnames(String text) {
+
+        // TODO pdfnames unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(org.extex.pdf.api.action.ActionSpec,
+     *      long, java.lang.String)
+     */
+    @Override
+    public void pdfoutline(ActionSpec action, long count, String text) {
+
+        // TODO pdfoutline unimplemented
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
+     */
+    @Override
+    public void setOutputStream(OutputStream outStream) {
+
+        out = outStream;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
+     */
+    @Override
+    public void setParameter(String name, String value) {
+
+        param.put(name, value);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
+     */
+    @Override
     public int shipout(Page p) throws DocumentWriterException {
 
         NodeList nodes = p.getNodes();
@@ -255,8 +449,8 @@ public class PdfDocumentWriter
 
             // set page size and margin
             PDRectangle pagesize =
-                    new PDRectangle(Unit.getDimenAsBP(paperwidth), Unit
-                        .getDimenAsBP(paperheight));
+                    new PDRectangle(Unit.getDimenAsBP(paperwidth),
+                        Unit.getDimenAsBP(paperheight));
             page.setMediaBox(pagesize);
 
             // set start point
@@ -292,185 +486,6 @@ public class PdfDocumentWriter
             throw new DocumentWriterException(e);
         }
         return 1;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getAnnotation(org.extex.typesetter.type.node.RuleNode,
-     *      java.lang.String)
-     */
-    public PdfAnnotation getAnnotation(RuleNode node, String annotation)
-            throws HelpingException {
-
-        // TODO getAnnotation unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getObject(java.lang.String,
-     *      boolean, java.lang.String)
-     */
-    public PdfObject getObject(String attr, boolean isStream, String text)
-            throws HelpingException {
-
-        // TODO getObject unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXImage(java.lang.String,
-     *      org.extex.typesetter.type.node.RuleNode, java.lang.String, long,
-     *      boolean)
-     */
-    public PdfRefXImage getXImage(String resource, RuleNode rule, String attr,
-            long page, boolean immediate) throws HelpingException {
-
-        // TODO getXImage unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfcatalog(java.lang.String,
-     *      org.extex.pdf.api.action.ActionSpec)
-     */
-    public void pdfcatalog(String text, ActionSpec action) {
-
-        // TODO pdfcatalog unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontname(org.extex.typesetter.tc.font.Font)
-     */
-    public String pdffontname(Font font) {
-
-        // TODO pdffontname unimplemented
-        return null;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdffontobjnum(org.extex.typesetter.tc.font.Font)
-     */
-    public long pdffontobjnum(Font font) {
-
-        // TODO pdffontobjnum unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfincludechars(org.extex.typesetter.tc.font.Font,
-     *      java.lang.String)
-     */
-    public void pdfincludechars(Font font, String text) {
-
-        // TODO pdfincludechars unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfinfo(java.lang.String)
-     */
-    public void pdfinfo(String text) {
-
-        // TODO pdfinfo unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastannot()
-     */
-    public long pdflastannot() {
-
-        // TODO pdflastannot unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastobj()
-     */
-    public long pdflastobj() {
-
-        // TODO pdflastobj unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastxform()
-     */
-    public long pdflastxform() {
-
-        // TODO pdflastxform unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdflastximage()
-     */
-    public long pdflastximage() {
-
-        // TODO pdflastximage unimplemented
-        return 0;
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfnames(
-     *      java.lang.String)
-     */
-    public void pdfnames(String text) {
-
-        // TODO pdfnames unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#pdfoutline(
-     *      org.extex.pdf.api.action.ActionSpec, long,
-     *      java.lang.String)
-     */
-    public void pdfoutline(ActionSpec action, long count, String text) {
-
-        // TODO pdfoutline unimplemented
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.pdf.api.PdftexSupport#getXForm(java.lang.String,
-     *      java.lang.String, org.extex.typesetter.type.NodeList)
-     */
-    public PdfXForm getXForm(String attr, String resources, NodeList list)
-            throws HelpingException {
-
-        // TODO gene: getXForm unimplemented
-        return null;
     }
 
 }

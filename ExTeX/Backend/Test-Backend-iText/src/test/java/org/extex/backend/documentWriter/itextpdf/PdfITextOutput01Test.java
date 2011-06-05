@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -46,16 +46,14 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      */
     public PdfITextOutput01Test() {
 
-        super();
-
         // delete temp files after the test
         new File("texput.log").deleteOnExit();
 
     }
 
     /**
-     * TODO 
-     *
+     * TODO
+     * 
      * @throws Exception
      */
     @Before
@@ -95,6 +93,7 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
             /* logValidator */
             new Validator() {
 
+                @Override
                 public boolean validate(String s) {
 
                     System.out.println(s);

@@ -33,5 +33,6 @@
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-pdftex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-Unit-tex"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-resource"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/ExTeX-base-test"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

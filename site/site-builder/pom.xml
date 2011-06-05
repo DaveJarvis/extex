@@ -42,8 +42,8 @@
 
     <dependency>
       <groupId>org.extex</groupId>
-      <artifactId>ExTeX-dev</artifactId>
-      <version>1.0</version>
+      <artifactId>develop</artifactId>
+      <version>1.3</version>
       <scope>compile</scope>
     </dependency>
 
@@ -83,7 +83,7 @@
         <configuration>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>true</downloadJavadocs>
-          <configLocation>org/extex/checkstyle-extex.xml</configLocation>
+          <configLocation>org/extex/checkstyle/checkstyle-extex.xml</configLocation>
         </configuration>
       </plugin>
       
@@ -166,7 +166,8 @@
   <licenses>
     <license>
       <name>GNU Library General Public License 2</name>
-      <url></url>
+      <url>LICENSE.html</url>
     </license>
   </licenses>
+
 </project>

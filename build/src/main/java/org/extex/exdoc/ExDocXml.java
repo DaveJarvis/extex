@@ -115,7 +115,6 @@ public class ExDocXml extends Traverser {
      */
     public ExDocXml() throws ParserConfigurationException {
 
-        super();
     }
 
     /**

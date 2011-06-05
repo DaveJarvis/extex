@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -40,8 +40,6 @@ public class AuxFile {
      * @param name ...
      */
     public AuxFile(String name) {
-
-        super();
 
         this.name = name.replaceAll("\\.[a-zA-Z0-9_]$", "") + ".aux";
     }

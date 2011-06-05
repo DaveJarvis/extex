@@ -1,0 +1,197 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <title>ExTeX WWW</title>
+  <meta name="Author" content="Gerd Neugebauer">
+  <style>
+body {
+  background-color:white;
+  font-family: sans-serif;
+  margin-left:150px;
+  margin-right:2em;
+  background: url(src/images/side.png) repeat-y;
+}
+.e {
+  text-transform:uppercase;
+  font-size:90%;
+  vertical-align: -0.4ex;
+  margin-left: -0.2em;
+  margin-right: -0.1em;
+  line-height: 0;
+}
+.a {
+  text-transform:uppercase;
+  font-size:75%;
+  vertical-align: 0.45ex;
+  margin-left: -0.36em;
+  margin-right: -0.15em;
+}
+.t {
+  margin-left: -0.15em;
+}
+.left {
+  position:absolute;
+  top:0;
+  left:0;
+}
+h1,h2,h3 {
+  color:firebrick;
+}
+address {
+  font-size:70%;
+  margin-top:2.5em;
+  padding-top:.5em;
+  border-top:1px solid gray;
+}
+pre {
+  background-color:#eeeeee;
+  border: 1px solid #999999;
+  padding:.15em;
+}
+.directory {
+  background-color:#eeffee;
+}
+.ld {
+  background-color:#eeeeee;
+  border:1px solid #666666;
+  font-size:90%;
+}
+  </style>
+</head>
+<body>
+<img class="left" src="src/images/www-side.png"/>
+
+<h1>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Web Site</h1>
+
+<p>
+This tree contains a simple generator for a Web site written in Perl.
+</p>
+<p>
+The aim is the ease of maintenance for normal content of pages. They
+are stored as simple HTML files and augmented automatically upon
+publication.
+</p>
+<p>
+The layout is separated form the content and stored in several files.
+This makes it very easy to adapt the appearance without touching the
+contents.
+</p>
+<p>
+The sources are kept in the sub-directory <tt>src</tt>.
+The generated files are written into the sub-directory <tt>target/site</tt>.
+Both locations can be configured.
+</p>
+<p>
+To generate the Web site run the following command:
+</p>
+<pre>
+        ant
+</pre>
+<p>
+This command creates a complete directory hierarchy with all
+sub-directories in <tt>../target/www</tt>. An exception are the directories
+named <tt>CVS</tt> and <tt>.svn</tt>. Those directories are ignored.
+</p>
+<p>
+The files starting with . or ending in ~ or in .bak are also ignored.
+The files not ending in .html are copied into the destination tree.
+The files ending in .html are processed as follows:
+</p>
+<ul>
+<li>Text is inserted before the &lt;/head&gt; tag from the file .headEnd.</li>
+<li>Text is inserted after the &lt;body&gt; tag from the file .bodyStart.</li>
+<li>Text is inserted before the &lt;/body&gt; tag from the file .bodyEnd.</li>
+</ul>
+<p>
+The text to be inserted is sought in the current directory and in case
+of failure upwards in the super-directories until it is found. In the
+inserted files the following tags are replaced:
+</p>
+<dl>
+<dt>&amp;top;</dt>
+<dd>this is the relative path to the top directory.</dd>
+<dt>&amp;year;</dt>
+<dd>this is the current year when generating.</dd>
+<dt>&amp;month;</dt>
+<dd>this is the current month when generating.</dd>
+<dt>&amp;day;</dt>
+<dd>this is the current day when generating.</dd>
+<dt>&lt;tabs/&gt;</dt>
+<dd>this is replaced by the contents of the file .tabs.</dd>
+<dt>&lt;navigation/&gt;</dt>
+<dd>this is replaced by the contents of the file .navigation.</dd>
+<dt>&lt;info/&gt;</dt>
+<dd>this is replaced by the contents of the file .info.</dd>
+</dl>
+<p>
+The current layout has the following scheme:
+</p>
+<table class="ld" width="100%">
+ <tr>
+   <td class="ld" colspan="3" align="center" style="height:3em;">Header</td>
+ </tr>
+ <tr>
+   <td class="ld" colspan="3" align="left">Tab Bar</td>
+ </tr>
+ <tr>
+   <td class="ld" align="center" style="height:8em;width=20%;">Navigation Area</td>
+   <td class="ld" align="center" style="height:8em;width=60%;">Main Text Area</td>
+   <td class="ld" align="center" style="height:8em;width=20%;">Info Area</td>
+ </tr>
+</table>
+<p>
+The header contains the right aligned Logo only.
+It is the same on all pages.
+</p>
+<p>
+The Tab bar shows the topmost navigation items with the Tab metaphor.
+</p>
+<p>
+The Navigation Area shows all navigation items.
+It is the same on all pages.
+</p>
+<p>
+The Info Area shows some info items specific for the current
+navigation item.
+</p>
+<p>
+The Main Text Area contains the contents of the page. This is
+maintained by the site authors.
+</p>
+
+<h2>The Directory Structure</h2>
+
+<p>
+ This module follows the Maven directory structure. The inputs for compilation
+ are somewhere under the directory <tt>src</tt>. The compiled results can be
+ found in the directory <tt>target</tt>.
+</p>
+<pre class="directory">
+ -+&mdash; src/
+  |    +&mdash; main/
+  |    |    +&mdash; images/
+  |    |    |    +&mdash; ...
+  |    +&mdash; news/
+  |         +&mdash; ...
+  |    +&mdash; perl/
+  |         +&mdash; ...
+  |    +&mdash; site/
+  |         +&mdash; ...
+  +&mdash; target/
+  +&mdash; build.xml
+  +&mdash; LICENSE.html
+  +&mdash; pom.xml
+  +&mdash; README.html
+</pre>
+
+<h2>License</h2>
+
+The &epsilon;&chi;Bib documentation is released under the 
+<a href="LICENSE.html">GNU Library General Public License</a>.
+
+<address>
+© 2006-2011 <a href="mailto:extex@dante.de">The ExTeX Group</a>
+</address>
+</body>
+</html>
+

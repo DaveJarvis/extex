@@ -355,7 +355,6 @@ public class ExDocTeX extends ExDocXml {
                 TransformerFactoryConfigurationError,
                 IOException {
 
-        super();
         InputStream xslt =
                 getClass().getClassLoader().getResourceAsStream(XSLT);
         if (xslt == null) {

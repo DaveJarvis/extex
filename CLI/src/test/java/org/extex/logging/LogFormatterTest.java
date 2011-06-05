@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,6 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This class contains test cases for the log formatter.
@@ -34,24 +33,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision$
  */
 public class LogFormatterTest {
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(LogFormatterTest.class);
-    }
-
-    /**
-     * Creates a new object.
-     */
-    public LogFormatterTest() {
-
-        super();
-    }
 
     /**
      * <testcase class="LogFormatter"> Test case checking that a simple string

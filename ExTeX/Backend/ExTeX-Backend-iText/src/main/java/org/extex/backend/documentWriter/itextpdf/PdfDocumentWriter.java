@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group
+ * Copyright (C) 2007-2011 The ExTeX Group
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -66,11 +66,11 @@ public class PdfDocumentWriter
             FontAware/* ,PdftexSupport */{
 
     /**
-     * The field <tt>localizer</tt> contains the localizer. It is initiated
-     * with a localizer for the name of this class.
+     * The field <tt>localizer</tt> contains the localizer. It is initiated with
+     * a localizer for the name of this class.
      */
-    private Localizer localizer =
-            LocalizerFactory.getLocalizer(PdfDocumentWriter.class);
+    private Localizer localizer = LocalizerFactory
+        .getLocalizer(PdfDocumentWriter.class);
 
     /**
      * The {@link CoreFontFactory}.
@@ -93,87 +93,6 @@ public class PdfDocumentWriter
     private Map<String, String> param = new HashMap<String, String>();
 
     /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws GeneralException, IOException {
-
-        if (out != null) {
-            if (document != null) {
-                document.close();
-            }
-            out.close();
-            out = null;
-        } else {
-            throw new DocumentWriterClosedChannelException("closed channel");
-        }
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) throws ConfigurationException {
-
-        if (config != null) {
-            // TODO mgn: incomplete
-        }
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
-    public String getExtension() {
-
-        return "pdf";
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
-     */
-    public void setFontFactory(CoreFontFactory factory) {
-
-        corefactory = factory;
-        List<String> sl = new ArrayList<String>();
-        sl.add("ttf");
-        sl.add("afm");
-        sl.add("tfm");
-        manager = corefactory.createManager(sl);
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
-     */
-    public void setOutputStream(OutputStream writer) {
-
-        out = writer;
-
-    }
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
-     *      java.lang.String)
-     */
-    public void setParameter(String name, String value) {
-
-        param.put(name, value);
-
-    }
-
-    /**
      * The pdf document.
      */
     private Document document = null;
@@ -194,10 +113,143 @@ public class PdfDocumentWriter
     private PdfWriter writer;
 
     /**
+     * The document writer options.
+     */
+    private DocumentWriterOptions options;
+
+    /**
+     * The logger.
+     */
+    private Logger logger;
+
+    /**
+     * Creates a new object.
+     * 
+     * @param config The configurations.
+     * @param options The options.
+     */
+    public PdfDocumentWriter(Configuration config, DocumentWriterOptions options) {
+
+        this.options = options;
+        configure(config);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#close()
+     */
+    @Override
+    public void close() throws GeneralException, IOException {
+
+        if (out != null) {
+            if (document != null) {
+                document.close();
+            }
+            out.close();
+            out = null;
+        } else {
+            throw new DocumentWriterClosedChannelException("closed channel");
+        }
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
+     */
+    @Override
+    public void configure(Configuration config) throws ConfigurationException {
+
+        if (config != null) {
+            // TODO mgn: incomplete
+        }
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
+     */
+    @Override
+    public void enableLogging(Logger logger) {
+
+        this.logger = logger;
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
+     */
+    @Override
+    public String getExtension() {
+
+        return "pdf";
+    }
+
+    /**
+     * Set the page size.
+     */
+    private void pageSize() {
+
+        // TODO mgn: set the right page size.
+        document.setPageSize(PageSize.A4);
+
+        nodevisitor.setPageSize(PageSize.A4);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.font.FontAware#setFontFactory(org.extex.font.CoreFontFactory)
+     */
+    @Override
+    public void setFontFactory(CoreFontFactory factory) {
+
+        corefactory = factory;
+        List<String> sl = new ArrayList<String>();
+        sl.add("ttf");
+        sl.add("afm");
+        sl.add("tfm");
+        manager = corefactory.createManager(sl);
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.SingleDocumentStream#setOutputStream(java.io.OutputStream)
+     */
+    @Override
+    public void setOutputStream(OutputStream writer) {
+
+        out = writer;
+
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(java.lang.String,
+     *      java.lang.String)
+     */
+    @Override
+    public void setParameter(String name, String value) {
+
+        param.put(name, value);
+
+    }
+
+    /**
      * {@inheritDoc}
      * 
      * @see org.extex.backend.documentWriter.DocumentWriter#shipout(org.extex.typesetter.type.page.Page)
      */
+    @Override
     public int shipout(Page page) throws GeneralException, IOException {
 
         try {
@@ -226,50 +278,5 @@ public class PdfDocumentWriter
             throw new DocumentWriterException(e.getMessage());
         }
         return shippedPages;
-    }
-
-    /**
-     * Set the page size.
-     */
-    private void pageSize() {
-
-        // TODO mgn: set the right page size.
-        document.setPageSize(PageSize.A4);
-
-        nodevisitor.setPageSize(PageSize.A4);
-    }
-
-    /**
-     * Creates a new object.
-     * 
-     * @param config The configurations.
-     * @param options The options.
-     */
-    public PdfDocumentWriter(Configuration config, DocumentWriterOptions options) {
-
-        super();
-        this.options = options;
-        configure(config);
-    }
-
-    /**
-     * The document writer options.
-     */
-    private DocumentWriterOptions options;
-
-    /**
-     * The logger.
-     */
-    private Logger logger;
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
-     */
-    public void enableLogging(Logger logger) {
-
-        this.logger = logger;
-
     }
 }

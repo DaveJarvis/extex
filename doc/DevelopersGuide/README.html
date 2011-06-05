@@ -9,7 +9,7 @@ body {
   font-family: sans-serif;
   margin-left:150px;
   margin-right:2em;
-  background: url(src/main/image/side.png) repeat-y;
+  background: url(src/images/side.png) repeat-y;
 }
 .e {
   text-transform:uppercase;
@@ -55,7 +55,7 @@ pre {
   </style>
 </head>
 <body>
-<img class="left" src="src/main/image/dev-guide-side.png"/>
+<img class="left" src="src/images/dev-guide-side.png"/>
 
 <h1>The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X Developer's Guide</h1>
 
@@ -71,6 +71,8 @@ pre {
 </p>
 <pre class="directory">
  -+&mdash; src/
+  |    +&mdash; images/
+  |    |    +&mdash; ...
   |    +&mdash; main/
   |         +&mdash; image/
   |         |    +&mdash; ...
@@ -118,7 +120,7 @@ pre {
 <p>
  The &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X developer's
  guide can be created in this directory with the help of <a
- href="http://maven.apache.org">Maven3</a>. As a prerequisite the Maven module 
+ href="http://maven.apache.org">Maven</a>. As a prerequisite the Maven module 
  <tt>ExBib-Main</tt> needs to be accessible at least from the local repository.
  This is accomplished by
 </p>
