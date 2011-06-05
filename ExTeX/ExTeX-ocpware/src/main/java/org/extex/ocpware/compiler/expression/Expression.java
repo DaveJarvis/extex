@@ -254,7 +254,7 @@ public class Expression {
      * The field <tt>leftState</tt> contains the left state or <code>null</code>
      * .
      */
-    String leftState;
+    private String leftState;
 
     /**
      * The field <tt>pushBack</tt> contains the optional list of push-back
