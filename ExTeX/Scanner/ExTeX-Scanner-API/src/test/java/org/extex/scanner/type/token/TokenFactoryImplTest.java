@@ -104,7 +104,7 @@ public class TokenFactoryImplTest {
      * Create a token and check it's values.
      * 
      * @param catcode the cat code
-     * @param uc the character code
+     * @param s the string
      * 
      * @return the token created
      * 

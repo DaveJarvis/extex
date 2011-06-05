@@ -475,6 +475,8 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.stream.observer.file.OpenFileObservable#registerObserver(org.extex.scanner.stream.observer.file.OpenFileObserver)
      */
     @Override
@@ -485,6 +487,8 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.stream.observer.reader.OpenReaderObservable#registerObserver(org.extex.scanner.stream.observer.reader.OpenReaderObserver)
      */
     @Override
@@ -495,6 +499,8 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.scanner.stream.observer.string.OpenStringObservable#registerObserver(org.extex.scanner.stream.observer.string.OpenStringObserver)
      */
     @Override
