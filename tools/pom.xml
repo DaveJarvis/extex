@@ -99,7 +99,6 @@
   </dependencies>
 
   <modules>
-    <module>ExTeX-dev</module>
     <module>ExTeX-skin</module>
   </modules>
 
