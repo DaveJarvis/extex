@@ -46,7 +46,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ScaledNumberParser {
+public final class ScaledNumberParser {
 
     /**
      * This interface describes a binary operation on two longs.

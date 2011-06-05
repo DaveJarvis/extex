@@ -58,7 +58,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4399 $
  */
-public class GlueComponentParser {
+public final class GlueComponentParser {
 
     /**
      * The constant <tt>BP100_PER_IN</tt> contains the number of 100 big points
