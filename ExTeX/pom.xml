@@ -36,9 +36,9 @@
 
   <distributionManagement>
     <site>
-      <id>org.extex.${artifactId}</id>
+      <id>org.extex.${project.artifactId}</id>
       <name>ExTeX Site</name>
-      <url>file:///serv/www/extex/snapshot/${artifactId}</url>
+      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
     </site>
   </distributionManagement>
 
@@ -409,7 +409,6 @@
         <configuration>
           <downloadSources>true</downloadSources>
           <downloadJavadocs>true</downloadJavadocs>
-          <!-- 
           <additionalBuildcommands>
             <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
           </additionalBuildcommands>
@@ -431,7 +430,6 @@
               </content>
             </file>
           </additionalConfig>
-           -->
         </configuration>
       </plugin>
 
