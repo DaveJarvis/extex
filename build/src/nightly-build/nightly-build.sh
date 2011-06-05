@@ -22,7 +22,8 @@ export MAVEN_OPTS="-Xmx720m"
 cd ..
 
 function run {
-    echo "\n########## $1 ##########" `date`
+    echo
+    echo "########## $1 ##########" `date`
     (cd $2; mvn ${@:3}) || echo "*** FAILURE ***"
     echo "########## /$1 ##########" `date`
 }
@@ -43,7 +44,8 @@ run 'ExBib site' ExBib site:stage-deploy
 
 run site site compile
 
-echo "\n########## www ##########" `date`
+echo
+echo "########## www ##########" `date`
 (cd www; ant install )
 echo '########## /www ##########' `date`
 
