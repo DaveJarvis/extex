@@ -27,9 +27,8 @@ import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
 /**
- * This class encapsulates a long value for the use in the expression
- * evaluator.
- *
+ * This class encapsulates a long value for the use in the expression evaluator.
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4733 $
  */
@@ -43,11 +42,11 @@ public class TCount extends Count implements EType {
 
     /**
      * Cast a terminal to a double.
-     *
+     * 
      * @param t the terminal to cast
-     *
+     * 
      * @return the double encountered
-     *
+     * 
      * @throws CastException in case of an error
      */
     protected static long castTerminal(EType t) throws CastException {
@@ -58,13 +57,13 @@ public class TCount extends Count implements EType {
             return castTerminal(((Accumulator) t).getValue());
         } else {
             throw new CastException(t.toString(), LocalizerFactory
-                    .getLocalizer(TCount.class).format("Name"));
+                .getLocalizer(TCount.class).format("Name"));
         }
     }
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public TCount() {
 
@@ -73,7 +72,7 @@ public class TCount extends Count implements EType {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param value the value
      */
     protected TCount(long value) {
@@ -82,9 +81,11 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#add(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#add(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType add(EType t) throws CastException {
 
         add(castTerminal(t));
@@ -92,18 +93,22 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#and(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#and(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType and(EType t) throws UnsupportedException {
 
         throw new UnsupportedException("&&", toString());
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#divide(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#divide(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType divide(EType t)
             throws CastException,
                 ArithmeticOverflowException {
@@ -113,54 +118,66 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#eq(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#eq(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean eq(EType t) throws CastException {
 
         return new TBoolean(getValue() == castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#ge(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#ge(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean ge(EType t) throws CastException {
 
         return new TBoolean(getValue() >= castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#gt(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#gt(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean gt(EType t) throws CastException {
 
         return new TBoolean(getValue() > castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#le(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#le(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean le(EType t) throws CastException {
 
         return new TBoolean(getValue() <= castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#lt(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#lt(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean lt(EType t) throws CastException {
 
         return new TBoolean(getValue() < castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#multiply(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#multiply(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType multiply(EType t) throws CastException {
 
         multiply(castTerminal(t));
@@ -168,17 +185,22 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#ne(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#ne(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean ne(EType t) throws CastException {
 
         return new TBoolean(getValue() != castTerminal(t));
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.expression.EType#negate()
      */
+    @Override
     public EType negate() {
 
         set(-getValue());
@@ -186,25 +208,31 @@ public class TCount extends Count implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.expression.EType#not()
      */
+    @Override
     public EType not() throws UnsupportedException {
 
         throw new UnsupportedException("!", toString());
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#or(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#or(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType or(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("||", toString());
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#parseNumber(
-     *      java.lang.CharSequence)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#parseNumber(java.lang.CharSequence)
      */
     public EType parse(CharSequence sequence) {
 
@@ -248,9 +276,11 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#set(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#set(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType set(EType t) throws CastException {
 
         set(castTerminal(t));
@@ -258,9 +288,11 @@ public class TCount extends Count implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#subtract(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#subtract(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType subtract(EType t) throws CastException {
 
         add(-castTerminal(t));
@@ -268,13 +300,15 @@ public class TCount extends Count implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TCount.class).format("Format",
-                Long.toString(this.getValue()));
+            Long.toString(this.getValue()));
     }
 
 }

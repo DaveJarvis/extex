@@ -28,14 +28,7 @@ import org.extex.core.UnicodeChar;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.Catcode;
 
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision:6459 $
- */
-/*
+/**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -44,17 +37,8 @@ import org.extex.scanner.type.Catcode;
  */
 public class MagicInputFilter extends InputStream {
 
-    /*
+    /**
      * The field <tt>context</tt> contains the interpreter context.
-     * 
-     * @uml.property name="context"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="context"
-     * 
-     * @uml.associationEnd
      */
     private Context context;
 
@@ -71,7 +55,7 @@ public class MagicInputFilter extends InputStream {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param stream the input stream
      * @param context the interpreter context
      */
@@ -84,7 +68,51 @@ public class MagicInputFilter extends InputStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @see java.io.InputStream#available()
+     */
+    @Override
+    public int available() throws IOException {
+
+        return stream.available();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.InputStream#close()
+     */
+    @Override
+    public void close() throws IOException {
+
+        stream.close();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.InputStream#mark(int)
+     */
+    @Override
+    public void mark(int readlimit) {
+
+        stream.mark(readlimit);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see java.io.InputStream#markSupported()
+     */
+    @Override
+    public boolean markSupported() {
+
+        return stream.markSupported();
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see java.io.InputStream#read()
      */
     @Override
@@ -106,7 +134,7 @@ public class MagicInputFilter extends InputStream {
         Matcher m = p.matcher(sb);
         if (m.lookingAt()) {
             String format = sb.substring(m.start(1), m.end(1));
-//            System. err.println(format);
+            // System. err.println(format);
         }
 
         return stream.read();
@@ -114,63 +142,7 @@ public class MagicInputFilter extends InputStream {
 
     /**
      * {@inheritDoc}
-     *
-     * @see java.io.InputStream#available()
-     */
-    @Override
-    public int available() throws IOException {
-
-        return stream.available();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.io.InputStream#close()
-     */
-    @Override
-    public void close() throws IOException {
-
-        stream.close();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.io.InputStream#mark(int)
-     */
-    @Override
-    public void mark(int readlimit) {
-
-        stream.mark(readlimit);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.io.InputStream#markSupported()
-     */
-    @Override
-    public boolean markSupported() {
-
-        return stream.markSupported();
-    }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @see java.io.InputStream#read(byte[], int, int)
-     */
-    @Override
-    public int read(byte[] b, int off, int len)
-            throws IOException {
-
-        return stream.read(b, off, len);
-    }
-
-    /**
-     * {@inheritDoc}
-     *
+     * 
      * @see java.io.InputStream#read(byte[])
      */
     @Override
@@ -181,7 +153,18 @@ public class MagicInputFilter extends InputStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
+     * @see java.io.InputStream#read(byte[], int, int)
+     */
+    @Override
+    public int read(byte[] b, int off, int len) throws IOException {
+
+        return stream.read(b, off, len);
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
      * @see java.io.InputStream#reset()
      */
     @Override
@@ -192,7 +175,7 @@ public class MagicInputFilter extends InputStream {
 
     /**
      * {@inheritDoc}
-     *
+     * 
      * @see java.io.InputStream#skip(long)
      */
     @Override

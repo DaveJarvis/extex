@@ -1,5 +1,4 @@
 
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.Dimen;
@@ -8,7 +7,7 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.font.FontKey;
 import org.extex.typesetter.tc.font.Font;
 
-/*
+/**
  * This class encapsulates a font and provides access to the font dimens with
  * convenience methods.
  * 
@@ -18,13 +17,6 @@ import org.extex.typesetter.tc.font.Font;
  * 
  * @version $Revision:5555 $
  */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
- */
 public class MathFont implements Font {
 
     /**
@@ -32,17 +24,8 @@ public class MathFont implements Font {
      */
     private static final long serialVersionUID = 1L;
 
-    /*
+    /**
      * The field <tt>font</tt> contains the encapsulated font.
-     * 
-     * @uml.property name="font"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="font"
-     * 
-     * @uml.associationEnd
      */
     private Font font;
 
@@ -65,6 +48,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
      */
+    @Override
     public FontKey getActualFontKey() {
 
         // TODO getActualFontKey unimplemented
@@ -78,6 +62,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
+    @Override
     public FixedDimen getActualSize() {
 
         // TODO getActualsize unimplemented
@@ -91,6 +76,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
+    @Override
     public int getCheckSum() {
 
         return 0; // this.font.getCheckSum();
@@ -103,9 +89,9 @@ public class MathFont implements Font {
      * 
      * @return the depth of the character
      * 
-     * @see org.extex.typesetter.tc.font.Font#getDepth(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getDepth(UnicodeChar uc) {
 
         return font.getDepth(uc);
@@ -118,6 +104,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
+    @Override
     public FixedDimen getDesignSize() {
 
         return font.getDesignSize();
@@ -130,9 +117,9 @@ public class MathFont implements Font {
      * 
      * @return the ef code
      * 
-     * @see org.extex.typesetter.tc.font.Font#getEfCode(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
      */
+    @Override
     public long getEfCode(UnicodeChar uc) {
 
         return font.getEfCode(uc);
@@ -145,6 +132,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getEm()
      */
+    @Override
     public FixedDimen getEm() {
 
         return this.font.getEm();
@@ -157,6 +145,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getEx()
      */
+    @Override
     public FixedDimen getEx() {
 
         return this.font.getEx();
@@ -174,6 +163,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getFontDimen(String)
      */
+    @Override
     public FixedDimen getFontDimen(String key) {
 
         return this.font.getFontDimen(key);
@@ -186,6 +176,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getFontKey()
      */
+    @Override
     public FontKey getFontKey() {
 
         return null; // this.font.getFontKey();
@@ -198,6 +189,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
+    @Override
     public String getFontName() {
 
         return this.font.getFontName();
@@ -210,9 +202,9 @@ public class MathFont implements Font {
      * 
      * @return the height of the character
      * 
-     * @see org.extex.typesetter.tc.font.Font#getHeight(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getHeight(UnicodeChar uc) {
 
         return font.getHeight(uc);
@@ -225,6 +217,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
      */
+    @Override
     public UnicodeChar getHyphenChar() {
 
         return this.font.getHyphenChar();
@@ -237,9 +230,9 @@ public class MathFont implements Font {
      * 
      * @return the italic correction of the character
      * 
-     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
         return font.getItalicCorrection(uc);
@@ -253,9 +246,10 @@ public class MathFont implements Font {
      * 
      * @return the kerning between two characters
      * 
-     * @see org.extex.typesetter.tc.font.Font#getKerning(
-     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getKerning(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getKerning(uc1, uc2);
@@ -269,9 +263,10 @@ public class MathFont implements Font {
      * 
      * @return Returns the ligature for two characters
      * 
-     * @see org.extex.typesetter.tc.font.Font#getLigature(
-     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getLigature(org.extex.core.UnicodeChar,
+     *      org.extex.core.UnicodeChar)
      */
+    @Override
     public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
 
         return font.getLigature(uc1, uc2);
@@ -284,6 +279,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
      */
+    @Override
     public FixedCount getScaleFactor() {
 
         return font.getScaleFactor();
@@ -296,6 +292,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getSkewChar()
      */
+    @Override
     public UnicodeChar getSkewChar() {
 
         return this.font.getSkewChar();
@@ -308,6 +305,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
+    @Override
     public FixedGlue getSpace() {
 
         return this.font.getSpace();
@@ -320,9 +318,9 @@ public class MathFont implements Font {
      * 
      * @return the width of the character
      * 
-     * @see org.extex.typesetter.tc.font.Font#getWidth(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedGlue getWidth(UnicodeChar uc) {
 
         return font.getWidth(uc);
@@ -336,9 +334,9 @@ public class MathFont implements Font {
      * 
      * @return <code>true</code> iff the glyph is present
      * 
-     * @see org.extex.typesetter.tc.font.Font#hasGlyph(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
      */
+    @Override
     public boolean hasGlyph(UnicodeChar uc) {
 
         return font.hasGlyph(uc);
@@ -351,9 +349,10 @@ public class MathFont implements Font {
      * @param uc the character
      * @param code the associated code
      * 
-     * @see org.extex.typesetter.tc.font.Font#setEfCode(
-     *      org.extex.core.UnicodeChar, long)
+     * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
+     *      long)
      */
+    @Override
     public void setEfCode(UnicodeChar uc, long code) {
 
         font.setEfCode(uc, code);
@@ -367,6 +366,7 @@ public class MathFont implements Font {
      * 
      * @see org.extex.typesetter.tc.font.Font#setFontDimen(String, Dimen)
      */
+    @Override
     public void setFontDimen(String key, Dimen value) {
 
         this.font.setFontDimen(key, value);
@@ -377,9 +377,9 @@ public class MathFont implements Font {
      * 
      * @param hyphen the hyphen character
      * 
-     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
      */
+    @Override
     public void setHyphenChar(UnicodeChar hyphen) {
 
         this.font.setHyphenChar(hyphen);
@@ -390,9 +390,9 @@ public class MathFont implements Font {
      * 
      * @param skew the skew character
      * 
-     * @see org.extex.typesetter.tc.font.Font#setSkewChar(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
      */
+    @Override
     public void setSkewChar(UnicodeChar skew) {
 
         this.font.setSkewChar(skew);

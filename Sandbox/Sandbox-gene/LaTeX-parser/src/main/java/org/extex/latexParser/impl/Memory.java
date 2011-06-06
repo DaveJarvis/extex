@@ -22,7 +22,7 @@ import java.io.IOException;
 
 import org.extex.scanner.api.exception.ScannerException;
 
-/*
+/**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -37,7 +37,7 @@ public interface Memory {
      * @param c the letter
      * @param macro the code
      */
-    public abstract void def(char c, Macro macro);
+    void def(char c, Macro macro);
 
     /**
      * Define a macro.
@@ -45,7 +45,7 @@ public interface Memory {
      * @param name the name without leading \
      * @param macro the code
      */
-    public abstract void def(String name, Macro macro);
+    void def(String name, Macro macro);
 
     /**
      * Getter for the definition of an active character.
@@ -54,7 +54,7 @@ public interface Memory {
      * 
      * @return the definition or <code>null</code>
      */
-    public abstract Macro getDefinition(char c);
+    Macro getDefinition(char c);
 
     /**
      * Getter for macros definition.
@@ -63,7 +63,7 @@ public interface Memory {
      * 
      * @return the definition or <code>null</code>
      */
-    public abstract Macro getDefinition(String name);
+    Macro getDefinition(String name);
 
     /**
      * Check whether an active character is already defined.
@@ -72,7 +72,7 @@ public interface Memory {
      * 
      * @return <code>true</code> iff the active character is defined
      */
-    public abstract boolean isDefined(char c);
+    boolean isDefined(char c);
 
     /**
      * Check whether a macro is already defined.
@@ -81,7 +81,7 @@ public interface Memory {
      * 
      * @return <code>true</code> iff the macro is defined
      */
-    public abstract boolean isDefined(String name);
+    boolean isDefined(String name);
 
     /**
      * Load some definitions from an external resource.
@@ -91,6 +91,6 @@ public interface Memory {
      * @throws IOException in case of an I/O error
      * @throws ScannerException in case of an error
      */
-    public abstract void load(String name) throws IOException, ScannerException;
+    void load(String name) throws IOException, ScannerException;
 
 }

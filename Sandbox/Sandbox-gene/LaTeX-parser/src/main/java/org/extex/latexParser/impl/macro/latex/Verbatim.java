@@ -65,15 +65,15 @@ public class Verbatim extends AbstractNode implements Macro {
         /**
          * Getter for the category code of a character.
          * 
-         * @param c the Unicode character to analyze
+         * @param uc the Unicode character to analyze
          * 
          * @return the category code of a character
          * 
          * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
          */
-        public Catcode getCatcode(UnicodeChar c) {
+        public Catcode getCatcode(UnicodeChar uc) {
 
-            if (c.equals(this.c)) {
+            if (uc.equals(this.c)) {
                 return Catcode.ESCAPE;
             }
             return Catcode.OTHER;

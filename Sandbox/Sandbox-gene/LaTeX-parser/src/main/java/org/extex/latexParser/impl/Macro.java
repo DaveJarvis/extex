@@ -44,8 +44,6 @@ public interface Macro {
      * @throws ScannerException in case of an error
      * @throws IOException in case of an I/O error
      */
-    public Node parse(Token token, Parser parser)
-            throws ScannerException,
-                IOException;
+    Node parse(Token token, Parser parser) throws ScannerException, IOException;
 
 }

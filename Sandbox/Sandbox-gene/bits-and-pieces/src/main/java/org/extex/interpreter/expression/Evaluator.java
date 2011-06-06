@@ -46,7 +46,7 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-/*
+/**
  * This class provides some static methods to parse an expression and return its
  * value.
  * 
@@ -54,37 +54,21 @@ import org.extex.typesetter.exception.TypesetterException;
  * 
  * @version $Revision: 4787 $
  */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
- */
 public class Evaluator {
 
-    /*
+    /**
      * The field <tt>ASSIGN</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="aSSIGN"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="aSSIGN"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction ASSIGN = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2) {
 
             return arg2;
@@ -103,28 +87,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>EQ</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="eQ"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="eQ"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction EQ = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -145,28 +120,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>GE</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="gE"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="gE"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction GE = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -187,28 +153,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>GT</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="gT"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="gT"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction GT = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -229,28 +186,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>LAND</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="lAND"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="lAND"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction LAND = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -271,28 +219,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>LE</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="lE"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="lE"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction LE = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -313,28 +252,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>LOR</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="lOR"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="lOR"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction LOR = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -355,28 +285,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>LT</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="lT"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="lT"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction LT = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -397,27 +318,18 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>MINUS</tt> contains the subtractor.
-     * 
-     * @uml.property name="mINUS"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="mINUS"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction MINUS = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2) throws HelpingException {
 
             return arg1.subtract(arg2);
@@ -436,28 +348,19 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>LAND</tt> contains the operation to assign the second
      * argument to the first one.
-     * 
-     * @uml.property name="nE"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="nE"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction NE = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2)
                 throws CastException,
                     UnsupportedException {
@@ -478,27 +381,18 @@ public class Evaluator {
 
     };
 
-    /*
+    /**
      * The field <tt>PLUS</tt> contains the adder.
-     * 
-     * @uml.property name="pLUS"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="pLUS"
-     * 
-     * @uml.associationEnd
      */
     private static final BinaryFunction PLUS = new BinaryFunction() {
 
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.interpreter.expression.BinaryFunction#apply(
-         *      org.extex.interpreter.expression.EType,
+         * @see org.extex.interpreter.expression.BinaryFunction#apply(org.extex.interpreter.expression.EType,
          *      org.extex.interpreter.expression.EType)
          */
+        @Override
         public EType apply(EType arg1, EType arg2) throws HelpingException {
 
             return arg1.add(arg2);
@@ -518,20 +412,20 @@ public class Evaluator {
     };
 
     /**
-     * The field <tt>UC_AND</tt> contains the Unicode code point for the
-     * logical and.
+     * The field <tt>UC_AND</tt> contains the Unicode code point for the logical
+     * and.
      */
     private static final int UC_AND = 0x2227;
 
     /**
-     * The field <tt>UC_GE</tt> contains the Unicode code point for the
-     * greater or equal sign.
+     * The field <tt>UC_GE</tt> contains the Unicode code point for the greater
+     * or equal sign.
      */
     private static final int UC_GE = 0x2265;
 
     /**
-     * The field <tt>UC_LE</tt> contains the Unicode code point for the less
-     * or equal sign.
+     * The field <tt>UC_LE</tt> contains the Unicode code point for the less or
+     * equal sign.
      */
     private static final int UC_LE = 0x2264;
 
@@ -542,14 +436,14 @@ public class Evaluator {
     private static final int UC_NE = 0x2260;
 
     /**
-     * The field <tt>UC_NOT</tt> contains the Unicode code point for the
-     * logical not sign.
+     * The field <tt>UC_NOT</tt> contains the Unicode code point for the logical
+     * not sign.
      */
     private static final int UC_NOT = 0xac;
 
     /**
-     * The field <tt>UC_OR</tt> contains the Unicode code point for the
-     * logical or.
+     * The field <tt>UC_OR</tt> contains the Unicode code point for the logical
+     * or.
      */
     private static final int UC_OR = 0x2228;
 
@@ -569,8 +463,9 @@ public class Evaluator {
         if (t == null) {
             throw new EofException();
         } else if (!t.eq(Catcode.OTHER, ',')) {
-            throw new HelpingException(LocalizerFactory
-                .getLocalizer(Evaluator.class), "MissingComma", t.toString());
+            throw new HelpingException(
+                LocalizerFactory.getLocalizer(Evaluator.class), "MissingComma",
+                t.toString());
         }
         source.skipSpace();
     }
@@ -742,8 +637,9 @@ public class Evaluator {
             }
         }
 
-        throw new HelpingException(LocalizerFactory
-            .getLocalizer(Evaluator.class), "MissingParenthesis", //
+        throw new HelpingException(
+            LocalizerFactory.getLocalizer(Evaluator.class),
+            "MissingParenthesis", //
             (t == null ? "null" : t.toString()));
     }
 
@@ -774,6 +670,58 @@ public class Evaluator {
                 return a;
             }
         }
+    }
+
+    /**
+     * Evaluate a logical expression.
+     * 
+     * @param context the Helping context
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
+     * @return the result
+     * 
+     * @throws HelpingException in case of an error
+     * @throws TypesetterException in case of an error in the typesetter
+     */
+    private EType evalLogicExpressionOrFunctionalExpression(Context context,
+            TokenSource source, Typesetter typesetter)
+            throws HelpingException,
+                TypesetterException {
+
+        Token t = source.getNonSpace(context);
+        if (t == null) {
+            throw new MissingNumberException();
+
+        } else if (t instanceof OtherToken) {
+            switch (t.getChar().getCodePoint()) {
+                case '!':
+                case UC_NOT:
+                    EType ac =
+                            evalLogicExpressionOrFunctionalExpression(context,
+                                source, typesetter);
+                    ac.not();
+                    return ac;
+                default:
+                    // ...
+            }
+        }
+
+        source.push(t);
+        EType accumulator = evalTerm(context, source, typesetter);
+
+        BinaryFunction op = getOp(context, source);
+        if (op != null) {
+            return op.apply(accumulator, evalTerm(context, source, typesetter));
+        }
+        op = getJunctor(context, source);
+        if (op != null) {
+            return op.apply(
+                accumulator,
+                evalLogicExpressionOrFunctionalExpression(context, source,
+                    typesetter));
+        }
+        return accumulator;
     }
 
     /**
@@ -821,57 +769,6 @@ public class Evaluator {
         }
         // TODO gene: unimplemented
         throw new RuntimeException("unimplemented");
-    }
-
-    /**
-     * Evaluate a logical expression.
-     * 
-     * @param context the Helping context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the result
-     * 
-     * @throws HelpingException in case of an error
-     * @throws TypesetterException in case of an error in the typesetter
-     */
-    private EType evalLogicExpressionOrFunctionalExpression(Context context,
-            TokenSource source, Typesetter typesetter)
-            throws HelpingException,
-                TypesetterException {
-
-        Token t = source.getNonSpace(context);
-        if (t == null) {
-            throw new MissingNumberException();
-
-        } else if (t instanceof OtherToken) {
-            switch (t.getChar().getCodePoint()) {
-                case '!':
-                case UC_NOT:
-                    EType ac =
-                            evalLogicExpressionOrFunctionalExpression(context,
-                                source, typesetter);
-                    ac.not();
-                    return ac;
-                default:
-                    // ...
-            }
-        }
-
-        source.push(t);
-        EType accumulator = evalTerm(context, source, typesetter);
-
-        BinaryFunction op = getOp(context, source);
-        if (op != null) {
-            return op.apply(accumulator, evalTerm(context, source, typesetter));
-        }
-        op = getJunctor(context, source);
-        if (op != null) {
-            return op.apply(accumulator,
-                evalLogicExpressionOrFunctionalExpression(context, source,
-                    typesetter));
-        }
-        return accumulator;
     }
 
     /**
@@ -966,8 +863,8 @@ public class Evaluator {
                 if (t == null) {
                     throw new EofException();
                 } else if (!t.eq(Catcode.OTHER, '(')) {
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(Evaluator.class),
+                    throw new HelpingException(
+                        LocalizerFactory.getLocalizer(Evaluator.class),
                         "MissingOpenParenthesis", name, t.toString());
                 }
                 EType accumulator = new Accumulator();
@@ -988,9 +885,9 @@ public class Evaluator {
                 if (t == null) {
                     throw new EofException();
                 } else if (!t.eq(Catcode.OTHER, ')')) {
-                    throw new HelpingException(LocalizerFactory
-                        .getLocalizer(Evaluator.class), "MissingParenthesis", t
-                        .toString());
+                    throw new HelpingException(
+                        LocalizerFactory.getLocalizer(Evaluator.class),
+                        "MissingParenthesis", t.toString());
                 }
                 source.skipSpace();
                 return accumulator;
@@ -1001,51 +898,6 @@ public class Evaluator {
         }
 
         throw new MissingNumberException();
-    }
-
-    /**
-     * Get an logical junction operator.
-     * 
-     * @param context the Helping context
-     * @param source the source for new tokens
-     * 
-     * @return the function constant associated to the operator found or
-     *         <code>null</code> if none was found
-     * 
-     * @throws HelpingException in case of an error
-     */
-    private BinaryFunction getJunctor(Context context, TokenSource source)
-            throws HelpingException {
-
-        Token t = source.getNonSpace(context);
-        Token t2;
-
-        if (t instanceof OtherToken) {
-            switch (t.getChar().getCodePoint()) {
-                case UC_AND:
-                    return LAND;
-                case UC_OR:
-                    return LOR;
-                case '&':
-                    t2 = source.getToken(context);
-                    if (t2 != null && t2.eq(Catcode.OTHER, '&')) {
-                        return LAND;
-                    }
-                    source.push(t2);
-                    break;
-                case '|':
-                    t2 = source.getToken(context);
-                    if (t2 == null || t2.eq(Catcode.OTHER, '|')) {
-                        return LOR;
-                    }
-                    source.push(t2);
-                    break;
-                default:
-                    // fall-through to report nothing
-            }
-        }
-        source.push(t);
-        return null;
     }
 
     /**
@@ -1108,6 +960,51 @@ public class Evaluator {
         }
 
         return false;
+    }
+
+    /**
+     * Get an logical junction operator.
+     * 
+     * @param context the Helping context
+     * @param source the source for new tokens
+     * 
+     * @return the function constant associated to the operator found or
+     *         <code>null</code> if none was found
+     * 
+     * @throws HelpingException in case of an error
+     */
+    private BinaryFunction getJunctor(Context context, TokenSource source)
+            throws HelpingException {
+
+        Token t = source.getNonSpace(context);
+        Token t2;
+
+        if (t instanceof OtherToken) {
+            switch (t.getChar().getCodePoint()) {
+                case UC_AND:
+                    return LAND;
+                case UC_OR:
+                    return LOR;
+                case '&':
+                    t2 = source.getToken(context);
+                    if (t2 != null && t2.eq(Catcode.OTHER, '&')) {
+                        return LAND;
+                    }
+                    source.push(t2);
+                    break;
+                case '|':
+                    t2 = source.getToken(context);
+                    if (t2 == null || t2.eq(Catcode.OTHER, '|')) {
+                        return LOR;
+                    }
+                    source.push(t2);
+                    break;
+                default:
+                    // fall-through to report nothing
+            }
+        }
+        source.push(t);
+        return null;
     }
 
     /**
@@ -1181,12 +1078,12 @@ public class Evaluator {
     }
 
     /**
-     * Register a function in the evaluator.
+     * Register a binary function in the evaluator.
      * 
      * @param name the name of the function in the expression
      * @param function the function object
      */
-    public void register(String name, ParsingFunction function) {
+    public void register(String name, BinaryFunction function) {
 
         functions.put(name, function);
     }
@@ -1203,23 +1100,23 @@ public class Evaluator {
     }
 
     /**
+     * Register a function in the evaluator.
+     * 
+     * @param name the name of the function in the expression
+     * @param function the function object
+     */
+    public void register(String name, ParsingFunction function) {
+
+        functions.put(name, function);
+    }
+
+    /**
      * Register a unary function in the evaluator.
      * 
      * @param name the name of the function in the expression
      * @param function the function object
      */
     public void register(String name, UnaryFunction function) {
-
-        functions.put(name, function);
-    }
-
-    /**
-     * Register a binary function in the evaluator.
-     * 
-     * @param name the name of the function in the expression
-     * @param function the function object
-     */
-    public void register(String name, BinaryFunction function) {
 
         functions.put(name, function);
     }

@@ -1,5 +1,5 @@
-package org.extex.ocpware;
 
+package org.extex.ocpware;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,22 +13,19 @@ import java.util.ResourceBundle;
 import org.extex.ocpware.engine.OcpReader;
 import org.extex.ocpware.engine.OcpReaderObserver;
 
-/*
+/**
  * This class provides a main program to run an otp or ocp file on some input.
- * <p> The program takes as one argument the name of the otp file: </p> <pre
+ * <p>
+ * The program takes as one argument the name of the otp file:
+ * </p>
+ * 
+ * <pre
  * class="CLI"> java org.extex.ocpware.OtpDebugger &lang;<i>file</i>&rang;
  * </pre>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
  * @version $Revision:6007 $
- */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
  */
 public final class OcpDebugger {
 
@@ -39,6 +36,11 @@ public final class OcpDebugger {
      * @version $Revision:6459 $
      */
     protected class Observer implements OcpReaderObserver {
+
+        /**
+         * The field <tt>trace</tt> contains the ...
+         */
+        private boolean trace = true;
 
         /**
          * TODO gene: missing JavaDoc
@@ -81,14 +83,12 @@ public final class OcpDebugger {
             return true;
         }
 
-        private boolean trace = true;
-
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.ocpware.engine.OcpReaderObserver#close(
-         *      org.extex.ocpware.engine.OcpReader)
+         * @see org.extex.ocpware.engine.OcpReaderObserver#close(org.extex.ocpware.engine.OcpReader)
          */
+        @Override
         public void close(OcpReader reader) {
 
             // TODO gene: close unimplemented
@@ -97,9 +97,10 @@ public final class OcpDebugger {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.ocpware.engine.OcpReaderObserver#step(
-         *      org.extex.ocpware.engine.OcpReader, int, int)
+         * @see org.extex.ocpware.engine.OcpReaderObserver#step(org.extex.ocpware.engine.OcpReader,
+         *      int, int)
          */
+        @Override
         public void step(OcpReader reader, int opcode, int arg) {
 
             boolean om;
@@ -153,17 +154,6 @@ public final class OcpDebugger {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
-     * @param string
-     */
-    private void setFile(String string) {
-
-        // TODO gene: setFile unimplemented
-
-    }
-
-    /**
      * The field <tt>bundle</tt> contains the resource bundle.
      */
     private ResourceBundle bundle;
@@ -173,17 +163,8 @@ public final class OcpDebugger {
      */
     private LineNumberReader in;
 
-    /*
+    /**
      * The field <tt>obs</tt> contains the observer.
-     * 
-     * @uml.property name="obs"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="obs"
-     * 
-     * @uml.associationEnd
      */
     private Observer obs = new Observer();
 
@@ -242,6 +223,17 @@ public final class OcpDebugger {
                 out.println("*** help error: " + ex.getLocalizedMessage());
             }
         }
+
+    }
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param string
+     */
+    private void setFile(String string) {
+
+        // TODO gene: setFile unimplemented
 
     }
 

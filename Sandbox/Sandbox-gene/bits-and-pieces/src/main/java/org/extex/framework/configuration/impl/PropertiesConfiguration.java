@@ -23,9 +23,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
-import java.util.Map.Entry;
 
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationLoader;
@@ -35,19 +35,12 @@ import org.extex.framework.configuration.exception.ConfigurationInvalidResourceE
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
 import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 
-/*
+/**
  * TODO gene: missing JavaDoc.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
  * @version $Revision:6459 $
- */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
  */
 public class PropertiesConfiguration implements Configuration {
 
@@ -56,17 +49,8 @@ public class PropertiesConfiguration implements Configuration {
      */
     private String base = "";
 
-    /*
+    /**
      * The field <tt>loader</tt> contains the optional loader.
-     * 
-     * @uml.property name="loader"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="loader"
-     * 
-     * @uml.associationEnd
      */
     private ConfigurationLoader loader = null;
 
@@ -123,9 +107,9 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
      */
+    @Override
     public Configuration findConfiguration(String key)
             throws ConfigurationInvalidResourceException,
                 ConfigurationNotFoundException,
@@ -149,9 +133,10 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#findConfiguration(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public Configuration findConfiguration(String key, String attribute)
             throws ConfigurationException {
 
@@ -162,9 +147,9 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#getAttribute(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
      */
+    @Override
     public String getAttribute(String name) {
 
         return properties.getProperty(name);
@@ -173,9 +158,9 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(
-     *      java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
      */
+    @Override
     public Configuration getConfiguration(String key)
             throws ConfigurationException {
 
@@ -189,9 +174,10 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#getConfiguration(
-     *      java.lang.String, java.lang.String)
+     * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+     *      java.lang.String)
      */
+    @Override
     public Configuration getConfiguration(String key, String attribute)
             throws ConfigurationException {
 
@@ -207,6 +193,7 @@ public class PropertiesConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getValue()
      */
+    @Override
     public String getValue() throws ConfigurationException {
 
         return "";
@@ -217,6 +204,7 @@ public class PropertiesConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
      */
+    @Override
     public String getValue(String key) throws ConfigurationException {
 
         return properties.getProperty(key);
@@ -228,6 +216,7 @@ public class PropertiesConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
      *      int)
      */
+    @Override
     public int getValueAsInteger(String key, int defaultValue)
             throws ConfigurationException {
 
@@ -241,6 +230,7 @@ public class PropertiesConfiguration implements Configuration {
      * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
      *      java.lang.String)
      */
+    @Override
     public void getValues(List<String> list, String key) {
 
         // TODO gene: getValues unimplemented
@@ -252,6 +242,7 @@ public class PropertiesConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
      */
+    @Override
     public List<String> getValues(String key) {
 
         // TODO gene: getValues unimplemented
@@ -263,6 +254,7 @@ public class PropertiesConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator()
      */
+    @Override
     public Iterator<Configuration> iterator() throws ConfigurationException {
 
         // TODO gene: iterator unimplemented
@@ -274,6 +266,7 @@ public class PropertiesConfiguration implements Configuration {
      * 
      * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
      */
+    @Override
     public Iterator<Configuration> iterator(String key)
             throws ConfigurationException {
 
@@ -284,9 +277,9 @@ public class PropertiesConfiguration implements Configuration {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(
-     *      org.extex.framework.configuration.ConfigurationLoader)
+     * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
      */
+    @Override
     public void setConfigurationLoader(ConfigurationLoader loader) {
 
         this.loader = loader;
@@ -296,6 +289,8 @@ public class PropertiesConfiguration implements Configuration {
      * Get the printable representation of this configuration. Something like an
      * XPath expression describing the configuration is produced for this
      * instance.
+     * 
+     * {@inheritDoc}
      * 
      * @see java.lang.Object#toString()
      */

@@ -25,29 +25,22 @@ import org.extex.interpreter.expression.EType;
 import org.extex.interpreter.expression.exception.CastException;
 import org.extex.interpreter.expression.exception.UnsupportedException;
 
-/*
+/**
  * This implementation of a Terminal encapsulates a floating point number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
  * @version $Revision: 4733 $
  */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
- */
 public class TDouble implements EType {
 
     /**
      * Cast a terminal to a double.
-     *
+     * 
      * @param t the terminal to cast
-     *
+     * 
      * @return the double encountered
-     *
+     * 
      * @throws CastException in case of an error
      */
     protected static double castTerminal(EType t) throws CastException {
@@ -60,7 +53,7 @@ public class TDouble implements EType {
             return castTerminal(((Accumulator) t).getValue());
         } else {
             throw new CastException(t.toString(), LocalizerFactory
-                    .getLocalizer(TDouble.class).format("Name"));
+                .getLocalizer(TDouble.class).format("Name"));
         }
     }
 
@@ -72,7 +65,7 @@ public class TDouble implements EType {
 
     /**
      * Creates a new object.
-     *
+     * 
      */
     public TDouble() {
 
@@ -81,7 +74,7 @@ public class TDouble implements EType {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param d the value
      */
     public TDouble(double d) {
@@ -91,9 +84,11 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#add(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#add(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType add(EType t) throws CastException {
 
         this.value += castTerminal(t);
@@ -101,18 +96,22 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#and(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#and(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType and(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("&&", toString());
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#divide(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#divide(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType divide(EType t)
             throws CastException,
                 ArithmeticOverflowException {
@@ -126,36 +125,31 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#eq(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#eq(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean eq(EType t) throws CastException {
 
         return new TBoolean(this.value == castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#ge(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#ge(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean ge(EType t) throws CastException {
 
         return new TBoolean(this.value >= castTerminal(t));
     }
 
-    /*
+    /**
      * Getter for value.
      * 
      * @return the value
-     * 
-     * @uml.property name="value"
-     */
-    /*
-     * TODO gene: missing JavaDoc
-     * 
-     * @return
-     * 
-     * @uml.property name="value"
      */
     public double getValue() {
 
@@ -163,36 +157,44 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#gt(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#gt(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean gt(EType t) throws CastException {
 
         return new TBoolean(this.value > castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#le(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#le(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean le(EType t) throws CastException {
 
         return new TBoolean(this.value <= castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#lt(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#lt(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean lt(EType t) throws CastException {
 
         return new TBoolean(this.value < castTerminal(t));
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#multiply(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#multiply(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType multiply(EType t) throws CastException {
 
         this.value *= castTerminal(t);
@@ -200,17 +202,22 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#ne(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#ne(org.extex.interpreter.expression.EType)
      */
+    @Override
     public TBoolean ne(EType t) throws CastException {
 
         return new TBoolean(this.value != castTerminal(t));
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.expression.EType#negate()
      */
+    @Override
     public EType negate() {
 
         value = -value;
@@ -218,59 +225,57 @@ public class TDouble implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.interpreter.expression.EType#not()
      */
+    @Override
     public EType not() throws UnsupportedException {
 
         throw new UnsupportedException("!", toString());
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#or(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#or(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType or(EType t) throws CastException, UnsupportedException {
 
         throw new UnsupportedException("||", toString());
     }
 
-//    /**
-//     * @see org.extex.interpreter.expression.EType#parse(
-//     *      java.lang.CharSequence)
-//     */
-//    public EType parse(CharSequence sequence) {
-//
-//        try {
-//            this.value = Double.parseDouble(sequence.toString());
-//            return this;
-//        } catch (NumberFormatException e) {
-//            return null;
-//        }
-//    }
+    // /**
+    // * @see org.extex.interpreter.expression.EType#parse(
+    // * java.lang.CharSequence)
+    // */
+    // public EType parse(CharSequence sequence) {
+    //
+    // try {
+    // this.value = Double.parseDouble(sequence.toString());
+    // return this;
+    // } catch (NumberFormatException e) {
+    // return null;
+    // }
+    // }
 
     /**
-     * @see org.extex.interpreter.expression.EType#set(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#set(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType set(EType t) throws CastException {
 
         this.value = castTerminal(t);
         return this;
     }
 
-    /*
+    /**
      * Setter for value.
      * 
      * @param value the value to set
-     * 
-     * @uml.property name="value"
-     */
-    /*
-     * TODO gene: missing JavaDoc
-     * 
-     * @param value
-     * 
-     * @uml.property name="value"
      */
     protected void setValue(double value) {
 
@@ -278,9 +283,11 @@ public class TDouble implements EType {
     }
 
     /**
-     * @see org.extex.interpreter.expression.EType#subtract(
-     *      org.extex.interpreter.expression.EType)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.interpreter.expression.EType#subtract(org.extex.interpreter.expression.EType)
      */
+    @Override
     public EType subtract(EType t) throws CastException {
 
         this.value -= castTerminal(t);
@@ -288,13 +295,15 @@ public class TDouble implements EType {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
     public String toString() {
 
         return LocalizerFactory.getLocalizer(TDouble.class).format("Format",
-                Double.toString(this.value));
+            Double.toString(this.value));
     }
 
 }

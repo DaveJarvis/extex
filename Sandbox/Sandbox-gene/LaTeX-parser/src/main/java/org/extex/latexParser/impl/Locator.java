@@ -33,13 +33,13 @@ public interface Locator {
      * 
      * @return the line number
      */
-    public abstract int getLineno();
+    int getLineno();
 
     /**
      * Getter for the source.
      * 
      * @return the source
      */
-    public abstract String getSource();
+    String getSource();
 
 }

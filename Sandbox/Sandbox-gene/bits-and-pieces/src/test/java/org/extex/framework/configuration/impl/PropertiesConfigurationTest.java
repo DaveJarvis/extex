@@ -24,6 +24,7 @@ import java.io.ByteArrayInputStream;
 import junit.framework.TestCase;
 
 import org.extex.framework.configuration.exception.ConfigurationNotFoundException;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -46,35 +47,8 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#PropertiesConfiguration()}.
-     */
-    @Test
-    public final void testPropertiesConfiguration() {
-
-        PropertiesConfiguration cfg = new PropertiesConfiguration();
-        assertEquals("", cfg.toString());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#PropertiesConfiguration(
-     *  java.io.InputStream, java.lang.String)}.
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public final void testPropertiesConfigurationInputStreamString()
-            throws Exception {
-
-        PropertiesConfiguration cfg =
-                new PropertiesConfiguration(new ByteArrayInputStream(B0), "xxx");
-        assertEquals("document(\"xxx\")", cfg.toString());
-    }
-
-    /**
-     * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#findConfiguration(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#findConfiguration(java.lang.String)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -88,8 +62,8 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#findConfiguration(
-     *  java.lang.String, java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#findConfiguration(java.lang.String, java.lang.String)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -103,8 +77,8 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getAttribute(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getAttribute(java.lang.String)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -118,8 +92,8 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getAttribute(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getAttribute(java.lang.String)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -135,8 +109,8 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getConfiguration(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getConfiguration(java.lang.String)}
+     * .
      * 
      * @throws Exception in case of an error
      */
@@ -155,94 +129,136 @@ public class PropertiesConfigurationTest extends TestCase {
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getConfiguration(
-     *  java.lang.String, java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getConfiguration(java.lang.String, java.lang.String)}
+     * .
      */
     @Test
-    public final void ___testGetConfigurationStringString() {
+    @Ignore
+    public final void testGetConfigurationStringString() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValue()}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValue()}
+     * .
      */
     @Test
-    public final void ___testGetValue() {
+    @Ignore
+    public final void testGetValue() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValue(java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValueAsInteger(java.lang.String, int)}
+     * .
      */
     @Test
-    public final void ___testGetValueString() {
+    @Ignore
+    public final void testGetValueAsInteger() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValueAsInteger(java.lang.String, int)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValues(java.util.List, java.lang.String)}
+     * .
      */
     @Test
-    public final void ___testGetValueAsInteger() {
+    @Ignore
+    public final void testGetValuesListOfStringString() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValues(java.util.List, java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValues(java.lang.String)}
+     * .
      */
     @Test
-    public final void ___testGetValuesListOfStringString() {
+    @Ignore
+    public final void testGetValuesString() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValues(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#getValue(java.lang.String)}
+     * .
      */
     @Test
-    public final void ___testGetValuesString() {
+    @Ignore
+    public final void testGetValueString() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#iterator()}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#iterator()}
+     * .
      */
     @Test
-    public final void ___testIterator() {
+    @Ignore
+    public final void testIterator() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#iterator(
-     *  java.lang.String)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#iterator(java.lang.String)}
+     * .
      */
     @Test
-    public final void ___testIteratorString() {
+    @Ignore
+    public final void testIteratorString() {
 
         fail("Not yet implemented"); // TODO
     }
 
     /**
      * Test method for
-     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#setConfigurationLoader(
-     *  org.extex.framework.configuration.ConfigurationLoader)}.
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#PropertiesConfiguration()}
+     * .
      */
     @Test
-    public final void ___testSetConfigurationLoader() {
+    public final void testPropertiesConfiguration() {
+
+        PropertiesConfiguration cfg = new PropertiesConfiguration();
+        assertEquals("", cfg.toString());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#PropertiesConfiguration(java.io.InputStream, java.lang.String)}
+     * .
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public final void testPropertiesConfigurationInputStreamString()
+            throws Exception {
+
+        PropertiesConfiguration cfg =
+                new PropertiesConfiguration(new ByteArrayInputStream(B0), "xxx");
+        assertEquals("document(\"xxx\")", cfg.toString());
+    }
+
+    /**
+     * Test method for
+     * {@link org.extex.framework.configuration.impl.PropertiesConfiguration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)}
+     * .
+     */
+    @Test
+    @Ignore
+    public final void testSetConfigurationLoader() {
 
         fail("Not yet implemented"); // TODO
     }
@@ -251,7 +267,8 @@ public class PropertiesConfigurationTest extends TestCase {
      * Test method for {@link java.lang.Object#toString()}.
      */
     @Test
-    public final void ___testToString() {
+    @Ignore
+    public final void testToString() {
 
         fail("Not yet implemented"); // TODO
     }

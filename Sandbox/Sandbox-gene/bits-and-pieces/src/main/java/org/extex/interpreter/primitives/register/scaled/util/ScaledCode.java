@@ -39,19 +39,12 @@ import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
-/*
+/**
  * This class provides a object usable as Code carrying a scaled number.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * 
  * @version $Revision: 4787 $
- */
-/*
- * TODO gene: missing JavaDoc.
- * 
- * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
- * 
- * @version $Revision$
  */
 public class ScaledCode extends AbstractAssignment
         implements
@@ -62,24 +55,14 @@ public class ScaledCode extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 20060606L;
 
-    /*
+    /**
      * The field <tt>value</tt> contains the encapsulated value. Unfortunately
      * Java does not allow multiple inheritance. Thus we have to use delegation
      * instead.
-     * 
-     * @uml.property name="value"
-     * 
-     * @uml.associationEnd
-     */
-    /*
-     * @uml.property name="value"
-     * 
-     * @uml.associationEnd
      */
     private ScaledNumber value = new ScaledNumber();
 
@@ -98,10 +81,11 @@ public class ScaledCode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -113,8 +97,8 @@ public class ScaledCode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -132,6 +116,7 @@ public class ScaledCode extends AbstractAssignment
      * @see org.extex.interpreter.parser.ScaledConvertible#convertScaled(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertScaled(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
@@ -141,18 +126,18 @@ public class ScaledCode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         source.getKeyword(context, "by");
         long scaled = ScaledNumberParser.parse(context, source, typesetter);
         if (scaled == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
         value.divide(scaled);
     }
@@ -160,10 +145,11 @@ public class ScaledCode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -175,12 +161,13 @@ public class ScaledCode extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
-            throws HelpingException, TypesetterException {
+            throws HelpingException,
+                TypesetterException {
 
         try {
             return context.getTokenFactory().toTokens(value.toString());
