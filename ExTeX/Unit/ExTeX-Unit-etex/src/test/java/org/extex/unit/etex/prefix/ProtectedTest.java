@@ -20,7 +20,7 @@
 package org.extex.unit.etex.prefix;
 
 import org.extex.scanner.type.Catcode;
-import org.extex.unit.tex.prefix.PrefixTester;
+import org.extex.test.PrefixTester;
 import org.junit.Test;
 
 /**

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.prefix;
 
+import org.extex.test.PrefixTester;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;

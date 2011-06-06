@@ -17,11 +17,10 @@
  *
  */
 
-package org.extex.unit.tex.prefix;
+package org.extex.test;
 
 import java.util.Properties;
 
-import org.extex.test.ExTeXLauncher;
 import org.junit.Test;
 
 /**
