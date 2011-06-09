@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,8 +19,8 @@
 
 package org.extex.unit.tex.typesetter.spacing;
 
+import org.extex.test.AbstractHfillTester;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is a test suite for the primitive <tt>\hfill</tt>.
@@ -29,16 +29,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision$
  */
 public class HfillTest extends AbstractHfillTester {
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(HfillTest.class);
-    }
 
     /**
      * Constructor for HfillTest.
