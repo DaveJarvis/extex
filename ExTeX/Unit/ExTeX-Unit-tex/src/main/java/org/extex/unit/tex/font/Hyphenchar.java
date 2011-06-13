@@ -70,7 +70,7 @@ import org.extex.typesetter.tc.font.Font;
  * <p>
  * The <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>book gives no indication ow the primitive should react for
+ * >e</span>X</logo>book gives no indication how the primitive should react for
  * negative values &ndash; except -1. The implementation of <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X</logo> allows to store and retrieve arbitrary negative values.
@@ -95,7 +95,7 @@ public class Hyphenchar extends AbstractAssignment
     /**
      * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * Creates a new object.
@@ -134,6 +134,7 @@ public class Hyphenchar extends AbstractAssignment
      * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -154,6 +155,7 @@ public class Hyphenchar extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -170,6 +172,7 @@ public class Hyphenchar extends AbstractAssignment
      * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
