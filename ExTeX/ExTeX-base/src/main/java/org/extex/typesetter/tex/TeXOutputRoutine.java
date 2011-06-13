@@ -27,10 +27,8 @@ import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.exception.InterpreterException;
@@ -41,7 +39,6 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.output.OutputRoutine;
 import org.extex.typesetter.type.page.Page;
 
@@ -56,7 +53,10 @@ import org.extex.typesetter.type.page.Page;
  * >e</span>X</logo> the output routine is a Java class implementing a defined
  * interface. This class implements the interface required and forwards the
  * request for processing to the appropriate interpreter.
- * 
+ * <p>
+ * The flow of control is illustrated in the following sequence diagram
+ * </p>
+ * <img src="doc-files/SD_par.png" width="100%" />
  * 
  * <doc name="output" type="register"> <h3>The Tokens Register <tt>\output</tt></h3>
  * <p>
@@ -90,7 +90,7 @@ import org.extex.typesetter.type.page.Page;
  *      &rarr; <tt>\output</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -120,7 +120,7 @@ import org.extex.typesetter.type.page.Page;
  *      &rarr; <tt>\deadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -150,7 +150,7 @@ import org.extex.typesetter.type.page.Page;
  *      &rarr; <tt>\maxdeadcycles</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -170,7 +170,7 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
      * The field <tt>serialVersionUID</tt> contains the version number for
      * serialization.
      */
-    private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 2011L;
 
     /**
      * The field <tt>OUTPUT_BOX</tt> contains the index of the box register to
@@ -222,11 +222,13 @@ public class TeXOutputRoutine implements OutputRoutine, Serializable {
      * @param backend the back-end driver to target the nodes to
      * 
      * @throws GeneralException in case of an error
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration error
      * 
      * @see org.extex.typesetter.output.OutputRoutine#output(org.extex.typesetter.type.page.Page,
      *      org.extex.backend.BackendDriver)
      */
+    @Override
     public void output(Page page, BackendDriver backend)
             throws GeneralException {
 
