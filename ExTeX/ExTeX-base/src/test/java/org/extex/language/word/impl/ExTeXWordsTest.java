@@ -49,41 +49,41 @@ import org.junit.Test;
 public class ExTeXWordsTest {
 
     /**
-     * The field <tt>wt</tt> contains the word tokenizer to test. The word
-     * tokenizer is stateless. Thus a single instance suffices.
+     * The field <tt>TOKENIZER</tt> contains the word tokenizer to test. The
+     * word tokenizer is stateless. Thus a single instance suffices.
      */
-    private static WordTokenizer wt = new ExTeXWords();
+    private static final WordTokenizer TOKENIZER = new ExTeXWords();
 
     /**
-     * The field <tt>nf</tt> contains the node factory to use throughout the
-     * test cases.
+     * The field <tt>NODE_FACTORY</tt> contains the node factory to use
+     * throughout the test cases.
      */
-    private static NodeFactory nf = new SimpleNodeFactory();
+    private static final NodeFactory NODE_FACTORY = new SimpleNodeFactory();
 
     /**
-     * The field <tt>tc</tt> contains the typesetting context.
+     * The field <tt>TC</tt> contains the typesetting context.
      */
-    private static ModifiableTypesettingContext tc =
+    private static final ModifiableTypesettingContext TC =
             new TypesettingContextImpl(new CMR10());
 
     {
         BaseHyphenationTable lan = new BaseHyphenationTable();
         lan.setLigatureBuilder(new LigatureBuilderImpl());
-        lan.setWordTokenizer(wt);
+        lan.setWordTokenizer(TOKENIZER);
         try {
             lan.setLeftHyphenMin(1L);
             lan.setRightHyphenMin(1L);
         } catch (HyphenationException e) {
             e.printStackTrace();
         }
-        tc.setLanguage(lan);
+        TC.setLanguage(lan);
     }
 
     /**
-     * The field <tt>hyphen</tt> contains the hyphen node.
+     * The field <tt>HYPHEN_NODE</tt> contains the hyphen node.
      */
-    private static CharNode hyphen = (CharNode) nf.getNode(tc,
-        UnicodeChar.get('-'));
+    private static final CharNode HYPHEN_NODE = (CharNode) NODE_FACTORY
+        .getNode(TC, UnicodeChar.get('-'));
 
     /**
      * The field <tt>UC_F</tt> contains the character f.
@@ -140,36 +140,36 @@ public class ExTeXWordsTest {
             char c = s.charAt(i);
             switch (c) {
                 case '\013':
-                    nodes.add(new LigatureNode(tc, UC_FF, //
-                        (CharNode) nf.getNode(tc, UC_F), //
-                        (CharNode) nf.getNode(tc, UC_F)));
+                    nodes.add(new LigatureNode(TC, UC_FF, //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F)));
                     break;
                 case '\014':
-                    nodes.add(new LigatureNode(tc, UC_FI, //
-                        (CharNode) nf.getNode(tc, UC_F), //
-                        (CharNode) nf.getNode(tc, UC_I)));
+                    nodes.add(new LigatureNode(TC, UC_FI, //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_I)));
                     break;
                 case '\015':
-                    nodes.add(new LigatureNode(tc, UC_FL, //
-                        (CharNode) nf.getNode(tc, UC_F), //
-                        (CharNode) nf.getNode(tc, UC_L)));
+                    nodes.add(new LigatureNode(TC, UC_FL, //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_L)));
                     break;
                 case '\016':
-                    nodes.add(new LigatureNode(tc, UC_FFI, //
-                        new LigatureNode(tc, UC_FF, //
-                            (CharNode) nf.getNode(tc, UC_F), //
-                            (CharNode) nf.getNode(tc, UC_F)), //
-                        (CharNode) nf.getNode(tc, UC_I)));
+                    nodes.add(new LigatureNode(TC, UC_FFI, //
+                        new LigatureNode(TC, UC_FF, //
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)), //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_I)));
                     break;
                 case '\017':
-                    nodes.add(new LigatureNode(tc, UC_FFL, //
-                        new LigatureNode(tc, UC_FF, //
-                            (CharNode) nf.getNode(tc, UC_F), //
-                            (CharNode) nf.getNode(tc, UC_F)), //
-                        (CharNode) nf.getNode(tc, UC_L)));
+                    nodes.add(new LigatureNode(TC, UC_FFL, //
+                        new LigatureNode(TC, UC_FF, //
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)), //
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_L)));
                     break;
                 default:
-                    nodes.add(nf.getNode(tc, UnicodeChar.get(c)));
+                    nodes.add(NODE_FACTORY.getNode(TC, UnicodeChar.get(c)));
             }
         }
         return nodes;
@@ -184,7 +184,7 @@ public class ExTeXWordsTest {
     public void testInsertShy1() throws Exception {
 
         NodeList nodes = new HorizontalListNode();
-        wt.insertShy(nodes, 0, new boolean[0], hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[0], HYPHEN_NODE);
         assertEquals(0, nodes.size());
     }
 
@@ -197,7 +197,7 @@ public class ExTeXWordsTest {
     public void testInsertShy10() throws Exception {
 
         NodeList nodes = makeList("ab");
-        wt.insertShy(nodes, 0, new boolean[]{true}, hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[]{true}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof DiscretionaryNode);
         assertTrue(nodes.get(1) instanceof CharNode);
@@ -213,7 +213,7 @@ public class ExTeXWordsTest {
     public void testInsertShy11() throws Exception {
 
         NodeList nodes = makeList("ab");
-        wt.insertShy(nodes, 0, new boolean[]{false}, hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[]{false}, HYPHEN_NODE);
         assertEquals(2, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof CharNode);
@@ -228,7 +228,7 @@ public class ExTeXWordsTest {
     public void testInsertShy2() throws Exception {
 
         NodeList nodes = makeList("a");
-        wt.insertShy(nodes, 0, new boolean[0], hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[0], HYPHEN_NODE);
         assertEquals(1, nodes.size());
     }
 
@@ -241,7 +241,7 @@ public class ExTeXWordsTest {
     public void testInsertShy20() throws Exception {
 
         NodeList nodes = makeList("ab");
-        wt.insertShy(nodes, 0, new boolean[]{false, true}, hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[]{false, true}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
@@ -257,7 +257,7 @@ public class ExTeXWordsTest {
     public void testInsertShy21() throws Exception {
 
         NodeList nodes = makeList("abc");
-        wt.insertShy(nodes, 1, new boolean[]{false, true}, hyphen);
+        TOKENIZER.insertShy(nodes, 1, new boolean[]{false, true}, HYPHEN_NODE);
         assertEquals(4, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof CharNode);
@@ -274,7 +274,7 @@ public class ExTeXWordsTest {
     public void testInsertShy3() throws Exception {
 
         NodeList nodes = makeList("a");
-        wt.insertShy(nodes, 1, new boolean[0], hyphen);
+        TOKENIZER.insertShy(nodes, 1, new boolean[0], HYPHEN_NODE);
         assertEquals(1, nodes.size());
     }
 
@@ -287,7 +287,8 @@ public class ExTeXWordsTest {
     public void testInsertShy31() throws Exception {
 
         NodeList nodes = makeList("a\13b");
-        wt.insertShy(nodes, 0, new boolean[]{false, true, false}, hyphen);
+        TOKENIZER.insertShy(nodes, 0, new boolean[]{false, true, false},
+            HYPHEN_NODE);
         assertEquals(4, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
@@ -304,7 +305,7 @@ public class ExTeXWordsTest {
     public void testInsertShy32() throws Exception {
 
         NodeList nodes = makeList("a\13b");
-        wt.insertShy(nodes, 1, new boolean[]{false, true}, hyphen);
+        TOKENIZER.insertShy(nodes, 1, new boolean[]{false, true}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
@@ -320,7 +321,8 @@ public class ExTeXWordsTest {
     public void testInsertShy33() throws Exception {
 
         NodeList nodes = makeList("a\13b");
-        wt.insertShy(nodes, 1, new boolean[]{false, false, true}, hyphen);
+        TOKENIZER.insertShy(nodes, 1, new boolean[]{false, false, true},
+            HYPHEN_NODE);
         assertEquals(4, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof LigatureNode);
@@ -337,8 +339,8 @@ public class ExTeXWordsTest {
     public void testInsertShy41() throws Exception {
 
         NodeList nodes = makeList("a\17b");
-        wt.insertShy(nodes, 1, //
-            new boolean[]{false, false, true, false}, hyphen);
+        TOKENIZER.insertShy(nodes, 1, //
+            new boolean[]{false, false, true, false}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);
@@ -357,8 +359,8 @@ public class ExTeXWordsTest {
     public void testInsertShy42() throws Exception {
 
         NodeList nodes = makeList("a\17b");
-        wt.insertShy(nodes, 1, //
-            new boolean[]{false, true, false}, hyphen);
+        TOKENIZER.insertShy(nodes, 1, //
+            new boolean[]{false, true, false}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
         assertTrue(nodes.get(1) instanceof DiscretionaryNode);

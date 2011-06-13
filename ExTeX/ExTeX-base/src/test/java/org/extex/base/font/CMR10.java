@@ -43,122 +43,527 @@ import org.extex.typesetter.tc.font.Font;
 public class CMR10 implements Font, Serializable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * TODO gene: missing JavaDoc.
      */
-    protected static final long serialVersionUID = 2006L;
-
-    /**
-     * Private implementation of the glyph interface.
-     * 
-     * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
-     * @version $Revision: 4784 $
-     */
-    public static class MyGlyph implements Serializable {
+    private static class Glyph {
 
         /**
-         * The constant <tt>serialVersionUID</tt> contains the id for
-         * serialization.
+         * The field <tt>code</tt> contains the ...
          */
-        protected static final long serialVersionUID = 2006L;
+        UnicodeChar code;
+
+        /**
+         * The field <tt>wd</tt> contains the ...
+         */
+        FixedGlue wd;
+
+        /**
+         * The field <tt>ht</tt> contains the ...
+         */
+        FixedGlue ht;
+
+        /**
+         * The field <tt>dp</tt> contains the ...
+         */
+        FixedGlue dp;
+
+        /**
+         * The field <tt>ic</tt> contains the ...
+         */
+        FixedDimen ic = Dimen.ZERO_PT;
+
+        /**
+         * The field <tt>ef</tt> contains the ...
+         */
+        long ef = 0;
+
+        /**
+         * The field <tt>ligature</tt> contains the ...
+         */
+        Map<UnicodeChar, UnicodeChar> ligature =
+                new HashMap<UnicodeChar, UnicodeChar>();
+
+        /**
+         * The field <tt>kerning</tt> contains the ...
+         */
+        Map<UnicodeChar, FixedDimen> kerning =
+                new HashMap<UnicodeChar, FixedDimen>();
 
         /**
          * Creates a new object.
          * 
-         * @param c the character
-         * @param w the width
-         * @param h the height
+         * @param code the code point
          */
-        public MyGlyph(UnicodeChar c, Dimen w, Dimen h) {
+        public Glyph(int code) {
 
-            // super(h, Dimen.ZERO_PT, w, Dimen.ZERO_PT);
-            // setName(c.toString());
+            this.code = UnicodeChar.get(code);
+            this.wd = Glue.ZERO;
+            this.ht = Glue.ZERO;
+            this.ic = Dimen.ZERO;
+            this.dp = Glue.ZERO;
         }
 
         /**
-         * Creates a new object.
+         * TODO gene: missing JavaDoc
          * 
-         * @param c the character
-         * @param w the width
-         * @param h the height
-         * @param d the depth
-         * @param ic the italic correction
+         * @param i
+         * @param j
          */
-        public MyGlyph(UnicodeChar c, Dimen w, Dimen h, Dimen d, Dimen ic) {
+        public void krn(int i, long j) {
 
-            // super(h, d, w, ic);
-            // setName(c.toString());
+            kerning.put(UnicodeChar.get(i), new Dimen(DESIGNSIZE.getValue() * j
+                    / C_1000000));
         }
 
-        // /**
-        // * Add a ligature entry.
-        // *
-        // * @param c the next letter
-        // * @param d the ligature letter
-        // */
-        // public void addLig(char c, char d) {
-        //
-        // Ligature lig = new Ligature();
-        // lig.setLetter(Character.toString(c));
-        // lig.setLetterid(Integer.toString(c));
-        // lig.setLig(Character.toString(d));
-        // lig.setLigid(Integer.toString(d));
-        // addLigature(lig);
-        // }
-        //
-        // /**
-        // * Add a kerning entry.
-        // *
-        // * @param c the character
-        // * @param dimen the kerning
-        // */
-        // public void addKern(char c, Dimen dimen) {
-        //
-        // String s = Character.toString(c);
-        // addKerning(new Kerning(s, s, dimen));
-        // }
+        /**
+         * TODO gene: missing JavaDoc
+         * 
+         * @param c
+         * @param i
+         */
+        public void lig(int c, int i) {
+
+            ligature.put(UnicodeChar.get(c), UnicodeChar.get(i));
+        }
 
     }
 
     /**
-     * The field <tt>ONE_683332</tt> contains the ...
+     * The field <tt>serialVersionUID</tt> contains the ...
      */
-//    private static final long ONE_683332 = Dimen.ONE * 683332;
+    private static final long serialVersionUID = 2011L;
 
     /**
-     * The field <tt>ONE_722224</tt> contains the ...
+     * The field <tt>C_1000000</tt> contains the ...
      */
-    private static final long ONE_722224 = Dimen.ONE * 722224;
+    private static final long C_1000000 = 1000000;
 
     /**
-     * The field <tt>ONE_777781</tt> contains the ...
+     * The field <tt>FAMILY</tt> contains the ...
      */
-    private static final long ONE_777781 = Dimen.ONE * 777781;
+    private static final String FAMILY = "CMR";
 
     /**
-     * The field <tt>TEN_6</tt> contains the value 10<sup>6</sup>
+     * The field <tt>FACE</tt> contains the ...
      */
-    private static final int TEN_6 = 1000000;
+    private static final int FACE = 0352;
 
     /**
-     * The field <tt>designSize</tt> contains the design size.
+     * The field <tt>CODINGSCHEME</tt> contains the ...
      */
-    private Dimen designSize = new Dimen(10 * Dimen.ONE);
+    private static final String CODINGSCHEME = "TEX TEXT";
+
+    /**
+     * The field <tt>DESIGNSIZE</tt> contains the ...
+     * 
+     * (COMMENT DESIGNSIZE IS IN POINTS) (COMMENT OTHER SIZES ARE MULTIPLES OF
+     * DESIGNSIZE)
+     */
+    private static final Dimen DESIGNSIZE = new Dimen(10 * Dimen.ONE);
+
+    /**
+     * The field <tt>GLUE_1000003</tt> contains the ...
+     */
+    private static final Glue GLUE_1000003 = new Glue(DESIGNSIZE.getValue()
+            * 1000003 / C_1000000);
+
+    /**
+     * The field <tt>DIMEN_27779</tt> contains the ...
+     */
+    private static final Dimen DIMEN_27779 = new Dimen(DESIGNSIZE.getValue()
+            * 27779 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_61508</tt> contains the ...
+     */
+    private static final Glue GLUE_61508 = new Glue(DESIGNSIZE.getValue()
+            * 61508 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_394445</tt> contains the ...
+     */
+    private static final Glue GLUE_394445 = new Glue(DESIGNSIZE.getValue()
+            * 394445 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_391668</tt> contains the ...
+     */
+    private static final Glue GLUE_391668 = new Glue(DESIGNSIZE.getValue()
+            * 391668 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_527781</tt> contains the ...
+     */
+    private static final Glue GLUE_527781 = new Glue(DESIGNSIZE.getValue()
+            * 527781 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_667859</tt> contains the ...
+     */
+    private static final Glue GLUE_667859 = new Glue(DESIGNSIZE.getValue()
+            * 667859 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_611113</tt> contains the ...
+     */
+    private static final Glue GLUE_611113 = new Glue(DESIGNSIZE.getValue()
+            * 611113 / C_1000000);
+
+    /**
+     * The field <tt>DIMEN_250000</tt> contains the ...
+     */
+    private static final Dimen DIMEN_250000 = new Dimen(DESIGNSIZE.getValue()
+            * 250000 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_1027781</tt> contains the ...
+     */
+    private static final Glue GLUE_1027781 = new Glue(DESIGNSIZE.getValue()
+            * 1027781 / C_1000000);
+
+    /**
+     * The field <tt>DIMEN_13888</tt> contains the ...
+     */
+    private static final Dimen DIMEN_13888 = new Dimen(DESIGNSIZE.getValue()
+            * 13888 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_736113</tt> contains the ...
+     */
+    private static final Glue GLUE_736113 = new Glue(DESIGNSIZE.getValue()
+            * 736113 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_916669</tt> contains the ...
+     */
+    private static final Glue GLUE_916669 = new Glue(DESIGNSIZE.getValue()
+            * 916669 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_51389</tt> contains the ...
+     */
+    private static final Glue GLUE_51389 = new Glue(DESIGNSIZE.getValue()
+            * 51389 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_361112</tt> contains the ...
+     */
+    private static final Glue GLUE_361112 = new Glue(DESIGNSIZE.getValue()
+            * 361112 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_784724</tt> contains the ...
+     */
+    private static final Glue GLUE_784724 = new Glue(DESIGNSIZE.getValue()
+            * 784724 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_652781</tt> contains the ...
+     */
+    private static final Glue GLUE_652781 = new Glue(DESIGNSIZE.getValue()
+            * 652781 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_680557</tt> contains the ...
+     */
+    private static final Glue GLUE_680557 = new Glue(DESIGNSIZE.getValue()
+            * 680557 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_763891</tt> contains the ...
+     */
+    private static final Glue GLUE_763891 = new Glue(DESIGNSIZE.getValue()
+            * 763891 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_708336</tt> contains the ...
+     */
+    private static final Glue GLUE_708336 = new Glue(DESIGNSIZE.getValue()
+            * 708336 / C_1000000);
+
+    /**
+     * The field <tt>GLUE__133125</tt> contains the ...
+     */
+    private static final Glue GLUE__133125 = new Glue(DESIGNSIZE.getValue()
+            * -133125 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_366875</tt> contains the ...
+     */
+    private static final Glue GLUE_366875 = new Glue(DESIGNSIZE.getValue()
+            * 366875 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_472224</tt> contains the ...
+     */
+    private static final Glue GLUE_472224 = new Glue(DESIGNSIZE.getValue()
+            * 472224 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_500000</tt> contains the ...
+     */
+    private static final Glue GLUE_500000 = new Glue(DESIGNSIZE.getValue()
+            * 500000 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_644444</tt> contains the ...
+     */
+    private static final Glue GLUE_644444 = new Glue(DESIGNSIZE.getValue()
+            * 644444 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_333334</tt> contains the ...
+     */
+    private static final Glue GLUE_333334 = new Glue(DESIGNSIZE.getValue()
+            * 333334 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_105556</tt> contains the ...
+     */
+    private static final Glue GLUE_105556 = new Glue(DESIGNSIZE.getValue()
+            * 105556 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_83334</tt> contains the ...
+     */
+    private static final Glue GLUE_83334 = new Glue(DESIGNSIZE.getValue()
+            * 83334 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_583334</tt> contains the ...
+     */
+    private static final Glue GLUE_583334 = new Glue(DESIGNSIZE.getValue()
+            * 583334 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_250000</tt> contains the ...
+     */
+    private static final Glue GLUE_250000 = new Glue(DESIGNSIZE.getValue()
+            * 250000 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_38889</tt> contains the ...
+     */
+    private static final Glue GLUE_38889 = new Glue(DESIGNSIZE.getValue()
+            * 38889 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_55555</tt> contains the ...
+     */
+    private static final Glue GLUE_55555 = new Glue(DESIGNSIZE.getValue()
+            * 55555 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_750000</tt> contains the ...
+     */
+    private static final Glue GLUE_750000 = new Glue(DESIGNSIZE.getValue()
+            * 750000 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_194443</tt> contains the ...
+     */
+    private static final Glue GLUE_194443 = new Glue(DESIGNSIZE.getValue()
+            * 194443 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_48612</tt> contains the ...
+     */
+    private static final Glue GLUE_48612 = new Glue(DESIGNSIZE.getValue()
+            * 48612 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_731944</tt> contains the ...
+     */
+    private static final Glue GLUE_731944 = new Glue(DESIGNSIZE.getValue()
+            * 731944 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_1013891</tt> contains the ...
+     */
+    private static final Glue GLUE_1013891 = new Glue(DESIGNSIZE.getValue()
+            * 1013891 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_902781</tt> contains the ...
+     */
+    private static final Glue GLUE_902781 = new Glue(DESIGNSIZE.getValue()
+            * 902781 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_97223</tt> contains the ...
+     */
+    private static final Glue GLUE_97223 = new Glue(DESIGNSIZE.getValue()
+            * 97223 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_527779</tt> contains the ...
+     */
+    private static final Glue GLUE_527779 = new Glue(DESIGNSIZE.getValue()
+            * 527779 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_500003</tt> contains the ...
+     */
+    private static final Glue GLUE_500003 = new Glue(DESIGNSIZE.getValue()
+            * 500003 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_170138</tt> contains the ...
+     */
+    private static final Glue GLUE_170138 = new Glue(DESIGNSIZE.getValue()
+            * 170138 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_444446</tt> contains the ...
+     */
+    private static final Glue GLUE_444446 = new Glue(DESIGNSIZE.getValue()
+            * 444446 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_567777</tt> contains the ...
+     */
+    private static final Glue GLUE_567777 = new Glue(DESIGNSIZE.getValue()
+            * 567777 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_628473</tt> contains the ...
+     */
+    private static final Glue GLUE_628473 = new Glue(DESIGNSIZE.getValue()
+            * 628473 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_500002</tt> contains the ...
+     */
+    private static final Glue GLUE_500002 = new Glue(DESIGNSIZE.getValue()
+            * 500002 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_194445</tt> contains the ...
+     */
+    private static final Glue GLUE_194445 = new Glue(DESIGNSIZE.getValue()
+            * 194445 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_305557</tt> contains the ...
+     */
+    private static final Glue GLUE_305557 = new Glue(DESIGNSIZE.getValue()
+            * 305557 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_430555</tt> contains the ...
+     */
+    private static final Glue GLUE_430555 = new Glue(DESIGNSIZE.getValue()
+            * 430555 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_277779</tt> contains the ...
+     */
+    private static final Glue GLUE_277779 = new Glue(DESIGNSIZE.getValue()
+            * 277779 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_555557</tt> contains the ...
+     */
+    private static final Glue GLUE_555557 = new Glue(DESIGNSIZE.getValue()
+            * 555557 / C_1000000);
+
+    /**
+     * The field <tt>DIMEN_77779</tt> contains the ...
+     */
+    private static final Dimen DIMEN_77779 = new Dimen(DESIGNSIZE.getValue()
+            * 77779 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_694445</tt> contains the ...
+     */
+    private static final Glue GLUE_694445 = new Glue(DESIGNSIZE.getValue()
+            * 694445 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_583336</tt> contains the ...
+     */
+    private static final Glue GLUE_583336 = new Glue(DESIGNSIZE.getValue()
+            * 583336 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_722224</tt> contains the ...
+     */
+    private static final Glue GLUE_722224 = new Glue(DESIGNSIZE.getValue()
+            * 722224 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_750002</tt> contains the ...
+     */
+    private static final Glue GLUE_750002 = new Glue(DESIGNSIZE.getValue()
+            * 750002 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_666669</tt> contains the ...
+     */
+    private static final Glue GLUE_666669 = new Glue(DESIGNSIZE.getValue()
+            * 666669 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_694446</tt> contains the ...
+     */
+    private static final Glue GLUE_694446 = new Glue(DESIGNSIZE.getValue()
+            * 694446 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_777781</tt> contains the ...
+     */
+    private static final Glue GLUE_777781 = new Glue(DESIGNSIZE.getValue()
+            * 777781 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_833336</tt> contains the ...
+     */
+    private static final Glue GLUE_833336 = new Glue(DESIGNSIZE.getValue()
+            * 833336 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_683332</tt> contains the ...
+     */
+    private static final Glue GLUE_683332 = new Glue(DESIGNSIZE.getValue()
+            * 683332 / C_1000000);
+
+    /**
+     * The field <tt>GLUE_625002</tt> contains the ...
+     */
+    private static final Glue GLUE_625002 = new Glue(DESIGNSIZE.getValue()
+            * 625002 / C_1000000);
+
+    /**
+     * The field <tt>CHECKSUM</tt> contains the ...
+     */
+    private static final int CHECKSUM = 011374260171;
+
+    /**
+     * TODO gene: missing JavaDoc
+     * 
+     * @param code
+     * @param wd
+     * @param ht
+     */
+    private static Glyph character(int code, Glue wd, Glue ht) {
+
+        Glyph g = new Glyph(code);
+        g.wd = wd;
+        g.ht = ht;
+        GLYPH_TABLE.put(g.code, g);
+        return g;
+    }
 
     /**
      * The field <tt>fontdimen</tt> contains the ...
      */
-    private Dimen[] fontdimen = {new Dimen(0), // (SLANT R 0 / 10)
-            new Dimen(Dimen.ONE * 33333 / 1000004), // (SPACE R 33333 / 1000004)
-            new Dimen(Dimen.ONE * 16666 / 1000007), // (STRETCH R 16666 /
-            // 1000007)
-            new Dimen(Dimen.ONE * 11111 / 1000002), // (SHRINK R 11111 /
-            // 1000002)
-            new Dimen(Dimen.ONE * 43055 / 1000005), // (XHEIGHT R 43055 /
-            // 1000005)
-            new Dimen(Dimen.ONE * 1000003 / 1000000), // (QUAD R 1.000003)
-            new Dimen(Dimen.ONE * 11111 / 1000002) // (EXTRASPACE R 11111 /
-            // 1000002)
+    private FixedDimen[] fontdimen = {Dimen.ZERO, // SLANT
+            new Dimen(DESIGNSIZE.getValue() * 333334 / C_1000000), // SPACE
+            new Dimen(DESIGNSIZE.getValue() * 166667 / C_1000000), // STRETCH
+            new Dimen(DESIGNSIZE.getValue() * 111112 / C_1000000), // SHRINK
+            new Dimen(DESIGNSIZE.getValue() * 430555 / C_1000000), // XHEIGHT
+            new Dimen(DESIGNSIZE.getValue() * 1000003 / C_1000000), // QUAD
+            new Dimen(DESIGNSIZE.getValue() * 111112 / C_1000000) // EXTRASPACE
             };
 
     /**
@@ -180,8 +585,8 @@ public class CMR10 implements Font, Serializable {
     protected static final int STRETCH = 2;
 
     /**
-     * The field <tt>SHRINK</tt> contains the font dimen position for the
-     * shrink parameter.
+     * The field <tt>SHRINK</tt> contains the font dimen position for the shrink
+     * parameter.
      */
     protected static final int SHRINK = 3;
 
@@ -204,1308 +609,401 @@ public class CMR10 implements Font, Serializable {
     protected static final int EXTRASPACE = 6;
 
     /**
-     * The field <tt>glyphs</tt> contains the hash map for the glyphs.
+     * The field <tt>GLYPH_TABLE</tt> contains the ...
      */
-    private Map<UnicodeChar, MyGlyph> glyphs =
-            new HashMap<UnicodeChar, MyGlyph>();
+    private static final Map<UnicodeChar, Glyph> GLYPH_TABLE =
+            new HashMap<UnicodeChar, Glyph>();
+
+    static {
+        Glyph glyph;
+        character(00, GLUE_625002, GLUE_683332);
+        character(01, GLUE_833336, GLUE_683332);
+        character(02, GLUE_777781, GLUE_683332);
+        character(03, GLUE_694446, GLUE_683332);
+        character(04, GLUE_666669, GLUE_683332);
+        character(05, GLUE_750002, GLUE_683332);
+        character(06, GLUE_722224, GLUE_683332);
+        character(07, GLUE_777781, GLUE_683332);
+        character(010, GLUE_722224, GLUE_683332);
+        character(011, GLUE_777781, GLUE_683332);
+        character(012, GLUE_722224, GLUE_683332);
+        glyph = character(013, GLUE_583336, GLUE_694445);
+        glyph.ic = DIMEN_77779;
+        glyph.lig('i', 016);
+        glyph.lig('l', 017);
+        glyph.krn(047, 77779);
+        glyph.krn(077, 77779);
+        glyph.krn(041, 77779);
+        glyph.krn(051, 77779);
+        glyph.krn(0135, 77779);
+        character(014, GLUE_555557, GLUE_694445);
+        character(015, GLUE_555557, GLUE_694445);
+        character(016, GLUE_833336, GLUE_694445);
+        character(017, GLUE_833336, GLUE_694445);
+        character(020, GLUE_277779, GLUE_430555);
+        glyph = character(021, GLUE_305557, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        character(022, GLUE_500002, GLUE_694445);
+        character(023, GLUE_500002, GLUE_694445);
+        character(024, GLUE_500002, GLUE_628473);
+        character(025, GLUE_500002, GLUE_694445);
+        character(026, GLUE_500002, GLUE_567777);
+        character(027, GLUE_750002, GLUE_694445);
+        character(030, GLUE_444446, GLUE_170138);
+        character(031, GLUE_500003, GLUE_694445);
+        character(032, GLUE_722224, GLUE_430555);
+        character(033, GLUE_777781, GLUE_430555);
+        glyph = character(034, GLUE_500002, GLUE_527779);
+        glyph.dp = GLUE_97223;
+        character(035, GLUE_902781, GLUE_683332);
+        character(036, GLUE_1013891, GLUE_683332);
+        glyph = character(037, GLUE_777781, GLUE_731944);
+        glyph.dp = GLUE_48612;
+        glyph = character(040, GLUE_277779, GLUE_430555);
+        glyph.krn('l', -277779);
+        glyph.krn('L', -319446);
+        glyph = character(041, GLUE_277779, GLUE_694445);
+        glyph.lig(0140, 074);
+        glyph = character(042, GLUE_500002, GLUE_694445);
+        glyph = character(043, GLUE_833336, GLUE_694445);
+        glyph.dp = GLUE_194443;
+        glyph = character(044, GLUE_500002, GLUE_750000);
+        glyph.dp = GLUE_55555;
+        glyph = character(045, GLUE_833336, GLUE_750000);
+        glyph.dp = GLUE_55555;
+        glyph = character(046, GLUE_777781, GLUE_694445);
+        glyph = character(047, GLUE_277779, GLUE_694445);
+        glyph.lig(047, 042);
+        glyph.krn(077, 111112);
+        glyph.krn(041, 111112);
+        glyph = character(050, GLUE_38889, GLUE_750000);
+        glyph.dp = GLUE_250000;
+        glyph = character(051, GLUE_38889, GLUE_750000);
+        glyph.dp = GLUE_250000;
+        glyph = character(052, GLUE_500002, GLUE_750000);
+        glyph = character(053, GLUE_777781, GLUE_583334);
+        glyph.dp = GLUE_83334;
+        glyph = character(054, GLUE_277779, GLUE_105556);
+        glyph.dp = GLUE_194445;
+        glyph = character(055, GLUE_333334, GLUE_430555);
+        glyph.lig(055, 0173);
+        glyph = character(056, GLUE_277779, GLUE_105556);
+        glyph = character(057, GLUE_500002, GLUE_750000);
+        glyph.dp = GLUE_250000;
+        character('0', GLUE_500002, GLUE_644444);
+        character('1', GLUE_500002, GLUE_644444);
+        character('2', GLUE_500002, GLUE_644444);
+        character('3', GLUE_500002, GLUE_644444);
+        character('4', GLUE_500002, GLUE_644444);
+        character('5', GLUE_500002, GLUE_644444);
+        character('6', GLUE_500002, GLUE_644444);
+        character('7', GLUE_500002, GLUE_644444);
+        character('8', GLUE_500002, GLUE_644444);
+        character('9', GLUE_500002, GLUE_644444);
+        character(072, GLUE_277779, GLUE_430555);
+        glyph = character(073, GLUE_277779, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        glyph = character(074, GLUE_277779, GLUE_500000);
+        glyph.dp = GLUE_194445;
+        glyph = character(075, GLUE_777781, GLUE_366875);
+        glyph.dp = GLUE__133125;
+        glyph = character(076, GLUE_472224, GLUE_500000);
+        glyph.dp = GLUE_194445;
+        glyph = character(077, GLUE_472224, GLUE_694445);
+        glyph.lig(0140, 076);
+        glyph = character(0100, GLUE_777781, GLUE_694445);
+        glyph = character('A', GLUE_750002, GLUE_683332);
+        glyph.krn('t', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('O', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('U', -27779);
+        glyph.krn('Q', -27779);
+        glyph.krn('T', -83334);
+        glyph.krn('Y', -83334);
+        glyph.krn('V', -111112);
+        glyph.krn('W', -111112);
+        character('B', GLUE_708336, GLUE_683332);
+        character('C', GLUE_722224, GLUE_683332);
+        glyph = character('D', GLUE_763891, GLUE_683332);
+        glyph.krn('X', -27779);
+        glyph.krn('W', -27779);
+        glyph.krn('A', -27779);
+        glyph.krn('V', -27779);
+        glyph.krn('Y', -27779);
+        character('E', GLUE_680557, GLUE_683332);
+        glyph = character('F', GLUE_652781, GLUE_683332);
+        glyph.krn('o', -83334);
+        glyph.krn('e', -83334);
+        glyph.krn('u', -83334);
+        glyph.krn('r', -83334);
+        glyph.krn('a', -83334);
+        glyph.krn('A', -111112);
+        glyph.krn('O', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('Q', -27779);
+        character('G', GLUE_784724, GLUE_683332);
+        character('H', GLUE_750002, GLUE_683332);
+        glyph = character('I', GLUE_361112, GLUE_683332);
+        glyph.krn('I', 27779);
+        character('J', GLUE_51389, GLUE_683332);
+        glyph = character('K', GLUE_777781, GLUE_683332);
+        glyph.krn('O', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('Q', -27779);
+        glyph = character('L', GLUE_625002, GLUE_683332);
+        glyph.krn('T', -83334);
+        glyph.krn('Y', -83334);
+        glyph.krn('V', -111112);
+        glyph.krn('W', -111112);
+        character('M', GLUE_916669, GLUE_683332);
+        character('N', GLUE_750002, GLUE_683332);
+        glyph = character('O', GLUE_777781, GLUE_683332);
+        glyph.krn('X', -27779);
+        glyph.krn('W', -27779);
+        glyph.krn('A', -27779);
+        glyph.krn('V', -27779);
+        glyph.krn('Y', -27779);
+        glyph = character('P', GLUE_680557, GLUE_683332);
+        glyph.krn('A', -83334);
+        glyph.krn('o', -27779);
+        glyph.krn('e', -27779);
+        glyph.krn('a', -27779);
+        glyph.krn(056, -83334);
+        glyph.krn(054, -83334);
+        glyph = character('Q', GLUE_777781, GLUE_683332);
+        glyph.dp = GLUE_194445;
+        glyph = character('R', GLUE_736113, GLUE_683332);
+        glyph.krn('t', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('O', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('U', -27779);
+        glyph.krn('Q', -27779);
+        glyph.krn('T', -83334);
+        glyph.krn('Y', -83334);
+        glyph.krn('V', -111112);
+        glyph.krn('W', -111112);
+        character('S', GLUE_555557, GLUE_683332);
+        glyph = character('T', GLUE_722224, GLUE_683332);
+        glyph.krn('y', -27779);
+        glyph.krn('e', -83334);
+        glyph.krn('o', -83334);
+        glyph.krn('r', -83334);
+        glyph.krn('a', -83334);
+        glyph.krn('A', -83334);
+        glyph.krn('u', -83334);
+        character('U', GLUE_750002, GLUE_683332);
+        glyph = character('V', GLUE_750002, GLUE_683332);
+        glyph.ic = DIMEN_13888;
+        glyph.krn('o', -83334);
+        glyph.krn('e', -83334);
+        glyph.krn('u', -83334);
+        glyph.krn('r', -83334);
+        glyph.krn('a', -83334);
+        glyph.krn('A', -111112);
+        glyph.krn('O', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('Q', -27779);
+        glyph = character('W', GLUE_1027781, GLUE_683332);
+        glyph.ic = DIMEN_13888;
+        glyph.krn('o', -83334);
+        glyph.krn('e', -83334);
+        glyph.krn('u', -83334);
+        glyph.krn('r', -83334);
+        glyph.krn('a', -83334);
+        glyph.krn('A', -111112);
+        glyph.krn('O', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('Q', -27779);
+        glyph = character('X', GLUE_750002, GLUE_683332);
+        glyph.krn('O', -27779);
+        glyph.krn('C', -27779);
+        glyph.krn('G', -27779);
+        glyph.krn('Q', -27779);
+        glyph = character('Y', GLUE_750002, GLUE_683332);
+        glyph.ic = DIMEN_250000;
+        glyph.krn('e', -83334);
+        glyph.krn('o', -83334);
+        glyph.krn('r', -83334);
+        glyph.krn('a', -83334);
+        glyph.krn('A', -83334);
+        glyph.krn('u', -83334);
+        character('Z', GLUE_611113, GLUE_683332);
+        glyph = character(0133, GLUE_277779, GLUE_750000);
+        glyph.dp = GLUE_250000;
+        character(0134, GLUE_500002, GLUE_694445);
+        glyph = character(0135, GLUE_277779, GLUE_750000);
+        glyph.dp = GLUE_250000;
+        character(0136, GLUE_500002, GLUE_694445);
+        character(0137, GLUE_277779, GLUE_667859);
+        glyph = character(0140, GLUE_277779, GLUE_694445);
+        glyph.lig(0140, 0134);
+        glyph = character('a', GLUE_500002, GLUE_430555);
+        glyph.krn('v', -27779);
+        glyph.krn('j', 55555);
+        glyph.krn('y', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('b', GLUE_555557, GLUE_694445);
+        glyph.krn('e', 27779);
+        glyph.krn('o', 27779);
+        glyph.krn('x', -27779);
+        glyph.krn('d', 27779);
+        glyph.krn('c', 27779);
+        glyph.krn('q', 27779);
+        glyph.krn('v', -27779);
+        glyph.krn('j', 55555);
+        glyph.krn('y', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('c', GLUE_444446, GLUE_430555);
+        glyph.krn('h', -27779);
+        glyph.krn('k', -27779);
+        character('d', GLUE_555557, GLUE_694445);
+        character('e', GLUE_444446, GLUE_430555);
+        glyph = character('f', GLUE_305557, GLUE_694445);
+        glyph.ic = DIMEN_77779;
+        glyph.lig('i', 014);
+        glyph.lig('f', 013);
+        glyph.lig('l', 015);
+        glyph.krn(047, 77779);
+        glyph.krn(077, 77779);
+        glyph.krn(041, 77779);
+        glyph.krn(051, 77779);
+        glyph.krn(0135, 77779);
+        glyph = character('g', GLUE_500002, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        glyph.ic = DIMEN_13888;
+        glyph.krn('j', 27779);
+        glyph = character('h', GLUE_555557, GLUE_694445);
+        glyph.krn('t', -27779);
+        glyph.krn('u', -27779);
+        glyph.krn('b', -27779);
+        glyph.krn('y', -27779);
+        glyph.krn('v', -27779);
+        glyph.krn('w', -27779);
+        character('i', GLUE_277779, GLUE_667859);
+        glyph = character('j', GLUE_305557, GLUE_667859);
+        glyph.dp = GLUE_194445;
+        glyph = character('k', GLUE_527781, GLUE_694445);
+        glyph.krn('a', -55555);
+        glyph.krn('e', -27779);
+        glyph.krn('a', -27779);
+        glyph.krn('o', -27779);
+        glyph.krn('c', -27779);
+        glyph = character('l', GLUE_277779, GLUE_694445);
+        glyph = character('m', GLUE_833336, GLUE_430555);
+        glyph.krn('t', -27779);
+        glyph.krn('u', -27779);
+        glyph.krn('b', -27779);
+        glyph.krn('y', -27779);
+        glyph.krn('v', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('n', GLUE_555557, GLUE_430555);
+        glyph.krn('t', -27779);
+        glyph.krn('u', -27779);
+        glyph.krn('b', -27779);
+        glyph.krn('y', -27779);
+        glyph.krn('v', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('o', GLUE_500002, GLUE_430555);
+        glyph.krn('e', 27779);
+        glyph.krn('o', 27779);
+        glyph.krn('x', -27779);
+        glyph.krn('d', 27779);
+        glyph.krn('c', 27779);
+        glyph.krn('q', 27779);
+        glyph.krn('v', -27779);
+        glyph.krn('j', 55555);
+        glyph.krn('y', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('p', GLUE_555557, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        glyph.krn('e', 27779);
+        glyph.krn('o', 27779);
+        glyph.krn('x', -27779);
+        glyph.krn('d', 27779);
+        glyph.krn('c', 27779);
+        glyph.krn('q', 27779);
+        glyph.krn('v', -27779);
+        glyph.krn('j', 55555);
+        glyph.krn('y', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('q', GLUE_527779, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        character('r', GLUE_391668, GLUE_430555);
+        character('s', GLUE_394445, GLUE_430555);
+        glyph = character('t', GLUE_38889, GLUE_61508);
+        glyph.krn('y', -27779);
+        glyph.krn('w', -27779);
+        glyph = character('u', GLUE_555557, GLUE_430555);
+        glyph.krn('w', -27779);
+        glyph = character('v', GLUE_527781, GLUE_430555);
+        glyph.ic = DIMEN_13888;
+        glyph.krn('a', -55555);
+        glyph.krn('e', -27779);
+        glyph.krn('a', -27779);
+        glyph.krn('o', -27779);
+        glyph.krn('c', -27779);
+        glyph = character('w', GLUE_722224, GLUE_430555);
+        glyph.ic = DIMEN_13888;
+        glyph.krn('e', -27779);
+        glyph.krn('a', -27779);
+        glyph.krn('o', -27779);
+        glyph.krn('c', -27779);
+        character('x', GLUE_527781, GLUE_430555);
+        glyph = character('y', GLUE_527781, GLUE_430555);
+        glyph.dp = GLUE_194445;
+        glyph.ic = DIMEN_13888;
+        glyph.krn('o', -27779);
+        glyph.krn('e', -27779);
+        glyph.krn('a', -27779);
+        glyph.krn(056, -83334);
+        glyph.krn(054, -83334);
+        character('z', GLUE_444446, GLUE_430555);
+        glyph = character(0173, GLUE_500002, GLUE_430555);
+        glyph.ic = DIMEN_27779;
+        glyph.lig(055, 0174);
+        glyph = character(0174, GLUE_1000003, GLUE_430555);
+        glyph.ic = DIMEN_27779;
+        character(0175, GLUE_500002, GLUE_694445);
+        character(0176, GLUE_500002, GLUE_667859);
+        character(0177, GLUE_500002, GLUE_667859);
+    }
 
     /**
-     * The field <tt>hypenChar</tt> contains the hyphen character.
+     * The field <tt>hyphenchar</tt> contains the hyphen character.
      */
-    private UnicodeChar hypenChar = UnicodeChar.get('-');
+    private UnicodeChar hyphenchar = UnicodeChar.get('-');
 
     /**
-     * The field <tt>skewChar</tt> contains the skew character.
+     * The field <tt>skewchar</tt> contains the ...
      */
-    private UnicodeChar skewChar = null;
+    private UnicodeChar skewchar = null;
+
+    /**
+     * The field <tt>fontKey</tt> contains the font key.
+     */
+    private FontKey fontKey = new FontKeyFactory().newInstance("cmr10");
 
     /**
      * The field <tt>space</tt> contains the space specification.
      */
-    private Glue space =
-            new Glue(fontdimen[SPACE], fontdimen[STRETCH], fontdimen[SHRINK]);
+    private Glue space = new Glue(fontdimen[SPACE], fontdimen[STRETCH],
+        fontdimen[SHRINK]);
 
     /**
-     * Creates a new object.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
      */
-    public CMR10() {
+    @Override
+    public FontKey getActualFontKey() {
 
-        // MyGlyph g;
-        // // (FAMILY CMR)
-        // // (FACE O 352)
-        // // (CODINGSCHEME TEX TEXT)
-        // // (DESIGNSIZE R 10 / 10)
-        // // (COMMENT DESIGNSIZE IS IN POINTS)
-        // // (COMMENT OTHER SIZES ARE MULTIPLES OF DESIGNSIZE)
-        // // (CHECKSUM O 11374260171)
-        // // (FONTDIMEN
-        // // (SLANT R 0 / 10)
-        // // (SPACE R 33333 / 1000004)
-        // // (STRETCH R 16666 / 1000007)
-        // // (SHRINK R 11111 / 1000002)
-        // // (XHEIGHT R 43055 / 1000005)
-        // // (QUAD R 1.000003)
-        // // (EXTRASPACE R 11111 / 1000002)
-        // // )
-        // // (LIGTABLE
-        // // (LABEL O 40)
-        // // (KRN C l R -27777 / 1000009)
-        // // (KRN C L R -31944 / 1000006)
-        // // (STOP)
-        // // (LABEL C f)
-        // // (LIG C i O 14)
-        // // (LIG C f O 13)
-        // // (LIG C l O 15)
-        // // (KRN O 47 R 07777 / 1000009)
-        // // (KRN O 77 R 07777 / 1000009)
-        // // (KRN O 41 R 07777 / 1000009)
-        // // (KRN O 51 R 07777 / 1000009)
-        // // (KRN O 135 R 07777 / 1000009)
-        // // (STOP)
-        // // (LABEL O 13)
-        // // (LIG C i O 16)
-        // // (LIG C l O 17)
-        // // (KRN O 47 R 07777 / 1000009)
-        // // (KRN O 77 R 07777 / 1000009)
-        // // (KRN O 41 R 07777 / 1000009)
-        // // (KRN O 51 R 077779 / 1000000)
-        // // (KRN O 135 R 077779 / 1000000)
-        // // (STOP)
-        // // (LABEL O 140)
-        // // (LIG O 140 O 134)
-        // // (STOP)
-        // // (LABEL O 47)
-        // // (LIG O 47 O 42)
-        // // (KRN O 77 R 111112 / 1000000)
-        // // (KRN O 41 R 111112 / 1000000)
-        // // (STOP)
-        // // (LABEL O 55)
-        // // (LIG O 55 O 173)
-        // // (STOP)
-        // // (LABEL O 173)
-        // // (LIG O 55 O 174)
-        // // (STOP)
-        // // (LABEL O 41)
-        // // (LIG O 140 O 74)
-        // // (STOP)
-        // // (LABEL O 77)
-        // // (LIG O 140 O 76)
-        // // (STOP)
-        // // (LABEL C k)
-        // // (LABEL C v)
-        // // (KRN C a R -055555 / 1000000)
-        // // (LABEL C w)
-        // // (KRN C e R -027779 / 1000000)
-        // // (KRN C a R -027779 / 1000000)
-        // // (KRN C o R -027779 / 1000000)
-        // // (KRN C c R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C P)
-        // // (KRN C A R -083334 / 1000000)
-        // // (LABEL C y)
-        // // (KRN C o R -027779 / 1000000)
-        // // (KRN C e R -027779 / 1000000)
-        // // (KRN C a R -027779 / 1000000)
-        // // (KRN O 56 R -083334 / 1000000)
-        // // (KRN O 54 R -083334 / 1000000)
-        // // (STOP)
-        // // (LABEL C F)
-        // // (LABEL C V)
-        // // (LABEL C W)
-        // // (KRN C o R -083334 / 1000000)
-        // // (KRN C e R -083334 / 1000000)
-        // // (KRN C u R -083334 / 1000000)
-        // // (KRN C r R -083334 / 1000000)
-        // // (KRN C a R -083334 / 1000000)
-        // // (KRN C A R -111112 / 1000000)
-        // // (LABEL C K)
-        // // (LABEL C X)
-        // // (KRN C O R -027779 / 1000000)
-        // // (KRN C C R -027779 / 1000000)
-        // // (KRN C G R -027779 / 1000000)
-        // // (KRN C Q R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C T)
-        // // (KRN C y R -027779 / 1000000)
-        // // (LABEL C Y)
-        // // (KRN C e R -083334 / 1000000)
-        // // (KRN C o R -083334 / 1000000)
-        // // (KRN C r R -083334 / 1000000)
-        // // (KRN C a R -083334 / 1000000)
-        // // (KRN C A R -083334 / 1000000)
-        // // (KRN C u R -083334 / 1000000)
-        // // (STOP)
-        // // (LABEL C D)
-        // // (LABEL C O)
-        // // (KRN C X R -027779 / 1000000)
-        // // (KRN C W R -027779 / 1000000)
-        // // (KRN C A R -027779 / 1000000)
-        // // (KRN C V R -027779 / 1000000)
-        // // (KRN C Y R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C h)
-        // // (LABEL C m)
-        // // (LABEL C n)
-        // // (KRN C t R -027779 / 1000000)
-        // // (KRN C u R -027779 / 1000000)
-        // // (KRN C b R -027779 / 1000000)
-        // // (KRN C y R -027779 / 1000000)
-        // // (KRN C v R -027779 / 1000000)
-        // // (KRN C w R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C c)
-        // // (KRN C h R -027779 / 1000000)
-        // // (KRN C k R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C b)
-        // // (LABEL C o)
-        // // (LABEL C p)
-        // // (KRN C e R 027779 / 1000000)
-        // // (KRN C o R 027779 / 1000000)
-        // // (KRN C x R -027779 / 1000000)
-        // // (KRN C d R 027779 / 1000000)
-        // // (KRN C c R 027779 / 1000000)
-        // // (KRN C q R 027779 / 1000000)
-        // // (LABEL C a)
-        // // (KRN C v R -027779 / 1000000)
-        // // (KRN C j R 055555 / 1000000)
-        // // (LABEL C t)
-        // // (KRN C y R -027779 / 1000000)
-        // // (LABEL C u)
-        // // (KRN C w R -027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C A)
-        // // (LABEL C R)
-        // // (KRN C t R -027779 / 1000000)
-        // // (KRN C C R -027779 / 1000000)
-        // // (KRN C O R -027779 / 1000000)
-        // // (KRN C G R -027779 / 1000000)
-        // // (KRN C U R -027779 / 1000000)
-        // // (KRN C Q R -027779 / 1000000)
-        // // (LABEL C L)
-        // // (KRN C T R -083334 / 1000000)
-        // // (KRN C Y R -083334 / 1000000)
-        // // (KRN C V R -111112 / 1000000)
-        // // (KRN C W R -111112 / 1000000)
-        // // (STOP)
-        // // (LABEL C g)
-        // // (KRN C j R 027779 / 1000000)
-        // // (STOP)
-        // // (LABEL C I)
-        // // (KRN C I R 027779 / 1000000)
-        // // (STOP)
-        // makeGlyph('\0', new Dimen(Dimen.ONE * 625002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\001', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\002', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\003', new Dimen(Dimen.ONE * 694446 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\004', new Dimen(Dimen.ONE * 666669 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\005', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\006', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\007', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\010', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\011', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\012', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('\013', new Dimen(Dimen.ONE * 583336 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addLig('i', '\020'); // (LIG C i O 16)
-        // g.addLig('l', '\021'); // (LIG C l O 17)
-        // g.addKern((char) 047, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 47
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 077, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 77
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 041, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 41
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 051, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 51
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 0135, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 135
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // // )
-        // makeGlyph('\014', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\015', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\016', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\017', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\020', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\021', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\022', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\023', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\024', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 628473 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\025', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\026', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 567777 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\027', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\030', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 170138 / TEN_6) // CHARDP
-        // );
-        // makeGlyph('\031', new Dimen(Dimen.ONE * 500003 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\032', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\033', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\034', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 527779 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 97223 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\035', new Dimen(Dimen.ONE * 902781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\036', new Dimen(Dimen.ONE * 1013891 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\037', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 731944 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 48612 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // g = makeGlyph('\040', new Dimen(Dimen.ONE * 277779 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('l', new Dimen(Dimen.ONE * -277779 / TEN_6)); // (KRN C l R
-        // // -277779 /
-        // // 1000000)
-        // g.addKern('L', new Dimen(Dimen.ONE * -319446 / TEN_6)); // (KRN C L R
-        // // -319446 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('\041', new Dimen(Dimen.ONE * 277779 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addLig((char) 0140, (char) 074); // (LIG O 140 O 74)
-        // // )
-        // makeGlyph('\042', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\043', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194443 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\044', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\045', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 55555 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\046', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('\047', new Dimen(Dimen.ONE * 277779 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addLig((char) 047, (char) 042); // (LIG O 47 O 42)
-        // g.addKern((char) 077, new Dimen(Dimen.ONE * 111112 / TEN_6)); // (KRN
-        // // O 77
-        // // R
-        // // 111112
-        // // /
-        // // 1000000)
-        // g.addKern((char) 041, new Dimen(Dimen.ONE * 111112 / TEN_6)); // (KRN
-        // // O 41
-        // // R
-        // // 111112
-        // // /
-        // // 1000000)
-        // // )
-        // makeGlyph('\050', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\051', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\052', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100) // CHARHT
-        // );
-        // makeGlyph('\053', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 583334 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 83334 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\054', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 105556 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // g = makeGlyph('\055', new Dimen(Dimen.ONE * 333334 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addLig((char) 055, (char) 0173); // (LIG O 55 O 173)
-        // // )
-        // makeGlyph('\056', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 105556 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\057', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('0', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('1', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('2', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('3', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('4', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('5', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('6', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('7', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('8', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('9', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 644444 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\072', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\073', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\074', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 5 / 10), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\075', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 366875 / TEN_6) // CHARHT
-        // // (CHARDP R -133125 / 1000000)
-        // );
-        // makeGlyph('\076', new Dimen(Dimen.ONE * 472224 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 5 / 10), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // g = makeGlyph('\077', new Dimen(Dimen.ONE * 472224 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addLig((char) 0140, (char) 076); // (LIG O 140 O 76)
-        // // )
-        // makeGlyph('\100', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('A', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('U', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C U R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-        // // -111112 /
-        // // 1000000)
-        // // )
-        // makeGlyph('B', new Dimen(Dimen.ONE * 708336 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('C', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('D', new Dimen(Dimen.ONE * 763891 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('X', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C X R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('W', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C W R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C A R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('V', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C V R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Y R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('E', new Dimen(Dimen.ONE * 680557 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('F', new Dimen(Dimen.ONE * 652781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('G', new Dimen(Dimen.ONE * 784724 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('H', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('I', new Dimen(Dimen.ONE * 361112 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('I', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C I R
-        // // 027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('J', new Dimen(Dimen.ONE * 51389 / 100000), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('K', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('L', new Dimen(Dimen.ONE * 625002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-        // // -111112 /
-        // // 1000000)
-        // // )
-        // makeGlyph('M', new Dimen(Dimen.ONE * 916669 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('N', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('O', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('X', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C X R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('W', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C W R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C A R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('V', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C V R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Y R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('P', new Dimen(Dimen.ONE * 680557 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern((char) 056, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-        // // O 56
-        // // R
-        // // -083334
-        // // /
-        // // 1000000)
-        // g.addKern((char) 054, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-        // // O 54
-        // // R
-        // // -083334
-        // // /
-        // // 1000000)
-        // // )
-        // makeGlyph('Q', new Dimen(ONE_777781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // g = makeGlyph('R', new Dimen(Dimen.ONE * 736113 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('U', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C U R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('T', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C T R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('Y', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C Y R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('V', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C V R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('W', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C W R
-        // // -111112 /
-        // // 1000000)
-        // // )
-        // makeGlyph('S', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('T', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-        // // -083334 /
-        // // 1000000)
-        // // )
-        // makeGlyph('U', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('V', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('W', new Dimen(Dimen.ONE * 1027781 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -111112 / TEN_6)); // (KRN C A R
-        // // -111112 /
-        // // 1000000)
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('X', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('O', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C O R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('C', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C C R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('G', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C G R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('Q', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C Q R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('Y', new Dimen(Dimen.ONE * 750002 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 0), // CHARDP
-        // new Dimen(Dimen.ONE * 25 / 1000) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('e', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C e R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C o R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('r', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C r R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C a R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('A', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C A R
-        // // -083334 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN C u R
-        // // -083334 /
-        // // 1000000)
-        // // )
-        // makeGlyph('Z', new Dimen(Dimen.ONE * 611113 / TEN_6), // CHARWD
-        // new Dimen(ONE_683332 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\133', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\134', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\135', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 75 / 100), // CHARHT
-        // new Dimen(Dimen.ONE * 25 / 100), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('\136', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\137', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('\140', new Dimen(Dimen.ONE * 277779 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addLig((char) 0140, (char) 0134); // (LIG O 140 O 134)
-        // // )
-        // g = makeGlyph('a', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-        // // 055555 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('b', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-        // // 055555 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('c', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('h', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C h R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('k', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C k R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('d', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('e', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('f', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 77779 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addLig('i', (char) 014); // (LIG C i O 14)
-        // g.addLig('f', (char) 013); // (LIG C f O 13)
-        // g.addLig('l', (char) 015); // (LIG C l O 15)
-        // g.addKern((char) 047, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 47
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 077, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 77
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 041, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 41
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 051, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 51
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // g.addKern((char) 0135, new Dimen(Dimen.ONE * 77779 / TEN_6)); // (KRN
-        // // O 135
-        // // R
-        // // 077779
-        // // /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('g', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('j', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C j R
-        // // 027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('h', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('i', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('j', new Dimen(Dimen.ONE * 305557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 667859 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // g = makeGlyph('k', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('a', new Dimen(Dimen.ONE * -55555 / TEN_6)); // (KRN C a R
-        // // -055555 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('l', new Dimen(Dimen.ONE * 277779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('m', new Dimen(Dimen.ONE * 833336 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('n', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('t', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C t R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('u', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C u R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('b', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C b R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('o', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-        // // 055555 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('p', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // // (COMMENT
-        // g.addKern('e', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C e R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C o R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('x', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C x R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('d', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C d R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C c R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('q', new Dimen(Dimen.ONE * 27779 / TEN_6)); // (KRN C q R
-        // // 027779 /
-        // // 1000000)
-        // g.addKern('v', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C v R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('j', new Dimen(Dimen.ONE * 55555 / TEN_6)); // (KRN C j R
-        // // 055555 /
-        // // 1000000)
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('q', new Dimen(Dimen.ONE * 527779 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // Dimen.ZERO_PT);
-        // makeGlyph('r', new Dimen(Dimen.ONE * 391668 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('s', new Dimen(Dimen.ONE * 394445 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('t', new Dimen(Dimen.ONE * 38889 / 100000), // CHARWD
-        // new Dimen(Dimen.ONE * 61508 / 100000) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('y', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C y R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('u', new Dimen(Dimen.ONE * 555557 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // // (COMMENT
-        // g.addKern('w', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C w R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('v', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('a', new Dimen(Dimen.ONE * -55555 / TEN_6)); // (KRN C a R
-        // // -055555 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // g = makeGlyph('w', new Dimen(ONE_722224 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('c', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C c R
-        // // -027779 /
-        // // 1000000)
-        // // )
-        // makeGlyph('x', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('y', new Dimen(Dimen.ONE * 527781 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // new Dimen(Dimen.ONE * 194445 / TEN_6), // CHARDP
-        // new Dimen(Dimen.ONE * 13888 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addKern('o', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C o R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('e', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C e R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern('a', new Dimen(Dimen.ONE * -27779 / TEN_6)); // (KRN C a R
-        // // -027779 /
-        // // 1000000)
-        // g.addKern((char) 056, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-        // // O 56
-        // // R
-        // // -083334
-        // // /
-        // // 1000000)
-        // g.addKern((char) 054, new Dimen(Dimen.ONE * -83334 / TEN_6)); // (KRN
-        // // O 54
-        // // R
-        // // -083334
-        // // /
-        // // 1000000)
-        // // )
-        // makeGlyph('z', new Dimen(Dimen.ONE * 444446 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6) // CHARHT
-        // );
-        // g = makeGlyph('\173', new Dimen(Dimen.ONE * 500002 / TEN_6), //
-        // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
-        // );
-        // // (COMMENT
-        // g.addLig((char) 055, (char) 0174); // (LIG O 55 O 174)
-        // // )
-        // makeGlyph('\174', new Dimen(Dimen.ONE * 1000003 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 430555 / TEN_6), // CHARHT
-        // Dimen.ZERO_PT, new Dimen(Dimen.ONE * 27779 / TEN_6) // CHARIC
-        // );
-        // makeGlyph('\175', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 694445 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\176', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
-        // );
-        // makeGlyph('\177', new Dimen(Dimen.ONE * 500002 / TEN_6), // CHARWD
-        // new Dimen(Dimen.ONE * 667859 / TEN_6) // CHARHT
-        // );
-
+        return fontKey;
     }
 
     /**
@@ -1513,9 +1011,10 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getActualSize()
      */
+    @Override
     public FixedDimen getActualSize() {
 
-        return designSize;
+        return DESIGNSIZE;
     }
 
     /**
@@ -1523,9 +1022,22 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getCheckSum()
      */
+    @Override
     public int getCheckSum() {
 
-        return 011374260171;
+        return CHECKSUM;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public FixedGlue getDepth(UnicodeChar uc) {
+
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? Glue.ZERO : glyph.dp;
     }
 
     /**
@@ -1533,9 +1045,22 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getDesignSize()
      */
+    @Override
     public FixedDimen getDesignSize() {
 
-        return designSize;
+        return DESIGNSIZE;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#getEfCode(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public long getEfCode(UnicodeChar uc) {
+
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? 0 : glyph.ef;
     }
 
     /**
@@ -1543,6 +1068,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getEm()
      */
+    @Override
     public FixedDimen getEm() {
 
         return fontdimen[QUAD];
@@ -1553,6 +1079,7 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getEx()
      */
+    @Override
     public FixedDimen getEx() {
 
         return fontdimen[XHEIGHT];
@@ -1563,295 +1090,192 @@ public class CMR10 implements Font, Serializable {
      * 
      * @see org.extex.typesetter.tc.font.Font#getFontDimen(java.lang.String)
      */
-    public FixedDimen getFontDimen(String key) {
+    @Override
+    public FixedDimen getFontDimen(String name) {
 
-        return fontdimen[Integer.parseInt(key)];
+        throw new RuntimeException("unimplemented");
+        // return FONTDIMEN.get(name);
     }
 
-    /**
-     * Returns the FontKey for this font.
-     * 
-     * @return the FontKey for this font
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getFontKey()
-     */
+    @Override
     public FontKey getFontKey() {
 
         return fontKey;
     }
 
     /**
-     * Return the font name.
-     * 
-     * @return the font name
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.tc.font.Font#getFontName()
      */
+    @Override
     public String getFontName() {
 
-        return "cmr10";
+        return "CMR10";
     }
 
     /**
-     * Returns the hyphen character.
+     * {@inheritDoc}
      * 
-     * @return the hyphen character
+     * @see org.extex.typesetter.tc.font.Font#getHeight(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public FixedGlue getHeight(UnicodeChar uc) {
+
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? Glue.ZERO : glyph.ht;
+    }
+
+    /**
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.tc.font.Font#getHyphenChar()
      */
+    @Override
     public UnicodeChar getHyphenChar() {
 
-        return this.hypenChar;
-    }
-
-    /**
-     * Returns the skew char.
-     * 
-     * @return the skew char
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getSkewChar()
-     */
-    public UnicodeChar getSkewChar() {
-
-        return this.skewChar;
-    }
-
-    /**
-     * Returns the size of the 'space'.
-     * 
-     * @return the size of the 'space'.
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getSpace()
-     */
-    public FixedGlue getSpace() {
-
-        return space;
-    }
-
-    // private MyGlyph makeGlyph(char c, Dimen w, Dimen h) {
-    //
-    // UnicodeChar uc = UnicodeChar.get(c);
-    // MyGlyph g = new MyGlyph(uc, w, h);
-    // glyphs.put(uc, g);
-    // return g;
-    // }
-
-    // private MyGlyph makeGlyph(char c, Dimen w, Dimen h,
-    // Dimen d, Dimen ic) {
-    //
-    // UnicodeChar uc = UnicodeChar.get(c);
-    // MyGlyph g = new MyGlyph(uc, w, h, d, ic);
-    // glyphs.put(uc, g);
-    // return g;
-    // }
-
-    /**
-     * Set the new value for the font parameter.
-     * 
-     * @param key the name of the parameter
-     * @param value the value to set
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setFontDimen( java.lang.String,
-     *      org.extex.core.dimen.Dimen)
-     */
-    public void setFontDimen(String key, Dimen value) {
-
-        fontdimen[Integer.parseInt(key)].set(value);
-    }
-
-    /**
-     * Set the hyphen character.
-     * 
-     * @param hyphen the hyphen character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(
-     *      org.extex.core.UnicodeChar)
-     */
-    public void setHyphenChar(UnicodeChar hyphen) {
-
-        this.hypenChar = hyphen;
-    }
-
-    /**
-     * Set the skew character.
-     * 
-     * @param skew the skew character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setSkewChar(
-     *      org.extex.core.UnicodeChar)
-     */
-    public void setSkewChar(UnicodeChar skew) {
-
-        this.skewChar = skew;
-    }
-
-    /**
-     * Setter for the ef code. The ef code influences the stretchability of
-     * characters. It has a positive value. 1000 means "normal" stretchability.
-     * 
-     * @param uc the character
-     * @param code the associated code
-     * 
-     * @see org.extex.typesetter.tc.font.Font#setEfCode(
-     *      org.extex.core.UnicodeChar, long)
-     */
-    public void setEfCode(UnicodeChar uc, long code) {
-
-        efcode.put(uc, Long.valueOf(code));
-    }
-
-    /**
-     * The field <tt>efcode</tt> contains the ef code.
-     */
-    private Map<UnicodeChar, Long> efcode = new HashMap<UnicodeChar, Long>();
-
-    /**
-     * Getter for the ef code.
-     * 
-     * @param uc the character
-     * 
-     * @return the ef code
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getEfCode(
-     *      org.extex.core.UnicodeChar)
-     */
-    public long getEfCode(UnicodeChar uc) {
-
-        Long x = efcode.get(uc);
-        return (x == null ? 0 : x.longValue());
-    }
-
-    /**
-     * Returns the depth of the character.
-     * 
-     * @param uc the character
-     * 
-     * @return the depth of the character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getDepth(org.extex.core.UnicodeChar)
-     */
-    public FixedGlue getDepth(UnicodeChar uc) {
-
-        // TODO gene: getDepth unimplemented
-        return null;
-    }
-
-    /**
-     * Returns the height of a character.
-     * 
-     * @param uc the character
-     * 
-     * @return the height of the character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getHeight(
-     *      org.extex.core.UnicodeChar)
-     */
-    public FixedGlue getHeight(UnicodeChar uc) {
-
-        // TODO gene: getHeight unimplemented
-        return null;
+        return hyphenchar;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(
-     *      org.extex.core.UnicodeChar)
+     * @see org.extex.typesetter.tc.font.Font#getItalicCorrection(org.extex.core.UnicodeChar)
      */
+    @Override
     public FixedDimen getItalicCorrection(UnicodeChar uc) {
 
-        // TODO gene: getItalicCorrection unimplemented
-        return null;
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? Dimen.ZERO : glyph.ic;
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.tc.font.Font#getKerning(
-     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
-     */
-    public FixedDimen getKerning(UnicodeChar uc1, UnicodeChar uc2) {
-
-        // TODO gene: getKerning unimplemented
-        return null;
-    }
-
-    /**
-     * Returns the ligature for two characters.
-     * 
-     * @param uc1 the first character
-     * @param uc2 the second character
-     * 
-     * @return Returns the ligature for two characters
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getLigature(
-     *      org.extex.core.UnicodeChar, org.extex.core.UnicodeChar)
-     */
-    public UnicodeChar getLigature(UnicodeChar uc1, UnicodeChar uc2) {
-
-        // TODO gene: getLigature unimplemented
-        return null;
-    }
-
-    /**
-     * Returns the width of a character.
-     * 
-     * @param uc the character
-     * 
-     * @return the width of the character
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getWidth(
+     * @see org.extex.typesetter.tc.font.Font#getKerning(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public FixedGlue getWidth(UnicodeChar uc) {
+    @Override
+    public FixedDimen getKerning(UnicodeChar uc, UnicodeChar uc2) {
 
-        // TODO gene: getWidth unimplemented
-        return null;
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? null : glyph.kerning.get(uc2);
     }
 
     /**
-     * Determine whether the glyph for a given character is present in this
-     * font.
+     * {@inheritDoc}
      * 
-     * @param uc the character
-     * 
-     * @return <code>true</code> iff the glyph is present
-     * 
-     * @see org.extex.typesetter.tc.font.Font#hasGlyph(
+     * @see org.extex.typesetter.tc.font.Font#getLigature(org.extex.core.UnicodeChar,
      *      org.extex.core.UnicodeChar)
      */
-    public boolean hasGlyph(UnicodeChar uc) {
+    @Override
+    public UnicodeChar getLigature(UnicodeChar uc, UnicodeChar uc2) {
 
-        return true;
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? null : glyph.ligature.get(uc2);
     }
 
     /**
-     * Returns the scale factor of the font.
-     * 
-     * @return the scale factor of the font
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.tc.font.Font#getScaleFactor()
      */
+    @Override
     public FixedCount getScaleFactor() {
 
         return Count.THOUSAND;
     }
 
     /**
-     * Returns the actual FontKey for this font.
+     * {@inheritDoc}
      * 
-     * @return the actual FontKey for this font.
-     * 
-     * @see org.extex.typesetter.tc.font.Font#getActualFontKey()
+     * @see org.extex.typesetter.tc.font.Font#getSkewChar()
      */
-    public FontKey getActualFontKey() {
+    @Override
+    public UnicodeChar getSkewChar() {
 
-        return fontKey;
+        return skewchar;
     }
 
     /**
-     * The field <tt>fontKey</tt> contains the font key.
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#getSpace()
      */
-    private FontKey fontKey = new FontKeyFactory().newInstance("cmr10");
+    @Override
+    public FixedGlue getSpace() {
+
+        return space;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#getWidth(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public FixedGlue getWidth(UnicodeChar uc) {
+
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        return glyph == null ? Glue.ZERO : glyph.wd;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#hasGlyph(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public boolean hasGlyph(UnicodeChar uc) {
+
+        return GLYPH_TABLE.get(uc) != null;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#setEfCode(org.extex.core.UnicodeChar,
+     *      long)
+     */
+    @Override
+    public void setEfCode(UnicodeChar uc, long code) {
+
+        Glyph glyph = GLYPH_TABLE.get(uc);
+        glyph.ef = code;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#setFontDimen(java.lang.String,
+     *      org.extex.core.dimen.Dimen)
+     */
+    @Override
+    public void setFontDimen(String name, Dimen value) {
+
+        throw new RuntimeException("unimplemented");
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#setHyphenChar(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public void setHyphenChar(UnicodeChar uc) {
+
+        this.hyphenchar = uc;
+    }
+
+    /**
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.tc.font.Font#setSkewChar(org.extex.core.UnicodeChar)
+     */
+    @Override
+    public void setSkewChar(UnicodeChar uc) {
+
+        this.skewchar = uc;
+    }
 
 }
