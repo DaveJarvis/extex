@@ -124,7 +124,7 @@ public class BaseLanguageManager extends AbstractFactory<ModifiableLanguage>
     }
 
     /**
-     * Getter for a localizer
+     * Getter for a localizer.
      * 
      * @return the localizer
      */

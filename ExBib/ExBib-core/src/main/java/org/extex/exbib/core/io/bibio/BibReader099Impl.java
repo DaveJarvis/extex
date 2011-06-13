@@ -190,9 +190,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * @return <code>true</code> iff the item is special and has been handled
      *         successfully.
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case of an unexpected end of file
-     * @throws ExBibSyntaxException in case of an syntax error
+     * @throws ExBibException in case of an error. especially<br />
+     *         ExBibEofException in case of an unexpected end of file<br />
+     *         ExBibSyntaxException in case of an syntax error
      */
     protected boolean handle(String tag, DB db, String brace, Locator locator)
             throws ExBibException {
@@ -233,8 +233,9 @@ public class BibReader099Impl extends AbstractFileReader implements BibReader {
      * Parse the given file and store the result into the database.
      * 
      * @param db the database to store the records in
-     * @throws ExBibException in case of an error
-     * @throws ExBibSyntaxException in case that something goes wrong
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibSyntaxException in case that something is wrong in the
+     *         syntax
      */
     @Override
     public void load(DB db) throws ExBibException {

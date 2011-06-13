@@ -44,31 +44,26 @@
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-Util</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-ant</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-bsf</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-groovy</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExBib-jython</artifactId>
-      <version>0.1</version>
     </dependency>
 
     <dependency>

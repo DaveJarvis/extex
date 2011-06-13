@@ -30,9 +30,7 @@ import org.extex.core.count.FixedCount;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Muskip;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.type.Code;
 import org.extex.interpreter.type.box.Box;
 import org.extex.interpreter.unit.UnitInfo;
@@ -44,7 +42,6 @@ import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
 import org.extex.typesetter.PageContext;
-import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.tc.Direction;
 import org.extex.typesetter.tc.TypesettingContext;
@@ -144,7 +141,7 @@ public interface Context
      *     &rarr; <tt>\escapechar</tt> {@linkplain
      *       org.extex.interpreter.TokenSource#getOptionalEquals(Context)
      *       &lang;equals&rang;} {@linkplain
-     *       org.extex.interpreter.parser.CountParser#parseNumber(Context,TokenSource,Typesetter)
+     *       org.extex.interpreter.parser.CountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
      *       &lang;number&rang;} </pre>
      * 
      * <h4>Examples</h4>
@@ -289,6 +286,7 @@ public interface Context
      * @see #getUccode(UnicodeChar)
      * @see #setUccode(UnicodeChar, UnicodeChar, boolean)
      */
+    @Override
     UnicodeChar getLccode(UnicodeChar uc);
 
     /**
@@ -319,6 +317,7 @@ public interface Context
      * 
      * @see #setMuskip(String, Muskip, boolean)
      */
+    @Override
     Muskip getMuskip(String name);
 
     /**
@@ -328,6 +327,7 @@ public interface Context
      * 
      * @see #setNamespace(String, boolean)
      */
+    @Override
     String getNamespace();
 
     /**
@@ -338,6 +338,7 @@ public interface Context
      * 
      * @see #setParshape(ParagraphShape)
      */
+    @Override
     ParagraphShape getParshape();
 
     /**
@@ -368,6 +369,7 @@ public interface Context
      * 
      * @see #setTokenFactory(TokenFactory)
      */
+    @Override
     TokenFactory getTokenFactory();
 
     /**
@@ -391,6 +393,7 @@ public interface Context
      * @see #set(Language, boolean)
      * @see #set(TypesettingContext, boolean)
      */
+    @Override
     TypesettingContext getTypesettingContext();
 
     /**
@@ -462,7 +465,8 @@ public interface Context
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an error in the configuration.
      * 
      * @see #getTypesettingContext()
      */
@@ -475,7 +479,8 @@ public interface Context
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an error in the configuration.
      * 
      * @see #getTypesettingContext()
      */
@@ -488,7 +493,8 @@ public interface Context
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an error in the configuration.
      * 
      * @see #getTypesettingContext()
      */
@@ -501,7 +507,8 @@ public interface Context
      * @param global the indicator for the scope; <code>true</code> means all
      *        groups; otherwise the current group is affected only
      * 
-     * @throws ConfigurationException in case of an error in the configuration.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an error in the configuration.
      * 
      * @see #getTypesettingContext()
      */
@@ -617,7 +624,8 @@ public interface Context
      * 
      * @param manager the language manager
      * 
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration error
      * 
      * @see #getLanguageManager()
      */
@@ -697,6 +705,7 @@ public interface Context
      * 
      * @see #getParshape()
      */
+    @Override
     void setParshape(ParagraphShape shape);
 
     /**

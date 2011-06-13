@@ -31,8 +31,8 @@ public class Parameters {
 
     /**
      * The field <tt>bibtexCommand</tt> contains the <span
-     * class="sc">Bib</span></span><span class="t">T</span><span
-     * class="e">e</span>X command.
+     * class="sc">Bib</span><span class="t">T</span><span class="e">e</span>X
+     * command.
      */
     private String bibtexCommand = "bibtex";
 
@@ -43,18 +43,18 @@ public class Parameters {
 
     /**
      * The field <tt>bibtexExtensions</tt> contains the <span
-     * class="sc">Bib</span></span><span class="t">T</span><span
-     * class="e">e</span>X extensions.
+     * class="sc">Bib</span><span class="t">T</span><span class="e">e</span>X
+     * extensions.
      */
-    private String[] bibtexExtensions =
-            new String[]{".bib", ".bibtex", ".BibTeX", ""};
+    private String[] bibtexExtensions = new String[]{".bib", ".bibtex",
+            ".BibTeX", ""};
 
     /**
      * The field <tt>graphicsExtensions</tt> contains the extensions for
      * graphics files.
      */
-    private String[] graphicsExtensions =
-            new String[]{".png", ".jpg", ".jpeg", ".gif", ".tiff", ".pdf", ""};
+    private String[] graphicsExtensions = new String[]{".png", ".jpg", ".jpeg",
+            ".gif", ".tiff", ".pdf", ""};
 
     /**
      * The field <tt>latexCommand</tt> contains the L<span
@@ -66,8 +66,8 @@ public class Parameters {
      * The field <tt>latexExtensions</tt> contains the L<span
      * class="la">a</span>T<span class="e">e</span>X extensions.
      */
-    private String[] latexExtensions =
-            new String[]{".tex", ".TeX", ".latex", ".LaTeX", ".ltx", ""};
+    private String[] latexExtensions = new String[]{".tex", ".TeX", ".latex",
+            ".LaTeX", ".ltx", ""};
 
     /**
      * The field <tt>makeindexCommand</tt> contains the makeindex command.
@@ -101,11 +101,11 @@ public class Parameters {
     private int limit = 3;
 
     /**
-     * Getter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X command.
+     * Getter for the <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X command.
      * 
-     * @return the <span class="sc">Bib</span></span><span
-     *         class="t">T</span><span class="e">e</span>X command
+     * @return the <span class="sc">Bib</span><span class="t">T</span><span
+     *         class="e">e</span>X command
      */
     public String getBibtexCommand() {
 
@@ -113,11 +113,11 @@ public class Parameters {
     }
 
     /**
-     * Getter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X extensions.
+     * Getter for the <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X extensions.
      * 
-     * @return the <span class="sc">Bib</span></span><span
-     *         class="t">T</span><span class="e">e</span>X extensions
+     * @return the <span class="sc">Bib</span><span class="t">T</span><span
+     *         class="e">e</span>X extensions
      */
     public String[] getBibtexExtensions() {
 
@@ -228,12 +228,11 @@ public class Parameters {
     }
 
     /**
-     * Setter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X command. If the argument is
-     * <code>null</code> then it is silently ignored. Thus a <code>null</code>
-     * value has no effect.
+     * Setter for the <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X command. If the argument is <code>null</code> then it
+     * is silently ignored. Thus a <code>null</code> value has no effect.
      * 
-     * @param bibtexCommand the <span class="sc">Bib</span></span><span
+     * @param bibtexCommand the <span class="sc">Bib</span><span
      *        class="t">T</span><span class="e">e</span>X command to set
      */
     public void setBibtexCommand(String bibtexCommand) {
@@ -244,12 +243,11 @@ public class Parameters {
     }
 
     /**
-     * Setter for the <span class="sc">Bib</span></span><span
-     * class="t">T</span><span class="e">e</span>X extensions. If the argument
-     * is <code>null</code> then it is silently ignored. Thus a
-     * <code>null</code> value has no effect.
+     * Setter for the <span class="sc">Bib</span><span class="t">T</span><span
+     * class="e">e</span>X extensions. If the argument is <code>null</code> then
+     * it is silently ignored. Thus a <code>null</code> value has no effect.
      * 
-     * @param bibtexExtensions the <span class="sc">Bib</span></span><span
+     * @param bibtexExtensions the <span class="sc">Bib</span><span
      *        class="t">T</span><span class="e">e</span>X extensions to set
      */
     public void setBibtexExtensions(String[] bibtexExtensions) {

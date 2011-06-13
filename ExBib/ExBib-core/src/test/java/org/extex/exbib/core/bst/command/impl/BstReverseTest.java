@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.exbib.core.bst.command.impl;
 
 import static org.junit.Assert.assertEquals;
 
-import org.extex.exbib.core.bst.exception.ExBibEmptyFunctionNameException;
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -38,7 +37,7 @@ public class BstReverseTest {
     /**
      * <testcase> Check that a null token leads to an error.</testcase>
      * 
-     * @throws ExBibEmptyFunctionNameException in case of an error
+     * @throws Exception in case of an error
      */
     @Test(expected = ExBibIllegalValueException.class)
     public final void test1() throws Exception {

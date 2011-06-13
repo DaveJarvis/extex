@@ -46,8 +46,8 @@ import org.extex.scanner.type.token.Token;
  * <p>
  * The {@link HelpingException HelpingException} is capable of carrying a name
  * and two arguments for the error message. This class can be queried to provide
- * additional help concerning the error at hand. See
- * {@link HelpingException HelpingException} for details.
+ * additional help concerning the error at hand. See {@link HelpingException
+ * HelpingException} for details.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -56,26 +56,26 @@ import org.extex.scanner.type.token.Token;
 public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
 
     /**
-     * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on
-     * the debugging emulation.
+     * The field <tt>ENABLE_DEBUG</tt> contains the indicator for turning on the
+     * debugging emulation.
      */
     private static final boolean ENABLE_DEBUG = false;
 
     /**
-     * The constant <tt>NL</tt> contains the String with the newline
-     * character, since it is needed several times.
+     * The constant <tt>NL</tt> contains the String with the newline character,
+     * since it is needed several times.
      */
     protected static final String NL = "\n";
 
     /**
-     * The field <tt>editHandler</tt> contains the handler to be invoked upon
-     * a request to edit a file.
+     * The field <tt>editHandler</tt> contains the handler to be invoked upon a
+     * request to edit a file.
      */
     private EditHandler editHandler = null;
 
     /**
-     * The field <tt>iv</tt> contains the interaction visitor with the
-     * different behavior for the different interaction modes.
+     * The field <tt>iv</tt> contains the interaction visitor with the different
+     * behavior for the different interaction modes.
      */
     private InteractionVisitor<TokenSource, Context, GeneralException> iv =
             new InteractionVisitor<TokenSource, Context, GeneralException>() {
@@ -83,9 +83,10 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitBatchmode(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public boolean visitBatchmode(TokenSource source,
                         Context context, GeneralException ex)
                         throws GeneralException {
@@ -96,19 +97,20 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitErrorstopmode(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public boolean visitErrorstopmode(TokenSource source,
                         Context context, GeneralException ex)
                         throws GeneralException {
 
                     if (ex.getCause() instanceof ConfigurationException) {
-                        showErrorLine(logger, ex.getCause()
-                            .getLocalizedMessage(), source.getLocator());
+                        showErrorLine(ex.getCause().getLocalizedMessage(),
+                            source.getLocator());
                     } else {
-                        showErrorLine(logger, ex.getLocalizedMessage(), source
-                            .getLocator());
+                        showErrorLine(ex.getLocalizedMessage(),
+                            source.getLocator());
                     }
 
                     try {
@@ -154,8 +156,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                         handleDebug();
                                     } else {
                                         logger.severe(localizer
-                                            .format("ErrorHandler.help")
-                                                + NL);
+                                            .format("ErrorHandler.help") + NL);
                                     }
                                     break;
                                 case 'e':
@@ -202,8 +203,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                     context
                                         .setInteraction(Interaction.BATCHMODE);
                                     logger.info(localizer
-                                        .format("ErrorHandler.batchmode")
-                                            + NL);
+                                        .format("ErrorHandler.batchmode") + NL);
                                     return true;
                                 case 'r':
                                 case 'R':
@@ -217,17 +217,17 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                 case 'S':
                                     context
                                         .setInteraction(Interaction.SCROLLMODE);
-                                    logger.info(localizer
-                                        .format("ErrorHandler.scrollmode")
-                                            + NL);
+                                    logger
+                                        .info(localizer
+                                            .format("ErrorHandler.scrollmode")
+                                                + NL);
                                     return true;
                                 case 'x':
                                 case 'X':
                                     return false;
                                 default:
                                     logger.severe(localizer
-                                        .format("ErrorHandler.help")
-                                            + NL);
+                                        .format("ErrorHandler.help") + NL);
                             }
                         }
 
@@ -239,9 +239,10 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitNonstopmode(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public boolean visitNonstopmode(TokenSource source,
                         Context context, GeneralException ex)
                         throws GeneralException {
@@ -252,9 +253,10 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 /**
                  * {@inheritDoc}
                  * 
-                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(
-                 *      java.lang.Object, java.lang.Object, java.lang.Object)
+                 * @see org.extex.interpreter.interaction.InteractionVisitor#visitScrollmode(java.lang.Object,
+                 *      java.lang.Object, java.lang.Object)
                  */
+                @Override
                 public boolean visitScrollmode(TokenSource source,
                         Context context, GeneralException ex)
                         throws GeneralException {
@@ -270,8 +272,8 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
 
     /**
-     * The field <tt>logger</tt> contains the logger to write a protocol of
-     * the interaction to. Note that the error has already been logged when this
+     * The field <tt>logger</tt> contains the logger to write a protocol of the
+     * interaction to. Note that the error has already been logged when this
      * handler is invoked. Thus only additional logging output should be
      * produced in this class.
      */
@@ -287,12 +289,22 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger theLogger) {
 
         this.logger = theLogger;
+    }
+
+    /**
+     * Getter for logger.
+     * 
+     * @return the logger
+     */
+    public Logger getLogger() {
+
+        return logger;
     }
 
     /**
@@ -315,14 +327,15 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                 return;
                 // TODO gene: handleDebug unimplemented
                 /*
-                 * } else if ("1".equals(line)) { } else if ("2".equals(line)) { }
-                 * else if ("3".equals(line)) { } else if ("4".equals(line)) { }
-                 * else if ("5".equals(line)) { } else if ("6".equals(line)) { }
-                 * else if ("7".equals(line)) { } else if ("8".equals(line)) { }
-                 * else if ("9".equals(line)) { } else if ("10".equals(line)) { }
-                 * else if ("11".equals(line)) { } else if ("12".equals(line)) { }
-                 * else if ("13".equals(line)) { } else if ("14".equals(line)) { }
-                 * else if ("15".equals(line)) { } else if ("16".equals(line)) {
+                 * } else if ("1".equals(line)) { } else if ("2".equals(line)) {
+                 * } else if ("3".equals(line)) { } else if ("4".equals(line)) {
+                 * } else if ("5".equals(line)) { } else if ("6".equals(line)) {
+                 * } else if ("7".equals(line)) { } else if ("8".equals(line)) {
+                 * } else if ("9".equals(line)) { } else if ("10".equals(line))
+                 * { } else if ("11".equals(line)) { } else if
+                 * ("12".equals(line)) { } else if ("13".equals(line)) { } else
+                 * if ("14".equals(line)) { } else if ("15".equals(line)) { }
+                 * else if ("16".equals(line)) {
                  */
             }
 
@@ -338,6 +351,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
      *      org.extex.interpreter.TokenSource,
      *      org.extex.interpreter.context.Context)
      */
+    @Override
     public boolean handleError(GeneralException exception, Token t,
             TokenSource source, Context context) throws HelpingException {
 
@@ -393,9 +407,9 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.ErrorHandler#setEditHandler(
-     *      org.extex.interpreter.EditHandler)
+     * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
      */
+    @Override
     public void setEditHandler(EditHandler editHandler) {
 
         this.editHandler = editHandler;
@@ -404,11 +418,10 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
     /**
      * This method is invoked to present the current line causing the error.
      * 
-     * @param logger the logger to use for output
      * @param message the error message
      * @param locator the locator for the error position
      */
-    protected void showErrorLine(Logger logger, String message, Locator locator) {
+    protected void showErrorLine(String message, Locator locator) {
 
         if (locator == null) {
             return;

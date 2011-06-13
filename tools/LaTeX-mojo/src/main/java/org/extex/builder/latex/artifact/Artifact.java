@@ -218,7 +218,7 @@ public class Artifact {
     }
 
     /**
-     * Getter for the key
+     * Getter for the key.
      * 
      * @return the key
      */
@@ -287,8 +287,8 @@ public class Artifact {
                 return false;
             }
             if (different(checksum, cs)) {
-                logger.info(Message
-                    .get("artifact.new.checksum", file.getName()));
+                logger
+                    .info(Message.get("artifact.new.checksum", file.getName()));
                 checksum = cs;
                 lastModified = file.lastModified();
             }

@@ -26,8 +26,8 @@
 %    \setrannum\cs{1}{9}
 %    \definecolor{color}{rgb}{.\the\cx,.\the\cy,.\the\cs}
     \setrannum\cx{40}{99}
-    \setrannum\cy{10}{99}
-    \setrannum\cs{10}{99}
+    \setrannum\cy{20}{99}
+    \setrannum\cs{20}{99}
     \definecolor{color}{rgb}{.\the\cs,.\the\cx,.\the\cs}
     %
     \setrannum\cx{0}{280}\advance\cx-20
@@ -47,7 +47,7 @@
     \put(\the\cx,\the\cy){%
       \rotatebox{\the\cangle}{\scalebox{\the\cs}{\textcolor{color}{\ExTeX}}}}
     \advance\cnum1
-  \ifnum\cnum<400\repeat
+  \ifnum\cnum<200\repeat
 }
 \begin{document}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \thispagestyle{empty}

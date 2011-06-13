@@ -977,19 +977,7 @@ public class TeX extends ExTeX {
     }
 
     /**
-     * Initialize the input streams. If the property <i>extex.file</i> is set
-     * and not the empty string, (e.g. from the command line) then this value is
-     * used as file name to read from. If the property <i>extex.code</i> is set
-     * and not the empty string (e.g. from the command line) then this value is
-     * used as initial input after the input file has been processed. Finally,
-     * if everything before failed then read input from the stdin stream.
-     * 
-     * @param interpreter the interpreter context
-     * @param properties the controlling properties
-     * 
-     * @return <code>true</code> if the stream have not been initialized
-     * 
-     * @throws ConfigurationException in case of a configuration error
+     * {@inheritDoc}
      * 
      * @see org.extex.ExTeX#initializeStreams(org.extex.interpreter.Interpreter,
      *      java.util.Properties)
@@ -1011,9 +999,7 @@ public class TeX extends ExTeX {
                 properties.getProperty(PROP_ENCODING), "<stdin>");
         }
 
-        super.initializeStreams(interpreter, properties);
-
-        return false;
+        return super.initializeStreams(interpreter, properties);
     }
 
     /**
@@ -1359,39 +1345,33 @@ public class TeX extends ExTeX {
             String arg = args[i];
 
             if (arg.equals("")) {
-                // silently ignored as TeXk does
-                continue;
+                continue; // silently ignored as TeXk does
             }
             int c = arg.charAt(0);
 
             if (c == '-') {
-                if (arg.equals("-")) {
-                    // extex - <file>
+                if (arg.equals("-")) { // extex - <file>
                     return runWithFile(args, i + 1);
                 }
                 arg = arg.substring(1);
                 switch (arg.charAt(0)) {
                     case '-':
                         String a;
-                        if (!"-".equals(arg)) {
-                            // extex --<property>...
+                        if (!"-".equals(arg)) { // extex --<property>...
                             a = arg.substring(1);
-                        } else if (++i < args.length) {
-                            // extex -- <property>...
+                        } else if (++i < args.length) { // extex --
+                                                        // <property>...
                             a = args[i];
-                        } else {
-                            // extex --
+                        } else { // extex --
                             throw new MainMissingArgumentException("--");
                         }
                         int eq = a.indexOf('=');
-                        if (eq >= 0) {
-                            // extex -- <property>=<value>
+                        if (eq >= 0) { // extex -- <property>=<value>
                             setProperty(a.substring(0, eq), a.substring(eq + 1));
-                        } else if (++i < args.length) {
-                            // extex -- <property> <value>
+                        } else if (++i < args.length) { // extex -- <property>
+                                                        // <value>
                             setProperty(a, args[i]);
-                        } else {
-                            // extex -- <property>
+                        } else { // extex -- <property>
                             throw new MainMissingArgumentException("-" + arg);
                         }
                         break;

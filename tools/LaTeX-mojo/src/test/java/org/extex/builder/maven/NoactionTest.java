@@ -22,8 +22,6 @@ import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 
-import org.extex.builder.maven.LaTeXMojo;
-import org.extex.builder.maven.NoactionMojo;
 import org.junit.Ignore;
 import org.junit.Test;
 

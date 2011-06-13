@@ -9,7 +9,7 @@ import org.apache.maven.plugin.logging.Log;
 
 /**
  * This class is a handler which passes the log requests to an underlying Maven
- * {@link Log}
+ * {@link Log}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

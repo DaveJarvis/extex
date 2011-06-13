@@ -107,17 +107,37 @@
     <module name="IllegalThrows"/>
     <module name="MultipleVariableDeclarations"/>
     <module name="BooleanExpressionComplexity">
-      <property name="max" value="6"/>
+      <property name="max" value="8"/>
     </module>
     <module name="HiddenField">
       <property name="ignoreConstructorParameter" value="true"/>
       <property name="ignoreSetter" value="true"/>
     </module>
     <module name="PackageAnnotation"/>
+    <module name="OuterTypeFilename"/>
+    <module name="NestedTryDepth"/>
+    <module name="SuperClone"/>
+    <module name="SuperFinalize"/>
+    <module name="OneStatementPerLine"/>
+    <module name="GenericWhitespace"/>
+    <module name="MethodParamPad"/>
+    <module name="TypecastParenPad">
+      <property name="tokens" value="RPAREN,TYPECAST"/>
+    </module>
+    <module name="JavadocStyle">
+      <property name="severity" value="ignore"/>
+      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="info"/>
+    </module>
   </module>
   <module name="FileLength">
     <property name="severity" value="info"/>
     <property name="max" value="4096"/>
   </module>
   <module name="FileTabCharacter"/>
+  <module name="Translation"/>
+  <module name="JavadocPackage">
+    <property name="severity" value="ignore"/>
+    <property name="allowLegacy" value="true"/>
+    <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+  </module>
 </module>

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -49,9 +49,9 @@ import org.junit.Test;
 public class BibReaderFactoryTest {
 
     /**
-     * The field <tt>cfg</tt> contains the test configuration.
+     * The field <tt>CFG</tt> contains the test configuration.
      */
-    private Configuration cfg = new Configuration() {
+    private static final Configuration CFG = new Configuration() {
 
         /**
          * {@inheritDoc}
@@ -258,7 +258,7 @@ public class BibReaderFactoryTest {
     public void test1() throws Exception {
 
         BibReaderFactory factory =
-                new BibReaderFactory(cfg, resourceFinder, null, null);
+                new BibReaderFactory(CFG, resourceFinder, null, null);
         BibReader ret = factory.newInstance("abc");
         assertNotNull(ret);
         assertTrue(ret instanceof BibReader099Impl);
@@ -274,7 +274,7 @@ public class BibReaderFactoryTest {
     public void test2() throws Exception {
 
         BibReaderFactory factory =
-                new BibReaderFactory(cfg, resourceFinder, null, "ASCII");
+                new BibReaderFactory(CFG, resourceFinder, null, "ASCII");
         BibReader ret = factory.newInstance("abc");
         assertNotNull(ret);
         assertTrue(ret instanceof BibReader099Impl);
@@ -290,7 +290,7 @@ public class BibReaderFactoryTest {
     public void test3() throws Exception {
 
         BibReaderFactory factory =
-                new BibReaderFactory(cfg, resourceFinder, "ASCII", "Latin1");
+                new BibReaderFactory(CFG, resourceFinder, "ASCII", "Latin1");
         BibReader ret = factory.newInstance("abc");
         assertNotNull(ret);
         assertTrue(ret instanceof BibReader099Impl);
@@ -306,7 +306,7 @@ public class BibReaderFactoryTest {
     public void test4() throws Exception {
 
         BibReaderFactory factory =
-                new BibReaderFactory(cfg, resourceFinder, null, null);
+                new BibReaderFactory(CFG, resourceFinder, null, null);
         factory.setEncoding("ASCII");
         assertEquals("ASCII", factory.getEncoding());
     }
@@ -319,7 +319,7 @@ public class BibReaderFactoryTest {
     @Test(expected = IllegalArgumentException.class)
     public void testError1() throws Exception {
 
-        new BibReaderFactory(cfg, null, null, null).newInstance("abc");
+        new BibReaderFactory(CFG, null, null, null).newInstance("abc");
     }
 
     /**
@@ -330,7 +330,7 @@ public class BibReaderFactoryTest {
     @Test(expected = ConfigurationUnsupportedEncodingException.class)
     public void testError2() throws Exception {
 
-        new BibReaderFactory(cfg, resourceFinder, null, "en")
+        new BibReaderFactory(CFG, resourceFinder, null, "en")
             .newInstance("abc");
     }
 

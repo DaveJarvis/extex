@@ -26,9 +26,8 @@ import org.extex.builder.latex.Parameters;
 import org.extex.builder.latex.artifact.Artifact;
 
 /**
- * This action runs <span class="sc">Bib</span></span><span
- * class="t">T</span><span class="e">e</span>X in one of its variants on the
- * artifact.
+ * This action runs <span class="sc">Bib</span><span class="t">T</span><span
+ * class="e">e</span>X in one of its variants on the artifact.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -38,9 +37,8 @@ public class BibTeXAction extends Action {
     /**
      * Creates a new object.
      * 
-     * @param artifact the artifact to run <span
-     *        class="sc">Bib</span></span><span class="t">T</span><span
-     *        class="e">e</span>X on
+     * @param artifact the artifact to run <span class="sc">Bib</span><span
+     *        class="t">T</span><span class="e">e</span>X on
      */
     public BibTeXAction(Artifact artifact) {
 

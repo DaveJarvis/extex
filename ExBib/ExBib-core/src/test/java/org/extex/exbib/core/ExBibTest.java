@@ -122,11 +122,15 @@ public class ExBibTest {
             assertEquals("[]", exBib.getDebug().toString());
             assertEquals("target/test.aux", exBib.getProperty(ExBib.PROP_FILE));
         } finally {
-            new File(aux).delete();
-            // assertTrue("Failed to delete " + aux, new File(aux).delete());
+            File faux = new File(aux);
+            if (faux.exists()) {
+                assertTrue("Failed to delete " + aux, faux.delete());
+            }
             String bbl = aux.replaceAll(".aux$", ".bbl");
-            new File(bbl).delete();
-            // assertTrue("Failed to delete " + bbl, new File(bbl).delete());
+            File fbbl = new File(bbl);
+            if (fbbl.exists()) {
+                assertTrue("Failed to delete " + bbl, fbbl.delete());
+            }
         }
     }
 

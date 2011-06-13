@@ -31,7 +31,7 @@ import org.junit.Test;
 public class ShowboxTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for JobnameTest.
+     * Constructor for Test.
      */
     public ShowboxTest() {
 
@@ -70,21 +70,6 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
 
     /**
      * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
-     * of a void register works. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testVoid1() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\showbox 1 \\end",
-            // --- error channel ---
-            "\\box1=void\nOK\n");
-    }
-
-    /**
-     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
      * of a hbox works. </testcase>
      * 
      * @throws Exception in case of an error
@@ -111,6 +96,21 @@ public class ShowboxTest extends NoFlagsPrimitiveTester {
             DEFINE_BRACES + "\\setbox1=\\vbox{}\\showbox 1 \\end",
             // --- error channel ---
             "\\box1=\n\\vbox(0.0pt+0.0pt)x0.0pt\nOK\n");
+    }
+
+    /**
+     * <testcase primitive="\showbox"> Test case checking that <tt>\showbox</tt>
+     * of a void register works. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testVoid1() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\showbox 1 \\end",
+            // --- error channel ---
+            "\\box1=void\nOK\n");
     }
 
     // TODO implement more primitive specific test cases

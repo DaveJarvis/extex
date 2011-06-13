@@ -82,6 +82,7 @@ import org.extex.resource.ResourceFinder;
  *     MyType t1 = factory.newInstance();
  * </pre>
  * 
+ * @param <TYPE> the type of the object delived by the factory
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -190,7 +191,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
     protected final TYPE createInstance(Class<?> target)
             throws ConfigurationException {
 
-        return createInstanceForConfiguration(configuration, target);
+        return createInstanceForConfiguration(getConfiguration(), target);
     }
 
     /**
@@ -238,7 +239,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
     protected final TYPE createInstance(Class<?> target, Object arg)
             throws ConfigurationException {
 
-        return createInstanceForConfiguration(configuration, target, arg);
+        return createInstanceForConfiguration(getConfiguration(), target, arg);
     }
 
     /**
@@ -776,7 +777,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
                 ((LogEnabled) instance).enableLogging(logger);
             }
             if (instance instanceof Configurable) {
-                ((Configurable) instance).configure(configuration);
+                ((Configurable) instance).configure(getConfiguration());
             }
         } catch (ConfigurationException e) {
             throw new RegistrarException(e);

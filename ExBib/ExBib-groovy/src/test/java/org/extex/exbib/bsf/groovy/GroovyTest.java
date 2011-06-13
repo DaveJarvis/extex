@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -33,14 +33,13 @@ import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.core.ExBib;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link BsfProcessor} with a Groovy
- * configuration.
+ * This is a test suite for the {@link org.extex.exbib.bsf.BsfProcessor} with a
+ * Groovy configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -97,8 +96,8 @@ public class GroovyTest {
             logger.addHandler(consoleHandler);
             exBib.setLogger(logger);
             assertTrue(exBib.run());
-            assertEquals("[@book{abc,...}]\n", outStream.toString().replaceAll(
-                "\r", ""));
+            assertEquals("[@book{abc,...}]\n",
+                outStream.toString().replaceAll("\r", ""));
         } finally {
             System.setOut(out);
             new File(aux).delete();

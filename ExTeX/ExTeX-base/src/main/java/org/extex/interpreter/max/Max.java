@@ -1507,7 +1507,7 @@ public abstract class Max
     }
 
     /**
-     * Setter for the font factory
+     * Setter for the font factory.
      * 
      * @param fontFactory the new font factory
      * 

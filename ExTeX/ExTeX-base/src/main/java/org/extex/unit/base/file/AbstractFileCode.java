@@ -24,7 +24,6 @@ import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -178,14 +177,11 @@ public abstract class AbstractFileCode extends AbstractCode
     }
 
     /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration to use
-     * 
-     * @throws ConfigurationException in case of an error
+     * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) {
 
         String strict = config.getAttribute("strict");

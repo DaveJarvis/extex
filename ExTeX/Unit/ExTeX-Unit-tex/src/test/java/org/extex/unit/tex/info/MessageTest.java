@@ -31,43 +31,11 @@ import org.junit.Test;
 public class MessageTest extends NoFlagsPrimitiveTester {
 
     /**
-     * Constructor for JobnameTest.
+     * Constructor for Test.
      */
     public MessageTest() {
 
         super("message", "{}");
-    }
-
-    /**
-     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
-     * results in an error message, if the following token is not a left brace.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace1() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\message }" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
-    }
-
-    /**
-     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
-     * results in an error message, if the following token is not a left brace.
-     * </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMissingBrace2() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\message {" + "\\end ",
-            // --- log message ---
-            "Missing `{' inserted");
     }
 
     /**
@@ -84,6 +52,22 @@ public class MessageTest extends NoFlagsPrimitiveTester {
                     + "\\end ",
             // --- log message ---
             "Hello world!");
+    }
+
+    /**
+     * <testcase primitive="\message"> Test case checking that \message expands
+     * macros in the argument. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMessage10() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\scrollmode" + DEFINE_BRACES + "\\def\\x{abc}" + "\\message{\\x}"
+                    + "\\end ",
+            // --- log message ---
+            "abc");
     }
 
     /**
@@ -196,37 +180,6 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     }
 
     /**
-     * <testcase primitive="\message"> Test case checking that \message expands
-     * macros in the argument. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessage10() throws Exception {
-
-        assertFailure(// --- input code ---
-            "\\scrollmode" + DEFINE_BRACES + "\\def\\x{abc}" + "\\message{\\x}"
-                    + "\\end ",
-            // --- log message ---
-            "abc");
-    }
-
-    /**
-     * <testcase primitive="\message"> Test case checking that \message in
-     * default mode complains about an undefined control sequence. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    public void testMessageUndef1() throws Exception {
-
-        assertFailure(// --- input code ---
-            DEFINE_BRACES + "\\message{\\x}",
-            // --- log message ---
-            "Undefined control sequence the control sequence \\x");
-    }
-
-    /**
      * <testcase primitive="\message"> Test case checking that \message can be
      * redirected. </testcase>
      * 
@@ -256,13 +209,60 @@ public class MessageTest extends NoFlagsPrimitiveTester {
             "`log' target missing");
     }
 
+    /**
+     * <testcase primitive="\message"> Test case checking that \message in
+     * default mode complains about an undefined control sequence. </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMessageUndef1() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\message{\\x}",
+            // --- log message ---
+            "Undefined control sequence the control sequence \\x");
+    }
+
+    /**
+     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
+     * results in an error message, if the following token is not a left brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMissingBrace1() throws Exception {
+
+        assertFailure(// --- input code ---
+            DEFINE_BRACES + "\\message }" + "\\end ",
+            // --- log message ---
+            "Missing `{' inserted");
+    }
+
+    /**
+     * <testcase primitive="\message"> Test case checking that <tt>\message</tt>
+     * results in an error message, if the following token is not a left brace.
+     * </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test
+    public void testMissingBrace2() throws Exception {
+
+        assertFailure(// --- input code ---
+            "\\message {" + "\\end ",
+            // --- log message ---
+            "Missing `{' inserted");
+    }
+
     // /**
     // * <testcase primitive="\message"> Test case checking that \message . . .
     // * </testcase>
     // *
     // * @throws Exception in case of an error
     // */
-    //@Test
+    // @Test
     // public void testMessageProtected1() throws Exception {
     //
     // assertFailure(//--- input code ---

@@ -90,32 +90,32 @@ public abstract class AbstractIf extends AbstractCode
     public static boolean skipToElseOrFi(Context context, TokenSource source,
             CodeToken primitive) throws HelpingException {
 
-        Code code;
-        int n = 0;
+        int depth = 0;
         Locator locator = source.getLocator();
 
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {
 
-            locator = source.getLocator();
-
-            if (t instanceof CodeToken
-                    && (code = context.getCode((CodeToken) t)) != null) {
-                if (code instanceof Fi) {
-                    if (--n < 0) {
-                        return false;
-                    }
-                } else if (code instanceof Else) {
-                    if (n <= 0) {
-                        return true;
-                    }
-                } else if (code.isIf()) {
-                    n++;
-                } else if (code.isOuter()) {
-                    throw new HelpingException(getMyLocalizer(),
-                        "TTP.OuterInSkipped", context.esc(primitive), //
-                        Integer.toString(locator.getLineNumber()));
+            if (!(t instanceof CodeToken)) {
+                continue;
+            }
+            Code code = context.getCode((CodeToken) t);
+            if (code == null) {
+                continue;
+            } else if (code instanceof Fi) {
+                if (--depth < 0) {
+                    return false;
                 }
+            } else if (code instanceof Else) {
+                if (depth <= 0) {
+                    return true;
+                }
+            } else if (code.isIf()) {
+                depth++;
+            } else if (code.isOuter()) {
+                throw new HelpingException(getMyLocalizer(),
+                    "TTP.OuterInSkipped", context.esc(primitive), //
+                    Integer.toString(source.getLocator().getLineNumber()));
             }
         }
 

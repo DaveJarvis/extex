@@ -62,7 +62,7 @@ public class AbstractConfigurable implements Configurable {
      * The field <tt>configuration</tt> contains the configuration of the
      * factory which is also passed to the new instances.
      */
-    protected Configuration configuration;
+    private Configuration configuration;
 
     /**
      * Configure an object according to a given Configuration.

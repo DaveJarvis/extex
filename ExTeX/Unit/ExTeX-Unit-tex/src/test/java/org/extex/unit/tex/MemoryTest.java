@@ -22,6 +22,7 @@ package org.extex.unit.tex;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.extex.test.ExTeXLauncher;
@@ -78,6 +79,8 @@ public class MemoryTest extends ExTeXLauncher {
             assertFalse(true);
         } catch (OutOfMemoryError e) {
             assertTrue(true);
+        } finally {
+            new File("job.log").delete();
         }
     }
 

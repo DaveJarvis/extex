@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -45,10 +45,8 @@ import org.extex.doctools.exceptions.UnknownArgumentException;
 import org.xml.sax.SAXException;
 
 /**
- * This class contains the main program to collect the POMs is a set of base
+ * This class contains the main program to collect the POMs in a set of base
  * directories.
- * <p>
- * </p>
  * <p>
  * Usage: <tt>java org.extex.doctools.PomCollector </tt><i>&lt;options&gt;
  * bases</i>

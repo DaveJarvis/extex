@@ -20,7 +20,6 @@
 package org.extex.interpreter.parser;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.typesetter.Typesetter;
@@ -49,7 +48,8 @@ public interface CountConvertible {
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration error
      */
     long convertCount(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,

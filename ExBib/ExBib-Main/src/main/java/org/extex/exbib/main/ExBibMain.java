@@ -228,6 +228,8 @@ public class ExBibMain extends AbstractMain {
         option("-E", "--bib.encoding", new StringPropertyOption(
             "opt.bib.encoding", ExBib.PROP_BIB_ENCODING, properties),
             "--bib-encoding");
+        option(null, "--bst", new StringPropertyOption("opt.bst",
+            ExBib.PROP_BST, properties));
         option("-c", "--configuration", new StringPropertyOption("opt.config",
             ExBib.PROP_CONFIG, properties));
         option(null, "--csfile", new StringPropertyOption("opt.csfile",

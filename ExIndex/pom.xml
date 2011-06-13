@@ -19,14 +19,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <licenses>
-    <license>
-      <name>GNU Lesser General Public License</name>
-      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
-      <distribution>repo</distribution>
-    </license>
-  </licenses>
-
   <properties>
     <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
   </properties>
@@ -75,6 +67,47 @@
     </site>
   </distributionManagement>
 
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExIndex-core</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExIndex-lisp</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExIndex-makeindex</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExIndex-Main</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>CLI</artifactId>
+        <version>0.1</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.extex</groupId>
+        <artifactId>ExTeX-resource</artifactId>
+        <version>0.2</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
   <modules>
    <module>ExIndex-core</module>
    <module>ExIndex-lisp</module>
@@ -84,61 +117,229 @@
    <module>ExIndex-Installer</module>
    <module>ExIndex-doc</module>
 -->
+   <module>../CLI</module>
+   <module>../ExTeX-resource</module>
   </modules>
 
-  <reporting>
+  <build>
+    <extensions>
+      <extension>
+        <groupId>org.extex</groupId>
+        <artifactId>develop</artifactId>
+        <version>1.3</version>
+      </extension>
+    </extensions>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-project-info-reports-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jxr-plugin</artifactId>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-javadoc-plugin</artifactId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
         <configuration>
-          <aggregate>true</aggregate>
+          <source>1.6</source>
+          <target>1.6</target>
         </configuration>
       </plugin>
-
+      
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>2.8.1</version>
+      </plugin>
+      
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
         <version>2.6</version>
-        <configuration>
-          <downloadSources>true</downloadSources>
-          <downloadJavadocs>true</downloadJavadocs>
-          <configLocation>org/extex/checkstyle-extex.xml</configLocation>
-        </configuration>
         <dependencies>
           <dependency>
             <groupId>org.extex</groupId>
-            <artifactId>ExTeX-dev</artifactId>
-            <version>1.0</version>
+            <artifactId>develop</artifactId>
+            <version>1.3</version>
           </dependency>
         </dependencies>
+        <configuration>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <configLocation>org/extex/checkstyle/checkstyle-extex.xml</configLocation>
+        </configuration>
       </plugin>
 
       <plugin>
-        <groupId>org.codehaus.mojo</groupId>
-        <artifactId>taglist-maven-plugin</artifactId>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.8</version>
         <configuration>
-          <tags>
-            <tag>TODO</tag>
-            <tag>@todo</tag>
-            <tag>FIXME</tag>
-          </tags>
+          <downloadSources>true</downloadSources>
+          <downloadJavadocs>true</downloadJavadocs>
+          <additionalBuildcommands>
+            <buildcommand>com.atlassw.tools.eclipse.checkstyle.CheckstyleBuilder</buildcommand>
+          </additionalBuildcommands>
+          <additionalProjectnatures>
+            <projectnature>com.atlassw.tools.eclipse.checkstyle.CheckstyleNature</projectnature>
+          </additionalProjectnatures>
+          <additionalConfig>
+            <file>
+              <name>.checkstyle</name>
+              <content>
+                <![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<fileset-config file-format-version="1.2.0" simple-config="true">
+    <fileset name="all" enabled="true" check-config-name="ExTeX" local="false">
+        <file-match-pattern match-pattern="." include-pattern="true"/>
+    </fileset>
+    <filter name="NonSrcDirs" enabled="true"/>
+</fileset-config>
+]]>
+              </content>
+            </file>
+          </additionalConfig>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-site-plugin</artifactId>
+        <version>3.0-beta-3</version>
+        <configuration>
+          <reportPlugins>
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-project-info-reports-plugin</artifactId>
+              <version>2.3.1</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>emma-maven-plugin</artifactId>
+              <version>1.0-alpha-3</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-jxr-plugin</artifactId>
+              <version>2.2</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-javadoc-plugin</artifactId>
+              <version>2.7</version>
+              <configuration>
+                <aggregate>true</aggregate>
+                <stylesheetfile>${exbib.directory}/src/javadoc/stylesheet.css</stylesheetfile>  
+                <overview>${basedir}/src/javadoc/overview.html</overview>
+                <groups>
+                  <group>
+                    <title>Main Packages</title>
+                    <packages>org.extex.exbib.main*:org.extex.exbib.util*</packages>
+                  </group>
+                  <group>
+                    <title>Core Packages</title>
+                    <packages>org.extex.exbib.core*</packages>
+                  </group>
+                  <group>
+                    <title>Framework and Resource Packages</title>
+                    <packages>org.extex.framework*:org.extex.resource*</packages>
+                  </group>
+                  <group>
+                    <title>Command Line Support Packages</title>
+                    <packages>org.extex.cli*:org.extex.logging*</packages>
+                  </group>
+                </groups>
+                <links>
+                  <link>http://java.sun.com/j2se/1.6.0/docs/api</link>
+                </links>
+              </configuration>
+            </plugin>
+
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>jdepend-maven-plugin</artifactId>
+              <version>2.0-beta-2</version>
+            </plugin>
+
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>findbugs-maven-plugin</artifactId>
+              <version>2.3.1</version>
+              <configuration>
+                <effort>Default</effort>
+                <threshold>Medium</threshold>
+              </configuration>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-checkstyle-plugin</artifactId>
+              <version>2.6</version>
+              <configuration>
+                <aggregate>true</aggregate>
+              <configLocation>org/extex/checkstyle-extex.xml</configLocation>
+            </configuration>
+            </plugin>
+
+            <plugin>
+              <groupId>org.codehaus.mojo</groupId>
+              <artifactId>taglist-maven-plugin</artifactId>
+              <version>2.4</version>
+              <configuration>
+                <aggregate>true</aggregate>
+                <tagListOptions>
+                  <tagClasses>
+                    <tagClass>
+                      <displayName>Todo Work</displayName>
+                      <tags>
+                        <tag>
+                          <matchString>@ignore</matchString>
+                          <matchType>exact</matchType>
+                        </tag>
+                        <tag>
+                          <matchString>todo</matchString>
+                          <matchType>ignoreCase</matchType>
+                        </tag>
+                        <tag>
+                          <matchString>FIXME</matchString>
+                          <matchType>exact</matchType>
+                        </tag>
+                      </tags>
+                    </tagClass>
+                  </tagClasses>
+                </tagListOptions>
+              </configuration>
+            </plugin>
+
+            <plugin>
+              <groupId>org.apache.maven.plugins</groupId>
+              <artifactId>maven-pmd-plugin</artifactId>
+              <version>2.5</version>
+              <configuration>
+                <linkXref>true</linkXref>
+                <sourceEncoding>utf-8</sourceEncoding>
+                <minimumTokens>100</minimumTokens>
+                <targetJdk>1.5</targetJdk>
+                <excludes>
+                  <exclude>**/*Bean.java</exclude>
+                  <exclude>**/generated/*.java</exclude>
+                </excludes>
+                <excludeRoots>
+                  <excludeRoot>target/generated-sources/stubs</excludeRoot>
+                </excludeRoots>
+              </configuration> 
+            </plugin>
+          </reportPlugins>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-report-plugin</artifactId>
+        <version>2.4.2</version>
+        <configuration>
+          <aggregate>true</aggregate>
+          <linkXRef>true</linkXRef>
         </configuration>
       </plugin>
 
     </plugins>
-
-  </reporting>
+  </build>
 
   <developers>
     <developer>
@@ -153,5 +354,13 @@
       <properties/>
     </developer>
   </developers>
+
+  <licenses>
+    <license>
+      <name>GNU Lesser General Public License</name>
+      <url>http://www.fsf.org/licensing/licenses/lgpl.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
 
 </project>

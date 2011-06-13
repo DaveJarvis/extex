@@ -100,7 +100,7 @@ public class TypesetterFactory extends AbstractFactory<Object> {
     }
 
     /**
-     * Make the node factory according to the specification
+     * Make the node factory according to the specification.
      * 
      * @param config the configuration to use
      * 

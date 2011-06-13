@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2010-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,6 +39,8 @@ public class NotTest {
      * <testcase> Test method for
      * {@link org.extex.exbib.bst2groovy.data.bool.Not#print(org.extex.exbib.bst2groovy.io.CodeWriter, java.lang.String)}
      * . </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     @Test
     public void testPrint1() throws Exception {
@@ -55,6 +57,8 @@ public class NotTest {
      * <testcase> Test method for
      * {@link org.extex.exbib.bst2groovy.data.bool.Not#print(org.extex.exbib.bst2groovy.io.CodeWriter, java.lang.String)}
      * . </testcase>
+     * 
+     * @throws Exception in case of an error
      */
     @Test
     public void testPrintAnd1() throws Exception {

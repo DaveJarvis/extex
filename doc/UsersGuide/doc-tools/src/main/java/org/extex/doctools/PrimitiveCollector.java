@@ -586,13 +586,13 @@ public class PrimitiveCollector {
     /**
      * The field <tt>defaultType</tt> contains the default type.
      */
-    private String defaultType = "primitive";;
+    private String defaultType = "primitive";
 
     /**
      * The field <tt>configurationsFileName</tt> contains the name of the file i
      * which the configurations are written.
      */
-    private String configurationsFileName = "configurations.tex";;
+    private String configurationsFileName = "configurations.tex";
 
     /**
      * The field <tt>unitsFileName</tt> contains the name of the file on which

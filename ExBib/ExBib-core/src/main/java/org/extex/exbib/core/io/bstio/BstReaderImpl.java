@@ -43,7 +43,6 @@ import org.extex.exbib.core.bst.token.impl.TLiteral;
 import org.extex.exbib.core.bst.token.impl.TQLiteral;
 import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.bst.token.impl.TokenList;
-import org.extex.exbib.core.exceptions.ExBibEofException;
 import org.extex.exbib.core.exceptions.ExBibEofInBlockException;
 import org.extex.exbib.core.exceptions.ExBibEofInLiteralListException;
 import org.extex.exbib.core.exceptions.ExBibException;
@@ -51,7 +50,6 @@ import org.extex.exbib.core.exceptions.ExBibImpossibleException;
 import org.extex.exbib.core.exceptions.ExBibIoException;
 import org.extex.exbib.core.exceptions.ExBibMissingLiteralException;
 import org.extex.exbib.core.exceptions.ExBibMissingStringException;
-import org.extex.exbib.core.exceptions.ExBibSyntaxException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedEofException;
 import org.extex.exbib.core.exceptions.ExBibUnexpectedException;
 import org.extex.exbib.core.io.AbstractFileReader;
@@ -349,6 +347,7 @@ public class BstReaderImpl extends AbstractFileReader
          * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
          *      Locator)
          */
+        @Override
         public void parse(BstProcessor processor, Locator locator)
                 throws ExBibException {
 
@@ -367,6 +366,7 @@ public class BstReaderImpl extends AbstractFileReader
          * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
          *      Locator)
          */
+        @Override
         public void parse(BstProcessor processor, Locator locator)
                 throws ExBibException {
 
@@ -447,6 +447,7 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         this.configuration = config;
@@ -462,10 +463,10 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @param value the expected value
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibUnexpectedEofException in case that the end of file has been
-     *         reached before the expected character could be read
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibUnexpectedEofException in case that the end of file has been
+     *         reached before the expected character could be read<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected void expectChar(String value) throws ExBibException {
@@ -505,6 +506,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -524,6 +526,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -539,6 +542,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -557,6 +561,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -572,6 +577,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -588,6 +594,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -604,6 +611,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -620,6 +628,7 @@ public class BstReaderImpl extends AbstractFileReader
              * @see org.extex.exbib.core.io.bstio.Instruction#parse(BstProcessor,
              *      Locator)
              */
+            @Override
             public void parse(BstProcessor processor, Locator locator)
                     throws ExBibException {
 
@@ -635,8 +644,8 @@ public class BstReaderImpl extends AbstractFileReader
      * @return the next token from the scanner or <code>null</code> if the end
      *         of file has been reached
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected Token nextToken() throws ExBibException {
@@ -677,28 +686,36 @@ public class BstReaderImpl extends AbstractFileReader
                     comments.append('\n');
                 }
                 buffer.delete(0, buffer.length());
-            } else if ((matcher = NUMBER_PATTERN.matcher(buffer)).lookingAt()) {
+                continue;
+            }
+            matcher = NUMBER_PATTERN.matcher(buffer);
+            if (matcher.lookingAt()) {
                 String val = matcher.group(1);
                 buffer.delete(0, matcher.end());
 
                 return new TInteger(val, getLocator());
-            } else if ((matcher = LITERAL_PATTERN.matcher(buffer)).lookingAt()) {
+            }
+            matcher = LITERAL_PATTERN.matcher(buffer);
+            if (matcher.lookingAt()) {
                 String val = matcher.group(1).toLowerCase(Locale.ENGLISH);
                 buffer.delete(0, matcher.end());
 
                 return new TLiteral(val, getLocator());
-            } else if ((matcher = STRING_PATTERN.matcher(buffer)).lookingAt()) {
+            }
+            matcher = STRING_PATTERN.matcher(buffer);
+            if (matcher.lookingAt()) {
                 String val = matcher.group(1);
                 buffer.delete(0, matcher.end());
 
                 return new TString(val, getLocator());
-            } else if (buffer.length() > 0) {
-                char c = buffer.charAt(0);
-                buffer.delete(0, 1);
-                return new TChar(c, getLocator());
-            } else {
+            }
+            if (buffer.length() <= 0) {
                 throw new ExBibImpossibleException(">>" + buffer + "<<");
             }
+
+            char c = buffer.charAt(0);
+            buffer.delete(0, 1);
+            return new TChar(c, getLocator());
         }
     }
 
@@ -713,6 +730,7 @@ public class BstReaderImpl extends AbstractFileReader
      *         a misconfiguration
      * @throws ExBibException in case of an error
      */
+    @Override
     public void parse(BstProcessor processor)
             throws ExBibException,
                 ExBibBstNotFoundException,
@@ -730,12 +748,13 @@ public class BstReaderImpl extends AbstractFileReader
      * @param processor the processor context
      * @param bst the name of the bst file to parse
      * 
-     * @throws ExBibBstNotFoundException in case that the requested bst could
+     * @throws ExBibException in case of an syntax error, especially<br />
+     *         ExBibBstNotFoundException in case that the requested bst could
      *         not be opened for reading
      * @throws ConfigurationException in case that the reading apparatus detects
      *         a misconfiguration
-     * @throws ExBibException in case of an syntax error
      */
+    @Override
     public void parse(BstProcessor processor, String bst)
             throws ExBibException,
                 ConfigurationException {
@@ -774,11 +793,11 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the contents of the block as {@link TokenList TokenList}
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the block was complete
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibEofException in case that the end of file has been reached
+     *         before the block was complete<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected TBlock parseBlock() throws ExBibException {
@@ -794,11 +813,11 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the collected Tokens in a TBlock container
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the block was complete
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, specially<br />
+     *         ExBibEofException in case that the end of file has been reached
+     *         before the block was complete<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     private TBlock parseBlockEnd() throws ExBibException {
@@ -841,11 +860,11 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the literal
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the literal argument was complete
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibEofException in case that the end of file has been reached
+     *         before the literal argument was complete<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected TLiteral parseLiteralArg() throws ExBibException {
@@ -870,11 +889,11 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the list of tokens
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the literal list was complete
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibEofException in case that the end of file has been reached
+     *         before the literal list was complete<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected TokenList parseLiteralList() throws ExBibException {
@@ -908,11 +927,11 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @return the string as TString
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case that the end of file has been reached
-     *         before the string argument was complete
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case of an internal error which
+     * @throws ExBibException in case of an error, specially<br />
+     *         ExBibEofException in case that the end of file has been reached
+     *         before the string argument was complete<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case of an internal error which
      *         should not happen
      */
     protected TString parseStringArg() throws ExBibException {
@@ -952,10 +971,10 @@ public class BstReaderImpl extends AbstractFileReader
      * @return <code>true</code> iff the given token has been handled
      *         successfully
      * 
-     * @throws ExBibException in case of an error
-     * @throws ExBibEofException in case of an unexpected end of file
-     * @throws ExBibSyntaxException in case of an syntax error
-     * @throws ExBibImpossibleException in case something impossible happens
+     * @throws ExBibException in case of an error, especially<br />
+     *         ExBibEofException in case of an unexpected end of file<br />
+     *         ExBibSyntaxException in case of an syntax error<br />
+     *         ExBibImpossibleException in case something impossible happens
      */
     protected boolean processCommand(Token token, BstProcessor processor)
             throws ExBibException {
@@ -979,6 +998,7 @@ public class BstReaderImpl extends AbstractFileReader
      * 
      * @see org.extex.exbib.core.io.bstio.BstReader#setSaveComment(java.lang.StringBuilder)
      */
+    @Override
     public void setSaveComment(StringBuilder save) {
 
         this.comments = save;

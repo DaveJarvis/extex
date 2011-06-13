@@ -173,7 +173,7 @@ public class ExBib {
     /**
      * The field <tt>VERSION</tt> contains the official version number.
      */
-    public static final String VERSION = "0.1";
+    public static final String VERSION = "0.2";
 
     /**
      * The field <tt>INCEPTION_YEAR</tt> contains the year the development has
@@ -252,6 +252,12 @@ public class ExBib {
      * the processor type.
      */
     public static final String PROP_PROCESSOR = "exbib.processor";
+
+    /**
+     * The field <tt>PROP_BST</tt> contains the name of the property for the bst
+     * file.
+     */
+    public static final String PROP_BST = "exbib.bst";
 
     /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
@@ -584,6 +590,11 @@ public class ExBib {
                 auxReader.load(container, file, encoding);
             } catch (FileNotFoundException e) {
                 return error("aux.not.found", e.getMessage());
+            }
+            String bst = (String) properties.get(PROP_BST);
+            if (bst != null) {
+                container.findProcessor("bbl").addBibliographyStyle(
+                    bst.split(","));
             }
 
             if (!validate(container, file)) {

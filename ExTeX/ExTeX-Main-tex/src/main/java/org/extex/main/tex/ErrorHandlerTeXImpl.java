@@ -19,8 +19,6 @@
 
 package org.extex.main.tex;
 
-import java.util.logging.Logger;
-
 import org.extex.core.Locator;
 
 /**
@@ -44,17 +42,13 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
     }
 
     /**
-     * This method is invoked to present the current line causing the error.
+     * {@inheritDoc}
      * 
-     * @param logger the logger to use for output
-     * @param message the error message
-     * @param locator the locator for the error position
-     * 
-     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(java.util.logging.Logger,
-     *      java.lang.String, org.extex.core.Locator)
+     * @see org.extex.main.tex.ErrorHandlerImpl#showErrorLine(java.lang.String,
+     *      org.extex.core.Locator)
      */
     @Override
-    protected void showErrorLine(Logger logger, String message, Locator locator) {
+    protected void showErrorLine(String message, Locator locator) {
 
         StringBuilder sb = new StringBuilder();
         String file = locator.getResourceName();
@@ -80,7 +74,7 @@ public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
         sb.append(lineNumber >= 0 ? Integer.toString(lineNumber) : "?");
         sb.append(NL);
 
-        logger.severe(sb.toString());
+        getLogger().severe(sb.toString());
     }
 
 }

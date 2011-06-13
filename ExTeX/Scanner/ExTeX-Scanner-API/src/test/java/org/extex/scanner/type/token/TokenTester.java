@@ -100,91 +100,90 @@ public class TokenTester {
             new TokenVisitor<Catcode, Object>() {
 
                 @Override
-                public Catcode visitActive(ActiveCharacterToken token,
-                        Object arg) throws Exception {
+                public Catcode visitActive(ActiveCharacterToken t, Object arg)
+                        throws Exception {
 
                     return Catcode.ACTIVE;
                 }
 
                 @Override
-                public Catcode visitCr(CrToken token, Object arg)
-                        throws Exception {
+                public Catcode visitCr(CrToken t, Object arg) throws Exception {
 
                     return Catcode.CR;
                 }
 
                 @Override
-                public Catcode visitEscape(ControlSequenceToken token,
-                        Object arg) throws Exception {
+                public Catcode visitEscape(ControlSequenceToken t, Object arg)
+                        throws Exception {
 
                     return Catcode.ESCAPE;
                 }
 
                 @Override
-                public Catcode visitLeftBrace(LeftBraceToken token, Object arg)
+                public Catcode visitLeftBrace(LeftBraceToken t, Object arg)
                         throws Exception {
 
                     return Catcode.LEFTBRACE;
                 }
 
                 @Override
-                public Catcode visitLetter(LetterToken token, Object arg)
+                public Catcode visitLetter(LetterToken t, Object arg)
                         throws Exception {
 
                     return Catcode.LETTER;
                 }
 
                 @Override
-                public Catcode visitMacroParam(MacroParamToken token, Object arg)
+                public Catcode visitMacroParam(MacroParamToken t, Object arg)
                         throws Exception {
 
                     return Catcode.MACROPARAM;
                 }
 
                 @Override
-                public Catcode visitMathShift(MathShiftToken token, Object arg)
+                public Catcode visitMathShift(MathShiftToken t, Object arg)
                         throws Exception {
 
                     return Catcode.MATHSHIFT;
                 }
 
                 @Override
-                public Catcode visitOther(OtherToken token, Object arg)
+                public Catcode visitOther(OtherToken t, Object arg)
                         throws Exception {
 
                     return Catcode.OTHER;
                 }
 
                 @Override
-                public Catcode visitRightBrace(RightBraceToken token, Object arg)
+                public Catcode visitRightBrace(RightBraceToken t, Object arg)
                         throws Exception {
 
                     return Catcode.RIGHTBRACE;
                 }
 
                 @Override
-                public Catcode visitSpace(SpaceToken token, Object arg)
+                public Catcode visitSpace(SpaceToken t, Object arg)
                         throws Exception {
 
                     return Catcode.SPACE;
                 }
 
                 @Override
-                public Catcode visitSubMark(SubMarkToken token, Object arg)
+                public Catcode visitSubMark(SubMarkToken t, Object arg)
                         throws Exception {
 
                     return Catcode.SUBMARK;
                 }
 
                 @Override
-                public Catcode visitSupMark(SupMarkToken token, Object arg)
+                public Catcode visitSupMark(SupMarkToken t, Object arg)
                         throws Exception {
 
                     return Catcode.SUPMARK;
                 }
 
                 @Override
-                public Catcode visitTabMark(TabMarkToken token, Object arg)
+                public Catcode visitTabMark(TabMarkToken t, Object arg)
                         throws Exception {
 
                     return Catcode.TABMARK;

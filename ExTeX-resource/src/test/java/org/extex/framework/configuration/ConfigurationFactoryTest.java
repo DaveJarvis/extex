@@ -48,16 +48,25 @@ import org.junit.Test;
  */
 public class ConfigurationFactoryTest {
 
+    /**
+     * TODO gene: missing JavaDoc.
+     */
     public class Xxx implements Configuration {
 
-        public Xxx() {
-
-        }
-
+        /**
+         * Creates a new object.
+         * 
+         * @param resource the resource
+         */
         public Xxx(String resource) {
 
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
+         */
         @Override
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -68,6 +77,12 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
         @Override
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -75,12 +90,22 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
+         */
         @Override
         public String getAttribute(String name) {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
+         */
         @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
@@ -88,6 +113,12 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
+         *      java.lang.String)
+         */
         @Override
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
@@ -95,18 +126,34 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue()
+         */
         @Override
         public String getValue() throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
+         */
         @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
+         *      int)
+         */
         @Override
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
@@ -114,23 +161,44 @@ public class ConfigurationFactoryTest {
             return 0;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
+         *      java.lang.String)
+         */
         @Override
         public void getValues(List<String> list, String key) {
 
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
+         */
         @Override
         public List<String> getValues(String key) {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator()
+         */
         @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
+         */
         @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
@@ -138,14 +206,28 @@ public class ConfigurationFactoryTest {
             return null;
         }
 
+        /**
+         * {@inheritDoc}
+         * 
+         * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
+         */
         @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
         }
     }
 
+    /**
+     * TODO gene: missing JavaDoc.
+     * 
+     */
     public class Yyy extends Xxx {
 
+        /**
+         * Creates a new object.
+         * 
+         * @param resource the resource
+         */
         public Yyy(String resource) {
 
             super(resource);

@@ -138,6 +138,8 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     /**
      * Required for mojo lookups to work.
      * 
+     * @throws Exception in case of an error
+     * 
      * @see junit.framework.TestCase#setUp()
      */
     @Override

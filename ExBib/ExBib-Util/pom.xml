@@ -5,6 +5,7 @@
   <groupId>org.extex</groupId>
   <artifactId>ExBib-Util</artifactId>
   <name>ExBib Utility Program</name>
+  <version>0.2</version>
   <description>
     This is the command line interface for the utility program.
   </description>

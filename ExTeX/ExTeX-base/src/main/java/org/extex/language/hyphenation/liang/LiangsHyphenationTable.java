@@ -183,7 +183,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
     }
 
     /**
-     * This methods allows the caller to add another pattern
+     * This methods allows the caller to add another pattern.
      * 
      * @param pattern a sequence of tokens alternatively of type other and
      *        letter. The other tokens must be numbers. The letter tokens period

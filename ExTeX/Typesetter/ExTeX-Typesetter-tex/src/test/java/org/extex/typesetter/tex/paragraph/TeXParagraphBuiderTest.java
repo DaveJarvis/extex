@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,9 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is the test class for the TeX paragraph builder.
+ * This is the test class for the <logo>T<span style=
+ * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
+ * >e</span>X</logo> paragraph builder.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

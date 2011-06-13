@@ -294,12 +294,12 @@ public class TocIndex {
      * 
      * @param outFile the outFile to set
      * 
-     * @throws RuntimeException in case the argument is <code>null</code>
+     * @throws Exception in case the argument is <code>null</code>
      */
-    public void setOutFile(String outFile) throws RuntimeException {
+    public void setOutFile(String outFile) throws Exception {
 
         if (outFile == null) {
-            throw new RuntimeException(getMessage("MissingArgument", "-output"));
+            throw new Exception(getMessage("MissingArgument", "-output"));
         }
         this.outFile = outFile;
     }

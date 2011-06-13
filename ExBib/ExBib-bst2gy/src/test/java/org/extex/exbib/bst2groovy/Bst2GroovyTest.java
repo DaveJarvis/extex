@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -85,6 +85,7 @@ public class Bst2GroovyTest {
          * 
          * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
          */
+        @Override
         public void enableTracing(boolean flag) {
 
             //
@@ -96,6 +97,7 @@ public class Bst2GroovyTest {
          * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
@@ -668,7 +670,7 @@ public class Bst2GroovyTest {
     @Test
     public void testExecute1() throws Exception {
 
-        run("entry {a b c}{}{}\nexecute{skip$}",//
+        run("entry {a b c}{}{}\nexecute{skip$}", //
             PREFIX + HEAD + "  }\n" + RUN + POST_RUN);
     }
 
@@ -1718,7 +1720,7 @@ public class Bst2GroovyTest {
     @Test
     public void testIterate1() throws Exception {
 
-        run("iterate{call.type$}",//
+        run("iterate{call.type$}", //
             PREFIX + HEAD + "  }\n\n"
                     + "  void callType(Entry entry) {\n"
                     + "    def typeFunction = types[entry.getType()]\n"
@@ -2274,7 +2276,7 @@ public class Bst2GroovyTest {
     @Test
     public void testReverse1() throws Exception {
 
-        run("reverse{call.type$}",//
+        run("reverse{call.type$}", //
             PREFIX + HEAD + "  }\n\n"
                     + "  void callType(Entry entry) {\n"
                     + "    def typeFunction = types[entry.getType()]\n"

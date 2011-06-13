@@ -21,7 +21,6 @@ package org.extex.interpreter.context;
 
 import org.extex.core.Locator;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.group.GroupInfo;
 import org.extex.interpreter.context.group.GroupType;
@@ -123,8 +122,9 @@ public interface ContextGroup {
      * @param start the token which started the group
      * 
      * @throws HelpingException in case of an error
-     * @throws ConfigurationException in case of an error in the configuration,
-     *         e.g. the class for the group can not be determined.
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an error in the configuration, e.g. the class for the
+     *         group can not be determined.
      * 
      * @see #closeGroup(Typesetter, TokenSource)
      */

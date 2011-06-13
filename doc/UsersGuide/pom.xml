@@ -68,7 +68,7 @@
             <goals>
               <goal>exec</goal>
             </goals>
-            <phase>compile</phase>
+            <phase>generate-sources</phase>
             <configuration>
               <executable>java</executable>
               <arguments>
@@ -76,7 +76,7 @@
                 <classpath/>
                 <argument>org.extex.doctools.PrimitiveCollector</argument>
                 <argument>-output</argument>
-                <argument>${project.build.directory}/generated</argument>
+                <argument>${project.build.directory}/generated-sources/tex</argument>
                 <argument>../../ExTeX/ExTeX-base</argument>
                 <argument>../../ExTeX/ExTeX-core</argument>
                 <argument>../../ExTeX/Unit/ExTeX-*</argument>

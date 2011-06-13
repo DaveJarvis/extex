@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -64,6 +64,8 @@ public class ExBibTest extends BibTester {
                     + "\t\tList the available encoding names and exit.\n"
                     + "\t--bib-[encoding] | --bib.[encoding] | -E <enc>\n"
                     + "\t\tUse the given encoding for the bib files.\n"
+                    + "\t--bs[t] <bst style>\n"
+                    + "\t\tspecify the bst style.\n"
                     + "\t--con[figuration] | -c <configuration>\n"
                     + "\t\tUse the configuration given. This is not a file!\n"
                     + "\t--c[opying]\n"
@@ -280,12 +282,10 @@ public class ExBibTest extends BibTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testAux12() throws Exception {
 
         runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n", CLI.EXIT_FAIL,
-            Check.EQ, BANNER + "I found no style file while reading test.aux\n"
-                    + "I couldn\'t open style file xyzzy\n"
+            Check.EQ, BANNER + "I couldn\'t open style file xyzzy\n"
                     + "(There was 1 error)\n", //
             "test.aux", "--bst", "xyzzy");
     }

@@ -308,7 +308,7 @@ public class OutputFactory extends AbstractConfigurable
 
     /**
      * Register an observer which is invoked to notify about any output stream
-     * requested via a call to getOututStream(),
+     * requested via a call to getOututStream().
      * 
      * @param observer the observers to register
      * 

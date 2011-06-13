@@ -2,7 +2,7 @@
   ############################################################################
   # This is the Ant build file for ExTeX documentation
   ############################################################################
-  # Copyright (C) 2009 The ExTeX Group
+  # Copyright (C) 2009-2011 The ExTeX Group
   #
   # This library is free software; you can redistribute it and/or modify it
   # under the terms of the GNU Lesser General Public License as published by
@@ -66,7 +66,7 @@
 
   <uptodate property="latex.not.required"
             targetfile="target/${doc.file}.${output.format}">
-    <srcfiles dir= "${project.build.directory}/generated" includes="**/*.tex"/>
+    <srcfiles dir= "${project.build.directory}/generated-sources/tex" includes="**/*.tex"/>
     <srcfiles dir= "${doc.dir}" includes="**/*.tex"/>
     <srcfiles dir= "${doc.dir}" includes="**/*.png"/>
   </uptodate>

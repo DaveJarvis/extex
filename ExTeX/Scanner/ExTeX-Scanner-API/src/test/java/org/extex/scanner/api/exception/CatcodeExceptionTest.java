@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,9 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.scanner.api.exception.CatcodeException;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the exception.
@@ -34,16 +32,6 @@ import org.junit.runner.JUnitCore;
  * @version $Revision:5563 $
  */
 public class CatcodeExceptionTest {
-
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        JUnitCore.runClasses(CatcodeExceptionTest.class);
-    }
 
     /**
      * Test method for {@link java.lang.Throwable#getLocalizedMessage()}.

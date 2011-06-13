@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2007-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,9 +23,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.Locale;
 
-import org.extex.scanner.api.exception.CatcodeWrongLengthException;
 import org.junit.Test;
-import org.junit.runner.JUnitCore;
 
 /**
  * Test suite for the exception.
@@ -36,18 +34,9 @@ import org.junit.runner.JUnitCore;
 public class CatcodeWrongLengthExceptionTest {
 
     /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        JUnitCore.runClasses(CatcodeWrongLengthExceptionTest.class);
-    }
-
-    /**
      * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+     * .
      */
     @Test
     public final void testGetLocalizedMessage1() {
@@ -59,7 +48,8 @@ public class CatcodeWrongLengthExceptionTest {
 
     /**
      * Test method for
-     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}.
+     * {@link org.extex.scanner.api.exception.CatcodeWrongLengthException#getLocalizedMessage()}
+     * .
      */
     @Test
     public final void testGetLocalizedMessage2() {

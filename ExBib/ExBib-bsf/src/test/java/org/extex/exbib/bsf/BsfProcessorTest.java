@@ -526,10 +526,10 @@ public class BsfProcessorTest {
     /**
      * <testcase> An empty language leads to an exception. </testcase>
      * 
-     * @throws ExBibException in case of an error
+     * @throws Exception in case of an error
      */
     @Test(expected = ExBibException.class)
-    public void testProcess3() throws ExBibException, IOException {
+    public void testProcess3() throws Exception {
 
         PrintStream err = System.err;
         System.setErr(new PrintStream(new OutputStream() {

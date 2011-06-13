@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -23,7 +23,6 @@ import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -33,7 +32,8 @@ import org.extex.typesetter.exception.TypesetterException;
  * expansion of arguments of primitives like <tt>\edef</tt>, <tt>\xdef</tt>,
  * <tt>\message</tt>, and others..
  * 
- * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean, CodeToken)
+ * @see TokenSource#scanUnprotectedTokens(Context, boolean, boolean,
+ *      org.extex.scanner.type.token.CodeToken)
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -48,7 +48,7 @@ public interface CodeExpander {
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param tokens the target token list
-     *
+     * 
      * @throws ConfigurationException in case of an configuration error
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter

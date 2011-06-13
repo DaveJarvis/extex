@@ -657,8 +657,11 @@ public class TypesetterImpl extends ListMakerFactory
     public void push(ListMaker listMaker) throws TypesetterException {
 
         saveStack.add(this.listMaker);
-        // TODO gene: beware of ClassCastException
-        this.listMaker = (TokenDelegateListMaker) listMaker;
+        if (listMaker instanceof TokenDelegateListMaker) {
+            this.listMaker = (TokenDelegateListMaker) listMaker;
+        } else {
+            throw new RuntimeException("unimpemented");
+        }
     }
 
     /**
@@ -857,6 +860,7 @@ public class TypesetterImpl extends ListMakerFactory
      * 
      * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long, long)
      */
+    @Override
     public void showlists(StringBuilder sb, long depth, long breadth) {
 
         localizer = LocalizerFactory.getLocalizer(getClass());

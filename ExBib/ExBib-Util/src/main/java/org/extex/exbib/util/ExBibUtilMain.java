@@ -133,7 +133,7 @@ public final class ExBibUtilMain extends AbstractMain {
     /**
      * The field <tt>VERSION</tt> contains the official version number.
      */
-    public static final String VERSION = "0.1";
+    public static final String VERSION = "0.2";
 
     /**
      * The field <tt>INCEPTION_YEAR</tt> contains the year the development has

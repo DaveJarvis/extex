@@ -35,13 +35,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bsf.LogFormatter;
 import org.extex.exbib.core.ExBib;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link BsfProcessor} with a Jacl configuration.
+ * This is a test suite for the {@link org.extex.exbib.bsf.BsfProcessor} with a
+ * Jacl configuration.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -72,7 +72,7 @@ public class JaclTest {
      * @param tclCode the Tcl code to evaluate
      * @param expected the expected result
      * @param bibEntries the contents of the bib file
-     *
+     * 
      * @throws IOException just in case
      */
     private void runTest(String tclCode, String expected, String bibEntries)

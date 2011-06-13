@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -48,10 +48,13 @@ import org.junit.Test;
  */
 public class UrlFinderTest {
 
+    /**
+     * This is the logging handler which collects the messages in memory.
+     */
     private class LoggingHandler extends Handler {
 
         /**
-         * The field <tt>buffer</tt> contains the ...
+         * The field <tt>buffer</tt> contains the collected messages.
          */
         private StringBuilder buffer = new StringBuilder();
 
@@ -111,6 +114,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
          */
+        @Override
         public Configuration findConfiguration(String key) {
 
             return this;
@@ -122,6 +126,7 @@ public class UrlFinderTest {
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public Configuration findConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
@@ -133,6 +138,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
          */
+        @Override
         public String getAttribute(String name) {
 
             if ("default".equals(name)) {
@@ -147,6 +153,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
          */
+        @Override
         public Configuration getConfiguration(String key)
                 throws ConfigurationException {
 
@@ -159,6 +166,7 @@ public class UrlFinderTest {
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
          *      java.lang.String)
          */
+        @Override
         public Configuration getConfiguration(String key, String attribute)
                 throws ConfigurationException {
 
@@ -170,6 +178,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValue()
          */
+        @Override
         public String getValue() throws ConfigurationException {
 
             return "";
@@ -180,6 +189,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
          */
+        @Override
         public String getValue(String key) throws ConfigurationException {
 
             return null;
@@ -191,6 +201,7 @@ public class UrlFinderTest {
          * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
          *      int)
          */
+        @Override
         public int getValueAsInteger(String key, int defaultValue)
                 throws ConfigurationException {
 
@@ -203,6 +214,7 @@ public class UrlFinderTest {
          * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
          *      java.lang.String)
          */
+        @Override
         public void getValues(List<String> list, String key) {
 
             // not needed
@@ -213,6 +225,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
          */
+        @Override
         public List<String> getValues(String key) {
 
             if ("extension".equals(key)) {
@@ -229,6 +242,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#iterator()
          */
+        @Override
         public Iterator<Configuration> iterator() throws ConfigurationException {
 
             ArrayList<Configuration> list = new ArrayList<Configuration>();
@@ -241,6 +255,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
          */
+        @Override
         public Iterator<Configuration> iterator(String key)
                 throws ConfigurationException {
 
@@ -254,6 +269,7 @@ public class UrlFinderTest {
          * 
          * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
          */
+        @Override
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
             // noop

@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.info;
 
+import java.io.File;
 import java.util.Properties;
 
 import org.extex.test.NoFlagsPrimitiveTester;
@@ -72,6 +73,7 @@ public class JobnameTest extends NoFlagsPrimitiveTester {
             "\\jobname" + "\\end ",
             // --- output channel ---
             "job" + TERM);
+        new File("job.log").delete();
     }
 
 }

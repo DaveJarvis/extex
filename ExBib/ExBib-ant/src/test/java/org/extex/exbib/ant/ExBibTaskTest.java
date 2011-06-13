@@ -101,7 +101,7 @@ public class ExBibTaskTest extends BuildFileTest {
         executeTarget("test.case.1");
         assertEquals("Message was logged but should not.",
             "Missing aux file parameter." //
-                    + "(There was 1 error)",//
+                    + "(There was 1 error)", //
             getLog().replaceAll("[\\r\\n]", ""));
     }
 
@@ -115,7 +115,7 @@ public class ExBibTaskTest extends BuildFileTest {
         executeTarget("test.case.2");
         assertEquals("Message was logged but should not.",
             "I couldn\'t open file file/which/does/not/exist.aux"
-                    + "(There was 1 error)",//
+                    + "(There was 1 error)", //
             getLog().replaceAll("[\\r\\n]", ""));
     }
 

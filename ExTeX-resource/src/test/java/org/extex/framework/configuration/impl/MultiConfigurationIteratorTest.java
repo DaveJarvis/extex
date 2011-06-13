@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2010-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -194,7 +194,7 @@ public class MultiConfigurationIteratorTest {
     /**
      * Create the test objects.
      * 
-     * @throws java.lang.Exception
+     * @throws Exception in case of an error
      */
     @Before
     public void setUp() throws Exception {

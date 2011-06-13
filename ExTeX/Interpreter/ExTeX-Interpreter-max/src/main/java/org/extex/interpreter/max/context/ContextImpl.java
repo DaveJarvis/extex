@@ -504,11 +504,7 @@ public class ContextImpl
     }
 
     /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param configuration the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
+     * {@inheritDoc}
      * 
      * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
@@ -1380,22 +1376,11 @@ public class ContextImpl
     }
 
     /**
-     * This method can be used to open another group. The current group is
-     * pushed onto the stack to be reactivated when the new group will be
-     * closed.
-     * 
-     * @param type the type of the group
-     * @param locator the locator for the start
-     * @param start the token which started the group
-     * @throws ConfigurationException in case of an error in the configuration,
-     *         e.g. the class for the group can not be determined.
-     * 
-     * @see #closeGroup(Typesetter, TokenSource)
-     * 
-     *      {@inheritDoc}
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.context.ContextGroup#openGroup(org.extex.interpreter.context.group.GroupType,
      *      org.extex.core.Locator, org.extex.scanner.type.token.Token)
+     * @see #closeGroup(Typesetter, TokenSource)
      */
     @Override
     public void openGroup(GroupType type, Locator locator, Token start)
@@ -1417,12 +1402,7 @@ public class ContextImpl
     }
 
     /**
-     * Pop the management information for a conditional from the stack and
-     * return it. If the stack is empty then <code>null</code> is returned.
-     * 
-     * @return the formerly topmost element from the conditional stack
-     * 
-     *         {@inheritDoc}
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.context.Context#popConditional()
      */

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,7 @@ package org.extex.scanner.type;
 /**
  * This class contains the definitions for name spaces. It is not a class which
  * is supposed to be instantiated.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -40,11 +40,9 @@ public final class Namespace {
      */
     public static final String SYSTEM_NAMESPACE = "system";
 
-
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_BOX</tt> contains the flag
-     * indicating whether or not the name space should be used for box
-     * registers.
+     * The constant <tt>SUPPORT_NAMESPACE_BOX</tt> contains the flag indicating
+     * whether or not the name space should be used for box registers.
      */
     public static final boolean SUPPORT_NAMESPACE_BOX = false;
 
@@ -57,8 +55,8 @@ public final class Namespace {
 
     /**
      * The constant <tt>SUPPORT_NAMESPACE_DEF</tt> contains the indicator that
-     * name spaces should be honored. In this case the look-up for Code is
-     * also performed in the default name space if not found in the current one.
+     * name spaces should be honored. In this case the look-up for Code is also
+     * performed in the default name space if not found in the current one.
      */
     public static final boolean SUPPORT_NAMESPACE_DEF = true;
 
@@ -70,9 +68,8 @@ public final class Namespace {
     public static final boolean SUPPORT_NAMESPACE_DIMEN = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_FONT</tt> contains the flag
-     * indicating whether or not the name space should be used for font
-     * registers.
+     * The constant <tt>SUPPORT_NAMESPACE_FONT</tt> contains the flag indicating
+     * whether or not the name space should be used for font registers.
      */
     public static final boolean SUPPORT_NAMESPACE_FONT = false;
 
@@ -84,17 +81,22 @@ public final class Namespace {
     public static final boolean SUPPORT_NAMESPACE_MUSKIP = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_SKIP</tt> contains the flag
-     * indicating whether or not the name space should be used for skip
-     * registers.
+     * The constant <tt>SUPPORT_NAMESPACE_SKIP</tt> contains the flag indicating
+     * whether or not the name space should be used for skip registers.
      */
     public static final boolean SUPPORT_NAMESPACE_SKIP = false;
 
     /**
-     * The constant <tt>SUPPORT_NAMESPACE_TOKS</tt> contains the flag
-     * indicating whether or not the name space should be used for tokens
-     * registers.
+     * The constant <tt>SUPPORT_NAMESPACE_TOKS</tt> contains the flag indicating
+     * whether or not the name space should be used for tokens registers.
      */
     public static final boolean SUPPORT_NAMESPACE_TOKS = false;
+
+    /**
+     * Creates a new object. It is private to avoid unwanted instantiation.
+     */
+    private Namespace() {
+
+    }
 
 }

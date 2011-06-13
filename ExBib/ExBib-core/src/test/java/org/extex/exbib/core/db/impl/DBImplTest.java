@@ -24,13 +24,12 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 import org.extex.exbib.core.bst.exception.ExBibEntryUndefinedException;
-import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.junit.Test;
 
 /**
- * This is a test suite for {@link Entry}.
+ * This is a test suite for {@link DBImpl}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -59,19 +58,6 @@ public class DBImplTest {
     }
 
     /**
-     * <testcase> Storing an alias leads to an error when the referenced entry
-     * is missing . </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test(expected = ExBibEntryUndefinedException.class)
-    public final void testStoreAlias() throws Exception {
-
-        DBImpl db = new DBImpl();
-        db.storeAlias("new", "old", null);
-    }
-
-    /**
      * <testcase> Check registerObserver(). </testcase>
      * 
      * @throws Exception in case of an error
@@ -91,6 +77,19 @@ public class DBImplTest {
     public final void testSort() throws Exception {
 
         new DBImpl().sort();
+    }
+
+    /**
+     * <testcase> Storing an alias leads to an error when the referenced entry
+     * is missing . </testcase>
+     * 
+     * @throws Exception in case of an error
+     */
+    @Test(expected = ExBibEntryUndefinedException.class)
+    public final void testStoreAlias() throws Exception {
+
+        DBImpl db = new DBImpl();
+        db.storeAlias("new", "old", null);
     }
 
 }

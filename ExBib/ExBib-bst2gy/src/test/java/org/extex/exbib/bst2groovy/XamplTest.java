@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2009-2010 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2009-2011 The ExTeX Group and individual authors listed below
  * 
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -29,6 +29,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.io.Reader;
 import java.io.Writer;
 import java.util.Properties;
 import java.util.logging.ConsoleHandler;
@@ -37,7 +38,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exbib.bsf.BsfProcessor;
 import org.extex.exbib.bst2groovy.parameters.Parameter;
 import org.extex.exbib.bst2groovy.parameters.ParameterType;
 import org.extex.exbib.core.ExBib;
@@ -48,10 +48,10 @@ import org.extex.resource.ResourceFinderFactory;
 import org.junit.Test;
 
 /**
- * This is a test suite for the {@link BsfProcessor} with a Groovy
- * configuration. It compiles a bst into a groovy program and uses this groovy
- * program on xampl.bib. Finally it compares the result with the result produced
- * by BibTeX.
+ * This is a test suite for the {@link org.extex.exbib.bsf.BsfProcessor} with a
+ * Groovy configuration. It compiles a bst into a groovy program and uses this
+ * groovy program on xampl.bib. Finally it compares the result with the result
+ * produced by BibTeX.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
@@ -70,16 +70,16 @@ public class XamplTest {
     public static String getFileContents(String name) throws IOException {
 
         StringBuilder buffer = new StringBuilder();
-        FileReader r = new FileReader(name);
+        Reader reader = new FileReader(name);
 
         try {
-            for (int c = r.read(); c >= 0; c = r.read()) {
+            for (int c = reader.read(); c >= 0; c = reader.read()) {
                 if (c != '\r') {
                     buffer.append((char) c);
                 }
             }
         } finally {
-            r.close();
+            reader.close();
         }
 
         return buffer.toString();

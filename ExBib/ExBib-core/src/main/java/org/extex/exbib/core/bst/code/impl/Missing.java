@@ -23,7 +23,6 @@ import org.extex.exbib.core.bst.BstProcessor;
 import org.extex.exbib.core.bst.code.AbstractCode;
 import org.extex.exbib.core.bst.exception.ExBibMissingEntryException;
 import org.extex.exbib.core.bst.token.TokenFactory;
-import org.extex.exbib.core.bst.token.impl.TString;
 import org.extex.exbib.core.db.Entry;
 import org.extex.exbib.core.exceptions.ExBibException;
 import org.extex.exbib.core.io.Locator;
@@ -67,10 +66,12 @@ import org.extex.exbib.core.io.Locator;
  * 
  * 
  * <p>
- * Missing items are represented as {@link TString}s with the value
- * <code>null</code>. Those can be distinguished from {@link TString}s with the
- * value "". They can be detected only by the special method
- * {@link TString#isNull()}.
+ * Missing items are represented as
+ * {@link org.extex.exbib.core.bst.token.impl.TString}s with the value
+ * <code>null</code>. Those can be distinguished from
+ * {@link org.extex.exbib.core.bst.token.impl.TString}s with the value "". They
+ * can be detected only by the special method
+ * {@link org.extex.exbib.core.bst.token.impl.TString#isNull()}.
  * </p>
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
@@ -101,6 +102,7 @@ public class Missing extends AbstractCode {
      * @see org.extex.exbib.core.bst.code.Code#execute(BstProcessor,
      *      org.extex.exbib.core.db.Entry, org.extex.exbib.core.io.Locator)
      */
+    @Override
     public void execute(BstProcessor processor, Entry entry, Locator locator)
             throws ExBibException {
 

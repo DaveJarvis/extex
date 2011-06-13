@@ -276,7 +276,7 @@
 
   <!-- ===================================================================== -->
   <xsl:template match="doc">
-\begin{doc}{<xsl:value-of select="@class"/>}
+\begin{doc}{<xsl:value-of select="@class"/>}{}{}
 <xsl:apply-templates select="*|text()"/>
 \end{doc}</xsl:template>
   <!-- ===================================================================== -->

@@ -285,8 +285,12 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                         sb.append((char) (uc.getCodePoint()));
                         state = SKIP_BLANKS;
 
-                        while (!atEndofLine()
-                                && (uc = getChar(tokenizer)) != null) {
+                        while (!atEndofLine()) {
+                            uc = getChar(tokenizer);
+                            if (uc == null) {
+                                break;
+                            }
+
                             if (tokenizer.getCatcode(uc) != Catcode.LETTER) {
                                 ungetChar(uc);
                                 return factory.createToken(Catcode.ESCAPE,
@@ -709,8 +713,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * </p>
      * 
      * @param tokenizer the classifier for characters
-     * @return the character or <code>null</code> if no more character is
-     *         available
+     * @return the character or <code>null</code> if no character is available
      * @throws ScannerException in the rare case that an IO Exception has
      *         occurred.
      */

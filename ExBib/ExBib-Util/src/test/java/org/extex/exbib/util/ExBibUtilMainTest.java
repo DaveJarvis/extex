@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2008 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2008-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,9 +33,7 @@ import java.io.Writer;
 import java.util.Locale;
 
 import org.extex.cli.CLI;
-import org.extex.exbib.core.ExBib;
 import org.extex.exbib.main.AbstractMain;
-import org.extex.exbib.util.ExBibUtilMain;
 import org.junit.Ignore;
 import org.junit.Test;
 
@@ -45,11 +43,10 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class ExBibUtilTest extends BibUtilTester {
+public class ExBibUtilMainTest extends BibUtilTester {
 
     /**
-     * The field <tt>USAGE</tt> contains the usage message (without the
-     * banner).
+     * The field <tt>USAGE</tt> contains the usage message (without the banner).
      */
     private static final String USAGE =
             "Usage: exbibutil <options> file\n"
@@ -319,16 +316,10 @@ public class ExBibUtilTest extends BibUtilTester {
      * @throws Exception in case of an error
      */
     @Test
-    @Ignore
     public void testConfig5() throws Exception {
 
-        runFailure(
-            BANNER
-                    + "Installation Error: Some parts of exbib could not be found: \n"
-                    + "\tClass `undefined.Undefined\' not found in\n"
-                    + "document(\"config/exbib/misconfigured.xml\")/exbib/Processor\n"
-                    + "\tConsult the log\n" //
-                    + "file for details.\n", //
+        runFailure(BANNER
+                + "Configuration `exbib/processor/undefined.xml' not found.\n", //
             "--config", "misconfigured");
     }
 
@@ -344,34 +335,6 @@ public class ExBibUtilTest extends BibUtilTester {
         runTest("test", null, CLI.EXIT_FAIL, Check.START,
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n", //
             "--copying");
-    }
-
-    /**
-     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
-     * argument. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testCsfile1() throws Exception {
-
-        runFailure(BANNER + "The option `--csfile\' needs a parameter.\n",
-            "--csfile");
-    }
-
-    /**
-     * <testcase> Test that the command line option <tt>--csfile</tt> needs an
-     * argument. </testcase>
-     * 
-     * @throws Exception in case of an error
-     */
-    @Test
-    @Ignore
-    public void testCsfile2() throws Exception {
-
-        runFailure(BANNER + "The csf `exbib\' could not be found.\n",
-            "--csfile", "xyzzy", "test");
     }
 
     /**
@@ -411,8 +374,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--encoding</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--encoding</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -424,8 +387,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--encoding</tt> needs
-     * a known encoding. </testcase>
+     * <testcase> Test that the command line option <tt>--encoding</tt> needs a
+     * known encoding. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -476,8 +439,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--language</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--language</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -513,8 +476,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--logfile</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--logfile</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -528,8 +491,8 @@ public class ExBibUtilTest extends BibUtilTester {
     /**
      * <testcase> Test that the command line option <tt>--logfile</tt> can be
      * used to redirect the log output. It is tested that the log file is
-     * created and the {@link ExBib} instance reports the log file with
-     * getLogfile(). </testcase>
+     * created and the {@link org.extex.exbib.core.ExBib} instance reports the
+     * log file with getLogfile(). </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -632,8 +595,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -645,8 +608,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt>
-     * discards the output if the file name is empty. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> discards
+     * the output if the file name is empty. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -659,8 +622,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> sends
-     * the output to stdout if the file name is "-". </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> sends the
+     * output to stdout if the file name is "-". </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -673,8 +636,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt> sends
-     * the output to the file. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> sends the
+     * output to the file. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -700,8 +663,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--outfile</tt>
-     * complains if the output file can not be opened. </testcase>
+     * <testcase> Test that the command line option <tt>--outfile</tt> complains
+     * if the output file can not be opened. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -716,8 +679,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--progname</tt> needs
-     * an argument. </testcase>
+     * <testcase> Test that the command line option <tt>--progname</tt> needs an
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -757,13 +720,13 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testProgName2() throws Exception {
 
-        runSuccess("This is abc, Version " + ExBib.VERSION + "\n", //
+        runSuccess("This is abc, Version " + ExBibUtilMain.VERSION + "\n", //
             "--progname", "abc");
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--quiet</tt> is
-     * honored. </testcase>
+     * <testcase> Test that the command line option <tt>--quiet</tt> is honored.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -783,13 +746,13 @@ public class ExBibUtilTest extends BibUtilTester {
     @Test
     public void testRelease1() throws Exception {
 
-        runFailure(ExBib.VERSION + "\n", //
+        runFailure(ExBibUtilMain.VERSION + "\n", //
             "--release");
     }
 
     /**
-     * <testcase> Test that the command line option <tt>--terse</tt> is
-     * honored. </testcase>
+     * <testcase> Test that the command line option <tt>--terse</tt> is honored.
+     * </testcase>
      * 
      * @throws Exception in case of an error
      */
@@ -814,8 +777,8 @@ public class ExBibUtilTest extends BibUtilTester {
     }
 
     /**
-     * <testcase> Test that the command line option <tt>-type</tt> needs a
-     * known argument. </testcase>
+     * <testcase> Test that the command line option <tt>-type</tt> needs a known
+     * argument. </testcase>
      * 
      * @throws Exception in case of an error
      */

@@ -29,7 +29,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.MissingLeftBraceException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.interpreter.ListMakers;
@@ -97,7 +96,8 @@ public class Box implements BoxOrRule, Serializable {
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of a typesetter error
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration error
      */
     public Box(Context context, TokenSource source, Typesetter typesetter,
             boolean isHorizontal, Tokens insert, GroupType groupType,
