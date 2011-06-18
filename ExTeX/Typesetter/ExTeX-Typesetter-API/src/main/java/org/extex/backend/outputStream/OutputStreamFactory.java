@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -25,7 +25,7 @@ import org.extex.backend.documentWriter.exception.DocumentWriterException;
 
 /**
  * This is the factory for new OutputStreams.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4492 $
  */
@@ -33,13 +33,13 @@ public interface OutputStreamFactory {
 
     /**
      * Getter for a new OutputStream.
-     *
-     * @param name the name segment to characterize the stream externally.
-     *  This segment might be used as part of the output file. If the name is
-     *  <code>null</code> then it is treated as not given at all.
+     * 
+     * @param name the name segment to characterize the stream externally. This
+     *        segment might be used as part of the output file. If the name is
+     *        <code>null</code> then it is treated as not given at all.
      * @param type the type of the stream to acquire. In general this should
-     *  correspond to the extension of a file of this type
-     *
+     *        correspond to the extension of a file of this type
+     * 
      * @return the new OutputStream
      * @throws DocumentWriterException in case of an error
      */
@@ -47,17 +47,17 @@ public interface OutputStreamFactory {
             throws DocumentWriterException;
 
     /**
-     * Register an observer which is invoked to notify about any output
-     * stream requested via a call to getOututStream(),
-     *
+     * Register an observer which is invoked to notify about any output stream
+     * requested via a call to getOututStream(),
+     * 
      * @param observer the observers to register
      */
-    public void register(OutputStreamObserver observer);
+    void register(OutputStreamObserver observer);
 
     /**
-     * Setter for the default extension.
-     * The default extension is used when the type specified is <code>null</code>.
-     *
+     * Setter for the default extension. The default extension is used when the
+     * type specified is <code>null</code>.
+     * 
      * @param extension the default extension
      */
     void setExtension(String extension);
