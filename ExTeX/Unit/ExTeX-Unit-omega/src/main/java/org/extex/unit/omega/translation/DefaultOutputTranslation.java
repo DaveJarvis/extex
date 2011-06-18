@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -38,13 +38,12 @@ import org.extex.unit.omega.ocp.util.OcpUtil;
  * This class provides an implementation for the primitive
  * <code>\DefaultOutputTranslation</code>.
  * 
- * <doc name="DefaultOutputTranslation">
- * <h3>The Primitive <tt>\DefaultOutputTranslation</tt></h3>
+ * <doc name="DefaultOutputTranslation"> <h3>The Primitive
+ * <tt>\DefaultOutputTranslation</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;DefaultOutputTranslation&rang;
@@ -95,8 +94,8 @@ public class DefaultOutputTranslation extends AbstractModeCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -114,12 +113,12 @@ public class DefaultOutputTranslation extends AbstractModeCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(
-     *      org.extex.resource.ResourceFinder)
+     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    @Override
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
-        this.finder = finder;
+        this.finder = resourceFinder;
     }
 
 }

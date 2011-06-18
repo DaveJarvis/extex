@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -22,7 +22,6 @@ package org.extex.unit.omega.math.util;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.exception.helping.MissingMathException;
 import org.extex.core.exception.helping.NoHelpException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -54,14 +53,13 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2006L;
 
     /**
-     * The field <tt>mathchar</tt> contains the actual character in the form
-     * of a MathCode which can immediately be passed to the typesetter.
+     * The field <tt>mathchar</tt> contains the actual character in the form of
+     * a MathCode which can immediately be passed to the typesetter.
      */
     private MathCode mathchar;
 
@@ -80,10 +78,10 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -93,10 +91,10 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.math.util.MathCodeConvertible#convertMathCode(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public MathCode convertMathCode(Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException {
 
@@ -106,8 +104,8 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -123,9 +121,9 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Showable#show(
-     *      org.extex.interpreter.context.Context)
+     * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
      */
+    @Override
     public Tokens show(Context context) throws HelpingException {
 
         try {
@@ -140,19 +138,12 @@ public class OmegaMathcharCode extends AbstractOmegaMathCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.unit.omega.register;
 
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.Glue;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
@@ -37,8 +36,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\glueshrinkorder</code>.
  * 
- * <doc name="glueshrinkorder">
- * <h3>The Primitive <tt>\glueshrinkorder</tt></h3>
+ * <doc name="glueshrinkorder"> <h3>The Primitive <tt>\glueshrinkorder</tt></h3>
  * <p>
  * The primitive <tt>\glueshrinkorder</tt> determines the order of the glue
  * shrink component of the following glue specification. A fixed,
@@ -50,8 +48,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <logo>Omega</logo>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;glueshrinkorder&rang;
@@ -79,8 +76,7 @@ public class Oglueshrinkorder extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -97,10 +93,10 @@ public class Oglueshrinkorder extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -109,25 +105,18 @@ public class Oglueshrinkorder extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 

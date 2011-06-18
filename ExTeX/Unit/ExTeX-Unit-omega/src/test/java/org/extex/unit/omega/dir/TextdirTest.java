@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,7 @@
 
 package org.extex.unit.omega.dir;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
@@ -55,17 +55,19 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\textdir"> Test case checking that <tt>\textdir</tt>
-     * needs an argument. </testcase>
+     * sets the test direction i the context. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testError0() throws Exception {
+    public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\textdir",
+        Interpreter in = assertSuccess(// --- input code ---
+            "\\textdir LRL" + "\\end",
             // --- output channel ---
-            "Unexpected end of file");
+            "");
+        assertEquals("LRL", in.getContext().getTypesettingContext()
+            .getDirection().toString());
     }
 
     /**
@@ -85,19 +87,17 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\textdir"> Test case checking that <tt>\textdir</tt>
-     * sets the test direction i the context. </testcase>
+     * needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void test1() throws Exception {
+    public void testError0() throws Exception {
 
-        Interpreter in = assertSuccess(// --- input code ---
-            "\\textdir LRL" + "\\end",
+        assertFailure(// --- input code ---
+            "\\textdir",
             // --- output channel ---
-            "");
-        assertEquals("LRL", in.getContext().getTypesettingContext()
-            .getDirection().toString());
+            "Unexpected end of file");
     }
 
 }

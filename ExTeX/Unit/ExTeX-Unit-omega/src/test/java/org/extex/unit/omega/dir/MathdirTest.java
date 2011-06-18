@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -19,7 +19,7 @@
 
 package org.extex.unit.omega.dir;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.extex.interpreter.Interpreter;
 import org.extex.test.NoFlagsButGlobalPrimitiveTester;
@@ -55,17 +55,20 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
-     * needs an argument. </testcase>
+     * sets the math direction in the context. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void testError0() throws Exception {
+    public void test1() throws Exception {
 
-        assertFailure(// --- input code ---
-            "\\mathdir",
+        Interpreter in = assertSuccess(// --- input code ---
+            "\\mathdir LRL" + "\\end",
             // --- output channel ---
-            "Unexpected end of file");
+            "");
+        assertEquals("LRL", in.getContext().getTypesettingContext()
+            .getDirection().toString());
+        // TODO gene: correct???
     }
 
     /**
@@ -85,20 +88,17 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * <testcase primitive="\mathdir"> Test case checking that <tt>\mathdir</tt>
-     * sets the math direction in the context. </testcase>
+     * needs an argument. </testcase>
      * 
      * @throws Exception in case of an error
      */
     @Test
-    public void test1() throws Exception {
+    public void testError0() throws Exception {
 
-        Interpreter in = assertSuccess(// --- input code ---
-            "\\mathdir LRL" + "\\end",
+        assertFailure(// --- input code ---
+            "\\mathdir",
             // --- output channel ---
-            "");
-        assertEquals("LRL", in.getContext().getTypesettingContext()
-            .getDirection().toString());
-        // TODO gene: correct???
+            "Unexpected end of file");
     }
 
 }

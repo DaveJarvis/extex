@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2006-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2006-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,15 +32,14 @@ import org.extex.unit.omega.OmegaExtension;
 import org.extex.unit.omega.ocp.util.OcpList;
 
 /**
- * This class provides an implementation for the primitive <tt>\pushocplist</tt>.
+ * This class provides an implementation for the primitive <tt>\pushocplist</tt>
+ * .
  * 
- * <doc name="pushocplist">
- * <h3>The Primitive <tt>\pushocplist</tt></h3>
+ * <doc name="pushocplist"> <h3>The Primitive <tt>\pushocplist</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pushocplist&rang;
@@ -78,8 +77,8 @@ public class Pushocplist extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -94,7 +93,7 @@ public class Pushocplist extends AbstractCode {
         }
 
         OcpList list = (OcpList) context.get(OcpList.class, "ocplist");
-        list.push(((OcpList)code));
+        list.push(((OcpList) code));
         context.set(OmegaExtension.NAME, "ocplist", list, prefix.clearGlobal());
     }
 

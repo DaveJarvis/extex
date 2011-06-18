@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,21 +36,19 @@ import org.extex.unit.tex.typesetter.spacing.HorizontalSkip;
 /**
  * This class provides an implementation for the primitive <code>\hfi</code>.
  * 
- * <doc name="hfi">
- * <h3>The Primitive <tt>\hfi</tt></h3>
+ * <doc name="hfi"> <h3>The Primitive <tt>\hfi</tt></h3>
  * <p>
- * The primitive <tt>\hfi</tt> inserts a new infinite glue into the output.
- * The value of <tt>\hfi</tt> is an infinite quantity which is less than
- * <tt>\hfil</tt>. This means that <tt>\hfil</tt> or a larger value
- * suppress this glue. On the other side if no greater value is present then
- * this value suppresses any finite value.
+ * The primitive <tt>\hfi</tt> inserts a new infinite glue into the output. The
+ * value of <tt>\hfi</tt> is an infinite quantity which is less than
+ * <tt>\hfil</tt>. This means that <tt>\hfil</tt> or a larger value suppress
+ * this glue. On the other side if no greater value is present then this value
+ * suppresses any finite value.
  * </p>
  * <p>
  * This quantity has been introduced by <logo>Omega</logo>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hfi&rang;
@@ -72,13 +70,11 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * The field <tt>FIL</tt> contains the glue to insert for this primitive.
      */
-    private static final Glue FI =
-            new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
-                GlueComponent.ZERO);
+    private static final Glue FI = new Glue(Dimen.ZERO, GlueComponent.ONE_FI,
+        GlueComponent.ZERO);
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -95,8 +91,8 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -110,16 +106,12 @@ public class Hfi extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * This method acquires horizontal glue.
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
-     * @return the amount of skip
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public FixedGlue getGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
