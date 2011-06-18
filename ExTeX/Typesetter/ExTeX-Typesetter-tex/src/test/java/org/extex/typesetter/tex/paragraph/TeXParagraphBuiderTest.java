@@ -20,7 +20,6 @@
 package org.extex.typesetter.tex.paragraph;
 
 import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
-import org.junit.runner.JUnitCore;
 
 /**
  * This is the test class for the <logo>T<span style=
@@ -33,16 +32,6 @@ import org.junit.runner.JUnitCore;
 public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
 
     /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
-
-        (new JUnitCore()).run(TeXParagraphBuiderTest.class);
-    }
-
-    /**
      * This method creates a new paragraph builder to be tested.
      * 
      * @return the new paragraph builder
@@ -53,21 +42,6 @@ public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
     protected ParagraphBuilder getParagraphBuilder() {
 
         return new TeXParagraphBuilder();
-    }
-
-    /**
-     * This method provides an indicator whether or not the tracing should be
-     * written to the console. This method is meant to be overwritten by derived
-     * classes to change the default behavior.
-     * 
-     * @return <code>true</code> iff the tracing is requested
-     * 
-     * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#traceonline()
-     */
-    @Override
-    protected boolean traceonline() {
-
-        return true;
     }
 
 }
