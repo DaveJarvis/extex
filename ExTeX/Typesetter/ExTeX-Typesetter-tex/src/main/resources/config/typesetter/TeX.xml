@@ -17,10 +17,10 @@
   -  Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
   -
   -->
-<Typesetter class="org.extex.typesetter.impl.TypesetterImpl"
+<Typesetter class="org.extex.typesetter.tex.impl.TypesetterImpl"
             direction="lr">
 
-  <PageBuilder class="org.extex.typesetter.pageBuilder.impl.PageBuilderImpl"/>
+  <PageBuilder class="org.extex.typesetter.tex.pageBuilder.impl.PageBuilderImpl"/>
 
   <ParagraphBuilder class="org.extex.typesetter.tex.paragraph.TeXParagraphBuilder">
     <Hyphenator class="org.extex.typesetter.tex.paragraph.TeXParagraphBuilder"/>
