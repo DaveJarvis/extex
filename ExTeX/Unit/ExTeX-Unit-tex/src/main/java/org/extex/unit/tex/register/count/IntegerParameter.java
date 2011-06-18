@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,8 +33,8 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class provides an implementation for the count valued primitives like
- * <code>\day</code>. It sets the named count register to the value given,
- * and as a side effect all prefixes are zeroed.
+ * <code>\day</code>. It sets the named count register to the value given, and
+ * as a side effect all prefixes are zeroed.
  * 
  * <p>
  * Example
@@ -54,8 +54,7 @@ public class IntegerParameter extends CountPrimitive
             Configurable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -94,9 +93,9 @@ public class IntegerParameter extends CountPrimitive
      * 
      * @throws ConfigurationException in case that something went wrong
      * 
-     * @see org.extex.framework.configuration.Configurable#configure(
-     *      org.extex.framework.configuration.Configuration)
+     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
      */
+    @Override
     public void configure(Configuration config) throws ConfigurationException {
 
         String k = config.getAttribute("key");
@@ -115,8 +114,7 @@ public class IntegerParameter extends CountPrimitive
      * 
      * @return the key for the current register
      * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -127,14 +125,9 @@ public class IntegerParameter extends CountPrimitive
     }
 
     /**
-     * Initialize the Code with some value coming from a String.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source of information for the initialization
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.AbstractCount#init(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

@@ -26,33 +26,31 @@ import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.interpreter.type.box.Box;
 import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.Token;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\shipout</code>.
+ * This class provides an implementation for the primitive <code>\shipout</code>
+ * .
  * 
- * <doc name="shipout">
- * <h3>The Primitive <tt>\shipout</tt></h3>
+ * <doc name="shipout"> <h3>The Primitive <tt>\shipout</tt></h3>
  * <p>
- * The primitive <tt>\shipout</tt> takes a box and send the contents of the
- * box to the back-end. If the box is void then this primitives ignores it and
- * does not contact the back-end.
+ * The primitive <tt>\shipout</tt> takes a box and send the contents of the box
+ * to the back-end. If the box is void then this primitives ignores it and does
+ * not contact the back-end.
  * </p>
  * <p>
- * In addition the count register <tt>\deadcyles</tt> is reset to 0. This
- * count register is used to break out of infinite loops when no material is
- * shipped out in the output routine.
+ * In addition the count register <tt>\deadcyles</tt> is reset to 0. This count
+ * register is used to break out of infinite loops when no material is shipped
+ * out in the output routine.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;shipout&rang;
  *      &rarr; <tt>\shipout</tt> {@linkplain
- *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, Token)
+ *        org.extex.interpreter.TokenSource#getBox(Flags,Context,Typesetter, org.extex.scanner.type.token.Token)
  *        &lang;box&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -68,8 +66,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Shipout extends AbstractCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -86,8 +83,8 @@ public class Shipout extends AbstractCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

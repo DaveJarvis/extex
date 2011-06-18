@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -64,8 +64,7 @@ public class MuskipParameter extends AbstractAssignment
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -100,75 +99,76 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
+        String k = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
         Muskip muskip = (Muskip) source.parse(Muskip.class, //
             context, source, typesetter);
-        muskip.add(context.getMuskip(key));
-        context.setMuskip(key, muskip, prefix.clearGlobal());
+        muskip.add(context.getMuskip(k));
+        context.setMuskip(k, muskip, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
     public void assign(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
+        String k = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
         Muskip muskip = (Muskip) source.parse(Muskip.class, //
             context, source, typesetter);
-        context.setMuskip(key, muskip, prefix.clearGlobal());
+        context.setMuskip(k, muskip, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.MuskipConvertible#convertMuskip(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.MuskipConvertible#convertMuskip(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Muskip convertMuskip(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
-        return context.getMuskip(key);
+        String k = getKey(context, source, typesetter);
+        return context.getMuskip(k);
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
+        String k = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
         long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
 
-        Muskip ms = new Muskip(context.getMuskip(key));
+        Muskip ms = new Muskip(context.getMuskip(k));
         ms.multiply(1, value);
-        context.setMuskip(key, ms, prefix.clearGlobal());
+        context.setMuskip(k, ms, prefix.clearGlobal());
     }
 
     /**
@@ -195,37 +195,38 @@ public class MuskipParameter extends AbstractAssignment
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        String key = getKey(context, source, typesetter);
+        String k = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
         long value = source.parseInteger(context, source, null);
 
-        Muskip ms = new Muskip(context.getMuskip(key));
+        Muskip ms = new Muskip(context.getMuskip(k));
         ms.multiply(value, 1);
-        context.setMuskip(key, ms, prefix.clearGlobal());
+        context.setMuskip(k, ms, prefix.clearGlobal());
     }
 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {
 
-        String key = getKey(context, source, typesetter);
+        String k = getKey(context, source, typesetter);
         try {
             return context.getTokenFactory().toTokens(
-                context.getMuskip(key).toString());
+                context.getMuskip(k).toString());
         } catch (GeneralException e) {
             throw new NoHelpException(e);
         }

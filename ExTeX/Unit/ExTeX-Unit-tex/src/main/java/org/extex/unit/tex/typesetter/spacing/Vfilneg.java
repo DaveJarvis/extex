@@ -33,18 +33,17 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\vfilneg</code>.
+ * This class provides an implementation for the primitive <code>\vfilneg</code>
+ * .
  * 
- * <doc name="vfilneg">
- * <h3>The Primitive <tt>\vfilneg</tt></h3>
+ * <doc name="vfilneg"> <h3>The Primitive <tt>\vfilneg</tt></h3>
  * <p>
- * The primitive <tt>\vfill</tt> inserts vertical glue into the current list.
- * It switches to vertical mode if necessary. The amount of glue inserted has
- * the natural height of 0pt and a stretchability of -1fil.
+ * The primitive <tt>\vfill</tt> inserts vertical glue into the current list. It
+ * switches to vertical mode if necessary. The amount of glue inserted has the
+ * natural height of 0pt and a stretchability of -1fil.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vfilneg&rang;
@@ -64,17 +63,15 @@ import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 public class Vfilneg extends AbstractVerticalCode implements VerticalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>FIL</tt> contains the amount of -1 fil.
      */
-    private static final Glue FIL_NEG =
-            new Glue(Dimen.ZERO, GlueComponent.MINUS_ONE_FIL,
-                GlueComponent.ZERO);
+    private static final Glue FIL_NEG = new Glue(Dimen.ZERO,
+        GlueComponent.MINUS_ONE_FIL, GlueComponent.ZERO);
 
     /**
      * Creates a new object.
@@ -89,8 +86,8 @@ public class Vfilneg extends AbstractVerticalCode implements VerticalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -104,18 +101,14 @@ public class Vfilneg extends AbstractVerticalCode implements VerticalSkip {
     /**
      * This method acquires a vertical glue.
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
-     * @return the amount of vertical skip
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+            Typesetter typesetter) {
 
         return FIL_NEG;
     }

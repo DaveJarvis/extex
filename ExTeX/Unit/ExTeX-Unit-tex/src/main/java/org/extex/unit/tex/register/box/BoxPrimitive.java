@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -35,19 +35,17 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\box</code>.
  * 
- * <doc name="box">
- * <h3>The Primitive <tt>\box</tt></h3>
+ * <doc name="box"> <h3>The Primitive <tt>\box</tt></h3>
  * <p>
- * The primitive <tt>\box</tt> inserts the contents of the named box register
- * at the current position. In addition the box register is cleared.
+ * The primitive <tt>\box</tt> inserts the contents of the named box register at
+ * the current position. In addition the box register is cleared.
  * </p>
  * <p>
  * If the primitive is used on the right hand side of a box assignment then the
  * box is cleared and the former contents is used for the assignment.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;box&rang;
@@ -69,8 +67,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class BoxPrimitive extends AbstractCode implements Boxable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -87,8 +84,8 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -104,22 +101,13 @@ public class BoxPrimitive extends AbstractCode implements Boxable {
     }
 
     /**
-     * Getter for the content as Box.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * @param insert the token to insert either at the beginning of the box or
-     *        after the box has been gathered. If it is <code>null</code> then
-     *        nothing is inserted
-     * 
-     * @return an appropriate Box
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.box.Boxable#getBox(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.Boxable#getBox(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
-     *      Token)
+     *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public Box getBox(Context context, TokenSource source,
             Typesetter typesetter, Token insert)
             throws ConfigurationException,

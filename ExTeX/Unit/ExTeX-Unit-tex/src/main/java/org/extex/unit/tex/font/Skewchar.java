@@ -122,6 +122,7 @@ public class Skewchar extends AbstractAssignment
      * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -141,6 +142,7 @@ public class Skewchar extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -157,6 +159,7 @@ public class Skewchar extends AbstractAssignment
      * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
@@ -164,7 +167,7 @@ public class Skewchar extends AbstractAssignment
 
         Font font = source.getFont(context, getToken());
         UnicodeChar uc = font.getSkewChar();
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             uc == null ? "-1" : Integer.toString(uc.getCodePoint()));
     }
 

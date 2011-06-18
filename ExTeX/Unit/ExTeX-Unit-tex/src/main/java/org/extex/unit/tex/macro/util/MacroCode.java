@@ -289,9 +289,9 @@ public class MacroCode extends AbstractCode
     private MacroPattern pattern;
 
     /**
-     * The field <tt>TRACER</tt> contains the observer for the argument parsing.
+     * The field <tt>tracer</tt> contains the observer for the argument parsing.
      */
-    private transient final ArgumentMatchingObserver TRACER =
+    private final transient ArgumentMatchingObserver tracer =
             new ArgumentMatchingObserver() {
 
                 @Override
@@ -384,9 +384,9 @@ public class MacroCode extends AbstractCode
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
     @Override
-    public void enableLogging(Logger logger) {
+    public void enableLogging(Logger log) {
 
-        this.logger = logger;
+        this.logger = log;
     }
 
     /**
@@ -405,11 +405,13 @@ public class MacroCode extends AbstractCode
             args = NO_TOKENS;
         } else {
             Count tracingmaros = context.getCount("tracingmacros");
-            ArgumentMatchingObserver tracer =
+            ArgumentMatchingObserver observer =
                     (tracingmaros != null && tracingmaros.gt(Count.ZERO)
-                            ? TRACER
+                            ? tracer
                             : null);
-            args = pattern.match(context, source, typesetter, notLong, tracer);
+            args =
+                    pattern.match(context, source, typesetter, notLong,
+                        observer);
         }
         Tokens toks = new Tokens();
         int len = body.length();
@@ -492,11 +494,8 @@ public class MacroCode extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * 
-     * @return the description of the primitive as list of Tokens
      * @see org.extex.interpreter.type.Showable#show(org.extex.interpreter.context.Context)
      */
     @Override

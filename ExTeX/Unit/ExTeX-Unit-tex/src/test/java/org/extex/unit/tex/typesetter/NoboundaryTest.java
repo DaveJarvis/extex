@@ -50,16 +50,15 @@ public class NoboundaryTest extends ExTeXLauncher {
     }
 
     /**
-     * <testcase> ...
-     * </testcase>
-     *
+     * <testcase> ... </testcase>
+     * 
      * @throws Exception in case of an error
      */
     @Test
     @Ignore
     public void test1() throws Exception {
-        
-        assertSuccess("","");
+
+        assertSuccess("", "");
     }
 
     // TODO implement primitive specific test cases

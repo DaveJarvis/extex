@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -39,24 +39,23 @@ import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 
 /**
- * This class provides an implementation for the primitive <code>\mag</code>.
- * It sets the named count register to the value given, and as a side effect all
+ * This class provides an implementation for the primitive <code>\mag</code>. It
+ * sets the named count register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="mag">
- * <h3>The Primitive <tt>\mag</tt></h3>
+ * <doc name="mag"> <h3>The Primitive <tt>\mag</tt></h3>
  * <p>
- * The primitive <tt>\mag</tt> provides a means to set the magnification
- * factor for the current document. The primitive acts like a normal count
- * register. The magnification factor is given in multiples of 1000. This means
- * that the default value 1000 corresponds to an unmagnified output.
+ * The primitive <tt>\mag</tt> provides a means to set the magnification factor
+ * for the current document. The primitive acts like a normal count register.
+ * The magnification factor is given in multiples of 1000. This means that the
+ * default value 1000 corresponds to an unmagnified output.
  * </p>
  * <p>
  * The effect of the setting of the magnification factor is that all length
  * values are multiplied with the magnification factor (divided by 1000). An
- * exception are the <i>true</i> length values. This means a length of
- * 1&nbsp;pt at a magnification of 1200 is in effect 1.2&nbsp;pt long. Whereas a
- * length of 1&nbsp;true&nbsp;pt remains unaffected by the magnification.
+ * exception are the <i>true</i> length values. This means a length of 1&nbsp;pt
+ * at a magnification of 1200 is in effect 1.2&nbsp;pt long. Whereas a length of
+ * 1&nbsp;true&nbsp;pt remains unaffected by the magnification.
  * </p>
  * <p>
  * The magnification can only changed once at the beginning of a run.
@@ -66,8 +65,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * error.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;mag&rang;
@@ -107,8 +105,7 @@ public class Mag extends AbstractCount
             CountConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -123,18 +120,13 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -149,8 +141,8 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -166,10 +158,10 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -179,10 +171,11 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -191,8 +184,7 @@ public class Mag extends AbstractCount
         long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
 
         value = context.getMagnification() / value;
@@ -202,15 +194,16 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
         try {
-            source.push(context.getTokenFactory().toTokens( //
+            source.push(context.getTokenFactory().toTokens(
                 context.getMagnification()));
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
@@ -218,14 +211,9 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * Initialize the Code with some value coming from a String.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source of information for the initialization
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.AbstractCount#init(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -248,10 +236,11 @@ public class Mag extends AbstractCount
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -263,25 +252,18 @@ public class Mag extends AbstractCount
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
-            context.getMagnification());
+        return context.getTokenFactory().toTokens(context.getMagnification());
     }
 
 }

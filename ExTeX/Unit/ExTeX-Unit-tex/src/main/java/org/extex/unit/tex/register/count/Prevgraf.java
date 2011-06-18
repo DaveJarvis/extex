@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,8 +32,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\prevgraf</code>.
  * 
- * <doc name="prevgraf">
- * <h3>The Primitive <tt>\prevgraf</tt></h3>
+ * <doc name="prevgraf"> <h3>The Primitive <tt>\prevgraf</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
@@ -60,8 +59,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Prevgraf extends CountPrimitive {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -76,37 +74,10 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
-     * Return the key (the name of the primitive) for the numbered count
-     * register.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context to use
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the key for the current register
-     * 
-     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(
+     * @see org.extex.unit.tex.register.count.CountPrimitive#advance(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
-     */
-    @Override
-    protected String getKey(Context context, TokenSource source,
-            Typesetter typesetter) {
-
-        return getName();
-    }
-
-    /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
-     * 
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -129,8 +100,8 @@ public class Prevgraf extends CountPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.CountPrimitive#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -151,8 +122,8 @@ public class Prevgraf extends CountPrimitive {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.CountPrimitive#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -177,10 +148,30 @@ public class Prevgraf extends CountPrimitive {
     }
 
     /**
+     * Return the key (the name of the primitive) for the numbered count
+     * register.
+     * 
+     * @param context the interpreter context to use
+     * @param source the source for new tokens
+     * @param typesetter the typesetter
+     * 
+     * @return the key for the current register
+     * 
+     * @see org.extex.unit.tex.register.count.AbstractCount#getKey(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
+     */
+    @Override
+    protected String getKey(Context context, TokenSource source,
+            Typesetter typesetter) {
+
+        return getName();
+    }
+
+    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.unit.tex.register.count.CountPrimitive#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.register.count.CountPrimitive#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override

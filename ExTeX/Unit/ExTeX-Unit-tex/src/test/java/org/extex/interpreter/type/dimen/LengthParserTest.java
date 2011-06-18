@@ -307,8 +307,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testErrorMin4() throws Exception {
 
-        assertFailure("\\dimen0=min(4pt, 2pt, 3pt ",//
-            "Unexpected end of file");
+        assertFailure("\\dimen0=min(4pt, 2pt, 3pt ", "Unexpected end of file");
     }
 
     /**

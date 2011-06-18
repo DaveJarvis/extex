@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -37,8 +37,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 /**
  * This class provides an implementation for the primitive <code>\relax</code>.
  * 
- * <doc name="parshape">
- * <h3>The Primitive <tt>\parshape</tt></h3>
+ * <doc name="parshape"> <h3>The Primitive <tt>\parshape</tt></h3>
  * <p>
  * The primitive <tt>\parshape</tt> is a declaration of the shape of the
  * paragraph. With its help it is possible to control the left and right margin
@@ -62,8 +61,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  * that later declarations overrule earlier ones.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;parshape&rang;
@@ -77,7 +75,8 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
  *    \parshape 3 20pt \linewidth
  *                20pt \linewidth
  *                0pt \linewidth </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \parshape 0 </pre>
  * 
  * <h3><tt>\parshape</tt> as special integer</h3>
@@ -100,8 +99,7 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 public class Parshape extends AbstractCode implements CountConvertible, Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -118,10 +116,10 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -132,8 +130,8 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -155,25 +153,19 @@ public class Parshape extends AbstractCode implements CountConvertible, Theable 
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
         ParagraphShape parshape = context.getParshape();
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             parshape != null ? parshape.getSize() / 2 : 0);
     }
 

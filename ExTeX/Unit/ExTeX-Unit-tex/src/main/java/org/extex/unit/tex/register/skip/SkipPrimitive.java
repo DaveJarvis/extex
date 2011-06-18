@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -42,16 +42,14 @@ import org.extex.typesetter.exception.TypesetterException;
  * It sets the named skip register to the value given, and as a side effect all
  * prefixes are zeroed.
  * 
- * <doc name="skip">
- * <h3>The Primitive <tt>\skip</tt></h3>
+ * <doc name="skip"> <h3>The Primitive <tt>\skip</tt></h3>
  * <p>
  * The primitive <tt>\skip</tt> provides access to a skip register. In a skip
  * register some glue value can be stored. A glue value consists of a natural
  * length and optionally some stretchability and shrinkability components.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;skip&rang;
@@ -89,8 +87,7 @@ public class SkipPrimitive extends AbstractSkip
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -105,18 +102,13 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen.
-     * It performs the remaining tasks for the expansion.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.code.Advanceable#advance(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -130,8 +122,8 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -147,10 +139,10 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.GlueConvertible#convertGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Glue convertGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -161,10 +153,11 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Divideable#divide(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Divideable#divide(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -173,8 +166,7 @@ public class SkipPrimitive extends AbstractSkip
         long value = source.parseInteger(context, source, null);
 
         if (value == 0) {
-            throw new ArithmeticOverflowException(
-                toText(context));
+            throw new ArithmeticOverflowException(toText(context));
         }
 
         Glue g = new Glue(context.getGlue(key));
@@ -185,10 +177,11 @@ public class SkipPrimitive extends AbstractSkip
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.code.Multiplyable#multiply(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.code.Multiplyable#multiply(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -202,17 +195,12 @@ public class SkipPrimitive extends AbstractSkip
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

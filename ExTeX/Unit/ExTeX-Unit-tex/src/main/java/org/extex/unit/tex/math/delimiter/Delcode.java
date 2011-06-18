@@ -146,18 +146,13 @@ public class Delcode extends AbstractAssignment
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen. It
-     * performs the remaining tasks for the expansion.
-     * 
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -173,17 +168,8 @@ public class Delcode extends AbstractAssignment
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}. This
-     * method is preferable to <tt>execute()</tt> since the <tt>execute()</tt>
-     * method provided in this class takes care of <tt>\afterassignment</tt> and
-     * <tt>\globaldefs</tt> as well.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @throws ConfigurationException in case of an configuration error
      * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
@@ -242,6 +228,7 @@ public class Delcode extends AbstractAssignment
      * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -258,6 +245,7 @@ public class Delcode extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -282,6 +270,7 @@ public class Delcode extends AbstractAssignment
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -296,17 +285,12 @@ public class Delcode extends AbstractAssignment
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
      * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,

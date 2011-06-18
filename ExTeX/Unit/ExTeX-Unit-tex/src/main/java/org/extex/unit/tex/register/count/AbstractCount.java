@@ -84,16 +84,12 @@ public abstract class AbstractCount extends AbstractAssignment
     }
 
     /**
-     * Initialize the Code with some value coming from a String.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source of information for the initialization
-     * @param typesetter the typesetter
-     * 
-     * @see org.extex.interpreter.type.InitializableCode#init(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.InitializableCode#init(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void init(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

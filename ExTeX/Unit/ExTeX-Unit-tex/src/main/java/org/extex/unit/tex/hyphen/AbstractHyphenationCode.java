@@ -20,13 +20,11 @@
 package org.extex.unit.tex.hyphen;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.type.AbstractCode;
 import org.extex.language.Language;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.scanner.type.tokens.Tokens;
-import org.extex.typesetter.Typesetter;
 
 /**
  * This is the abstract base class for all hyphenation related primitives. It
@@ -63,7 +61,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\lang</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -89,7 +87,7 @@ import org.extex.typesetter.Typesetter;
  *      &rarr; <tt>\language</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,TokenSource,Typesetter)
+ *        org.extex.base.parser.ConstantCountParser#parseNumber(Context,org.extex.interpreter.TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;number&rang;}  </pre>
  * 
  * <h4>Examples</h4>

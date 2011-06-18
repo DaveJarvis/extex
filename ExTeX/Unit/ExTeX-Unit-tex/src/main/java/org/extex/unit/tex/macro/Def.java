@@ -157,9 +157,9 @@ public class Def extends AbstractAssignment implements LogEnabled {
      * @see org.extex.framework.logger.LogEnabled#enableLogging(
      *      java.util.logging.Logger)
      */
-    public void enableLogging(Logger logger) {
+    public void enableLogging(Logger log) {
 
-        this.logger = logger;
+        this.logger = log;
     }
 
 }

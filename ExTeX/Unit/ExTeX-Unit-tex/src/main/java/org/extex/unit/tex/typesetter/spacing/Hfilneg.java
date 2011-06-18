@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -33,18 +33,16 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 
 /**
- * This class provides an implementation for the primitive <code>\hfilneg</code>.
+ * This class provides an implementation for the primitive <code>\hfilneg</code>
+ * .
  * 
- * <doc name="hfilneg">
- * <h3>The Primitive <tt>\hfilneg</tt></h3>
+ * <doc name="hfilneg"> <h3>The Primitive <tt>\hfilneg</tt></h3>
  * <p>
- * The primitive <tt>\hfilneg</tt> inserts glue at the current position which
- * is stretchable horizontally wit the value of -1fil. The order of the glue is
- * 1.
+ * The primitive <tt>\hfilneg</tt> inserts glue at the current position which is
+ * stretchable horizontally wit the value of -1fil. The order of the glue is 1.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hfilneg&rang;
@@ -64,8 +62,7 @@ import org.extex.unit.tex.typesetter.AbstractHorizontalCode;
 public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -73,9 +70,8 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
      * The field <tt>FIL_NEG</tt> contains the glue to insert for this
      * primitive.
      */
-    private static final Glue FIL_NEG =
-            new Glue(Dimen.ZERO, GlueComponent.MINUS_ONE_FIL,
-                GlueComponent.ZERO);
+    private static final Glue FIL_NEG = new Glue(Dimen.ZERO,
+        GlueComponent.MINUS_ONE_FIL, GlueComponent.ZERO);
 
     /**
      * Creates a new object.
@@ -90,8 +86,8 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -103,20 +99,14 @@ public class Hfilneg extends AbstractHorizontalCode implements HorizontalSkip {
     }
 
     /**
-     * This method acquires a vertical glue.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
-     * 
-     * @return the amount of vertical skip
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.typesetter.spacing.HorizontalSkip#getGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public FixedGlue getGlue(Context context, TokenSource source,
-            Typesetter typesetter) throws HelpingException, TypesetterException {
+            Typesetter typesetter) {
 
         return FIL_NEG;
     }

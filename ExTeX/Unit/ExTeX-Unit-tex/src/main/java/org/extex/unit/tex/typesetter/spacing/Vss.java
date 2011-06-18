@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -32,14 +32,12 @@ import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 /**
  * This class provides an implementation for the primitive <code>\vss</code>.
  * 
- * <doc name="vss">
- * <h3>The Primitive <tt>\vss</tt></h3>
+ * <doc name="vss"> <h3>The Primitive <tt>\vss</tt></h3>
  * <p>
  * TODO missing documentation
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;vss&rang;
@@ -59,8 +57,7 @@ import org.extex.unit.tex.typesetter.AbstractVerticalCode;
 public class Vss extends AbstractVerticalCode implements VerticalSkip {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -77,8 +74,8 @@ public class Vss extends AbstractVerticalCode implements VerticalSkip {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -92,16 +89,12 @@ public class Vss extends AbstractVerticalCode implements VerticalSkip {
     /**
      * This method acquires a vertical glue.
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
-     * @return the amount of vertical skip
-     * 
-     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.unit.tex.typesetter.spacing.VerticalSkip#getGlue(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public FixedGlue getGlue(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

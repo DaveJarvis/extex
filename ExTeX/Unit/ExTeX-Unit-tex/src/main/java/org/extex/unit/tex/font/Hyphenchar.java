@@ -180,7 +180,7 @@ public class Hyphenchar extends AbstractAssignment
 
         Font font = source.getFont(context, getToken());
         UnicodeChar uc = font.getHyphenChar();
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             uc == null ? "-1" : Integer.toString(uc.getCodePoint()));
     }
 

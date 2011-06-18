@@ -88,19 +88,19 @@ public class MacroPattern extends Tokens {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(
-         *      org.extex.scanner.type.tokens.Tokens[],
+         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
+        @Override
         public void match(Tokens[] args, Context context, TokenSource source,
-                Typesetter typesetter, boolean notLong, CodeToken cs)
+                Typesetter typesetter, boolean notLong, CodeToken token)
                 throws HelpingException,
                     TypesetterException {
 
             args[no] = MacroPattern.getTokenOrBlock(context, source, //
-                typesetter, cs);
+                typesetter, token);
         }
 
         /**
@@ -154,12 +154,12 @@ public class MacroPattern extends Tokens {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(
-         *      org.extex.scanner.type.tokens.Tokens[],
+         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
+        @Override
         public void match(Tokens[] args, Context context, TokenSource source,
                 Typesetter typesetter, boolean notLong, CodeToken cs)
                 throws HelpingException {
@@ -209,12 +209,12 @@ public class MacroPattern extends Tokens {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(
-         *      org.extex.scanner.type.tokens.Tokens[],
+         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
+        @Override
         public void match(Tokens[] args, Context context, TokenSource source,
                 Typesetter typesetter, boolean notLong, CodeToken cs)
                 throws HelpingException {
@@ -273,12 +273,12 @@ public class MacroPattern extends Tokens {
         /**
          * {@inheritDoc}
          * 
-         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(
-         *      org.extex.scanner.type.tokens.Tokens[],
+         * @see org.extex.unit.tex.macro.util.MacroPattern.Matcher#match(org.extex.scanner.type.tokens.Tokens[],
          *      org.extex.interpreter.context.Context,
          *      org.extex.interpreter.TokenSource,
          *      org.extex.typesetter.Typesetter, boolean, CodeToken)
          */
+        @Override
         public void match(Tokens[] args, Context context, TokenSource source,
                 Typesetter typesetter, boolean notLong, CodeToken cs)
                 throws HelpingException,
@@ -323,12 +323,6 @@ public class MacroPattern extends Tokens {
     private interface Matcher extends Serializable {
 
         /**
-         * The field <tt>serialVersionUID</tt> contains the version number for
-         * serialization.
-         */
-        static final long serialVersionUID = 2007L;
-
-        /**
          * Perform a match and digest the required tokens. As a side effect the
          * argument array can be filled with recognized argument values.
          * 
@@ -350,20 +344,19 @@ public class MacroPattern extends Tokens {
     }
 
     /**
-     * The constant <tt>EMPTY</tt> contains the empty macro pattern. This can
-     * be used in a poor man's factory.
+     * The constant <tt>EMPTY</tt> contains the empty macro pattern. This can be
+     * used in a poor man's factory.
      */
     public static final MacroPattern EMPTY = new MacroPattern(Tokens.EMPTY);
 
     /**
-     * The constant <tt>NOT_COMPILED</tt> contains the flag for the compiler
-     * to leave out the compiler.
+     * The constant <tt>NOT_COMPILED</tt> contains the flag for the compiler to
+     * leave out the compiler.
      */
     private static final boolean NOT_COMPILED = true;
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -428,8 +421,8 @@ public class MacroPattern extends Tokens {
             if (afterHash) {
                 if (t instanceof OtherToken) {
                     if (t.getChar().getCodePoint() - '1' != no) {
-                        throw new NonConsequtiveParamsException(cs
-                            .toText(context.escapechar()));
+                        throw new NonConsequtiveParamsException(
+                            cs.toText(context.escapechar()));
                     }
                     no++;
                 } else if (!(t instanceof MacroParamToken)) {
@@ -548,18 +541,18 @@ public class MacroPattern extends Tokens {
                     ml.add(new GroupMatcher(arity - 1));
                 } else {
                     if (!(t instanceof OtherToken)) {
-                        throw new NonConsequtiveParamsException(cs
-                            .toText(context.escapechar()));
+                        throw new NonConsequtiveParamsException(
+                            cs.toText(context.escapechar()));
                     }
                     UnicodeChar uc = t.getChar();
                     if (uc == null) {
-                        throw new NonConsequtiveParamsException(cs
-                            .toText(context.escapechar()));
+                        throw new NonConsequtiveParamsException(
+                            cs.toText(context.escapechar()));
                     }
                     int no = uc.getCodePoint() - '1';
                     if (no < 0 || no >= 9) {
-                        throw new NonConsequtiveParamsException(cs
-                            .toText(context.escapechar()));
+                        throw new NonConsequtiveParamsException(
+                            cs.toText(context.escapechar()));
                     }
 
                     if (i + 1 < length) {

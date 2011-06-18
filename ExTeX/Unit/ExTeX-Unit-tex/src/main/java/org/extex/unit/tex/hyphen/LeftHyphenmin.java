@@ -105,18 +105,13 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * This method is called when the macro <tt>\advance</tt> has been seen. It
-     * performs the remaining tasks for the expansion.
-     * 
-     * @param prefix the prefix for the command
-     * @param context the processor context
-     * @param source the token source to parse
-     * @param typesetter the typesetter
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.code.Advanceable#advance(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void advance(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -159,6 +154,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
      * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -175,6 +171,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
      * @see org.extex.interpreter.parser.DimenConvertible#convertDimen(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -192,6 +189,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void divide(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -277,6 +275,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
      *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void multiply(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -308,17 +307,12 @@ public class LeftHyphenmin extends AbstractHyphenationCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
      * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, Typesetter)
+     *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
@@ -326,7 +320,7 @@ public class LeftHyphenmin extends AbstractHyphenationCode
 
         Language language = getHyphenationTable(context);
         try {
-            return context.getTokenFactory().toTokens( //
+            return context.getTokenFactory().toTokens(
                 language.getLeftHyphenMin());
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {

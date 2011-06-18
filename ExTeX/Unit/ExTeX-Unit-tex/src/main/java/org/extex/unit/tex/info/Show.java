@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -44,25 +44,23 @@ import org.extex.typesetter.exception.TypesetterException;
 /**
  * This class provides an implementation for the primitive <code>\show</code>.
  * 
- * <doc name="show">
- * <h3>The Primitive <tt>\show</tt></h3>
+ * <doc name="show"> <h3>The Primitive <tt>\show</tt></h3>
  * <p>
  * The primitive <tt>\show</tt> consumes the following token and prints the
  * definition of the token to the output stream an into the log file.
  * </p>
  * <ul>
  * <li>If the token is a control sequence or active character and it is
- * undefined then it is reported as <i>undefined</i>. </li>
+ * undefined then it is reported as <i>undefined</i>.</li>
  * <li>If the token is a control sequence or active character and it is a
  * primitive then it is reported with the original name of the primitive. This
- * applies even if is redefined with <tt>\let</tt> to another name. </li>
+ * applies even if is redefined with <tt>\let</tt> to another name.</li>
  * <li>If the token is a control sequence or active character and it is a macro
- * then it is reported with the pattern and expansion text. </li>
+ * then it is reported with the pattern and expansion text.</li>
  * <li>Otherwise the long descriptive form of the token is reported.</li>
  * </ul>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;show&rang;
@@ -70,27 +68,30 @@ import org.extex.typesetter.exception.TypesetterException;
  *           org.extex.interpreter.TokenSource#getToken(Context)
  *           &lang;token&rang;} </pre>
  * 
- * <h4>Examples</h4>
- * Examples:
+ * <h4>Examples</h4> Examples:
  * 
  * <pre class="TeXSample">
  *    \show\abc
  *    > \abc=undefined
  *  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \show \def
  *    > \def=\def.
  *  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \let\xxx=\def\show \xxx
  *    > \xxx=\def.
  *  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \def\m{abc}\show \m
  *    > \m=macro:
  *    ->abc.
  *  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \show a
  *    > the letter a.
  *  </pre>
@@ -103,8 +104,7 @@ import org.extex.typesetter.exception.TypesetterException;
 public class Show extends AbstractCode implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -128,9 +128,9 @@ public class Show extends AbstractCode implements LogEnabled {
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;
@@ -139,8 +139,8 @@ public class Show extends AbstractCode implements LogEnabled {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -188,7 +188,7 @@ public class Show extends AbstractCode implements LogEnabled {
             Code code = context.getCode((CodeToken) t);
             if (code == null) {
 
-                toks.add(context.getTokenFactory().toTokens( //
+                toks.add(context.getTokenFactory().toTokens(
                     getLocalizer().format("TTP.Undefined")));
 
             } else if ((code instanceof Showable)) {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2003-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2003-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -21,7 +21,6 @@ package org.extex.unit.tex.typesetter.box;
 
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -36,16 +35,14 @@ import org.extex.typesetter.type.node.RuleNode;
 /**
  * This class provides an implementation for the primitive <code>\hrule</code>.
  * 
- * <doc name="hrule">
- * <h3>The Primitive <tt>\hrule</tt></h3>
+ * <doc name="hrule"> <h3>The Primitive <tt>\hrule</tt></h3>
  * <p>
  * This primitive produces a horizontal rule. This is a rectangular area of
  * specified dimensions. If not overwritten the width and depth are 0pt and the
  * height is 0.4&nbsp;pt (26214&nbsp;sp).
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;hrule&rang;
@@ -76,9 +73,11 @@ import org.extex.typesetter.type.node.RuleNode;
  * 
  * <pre class="TeXSample">
  *    \hrule  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \hrule width 2pt  </pre>
- *  <pre class="TeXSample">
+ * 
+ * <pre class="TeXSample">
  *    \hrule width 2pt depth 3mm height \dimen4  </pre>
  * 
  * </doc>
@@ -90,8 +89,7 @@ import org.extex.typesetter.type.node.RuleNode;
 public class Hrule extends AbstractCode implements RuleConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -125,18 +123,12 @@ public class Hrule extends AbstractCode implements RuleConvertible {
     }
 
     /**
-     * Getter for the content as Rule.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use
-     * 
-     * @return an appropriate Box
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.box.RuleConvertible#getRule(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.box.RuleConvertible#getRule(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public RuleNode getRule(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 

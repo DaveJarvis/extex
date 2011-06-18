@@ -90,11 +90,6 @@ import org.extex.typesetter.Typesetter;
 public class Patterns extends AbstractHyphenationCode {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
-
-    /**
      * This class provides the token visitor which processes all tokens in the
      * argument of the <tt>\pattern</tt> macro. The return value of the visitor
      * methods indicates whether or not a continuation of the processing is
@@ -164,6 +159,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitActive(org.extex.scanner.type.token.ActiveCharacterToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitActive(ActiveCharacterToken token, Object arg)
                 throws InterpreterException {
 
@@ -184,6 +180,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitCr(CrToken token, Object arg)
                 throws InterpreterException {
 
@@ -207,6 +204,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitEscape(org.extex.scanner.type.token.ControlSequenceToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitEscape(ControlSequenceToken token, Object arg)
                 throws InterpreterException {
 
@@ -227,6 +225,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitLeftBrace(org.extex.scanner.type.token.LeftBraceToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitLeftBrace(LeftBraceToken token, Object arg)
                 throws InterpreterException {
 
@@ -248,6 +247,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitLetter(org.extex.scanner.type.token.LetterToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitLetter(LetterToken token, Object arg)
                 throws InterpreterException,
                     CatcodeException {
@@ -287,6 +287,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitMacroParam(org.extex.scanner.type.token.MacroParamToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitMacroParam(MacroParamToken token, Object arg)
                 throws InterpreterException {
 
@@ -310,6 +311,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitMathShift(org.extex.scanner.type.token.MathShiftToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitMathShift(MathShiftToken token, Object arg)
                 throws InterpreterException {
 
@@ -331,6 +333,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitOther(org.extex.scanner.type.token.OtherToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitOther(OtherToken token, Object arg)
                 throws InterpreterException,
                     CatcodeException {
@@ -371,9 +374,12 @@ public class Patterns extends AbstractHyphenationCode {
          * This method returns a non-null value to indicate the end of
          * processing.
          * 
+         * {@inheritDoc}
+         * 
          * @see org.extex.scanner.type.token.TokenVisitor#visitRightBrace(org.extex.scanner.type.token.RightBraceToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitRightBrace(RightBraceToken token, Object arg)
                 throws HyphenationException {
 
@@ -398,6 +404,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSpace(org.extex.scanner.type.token.SpaceToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitSpace(SpaceToken token, Object arg)
                 throws HyphenationException {
 
@@ -425,6 +432,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSubMark(org.extex.scanner.type.token.SubMarkToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitSubMark(SubMarkToken token, Object arg)
                 throws InterpreterException {
 
@@ -448,6 +456,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitSupMark(org.extex.scanner.type.token.SupMarkToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitSupMark(SupMarkToken token, Object arg)
                 throws InterpreterException {
 
@@ -471,6 +480,7 @@ public class Patterns extends AbstractHyphenationCode {
          * @see org.extex.scanner.type.token.TokenVisitor#visitTabMark(org.extex.scanner.type.token.TabMarkToken,
          *      java.lang.Object)
          */
+        @Override
         public Boolean visitTabMark(TabMarkToken token, Object arg)
                 throws InterpreterException {
 
@@ -478,6 +488,11 @@ public class Patterns extends AbstractHyphenationCode {
                 "TTP.NonLetter", token.toString()));
         }
     }
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * Creates a new object.
