@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -20,7 +20,6 @@
 package org.extex.unit.etex.conditional.analyze;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
@@ -36,12 +35,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\currentiflevel</code>.
  * 
- * <doc name="currentiflevel">
- * <h3>The Primitive <tt>\currentiflevel</tt></h3>
+ * <doc name="currentiflevel"> <h3>The Primitive <tt>\currentiflevel</tt></h3>
  * <p>
  * The primitive <tt>\currentiflevel</tt> is an internal integer quantity. It
- * reflects the current level of open conditionals. Whenever an <tt>\if</tt>
- * is opened then this quantity is incremented by one. If the <tt>\if</tt> is
+ * reflects the current level of open conditionals. Whenever an <tt>\if</tt> is
+ * opened then this quantity is incremented by one. If the <tt>\if</tt> is
  * closed it is decremented. Initially the quantity is zero.
  * </p>
  * 
@@ -71,8 +69,7 @@ public class Currentiflevel extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -89,10 +86,10 @@ public class Currentiflevel extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -100,25 +97,18 @@ public class Currentiflevel extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 

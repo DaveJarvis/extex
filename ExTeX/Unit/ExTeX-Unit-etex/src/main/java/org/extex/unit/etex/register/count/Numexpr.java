@@ -22,7 +22,6 @@ package org.extex.unit.etex.register.count;
 import org.extex.core.exception.helping.ArithmeticOverflowException;
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.parser.CountConvertible;
@@ -117,11 +116,6 @@ import org.extex.unit.base.Relax;
 public class Numexpr extends AbstractCode implements CountConvertible, Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
-     */
-    protected static final long serialVersionUID = 2007L;
-
-    /**
      * This interface describes a binary operation on two longs.
      */
     private interface BinOp {
@@ -138,9 +132,9 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * This operation ignores the first argument and returns the second one.
+     * This operation subtracts the second argument from the first one.
      */
-    private static final class Second implements BinOp {
+    private static final class Minus implements BinOp {
 
         /**
          * {@inheritDoc}
@@ -148,9 +142,10 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
          *      long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
-            return arg2;
+            return arg1 - arg2;
         }
     }
 
@@ -165,6 +160,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
          *      long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
             return arg1 + arg2;
@@ -172,9 +168,9 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * This operation subtracts the second argument from the first one.
+     * This operation ignores the first argument and returns the second one.
      */
-    private static final class Minus implements BinOp {
+    private static final class Second implements BinOp {
 
         /**
          * {@inheritDoc}
@@ -182,11 +178,17 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
          * @see org.extex.unit.etex.register.count.Numexpr.BinOp#apply(long,
          *      long)
          */
+        @Override
         public long apply(long arg1, long arg2) {
 
-            return arg1 - arg2;
+            return arg2;
         }
     }
+
+    /**
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
+     */
+    protected static final long serialVersionUID = 2007L;
 
     /**
      * The field <tt>SECOND</tt> contains the operation to select the second
@@ -220,6 +222,7 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
      * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -324,24 +327,18 @@ public class Numexpr extends AbstractCode implements CountConvertible, Theable {
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
      * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 

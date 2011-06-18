@@ -44,8 +44,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\scantokens</code>.
  * 
- * <doc name="scantokens">
- * <h3>The Primitive <tt>\scantokens</tt></h3>
+ * <doc name="scantokens"> <h3>The Primitive <tt>\scantokens</tt></h3>
  * <p>
  * The primitive <tt>\scantokens</tt> takes an unexpanded list of tokens and
  * uses them as a new source for an input stream. For this purpose the tokens
@@ -53,12 +52,11 @@ import org.extex.typesetter.exception.TypesetterException;
  * and read back in.
  * </p>
  * <p>
- * The tokens from the tokens register <tt>\everyeof</tt> are inserted when
- * the stream has no more tokens to read.
+ * The tokens from the tokens register <tt>\everyeof</tt> are inserted when the
+ * stream has no more tokens to read.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;scantokens&rang;
@@ -104,12 +102,11 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * Close this stream if it is a file stream.
-         * 
-         * @return <code>true</code> if the closing was successful
+         * {@inheritDoc}
          * 
          * @see org.extex.scanner.api.TokenStream#closeFileStream()
          */
+        @Override
         public boolean closeFileStream() {
 
             stream.closeFileStream();
@@ -117,22 +114,12 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
-         * Get the next token from the token stream. If tokens are on the
-         * push-back stack then those are delivered otherwise new tokens might
-         * be extracted utilizing the token factory and the tokenizer.
+         * {@inheritDoc}
          * 
-         * @param factory the token factory
-         * @param tokenizer the tokenizer
-         * 
-         * @return the next Token or <code>null</code> if no more tokens are
-         *         available
-         * 
-         * @throws ScannerException in case of an error
-         * 
-         * @see org.extex.scanner.api.TokenStream#get(
-         *      org.extex.scanner.type.token.TokenFactory,
+         * @see org.extex.scanner.api.TokenStream#get(org.extex.scanner.type.token.TokenFactory,
          *      org.extex.scanner.api.Tokenizer)
          */
+        @Override
         public Token get(TokenFactory factory, Tokenizer tokenizer)
                 throws ScannerException {
 
@@ -140,41 +127,55 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.scanner.api.TokenStream#getLocator()
          */
+        @Override
         public Locator getLocator() {
 
             return stream.getLocator();
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.scanner.api.TokenStream#isEof()
          */
+        @Override
         public boolean isEof() throws ScannerException {
 
             return stream.isEof();
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.scanner.api.TokenStream#isEol()
          */
+        @Override
         public boolean isEol() throws ScannerException {
 
             return stream.isEol();
         }
 
         /**
+         * {@inheritDoc}
+         * 
          * @see org.extex.scanner.api.TokenStream#isFileStream()
          */
+        @Override
         public boolean isFileStream() {
 
             return true;
         }
 
         /**
-         * @see org.extex.scanner.api.TokenStream#put(
-         *      org.extex.scanner.type.token.Token)
+         * {@inheritDoc}
+         * 
+         * @see org.extex.scanner.api.TokenStream#put(org.extex.scanner.type.token.Token)
          */
+        @Override
         public void put(Token token) {
 
             stream.put(token);
@@ -200,8 +201,8 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -222,10 +223,11 @@ public class Scantokens extends AbstractCode implements ExpandableCode {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter)
             throws ConfigurationException,

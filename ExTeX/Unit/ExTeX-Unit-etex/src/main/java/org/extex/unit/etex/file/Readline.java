@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2004-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2004-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -45,8 +45,7 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  * This class provides an implementation for the primitive
  * <code>\readline</code>.
  * 
- * <doc name="readline">
- * <h3>The Primitive <tt>\readline</tt></h3>
+ * <doc name="readline"> <h3>The Primitive <tt>\readline</tt></h3>
  * <p>
  * The primitive <tt>\readline</tt> read characters from an input stream until
  * the end of line is encountered. The characters are translated to tokens with
@@ -56,8 +55,7 @@ import org.extex.unit.tex.macro.util.MacroPattern;
  * resulting token list is bound to the control sequence given.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;readline&rang;
@@ -87,8 +85,7 @@ import org.extex.unit.tex.macro.util.MacroPattern;
 public class Readline extends AbstractAssignment implements LogEnabled {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -105,9 +102,9 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          * 
          * @return the category code of a character
          * 
-         * @see org.extex.scanner.api.Tokenizer#getCatcode(
-         *      org.extex.core.UnicodeChar)
+         * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
          */
+        @Override
         public Catcode getCatcode(UnicodeChar c) {
 
             return (c.getCodePoint() == ' ' ? Catcode.SPACE : Catcode.OTHER);
@@ -120,6 +117,7 @@ public class Readline extends AbstractAssignment implements LogEnabled {
          * 
          * @see org.extex.scanner.api.Tokenizer#getNamespace()
          */
+        @Override
         public String getNamespace() {
 
             return Namespace.DEFAULT_NAMESPACE;
@@ -143,18 +141,10 @@ public class Readline extends AbstractAssignment implements LogEnabled {
     }
 
     /**
-     * The method <tt>assign</tt> is the core of the functionality of
-     * {@link #execute(Flags, Context, TokenSource, Typesetter) execute()}.
-     * This method is preferable to <tt>execute()</tt> since the
-     * <tt>execute()</tt> method provided in this class takes care of
-     * <tt>\afterassignment</tt> and <tt>\globaldefs</tt> as well.
+     * {@inheritDoc}
      * 
-     * @param prefix the prefix controlling the execution
-     * @param context the interpreter context
-     * @param source the token source
-     * @param typesetter the typesetter
-     * @see org.extex.interpreter.type.AbstractAssignment#assign(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractAssignment#assign(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -214,9 +204,9 @@ public class Readline extends AbstractAssignment implements LogEnabled {
      * 
      * @param log the logger to use
      * 
-     * @see org.extex.framework.logger.LogEnabled#enableLogging(
-     *      java.util.logging.Logger)
+     * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;

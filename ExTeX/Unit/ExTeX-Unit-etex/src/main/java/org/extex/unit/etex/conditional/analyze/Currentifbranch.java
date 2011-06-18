@@ -20,7 +20,6 @@
 package org.extex.unit.etex.conditional.analyze;
 
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Conditional;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -37,23 +36,21 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\currentifbranch</code>.
  * 
- * <doc name="currentifbranch">
- * <h3>The Primitive <tt>\currentifbranch</tt></h3>
+ * <doc name="currentifbranch"> <h3>The Primitive <tt>\currentifbranch</tt></h3>
  * <p>
- * The primitive <tt>\currentifbranch</tt> is an integer quantity which
- * provides the information in which branch of the enclosing conditional. The
- * value is determined by the following rules:
+ * The primitive <tt>\currentifbranch</tt> is an integer quantity which provides
+ * the information in which branch of the enclosing conditional. The value is
+ * determined by the following rules:
  * </p>
  * <ul>
- * <li> If the then branch of the enclosing is active then the value is
- * <tt>1</tt>. </li>
- * <li> If the else branch of the enclosing is active then the value is
- * <tt>-1</tt>. </li>
- * <li> If the enclosing conditional is <tt>\ifcase</tt> then the value is the
+ * <li>If the then branch of the enclosing is active then the value is
+ * <tt>1</tt>.</li>
+ * <li>If the else branch of the enclosing is active then the value is
+ * <tt>-1</tt>.</li>
+ * <li>If the enclosing conditional is <tt>\ifcase</tt> then the value is the
  * number selecting the current case for normal cases and <tt>-1</tt> for the
- * else case. </li>
- * <li> If there is no enclosing conditional then the value is <tt>0</tt>.
- * </li>
+ * else case.</li>
+ * <li>If there is no enclosing conditional then the value is <tt>0</tt>.</li>
  * </ul>
  * <p>
  * The primitive <tt>\currentifbranch</tt> is a read-only quantity. an attempt
@@ -85,8 +82,7 @@ public class Currentifbranch extends AbstractCode
             Theable {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -103,10 +99,10 @@ public class Currentifbranch extends AbstractCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -115,25 +111,18 @@ public class Currentifbranch extends AbstractCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @throws CatcodeException in case of an error in token creation
-     * @throws ConfigurationException in case of an configuration error
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws CatcodeException,
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 
