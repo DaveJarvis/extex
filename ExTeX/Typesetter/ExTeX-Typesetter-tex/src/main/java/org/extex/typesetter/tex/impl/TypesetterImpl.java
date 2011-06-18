@@ -31,7 +31,6 @@ import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.ImpossibleException;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
@@ -175,7 +174,8 @@ public class TypesetterImpl extends ListMakerFactory
      * @param node the node to add
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
@@ -207,7 +207,8 @@ public class TypesetterImpl extends ListMakerFactory
      * @param options the options to use
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
@@ -228,7 +229,8 @@ public class TypesetterImpl extends ListMakerFactory
      *        be used.
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
      *      FixedCount)
@@ -299,7 +301,8 @@ public class TypesetterImpl extends ListMakerFactory
      * @return the node list enclosed in this instance
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#complete(org.extex.typesetter.TypesetterOptions)
      */
@@ -349,7 +352,8 @@ public class TypesetterImpl extends ListMakerFactory
      * End the current paragraph.
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of an configuration problem
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration problem
      * 
      * @see org.extex.typesetter.ListManager#endParagraph()
      */
@@ -398,7 +402,8 @@ public class TypesetterImpl extends ListMakerFactory
      * any material still left unprocessed.
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of an configuration problem
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration problem
      * 
      * @see org.extex.typesetter.Typesetter#finish()
      */
@@ -607,7 +612,8 @@ public class TypesetterImpl extends ListMakerFactory
      * Emit a new paragraph. This might be a noop under certain circumstances.
      * 
      * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of a configuration error
      * 
      * @see org.extex.typesetter.ListMaker#par()
      */
@@ -847,6 +853,8 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long, long)
      */
     @Override
@@ -926,6 +934,8 @@ public class TypesetterImpl extends ListMakerFactory
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

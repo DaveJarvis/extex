@@ -30,7 +30,6 @@ import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.ListManager;
 import org.extex.typesetter.Mode;
-import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.type.NodeList;
@@ -42,23 +41,22 @@ import org.extex.typesetter.type.node.HorizontalListNode;
 /**
  * This is the list maker for the display math formulae.
  * 
- * <doc name="everydisplayend" type="register">
- * <h3>The Tokens Parameter <tt>\everydisplayend</tt></h3>
+ * <doc name="everydisplayend" type="register"> <h3>The Tokens Parameter
+ * <tt>\everydisplayend</tt></h3>
  * <p>
  * The tokens parameter <tt>\everydisplayend</tt> contains a list of tokens
  * which is inserted at the end of display math. Those tokens take effect just
  * before the math mode is ended but after any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everydisplayend&rang;
  *      &rarr; <tt>\everydisplayend</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -68,23 +66,22 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * 
  * </doc>
  * 
- * <doc name="everydisplay" type="register">
- * <h3>The Tokens Parameter <tt>\everydisplay</tt></h3>
+ * <doc name="everydisplay" type="register"> <h3>The Tokens Parameter
+ * <tt>\everydisplay</tt></h3>
  * <p>
  * The tokens parameter <tt>\everydisplay</tt> contains a list of tokens which
  * is inserted at the beginning of display math. Those tokens take effect after
  * the math mode has been entered but before any tokens given explicitly.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;everydisplay&rang;
  *      &rarr; <tt>\everydisplay</tt> {@linkplain
  *        org.extex.interpreter.TokenSource#getOptionalEquals(Context)
  *        &lang;equals&rang;} {@linkplain
- *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,Typesetter)
+ *        org.extex.interpreter.TokenSource#getTokens(Context,TokenSource,org.extex.typesetter.Typesetter)
  *        &lang;tokens&rang;}  </pre>
  * 
  * <h4>Examples</h4>
@@ -180,8 +177,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.math.MathListMaker#mathShift(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.math.MathListMaker#mathShift(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
@@ -216,6 +212,7 @@ public class DisplaymathListMaker extends MathListMaker implements EqConsumer {
      * 
      * @see org.extex.typesetter.listMaker.math.EqConsumer#switchToNumber(boolean)
      */
+    @Override
     public void switchToNumber(boolean left) throws CantUseInException {
 
         if (eqno != null) {

@@ -89,6 +89,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getLocator()
      */
+    @Override
     public Locator getLocator() {
 
         return locator;
@@ -112,6 +113,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getMode()
      */
+    @Override
     public abstract Mode getMode();
 
     /**
@@ -133,14 +135,18 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#getPrevDepth()
      */
+    @Override
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
         throw new TypesetterUnsupportedException();
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.ListMaker#getSpacefactor()
      */
+    @Override
     public long getSpacefactor() throws TypesetterUnsupportedException {
 
         throw new TypesetterUnsupportedException();
@@ -151,6 +157,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#leftBrace()
      */
+    @Override
     public void leftBrace() {
 
         // noop
@@ -159,11 +166,11 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void mathShift(Context context, TokenSource source, Token t)
             throws TypesetterException,
                 ConfigurationException,
@@ -195,6 +202,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.ListMaker#rightBrace()
      */
+    @Override
     public void rightBrace() throws TypesetterException {
 
         // noop
@@ -207,9 +215,9 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * 
      * @throws TypesetterUnsupportedException in case of an error
      * 
-     * @see org.extex.typesetter.ListMaker#setPrevDepth(
-     *      org.extex.core.dimen.FixedDimen)
+     * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
      */
+    @Override
     public void setPrevDepth(FixedDimen pd)
             throws TypesetterUnsupportedException {
 
@@ -224,9 +232,9 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
      * @throws TypesetterUnsupportedException in case of an error
      * @throws InvalidSpacefactorException in case of an invalid space factor
      * 
-     * @see org.extex.typesetter.ListMaker#setSpacefactor(
-     *      org.extex.core.count.FixedCount)
+     * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
      */
+    @Override
     public void setSpacefactor(FixedCount sf)
             throws TypesetterUnsupportedException,
                 InvalidSpacefactorException {
@@ -237,11 +245,11 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void subscriptMark(Context context, TokenSource source,
             Typesetter typesetter, Token token)
             throws TypesetterException,
@@ -254,11 +262,11 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void superscriptMark(Context context, TokenSource source,
             Typesetter typesetter, Token token)
             throws TypesetterException,
@@ -271,11 +279,11 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
+    @Override
     public void tab(Context context, TokenSource source, Token token)
             throws TypesetterException,
                 ConfigurationException {

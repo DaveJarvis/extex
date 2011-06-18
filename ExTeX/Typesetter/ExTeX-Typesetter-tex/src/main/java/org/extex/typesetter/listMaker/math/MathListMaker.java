@@ -1039,18 +1039,7 @@ public class MathListMaker extends HorizontalListMaker
     }
 
     /**
-     * This method instructs the implementing class to use a fraction
-     * construction. The math list collected so far is integrated into the
-     * fraction noad.
-     * 
-     * @param leftDelimiter the left delimiter or <code>null</code> if none
-     *        should be used.
-     * @param rightDelimiter the right delimiter or <code>null</code> if none
-     *        should be used.
-     * @param ruleWidth th width of the rule or <code>null</code> to indicate
-     *        that the default width should be used
-     * 
-     * @throws TypesetterException in case of an error
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.listMaker.math.NoadConsumer#switchToFraction(org.extex.typesetter.type.math.MathDelimiter,
      *      org.extex.typesetter.type.math.MathDelimiter,

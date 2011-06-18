@@ -53,8 +53,7 @@ public class TrivialPageBuilder implements PageBuilder {
     private Context context = null;
 
     /**
-     * The field <tt>options</tt> contains the options to control the
-     * behaviour.
+     * The field <tt>options</tt> contains the options to control the behaviour.
      */
     private TypesetterOptions options = null;
 
@@ -75,6 +74,7 @@ public class TrivialPageBuilder implements PageBuilder {
      * 
      * @see org.extex.typesetter.pageBuilder.PageBuilder#close()
      */
+    @Override
     public void close() throws TypesetterException {
 
         try {
@@ -88,9 +88,10 @@ public class TrivialPageBuilder implements PageBuilder {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(
-     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#flush(org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void flush(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
@@ -120,10 +121,10 @@ public class TrivialPageBuilder implements PageBuilder {
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(
-     *      org.extex.typesetter.type.node.VerticalListNode,
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#inspectAndBuild(org.extex.typesetter.type.node.VerticalListNode,
      *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void inspectAndBuild(VerticalListNode nodes, Typesetter typesetter)
             throws TypesetterException {
 
@@ -140,9 +141,9 @@ public class TrivialPageBuilder implements PageBuilder {
      * 
      * @param backend the new document writer to use
      * 
-     * @see org.extex.typesetter.Typesetter#setBackend(
-     *      org.extex.backend.BackendDriver)
+     * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
      */
+    @Override
     public void setBackend(BackendDriver backend) {
 
         this.backend = backend;
@@ -151,12 +152,12 @@ public class TrivialPageBuilder implements PageBuilder {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(
-     *      org.extex.typesetter.PageContext)
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#setContext(org.extex.typesetter.PageContext)
      */
+    @Override
     public void setContext(PageContext context) {
 
-        //TODO gene: beware of ClassCastException
+        // TODO gene: beware of ClassCastException
         this.context = (Context) context;
     }
 
@@ -165,36 +166,43 @@ public class TrivialPageBuilder implements PageBuilder {
      * 
      * @param options the options to set
      * 
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(
-     *      org.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOptions(org.extex.typesetter.TypesetterOptions)
      */
+    @Override
     public void setOptions(TypesetterOptions options) {
 
         this.options = options;
     }
 
     /**
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(
-     *      org.extex.typesetter.output.OutputRoutine)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
      */
+    @Override
     public void setOutputRoutine(OutputRoutine output) {
 
         // not supported
     }
 
     /**
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(
-     *      org.extex.typesetter.type.page.PageFactory)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#setPageFactory(org.extex.typesetter.type.page.PageFactory)
      */
+    @Override
     public void setPageFactory(PageFactory factory) {
 
         pageFactory = factory;
     }
 
     /**
-     * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(
-     *      org.extex.typesetter.type.NodeList, org.extex.typesetter.Typesetter)
+     * {@inheritDoc}
+     * 
+     * @see org.extex.typesetter.pageBuilder.PageBuilder#shipout(org.extex.typesetter.type.NodeList,
+     *      org.extex.typesetter.Typesetter)
      */
+    @Override
     public void shipout(NodeList nodes, Typesetter typesetter)
             throws TypesetterException {
 
