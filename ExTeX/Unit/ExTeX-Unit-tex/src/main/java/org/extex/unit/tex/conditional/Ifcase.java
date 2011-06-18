@@ -189,30 +189,32 @@ public class Ifcase extends AbstractIf {
     private Tag skipToOrOrElseOrFi(Context context, TokenSource source)
             throws HelpingException {
 
-        Code code;
         int n = 0;
         Locator locator = source.getLocator();
 
         for (Token t = source.getToken(context); t != null; t =
                 source.getToken(context)) {
             locator = source.getLocator();
-            if (t instanceof CodeToken
-                    && (code = context.getCode((CodeToken) t)) != null) {
-                if (code instanceof Fi) {
-                    if (--n < 0) {
-                        return Tag.FI;
-                    }
-                } else if (code instanceof Or) {
-                    if (n <= 0) {
-                        return Tag.OR;
-                    }
-                } else if (code instanceof Else) {
-                    if (n <= 0) {
-                        return Tag.ELSE;
-                    }
-                } else if (code.isIf()) {
-                    n++;
+            Code code =
+                    (t instanceof CodeToken
+                            ? context.getCode((CodeToken) t)
+                            : null);
+            if (code == null) {
+                // continue
+            } else if (code instanceof Fi) {
+                if (--n < 0) {
+                    return Tag.FI;
                 }
+            } else if (code instanceof Or) {
+                if (n <= 0) {
+                    return Tag.OR;
+                }
+            } else if (code instanceof Else) {
+                if (n <= 0) {
+                    return Tag.ELSE;
+                }
+            } else if (code.isIf()) {
+                n++;
             }
         }
 

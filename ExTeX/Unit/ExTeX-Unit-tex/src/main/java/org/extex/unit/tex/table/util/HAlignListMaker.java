@@ -71,8 +71,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
         private NodeList list = null;
 
         /**
-         * The field <tt>span</tt> contains the indicator that this cell
-         * should be joined with the next cell when generating boxes.
+         * The field <tt>span</tt> contains the indicator that this cell should
+         * be joined with the next cell when generating boxes.
          */
         private boolean span = false;
 
@@ -116,11 +116,28 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * The constant <tt>FIXED</tt> contains the default format consisting of
-     * the pure contents only.
+     * The constant <tt>FIXED</tt> contains the default format consisting of the
+     * pure contents only.
      */
-    private static final PreambleItem FIXED =
-            new PreambleItem(Tokens.EMPTY, Tokens.EMPTY);
+    private static final PreambleItem FIXED = new PreambleItem(Tokens.EMPTY,
+        Tokens.EMPTY);
+
+    /**
+     * Compute the sum of an array of dimens.
+     * 
+     * @param d the dimen array
+     * 
+     * @return the sum in a new Dimen
+     */
+    public static Dimen sum(Dimen[] d) {
+
+        Dimen sum = new Dimen();
+
+        for (int i = 0; i < d.length; i++) {
+            sum.add(d[i]);
+        }
+        return sum;
+    }
 
     /**
      * The field <tt>col</tt> contains the indicator for the current column.
@@ -148,8 +165,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     private List<Cell[]> rows = new ArrayList<Cell[]>();
 
     /**
-     * The field <tt>spread</tt> contains the indicator that the width should
-     * be interpreted relative to the natural width.
+     * The field <tt>spread</tt> contains the indicator that the width should be
+     * interpreted relative to the natural width.
      */
     private boolean spread;
 
@@ -229,8 +246,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * @throws TypesetterException in case of an error
      * @throws ConfigurationException in case of a configuration error
      * 
-     * @see org.extex.typesetter.listMaker.RestrictedHorizontalListMaker#complete(
-     *      org.extex.typesetter.TypesetterOptions)
+     * @see org.extex.typesetter.listMaker.RestrictedHorizontalListMaker#complete(org.extex.typesetter.TypesetterOptions)
      */
     @Override
     public NodeList complete(TypesetterOptions context)
@@ -287,11 +303,11 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.AlignmentList#cr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#cr(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.typesetter.type.NodeList)
      */
+    @Override
     public void cr(Context context, TokenSource source, NodeList noalign)
             throws TypesetterException {
 
@@ -315,10 +331,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.AlignmentList#crcr(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#crcr(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void crcr(Context context, TokenSource source, Typesetter typesetter)
             throws TypesetterException {
 
@@ -328,10 +344,11 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
         NodeList noalign = null;
         try {
             Token token = source.getToken(context);
-            Code code;
+            Code code =
+                    (token instanceof CodeToken ? context
+                        .getCode((CodeToken) token) : null);
 
-            if (token instanceof CodeToken
-                    && (code = context.getCode((CodeToken) token)) instanceof Noalign) {
+            if (code instanceof Noalign) {
                 noalign =
                         ((Noalign) code).exec(context, source, typesetter,
                             token);
@@ -353,6 +370,7 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * 
      * @see org.extex.typesetter.listMaker.AlignmentList#omit()
      */
+    @Override
     public void omit() throws TypesetterException {
 
         // TODO gene: respect protected macros
@@ -367,10 +385,10 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
      * 
      * @throws TypesetterException in case of an error
      * 
-     * @see org.extex.typesetter.listMaker.AlignmentList#span(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AlignmentList#span(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource)
      */
+    @Override
     public void span(Context context, TokenSource source)
             throws TypesetterException {
 
@@ -412,27 +430,9 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
     }
 
     /**
-     * Compute the sum of an array of dimens.
-     * 
-     * @param d the dimen array
-     * 
-     * @return the sum in a new Dimen
-     */
-    public static Dimen sum(Dimen[] d) {
-
-        Dimen sum = new Dimen();
-
-        for (int i = 0; i < d.length; i++) {
-            sum.add(d[i]);
-        }
-        return sum;
-    }
-
-    /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.listMaker.AbstractListMaker#tab(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.typesetter.listMaker.AbstractListMaker#tab(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource,
      *      org.extex.scanner.type.token.Token)
      */
@@ -442,8 +442,8 @@ public class HAlignListMaker extends RestrictedHorizontalListMaker
                 ConfigurationException {
 
         if (col >= line.length) {
-            new HelpingException(getLocalizer(), "TTP.ExtraAlignTab", token
-                .toString());
+            new HelpingException(getLocalizer(), "TTP.ExtraAlignTab",
+                token.toString());
         }
 
         try {
