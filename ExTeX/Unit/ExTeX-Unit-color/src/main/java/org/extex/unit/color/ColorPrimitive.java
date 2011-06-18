@@ -191,20 +191,12 @@ public class ColorPrimitive extends AbstractColor {
     }
 
     /**
-     * This method converts something into a color. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
-     * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     * 
-     * @return the converted value
+     * {@inheritDoc}
      * 
      * @see org.extex.interpreter.type.color.ColorConvertible#convertColor(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Color convertColor(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException {
 
