@@ -39,6 +39,7 @@ import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LMissingArgumentsException;
 import org.extex.exindex.lisp.exception.SyntaxException;
 import org.extex.logging.LogFormatter;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -229,6 +230,7 @@ public class RawParserTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public final void testFull01Fail() throws Exception {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -238,8 +240,7 @@ public class RawParserTest {
         indexer.load(new StringReader("(define-attributes ((\"abc\")))"),
             "<reader>");
         List<String> rsc = new ArrayList<String>();
-        rsc
-            .add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
+        rsc.add("(indexentry :tkey ((\"abc\")) :locref \"123\" :attr \"none\")");
         ByteArrayOutputStream log = new ByteArrayOutputStream();
         Logger logger = SomeTestUtilities.makeLogger();
         Handler handler = new StreamHandler(log, new LogFormatter());
