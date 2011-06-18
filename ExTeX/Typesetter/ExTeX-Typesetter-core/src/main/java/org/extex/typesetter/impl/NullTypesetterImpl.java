@@ -26,7 +26,6 @@ import org.extex.core.count.FixedCount;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.helping.HelpingException;
 import org.extex.core.glue.FixedGlue;
-import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
@@ -83,14 +82,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * Add an arbitrary node to the internal list of nodes gathered so far. The
-     * node should not be one of the special nodes treated by methods of their
-     * own.
-     * 
-     * @param node the node to add
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
      */
@@ -101,14 +93,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
     }
 
     /**
-     * Add a node list to the current list maker and adjust the spacing between
-     * the elements of the list.
-     * 
-     * @param list the list
-     * @param options the options to use
-     * 
-     * @throws TypesetterException in case of an error
-     * @throws ConfigurationException in case of a configuration error
+     * {@inheritDoc}
      * 
      * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
      *      org.extex.typesetter.TypesetterOptions)
@@ -178,20 +163,6 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
                 ConfigurationException {
 
         return null;
-    }
-
-    /**
-     * Configure an object according to a given Configuration.
-     * 
-     * @param config the configuration object to consider
-     * 
-     * @throws ConfigurationException in case that something went wrong
-     * 
-     * @see org.extex.framework.configuration.Configurable#configure(org.extex.framework.configuration.Configuration)
-     */
-    public void configure(Configuration config) {
-
-        // nothing to do
     }
 
     /**
@@ -583,6 +554,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
      * 
      * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long, long)
      */
+    @Override
     public void showlists(StringBuilder sb, long depth, long breadth) {
 
         // nothing to do
