@@ -39,16 +39,14 @@ import org.extex.typesetter.tc.font.Font;
  * This class provides an implementation for the primitive
  * <code>\pdffontname</code>.
  * 
- * <doc name="pdffontname">
- * <h3>The PDF Primitive <tt>\pdffontname</tt></h3>
+ * <doc name="pdffontname"> <h3>The PDF Primitive <tt>\pdffontname</tt></h3>
  * <p>
  * This primitive expands to the name of the font as used in PDF. For instance
  * if a font is addressed as <tt>/F12</tt> then this primitive expands to
  * <tt>12</tt>.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdffontname&rang;
@@ -74,8 +72,7 @@ public class Pdffontname extends AbstractPdftexCode
             TokensConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -90,21 +87,12 @@ public class Pdffontname extends AbstractPdftexCode
     }
 
     /**
-     * This method converts a register into tokens. It might be necessary to
-     * read further tokens to determine which value to use. For instance an
-     * additional register number might be required. In this case the additional
-     * arguments Context and TokenSource can be used.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for new tokens
-     * @param typesetter the typesetter to use for conversion
-     * 
-     * @return the converted value
-     * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens convertTokens(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -123,8 +111,8 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.AbstractCode#execute(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.AbstractCode#execute(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     @Override
@@ -137,10 +125,11 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.ExpandableCode#expand(
-     *      org.extex.interpreter.Flags, org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.ExpandableCode#expand(org.extex.interpreter.Flags,
+     *      org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public void expand(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -150,10 +139,10 @@ public class Pdffontname extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2005-2007 The ExTeX Group and individual authors listed below
+ * Copyright (C) 2005-2011 The ExTeX Group and individual authors listed below
  *
  * This library is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published by the
@@ -36,15 +36,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\pdflastximage</code>.
  * 
- * <doc name="pdflastximage">
- * <h3>The PDF Primitive <tt>\pdflastximage</tt></h3>
+ * <doc name="pdflastximage"> <h3>The PDF Primitive <tt>\pdflastximage</tt></h3>
  * <p>
  * This primitive provides a read-only count register containing the number of
  * the last ximage. If none is present then 0 is returned.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdflastximage&rang;
@@ -66,10 +64,9 @@ public class Pdflastximage extends AbstractPdftexCode
             CountConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
-    protected static final long serialVersionUID = 2007L;
+    protected static final long serialVersionUID = 2011L;
 
     /**
      * Creates a new object.
@@ -84,10 +81,10 @@ public class Pdflastximage extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -109,17 +106,16 @@ public class Pdflastximage extends AbstractPdftexCode
      * @return the converted value
      * 
      * @throws HelpingException in case of an error
-     * @throws TypesetterException
+     * @throws TypesetterException in case of a typesetter error
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
     public Tokens convertTokens(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return context.getTokenFactory().toTokens( //
+            return context.getTokenFactory().toTokens(
                 convertCount(context, source, typesetter));
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
@@ -127,17 +123,12 @@ public class Pdflastximage extends AbstractPdftexCode
     }
 
     /**
-     * This method is the getter for the description of the primitive.
+     * {@inheritDoc}
      * 
-     * @param context the interpreter context
-     * @param source the source for further tokens to qualify the request
-     * @param typesetter the typesetter to use
-     * 
-     * @return the description of the primitive as list of Tokens
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {

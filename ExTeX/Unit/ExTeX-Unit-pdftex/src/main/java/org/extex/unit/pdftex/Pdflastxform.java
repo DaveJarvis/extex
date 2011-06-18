@@ -37,15 +37,13 @@ import org.extex.typesetter.exception.TypesetterException;
  * This class provides an implementation for the primitive
  * <code>\pdflastxform</code>.
  * 
- * <doc name="pdflastxform">
- * <h3>The PDF Primitive <tt>\pdflastxform</tt></h3>
+ * <doc name="pdflastxform"> <h3>The PDF Primitive <tt>\pdflastxform</tt></h3>
  * <p>
  * This primitive provides a read-only count register containing the number of
  * the last xform. If none is present then 0 is returned.
  * </p>
  * 
- * <h4>Syntax</h4>
- * The formal description of this primitive is the following:
+ * <h4>Syntax</h4> The formal description of this primitive is the following:
  * 
  * <pre class="syntax">
  *    &lang;pdflastxform&rang;
@@ -68,8 +66,7 @@ public class Pdflastxform extends AbstractPdftexCode
             TokensConvertible {
 
     /**
-     * The constant <tt>serialVersionUID</tt> contains the id for
-     * serialization.
+     * The constant <tt>serialVersionUID</tt> contains the id for serialization.
      */
     protected static final long serialVersionUID = 2007L;
 
@@ -86,10 +83,10 @@ public class Pdflastxform extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.parser.CountConvertible#convertCount(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.parser.CountConvertible#convertCount(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public long convertCount(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
@@ -101,15 +98,15 @@ public class Pdflastxform extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.tokens.TokensConvertible#convertTokens(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens convertTokens(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         try {
-            return context.getTokenFactory().toTokens( //
+            return context.getTokenFactory().toTokens(
                 convertCount(context, source, typesetter));
         } catch (CatcodeException e) {
             throw new NoHelpException(e);
@@ -119,10 +116,10 @@ public class Pdflastxform extends AbstractPdftexCode
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.interpreter.type.Theable#the(
-     *      org.extex.interpreter.context.Context,
+     * @see org.extex.interpreter.type.Theable#the(org.extex.interpreter.context.Context,
      *      org.extex.interpreter.TokenSource, org.extex.typesetter.Typesetter)
      */
+    @Override
     public Tokens the(Context context, TokenSource source, Typesetter typesetter)
             throws HelpingException,
                 TypesetterException {
