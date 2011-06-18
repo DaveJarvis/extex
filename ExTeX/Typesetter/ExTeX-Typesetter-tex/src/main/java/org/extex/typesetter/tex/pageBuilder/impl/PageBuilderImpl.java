@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.typesetter.pageBuilder.impl;
+package org.extex.typesetter.tex.pageBuilder.impl;
 
 import org.extex.backend.BackendDriver;
 import org.extex.core.dimen.FixedDimen;

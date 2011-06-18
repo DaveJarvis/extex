@@ -17,7 +17,7 @@
  *
  */
 
-package org.extex.typesetter.pageBuilder.trivial;
+package org.extex.typesetter.tex.pageBuilder.trivial;
 
 import org.extex.backend.BackendDriver;
 import org.extex.core.dimen.FixedDimen;

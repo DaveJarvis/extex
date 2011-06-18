@@ -19,4 +19,4 @@
  * This package contains an implementation of a page builder.
  */
 
-package org.extex.typesetter.pageBuilder.trivial;
+package org.extex.typesetter.tex.pageBuilder.trivial;
