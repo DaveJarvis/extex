@@ -592,7 +592,7 @@ public class MacroPattern extends Tokens {
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param notLong
+     * @param notLong the inverted long indicator
      * @param observer the observer for argument matching events
      * 
      * @return a new array of parameters which have been found during the
@@ -634,7 +634,7 @@ public class MacroPattern extends Tokens {
      * @param context the processor context
      * @param source the source for new tokens
      * @param typesetter the typesetter
-     * @param notLong
+     * @param notLong the inverted long indicator
      * @param observer the observer for argument matching events
      * 
      * @return a new array of parameters which have been found during the
@@ -684,7 +684,7 @@ public class MacroPattern extends Tokens {
      * @param len the length of the patterns
      * @param index the starting index
      * @param observer the observer for tracing
-     * @param notlong
+     * @param notLong the inverted long indicator
      * 
      * @return the index of the character after the parameter
      * 
@@ -693,7 +693,7 @@ public class MacroPattern extends Tokens {
      */
     private int scanParameter(Context context, TokenSource source,
             Typesetter typesetter, Tokens[] args, int len, int index,
-            ArgumentMatchingObserver observer, boolean notlong)
+            ArgumentMatchingObserver observer, boolean notLong)
             throws HelpingException,
                 TypesetterException {
 
@@ -726,7 +726,7 @@ public class MacroPattern extends Tokens {
             if (t instanceof MacroParamToken) {
                 args[no] = getTokenOrBlock(context, source, typesetter, cs);
             } else {
-                args[no] = scanTo(context, source, t, notlong);
+                args[no] = scanTo(context, source, t, notLong);
                 i = index + 2;
             }
         }
@@ -743,7 +743,7 @@ public class MacroPattern extends Tokens {
      * @param context the processor context
      * @param source the source for new tokens
      * @param to the terminating token
-     * @param notLong
+     * @param notLong the inverted long indicator
      * 
      * @return the tokens accumulated in between
      * 
