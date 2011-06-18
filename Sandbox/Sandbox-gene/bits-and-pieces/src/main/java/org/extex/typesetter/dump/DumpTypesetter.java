@@ -24,8 +24,8 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.TypesetterOptions;
 import org.extex.typesetter.exception.TypesetterException;
-import org.extex.typesetter.impl.TypesetterImpl;
 import org.extex.typesetter.tc.TypesettingContext;
+import org.extex.typesetter.tex.impl.TypesetterImpl;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 
@@ -73,7 +73,7 @@ public class DumpTypesetter extends TypesetterImpl {
     /**
      * {@inheritDoc}
      * 
-     * @see org.extex.typesetter.impl.TypesetterImpl#addSpace(
+     * @see org.extex.typesetter.tex.impl.TypesetterImpl#addSpace(
      *      org.extex.typesetter.tc.TypesettingContext,
      *      org.extex.core.count.FixedCount)
      */
