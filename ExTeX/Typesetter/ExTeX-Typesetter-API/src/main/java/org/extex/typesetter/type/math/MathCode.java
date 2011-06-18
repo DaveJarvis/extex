@@ -126,6 +126,8 @@ public class MathCode implements Serializable {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override

@@ -367,6 +367,8 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -378,6 +380,8 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder)
      */
     @Override
@@ -387,8 +391,11 @@ public abstract class AbstractNoad implements Noad {
     }
 
     /**
+     * {@inheritDoc}
+     * 
      * @see "TTP [696]"
-     * @see org.extex.typesetter.type.noad.Noad#toString(StringBuilder, int)
+     * @see org.extex.typesetter.type.noad.Noad#toString(java.lang.StringBuilder,
+     *      int)
      */
     @Override
     public void toString(StringBuilder sb, int depth) {
