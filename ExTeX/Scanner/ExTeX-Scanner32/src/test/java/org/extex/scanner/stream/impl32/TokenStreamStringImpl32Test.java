@@ -97,7 +97,10 @@ public class TokenStreamStringImpl32Test {
     }
 
     /**
-     * @see junit.framework.TestCase#setUp()
+     * Sets up the fixture, for example, open a network connection. This method
+     * is called before a test is executed.
+     * 
+     * @throws Exception in case of an error
      */
     @Before
     public void setUp() throws Exception {
@@ -105,6 +108,11 @@ public class TokenStreamStringImpl32Test {
         factory = new TokenFactoryImpl();
         tokenizer = new Tokenizer() {
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.scanner.api.Tokenizer#getCatcode(org.extex.core.UnicodeChar)
+             */
             @Override
             public Catcode getCatcode(UnicodeChar c) {
 
@@ -136,10 +144,16 @@ public class TokenStreamStringImpl32Test {
                     case '\0':
                     case '\f':
                         return Catcode.IGNORE;
+                    default:
+                        return Catcode.OTHER;
                 }
-                return Catcode.OTHER;
             }
 
+            /**
+             * {@inheritDoc}
+             * 
+             * @see org.extex.scanner.api.Tokenizer#getNamespace()
+             */
             @Override
             public String getNamespace() {
 
