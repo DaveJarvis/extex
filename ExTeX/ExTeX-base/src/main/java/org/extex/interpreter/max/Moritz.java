@@ -49,7 +49,6 @@ import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Mudimen;
 import org.extex.core.muskip.Muskip;
 import org.extex.framework.configuration.Configurable;
-import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.Flags;
 import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
@@ -238,7 +237,7 @@ public class Moritz extends Max
     /**
      * The field <tt>parsers</tt> contains the list of registered parsers.
      */
-    @SuppressWarnings({"rawtypes"})
+    @SuppressWarnings("rawtypes")
     private Map<Class, Parser> parsers = new HashMap<Class, Parser>();
 
     /**
@@ -420,7 +419,8 @@ public class Moritz extends Max
      * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
-     * @throws ConfigurationException in case of an configuration error
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         in case of an configuration error
      * 
      * @see org.extex.interpreter.TokenSource#getBox(org.extex.interpreter.Flags,
      *      org.extex.interpreter.context.Context,
@@ -1406,8 +1406,9 @@ public class Moritz extends Max
      * 
      * @param factory the token stream factory
      * 
-     * @throws ConfigurationException this exception is never thrown. It is
-     *         defined here to provide an exit for derived classes
+     * @throws org.extex.framework.configuration.exception.ConfigurationException
+     *         this exception is never thrown. It is defined here to provide an
+     *         exit for derived classes
      */
     @Override
     public void setTokenStreamFactory(TokenStreamFactory factory) {
