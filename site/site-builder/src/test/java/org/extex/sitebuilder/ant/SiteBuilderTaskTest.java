@@ -94,9 +94,9 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     public final void test01() throws Exception {
 
-        String cwd =
-                new File(".").getAbsoluteFile().getCanonicalPath().toString()
-                    .replace('\\', '/');
+        // String cwd =
+        // new File(".").getAbsoluteFile().getCanonicalPath().toString()
+        // .replace('\\', '/');
 
         File siteDir = new File("target/test-site");
         CleanupUtil.rmdir(siteDir);
