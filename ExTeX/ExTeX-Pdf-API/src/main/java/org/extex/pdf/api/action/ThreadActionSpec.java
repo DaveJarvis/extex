@@ -29,7 +29,7 @@ import org.extex.typesetter.exception.TypesetterException;
 
 /**
  * This class represents a thread action spec.
- *
+ * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4409 $
  */
@@ -42,21 +42,22 @@ public class ThreadActionSpec extends ActionSpec {
     private static final long serialVersionUID = 2007L;
 
     /**
-     * Parse a thread action spec.
-     *
+     * Parse a thread action specification.
+     * 
      * @param context the interpreter context
      * @param source the source for new tokens
      * @param typesetter the typesetter
      * @param primitive the name of the primitive
-     *
-     * @return the action spec found
-     *
+     * 
+     * @return the action specification found
+     * 
      * @throws HelpingException in case of an error
      * @throws TypesetterException in case of an error in the typesetter
      */
     public static ActionSpec parseActionSpec(Context context,
-            TokenSource source, Typesetter typesetter,
-            CodeToken primitive) throws HelpingException,TypesetterException {
+            TokenSource source, Typesetter typesetter, CodeToken primitive)
+            throws HelpingException,
+                TypesetterException {
 
         String file = null;
         if (source.getKeyword(context, "file")) {
@@ -80,7 +81,7 @@ public class ThreadActionSpec extends ActionSpec {
 
     /**
      * Creates a new object.
-     *
+     * 
      * @param file the file
      * @param id the id
      */
@@ -91,21 +92,8 @@ public class ThreadActionSpec extends ActionSpec {
     }
 
     /**
-     * Getter for id.
-     * The id can either be a number or a name.
-     * This value is not <code>null</code>.
-     *
-     * @return the id
-     */
-    protected IdSpec getId() {
-
-        return this.id;
-    }
-
-    /**
-     * Getter for file.
-     * This value is not <code>null</code>.
-     *
+     * Getter for file. This value is not <code>null</code>.
+     * 
      * @return the file
      */
     protected String getFile() {
@@ -114,10 +102,21 @@ public class ThreadActionSpec extends ActionSpec {
     }
 
     /**
+     * Getter for id. The id can either be a number or a name. This value is not
+     * <code>null</code>.
+     * 
+     * @return the id
+     */
+    protected IdSpec getId() {
+
+        return this.id;
+    }
+
+    /**
      * Returns a string representation of the object.
-     *
-     * @return  a string representation of the object.
-     *
+     * 
+     * @return a string representation of the object.
+     * 
      * @see java.lang.Object#toString()
      */
     @Override
@@ -132,13 +131,12 @@ public class ThreadActionSpec extends ActionSpec {
 
     /**
      * This method is the entry point for the visitor pattern.
-     *
+     * 
      * @param visitor the visitor to call back
-     *
+     * 
      * @return an arbitrary return object
-     *
-     * @see org.extex.pdf.api.action.ActionSpec#visit(
-     *      org.extex.pdf.api.action.ActionVisitor)
+     * 
+     * @see org.extex.pdf.api.action.ActionSpec#visit(org.extex.pdf.api.action.ActionVisitor)
      */
     @Override
     public Object visit(ActionVisitor visitor) {
