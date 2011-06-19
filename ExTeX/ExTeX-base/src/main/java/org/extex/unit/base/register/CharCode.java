@@ -165,7 +165,7 @@ public class CharCode extends AbstractCode
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens( //
+        return context.getTokenFactory().toTokens(
             Integer.toString(character.getCodePoint()));
     }
 
