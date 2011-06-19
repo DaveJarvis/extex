@@ -40,168 +40,10 @@ import org.junit.Test;
 public class MainTest {
 
     /**
-     * Run a test.
-     * 
-     * @param bst the content of the bst file
-     * @param expectedOut the expected output stream
-     * @param expectedErr the expected error stream
-     * @param exitCode the exit code
-     * @param args the arguments
-     * 
-     * @throws IOException in case of an I/O error
+     * The field <tt>LGPL</tt> contains the text of the LGPG as shown by
+     * --copying.
      */
-    private static void run(String bst, String expectedOut, String expectedErr,
-            int exitCode, String... args) throws IOException {
-
-        File file = null;
-        if (bst != null) {
-            file = File.createTempFile("bst2groovyTest", ".bst");
-            FileWriter w = new FileWriter(file);
-            w.write(bst);
-            w.close();
-
-            for (int i = 0; i < args.length; i++) {
-                if (args[i].equals("{file}")) {
-                    args[i] = file.getAbsolutePath();
-                }
-            }
-        }
-        Locale.setDefault(Locale.ENGLISH);
-        PrintStream err = System.err;
-        ByteArrayOutputStream errStream = new ByteArrayOutputStream();
-        System.setErr(new PrintStream(errStream));
-        PrintStream out = System.err;
-        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outStream));
-        int ex;
-        try {
-            ex = Main.commandLine(args);
-        } finally {
-            System.err.close();
-            System.setErr(err);
-            System.out.close();
-            System.setOut(out);
-            if (file != null && file.exists()) {
-                assertTrue(file.toString() + ": deletetion failed",
-                    file.delete());
-            }
-        }
-        if (expectedErr != null) {
-            assertEquals(expectedErr, errStream.toString());
-        }
-        assertEquals(exitCode, ex);
-        if (expectedOut != null) {
-            assertEquals(expectedOut, outStream.toString());
-        }
-    }
-
-    /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void test01() throws IOException {
-
-        run(null, null, "I couldn't open style file xyzzy.bst\n",
-            CLI.EXIT_FAIL, "xyzzy.bst");
-    }
-
-    /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void test02() throws IOException {
-
-        run(null, null, "I couldn't open style file xyzzy.bst\n",
-            CLI.EXIT_FAIL, "-", "xyzzy.bst");
-    }
-
-    /**
-     * <testcase> Test that a unreadable input file is reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void test03() throws IOException {
-
-        run(null, "", "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL,
-            "--", "xyzzy.bst");
-    }
-
-    /**
-     * <testcase> Test that a <code>null</code> input file is
-     * reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void test04() throws IOException {
-
-        run(null, null, "I couldn't open style file \n", CLI.EXIT_FAIL, "-=");
-    }
-
-    /**
-     * <testcase> Test that an empty file is compiled correctly.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void test10() throws IOException {
-
-        run("",
-            "import org.extex.exbib.core.Processor\n"
-                    + "import org.extex.exbib.core.db.DB\n"
-                    + "import org.extex.exbib.core.db.Entry\n"
-                    + "import org.extex.exbib.core.io.Writer\n"
-                    + "\n"
-                    + "class Style extends org.extex.exbib.groovy.Style {\n\n" //
-                    + "  Style(bibDB, bibWriter, bibProcessor) {\n\n"
-                    + "    super(bibDB, bibWriter, bibProcessor)\n\n" //
-                    + "  }\n\n" //
-                    + "  void run() {\n" //
-                    + "  }\n\n" //
-                    + "}\n\n"
-                    + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
-            CLI.EXIT_OK, "{file}");
-    }
-
-    /**
-     * <testcase> Test that an unreadable configuration is reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void testConfig1() throws IOException {
-
-        run(null, "", "Missing argument for option --config\n", CLI.EXIT_FAIL,
-            "--config");
-    }
-
-    /**
-     * <testcase> Test that a unknown configuration .</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void testConfig2() throws IOException {
-
-        run(null, "", "Configuration `xyzzy' not found.\n", CLI.EXIT_FAIL,
-            "--config", "xyzzy");
-    }
-
-    /**
-     * <testcase>Test that the version is reported.</testcase>
-     * 
-     * @throws IOException in case of an I/O error
-     */
-    @Test
-    public void testCopying() throws IOException {
-
-        run(null,
-            "",
+    private static final String LGPL =
             "                 GNU LESSER GENERAL PUBLIC LICENSE\n"
                     + "                      Version 2.1, February 1999\n"
                     + "Copyright (C) 1991, 1999 Free Software Foundation, Inc.\n"
@@ -630,8 +472,170 @@ public class MainTest {
                     + "Hacker.\n" + "\n"
                     + " <signature of Ty Coon>, 1 April 1990\n"
                     + " Ty Coon, President of Vice\n"
-                    + "That's all there is to it!\n", CLI.EXIT_FAIL,
-            "--copying");
+                    + "That's all there is to it!\n";
+
+    /**
+     * Run a test.
+     * 
+     * @param bst the content of the bst file
+     * @param expectedOut the expected output stream
+     * @param expectedErr the expected error stream
+     * @param exitCode the exit code
+     * @param args the arguments
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    private static void run(String bst, String expectedOut, String expectedErr,
+            int exitCode, String... args) throws IOException {
+
+        File file = null;
+        if (bst != null) {
+            file = File.createTempFile("bst2groovyTest", ".bst");
+            FileWriter w = new FileWriter(file);
+            w.write(bst);
+            w.close();
+
+            for (int i = 0; i < args.length; i++) {
+                if (args[i].equals("{file}")) {
+                    args[i] = file.getAbsolutePath();
+                }
+            }
+        }
+        Locale.setDefault(Locale.ENGLISH);
+        PrintStream err = System.err;
+        ByteArrayOutputStream errStream = new ByteArrayOutputStream();
+        System.setErr(new PrintStream(errStream));
+        PrintStream out = System.err;
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        System.setOut(new PrintStream(outStream));
+        int ex;
+        try {
+            ex = Main.commandLine(args);
+        } finally {
+            System.err.close();
+            System.setErr(err);
+            System.out.close();
+            System.setOut(out);
+            if (file != null && file.exists()) {
+                assertTrue(file.toString() + ": deletetion failed",
+                    file.delete());
+            }
+        }
+        if (expectedErr != null) {
+            assertEquals(expectedErr, errStream.toString());
+        }
+        assertEquals(exitCode, ex);
+        if (expectedOut != null) {
+            assertEquals(expectedOut, outStream.toString());
+        }
+    }
+
+    /**
+     * <testcase> Test that a unreadable input file is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test01() throws IOException {
+
+        run(null, null, "I couldn't open style file xyzzy.bst\n",
+            CLI.EXIT_FAIL, "xyzzy.bst");
+    }
+
+    /**
+     * <testcase> Test that a unreadable input file is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test02() throws IOException {
+
+        run(null, null, "I couldn't open style file xyzzy.bst\n",
+            CLI.EXIT_FAIL, "-", "xyzzy.bst");
+    }
+
+    /**
+     * <testcase> Test that a unreadable input file is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test03() throws IOException {
+
+        run(null, "", "I couldn't open style file xyzzy.bst\n", CLI.EXIT_FAIL,
+            "--", "xyzzy.bst");
+    }
+
+    /**
+     * <testcase> Test that a <code>null</code> input file is
+     * reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test04() throws IOException {
+
+        run(null, null, "I couldn't open style file \n", CLI.EXIT_FAIL, "-=");
+    }
+
+    /**
+     * <testcase> Test that an empty file is compiled correctly.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void test10() throws IOException {
+
+        run("",
+            "import org.extex.exbib.core.Processor\n"
+                    + "import org.extex.exbib.core.db.DB\n"
+                    + "import org.extex.exbib.core.db.Entry\n"
+                    + "import org.extex.exbib.core.io.Writer\n"
+                    + "\n"
+                    + "class Style extends org.extex.exbib.groovy.Style {\n\n" //
+                    + "  Style(bibDB, bibWriter, bibProcessor) {\n\n"
+                    + "    super(bibDB, bibWriter, bibProcessor)\n\n" //
+                    + "  }\n\n" //
+                    + "  void run() {\n" //
+                    + "  }\n\n" //
+                    + "}\n\n"
+                    + "new Style(bibDB, bibWriter, bibProcessor).run()\n", "",
+            CLI.EXIT_OK, "{file}");
+    }
+
+    /**
+     * <testcase> Test that an unreadable configuration is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testConfig1() throws IOException {
+
+        run(null, "", "Missing argument for option --config\n", CLI.EXIT_FAIL,
+            "--config");
+    }
+
+    /**
+     * <testcase> Test that a unknown configuration .</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testConfig2() throws IOException {
+
+        run(null, "", "Configuration `xyzzy' not found.\n", CLI.EXIT_FAIL,
+            "--config", "xyzzy");
+    }
+
+    /**
+     * <testcase>Test that the version is reported.</testcase>
+     * 
+     * @throws IOException in case of an I/O error
+     */
+    @Test
+    public void testCopying() throws IOException {
+
+        run(null, "", LGPL, CLI.EXIT_FAIL, "--copying");
     }
 
     /**
