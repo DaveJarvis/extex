@@ -152,7 +152,7 @@ public class ParserStream extends PushbackInputStream {
             throw new SyntaxException(c, line, lineno);
         }
 
-        for (c = read(); c <= 0; c = read()) {
+        for (c = read(); c >= 0; c = read()) {
             if ((c >= '0' && c <= '9') //
                     || (c >= 'a' && c <= 'z') //
                     || (c >= 'A' && c <= 'Z') //
