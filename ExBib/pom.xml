@@ -139,12 +139,6 @@
 
       <dependency>
         <groupId>org.extex</groupId>
-        <artifactId>ExBib-bsf</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-
-      <dependency>
-        <groupId>org.extex</groupId>
         <artifactId>ExBib-groovy</artifactId>
         <version>${project.version}</version>
       </dependency>
@@ -398,6 +392,20 @@
         <configuration>
           <aggregate>true</aggregate>
           <linkXRef>true</linkXRef>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.pitest</groupId>
+        <artifactId>pitest-maven</artifactId>
+        <version>0.19</version>
+        <configuration>
+          <inScopeClasses>
+            <param>org.extex.exbib.*</param>
+          </inScopeClasses>
+          <targetClasses>
+            <param>org.extex.exbib.*</param>
+          </targetClasses>
         </configuration>
       </plugin>
 
