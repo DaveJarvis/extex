@@ -941,7 +941,7 @@ public class CMR10 implements Font, Serializable {
         character('r', GLUE_391668, GLUE_430555);
         character('s', GLUE_394445, GLUE_430555);
         glyph = character('t', GLUE_38889, GLUE_61508);
-        glyph.krn('y', -27779);glyph
+        glyph.krn('y', -27779);
         glyph.krn('w', -27779);
         glyph = character('u', GLUE_555557, GLUE_430555);
         glyph.krn('w', -27779);
