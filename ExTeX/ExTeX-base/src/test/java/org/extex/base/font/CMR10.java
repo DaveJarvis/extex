@@ -43,50 +43,50 @@ import org.extex.typesetter.tc.font.Font;
 public class CMR10 implements Font, Serializable {
 
     /**
-     * TODO gene: missing JavaDoc.
+     * The container for the informations on a glyph.
      */
     private static class Glyph {
 
         /**
-         * The field <tt>code</tt> contains the ...
+         * The field <tt>code</tt> contains the character code.
          */
-        UnicodeChar code;
+        private UnicodeChar code;
 
         /**
-         * The field <tt>wd</tt> contains the ...
+         * The field <tt>wd</tt> contains the width.
          */
-        FixedGlue wd;
+        private FixedGlue wd;
 
         /**
-         * The field <tt>ht</tt> contains the ...
+         * The field <tt>ht</tt> contains the height.
          */
-        FixedGlue ht;
+        private FixedGlue ht;
 
         /**
-         * The field <tt>dp</tt> contains the ...
+         * The field <tt>dp</tt> contains the depth.
          */
-        FixedGlue dp;
+        private FixedGlue dp;
 
         /**
-         * The field <tt>ic</tt> contains the ...
+         * The field <tt>ic</tt> contains the italic correction.
          */
-        FixedDimen ic = Dimen.ZERO_PT;
+        private FixedDimen ic = Dimen.ZERO_PT;
 
         /**
-         * The field <tt>ef</tt> contains the ...
+         * The field <tt>ef</tt> contains the ef code.
          */
-        long ef = 0;
+        private long ef = 0;
 
         /**
-         * The field <tt>ligature</tt> contains the ...
+         * The field <tt>ligatures</tt> contains the ligatures.
          */
-        Map<UnicodeChar, UnicodeChar> ligature =
+        private Map<UnicodeChar, UnicodeChar> ligatures =
                 new HashMap<UnicodeChar, UnicodeChar>();
 
         /**
-         * The field <tt>kerning</tt> contains the ...
+         * The field <tt>kernings</tt> contains the kernings.
          */
-        Map<UnicodeChar, FixedDimen> kerning =
+        private Map<UnicodeChar, FixedDimen> kernings =
                 new HashMap<UnicodeChar, FixedDimen>();
 
         /**
@@ -104,32 +104,34 @@ public class CMR10 implements Font, Serializable {
         }
 
         /**
-         * TODO gene: missing JavaDoc
+         * Add kerning.
          * 
-         * @param i
-         * @param j
+         * @param c the second character
+         * @param kern the kerning
          */
-        public void krn(int i, long j) {
+        public void krn(int c, long kern) {
 
-            kerning.put(UnicodeChar.get(i), new Dimen(DESIGNSIZE.getValue() * j
-                    / C_1000000));
+            kernings.put(UnicodeChar.get(c), new Dimen(DESIGNSIZE.getValue()
+                    * kern / C_1000000));
         }
 
         /**
-         * TODO gene: missing JavaDoc
+         * Define a ligature.
          * 
-         * @param c
-         * @param i
+         * @param c the second character
+         * @param lig the ligature
          */
-        public void lig(int c, int i) {
+        public void lig(int c, int lig) {
 
-            ligature.put(UnicodeChar.get(c), UnicodeChar.get(i));
+            ligatures.put(UnicodeChar.get(c), UnicodeChar.get(lig));
         }
 
     }
 
     /**
-     * The field <tt>serialVersionUID</tt> contains the ...
+     * 
+     * The field <tt>serialVersionUID</tt> contains the version number for
+     * serialization.
      */
     private static final long serialVersionUID = 2011L;
 
@@ -539,11 +541,13 @@ public class CMR10 implements Font, Serializable {
     private static final int CHECKSUM = 011374260171;
 
     /**
-     * TODO gene: missing JavaDoc
+     * Create a glyph and put it into the glyph table.
      * 
-     * @param code
-     * @param wd
-     * @param ht
+     * @param code the character code
+     * @param wd the width
+     * @param ht the height
+     * 
+     * @return the new glyph
      */
     private static Glyph character(int code, Glue wd, Glue ht) {
 
@@ -937,7 +941,7 @@ public class CMR10 implements Font, Serializable {
         character('r', GLUE_391668, GLUE_430555);
         character('s', GLUE_394445, GLUE_430555);
         glyph = character('t', GLUE_38889, GLUE_61508);
-        glyph.krn('y', -27779);
+        glyph.krn('y', -27779);glyph
         glyph.krn('w', -27779);
         glyph = character('u', GLUE_555557, GLUE_430555);
         glyph.krn('w', -27779);
@@ -980,7 +984,7 @@ public class CMR10 implements Font, Serializable {
     private UnicodeChar hyphenchar = UnicodeChar.get('-');
 
     /**
-     * The field <tt>skewchar</tt> contains the ...
+     * The field <tt>skewchar</tt> contains the skew character.
      */
     private UnicodeChar skewchar = null;
 
@@ -1159,7 +1163,7 @@ public class CMR10 implements Font, Serializable {
     public FixedDimen getKerning(UnicodeChar uc, UnicodeChar uc2) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
-        return glyph == null ? null : glyph.kerning.get(uc2);
+        return glyph == null ? null : glyph.kernings.get(uc2);
     }
 
     /**
@@ -1172,7 +1176,7 @@ public class CMR10 implements Font, Serializable {
     public UnicodeChar getLigature(UnicodeChar uc, UnicodeChar uc2) {
 
         Glyph glyph = GLYPH_TABLE.get(uc);
-        return glyph == null ? null : glyph.ligature.get(uc2);
+        return glyph == null ? null : glyph.ligatures.get(uc2);
     }
 
     /**
