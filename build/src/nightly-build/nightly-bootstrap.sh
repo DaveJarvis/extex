@@ -51,7 +51,7 @@ else
     svn update >$BUILD_LOG 2>&1
 fi
 
-if test -n "`grep 'At revision' $BUILD_LOG`"; then
+if test -z "$1" -a -n "`grep 'At revision' $BUILD_LOG`"; then
     date >>$BUILD_LOG 2>&1
     echo "All quiet on the western front" >> $BUILD_LOG
     exit 0
