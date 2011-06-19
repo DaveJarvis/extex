@@ -127,6 +127,7 @@ public class EnsureLoaded extends AbstractCode
      * 
      * @see org.extex.framework.logger.LogEnabled#enableLogging(java.util.logging.Logger)
      */
+    @Override
     public void enableLogging(Logger log) {
 
         this.logger = log;
@@ -167,6 +168,7 @@ public class EnsureLoaded extends AbstractCode
      * 
      * @see org.extex.backend.outputStream.OutputStreamConsumer#setOutputStreamFactory(org.extex.backend.outputStream.OutputStreamFactory)
      */
+    @Override
     public void setOutputStreamFactory(OutputStreamFactory factory) {
 
         this.outFactory = factory;
@@ -177,9 +179,10 @@ public class EnsureLoaded extends AbstractCode
      * 
      * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
      */
-    public void setResourceFinder(ResourceFinder finder) {
+    @Override
+    public void setResourceFinder(ResourceFinder resourceFinder) {
 
-        this.finder = finder;
+        this.finder = resourceFinder;
     }
 
 }
