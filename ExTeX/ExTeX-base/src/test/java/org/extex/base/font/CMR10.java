@@ -146,12 +146,12 @@ public class CMR10 implements Font, Serializable {
     /**
      * The field <tt>FACE</tt> contains the ...
      */
-    private static final int FACE = 0352;
+    // private static final int FACE = 0352;
 
     /**
      * The field <tt>CODINGSCHEME</tt> contains the ...
      */
-    private static final String CODINGSCHEME = "TEX TEXT";
+    // private static final String CODINGSCHEME = "TEX TEXT";
 
     /**
      * The field <tt>DESIGNSIZE</tt> contains the ...
@@ -1111,7 +1111,7 @@ public class CMR10 implements Font, Serializable {
     @Override
     public String getFontName() {
 
-        return "CMR10";
+        return FAMILY + "10";
     }
 
     /**
