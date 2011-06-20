@@ -44,9 +44,6 @@ run 'ExBib site' ExBib site:stage-deploy
 
 run site site compile
 
-echo
-echo "########## www ##########" `date`
-(cd www; ant install )
-echo '########## /www ##########' `date`
+run www -Dant.target=install compile
 
 #--------------------------------------------------------------------
