@@ -44,6 +44,6 @@ run 'ExBib site' ExBib site:stage-deploy
 
 run site site compile
 
-run www -Dant.target=install compile
+run www www -Dant.target=install compile
 
 #--------------------------------------------------------------------
