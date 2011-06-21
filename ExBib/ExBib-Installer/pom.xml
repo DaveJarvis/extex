@@ -99,12 +99,12 @@
               <goal>run</goal>
             </goals>
             <configuration>
-              <tasks>
+              <targets>
                 <copy todir="${staging.dir}"
                       encoding="ISO-8859-1">
                   <fileset dir="${basedir}/src/main/izpack" />
                 </copy>
-              </tasks>
+              </targets>
             </configuration>
           </execution>
         </executions>

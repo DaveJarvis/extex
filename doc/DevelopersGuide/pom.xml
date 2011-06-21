@@ -72,7 +72,7 @@
           <execution>
             <phase>compile</phase>
             <configuration>
-              <tasks>
+              <targets>
                 <ant antfile="src/build/latex.ant">
                   <property name="doc.file" value="extex-developers" />
                   <property name="doc.dir" location="src/main/tex/dev-guide" />
@@ -80,7 +80,7 @@
                   <property name="makeindex.style" location="../src/main/texinputs/makeindex/doc.ist" />
                   <property name="maven.classpath" refid="maven.compile.classpath" />
                 </ant>
-              </tasks>
+              </targets>
             </configuration>
             <goals>
               <goal>run</goal>
