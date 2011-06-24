@@ -48,16 +48,6 @@
       <artifactId>ExTeX-Interpreter-API</artifactId>
     </dependency>
 
-<!-- 
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Interpreter-API</artifactId>
-      <version>${project.version}</version>
-      <classifier>tests</classifier>
-      <scope>test</scope>
-    </dependency>
- -->
-
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>

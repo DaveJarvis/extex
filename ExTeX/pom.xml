@@ -30,70 +30,14 @@
     <url>http://www.extex.org</url>
   </organization>
 
-  <properties>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-  </properties>
-
-  <distributionManagement>
-    <site>
-      <id>org.extex.${project.artifactId}</id>
-      <name>ExTeX Site</name>
-      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
-    </site>
-  </distributionManagement>
-
-  <scm>
-    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/ExTeX</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/ExTeX</url>
-  </scm>
-
-  <developers>
-    <developer>
-      <id>gene</id>
-      <name>Gerd Neugebauer</name>
-      <email>gene@gerd-neugebauer.de</email>
-      <url>http://www.gerd-neugebauer.de/</url>
-      <roles>
-        <role>developer</role>
-        <role>build manager</role>
-      </roles>
-      <timezone>+1</timezone>
-      <properties/>
-    </developer>
-    <developer>
-      <id>mgn</id>
-      <name>Michael Niedermair</name>
-      <email>m.g.n@gmx.de</email>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>+1</timezone>
-      <properties/>
-    </developer>
-    <developer>
-      <id>plaicy</id>
-      <name>Sebastian Waschik</name>
-      <email>sebastian.waschik@gmx.de</email>
-      <roles>
-        <role>developer</role>
-      </roles>
-      <timezone>+1</timezone>
-      <properties/>
-    </developer>
-  </developers>
-
-  <repositories>
-    <repository>
-      <id>extex.org</id>
-      <name>extex.org Maven Repository</name>
-      <url>http://www.extex.org/maven2/</url>
-    </repository>
-  </repositories> 
+  <parent>
+    <groupId>org.extex</groupId>
+    <artifactId>project</artifactId>
+    <version>0.1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
 
   <modules>
-   <module>../CLI</module>
-   <module>../ExTeX-resource</module>
    <module>Backend/ExTeX-Backend-dump</module>
    <module>Backend/ExTeX-Backend-dvi</module>
    <module>Backend/ExTeX-Backend-dvix</module>
@@ -137,14 +81,20 @@
    <module>Unit/ExTeX-Unit-tex</module>
   </modules>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
+  <developers>
+    <developer>
+      <id>gene</id>
+      <name>Gerd Neugebauer</name>
+      <email>gene@gerd-neugebauer.de</email>
+      <url>http://www.gerd-neugebauer.de/</url>
+      <roles>
+        <role>developer</role>
+        <role>build manager</role>
+      </roles>
+      <timezone>+1</timezone>
+      <properties/>
+    </developer>
+  </developers>
 
   <dependencyManagement>
     <dependencies>
@@ -366,6 +316,7 @@
     </dependencies>
   </dependencyManagement>
 
+<!-- 
   <build>
     <plugins>
       <plugin>
@@ -449,14 +400,6 @@
               <artifactId>emma-maven-plugin</artifactId>
               <version>1.0-alpha-3</version>
             </plugin>
-
-<!-- 
-            <plugin>
-              <groupId>org.codehaus.mojo</groupId>
-              <artifactId>dashboard-maven-plugin</artifactId>
-              <version>1.0.0-beta-1</version>
-            </plugin>
- -->
  
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
@@ -580,5 +523,6 @@
 
     </plugins>
   </build>
+ -->
 
 </project>

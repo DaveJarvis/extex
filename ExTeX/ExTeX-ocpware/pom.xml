@@ -21,9 +21,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <dependencies>
-  </dependencies>
-
   <developers>
     <developer>
       <id>gene</id>

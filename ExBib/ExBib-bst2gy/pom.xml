@@ -34,11 +34,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <properties>
-    <extex.directory>${basedir}/../..</extex.directory>
-    <exbib.directory>${basedir}/..</exbib.directory>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
@@ -65,30 +60,6 @@
     </dependency>
 
   </dependencies>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-jar-plugin</artifactId>
-        <version>2.2</version>
-        <configuration>
-          <archive>
-            <index>true</index>
-            <manifest>
-              <packageName>org.extex.exbib.main</packageName>
-              <addClasspath>true</addClasspath>
-              <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
-              <addExtensions>true</addExtensions>
-            </manifest>
-            <manifestEntries>
-              <url>${project.url}</url>
-            </manifestEntries>
-          </archive>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
   <developers>
     <developer>

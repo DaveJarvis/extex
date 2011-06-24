@@ -43,16 +43,6 @@
       <scope>test</scope>
     </dependency>
 
-<!-- 
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-base-test</artifactId>
-      <version>${project.version}</version>
-      <classifier>tests</classifier>
-      <scope>test</scope>
-    </dependency>
- -->
-
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-base-test</artifactId>
@@ -101,34 +91,8 @@
       <scope>test</scope>
     </dependency>
 
-<!-- 
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-Unit-tex</artifactId>
-      <classifier>tests</classifier>
-      <version>${project.version}</version>
-      <scope>test</scope>
-    </dependency>
- -->
   </dependencies>
 
-  <build>
-    <plugins>
-       <plugin>
-         <groupId>org.apache.maven.plugins</groupId>
-         <artifactId>maven-jar-plugin</artifactId>
-         <version>2.3.1</version>
-         <executions>
-           <execution>
-             <goals>
-               <goal>test-jar</goal>
-             </goals>
-           </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
-  
   <developers>
     <developer>
       <id>gene</id>

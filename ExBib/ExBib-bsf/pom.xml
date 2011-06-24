@@ -31,11 +31,6 @@
     <relativePath>../pom.xml</relativePath>
   </parent>
 
-  <properties>
-    <extex.directory>${basedir}/../..</extex.directory>
-    <exbib.directory>${basedir}/..</exbib.directory>
-  </properties>
-
   <dependencies>
     <dependency>
       <groupId>org.extex</groupId>
