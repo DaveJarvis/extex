@@ -169,9 +169,9 @@ pre {
   and configuration.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png" alt="*"/>
-  <a href="Sandbox/">Sandbox</a><br/> contains sand boxes of developers.
-  Here code can be put under version control without integrate it into
-  the official project tree.
+  <a href="Sandbox/">Sandbox</a><br/> contains sand boxes of
+  developers.  Here code can be put under version control without
+  integrating it into the official project tree.
 </p>
 <p class="dir"><img style="vertical-align:top" src="src/images/folder-blue.png" alt="*"/>
   <a href="build/">build</a><br/> contains
@@ -240,17 +240,197 @@ Sub-Projects</h2>
 
 <p>
  &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is
+ organized in a bunch of separate Maven modules. This is driven by the
+ design goal of configurability: The modules can be be assembled in
+ various ways.
+</p>
+<p>
+ The downside is that these modules need to be compiled. This is
+ accomplished by Maven.
+</p>
+<pre>
+-&gt; mvn compile
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] ExTeX Development Resources
+[INFO] The ExTeX Project
+[INFO] ExTeX Build System
+[INFO] ExTeX texmf tree
+[INFO] ExTeX Maven Skin
+[INFO] ExTeX Tools
+[INFO] Command Line Interface
+[INFO] ExTeX Resource and Framework
+[INFO] ExTeX
+[INFO] ExTeX Core
+[INFO] ExTeX Font System API
+[INFO] ExTeX Scanner API
+[INFO] ExTeX Typesetter API
+[INFO] ExTeX Interpreter API
+[INFO] ExTeX Scanner
+[INFO] ExTeX Typesetter TeX
+[INFO] ExTeX Base
+[INFO] ExTeX Backend Dump
+[INFO] ExTeX Backend DVI
+[INFO] ExTeX Backend DVIx
+[INFO] ExTeX Pdf API
+[INFO] ExTeX Backend iText
+[INFO] ExTeX Backend PDFBox
+[INFO] ExTeX Backend PS
+[INFO] ExTeX Backend RTF
+[INFO] ExTeX Backend SVG
+[INFO] ExTeX Backend Text
+[INFO] ExTeX Backend XML
+[INFO] ExTeX Typesetter core
+[INFO] ExTeX Interpreter max
+[INFO] ExTeX base test
+[INFO] ExTeX Font Test Support
+[INFO] ExTeX AFM Font System
+[INFO] ExTeX TFM Font System
+[INFO] ExTeX Unit TeX
+[INFO] ExTeX Unit Native
+[INFO] ExTeX Base Ext
+[INFO] ExTeX OTF Font System
+[INFO] ExTeX Font Utilities
+[INFO] ExTeX Unit Namespace
+[INFO] ExTeX Unit ExTeX
+[INFO] ExTeX Unit eTeX
+[INFO] ExTeX Unit pdfTeX
+[INFO] ExTeX OCPware
+[INFO] ExTeX Unit Omega
+[INFO] ExTeX Unit Color
+[INFO] ExTeX Format Utility Program
+[INFO] ExTeX TeX Main Program
+[INFO] ExTeX Scanner 32
+[INFO] ExTeX Unit Image
+[INFO] ExBib
+[INFO] ExBib Core
+[INFO] ExBib Command Line
+[INFO] ExBib BSF Adaptor
+[INFO] ExBib Groovy
+[INFO] ExBib BST to Groovy Compiler
+[INFO] ExBib Jacl
+[INFO] ExBib Jython
+[INFO] ExBib Ant Task
+[INFO] ExBib texmf
+[INFO] ExBib Utility Program
+[INFO] ExTeX Developer's Site
+[INFO]                                                                         
+[INFO] ------------------------------------------------------------------------
+[INFO] Building ExTeX Development Resources 1.4
+[INFO] ------------------------------------------------------------------------
+[INFO] 
+[INFO] --- maven-resources-plugin:2.4.3:resources (default-resources) @ develop ---
+[INFO] Using 'ISO-8859-1' encoding to copy filtered resources.
+[INFO] Copying 3 resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ develop ---
+[INFO] No sources to compile
+[INFO]                                                                         
+...
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary:
+[INFO] 
+[INFO] ExTeX Development Resources ....................... SUCCESS [2.400s]
+[INFO] The ExTeX Project ................................. SUCCESS [0.001s]
+[INFO] ExTeX Build System ................................ SUCCESS [0.000s]
+[INFO] ExTeX texmf tree .................................. SUCCESS [0.000s]
+[INFO] ExTeX Maven Skin .................................. SUCCESS [0.207s]
+[INFO] ExTeX Tools ....................................... SUCCESS [0.001s]
+[INFO] Command Line Interface ............................ SUCCESS [0.515s]
+[INFO] ExTeX Resource and Framework ...................... SUCCESS [0.542s]
+[INFO] ExTeX ............................................. SUCCESS [0.002s]
+[INFO] ExTeX Core ........................................ SUCCESS [0.804s]
+[INFO] ExTeX Font System API ............................. SUCCESS [0.549s]
+[INFO] ExTeX Scanner API ................................. SUCCESS [0.734s]
+[INFO] ExTeX Typesetter API .............................. SUCCESS [5.532s]
+[INFO] ExTeX Interpreter API ............................. SUCCESS [1.006s]
+[INFO] ExTeX Scanner ..................................... SUCCESS [0.603s]
+[INFO] ExTeX Typesetter TeX .............................. SUCCESS [0.533s]
+[INFO] ExTeX Base ........................................ SUCCESS [1.728s]
+[INFO] ExTeX Backend Dump ................................ SUCCESS [0.429s]
+[INFO] ExTeX Backend DVI ................................. SUCCESS [0.395s]
+[INFO] ExTeX Backend DVIx ................................ SUCCESS [0.331s]
+[INFO] ExTeX Pdf API ..................................... SUCCESS [0.545s]
+[INFO] ExTeX Backend iText ............................... SUCCESS [0.332s]
+[INFO] ExTeX Backend PDFBox .............................. SUCCESS [0.350s]
+[INFO] ExTeX Backend PS .................................. SUCCESS [0.291s]
+[INFO] ExTeX Backend RTF ................................. SUCCESS [0.231s]
+[INFO] ExTeX Backend SVG ................................. SUCCESS [0.221s]
+[INFO] ExTeX Backend Text ................................ SUCCESS [0.250s]
+[INFO] ExTeX Backend XML ................................. SUCCESS [0.259s]
+[INFO] ExTeX Typesetter core ............................. SUCCESS [0.178s]
+[INFO] ExTeX Interpreter max ............................. SUCCESS [0.185s]
+[INFO] ExTeX base test ................................... SUCCESS [0.427s]
+[INFO] ExTeX Font Test Support ........................... SUCCESS [0.211s]
+[INFO] ExTeX AFM Font System ............................. SUCCESS [0.315s]
+[INFO] ExTeX TFM Font System ............................. SUCCESS [0.556s]
+[INFO] ExTeX Unit TeX .................................... SUCCESS [2.535s]
+[INFO] ExTeX Unit Native ................................. SUCCESS [0.396s]
+[INFO] ExTeX Base Ext .................................... SUCCESS [1.083s]
+[INFO] ExTeX OTF Font System ............................. SUCCESS [0.528s]
+[INFO] ExTeX Font Utilities .............................. SUCCESS [0.370s]
+[INFO] ExTeX Unit Namespace .............................. SUCCESS [0.276s]
+[INFO] ExTeX Unit ExTeX .................................. SUCCESS [0.341s]
+[INFO] ExTeX Unit eTeX ................................... SUCCESS [0.767s]
+[INFO] ExTeX Unit pdfTeX ................................. SUCCESS [0.319s]
+[INFO] ExTeX OCPware ..................................... SUCCESS [0.773s]
+[INFO] ExTeX Unit Omega .................................. SUCCESS [0.837s]
+[INFO] ExTeX Unit Color .................................. SUCCESS [0.377s]
+[INFO] ExTeX Format Utility Program ...................... SUCCESS [0.207s]
+[INFO] ExTeX TeX Main Program ............................ SUCCESS [0.618s]
+[INFO] ExTeX Scanner 32 .................................. SUCCESS [0.332s]
+[INFO] ExTeX Unit Image .................................. SUCCESS [0.310s]
+[INFO] ExBib ............................................. SUCCESS [0.001s]
+[INFO] ExBib Core ........................................ SUCCESS [6.510s]
+[INFO] ExBib Command Line ................................ SUCCESS [0.370s]
+[INFO] ExBib BSF Adaptor ................................. SUCCESS [0.289s]
+[INFO] ExBib Groovy ...................................... SUCCESS [0.542s]
+[INFO] ExBib BST to Groovy Compiler ...................... SUCCESS [0.706s]
+[INFO] ExBib Jacl ........................................ SUCCESS [0.203s]
+[INFO] ExBib Jython ...................................... SUCCESS [0.143s]
+[INFO] ExBib Ant Task .................................... SUCCESS [0.311s]
+[INFO] ExBib texmf ....................................... SUCCESS [1.266s]
+[INFO] ExBib Utility Program ............................. SUCCESS [0.292s]
+[INFO] ExTeX Developer's Site ............................ SUCCESS [0.000s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 44.778s
+[INFO] Finished at: Fri Jun 24 12:52:39 CEST 2011
+[INFO] Final Memory: 8M/20M
+[INFO] ------------------------------------------------------------------------
+</pre>
+<p>
+ As a result the compiled classes can be found in the various
+ subdirectories <tt>target/classes</tt> of the Maven modules.
+</p>
+<p>
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is
  organized into the sub-projects <tt>ExTeX</tt>, <tt>ExBib</tt>,
  and <tt>ExIndex</tt>. These sub-projects are organized in a way that
  they can be compiled independently. Consult the ReadMe files in the
- sub-projects to get instructions to compile them.
+ sub-projects to get instructions to compile them separately.
 </p>
-
 <p>
-  &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X
-  utilizes <a href="http://maven.apache.org">Maven</a> for
-  compilation. 
-</p>  
+ In a similar way you can get the jar files for all modules with the
+ following command:
+</p>
+<pre>
+-&gt; mvn package
+</pre>
+<p style="color:red;font-weight:bold;">
+ <img src="src/images/warn.png" alt="Warning:"/>
+ &epsilon;&chi;<span class="t">T</span><span class="e">e</span>X is
+ still in development. Thus you should not be surprised to get test
+ failures when running the tests.
+</p>
+<p>
+ The test failures are an indication, where the development needs to
+ continue. If you are willing to continue instruct Maven to ignore
+ them.
+</p>
 
 
 <address>
