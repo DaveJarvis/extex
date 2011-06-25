@@ -28,19 +28,18 @@ function run {
     echo "########## /$1 ##########" `date`
 }
 
-run install . install
+run install . -Dmaven.test.failure.ignore=true install
 
 #run 'clean ExBib' ExBib clean
 #run ExBib ExBib install
 run ExBib ExBib/ExBib-Installer package
 
 #run 'clean ExTeX' ExTeX clean
-run ExTeX ExTeX \
-         -Dmaven.test.failure.ignore=true \
-         -Dmaven.test.error.ignore=true   \
-         package
-
-run 'ExBib site' ExBib site:stage-deploy
+#run ExTeX ExTeX \
+#         -Dmaven.test.failure.ignore=true \
+#         -Dmaven.test.error.ignore=true   \
+#         package
+#run 'ExBib site' ExBib site:stage-deploy
 
 run site site compile
 
