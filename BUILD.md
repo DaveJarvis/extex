@@ -20,7 +20,7 @@ contains [Maven](http://maven.apache.org) projects used in
 * ![](src/images/folder-blue.png) [src](src/) contains additional
 sources. Thus we follow the conventions of Maven.
 
-Compiling εχTeX or Sub-Projects
+Compiling εχTeX
 -------------------------------------------
 
 εχTeX is organized in a bunch of separate Maven modules.
@@ -33,15 +33,18 @@ accomplished by Maven.
 As a result the compiled classes can be found in the various
 subdirectories `target/classes` of the Maven modules.
 
-εχTeX is organized into the sub-projects `ExTeX`, `ExBib`,
-and `ExIndex`. These sub-projects are organized in a way that they can
-be compiled independently. Consult the ReadMe files in the sub-projects
-to get instructions to compile them separately.
-
 In a similar way you can get the jar files for all modules with the
 following command:
 
-    -> mvn package
+    mvn package
+
+Compiling Sub-Projects
+-------------------------------------------
+
+εχTeX is organized into the sub-projects `ExTeX`, `ExBib`,
+and `ExIndex`. These sub-projects are organized in a way that they can
+be compiled independently. Consult the README files in the sub-projects
+to get instructions to compile them separately.
 
 Testing εχTeX
 -------------------------------------------
