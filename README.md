@@ -1,6 +1,9 @@
 εχTeX
 =================
 
+The goal of this fork is to ascertain whether real-time rendering of
+TeX into either MathML or SVG is feasible using εχTeX.
+
 εχTeX aims at the development of a high quality typesetting
 system. This development is massively based on the experiences with the
 typesetting system TeX. Despite of its age TeX can still be
@@ -13,12 +16,6 @@ makes it hard to improve the system -- even in the few areas which
 deserve improvements. The new millenium needs a system which is open for
 further development and at the same time compatible with TeX as
 much as reasonable.
-
-Purpose
--------------------------------
-
-The goal of this fork is to ascertain whether real-time rendering of
-TeX into either MathML or SVG is feasible.
 
 Original Code
 -------------------------------
@@ -82,12 +79,6 @@ functionality for components and configuration.
 contains sand boxes of developers. Here code can be put under version
 control without integrating it into the official project tree.
 
-* ![](src/images/folder-blue.png) [build](build/)
-contains the [Maven](http://maven.apache.org)-based build system. It
-also contains some fragments from the old
-[Ant](http://ant.apache.org)-based build system which is now outdated,
-does not work any more, and will sooner or later be overcome completely.
-
 * ![](src/images/folder-blue.png) [develop](develop/)
 contains configurations and tools for the development.
 
@@ -98,18 +89,11 @@ itself. Additional documentation can be found in the sub-projects.
 * ![](src/images/folder-blue.png) [library](library/)
 contains the library of collected papers and documents.
 
-* ![](src/images/folder-blue.png) [maven2](maven2/)
-contains [Maven](http://maven.apache.org) projects used in
-εχTeX which do not have a public site of their own.
-
 * ![](src/images/folder-blue.png) [site](site/)
 contains the relaunch of the web pages on
 [www.extex.org](http://www.extex.org/). It is not active yet.
 
-* ![](src/images/folder-blue.png) [src](src/) contains additional
-sources. Thus we follow the conventions of Maven.
-
-![+](src/images/folder-gray.png) [target](target/)
+* ![](src/images/folder-gray.png) [target](target/)
 is not contained in the repository. It is created on the fly during
 compilation to receive the intermediate files and results.
 
@@ -127,34 +111,4 @@ some sort which do not need the global build system of
 * ![](src/images/folder-blue.png) [www](www/)
 contains the sources for the web pages for
 [www.extex.org](http://www.extex.org/).
-
-Compiling εχTeX or Sub-Projects
--------------------------------------------
-
-εχTeX is organized in a bunch of separate Maven modules.
-This is driven by the design goal of configurability: The modules can be
-be assembled in various ways.
-
-The downside is that these modules need to be compiled. This is
-accomplished by Maven.
-
-As a result the compiled classes can be found in the various
-subdirectories `target/classes` of the Maven modules.
-
-εχTeX is organized into the sub-projects `ExTeX`, `ExBib`,
-and `ExIndex`. These sub-projects are organized in a way that they can
-be compiled independently. Consult the ReadMe files in the sub-projects
-to get instructions to compile them separately.
-
-In a similar way you can get the jar files for all modules with the
-following command:
-
-    -> mvn package
-
-![Warning:](src/images/warn.png) εχTeX is still in
-development. Thus you should not be surprised to get test failures when
-running the tests.
-
-The test failures are an indication, where the development needs to
-continue. If you are willing to continue instruct Maven to ignore them.
 
