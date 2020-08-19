@@ -1,16 +1,19 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.extex</groupId>
   <artifactId>ExTeX-skin</artifactId>
-  <version>1.1</version>
-  <packaging>jar</packaging>
   <name>ExTeX Maven Skin</name>
-  <url>http://www.extex.org/snapshot/ExTeX-skin/</url>
-  <inceptionYear>2010</inceptionYear>
   <description>
     This is the ExTeX site skin.
   </description>
+
+  <version>1.1</version>
+  <packaging>jar</packaging>
+  <inceptionYear>2010</inceptionYear>
+  <url>http://www.extex.org/snapshot/ExTeX-skin/</url>
+
   <organization>
     <name>The ExTeX Group</name>
     <url>http://www.extex.org</url>
@@ -18,7 +21,8 @@
 
   <scm>
     <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk/tools/ExTeX-skin/</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/tools/ExTeX-skin/</developerConnection>
+    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk/tools/ExTeX-skin/
+    </developerConnection>
     <url>http://svn.berlios.de/wsvn/extex/trunk/tools/ExTeX-skin/</url>
   </scm>
 
@@ -32,23 +36,24 @@
   </properties>
 
   <build>
-   <plugins>
+    <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
-        <version>3.0-beta-3</version>
-        <configuration>
-          <reportPlugins>
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-project-info-reports-plugin</artifactId>
-              <version>2.3.1</version>
-            </plugin>
-          </reportPlugins>
-        </configuration>
+        <version>3.3</version>
       </plugin>
-   </plugins>
+    </plugins>
   </build>
+
+  <reporting>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-project-info-reports-plugin</artifactId>
+        <version>3.1.0</version>
+      </plugin>
+    </plugins>
+  </reporting>
 
   <distributionManagement>
     <site>
@@ -65,7 +70,7 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
   <developers>
     <developer>
       <id>gene</id>
@@ -80,7 +85,7 @@
       <properties/>
     </developer>
   </developers>
-  
+
   <mailingLists>
     <mailingList>
       <name>extex</name>
@@ -93,5 +98,4 @@
       <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
     </mailingList>
   </mailingLists>
-  
 </project>
