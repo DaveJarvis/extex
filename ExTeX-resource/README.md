@@ -1,4 +1,4 @@
-![](src/images/ExTeX-resource-side.png){.left}
+
 
 εχTeX resource
 ==========================
