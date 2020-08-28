@@ -1,4 +1,4 @@
-![](src/images/ExBib-Jacl-side.png){.left}
+
 
 The εχBib Jacl
 ==============

@@ -1,4 +1,4 @@
-![](src/images/www-side.png){.left}
+
 
 The εχTeX Web Site
 ==============================

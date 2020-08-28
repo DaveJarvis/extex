@@ -1,4 +1,4 @@
-![](src/images/LaTeXmojo-side.png){.left}
+
 
 The L[a]{.la}TeX Mojo
 =================================

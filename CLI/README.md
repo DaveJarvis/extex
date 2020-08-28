@@ -1,4 +1,4 @@
-![](src/images/ExTeX-CLI-side.png){.left}
+
 
 The εχT[e]{.e}X CLI -- the Command Line Interface
 =================================================

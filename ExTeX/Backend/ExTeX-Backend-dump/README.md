@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Backend-dump-side.png){.left}
+
 
 The εχT[e]{.e}X Backend dump
 ============================

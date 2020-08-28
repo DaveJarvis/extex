@@ -1,4 +1,4 @@
-![sidebar](src/images/users-guide-side.png){.left}
+
 
 The εχTeX User\'s Guide
 ===================================

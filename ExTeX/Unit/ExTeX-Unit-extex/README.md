@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Unit-ExTeX-side.png){.left}
+
 
 The εχT[e]{.e}X Unit εχT[e]{.e}X
 ================================

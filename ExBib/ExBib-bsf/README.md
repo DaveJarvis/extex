@@ -1,4 +1,4 @@
-![](src/images/ExBib-BSF-side.png){.left}
+
 
 The εχBib BSF
 =============

@@ -1,4 +1,4 @@
-![](src/images/dev-guide-side.png){.left}
+
 
 The εχTeX Developer\'s Guide
 ========================================

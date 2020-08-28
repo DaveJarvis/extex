@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Unit-omega-side.png){.left}
+
 
 The εχT[e]{.e}X Unit Ω
 ======================

@@ -1,4 +1,4 @@
-![](src/images/ExTeX-core-side.png){.left}
+
 
 The εχTeX Core
 ==========================

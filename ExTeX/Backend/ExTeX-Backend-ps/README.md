@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Backend-ps-side.png){.left}
+
 
 The εχT[e]{.e}X Back-End PS
 ===========================

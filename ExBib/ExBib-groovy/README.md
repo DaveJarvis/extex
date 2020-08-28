@@ -1,4 +1,4 @@
-![](src/images/ExBib-Groovy-side.png){.left}
+
 
 The εχBib Groovy
 ================

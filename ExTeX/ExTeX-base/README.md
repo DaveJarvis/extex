@@ -1,4 +1,4 @@
-![](src/images/ExTeX-base-side.png){.left}
+
 
 The εχTeX Base
 ==========================

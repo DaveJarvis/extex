@@ -1,4 +1,4 @@
-![](src/images/ExBib-Ant-side.png){.left}
+
 
 The εχBib Ant
 =============

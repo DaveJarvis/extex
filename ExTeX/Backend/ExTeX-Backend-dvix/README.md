@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Backend-dvix-side.png){.left}
+
 
 The εχT[e]{.e}X Back-End DVIx
 =============================

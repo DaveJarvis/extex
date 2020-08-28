@@ -1,4 +1,4 @@
-![](src/images/ExBib-Jython-side.png){.left}
+
 
 The εχBib Jython
 ================

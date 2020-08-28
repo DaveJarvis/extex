@@ -1,4 +1,4 @@
-![](src/images/ExTeX-site-builder-side.png){.left}
+
 
 The εχTeX Site Builder
 ==================================

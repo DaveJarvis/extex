@@ -1,4 +1,4 @@
-![](src/images/develop-side.png){.left}
+
 
 The εχT[e]{.e}X Development Resources
 =====================================

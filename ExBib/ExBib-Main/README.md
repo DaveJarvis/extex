@@ -1,4 +1,4 @@
-![](src/images/ExBib-Main-side.png){.left}
+
 
 εχBib Main
 ==========

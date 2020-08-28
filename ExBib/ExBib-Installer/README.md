@@ -1,4 +1,4 @@
-![](src/images/ExBib-Installer-side.png){.left}
+
 
 The εχBib Installer
 ===================

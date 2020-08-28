@@ -1,4 +1,4 @@
-![](src/images/ExIndex-side.png){.left}
+
 
 The εχIndex Documentation
 =========================

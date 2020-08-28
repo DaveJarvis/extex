@@ -1,4 +1,4 @@
-![](src/images/ExTeX-Backend-rtf-side.png){.left}
+
 
 The εχT[e]{.e}X Back-End RTF
 ============================

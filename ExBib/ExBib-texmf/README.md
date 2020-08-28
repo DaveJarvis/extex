@@ -1,4 +1,4 @@
-![](src/images/ExBib-side.png){.left}
+
 
 εχBib Styles
 ============
