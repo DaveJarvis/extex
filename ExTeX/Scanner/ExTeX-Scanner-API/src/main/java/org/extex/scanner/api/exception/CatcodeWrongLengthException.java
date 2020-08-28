@@ -53,7 +53,7 @@ public class CatcodeWrongLengthException extends CatcodeException {
     @Override
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeWrongLengthException.Text", //
+        return getLocalizer().format("CatcodeWrongLengthException.Text",
             super.getMessage());
     }
 

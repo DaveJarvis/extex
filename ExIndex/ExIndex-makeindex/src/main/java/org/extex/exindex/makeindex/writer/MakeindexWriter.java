@@ -56,9 +56,9 @@ public class MakeindexWriter implements IndexWriter {
      */
     public MakeindexWriter(Writer writer, Parameters params) throws IOException {
 
-        this.writer = new LineBreakingWriter(writer, //
-            (int) params.getNumber("markup:line-max"), //
-            params.getString("markup:indent-space"), //
+        this.writer = new LineBreakingWriter(writer,
+            (int) params.getNumber("markup:line-max"),
+            params.getString("markup:indent-space"),
             (int) params.getNumber("markup:indent_length"));
         this.params = params;
     }
@@ -93,20 +93,20 @@ public class MakeindexWriter implements IndexWriter {
     public int[] write(List<Entry> entries, Logger logger, String startPage,
             PageProcessor pageProcessor) throws IOException {
 
-        // String[] item = {params.getString("index:item_0"), //
-        // params.getString("index:item_1"), //
+        // String[] item = {params.getString("index:item_0"),
+        // params.getString("index:item_1"),
         // params.getString("index:item_2")};
-        String[] itemX = {params.getString("index:item_0"), //
-                params.getString("index:item_x1"), //
+        String[] itemX = {params.getString("index:item_0"),
+                params.getString("index:item_x1"),
                 params.getString("index:item_x2")};
-        String[] delim = {params.getString("index:delim_0"), //
-                params.getString("index:delim_1"), //
+        String[] delim = {params.getString("index:delim_0"),
+                params.getString("index:delim_1"),
                 params.getString("index:delim_2")};
         String delimN = params.getString("markup:locref-list-sep");
-        String[] pageParams = {params.getString("index:encap-prefix"), //
-                params.getString("index:encap-infix"), //
-                params.getString("index:encap-suffix"), //
-                params.getString("markup:range"), //
+        String[] pageParams = {params.getString("index:encap-prefix"),
+                params.getString("index:encap-infix"),
+                params.getString("index:encap-suffix"),
+                params.getString("markup:range"),
                 params.getString("markup:locref-list-sep")};
         long headingFlag = params.getNumber("index:headings-flag");
         int[] count = {0, 0};
@@ -149,7 +149,7 @@ public class MakeindexWriter implements IndexWriter {
             // break;
             // } else if (!lastKey[i].equals(display[i])) {
             // level = i;
-            //
+
             // writer.write(item[0]); // TODO
             // write(display[i]);
             // // throw new RuntimeException("unimplemented");

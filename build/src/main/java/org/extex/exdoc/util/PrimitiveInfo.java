@@ -78,7 +78,7 @@ public class PrimitiveInfo {
             return false;
         }
         PrimitiveInfo pi = (PrimitiveInfo) obj;
-        return eq(name, pi.name) //
+        return eq(name, pi.name)
                 && eq(implementer, pi.implementer)
                 && eq(namespace, pi.namespace);
     }

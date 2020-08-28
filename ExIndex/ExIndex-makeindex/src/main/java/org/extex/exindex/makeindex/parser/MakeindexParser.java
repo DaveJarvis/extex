@@ -94,9 +94,9 @@ public class MakeindexParser implements Parser {
 
             for (int c = locator.read(); c >= 0; c = locator.read()) {
                 if (c == k0 && scanKeyword(locator, keyword)) {
-                    String arg = scanArgument(locator, argOpen, argClose, //
+                    String arg = scanArgument(locator, argOpen, argClose,
                         escape, quote, index);
-                    String p = scanArgument(locator, argOpen, argClose, //
+                    String p = scanArgument(locator, argOpen, argClose,
                         escape, quote, index);
                     String enc = null;
                     int x = arg.lastIndexOf(encap);

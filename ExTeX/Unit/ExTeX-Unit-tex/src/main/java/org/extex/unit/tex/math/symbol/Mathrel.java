@@ -105,7 +105,7 @@ public class Mathrel extends AbstractMathCode {
                 TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
 
         if (noad != null) {

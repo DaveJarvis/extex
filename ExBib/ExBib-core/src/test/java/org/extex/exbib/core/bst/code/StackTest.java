@@ -72,7 +72,7 @@ public class StackTest {
         logger.setLevel(Level.ALL);
         err = new StoringHandler();
         logger.addHandler(err);
-        p = new BstInterpreter099c(new DBImpl(), //
+        p = new BstInterpreter099c(new DBImpl(),
             new StringBufferWriter(out), logger);
     }
 

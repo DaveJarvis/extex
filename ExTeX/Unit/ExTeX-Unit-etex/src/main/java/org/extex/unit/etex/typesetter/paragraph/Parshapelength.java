@@ -134,7 +134,7 @@ public class Parshapelength extends AbstractCode
         long l = source.parseInteger(context, source, typesetter);
         int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
         ParagraphShape parshape = context.getParshape();
-        FixedDimen d = (parshape == null || n < 0) //
+        FixedDimen d = (parshape == null || n < 0)
                 ? Dimen.ZERO_PT
                 : parshape.getLength(n);
 

@@ -124,7 +124,7 @@ public abstract class DviCommand {
     /**
      * the interpreter commands
      */
-    private static final DviReadCommand[] OPCODEARRAY = {//
+    private static final DviReadCommand[] OPCODEARRAY = {
             /**
              * set_char_0: Typeset character number 0 from font <code>f</code>
              * such that the reference point of the character is at

@@ -212,7 +212,7 @@ public class Delcode extends AbstractAssignment
         }
 
         context.setDelcode(charCode,
-            AbstractTeXDelimiter.newMathDelimiter(value), //
+            AbstractTeXDelimiter.newMathDelimiter(value),
             prefix.clearGlobal());
 
         Token afterassignment = context.getAfterassignment();

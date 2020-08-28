@@ -51,8 +51,8 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
      */
     public AbstractKernNode(FixedDimen kern, boolean horizontal) {
 
-        super((horizontal ? kern : Dimen.ZERO_PT), //
-            (horizontal ? Dimen.ZERO_PT : kern), //
+        super((horizontal ? kern : Dimen.ZERO_PT), 
+            (horizontal ? Dimen.ZERO_PT : kern), 
             Dimen.ZERO_PT);
     }
 
@@ -75,7 +75,7 @@ public abstract class AbstractKernNode extends AbstractNode implements KernNode 
     @Override
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
-        sb.append(getLocalizer().format("String.Format", //
+        sb.append(getLocalizer().format("String.Format", 
             getWidth().toString()));
     }
 

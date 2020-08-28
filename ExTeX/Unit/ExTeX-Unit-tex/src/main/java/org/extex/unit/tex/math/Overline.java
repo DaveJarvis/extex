@@ -90,7 +90,7 @@ public class Overline extends AbstractMathCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
         nc.add(new OverlinedNoad(noad, context.getTypesettingContext()));
     }

@@ -65,7 +65,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
             "\\nonstopmode" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.NONSTOPMODE, //
+        assertEquals(Interaction.NONSTOPMODE,
             interpreter.getContext().getInteraction());
     }
 
@@ -83,7 +83,7 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
             "\\errorstopmode\\begingroup\\nonstopmode\\endgroup" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.NONSTOPMODE, //
+        assertEquals(Interaction.NONSTOPMODE,
             interpreter.getContext().getInteraction());
     }
 

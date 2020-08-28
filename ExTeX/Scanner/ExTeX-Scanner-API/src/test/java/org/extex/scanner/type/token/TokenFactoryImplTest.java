@@ -179,7 +179,7 @@ public class TokenFactoryImplTest {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
-        Token t = tf.createToken(Catcode.ACTIVE, UnicodeChar.get('c'), //
+        Token t = tf.createToken(Catcode.ACTIVE, UnicodeChar.get('c'),
             "abc", "namespace");
         assertNotNull(t);
         assertTrue(t instanceof ActiveCharacterToken);
@@ -532,7 +532,7 @@ public class TokenFactoryImplTest {
 
         TokenFactoryImpl tf = new TokenFactoryImpl();
         assertNotNull(tf);
-        Token t = tf.createToken(Catcode.ESCAPE, UnicodeChar.get('c'), //
+        Token t = tf.createToken(Catcode.ESCAPE, UnicodeChar.get('c'),
             "abc", "namespace");
         assertNotNull(t);
         assertTrue(t instanceof ControlSequenceToken);

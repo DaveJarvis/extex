@@ -50,7 +50,7 @@ public class MathcharTest extends AbstractMathTester {
 
         assertFailure(
         //--- input code ---
-                DEFINE_MATH + "$\\mathchar-1 " //
+                DEFINE_MATH + "$\\mathchar-1 "
                         + "\\alpha\\end",
                 //--- output message ---
                 "Bad mathchar (-1)");

@@ -177,7 +177,7 @@ public class ChangeCase extends AbstractCode {
                     } else if (c == '}') {
                         level--;
                     } else if (level > 0) {
-                        //
+
                     } else if (c == ':') {
                         if (i == sb.length()) {
                             break;

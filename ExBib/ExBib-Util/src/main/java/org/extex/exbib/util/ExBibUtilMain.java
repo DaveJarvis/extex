@@ -328,7 +328,7 @@ public final class ExBibUtilMain extends AbstractMain {
                 IOException,
                 ExBibException {
 
-        AuxReader auxReader = new AuxReaderFactory(//
+        AuxReader auxReader = new AuxReaderFactory(
             configuration.getConfiguration("AuxReader")).newInstance(finder);
         auxReader.register(new ResourceObserverImpl(getLogger()));
 

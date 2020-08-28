@@ -113,7 +113,7 @@ public abstract class AbstractFileCode extends AbstractCode
         String key = Long.toString(no);
 
         if (no < 0 || no > MAX_IN_FILE_NO) {
-            throw new BadFileNumberException(key, //
+            throw new BadFileNumberException(key, 
                 "0", Integer.toString(MAX_IN_FILE_NO));
         }
 

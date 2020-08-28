@@ -568,7 +568,7 @@ public class Moritz extends Max
 
             if (t == null) {
                 return false;
-            } else if (!(t.eq(Catcode.LETTER, s.charAt(i)) //
+            } else if (!(t.eq(Catcode.LETTER, s.charAt(i))
                     || t.eq(Catcode.OTHER, s.charAt(i)))
                     || !getKeyword(context, s, i + 1)) {
                 put(t);
@@ -647,7 +647,7 @@ public class Moritz extends Max
                     n = token.getChar().getCodePoint() - '0';
 
                     for (t = getToken(context); t != null
-                            && t.isa(Catcode.OTHER) && t.getChar().isDigit(); //
+                            && t.isa(Catcode.OTHER) && t.getChar().isDigit();
                     t = getToken(context)) {
                         n = n * 10 + t.getChar().getCodePoint() - '0';
                     }
@@ -675,7 +675,7 @@ public class Moritz extends Max
                     break;
 
                 case '\'':
-                    for (t = getToken(context); t instanceof OtherToken; //
+                    for (t = getToken(context); t instanceof OtherToken;
                     t = getToken(context)) {
                         int no = t.getChar().getCodePoint() - '0';
                         if (no < 0 || no >= 7) {
@@ -690,8 +690,8 @@ public class Moritz extends Max
 
                 case '"':
 
-                    for (t = getToken(context); //
-                    t instanceof OtherToken || t instanceof LetterToken; //
+                    for (t = getToken(context);
+                    t instanceof OtherToken || t instanceof LetterToken;
                     t = getToken(context)) {
                         int no = t.getChar().getCodePoint();
                         switch (no) {
@@ -1155,7 +1155,7 @@ public class Moritz extends Max
     public void registerObserver(StreamCloseObserver observer) {
 
         observersCloseStream =
-                StreamCloseObserverList.register(observersCloseStream, //
+                StreamCloseObserverList.register(observersCloseStream,
                     observer);
     }
 

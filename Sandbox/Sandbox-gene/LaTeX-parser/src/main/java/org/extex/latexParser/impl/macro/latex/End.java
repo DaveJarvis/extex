@@ -110,6 +110,6 @@ public class End extends AbstractNode implements Macro {
      */
     public void print(PrintStream stream) {
 
-        //
+
     }
 }

@@ -232,7 +232,7 @@ public final class StyleNoad implements Noad {
      * Some of them are available via constants; others can be acquired via some
      * methods-
      */
-    private static final StyleNoad[] STYLE = {//
+    private static final StyleNoad[] STYLE = {
             new StyleNoad(0, "displaystyle", "textfont"),
                     new StyleNoad(1, "displaystyle", "textfont"),
                     new StyleNoad(2, "textstyle", "textfont"),

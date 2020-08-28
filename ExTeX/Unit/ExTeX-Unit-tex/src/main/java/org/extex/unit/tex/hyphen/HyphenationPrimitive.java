@@ -169,8 +169,8 @@ public class HyphenationPrimitive extends AbstractHyphenationCode {
         try {
             UnicodeCharList word;
 
-            for (t = source.getNonSpace(context); //
-            !(t instanceof RightBraceToken); //
+            for (t = source.getNonSpace(context);
+            !(t instanceof RightBraceToken);
             t = source.getNonSpace(context)) {
 
                 if (!isWordConstituent(t, context)) {

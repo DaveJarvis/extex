@@ -46,7 +46,7 @@ public final class OcpUtil {
 
     private OcpUtil() {
 
-        //
+
     }
 
     /**
@@ -91,8 +91,8 @@ public final class OcpUtil {
 
         StringBuilder sb = new StringBuilder(t.toText());
 
-        for (t = source.getToken(context); //
-        t != null && !(t instanceof SpaceToken); //
+        for (t = source.getToken(context);
+        t != null && !(t instanceof SpaceToken);
         t = source.getToken(context)) {
             sb.append(t.toText());
         }
@@ -115,8 +115,8 @@ public final class OcpUtil {
 
         StringBuilder sb = new StringBuilder();
 
-        for (Token t = source.getToken(context); //
-        t != null && !(t instanceof SpaceToken); //
+        for (Token t = source.getToken(context);
+        t != null && !(t instanceof SpaceToken);
         t = source.getToken(context)) {
             sb.append(t.toText());
         }

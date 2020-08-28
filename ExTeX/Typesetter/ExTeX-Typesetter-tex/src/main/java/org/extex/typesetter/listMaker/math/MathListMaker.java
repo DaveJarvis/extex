@@ -313,17 +313,17 @@ public class MathListMaker extends HorizontalListMaker
      */
     protected static boolean insufficientSymbolFonts(TypesetterOptions options) {
 
-        Font textfont2 = options.getFont(MathFontParameter.key(options, //
+        Font textfont2 = options.getFont(MathFontParameter.key(options,
             TEXTFONT, "2"));
         if (textfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptfont2 = options.getFont(MathFontParameter.key(options, //
+        Font scriptfont2 = options.getFont(MathFontParameter.key(options,
             SCRIPTFONT, "2"));
         if (scriptfont2.getFontDimen("8") == null) {
             return true;
         }
-        Font scriptscriptfont2 = options.getFont(MathFontParameter.key(options, //
+        Font scriptscriptfont2 = options.getFont(MathFontParameter.key(options,
             SCRIPTSCRIPTFONT, "2"));
         if (scriptscriptfont2.getFontDimen("8") == null) {
             return true;
@@ -546,7 +546,7 @@ public class MathListMaker extends HorizontalListMaker
         if (!stack.empty()) {
             MathMemento mm = stack.pop();
             throw new TypesetterException(new HelpingException(getLocalizer(),
-                "TTP.MissingInserted", //
+                "TTP.MissingInserted",
                 (mm.isBlock() ? "}" : "\\right.")));
         }
 
@@ -979,7 +979,7 @@ public class MathListMaker extends HorizontalListMaker
     @Override
     public void showlist(StringBuilder sb, long depth, long breadth) {
 
-        //
+
     }
 
     /**

@@ -28,7 +28,7 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({DBImplTest.class //
+@Suite.SuiteClasses({DBImplTest.class
 })
 public final class AllTests {
 

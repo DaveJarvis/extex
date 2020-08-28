@@ -129,7 +129,7 @@ public class Inputfilename extends AbstractCode
             throws CatcodeException, HelpingException, TypesetterException {
 
         String filename = source.getLocator().getResourceName();
-        return context.getTokenFactory().toTokens(//
+        return context.getTokenFactory().toTokens(
             (filename == null ? "" : filename));
     }
 

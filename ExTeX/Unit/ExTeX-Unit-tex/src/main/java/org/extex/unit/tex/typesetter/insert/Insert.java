@@ -90,7 +90,7 @@ public class Insert extends AbstractCode {
         Flags f = prefix.copy();
         prefix.clear();
         long index = source.parseNumber(context, source, typesetter);
-        Box box = new Box(context, source, typesetter, false, null, //
+        Box box = new Box(context, source, typesetter, false, null,
             GroupType.INSERT_GROUP, source.getLastToken());
 
         Mode mode = typesetter.getMode();

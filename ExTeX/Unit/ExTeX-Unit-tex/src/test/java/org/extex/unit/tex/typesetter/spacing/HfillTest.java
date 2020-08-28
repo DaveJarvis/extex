@@ -50,10 +50,10 @@ public class HfillTest extends AbstractHfillTester {
         // --- input code ---
             "\\font\\f cmr10 \\f\\hsize=100pt x\\hfill x\\end ",
             // --- output channel ---
-            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    "..x\n" + //
-                    "..\\glue0.0pt plus 1.0fill\n" + //
+            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" +
+                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" +
+                    "..x\n" +
+                    "..\\glue0.0pt plus 1.0fill\n" +
                     "..x\n");
     }
 

@@ -375,7 +375,7 @@ public class PomCollector {
         buffer.append("</top>");
 
         transformer.transform(
-            //
+
             new StreamSource(new StringReader(buffer.toString())),
             new StreamResult(writer));
     }

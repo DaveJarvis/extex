@@ -207,7 +207,7 @@ public class TokenStreamStringImplTest {
     public void testActive() throws Exception {
 
         TokenStream stream = makeStream("~");
-        assertEquals("the active character ~", //
+        assertEquals("the active character ~",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -421,11 +421,11 @@ public class TokenStreamStringImplTest {
     public void testCR1() throws Exception {
 
         TokenStream stream = makeStream("a\nc");
-        assertEquals("the letter a", //
+        assertEquals("the letter a",
             stream.get(FACTORY, TOKENIZER).toString());
         Token t = stream.get(FACTORY, TOKENIZER);
         assertEquals("blank space  ", t.toString());
-        assertEquals("the letter c", //
+        assertEquals("the letter c",
             stream.get(FACTORY, TOKENIZER).toString());
     }
 
@@ -460,11 +460,11 @@ public class TokenStreamStringImplTest {
     public void testCR2() throws Exception {
 
         TokenStream stream = makeStream("a\n c");
-        assertEquals("the letter a", //
+        assertEquals("the letter a",
             stream.get(FACTORY, TOKENIZER).toString());
         Token t = stream.get(FACTORY, TOKENIZER);
         assertEquals("blank space  ", t.toString());
-        assertEquals("the letter c", //
+        assertEquals("the letter c",
             stream.get(FACTORY, TOKENIZER).toString());
     }
 
@@ -516,7 +516,7 @@ public class TokenStreamStringImplTest {
     public void testDollar() throws Exception {
 
         TokenStream stream = makeStream("$");
-        assertEquals("math shift character $", //
+        assertEquals("math shift character $",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -546,7 +546,7 @@ public class TokenStreamStringImplTest {
     public void testEscape0() throws Exception {
 
         TokenStream stream = makeStream("\\abc");
-        assertEquals("the control sequence \\abc", //
+        assertEquals("the control sequence \\abc",
             stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
@@ -560,7 +560,7 @@ public class TokenStreamStringImplTest {
     public void testEscape1() throws Exception {
 
         TokenStream stream = makeStream("\\abc ");
-        assertEquals("the control sequence \\abc", //
+        assertEquals("the control sequence \\abc",
             stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
@@ -575,7 +575,7 @@ public class TokenStreamStringImplTest {
     public void testEscape2() throws Exception {
 
         TokenStream stream = makeStream("\\");
-        assertEquals("the control sequence \\", //
+        assertEquals("the control sequence \\",
             stream.get(FACTORY, TOKENIZER).toString());
         assertEquals("the control sequence \\par", // TODO: is this correct?
             stream.get(FACTORY, TOKENIZER).toString());
@@ -593,9 +593,9 @@ public class TokenStreamStringImplTest {
     public void testEscape3() throws Exception {
 
         TokenStream stream = makeStream("\\23");
-        assertEquals("the control sequence \\2", //
+        assertEquals("the control sequence \\2",
             stream.get(FACTORY, TOKENIZER).toString());
-        assertEquals("the character 3", //
+        assertEquals("the character 3",
             stream.get(FACTORY, TOKENIZER).toString());
         assertEquals("blank space  ", stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
@@ -611,7 +611,7 @@ public class TokenStreamStringImplTest {
     public void testEscape4() throws Exception {
 
         TokenStream stream = makeStream("\\a^^41c ");
-        assertEquals("the control sequence \\aAc", //
+        assertEquals("the control sequence \\aAc",
             stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
@@ -626,7 +626,7 @@ public class TokenStreamStringImplTest {
     public void testEscape5() throws Exception {
 
         TokenStream stream = makeStream("\\^^41c ");
-        assertEquals("the control sequence \\Ac", //
+        assertEquals("the control sequence \\Ac",
             stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
@@ -641,7 +641,7 @@ public class TokenStreamStringImplTest {
     public void testEscape6() throws Exception {
 
         TokenStream stream = makeStream("^^5cc ");
-        assertEquals("the control sequence \\c", //
+        assertEquals("the control sequence \\c",
             stream.get(FACTORY, TOKENIZER).toString());
         assertNull(stream.get(FACTORY, TOKENIZER));
     }
@@ -656,7 +656,7 @@ public class TokenStreamStringImplTest {
     public void testHash() throws Exception {
 
         TokenStream stream = makeStream("#");
-        assertEquals("macro parameter character #", //
+        assertEquals("macro parameter character #",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -769,7 +769,7 @@ public class TokenStreamStringImplTest {
     public void testLeftBrace() throws Exception {
 
         TokenStream stream = makeStream("{");
-        assertEquals("begin-group character {", //
+        assertEquals("begin-group character {",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -856,7 +856,7 @@ public class TokenStreamStringImplTest {
     public void testRightBrace() throws Exception {
 
         TokenStream stream = makeStream("}");
-        assertEquals("end-group character }", //
+        assertEquals("end-group character }",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -937,7 +937,7 @@ public class TokenStreamStringImplTest {
     public void testTab() throws Exception {
 
         TokenStream stream = makeStream("&");
-        assertEquals("alignment tab character &", //
+        assertEquals("alignment tab character &",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);
@@ -967,7 +967,7 @@ public class TokenStreamStringImplTest {
     public void testUnderscore() throws Exception {
 
         TokenStream stream = makeStream("_");
-        assertEquals("subscript character _", //
+        assertEquals("subscript character _",
             stream.get(FACTORY, TOKENIZER).toString());
         Token token = stream.get(FACTORY, TOKENIZER);
         assertNotNull(token);

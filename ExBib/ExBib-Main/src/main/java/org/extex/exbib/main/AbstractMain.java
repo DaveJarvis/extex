@@ -198,10 +198,10 @@ public abstract class AbstractMain extends CLI {
         } else if (lang.matches("[a-z][a-z]")) {
             locale = new Locale(lang);
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z]")) {
-            locale = new Locale(lang.substring(0, 1), //
+            locale = new Locale(lang.substring(0, 1),
                 lang.substring(3, 4));
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z][-_][a-z][a-z]")) {
-            locale = new Locale(lang.substring(0, 1), //
+            locale = new Locale(lang.substring(0, 1),
                 lang.substring(3, 4), lang.substring(6, 7));
         } else {
             log("undefined.language", lang);
@@ -334,12 +334,12 @@ public abstract class AbstractMain extends CLI {
             protected int run(String arg) {
 
                 logBanner();
-                getLogger().severe(describeOptions(getBundle(), //
+                getLogger().severe(describeOptions(getBundle(),
                     "usage.start", "usage.end", getProgramName()));
                 return EXIT_FAIL;
             }
         }, "-?");
-        option("-l", "--logfile", //
+        option("-l", "--logfile",
             new StringPropertyOption("opt.logfile", PROP_LOGFILE, properties));
         option(null, "--load", new StringOption("opt.load") {
 
@@ -367,12 +367,12 @@ public abstract class AbstractMain extends CLI {
                 return EXIT_CONTINUE;
             }
         });
-        option("-o", "--output", //
+        option("-o", "--output",
             new StringPropertyOption("opt.output", ExBib.PROP_OUTFILE,
                 properties), "--outfile");
         option(
             "-p",
-            "--progname", //
+            "--progname",
             new StringPropertyOption("opt.progname", PROP_PROGNAME, properties),
             "--program.name", "--program-name");
         option("-q", "--quiet", new NoArgOption("opt.quiet") {
@@ -591,8 +591,8 @@ public abstract class AbstractMain extends CLI {
 
             log(Level.WARNING, "version", getProgramName(), version);
             int year = Calendar.getInstance().get(Calendar.YEAR);
-            log(Level.SEVERE, "copyright", getProgramName(), //
-                year <= inceptionYear //
+            log(Level.SEVERE, "copyright", getProgramName(),
+                year <= inceptionYear
                         ? Integer.toString(inceptionYear)
                         : Integer.toString(inceptionYear) + "-"
                                 + Integer.toString(year));

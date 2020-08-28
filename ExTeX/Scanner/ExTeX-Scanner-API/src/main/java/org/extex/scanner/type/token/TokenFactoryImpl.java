@@ -168,7 +168,7 @@ public class TokenFactoryImpl
             throws CatcodeException {
 
         try {
-            return (Token) code.visit(this, null, UnicodeChar.get(c), //
+            return (Token) code.visit(this, null, UnicodeChar.get(c),
                 namespace);
         } catch (CatcodeException e) {
             throw e;

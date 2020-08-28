@@ -52,7 +52,7 @@ public class BstExecuteTest {
     @Test
     public final void testToString() throws Exception {
 
-        assertEquals("EXECUTE { abc }", //
+        assertEquals("EXECUTE { abc }",
             new BstExecute(new TLiteral("abc", null), null).toString());
     }
 

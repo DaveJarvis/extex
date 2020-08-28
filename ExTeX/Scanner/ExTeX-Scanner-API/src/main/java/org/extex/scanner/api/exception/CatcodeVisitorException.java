@@ -48,7 +48,7 @@ public class CatcodeVisitorException extends CatcodeException {
     @Override
     public String getLocalizedMessage() {
 
-        return getLocalizer().format("CatcodeVisitorException.Text", //
+        return getLocalizer().format("CatcodeVisitorException.Text",
                 super.getMessage());
     }
 

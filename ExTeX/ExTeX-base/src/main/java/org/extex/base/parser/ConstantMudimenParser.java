@@ -76,7 +76,7 @@ public class ConstantMudimenParser implements Parser<Mudimen> {
                     false);
         if (!source.getKeyword(context, "mu")) {
             throw new HelpingException(
-                //
+
                 LocalizerFactory.getLocalizer(ConstantMudimenParser.class),
                 "TTP.IllegalMu");
         }

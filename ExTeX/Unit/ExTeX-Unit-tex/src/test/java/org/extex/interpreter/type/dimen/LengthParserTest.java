@@ -47,9 +47,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAbs1() throws Exception {
 
-        assertSuccess("\\dimen1=1.2pt" //
-                + "\\dimen0=abs(\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.2pt" 
+                + "\\dimen0=abs(\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "1.2pt" + TERM);
     }
 
@@ -62,9 +62,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAbs2() throws Exception {
 
-        assertSuccess("\\dimen1=-1.2pt" //
-                + "\\dimen0=abs(\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=-1.2pt" 
+                + "\\dimen0=abs(\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "1.2pt" + TERM);
     }
 
@@ -77,7 +77,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAbs3() throws Exception {
 
-        assertFailure("\\dimen0=abs(4pt ", //
+        assertFailure("\\dimen0=abs(4pt ", 
             "Unexpected end of file");
     }
 
@@ -90,9 +90,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAdd1() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1+1.23pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1+1.23pt)" 
+                + "\\the\\dimen0\\end", 
             "3.23pt" + TERM);
     }
 
@@ -105,9 +105,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAdd2() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(1.23pt+\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(1.23pt+\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "3.23pt" + TERM);
     }
 
@@ -120,9 +120,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAdd3() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
+        assertSuccess("\\dimen1=2pt" 
                 + "\\dimen0=(\\dimen1+\\dimen1+\\dimen1)"
-                + "\\the\\dimen0\\end", //
+                + "\\the\\dimen0\\end", 
             "6.0pt" + TERM);
     }
 
@@ -135,7 +135,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testAdd4() throws Exception {
 
-        assertFailure("\\dimen0=(1+2pt)", //
+        assertFailure("\\dimen0=(1+2pt)", 
             "Incompatible unit for + found: sp^0 <> sp^1");
     }
 
@@ -148,7 +148,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testCos1() throws Exception {
 
-        assertFailure("\\dimen0=cos(1pt) ", //
+        assertFailure("\\dimen0=cos(1pt) ", 
             "Function cos requires a scalar argument instead of 1.0sp");
     }
 
@@ -160,8 +160,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testCos2() throws Exception {
 
-        assertSuccess("\\dimen0=(cos(0)pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(cos(0)pt)" 
+                + "\\the\\dimen0\\end", 
             "1.0pt" + TERM);
     }
 
@@ -173,8 +173,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testCos3() throws Exception {
 
-        assertSuccess("\\dimen0=(cos(pi/2)pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(cos(pi/2)pt)" 
+                + "\\the\\dimen0\\end", 
             "0.0pt" + TERM);
     }
 
@@ -186,9 +186,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testCount1() throws Exception {
 
-        assertSuccess("\\count1=12345 " //
-                + "\\dimen0=\\count1 pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\count1=12345 " 
+                + "\\dimen0=\\count1 pt" 
+                + "\\the\\dimen0\\end", 
             "12345.0pt" + TERM);
     }
 
@@ -201,7 +201,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testDiv1() throws Exception {
 
-        assertFailure("\\dimen0=(1pt/0)", //
+        assertFailure("\\dimen0=(1pt/0)", 
             "Arithmetic overflow");
     }
 
@@ -213,9 +213,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testDiv10() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1*\\dimen1/1pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1*\\dimen1/1pt)" 
+                + "\\the\\dimen0\\end", 
             "4.0pt" + TERM);
     }
 
@@ -227,8 +227,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testDiv2() throws Exception {
 
-        assertSuccess("\\dimen0=(4pt/2) " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(4pt/2) " 
+                + "\\the\\dimen0\\end", 
             "2.0pt" + TERM);
     }
 
@@ -241,8 +241,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testDivError1() throws Exception {
 
-        assertFailure("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1/0)", //
+        assertFailure("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1/0)", 
             "Arithmetic overflow");
     }
 
@@ -255,7 +255,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testError1() throws Exception {
 
-        assertFailure("\\dimen0=(/", //
+        assertFailure("\\dimen0=(/", 
             "Missing number, treated as zero");
     }
 
@@ -268,7 +268,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testError2() throws Exception {
 
-        assertFailure("\\dimen0=(1pt;", //
+        assertFailure("\\dimen0=(1pt;", 
             "Missing ) inserted for expression");
     }
 
@@ -281,7 +281,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testError3() throws Exception {
 
-        assertFailure("\\dimen0=(1pt", //
+        assertFailure("\\dimen0=(1pt", 
             "Unexpected end of file");
     }
 
@@ -319,10 +319,10 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testExpand1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES //
-                + "\\def\\xxx{1.2pt}" //
-                + "\\dimen0=\\xxx " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess(DEFINE_BRACES 
+                + "\\def\\xxx{1.2pt}" 
+                + "\\dimen0=\\xxx " 
+                + "\\the\\dimen0\\end", 
             "1.2pt" + TERM);
     }
 
@@ -335,7 +335,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testExprError1() throws Exception {
 
-        assertFailure("\\dimen0= ", //
+        assertFailure("\\dimen0= ", 
             "Missing number, treated as zero");
     }
 
@@ -348,7 +348,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testExprError2() throws Exception {
 
-        assertFailure("\\dimen0=(4pt ", //
+        assertFailure("\\dimen0=(4pt ", 
             "Unexpected end of file");
     }
 
@@ -361,7 +361,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testExprError3() throws Exception {
 
-        assertFailure("\\dimen0=(4pt", //
+        assertFailure("\\dimen0=(4pt", 
             "Unexpected end of file");
     }
 
@@ -374,7 +374,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testFunctionError1() throws Exception {
 
-        assertFailure("\\dimen0=(xyzzy())", //
+        assertFailure("\\dimen0=(xyzzy())", 
             "Syntax error");
     }
 
@@ -387,9 +387,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMax1() throws Exception {
 
-        assertSuccess("\\dimen1=1.2pt" //
-                + "\\dimen0=max(\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.2pt" 
+                + "\\dimen0=max(\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "1.2pt" + TERM);
     }
 
@@ -402,8 +402,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMax2() throws Exception {
 
-        assertSuccess("\\dimen0=max(1pt, 2pt, 3pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=max(1pt, 2pt, 3pt)" 
+                + "\\the\\dimen0\\end", 
             "3.0pt" + TERM);
     }
 
@@ -415,8 +415,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMax3() throws Exception {
 
-        assertSuccess("\\dimen0=max(4pt, 2pt, 3pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=max(4pt, 2pt, 3pt)" 
+                + "\\the\\dimen0\\end", 
             "4.0pt" + TERM);
     }
 
@@ -429,7 +429,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMaxError1() throws Exception {
 
-        assertFailure("\\dimen0=max()", //
+        assertFailure("\\dimen0=max()", 
             "Missing number, treated as zero");
     }
 
@@ -442,7 +442,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMaxError2() throws Exception {
 
-        assertFailure("\\dimen0=max(1.2, 12pt)", //
+        assertFailure("\\dimen0=max(1.2, 12pt)", 
             "Incompatible unit for max found: sp^0 <> sp^1");
     }
 
@@ -455,7 +455,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMaxError3() throws Exception {
 
-        assertFailure("\\dimen0=max", //
+        assertFailure("\\dimen0=max", 
             "Unexpected end of file");
     }
 
@@ -468,7 +468,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMaxError4() throws Exception {
 
-        assertFailure("\\dimen0=max x", //
+        assertFailure("\\dimen0=max x", 
             "Missing ( inserted for function max instead of the letter x");
     }
 
@@ -481,9 +481,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMin1() throws Exception {
 
-        assertSuccess("\\dimen1=1.2pt" //
-                + "\\dimen0=min(\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.2pt" 
+                + "\\dimen0=min(\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "1.2pt" + TERM);
     }
 
@@ -495,8 +495,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMin2() throws Exception {
 
-        assertSuccess("\\dimen0=min(1pt, 2pt, 3pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=min(1pt, 2pt, 3pt)" 
+                + "\\the\\dimen0\\end", 
             "1.0pt" + TERM);
     }
 
@@ -509,8 +509,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMin3() throws Exception {
 
-        assertSuccess("\\dimen0=min(4pt, 2pt, 3pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=min(4pt, 2pt, 3pt)" 
+                + "\\the\\dimen0\\end", 
             "2.0pt" + TERM);
     }
 
@@ -523,7 +523,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMinError1() throws Exception {
 
-        assertFailure("\\dimen0=min()", //
+        assertFailure("\\dimen0=min()", 
             "Missing number, treated as zero");
     }
 
@@ -549,9 +549,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMinus1() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=-\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=-\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "-1.23pt" + TERM);
     }
 
@@ -564,9 +564,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMinus2() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=--\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=--\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "1.23pt" + TERM);
     }
 
@@ -579,9 +579,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMult1() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=(2*\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=(2*\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "2.45999pt" + TERM);
     }
 
@@ -594,9 +594,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMult2() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=(\\dimen1 *2)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=(\\dimen1 *2)" 
+                + "\\the\\dimen0\\end", 
             "2.45999pt" + TERM);
     }
 
@@ -609,9 +609,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMult3() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(1.23*\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(1.23*\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "2.45999pt" + TERM);
     }
 
@@ -624,9 +624,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testMult4() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1*1.23)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1*1.23)" 
+                + "\\the\\dimen0\\end", 
             "2.45999pt" + TERM);
     }
 
@@ -639,8 +639,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPi1() throws Exception {
 
-        assertSuccess("\\dimen1=(pi pt)" //
-                + "\\the\\dimen1\\end", //
+        assertSuccess("\\dimen1=(pi pt)" 
+                + "\\the\\dimen1\\end", 
             "3.14159pt" + TERM);
     }
 
@@ -653,9 +653,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPlus1() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=+\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=+\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "1.23pt" + TERM);
     }
 
@@ -668,9 +668,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPlus2() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=++\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=++\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "1.23pt" + TERM);
     }
 
@@ -682,7 +682,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPt0() throws Exception {
 
-        assertSuccess("\\dimen0=0pt\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=0pt\\the\\dimen0\\end", 
             "0.0pt" + TERM);
     }
 
@@ -695,7 +695,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPt1() throws Exception {
 
-        assertSuccess("\\dimen0=123.4pt\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=123.4pt\\the\\dimen0\\end", 
             "123.4pt" + TERM);
     }
 
@@ -708,7 +708,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPt2() throws Exception {
 
-        assertSuccess("\\dimen0=-123.4pt\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=-123.4pt\\the\\dimen0\\end", 
             "-123.4pt" + TERM);
     }
 
@@ -721,7 +721,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPt3() throws Exception {
 
-        assertSuccess("\\dimen0=.45pt\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=.45pt\\the\\dimen0\\end", 
             "0.45pt" + TERM);
     }
 
@@ -734,7 +734,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testPt4() throws Exception {
 
-        assertSuccess("\\dimen0=-.45pt\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=-.45pt\\the\\dimen0\\end", 
             "-0.45pt" + TERM);
     }
 
@@ -755,8 +755,8 @@ public class LengthParserTest extends ExTeXLauncher {
                 return new Accumulator(1234 * ScaledNumber.ONE / 100);
             }
         });
-        assertSuccess("\\dimen0=(f pt) " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(f pt) " 
+                + "\\the\\dimen0\\end", 
             "12.34pt" + TERM);
         assertNotNull(LengthParser.unregister("f"));
     }
@@ -779,8 +779,8 @@ public class LengthParserTest extends ExTeXLauncher {
                 return new Accumulator(3456 * ScaledNumber.ONE / 100, 1);
             }
         });
-        assertSuccess("\\dimen0=(h(1pt,2pt)) " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(h(1pt,2pt)) " 
+                + "\\the\\dimen0\\end", 
             "34.56pt" + TERM);
         assertNotNull(LengthParser.unregister("h"));
     }
@@ -803,8 +803,8 @@ public class LengthParserTest extends ExTeXLauncher {
                 return null;
             }
         });
-        assertFailure("\\dimen0=(h(1pt:2pt)) " //
-                + "\\the\\dimen0\\end", //
+        assertFailure("\\dimen0=(h(1pt:2pt)) " 
+                + "\\the\\dimen0\\end", 
             "Missing , instead of the character :");
     }
 
@@ -826,7 +826,7 @@ public class LengthParserTest extends ExTeXLauncher {
                 return null;
             }
         });
-        assertFailure("\\dimen0=(h(1pt ", //
+        assertFailure("\\dimen0=(h(1pt ", 
             "Unexpected end of file");
     }
 
@@ -838,8 +838,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSgn1() throws Exception {
 
-        assertSuccess("\\dimen0=sgn(0)pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=sgn(0)pt" 
+                + "\\the\\dimen0\\end", 
             "0.0pt" + TERM);
     }
 
@@ -851,8 +851,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSgn2() throws Exception {
 
-        assertSuccess("\\dimen0=sgn(10)pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=sgn(10)pt" 
+                + "\\the\\dimen0\\end", 
             "1.0pt" + TERM);
     }
 
@@ -864,8 +864,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSgn3() throws Exception {
 
-        assertSuccess("\\dimen0=sgn(-10)pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=sgn(-10)pt" 
+                + "\\the\\dimen0\\end", 
             "-1.0pt" + TERM);
     }
 
@@ -878,7 +878,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSin1() throws Exception {
 
-        assertFailure("\\dimen0=sin(1pt) ", //
+        assertFailure("\\dimen0=sin(1pt) ", 
             "Function sin requires a scalar argument instead of 1.0sp");
     }
 
@@ -890,8 +890,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSin2() throws Exception {
 
-        assertSuccess("\\dimen0=sin(0)pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=sin(0)pt" 
+                + "\\the\\dimen0\\end", 
             "0.0pt" + TERM);
     }
 
@@ -903,8 +903,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSin3() throws Exception {
 
-        assertSuccess("\\dimen0=(sin(pi/2)pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=(sin(pi/2)pt)" 
+                + "\\the\\dimen0\\end", 
             "0.99998pt" + TERM);
     }
 
@@ -917,9 +917,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSubtract1() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1-1.23pt)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1-1.23pt)" 
+                + "\\the\\dimen0\\end", 
             "0.77pt" + TERM);
     }
 
@@ -932,9 +932,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testSubtract2() throws Exception {
 
-        assertSuccess("\\dimen1=2pt" //
-                + "\\dimen0=(\\dimen1-\\dimen1-\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=2pt" 
+                + "\\dimen0=(\\dimen1-\\dimen1-\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "-2.0pt" + TERM);
     }
 
@@ -973,7 +973,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testTan1() throws Exception {
 
-        assertFailure("\\dimen0=tan(1pt) ", //
+        assertFailure("\\dimen0=tan(1pt) ", 
             "Function tan requires a scalar argument instead of 1.0sp");
     }
 
@@ -985,8 +985,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testTan2() throws Exception {
 
-        assertSuccess("\\dimen0=tan(0)pt" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen0=tan(0)pt" 
+                + "\\the\\dimen0\\end", 
             "0.0pt" + TERM);
     }
 
@@ -998,9 +998,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testTerm1() throws Exception {
 
-        assertSuccess("\\dimen1=1.2pt" //
-                + "\\dimen0=((1+2)*\\dimen1)" //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.2pt" 
+                + "\\dimen0=((1+2)*\\dimen1)" 
+                + "\\the\\dimen0\\end", 
             "3.59999pt" + TERM);
     }
 
@@ -1012,8 +1012,8 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testUnitError1() throws Exception {
 
-        assertFailure("\\dimen1=2pt" //
-                + "\\dimen0=(1)", //
+        assertFailure("\\dimen1=2pt" 
+                + "\\dimen0=(1)", 
             "Illegal unit of measure (pt inserted)");
     }
 
@@ -1026,7 +1026,7 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testUnitError2() throws Exception {
 
-        assertFailure("\\dimen1=2pt" //
+        assertFailure("\\dimen1=2pt" 
                 + "\\dimen0=(1/\\dimen1)",
             "Illegal unit for a length value found: sp^-1");
     }
@@ -1065,9 +1065,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testVar1() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "1.23pt" + TERM);
     }
 
@@ -1080,9 +1080,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testVar2() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=-\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=-\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "-1.23pt" + TERM);
     }
 
@@ -1095,9 +1095,9 @@ public class LengthParserTest extends ExTeXLauncher {
     @Test
     public void testVar3() throws Exception {
 
-        assertSuccess("\\dimen1=1.23pt" //
-                + "\\dimen0=--\\dimen1 " //
-                + "\\the\\dimen0\\end", //
+        assertSuccess("\\dimen1=1.23pt" 
+                + "\\dimen0=--\\dimen1 " 
+                + "\\the\\dimen0\\end", 
             "1.23pt" + TERM);
     }
 

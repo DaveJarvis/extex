@@ -430,7 +430,7 @@ public class BibliographyCore implements Bibliography, Observable {
     public boolean setOption(String name, String value)
             throws ExBibIllegalValueException {
 
-        return setOption(name, (value.matches("-?[0-9]+") //
+        return setOption(name, (value.matches("-?[0-9]+") 
                 ? new TInteger(value, null)
                 : new TString(value, null)));
     }

@@ -100,11 +100,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n instanceof HorizontalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(Dimen.ONE_INCH));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(Dimen.ONE_PT));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ONE_SP));
         NodeList nl = (NodeList) n;
         int size = nl.size();
@@ -127,11 +127,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         assertNotNull(n);
         assertTrue(n instanceof HorizontalListNode);
         NodeList nl = (NodeList) n;
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(wd));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(Dimen.ONE_PT));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ONE_SP));
         int size = nl.size();
         assertTrue("size " + Integer.toString(size), 2 == size);
@@ -156,11 +156,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n instanceof HorizontalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(wd));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(Dimen.ONE_PT));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ONE_SP));
         NodeList nl = (NodeList) n;
         int size = nl.size();
@@ -185,11 +185,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         assertNotNull(n);
         assertTrue(n instanceof HorizontalListNode);
         NodeList nl = (NodeList) n;
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(wd));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(Dimen.ONE_PT));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ONE_SP));
         int size = nl.size();
         assertTrue("size " + Integer.toString(size), 4 == size);
@@ -234,11 +234,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n.getClass().getName(), n instanceof VerticalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(Dimen.ONE_PT));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(ht));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
@@ -260,11 +260,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n.getClass().getName(), n instanceof VerticalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(Dimen.ONE_PT));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(ht));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
@@ -290,11 +290,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n.getClass().getName(), n instanceof VerticalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(Dimen.ONE_PT));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(ht));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();
@@ -318,11 +318,11 @@ public class ExpandedLeadersNodeTest extends LeadersNodeTester {
         Node n = node.atShipping(null, null, null, null);
         assertNotNull(n);
         assertTrue(n.getClass().getName(), n instanceof VerticalListNode);
-        assertTrue("width " + n.getWidth().toString(), //
+        assertTrue("width " + n.getWidth().toString(), 
             n.getWidth().eq(Dimen.ONE_PT));
-        assertTrue("height " + n.getHeight().toString(), //
+        assertTrue("height " + n.getHeight().toString(), 
             n.getHeight().eq(ht));
-        assertTrue("depth " + n.getDepth().toString(), //
+        assertTrue("depth " + n.getDepth().toString(), 
             n.getDepth().eq(Dimen.ZERO_PT));
         NodeList nl = (NodeList) n;
         int size = nl.size();

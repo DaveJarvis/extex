@@ -166,7 +166,7 @@ public class TocIndex {
         }
         PrintStream out;
         try {
-            out = (outFile == null //
+            out = (outFile == null
                     ? System.out
                     : new PrintStream(new FileOutputStream(outFile)));
         } catch (FileNotFoundException e) {

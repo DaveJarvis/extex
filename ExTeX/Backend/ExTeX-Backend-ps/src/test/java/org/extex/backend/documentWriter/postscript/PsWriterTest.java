@@ -95,9 +95,9 @@ public class PsWriterTest {
             .newInstance("test/font/test-fonts"));
         factory.setProperties(new Properties());
         factory.setResourceFinder(new ResourceFinderFactory()
-            .createResourceFinder(//
-                ConfigurationFactory.newInstance("path/fontTestFileFinder"), //
-                Logger.getLogger("test"), new Properties(), //
+            .createResourceFinder(
+                ConfigurationFactory.newInstance("path/fontTestFileFinder"), 
+                Logger.getLogger("test"), new Properties(), 
                 new InteractionIndicator() {
 
                     public boolean isInteractive() {
@@ -139,21 +139,21 @@ public class PsWriterTest {
         writer.shipout(new PageImpl(new VerticalListNode(), new Count[10]));
         writer.close();
         String s = out.toString().replaceAll("\r", "");
-        assertEquals("%!PS-Adobe-2.0\n" //
-                + "%%Creator: ExTeX-Backend-ps\n" //
+        assertEquals("%!PS-Adobe-2.0\n" 
+                + "%%Creator: ExTeX-Backend-ps\n" 
                 + "%%CreationDate: ", s.substring(0, 59));
-        assertEquals("%%Title: \n" //
-                + "%%Pages: 1\n" //
-                + "%%PageOrder: Ascend\n" //
-                + "%%BoundingBox: 0 0 596 842\n" //
-                + "%%DocumentFonts:\n" //
-                + "%%EndComments\n" //
-                + "/TeXDict 300 dict def\n" + "%%BeginProcSet: Ps.java\n" //
-                + "TeXDict begin /eop{}def end\n" //
-                + "%%EndProcSet\n" //
-                + "%%Page: 1 1\n" //
-                + "TeXDict begin\n eop\nend\n" + "showpage\n" //
-                + "%%EOF\n", //
+        assertEquals("%%Title: \n" 
+                + "%%Pages: 1\n" 
+                + "%%PageOrder: Ascend\n" 
+                + "%%BoundingBox: 0 0 596 842\n" 
+                + "%%DocumentFonts:\n" 
+                + "%%EndComments\n" 
+                + "/TeXDict 300 dict def\n" + "%%BeginProcSet: Ps.java\n" 
+                + "TeXDict begin /eop{}def end\n" 
+                + "%%EndProcSet\n" 
+                + "%%Page: 1 1\n" 
+                + "TeXDict begin\n eop\nend\n" + "showpage\n" 
+                + "%%EOF\n", 
             s.substring(79));
     }
 
@@ -185,22 +185,22 @@ public class PsWriterTest {
         writer.close();
 
         String s = out.toString().replaceAll("\r", "");
-        assertEquals("%!PS-Adobe-2.0\n" //
-                + "%%Creator: ExTeX-Backend-ps\n" //
+        assertEquals("%!PS-Adobe-2.0\n" 
+                + "%%Creator: ExTeX-Backend-ps\n" 
                 + "%%CreationDate: ", s.substring(0, 59));
-        assertEquals("%%Title: \n" //
-                + "%%Pages: 1\n" //
-                + "%%PageOrder: Ascend\n" //
-                + "%%BoundingBox: 0 0 596 842\n" //
-                + "%%DocumentFonts:\n" //
-                + "%%EndComments\n" //
+        assertEquals("%%Title: \n" 
+                + "%%Pages: 1\n" 
+                + "%%PageOrder: Ascend\n" 
+                + "%%BoundingBox: 0 0 596 842\n" 
+                + "%%DocumentFonts:\n" 
+                + "%%EndComments\n" 
                 + "/TeXDict 300 dict def\n"
-                + "%%BeginProcSet: Ps.java\n" //
+                + "%%BeginProcSet: Ps.java\n" 
                 + "TeXDict begin /Cg{setgray}def /eop{}def end\n"
-                + "%%EndProcSet\n" //
-                + "%%Page: 1 1\n" //
-                + "TeXDict begin\n" //
-                + " 0.0 Cg A\n" //
+                + "%%EndProcSet\n" 
+                + "%%Page: 1 1\n" 
+                + "TeXDict begin\n" 
+                + " 0.0 Cg A\n" 
                 + "end\n" + "showpage\n" + "%%EOF\n", s.substring(79));
     }
 

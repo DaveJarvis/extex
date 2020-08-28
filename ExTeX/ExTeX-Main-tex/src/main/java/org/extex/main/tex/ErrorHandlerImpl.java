@@ -163,7 +163,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                 case 'E':
                                     // TTP[84]
                                     if (editHandler != null
-                                            && editHandler.edit(localizer, //
+                                            && editHandler.edit(localizer,
                                                 source.getLocator())) {
 
                                         context
@@ -187,11 +187,11 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
                                     if (firstHelp) {
                                         help = ex.getHelp();
                                         if (help == null) {
-                                            help = localizer.format(//
+                                            help = localizer.format(
                                                 "ErrorHandler.noHelp");
                                         }
                                     } else {
-                                        help = localizer.format(//
+                                        help = localizer.format(
                                             "ErrorHandler.noMoreHelp");
                                     }
 

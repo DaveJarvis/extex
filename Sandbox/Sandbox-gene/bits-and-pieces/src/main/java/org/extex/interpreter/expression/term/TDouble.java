@@ -251,7 +251,7 @@ public class TDouble implements EType {
     // * java.lang.CharSequence)
     // */
     // public EType parse(CharSequence sequence) {
-    //
+
     // try {
     // this.value = Double.parseDouble(sequence.toString());
     // return this;

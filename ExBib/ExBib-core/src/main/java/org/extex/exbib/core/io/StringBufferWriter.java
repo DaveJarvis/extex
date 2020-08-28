@@ -57,7 +57,7 @@ public class StringBufferWriter implements Writer {
      */
     public void close() {
 
-        //
+        
     }
 
     /**
@@ -67,7 +67,7 @@ public class StringBufferWriter implements Writer {
      */
     public void flush() {
 
-        //
+        
     }
 
     /**

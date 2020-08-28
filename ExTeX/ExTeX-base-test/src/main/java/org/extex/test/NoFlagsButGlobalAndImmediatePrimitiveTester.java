@@ -97,7 +97,7 @@ public abstract class NoFlagsButGlobalAndImmediatePrimitiveTester
      */
     // @Test
     // public void testNoProtectedFlag() throws Exception {
-    //
+    
     // assertFailure(//--- input code ---
     // DEFINE_CATCODES + "\\protected\\" + primitive + args,
     // //--- log message ---

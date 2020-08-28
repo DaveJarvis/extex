@@ -485,9 +485,9 @@ public class PageFactoryNodeVisitor
                 Matcher m = sizePattern.matcher(text);
                 if (m.matches()) {
                     try {
-                        Dimen width = ConstantDimenParser.scan(context, //
+                        Dimen width = ConstantDimenParser.scan(context, 
                             new StringSource(m.group(1)), typesetter);
-                        Dimen height = ConstantDimenParser.scan(context, //
+                        Dimen height = ConstantDimenParser.scan(context, 
                             new StringSource(m.group(2)), typesetter);
                         page.setMediaWidth(width);
                         page.setMediaHeight(height);

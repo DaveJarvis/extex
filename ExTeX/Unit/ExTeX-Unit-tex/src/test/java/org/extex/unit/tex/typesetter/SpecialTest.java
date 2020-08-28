@@ -60,7 +60,7 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             DEFINE_BRACES + "\\special{abc}\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
                     ".\\special{abc}\n");
     }
 

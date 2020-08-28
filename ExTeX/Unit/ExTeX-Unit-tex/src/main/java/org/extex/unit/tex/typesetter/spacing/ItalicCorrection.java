@@ -94,8 +94,8 @@ public class ItalicCorrection extends AbstractCode {
         Node node = typesetter.getLastNode();
 
         if (node instanceof CharNode) {
-            FixedDimen ic = italicCorrection(//
-                ((CharNode) node).getCharacter(), //
+            FixedDimen ic = italicCorrection(
+                ((CharNode) node).getCharacter(), 
                 ((CharNode) node).getTypesettingContext().getFont());
             typesetter.add(new ExplicitKernNode(ic, true));
         }

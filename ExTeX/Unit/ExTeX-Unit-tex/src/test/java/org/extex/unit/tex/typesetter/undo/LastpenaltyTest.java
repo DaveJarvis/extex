@@ -61,7 +61,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\penalty123 \\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 123.\n",
-            //
+            
             null);
     }
 
@@ -79,7 +79,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "\\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 0.\n",
-            //
+            
             null);
     }
 
@@ -97,7 +97,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\penalty123\\relax\\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 123.\n",
-            //
+            
             null);
     }
 
@@ -115,7 +115,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 0.\n",
-            //
+            
             null);
     }
 
@@ -133,7 +133,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\kern 12pt\\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 0.\n",
-            //
+            
             null);
     }
 
@@ -151,7 +151,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\hfill \\showthe\\lastpenalty\\end",
             // --- output channel ---
             "> 0.\n",
-            //
+            
             null);
     }
 
@@ -169,7 +169,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
             "a\\penalty123 \\count0=\\lastpenalty x\\showthe\\count0\\end",
             // --- output channel ---
             "> 123.\n",
-            //
+            
             null);
     }
 

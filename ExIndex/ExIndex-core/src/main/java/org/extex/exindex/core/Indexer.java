@@ -163,8 +163,8 @@ public class Indexer extends LEngine {
                 IllegalAccessException,
                 InvocationTargetException {
 
-        defun(name, //
-            (LFunction) clazz.getConstructor(String.class, //
+        defun(name, 
+            (LFunction) clazz.getConstructor(String.class, 
                 IndexContainer.class).newInstance(name, container));
         container.defineMarkup(name, markup);
 
@@ -211,13 +211,13 @@ public class Indexer extends LEngine {
         defun("define-crossref-class", new LDefineCrossrefClass(
             "define-crossref-class", container));
         defun("define-index", new LDefineIndex("define-index", container));
-        defun("define-letter-group", //
+        defun("define-letter-group", 
             new LDefineLetterGroup("define-letter-group", container));
-        defun("define-letter-groups", //
+        defun("define-letter-groups", 
             new LDefineLetterGroups("define-letter-groups", container));
-        defun("define-location-class", //
+        defun("define-location-class", 
             new LDefineLocationClass("define-location-class", container));
-        defun("define-location-class-order", //
+        defun("define-location-class-order", 
             new LDefineLocationClassOrder("define-location-class-order",
                 container));
         defun("define-rule-set", new LDefineRuleSet("define-rule-set",
@@ -241,14 +241,14 @@ public class Indexer extends LEngine {
             new Markup("CROSSREF-LAYER-LIST"));
         defMarkup("markup-crossref-list", LMarkupCrossrefList.class,
             new Markup("CROSSREF-LIST"));
-        defMarkup("markup-index", LMarkupIndex.class, //
+        defMarkup("markup-index", LMarkupIndex.class, 
             new Markup("INDEX"));
-        defMarkup("markup-indexentry", LMarkupIndexEntry.class, //
+        defMarkup("markup-indexentry", LMarkupIndexEntry.class, 
             new Markup("INDEXENTRY"));
         defMarkup("markup-indexentry-list", LMarkupIndexEntryList.class,
             new Markup("INDEXENTRY-LIST"));
         defMarkup("markup-keyword", LMarkupKeyword.class, new Markup("KEYWORD"));
-        defMarkup("markup-keyword-list", LMarkupKeywordList.class, //
+        defMarkup("markup-keyword-list", LMarkupKeywordList.class, 
             new Markup("KEYWORD-LIST"));
         defMarkup("markup-letter-group", LMarkupLetterGroup.class,
             new MarkupTransform("LETTER-GROUP"));
@@ -256,17 +256,17 @@ public class Indexer extends LEngine {
             new Markup("LETTER-GROUP-LIST"));
         defMarkup("markup-locclass-list", LMarkupLocclassList.class,
             new Markup("LOCCLASS-LIST"));
-        defMarkup("markup-locref-list", LMarkupLocrefList.class, //
+        defMarkup("markup-locref-list", LMarkupLocrefList.class, 
             new MarkupNum("LOCREF-LIST"));
-        defMarkup("markup-locref", LMarkupLocref.class, //
+        defMarkup("markup-locref", LMarkupLocref.class, 
             new MarkupNum("LOCREF"));
-        defMarkup("markup-locref-layer", LMarkupLocrefLayer.class, //
+        defMarkup("markup-locref-layer", LMarkupLocrefLayer.class, 
             new MarkupNum("LOCREF-LAYER"));
         defMarkup("markup-locref-layer-list", LMarkupLocrefLayerList.class,
             new MarkupNum("LOCREF-LAYER-LIST"));
-        defMarkup("markup-range", LMarkupRange.class, //
+        defMarkup("markup-range", LMarkupRange.class, 
             new MarkupNum("RANGE"));
-        defMarkup("markup-trace", LMarkupTrace.class, //
+        defMarkup("markup-trace", LMarkupTrace.class, 
             new Markup("TRACE", "<", ">\n"));
 
         container.addLocationClass("arabic-numbers", new ArabicNumbers());
@@ -406,7 +406,7 @@ public class Indexer extends LEngine {
                     ? "Reading"
                     : "ReadingStdin"), resource));
 
-            RawIndexParser parser = parserFactory.create(resource, //
+            RawIndexParser parser = parserFactory.create(resource, 
                 LString.stringValue(get("indexer:charset-raw")), this);
             if (parser == null) {
                 logger.info(LOCALIZER.format("ResourceNotFound", resource));

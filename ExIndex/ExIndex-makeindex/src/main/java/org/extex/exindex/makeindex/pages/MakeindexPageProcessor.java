@@ -159,7 +159,7 @@ public class MakeindexPageProcessor implements PageProcessor {
                     warnings++;
                 } else {
                     if (open.isOne()) {
-                        pages.set(openIndex, //
+                        pages.set(openIndex, 
                             new PageRangeRange(open, p.getFrom()));
                     }
                     open = null;
@@ -168,7 +168,7 @@ public class MakeindexPageProcessor implements PageProcessor {
                 }
             } else if (open != null) {
                 String oe = open.getEncap();
-                if ((oe == null && p.getEncap() == null) || //
+                if ((oe == null && p.getEncap() == null) || 
                         (oe != null && oe.equals(p.getEncap()))) {
                     pages.remove(i);
                     i--;

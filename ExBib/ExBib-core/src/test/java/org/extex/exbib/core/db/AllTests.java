@@ -28,11 +28,11 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({EntryTest.class, //
-        ValueTest.class, //
-        VMacroTest.class, //
-        org.extex.exbib.core.db.impl.AllTests.class, //
-        org.extex.exbib.core.db.sorter.AllTests.class //
+@Suite.SuiteClasses({EntryTest.class,
+        ValueTest.class,
+        VMacroTest.class,
+        org.extex.exbib.core.db.impl.AllTests.class,
+        org.extex.exbib.core.db.sorter.AllTests.class
 })
 public final class AllTests {
 

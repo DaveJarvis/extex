@@ -142,11 +142,11 @@ public class Site {
             } else if ("-force".startsWith(a)) {
                 force = true;
             } else if ("-help".startsWith(a)) {
-                System.out.println("Options:\n" + //
-                        "\t-source <dir>\n" + //
-                        "\t-output <dir>\n" + //
-                        "\t-force\n" + //
-                        "\t-verbose\n" + //
+                System.out.println("Options:\n" + 
+                        "\t-source <dir>\n" + 
+                        "\t-output <dir>\n" + 
+                        "\t-force\n" + 
+                        "\t-verbose\n" + 
                         "\t-source\n");
                 exit(null);
             } else {

@@ -199,7 +199,7 @@ public class BibReaderImpl extends BibReader099Impl {
             }
 
             if (c != brace.charAt(0)) {
-                throw new ExBibUnexpectedException(//
+                throw new ExBibUnexpectedException(
                     (c > 0 ? Character.toString(c) : null), brace, getLocator());
             }
 

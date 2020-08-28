@@ -116,8 +116,8 @@ public class Discretionary extends AbstractCode {
         Locator locator = source.getLocator();
 
         typesetter.add(new DiscretionaryNode(fill(pre, tc, context, source,
-            typesetter, locator), //
-            fill(post, tc, context, source, typesetter, locator), //
+            typesetter, locator),
+            fill(post, tc, context, source, typesetter, locator),
             fill(nobreak, tc, context, source, typesetter, locator)));
     }
 

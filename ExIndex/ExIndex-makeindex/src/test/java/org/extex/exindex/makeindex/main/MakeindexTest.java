@@ -80,18 +80,18 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{f},
             f,
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -108,18 +108,18 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{"-g", f},
             f,
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -136,18 +136,18 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{"-gc", f},
             f,
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -164,18 +164,18 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{"-l", f},
             f,
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -192,18 +192,18 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{"-", f},
             f,
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -218,13 +218,13 @@ public class MakeindexTest extends AbstractTester {
         String f = "target/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"-q", f}, f, "\\indexentry{bbb}{2}\n"
-                + "\\indexentry{aaa}{3}\n", //
-            "", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                + "\\indexentry{aaa}{3}\n",
+            "",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -239,13 +239,13 @@ public class MakeindexTest extends AbstractTester {
         String f = "target/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"-quiet", f}, f, "\\indexentry{bbb}{2}\n"
-                + "\\indexentry{aaa}{3}\n", //
-            "", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                + "\\indexentry{aaa}{3}\n",
+            "",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -260,18 +260,18 @@ public class MakeindexTest extends AbstractTester {
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"target/t1"},
             "target/t1.idx",
-            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -286,20 +286,20 @@ public class MakeindexTest extends AbstractTester {
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"target/t1.idx"},
             "target/t1.idx",
-            "\\indexentry{bbb}{2}\n" //
-                    + "\\indexentry{bbb}{4}\n" //
-                    + "\\indexentry{aaa}{3}\n", //
+            "\\indexentry{bbb}{2}\n"
+                    + "\\indexentry{bbb}{4}\n"
+                    + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (3 entries accepted, 0 rejected)\n"
                     + "Sorting...done (3 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item aaa, 3\n" //
-                    + "  \\item bbb, 2, 4\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item aaa, 3\n"
+                    + "  \\item bbb, 2, 4\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -317,17 +317,17 @@ public class MakeindexTest extends AbstractTester {
         runOnFile(
             new String[]{"-c", f},
             f,
-            "\\indexentry{bb  b}{2}\n" + "\\indexentry{bb b}{3}\n", //
+            "\\indexentry{bb  b}{2}\n" + "\\indexentry{bb b}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
                     + "Sorting...done (1 comparisons).\n"
                     + "Generating output file ./target/t1.ind...done (0 entries written, 0 warnings).\n"
                     + "Output written in ./target/t1.ind.\n"
-                    + "Transcript written in target/t1.ilg.\n", //
-            "\\begin{theindex}\n" //
-                    + "\n" //
-                    + "  \\item bb b, 2, 3\n" //
-                    + "\n" //
+                    + "Transcript written in target/t1.ilg.\n",
+            "\\begin{theindex}\n"
+                    + "\n"
+                    + "  \\item bb b, 2, 3\n"
+                    + "\n"
                     + "\\end{theindex}\n");
     }
 
@@ -340,8 +340,8 @@ public class MakeindexTest extends AbstractTester {
     public void testD01() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-D"}, //
-            BANNER + "Unknown option -D.\n", //
+        run(new String[]{"-D"},
+            BANNER + "Unknown option -D.\n",
             "", -1);
     }
 
@@ -354,8 +354,8 @@ public class MakeindexTest extends AbstractTester {
     public void testD02() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-Dabc"}, //
-            BANNER + "Unknown option -Dabc.\n", //
+        run(new String[]{"-Dabc"},
+            BANNER + "Unknown option -Dabc.\n",
             "", -1);
     }
 
@@ -369,12 +369,12 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{}, //
+            new String[]{},
             BANNER
-                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n" //
-                    + "Sorting...done (0 comparisons).\n" //
-                    + "Generating output...done (0 entries written, 0 warnings).\n" //
-                    + "Output written in stdout.\n", //
+                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (0 comparisons).\n"
+                    + "Generating output...done (0 entries written, 0 warnings).\n"
+                    + "Output written in stdout.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
     }
 
@@ -388,12 +388,12 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{""}, //
+            new String[]{""},
             BANNER
-                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n" //
-                    + "Sorting...done (0 comparisons).\n" //
-                    + "Generating output...done (0 entries written, 0 warnings).\n" //
-                    + "Output written in stdout.\n", //
+                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (0 comparisons).\n"
+                    + "Generating output...done (0 entries written, 0 warnings).\n"
+                    + "Output written in stdout.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
     }
 
@@ -406,8 +406,8 @@ public class MakeindexTest extends AbstractTester {
     public void testEnc00() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-enc", "xxx"}, //
-            BANNER + "Encoding xxx is not supported.\n", //
+        run(new String[]{"-enc", "xxx"},
+            BANNER + "Encoding xxx is not supported.\n",
             "", -1);
     }
 
@@ -420,8 +420,8 @@ public class MakeindexTest extends AbstractTester {
     public void testEnc01() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-enc"}, //
-            BANNER + "Missing argument for option -enc\n", //
+        run(new String[]{"-enc"},
+            BANNER + "Missing argument for option -enc\n",
             "", -1);
     }
 
@@ -434,8 +434,8 @@ public class MakeindexTest extends AbstractTester {
     public void testEnc10() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-encoding="}, //
-            BANNER + "Missing argument for option -encoding=\n", //
+        run(new String[]{"-encoding="},
+            BANNER + "Missing argument for option -encoding=\n",
             "", -1);
     }
 
@@ -448,8 +448,8 @@ public class MakeindexTest extends AbstractTester {
     public void testEncoding00() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-encoding=xxx"}, //
-            BANNER + "Encoding xxx is not supported.\n", //
+        run(new String[]{"-encoding=xxx"},
+            BANNER + "Encoding xxx is not supported.\n",
             "", -1);
     }
 
@@ -463,9 +463,9 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"--help"}, //
+            new String[]{"--help"},
             BANNER
-                    + "Usage: makeindex [-ilqrcg] [-s sty] [-o ind] [-t log] [-p num] [idx0 idx1 ...]\n", //
+                    + "Usage: makeindex [-ilqrcg] [-s sty] [-o ind] [-t log] [-p num] [idx0 idx1 ...]\n",
             "", 1);
     }
 
@@ -478,8 +478,8 @@ public class MakeindexTest extends AbstractTester {
     public void testStyle00() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-s"}, //
-            BANNER + "Missing argument for option -s\n", //
+        run(new String[]{"-s"},
+            BANNER + "Missing argument for option -s\n",
             "", -1);
     }
 
@@ -492,8 +492,8 @@ public class MakeindexTest extends AbstractTester {
     public void testStyle01() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-s", ""}, //
-            BANNER + "Empty style is not permitted.\n", //
+        run(new String[]{"-s", ""},
+            BANNER + "Empty style is not permitted.\n",
             "", -1);
     }
 
@@ -506,8 +506,8 @@ public class MakeindexTest extends AbstractTester {
     public void testStyle02() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-s", null}, //
-            BANNER + "Empty style is not permitted.\n", //
+        run(new String[]{"-s", null},
+            BANNER + "Empty style is not permitted.\n",
             "", -1);
     }
 
@@ -520,8 +520,8 @@ public class MakeindexTest extends AbstractTester {
     public void testStyle03() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-style="}, //
-            BANNER + "Empty style is not permitted.\n", //
+        run(new String[]{"-style="},
+            BANNER + "Empty style is not permitted.\n",
             "", -1);
     }
 
@@ -534,8 +534,8 @@ public class MakeindexTest extends AbstractTester {
     public void testStyle1() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-s", "xyzzy"}, //
-            BANNER + "Input style file xyzzy not found.\n", //
+        run(new String[]{"-s", "xyzzy"},
+            BANNER + "Input style file xyzzy not found.\n",
             "", -1);
     }
 
@@ -549,14 +549,14 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"-s", "src/test/resources/makeindex/empty.ist"}, //
+            new String[]{"-s", "src/test/resources/makeindex/empty.ist"},
             BANNER
                     + "Scanning style file src/test/resources/makeindex/empty.ist...done (0 attributes\n"
                     + "redefined, 0 ignored).\n"
                     + "Scanning input file stdin...done (0 entries accepted,\n0 rejected)\n"
                     + "Sorting...done (0 comparisons).\n"
                     + "Generating output...done (0 entries written, 0 warnings).\n"
-                    + "Output written in stdout.\n", //
+                    + "Output written in stdout.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
     }
 
@@ -570,14 +570,14 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"-style=src/test/resources/makeindex/empty.ist"}, //
+            new String[]{"-style=src/test/resources/makeindex/empty.ist"},
             BANNER
                     + "Scanning style file src/test/resources/makeindex/empty.ist...done (0 attributes\n"
                     + "redefined, 0 ignored).\n"
                     + "Scanning input file stdin...done (0 entries accepted,\n0 rejected)\n"
                     + "Sorting...done (0 comparisons).\n"
                     + "Generating output...done (0 entries written, 0 warnings).\n"
-                    + "Output written in stdout.\n", //
+                    + "Output written in stdout.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
     }
 
@@ -591,13 +591,13 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"-t", "target/xyz.ilog"}, //
+            new String[]{"-t", "target/xyz.ilog"},
             BANNER
-                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n" //
-                    + "Sorting...done (0 comparisons).\n" //
-                    + "Generating output...done (0 entries written, 0 warnings).\n" //
+                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (0 comparisons).\n"
+                    + "Generating output...done (0 entries written, 0 warnings).\n"
                     + "Output written in stdout.\n"
-                    + "Transcript written in target/xyz.ilog.\n", //
+                    + "Transcript written in target/xyz.ilog.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
         File t = new File("target/xyz.ilog");
         assertTrue(t.exists());
@@ -614,13 +614,13 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"-transcript=target/xyz.ilog"}, //
+            new String[]{"-transcript=target/xyz.ilog"},
             BANNER
-                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n" //
-                    + "Sorting...done (0 comparisons).\n" //
-                    + "Generating output...done (0 entries written, 0 warnings).\n" //
+                    + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n"
+                    + "Sorting...done (0 comparisons).\n"
+                    + "Generating output...done (0 entries written, 0 warnings).\n"
                     + "Output written in stdout.\n"
-                    + "Transcript written in target/xyz.ilog.\n", //
+                    + "Transcript written in target/xyz.ilog.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
         File t = new File("target/xyz.ilog");
         assertTrue(t.exists());
@@ -636,8 +636,8 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownArgument1() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-xyzzy"}, //
-            BANNER + "Unknown option -xyzzy.\n", //
+        run(new String[]{"-xyzzy"},
+            BANNER + "Unknown option -xyzzy.\n",
             "", -1);
     }
 
@@ -650,8 +650,8 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile1() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"target/xyzzy"}, //
-            BANNER + "Input index file target/xyzzy not found.\n", //
+        run(new String[]{"target/xyzzy"},
+            BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }
 
@@ -664,8 +664,8 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile2() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-", "target/xyzzy"}, //
-            BANNER + "Input index file target/xyzzy not found.\n", //
+        run(new String[]{"-", "target/xyzzy"},
+            BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }
 
@@ -678,8 +678,8 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile3() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"--", "target/xyzzy"}, //
-            BANNER + "Input index file target/xyzzy not found.\n", //
+        run(new String[]{"--", "target/xyzzy"},
+            BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }
 

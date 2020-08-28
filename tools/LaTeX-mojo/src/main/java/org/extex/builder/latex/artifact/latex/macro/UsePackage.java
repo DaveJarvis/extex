@@ -39,7 +39,7 @@ public final class UsePackage extends MacroWithArgs {
     /**
      * The field <tt>PACKAGES</tt> contains the known packages.
      */
-    private static final String[] PACKAGES = new String[]{//
+    private static final String[] PACKAGES = new String[]{
             "12many", // 12many
                     "2in1", // ltxmisc
                     "2sidedoc", // relenc
@@ -1789,7 +1789,7 @@ public final class UsePackage extends MacroWithArgs {
 
         for (String p : arg.split(",")) {
             p = p.trim();
-            File f = net.searchFile(arg, //
+            File f = net.searchFile(arg, 
                 net.getParameters().getLatexExtensions(), artifact.getFile());
             if (f == null) {
                 warn(p, net.getLogger());

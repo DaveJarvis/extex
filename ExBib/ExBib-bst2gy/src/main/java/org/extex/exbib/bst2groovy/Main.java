@@ -264,7 +264,7 @@ public class Main extends CLI {
             protected int run(String arg) {
 
                 logBanner(Level.WARNING);
-                logger.severe(describeOptions(getBundle(), //
+                logger.severe(describeOptions(getBundle(),
                     "usage.start", "usage.end", PROGNAME));
                 return EXIT_FAIL;
             }
@@ -330,7 +330,7 @@ public class Main extends CLI {
     private int log(Level level, String tag, Object... args) {
 
         try {
-            logger.log(level, //
+            logger.log(level,
                 MessageFormat.format(bundle.getString(tag), args));
         } catch (MissingResourceException e) {
             logger.severe("???" + tag + "???");
@@ -373,7 +373,7 @@ public class Main extends CLI {
                 optimizing));
             ResourceFinder finder =
                     new ResourceFinderFactory().createResourceFinder(
-                        ConfigurationFactory.newInstance(config), logger, //
+                        ConfigurationFactory.newInstance(config), logger,
                         properties, null);
             finder.enableTracing(traceFinder);
             bst2Groovy.setResourceFinder(finder);

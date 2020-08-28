@@ -128,21 +128,21 @@ public class DependencyNet implements State {
 
         File outputDirectory = parameters.getOutputDirectory();
         if (!outputDirectory.isDirectory() && !outputDirectory.mkdirs()) {
-            throw new MakeException(logger, "net.out.dir", //
+            throw new MakeException(logger, "net.out.dir",
                 outputDirectory.toString());
         }
 
         int lim = parameters.getLimit();
 
         for (int i = 1; i <= lim; i++) {
-            logger.info(Message.get("net.building", //
+            logger.info(Message.get("net.building",
                 Integer.toString(i), target.toString()));
             if (!target.build(parameters, logger, simulate)) {
                 return;
             }
 
         }
-        throw new MakeException(logger, "net.limit.reached", //
+        throw new MakeException(logger, "net.limit.reached",
             Integer.toString(parameters.getLimit()));
     }
 
@@ -363,7 +363,7 @@ public class DependencyNet implements State {
             master = new Artifact(file);
             addArtifact(master);
 
-            target = parameters.getTargetFormat().makeTarget(directory, //
+            target = parameters.getTargetFormat().makeTarget(directory,
                 file.getName(), this);
 
             analyzeLaTeX(master);

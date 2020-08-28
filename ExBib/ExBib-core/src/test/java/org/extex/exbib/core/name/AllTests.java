@@ -28,8 +28,8 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({NameFactoryTest.class, //
-        NameTest.class //
+@Suite.SuiteClasses({NameFactoryTest.class,
+        NameTest.class
 })
 public final class AllTests {
 

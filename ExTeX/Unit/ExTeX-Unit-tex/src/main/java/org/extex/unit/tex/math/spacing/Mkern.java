@@ -95,7 +95,7 @@ public class Mkern extends AbstractMathCode {
                 TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Mudimen mdimen = (Mudimen) source.parse(Mudimen.class, //
+        Mudimen mdimen = (Mudimen) source.parse(Mudimen.class,
             context, source, typesetter);
         nc.add(mdimen);
     }

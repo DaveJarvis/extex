@@ -102,7 +102,7 @@ public class FilteringParserFactory extends XindyParserFactory {
 
         Reader reader = new InputStreamReader(stream, charset);
         if (filter != null) {
-            stream = getClass().getClassLoader().getResourceAsStream(//
+            stream = getClass().getClassLoader().getResourceAsStream(
                 "org/extex/exindex/filter/" + filter + ".filter");
             if (stream != null) {
                 Properties p = new Properties();
@@ -153,7 +153,7 @@ public class FilteringParserFactory extends XindyParserFactory {
             throw new MainException(LOCALIZER.format("UnknownFilter", filter));
         }
 
-        stream = getClass().getClassLoader().getResourceAsStream(//
+        stream = getClass().getClassLoader().getResourceAsStream(
             "org/extex/exindex/parser/" + parser + ".parser");
         if (stream == null) {
             throw new MainException(LOCALIZER.format("ParserMissing", parser));

@@ -138,7 +138,7 @@ public class TestSummary extends Task {
                             + "([0-9]+)"
                             + ".*href=\"alltests-fails.html\"[^>]*>"
                             + "([0-9]+)" + ".*[^0-9.]" + "([0-9.]+)"
-                            + "%</td><td>" + "([0-9.]+)" //
+                            + "%</td><td>" + "([0-9.]+)"
                             + ".*", Pattern.DOTALL).matcher(sb);
 
         int o = 0;
@@ -162,7 +162,7 @@ public class TestSummary extends Task {
         }
 
         try {
-            PrintStream stream = (output == null //
+            PrintStream stream = (output == null
                     ? System.out
                     : new PrintStream(new FileOutputStream(output)));
 

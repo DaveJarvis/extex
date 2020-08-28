@@ -274,7 +274,7 @@ public class TeXTest {
     public void testCode() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "\\end"}, //
+            new String[]{"-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -290,7 +290,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
         runSuccess(
-            new String[]{"-ini"}, //
+            new String[]{"-ini"},
             BANNER_TEX + "**\n*\nNo pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -304,7 +304,7 @@ public class TeXTest {
     @Test
     public void testConfgurationError1() throws Exception {
 
-        runFailure(new String[]{"-conf=xyz"}, //
+        runFailure(new String[]{"-conf=xyz"},
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found.\n");
         new File(".", "texput.log").delete();
@@ -319,7 +319,7 @@ public class TeXTest {
     @Test
     public void testConfgurationError2() throws Exception {
 
-        runFailure(new String[]{"-conf", "xyz"}, //
+        runFailure(new String[]{"-conf", "xyz"},
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found.\n");
         new File(".", "texput.log").delete();
@@ -335,7 +335,7 @@ public class TeXTest {
     public void testCopying() throws Exception {
 
         String s = runSuccess(new String[]{"-copying"}, null, null);
-        assertTrue("No match:\n" + s, //
+        assertTrue("No match:\n" + s,
             s.indexOf("GNU LIBRARY GENERAL PUBLIC LICENSE") >= 0);
     }
 
@@ -349,7 +349,7 @@ public class TeXTest {
     public void testCopyright() throws Exception {
 
         runSuccess(
-            new String[]{"-copyright"}, //
+            new String[]{"-copyright"},
             "Copyright (C) 2003-"
                     + Calendar.getInstance().get(Calendar.YEAR)
                     + " The ExTeX Group (mailto:extex@dante.de).\n"
@@ -381,7 +381,7 @@ public class TeXTest {
     public void testEncodingError1() throws Exception {
 
         runFailure(
-            new String[]{"--extex.encoding=xyz", "-ini"}, //
+            new String[]{"--extex.encoding=xyz", "-ini"},
             BANNER_TEX
                     + "**"
                     + TRANSCRIPT_TEXPUT
@@ -399,7 +399,7 @@ public class TeXTest {
     public void testEncodingError2() throws Exception {
 
         runFailure(
-            new String[]{"--extex.encoding", "xyz", "-ini"}, //
+            new String[]{"--extex.encoding", "xyz", "-ini"},
             BANNER_TEX
                     + "**"
                     + TRANSCRIPT_TEXPUT
@@ -416,7 +416,7 @@ public class TeXTest {
     @Test
     public void testExternal1() throws Exception {
 
-        runSuccess(new String[]{"-abc", "-init", "\\end"}, //
+        runSuccess(new String[]{"-abc", "-init", "\\end"},
             TRANSCRIPT_TEXPUT, "texput.log");
     }
 
@@ -436,7 +436,7 @@ public class TeXTest {
             w.write("extex.nobanner:true\n");
             w.close();
 
-            runSuccess(new String[]{"-" + cfg, "-init", "\\end"}, //
+            runSuccess(new String[]{"-" + cfg, "-init", "\\end"},
                 TRANSCRIPT_TEXPUT, "texput.log");
         } finally {
             f.delete();
@@ -468,7 +468,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runSuccess(
-            new String[]{"-ini", "UndefinedFile"}, //
+            new String[]{"-ini", "UndefinedFile"},
             BANNER_TEX + "I can\'t find file `UndefinedFile\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"),
             "UndefinedFile.log");
@@ -484,7 +484,7 @@ public class TeXTest {
     public void testFile10() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", EMPTY_TEX}, //
+            new String[]{"-ini", EMPTY_TEX},
             BANNER_TEX
                     + "(../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex )\n"
                     + "*\n" + "No pages of output.\n" + transcript("empty"),
@@ -503,7 +503,7 @@ public class TeXTest {
         System.setIn(new ByteArrayInputStream((EMPTY_TEX + "\n\\end\n")
             .getBytes()));
         runSuccess(
-            new String[]{"-ini"}, //
+            new String[]{"-ini"},
             BANNER_TEX + "**(" + EMPTY_TEX + " )\n" + "*\n"
                     + "No pages of output.\n" + transcript("empty"),
             "empty.log");
@@ -519,7 +519,7 @@ public class TeXTest {
     public void testFile2() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "UndefinedFile.tex"}, //
+            new String[]{"-ini", "UndefinedFile.tex"},
             BANNER_TEX + "I can\'t find file `UndefinedFile.tex\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"),
             "UndefinedFile.log");
@@ -535,7 +535,7 @@ public class TeXTest {
     public void testFile3() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-", "-UndefinedFile"}, //
+            new String[]{"-ini", "-", "-UndefinedFile"},
             BANNER_TEX + "I can\'t find file `-UndefinedFile\'\n" + "*\n"
                     + "No pages of output.\n" + transcript("-UndefinedFile"),
             "-UndefinedFile.log");
@@ -644,7 +644,7 @@ public class TeXTest {
     @Test
     public void testHaltOnError() throws Exception {
 
-        runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"}, //
+        runFailure(new String[]{"-ini", "-halt-on-error", "\\xxxx"},
             BANNER_TEX + "*:1: Undefined control sequence \\xxxx\n"
                     + "\\xxxx\n" + "_____^\n" + "? \n"
                     + "End of file on the terminal!\n" + TRANSCRIPT_TEXPUT);
@@ -688,7 +688,7 @@ public class TeXTest {
     @Test
     public void testInteraction1() throws Exception {
 
-        runFailure(new String[]{"-interaction"}, //
+        runFailure(new String[]{"-interaction"},
             BANNER + "Missing argument for extex.interaction");
     }
 
@@ -701,7 +701,7 @@ public class TeXTest {
     @Test
     public void testInteraction12() throws Exception {
 
-        runFailure(new String[]{"-interaction", "xxx"}, //
+        runFailure(new String[]{"-interaction", "xxx"},
             BANNER + "Bad interaction mode (xxx)");
     }
 
@@ -715,7 +715,7 @@ public class TeXTest {
     public void testInteraction14() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-interaction", "batchmode"}, //
+        runFailure(new String[]{"-ini", "-interaction", "batchmode"},
             "");
     }
 
@@ -730,7 +730,7 @@ public class TeXTest {
     public void testInteraction15() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-interaction", "b"}, //
+        runFailure(new String[]{"-ini", "-interaction", "b"},
             "");
     }
 
@@ -745,7 +745,7 @@ public class TeXTest {
     public void testInteraction16() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-int", "0"}, //
+        runFailure(new String[]{"-ini", "-int", "0"},
             "");
     }
 
@@ -758,7 +758,7 @@ public class TeXTest {
     @Test
     public void testInteraction2() throws Exception {
 
-        runFailure(new String[]{"-interaction=xxx"}, //
+        runFailure(new String[]{"-interaction=xxx"},
             BANNER + "Bad interaction mode (xxx)");
     }
 
@@ -791,7 +791,7 @@ public class TeXTest {
     @Test
     public void testInteraction3() throws Exception {
 
-        runFailure(new String[]{"-interaction="}, //
+        runFailure(new String[]{"-interaction="},
             BANNER + "Bad interaction mode ()");
     }
 
@@ -806,7 +806,7 @@ public class TeXTest {
     public void testInteraction4() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-interaction=batchmode"}, //
+        runFailure(new String[]{"-ini", "-interaction=batchmode"},
             "");
     }
 
@@ -821,7 +821,7 @@ public class TeXTest {
     public void testInteraction5() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-interaction=b"}, //
+        runFailure(new String[]{"-ini", "-interaction=b"},
             "");
     }
 
@@ -836,7 +836,7 @@ public class TeXTest {
     public void testInteraction6() throws Exception {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
-        runFailure(new String[]{"-ini", "-int=0"}, //
+        runFailure(new String[]{"-ini", "-int=0"},
             "");
     }
 
@@ -850,7 +850,7 @@ public class TeXTest {
     public void testJobname1() throws Exception {
 
         runSuccess(new String[]{"-jobname=abc", "-ini",
-                "--extex.nobanner=true", "\\end"}, //
+                "--extex.nobanner=true", "\\end"},
             transcript("abc"), "abc.log");
     }
 
@@ -864,7 +864,7 @@ public class TeXTest {
     public void testJobname2() throws Exception {
 
         runSuccess(new String[]{"-jobname", "abc", "-ini",
-                "--extex.nobanner=true", "\\end"}, //
+                "--extex.nobanner=true", "\\end"},
             transcript("abc"), "abc.log");
     }
 
@@ -878,7 +878,7 @@ public class TeXTest {
     @Test
     public void testLanguageVersion() throws Exception {
 
-        runSuccess(new String[]{"-l=de", "-version"}, //
+        runSuccess(new String[]{"-l=de", "-version"},
             BANNER_DE, "texput.log");
     }
 
@@ -892,7 +892,7 @@ public class TeXTest {
     @Test
     public void testLanguageVersion2() throws Exception {
 
-        runSuccess(new String[]{"-lan", "de", "-version"}, //
+        runSuccess(new String[]{"-lan", "de", "-version"},
             BANNER_DE, "texput.log");
     }
 
@@ -932,7 +932,7 @@ public class TeXTest {
     public void testMinus() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-"}, //
+            new String[]{"-ini", "-"},
             BANNER_TEX + "**\n" + "*\n" + "No pages of output.\n"
                     + "Transcript written on "
                     + (new File(".", "texput.log")).toString() + ".\n",
@@ -948,7 +948,7 @@ public class TeXTest {
     @Test
     public void testMissingProperty() throws Exception {
 
-        runFailure(new String[]{"--"}, //
+        runFailure(new String[]{"--"},
             BANNER + "Missing argument for --");
     }
 
@@ -962,7 +962,7 @@ public class TeXTest {
     public void testNobanner1() throws Exception {
 
         System.setIn(new ByteArrayInputStream("\\relax\n\\end\\n".getBytes()));
-        runSuccess(new String[]{"-ini", "--extex.nobanner=true"}, //
+        runSuccess(new String[]{"-ini", "--extex.nobanner=true"},
             "**\n*" + TRANSCRIPT_TEXPUT, "texput.log");
     }
 
@@ -975,7 +975,7 @@ public class TeXTest {
     @Test
     public void testOutputError1() throws Exception {
 
-        runFailure(new String[]{"-out"}, //
+        runFailure(new String[]{"-out"},
             BANNER + "Missing argument for extex.output");
     }
 
@@ -989,7 +989,7 @@ public class TeXTest {
     public void testOutputError2() throws Exception {
 
         runFailure(
-            new String[]{"-ini", "-out=undefined", "\\relax abc"}, //
+            new String[]{"-ini", "-out=undefined", "\\relax abc"},
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
@@ -1007,7 +1007,7 @@ public class TeXTest {
     public void testOutputError3() throws Exception {
 
         runFailure(
-            new String[]{"-ini", "-out", "undefined", "\\relax abc"}, //
+            new String[]{"-ini", "-out", "undefined", "\\relax abc"},
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
@@ -1025,7 +1025,7 @@ public class TeXTest {
     public void testOutputpath2() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-output-path=.", "\\end"}, //
+            new String[]{"-ini", "-output-path=.", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1040,7 +1040,7 @@ public class TeXTest {
     public void testOutputpath3() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-output-path", ".", "\\end"}, //
+            new String[]{"-ini", "-output-path", ".", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1055,7 +1055,7 @@ public class TeXTest {
     public void testOutputpath4() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-output-path=.", "-output-dir=.", "\\end"}, //
+            new String[]{"-ini", "-output-path=.", "-output-dir=.", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1069,7 +1069,7 @@ public class TeXTest {
     @Test
     public void testOutputpathError1() throws Exception {
 
-        runFailure(new String[]{"-output-path"}, //
+        runFailure(new String[]{"-output-path"},
             BANNER + "Missing argument for extex.output.directories");
     }
 
@@ -1084,7 +1084,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runSuccess(
-            new String[]{"-ini", "-parse", "\\end"}, //
+            new String[]{"-ini", "-parse", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1099,7 +1099,7 @@ public class TeXTest {
     public void testParseFirstLine2() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-parse", EMPTY_TEX}, //
+            new String[]{"-ini", "-parse", EMPTY_TEX},
             BANNER_TEX + "(" + EMPTY_TEX + " )\n" + "*\n"
                     + "No pages of output.\n" + transcript("empty"),
             "empty.log");
@@ -1116,7 +1116,7 @@ public class TeXTest {
     public void testParseFirstLine3() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-parse", PARSE_PATH + "parse1.tex"}, //
+            new String[]{"-ini", "-parse", PARSE_PATH + "parse1.tex"},
             BANNER_TEX
                     + "("
                     + PARSE_PATH
@@ -1242,7 +1242,7 @@ public class TeXTest {
 
         System.setIn(new ByteArrayInputStream("xyzzy\n".getBytes()));
         runSuccess(
-            new String[]{"-ini"}, //
+            new String[]{"-ini"},
             BANNER_TEX + "**I can't find file `xyzzy'\n" + "*\n"
                     + "No pages of output.\n" + transcript("xyzzy"),
             "xyzzy.log");
@@ -1258,7 +1258,7 @@ public class TeXTest {
     public void testTexinputs1() throws Exception {
 
         runSuccess(
-            new String[]{"-texinputs=.", "-ini", "\\end"}, //
+            new String[]{"-texinputs=.", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1273,7 +1273,7 @@ public class TeXTest {
     public void testTexinputs2() throws Exception {
 
         runSuccess(
-            new String[]{"-texinputs", ".", "-ini", "\\end"}, //
+            new String[]{"-texinputs", ".", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1287,7 +1287,7 @@ public class TeXTest {
     @Test
     public void testTexinputsError1() throws Exception {
 
-        runFailure(new String[]{"-texinputs"}, //
+        runFailure(new String[]{"-texinputs"},
             BANNER + "Missing argument for extex.texinputs");
     }
 
@@ -1301,7 +1301,7 @@ public class TeXTest {
     public void testTexmfoutputs2() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-texmfoutputs=.", "\\end"}, //
+            new String[]{"-ini", "-texmfoutputs=.", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1316,7 +1316,7 @@ public class TeXTest {
     public void testTexmfoutputs3() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-texmfoutputs", ".", "\\end"}, //
+            new String[]{"-ini", "-texmfoutputs", ".", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1330,7 +1330,7 @@ public class TeXTest {
     @Test
     public void testTexmfoutputsError1() throws Exception {
 
-        runFailure(new String[]{"-texmfoutputs"}, //
+        runFailure(new String[]{"-texmfoutputs"},
             BANNER + "Missing argument for tex.output.dir.fallback");
     }
 
@@ -1344,7 +1344,7 @@ public class TeXTest {
     public void testTexoutputs2() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-texoutputs=.", "\\end"}, //
+            new String[]{"-ini", "-texoutputs=.", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1359,7 +1359,7 @@ public class TeXTest {
     public void testTexoutputs3() throws Exception {
 
         runSuccess(
-            new String[]{"-ini", "-texoutputs", ".", "\\end"}, //
+            new String[]{"-ini", "-texoutputs", ".", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1373,7 +1373,7 @@ public class TeXTest {
     @Test
     public void testTexoutputsError1() throws Exception {
 
-        runFailure(new String[]{"-texoutputs"}, //
+        runFailure(new String[]{"-texoutputs"},
             BANNER + "Missing argument for tex.output.dir");
     }
 
@@ -1387,7 +1387,7 @@ public class TeXTest {
     public void testTrace1() throws Exception {
 
         runSuccess(
-            new String[]{"-d=fFTM", "-ini", "\\end"}, //
+            new String[]{"-d=fFTM", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1402,7 +1402,7 @@ public class TeXTest {
     public void testTrace11() throws Exception {
 
         runSuccess(
-            new String[]{"-d", "fFTM", "-ini", "\\end"}, //
+            new String[]{"-d", "fFTM", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1417,7 +1417,7 @@ public class TeXTest {
     public void testTrace12() throws Exception {
 
         runSuccess(
-            new String[]{"-debug", "fFTM", "-ini", "\\end"}, //
+            new String[]{"-debug", "fFTM", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1432,7 +1432,7 @@ public class TeXTest {
     public void testTrace2() throws Exception {
 
         runSuccess(
-            new String[]{"-debug=fFTM", "-ini", "\\end"}, //
+            new String[]{"-debug=fFTM", "-ini", "\\end"},
             BANNER_TEX + "No pages of output.\n" + TRANSCRIPT_TEXPUT,
             "texput.log");
     }
@@ -1446,7 +1446,7 @@ public class TeXTest {
     @Test
     public void testTraceError1() throws Exception {
 
-        runFailure(new String[]{"-d=^"}, //
+        runFailure(new String[]{"-d=^"},
             BANNER + "Unknown debug option: ^\n");
         new File(".", "texput.log").delete();
     }
@@ -1460,7 +1460,7 @@ public class TeXTest {
     @Test
     public void testTraceError2() throws Exception {
 
-        runFailure(new String[]{"-d"}, //
+        runFailure(new String[]{"-d"},
             BANNER + "Missing argument for d");
     }
 
@@ -1473,7 +1473,7 @@ public class TeXTest {
     @Test
     public void testUndefinedProperty() throws Exception {
 
-        runFailure(new String[]{"--undefined"}, //
+        runFailure(new String[]{"--undefined"},
             BANNER + "Missing argument for --undefined");
     }
 
@@ -1486,7 +1486,7 @@ public class TeXTest {
     @Test
     public void testUnknown1() throws Exception {
 
-        runFailure(new String[]{"-xxx"}, //
+        runFailure(new String[]{"-xxx"},
             BANNER + "Unknown option: xxx\n");
     }
 
@@ -1500,7 +1500,7 @@ public class TeXTest {
     public void testUnknown2() throws Exception {
 
         for (char c = 'a'; c <= 'z'; c++) {
-            runFailure(new String[]{"-" + c + "xxx"}, //
+            runFailure(new String[]{"-" + c + "xxx"},
                 BANNER + "Unknown option: " + c + "xxx\n");
         }
     }
@@ -1515,7 +1515,7 @@ public class TeXTest {
     public void testUnknown3() throws Exception {
 
         for (char c = 'A'; c <= 'Z'; c++) {
-            runFailure(new String[]{"-" + c + "xxx"}, //
+            runFailure(new String[]{"-" + c + "xxx"},
                 BANNER + "Unknown option: " + c + "xxx\n");
         }
     }
@@ -1529,7 +1529,7 @@ public class TeXTest {
     @Test
     public void testVer() throws Exception {
 
-        runSuccess(new String[]{"-ver"}, //
+        runSuccess(new String[]{"-ver"},
             BANNER, "texput.log");
     }
 
@@ -1542,7 +1542,7 @@ public class TeXTest {
     @Test
     public void testVersion() throws Exception {
 
-        runSuccess(new String[]{"-version"}, //
+        runSuccess(new String[]{"-version"},
             BANNER, "texput.log");
     }
 

@@ -193,8 +193,8 @@ public class HorizontalListNode extends GenericNodeList
         if (target != null && target.ne(wd)) {
             wd.subtract(target);
             wd.negate();
-            FixedGlueComponent s = (wd.le(Dimen.ZERO) //
-                    ? wg.getShrink() //
+            FixedGlueComponent s = (wd.le(Dimen.ZERO)
+                    ? wg.getShrink()
                     : wg.getStretch());
             for (Node node : this) {
                 node.spreadWidth(wd, s);

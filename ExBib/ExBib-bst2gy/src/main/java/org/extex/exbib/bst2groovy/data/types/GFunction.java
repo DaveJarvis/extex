@@ -251,7 +251,7 @@ public class GFunction extends GCodeContainer implements Compiler {
         Call cal =
                 new Call(returnType == ReturnType.CODE
                         ? ReturnType.VOID
-                        : returnType, //
+                        : returnType,
                     (entry.isUsed() ? entryRef.getName() : null), args);
 
         if (state.stackHasSideEffects()) {

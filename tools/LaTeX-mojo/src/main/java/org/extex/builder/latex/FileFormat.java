@@ -137,7 +137,7 @@ public enum FileFormat {
     private static Artifact make(File directory, String name, String ext,
             DependencyNet net) throws IOException {
 
-        Artifact artifact = new Artifact(directory, //
+        Artifact artifact = new Artifact(directory,
             name.replaceAll("\\.[a-zA-Z0-9_]*$", "") + ext);
         Artifact master = net.getMaster();
         artifact.provideActions(new LaTeXAction(master));

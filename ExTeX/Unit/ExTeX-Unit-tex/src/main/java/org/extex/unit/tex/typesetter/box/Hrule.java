@@ -154,7 +154,7 @@ public class Hrule extends AbstractCode implements RuleConvertible {
             }
         }
 
-        return new RuleNode(width, height, depth, //
+        return new RuleNode(width, height, depth, 
             context.getTypesettingContext(), true);
     }
 

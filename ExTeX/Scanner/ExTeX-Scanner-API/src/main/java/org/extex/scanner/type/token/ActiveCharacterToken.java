@@ -195,7 +195,7 @@ public class ActiveCharacterToken extends AbstractToken implements CodeToken {
     @Override
     public void toString(StringBuilder sb) {
 
-        sb.append(getLocalizer().format("ActiveCharacterToken.Text", //
+        sb.append(getLocalizer().format("ActiveCharacterToken.Text",
             super.toString()));
     }
 

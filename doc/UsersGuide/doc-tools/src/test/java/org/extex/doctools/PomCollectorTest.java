@@ -59,7 +59,7 @@ public class PomCollectorTest {
 
         StringWriter w = new StringWriter();
         new PomCollector().run(w);
-        assertEquals("%%\n\\begin{PomList}\\end{PomList}\n%%\n", //
+        assertEquals("%%\n\\begin{PomList}\\end{PomList}\n%%\n",
             w.toString().replaceAll("\r", ""));
     }
 
@@ -254,7 +254,7 @@ public class PomCollectorTest {
             System.setErr(err);
         }
 
-        assertEquals("Option `-omit needs an argument.\n", //
+        assertEquals("Option `-omit needs an argument.\n",
             myOut.toString().replaceAll("\r", ""));
     }
 

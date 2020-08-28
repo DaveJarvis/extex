@@ -62,7 +62,7 @@ public class ColorManager {
         Color color = colorTable.get(name);
         if (color == null) {
             color =
-                    new Color(Display.getCurrent(), //
+                    new Color(Display.getCurrent(), 
                         PreferenceConverter.getColor(Activator.getDefault()
                             .getPreferenceStore(), name));
             colorTable.put(name, color);

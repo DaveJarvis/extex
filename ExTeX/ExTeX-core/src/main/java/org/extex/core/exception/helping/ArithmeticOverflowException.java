@@ -49,8 +49,8 @@ public class ArithmeticOverflowException extends HelpingException {
      */
     public ArithmeticOverflowException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(//
-            ArithmeticOverflowException.class), //
+        super(LocalizerFactory.getLocalizer(
+            ArithmeticOverflowException.class),
             "TTP.ArithmeticOverflow", macro == null ? "" : macro);
     }
 

@@ -258,8 +258,8 @@ public class BackendDriverImpl
 
         if (documentWriter == null) {
 
-            documentWriter = documentWriterFactory.newInstance(//
-                documentWriterType, //
+            documentWriter = documentWriterFactory.newInstance(
+                documentWriterType,
                 streamFactory);
             if (documentWriter instanceof PropertyAware) {
                 ((PropertyAware) documentWriter).setProperties(properties);

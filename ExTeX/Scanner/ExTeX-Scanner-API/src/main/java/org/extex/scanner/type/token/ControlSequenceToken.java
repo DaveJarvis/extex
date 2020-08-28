@@ -186,7 +186,7 @@ public class ControlSequenceToken extends AbstractToken implements CodeToken {
         }
 
         ControlSequenceToken othertoken = (ControlSequenceToken) other;
-        return name.equals(othertoken.getName()) //
+        return name.equals(othertoken.getName())
                 && namespace.equals(othertoken.namespace);
     }
 

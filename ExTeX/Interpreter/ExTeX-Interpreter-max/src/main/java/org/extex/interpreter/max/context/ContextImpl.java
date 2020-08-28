@@ -1457,7 +1457,7 @@ public class ContextImpl
             Code primitive, long branch, boolean neg) {
 
         Conditional cond = isIfThenElse
-        //
+
                 ? new Conditional(locator, primitive, branch, neg)
                 : new ConditionalSwitch(locator, primitive, branch, neg);
         conditionalStack.add(cond);
@@ -2358,14 +2358,14 @@ public class ContextImpl
             throws HelpingException {
 
         if (magnificationLock && this.magnification != mag) {
-            throw new HelpingException(getLocalizer(), "TTP.IncompatibleMag", //
+            throw new HelpingException(getLocalizer(), "TTP.IncompatibleMag",
                 Long.toString(mag), Long.toString(magnification));
         }
 
         magnificationLock |= lock;
 
         if (mag < 1 || mag > magnificationMax) {
-            throw new HelpingException(getLocalizer(), "TTP.IllegalMag", //
+            throw new HelpingException(getLocalizer(), "TTP.IllegalMag",
                 Long.toString(mag));
         }
 

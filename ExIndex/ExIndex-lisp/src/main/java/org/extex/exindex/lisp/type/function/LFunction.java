@@ -146,7 +146,7 @@ public abstract class LFunction {
             if (fct == null) {
                 throw new LUndefinedFlagException(argName, name);
             }
-            ai = fct.parse(args, ai + 1, //
+            ai = fct.parse(args, ai + 1,
                 arguments, index.get(argName).intValue());
         }
 

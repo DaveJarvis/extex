@@ -65,7 +65,7 @@ public class MathPrimitive implements Macro {
             throw new SyntaxError(parser, "{0} is defined in math mode only",
                 token.toText());
         }
-        return new MacroNode(token, null, null, //
+        return new MacroNode(token, null, null,
             parser.getSource(), parser.getLineno());
     }
 }

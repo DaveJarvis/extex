@@ -110,7 +110,7 @@ public class BstCodeScanner extends RuleBasedScanner {
 
                 Object t = r.tokenize(c);
                 if (t instanceof String) {
-                    list.add(createElement(scanner.getTokenOffset(), //
+                    list.add(createElement(scanner.getTokenOffset(),
                         (String) t));
                 } else {
                     break;
@@ -732,8 +732,8 @@ public class BstCodeScanner extends RuleBasedScanner {
                     .getColor(BstEditorPreferences.PREFERENCE_FG_ERROR), null,
                     TextAttribute.UNDERLINE));
 
-        setRules(new IRule[]{// new EndOfLineRule("%", commentToken), //
-        new ParserRule()// , //
+        setRules(new IRule[]{// new EndOfLineRule("%", commentToken),
+        new ParserRule()// ,
         // new WhitespaceRule(new BstWhitespaceDetector())
         });
     }

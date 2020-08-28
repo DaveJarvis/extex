@@ -200,7 +200,7 @@ public class SVGDocumentWriter
     // org.extex.backend.documentWriter.DocumentWriter#setOutputStream(java.io.OutputStream)
     // */
     // public void setOutputStream(OutputStream outStream) {
-    //
+
     // out = outStream;
     // }
 

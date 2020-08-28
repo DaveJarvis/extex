@@ -43,6 +43,6 @@ public class SkipCompiler implements Compiler {
     public void evaluate(EntryReference entryReference, ProcessorState state,
             Evaluator evaluator, LinkContainer linkData) {
 
-        //
+
     }
 }

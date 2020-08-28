@@ -87,13 +87,13 @@ public class TraceCommandObserver implements CommandObserver {
 
         if (!prefix) {
             long online = context.getCount("tracingonline").getValue();
-            logger.log((online > 0 ? Level.INFO : Level.FINE), //
+            logger.log((online > 0 ? Level.INFO : Level.FINE), 
                 "{" + token.toText() + "}\n");
         }
 
         try {
-            prefix = (tracing > 2 && //
-                    token instanceof CodeToken && //
+            prefix = (tracing > 2 && 
+                    token instanceof CodeToken && 
                     context.getCode((CodeToken) token) instanceof PrefixCode);
         } catch (HelpingException e) {
             logger.warning(e.getMessage());

@@ -54,8 +54,8 @@ public class MskipTest extends AbstractMathTester {
                         + "$a\\mskip12mu b$\\end",
                 //--- output message ---
                 "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
-                        + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                        + "..a\n" //
+                        + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" 
+                        + "..a\n" 
                         + "..\\glue12.0pt\n" // TODO gene: convert mu to sp
                         + "..b\n");
     }

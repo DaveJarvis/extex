@@ -85,7 +85,7 @@ public class Key {
             return false;
         }
         Key pi = (Key) obj;
-        return eq(theName, pi.theName) //
+        return eq(theName, pi.theName)
                 && eq(thePackage, pi.thePackage)
                 && eq(theClass, pi.theClass)
                 && eq(theMethod, pi.theMethod);

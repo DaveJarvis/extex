@@ -113,9 +113,9 @@ public class LDefineIndex extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.LSTRING, //
-                Arg.OPT_BOOLEAN(":drop", null), //
-                Arg.OPT_STRING(":merge-to", null), //
+        super(name, container, new Arg[]{Arg.LSTRING,
+                Arg.OPT_BOOLEAN(":drop", null),
+                Arg.OPT_STRING(":merge-to", null),
                 Arg.OPT_STRING(":suffix", null)});
     }
 

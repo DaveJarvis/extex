@@ -1280,7 +1280,7 @@ public class XtfReader implements XMLWriterConvertible {
                             gsub.findLangSys(ScriptTag.getInstance(tag),
                                 LanguageSystemTag.getInstance(language));
                     if (langsys != null) {
-                        //
+
                     }
                 }
 

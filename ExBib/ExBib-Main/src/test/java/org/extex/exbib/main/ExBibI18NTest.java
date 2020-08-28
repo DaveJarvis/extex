@@ -55,16 +55,16 @@ public class ExBibI18NTest {
         File data =
                 BibTester
                     .makeFile("target/data.bib",
-                        "UTF-8", //
-                        "@Book{ aristotle,\n" //
+                        "UTF-8",
+                        "@Book{ aristotle,\n"
                                 + "  author =       {A\u03c1\u03b9\u03c3\u03c4o\u03c4\u03ad\u03bb\u03b7\u03c2},\n"
                                 + "  title =        {title},\n"
                                 + "  publisher =    {publisher},\n"
                                 + "  year =         {year}\n" + "}\n" + "");
-        File aux = BibTester.makeFile("test.aux", "ISO-8859-1", //
-            "\\relax\n" //
-                    + "\\citation{*}\n" //
-                    + "\\bibstyle{" + STYLE_DIR + "/alpha.bst" + "}\n" //
+        File aux = BibTester.makeFile("test.aux", "ISO-8859-1",
+            "\\relax\n"
+                    + "\\citation{*}\n"
+                    + "\\bibstyle{" + STYLE_DIR + "/alpha.bst" + "}\n"
                     + "\\bibdata{target/data.bib}\n");
         try {
             TRunner.runTest(aux, new File(DATA_DIR, "greek.result"),

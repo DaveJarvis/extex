@@ -45,7 +45,7 @@ public class MissingLeftBraceException extends HelpingException {
      */
     public MissingLeftBraceException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(//
+        super(LocalizerFactory.getLocalizer(
                 MissingLeftBraceException.class), "TTP.MissingLeftBrace");
     }
 

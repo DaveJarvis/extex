@@ -105,7 +105,7 @@ public class FileWrapper extends File implements FileFilter {
         FileWrapper[] result = new FileWrapper[files.length];
         int i = 0;
 
-        String path = depth == 0 //
+        String path = depth == 0 
                 ? relativePath
                 : relativePath + "/" + getName();
         for (File f : files) {

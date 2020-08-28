@@ -122,10 +122,10 @@ public class PfbParserTest extends TestCase {
     // * @throws Exception if an error occurred.
     // */
     // public void testXmlExport() throws Exception {
-    //
+
     // PfbParser parser = new PfbParser(PFB_FILE);
     // assertNotNull(parser);
-    //
+
     // XMLStreamWriter writer =
     // new XMLStreamWriter(new FileOutputStream("test.xml"),
     // "ISO-8859-1");

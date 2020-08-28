@@ -60,16 +60,16 @@ public class ParTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\hsize=123pt abc\\par def\\end ",
             // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x123.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x123.0pt\n" + //
-                    "..a\n" + //
-                    "..b\n" + //
-                    "..c\n" + //
-                    "\\vbox(8.0pt+0.0pt)x123.0pt\n" + //
+            "\\vbox(8.0pt+0.0pt)x123.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x123.0pt\n" +
+                    "..a\n" +
+                    "..b\n" +
+                    "..c\n" +
+                    "\\vbox(8.0pt+0.0pt)x123.0pt\n" +
                     ".\\glue0.0pt\n" + // questionable
-                    ".\\hbox(8.0pt+0.0pt)x123.0pt\n" + //
-                    "..d\n" + //
-                    "..e\n" + //
+                    ".\\hbox(8.0pt+0.0pt)x123.0pt\n" +
+                    "..d\n" +
+                    "..e\n" +
                     "..f\n");
     }
 

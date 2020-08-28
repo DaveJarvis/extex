@@ -63,7 +63,7 @@ public final class Not extends GenericCode {
                 ((GreaterCompiler.Greater) code).getArg(1));
         } else if (code instanceof LessCompiler.Less) {
             return new LessCompiler.LessEqual(
-                //
+                
                 ((LessCompiler.Less) code).getArg(0),
                 ((LessCompiler.Less) code).getArg(1));
         } else if (code instanceof EqualsCompiler.Equals) {

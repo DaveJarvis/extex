@@ -65,7 +65,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
             "\\errorstopmode" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.ERRORSTOPMODE, //
+        assertEquals(Interaction.ERRORSTOPMODE, 
             interpreter.getContext().getInteraction());
     }
 
@@ -83,7 +83,7 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
             "\\batchmode\\begingroup\\errorstopmode\\endgroup" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.ERRORSTOPMODE, //
+        assertEquals(Interaction.ERRORSTOPMODE, 
             interpreter.getContext().getInteraction());
     }
 

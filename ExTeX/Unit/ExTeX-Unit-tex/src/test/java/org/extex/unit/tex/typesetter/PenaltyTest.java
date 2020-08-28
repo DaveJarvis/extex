@@ -64,10 +64,10 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "x\\penalty -12 x\\end ",
             // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    "..x\n" + //
-                    "..\\penalty -12\n" + //
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    "..x\n" +
+                    "..\\penalty -12\n" +
                     "..x\n");
     }
 

@@ -139,7 +139,7 @@ public class Colordef extends AbstractAssignment {
                 throws HelpingException,
                     TypesetterException {
 
-            color = ColorParser.parseColor(context, source, typesetter, //
+            color = ColorParser.parseColor(context, source, typesetter, 
                 getToken());
         }
 

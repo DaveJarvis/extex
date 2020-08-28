@@ -54,7 +54,7 @@ public class BstReverseTest {
     @Test
     public final void testToString() throws ExBibException {
 
-        assertEquals("REVERSE { abc }", //
+        assertEquals("REVERSE { abc }",
             new BstReverse(new TLiteral("abc", null), null).toString());
     }
 

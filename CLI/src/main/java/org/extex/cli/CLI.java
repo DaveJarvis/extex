@@ -304,7 +304,7 @@ public class CLI {
                     throw new UnknownOptionCliException(opt);
                 }
             }
-            int ret = (eq >= 0 //
+            int ret = (eq >= 0
                     ? option.run(opt, arg, args)
                     : option.run(opt, args));
             if (ret != EXIT_CONTINUE) {

@@ -459,7 +459,7 @@ public class BaseHyphenationTableTest {
                 + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
                 + "...-}{}{}\n" + ".e\n"
                 + ".\\discretionary{\\hbox(0.0pt+0.0pt)x0.0pt\n"
-                + "...-}{}{}\n" + ".f", //
+                + "...-}{}{}\n" + ".f",
             nodes.toString());
     }
 

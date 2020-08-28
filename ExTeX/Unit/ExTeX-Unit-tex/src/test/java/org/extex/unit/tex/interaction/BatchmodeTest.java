@@ -64,7 +64,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
             "\\batchmode" + "\\end",
             // --- output channel ---
             "");
-        assertEquals(Interaction.BATCHMODE, //
+        assertEquals(Interaction.BATCHMODE, 
             interpreter.getContext().getInteraction());
     }
 
@@ -81,7 +81,7 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
             "\\errorstopmode\\begingroup\\batchmode\\endgroup" + "\\end",
             // --- output channel ---
             "");
-        assertEquals(Interaction.BATCHMODE, //
+        assertEquals(Interaction.BATCHMODE, 
             interpreter.getContext().getInteraction());
     }
 

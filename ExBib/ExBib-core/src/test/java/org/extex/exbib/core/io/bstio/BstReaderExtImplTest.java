@@ -76,7 +76,7 @@ public class BstReaderExtImplTest {
          */
         public void enableTracing(boolean flag) {
 
-            //
+
         }
 
         /**

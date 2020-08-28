@@ -303,7 +303,7 @@ public class OutputFile implements OutFile {
         if (file != null) {
 
             try {
-                writer = factory.writerStream(new FileOutputStream(file), //
+                writer = factory.writerStream(new FileOutputStream(file),
                     key, encoding);
             } catch (FileNotFoundException e) {
                 // ignored on purpose

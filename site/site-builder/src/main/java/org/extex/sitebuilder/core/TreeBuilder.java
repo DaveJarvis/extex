@@ -227,7 +227,7 @@ public class TreeBuilder extends TemplatingEngine {
         }
 
         Writer writer = new StringWriter();
-        engine.evaluate(context, writer, tag, //
+        engine.evaluate(context, writer, tag,
             buffer.substring(start, end).trim());
         return writer.toString();
     }
@@ -267,7 +267,7 @@ public class TreeBuilder extends TemplatingEngine {
 
             if (f.isDirectory()) {
                 applyTemplate(f,
-                    new File(outdir, f.getName()), //
+                    new File(outdir, f.getName()),
                     (relativePath.equals(".") ? ".." : relativePath + "/.."),
                     t, engine, context);
                 context.put("relativePath", relativePath);
@@ -385,11 +385,11 @@ public class TreeBuilder extends TemplatingEngine {
 
         if (!omitList.contains(base.getName())) {
 
-            applyTemplate(base, //
-                target, //
-                ".", //
-                engine.getTemplate(template), //
-                engine, //
+            applyTemplate(base,
+                target,
+                ".",
+                engine.getTemplate(template),
+                engine,
                 context);
         }
     }

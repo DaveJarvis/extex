@@ -140,32 +140,32 @@ public class ExTeXWordsTest {
             char c = s.charAt(i);
             switch (c) {
                 case '\013':
-                    nodes.add(new LigatureNode(TC, UC_FF, //
-                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                    nodes.add(new LigatureNode(TC, UC_FF,
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F),
                         (CharNode) NODE_FACTORY.getNode(TC, UC_F)));
                     break;
                 case '\014':
-                    nodes.add(new LigatureNode(TC, UC_FI, //
-                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                    nodes.add(new LigatureNode(TC, UC_FI,
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F),
                         (CharNode) NODE_FACTORY.getNode(TC, UC_I)));
                     break;
                 case '\015':
-                    nodes.add(new LigatureNode(TC, UC_FL, //
-                        (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
+                    nodes.add(new LigatureNode(TC, UC_FL,
+                        (CharNode) NODE_FACTORY.getNode(TC, UC_F),
                         (CharNode) NODE_FACTORY.getNode(TC, UC_L)));
                     break;
                 case '\016':
-                    nodes.add(new LigatureNode(TC, UC_FFI, //
-                        new LigatureNode(TC, UC_FF, //
-                            (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
-                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)), //
+                    nodes.add(new LigatureNode(TC, UC_FFI,
+                        new LigatureNode(TC, UC_FF,
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F),
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)),
                         (CharNode) NODE_FACTORY.getNode(TC, UC_I)));
                     break;
                 case '\017':
-                    nodes.add(new LigatureNode(TC, UC_FFL, //
-                        new LigatureNode(TC, UC_FF, //
-                            (CharNode) NODE_FACTORY.getNode(TC, UC_F), //
-                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)), //
+                    nodes.add(new LigatureNode(TC, UC_FFL,
+                        new LigatureNode(TC, UC_FF,
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F),
+                            (CharNode) NODE_FACTORY.getNode(TC, UC_F)),
                         (CharNode) NODE_FACTORY.getNode(TC, UC_L)));
                     break;
                 default:
@@ -339,7 +339,7 @@ public class ExTeXWordsTest {
     public void testInsertShy41() throws Exception {
 
         NodeList nodes = makeList("a\17b");
-        TOKENIZER.insertShy(nodes, 1, //
+        TOKENIZER.insertShy(nodes, 1,
             new boolean[]{false, false, true, false}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);
@@ -359,7 +359,7 @@ public class ExTeXWordsTest {
     public void testInsertShy42() throws Exception {
 
         NodeList nodes = makeList("a\17b");
-        TOKENIZER.insertShy(nodes, 1, //
+        TOKENIZER.insertShy(nodes, 1,
             new boolean[]{false, true, false}, HYPHEN_NODE);
         assertEquals(3, nodes.size());
         assertTrue(nodes.get(0) instanceof CharNode);

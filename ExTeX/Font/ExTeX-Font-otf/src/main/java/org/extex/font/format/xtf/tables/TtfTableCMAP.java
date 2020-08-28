@@ -563,11 +563,11 @@ public class TtfTableCMAP extends AbstractXtfTable
     public class Format2 extends Format {
 
         // private short[] subHeaderKeys = new short[256];
-        //
+
         // private int[] subHeaders1;
-        //
+
         // private int[] subHeaders2;
-        //
+
         // private short[] glyphIndexArray;
 
         /**
@@ -1040,15 +1040,15 @@ public class TtfTableCMAP extends AbstractXtfTable
     public class Format6 extends Format {
 
         // private short format;
-        //
+
         // private short length;
-        //
+
         // private short version;
-        //
+
         // private short firstCode;
-        //
+
         // private short entryCount;
-        //
+
         // private short[] glyphIdArray;
 
         /**

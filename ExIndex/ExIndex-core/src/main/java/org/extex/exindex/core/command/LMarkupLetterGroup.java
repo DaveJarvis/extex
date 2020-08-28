@@ -92,14 +92,14 @@ public class LMarkupLetterGroup extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.OPT_STRING(":group", null), //
-                Arg.OPT_STRING(":open", ""), //
-                Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_STRING(":open-head", ""), //
-                Arg.OPT_STRING(":close-head", ""), //
-                Arg.OPT_BOOLEAN(":upcase", Boolean.FALSE), //
-                Arg.OPT_BOOLEAN(":downcase", Boolean.FALSE), //
-                Arg.OPT_BOOLEAN(":capitalize", Boolean.FALSE), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":group", null),
+                Arg.OPT_STRING(":open", ""),
+                Arg.OPT_STRING(":close", ""),
+                Arg.OPT_STRING(":open-head", ""),
+                Arg.OPT_STRING(":close-head", ""),
+                Arg.OPT_BOOLEAN(":upcase", Boolean.FALSE),
+                Arg.OPT_BOOLEAN(":downcase", Boolean.FALSE),
+                Arg.OPT_BOOLEAN(":capitalize", Boolean.FALSE),
                 Arg.OPT_BOOLEAN(":force-printing", Boolean.FALSE)});
     }
 

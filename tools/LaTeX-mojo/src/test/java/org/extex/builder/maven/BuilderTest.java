@@ -103,7 +103,7 @@ public class BuilderTest {
             builder.getArtifact(new File("def")));
 
         builder.print(w, "");
-        assertEquals("abc\n\t-> def\ndef\n", //
+        assertEquals("abc\n\t-> def\ndef\n",
             out.toString().replaceAll("\r", ""));
     }
 
@@ -125,9 +125,9 @@ public class BuilderTest {
         builder.getArtifact(new File("xyz")).dependsOn(
             builder.getArtifact(new File("def")));
         builder.print(w, "");
-        assertEquals("abc\n\t-> def\n\t-> xyz\n" //
-                + "def\n" //
-                + "xyz\n\t-> def\n", //
+        assertEquals("abc\n\t-> def\n\t-> xyz\n"
+                + "def\n"
+                + "xyz\n\t-> def\n",
             out.toString().replaceAll("\r", ""));
     }
 

@@ -29,5 +29,5 @@ import org.extex.typesetter.type.Node;
  */
 public interface SkipNode extends Node {
 
-    //
+
 }

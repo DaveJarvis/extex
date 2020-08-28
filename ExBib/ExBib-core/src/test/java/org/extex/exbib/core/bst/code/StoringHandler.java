@@ -48,7 +48,7 @@ public final class StoringHandler extends Handler {
     @Override
     public void close() {
 
-        //
+        
     }
 
     /**
@@ -59,7 +59,7 @@ public final class StoringHandler extends Handler {
     @Override
     public void flush() {
 
-        //
+        
     }
 
     /**

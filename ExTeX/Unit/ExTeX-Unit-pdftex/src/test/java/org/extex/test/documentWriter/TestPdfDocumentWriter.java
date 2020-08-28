@@ -756,8 +756,8 @@ public class TestPdfDocumentWriter
             throw new DocumentWriterException(e);
         } catch (GeneralException e) {
             Throwable ex = e.getCause();
-            throw (ex instanceof DocumentWriterException //
-                    ? (DocumentWriterException) ex //
+            throw (ex instanceof DocumentWriterException 
+                    ? (DocumentWriterException) ex 
                     : new DocumentWriterException(e.getLocalizedMessage()));
         }
         return 1;

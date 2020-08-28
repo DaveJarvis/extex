@@ -45,7 +45,7 @@ public class InvalidCharacterNameException extends InvalidCharacterException {
      */
     public InvalidCharacterNameException(String uc) {
 
-        super(LocalizerFactory.getLocalizer(//
+        super(LocalizerFactory.getLocalizer(
                 InvalidCharacterNameException.class), "InvalidChar", uc);
     }
 

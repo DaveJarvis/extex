@@ -148,7 +148,7 @@ public class ChangeCase8 extends ChangeCase {
                     } else if (c == '}') {
                         level--;
                     } else if (level > 0) {
-                        //
+
                     } else if (c == ':') {
                         if (i == sb.length()) {
                             break;

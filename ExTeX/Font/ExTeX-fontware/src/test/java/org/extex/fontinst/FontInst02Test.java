@@ -665,18 +665,18 @@ public class FontInst02Test extends ExTeXLauncher {
     private Properties getMyProps() {
 
         Properties props = getProps();
-        props.setProperty("extex.texinputs", //
-            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
-                    "../texmf/src/texmf/fonts/afm/" + SEP + //
-                    "../texmf/src/texmf/fonts/enc/" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/misc" //
+        props.setProperty("extex.texinputs",
+            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP +
+                    "../texmf/src/texmf/fonts/afm/" + SEP +
+                    "../texmf/src/texmf/fonts/enc/" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/misc"
         );
         // props.setProperty("extex.launcher.trace", "true");
         // props.setProperty("extex.launcher.time", "true");
@@ -694,17 +694,17 @@ public class FontInst02Test extends ExTeXLauncher {
 
         setConfig("tex");
         assertOutput(getMyProps(), // --- input code ---
-            DEFINE_CATCODES //
-                    // + "\\tracingmacros=1 " //
+            DEFINE_CATCODES
+                    // + "\\tracingmacros=1 "
                     + "\\def\\m#1#2#3\\fi#4{\n" + "   \\fi\n"
                     + "   #4\n"
-                    + "   \\ifnum 1#3<1000\n" + "      .\n" //
-                    + "   \\else\n" //
-                    + "      \\m#2#3\n" //
-                    + "   \\fi\n" //
-                    + "}\n" //
-                    + "\\edef\\a{\\iftrue \\m 1000\\fi\n 1000 }\n" //
-                    + "\\a\n" //
+                    + "   \\ifnum 1#3<1000\n" + "      .\n"
+                    + "   \\else\n"
+                    + "      \\m#2#3\n"
+                    + "   \\fi\n"
+                    + "}\n"
+                    + "\\edef\\a{\\iftrue \\m 1000\\fi\n 1000 }\n"
+                    + "\\a\n"
                     + "\\end\n",
             // --- log channel ---
             "",
@@ -730,14 +730,14 @@ public class FontInst02Test extends ExTeXLauncher {
         setConfig("tex");
         assertOutput(
             getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+            "\\input fontinst.sty "
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "
                     + "\\bye",
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n"
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr8r.mtx.\n"
                     + "Raw font written on fxlr8r.pl.\n",
             // --- output channel ---
             TERM);
@@ -774,14 +774,14 @@ public class FontInst02Test extends ExTeXLauncher {
         setConfig("tex");
         assertOutput(
             getMyProps(), // --- input code ---
-            "\\input fontinst.sty " //
-                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "//
+            "\\input fontinst.sty "
+                    + "\\transformfont{fxlr8r}{\\reencodefont{8r}{\\fromafm{fxlr}}} "
                     + "\\bye",
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n"
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr8r.mtx.\n"
                     + "Raw font written on fxlr8r.pl.\n",
             // --- output channel ---
             TERM);

@@ -110,7 +110,7 @@ public class TField2Test {
 
         public void getValues(List<String> list, String key) {
 
-            //
+
         }
 
         public List<String> getValues(String key) {
@@ -140,14 +140,14 @@ public class TField2Test {
 
                 public void remove() {
 
-                    //
+
                 }
             };
         }
 
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
-            //
+
         }
 
     };
@@ -187,7 +187,7 @@ public class TField2Test {
 
             public void enableTracing(boolean flag) {
 
-                //
+
             }
 
             public NamedInputStream findResource(String name, String type)

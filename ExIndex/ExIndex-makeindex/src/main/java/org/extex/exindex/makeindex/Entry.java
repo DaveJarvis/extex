@@ -82,7 +82,7 @@ public class Entry {
             this.heading = HEADING_NUMBER;
         } else {
             char c = s.charAt(0);
-            this.heading = (Character.isLetter(c)) //
+            this.heading = (Character.isLetter(c))
                     ? Character.toLowerCase(c)
                     : HEADING_SYMBOL;
         }
@@ -104,7 +104,7 @@ public class Entry {
      * @param morePages the pages to add
      */
     // public void addPages(List<PageReference> morePages) {
-    //
+
     // for (PageReference pr : morePages) {
     // pages.add(new PageRange(pr));
     // }

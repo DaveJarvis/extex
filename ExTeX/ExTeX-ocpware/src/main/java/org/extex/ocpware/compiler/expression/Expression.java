@@ -417,7 +417,7 @@ public class Expression {
             Left l = totalLeft.get(i);
             List<Integer> holes = l.genLeft(currentState, cs);
 
-            if (i < size - 1 //
+            if (i < size - 1
                     && !(l instanceof BeginningLeft)
                     && !(totalLeft.get(i + 1) instanceof EndLeft)) {
 

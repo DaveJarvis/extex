@@ -144,12 +144,12 @@ public class Vbox extends AbstractBoxPrimitive {
         try {
             if (source.getKeyword(context, "to")) {
                 Dimen d = source.parseDimen(context, source, typesetter);
-                box = constructBox(context, source, typesetter, startToken, //
+                box = constructBox(context, source, typesetter, startToken,
                     insert);
                 box.setHeight(d);
             } else if (source.getKeyword(context, "spread")) {
                 Dimen d = source.parseDimen(context, source, typesetter);
-                box = constructBox(context, source, typesetter, startToken, //
+                box = constructBox(context, source, typesetter, startToken,
                     insert);
                 box.spreadHeight(d);
             } else {
@@ -191,7 +191,7 @@ public class Vbox extends AbstractBoxPrimitive {
             throws HelpingException,
                 TypesetterException {
 
-        Box box = acquireBox(context, source, typesetter, //
+        Box box = acquireBox(context, source, typesetter,
             GroupType.VBOX_GROUP, startToken, insert);
         NodeList nodes = box.getNodes();
         Dimen depth = new Dimen(box.getDepth());

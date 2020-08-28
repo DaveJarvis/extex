@@ -113,7 +113,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void test002() throws Exception {
 
-        runFailure(BANNER + "The option `--\' needs a parameter.\n", //
+        runFailure(BANNER + "The option `--\' needs a parameter.\n",
             "--");
     }
 
@@ -126,7 +126,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void test003() throws Exception {
 
-        runFailure(BANNER + "The option `-\' needs a parameter.\n", //
+        runFailure(BANNER + "The option `-\' needs a parameter.\n",
             "-");
     }
 
@@ -139,7 +139,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void test004() throws Exception {
 
         runFailure(BANNER
-                + "I couldn\'t open file some/non/existent/file.bib\n", //
+                + "I couldn\'t open file some/non/existent/file.bib\n",
             "-", "some/non/existent/file");
     }
 
@@ -153,9 +153,9 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void test010() throws Exception {
 
         String basename = "test";
-        String auxContents = "\\relax\n" //
-                + "\\citation{abc}\n" //
-                + "\\bibdata{some/non/existent/file}\n" //
+        String auxContents = "\\relax\n"
+                + "\\citation{abc}\n"
+                + "\\bibdata{some/non/existent/file}\n"
                 + "\\bibstyle{undef}\n";
         File aux = new File(basename + ".bib");
         if (auxContents != null) {
@@ -188,9 +188,9 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void test011() throws Exception {
 
         String basename = "test";
-        String auxContents = "\\relax\n" //
-                + "\\citation{article-full}\n" //
-                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n" //
+        String auxContents = "\\relax\n"
+                + "\\citation{article-full}\n"
+                + "\\bibdata{src/test/resources/bibtex/base/xampl}\n"
                 + "\\bibstyle{undef}\n";
         File aux = new File(basename + ".aux");
         if (auxContents != null) {
@@ -203,7 +203,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
         }
 
         try {
-            runTest(basename, null, CLI.EXIT_OK, Check.EQ, BANNER, //
+            runTest(basename, null, CLI.EXIT_OK, Check.EQ, BANNER,
                 "-x", aux.toString());
         } finally {
             if (aux.exists() && !aux.delete()) {
@@ -221,7 +221,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testAux1() throws Exception {
 
         runFailure(BANNER
-                + "I couldn\'t open file file/which/does/not/exist.aux\n", //
+                + "I couldn\'t open file file/which/does/not/exist.aux\n",
             "-x", "file/which/does/not/exist");
     }
 
@@ -233,7 +233,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testAux2() throws Exception {
 
-        runFailure(BANNER + "The file argument can not be empty.\n", //
+        runFailure(BANNER + "The file argument can not be empty.\n",
             "-x", "");
     }
 
@@ -245,7 +245,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testAux3() throws Exception {
 
-        runFailure(BANNER + "Only one aux file can be processed.\n", //
+        runFailure(BANNER + "Only one aux file can be processed.\n",
             "-x", "a", "-x", "b");
     }
 
@@ -319,7 +319,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testConfig5() throws Exception {
 
         runFailure(BANNER
-                + "Configuration `exbib/processor/undefined.xml' not found.\n", //
+                + "Configuration `exbib/processor/undefined.xml' not found.\n",
             "--config", "misconfigured");
     }
 
@@ -333,7 +333,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testCopying1() throws Exception {
 
         runTest("test", null, CLI.EXIT_FAIL, Check.START,
-            "                 GNU LESSER GENERAL PUBLIC LICENSE\n", //
+            "                 GNU LESSER GENERAL PUBLIC LICENSE\n",
             "--copying");
     }
 
@@ -345,7 +345,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEmpty1() throws Exception {
 
-        runSuccess(BANNER, //
+        runSuccess(BANNER,
             "");
     }
 
@@ -357,7 +357,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEmpty2() throws Exception {
 
-        runSuccess(BANNER, //
+        runSuccess(BANNER,
             "-", "");
     }
 
@@ -369,7 +369,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEmpty3() throws Exception {
 
-        runSuccess(BANNER, //
+        runSuccess(BANNER,
             "--", "");
     }
 
@@ -395,7 +395,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEncoding2() throws Exception {
 
-        runFailure(BANNER + "The encoding `xyzzy\' is not known.\n", //
+        runFailure(BANNER + "The encoding `xyzzy\' is not known.\n",
             "--out", "test.out", "--encoding", "xyzzy");
     }
 
@@ -408,7 +408,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testHelp1() throws Exception {
 
-        runFailure(BANNER + USAGE, //
+        runFailure(BANNER + USAGE,
             "--help");
     }
 
@@ -421,7 +421,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testHelp2() throws Exception {
 
-        runFailure(BANNER + USAGE, //
+        runFailure(BANNER + USAGE,
             "-h");
     }
 
@@ -434,7 +434,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testHelp3() throws Exception {
 
-        runFailure(BANNER + USAGE, //
+        runFailure(BANNER + USAGE,
             "-?");
     }
 
@@ -531,7 +531,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Ignore
     public void testLogfile03() throws Exception {
 
-        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER, //
+        runTest("test", "", CLI.EXIT_FAIL, Check.EQ, BANNER,
             "test.bib", "-log", "");
     }
 
@@ -549,7 +549,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    CLI.EXIT_OK, Check.EQ, BANNER, //
+                    CLI.EXIT_OK, Check.EQ, BANNER,
                     "test.bib");
         assertEquals("exbibutil", exbib.getProgramName());
         // assertEquals("test.bbl", exbib.getOutfile());
@@ -617,7 +617,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testOutfile2() throws Exception {
 
         runTest("test", null, CLI.EXIT_OK, Check.START, BANNER
-                + "The output is discarded.\n" + "Runtime ", //
+                + "The output is discarded.\n" + "Runtime ",
             "-v", "--outfile", "");
     }
 
@@ -631,7 +631,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testOutfile3() throws Exception {
 
         runTest("test", null, CLI.EXIT_OK, Check.START, BANNER
-                + "The output is sent to stdout.\n" + "Runtime ", //
+                + "The output is sent to stdout.\n" + "Runtime ",
             "-v", "--outfile", "-");
     }
 
@@ -651,7 +651,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
 
         try {
             runTest("test", null, CLI.EXIT_OK, Check.START, BANNER
-                    + "The output file: test.output\n" + "Runtime ", //
+                    + "The output file: test.output\n" + "Runtime ",
                 "-v", "--outfile", file.toString());
             assertTrue(file.exists());
         } finally {
@@ -674,7 +674,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
         runFailure(
             BANNER
                     + "The output file: some/file/for/writing\n"
-                    + "The output file `some/file/for/writing\' could not be opened.\n", //
+                    + "The output file `some/file/for/writing\' could not be opened.\n",
             "-v", "--outfile", "some/file/for/writing", "test.bib");
     }
 
@@ -706,7 +706,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
                     "\\citation{*}\n"
                             + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                             + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-                    CLI.EXIT_OK, Check.EQ, null, //
+                    CLI.EXIT_OK, Check.EQ, null,
                     "--progname", "xxx", "test.bib");
         assertEquals("xxx", exbib.getProgramName());
     }
@@ -720,7 +720,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testProgName2() throws Exception {
 
-        runSuccess("This is abc, Version " + ExBibUtilMain.VERSION + "\n", //
+        runSuccess("This is abc, Version " + ExBibUtilMain.VERSION + "\n",
             "--progname", "abc");
     }
 
@@ -733,7 +733,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testQuiet1() throws Exception {
 
-        runSuccess("", //
+        runSuccess("",
             "--quiet");
     }
 
@@ -746,7 +746,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testRelease1() throws Exception {
 
-        runFailure(ExBibUtilMain.VERSION + "\n", //
+        runFailure(ExBibUtilMain.VERSION + "\n",
             "--release");
     }
 
@@ -759,7 +759,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testTerse1() throws Exception {
 
-        runSuccess("", //
+        runSuccess("",
             "--terse");
     }
 
@@ -772,7 +772,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType1() throws Exception {
 
-        runFailure(BANNER + "The option `--type\' needs a parameter.\n", //
+        runFailure(BANNER + "The option `--type\' needs a parameter.\n",
             "--type");
     }
 
@@ -785,7 +785,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType2() throws Exception {
 
-        runFailure(BANNER + "The output type `xyzzy\' is not known.\n", //
+        runFailure(BANNER + "The output type `xyzzy\' is not known.\n",
             "--type", "xyzzy");
     }
 
@@ -797,7 +797,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType3() throws Exception {
 
-        runSuccess(BANNER, //
+        runSuccess(BANNER,
             "--type", "bib");
     }
 
@@ -809,7 +809,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType4() throws Exception {
 
-        runSuccess(BANNER, //
+        runSuccess(BANNER,
             "--type", "xml");
     }
 
@@ -822,7 +822,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testUndefined1() throws Exception {
 
-        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n", //
+        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n",
             "--undefined");
     }
 
@@ -835,7 +835,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testUndefined2() throws Exception {
 
-        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n", //
+        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n",
             "--undefined=123");
     }
 
@@ -849,7 +849,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testVerbose1() throws Exception {
 
         runTest("test", "only comment\n", CLI.EXIT_OK, Check.REGEX, BANNER
-                + "The output is sent to stdout.\n" + "Runtime [0-9]* ms\n", //
+                + "The output is sent to stdout.\n" + "Runtime [0-9]* ms\n",
             "--verbose");
     }
 
@@ -866,7 +866,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
         String bib = new File("test.bib").toString().replaceAll("\\\\", ".");
         runTest("test", "only comment\n", CLI.EXIT_OK, Check.REGEX, BANNER
                 + "The output is sent to stdout.\n" + "Database file #1: \n"
-                + bib + ".bib\n" + "Runtime [0-9]* ms\n", //
+                + bib + ".bib\n" + "Runtime [0-9]* ms\n",
             "--verbose", "test.bib");
     }
 
@@ -887,7 +887,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n", //
+                    + "switch -copying.\n",
             "--version");
     }
 
@@ -908,7 +908,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
                     + "There is NO warranty.  Redistribution of this software is\n"
                     + "covered by the terms of the GNU Library General Public License.\n"
                     + "For more information about these matters, use the command line\n"
-                    + "switch -copying.\n", //
+                    + "switch -copying.\n",
             "--vers");
     }
 

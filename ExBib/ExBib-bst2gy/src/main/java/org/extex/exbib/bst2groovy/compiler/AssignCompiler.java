@@ -148,7 +148,7 @@ public final class AssignCompiler implements Compiler {
          */
         public SetLocalInteger(String entry, String name, GCode value) {
 
-            super(ReturnType.VOID, entry + ".setLocal", //
+            super(ReturnType.VOID, entry + ".setLocal",
                 new GStringConstant(name), value);
         }
 
@@ -169,7 +169,7 @@ public final class AssignCompiler implements Compiler {
          */
         public SetLocalString(String entry, String name, GCode value) {
 
-            super(ReturnType.VOID, entry + ".setLocal", //
+            super(ReturnType.VOID, entry + ".setLocal",
                 new GStringConstant(name), value);
         }
 
@@ -295,7 +295,7 @@ public final class AssignCompiler implements Compiler {
         public void visitIntegerOption(TIntegerOption option, Object... args) {
 
             ProcessorState state = (ProcessorState) args[0];
-            state.add(new SetIntegerOption(((String) args[2]), //
+            state.add(new SetIntegerOption(((String) args[2]),
                 ((GCode) args[3])));
         }
 
@@ -384,7 +384,7 @@ public final class AssignCompiler implements Compiler {
                 throws ExBibException {
 
             ProcessorState state = (ProcessorState) args[0];
-            state.add(new SetStringOption(((String) args[2]), //
+            state.add(new SetStringOption(((String) args[2]),
                 ((GCode) args[3])));
         }
 

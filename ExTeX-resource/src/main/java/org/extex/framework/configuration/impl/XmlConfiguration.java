@@ -438,7 +438,7 @@ public class XmlConfiguration implements Configuration {
     @Override
     public String getAttribute(String name) {
 
-        return (this.root.getAttributeNode(name) == null ? null : //
+        return (this.root.getAttributeNode(name) == null ? null :
                 this.root.getAttribute(name));
     }
 

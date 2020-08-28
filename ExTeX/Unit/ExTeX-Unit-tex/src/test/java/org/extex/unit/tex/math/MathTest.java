@@ -81,10 +81,10 @@ public class MathTest extends ExTeXLauncher {
                     + DEFINE_CATCODES + "$a_b$ \\end",
             //--- output channel ---
             "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n" //
-                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n" //
-                    + "...a\n" //
-                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted 1.49998pt\n" //
+                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
+                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
+                    + "...a\n"
+                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted 1.49998pt\n"
                     + "....b\n");
     }
 
@@ -104,10 +104,10 @@ public class MathTest extends ExTeXLauncher {
                     + DEFINE_CATCODES + "$a^b$ \\end",
             //--- output channel ---
             "\\vbox(4.8611pt+0.0pt)x100.0pt\n"
-                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n" //
-                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n" //
-                    + "...a\n" //
-                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted -5.93748pt\n" //
+                    + ".\\hbox(4.8611pt+0.0pt)x100.0pt\n"
+                    + "..\\hbox(4.8611pt+0.0pt)x8.80255pt\n"
+                    + "...a\n"
+                    + "...\\hbox(4.8611pt+0.0pt)x3.51666pt, shifted -5.93748pt\n"
                     + "....b\n");
     }
 

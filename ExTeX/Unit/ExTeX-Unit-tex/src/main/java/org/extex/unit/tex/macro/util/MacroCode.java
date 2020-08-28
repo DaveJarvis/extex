@@ -372,9 +372,9 @@ public class MacroCode extends AbstractCode
             return false;
         }
         MacroCode macro = (MacroCode) code;
-        return (notLong == macro.notLong //
-                && outerP == macro.outerP //
-                && compare(pattern, macro.pattern) //
+        return (notLong == macro.notLong 
+                && outerP == macro.outerP 
+                && compare(pattern, macro.pattern) 
         && body.equals(macro.body));
     }
 

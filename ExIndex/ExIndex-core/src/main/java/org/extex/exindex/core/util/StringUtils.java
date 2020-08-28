@@ -57,9 +57,9 @@ public final class StringUtils {
     public static void putPrintable(StringBuilder sb, String s) {
 
         sb.append("\"");
-        sb.append(s.replaceAll("\\\\", "\\\\")//
-            .replaceAll("\"", "\\\"")//
-            .replaceAll("\n", "\\n")//
+        sb.append(s.replaceAll("\\\\", "\\\\")
+            .replaceAll("\"", "\\\"")
+            .replaceAll("\n", "\\n")
             .replaceAll("\t", "\\t"));
         sb.append("\"");
     }

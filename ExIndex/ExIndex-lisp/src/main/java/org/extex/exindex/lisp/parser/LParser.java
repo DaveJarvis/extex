@@ -298,7 +298,7 @@ public class LParser implements ResourceLocator {
             throw new SyntaxException(resource);
         }
         String s = sb.toString();
-        return (dot //
+        return (dot
                 ? new LDouble(Double.parseDouble(s))
                 : new LNumber(Long.parseLong(s)));
     }

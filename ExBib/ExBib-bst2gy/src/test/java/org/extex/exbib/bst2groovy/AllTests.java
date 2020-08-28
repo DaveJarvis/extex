@@ -28,13 +28,13 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Bst2GroovyAlphaTest.class, //
-        Bst2GroovyTest.class, //
-        MainTest.class, //
-        XamplTest.class, //
-        org.extex.exbib.bst2groovy.data.bool.NotTest.class, //
-        org.extex.exbib.bst2groovy.exception.ImpossibleExceptionTest.class, //
-        org.extex.exbib.bst2groovy.io.CodeWriterTest.class //
+@Suite.SuiteClasses({Bst2GroovyAlphaTest.class,
+        Bst2GroovyTest.class,
+        MainTest.class,
+        XamplTest.class,
+        org.extex.exbib.bst2groovy.data.bool.NotTest.class,
+        org.extex.exbib.bst2groovy.exception.ImpossibleExceptionTest.class,
+        org.extex.exbib.bst2groovy.io.CodeWriterTest.class
 })
 public final class AllTests {
 

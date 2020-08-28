@@ -65,9 +65,9 @@ public class EpsWriterTest {
             .newInstance("test/font/test-fonts"));
         factory.setProperties(new Properties());
         factory.setResourceFinder(new ResourceFinderFactory()
-            .createResourceFinder(//
-                ConfigurationFactory.newInstance("path/fontTestFileFinder"), //
-                Logger.getLogger("test"), new Properties(), //
+            .createResourceFinder(
+                ConfigurationFactory.newInstance("path/fontTestFileFinder"),
+                Logger.getLogger("test"), new Properties(),
                 new InteractionIndicator() {
 
                     public boolean isInteractive() {
@@ -112,7 +112,7 @@ public class EpsWriterTest {
          */
         public void register(OutputStreamObserver observer) {
 
-            //
+
         }
 
         /**
@@ -123,7 +123,7 @@ public class EpsWriterTest {
          */
         public void setExtension(String extension) {
 
-            //
+
         }
 
     };
@@ -178,16 +178,16 @@ public class EpsWriterTest {
         assertEquals(1, pages.size());
         String s = pages.get(0).toString().replaceAll("\r", "");
 
-        assertEquals("%!PS-Adobe-2.0 EPSF-2.0\n" //
-                + "%%Creator: ExTeX-Backend-ps\n" //
+        assertEquals("%!PS-Adobe-2.0 EPSF-2.0\n"
+                + "%%Creator: ExTeX-Backend-ps\n"
                 + "%%CreationDate: ", s.substring(0, 68));
         assertEquals("%%Title: \n" + "%%BoundingBox: 0 0 0 0\n"
                 + "%%HiResBoundingBox: 0.0 0.0 0.0 0.0\n"
                 + "%%DocumentFonts:\n" + "%%EndComments\n"
-                + "/TeXDict 300 dict def\n" //
-                + "%%BeginProcSet: Ps.java\n" //
-                + "TeXDict begin /eop{}def end\n" //
-                + "%%EndProcSet\n" //
+                + "/TeXDict 300 dict def\n"
+                + "%%BeginProcSet: Ps.java\n"
+                + "TeXDict begin /eop{}def end\n"
+                + "%%EndProcSet\n"
                 + "TeXDict begin\n eop\n" + "end\n" + "%%EOF\n", s
             .substring(88));
         pages.clear();
@@ -208,18 +208,18 @@ public class EpsWriterTest {
         writer.close();
         assertEquals(2, pages.size());
         String s = pages.get(0).toString().replaceAll("\r", "");
-        assertEquals("%!PS-Adobe-2.0 EPSF-2.0\n" //
-                + "%%Creator: ExTeX-Backend-ps\n" //
+        assertEquals("%!PS-Adobe-2.0 EPSF-2.0\n"
+                + "%%Creator: ExTeX-Backend-ps\n"
                 + "%%CreationDate: ", s.substring(0, 68));
         assertEquals("%%Title: \n" + "%%BoundingBox: 0 0 0 0\n"
                 + "%%HiResBoundingBox: 0.0 0.0 0.0 0.0\n"
                 + "%%DocumentFonts:\n" + "%%EndComments\n"
-                + "/TeXDict 300 dict def\n" //
-                + "%%BeginProcSet: Ps.java\n" //
-                + "TeXDict begin /eop{}def end\n" //
-                + "%%EndProcSet\n" //
-                + "TeXDict begin\n eop\n" //
-                + "end\n" //
+                + "/TeXDict 300 dict def\n"
+                + "%%BeginProcSet: Ps.java\n"
+                + "TeXDict begin /eop{}def end\n"
+                + "%%EndProcSet\n"
+                + "TeXDict begin\n eop\n"
+                + "end\n"
                 + "%%EOF\n", s.substring(88));
         pages.clear();
     }

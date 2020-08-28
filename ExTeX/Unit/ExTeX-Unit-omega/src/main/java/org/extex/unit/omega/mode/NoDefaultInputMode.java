@@ -83,7 +83,7 @@ public class NoDefaultInputMode extends AbstractModeCode {
     public void execute(Flags prefix, Context context, TokenSource source,
             Typesetter typesetter) throws TypesetterException {
 
-        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, null, //
+        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, null,
             prefix.clearGlobal());
     }
 

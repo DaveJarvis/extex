@@ -94,8 +94,8 @@ public class NoDefaultInputTranslation extends AbstractModeCode {
 
         OmegaMode mode = scanInputMode(context, source);
 
-        context.set(OmegaExtension.NAME, //
-            DEFAULT_INPUT_TRANSLATION + mode.toString(), //
+        context.set(OmegaExtension.NAME, 
+            DEFAULT_INPUT_TRANSLATION + mode.toString(), 
             null, prefix.clearGlobal());
     }
 }

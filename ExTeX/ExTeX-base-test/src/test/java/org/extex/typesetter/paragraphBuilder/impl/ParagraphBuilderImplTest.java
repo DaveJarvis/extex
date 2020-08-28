@@ -274,7 +274,7 @@ public class ParagraphBuilderImplTest {
         builder.setOptions(new MockOptions());
         HorizontalListNode nodes = new HorizontalListNode();
         NodeList n = builder.build(nodes);
-        assertEquals(//
+        assertEquals(
             "\\vbox(0.0pt+0.0pt)x0.01526pt\n"
                     + ".\\hbox(0.0pt+0.0pt)x0.01526pt\n"
                     + "..\\penalty 10000\n" + "..\\glue0.01526pt", n.toString());

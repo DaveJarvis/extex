@@ -101,35 +101,35 @@ public class BstEditorPreferences extends FieldEditorPreferencePage
 
     static {
         IPreferenceStore store = Activator.getDefault().getPreferenceStore();
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_COMMENT, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_COMMENT,
             new RGB(63, 127, 95));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_STRING, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_STRING,
             new RGB(42, 0, 255));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_COMMAND, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_COMMAND,
             new RGB(127, 0, 85));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_KEYWORD, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_KEYWORD,
             new RGB(127, 0, 85));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_QUOTE, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_QUOTE,
             new RGB(255, 128, 128));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_NUMBER, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_NUMBER,
             new RGB(127, 127, 255));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_ERROR, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_ERROR,
             new RGB(255, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_FUNCTION, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_FUNCTION,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_FIELD, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_FIELD,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_GLOBAL_STRING, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_GLOBAL_STRING,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_LOCAL_STRING, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_LOCAL_STRING,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_GLOBAL_NUMBER, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_GLOBAL_NUMBER,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_LOCAL_NUMBER, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_LOCAL_NUMBER,
             new RGB(0, 0, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_MACRO, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_MACRO,
             new RGB(128, 128, 0));
-        PreferenceConverter.setDefault(store, PREFERENCE_FG_DEFAULT, //
+        PreferenceConverter.setDefault(store, PREFERENCE_FG_DEFAULT,
             new RGB(0, 0, 0));
     }
 

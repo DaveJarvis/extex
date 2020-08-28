@@ -71,7 +71,7 @@ public class EofException extends HelpingException {
      */
     public EofException(String macro) {
 
-        super(LocalizerFactory.getLocalizer(EofException.class), //
+        super(LocalizerFactory.getLocalizer(EofException.class), 
                 (macro != null ? "UnexpectedEofIn" : "UnexpectedEof"), macro);
     }
 

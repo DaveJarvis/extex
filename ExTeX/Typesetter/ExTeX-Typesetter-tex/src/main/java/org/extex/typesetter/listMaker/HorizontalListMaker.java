@@ -321,7 +321,7 @@ public class HorizontalListMaker extends AbstractListMaker {
             if (f != 0) {
                 spaceFactor =
                         (spaceFactor < DEFAULT_SPACEFACTOR
-                                && f > DEFAULT_SPACEFACTOR //
+                                && f > DEFAULT_SPACEFACTOR
                         ? DEFAULT_SPACEFACTOR : f);
             }
         }

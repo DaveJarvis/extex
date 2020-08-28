@@ -141,7 +141,7 @@ public class IfCompiler implements Compiler {
         @Override
         public int optimize(List<GCode> list, int index) {
 
-            if (index > 0 //
+            if (index > 0
                     && thenBranch.size() == 1
                     && elseBranch.size() == 1
                     && list.get(index - 1) instanceof DeclareVar

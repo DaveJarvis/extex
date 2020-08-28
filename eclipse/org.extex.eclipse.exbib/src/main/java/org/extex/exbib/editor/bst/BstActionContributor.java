@@ -54,7 +54,7 @@ public class BstActionContributor extends BasicTextEditorActionContributor {
                 new RetargetTextEditorAction(ResourceBundle
                     .getBundle(getClass().getName().replace('.', '/')),
                     "Editor.ContentAssist.");
-        contentAssist.setActionDefinitionId(//
+        contentAssist.setActionDefinitionId(
             ITextEditorActionDefinitionIds.CONTENT_ASSIST_PROPOSALS);
     }
 

@@ -48,7 +48,7 @@ public class BadFilter1 extends Reader {
     @Override
     public void close() throws IOException {
 
-        //
+
     }
 
     /**

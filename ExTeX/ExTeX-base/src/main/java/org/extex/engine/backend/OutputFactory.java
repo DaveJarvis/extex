@@ -245,10 +245,10 @@ public class OutputFactory extends AbstractConfigurable
             isDefault = true;
             filename = basename + (ext == null ? "" : "." + ext);
         } else {
-            filename = MessageFormat.format(format, //
-                new Object[]{basename, //
-                        (name == null ? "" : name), //
-                        Long.valueOf(cnt), //
+            filename = MessageFormat.format(format,
+                new Object[]{basename,
+                        (name == null ? "" : name),
+                        Long.valueOf(cnt),
                         (ext == null ? "" : "." + ext)});
         }
 

@@ -142,7 +142,7 @@ public class Makeindex1Test {
         StringWriter writer = new StringWriter();
         indexer.markup(writer, logger);
 
-        assertEquals(readReference("extex/extex-users.ind-reference"), //
+        assertEquals(readReference("extex/extex-users.ind-reference"),
             writer.toString());
         // indexer.printBindings(System.out);
     }

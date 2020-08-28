@@ -119,7 +119,7 @@ public class Sfcode extends AbstractAssignment implements
         long sfCode = source.parseInteger(context, source, typesetter);
 
         if (sfCode < 0 || sfCode > MAX_SF_CODE) {
-            throw new InvalidCodeException(Long.toString(sfCode), //
+            throw new InvalidCodeException(Long.toString(sfCode),
                 Integer.toString(MAX_SF_CODE));
         }
 

@@ -56,7 +56,7 @@ public class CopyTest extends NoFlagsPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\copy ", //
+        assertFailure("\\copy ",
             "Missing number, treated as zero");
     }
 

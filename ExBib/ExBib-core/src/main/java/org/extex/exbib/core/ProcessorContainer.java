@@ -188,7 +188,7 @@ public class ProcessorContainer
         try {
             minCrossrefs =
                     Integer.parseInt(properties.getProperty(
-                        ExBib.PROP_MIN_CROSSREF, //
+                        ExBib.PROP_MIN_CROSSREF,
                         Integer.toString(minCrossrefs)));
         } catch (NumberFormatException e) {
             throw new ExBibMissingNumberException(properties.getProperty(
@@ -239,7 +239,7 @@ public class ProcessorContainer
         if (processor == null) {
 
             int mx = minCrossrefs;
-            String p = properties.getProperty(//
+            String p = properties.getProperty(
                 ExBib.PROP_MIN_CROSSREF + "." + name);
             if (p != null) {
                 try {
@@ -262,7 +262,7 @@ public class ProcessorContainer
             }
             processor =
                     processorFactory.newInstance(properties
-                        .getProperty(ExBib.PROP_PROCESSOR), //
+                        .getProperty(ExBib.PROP_PROCESSOR),
                         db);
             processor.setLogger(logger);
             if (processor instanceof ResourceAware) {

@@ -158,7 +158,7 @@ public class Write extends AbstractCode implements TokensWriter, LogEnabled {
 
         if (prefix.clearImmediate()) {
 
-            Tokens toks = source.scanUnprotectedTokens(context, false, false, //
+            Tokens toks = source.scanUnprotectedTokens(context, false, false,
                 getToken());
             try {
                 toks = source.expand(toks, typesetter);

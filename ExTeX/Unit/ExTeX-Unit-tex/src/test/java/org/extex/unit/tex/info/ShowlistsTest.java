@@ -89,7 +89,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
             "### vertical mode entered at line 0\n" + "prevdepth ignored\n"
                     + "Transcript written on ."
                     + System.getProperty("file.separator") + "texput.log.\n",
-            //
+
             "");
     }
 
@@ -112,7 +112,7 @@ public class ShowlistsTest extends NoFlagsPrimitiveTester {
                     + "### vertical mode entered at line 0\n"
                     + "prevdepth ignored\n" + "Transcript written on ."
                     + System.getProperty("file.separator") + "texput.log.\n",
-            //
+
             "" + TERM);
     }
 

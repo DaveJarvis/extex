@@ -122,7 +122,7 @@ public class CharNoad extends AbstractNoad {
         TypesetterOptions context = mathContext.getOptions();
         StyleNoad style = mathContext.getStyle();
         UnicodeChar c = glyph.getCharacter();
-        Font font = context.getFont(MathFontParameter.key(context, //
+        Font font = context.getFont(MathFontParameter.key(context,
             style.getFontName(), Integer.toString(glyph.getFamily())));
         if (font.getActualSize().eq(Dimen.ZERO)) {
             throw new TypesetterException(new HelpingException(getLocalizer(),

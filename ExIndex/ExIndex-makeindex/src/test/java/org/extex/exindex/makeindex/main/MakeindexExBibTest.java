@@ -63,7 +63,7 @@ public class MakeindexExBibTest extends AbstractTester {
             run(
                 new String[]{"src/test/resources/makeindex/exbib-manual.idx",
                         "-s", "src/test/resources/makeindex/doc.ist", "-out",
-                        "target/exbib-manual.ind"}, //
+                        "target/exbib-manual.ind"},
                 BANNER
                         + "Scanning style file src/test/resources/makeindex/doc.ist...done (7 attributes\n"
                         + "redefined, 0 ignored).\n"
@@ -87,7 +87,7 @@ public class MakeindexExBibTest extends AbstractTester {
             }
             r.close();
             r = null;
-            r = new BufferedReader(new FileReader(//
+            r = new BufferedReader(new FileReader(
                 "src/test/resources/makeindex/exbib-manual.ind"));
             StringBuilder expected = new StringBuilder();
             for (int c = r.read(); c >= 0; c = r.read()) {

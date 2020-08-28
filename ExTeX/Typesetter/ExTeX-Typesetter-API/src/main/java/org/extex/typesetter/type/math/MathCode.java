@@ -80,7 +80,7 @@ public class MathCode implements Serializable {
         if (code < 0 || code > 0x8000) {
             throw new HelpingException(
                 LocalizerFactory.getLocalizer(MathCode.class),
-                "TTP.InvalidCode", //
+                "TTP.InvalidCode",
                 Long.toString(code));
         } else if (code == 0x8000) {
             mathClass = null;

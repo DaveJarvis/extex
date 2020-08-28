@@ -197,7 +197,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
             if (w.getLength().gt(width)) {
                 if (i == start + 1) {
                     // avoid infinite loop and accept overfull box
-                    i = saveNodes(nodes, i, point, hlist, //
+                    i = saveNodes(nodes, i, point, hlist, 
                         accumulator, height, depth);
                 }
                 return discardNodes(i, len, nodes);
@@ -276,7 +276,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
 
             hlist.addSkip(leftskip);
             accumulator.add(leftskip);
-            i = breakLine(i, len, nodes, hlist, wd, //
+            i = breakLine(i, len, nodes, hlist, wd, 
                 accumulator, hlist.getHeight(), hlist.getDepth());
             hlist.addSkip(rightskip);
             accumulator.add(rightskip);

@@ -255,7 +255,7 @@ public class NewsBuilderMainTest {
         LineNumberReader r = null;
         try {
             assertEquals(0,
-                run(new String[]{"-base", "src/test/resources/news-3", //
+                run(new String[]{"-base", "src/test/resources/news-3",
                         "-max", "3"}, null));
             assertTrue("Expected file is missing: " + file.toString(),
                 file.exists());

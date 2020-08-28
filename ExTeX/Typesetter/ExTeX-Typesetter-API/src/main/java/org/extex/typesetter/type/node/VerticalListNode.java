@@ -332,7 +332,7 @@ public class VerticalListNode extends GenericNodeList
      */
     private long splitPenalty(long penalty, WideGlue ht, FixedDimen height) {
 
-        // long badness = Badness.badness(height.getValue(), //
+        // long badness = Badness.badness(height.getValue(),
         // ht.getLength().getValue());
         // TODO gene: splitPenalty() unimplemented
         return penalty;
@@ -460,8 +460,8 @@ public class VerticalListNode extends GenericNodeList
         if (targetHeight.ne(ht)) {
             ht.subtract(targetHeight);
             ht.negate();
-            FixedGlueComponent s = (ht.le(Dimen.ZERO) //
-                    ? flexibleHeight.getShrink() //
+            FixedGlueComponent s = (ht.le(Dimen.ZERO)
+                    ? flexibleHeight.getShrink()
                     : flexibleHeight.getStretch());
             for (int i = 0; i < size; i++) {
                 get(i).spreadHeight(ht, s);

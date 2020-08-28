@@ -1028,8 +1028,8 @@ public class GroupImpl implements Group {
 
         TypesettingContext context = typesettingContext;
 
-        return context != null //
-                ? context //
+        return context != null
+                ? context
                 : next != null ? next.getTypesettingContext() : null;
     }
 

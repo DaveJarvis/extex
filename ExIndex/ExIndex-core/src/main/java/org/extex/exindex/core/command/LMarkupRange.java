@@ -140,11 +140,11 @@ public class LMarkupRange extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
-                Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_STRING(":sep", ""), //
-                Arg.OPT_STRING(":class", ""), //
-                Arg.OPT_LNUMBER(":length", new LNumber(0)), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""),
+                Arg.OPT_STRING(":close", ""),
+                Arg.OPT_STRING(":sep", ""),
+                Arg.OPT_STRING(":class", ""),
+                Arg.OPT_LNUMBER(":length", new LNumber(0)),
                 Arg.OPT_LBOOLEAN(":ignore-end")});
     }
 
@@ -171,7 +171,7 @@ public class LMarkupRange extends AbstractLAdapter {
 
         MarkupNum markup = (MarkupNum) getMarkup(interpreter);
         markup.set(clazz, open, close, sep);
-        markup.setNumber(clazz, 0, //
+        markup.setNumber(clazz, 0,
             length == null ? 0 : (int) length.getValue());
         markup.setNumber(clazz, 1, ignoreEnd == LBoolean.TRUE ? 1 : 0);
 

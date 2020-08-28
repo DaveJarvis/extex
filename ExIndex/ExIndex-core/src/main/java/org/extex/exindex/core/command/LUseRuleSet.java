@@ -86,7 +86,7 @@ public class LUseRuleSet extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.OPT_NUMBER(":phase", Integer.valueOf(0)), //
+        super(name, new Arg[]{Arg.OPT_NUMBER(":phase", Integer.valueOf(0)),
                 Arg.OPT_QSTRING_LIST(":rule-set")});
         this.container = container;
     }

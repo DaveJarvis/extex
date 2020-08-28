@@ -427,10 +427,10 @@ public class XindyParser extends LParser implements RawIndexParser {
         int size = list.size();
 
         if (size == 0) {
-            throw new RawIndexSyntaxException(locator, //
+            throw new RawIndexSyntaxException(locator,
                 makeErrorMessage("IndexEntryMissing"));
         } else if (list.get(0) != INDEXENTRY) {
-            throw new RawIndexSyntaxException(locator, //
+            throw new RawIndexSyntaxException(locator,
                 makeErrorMessage("IndexEntryExpected", list.get(0).toString()));
         }
 

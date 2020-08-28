@@ -57,7 +57,7 @@ public class LowerTest extends NoFlagsPrimitiveTester {
     public void testVoid1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\lower1pt\\box0 \\end",
-        //
+
             "");
     }
 

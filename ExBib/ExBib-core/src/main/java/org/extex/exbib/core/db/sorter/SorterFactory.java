@@ -97,7 +97,7 @@ public class SorterFactory extends AbstractFactory<Sorter>
             if (arg == null) {
                 sorter = createInstance(t, Sorter.class);
             } else {
-                sorter = createInstance(t, //
+                sorter = createInstance(t,
                     Sorter.class, String.class, arg);
             }
         } catch (ConfigurationNotFoundException e) {

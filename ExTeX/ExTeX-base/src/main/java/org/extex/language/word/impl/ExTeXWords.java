@@ -123,9 +123,9 @@ public class ExTeXWords implements WordTokenizer {
         int leftLen = node.getLeft().countChars();
 
         if (needHyphen == 1 && isHyph[index + leftLen]) {
-            nodes.add(insertionPoint, //
+            nodes.add(insertionPoint,
                 new DiscretionaryNode(
-                    //
+
                     new HorizontalListNode(node.getLeft(), hyphenNode),
                     new HorizontalListNode(node.getRight()),
                     new HorizontalListNode(node)));
@@ -304,7 +304,7 @@ public class ExTeXWords implements WordTokenizer {
                         nodes.remove(insertion--);
                         post =
                                 new HorizontalListNode(
-                                    //
+
                                     new LigatureNode(((CharNode) prev)
                                         .getTypesettingContext(), lig,
                                         (CharNode) prev, hyphenNode));
@@ -323,7 +323,7 @@ public class ExTeXWords implements WordTokenizer {
                 } else {
                     post = new HorizontalListNode(hyphenNode);
                 }
-                nodes.add(insertion++, //
+                nodes.add(insertion++,
                     new DiscretionaryNode(post, null, nobreak));
                 nobreak = null;
             }

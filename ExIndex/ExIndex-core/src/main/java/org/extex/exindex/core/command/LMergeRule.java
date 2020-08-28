@@ -99,9 +99,9 @@ public class LMergeRule extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.STRING,
-                Arg.OPT_BOOLEAN(":again", Boolean.FALSE), //
-                Arg.OPT_BOOLEAN(":string", Boolean.FALSE), //
-                Arg.OPT_BOOLEAN(":bregexp", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":again", Boolean.FALSE),
+                Arg.OPT_BOOLEAN(":string", Boolean.FALSE),
+                Arg.OPT_BOOLEAN(":bregexp", Boolean.FALSE),
                 Arg.OPT_BOOLEAN(":eregexp", Boolean.FALSE)});
         this.container = container;
     }
@@ -114,16 +114,16 @@ public class LMergeRule extends LFunction {
     // * @return the transformed string
     // */
     // public String apply(String in) {
-    //
+
     // StringBuilder sb = new StringBuilder(in);
-    //
+
     // for (int i = 0; i < sb.length();) {
     // i = apply(sb, i);
     // }
-    //
+
     // return sb.toString();
     // }
-    //
+
     // /**
     // * Apply all rules at a certain position.
     // *
@@ -133,7 +133,7 @@ public class LMergeRule extends LFunction {
     // * @return the next index
     // */
     // private int apply(StringBuilder sb, int start) {
-    //
+
     // for (Rule r : rules) {
     // int next = r.apply(sb, start);
     // if (next < 0) {

@@ -28,8 +28,8 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({BstReaderExtImplTest.class, //
-        BstPrinterImplTest.class //
+@Suite.SuiteClasses({BstReaderExtImplTest.class,
+        BstPrinterImplTest.class
 })
 public final class AllTests {
 

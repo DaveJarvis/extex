@@ -131,7 +131,7 @@ public class LDefineLocationClass extends LFunction {
 
         super(name, new Arg[]{Arg.STRING, Arg.QLIST,
                 Arg.OPT_NUMBER(":min-range-length", Integer.valueOf(0)),
-                Arg.OPT_NUMBER(":hierdepth", Integer.valueOf(0)), //
+                Arg.OPT_NUMBER(":hierdepth", Integer.valueOf(0)),
                 Arg.OPT_BOOLEAN(":var", Boolean.FALSE)});
         this.container = container;
     }

@@ -80,12 +80,12 @@ public class LiangsHyphenationTableTest {
         table.addPattern(newTokens("0a3b0"));
         table.addPattern(newTokens("0a0b4c0"));
         table.addPattern(newTokens("0a2b0c0d0e0f4"));
-        assertEquals("'a' nil\n" //
-                + "  'b' (030)\n" //
-                + "    'c' (0340)\n" //
-                + "      'd' nil\n" //
-                + "        'e' nil\n" //
-                + "          'f' (0340004)\n", //
+        assertEquals("'a' nil\n"
+                + "  'b' (030)\n"
+                + "    'c' (0340)\n"
+                + "      'd' nil\n"
+                + "        'e' nil\n"
+                + "          'f' (0340004)\n",
             table.getPatterns().toString());
     }
 
@@ -103,14 +103,14 @@ public class LiangsHyphenationTableTest {
         table.addPattern(newTokens("0a0b4c0x5y1"));
         table.addPattern(newTokens("0a0b4c0"));
         table.addPattern(newTokens("0a3b0"));
-        assertEquals("'a' nil\n" //
-                + "  'b' (030)\n" //
-                + "    'c' (0340)\n" //
-                + "      'd' nil\n" //
-                + "        'e' nil\n" //
-                + "          'f' (0340004)\n"//
-                + "      'x' nil\n" //
-                + "        'y' (034051)\n", //
+        assertEquals("'a' nil\n"
+                + "  'b' (030)\n"
+                + "    'c' (0340)\n"
+                + "      'd' nil\n"
+                + "        'e' nil\n"
+                + "          'f' (0340004)\n"
+                + "      'x' nil\n"
+                + "        'y' (034051)\n",
             table.getPatterns().toString());
     }
 
@@ -128,13 +128,13 @@ public class LiangsHyphenationTableTest {
         table.addPattern(newTokens("0a0b4c0"));
         table.addPattern(newTokens("0a0b3.0"));
         table.addPattern(newTokens("0a2b0c0d0e0f4"));
-        assertEquals("'a' nil\n" //
-                + "  'b' (030)\n" //
-                + "    '.' (0330)\n" //
-                + "    'c' (0340)\n" //
-                + "      'd' nil\n" //
-                + "        'e' nil\n" //
-                + "          'f' (0340004)\n", //
+        assertEquals("'a' nil\n"
+                + "  'b' (030)\n"
+                + "    '.' (0330)\n"
+                + "    'c' (0340)\n"
+                + "      'd' nil\n"
+                + "        'e' nil\n"
+                + "          'f' (0340004)\n",
             table.getPatterns().toString());
     }
 }

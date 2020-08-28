@@ -262,7 +262,7 @@ public class MessageTest extends NoFlagsPrimitiveTester {
     // */
     // @Test
     // public void testMessageProtected1() throws Exception {
-    //
+
     // assertFailure(//--- input code ---
     // DEFINE_BRACES
     // + "\\protected\\def\\x{abc}"

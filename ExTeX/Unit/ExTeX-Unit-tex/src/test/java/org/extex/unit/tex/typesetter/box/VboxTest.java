@@ -147,15 +147,15 @@ public class VboxTest extends NoFlagsPrimitiveTester {
             DEFINE_BRACES + "\\font\\fnt cmtt12 \\fnt " + "x\\vbox {abcd} "
                     + "\\end",
             // --- output channel ---
-            "\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(7.33333pt+0.0pt)x3000.0pt\n" //
-                    + "..x\n" //
-                    + "..\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
-                    + "...\\vbox(7.33333pt+0.0pt)x3000.0pt\n" //
-                    + "....\\hbox(7.33333pt+0.0pt)x3000.0pt\n" //
-                    + ".....a\n" //
-                    + ".....b\n" //
-                    + ".....c\n" //
+            "\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                    + ".\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
+                    + "..x\n"
+                    + "..\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                    + "...\\vbox(7.33333pt+0.0pt)x3000.0pt\n"
+                    + "....\\hbox(7.33333pt+0.0pt)x3000.0pt\n"
+                    + ".....a\n"
+                    + ".....b\n"
+                    + ".....c\n"
                     + ".....d\n");
     }
 

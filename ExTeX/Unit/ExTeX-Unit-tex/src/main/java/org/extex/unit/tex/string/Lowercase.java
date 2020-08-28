@@ -130,8 +130,8 @@ public class Lowercase extends AbstractCode implements ExpandableCode {
                 t = toks.get(i);
                 if (t instanceof LetterToken || t instanceof OtherToken) {
                     UnicodeChar uc = context.getLccode(t.getChar());
-                    if (uc != null && //
-                            uc.getCodePoint() != 0 && //
+                    if (uc != null &&
+                            uc.getCodePoint() != 0 &&
                             !uc.equals(t.getChar())) {
                         t = factory.createToken(t.getCatcode(), uc, namespace);
                     }

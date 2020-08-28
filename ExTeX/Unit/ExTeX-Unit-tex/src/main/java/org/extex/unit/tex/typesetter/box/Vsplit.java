@@ -165,7 +165,7 @@ public class Vsplit extends AbstractCode implements Boxable, LogEnabled {
         // TODO gene: set splitmark etc
         try {
             return b
-                .vsplit(ht, //
+                .vsplit(ht, 
                     (Count.ONE.le(context.getCount("tracingpages"))
                             ? logger
                             : null));

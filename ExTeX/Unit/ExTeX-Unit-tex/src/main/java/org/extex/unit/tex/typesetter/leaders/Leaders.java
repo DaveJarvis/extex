@@ -194,7 +194,7 @@ public class Leaders extends AbstractCode {
         code = context.getCode(vskip);
 
         if (code == null) {
-            throw new UndefinedControlSequenceException(//
+            throw new UndefinedControlSequenceException(
                 context.esc(vskip.getName()));
         }
 

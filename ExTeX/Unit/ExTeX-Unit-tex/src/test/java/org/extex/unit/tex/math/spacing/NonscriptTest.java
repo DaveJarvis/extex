@@ -50,7 +50,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$x\\nonscript\\mskip 1mux$" //
+                + "$x\\nonscript\\mskip 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -74,7 +74,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\displaystyle x\\nonscript\\mskip 1mux$" //
+                + "$\\displaystyle x\\nonscript\\mskip 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -98,7 +98,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptstyle x\\nonscript\\mskip 1mux$" //
+                + "$\\scriptstyle x\\nonscript\\mskip 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(3.01389pt+0.0pt)x3000.0pt\n"
@@ -121,7 +121,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptscriptstyle x\\nonscript\\mskip 1mux$" //
+                + "$\\scriptscriptstyle x\\nonscript\\mskip 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(2.15277pt+0.0pt)x3000.0pt\n"
@@ -144,7 +144,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$x\\nonscript\\mkern 1mux$" //
+                + "$x\\nonscript\\mkern 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -168,7 +168,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\displaystyle x\\nonscript\\mkern 1mux$" //
+                + "$\\displaystyle x\\nonscript\\mkern 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -192,7 +192,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptstyle x\\nonscript\\mkern 1mux$" //
+                + "$\\scriptstyle x\\nonscript\\mkern 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(3.01389pt+0.0pt)x3000.0pt\n"
@@ -215,7 +215,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptscriptstyle x\\nonscript\\mkern 1mux$" //
+                + "$\\scriptscriptstyle x\\nonscript\\mkern 1mux$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(2.15277pt+0.0pt)x3000.0pt\n"
@@ -238,7 +238,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$x\\nonscript\\kern 1ptx$" //
+                + "$x\\nonscript\\kern 1ptx$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -262,7 +262,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\displaystyle x\\nonscript\\kern 1ptx$" //
+                + "$\\displaystyle x\\nonscript\\kern 1ptx$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(4.30554pt+0.0pt)x3000.0pt\n"
@@ -286,7 +286,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptstyle x\\nonscript\\kern 1ptx$" //
+                + "$\\scriptstyle x\\nonscript\\kern 1ptx$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(3.01389pt+0.0pt)x3000.0pt\n"
@@ -309,7 +309,7 @@ public class NonscriptTest extends AbstractMathTester {
         assertSuccess(showNodesProperties(),
         //--- input code ---
                 DEFINE_MATH_FONTS + DEFINE_MATH
-                + "$\\scriptscriptstyle x\\nonscript\\kern 1ptx$" //
+                + "$\\scriptscriptstyle x\\nonscript\\kern 1ptx$"
                 + "\\end",
                 //--- output message ---
                 "\\vbox(2.15277pt+0.0pt)x3000.0pt\n"

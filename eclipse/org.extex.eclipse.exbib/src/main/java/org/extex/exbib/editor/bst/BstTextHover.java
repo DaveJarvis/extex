@@ -61,7 +61,7 @@ public final class BstTextHover implements ITextHover {
     public String getHoverInfo(ITextViewer textViewer, IRegion hoverRegion) {
 
         try {
-            String tag = textViewer.getDocument().get(hoverRegion.getOffset(), //
+            String tag = textViewer.getDocument().get(hoverRegion.getOffset(),
                 hoverRegion.getLength());
             if (tag.matches("#-?[0-9]+")) {
                 // TODO: info on number format

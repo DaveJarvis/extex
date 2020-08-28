@@ -290,7 +290,7 @@ public class OtfTableCFF extends AbstractXtfTable
     // * @return Returns the namedIndex.
     // */
     // public List getNamedIndex() {
-    //
+
     // return namedIndex;
     // }
 

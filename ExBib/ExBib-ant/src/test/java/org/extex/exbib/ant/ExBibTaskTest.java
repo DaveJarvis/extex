@@ -86,7 +86,7 @@ public class ExBibTaskTest extends BuildFileTest {
         configureProject("target/build.xml");
         executeTarget("test.case");
         assertEquals("Message was logged but should not.",
-            log.replaceAll("\\n", ""), //
+            log.replaceAll("\\n", ""),
             getLog().replaceAll("\\r", "").replaceAll("\\n", ""));
         build.delete();
     }
@@ -100,8 +100,8 @@ public class ExBibTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         executeTarget("test.case.1");
         assertEquals("Message was logged but should not.",
-            "Missing aux file parameter." //
-                    + "(There was 1 error)", //
+            "Missing aux file parameter."
+                    + "(There was 1 error)",
             getLog().replaceAll("[\\r\\n]", ""));
     }
 
@@ -115,7 +115,7 @@ public class ExBibTaskTest extends BuildFileTest {
         executeTarget("test.case.2");
         assertEquals("Message was logged but should not.",
             "I couldn\'t open file file/which/does/not/exist.aux"
-                    + "(There was 1 error)", //
+                    + "(There was 1 error)",
             getLog().replaceAll("[\\r\\n]", ""));
     }
 
@@ -126,9 +126,9 @@ public class ExBibTaskTest extends BuildFileTest {
      */
     public final void test11() throws Exception {
 
-        runTest("<ExBib\n" //
-                + "  file=\"file/which/does/not/exist.aux\" />\n", //
-            null, //
+        runTest("<ExBib\n"
+                + "  file=\"file/which/does/not/exist.aux\" />\n",
+            null,
             "I couldn\'t open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
     }
@@ -140,10 +140,10 @@ public class ExBibTaskTest extends BuildFileTest {
      */
     public final void test12() throws Exception {
 
-        runTest("<ExBib\n" //
+        runTest("<ExBib\n"
                 + "  minCrossrefs=\"abc\" \n"
-                + "  file=\"file/which/does/not/exist\"/>\n", //
-            null, //
+                + "  file=\"file/which/does/not/exist\"/>\n",
+            null,
             "I found `abc\' instead of the expected number\n"
                     + "(There was 1 error)\n");
     }
@@ -155,10 +155,10 @@ public class ExBibTaskTest extends BuildFileTest {
      */
     public final void test13() throws Exception {
 
-        runTest("<ExBib\n" //
+        runTest("<ExBib\n"
                 + "  logfile=\"target/log.log\" \n"
-                + "  file=\"file/which/does/not/exist\"/>\n", //
-            null, //
+                + "  file=\"file/which/does/not/exist\"/>\n",
+            null,
             "I couldn\'t open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
         File log = new File("target/log.log");
@@ -174,10 +174,10 @@ public class ExBibTaskTest extends BuildFileTest {
     public final void test21() throws Exception {
 
         runTest(
-            "<ExBib>\n" //
+            "<ExBib>\n"
                     + "  exbib.file=file/which/does/not/exist.aux\n"
-                    + "</ExBib>\n", //
-            null, //
+                    + "</ExBib>\n",
+            null,
             "I couldn\'t open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
     }
@@ -190,9 +190,9 @@ public class ExBibTaskTest extends BuildFileTest {
     public final void test22() throws Exception {
 
         try {
-            runTest("<ExBib\n" //
-                    + "  load=\"file/which/does/not/exist\"/>\n", //
-                null, //
+            runTest("<ExBib\n"
+                    + "  load=\"file/which/does/not/exist\"/>\n",
+                null,
                 "");
             assertTrue(false);
         } catch (BuildException e) {
@@ -209,9 +209,9 @@ public class ExBibTaskTest extends BuildFileTest {
     public final void test23() throws Exception {
 
         try {
-            runTest("<ExBib\n" //
-                    + "  load=\"~/file/which/does/not/exist\"/>\n", //
-                null, //
+            runTest("<ExBib\n"
+                    + "  load=\"~/file/which/does/not/exist\"/>\n",
+                null,
                 "");
             assertTrue(false);
         } catch (BuildException e) {

@@ -28,9 +28,9 @@ import org.junit.runners.Suite;
  * @version $Revision: 8318 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({DefineIndexTest.class, //
-        LDefineAttributesTest.class, //
-        LDefineLocationClassTest.class, //
+@Suite.SuiteClasses({DefineIndexTest.class,
+        LDefineAttributesTest.class,
+        LDefineLocationClassTest.class,
         RawParserTest.class})
 public final class AllTests {
 

@@ -28,9 +28,9 @@ import org.junit.runners.Suite;
  * @version $Revision: 8318 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({IndexerTest.class, //
-        MakeindexComparatorTest.class, //
-        MakeindexExBibTest.class, //
+@Suite.SuiteClasses({IndexerTest.class,
+        MakeindexComparatorTest.class,
+        MakeindexExBibTest.class,
         MakeindexTest.class})
 public final class AllTests {
 

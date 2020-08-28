@@ -60,13 +60,13 @@ public class VtopTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             DEFINE_BRACES + "\\vtop{abc} ",
             // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" //
-                    + ".\\vbox(8.0pt+0.0pt)x3000.0pt\n" //
-                    + "..\\vbox(8.0pt+0.0pt)x3000.0pt\n" //
-                    + "...\\hbox(8.0pt+0.0pt)x3000.0pt\n" //
-                    + "....a\n" //
-                    + "....b\n" //
-                    + "....c\n" //
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                    + ".\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                    + "..\\vbox(8.0pt+0.0pt)x3000.0pt\n"
+                    + "...\\hbox(8.0pt+0.0pt)x3000.0pt\n"
+                    + "....a\n"
+                    + "....b\n"
+                    + "....c\n"
         );
     }
 

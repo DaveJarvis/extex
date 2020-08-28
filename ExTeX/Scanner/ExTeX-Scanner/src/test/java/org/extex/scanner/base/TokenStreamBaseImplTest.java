@@ -215,7 +215,7 @@ public class TokenStreamBaseImplTest {
     public void testPut1() throws Exception {
 
         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
         stream.put(token);
         Token token2 =
@@ -235,9 +235,9 @@ public class TokenStreamBaseImplTest {
     public void testPut2() throws Exception {
 
         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
-        Token t2 = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token t2 = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'b', "");
         stream.put(token);
         stream.put(t2);
@@ -260,7 +260,7 @@ public class TokenStreamBaseImplTest {
     public void testSkipSpaces1() throws Exception {
 
         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
         stream.put(token);
         stream.skipSpaces();
@@ -280,9 +280,9 @@ public class TokenStreamBaseImplTest {
     public void testSkipSpaces2() throws Exception {
 
         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
-        Token space = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token space = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.SPACE, ' ', "");
         stream.put(token);
         stream.put(space);
@@ -303,9 +303,9 @@ public class TokenStreamBaseImplTest {
     public void testSkipSpaces3() throws Exception {
 
         TokenStreamBaseImpl stream = new TokenStreamBaseImpl(false);
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
-        Token space = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token space = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.SPACE, ' ', "");
         stream.put(token);
         stream.put(space);
@@ -327,7 +327,7 @@ public class TokenStreamBaseImplTest {
     @Test
     public void testTokenStreamBaseImplBooleanTokens() throws Exception {
 
-        Token token = TokenStreamStringImplTest.FACTORY.createToken(//
+        Token token = TokenStreamStringImplTest.FACTORY.createToken(
             Catcode.LETTER, 'a', "");
         TokenStreamBaseImpl stream =
                 new TokenStreamBaseImpl(true, new Tokens(token));

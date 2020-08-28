@@ -63,7 +63,7 @@ public abstract class WriterTester {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         writer.write(baos, ocp);
         baos.close();
-        assertEquals("Compiler result", expect, //
+        assertEquals("Compiler result", expect,
             baos.toString().replaceAll("\r", ""));
     }
 
@@ -103,7 +103,7 @@ public abstract class WriterTester {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         writer.write(baos, ocp);
         baos.close();
-        assertEquals("Compiler result", expect.toString(), //
+        assertEquals("Compiler result", expect.toString(),
             baos.toString().replaceAll("\r", ""));
     }
 

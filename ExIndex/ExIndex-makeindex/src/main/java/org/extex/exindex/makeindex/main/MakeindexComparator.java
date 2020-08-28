@@ -145,7 +145,7 @@ public class MakeindexComparator implements Comparator<Entry> {
         }
 
         if (NUMBER_PATTERN.matcher(first).matches()) {
-            return NUMBER_PATTERN.matcher(second).matches() //
+            return NUMBER_PATTERN.matcher(second).matches() 
                     ? Integer.parseInt(first) - Integer.parseInt(second)
                     : LESS;
         } else if (NUMBER_PATTERN.matcher(second).matches()) {
@@ -189,8 +189,8 @@ public class MakeindexComparator implements Comparator<Entry> {
      */
     protected boolean issymbol(char c) {
 
-        return ('!' <= c && c <= '@') || //
-                ('[' <= c && c <= '`') || //
+        return ('!' <= c && c <= '@') || 
+                ('[' <= c && c <= '`') || 
                 ('{' <= c && c <= '~');
     }
 

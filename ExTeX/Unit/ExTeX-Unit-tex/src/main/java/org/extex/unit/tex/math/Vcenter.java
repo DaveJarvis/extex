@@ -87,7 +87,7 @@ public class Vcenter extends AbstractMathCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter, 
             getToken(), GroupType.VCENTER_GROUP);
         nc.add(new VCenterNoad(noad, context.getTypesettingContext()));
     }

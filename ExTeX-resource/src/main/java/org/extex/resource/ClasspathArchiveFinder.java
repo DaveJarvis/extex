@@ -273,15 +273,15 @@ public class ClasspathArchiveFinder extends AbstractFinder {
                 Enumeration<Object> keys = properties.keys();
                 while (keys.hasMoreElements()) {
                     String k = keys.nextElement().toString();
-                    cache.put(k, new URL(protocol, host, port, //
+                    cache.put(k, new URL(protocol, host, port,
                         p + properties.getProperty(k)));
                 }
             }
         } catch (IOException e) {
             throw new ConfigurationWrapperException(e);
         }
-        trace("DatabaseLoaded", //
-            Long.toString(System.currentTimeMillis() - start), //
+        trace("DatabaseLoaded",
+            Long.toString(System.currentTimeMillis() - start),
             Integer.toString(cache.size()));
         return cache;
     }

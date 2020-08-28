@@ -138,7 +138,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
     @Override
     public boolean eq(FixedGlueComponent d) {
 
-        return (d != null && //
+        return (d != null &&
                 value == d.getValue() && order == d.getOrder());
     }
 
@@ -188,7 +188,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
     @Override
     public boolean gt(FixedGlueComponent d) {
 
-        return ((order == d.getOrder() && value > d.getValue()) || //
+        return ((order == d.getOrder() && value > d.getValue()) ||
         order > d.getOrder());
     }
 
@@ -216,7 +216,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
     @Override
     public boolean lt(FixedGlueComponent d) {
 
-        return ((order == d.getOrder() && value < d.getValue()) || //
+        return ((order == d.getOrder() && value < d.getValue()) ||
         order < d.getOrder());
     }
 

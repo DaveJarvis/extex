@@ -61,7 +61,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vrule \\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.4pt\n" + //
+            "\\vbox(0.0pt+0.0pt)x0.4pt\n" +
                     ".\\rule0.0pt+0.0ptx0.4pt\n");
     }
 
@@ -79,7 +79,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vrule width 12pt\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x12.0pt\n" + //
+            "\\vbox(0.0pt+0.0pt)x12.0pt\n" +
                     ".\\rule0.0pt+0.0ptx12.0pt\n");
     }
 
@@ -97,7 +97,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vrule height 12pt\\end ",
             // --- output channel ---
-            "\\vbox(12.0pt+0.0pt)x0.4pt\n" + //
+            "\\vbox(12.0pt+0.0pt)x0.4pt\n" +
                     ".\\rule12.0pt+0.0ptx0.4pt\n");
     }
 
@@ -115,7 +115,7 @@ public class VruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vrule depth 12pt\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+12.0pt)x0.4pt\n" + //
+            "\\vbox(0.0pt+12.0pt)x0.4pt\n" +
                     ".\\rule0.0pt+12.0ptx0.4pt\n");
     }
 

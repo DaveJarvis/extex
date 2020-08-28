@@ -41,8 +41,8 @@ public class MakeindexComparatorTest {
     public void testCompare01() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertEquals(0, mc.compare(//
-            new Entry(new String[]{""}, new String[]{""}, null), //
+        assertEquals(0, mc.compare(
+            new Entry(new String[]{""}, new String[]{""}, null), 
             new Entry(new String[]{""}, new String[]{""}, null)));
         assertEquals(1, mc.getComparisons());
     }
@@ -54,8 +54,8 @@ public class MakeindexComparatorTest {
     public void testCompare02() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertEquals(0, mc.compare(//
-            new Entry(new String[]{"x"}, new String[]{""}, null), //
+        assertEquals(0, mc.compare(
+            new Entry(new String[]{"x"}, new String[]{""}, null), 
             new Entry(new String[]{"x"}, new String[]{""}, null)));
         assertEquals(1, mc.getComparisons());
     }
@@ -68,8 +68,8 @@ public class MakeindexComparatorTest {
     public void testCompare03() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertEquals(-1, mc.compare(//
-            new Entry(new String[]{"1"}, new String[]{""}, null), //
+        assertEquals(-1, mc.compare(
+            new Entry(new String[]{"1"}, new String[]{""}, null), 
             new Entry(new String[]{"2"}, new String[]{""}, null)));
         assertEquals(1, mc.getComparisons());
     }
@@ -82,8 +82,8 @@ public class MakeindexComparatorTest {
     public void testCompare04() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertEquals(1, mc.compare(//
-            new Entry(new String[]{"2"}, new String[]{""}, null), //
+        assertEquals(1, mc.compare(
+            new Entry(new String[]{"2"}, new String[]{""}, null), 
             new Entry(new String[]{"1"}, new String[]{""}, null)));
         assertEquals(1, mc.getComparisons());
     }
@@ -96,8 +96,8 @@ public class MakeindexComparatorTest {
     public void testCompare05() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertTrue(mc.compare(//
-            new Entry(new String[]{"1"}, new String[]{""}, null), //
+        assertTrue(mc.compare(
+            new Entry(new String[]{"1"}, new String[]{""}, null), 
             new Entry(new String[]{"*"}, new String[]{""}, null)) > 0);
         assertEquals(1, mc.getComparisons());
     }
@@ -110,8 +110,8 @@ public class MakeindexComparatorTest {
     public void testCompare10() {
 
         MakeindexComparator mc = new MakeindexComparator();
-        assertEquals(-1, mc.compare(//
-            new Entry(new String[]{"x"}, new String[]{""}, null), //
+        assertEquals(-1, mc.compare(
+            new Entry(new String[]{"x"}, new String[]{""}, null), 
             new Entry(new String[]{"x", "x"}, new String[]{""}, null)));
         assertEquals(1, mc.getComparisons());
     }

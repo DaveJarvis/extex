@@ -72,9 +72,9 @@ public final class OcpDebugger {
                     || "stop".startsWith(args[0]) || "exit".startsWith(args[0])) {
                 return false;
             } else if ("run".startsWith(args[0])) {
-                //
+
             } else if ("step".startsWith(args[0])) {
-                //
+
             } else if ("trace".startsWith(args[0])) {
                 trace = Boolean.getBoolean(args.length == 1 ? "true" : args[1]);
             } else {

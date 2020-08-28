@@ -168,7 +168,7 @@ public class LetterGroupContainer {
      */
     public LetterGroup findLetterGroup(String key) {
 
-        SortedSet<String> list = index.get(key.equals("") //
+        SortedSet<String> list = index.get(key.equals("")
                 ? null
                 : Character.valueOf(key.charAt(0)));
 

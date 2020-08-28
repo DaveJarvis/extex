@@ -228,7 +228,7 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
-        assertTrue("A in cmr12 should be managable", //
+        assertTrue("A in cmr12 should be managable",
             manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
@@ -262,9 +262,9 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
-        assertTrue("A in cmr12 should be managable", //
+        assertTrue("A in cmr12 should be managable",
             manager.recognize(key, UnicodeChar.get('A')));
-        assertTrue("B in cmr12 should be managable", //
+        assertTrue("B in cmr12 should be managable",
             manager.recognize(key, UnicodeChar.get('B')));
         assertFalse("second is not new any more", manager
             .isNewRecongnizedFont());
@@ -301,10 +301,10 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         assertNotNull(manager);
 
         FontKey key = factory.getFontKey("cmr12");
-        assertTrue("A in cmr12 should be managable", //
+        assertTrue("A in cmr12 should be managable",
             manager.recognize(key, UnicodeChar.get('A')));
         key = factory.getFontKey("cmr10");
-        assertTrue("B in cmr12 should be managable", //
+        assertTrue("B in cmr12 should be managable",
             manager.recognize(key, UnicodeChar.get('B')));
         assertTrue("second is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
@@ -347,10 +347,10 @@ public class FontFactoryImplManagerTest extends AbstractFontFactoryTester {
         sl.add("tfm");
         BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
-        assertTrue("A in cmr12 should be managable", //
+        assertTrue("A in cmr12 should be managable",
             manager
                 .recognize(factory.getFontKey("cmr12"), UnicodeChar.get('A')));
-        assertTrue("B in cmr12 should be managable", //
+        assertTrue("B in cmr12 should be managable",
             manager
                 .recognize(factory.getFontKey("cmr10"), UnicodeChar.get('B')));
 

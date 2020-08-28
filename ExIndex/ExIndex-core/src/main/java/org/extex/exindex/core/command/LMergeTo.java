@@ -95,7 +95,7 @@ public class LMergeTo extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.LSTRING, Arg.LSTRING, //
+        super(name, new Arg[]{Arg.LSTRING, Arg.LSTRING,
                 Arg.OPT_LBOOLEAN(":drop")});
         this.container = container;
     }

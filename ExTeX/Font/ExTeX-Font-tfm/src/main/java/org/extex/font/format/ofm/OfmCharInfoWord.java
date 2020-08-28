@@ -52,7 +52,7 @@ public class OfmCharInfoWord extends TfmCharInfoWord {
         // italicindex = (short) (italicindextag >> 2 & TfmConstants.CONST_X3F);
         // tag = (short) (italicindextag & TfmConstants.CONST_X03);
         // remainder = (short) rar.readByteAsInt();
-        //
+
         // switch (tag) {
         // case TAG0:
         // tagT = NO_TAG;

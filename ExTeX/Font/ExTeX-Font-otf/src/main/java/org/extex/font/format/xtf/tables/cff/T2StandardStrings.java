@@ -38,7 +38,7 @@ public final class T2StandardStrings {
      */
     private T2StandardStrings() {
 
-        //
+
     }
 
     /**

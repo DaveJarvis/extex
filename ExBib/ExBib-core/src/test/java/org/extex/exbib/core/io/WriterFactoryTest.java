@@ -177,7 +177,7 @@ public class WriterFactoryTest {
          */
         public void getValues(List<String> list, String key) {
 
-            //
+
         }
 
         /**
@@ -221,7 +221,7 @@ public class WriterFactoryTest {
          */
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
-            //
+
         }
     }
 

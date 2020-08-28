@@ -47,9 +47,9 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
 
         assertOutput("\\mathchardef\\T=1000 " + "\\dimen0=-\\T pt"
                 + "\\showthe\\dimen0 " + "\\end",
-        //
+
             "> -1000.0pt.\n",
-            //
+
             "");
     }
 
@@ -64,9 +64,9 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
     public final void testParse2() throws Exception {
 
         assertOutput("\\dimen0=--12 pt" + "\\showthe\\dimen0 " + "\\end",
-        //
+
             "> 12.0pt.\n",
-            //
+
             "");
     }
 
@@ -81,9 +81,9 @@ public class ConstantDimenParserTest extends ExTeXLauncher {
     public final void testParse3() throws Exception {
 
         assertOutput("\\dimen0=- -12 pt" + "\\showthe\\dimen0 " + "\\end",
-        //
+
             "> 12.0pt.\n",
-            //
+
             "");
     }
 

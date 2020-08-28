@@ -78,7 +78,7 @@ public class UnexpectedException extends SyntaxException {
         try {
             ResourceBundle bundle =
                     ResourceBundle.getBundle(getClass().getName());
-            return MessageFormat.format(bundle.getString("Message"), //
+            return MessageFormat.format(bundle.getString("Message"),
                 unexpected, Integer.toString(lineno), line);
         } catch (MissingResourceException e) {
             return super.getMessage();

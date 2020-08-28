@@ -256,8 +256,8 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
             return new MathCode(null, null);
         } else {
             return new MathCode(
-                MathClass.getMathClass((int) (code >> CLASS_OFFSET)), //
-                new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK, //
+                MathClass.getMathClass((int) (code >> CLASS_OFFSET)),
+                new MathGlyph((int) (code >> FAMILY_OFFSET) & FAMILY_MASK,
                     UnicodeChar.get((int) (code & CHARACTER_MASK))));
         }
 

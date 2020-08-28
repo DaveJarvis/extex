@@ -92,7 +92,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
             return;
         }
 
-        PrintStream out = new PrintStream((outputFactory != null //
+        PrintStream out = new PrintStream((outputFactory != null 
                 ? outputFactory.getOutputStream(name, "fls")
                 : new FileOutputStream(name + ".fls")));
         print(out);

@@ -181,9 +181,9 @@ public class IndexerTest {
     public final void test01() throws Exception {
 
         runTest(null, null, null, "Starting the startup phase.\n"
-                + "No styles to load.\n" //
-                + "Preparing index ...\n" //
-                + "No resources to load.\n" //
+                + "No styles to load.\n"
+                + "Preparing index ...\n"
+                + "No resources to load.\n"
                 + "Starting the markup phase.\n");
     }
 
@@ -196,11 +196,11 @@ public class IndexerTest {
     @Test
     public final void test02() throws Exception {
 
-        runTest(makeList(), makeList(), null, //
-            "Starting the startup phase.\n" //
-                    + "No styles to load.\n" //
-                    + "Preparing index ...\n" //
-                    + "No resources to load.\n" //
+        runTest(makeList(), makeList(), null,
+            "Starting the startup phase.\n"
+                    + "No styles to load.\n"
+                    + "Preparing index ...\n"
+                    + "No resources to load.\n"
                     + "Starting the markup phase.\n");
     }
 
@@ -213,12 +213,12 @@ public class IndexerTest {
     public final void test10() throws Exception {
 
         runTest(makeList(), makeList("T10.raw"), "",
-            "Starting the startup phase.\n" //
-                    + "No styles to load.\n" //
-                    + "Preparing index ...\n" //
-                    + "Starting the processing phase.\n" //
-                    + "Reading T10.raw.\n" //
-                    + "Starting the pre-processing phase.\n" //
+            "Starting the startup phase.\n"
+                    + "No styles to load.\n"
+                    + "Preparing index ...\n"
+                    + "Starting the processing phase.\n"
+                    + "Reading T10.raw.\n"
+                    + "Starting the pre-processing phase.\n"
                     + "Starting the markup phase.\n");
     }
 
@@ -231,9 +231,9 @@ public class IndexerTest {
     public final void test11() throws Exception {
 
         runTest(makeList("style11"), makeList(), "\\begin{index}\\end{index}",
-            "Starting the startup phase.\n" //
-                    + "Preparing index ...\n" //
-                    + "No resources to load.\n" //
+            "Starting the startup phase.\n"
+                    + "Preparing index ...\n"
+                    + "No resources to load.\n"
                     + "Starting the markup phase.\n");
     }
 
@@ -282,7 +282,7 @@ public class IndexerTest {
 
         runTest(makeList("style11"), makeList("T111.raw"),
             "\\begin{index}aabcIV\\end{index}", "Starting the startup phase.\n"
-                    + "Preparing index ...\n" //
+                    + "Preparing index ...\n"
                     + "Starting the processing phase.\n"
                     + "Reading T111.raw.\n"
                     + "Starting the pre-processing phase.\n"
@@ -300,7 +300,7 @@ public class IndexerTest {
         runTest(makeList("style11"), makeList("T112.raw"),
             "\\begin{index}aabcIVVI\\end{index}",
             "Starting the startup phase.\n"
-                    + "Preparing index ...\n" //
+                    + "Preparing index ...\n"
                     + "Starting the processing phase.\n"
                     + "Reading T112.raw.\n"
                     + "Starting the pre-processing phase.\n"
@@ -318,7 +318,7 @@ public class IndexerTest {
         runTest(makeList("style13"), makeList("T112.raw"),
             "\\begin{index}->aabcIVVI\\end{index}",
             "Starting the startup phase.\n"
-                    + "Preparing index ...\n" //
+                    + "Preparing index ...\n"
                     + "Starting the processing phase.\n"
                     + "Reading T112.raw.\n"
                     + "Starting the pre-processing phase.\n"

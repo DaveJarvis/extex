@@ -275,7 +275,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     public TokenStream getStream(CharSequence line)
             throws ConfigurationException {
 
-        TokenStream stream = getStream(new StringReader(line.toString()), //
+        TokenStream stream = getStream(new StringReader(line.toString()),
             Boolean.FALSE, "*");
 
         if (openStringObservers != null) {
@@ -331,7 +331,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
         TokenStream stream;
         try {
 
-            stream = (TokenStream) readerConstructor.newInstance(//
+            stream = (TokenStream) readerConstructor.newInstance(
                 new Object[]{configuration, options, r, isFile, source});
 
         } catch ( final Exception e) {

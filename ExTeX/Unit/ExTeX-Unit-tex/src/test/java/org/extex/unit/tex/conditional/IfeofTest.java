@@ -132,8 +132,8 @@ public class IfeofTest extends ConditionalTester {
     public void test3() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\openin8 " + EMPTY_TEX + " " //
-                    + "\\read8 to \\x " //
+            "\\openin8 " + EMPTY_TEX + " " 
+                    + "\\read8 to \\x " 
                     + "\\ifeof8 true\\else false\\fi \\end",
             // --- output channel ---
             "true" + TERM);
@@ -150,7 +150,7 @@ public class IfeofTest extends ConditionalTester {
     public void test4() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\openin8 " + NON_EMPTY_TEX + " " //
+            "\\openin8 " + NON_EMPTY_TEX + " " 
                     + "\\ifeof8 true\\else false\\fi \\end",
             // --- output channel ---
             "false" + TERM);

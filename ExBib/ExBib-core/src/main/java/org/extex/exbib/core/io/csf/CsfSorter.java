@@ -270,7 +270,7 @@ public class CsfSorter
             try {
                 String encoding =
                         properties.getProperty(ExBib.PROP_CSF_ENCODING);
-                new CsfReader().read(encoding == null //
+                new CsfReader().read(encoding == null
                         ? new InputStreamReader(is)
                         : new InputStreamReader(is, encoding), this);
             } finally {

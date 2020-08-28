@@ -179,7 +179,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.ACTIVE, uc, //
+                    return factory.createToken(Catcode.ACTIVE, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -227,11 +227,11 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                     Token t = null;
 
                     if (state == MID_LINE) {
-                        t = factory.createToken(Catcode.SPACE, ' ', //
+                        t = factory.createToken(Catcode.SPACE, ' ', 
                             tokenizer.getNamespace());
                     } else if (state == NEW_LINE) {
-                        t = factory.createToken(Catcode.ESCAPE, //
-                            UnicodeChar.get('\\'), "par", //
+                        t = factory.createToken(Catcode.ESCAPE, 
+                            UnicodeChar.get('\\'), "par", 
                             tokenizer.getNamespace());
                     } else {
                         // drop the character
@@ -375,7 +375,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.LEFTBRACE, uc, //
+                    return factory.createToken(Catcode.LEFTBRACE, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -400,7 +400,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.LETTER, uc, //
+                    return factory.createToken(Catcode.LETTER, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -428,7 +428,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.MACROPARAM, uc, //
+                    return factory.createToken(Catcode.MACROPARAM, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -456,7 +456,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.MATHSHIFT, uc, //
+                    return factory.createToken(Catcode.MATHSHIFT, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -481,7 +481,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.OTHER, uc, //
+                    return factory.createToken(Catcode.OTHER, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -506,7 +506,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.RIGHTBRACE, uc, //
+                    return factory.createToken(Catcode.RIGHTBRACE, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -564,7 +564,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.SUBMARK, uc, //
+                    return factory.createToken(Catcode.SUBMARK, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -592,7 +592,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.SUPMARK, uc, //
+                    return factory.createToken(Catcode.SUPMARK, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -620,7 +620,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                     state = MID_LINE;
 
-                    return factory.createToken(Catcode.TABMARK, uc, //
+                    return factory.createToken(Catcode.TABMARK, uc, 
                         tokenizer.getNamespace());
                 }
 
@@ -676,7 +676,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
         int hexHigh = hex2int(c.getCodePoint());
         if (hexHigh < 0) {
             hexHigh = c.getCodePoint();
-            return UnicodeChar.get(((hexHigh < CARET_LIMIT) //
+            return UnicodeChar.get(((hexHigh < CARET_LIMIT) 
                     ? hexHigh + CARET_LIMIT
                     : hexHigh - CARET_LIMIT));
         }
@@ -795,7 +795,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
             }
 
             try {
-                t = (Token) tokenizer.getCatcode(uc).visit(visitor, //
+                t = (Token) tokenizer.getCatcode(uc).visit(visitor, 
                     factory, tokenizer, uc);
             } catch (Exception e) {
                 throw new ScannerException(e);

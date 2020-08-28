@@ -370,7 +370,7 @@ public class ExBibTest {
     public final void testOptions1() throws Exception {
 
         String aux = "target/test.aux";
-        makeFile(aux, "\\citation{*}\n" //
+        makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{min.crossref=4}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
@@ -399,7 +399,7 @@ public class ExBibTest {
     public final void testOptions2() throws Exception {
 
         String aux = "target/test.aux";
-        makeFile(aux, "\\citation{*}\n" //
+        makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{sort=42}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
@@ -425,7 +425,7 @@ public class ExBibTest {
     public final void testOptions3() throws Exception {
 
         String aux = "target/test.aux";
-        makeFile(aux, "\\citation{*}\n" //
+        makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{sort=locale:en}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");

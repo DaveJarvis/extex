@@ -119,7 +119,7 @@ public class BstEditorConfiguration extends SourceViewerConfiguration {
     public String[] getConfiguredContentTypes(ISourceViewer sourceViewer) {
 
         return new String[]{IDocument.DEFAULT_CONTENT_TYPE,
-                BstPartitionScanner.BST_COMMENT, //
+                BstPartitionScanner.BST_COMMENT,
                 BstPartitionScanner.BST_CODE};
     }
 

@@ -105,8 +105,8 @@ public class DefaultInputTranslation extends AbstractModeCode
         OmegaMode mode = scanInputMode(context, source);
         Ocp ocp = OcpUtil.scanOcp(context, source, typesetter, finder);
 
-        context.set(OmegaExtension.NAME, //
-            DEFAULT_INPUT_TRANSLATION + mode.toString(), //
+        context.set(OmegaExtension.NAME,
+            DEFAULT_INPUT_TRANSLATION + mode.toString(),
             ocp, prefix.clearGlobal());
     }
 

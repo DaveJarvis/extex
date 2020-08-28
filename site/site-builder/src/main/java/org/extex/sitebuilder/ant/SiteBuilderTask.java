@@ -91,7 +91,7 @@ public class SiteBuilderTask extends Task {
         @Override
         public void close() throws SecurityException {
 
-            //
+
         }
 
         /**
@@ -102,7 +102,7 @@ public class SiteBuilderTask extends Task {
         @Override
         public void flush() {
 
-            //
+
         }
 
         /**

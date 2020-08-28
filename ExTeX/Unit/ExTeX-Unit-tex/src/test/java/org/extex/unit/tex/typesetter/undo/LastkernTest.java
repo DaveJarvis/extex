@@ -61,7 +61,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "\\showthe\\lastkern\\end",
             // --- output channel ---
             "> 0.0pt.\n",
-            //
+
             null);
     }
 
@@ -79,7 +79,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "a\\kern123pt\\showthe\\lastkern\\end",
             // --- output channel ---
             "> 123.0pt.\n",
-            //
+
             null);
     }
 
@@ -97,7 +97,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "a\\kern123pt\\relax\\showthe\\lastkern\\end",
             // --- output channel ---
             "> 123.0pt.\n",
-            //
+
             null);
     }
 
@@ -115,7 +115,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "a\\showthe\\lastkern\\end",
             // --- output channel ---
             "> 0.0pt.\n",
-            //
+
             null);
     }
 
@@ -133,7 +133,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "a\\kern123pt\\dimen0=\\lastkern x\\showthe\\dimen0\\end",
             // --- output channel ---
             "> 123.0pt.\n",
-            //
+
             null);
     }
 
@@ -151,7 +151,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
             "a\\kern123pt\\count0=\\lastkern x\\showthe\\count0\\end",
             // --- output channel ---
             "> 8060928.\n",
-            //
+
             null);
     }
 

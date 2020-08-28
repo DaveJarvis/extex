@@ -109,7 +109,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String k = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
-        Muskip muskip = (Muskip) source.parse(Muskip.class, //
+        Muskip muskip = (Muskip) source.parse(Muskip.class, 
             context, source, typesetter);
         muskip.add(context.getMuskip(k));
         context.setMuskip(k, muskip, prefix.clearGlobal());
@@ -128,7 +128,7 @@ public class MuskipParameter extends AbstractAssignment
 
         String k = getKey(context, source, typesetter);
         source.getOptionalEquals(context);
-        Muskip muskip = (Muskip) source.parse(Muskip.class, //
+        Muskip muskip = (Muskip) source.parse(Muskip.class, 
             context, source, typesetter);
         context.setMuskip(k, muskip, prefix.clearGlobal());
     }

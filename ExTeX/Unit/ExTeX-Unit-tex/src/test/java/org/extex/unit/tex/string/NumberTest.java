@@ -57,7 +57,7 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     public void testCount1() throws Exception {
 
         assertSuccess("\\count0=2 \\number\\count0 \\end",
-        //
+        
             "2" + TERM);
     }
 
@@ -71,7 +71,7 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     public void testCount2() throws Exception {
 
         assertSuccess("\\count0=32 \\number\\count0 \\end",
-        //
+        
             "32" + TERM);
     }
 
@@ -85,7 +85,7 @@ public class NumberTest extends NoFlagsPrimitiveTester {
     public void testCount3() throws Exception {
 
         assertSuccess("\\count0=-2 \\number\\count0 \\end",
-        //
+        
             "-2" + TERM);
     }
 
@@ -100,7 +100,7 @@ public class NumberTest extends NoFlagsPrimitiveTester {
 
         assertSuccess(
             "\\count0=-2 \\count1=\\number\\count0\\relax\\the\\count1\\end",
-            //
+            
             "-2" + TERM);
     }
 

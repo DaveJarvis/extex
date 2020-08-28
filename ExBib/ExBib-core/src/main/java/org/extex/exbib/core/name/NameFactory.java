@@ -110,7 +110,7 @@ public final class NameFactory {
 
     private NameFactory() {
 
-        //
+
     }
 
     /**

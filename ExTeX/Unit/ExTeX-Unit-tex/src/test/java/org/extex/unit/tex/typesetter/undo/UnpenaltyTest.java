@@ -95,9 +95,9 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\unpenalty\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" + 
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + 
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + 
                     "..a\n");
     }
 
@@ -115,9 +115,9 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\penalty123 \\unpenalty\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" + 
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + 
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + 
                     "..a\n");
     }
 

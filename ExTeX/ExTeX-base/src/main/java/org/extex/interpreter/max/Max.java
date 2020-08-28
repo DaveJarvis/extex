@@ -1009,7 +1009,7 @@ public abstract class Max
 
         if (cx.incrementErrorCount() > maxErrors.getValue()) { // cf. TTP[82]
             throw new ErrorLimitException(maxErrors.getValue());
-        } else if (errorHandler != null && //
+        } else if (errorHandler != null &&
                 errorHandler.handleError(t, token, this, cx)) {
             return;
         }
@@ -1448,9 +1448,9 @@ public abstract class Max
         if (cond != null) {
             Localizer loc = getLocalizer();
             String endPrimitive = loc.format("TTP.EndPrimitive");
-            HelpingException e = new HelpingException(loc, "TTP.EndIf", //
-                context.esc(endPrimitive), //
-                cond.getPrimitiveToken().toText(), //
+            HelpingException e = new HelpingException(loc, "TTP.EndIf",
+                context.esc(endPrimitive),
+                cond.getPrimitiveToken().toText(),
                 cond.getLocator().toString());
             if (observersError != null) {
                 observersError.update(e);
@@ -1544,7 +1544,7 @@ public abstract class Max
     @Override
     public void setJobname(String jobname) throws GeneralException {
 
-        context.setToks("jobname", //
+        context.setToks("jobname",
             context.getTokenFactory().toTokens(jobname), true);
     }
 
@@ -1819,8 +1819,8 @@ public abstract class Max
             reportDirtyFlag(token);
         }
 
-        ((TokenDelegateListMaker) typesetter).letter(token.getChar(), //
-            context.getTypesettingContext(), //
+        ((TokenDelegateListMaker) typesetter).letter(token.getChar(),
+            context.getTypesettingContext(),
             context, this, getLocator());
         return null;
     }

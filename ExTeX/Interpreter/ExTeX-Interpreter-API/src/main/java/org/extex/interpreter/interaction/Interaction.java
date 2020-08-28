@@ -295,7 +295,7 @@ public abstract class Interaction implements Serializable {
      *      "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      *      >e</span>X</logo> &ndash; The Program [73]"
      */
-    private static final Interaction[] MODE_MAP = //
+    private static final Interaction[] MODE_MAP =
             {BATCHMODE, NONSTOPMODE, SCROLLMODE, ERRORSTOPMODE};
 
     /**
@@ -336,7 +336,7 @@ public abstract class Interaction implements Serializable {
             }
         }
 
-        throw new InteractionUnknownException(mode == null //
+        throw new InteractionUnknownException(mode == null
                 ? ""
                 : mode.toString());
     }

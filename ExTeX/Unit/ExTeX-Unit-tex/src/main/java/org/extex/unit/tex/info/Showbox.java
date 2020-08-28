@@ -163,7 +163,7 @@ public class Showbox extends AbstractCode implements LogEnabled {
         Box b = context.getBox(key);
 
         if (b == null) {
-            logger.info(getLocalizer().format("TTP.Show.void", //
+            logger.info(getLocalizer().format("TTP.Show.void",
                 context.esc("box" + key)));
         } else {
             long depth = context.getCount("showboxdepth").getValue();

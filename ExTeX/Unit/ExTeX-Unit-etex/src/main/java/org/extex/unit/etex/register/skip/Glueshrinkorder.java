@@ -133,7 +133,7 @@ public class Glueshrinkorder extends AbstractCode
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens(//
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 

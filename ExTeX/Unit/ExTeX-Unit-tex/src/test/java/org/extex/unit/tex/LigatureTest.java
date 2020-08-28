@@ -69,10 +69,10 @@ public class LigatureTest extends ExTeXLauncher {
         // --- input code ---
             "\\font\\f=cmr10 \\f " + "Affe",
             // --- output channel ---
-            "\\vbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                    + "..A\n" //
-                    + "..?\n" //
+            "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
+                    + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n"
+                    + "..A\n"
+                    + "..?\n"
                     + "..e\n");
     }
 

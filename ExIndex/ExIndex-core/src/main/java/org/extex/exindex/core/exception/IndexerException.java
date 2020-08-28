@@ -81,8 +81,8 @@ public class IndexerException extends LException {
         if (locator != null) {
             return localizer.format((message == null
                     ? "LocatedNoMessage"
-                    : "LocatedMessage"), //
-                locator.getResource(), //
+                    : "LocatedMessage"),
+                locator.getResource(),
                 Integer.toString(locator.getLineNumber()), message);
         }
 

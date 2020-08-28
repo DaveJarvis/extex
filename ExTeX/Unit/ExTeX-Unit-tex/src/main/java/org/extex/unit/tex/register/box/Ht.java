@@ -147,7 +147,7 @@ public class Ht extends AbstractAssignment
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Box box = context.getBox(//
+        Box box = context.getBox(
             Setbox.getKey(context, source, typesetter, getToken()));
         return (box == null ? 0 : box.getHeight().getValue());
     }
@@ -177,7 +177,7 @@ public class Ht extends AbstractAssignment
             throws HelpingException,
                 TypesetterException {
 
-        Box box = context.getBox(//
+        Box box = context.getBox(
             Setbox.getKey(context, source, typesetter, getToken()));
         FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getHeight());
         try {

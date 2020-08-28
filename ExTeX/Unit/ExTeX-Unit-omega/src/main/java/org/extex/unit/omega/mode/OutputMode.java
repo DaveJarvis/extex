@@ -91,7 +91,7 @@ public class OutputMode extends AbstractModeCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         OmegaMode mode = scanOutputMode(context, source);
-        context.set(OmegaExtension.NAME, OUTPUT_MODE, mode, //
+        context.set(OmegaExtension.NAME, OUTPUT_MODE, mode,
             prefix.clearGlobal());
     }
 

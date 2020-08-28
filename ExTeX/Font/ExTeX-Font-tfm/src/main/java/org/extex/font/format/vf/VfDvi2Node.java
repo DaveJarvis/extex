@@ -394,7 +394,7 @@ public class VfDvi2Node implements DviInterpreter, DviExecuteCommand {
     @Override
     public void execute(DviRule command) throws FontException {
 
-        RuleNode node = new RuleNode(//
+        RuleNode node = new RuleNode(
             // width
             TfmFixWord.toDimen(vfFont.getDesignSize(), command.getWidth()),
             // height

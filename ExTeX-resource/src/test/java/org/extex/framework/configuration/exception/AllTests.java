@@ -28,18 +28,18 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ConfigurationClassNotFoundExceptionTest.class, //
-        ConfigurationIllegalAccessExceptionTest.class, //
-        ConfigurationInstantiationExceptionTest.class, //
-        ConfigurationInvalidClassExceptionTest.class, //
-        ConfigurationInvalidConstructorExceptionTest.class, //
-        ConfigurationInvalidResourceExceptionTest.class, //
-        ConfigurationIOExceptionTest.class, //
-        ConfigurationMissingAttributeExceptionTest.class, //
-        ConfigurationNotFoundExceptionTest.class, //
-        ConfigurationNoSuchMethodExceptionTest.class, //
-        ConfigurationSyntaxExceptionTest.class, //
-        ConfigurationUnsupportedEncodingExceptionTest.class, //
+@Suite.SuiteClasses({ConfigurationClassNotFoundExceptionTest.class,
+        ConfigurationIllegalAccessExceptionTest.class,
+        ConfigurationInstantiationExceptionTest.class,
+        ConfigurationInvalidClassExceptionTest.class,
+        ConfigurationInvalidConstructorExceptionTest.class,
+        ConfigurationInvalidResourceExceptionTest.class,
+        ConfigurationIOExceptionTest.class,
+        ConfigurationMissingAttributeExceptionTest.class,
+        ConfigurationNotFoundExceptionTest.class,
+        ConfigurationNoSuchMethodExceptionTest.class,
+        ConfigurationSyntaxExceptionTest.class,
+        ConfigurationUnsupportedEncodingExceptionTest.class,
         ConfigurationWrapperExceptionTest.class})
 public final class AllTests {
 

@@ -56,7 +56,7 @@ public class IndexerTraceTest extends AbstractIndexerTester {
                 + "<CROSSREF-LAYER-LIST:CLOSE[see]>\n"
                 + "<CROSSREF-LIST:CLOSE[see]>\n" + "<KEYWORD-LIST:CLOSE[0]>\n"
                 + "<INDEXENTRY:CLOSE[0]>\n" + "<LETTER-GROUP:CLOSE[a]>\n"
-                + "<LETTER-GROUP-LIST:CLOSE>\n" + "<INDEX:CLOSE>\n", //
+                + "<LETTER-GROUP-LIST:CLOSE>\n" + "<INDEX:CLOSE>\n",
             "");
     }
 

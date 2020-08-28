@@ -61,7 +61,7 @@ public class VskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vskip 12pt\\end ",
             // --- output channel ---
-            "\\vbox(12.0pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(12.0pt+0.0pt)x0.0pt\n" +
                     ".\\glue12.0pt\n");
     }
 
@@ -79,7 +79,7 @@ public class VskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vskip 12pt plus 3pt minus 4pt\\end ",
             // --- output channel ---
-            "\\vbox(12.0pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(12.0pt+0.0pt)x0.0pt\n" +
                     ".\\glue12.0pt plus 3.0pt minus 4.0pt\n");
     }
 

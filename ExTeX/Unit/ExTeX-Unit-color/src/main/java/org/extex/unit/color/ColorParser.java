@@ -208,12 +208,12 @@ public final class ColorParser {
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof ColorConvertible) {
-                color = ((ColorConvertible) code).convertColor(context, source, //
+                color = ((ColorConvertible) code).convertColor(context, source,
                     typesetter);
             }
         } else {
             source.push(t);
-            color = ColorParser.parseColorConstant(context, source, typesetter, //
+            color = ColorParser.parseColorConstant(context, source, typesetter,
                 primitive);
         }
         if (color == null) {
@@ -248,7 +248,7 @@ public final class ColorParser {
 
         for (;;) {
             if (source.getKeyword(context, "alpha")) {
-                alpha = scanColorComponent(context, source, typesetter, //
+                alpha = scanColorComponent(context, source, typesetter,
                     primitive);
             } else if (source.getKeyword(context, "rgb")) {
                 mode = RGB_MODE;
@@ -305,7 +305,7 @@ public final class ColorParser {
         }
         if (cc < 0 || cc > ScaledNumber.ONE) {
             throw new HelpingException(LocalizerFactory
-                .getLocalizer(ColorParser.class), "IllegalValue", //
+                .getLocalizer(ColorParser.class), "IllegalValue",
                 Long.toString(cc));
         }
         return (int) (cc * Color.MAX_VALUE / GlueComponent.ONE);

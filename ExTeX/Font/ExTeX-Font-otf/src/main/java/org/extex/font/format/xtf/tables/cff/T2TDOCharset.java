@@ -397,7 +397,7 @@ public class T2TDOCharset extends T2TDONumber {
                         // Type Name Description
                         // sid first First glyph in range
                         // Card8 nLeft Glyphs left in range (excluding first)
-                        //
+
                         // Each Range1 describes a group of sequential SIDs.
                         // The number of ranges is not explicitly specified
                         // in the font. Instead, software utilizing this data
@@ -515,7 +515,7 @@ public class T2TDOCharset extends T2TDONumber {
                 }
 
                 break;
-            default: //
+            default:
         }
 
         writer.writeEndElement();

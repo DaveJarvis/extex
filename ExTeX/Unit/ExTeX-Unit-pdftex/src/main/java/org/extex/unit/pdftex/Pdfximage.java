@@ -116,7 +116,7 @@ public class Pdfximage extends AbstractPdftexCode {
 
         PdfRefXImage image =
                 writer.getXImage(resource, new RuleNode(width, height, depth,
-                    context.getTypesettingContext(), true), attr, page, //
+                    context.getTypesettingContext(), true), attr, page,
                     prefix.isImmediate());
 
         typesetter.add(image);

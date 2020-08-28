@@ -84,7 +84,7 @@ public final class PdfBoxType1Font extends PDType1Font {
         //        // read the pfb
         //        PfbParser pfbparser = new PfbParser(pfb);
         //        pfb.close();
-        //
+
         //        PDStream fontStream = new PDStream(doc, pfbparser.getInputStream(),
         //                false);
         //        fontStream.getStream().setInt("Length", pfbparser.size());
@@ -94,13 +94,13 @@ public final class PdfBoxType1Font extends PDType1Font {
         //        }
         //        fontStream.addCompression();
         //        fd.setFontFile(fontStream);
-        //
+
         //        // read the afm
         //        AFMParser parser = new AFMParser(afm);
         //        parser.parse();
         //        metric = parser.getResult();
         //        setEncoding(new AFMEncoding(metric));
-        //
+
         //        // set the values
         //        setBaseFont(metric.getFontName());
         //        fd.setFontName(metric.getFontName());
@@ -114,18 +114,18 @@ public final class PdfBoxType1Font extends PDType1Font {
         //        fd.setXHeight(metric.getXHeight());
         //        fd.setAverageWidth(metric.getAverageCharacterWidth());
         //        fd.setCharacterSet(metric.getCharacterSet());
-        //
+
         //        // use encoding ?
         //        if (encvec == null) {
         //            // no reencoding
-        //
+
         //            // get firstchar, lastchar
         //            int firstchar = 255;
         //            int lastchar = 0;
-        //
+
         //            // widths
         //            List listmetric = metric.getCharMetrics();
-        //
+
         //            int maxWidths = 256;
         //            List widths = new ArrayList(maxWidths);
         //            Integer zero = new Integer(0);
@@ -149,13 +149,13 @@ public final class PdfBoxType1Font extends PDType1Font {
         //            setWidths(widths);
         //        } else {
         //            // use reencoding
-        //
+
         //            // widths
         //            List listmetric = metric.getCharMetrics();
         //            int maxWidths = 256;
         //            List widths = new ArrayList(maxWidths);
         //            Integer zero = new Integer(0);
-        //
+
         //            // fill with zero
         //            for (int i = 0; i < encvec.length; i++) {
         //                if (encvec[i] != null) {

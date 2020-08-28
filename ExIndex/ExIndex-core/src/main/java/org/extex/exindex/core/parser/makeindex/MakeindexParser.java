@@ -528,7 +528,7 @@ public class MakeindexParser implements RawIndexParser {
             return ((LChar) v).getValue();
         }
 
-        throw new RawIndexException(locator, //
+        throw new RawIndexException(locator, 
             LocalizerFactory.getLocalizer(getClass()).format("CharExpected",
                 v.toString()));
 
@@ -555,7 +555,7 @@ public class MakeindexParser implements RawIndexParser {
             return ((LString) v).getValue();
         }
 
-        throw new RawIndexException(locator, //
+        throw new RawIndexException(locator, 
             LocalizerFactory.getLocalizer(getClass()).format("StringExpected",
                 v.toString()));
 
@@ -603,10 +603,10 @@ public class MakeindexParser implements RawIndexParser {
             final int last = attr.length() - 1;
             char c = attr.charAt(last);
             if (c == rangeOpen) {
-                ref = new OpenLocationReference(attr.substring(0, last), //
+                ref = new OpenLocationReference(attr.substring(0, last), 
                     locref);
             } else if (c == rangeClose) {
-                ref = new CloseLocationReference(attr.substring(0, last), //
+                ref = new CloseLocationReference(attr.substring(0, last), 
                     locref);
             } else {
                 ref = new LocationReference(attr, locref);

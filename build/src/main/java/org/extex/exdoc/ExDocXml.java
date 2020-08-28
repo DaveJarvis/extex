@@ -257,7 +257,7 @@ public class ExDocXml extends Traverser {
 
         for (int i = content.indexOf(start); i >= 0; i = content.indexOf(start)) {
             int j = content.indexOf("}", i);
-            String s = content.substring(i + start.length(), j).trim().//
+            String s = content.substring(i + start.length(), j).trim().
                 replaceAll("\\s+", " ");
             int is = s.indexOf(' ');
             int ib = s.indexOf(')');
@@ -474,14 +474,14 @@ public class ExDocXml extends Traverser {
             out.print(x);
             out.print("\">\n    <author email=\"");
             Author author = authors.get(x);
-            out.print(author.getEmail()//
-                .replaceAll("&", "&amp;")//
-                .replaceAll("<", "&lt;")//
+            out.print(author.getEmail()
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;"));
             out.print("\">");
-            out.print(author.getName()//
-                .replaceAll("&", "&amp;")//
-                .replaceAll("<", "&lt;")//
+            out.print(author.getName()
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;"));
             out.print("</author>\n  </resource>\n");
         }

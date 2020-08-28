@@ -117,12 +117,12 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
                 source.push(toks);
                 return;
             } else if (code == null) {
-                throw new UndefinedControlSequenceException(//
+                throw new UndefinedControlSequenceException(
                     cs.toText(context.escapechar()));
             }
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
+        throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe",
             cs.toString(), toText(context));
     }
 
@@ -173,7 +173,7 @@ public class The extends AbstractCode implements ExpandableCode, CodeExpander {
             }
         }
 
-        throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe", //
+        throw new HelpingException(getLocalizer(), "TTP.CantUseAfterThe",
             cs.toString(), toText(context));
     }
 }

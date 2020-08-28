@@ -28,12 +28,12 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({WriterFactoryTest.class, //
-        LocatorTest.class, //
-        org.extex.exbib.core.io.bibio.AllTests.class, //
-        org.extex.exbib.core.io.bstio.AllTests.class, //
-        org.extex.exbib.core.io.bblio.AllTests.class, //
-        org.extex.exbib.core.io.csf.AllTests.class //
+@Suite.SuiteClasses({WriterFactoryTest.class,
+        LocatorTest.class,
+        org.extex.exbib.core.io.bibio.AllTests.class,
+        org.extex.exbib.core.io.bstio.AllTests.class,
+        org.extex.exbib.core.io.bblio.AllTests.class,
+        org.extex.exbib.core.io.csf.AllTests.class
 })
 public final class AllTests {
 

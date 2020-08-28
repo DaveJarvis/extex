@@ -81,7 +81,7 @@ public final class TRunner {
         if (!result.exists()) {
             assertTrue(result.toString() + " reference not found", false);
         }
-        File bbl = new File(aux.getParent(), //
+        File bbl = new File(aux.getParent(), 
             aux.getName().replaceAll(".aux$", ".bbl"));
 
         PrintStream err = System.err;
@@ -108,7 +108,7 @@ public final class TRunner {
             if (bbl.exists() && !bbl.delete()) {
                 assertTrue(bbl.toString() + ": deletion failed", false);
             }
-            File f = new File(aux.getParent(), //
+            File f = new File(aux.getParent(), 
                 aux.getName().replaceAll(".aux$", ".blg"));
             if (f.exists() && !f.delete()) {
                 assertTrue(f.toString() + ": deletion failed", false);
@@ -134,9 +134,9 @@ public final class TRunner {
         File aux = new File("test.aux");
         FileWriter out = new FileWriter(aux);
         try {
-            out.write("\\relax\n" //
-                    + "\\citation{" + citation + "}\n" //
-                    + "\\bibstyle{" + style + "}\n" //
+            out.write("\\relax\n" 
+                    + "\\citation{" + citation + "}\n" 
+                    + "\\bibstyle{" + style + "}\n" 
                     + "\\bibdata{" + data + "}\n");
         } finally {
             out.close();

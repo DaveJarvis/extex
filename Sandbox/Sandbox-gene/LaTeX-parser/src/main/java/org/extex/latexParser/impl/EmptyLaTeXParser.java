@@ -183,11 +183,11 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             GroupNode env = peek();
             if (env instanceof MathEnvironment) {
                 throw new SyntaxError(parser,
-                    "trying to use math when already in math started at ", //
+                    "trying to use math when already in math started at ",
                     env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
 
-            env = new MathEnvironment(start, t, start, t, //
+            env = new MathEnvironment(start, t, start, t,
                 getSource(), getLineno());
             push(env);
             for (Node n = parseNode(start); n != null; n = parseNode(start)) {
@@ -196,7 +196,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             Token t1 = getToken();
             if (!t1.equals(t)) {
                 throw new SyntaxError(parser,
-                    "closing math is missing for math started at ", //
+                    "closing math is missing for math started at ",
                     env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
 
@@ -204,7 +204,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
             if (pop != env) {
                 push(pop);
                 throw new SyntaxError(parser,
-                    "closing math is missing for math started at ", //
+                    "closing math is missing for math started at ",
                     env.getSource(), ":", Integer.toString(env.getLineNumber()));
             }
             return env;
@@ -511,7 +511,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitLetter(LetterToken token, TokenStream stream)
                 throws Exception {
 
-            return parseTokens(token, //
+            return parseTokens(token,
                 FACTORY.createToken(Catcode.OTHER, ']', ""));
         }
 
@@ -525,7 +525,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitOther(OtherToken token, TokenStream stream)
                 throws Exception {
 
-            return parseTokens(token, //
+            return parseTokens(token,
                 FACTORY.createToken(Catcode.OTHER, ']', ""));
         }
 
@@ -539,7 +539,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
         public Node visitSpace(SpaceToken token, TokenStream stream)
                 throws Exception {
 
-            return parseTokens(token, //
+            return parseTokens(token,
                 FACTORY.createToken(Catcode.OTHER, ']', ""));
         }
 
@@ -761,7 +761,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
                 new LineNumberReader(new InputStreamReader(stream));
         try {
             this.reader = reader;
-            scanner = new TokenStreamImpl(null, null, reader, Boolean.TRUE, //
+            scanner = new TokenStreamImpl(null, null, reader, Boolean.TRUE,
                 source);
 
             for (Token t = scanner.get(FACTORY, tokenizer); t != null; t =
@@ -1046,7 +1046,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     protected Node undefinedActive(ActiveCharacterToken token)
             throws SyntaxError {
 
-        throw new SyntaxError(parser, "undefined active character {0}", //
+        throw new SyntaxError(parser, "undefined active character {0}",
             token.toText());
     }
 
@@ -1062,7 +1062,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
     protected Node undefinedMacro(ControlSequenceToken token)
             throws SyntaxError {
 
-        throw new SyntaxError(parser, "undefined control sequence {0}", //
+        throw new SyntaxError(parser, "undefined control sequence {0}",
             token.toText());
     }
 

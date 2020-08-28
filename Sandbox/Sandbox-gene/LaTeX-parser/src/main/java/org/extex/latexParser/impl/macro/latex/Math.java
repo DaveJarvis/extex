@@ -62,7 +62,7 @@ public class Math implements Macro {
                 env.getSource(), Integer.toString(env.getLineNumber()));
         }
 
-        env = new MathEnvironment(start, null, end, null, //
+        env = new MathEnvironment(start, null, end, null,
             parser.getSource(), parser.getLineno());
         parser.push(env);
         for (Node n = parser.parseNode(end); n != null; n =
@@ -73,7 +73,7 @@ public class Math implements Macro {
         if (pop != env) {
             parser.push(pop);
             throw new SyntaxError(parser,
-                "closing math is missing for math opened at {0}:{1}", //
+                "closing math is missing for math opened at {0}:{1}",
                 env.getSource(), Integer.toString(env.getLineNumber()));
         }
         return env;
@@ -109,7 +109,7 @@ public class Math implements Macro {
 
         Token end;
         try {
-            end = parser.getTokenFactory().createToken(Catcode.ESCAPE, //
+            end = parser.getTokenFactory().createToken(Catcode.ESCAPE,
                 UnicodeChar.get('\\'), cl, "");
         } catch (CatcodeException e) {
             throw new SystemException("unknown", e);

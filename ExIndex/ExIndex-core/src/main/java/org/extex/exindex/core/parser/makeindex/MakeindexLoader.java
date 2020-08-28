@@ -220,7 +220,7 @@ public final class MakeindexLoader {
                 }
                 c = locator.read();
                 if (c != '\'') {
-                    throw (c < 0 //
+                    throw (c < 0
                             ? new RawIndexEofException(locator, '\'')
                             : new RawIndexMissingCharException(locator,
                                 (char) c, '\''));

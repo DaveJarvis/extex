@@ -66,7 +66,7 @@ public class UrlFinderTest {
         @Override
         public void close() throws SecurityException {
 
-            //
+
         }
 
         /**
@@ -77,7 +77,7 @@ public class UrlFinderTest {
         @Override
         public void flush() {
 
-            //
+
         }
 
         /**

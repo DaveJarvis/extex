@@ -216,7 +216,7 @@ public class TypesetterFactory extends AbstractFactory<Object> {
         OutputRoutineFactory outputRoutineFactory = new OutputRoutineFactory();
         outputRoutineFactory.configure(cfg.getConfiguration("OutputRoutine"));
         outputRoutineFactory.enableLogging(getLogger());
-        typesetter.setOutputRoutine(//
+        typesetter.setOutputRoutine(
             outputRoutineFactory.newInstance(interpreter));
 
         return typesetter;

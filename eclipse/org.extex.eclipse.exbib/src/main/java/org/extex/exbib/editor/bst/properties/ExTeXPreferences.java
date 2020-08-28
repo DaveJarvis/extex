@@ -137,7 +137,7 @@ public class ExTeXPreferences extends FieldEditorPreferencePage
             StringBuilder list = new StringBuilder();
             LineNumberReader in = null;
             try {
-                in = new LineNumberReader(//
+                in = new LineNumberReader(
                     new InputStreamReader(p.getInputStream()));
                 for (String line = in.readLine(); line != null; line =
                         in.readLine()) {

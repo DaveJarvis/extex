@@ -56,7 +56,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     @Test
     public void test1() throws Exception {
 
-        assertSuccess(DEFINE_BRACES + "x\\expandafter\\ignorespaces{    }x", //
+        assertSuccess(DEFINE_BRACES + "x\\expandafter\\ignorespaces{    }x", 
             "xx" + TERM);
     }
 
@@ -70,7 +70,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     @Test
     public void test2() throws Exception {
 
-        assertSuccess("\\catcode`\\~=13 \\let~\\ignorespaces x~    x", //
+        assertSuccess("\\catcode`\\~=13 \\let~\\ignorespaces x~    x", 
             "xx" + TERM);
     }
 
@@ -85,7 +85,7 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
     public void test3() throws Exception {
 
         assertSuccess(DEFINE_BRACES + DEFINE_HASH
-                + "\\def\\x#1{x\\ignorespaces}\\x.    x", //
+                + "\\def\\x#1{x\\ignorespaces}\\x.    x", 
             "xx" + TERM);
     }
 

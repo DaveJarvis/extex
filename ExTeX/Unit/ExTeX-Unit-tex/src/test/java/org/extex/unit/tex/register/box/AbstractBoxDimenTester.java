@@ -57,7 +57,7 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\dimen0=\\" + primitive, //
+        assertFailure("\\dimen0=\\" + primitive,
             "Missing number, treated as zero");
     }
 
@@ -71,7 +71,7 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testEof3() throws Exception {
 
-        assertFailure("\\the\\" + primitive, //
+        assertFailure("\\the\\" + primitive,
             "Missing number, treated as zero");
     }
 
@@ -85,9 +85,9 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testAfterassignment1() throws Exception {
 
-        assertSuccess(//
+        assertSuccess(
             DEFINE_BRACES + "\\afterassignment x-\\" + primitive
-                    + "1=2pt\\end ", //
+                    + "1=2pt\\end ",
             "-x" + TERM);
     }
 
@@ -101,8 +101,8 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testGlobal1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\global\\" + primitive + "1=2pt\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\global\\" + primitive + "1=2pt\\end ",
             "");
     }
 
@@ -116,9 +116,9 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testHbox1() throws Exception {
 
-        assertSuccess(//
+        assertSuccess(
             DEFINE_BRACES + "\\setbox1=\\hbox{x}\\" + primitive
-                    + "1=2pt \\the\\" + primitive + "1\\end ", //
+                    + "1=2pt \\the\\" + primitive + "1\\end ",
             "2.0pt" + TERM);
     }
 
@@ -132,8 +132,8 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testCount1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\count0=\\" + primitive + "1 \\the\\count0\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\count0=\\" + primitive + "1 \\the\\count0\\end ",
             "0" + TERM);
     }
 
@@ -147,8 +147,8 @@ public abstract class AbstractBoxDimenTester
     @Test
     public void testDimen1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\dimen0=\\" + primitive + "1 \\the\\dimen0\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\dimen0=\\" + primitive + "1 \\the\\dimen0\\end ",
             "0.0pt" + TERM);
     }
 

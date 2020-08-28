@@ -41,7 +41,7 @@ public class MissingNumberException extends HelpingException {
 
     public MissingNumberException() {
 
-        super(LocalizerFactory.getLocalizer(//
+        super(LocalizerFactory.getLocalizer(
                 MissingNumberException.class), "TTP.MissingNumber");
     }
 

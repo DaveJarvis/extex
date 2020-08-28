@@ -193,10 +193,10 @@ public class FlagsImpl implements Flags {
     public String[] get() {
 
         Localizer localizer = LocalizerFactory.getLocalizer(FlagsImpl.class);
-        String[] result = new String[((globalP ? 1 : 0) //
-                + (longP ? 1 : 0) //
-                + (outerP ? 1 : 0) //
-                + (immediateP ? 1 : 0) //
+        String[] result = new String[((globalP ? 1 : 0)
+                + (longP ? 1 : 0)
+                + (outerP ? 1 : 0)
+                + (immediateP ? 1 : 0)
         + (protectedP ? 1 : 0))];
         int i = 0;
         if (globalP) {

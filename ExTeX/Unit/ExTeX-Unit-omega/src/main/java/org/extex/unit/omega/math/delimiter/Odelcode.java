@@ -211,7 +211,7 @@ public class Odelcode extends AbstractAssignment
         }
 
         context.setDelcode(charCode,
-            AbstractOmegaDelimiter.newMathDelimiter(value), //
+            AbstractOmegaDelimiter.newMathDelimiter(value),
             prefix.clearGlobal());
 
         Token afterassignment = context.getAfterassignment();

@@ -239,7 +239,7 @@ public class Currentiftype extends AbstractCode
             return 0;
         }
         Count l = MAP.get(conditional.getPrimitive().getClass());
-        return (l == null ? 0 : //
+        return (l == null ? 0 :
                 conditional.isNeg() ? -l.getValue() : l.getValue());
     }
 

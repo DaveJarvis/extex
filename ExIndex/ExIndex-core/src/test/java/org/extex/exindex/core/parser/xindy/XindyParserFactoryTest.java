@@ -50,7 +50,7 @@ public class XindyParserFactoryTest {
 
                 public void enableTracing(boolean flag) {
 
-                    //
+                    
                 }
 
                 public NamedInputStream findResource(String name, String type)
@@ -76,7 +76,7 @@ public class XindyParserFactoryTest {
 
             public void enableTracing(boolean flag) {
 
-                //
+                
             }
 
             public NamedInputStream findResource(String name, String type)

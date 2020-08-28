@@ -96,7 +96,7 @@ public class Vadjust extends AbstractCode {
         Flags flags = prefix.copy();
         prefix.clear();
         Box box;
-        box = new Box(context, source, typesetter, false, null, //
+        box = new Box(context, source, typesetter, false, null,
             GroupType.VBOX_GROUP, source.getLastToken());
         typesetter.add(new AdjustNode(box.getNodes()));
         prefix.set(flags);

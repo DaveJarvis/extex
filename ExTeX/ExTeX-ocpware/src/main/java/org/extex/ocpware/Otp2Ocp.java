@@ -55,7 +55,7 @@ public final class Otp2Ocp {
 
     private Otp2Ocp() {
 
-        //
+
     }
 
     /**

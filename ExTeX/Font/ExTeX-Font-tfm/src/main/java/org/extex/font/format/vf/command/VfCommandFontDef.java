@@ -299,7 +299,7 @@ public class VfCommandFontDef extends VfCommand {
     // * de.dante.extex.font.type.PlWriter)
     // */
     // public void toPL(final PlWriter out) throws IOException, FontException {
-    //
+    
     // out.plopen("MAPFONT").addDec(getFontnumbers());
     // out.plopen("FONTNAME").addStr(getFontname()).plclose();
     // out.plopen("FONTCHECKSUM").addOct(getChecksum()).plclose();

@@ -162,10 +162,10 @@ public class Verbatim extends AbstractNode implements Macro {
         // }
         // final Verbatim verb =
         // new Verbatim(token, start, parser.getSource(), parser.getLineno());
-        //
+
         // Tokenizer tokenizer =
         // parser.setTokenizer(new VerbTokenizer(start.getChar()));
-        //
+
         // for (Token t = parser.getToken(); t != null; t = parser.getToken()) {
         // if (t instanceof ControlSequenceToken) {
         // parser.setTokenizer(tokenizer);

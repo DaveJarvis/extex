@@ -56,7 +56,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\chardef ", //
+        assertFailure("\\chardef ", 
             "Missing control sequence inserted");
     }
 
@@ -69,7 +69,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof2() throws Exception {
 
-        assertFailure("\\chardef\\x ", //
+        assertFailure("\\chardef\\x ", 
             "Missing number, treated as zero");
     }
 
@@ -82,7 +82,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testError1() throws Exception {
 
-        assertFailure(DEFINE_BRACES + "\\chardef\\x -1 \\x\\end", //
+        assertFailure(DEFINE_BRACES + "\\chardef\\x -1 \\x\\end", 
             "Bad character code (-1)");
     }
 
@@ -96,7 +96,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void test1() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\x\\end", //
+        assertSuccess("\\chardef\\x 65 \\x\\end", 
             "A" + TERM);
     }
 
@@ -110,7 +110,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void test2() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\count0=\\x \\the\\count0\\end", //
+        assertSuccess("\\chardef\\x 65 \\count0=\\x \\the\\count0\\end", 
             "65" + TERM);
     }
 
@@ -124,7 +124,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void test3() throws Exception {
 
-        assertSuccess("\\chardef\\x 65 \\the\\x\\end", //
+        assertSuccess("\\chardef\\x 65 \\the\\x\\end", 
             "65" + TERM);
     }
 
@@ -138,7 +138,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void test4() throws Exception {
 
-        assertOutput("\\chardef\\x 65 \\show\\x\\end", //
+        assertOutput("\\chardef\\x 65 \\show\\x\\end", 
             "> \\x=\\char\"41.\n", "");
     }
 
@@ -152,7 +152,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test5() throws Exception {
 
         assertSuccess(DEFINE_BRACES
-                + "\\chardef\\x 65 {\\chardef\\x 66}\\x\\end", //
+                + "\\chardef\\x 65 {\\chardef\\x 66}\\x\\end", 
             "A" + TERM);
     }
 
@@ -166,7 +166,7 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
     public void test6() throws Exception {
 
         assertSuccess(DEFINE_BRACES
-                + "\\chardef\\x 65 {\\global\\chardef\\x 66}\\x\\end", //
+                + "\\chardef\\x 65 {\\global\\chardef\\x 66}\\x\\end", 
             "B" + TERM);
     }
 

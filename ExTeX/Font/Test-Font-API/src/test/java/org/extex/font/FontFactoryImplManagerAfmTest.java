@@ -211,7 +211,7 @@ public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
         BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
-        assertTrue("A in fxlr should be managable", //
+        assertTrue("A in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
@@ -243,15 +243,15 @@ public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
         BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
-        assertTrue("A in fxlr should be managable", //
+        assertTrue("A in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('A', (char) cid.getId());
         assertEquals("A", cid.getName());
-        assertTrue("B in fxlr should be managable", //
+        assertTrue("B in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('B')));
-        assertTrue("C in fxlr should be managable", //
+        assertTrue("C in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('C')));
 
         Iterator<ManagerInfo> it = manager.iterate();
@@ -277,15 +277,15 @@ public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
         BackendFontManager manager = factory.createManager(sl);
         assertNotNull(manager);
 
-        assertTrue("A in fxlr should be managable", //
+        assertTrue("A in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('A')));
         assertTrue("first always is new", manager.isNewRecongnizedFont());
         BackendCharacter cid = manager.getRecognizedCharId();
         assertEquals('A', (char) cid.getId());
         assertEquals("A", cid.getName());
-        assertTrue("B in fxlr should be managable", //
+        assertTrue("B in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('B')));
-        assertTrue("C in fxlr should be managable", //
+        assertTrue("C in fxlr should be managable", 
             manager.recognize(key, UnicodeChar.get('C')));
 
         Iterator<ManagerInfo> it = manager.iterate();

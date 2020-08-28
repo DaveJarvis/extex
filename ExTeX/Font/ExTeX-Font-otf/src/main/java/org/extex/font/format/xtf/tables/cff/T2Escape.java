@@ -73,7 +73,7 @@ public class T2Escape extends T2CharString {
     public void init(RandomAccessR rar, OtfTableCFF cff, int baseoffset,
             CffFont cffFont) throws IOException {
 
-        //
+
     }
 
 }

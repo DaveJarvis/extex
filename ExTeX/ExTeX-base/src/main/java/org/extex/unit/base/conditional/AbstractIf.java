@@ -114,13 +114,13 @@ public abstract class AbstractIf extends AbstractCode
                 depth++;
             } else if (code.isOuter()) {
                 throw new HelpingException(getMyLocalizer(),
-                    "TTP.OuterInSkipped", context.esc(primitive), //
+                    "TTP.OuterInSkipped", context.esc(primitive),
                     Integer.toString(source.getLocator().getLineNumber()));
             }
         }
 
         throw new HelpingException(getMyLocalizer(), "TTP.EOFinSkipped",
-            context.esc(primitive), //
+            context.esc(primitive),
             locator != null ? Integer.toString(locator.getLineNumber()) : "");
     }
 

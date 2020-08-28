@@ -123,7 +123,7 @@ public class PropertiesConfiguration implements Configuration {
                 p.put(k, entry.getValue());
             }
         }
-        return p.isEmpty() //
+        return p.isEmpty()
                 ? null
                 : new PropertiesConfiguration(p, base, resource);
     }

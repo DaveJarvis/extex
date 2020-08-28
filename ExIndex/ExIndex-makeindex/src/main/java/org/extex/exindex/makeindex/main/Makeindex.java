@@ -513,7 +513,7 @@ public class Makeindex {
 
         Logger log = getLogger();
         if (banner) {
-            log.log(Level.INFO, LOCALIZER.format("Banner", VERSION, REVISION, //
+            log.log(Level.INFO, LOCALIZER.format("Banner", VERSION, REVISION,
                 System.getProperty("java.version")));
             banner = false;
         }
@@ -551,12 +551,12 @@ public class Makeindex {
             collator = new MakeindexGermanCollator();
         }
         if (isCollateSpaces()) {
-            collator = (collator != null //
+            collator = (collator != null
                     ? new CollatorPipe(new SpaceCollator(), collator)
                     : new SpaceCollator());
         }
         if (isLetterOrdering()) {
-            collator = (collator != null //
+            collator = (collator != null
                     ? new CollatorPipe(new LettersOnlyCollator(), collator)
                     : new LettersOnlyCollator());
         }
@@ -737,7 +737,7 @@ public class Makeindex {
                         log(LOCALIZER.format("UnknownArgument", a));
                         return -1;
                     }
-                    properties.setProperty(a.substring(2, eq), //
+                    properties.setProperty(a.substring(2, eq),
                         a.substring(eq + 1));
 
                 } else if (!processShortArguments(a)) {
@@ -747,7 +747,7 @@ public class Makeindex {
             }
 
             Configuration config =
-                    ConfigurationFactory.newInstance(//
+                    ConfigurationFactory.newInstance(
                         "makeindex/"
                                 + properties.getProperty(PROP_CONFIG,
                                     "makeindex.xml"));
@@ -755,10 +755,10 @@ public class Makeindex {
             ResourceFinder finder =
                     (resourceFinder != null
                             ? resourceFinder
-                            : new ResourceFinderFactory().createResourceFinder(//
-                                config.getConfiguration("Resource"), //
-                                logger, //
-                                properties, //
+                            : new ResourceFinderFactory().createResourceFinder(
+                                config.getConfiguration("Resource"),
+                                logger,
+                                properties,
                                 null));
 
             String transcript = properties.getProperty(PROP_TRANSCRIPT);
@@ -847,7 +847,7 @@ public class Makeindex {
 
         if (file == null) {
             fmt = "ScanningStandardInput";
-            reader = new InputStreamReader(System.in, //
+            reader = new InputStreamReader(System.in,
                 properties.getProperty(PROP_INPUT_ENCODING));
         } else {
             NamedInputStream nis = finder.findResource(file, "idx");
@@ -855,12 +855,12 @@ public class Makeindex {
                 throw new FileNotFoundException(file);
             }
             file = nis.getName();
-            reader = new InputStreamReader(nis, //
+            reader = new InputStreamReader(nis,
                 properties.getProperty(PROP_INPUT_ENCODING));
             fmt = "ScanningInput";
 
             if (properties.getProperty(PROP_OUTPUT) == null) {
-                properties.setProperty(PROP_OUTPUT, //
+                properties.setProperty(PROP_OUTPUT,
                     file.replaceAll(".idx$", "") + ".ind");
             }
         }
@@ -869,7 +869,7 @@ public class Makeindex {
             Parser parser = new MakeindexParser();
             Collator collator = makeCollator();
             int[] count = parser.load(reader, file, index, collator);
-            info("ScanningInputDone", //
+            info("ScanningInputDone",
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {
             reader.close();
@@ -901,13 +901,13 @@ public class Makeindex {
         if (nis == null) {
             throw new StyleNotFoundException(file);
         }
-        Reader reader = new InputStreamReader(nis, //
+        Reader reader = new InputStreamReader(nis,
             properties.getProperty(PROP_STYLE_ENCODING));
         info("ScanningStyle", file);
         try {
             int[] count =
                     MakeindexParameters.load(reader, file, params, logger);
-            info("ScanningStyleDone", //
+            info("ScanningStyleDone",
                 Integer.toString(count[0]), Integer.toString(count[1]));
         } finally {
             reader.close();
@@ -921,7 +921,7 @@ public class Makeindex {
      */
     public void setCollateGerman(boolean collateGerman) {
 
-        properties.setProperty(PROP_COLLATE_GERMAN, //
+        properties.setProperty(PROP_COLLATE_GERMAN,
             Boolean.toString(collateGerman));
     }
 
@@ -932,7 +932,7 @@ public class Makeindex {
      */
     public void setCollateSpaces(boolean collateSpaces) {
 
-        properties.setProperty(PROP_COLLATE_SPACES, //
+        properties.setProperty(PROP_COLLATE_SPACES,
             Boolean.toString(collateSpaces));
     }
 
@@ -953,7 +953,7 @@ public class Makeindex {
      */
     public void setLetterOrdering(boolean letterOrdering) {
 
-        properties.setProperty(PROP_LETTER_ORDERING, //
+        properties.setProperty(PROP_LETTER_ORDERING,
             Boolean.toString(letterOrdering));
     }
 
@@ -994,7 +994,7 @@ public class Makeindex {
      */
     public void setPageCompression(boolean pageCompression) {
 
-        properties.setProperty(PROP_PAGE_COMPRESSION, //
+        properties.setProperty(PROP_PAGE_COMPRESSION,
             Boolean.toString(pageCompression));
     }
 
@@ -1047,7 +1047,7 @@ public class Makeindex {
                 properties.getProperty(PROP_OUTPUT_ENCODING));
         } else {
             fmt = "GeneratingOutputFile";
-            w = new OutputStreamWriter(new FileOutputStream(output), //
+            w = new OutputStreamWriter(new FileOutputStream(output),
                 properties.getProperty(PROP_OUTPUT_ENCODING));
         }
         try {
@@ -1063,11 +1063,11 @@ public class Makeindex {
             info("SortingDone", Long.toString(warn[1]));
             info(fmt, output);
 
-            int[] count = indexWriter.write(entries, logger, getStartPage(), //
+            int[] count = indexWriter.write(entries, logger, getStartPage(),
                 pageProcessor);
 
-            info("GeneratingOutputDone", //
-                Integer.toString(count[0]), //
+            info("GeneratingOutputDone",
+                Integer.toString(count[0]),
                 Long.toString(count[1] + warn[0]));
         } finally {
             w.close();

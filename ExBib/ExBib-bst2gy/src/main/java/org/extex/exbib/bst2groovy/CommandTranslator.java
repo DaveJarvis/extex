@@ -130,7 +130,7 @@ public class CommandTranslator {
 
             TLiteral literal;
             try {
-                literal = new TLiteral(command.getValue().getValue(), //
+                literal = new TLiteral(command.getValue().getValue(), 
                     command.getLocator());
             } catch (ExBibEmptyFunctionNameException e) {
                 throw new WrappingException(e);
@@ -213,13 +213,13 @@ public class CommandTranslator {
             EntryReference entryReference = new EntryReference("it");
             evaluator.evaluate(literal, entryReference, state);
             if (state.size() != 0) {
-                throw new CommandWithReturnException("EXECUTE", //
+                throw new CommandWithReturnException("EXECUTE", 
                     literal.getValue());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("EXECUTE", //
+                throw new CommandWithArgumentsException("EXECUTE", 
                     literal.getValue());
             } else if (entryReference.isUsed()) {
-                throw new CommandWithEntryException("EXECUTE", //
+                throw new CommandWithEntryException("EXECUTE", 
                     literal.getValue());
             }
             code.addAll(state.getCode());
@@ -301,10 +301,10 @@ public class CommandTranslator {
                 throw new WrappingException(e);
             }
             if (state.size() != 0) {
-                throw new CommandWithReturnException("REVERSE", //
+                throw new CommandWithReturnException("REVERSE", 
                     command.toString());
             } else if (state.getLocals().size() != 0) {
-                throw new CommandWithArgumentsException("REVERSE", //
+                throw new CommandWithArgumentsException("REVERSE", 
                     command.toString());
             }
             code.add(new GLoop("getDB().getEntries().reverse().each", state

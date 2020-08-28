@@ -83,9 +83,9 @@ public class LMarkupKeywordList extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
-                Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_STRING(":sep", ""), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""),
+                Arg.OPT_STRING(":close", ""),
+                Arg.OPT_STRING(":sep", ""),
                 Arg.OPT_NUMBER(":depth", Integer.valueOf(0))});
     }
 

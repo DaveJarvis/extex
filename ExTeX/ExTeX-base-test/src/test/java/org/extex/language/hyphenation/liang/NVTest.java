@@ -379,9 +379,9 @@ public class NVTest {
         font = new MockFont();
         // cnf = new CachingNodeFactory();
         // tokenFactory = new TokenFactoryImpl();
-        // f = tokenFactory.createToken(Catcode.LETTER, 'f', //
+        // f = tokenFactory.createToken(Catcode.LETTER, 'f', 
         // Namespace.DEFAULT_NAMESPACE);
-        // l = tokenFactory.createToken(Catcode.LETTER, 'l', //
+        // l = tokenFactory.createToken(Catcode.LETTER, 'l', 
         // Namespace.DEFAULT_NAMESPACE);
         // UnicodeChar hyphen = font.getHyphenChar();
         tc = new TypesettingContextImpl(font);
@@ -401,15 +401,15 @@ public class NVTest {
 
         // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
-        // UnicodeChar.get(MockFont.FFL), //
-        // getCharNode(tc, f.getChar()), //
-        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-        // getCharNode(tc, f.getChar()), //
+        // UnicodeChar.get(MockFont.FFL), 
+        // getCharNode(tc, f.getChar()), 
+        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), 
+        // getCharNode(tc, f.getChar()), 
         // getCharNode(tc, l.getChar())));
-        //
-        // NV nv = new NV(list, hyphen, tc, cnf, //
+        
+        // NV nv = new NV(list, hyphen, tc, cnf, 
         // new boolean[]{false, true, false, false});
-        //
+        
         // Count idx = new Count(0);
         // ffl.visit(nv, idx);
         // assertEquals(1, idx.getValue());
@@ -431,15 +431,15 @@ public class NVTest {
 
         // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
-        // UnicodeChar.get(MockFont.FFL), //
-        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-        // getCharNode(tc, f.getChar()), //
-        // getCharNode(tc, f.getChar())), //
+        // UnicodeChar.get(MockFont.FFL), 
+        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), 
+        // getCharNode(tc, f.getChar()), 
+        // getCharNode(tc, f.getChar())), 
         // getCharNode(tc, l.getChar()));
-        //
-        // NV nv = new NV(list, hyphen, tc, cnf, //
+        
+        // NV nv = new NV(list, hyphen, tc, cnf, 
         // new boolean[]{false, true, false, false});
-        //
+        
         // Count idx = new Count(0);
         // ffl.visit(nv, idx);
         // assertEquals(1, idx.getValue());
@@ -461,15 +461,15 @@ public class NVTest {
 
         // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
-        // UnicodeChar.get(MockFont.FFL), //
-        // getCharNode(tc, f.getChar()), //
-        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-        // getCharNode(tc, f.getChar()), //
+        // UnicodeChar.get(MockFont.FFL), 
+        // getCharNode(tc, f.getChar()), 
+        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), 
+        // getCharNode(tc, f.getChar()), 
         // getCharNode(tc, l.getChar())));
-        //
-        // NV nv = new NV(list, hyphen, tc, cnf, //
+        
+        // NV nv = new NV(list, hyphen, tc, cnf, 
         // new boolean[]{false, false, false, false});
-        //
+        
         // Count idx = new Count(0);
         // ffl.visit(nv, idx);
         // assertEquals(0, idx.getValue());
@@ -488,15 +488,15 @@ public class NVTest {
 
         // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
-        // UnicodeChar.get(MockFont.FFL), //
-        // getCharNode(tc, f.getChar()), //
-        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-        // getCharNode(tc, f.getChar()), //
+        // UnicodeChar.get(MockFont.FFL), 
+        // getCharNode(tc, f.getChar()), 
+        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), 
+        // getCharNode(tc, f.getChar()), 
         // getCharNode(tc, l.getChar())));
-        //
-        // NV nv = new NV(list, hyphen, tc, cnf, //
+        
+        // NV nv = new NV(list, hyphen, tc, cnf, 
         // new boolean[]{false, false, false, false});
-        //
+        
         // Count idx = new Count(0);
         // ffl.visit(nv, idx);
         // assertEquals(0, idx.getValue());
@@ -515,15 +515,15 @@ public class NVTest {
 
         // NodeList list = new HorizontalListNode();
         // LigatureNode ffl = new LigatureNode(tc,
-        // UnicodeChar.get(MockFont.FFL), //
-        // getCharNode(tc, f.getChar()), //
-        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), //
-        // getCharNode(tc, f.getChar()), //
+        // UnicodeChar.get(MockFont.FFL), 
+        // getCharNode(tc, f.getChar()), 
+        // new LigatureNode(tc, UnicodeChar.get(MockFont.FF), 
+        // getCharNode(tc, f.getChar()), 
         // getCharNode(tc, l.getChar())));
-        //
-        // NV nv = new NV(list, hyphen, tc, cnf, //
+        
+        // NV nv = new NV(list, hyphen, tc, cnf, 
         // new boolean[]{true, false, false, false});
-        //
+        
         // Count idx = new Count(0);
         // ffl.visit(nv, idx);
         // assertEquals(1, idx.getValue());

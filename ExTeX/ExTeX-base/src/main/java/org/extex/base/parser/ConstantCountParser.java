@@ -339,7 +339,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
     public static long scanNumber(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return scanNumber(context, source, typesetter, //
+        return scanNumber(context, source, typesetter,
             source.getNonSpace(context));
     }
 
@@ -432,7 +432,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
                         if (n < 0 || n > 7) {
                             throw new MissingNumberException();
                         }
-                        for (t = source.scanToken(context); t instanceof OtherToken; //
+                        for (t = source.scanToken(context); t instanceof OtherToken;
                         t = source.scanToken(context)) {
                             no = t.getChar().getCodePoint() - '0';
                             if (no < 0 || no > 7) {
@@ -450,8 +450,8 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
 
                     case '"':
 
-                        for (t = source.scanToken(context); //
-                        t instanceof OtherToken || t instanceof LetterToken; //
+                        for (t = source.scanToken(context);
+                        t instanceof OtherToken || t instanceof LetterToken;
                         t = source.scanToken(context)) {
                             no = t.getChar().getCodePoint();
                             switch (no) {

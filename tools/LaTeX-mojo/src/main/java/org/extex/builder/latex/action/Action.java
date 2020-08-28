@@ -83,7 +83,7 @@ public abstract class Action {
         if (commandLine == null) {
             return false;
         }
-        logger.log(simulate ? Level.INFO : Level.INFO, //
+        logger.log(simulate ? Level.INFO : Level.INFO,
             Message.get("action.show", join(commandLine)));
         if (simulate) {
             return false;
@@ -102,7 +102,7 @@ public abstract class Action {
                     buffer.append((char) c);
                 }
                 if (p.exitValue() != 0) {
-                    throw new MakeException(logger, "action.log", //
+                    throw new MakeException(logger, "action.log",
                         buffer.toString());
                 }
                 logger.fine(Message.get("action.log", buffer.toString()));
@@ -110,7 +110,7 @@ public abstract class Action {
                 p.destroy();
             }
         } catch (IOException e) {
-            throw new MakeException(logger, "action.error", //
+            throw new MakeException(logger, "action.error",
                 commandLine.get(0), e.toString());
         }
         return true;

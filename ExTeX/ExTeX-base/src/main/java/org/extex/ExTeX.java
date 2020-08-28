@@ -523,7 +523,7 @@ public class ExTeX {
      * property indicating that a stack trace should be written for internal
      * errors.
      */
-    protected static final String PROP_INTERNAL_STACKTRACE //
+    protected static final String PROP_INTERNAL_STACKTRACE
     = "extex.stacktrace.on.internal.error";
 
     /**
@@ -870,10 +870,10 @@ public class ExTeX {
         } else if (lang.matches("[a-z][a-z]")) {
             Locale.setDefault(new Locale(lang));
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z]")) {
-            Locale.setDefault(new Locale(lang.substring(0, 1), //
+            Locale.setDefault(new Locale(lang.substring(0, 1),
                 lang.substring(3, 4)));
         } else if (lang.matches("[a-z][a-z][-_][a-z][a-z][-_][a-z][a-z]")) {
-            Locale.setDefault(new Locale(lang.substring(0, 1), //
+            Locale.setDefault(new Locale(lang.substring(0, 1),
                 lang.substring(3, 4), lang.substring(6, 7)));
         } else {
             getLogger().warning(localizer.format("ExTeX.locale.error", lang));
@@ -1048,7 +1048,7 @@ public class ExTeX {
                 GeneralException {
 
         String format = (fmt == null ? "" : fmt);
-        String time = DateFormat.getDateTimeInstance(DateFormat.SHORT, //
+        String time = DateFormat.getDateTimeInstance(DateFormat.SHORT,
             DateFormat.SHORT).format(new Date());
 
         Context context = interpreter.getContext();
@@ -1265,13 +1265,13 @@ public class ExTeX {
         backendFactory.configure(config);
         backendFactory.enableLogging(logger);
         backendFactory.setOptions(options);
-        return backendFactory.newInstance(//
-            outputType, //
-            outFactory, //
-            finder, //
-            properties, //
-            properties.getProperty(PROP_NAME) + " " + EXTEX_VERSION, //
-            fontFactory, //
+        return backendFactory.newInstance(
+            outputType,
+            outFactory,
+            finder,
+            properties,
+            properties.getProperty(PROP_NAME) + " " + EXTEX_VERSION,
+            fontFactory,
             makeColorConverter(config.getConfiguration("ColorConverter")));
     }
 
@@ -1286,7 +1286,7 @@ public class ExTeX {
      */
     protected ColorConverter makeColorConverter(Configuration config) {
 
-        return new ColorConverterFacory(config, logger).newInstance(//
+        return new ColorConverterFacory(config, logger).newInstance(
             properties.getProperty(PROP_COLOR_CONVERTER));
     }
 
@@ -1515,7 +1515,7 @@ public class ExTeX {
                     new ErrorHandlerFactory(
                         interpreterConfig.getConfiguration(TAG_ERRORHANDLER));
             errorHandlerFactory.enableLogging(logger);
-            errHandler = errorHandlerFactory.newInstance(//
+            errHandler = errorHandlerFactory.newInstance(
                 properties.getProperty(PROP_ERROR_HANDLER));
         }
         interpreter.setErrorHandler(errHandler);
@@ -1526,7 +1526,7 @@ public class ExTeX {
 
         initializeStreams(interpreter, properties);
 
-        Typesetter typesetter = makeTypesetter(interpreter, config, //
+        Typesetter typesetter = makeTypesetter(interpreter, config,
             outFactory, finder, fontFactory);
         interpreter.setTypesetter(typesetter);
 
@@ -1649,8 +1649,8 @@ public class ExTeX {
     protected OutputFactory makeOutputFactory(String jobname,
             Configuration config) {
 
-        OutputFactory outFactory = new OutputFactory(//
-            properties.getProperty(PROP_OUTPUT_DIRS).split(":"), //
+        OutputFactory outFactory = new OutputFactory(
+            properties.getProperty(PROP_OUTPUT_DIRS).split(":"),
             jobname);
         outFactory.setDefaultStream(outStream);
         outFactory.configure(config);
@@ -1772,7 +1772,7 @@ public class ExTeX {
     protected TokenStreamFactory makeTokenStreamFactory(Configuration config,
             ResourceFinder finder) throws NotObservableException {
 
-        TokenStreamFactory factory = new TokenStreamFactory(//
+        TokenStreamFactory factory = new TokenStreamFactory(
             properties.getProperty(PROP_TOKEN_STREAM));
         factory.configure(config);
         factory.enableLogging(logger);
@@ -1818,11 +1818,11 @@ public class ExTeX {
 
         Context context = interpreter.getContext();
 
-        BackendDriver backend = makeBackend(//
-            config.getConfiguration("Backend"), //
-            outFactory, //
-            (DocumentWriterOptions) context, //
-            finder, //
+        BackendDriver backend = makeBackend(
+            config.getConfiguration("Backend"),
+            outFactory,
+            (DocumentWriterOptions) context,
+            finder,
             fontFactory);
 
         TypesetterFactory factory = new TypesetterFactory();
@@ -1934,7 +1934,7 @@ public class ExTeX {
                 logHandler.close();
                 logger.removeHandler(logHandler);
                 // see "TeX -- The Program [1333]"
-                logger.log((noBanner ? Level.FINE : Level.INFO), //
+                logger.log((noBanner ? Level.FINE : Level.INFO),
                     localizer.format("ExTeX.Logfile", logFile));
             }
         }
@@ -2013,9 +2013,9 @@ public class ExTeX {
             }
 
             String name = properties.getProperty(PROP_NAME);
-            logger.log(priority, localizer.format("ExTeX.Version", //
-                name, //
-                EXTEX_VERSION, //
+            logger.log(priority, localizer.format("ExTeX.Version",
+                name,
+                EXTEX_VERSION,
                 banner));
         }
     }

@@ -58,12 +58,12 @@ public class KerningTest extends ExTeXLauncher {
         // --- input code ---
             "\\font\\f=cmr10 \\f " + "AVA",
             // --- output channel ---
-            "\\vbox(6.83331pt+0.0pt)x3000.0pt\n" //
-                    + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n" //
-                    + "..A\n" //
-                    + "..\\kern -1.11113pt\n" //
-                    + "..V\n" //
-                    + "..\\kern -1.11113pt\n" //
+            "\\vbox(6.83331pt+0.0pt)x3000.0pt\n"
+                    + ".\\hbox(6.83331pt+0.0pt)x3000.0pt\n"
+                    + "..A\n"
+                    + "..\\kern -1.11113pt\n"
+                    + "..V\n"
+                    + "..\\kern -1.11113pt\n"
                     + "..A\n");
     }
 
@@ -79,10 +79,10 @@ public class KerningTest extends ExTeXLauncher {
         // --- input code ---
             "\\font\\f=cmr10 \\f " + "xyz",
             // --- output channel ---
-            "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n" //
-                    + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n" //
-                    + "..x\n" //
-                    + "..y\n" //
+            "\\vbox(4.30554pt+1.94444pt)x3000.0pt\n"
+                    + ".\\hbox(4.30554pt+1.94444pt)x3000.0pt\n"
+                    + "..x\n"
+                    + "..y\n"
                     + "..z\n");
     }
 

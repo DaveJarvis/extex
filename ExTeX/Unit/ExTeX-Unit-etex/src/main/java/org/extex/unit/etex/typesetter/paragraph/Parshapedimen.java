@@ -122,8 +122,8 @@ public class Parshapedimen extends AbstractCode
         if (parshape == null || n < 0) {
             return 0;
         }
-        return ((n & 1) == 0 //
-                ? parshape.getIndent(n / 2).getValue() //
+        return ((n & 1) == 0 
+                ? parshape.getIndent(n / 2).getValue() 
                 : parshape.getLength(n / 2).getValue());
     }
 
@@ -142,8 +142,8 @@ public class Parshapedimen extends AbstractCode
         int n = (l < Integer.MAX_VALUE ? (int) l : Integer.MAX_VALUE);
         ParagraphShape parshape = context.getParshape();
         FixedDimen d =
-                (parshape == null || n < 0 ? Dimen.ZERO_PT : ((n & 1) == 0 //
-                        ? parshape.getIndent(n / 2) //
+                (parshape == null || n < 0 ? Dimen.ZERO_PT : ((n & 1) == 0 
+                        ? parshape.getIndent(n / 2) 
                         : parshape.getLength(n / 2)));
 
         try {

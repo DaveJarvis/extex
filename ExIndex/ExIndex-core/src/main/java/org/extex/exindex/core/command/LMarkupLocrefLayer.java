@@ -86,10 +86,10 @@ public class LMarkupLocrefLayer extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
-                Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_STRING(":class", ""), //
-                Arg.OPT_LNUMBER(":layer", new LNumber(0)), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""),
+                Arg.OPT_STRING(":close", ""),
+                Arg.OPT_STRING(":class", ""),
+                Arg.OPT_LNUMBER(":layer", new LNumber(0)),
                 Arg.OPT_LNUMBER(":depth", new LNumber(0))});
     }
 

@@ -61,16 +61,16 @@ public class FontInst01Test extends ExTeXLauncher {
     private Properties getMyProps() {
 
         Properties props = getProps();
-        props.setProperty("extex.texinputs", //
-            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/misc" //
+        props.setProperty("extex.texinputs",
+            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP +
+                    "../ExTeX-fontware/src/texmf/tex/misc"
         );
         // props.setProperty("extex.launcher.trace", "true");
         return props;
@@ -105,7 +105,7 @@ public class FontInst01Test extends ExTeXLauncher {
         stream.close();
         assertEquals(
             "generated file",
-            "%!PS-Adobe-3.0 Resource-Encoding\n" //
+            "%!PS-Adobe-3.0 Resource-Encoding\n"
                     + "% @psencodingfile{\n"
                     + "%    author = \"See file T1.etx\",\n"
                     + "%    version = \"See file T1.etx\",\n"

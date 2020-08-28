@@ -219,7 +219,7 @@ public class BstModel {
     public BstClass getClassification(String name) {
 
         BstModelNode info = getNode(name);
-        return info != null //
+        return info != null
                 ? info.getClassification()
                 : BstClass.UNKNOWN;
     }

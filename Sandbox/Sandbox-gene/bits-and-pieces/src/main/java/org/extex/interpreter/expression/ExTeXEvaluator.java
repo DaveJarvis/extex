@@ -35,7 +35,7 @@ public class ExTeXEvaluator extends Evaluator {
 
     //    {
     //        functions.put("abs", new Function0() {
-    //
+
     //            /**
     //             * Compute the absolute value by eliminating the sign if present.
     //             *
@@ -44,15 +44,15 @@ public class ExTeXEvaluator extends Evaluator {
     //             */
     //            public void apply(Terminal accumulator)
     //                    throws InterpreterException {
-    //
+
     //                //                if (accumulator.value < 0) {
     //                //                    accumulator.value = -accumulator.value;
     //                //                }
     //            }
     //        });
-    //
+
     //        functions.put("max", new Function() {
-    //
+
     //            /**
     //             * Compute the maximum of an arbitrary number of arguments.
     //             *
@@ -66,7 +66,7 @@ public class ExTeXEvaluator extends Evaluator {
     //            public void apply(Terminal accumulator,
     //                    Context context, TokenSource source,
     //                    Typesetter typesetter) throws InterpreterException {
-    //
+
     //                Token t;
     //                evalExpr(accumulator, context, source, typesetter);
     //                for (t = source.getNonSpace(context); t != null
@@ -87,9 +87,9 @@ public class ExTeXEvaluator extends Evaluator {
     //                source.push(t);
     //            }
     //        });
-    //
+
     //        functions.put("min", new Function() {
-    //
+
     //            /**
     //             * Compute the minimum of an arbitrary number of arguments.
     //             *
@@ -103,7 +103,7 @@ public class ExTeXEvaluator extends Evaluator {
     //            public void apply(Terminal accumulator,
     //                    Context context, TokenSource source,
     //                    Typesetter typesetter) throws InterpreterException {
-    //
+
     //                Token t;
     //                evalExpr(accumulator, context, source, typesetter);
     //                for (t = source.getNonSpace(context); t != null
@@ -124,9 +124,9 @@ public class ExTeXEvaluator extends Evaluator {
     //                source.push(t);
     //            }
     //        });
-    //
+
     //        functions.put("sgn", new Function1() {
-    //
+
     //            /**
     //             * Compute the sign i.e. return 1 for positive values, 0 for zero
     //             * values and -1 for negative values.
@@ -136,7 +136,7 @@ public class ExTeXEvaluator extends Evaluator {
     //             */
     //            public void apply(Terminal accumulator)
     //                    throws InterpreterException {
-    //
+
     //                //                if (accumulator.value > 0) {
     //                //                    accumulator.value = 1;
     //                //                } else if (accumulator.value < 0) {

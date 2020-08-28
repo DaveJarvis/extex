@@ -181,7 +181,7 @@ public class OcpExTeXWriter extends AbstractWriter {
             sb.append('\'');
             s = sb.toString();
         }
-        out.print(format(key, //
+        out.print(format(key,
             Integer.toHexString(value), Integer.toString(value), s));
     }
 

@@ -38,11 +38,11 @@ public final class NewsBuilderMain {
     /**
      * The constant <tt>HELP_INFO</tt> contains the help message.
      */
-    protected static final String HELP_INFO = "Arguments:\n" //
-            + "\t-baseDirectory [base directory]\n" //
-            + "\t-max [maximum number of items]\n" //
-            + "\t-outputFile [file]\n" //
-            + "\t-template [template file]\n"//
+    protected static final String HELP_INFO = "Arguments:\n"
+            + "\t-baseDirectory [base directory]\n"
+            + "\t-max [maximum number of items]\n"
+            + "\t-outputFile [file]\n"
+            + "\t-template [template file]\n"
             + "\t[base directory]\n";
 
     /**

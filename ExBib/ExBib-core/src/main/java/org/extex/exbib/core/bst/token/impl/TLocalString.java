@@ -64,7 +64,7 @@ public class TLocalString extends TLiteral {
         }
 
         VString val = (VString) entry.getLocal(getValue());
-        processor.push(val == null //
+        processor.push(val == null
                 ? TokenFactory.T_EMPTY
                 : new TString(val.getContent(), locator));
     }

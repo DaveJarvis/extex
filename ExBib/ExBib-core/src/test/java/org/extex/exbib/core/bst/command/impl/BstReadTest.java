@@ -41,7 +41,7 @@ public class BstReadTest {
     @Test
     public final void testToString() throws ExBibException {
 
-        assertEquals("READ", //
+        assertEquals("READ",
             new BstRead(null).toString());
     }
 

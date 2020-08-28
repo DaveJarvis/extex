@@ -55,9 +55,9 @@ public class HtTest extends AbstractBoxDimenTester {
     @Test
     public void testCount2() throws Exception {
 
-        assertSuccess(//
+        assertSuccess(
             DEFINE_BRACES
-                    + "\\setbox1=\\hbox{abc}\\count0=\\ht1 \\the\\count0\\end ", //
+                    + "\\setbox1=\\hbox{abc}\\count0=\\ht1 \\the\\count0\\end ",
             "524288" + TERM);
     }
 

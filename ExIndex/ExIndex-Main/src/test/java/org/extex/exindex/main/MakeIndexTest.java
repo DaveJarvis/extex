@@ -89,7 +89,7 @@ public class MakeIndexTest {
             int ex = ExIndex.mainFacade(args);
             if (expectedOut != null) {
                 outStream.flush();
-                assertEquals("stdout", expectedOut, //
+                assertEquals("stdout", expectedOut,
                     outStream.toString());
             }
             if (extectedErr != null) {
@@ -118,7 +118,7 @@ public class MakeIndexTest {
         Writer w = new FileWriter(ist);
         try {
             w.write("%\n"
-                    + "% Makeindex style file\n" //
+                    + "% Makeindex style file\n"
                     + "group_skip \"\"\n"
                     + "heading_prefix \"\\n \\\\indexGroup{\"\n"
                     + "heading_suffix \"}\"\n" + "headings_flag 1\n" + "\n"
@@ -178,7 +178,7 @@ public class MakeIndexTest {
             runTest(
                 new String[]{"-style", "target/test1.ist", "-makeindex",
                         "target/test1.idx"},
-                0, //
+                0,
                 "\\begin{theindex}\n"
                         + "\n"
                         + " \\indexGroup{B}\n"

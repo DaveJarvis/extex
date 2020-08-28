@@ -137,9 +137,9 @@ public class LDefineLetterGroup extends LFunction {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, new Arg[]{Arg.STRING, //
-                Arg.OPT_STRING(":before", null), //
-                Arg.OPT_STRING(":after", null), //
+        super(name, new Arg[]{Arg.STRING,
+                Arg.OPT_STRING(":before", null),
+                Arg.OPT_STRING(":after", null),
                 Arg.OPT_LIST(":prefixes")});
         this.container = container;
     }

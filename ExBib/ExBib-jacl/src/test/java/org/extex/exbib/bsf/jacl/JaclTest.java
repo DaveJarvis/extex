@@ -123,8 +123,8 @@ public class JaclTest {
     public void test1() throws Exception {
 
         runTest(
-            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
-                    + "puts [$bibDB getMinCrossrefs]\n", //
+            "set bibDB [bsf lookupBean \"bibDB\"]\n"
+                    + "puts [$bibDB getMinCrossrefs]\n",
             "2\n",
             "@book{abc,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
     }
@@ -138,12 +138,12 @@ public class JaclTest {
     public void test2() throws Exception {
 
         runTest(
-            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
-                    + "set x [$bibDB getMacroNames]\n" //
-                    + "puts [$x size]\n" //
-                    + "puts [[$x get 0] toString]\n", //
-            "1\nabc\n", //
-            "@string{abc={ABC}}" //
+            "set bibDB [bsf lookupBean \"bibDB\"]\n"
+                    + "set x [$bibDB getMacroNames]\n"
+                    + "puts [$x size]\n"
+                    + "puts [[$x get 0] toString]\n",
+            "1\nabc\n",
+            "@string{abc={ABC}}"
                     + "@book{xyz,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
     }
 
@@ -156,12 +156,12 @@ public class JaclTest {
     public void test3() throws Exception {
 
         runTest(
-            "set bibDB [bsf lookupBean \"bibDB\"]\n" //
-                    + "set x [$bibDB getEntries]\n" //
-                    + "puts [$x size]\n" //
-                    + "puts [[$x get 0] toString]\n", //
-            "1\n@book{xyz,...}\n", //
-            "@string{abc={ABC}}" //
+            "set bibDB [bsf lookupBean \"bibDB\"]\n"
+                    + "set x [$bibDB getEntries]\n"
+                    + "puts [$x size]\n"
+                    + "puts [[$x get 0] toString]\n",
+            "1\n@book{xyz,...}\n",
+            "@string{abc={ABC}}"
                     + "@book{xyz,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
     }
 

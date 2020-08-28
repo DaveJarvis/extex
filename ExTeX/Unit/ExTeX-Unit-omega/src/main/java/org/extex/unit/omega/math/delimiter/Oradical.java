@@ -95,7 +95,7 @@ public class Oradical extends AbstractOmegaDelimiter {
         NoadConsumer nc = getListMaker(context, typesetter);
         MathDelimiter delcode =
                 parseDelimiter(context, source, typesetter, getToken());
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
         nc.add(new RadicalNoad(delcode, noad, context.getTypesettingContext()));
     }

@@ -58,7 +58,7 @@ public class BstPartitionScanner extends RuleBasedPartitionScanner {
         setDefaultReturnToken(CODE_TOKEN);
 
         setPredicateRules(new IPredicateRule[]{
-                new EndOfLineRule("%", new Token(BST_COMMENT)), //
+                new EndOfLineRule("%", new Token(BST_COMMENT)),
                 new IPredicateRule() {
 
                     @Override

@@ -188,7 +188,7 @@ public class UnicodeChar implements Serializable {
     @Override
     public boolean equals(Object unicodeChar) {
 
-        return ((unicodeChar instanceof UnicodeChar) && //
+        return ((unicodeChar instanceof UnicodeChar) &&
         this.code == ((UnicodeChar) unicodeChar).getCodePoint());
     }
 

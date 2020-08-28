@@ -231,7 +231,7 @@ public class BibReaderFactoryTest {
         @Override
         public void enableTracing(boolean flag) {
 
-            //
+            
         }
 
         /**

@@ -65,7 +65,7 @@ public class BibTeX implements Command {
 
         ProcessBuilder builder =
                 new ProcessBuilder(settings.get(Settings.BIBTEX_COMMAND,
-                    "bibtex"), //
+                    "bibtex"),
                     base);
         builder.directory(settings.getWorkingDirectory());
         builder.redirectErrorStream(true);

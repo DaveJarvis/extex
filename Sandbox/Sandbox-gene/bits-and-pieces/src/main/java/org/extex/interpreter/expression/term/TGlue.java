@@ -98,11 +98,11 @@ public class TGlue extends WideGlue implements EType {
             return this;
         } else if (t instanceof TDouble) {
             double x = ((TDouble) t).getValue();
-            value.setLength(//
+            value.setLength(
                 new Dimen((long) (value.getLength().getValue() / x)));
-            value.setStretch(//
+            value.setStretch(
                 new Dimen((long) (value.getStretch().getValue() / x)));
-            value.setShrink(//
+            value.setShrink(
                 new Dimen((long) (value.getShrink().getValue() / x)));
             // TODO gene: divide unimplemented
             return this;

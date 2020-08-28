@@ -36,12 +36,12 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({NewsBuilderTest.class, //
-        NewsBuilderMainTest.class, //
-        SiteBuilderMainTest.class, //
-        SiteBuilderTest.class, //
-        SiteMapBuilderTest.class, //
-        SiteBuilderTaskTest.class, //
+@Suite.SuiteClasses({NewsBuilderTest.class,
+        NewsBuilderMainTest.class,
+        SiteBuilderMainTest.class,
+        SiteBuilderTest.class,
+        SiteMapBuilderTest.class,
+        SiteBuilderTaskTest.class,
         ParsingReaderTest.class})
 public class AllTests {
 

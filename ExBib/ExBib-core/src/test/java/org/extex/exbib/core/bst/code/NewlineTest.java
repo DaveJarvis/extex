@@ -56,7 +56,7 @@ public class NewlineTest {
     @Before
     public void setUp() throws Exception {
 
-        p = new BstInterpreter099c(new DBImpl(), //
+        p = new BstInterpreter099c(new DBImpl(),
             new StringBufferWriter(out), null);
     }
 

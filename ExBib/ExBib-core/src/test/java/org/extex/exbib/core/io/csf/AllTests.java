@@ -28,8 +28,8 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({CsfReaderTest.class, //
-    CsfSorterTest.class //
+@Suite.SuiteClasses({CsfReaderTest.class,
+    CsfSorterTest.class
 })
 public final class AllTests {
 

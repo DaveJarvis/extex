@@ -28,9 +28,9 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({Sorter099Test.class, //
-        SorterFactoryTest.class, //
-        SorterTest.class //
+@Suite.SuiteClasses({Sorter099Test.class,
+        SorterFactoryTest.class,
+        SorterTest.class
 })
 public final class AllTests {
 

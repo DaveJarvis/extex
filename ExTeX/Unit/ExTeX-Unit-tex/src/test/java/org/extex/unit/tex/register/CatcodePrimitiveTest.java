@@ -56,7 +56,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\catcode ", //
+        assertFailure("\\catcode ",
             "Missing number, treated as zero");
     }
 
@@ -69,7 +69,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof2() throws Exception {
 
-        assertFailure("\\catcode 65 ", //
+        assertFailure("\\catcode 65 ",
             "Missing number, treated as zero");
     }
 
@@ -82,7 +82,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testRange1() throws Exception {
 
-        assertFailure("\\catcode 1=-1", //
+        assertFailure("\\catcode 1=-1",
             "Invalid code (-1), should be in the range 0..15");
     }
 
@@ -95,7 +95,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testRange2() throws Exception {
 
-        assertFailure("\\catcode 1=16", //
+        assertFailure("\\catcode 1=16",
             "Invalid code (16), should be in the range 0..15");
     }
 
@@ -108,7 +108,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testRange4() throws Exception {
 
-        assertFailure("\\catcode -1=1", //
+        assertFailure("\\catcode -1=1",
             "Bad character code (-1)");
     }
 
@@ -121,7 +121,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue0() throws Exception {
 
-        assertSuccess("\\catcode 1=0 \\end", //
+        assertSuccess("\\catcode 1=0 \\end",
             "");
     }
 
@@ -134,7 +134,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue1() throws Exception {
 
-        assertSuccess("\\catcode 1=1 \\end", //
+        assertSuccess("\\catcode 1=1 \\end",
             "");
     }
 
@@ -147,7 +147,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue2() throws Exception {
 
-        assertSuccess("\\catcode 1=2 \\end", //
+        assertSuccess("\\catcode 1=2 \\end",
             "");
     }
 
@@ -160,7 +160,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue3() throws Exception {
 
-        assertSuccess("\\catcode 1=3 \\end", //
+        assertSuccess("\\catcode 1=3 \\end",
             "");
     }
 
@@ -173,7 +173,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue4() throws Exception {
 
-        assertSuccess("\\catcode 1=4 \\end", //
+        assertSuccess("\\catcode 1=4 \\end",
             "");
     }
 
@@ -186,7 +186,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue5() throws Exception {
 
-        assertSuccess("\\catcode 1=5 \\end", //
+        assertSuccess("\\catcode 1=5 \\end",
             "");
     }
 
@@ -199,7 +199,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue6() throws Exception {
 
-        assertSuccess("\\catcode 1=6 \\end", //
+        assertSuccess("\\catcode 1=6 \\end",
             "");
     }
 
@@ -212,7 +212,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue7() throws Exception {
 
-        assertSuccess("\\catcode 1= 7 \\end", //
+        assertSuccess("\\catcode 1= 7 \\end",
             "");
     }
 
@@ -225,7 +225,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue8() throws Exception {
 
-        assertSuccess("\\catcode 1= 8 \\end", //
+        assertSuccess("\\catcode 1= 8 \\end",
             "");
     }
 
@@ -238,7 +238,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue9() throws Exception {
 
-        assertSuccess("\\catcode 1= 9 \\end", //
+        assertSuccess("\\catcode 1= 9 \\end",
             "");
     }
 
@@ -251,7 +251,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue10() throws Exception {
 
-        assertSuccess("\\catcode 1= 10 \\end", //
+        assertSuccess("\\catcode 1= 10 \\end",
             "");
     }
 
@@ -264,7 +264,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue11() throws Exception {
 
-        assertSuccess("\\catcode 1= 11 \\end", //
+        assertSuccess("\\catcode 1= 11 \\end",
             "");
     }
 
@@ -277,7 +277,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue12() throws Exception {
 
-        assertSuccess("\\catcode 1= 12 \\end", //
+        assertSuccess("\\catcode 1= 12 \\end",
             "");
     }
 
@@ -290,7 +290,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue13() throws Exception {
 
-        assertSuccess("\\catcode 1= 13 \\end", //
+        assertSuccess("\\catcode 1= 13 \\end",
             "");
     }
 
@@ -303,7 +303,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue14() throws Exception {
 
-        assertSuccess("\\catcode 1= 14 \\end", //
+        assertSuccess("\\catcode 1= 14 \\end",
             "");
     }
 
@@ -316,7 +316,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testValue15() throws Exception {
 
-        assertSuccess("\\catcode 1= 15 \\end", //
+        assertSuccess("\\catcode 1= 15 \\end",
             "");
     }
 
@@ -329,7 +329,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testCount1() throws Exception {
 
-        assertSuccess("\\catcode 1=15 \\count0=\\catcode1 \\the\\count0\\end", //
+        assertSuccess("\\catcode 1=15 \\count0=\\catcode1 \\the\\count0\\end",
             "15" + TERM);
     }
 
@@ -342,7 +342,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAfterassignment1() throws Exception {
 
-        assertSuccess("\\afterassignment x--\\catcode 1=15 \\end", //
+        assertSuccess("\\afterassignment x--\\catcode 1=15 \\end",
             "--x" + TERM);
     }
 
@@ -356,7 +356,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     public void testGlobal1() throws Exception {
 
         assertSuccess(DEFINE_BRACES
-                + "{\\catcode 1=15} \\count0=\\catcode1 \\the\\count0\\end", //
+                + "{\\catcode 1=15} \\count0=\\catcode1 \\the\\count0\\end",
             "12" + TERM);
     }
 
@@ -370,7 +370,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     public void testGlobal2() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "{\\global\\catcode 1=15}"
-                + "\\count0=\\catcode1 \\the\\count0\\end", //
+                + "\\count0=\\catcode1 \\the\\count0\\end",
             "15" + TERM);
     }
 
@@ -384,7 +384,7 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
     public void testGlobal3() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\globaldefs=1{\\catcode 1=15}"
-                + "\\count0=\\catcode1 \\the\\count0\\end", //
+                + "\\count0=\\catcode1 \\the\\count0\\end",
             "15" + TERM);
     }
 

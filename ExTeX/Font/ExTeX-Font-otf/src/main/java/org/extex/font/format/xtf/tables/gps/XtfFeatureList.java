@@ -174,7 +174,7 @@ public class XtfFeatureList implements XMLWriterConvertible {
         // * not found.
         // */
         // public XtfLookup getLookup(int type) {
-        //
+
         // for (int i = 0; i < lookupCount; i++) {
         // int lli = lookupListIndex[i];
         // XtfLookupList lookuplist = gsub.getLookupList();

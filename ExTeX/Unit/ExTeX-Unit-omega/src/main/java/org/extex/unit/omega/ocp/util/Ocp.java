@@ -103,43 +103,43 @@ public class Ocp implements Code, Showable, OcpConvertible, Serializable {
 
         } catch (AliasNotDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "alias.not.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "alias.not.defined",
                 e.getMessage());
         } catch (StateNotDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "state.not.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "state.not.defined",
                 e.getMessage());
         } catch (TableNotDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "table.not.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "table.not.defined",
                 e.getMessage());
         } catch (StateDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "state.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "state.defined",
                 e.getMessage());
         } catch (SyntaxException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "syntax.exception", //
+                LocalizerFactory.getLocalizer(Ocp.class), "syntax.exception",
                 e.getMessage());
         } catch (TableDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "table.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "table.defined",
                 e.getMessage());
         } catch (AliasDefinedException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "alias.defined", //
+                LocalizerFactory.getLocalizer(Ocp.class), "alias.defined",
                 e.getMessage());
         } catch (MissingExpressionsException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "missing expression", //
+                LocalizerFactory.getLocalizer(Ocp.class), "missing expression",
                 e.getMessage());
         } catch (ArgmentTooBigException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "argument.too.big", //
+                LocalizerFactory.getLocalizer(Ocp.class), "argument.too.big",
                 e.getMessage());
         } catch (IOException e) {
             throw new HelpingException(
-                LocalizerFactory.getLocalizer(Ocp.class), "io.exception", //
+                LocalizerFactory.getLocalizer(Ocp.class), "io.exception",
                 e.getMessage());
         } finally {
             if (stream != null) {

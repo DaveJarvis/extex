@@ -116,7 +116,7 @@ public class Edef extends AbstractAssignment implements LogEnabled {
                 MacroPattern.getPattern(context, source, notLong, cs);
         Tokens body;
         try {
-            body = source.scanUnprotectedTokens(context, //
+            body = source.scanUnprotectedTokens(context,
                 false, false, getToken());
 
             Token t = pattern.get(pattern.length() - 1);
@@ -127,8 +127,8 @@ public class Edef extends AbstractAssignment implements LogEnabled {
             throw new EofInToksException(cs.toText(context.escapechar()));
         }
 
-        MacroCode macroCode = (protect //
-                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body) //
+        MacroCode macroCode = (protect
+                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body)
                 : new MacroCode(cs, prefix, notLong, pattern, body));
         macroCode.enableLogging(logger);
 

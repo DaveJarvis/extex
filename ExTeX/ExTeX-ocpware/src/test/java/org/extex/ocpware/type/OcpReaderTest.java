@@ -123,7 +123,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testLeftBackup1() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n`a'<1,> => `x'; . => \\1;", //
+        OcpReader reader = prepare("expressions:\n`a'<1,> => `x'; . => \\1;",
             "aaab");
         // new OcpExTeXWriter().write(System.out, r.getProgram());
         // attachObserver(r);
@@ -273,7 +273,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testClose3() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n. => `*';", //
+        OcpReader reader = prepare("expressions:\n. => `*';",
             "");
         reader.close();
         assertEquals(-1, reader.read());
@@ -288,7 +288,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testClose4() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n. => `*'; % xxx", //
+        OcpReader reader = prepare("expressions:\n. => `*'; % xxx",
             "");
         reader.close();
         assertEquals(-1, reader.read());
@@ -384,7 +384,7 @@ public class OcpReaderTest {
     public final void testReadEof1() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';",
                     "");
 
         assertEquals(-1, reader.read());
@@ -400,7 +400,7 @@ public class OcpReaderTest {
     public final void testReadEof2() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';",
                     "");
 
         assertEquals(-1, reader.read());
@@ -416,7 +416,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRightNum1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n.. => 42;", //
+        OcpReader reader = prepare("expressions:\n.. => 42;",
             "ab");
 
         assertEquals((int) '*', reader.read());
@@ -433,7 +433,7 @@ public class OcpReaderTest {
     public final void testPushNum1() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';",
                     "a");
 
         assertEquals((int) '*', reader.read());
@@ -450,7 +450,7 @@ public class OcpReaderTest {
     public final void testPushNum2() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => `*';", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => `*';",
                     "a b");
 
         assertEquals((int) '*', reader.read());
@@ -469,7 +469,7 @@ public class OcpReaderTest {
     public final void testRightChar1() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => \\1;", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => \\1;",
                     "a");
 
         assertEquals((int) 'a', reader.read());
@@ -486,7 +486,7 @@ public class OcpReaderTest {
     public final void testRightLchar1() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => \\$;", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => \\$;",
                     "a");
 
         assertEquals((int) 'a', reader.read());
@@ -502,7 +502,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testPushChar1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => `-'#(\\1);", //
+        OcpReader reader = prepare("expressions:\n. => `-'#(\\1);",
             "x");
 
         assertEquals((int) '-', reader.read());
@@ -519,7 +519,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testAdd1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(64+1);", //
+        OcpReader reader = prepare("expressions:\n. => #(64+1);",
             "x");
 
         assertEquals((int) 'A', reader.read());
@@ -535,7 +535,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testSub1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(66-1);", //
+        OcpReader reader = prepare("expressions:\n. => #(66-1);",
             "x");
 
         assertEquals((int) 'A', reader.read());
@@ -551,7 +551,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testMult1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(33*2);", //
+        OcpReader reader = prepare("expressions:\n. => #(33*2);",
             "x");
 
         assertEquals((int) 'B', reader.read());
@@ -567,7 +567,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testMod1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(12 mod: 2);", //
+        OcpReader reader = prepare("expressions:\n. => #(12 mod: 2);",
             "x");
 
         assertEquals(0, reader.read());
@@ -583,7 +583,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testMod2() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(13 mod: 2);", //
+        OcpReader reader = prepare("expressions:\n. => #(13 mod: 2);",
             "x");
 
         assertEquals(1, reader.read());
@@ -599,7 +599,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testDiv1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(12 div: 2);", //
+        OcpReader reader = prepare("expressions:\n. => #(12 div: 2);",
             "x");
 
         assertEquals(6, reader.read());
@@ -615,7 +615,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testDiv0() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => #(12 div: 0);", //
+        OcpReader reader = prepare("expressions:\n. => #(12 div: 0);",
             "x");
         reader.read();
     }
@@ -631,7 +631,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("tables: a[1] = {123}; "
-                        + "expressions:\n. => #(a[0]);", //
+                        + "expressions:\n. => #(a[0]);",
                     "x");
         assertEquals(123, reader.read());
         assertEquals(-1, reader.read());
@@ -648,7 +648,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("tables: a[1] = {123}; "
-                        + "expressions:\n. => #(a[2]);", //
+                        + "expressions:\n. => #(a[2]);",
                     "x");
         reader.read();
     }
@@ -679,7 +679,7 @@ public class OcpReaderTest {
     public final void testLookup4() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(//
+        ocpProgram.addState(
             new int[]{OcpCode.PUSH_NUM.inst(2), OcpCode.PUSH_NUM.inst(2),
                     OcpCode.LOOKUP.inst()});
         OcpReader reader =
@@ -698,7 +698,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRightSome1() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n. => \\(*-2);", //
+        OcpReader reader = prepare("expressions:\n. => \\(*-2);",
             "x");
         reader.read();
     }
@@ -712,7 +712,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRightSome2() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);", //
+        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);",
             "xy");
 
         assertEquals((int) 'x', reader.read());
@@ -730,7 +730,7 @@ public class OcpReaderTest {
     public final void testPBackOutput1() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a' => `x' <= #(65); . => \\*;", //
+                prepare("expressions:\n`a' => `x' <= #(65); . => \\*;",
                     "a");
 
         assertEquals((int) 'x', reader.read());
@@ -748,7 +748,7 @@ public class OcpReaderTest {
     public final void testPBackOutput2() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a' => `.' <= #@\"10000; . => \\*;", //
+                prepare("expressions:\n`a' => `.' <= #@\"10000; . => \\*;",
                     "a");
 
         reader.read();
@@ -764,7 +764,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testPBackNum1() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n`a' => `x' <= 65; . => \\*;", //
+        OcpReader reader = prepare("expressions:\n`a' => `x' <= 65; . => \\*;",
             "a");
 
         assertEquals((int) 'x', reader.read());
@@ -782,7 +782,7 @@ public class OcpReaderTest {
     public final void testPBackNum2() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a' => `.' <= @\"10000; . => \\*;", //
+                prepare("expressions:\n`a' => `.' <= @\"10000; . => \\*;",
                     "a");
 
         reader.read();
@@ -799,7 +799,7 @@ public class OcpReaderTest {
     public final void testPBackChar1() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\1; . => \\*;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\1; . => \\*;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -817,7 +817,7 @@ public class OcpReaderTest {
     public final void testPBackChar2() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\0; . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\0; . => \\1;",
                     "ab");
 
         reader.read();
@@ -834,7 +834,7 @@ public class OcpReaderTest {
     public final void testPBackChar3() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\3; . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\3; . => \\1;",
                     "ab");
 
         reader.read();
@@ -851,7 +851,7 @@ public class OcpReaderTest {
     public final void testPBackLchar1() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\$; . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\$; . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -869,7 +869,7 @@ public class OcpReaderTest {
     public final void testPBackSome1() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\(*+1-1); . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\(*+1-1); . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -886,7 +886,7 @@ public class OcpReaderTest {
     public final void testPBackSome2() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\(*+0-1); . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\(*+0-1); . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -905,7 +905,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("expressions:\n" + "`a'`b'`c' => 123;"
-                        + "\n`a\'`b\' => `x' <= \\$; . => \\1;", //
+                        + "\n`a\'`b\' => `x' <= \\$; . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -924,7 +924,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("expressions:\n" + "`a'`b'`c' => 123;\n"
-                        + "`a' => `x' <= `p'; . => \\1;", //
+                        + "`a' => `x' <= `p'; . => \\1;",
                     "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -944,7 +944,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("expressions:\n" + "`a'`b'`c' => 123;"
-                        + "\n`a'`b' => `x' <= \\$; . => \\1;", //
+                        + "\n`a'`b' => `x' <= \\$; . => \\1;",
                     "abd");
 
         assertEquals((int) 'x', reader.read());
@@ -963,7 +963,7 @@ public class OcpReaderTest {
     public final void testPBackLchar3() throws IOException {
 
         OcpReader reader =
-                prepare("expressions:\n`a'`b' => `x' <= \\($-3); . => \\1;", //
+                prepare("expressions:\n`a'`b' => `x' <= \\($-3); . => \\1;",
                     "ab");
 
         reader.read();
@@ -979,7 +979,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testStatePop1() throws IOException {
 
-        OcpReader reader = prepare("expressions:\n. => `x' <pop:>;", //
+        OcpReader reader = prepare("expressions:\n. => `x' <pop:>;",
             "ab");
 
         assertEquals((int) 'x', reader.read());
@@ -997,7 +997,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n"
-                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n", //
+                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n",
                     "ab");
 
         assertEquals((int) 'y', reader.read());
@@ -1016,7 +1016,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n"
-                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n", //
+                        + "`a' => `y' <push: a>;\n" + "<a>. =>`x' <pop:>;\n",
                     "aba");
 
         assertEquals((int) 'y', reader.read());
@@ -1036,7 +1036,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n" + "`a' => `y' <a>;\n"
-                        + "<a>. =>`x';\n", //
+                        + "<a>. =>`x';\n",
                     "aba");
 
         assertEquals((int) 'y', reader.read());
@@ -1056,7 +1056,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n" + "`a'-`z' => `.';\n"
-                        + ". =>`-';\n", //
+                        + ". =>`-';\n",
                     "a");
 
         assertEquals((int) '.', reader.read());
@@ -1074,7 +1074,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n" + "`a'-`z' => `.';\n"
-                        + ". =>`-';\n", //
+                        + ". =>`-';\n",
                     "A");
         assertEquals((int) '-', reader.read());
         assertEquals(-1, reader.read());
@@ -1091,7 +1091,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n" + "`A'-`Z' => `.';\n"
-                        + ". =>`-';\n", //
+                        + ". =>`-';\n",
                     "a");
         assertEquals((int) '-', reader.read());
         assertEquals(-1, reader.read());
@@ -1108,7 +1108,7 @@ public class OcpReaderTest {
 
         OcpReader reader =
                 prepare("states: a;\n" + "expressions:\n"
-                        + "(`A'|`B') => `.';\n" + ". =>`-';\n", //
+                        + "(`A'|`B') => `.';\n" + ". =>`-';\n",
                     "A");
         assertEquals((int) '.', reader.read());
         assertEquals(-1, reader.read());
@@ -1124,7 +1124,7 @@ public class OcpReaderTest {
     public final void testGotoEq1() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_EQ.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1144,7 +1144,7 @@ public class OcpReaderTest {
     public final void testGotoEq2() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_EQ.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1165,7 +1165,7 @@ public class OcpReaderTest {
     public final void testGotoEq3() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_EQ.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1186,7 +1186,7 @@ public class OcpReaderTest {
     public final void testGotoLe1() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_LE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1206,7 +1206,7 @@ public class OcpReaderTest {
     public final void testGotoLe2() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_LE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1227,7 +1227,7 @@ public class OcpReaderTest {
     public final void testGotoLe3() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_LE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1247,7 +1247,7 @@ public class OcpReaderTest {
     public final void testGotoGe1() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_GE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1267,7 +1267,7 @@ public class OcpReaderTest {
     public final void testGotoGe2() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_GE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1287,7 +1287,7 @@ public class OcpReaderTest {
     public final void testGotoGe3() throws IOException {
 
         OcpProgram ocpProgram = new OcpProgram();
-        ocpProgram.addState(new int[]{//
+        ocpProgram.addState(new int[]{
             OcpCode.LEFT_START.inst(), OcpCode.GOTO_GE.inst('x'), 4,
                     OcpCode.RIGHT_NUM.inst('X'), OcpCode.STOP.inst()});
         OcpReader reader =
@@ -1308,7 +1308,7 @@ public class OcpReaderTest {
     public final void testRead4() throws Exception {
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => #\\$;", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => #\\$;",
                     "a b");
 
         assertEquals((int) 'a', reader.read());
@@ -1332,7 +1332,7 @@ public class OcpReaderTest {
         }
 
         OcpReader reader =
-                prepare("input: 1;output: 1;" + "expressions:\n. => #\\$;", //
+                prepare("input: 1;output: 1;" + "expressions:\n. => #\\$;",
                     "a b");
         reader.register(new OcpReaderObserver() {
 
@@ -1368,7 +1368,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRead6() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => \\*;", //
+        OcpReader reader = prepare("expressions:\n. => \\*;",
             "ab");
 
         assertEquals((int) 'a', reader.read());
@@ -1385,7 +1385,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRead7() throws Exception {
 
-        OcpReader reader = prepare("expressions: .. => \\*;\n. => \\*;", //
+        OcpReader reader = prepare("expressions: .. => \\*;\n. => \\*;",
             "ab");
 
         assertEquals((int) 'a', reader.read());
@@ -1401,7 +1401,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRead100() throws Exception {
 
-        OcpReader reader = prepare("expressions: .. => \\*;\n. => \\*;", //
+        OcpReader reader = prepare("expressions: .. => \\*;\n. => \\*;",
             "ab");
 
         char[] cbuff = new char[12];
@@ -1418,7 +1418,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRead101() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n. => \\*;", //
+        OcpReader reader = prepare("expressions:\n. => \\*;",
             "abc");
 
         char[] cbuff = new char[2];
@@ -1436,7 +1436,7 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testRead102() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);", //
+        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);",
             "abcd");
         // attachObserver(r);
 
@@ -1456,7 +1456,7 @@ public class OcpReaderTest {
     public final void testEnd1() throws Exception {
 
         OcpReader reader =
-                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;", //
+                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;",
                     "x");
 
         assertEquals((int) 'A', reader.read());
@@ -1473,7 +1473,7 @@ public class OcpReaderTest {
     public final void testEnd2() throws Exception {
 
         OcpReader reader =
-                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;", //
+                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;",
                     "xx");
 
         assertEquals((int) 'x', reader.read());
@@ -1491,7 +1491,7 @@ public class OcpReaderTest {
     public final void testEnd3() throws Exception {
 
         OcpReader reader =
-                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;", //
+                prepare("expressions:\n" + "`x' end: => `A';" + "\n. => \\*;",
                     "x\nxa");
 
         assertEquals((int) 'A', reader.read());
@@ -1510,9 +1510,9 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testBeg1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "beg: `x' => `A';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "beg: `x' => `A';\n"
+                + ". => \\*;",
             "x");
 
         assertEquals((int) 'A', reader.read());
@@ -1528,9 +1528,9 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testBeg2() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "beg: `x' => `A';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "beg: `x' => `A';\n"
+                + ". => \\*;",
             "xx");
 
         assertEquals((int) 'A', reader.read());
@@ -1547,9 +1547,9 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testBeg3() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "beg: `x' => `A';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "beg: `x' => `A';\n"
+                + ". => \\*;",
             "ax");
 
         assertEquals((int) 'a', reader.read());
@@ -1566,9 +1566,9 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testBeg4() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "beg: `x' => `A';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "beg: `x' => `A';\n"
+                + ". => \\*;",
             "a\nxx");
 
         assertEquals((int) 'a', reader.read());
@@ -1587,10 +1587,10 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testBeg5() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "beg: `x' => `A';\n" //
-                + "`y' => `.' <= `z';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "beg: `x' => `A';\n"
+                + "`y' => `.' <= `z';\n"
+                + ". => \\*;",
             "yx");
 
         assertEquals((int) '.', reader.read());
@@ -1608,8 +1608,8 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testNewline1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + ". => \\*;",
             "abc\ndef");
 
         assertEquals((int) 'a', reader.read());
@@ -1632,9 +1632,9 @@ public class OcpReaderTest {
     @SuppressWarnings("boxing")
     public final void testNewline2() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n" //
-                + "`a' => `.' <= `z';\n" //
-                + ". => \\*;", //
+        OcpReader reader = prepare("expressions:\n"
+                + "`a' => `.' <= `z';\n"
+                + ". => \\*;",
             "aa\ncd");
 
         assertEquals((int) '.', reader.read());
@@ -1655,7 +1655,7 @@ public class OcpReaderTest {
     @Test
     public final void testToString0() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);", //
+        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);",
             "abcd");
         assertEquals("[0/0] \n", reader.toString());
     }
@@ -1668,7 +1668,7 @@ public class OcpReaderTest {
     @Test
     public final void testToString1() throws Exception {
 
-        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);", //
+        OcpReader reader = prepare("expressions:\n.. => \\(*+0-1);",
             "abcd");
         reader.read(new char[2]);
         assertEquals("[0/4] ab\n", reader.toString());

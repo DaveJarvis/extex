@@ -94,7 +94,7 @@ public class Lastbox extends AbstractCode implements Boxable {
 
         Mode mode = typesetter.getMode();
         if (mode.isMath() || mode == Mode.VERTICAL) {
-            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
+            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn",
                 toText(), mode.toString());
         }
 
@@ -117,7 +117,7 @@ public class Lastbox extends AbstractCode implements Boxable {
 
         Mode mode = typesetter.getMode();
         if (mode.isMath() /* || mode == Mode.VERTICAL */) {
-            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn", //
+            throw new HelpingException(getLocalizer(), "TTP.LastBoxIn",
                 toText(), mode.toString());
         }
 

@@ -98,7 +98,7 @@ public class ExIndexTest {
             int ex = index.run(args);
             if (expectedOut != null) {
                 outStream.flush();
-                assertEquals("stdout", expectedOut, //
+                assertEquals("stdout", expectedOut,
                     outStream.toString());
             }
             if (extectedErr != null) {
@@ -423,7 +423,7 @@ public class ExIndexTest {
     @Test
     public final void testHelp1() throws Exception {
 
-        runTest(new String[]{"--help"}, 1, //
+        runTest(new String[]{"--help"}, 1,
             "ExIndex <options> <idx files>\n" + "\t-s[tyle] <style>\n"
                     + "\t- <idx file>\n" + "\t-o[utput] <ind file>\n"
                     + "\t-g[erman]\n" + "\t-l\n" + "\t-c\n" + "\t-r\n"

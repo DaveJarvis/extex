@@ -54,7 +54,7 @@ public class BstIterateTest {
     @Test
     public final void testToString() throws ExBibException {
 
-        assertEquals("ITERATE { abc }", //
+        assertEquals("ITERATE { abc }",
             new BstIterate(new TLiteral("abc", null), null).toString());
     }
 

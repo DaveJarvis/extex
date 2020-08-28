@@ -440,23 +440,23 @@ public class Showgroups extends AbstractCode
 
         for (int i = gi.length - 1; i >= 0; i--) {
             g = gi[i];
-            String level = (i == 0 ? "" //
+            String level = (i == 0 ? "" 
                     : loc.format("log.level" + key, Integer.toString(i)));
             start = g.getGroupStart();
-            String token = (start == null ? "" //
-                    : loc.format("log.token" + key, //
+            String token = (start == null ? "" 
+                    : loc.format("log.token" + key, 
                         start.toText(context.escapechar())));
             locator = g.getLocator();
             String line =
-                    (locator == null ? "" //
+                    (locator == null ? "" 
                             : loc.format("log.resource" + key, locator
                                 .getResourceName(), Integer.toString(locator
                                 .getLineNumber())));
 
-            logger.info(loc.format("log.pattern", //
-                loc.format((String) g.getGroupType().visit(GTV, null)), //
-                level, //
-                line, //
+            logger.info(loc.format("log.pattern", 
+                loc.format((String) g.getGroupType().visit(GTV, null)), 
+                level, 
+                line, 
                 token));
         }
     }

@@ -90,7 +90,7 @@ public abstract class AbstractDefTester extends ExTeXLauncher {
     public void testBasic2() throws Exception {
 
         assertSuccess(// --- input code ---
-            DEFINE_BRACES + "\\catcode`\\~=13 " //
+            DEFINE_BRACES + "\\catcode`\\~=13 " 
                     + "\\" + def + "~{AAA}" + "--~--\\end",
             // --- output message ---
             "--AAA--" + TERM);

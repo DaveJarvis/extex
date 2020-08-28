@@ -177,14 +177,14 @@ public class ExDocHtml extends ExDocXml {
             out.print(x);
             out.print("\">\n    <author email=\"");
             Author author = authors.get(x);
-            out.print(author.getEmail()//
-                .replaceAll("&", "&amp;")//
-                .replaceAll("<", "&lt;")//
+            out.print(author.getEmail()
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;"));
             out.print("\">");
-            out.print(author.getName()//
-                .replaceAll("&", "&amp;")//
-                .replaceAll("<", "&lt;")//
+            out.print(author.getName()
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
                 .replaceAll(">", "&gt;"));
             out.print("</author>\n  </resource>\n");
         }
@@ -240,8 +240,8 @@ public class ExDocHtml extends ExDocXml {
             prim.close();
         }
 
-        Copy.mapped("org/extex/exdoc/html/index.html", //
-            new File(getOutput(), "index.html"), //
+        Copy.mapped("org/extex/exdoc/html/index.html",
+            new File(getOutput(), "index.html"),
             Collections.EMPTY_MAP);
     }
 

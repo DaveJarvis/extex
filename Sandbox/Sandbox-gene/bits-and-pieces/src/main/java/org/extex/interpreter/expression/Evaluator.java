@@ -522,7 +522,7 @@ public class Evaluator {
     private EType evalExpression(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        return evalExpression(evalTerm(context, source, typesetter), //
+        return evalExpression(evalTerm(context, source, typesetter), 
             context, source, typesetter);
     }
 
@@ -551,8 +551,8 @@ public class Evaluator {
         for (Token t = source.getNonSpace(context); t != null; t =
                 source.getNonSpace(context)) {
 
-            int c = (t instanceof OtherToken //
-                    ? t.getChar().getCodePoint()//
+            int c = (t instanceof OtherToken 
+                    ? t.getChar().getCodePoint()
                     : '\0');
 
             switch (c) {
@@ -637,7 +637,7 @@ public class Evaluator {
 
         throw new HelpingException(
             LocalizerFactory.getLocalizer(Evaluator.class),
-            "MissingParenthesis", //
+            "MissingParenthesis", 
             (t == null ? "null" : t.toString()));
     }
 

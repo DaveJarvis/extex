@@ -728,10 +728,10 @@ public class XtfScriptList implements XMLWriterConvertible {
     // * @return Returns the int value.
     // */
     // public static int tag2Int(String tag) {
-    //
+
     // return ((tag.charAt(0) << 24) | (tag.charAt(1) << 16)
     // | (tag.charAt(2) << 8) | tag.charAt(3));
-    //
+
     // }
 
     /**

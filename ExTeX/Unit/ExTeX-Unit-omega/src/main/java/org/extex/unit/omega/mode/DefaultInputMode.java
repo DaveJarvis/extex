@@ -91,7 +91,7 @@ public class DefaultInputMode extends AbstractModeCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         OmegaMode mode = scanInputMode(context, source);
-        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, mode, //
+        context.set(OmegaExtension.NAME, DEFAULT_INPUT_MODE, mode,
             prefix.clearGlobal());
     }
 

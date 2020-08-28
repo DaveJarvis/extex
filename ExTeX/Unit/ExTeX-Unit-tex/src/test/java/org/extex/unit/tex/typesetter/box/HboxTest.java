@@ -58,7 +58,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     public void testEmpty1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\hbox{}\\end",
-        //
+
             "" + TERM);
     }
 
@@ -72,7 +72,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     public void test1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\hbox{abc}\\end",
-        //
+
             "abc" + TERM);
     }
 

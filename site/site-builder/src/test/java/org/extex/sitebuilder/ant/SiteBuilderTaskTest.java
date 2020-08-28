@@ -82,7 +82,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         configureProject(build.toString());
         executeTarget("test.case");
         if (log != null) {
-            assertEquals("Message was logged but should not.", log, //
+            assertEquals("Message was logged but should not.", log,
                 getLog().replaceAll("\\r", ""));
         }
     }
@@ -105,20 +105,20 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         runTest(
             "<SiteBuilder"
                     + "    output=\"target/test-site\""
-                    + "    logLevel=\"WARNING\" >\n" //
+                    + "    logLevel=\"WARNING\" >\n"
                     + "  <omit>RCS</omit>\n"
                     + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
                     + "  <News    dir=\".\" "
                     + "           output=\"target/test-site/rss/2.0/news.rss\" "
-                    + "           template=\"org/extex/sitebuilder/news.vm\"\n" //
+                    + "           template=\"org/extex/sitebuilder/news.vm\"\n"
                     + "           max=\"3\"/>\n"
                     + "  <Tree    dir=\"src/test/resources/empty-site\""
-                    + "           template=\"org/extex/sitebuilder/site.vm\"/>\n" //
+                    + "           template=\"org/extex/sitebuilder/site.vm\"/>\n"
                     + "  <Tree    dir=\"src/test/resources/test-site-1\""
-                    + "           processHtml=\"true\"/>\n" //
+                    + "           processHtml=\"true\"/>\n"
                     + "  <Sitemap output=\"target/test-site/sitemap.html\""
                     + "           template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
-                    + "</SiteBuilder>", //
+                    + "</SiteBuilder>",
             null);
         assertTrue("Missing site dir: " + siteDir.toString(), siteDir.exists());
         assertFalse(new File(siteDir, "RCS").exists());
@@ -150,9 +150,9 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     public final void testTree01() throws Exception {
 
         try {
-            runTest("<SiteBuilder>\n" //
-                    + "  <Tree dir=\"site/base/dir\" />\n" //
-                    + "</SiteBuilder>", //
+            runTest("<SiteBuilder>\n"
+                    + "  <Tree dir=\"site/base/dir\" />\n"
+                    + "</SiteBuilder>",
                 "");
             assertTrue("Unexpected success", false);
         } catch (Exception e) {
@@ -169,9 +169,9 @@ public class SiteBuilderTaskTest extends BuildFileTest {
     public final void testTree02() throws Exception {
 
         try {
-            runTest("<SiteBuilder>\n" //
-                    + "  <Tree />\n" //
-                    + "</SiteBuilder>", //
+            runTest("<SiteBuilder>\n"
+                    + "  <Tree />\n"
+                    + "</SiteBuilder>",
                 null);
         } catch (BuildException e) {
             assertTrue(e.getCause().toString(), e.getCause().toString()

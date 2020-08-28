@@ -118,9 +118,9 @@ public class TokenStreamBaseImpl implements TokenStream {
             throws ScannerException {
 
         if (!skipSpaces) {
-            return (stack.length() > 0 ? //
+            return (stack.length() > 0 ?
                     stack.removeLast()
-                    : //
+                    :
                     getNext(factory, tokenizer));
         }
         Token t;

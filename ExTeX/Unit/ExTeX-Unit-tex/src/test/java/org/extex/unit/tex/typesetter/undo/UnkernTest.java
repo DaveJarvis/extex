@@ -93,9 +93,9 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\unkern\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" +
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
                     "..a\n");
     }
 
@@ -113,9 +113,9 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\kern1pt\\unkern\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" +
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
                     "..a\n");
     }
 

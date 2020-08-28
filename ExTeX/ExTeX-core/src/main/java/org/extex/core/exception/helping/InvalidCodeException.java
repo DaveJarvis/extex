@@ -46,7 +46,7 @@ public class InvalidCodeException extends HelpingException {
      */
     public InvalidCodeException(String code, String max) {
 
-        super(LocalizerFactory.getLocalizer(//
+        super(LocalizerFactory.getLocalizer(
                 InvalidCodeException.class), "TTP.InvalidCode", code, max);
     }
 

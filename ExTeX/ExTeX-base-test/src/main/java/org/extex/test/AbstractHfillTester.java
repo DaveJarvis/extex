@@ -109,8 +109,8 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\font\\f cmr10 \\f\\hsize=100pt \\" + invocation + " x\\end ",
             // --- output channel ---
-            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + //
-                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + //
+            "\\vbox(4.30554pt+0.0pt)x100.0pt\n" + 
+                    ".\\hbox(4.30554pt+0.0pt)x100.0pt\n" + 
 
                     "..\\glue0.0pt plus " + fil + "\n" + "..x\n");
     }

@@ -178,7 +178,7 @@ public class Show extends AbstractCode implements LogEnabled {
 
             } else {
                 toks =
-                        new Tokens(//
+                        new Tokens(
                             context.getTokenFactory().createToken(
                                 Catcode.OTHER, t.getChar(),
                                 Namespace.DEFAULT_NAMESPACE));
@@ -201,7 +201,7 @@ public class Show extends AbstractCode implements LogEnabled {
                     code.getToken().toText(context.escapechar())));
 
                 // } else {
-                //
+
                 // toks.add(new Tokens(context, t.getChar().getCodePoint()));
             }
         } catch (CatcodeException e) {

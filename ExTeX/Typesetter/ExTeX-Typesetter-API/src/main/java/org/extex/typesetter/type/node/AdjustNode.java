@@ -87,7 +87,7 @@ public class AdjustNode extends AbstractNode implements Node {
     @Override
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
-        sb.append(getLocalizer().format("String.Format", //
+        sb.append(getLocalizer().format("String.Format",
             getWidth().toString()));
         nodes.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
     }

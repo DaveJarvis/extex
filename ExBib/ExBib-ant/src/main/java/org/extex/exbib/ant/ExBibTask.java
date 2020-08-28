@@ -365,13 +365,13 @@ public class ExBibTask extends Task {
             @Override
             public void close() throws SecurityException {
 
-                //
+
             }
 
             @Override
             public void flush() {
 
-                //
+
             }
 
             @Override

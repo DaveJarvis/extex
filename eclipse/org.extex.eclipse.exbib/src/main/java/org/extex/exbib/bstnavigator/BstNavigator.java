@@ -95,7 +95,7 @@ public class BstNavigator extends ViewPart {
     @Override
     public void createPartControl(Composite parent) {
 
-        viewer = new TreeViewer(parent, //
+        viewer = new TreeViewer(parent,
             SWT.MULTI | SWT.H_SCROLL | SWT.V_SCROLL);
         drillDownAdapter = new DrillDownAdapter(viewer);
         viewer.setContentProvider(new ResourceTreeContentProvider());

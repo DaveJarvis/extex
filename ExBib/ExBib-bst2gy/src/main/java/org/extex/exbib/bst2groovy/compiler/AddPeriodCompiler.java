@@ -72,9 +72,9 @@ public class AddPeriodCompiler implements Compiler {
                 @Override
                 public void print(CodeWriter writer) throws IOException {
 
-                    writer.write("\n\tString addPeriod(String s) {", //
+                    writer.write("\n\tString addPeriod(String s) {",
                         "\n\t\treturn s == null || s == '' ? '' "
-                                + ": s.matches(\".*[.!?]\") ? s : s + \".\"", //
+                                + ": s.matches(\".*[.!?]\") ? s : s + \".\"",
                         "\n\t}\n");
                 }
 

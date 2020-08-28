@@ -26,23 +26,23 @@ package org.extex.exbib.editor.bst.model;
  * @version $Revision: 1 $
  */
 public enum BstClass {
-    BUILTIN, //
-    COMMAND_ENTRY, //
-    COMMAND_EXECUTE, //
-    COMMAND_FUNCTION, //
-    COMMAND_INTEGERS, //
-    COMMAND_ITERATE, //
-    COMMAND_MACRO, //
-    COMMAND_READ, //
-    COMMAND_REVERSE, //
-    COMMAND_STRINGS, //
-    COMMAND_SORT, //
-    FIELD, //
-    FUNCTION, //
-    MACRO, //
-    GLOBAL_STRING, //
-    GLOBAL_NUMBER, //
-    LOCAL_STRING, //
-    LOCAL_NUMBER, //
+    BUILTIN,
+    COMMAND_ENTRY,
+    COMMAND_EXECUTE,
+    COMMAND_FUNCTION,
+    COMMAND_INTEGERS,
+    COMMAND_ITERATE,
+    COMMAND_MACRO,
+    COMMAND_READ,
+    COMMAND_REVERSE,
+    COMMAND_STRINGS,
+    COMMAND_SORT,
+    FIELD,
+    FUNCTION,
+    MACRO,
+    GLOBAL_STRING,
+    GLOBAL_NUMBER,
+    LOCAL_STRING,
+    LOCAL_NUMBER,
     UNKNOWN
 }

@@ -177,10 +177,10 @@ public class LMarkupIndex extends AbstractLAdapter {
             throws SecurityException,
                 NoSuchMethodException {
 
-        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), //
-                Arg.OPT_STRING(":close", ""), //
-                Arg.OPT_BOOLEAN(":flat", Boolean.FALSE), //
-                Arg.OPT_BOOLEAN(":tree", Boolean.FALSE), //
+        super(name, container, new Arg[]{Arg.OPT_STRING(":open", ""), 
+                Arg.OPT_STRING(":close", ""), 
+                Arg.OPT_BOOLEAN(":flat", Boolean.FALSE), 
+                Arg.OPT_BOOLEAN(":tree", Boolean.FALSE), 
                 Arg.OPT_LNUMBER(":hierdepth", null)});
         this.container = container;
     }
@@ -209,8 +209,8 @@ public class LMarkupIndex extends AbstractLAdapter {
 
         getMarkup(interpreter).setDefault(open, close);
 
-        switch ((flat.booleanValue() ? 1 : 0) //
-                | (tree.booleanValue() ? 1 : 0) //
+        switch ((flat.booleanValue() ? 1 : 0) 
+                | (tree.booleanValue() ? 1 : 0) 
                 | (hierdepth != null ? 4 : 0)) {
             case 1:
                 container.setDepth(0);

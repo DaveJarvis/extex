@@ -59,7 +59,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
         File testPom = new File(pom);
         Writer w = new BufferedWriter(new FileWriter(testPom));
         try {
-            w.write("<project>\n" //
+            w.write("<project>\n"
                     + "  <build>\n"
                     + "    <plugins>\n"
                     + "      <plugin>\n"
@@ -67,7 +67,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
                     + "        <artifactId>maven-latex-plugin</artifactId>\n"
                     + "        <configuration>\n");
             w.write(content);
-            w.write("        </configuration>\n" //
+            w.write("        </configuration>\n"
                     + "        <executions>\n"
                     + "          <execution>\n"
                     + "            <goals>\n"
@@ -130,7 +130,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
         mojo.setLog(new TLog(buffer));
         mojo.execute();
         if (log != null) {
-            assertEquals(log, //
+            assertEquals(log,
                 buffer.toString().replace('\\', '/'));
         }
     }

@@ -325,9 +325,9 @@ public class ItextDocumentWriter
                     // putLong("\\cf", cf);
                     // color = cf;
                     // }
-                    //
+
                     // int c = node.getCharacter().getCodePoint();
-                    //
+
                     // if (c > 32 && c < 0x7f) {
                     // put((byte) c);
                     // } else if (c < 0) {
@@ -347,7 +347,7 @@ public class ItextDocumentWriter
                     // } catch (IOException e) {
                     // throw new GeneralException(e);
                     // }
-                    //
+
                     // if (horizontal) {
                     // posX += node.getWidth().getValue();
                     // return Boolean.TRUE;
@@ -505,7 +505,7 @@ public class ItextDocumentWriter
                     // putTwip("\\dpxsize", node.getWidth().getValue());
                     // putTwip("\\dpysize", node.getVerticalSize().getValue());
                     // putTwip("\\dplinew", 60);
-                    //
+
                     // Color c = node.getTypesettingContext().getColor();
                     // if (c != null) {
                     // RgbColor co = converter.toRgb(c);

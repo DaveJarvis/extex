@@ -347,7 +347,7 @@ public class TfmCharInfoWord implements Serializable {
     // * @param glyph the element
     // */
     // public void addGlyph(Element glyph) {
-    //
+
     // glyph.setAttribute("width", getWidth().toStringComma());
     // glyph.setAttribute("height", getHeight().toStringComma());
     // glyph.setAttribute("depth", getDepth().toStringComma());
@@ -356,27 +356,27 @@ public class TfmCharInfoWord implements Serializable {
     // glyph.setAttribute("height-fw", String.valueOf(getHeight().getValue()));
     // glyph.setAttribute("depth-fw", String.valueOf(getDepth().getValue()));
     // glyph.setAttribute("italic-fw", String.valueOf(getItalic().getValue()));
-    //
+
     // // ligature
     // int ligstart = getLigkernstart();
     // if (ligstart != TfmCharInfoWord.NOINDEX) {
-    //
+
     // for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
     // ligKernTable[k].nextIndex(k)) {
     // TfmLigKern lk = ligKernTable[k];
-    //
+
     // if (lk instanceof TfmLigature) {
     // TfmLigature lig = (TfmLigature) lk;
-    //
+
     // Element ligature = new Element("ligature");
-    //
+
     // ligature.setAttribute("letter-id", String.valueOf(lig
     // .getNextChar()));
     // String sl = Character.toString((char) lig.getNextChar());
     // if (sl != null && sl.trim().length() > 0) {
     // ligature.setAttribute("letter", sl.trim());
     // }
-    //
+
     // ligature.setAttribute("lig-id", String.valueOf(lig
     // .getAddingChar()));
     // String slig =
@@ -387,9 +387,9 @@ public class TfmCharInfoWord implements Serializable {
     // glyph.addContent(ligature);
     // } else if (lk instanceof TfmKerning) {
     // TfmKerning kern = (TfmKerning) lk;
-    //
+
     // Element kerning = new Element("kerning");
-    //
+
     // kerning.setAttribute("glyph-id", String.valueOf(kern
     // .getNextChar()));
     // String sk = Character.toString((char) kern.getNextChar());
@@ -398,7 +398,7 @@ public class TfmCharInfoWord implements Serializable {
     // }
     // kerning
     // .setAttribute("size", kern.getKern().toStringComma());
-    //
+
     // glyph.addContent(kerning);
     // }
     // }

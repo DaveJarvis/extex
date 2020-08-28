@@ -173,7 +173,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
             throws HyphenationException {
 
         if (name == null || name.matches(NON_LOADABLE_LANGUAGE_PATTERN)) {
-            //
+            
         } else if (finder == null) {
             getLogger().warning(getLocalizer().format("MissingResourceFinder"));
         } else {

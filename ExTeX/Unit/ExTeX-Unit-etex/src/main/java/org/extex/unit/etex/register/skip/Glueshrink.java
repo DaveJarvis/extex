@@ -135,7 +135,7 @@ public class Glueshrink extends AbstractCode
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens(//
+        return context.getTokenFactory().toTokens(
             (new Dimen(convertDimen(context, source, typesetter))).toString());
     }
 

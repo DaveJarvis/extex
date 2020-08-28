@@ -148,7 +148,7 @@ public class Wd extends AbstractAssignment
     public long convertDimen(Context context, TokenSource source,
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
-        Box b = context.getBox(//
+        Box b = context.getBox(
             Setbox.getKey(context, source, typesetter, getToken()));
         return (b == null ? 0 : b.getWidth().getValue());
     }
@@ -177,7 +177,7 @@ public class Wd extends AbstractAssignment
             throws HelpingException,
                 TypesetterException {
 
-        Box box = context.getBox(//
+        Box box = context.getBox(
             Setbox.getKey(context, source, typesetter, getToken()));
         FixedDimen d = (box == null ? Dimen.ZERO_PT : box.getWidth());
         try {

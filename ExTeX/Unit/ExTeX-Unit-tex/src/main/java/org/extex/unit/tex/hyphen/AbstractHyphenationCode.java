@@ -145,8 +145,8 @@ public abstract class AbstractHyphenationCode extends AbstractCode {
             throws HelpingException {
 
         Tokens lang = context.getToksOrNull(LANGUAGE_TOKS);
-        String name = (lang != null //
-                ? lang.toText() //
+        String name = (lang != null 
+                ? lang.toText() 
                 : Long.toString(context.getCount(LANGUAGE_COUNT).getValue()));
 
         return context.getLanguage(name);

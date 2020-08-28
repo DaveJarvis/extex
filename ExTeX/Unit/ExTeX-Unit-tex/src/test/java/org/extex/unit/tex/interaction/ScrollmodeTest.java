@@ -65,7 +65,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
             "\\scrollmode" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.SCROLLMODE, //
+        assertEquals(Interaction.SCROLLMODE,
             interpreter.getContext().getInteraction());
     }
 
@@ -83,7 +83,7 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
             "\\errorstopmode\\begingroup\\scrollmode\\endgroup" + "\\end",
             //--- output channel ---
             "");
-        assertEquals(Interaction.SCROLLMODE, //
+        assertEquals(Interaction.SCROLLMODE,
             interpreter.getContext().getInteraction());
     }
 

@@ -102,13 +102,13 @@ public class MathContext {
     public FixedDimen mathParameter(MathFontParameter p,
             StyleNoad actualStyle) throws TypesetterException {
 
-        Font font = options.getFont(MathFontParameter.key(options, //
+        Font font = options.getFont(MathFontParameter.key(options,
             actualStyle.getFontName(), p.inSymbol() ? "2" : "3"));
         FixedDimen value;
         if (font == null || (value = font.getFontDimen(p.getNo())) == null) {
             throw new TypesetterException(
-            //
-                new HelpingException(LocalizerFactory.getLocalizer(getClass()), //
+
+                new HelpingException(LocalizerFactory.getLocalizer(getClass()),
                     p.inSymbol()
                             ? "TTP.InsufficientSymbolFonts"
                             : "TTP.InsufficientExtensionFonts"));

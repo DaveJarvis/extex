@@ -408,7 +408,7 @@ public class ExIndex extends Indexer {
 
         config = ConfigurationFactory.newInstance("path/indexer");
         ResourceFinder f =
-                new ResourceFinderFactory().createResourceFinder(config, //
+                new ResourceFinderFactory().createResourceFinder(config,
                     logger, System.getProperties(), new InteractionIndicator() {
 
                         public boolean isInteractive() {
@@ -525,8 +525,8 @@ public class ExIndex extends Indexer {
                 } else if ("-".equals(a)) {
                     files.add(getArg(a, args, ++i));
                 } else if ("-collate-spaces".startsWith(a)) {
-                    eval(new LList(LSymbol.get("sort-rule"), //
-                        new LString(" "), //
+                    eval(new LList(LSymbol.get("sort-rule"),
+                        new LString(" "),
                         new LString("")));
 
                 } else if ("-filter".startsWith(a)) {
@@ -569,7 +569,7 @@ public class ExIndex extends Indexer {
                     }
 
                 } else if ("-trace".startsWith(a) && a.length() > 4) {
-                    eval(new LList(LSymbol.get("markup-trace"), //
+                    eval(new LList(LSymbol.get("markup-trace"),
                         LSymbol.get(":on")));
 
                 } else if ("-Charset".startsWith(a)) {
@@ -711,7 +711,7 @@ public class ExIndex extends Indexer {
 
         if (banner) {
             String build = "$Revision$".replaceAll("[^0-9]", "");
-            logger.log(Level.INFO, LOCALIZER.format("Banner", build, //
+            logger.log(Level.INFO, LOCALIZER.format("Banner", build,
                 System.getProperty("java.version")));
             banner = false;
         }
@@ -763,7 +763,7 @@ public class ExIndex extends Indexer {
                     reader.close();
                 }
             }
-            logger.log(Level.INFO, LOCALIZER.format("ScanningStyleDone", //
+            logger.log(Level.INFO, LOCALIZER.format("ScanningStyleDone",
                 Integer.toString(ret[0]), Integer.toString(ret[1])));
         }
     }

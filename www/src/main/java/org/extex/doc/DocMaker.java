@@ -80,12 +80,12 @@ public class DocMaker extends DocParser {
 
                     public void execute(Map<String, Doc> map) {
 
-                        //
+                        
                     }
 
                     public void setTarget(String targetDir) {
 
-                        //
+                        
                     }
                 };
             }
@@ -112,7 +112,7 @@ public class DocMaker extends DocParser {
 
                     public void setTarget(String targetDir) {
 
-                        //
+                        
                     }
                 };
             }
@@ -142,7 +142,7 @@ public class DocMaker extends DocParser {
             } else if (!a.startsWith("-")) {
                 docMaker.addDir(a);
             } else if (a.equals("-")) {
-                //
+                
             } else if ("-verbose".startsWith(a)) {
                 docMaker.setVerbose(true);
             } else if ("-output".startsWith(a)) {
@@ -377,7 +377,7 @@ public class DocMaker extends DocParser {
         }
         for (File file : files) {
             if (file.getName().endsWith(".xml")) {
-                //
+                
             }
         }
     }

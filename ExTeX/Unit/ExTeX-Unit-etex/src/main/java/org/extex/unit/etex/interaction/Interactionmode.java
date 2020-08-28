@@ -129,7 +129,7 @@ public class Interactionmode extends AbstractAssignment
                 TypesetterException {
 
         try {
-            return context.getTokenFactory().toTokens(//
+            return context.getTokenFactory().toTokens(
                 context.getInteraction().getIndex());
         } catch (CatcodeException e) {
             throw new NoHelpException(e);

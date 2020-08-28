@@ -77,8 +77,8 @@ public class ConfigurationNoSuchMethodException extends ConfigurationException {
 
         return getLocalizer().format(
             "ConfigurationNoSuchMethodException.Text",
-            (methodName != null //
-                    ? methodName //
+            (methodName != null
+                    ? methodName
                     : getCause() != null
                             ? getCause().getLocalizedMessage()
                             : ""));

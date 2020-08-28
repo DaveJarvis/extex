@@ -234,7 +234,7 @@ public class CatcodePrimitive extends AbstractAssignment
             context.setCatcode(charCode, Catcode.valueOf((int) ccNumber),
                 prefix.clearGlobal());
         } catch (CatcodeException e) {
-            throw new InvalidCodeException(Long.toString(ccNumber), //
+            throw new InvalidCodeException(Long.toString(ccNumber),
                 Integer.toString(Catcode.getCatcodeMax()));
         }
 

@@ -143,8 +143,8 @@ public class Def extends AbstractAssignment implements LogEnabled {
             throw new EofInToksException(cs.toText(context.escapechar()));
         }
 
-        MacroCode macroCode = (protect //
-                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body) //
+        MacroCode macroCode = (protect 
+                ? new ProtectedMacroCode(cs, prefix, notLong, pattern, body) 
                 : new MacroCode(cs, prefix, notLong, pattern, body));
         macroCode.enableLogging(logger);
 

@@ -268,7 +268,7 @@ public class TfmReader implements Serializable {
     // * @return Returns the encfactory.
     // */
     // public EncFactory getEncfactory() {
-    //
+
     // return encfactory;
     // }
 
@@ -497,7 +497,7 @@ public class TfmReader implements Serializable {
     // * @return Returns the pfbparser.
     // */
     // public PfbParser getPfbParser() {
-    //
+
     // return pfbparser;
     // }
 
@@ -506,7 +506,7 @@ public class TfmReader implements Serializable {
     // * @return Returns the psfenc.
     // */
     // public PsFontEncoding getPsfenc() {
-    //
+
     // return psfenc;
     // }
 
@@ -515,7 +515,7 @@ public class TfmReader implements Serializable {
     // * @return Returns the psfontmap.
     // */
     // public PsFontsMapReader getPsfontmap() {
-    //
+
     // return psfontmap;
     // }
 
@@ -556,14 +556,14 @@ public class TfmReader implements Serializable {
     // */
     // public void setFontMapEncoding(PsFontsMapReader apsfontmap,
     // EncFactory encf) throws FontException, ConfigurationException {
-    //
+
     // psfontmap = apsfontmap;
     // encfactory = encf;
-    //
+
     // // read psfonts.map
     // if (psfontmap != null) {
     // psfenc = psfontmap.getPSFontEncoding(fontname);
-    //
+
     // // encoding
     // if (psfenc != null) {
     // if (!"".equals(psfenc.getEncfile())) {
@@ -586,10 +586,10 @@ public class TfmReader implements Serializable {
     // * @param parser The pfb parser to set.
     // */
     // public void setPfbParser(PfbParser parser) {
-    //
+
     // pfbparser = parser;
     // if (enctable == null && parser != null) {
-    //
+
     // // no encoding table -> set the glyphname
     // String enc[] = parser.getEncoding();
     // // glyphname

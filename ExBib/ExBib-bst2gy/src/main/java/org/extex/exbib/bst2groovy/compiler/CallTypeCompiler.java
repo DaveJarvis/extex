@@ -68,16 +68,16 @@ public class CallTypeCompiler implements Compiler {
         @Override
         public void print(CodeWriter writer) throws IOException {
 
-            writer.write("\n\tvoid callType(Entry entry) {", //
-                "\n\t\tdef typeFunction = types[entry.getType()]", //
-                "\n\t\tif (typeFunction == null) {", //
-                "\n\t\t\ttypeFunction = types['default.type']", //
-                "\n\t\t\tif (typeFunction == null) {", //
-                "\n\t\t\t\twarning('missing default.type')", //
-                "\n\t\t\t\treturn", //
-                "\n\t\t\t}", //
-                "\n\t\t}", //
-                "\n\t\ttypeFunction(entry)", //
+            writer.write("\n\tvoid callType(Entry entry) {",
+                "\n\t\tdef typeFunction = types[entry.getType()]",
+                "\n\t\tif (typeFunction == null) {",
+                "\n\t\t\ttypeFunction = types['default.type']",
+                "\n\t\t\tif (typeFunction == null) {",
+                "\n\t\t\t\twarning('missing default.type')",
+                "\n\t\t\t\treturn",
+                "\n\t\t\t}",
+                "\n\t\t}",
+                "\n\t\ttypeFunction(entry)",
                 "\n\t}\n");
         }
     };

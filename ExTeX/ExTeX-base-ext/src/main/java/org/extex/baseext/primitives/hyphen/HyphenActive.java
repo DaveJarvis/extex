@@ -122,7 +122,7 @@ public class HyphenActive extends AbstractHyphenationCode implements Theable {
 
         Language table = getHyphenationTable(context);
         try {
-            return context.getTokenFactory().toTokens( //
+            return context.getTokenFactory().toTokens(
                 (table.isHyphenating() ? "0" : "1"));
         } catch (HyphenationException e) {
             if (e.getCause() instanceof ConfigurationException) {

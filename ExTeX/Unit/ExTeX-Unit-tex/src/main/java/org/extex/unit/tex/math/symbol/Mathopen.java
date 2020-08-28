@@ -102,7 +102,7 @@ public class Mathopen extends AbstractMathCode {
             Typesetter typesetter) throws TypesetterException, HelpingException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
 
         if (noad != null) {

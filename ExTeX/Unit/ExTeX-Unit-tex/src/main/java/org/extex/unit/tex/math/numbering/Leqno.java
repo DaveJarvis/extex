@@ -104,7 +104,7 @@ public class Leqno extends AbstractMathCode {
             throw new CantUseInException(toText(context),
                 "math mode");
         }
-        throw new CantUseInException(toText(context), //
+        throw new CantUseInException(toText(context),
             typesetter.getMode().toString());
     }
 

@@ -81,7 +81,7 @@ public class ExplicitKernNode extends AbstractKernNode implements Discardable {
     @Override
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
-        sb.append(getLocalizer().format("String.Format", //
+        sb.append(getLocalizer().format("String.Format",
             getWidth().toString()));
     }
 

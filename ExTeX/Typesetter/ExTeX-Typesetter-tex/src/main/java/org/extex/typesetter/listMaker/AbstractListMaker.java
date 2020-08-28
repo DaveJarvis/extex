@@ -182,7 +182,7 @@ public abstract class AbstractListMaker implements TokenDelegateListMaker {
             throw new TypesetterException(
                 new MissingMathException(t.toString()));
         } else if (next.isa(Catcode.MATHSHIFT)) {
-            manager.push(//
+            manager.push(
                 new DisplaymathListMaker(manager, source.getLocator()));
             source.push(context.getToks("everydisplay"));
         } else {

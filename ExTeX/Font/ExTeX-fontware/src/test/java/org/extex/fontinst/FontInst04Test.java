@@ -122,22 +122,22 @@ public class FontInst04Test extends ExTeXLauncher {
      * The tex output (t1fxl.fd)
      */
     private static final String TEXT_T1FXL_FD = "%Filename: t1fxl.fd\n"
-            + "%Created by: tex create\n" //
-            + "%Created using fontinst v1.929\n" //
+            + "%Created by: tex create\n" 
+            + "%Created using fontinst v1.929\n" 
             + "\n"
-            + "%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY\n" //
-            + "\n" //
-            + "\\ProvidesFile{t1fxl.fd}\n" //
+            + "%THIS FILE SHOULD BE PUT IN A TEX INPUTS DIRECTORY\n" 
+            + "\n" 
+            + "\\ProvidesFile{t1fxl.fd}\n" 
             + "   [" + _Y + "/" + _M + "/"
             + _D
-            + " Fontinst v1.929 font definitions for T1/fxl.]\n" //
-            + "\n" //
-            + "\\DeclareFontFamily{T1}{fxl}{}\n" //
-            + "\n" //
+            + " Fontinst v1.929 font definitions for T1/fxl.]\n" 
+            + "\n" 
+            + "\\DeclareFontFamily{T1}{fxl}{}\n" 
+            + "\n" 
             + "\\DeclareFontShape{T1}{fxl}{m}{n}{\n" + "   <-> fxlr-t1\n"
-            + "}{}\n" //
-            + "\n" //
-            + "\n" //
+            + "}{}\n" 
+            + "\n" 
+            + "\n" 
             + "\\endinput\n";
 
 
@@ -165,18 +165,18 @@ public class FontInst04Test extends ExTeXLauncher {
     private Properties getMyProps() {
 
         Properties props = getProps();
-        props.setProperty("extex.texinputs", //
-            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + //
-                    "../texmf/src/texmf/fonts/afm/" + SEP + //
-                    "../texmf/src/texmf/fonts/enc/" + SEP + //
-                    "../ExTeX-fontware/src/texmf/tex/misc" //
+        props.setProperty("extex.texinputs", 
+            "../ExTeX-fontware/src/texmf/tex/fontinst/base" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinetx" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/latinmtx" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathetx" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/mathmtx" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/misc" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smbletx" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/fontinst/smblmtx" + SEP + 
+                    "../texmf/src/texmf/fonts/afm/" + SEP + 
+                    "../texmf/src/texmf/fonts/enc/" + SEP + 
+                    "../ExTeX-fontware/src/texmf/tex/misc" 
         );
         // props.setProperty("extex.launcher.trace", "true");
         // props.setProperty("extex.launcher.time", "true");
@@ -196,10 +196,10 @@ public class FontInst04Test extends ExTeXLauncher {
         assertOutput(getMyProps(), // --- input code ---
             TEX_CMDS,
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n" 
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr-8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr-8r.mtx.\n" 
                     + "Raw font written on fxlr-8r.pl.\n"
                     + "Warning: missing glyph `perthousandzero'.\n"
                     + "Warning: missing glyph `Eng'.\n"
@@ -227,10 +227,10 @@ public class FontInst04Test extends ExTeXLauncher {
         assertOutput(getMyProps(), // --- input code ---
             TEX_CMDS,
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n" 
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr-8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr-8r.mtx.\n" 
                     + "Raw font written on fxlr-8r.pl.\n"
                     + "Warning: missing glyph `perthousandzero'.\n"
                     + "Warning: missing glyph `Eng'.\n"
@@ -270,10 +270,10 @@ public class FontInst04Test extends ExTeXLauncher {
         assertOutput(getMyProps(), // --- input code ---
             TEX_CMDS,
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n" 
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr-8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr-8r.mtx.\n" 
                     + "Raw font written on fxlr-8r.pl.\n"
                     + "Warning: missing glyph `perthousandzero'.\n"
                     + "Warning: missing glyph `Eng'.\n"
@@ -313,10 +313,10 @@ public class FontInst04Test extends ExTeXLauncher {
         assertOutput(getMyProps(), // --- input code ---
             TEX_CMDS,
             // --- log channel ---
-            "No file fontinst.rc.\n" //
-                    + "Metrics written on fxlr.mtx.\n"//
+            "No file fontinst.rc.\n" 
+                    + "Metrics written on fxlr.mtx.\n"
                     + "Raw font written on fxlr.pl.\n" // +
-                    + "Transformed metrics written on fxlr-8r.mtx.\n" //
+                    + "Transformed metrics written on fxlr-8r.mtx.\n" 
                     + "Raw font written on fxlr-8r.pl.\n"
                     + "Warning: missing glyph `perthousandzero'.\n"
                     + "Warning: missing glyph `Eng'.\n"

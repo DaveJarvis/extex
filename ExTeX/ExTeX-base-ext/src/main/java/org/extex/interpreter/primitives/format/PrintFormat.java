@@ -136,7 +136,7 @@ public class PrintFormat extends AbstractCode implements Theable {
                     ((RealConvertible) code).convertReal(context, source,
                         typesetter);
             try {
-                return context.getTokenFactory().toTokens( //
+                return context.getTokenFactory().toTokens(
                     form.format(val.getValue()));
             } catch (CatcodeException e) {
                 throw new NoHelpException(e);
@@ -146,7 +146,7 @@ public class PrintFormat extends AbstractCode implements Theable {
                     ((CountConvertible) code).convertCount(context, source,
                         typesetter);
             try {
-                return context.getTokenFactory().toTokens( //
+                return context.getTokenFactory().toTokens(
                     form.format(val));
             } catch (CatcodeException e) {
                 throw new NoHelpException(e);
@@ -157,7 +157,7 @@ public class PrintFormat extends AbstractCode implements Theable {
                     ((PairConvertible) code).convertPair(context, source,
                         typesetter);
             try {
-                return context.getTokenFactory().toTokens( //
+                return context.getTokenFactory().toTokens(
                     form.format(val.getX().getValue()) + " "
                             + form.format(val.getY().getValue()));
             } catch (CatcodeException e) {

@@ -28,14 +28,14 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({TBlockTest.class, //
-        TCharTest.class, //
-        TFieldTest.class, //
-        TField2Test.class, //
-        TIntegerTest.class, //
-        TLiteralTest.class, //
-        TQLiteralTest.class, //
-        TStringTest.class //
+@Suite.SuiteClasses({TBlockTest.class,
+        TCharTest.class,
+        TFieldTest.class,
+        TField2Test.class,
+        TIntegerTest.class,
+        TLiteralTest.class,
+        TQLiteralTest.class,
+        TStringTest.class
 })
 public final class AllTests {
 

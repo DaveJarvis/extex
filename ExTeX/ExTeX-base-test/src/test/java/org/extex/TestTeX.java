@@ -170,7 +170,7 @@ public final class TestTeX {
         // pro.setProperty("extex.output", "dump");
         pro.setProperty("extex.config", "tex.xml"); // gene
         pro.setProperty("extex.nobanner", "true"); // gene
-        pro.setProperty("extex.texinputs", //
+        pro.setProperty("extex.texinputs",
             "../" + project + "/src/test/resources/data"); // gene
         pro.setProperty("extex.file", texfile);
         pro.setProperty("extex.jobname", texfile);

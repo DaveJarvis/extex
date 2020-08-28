@@ -134,9 +134,9 @@ public final class TDoubleParser implements ETypeParser {
     @Override
     public void registered(Evaluator evaluator) {
 
-        //
+
         // functions.put("cos", new Function1() {
-        //
+
         // /**
         // * Compute the cos value.
         // *
@@ -145,7 +145,7 @@ public final class TDoubleParser implements ETypeParser {
         // */
         // public void apply(Terminal accumulator)
         // throws InterpreterException {
-        //
+
         // // if (accumulator.sp != 0) {
         // // throw new HelpingException(LocalizerFactory
         // // .getLocalizer(Evaluator.class.getName()),
@@ -155,9 +155,9 @@ public final class TDoubleParser implements ETypeParser {
         // // accumulator.value = (long) (ScaledNumber.ONE * Math.cos(x));
         // }
         // });
-        //
+
         // functions.put("sin", new Function1() {
-        //
+
         // /**
         // * Compute the sin value.
         // *
@@ -166,7 +166,7 @@ public final class TDoubleParser implements ETypeParser {
         // */
         // public void apply(Terminal accumulator)
         // throws InterpreterException {
-        //
+
         // // if (accumulator.sp != 0) {
         // // throw new HelpingException(LocalizerFactory
         // // .getLocalizer(Evaluator.class.getName()),
@@ -176,9 +176,9 @@ public final class TDoubleParser implements ETypeParser {
         // // accumulator.value = (long) (ScaledNumber.ONE * Math.sin(x));
         // }
         // });
-        //
+
         // functions.put("tan", new Function1() {
-        //
+
         // /**
         // * Compute the tan value.
         // *
@@ -187,7 +187,7 @@ public final class TDoubleParser implements ETypeParser {
         // */
         // public void apply(Terminal accumulator)
         // throws InterpreterException {
-        //
+
         // // if (accumulator.sp != 0) {
         // // throw new HelpingException(LocalizerFactory
         // // .getLocalizer(Evaluator.class.getName()),
@@ -197,7 +197,7 @@ public final class TDoubleParser implements ETypeParser {
         // // accumulator.value = (long) (ScaledNumber.ONE * Math.tan(x));
         // }
         // });
-        //
+
         evaluator.register("pi", new ConstantFunction() {
 
             /**

@@ -54,9 +54,9 @@ public class MkernTest extends AbstractMathTester {
                         + "$a\\mkern12mu b$\\end",
                 //--- output message ---
                 "\\vbox(6.94444pt+0.0pt)x3000.0pt\n"
-                        + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" //
-                        + "..a\n" //
-                        + "..\\kern6.66667pt\n" //
+                        + ".\\hbox(6.94444pt+0.0pt)x3000.0pt\n" 
+                        + "..a\n" 
+                        + "..\\kern6.66667pt\n" 
                         + "..b\n");
     }
 

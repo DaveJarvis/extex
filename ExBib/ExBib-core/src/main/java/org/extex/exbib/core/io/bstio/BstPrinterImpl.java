@@ -176,7 +176,7 @@ public class BstPrinterImpl implements CommandVisitor {
      */
     public void visitChar(TChar c, Object... args) {
 
-        //
+
     }
 
     /**

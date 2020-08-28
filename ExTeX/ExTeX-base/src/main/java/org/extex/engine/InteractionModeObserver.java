@@ -69,7 +69,7 @@ public class InteractionModeObserver implements InteractionObserver {
     public void receiveInteractionChange(ContextInternals context,
             Interaction mode) throws Exception {
 
-        handler.setLevel(mode == Interaction.BATCHMODE //
+        handler.setLevel(mode == Interaction.BATCHMODE 
                 ? Level.SEVERE
                 : Level.INFO);
     }

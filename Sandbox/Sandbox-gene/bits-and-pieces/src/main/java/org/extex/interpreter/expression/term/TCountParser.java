@@ -150,7 +150,7 @@ public final class TCountParser implements ETypeParser {
                             t = null;
                             break;
                         }
-                        for (t = source.scanToken(context); t instanceof OtherToken; //
+                        for (t = source.scanToken(context); t instanceof OtherToken;
                         t = source.scanToken(context)) {
                             save.add(t);
                             no = t.getChar().getCodePoint() - '0';
@@ -167,8 +167,8 @@ public final class TCountParser implements ETypeParser {
 
                     case '"':
 
-                        for (t = source.scanToken(context); //
-                        t instanceof OtherToken || t instanceof LetterToken; //
+                        for (t = source.scanToken(context);
+                        t instanceof OtherToken || t instanceof LetterToken;
                         t = source.scanToken(context)) {
                             save.add(t);
                             no = t.getChar().getCodePoint();
@@ -222,7 +222,7 @@ public final class TCountParser implements ETypeParser {
                     break;
 
                 } else if (code instanceof CountConvertible) {
-                    n = ((CountConvertible) code).convertCount(context, //
+                    n = ((CountConvertible) code).convertCount(context,
                         source, typesetter);
                     return new TCount(n);
                 } else if (code instanceof ExpandableCode) {

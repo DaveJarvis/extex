@@ -61,10 +61,10 @@ public class HskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "x\\hskip 123pt x\\end ",
             // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    "..x\n" + //
-                    "..\\glue123.0pt\n" + //
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    "..x\n" +
+                    "..\\glue123.0pt\n" +
                     "..x\n");
     }
 
@@ -82,10 +82,10 @@ public class HskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "x\\hskip 123pt plus 1.2fil x\\end ",
             // --- output channel ---
-            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    "..x\n" + //
-                    "..\\glue123.0pt plus 1.2fil\n" + //
+            "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    "..x\n" +
+                    "..\\glue123.0pt plus 1.2fil\n" +
                     "..x\n");
     }
 

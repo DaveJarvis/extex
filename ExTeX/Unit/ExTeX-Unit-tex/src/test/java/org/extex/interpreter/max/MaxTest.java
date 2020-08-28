@@ -83,9 +83,9 @@ public class MaxTest extends ExTeXLauncher {
     @Test
     public void testEndgroup1() throws Exception {
 
-        assertFailure(//
+        assertFailure(
             DEFINE_BRACES + "}",
-            //
+
             "Too many }'s");
     }
 

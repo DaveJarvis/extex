@@ -56,7 +56,7 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\afterassignment ", //
+        assertFailure("\\afterassignment ", 
             "Unexpected end of file while processing \\afterassignment");
     }
 

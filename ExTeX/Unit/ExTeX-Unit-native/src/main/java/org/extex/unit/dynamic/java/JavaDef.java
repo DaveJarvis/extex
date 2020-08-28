@@ -200,7 +200,7 @@ public class JavaDef extends AbstractAssignment implements Definer {
         }
 
         try {
-            Code code = (Code) (Class.forName(classname).getConstructor(//
+            Code code = (Code) (Class.forName(classname).getConstructor(
                 new Class[]{CodeToken.class}).newInstance(cs));
             context.setCode(cs, code, prefix.clearGlobal());
 

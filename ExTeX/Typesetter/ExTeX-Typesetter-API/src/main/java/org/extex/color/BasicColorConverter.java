@@ -93,13 +93,13 @@ public class BasicColorConverter implements ColorConverter {
             int g = Color.MAX_VALUE - color.getGreen();
             int b = Color.MAX_VALUE - color.getBlue();
             int black = (r > b ? (b > g ? g : b) : (r > g ? g : r));
-            return ColorFactory.getCmyk(//
+            return ColorFactory.getCmyk(
                 black == Color.MAX_VALUE ? 0 : (r - black)
-                        / (Color.MAX_VALUE - black), //
+                        / (Color.MAX_VALUE - black),
                 black == Color.MAX_VALUE ? 0 : (g - black)
-                        / (Color.MAX_VALUE - black), //
+                        / (Color.MAX_VALUE - black),
                 black == Color.MAX_VALUE ? 0 : (r - black)
-                        / (Color.MAX_VALUE - black), //
+                        / (Color.MAX_VALUE - black),
                 black, color.getAlpha());
         }
     };
@@ -183,9 +183,9 @@ public class BasicColorConverter implements ColorConverter {
                     Color.MAX_VALUE - color.getYellow()
                             * (Color.MAX_VALUE - color.getBlack())
                             / Color.MAX_VALUE + color.getBlack();
-            return ColorFactory.getRgb((r < 0 ? 0 : r), //
-                (g < 0 ? 0 : g), //
-                (b < 0 ? 0 : b), //
+            return ColorFactory.getRgb((r < 0 ? 0 : r),
+                (g < 0 ? 0 : g),
+                (b < 0 ? 0 : b),
                 color.getAlpha());
         }
 

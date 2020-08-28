@@ -82,7 +82,7 @@ public class ExIndexParserFactory implements RawIndexParserFactory {
             }
         }
         Reader reader = new InputStreamReader(stream, charset);
-        stream = getClass().getClassLoader().getResourceAsStream(//
+        stream = getClass().getClassLoader().getResourceAsStream(
             "org/extex/exindex/parser/" + parser + ".parser");
         if (stream == null) {
             throw new ParserException(LOCALIZER.format("ParserMissing", parser));

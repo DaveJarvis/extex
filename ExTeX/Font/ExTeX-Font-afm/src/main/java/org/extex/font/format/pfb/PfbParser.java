@@ -403,14 +403,14 @@ public class PfbParser implements XMLWriterConvertible, Serializable {
     // * @return Returns the encrypt data.
     // */
     // private byte[] encrypt(byte[] data, int r, byte[] random) {
-    //
+
     // ByteArrayOutputStream code =
     // new ByteArrayOutputStream(random.length + data.length);
     // int rr = r;
     // byte d[] = new byte[data.length + random.length];
     // System.arraycopy(random, 0, d, 0, random.length);
     // System.arraycopy(data, 0, d, random.length, data.length);
-    //
+
     // for (byte xx : d) {
     // int x = xx & 0xff;
     // int cipher = x ^ (rr >> 8);

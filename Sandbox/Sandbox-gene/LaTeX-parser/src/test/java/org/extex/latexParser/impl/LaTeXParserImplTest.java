@@ -74,7 +74,7 @@ public class LaTeXParserImplTest {
         @Override
         public void close() {
 
-            //
+
         }
 
         /**
@@ -85,7 +85,7 @@ public class LaTeXParserImplTest {
         @Override
         public void flush() {
 
-            //
+
         }
 
         /**

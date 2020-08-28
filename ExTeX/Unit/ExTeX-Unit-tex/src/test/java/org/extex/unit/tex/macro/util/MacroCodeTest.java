@@ -356,7 +356,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow1() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc{}" //
+            DEFINE_CATCODES + "\\def\\abc{}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "->.\n",
@@ -374,7 +374,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow2() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc{xyz}" //
+            DEFINE_CATCODES + "\\def\\abc{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "->xyz.\n",
@@ -392,7 +392,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow3() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{xyz}" //
+            DEFINE_CATCODES + "\\def\\abc#1{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "#1->xyz.\n",
@@ -410,7 +410,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow4() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1#{xyz}" //
+            DEFINE_CATCODES + "\\def\\abc#1#{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "#1{->xyz{.\n",
@@ -428,7 +428,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow5() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{x#1x}" //
+            DEFINE_CATCODES + "\\def\\abc#1{x#1x}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "#1->x#1x.\n",
@@ -446,7 +446,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow6() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{x##1x}" //
+            DEFINE_CATCODES + "\\def\\abc#1{x##1x}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "#1->x##1x.\n",
@@ -463,7 +463,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow7() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\long\\def\\abc#1#{xyz}" //
+            DEFINE_CATCODES + "\\long\\def\\abc#1#{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=\\long macro:\n" + "#1{->xyz{.\n",
@@ -480,7 +480,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow8() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\outer\\def\\abc#1#{xyz}" //
+            DEFINE_CATCODES + "\\outer\\def\\abc#1#{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=\\outer macro:\n" + "#1{->xyz{.\n",
@@ -498,7 +498,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow9() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\outer\\long\\def\\abc#1#{xyz}" //
+            DEFINE_CATCODES + "\\outer\\long\\def\\abc#1#{xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=\\long\\outer macro:\n" + "#1{->xyz{.\n",
@@ -516,7 +516,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow10() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\def\\abc#1{\\xyz}" //
+            DEFINE_CATCODES + "\\def\\abc#1{\\xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> \\abc=macro:\n" + "#1->\\xyz.\n",
@@ -534,7 +534,7 @@ public class MacroCodeTest extends ExTeXLauncher {
     public void testShow11() throws Exception {
 
         assertOutput(// --- input code ---
-            DEFINE_CATCODES + "\\escapechar=-1 " + "\\def\\abc#1{\\xyz}" //
+            DEFINE_CATCODES + "\\escapechar=-1 " + "\\def\\abc#1{\\xyz}"
                     + "\\show\\abc \\end",
             // --- error channel ---
             "> abc=macro:\n" + "#1->xyz.\n",

@@ -28,44 +28,44 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({AddPeriodTest.class, //
-        CallTypeTest.class, //
-        ChangeCaseTest.class, //
-        ChrToIntTest.class, //
-        CiteTest.class, //
-        ConcatTest.class, //
-        DuplicateTest.class, //
-        EmptyTest.class, //
-        EqTest.class, //
-        FormatNameTest.class, //
-        FormatName099Test.class, //
-        GtTest.class, //
-        IfTest.class, //
-        IntToChrTest.class, //
-        IntToStrTest.class, //
-        LtTest.class, //
-        MinusTest.class, //
-        MissingTest.class, //
-        NewlineTest.class, //
-        NumNamesTest.class, //
-        PlusTest.class, //
-        PopTest.class, //
-        PreambleTest.class, //
-        PurifyTest.class, //
-        QuoteTest.class, //
-        SetTest.class, //
-        SkipTest.class, //
-        StackTest.class, //
-        SubstringTest.class, //
-        SwapTest.class, //
-        TextLengthTest.class, //
-        TextPrefixTest.class, //
-        TopTest.class, //
-        TypeTest.class, //
-        WarningTest.class, //
-        WhileTest.class, //
-        WidthTest.class, //
-        WriteTest.class //
+@Suite.SuiteClasses({AddPeriodTest.class,
+        CallTypeTest.class,
+        ChangeCaseTest.class,
+        ChrToIntTest.class,
+        CiteTest.class,
+        ConcatTest.class,
+        DuplicateTest.class,
+        EmptyTest.class,
+        EqTest.class,
+        FormatNameTest.class,
+        FormatName099Test.class,
+        GtTest.class,
+        IfTest.class,
+        IntToChrTest.class,
+        IntToStrTest.class,
+        LtTest.class,
+        MinusTest.class,
+        MissingTest.class,
+        NewlineTest.class,
+        NumNamesTest.class,
+        PlusTest.class,
+        PopTest.class,
+        PreambleTest.class,
+        PurifyTest.class,
+        QuoteTest.class,
+        SetTest.class,
+        SkipTest.class,
+        StackTest.class,
+        SubstringTest.class,
+        SwapTest.class,
+        TextLengthTest.class,
+        TextPrefixTest.class,
+        TopTest.class,
+        TypeTest.class,
+        WarningTest.class,
+        WhileTest.class,
+        WidthTest.class,
+        WriteTest.class
 })
 public final class AllTests {
 

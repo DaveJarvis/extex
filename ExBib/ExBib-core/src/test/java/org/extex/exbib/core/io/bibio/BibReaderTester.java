@@ -57,7 +57,7 @@ import org.junit.Test;
 public abstract class BibReaderTester {
 
     /**
-     * ´Creating an entry is ok.
+     * ï¿½Creating an entry is ok.
      */
     protected class EntryMakingTestDB extends TestDB {
 
@@ -271,7 +271,7 @@ public abstract class BibReaderTester {
          */
         public void storeComment(String comment) {
 
-            //
+            
         }
 
         /**

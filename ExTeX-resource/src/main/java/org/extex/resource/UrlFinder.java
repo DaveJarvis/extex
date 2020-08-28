@@ -336,7 +336,7 @@ public class UrlFinder extends AbstractFinder
      */
     private NamedInputStream openUrl(String path, String name) {
 
-        String n = (path.equals("") || path.endsWith("/") //
+        String n = (path.equals("") || path.endsWith("/") 
         ? path : path + "/") + name;
 
         if (!n.matches("^[a-z0-9]+://.+")) {

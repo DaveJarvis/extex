@@ -122,7 +122,7 @@ public final class GlueComponentParser {
         if (t instanceof CodeToken) {
             Code code = context.getCode((CodeToken) t);
             if (code instanceof DimenConvertible) {
-                v *= ((DimenConvertible) code).convertDimen(context, //
+                v *= ((DimenConvertible) code).convertDimen(context, 
                     source, typesetter) / GlueComponent.ONE;
                 return new GlueComponent(v);
             }
@@ -192,8 +192,8 @@ public final class GlueComponentParser {
                 case 'f':
                     if (fixed && t.eq(Catcode.LETTER, 'i')) {
                         int order = 1;
-                        for (t = source.getToken(context); //
-                        (t != null && (t.eq('l') || t.eq('L'))); //
+                        for (t = source.getToken(context); 
+                        (t != null && (t.eq('l') || t.eq('L'))); 
                         t = source.getToken(context)) {
                             order++;
                         }

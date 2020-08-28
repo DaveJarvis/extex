@@ -156,7 +156,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         @Override
         public void widgetDefaultSelected(SelectionEvent e) {
 
-            //
+            
         }
 
         /**
@@ -217,7 +217,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
             @Override
             public void widgetDefaultSelected(SelectionEvent e) {
 
-                //
+                
             }
 
             @Override
@@ -233,20 +233,20 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
         // bibtexControl = new Text(group, SWT.BORDER);
         bibtexControl.addModifyListener(modifyListener);
         bibtexControl.setLayoutData(HFILL);
-        //
+        
         // Button fileButton = new Button(group, SWT.NONE);
         // fileButton.setText("Select");
         // fileButton.addSelectionListener(new SelectionListener() {
-        //
+        
         // @Override
         // public void widgetDefaultSelected(SelectionEvent e) {
-        //
-        // //
+        
+        // 
         // }
-        //
+        
         // @Override
         // public void widgetSelected(SelectionEvent e) {
-        //
+        
         // FileDialog fileDialog = new FileDialog(getShell());
         // fileDialog.setFileName(bibtexControl.getText());
         // String file = fileDialog.open();
@@ -281,7 +281,7 @@ public class ArgumentsTab extends AbstractLaunchConfigurationTab {
             @Override
             public void widgetDefaultSelected(SelectionEvent e) {
 
-                //
+                
             }
 
             @Override

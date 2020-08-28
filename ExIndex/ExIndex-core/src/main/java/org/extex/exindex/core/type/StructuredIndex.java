@@ -233,7 +233,7 @@ public class StructuredIndex extends LetterGroupContainer
     public String applyMergeRule(String text) {
 
         if (mergeRules.isEmpty()) {
-            return (fallback == null //
+            return (fallback == null 
                     ? text
                     : fallback.applyMergeRuleFallback(text));
         }
@@ -253,7 +253,7 @@ public class StructuredIndex extends LetterGroupContainer
         List<Rule> rules = sortRulesMap.get(Integer.valueOf(level));
 
         if (rules == null || rules.isEmpty()) {
-            return (fallback == null //
+            return (fallback == null 
                     ? text
                     : fallback.applySortRuleFallback(text, level));
         }

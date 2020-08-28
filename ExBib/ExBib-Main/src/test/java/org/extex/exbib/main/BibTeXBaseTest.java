@@ -52,9 +52,9 @@ public class BibTeXBaseTest {
      */
     private void runTest(String style) throws IOException {
 
-        TRunner.runTest(DATA_DIR + "/" + style, //
-            DATA_DIR + "/xampl", //
-            "*", //
+        TRunner.runTest(DATA_DIR + "/" + style,
+            DATA_DIR + "/xampl",
+            "*",
             new File(DATA_DIR, style + ".result"), "--strict");
     }
 

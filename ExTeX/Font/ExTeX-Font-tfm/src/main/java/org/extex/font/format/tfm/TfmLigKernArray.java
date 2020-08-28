@@ -548,7 +548,7 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
     // org.extex.font.format.pl.PlFormat#toPL(org.extex.font.format.pl.PlWriter)
     // */
     // public void toPL(PlWriter out) throws IOException {
-    //
+
     // if (boundaryChar != TfmCharInfoWord.NOCHARCODE) {
     // out.plopen("BOUNDARYCHAR").addChar(boundaryChar).plclose();
     // }
@@ -560,25 +560,25 @@ public class TfmLigKernArray implements /* PlFormat, */Serializable {
     // if (foundLigKern(ciw)) {
     // out.plopen("LABEL").addChar((short) (i + bc));
     // out.plclose();
-    //
+
     // // ligature
     // int ligstart = ciw.getLigkernstart();
     // if (ligstart != TfmCharInfoWord.NOINDEX
     // && ligKernTable != null) {
-    //
+
     // for (int k = ligstart; k != TfmCharInfoWord.NOINDEX; k =
     // ligKernTable[k].nextIndex(k)) {
     // TfmLigKern lk = ligKernTable[k];
-    //
+
     // if (lk instanceof TfmLigature) {
     // TfmLigature lig = (TfmLigature) lk;
-    //
+
     // out.plopen("LIG")
     // .addChar(lig.getNextChar()).addChar(
     // lig.getAddingChar()).plclose();
     // } else if (lk instanceof TfmKerning) {
     // TfmKerning kerning = (TfmKerning) lk;
-    //
+
     // out.plopen("KRN").addChar(
     // kerning.getNextChar()).addReal(
     // kerning.getKern()).plclose();

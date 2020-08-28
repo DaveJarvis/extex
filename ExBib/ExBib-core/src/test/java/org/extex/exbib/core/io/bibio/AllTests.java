@@ -28,13 +28,13 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({BibPrinterFactoryTest.class, //
-        BibPrinterImplTest.class, //
-        BibPrinterLispImplTest.class, //
-        BibPrinterXmlImplTest.class, //
-        BibReaderFactoryTest.class, //
-        BibReader099ImplTest.class, //
-        BibReaderImplTest.class //
+@Suite.SuiteClasses({BibPrinterFactoryTest.class,
+        BibPrinterImplTest.class,
+        BibPrinterLispImplTest.class,
+        BibPrinterXmlImplTest.class,
+        BibReaderFactoryTest.class,
+        BibReader099ImplTest.class,
+        BibReaderImplTest.class
 })
 public final class AllTests {
 

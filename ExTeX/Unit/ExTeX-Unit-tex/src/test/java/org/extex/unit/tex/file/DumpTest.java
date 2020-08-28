@@ -2504,7 +2504,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
         Calendar calendar = Calendar.getInstance();
         assertEquals(
             "texput "
-                    + //
+                    +
                     calendar.get(Calendar.YEAR) + "."
                     + (calendar.get(Calendar.MONTH) + 1) + "."
                     + calendar.get(Calendar.DAY_OF_MONTH), context.getId());
@@ -2532,7 +2532,7 @@ public class DumpTest extends NoFlagsPrimitiveTester {
     @Test
     public void testGroupError1() throws Exception {
 
-        assertFailure(DEFINE_BRACES + "{\\dump}", //
+        assertFailure(DEFINE_BRACES + "{\\dump}",
             "You can't dump inside a group");
     }
 

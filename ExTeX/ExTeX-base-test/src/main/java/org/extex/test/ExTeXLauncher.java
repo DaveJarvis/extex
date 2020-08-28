@@ -216,13 +216,13 @@ public abstract class ExTeXLauncher {
 
         provide(properties, "extex.output", "test-plain");
         provide(properties, "extex.interaction", "batchmode");
-        provide(properties, "extex.texinputs", //
-            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP + //
-                    "../texmf/src/main/texmf" + SEP + //
+        provide(properties, "extex.texinputs",
+            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP +
+                    "../texmf/src/main/texmf" + SEP +
                     "../texmf/src/texmf");
-        provide(properties, "extex.fonts", //
-            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP + //
-                    "../texmf/src/main/texmf" + SEP + //
+        provide(properties, "extex.fonts",
+            "." + SEP + "../texmf/src/texmf/test/texmf" + SEP +
+                    "../texmf/src/main/texmf" + SEP +
                     "../texmf/src/texmf");
         provide(properties, "extex.nobanner", "true");
         provide(properties, "extex.typesetter", "devel");
@@ -336,7 +336,7 @@ public abstract class ExTeXLauncher {
             String log, String expect) throws HelpingException {
 
         return assertOutput(properties,
-            code, //
+            code,
             (log == null ? null : new EqualityValidator("log stream", log)),
             (expect == null
                     ? null
@@ -403,7 +403,7 @@ public abstract class ExTeXLauncher {
                         new InputStreamReader(System.in)));
                 context.set(context.getLanguage("0"), true);
                 if (setHsize) {
-                    context.setDimen("hsize", new Dimen(Dimen.ONE * 3000), //
+                    context.setDimen("hsize", new Dimen(Dimen.ONE * 3000),
                         true);
                 }
                 if (trace && interpreter instanceof ExpandMacroObservable) {
@@ -499,7 +499,7 @@ public abstract class ExTeXLauncher {
             assertFalse("No error expected", errorP);
         }
         if (outputValidator != null) {
-            assertTrue("output stream", //
+            assertTrue("output stream",
                 outputValidator.validate(stream.toString()));
         }
         return interpreter;
@@ -629,7 +629,7 @@ public abstract class ExTeXLauncher {
      */
     protected void init(ExTeX extex) {
 
-        //
+
     }
 
     /**

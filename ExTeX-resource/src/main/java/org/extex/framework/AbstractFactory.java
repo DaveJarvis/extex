@@ -441,7 +441,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
             throw new ConfigurationInstantiationException(e);
         }
 
-        throw new ConfigurationInvalidClassException(theClass.getName(), //
+        throw new ConfigurationInvalidClassException(theClass.getName(),
             target.getName(), config);
     }
 
@@ -535,13 +535,13 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
                         if (args[1].isAssignableFrom(argClass)) {
                             if (args[0].isAssignableFrom(Configuration.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = (TYPE) constructor.newInstance(//
+                                instance = (TYPE) constructor.newInstance(
                                     config, arg);
                                 enableLogging(instance, logger);
                                 return instance;
                             } else if (args[0].isAssignableFrom(Logger.class)
                                     && args[1].isAssignableFrom(argClass)) {
-                                instance = (TYPE) constructor.newInstance(//
+                                instance = (TYPE) constructor.newInstance(
                                     config, arg);
                                 configure(instance, config);
                                 return instance;
@@ -562,7 +562,7 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
             throw new ConfigurationInstantiationException(e);
         }
 
-        throw new ConfigurationInvalidClassException(theClass.getName(), //
+        throw new ConfigurationInvalidClassException(theClass.getName(),
             target.getName(), config);
     }
 

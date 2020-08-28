@@ -81,7 +81,7 @@ public class LSortRule extends LFunction {
                 NoSuchMethodException {
 
         super(name, new Arg[]{Arg.STRING, Arg.STRING,
-                Arg.OPT_BOOLEAN(":again", Boolean.FALSE), //
+                Arg.OPT_BOOLEAN(":again", Boolean.FALSE),
                 Arg.OPT_NUMBER(":run", Integer.valueOf(0))});
         this.container = container;
     }
@@ -105,7 +105,7 @@ public class LSortRule extends LFunction {
             String replacement, Boolean again, Integer phase)
             throws LSettingConstantException {
 
-        container.addSortRule(phase, //
+        container.addSortRule(phase,
             new StringRule(pattern, replacement, again.booleanValue()));
         return null;
     }

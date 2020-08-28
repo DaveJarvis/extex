@@ -134,7 +134,7 @@ public class SyntaxException extends OcpException {
             return MessageFormat
                 .format(
                     bundle.getString(x[(found < 0 ? 0 : 2)
-                            + (expected < 0 ? 0 : 1)]), //
+                            + (expected < 0 ? 0 : 1)]),
                     (found < 0 ? "EOF" : Character.toString((char) found)),
                     (expected < 0 ? "EOF" : Character.toString((char) expected)),
                     Integer.toString(lineno), line);

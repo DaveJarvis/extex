@@ -636,22 +636,22 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         } else if (token instanceof TField) {
             compilers.put(name, new GetFieldCompiler(name));
         } else if (token instanceof TInteger) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetIntegerCompiler(GFunction.translate(name)));
         } else if (token instanceof TString) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetStringCompiler(GFunction.translate(name)));
         } else if (token instanceof TLocalInteger) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetLocalIntegerCompiler(name));
         } else if (token instanceof TLocalString) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetLocalStringCompiler(name));
         } else if (token instanceof TStringOption) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetOptionStringCompiler(name));
         } else if (token instanceof TIntegerOption) {
-            compilers.put(name, //
+            compilers.put(name, 
                 new GetOptionIntegerCompiler(name));
         }
     }
@@ -697,7 +697,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         List<Var> locals = state.getLocals();
         varManager.reassign(locals, "p");
         Collections.reverse(locals);
-        GFunction function = new GFunction(returnValue, name, //
+        GFunction function = new GFunction(returnValue, name, 
             locals, state.getCode(), entry);
 
         if (parameters.get(ParameterType.OPTIMIZE).toBoolean()) {
@@ -774,7 +774,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     public void load() throws ExBibBstNotFoundException, ExBibException {
 
         if (factory == null) {
-            factory = new BstReaderFactory(//
+            factory = new BstReaderFactory(
                 getConfiguration().getConfiguration("BstReader"), getFinder());
         }
         BstReader reader = factory.newInstance();
@@ -849,7 +849,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
 
         GFunction run =
                 new GFunction(null, "run",
-                    new ArrayList<Var>(), //
+                    new ArrayList<Var>(), 
                     new CommandTranslator(this).translate(this),
                     new EntryReference("entry"));
         run.use();
@@ -872,9 +872,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
         }
 
         w.write(
-            "\n}\n\nnew ", //
+            "\n}\n\nnew ", 
             getParameter(ParameterType.STYLE_NAME).toString(),
-            "(bibDB, bibWriter, bibProcessor).", //
+            "(bibDB, bibWriter, bibProcessor).", 
             run.getName(), "()\n");
         w.flush();
     }
@@ -906,9 +906,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void writeConstructor(CodeWriter writer) throws IOException {
 
         writer.write(
-            "\n\n", //
+            "\n\n", 
             "  ", getParameter(ParameterType.STYLE_NAME).toString(),
-            "(bibDB, bibWriter, bibProcessor) {\n\n", //
+            "(bibDB, bibWriter, bibProcessor) {\n\n", 
             "    super(bibDB, bibWriter, bibProcessor)\n\n");
 
         List<String> strings = this.getMacroNames();
@@ -934,9 +934,9 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
                     GStringConstant.translate(getOption(s).getValue()), ",\n");
             }
             writer.write("\t\t].each { name, value ->\n",
-                "\t\t\t", //
+                "\t\t\t", 
                 "if (bibProcessor.getOption(name) == null) {\n\t\t\t\t",
-                "bibProcessor.setOption(name, value)\n", //
+                "bibProcessor.setOption(name, value)\n", 
                 "\t\t\t}\n\t\t", "}\n");
         }
 
@@ -953,7 +953,7 @@ public class Bst2Groovy extends BstInterpreterCore implements Evaluator {
     private void writeHead(CodeWriter writer) throws IOException {
 
         writer.write("class ", getParameter(ParameterType.STYLE_NAME)
-            .toString(), " extends org.extex.exbib.groovy.Style {\n\n", //
+            .toString(), " extends org.extex.exbib.groovy.Style {\n\n", 
             "\n");
 
         for (String name : getIntegers()) {

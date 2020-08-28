@@ -105,8 +105,8 @@ public class DefaultOutputTranslation extends AbstractModeCode
         OmegaMode mode = scanOutputMode(context, source);
         Ocp ocp = OcpUtil.scanOcp(context, source, typesetter, finder);
 
-        context.set(OmegaExtension.NAME, //
-            DEFAULT_OUTPUT_TRANSLATION + mode.toString(), //
+        context.set(OmegaExtension.NAME,
+            DEFAULT_OUTPUT_TRANSLATION + mode.toString(),
             ocp, prefix.clearGlobal());
     }
 

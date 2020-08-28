@@ -57,9 +57,9 @@ public class CrossrefTest {
             throws IOException {
 
         TRunner.runTest(
-            DATA_DIR + "/" + style, //
-            DATA_DIR + "/xampl", //
-            "book-crossref,inbook-crossref", //
+            DATA_DIR + "/" + style,
+            DATA_DIR + "/xampl",
+            "book-crossref,inbook-crossref",
             new File(DATA_DIR, style + ".result." + xref + "xref"),
             "--min-crossrefs", xref);
     }

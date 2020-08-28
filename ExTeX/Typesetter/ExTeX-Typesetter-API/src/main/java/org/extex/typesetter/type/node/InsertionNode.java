@@ -107,10 +107,10 @@ public class InsertionNode extends AbstractNode implements Node {
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         sb.append(getLocalizer().format("String.Format",
-            Long.toString(subtype), //
-            getHeight().toString(), //
-            "???", //
-            getDepth().toString(), //
+            Long.toString(subtype),
+            getHeight().toString(),
+            "???",
+            getDepth().toString(),
             Long.toString(floatCost)));
         nodes.toString(sb, prefix, Integer.MAX_VALUE, Integer.MAX_VALUE);
     }

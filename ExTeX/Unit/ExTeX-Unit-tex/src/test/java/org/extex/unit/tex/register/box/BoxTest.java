@@ -56,7 +56,7 @@ public class BoxTest extends NoFlagsPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\box ", //
+        assertFailure("\\box ", 
             "Missing number, treated as zero");
     }
 

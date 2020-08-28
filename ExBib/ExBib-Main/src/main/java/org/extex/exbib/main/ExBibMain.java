@@ -265,7 +265,7 @@ public class ExBibMain extends AbstractMain {
             ExBib.PROP_OUTFILE, properties), "--outfile");
         option(
             "-p",
-            "--progname", //
+            "--progname", 
             new StringPropertyOption("opt.progname", PROP_PROGNAME, properties),
             "--program.name", "--program-name");
         option("-s", "--sorter", new StringPropertyOption("opt.sorter",
@@ -279,10 +279,10 @@ public class ExBibMain extends AbstractMain {
                 return EXIT_CONTINUE;
             }
         });
-        option("-7", "--traditional", //
+        option("-7", "--traditional", 
             new NoArgPropertyOption("opt.7.bit", ExBib.PROP_SORT, "csf:",
                 properties));
-        option("-8", "--8bit", //
+        option("-8", "--8bit", 
             new NoArgPropertyOption("opt.8.bit", ExBib.PROP_SORT,
                 "csf:88591lat.csf", properties));
         option("-B", "--big", new NoArgOption(null) {
@@ -303,7 +303,7 @@ public class ExBibMain extends AbstractMain {
                     info("ignore.option", arg);
                     return EXIT_CONTINUE;
                 }
-            }, //
+            }, 
             "--mentints", "-mentstrs", "--mfields", "--mpool", "--mstrings",
             "--mwizfuns");
     }

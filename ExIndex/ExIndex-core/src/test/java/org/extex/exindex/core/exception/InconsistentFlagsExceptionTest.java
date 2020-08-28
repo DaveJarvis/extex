@@ -72,7 +72,7 @@ public class InconsistentFlagsExceptionTest {
             Locale.setDefault(Locale.ENGLISH);
             InconsistentFlagsException e =
                     new InconsistentFlagsException(null, ":f1", ":f2");
-            assertEquals("The flags :f1 and :f2 may not be used together.\n", //
+            assertEquals("The flags :f1 and :f2 may not be used together.\n",
                 e.getLocalizedMessage());
         } finally {
             Locale.setDefault(locale);
@@ -92,7 +92,7 @@ public class InconsistentFlagsExceptionTest {
             InconsistentFlagsException e =
                     new InconsistentFlagsException(RL, ":f1", ":f2");
             assertEquals(
-                "rsc:1: The flags :f1 and :f2 may not be used together.\n", //
+                "rsc:1: The flags :f1 and :f2 may not be used together.\n",
                 e.getLocalizedMessage());
         } finally {
             Locale.setDefault(locale);
@@ -112,7 +112,7 @@ public class InconsistentFlagsExceptionTest {
             InconsistentFlagsException e =
                     new InconsistentFlagsException(null, ":f1", ":f2");
             assertEquals(
-                "Die Optionen :f1 und :f2 k\u00f6nnen nicht zusammen benutzt werden.\n", //
+                "Die Optionen :f1 und :f2 k\u00f6nnen nicht zusammen benutzt werden.\n",
                 e.getLocalizedMessage());
         } finally {
             Locale.setDefault(locale);
@@ -132,7 +132,7 @@ public class InconsistentFlagsExceptionTest {
             InconsistentFlagsException e =
                     new InconsistentFlagsException(RL, ":f1", ":f2");
             assertEquals(
-                "rsc:1: Die Optionen :f1 und :f2 k\u00f6nnen nicht zusammen benutzt werden.\n", //
+                "rsc:1: Die Optionen :f1 und :f2 k\u00f6nnen nicht zusammen benutzt werden.\n",
                 e.getLocalizedMessage());
         } finally {
             Locale.setDefault(locale);

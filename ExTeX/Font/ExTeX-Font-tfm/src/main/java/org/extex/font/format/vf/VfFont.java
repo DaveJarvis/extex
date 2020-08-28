@@ -264,7 +264,7 @@ public class VfFont implements XMLWriterConvertible {
     // * de.dante.extex.font.type.PlWriter)
     // */
     // public void toPL(final PlWriter out) throws IOException, FontException {
-    //
+
     // out.plopen("VTITLE ").plclose();
     // out.plopen("FAMILY").addStr(mastertfm.getFontFamily()).plclose();
     // out.plopen("FACE").addFace(mastertfm.getFace()).plclose();
@@ -286,7 +286,7 @@ public class VfFont implements XMLWriterConvertible {
     // }
     // // ligtable
     // mastertfm.getLigkern().toPL(out);
-    //
+
     // // character
     // for (int i = 0; i < cmds.size(); i++) {
     // VfCommand command = (VfCommand) cmds.get(i);
@@ -301,7 +301,7 @@ public class VfFont implements XMLWriterConvertible {
     // * @see de.dante.extex.font.type.FontMetric#getFontMetric()
     // */
     // public Element getFontMetric() throws FontException {
-    //
+
     // // create efm-file
     // Element root = new Element("fontgroup");
     // root.setAttribute("name", getFontname());
@@ -311,20 +311,20 @@ public class VfFont implements XMLWriterConvertible {
     // root.setAttribute("empr", "100");
     // root.setAttribute("type", "vf");
     // root.setAttribute("virtual", "true");
-    //
+
     // Element fontdimen = new Element("fontdimen");
     // root.addContent(fontdimen);
-    //
+
     // Element font = new Element("font");
     // root.addContent(font);
-    //
+
     // font.setAttribute("font-name", getFontname());
     // font.setAttribute("font-family", getFontname());
     // root.setAttribute("units-per-em", "1000");
     // font.setAttribute("checksum", String.valueOf(mastertfm.getChecksum()));
     // font.setAttribute("type", mastertfm.getFontType().toTFMString());
     // mastertfm.getParam().addParam(fontdimen);
-    //
+
     // // character
     // for (int i = 0; i < cmds.size(); i++) {
     // VfCommand command = (VfCommand) cmds.get(i);

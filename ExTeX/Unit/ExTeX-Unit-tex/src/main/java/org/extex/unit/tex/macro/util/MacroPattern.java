@@ -99,7 +99,7 @@ public class MacroPattern extends Tokens {
                 throws HelpingException,
                     TypesetterException {
 
-            args[no] = MacroPattern.getTokenOrBlock(context, source, //
+            args[no] = MacroPattern.getTokenOrBlock(context, source, 
                 typesetter, token);
         }
 
@@ -222,11 +222,11 @@ public class MacroPattern extends Tokens {
             Token t = source.getToken(context);
             if (!token.equals(t)) {
                 throw new HelpingException(getLocalizer(),
-                    "TTP.UseDoesntMatch", //
+                    "TTP.UseDoesntMatch", 
                     cs.toText(context.escapechar()));
             }
             if (notLong && t.eq(Catcode.ESCAPE, "par")) {
-                throw new HelpingException(getLocalizer(), "TTP.RunawayArg", //
+                throw new HelpingException(getLocalizer(), "TTP.RunawayArg", 
                     cs.toText(context.escapechar()));
             }
         }
@@ -290,7 +290,7 @@ public class MacroPattern extends Tokens {
                 throw new EofInMatchException(cs.toText(context.escapechar()));
             } else if (!(t instanceof LeftBraceToken)) {
                 throw new HelpingException(getLocalizer(),
-                    "TTP.UseDoesntMatch", //
+                    "TTP.UseDoesntMatch", 
                     cs.toText(context.escapechar()));
             } else if (t instanceof RightBraceToken) {
                 throw new ExtraRightBraceInDefException(cs.toText(context
@@ -656,13 +656,13 @@ public class MacroPattern extends Tokens {
         for (int i = 0; i < len;) {
             Token ti = get(i++);
             if (ti instanceof MacroParamToken) {
-                i = scanParameter(context, source, typesetter, //
+                i = scanParameter(context, source, typesetter, 
                     args, len, i, observer, notLong);
             } else {
                 Token t = source.getToken(context);
                 if (!ti.equals(t)) {
                     throw new HelpingException(getLocalizer(),
-                        "TTP.UseDoesntMatch", //
+                        "TTP.UseDoesntMatch", 
                         cs.toText(context.escapechar()));
                 } else if (notLong && t.eq(Catcode.ESCAPE, "par")) {
                     throw new HelpingException(getLocalizer(),
@@ -705,7 +705,7 @@ public class MacroPattern extends Tokens {
             if (t.equals(x)) {
                 return index + 1;
             }
-            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch", //
+            throw new HelpingException(getLocalizer(), "TTP.UseDoesntMatch", 
                 cs.toText(context.escapechar()));
         }
 

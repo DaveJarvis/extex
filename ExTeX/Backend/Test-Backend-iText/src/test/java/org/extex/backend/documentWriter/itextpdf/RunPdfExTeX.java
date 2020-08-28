@@ -80,7 +80,7 @@ public class RunPdfExTeX {
         // run(prop, "\\font\\hugo=cmr12 " + "\\hugo " + "Hugo " + "\\end",
         // new FileOutputStream(filexml));
         // System.out.println("create " + filexml.getPath());
-        //
+        
         // prop.setProperty("extex.output", "dump");
         // run(prop, "\\font\\hugo=cmr12 " + "\\hugo " + "Hugo " + "\\end",
         // new FileOutputStream(filedump));

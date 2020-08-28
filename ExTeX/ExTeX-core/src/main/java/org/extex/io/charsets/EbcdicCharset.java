@@ -34,7 +34,7 @@ public class EbcdicCharset extends Charset {
     /**
      * The field <tt>CODES</tt> contains the table of codes.
      */
-    public static final char[] CODES = {//
+    public static final char[] CODES = {
             /* 00 */0,
             /* 01 */0,
             /* 02 */0,

@@ -540,7 +540,7 @@ public abstract class AbstractParagraphBuiderTester {
         @Override
         public void setEfCode(UnicodeChar uc, long code) {
 
-            //
+
         }
 
         /**
@@ -552,7 +552,7 @@ public abstract class AbstractParagraphBuiderTester {
         @Override
         public void setFontDimen(String key, Dimen value) {
 
-            //
+
         }
 
         /**
@@ -771,7 +771,7 @@ public abstract class AbstractParagraphBuiderTester {
     public void setUp() {
 
         if (tracer == null) {
-            tracer = Logger.getLogger(//
+            tracer = Logger.getLogger(
                 AbstractParagraphBuiderTester.class.getName());
             tracer.setUseParentHandlers(false);
             if (traceonline()) {
@@ -960,17 +960,17 @@ public abstract class AbstractParagraphBuiderTester {
 
         // assertTrue(list instanceof VerticalListNode);
         // assertEquals(2, list.size());
-        assertEquals("\\vbox(0.0pt+0.0pt)x23.0pt\n" //
-                + ".\\hbox(0.0pt+0.0pt)x23.0pt\n" //
-                + "..a\n" //
-                + "..b\n" //
-                + "..space 1.0pt\n" //
-                + "..c\n" //
-                + "..\\discretionary{}{}{}\n" //
-                + "..d\n" //
-                + "..space 1.0pt\n" //
-                + "..e\n" //
-                + "..\\penalty 10000\n" //
+        assertEquals("\\vbox(0.0pt+0.0pt)x23.0pt\n"
+                + ".\\hbox(0.0pt+0.0pt)x23.0pt\n"
+                + "..a\n"
+                + "..b\n"
+                + "..space 1.0pt\n"
+                + "..c\n"
+                + "..\\discretionary{}{}{}\n"
+                + "..d\n"
+                + "..space 1.0pt\n"
+                + "..e\n"
+                + "..\\penalty 10000\n"
                 + "..\\glue0.01526pt", list.toString());
     }
 

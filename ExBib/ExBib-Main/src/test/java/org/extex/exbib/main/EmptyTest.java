@@ -46,9 +46,9 @@ public class EmptyTest {
      */
     private void runTest(String style) throws IOException {
 
-        TRunner.runTest(DATA_DIR + "/" + style, //
-            DATA_DIR + "/a", //
-            "*", //
+        TRunner.runTest(DATA_DIR + "/" + style,
+            DATA_DIR + "/a",
+            "*",
             new File(DATA_DIR, style + ".result"));
     }
 

@@ -64,7 +64,7 @@ public class Bst2GroovyAlphaTest {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             // bst2Groovy.setOptimizing(false);
             bst2Groovy.setResourceFinder(finder);
-            bst2Groovy.setParameter(ParameterType.STYLE_NAME, //
+            bst2Groovy.setParameter(ParameterType.STYLE_NAME,
                 new Parameter(name));
             FileWriter w =
                     new FileWriter("target/" + name.toLowerCase() + ".groovy");

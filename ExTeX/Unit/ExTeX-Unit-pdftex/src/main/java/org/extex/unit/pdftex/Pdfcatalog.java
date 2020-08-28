@@ -91,7 +91,7 @@ public class Pdfcatalog extends AbstractPdftexCode {
 
         ActionSpec action = null;
         if (source.getKeyword(context, "openaction")) {
-            action = ActionSpec.parseActionSpec(context, source, typesetter, //
+            action = ActionSpec.parseActionSpec(context, source, typesetter,
                 getToken());
         }
 

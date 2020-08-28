@@ -48,7 +48,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         // --- input code ---
-            "\\mathchardef\\alpha=\"010B " //
+            "\\mathchardef\\alpha=\"010B "
                     + "\\alpha\\end",
             // --- output message ---
             "Missing $ inserted");
@@ -98,7 +98,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
         assertSuccess(
         // --- input code ---
             AbstractMathTester.DEFINE_MATH_FONTS + DEFINE_MATH
-                    + "\\mathchardef\\alpha=\"010B" //
+                    + "\\mathchardef\\alpha=\"010B"
                     + "$a\\alpha b$\\end",
             // --- output message ---
             "a\013b" + TERM);
@@ -115,8 +115,8 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            "\\mathchardef\\alpha=\"010B " //
-                    + "\\mathchardef\\beta=\\alpha " //
+            "\\mathchardef\\alpha=\"010B "
+                    + "\\mathchardef\\beta=\\alpha "
                     + "\\the\\beta\\end",
             // --- output message ---
             "267" + TERM);
@@ -134,7 +134,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            "\\mathchardef\\alpha=\"010B " //
+            "\\mathchardef\\alpha=\"010B "
                     + "\\count0=\\alpha \\the\\count0\\end",
             // --- output message ---
             "267" + TERM);
@@ -151,7 +151,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            "\\catcode`~=13 " + "\\mathchardef~=\"010B " //
+            "\\catcode`~=13 " + "\\mathchardef~=\"010B "
                     + "\\count0=~ \\the\\count0\\end",
             // --- output message ---
             "267" + TERM);
@@ -169,7 +169,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            "\\mathchardef\\alpha=\"010B " //
+            "\\mathchardef\\alpha=\"010B "
                     + "\\the\\alpha\\end",
             // --- output message ---
             "267" + TERM);
@@ -186,7 +186,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            "\\begingroup\\global\\mathchardef\\alpha=\"010B \\endgroup" //
+            "\\begingroup\\global\\mathchardef\\alpha=\"010B \\endgroup"
                     + "\\the\\alpha\\end",
             // --- output message ---
             "267" + TERM);
@@ -203,7 +203,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertFailure(
         // --- input code ---
-            "\\begingroup\\mathchardef\\alpha=\"010B \\endgroup" //
+            "\\begingroup\\mathchardef\\alpha=\"010B \\endgroup"
                     + "\\the\\alpha\\end",
             // --- output message ---
             "Undefined control sequence \\alpha");
@@ -221,7 +221,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\mathchardef\\alpha={ord 1 `A} " //
+            DEFINE_BRACES + "\\mathchardef\\alpha={ord 1 `A} "
                     + "\\the\\alpha\\end",
             // --- output message ---
             "321" + TERM);
@@ -239,7 +239,7 @@ public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
         assertSuccess(
         // --- input code ---
-            DEFINE_BRACES + "\\mathchardef\\alpha={0 1 `A} " //
+            DEFINE_BRACES + "\\mathchardef\\alpha={0 1 `A} "
                     + "\\the\\alpha\\end",
             // --- output message ---
             "321" + TERM);

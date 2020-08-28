@@ -93,7 +93,7 @@ public class BstScanner extends RuleBasedScanner {
         Token builtinToken =
                 new Token(new TextAttribute(manager
                     .getColor(BstEditorPreferences.PREFERENCE_FG_KEYWORD)));
-        WordRule commandRule = new WordRule(new BstWordDetector(), //
+        WordRule commandRule = new WordRule(new BstWordDetector(),
             new Token(new TextAttribute(null)), true);
         commandRule.addWord("entry", commandToken);
         commandRule.addWord("function", commandToken);
@@ -136,7 +136,7 @@ public class BstScanner extends RuleBasedScanner {
 
         setRules(new IRule[]{
                 new EndOfLineRule("%", new Token(new TextAttribute(manager
-                    .getColor(BstEditorPreferences.PREFERENCE_FG_COMMENT)))), //
+                    .getColor(BstEditorPreferences.PREFERENCE_FG_COMMENT)))),
                 commandRule,
                 new WordRule(numberDetector, new Token(
                     new TextAttribute(manager
@@ -146,7 +146,7 @@ public class BstScanner extends RuleBasedScanner {
                 new SingleLineRule("\"", "\"", new Token(
                     new TextAttribute(manager
                         .getColor(BstEditorPreferences.PREFERENCE_FG_STRING))),
-                    '\0'), //
+                    '\0'),
                 new WhitespaceRule(new BstWhitespaceDetector())});
     }
 }

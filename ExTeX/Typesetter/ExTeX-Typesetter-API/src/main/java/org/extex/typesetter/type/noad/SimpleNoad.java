@@ -27,5 +27,5 @@ package org.extex.typesetter.type.noad;
  */
 public interface SimpleNoad {
 
-    //
+
 }

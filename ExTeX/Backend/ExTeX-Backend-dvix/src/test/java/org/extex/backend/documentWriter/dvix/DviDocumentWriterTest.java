@@ -133,7 +133,7 @@ public class DviDocumentWriterTest {
         DviDocumentWriter writer = new DviDocumentWriter(OPTIONS);
         writer.setOutputStream(new ByteArrayOutputStream());
         Page page =
-                new PageImpl(new VerticalListNode(), new FixedCount[]{//
+                new PageImpl(new VerticalListNode(), new FixedCount[]{
                     Count.ONE, Count.ONE, Count.ONE, Count.ONE, Count.ONE,
                             Count.ONE, Count.ONE, Count.ONE, Count.ONE,
                             Count.ONE});
@@ -151,7 +151,7 @@ public class DviDocumentWriterTest {
         ByteArrayOutputStream out = new ByteArrayOutputStream();
         writer.setOutputStream(out);
         Page page =
-                new PageImpl(new VerticalListNode(), new FixedCount[]{//
+                new PageImpl(new VerticalListNode(), new FixedCount[]{
                     Count.ONE, Count.ONE, Count.ONE, Count.ONE, Count.ONE,
                             Count.ONE, Count.ONE, Count.ONE, Count.ONE,
                             Count.ONE});

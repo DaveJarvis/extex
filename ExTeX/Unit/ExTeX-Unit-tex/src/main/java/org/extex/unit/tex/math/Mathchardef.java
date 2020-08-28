@@ -96,8 +96,8 @@ public class Mathchardef extends AbstractAssignment {
                 AbstractTeXMathCode.parseMathCode(context, source, typesetter,
                     getToken());
 
-        context.setCode(cs, //
-            new TeXMathcharCode(cs, mathchar), //
+        context.setCode(cs, 
+            new TeXMathcharCode(cs, mathchar), 
             prefix.clearGlobal());
     }
 

@@ -252,7 +252,7 @@ public class FormatName extends AbstractCode implements Serializable {
             int length = format.length();
 
             for (int i = 0; i < length;) {
-                i = (format.charAt(i) == '{' //
+                i = (format.charAt(i) == '{'
                         ? parseItem(i, format, locator)
                         : parseToBrace(i, format));
             }
@@ -407,7 +407,7 @@ public class FormatName extends AbstractCode implements Serializable {
                             add(item);
 
                             if (c == '{') {
-                                i = parseEndOfBlock(i + 1, item, format, true, //
+                                i = parseEndOfBlock(i + 1, item, format, true,
                                     locator);
                             }
 

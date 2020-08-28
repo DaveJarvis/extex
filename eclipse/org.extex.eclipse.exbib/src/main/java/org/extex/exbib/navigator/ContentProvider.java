@@ -68,7 +68,7 @@ public class ContentProvider implements ITreeContentProvider {
             List<String> list = new ArrayList<String>();
             LineNumberReader in = null;
             try {
-                in = new LineNumberReader(//
+                in = new LineNumberReader(
                     new InputStreamReader(p.getInputStream()));
                 for (String line = in.readLine(); line != null; line =
                         in.readLine()) {

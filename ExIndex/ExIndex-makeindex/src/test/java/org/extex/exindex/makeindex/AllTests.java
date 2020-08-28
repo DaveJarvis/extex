@@ -29,7 +29,7 @@ import org.junit.runners.Suite;
  * @version $Revision: 8318 $
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({org.extex.exindex.makeindex.main.AllTests.class, //
+@Suite.SuiteClasses({org.extex.exindex.makeindex.main.AllTests.class,
         LineBreakingWriterTest.class})
 public final class AllTests {
 

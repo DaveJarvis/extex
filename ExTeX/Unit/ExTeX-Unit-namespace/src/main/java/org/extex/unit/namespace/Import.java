@@ -118,7 +118,7 @@ public class Import extends Let {
                     throw new HelpingException(getLocalizer(),
                         "Namespace.Import.undef", t.toString());
                 }
-                let(prefix, context, //
+                let(prefix, context, 
                     ((CodeToken) t).cloneInNamespace(namespace), t);
             }
         }

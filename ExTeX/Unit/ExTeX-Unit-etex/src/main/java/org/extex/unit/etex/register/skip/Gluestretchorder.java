@@ -133,7 +133,7 @@ public class Gluestretchorder extends AbstractCode
                 HelpingException,
                 TypesetterException {
 
-        return context.getTokenFactory().toTokens(//
+        return context.getTokenFactory().toTokens(
             convertCount(context, source, typesetter));
     }
 

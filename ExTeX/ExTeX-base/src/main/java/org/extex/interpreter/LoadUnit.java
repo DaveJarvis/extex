@@ -160,9 +160,9 @@ public final class LoadUnit extends AbstractFactory<Code> {
                     }
                     context.setCode(
                         ((CodeToken) t).cloneInNamespace(namespace),
-                        (t instanceof CodeToken //
+                        (t instanceof CodeToken 
                                 ? context.getCode((CodeToken) t)
-                                : new LetCode(t)), //
+                                : new LetCode(t)), 
                         false);
                 }
             }
@@ -221,7 +221,7 @@ public final class LoadUnit extends AbstractFactory<Code> {
             Configuration cfg = iterator.next();
 
             String name = cfg.getAttribute(NAME_ATTRIBUTE);
-            Token t = tokenFactory.createToken(Catcode.ESCAPE, //
+            Token t = tokenFactory.createToken(Catcode.ESCAPE, 
                 UnicodeChar.get('\\'), name, Namespace.DEFAULT_NAMESPACE);
             Code code = createInstanceForConfiguration(cfg, Code.class, t);
 

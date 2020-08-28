@@ -34,15 +34,15 @@ public class MakeindexGermanCollator implements Collator {
     public String collate(String in) {
 
         return in
-        //
-            .replaceAll("[\u00c4\u00e4]", "ae")//
-            .replaceAll("[\u00d6\u00f6]", "oe")//
-            .replaceAll("[\u00dc\u00fc]", "ue")//
-            .replaceAll("[\u00df]", "ss")//
-            .replaceAll("[\\\\]?\"[aA]", "ae")//
-            .replaceAll("[\\\\]?\"[oO]", "oe")//
-            .replaceAll("[\\\\]?\"[uU]", "ue")//
-            .replaceAll("\"s", "ss")//
+
+            .replaceAll("[\u00c4\u00e4]", "ae")
+            .replaceAll("[\u00d6\u00f6]", "oe")
+            .replaceAll("[\u00dc\u00fc]", "ue")
+            .replaceAll("[\u00df]", "ss")
+            .replaceAll("[\\\\]?\"[aA]", "ae")
+            .replaceAll("[\\\\]?\"[oO]", "oe")
+            .replaceAll("[\\\\]?\"[uU]", "ue")
+            .replaceAll("\"s", "ss")
             .replaceAll("\\\\ss ", "ss");
     }
 }

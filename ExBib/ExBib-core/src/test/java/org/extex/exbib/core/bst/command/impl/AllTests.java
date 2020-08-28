@@ -28,11 +28,11 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({BstExecuteTest.class, //
-        BstIterateTest.class, //
-        BstReadTest.class, //
-        BstReverseTest.class, //
-        BstSortTest.class //
+@Suite.SuiteClasses({BstExecuteTest.class,
+        BstIterateTest.class,
+        BstReadTest.class,
+        BstReverseTest.class,
+        BstSortTest.class
 })
 public final class AllTests {
 

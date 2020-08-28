@@ -772,8 +772,8 @@ public class MultiDumpDocumentWriter
             throw e;
         } catch (GeneralException e) {
             Throwable ex = e.getCause();
-            throw (ex instanceof DocumentWriterException //
-                    ? (DocumentWriterException) ex //
+            throw (ex instanceof DocumentWriterException 
+                    ? (DocumentWriterException) ex 
                     : new DocumentWriterException(e.getLocalizedMessage()));
         }
         out = null;

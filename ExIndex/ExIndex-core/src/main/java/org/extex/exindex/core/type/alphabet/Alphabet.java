@@ -27,5 +27,5 @@ package org.extex.exindex.core.type.alphabet;
  */
 public interface Alphabet {
 
-    //
+
 }

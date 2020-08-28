@@ -166,7 +166,7 @@ public class LatexAutoTask extends Task {
 
         File base = new File("base.tex");
         File target = new File("target");
-        File aux = new File(target, //
+        File aux = new File(target,
             base.getName().replaceFirst("\\.[a-zA-Z]+$", ".aux"));
 
         target.mkdirs();
@@ -202,8 +202,8 @@ public class LatexAutoTask extends Task {
 
         String base = artifact.getName().replace('\\', '/');
 
-        ProcessBuilder latex = new ProcessBuilder(latexCommand, //
-            "-output-directory=" + output, //
+        ProcessBuilder latex = new ProcessBuilder(latexCommand,
+            "-output-directory=" + output,
             base);
         latex.directory(new File(workingDirectory));
         latex.redirectErrorStream(true);

@@ -104,7 +104,7 @@ public class Accent extends AbstractCode {
 
         if (typesetter.getMode().isMath()) {
             throw new HelpingException(
-                getLocalizer(), //
+                getLocalizer(),
                 "TTP.AccentInMathMode", toText(context),
                 context.esc("mathaccent"));
         }

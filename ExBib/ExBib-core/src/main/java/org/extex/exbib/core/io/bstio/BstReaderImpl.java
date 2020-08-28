@@ -940,7 +940,7 @@ public class BstReaderImpl extends AbstractFileReader
         Token t = nextToken();
 
         if (!(t instanceof TString)) {
-            throw new ExBibMissingStringException(//
+            throw new ExBibMissingStringException(
                 t == null ? null : t.toString(), getLocator());
         }
 

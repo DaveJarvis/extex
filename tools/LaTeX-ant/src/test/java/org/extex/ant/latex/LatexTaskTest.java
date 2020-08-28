@@ -55,9 +55,9 @@ public class LatexTaskTest extends BuildFileTest {
     public final void _test20() throws IOException {
 
         String fileName = "abc.tex";
-        File f = mkfile(fileName, //
-            "\\documentclass{article}\n" //
-                    + "\\begin{document}\n" //
+        File f = mkfile(fileName,
+            "\\documentclass{article}\n"
+                    + "\\begin{document}\n"
                     + "\\end{document}\n");
         try {
             runTest("<LaTeX master=\"" + fileName + "\"/>", "");
@@ -114,8 +114,8 @@ public class LatexTaskTest extends BuildFileTest {
         configureProject("target/build.xml");
         expectOutput("test.case", "");
         if (log != null) {
-            assertEquals("Message was logged but should not.", //
-                log, //
+            assertEquals("Message was logged but should not.",
+                log,
                 getLog().replaceAll("\\r", ""));
         }
         build.delete();
@@ -157,7 +157,7 @@ public class LatexTaskTest extends BuildFileTest {
             runTest("<LaTeX/>", "");
             assertTrue("unexpected success", false);
         } catch (BuildException e) {
-            assertEquals("message", //
+            assertEquals("message",
                 "master file argument missing", e.getMessage());
         } finally {
             new File("target", "abc.aux").delete();
@@ -179,7 +179,7 @@ public class LatexTaskTest extends BuildFileTest {
             runTest("<LaTeX master=\"" + fileName + "\"/>", "");
             assertTrue("unexpected success", false);
         } catch (BuildException e) {
-            assertEquals("message", //
+            assertEquals("message",
                 "master file " + new File("target", fileName).getAbsoluteFile()
                         + " not found", e.getMessage());
         } finally {
@@ -200,7 +200,7 @@ public class LatexTaskTest extends BuildFileTest {
         String fileName = "abc.tex";
         File f = mkfile(fileName, "");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
                     + "</LaTeX>", null);
             assertTrue("unexpected success", false);
         } catch (BuildException e) {
@@ -222,16 +222,16 @@ public class LatexTaskTest extends BuildFileTest {
     public final void test04() throws IOException {
 
         String fileName = "abc.tex";
-        File f = mkfile(fileName, //
-            "\\documentclass{article}\n" //
-                    + "\\begin{document}\n" //
+        File f = mkfile(fileName,
+            "\\documentclass{article}\n"
+                    + "\\begin{document}\n"
                     + "\\end{document}\n");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<File/>" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
+                    + "<File/>"
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("I found no \\citation commands"));
         } finally {
             f.delete();
@@ -250,19 +250,19 @@ public class LatexTaskTest extends BuildFileTest {
     public final void test05() throws IOException {
 
         String fileName = "abc.tex";
-        File f = mkfile(fileName, //
-            "\\documentclass{article}\n" //
-                    + "\\begin{document}\n" //
-                    + "\\bibliography{abc}" //
-                    + "\\bibliographystyle{plain}" //
-                    + "\\nocite{*}" //
+        File f = mkfile(fileName,
+            "\\documentclass{article}\n"
+                    + "\\begin{document}\n"
+                    + "\\bibliography{abc}"
+                    + "\\bibliographystyle{plain}"
+                    + "\\nocite{*}"
                     + "\\end{document}\n");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<File/>" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
+                    + "<File/>"
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("I couldn't open database file "));
         } finally {
             f.delete();
@@ -281,18 +281,18 @@ public class LatexTaskTest extends BuildFileTest {
     public final void testDependency01() throws IOException {
 
         String fileName = "abc.tex";
-        File f = mkfile(fileName, //
-            "\\documentclass{article}\n" //
-                    + "\\begin{document}\n" //
-                    + "\\bibliography{abc}" //
-                    + "\\bibliographystyle{plain}" //
-                    + "\\nocite{*}" //
+        File f = mkfile(fileName,
+            "\\documentclass{article}\n"
+                    + "\\begin{document}\n"
+                    + "\\bibliography{abc}"
+                    + "\\bibliographystyle{plain}"
+                    + "\\nocite{*}"
                     + "\\end{document}\n");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
                     + "<file name=\"xyz\"/>" + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("unknown output format"));
         } finally {
             f.delete();
@@ -309,11 +309,11 @@ public class LatexTaskTest extends BuildFileTest {
         String fileName = "abc.tex";
         File f = mkfile(fileName, "");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<property/>" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
+                    + "<property/>"
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("property without name"));
         } finally {
             f.delete();
@@ -330,11 +330,11 @@ public class LatexTaskTest extends BuildFileTest {
         String fileName = "abc.tex";
         File f = mkfile(fileName, "");
         try {
-            runTest("<LaTeX master=\"" + fileName + "\">" //
-                    + "<property name=\"abc\"/>" //
+            runTest("<LaTeX master=\"" + fileName + "\">"
+                    + "<property name=\"abc\"/>"
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("has no value"));
         } finally {
             f.delete();
@@ -352,11 +352,11 @@ public class LatexTaskTest extends BuildFileTest {
         File f = mkfile(fileName, "");
         try {
             runTest("<LaTeX master=\"" + fileName
-                    + "\">" //
+                    + "\">"
                     + "<property name=\"latex.output.format\" value=\"xxx\"/>"
                     + "</LaTeX>", null);
         } catch (BuildException e) {
-            assertTrue("Exception: " + e.toString(), //
+            assertTrue("Exception: " + e.toString(),
                 e.toString().contains("unknown output format"));
         } finally {
             f.delete();

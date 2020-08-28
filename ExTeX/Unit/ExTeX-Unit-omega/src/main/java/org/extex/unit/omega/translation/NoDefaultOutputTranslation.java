@@ -94,8 +94,8 @@ public class NoDefaultOutputTranslation extends AbstractModeCode {
 
         OmegaMode mode = scanInputMode(context, source);
 
-        context.set(OmegaExtension.NAME, //
-            DEFAULT_OUTPUT_TRANSLATION + mode.toString(), //
+        context.set(OmegaExtension.NAME,
+            DEFAULT_OUTPUT_TRANSLATION + mode.toString(),
             null, prefix.clearGlobal());
     }
 

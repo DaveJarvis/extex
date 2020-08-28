@@ -76,7 +76,7 @@ public class PdfSinglePageDocumentWriter
     // * the pdf-dokument
     // */
     // private PdfDocument document;
-    //
+
     // /**
     // * the pdf content
     // */
@@ -217,7 +217,7 @@ public class PdfSinglePageDocumentWriter
             // Changes the default coordinate system so that the origin
             // is in the upper left corner instead of the lower left corner.
             // cb.concatCTM(1f, 0f, 0f, -1f, 0f, pagesize.height());
-            //
+
             // // -------------------------------------
             // cb.setColorStroke(Color.RED);
             // cb.moveTo(0, 0);
@@ -271,7 +271,7 @@ public class PdfSinglePageDocumentWriter
     // * @return Returns the new Rectangle
     // */
     // private Rectangle createRectangle(Dimen w, Dimen h) {
-    //
+
     // return new Rectangle((float) Unit.getDimenAsBP(w), (float) Unit
     // .getDimenAsBP(h));
     // }
@@ -282,7 +282,7 @@ public class PdfSinglePageDocumentWriter
     // * @return Returns the node-element
     // */
     // private Element getNodeElement(Node node) {
-    //
+
     // Element element = null;
     // try {
     // Object o = node.visit(this, node);

@@ -56,7 +56,7 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof1() throws Exception {
 
-        assertFailure("\\setbox ", //
+        assertFailure("\\setbox ",
             "Missing number, treated as zero");
     }
 
@@ -69,7 +69,7 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEof2() throws Exception {
 
-        assertFailure("\\setbox 1", //
+        assertFailure("\\setbox 1",
             "A <box> was supposed to be here");
     }
 
@@ -82,8 +82,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testGroup1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "{\\setbox1=\\hbox{abc}}\\box1\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "{\\setbox1=\\hbox{abc}}\\box1\\end ",
             "");
     }
 
@@ -96,8 +96,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testGroup2() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "{\\global\\setbox1=\\hbox{abc}}\\box1\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "{\\global\\setbox1=\\hbox{abc}}\\box1\\end ",
             "abc" + TERM);
     }
 
@@ -110,8 +110,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testGroup3() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\globaldefs=1{\\setbox1=\\hbox{abc}}\\box1\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\globaldefs=1{\\setbox1=\\hbox{abc}}\\box1\\end ",
             "abc" + TERM);
     }
 
@@ -124,8 +124,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testEveryhbox1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\everyhbox{x}-\\setbox1=\\hbox{abc}\\box1\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\everyhbox{x}-\\setbox1=\\hbox{abc}\\box1\\end ",
             "-xabc" + TERM);
     }
 
@@ -138,9 +138,9 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAfterassignment1() throws Exception {
 
-        assertSuccess(//
+        assertSuccess(
             DEFINE_BRACES
-                    + "\\afterassignment x-\\setbox1=\\hbox{abc}\\box1\\end ", //
+                    + "\\afterassignment x-\\setbox1=\\hbox{abc}\\box1\\end ",
             "-xabc" + TERM);
     }
 
@@ -153,8 +153,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAssign1() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\setbox1=\\box0\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\setbox1=\\box0\\end ",
             "");
     }
 
@@ -167,8 +167,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAssign2() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\setbox1=\\copy0\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\setbox1=\\copy0\\end ",
             "");
     }
 
@@ -181,8 +181,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAssign3() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\setbox1=\\lastbox\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\setbox1=\\lastbox\\end ",
             "");
     }
 
@@ -195,8 +195,8 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
     @Test
     public void testAssign4() throws Exception {
 
-        assertSuccess(//
-            DEFINE_BRACES + "\\setbox1\\hbox{abc}--\\box1\\end ", //
+        assertSuccess(
+            DEFINE_BRACES + "\\setbox1\\hbox{abc}--\\box1\\end ",
             "--abc" + TERM);
     }
 

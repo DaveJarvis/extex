@@ -96,8 +96,8 @@ public class Omathchardef extends AbstractAssignment {
                 AbstractOmegaMathCode.parseMathCode(context, source,
                     typesetter, getToken());
 
-        context.setCode(cs, //
-            new OmegaMathcharCode(cs, mathchar), //
+        context.setCode(cs,
+            new OmegaMathcharCode(cs, mathchar),
             prefix.clearGlobal());
     }
 

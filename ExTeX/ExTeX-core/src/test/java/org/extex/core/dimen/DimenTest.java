@@ -472,7 +472,7 @@ public class DimenTest {
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      * >e</span>X</logo>.
      */
-    private static final String[] STRING = {//
+    private static final String[] STRING = {
             /* 0 */"0.0pt",
             /* 1 */"0.00002pt",
             /* 2 */"0.00003pt",

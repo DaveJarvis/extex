@@ -127,7 +127,7 @@ public class ExecuteFile extends OutputFile {
             if (exitCode == 0) {
                 logger.fine(localizer.format("End.Message", command));
             } else {
-                logger.fine(localizer.format("Failed.Message", command, //
+                logger.fine(localizer.format("Failed.Message", command,
                     Integer.toString(exitCode)));
             }
         } catch (InterruptedException e) {

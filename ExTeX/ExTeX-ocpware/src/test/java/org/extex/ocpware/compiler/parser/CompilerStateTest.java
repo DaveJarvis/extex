@@ -61,7 +61,7 @@ public class CompilerStateTest {
         try {
             new CompilerState(stream);
         } catch (MissingExpressionsException e) {
-            assertEquals("syntax error: missing an expressions section", //
+            assertEquals("syntax error: missing an expressions section",
                 e.getLocalizedMessage());
             return;
         } finally {
@@ -84,7 +84,7 @@ public class CompilerStateTest {
         try {
             new CompilerState(stream);
         } catch (SyntaxException e) {
-            assertEquals("2: syntax error; unexpected 'abc':\n", //
+            assertEquals("2: syntax error; unexpected 'abc':\n",
                 e.getLocalizedMessage());
             return;
         } finally {
@@ -108,7 +108,7 @@ public class CompilerStateTest {
         try {
             new CompilerState(stream);
         } catch (SyntaxException e) {
-            assertEquals("1: syntax error; unexpected \'input\':\n" + "input", //
+            assertEquals("1: syntax error; unexpected \'input\':\n" + "input",
                 e.getLocalizedMessage());
             return;
         } finally {
@@ -133,7 +133,7 @@ public class CompilerStateTest {
             new CompilerState(stream);
         } catch (SyntaxException e) {
             assertEquals(
-                "1: syntax error; unexpected \'output\':\n" + "output", //
+                "1: syntax error; unexpected \'output\':\n" + "output",
                 e.getLocalizedMessage());
             return;
         } finally {
@@ -159,7 +159,7 @@ public class CompilerStateTest {
             new CompilerState(stream);
         } catch (SyntaxException e) {
             assertEquals("2: syntax error; unexpected 'o' instead of ';':\n"
-                    + " o", //
+                    + " o",
                 e.getLocalizedMessage());
             return;
         } finally {
@@ -395,7 +395,7 @@ public class CompilerStateTest {
         CompilerState cs = new CompilerState(stream);
         stream.close();
 
-        assertEquals("Contents", expect.toString(), //
+        assertEquals("Contents", expect.toString(),
             cs.toString().replaceAll("\r", ""));
     }
 

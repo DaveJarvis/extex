@@ -93,7 +93,7 @@ public class Mathaccent extends AbstractTeXMathCode {
         MathCode accent =
                 parseMathCode(context, source, typesetter, getToken());
 
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
         nc.add(new AccentNoad(accent, noad, context.getTypesettingContext()));
     }

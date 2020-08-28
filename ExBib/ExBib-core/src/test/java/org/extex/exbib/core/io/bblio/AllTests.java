@@ -28,8 +28,8 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({BblWriterFactoryTest.class, //
-        BblWriterTest.class //
+@Suite.SuiteClasses({BblWriterFactoryTest.class,
+        BblWriterTest.class
 })
 public final class AllTests {
 

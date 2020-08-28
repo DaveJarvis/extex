@@ -90,7 +90,7 @@ public class Underline extends AbstractMathCode {
             Typesetter typesetter) throws HelpingException, TypesetterException {
 
         NoadConsumer nc = getListMaker(context, typesetter);
-        Noad noad = nc.scanNoad(prefix, context, source, typesetter, //
+        Noad noad = nc.scanNoad(prefix, context, source, typesetter,
             getToken(), GroupType.MATH_GROUP);
         nc.add(new UnderlinedNoad(noad, context.getTypesettingContext()));
     }

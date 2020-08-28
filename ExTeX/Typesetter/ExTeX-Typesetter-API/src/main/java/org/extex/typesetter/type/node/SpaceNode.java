@@ -77,10 +77,10 @@ public class SpaceNode extends GlueNode implements Node {
     public void toString(StringBuilder sb, String prefix, int breadth, int depth) {
 
         if (!DEVELOP || getWidth().eq(size.getLength())) {
-            sb.append(getLocalizer().format("String.Format", //
+            sb.append(getLocalizer().format("String.Format",
                 size.toString()));
         } else {
-            sb.append(getLocalizer().format("String.Format.develop", //
+            sb.append(getLocalizer().format("String.Format.develop",
                 size.toString(), getWidth().toString()));
         }
     }

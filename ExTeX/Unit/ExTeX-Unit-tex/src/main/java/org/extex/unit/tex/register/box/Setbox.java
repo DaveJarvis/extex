@@ -199,7 +199,7 @@ public class Setbox extends AbstractAssignment {
         source.getOptionalEquals(context);
         Flags f = prefix.copy();
         prefix.clear();
-        Box box = source.getBox(prefix, context, typesetter, //
+        Box box = source.getBox(prefix, context, typesetter,
             context.getAfterassignment());
         context.setBox(key, box, f.clearGlobal());
         context.setAfterassignment(null);

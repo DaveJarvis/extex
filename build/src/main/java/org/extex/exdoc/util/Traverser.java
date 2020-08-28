@@ -301,8 +301,8 @@ public class Traverser {
             } else if (author == null) {
                 m = PATTERN_AUTHOR.matcher(line);
                 if (m.find()) {
-                    author = new Author(//
-                        line.substring(m.start(2), m.end(2)), //
+                    author = new Author(
+                        line.substring(m.start(2), m.end(2)), 
                         line.substring(m.start(1), m.end(1)));
                     out(f.toString(), author);
                     continue;
@@ -349,7 +349,7 @@ public class Traverser {
             if (m.find()) {
                 className = line.substring(m.start(2), m.end(2));
                 treatDocs(stack, author, packageName, className);
-                p = (line.substring(m.start(2), m.end(2)).equals("class") //
+                p = (line.substring(m.start(2), m.end(2)).equals("class") 
                         ? PATTERN_METHOD
                         : PATTERN_METHOD_I);
                 break;
@@ -358,8 +358,8 @@ public class Traverser {
             if (author == null) {
                 m = PATTERN_AUTHOR.matcher(line);
                 if (m.find()) {
-                    author = new Author(//
-                        line.substring(m.start(2), m.end(2)), //
+                    author = new Author(
+                        line.substring(m.start(2), m.end(2)), 
                         line.substring(m.start(1), m.end(1)));
                     out(f.toString(), author);
                     continue;

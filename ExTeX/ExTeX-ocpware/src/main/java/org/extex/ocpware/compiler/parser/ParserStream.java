@@ -142,8 +142,8 @@ public class ParserStream extends PushbackInputStream {
         StringBuilder sb = new StringBuilder();
 
         int c = skipSpace();
-        if ((c >= 'a' && c <= 'z') //
-                || (c >= 'A' && c <= 'Z') //
+        if ((c >= 'a' && c <= 'z') 
+                || (c >= 'A' && c <= 'Z') 
                 || c == '_') {
             sb.append((char) c);
         } else if (c < 0) {
@@ -153,9 +153,9 @@ public class ParserStream extends PushbackInputStream {
         }
 
         for (c = read(); c >= 0; c = read()) {
-            if ((c >= '0' && c <= '9') //
-                    || (c >= 'a' && c <= 'z') //
-                    || (c >= 'A' && c <= 'Z') //
+            if ((c >= '0' && c <= '9') 
+                    || (c >= 'a' && c <= 'z') 
+                    || (c >= 'A' && c <= 'Z') 
                     || c == '_' || c == ':') {
                 sb.append((char) c);
             } else {

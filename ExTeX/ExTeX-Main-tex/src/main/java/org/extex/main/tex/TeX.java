@@ -1024,7 +1024,7 @@ public class TeX extends ExTeX {
                         + (primaryFile == null ? 0 : 3)];
         getLogger().log(
             (getBooleanProperty(PROP_NO_BANNER) ? Level.FINE : Level.INFO),
-            localizer.format(pattern, primaryFile, //
+            localizer.format(pattern, primaryFile,
                 Integer.toString(pages)));
     }
 
@@ -1679,7 +1679,7 @@ public class TeX extends ExTeX {
         }
 
         QueryFileHandler queryHandler = getQueryFileHandler();
-        setInputFileName((queryHandler != null //
+        setInputFileName((queryHandler != null
                 ? queryHandler.query(getLogger(), getProperties())
                 : null));
 
@@ -1744,8 +1744,8 @@ public class TeX extends ExTeX {
     private void setInputFileName(String name) {
 
         if (name != null) {
-            setProperty(PROP_JOBNAME, //
-                (name.matches(".*\\.[a-zA-Z0-9_]*") //
+            setProperty(PROP_JOBNAME,
+                (name.matches(".*\\.[a-zA-Z0-9_]*")
                         ? name.substring(0, name.lastIndexOf("."))
                         : name));
             setProperty(PROP_FILE, name);

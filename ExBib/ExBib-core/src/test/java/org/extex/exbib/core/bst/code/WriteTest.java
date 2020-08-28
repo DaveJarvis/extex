@@ -63,7 +63,7 @@ public class WriteTest {
     public void setUp() throws Exception {
 
         out = new StringBuffer();
-        p = new BstInterpreter099c(new DBImpl(), //
+        p = new BstInterpreter099c(new DBImpl(),
             new StringBufferWriter(out), null);
     }
 

@@ -244,22 +244,22 @@ public class VfCommandCharacterPackets extends VfCommand {
     // * de.dante.extex.font.type.PlWriter)
     // */
     // public void toPL(final PlWriter out) throws IOException, FontException {
-    //
+
     // // read the char from ther master-tfm
     // int bc = mastertfm.getLengths().getBc();
     // TFMCharInfoWord ciw =
     // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
-    //
+
     // out.plopen("CHARACTER").addChar((short) charactercode);
     // if (ciw != null) {
     // ciw.toPL(out);
     // }
-    //
+
     // // print the map
     // out.plopen("MAP");
     // try {
     // RandomAccessR arar = new RandomAccessInputArray(dvi);
-    //
+
     // DviPl pl = new DviPl(out, fontfactory);
     // pl.interpret(arar);
     // arar.close();
@@ -269,7 +269,7 @@ public class VfCommandCharacterPackets extends VfCommand {
     // out.plclose();
     // out.plclose();
     // }
-    //
+
     // /**
     // * Add glyph to the element
     // *
@@ -277,15 +277,15 @@ public class VfCommandCharacterPackets extends VfCommand {
     // * @throws FontException if a font-error occurs.
     // */
     // public void addGlyph(final Element element) throws FontException {
-    //
+
     // // read the char from ther master-tfm
     // int bc = mastertfm.getLengths().getBc();
     // TFMCharInfoWord ciw =
     // mastertfm.getCharinfo().getCharInfoWord(charactercode - bc);
-    //
+
     // // create glyph
     // Element glyph = new Element("glyph");
-    //
+
     // glyph.setAttribute("ID", String.valueOf(charactercode));
     // glyph.setAttribute("glyph-number", String.valueOf(charactercode - bc));
     // String c = Character.toString((char) (charactercode - bc));
@@ -296,10 +296,10 @@ public class VfCommandCharacterPackets extends VfCommand {
     // element.setAttribute("glyph-name", ciw.getGlyphname().substring(1));
     // }
     // ciw.addGlyph(glyph);
-    //
+
     // try {
     // RandomAccessR arar = new RandomAccessInputArray(dvi);
-    //
+
     // Element cmd = new Element("commands");
     // DviEfm dviefm = new DviEfm(cmd, fontfactory, fontmap);
     // dviefm.interpret(arar);

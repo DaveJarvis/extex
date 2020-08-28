@@ -282,7 +282,7 @@ public class InteractionTest {
             assertTrue(false);
         } catch (InteractionUnknownException e) {
             assertEquals("message", "", e.getMessage());
-            assertEquals("localized message", "Bad interaction mode ()", //
+            assertEquals("localized message", "Bad interaction mode ()",
                 e.getLocalizedMessage());
         }
     }

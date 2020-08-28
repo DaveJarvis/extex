@@ -28,12 +28,12 @@ import org.junit.runners.Suite;
  * @version $Revision$
  */
 @RunWith(Suite.class)
-@Suite.SuiteClasses({ExBibTest.class, //
-        ProcessorContainerTest.class, //
-        org.extex.exbib.core.bst.AllTests.class, //
-        org.extex.exbib.core.db.AllTests.class, //
-        org.extex.exbib.core.io.AllTests.class, //
-        org.extex.exbib.core.name.AllTests.class //
+@Suite.SuiteClasses({ExBibTest.class,
+        ProcessorContainerTest.class,
+        org.extex.exbib.core.bst.AllTests.class,
+        org.extex.exbib.core.db.AllTests.class,
+        org.extex.exbib.core.io.AllTests.class,
+        org.extex.exbib.core.name.AllTests.class
 })
 public final class AllTests {
 

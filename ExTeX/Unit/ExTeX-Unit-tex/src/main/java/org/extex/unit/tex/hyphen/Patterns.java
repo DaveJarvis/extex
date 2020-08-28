@@ -139,7 +139,7 @@ public class Patterns extends AbstractHyphenationCode {
 
             this.table = table;
             this.context = context;
-            zero = context.getTokenFactory().createToken(Catcode.OTHER, '0', //
+            zero = context.getTokenFactory().createToken(Catcode.OTHER, '0',
                 Namespace.DEFAULT_NAMESPACE);
         }
 

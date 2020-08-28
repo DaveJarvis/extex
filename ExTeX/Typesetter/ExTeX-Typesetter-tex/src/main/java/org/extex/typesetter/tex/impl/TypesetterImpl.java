@@ -146,7 +146,7 @@ public class TypesetterImpl extends ListMakerFactory
      */
     public TypesetterImpl() {
 
-        listMaker = createListMaker(this, ListMakers.VERTICAL, //
+        listMaker = createListMaker(this, ListMakers.VERTICAL,
             new Locator("", 0, "", 0));
         // TODO gene: find better initial locator
     }
@@ -191,7 +191,7 @@ public class TypesetterImpl extends ListMakerFactory
         if (saveStack == null
                 && (node instanceof PenaltyNode
                         || node instanceof InsertionNode
-                        || node instanceof HorizontalListNode //
+                        || node instanceof HorizontalListNode
                 || node instanceof VerticalListNode)) {
 
             pageBuilder.inspectAndBuild(
@@ -880,8 +880,8 @@ public class TypesetterImpl extends ListMakerFactory
 
         for (int i = saveStack.size() - 1; i >= 0; i--) {
             ListMaker lm = saveStack.get(i);
-            sb.append(localizer.format("Showlist.Format", //
-                lm.getMode().toString(), //
+            sb.append(localizer.format("Showlist.Format",
+                lm.getMode().toString(),
                 Integer.toString(lm.getLocator().getLineNumber())));
             lm.showlist(sb, depth, breadth);
         }

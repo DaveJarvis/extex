@@ -62,7 +62,7 @@ public class HruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\hrule\\end ",
             // --- output channel ---
-            "\\vbox(0.4pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(0.4pt+0.0pt)x0.0pt\n" +
                     ".\\rule0.4pt+0.0ptx0.0pt\n");
     }
 
@@ -80,7 +80,7 @@ public class HruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\hrule height 1pt\\end ",
             // --- output channel ---
-            "\\vbox(1.0pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(1.0pt+0.0pt)x0.0pt\n" +
                     ".\\rule1.0pt+0.0ptx0.0pt\n");
     }
 
@@ -98,7 +98,7 @@ public class HruleTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\hrule height 2pt depth 1pt width 42pt\\end ",
             // --- output channel ---
-            "\\vbox(2.0pt+1.0pt)x42.0pt\n" + //
+            "\\vbox(2.0pt+1.0pt)x42.0pt\n" +
                     ".\\rule2.0pt+1.0ptx42.0pt\n");
     }
 

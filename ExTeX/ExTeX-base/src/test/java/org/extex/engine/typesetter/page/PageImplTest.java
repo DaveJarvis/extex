@@ -48,7 +48,7 @@ public class PageImplTest {
     @Test
     public final void testGetMediaHeight() {
 
-        assertEquals("845.0467pt", //
+        assertEquals("845.0467pt",
             new PageImpl(new VerticalListNode(), null).getMediaHeight()
                 .toString());
     }
@@ -60,7 +60,7 @@ public class PageImplTest {
     @Test
     public final void testGetMediaHOffset() {
 
-        assertEquals("72.26999pt", //
+        assertEquals("72.26999pt",
             new PageImpl(new VerticalListNode(), null).getMediaHOffset()
                 .toString());
     }
@@ -71,7 +71,7 @@ public class PageImplTest {
     @Test
     public final void testGetMediaVOffset() {
 
-        assertEquals("72.26999pt", //
+        assertEquals("72.26999pt",
             new PageImpl(new VerticalListNode(), null).getMediaVOffset()
                 .toString());
     }
@@ -83,7 +83,7 @@ public class PageImplTest {
     @Test
     public final void testGetMediaWidth() {
 
-        assertEquals("597.50778pt", //
+        assertEquals("597.50778pt",
             new PageImpl(new VerticalListNode(), null).getMediaWidth()
                 .toString());
     }
@@ -96,7 +96,7 @@ public class PageImplTest {
     public final void testGetNodes() {
 
         VerticalListNode list = new VerticalListNode();
-        assertEquals("\\vbox(0.0pt+0.0pt)x0.0pt", //
+        assertEquals("\\vbox(0.0pt+0.0pt)x0.0pt",
             new PageImpl(list, null).getNodes().toString());
     }
 

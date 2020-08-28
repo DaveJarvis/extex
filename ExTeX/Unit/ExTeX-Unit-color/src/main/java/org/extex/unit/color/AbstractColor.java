@@ -169,7 +169,7 @@ public abstract class AbstractColor extends AbstractAssignment
 
         Color color = convertColor(context, null, null);
         try {
-            return context.getTokenFactory().toTokens(//
+            return context.getTokenFactory().toTokens(
                 (String) color.visit(theVisitor, null));
         } catch (HelpingException e) {
             throw e;
@@ -191,7 +191,7 @@ public abstract class AbstractColor extends AbstractAssignment
 
         Color color = convertColor(context, source, typesetter);
         try {
-            return context.getTokenFactory().toTokens(//
+            return context.getTokenFactory().toTokens(
                 (String) color.visit(theVisitor, null));
         } catch (HelpingException e) {
             throw e;

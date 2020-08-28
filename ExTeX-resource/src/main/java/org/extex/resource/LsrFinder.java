@@ -401,14 +401,14 @@ public class LsrFinder extends AbstractFinder
 
             // BufferedReader in = new BufferedReader(new FileReader(file));
             // int len;
-            //
+            
             // for (String line = in.readLine(); line != null; line = in
             // .readLine()) {
             // len = line.length();
             // if (len == 0 || line.charAt(0) == '%') {
             // continue;
             // } else if (line.charAt(len - 1) == ':') {
-            // directory = new File(path, //
+            // directory = new File(path, 
             // line.substring((line.startsWith("./") ? 2 : 0),
             // len - 1));
             // } else {
@@ -434,8 +434,8 @@ public class LsrFinder extends AbstractFinder
             throw new ConfigurationIOException(e);
         }
 
-        trace("DatabaseLoaded", file.toString(), //
-            Long.toString(System.currentTimeMillis() - start), //
+        trace("DatabaseLoaded", file.toString(), 
+            Long.toString(System.currentTimeMillis() - start), 
             Integer.toString(cache.size()));
         // PrintStream err = System.err;
         // err.print(file);

@@ -87,7 +87,7 @@ public class Prevgraf extends CountPrimitive {
         String key = getKey(context, source, typesetter);
         source.getKeyword(context, "by");
 
-        long value = source.parseInteger(context, source, null) //
+        long value = source.parseInteger(context, source, null)
                 + context.getCount(key).getValue();
 
         if (value < 0) {

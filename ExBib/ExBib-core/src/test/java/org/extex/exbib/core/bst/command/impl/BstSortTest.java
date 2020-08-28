@@ -41,7 +41,7 @@ public class BstSortTest {
     @Test
     public final void testToString() throws ExBibException {
 
-        assertEquals("SORT", //
+        assertEquals("SORT",
             new BstSort(null).toString());
     }
 

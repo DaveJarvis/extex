@@ -365,7 +365,7 @@ public abstract class AbstractPostscriptWriter
         out.print("%!");
         out.println(magicVersion);
         writeDsc(out, "Creator", getParameter("Creator"));
-        writeDsc(out, "CreationDate", //
+        writeDsc(out, "CreationDate",
             DF.format(Calendar.getInstance().getTime()));
         writeDsc(out, "Title", getParameter("Title"));
     }

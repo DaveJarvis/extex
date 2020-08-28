@@ -147,7 +147,7 @@ public class XamplTest {
                 .replaceAll("\r", ""));
             assertTrue("ExBib has signaled a failure", code);
             System.out.flush();
-            assertEquals("output stream", expectedOut, //
+            assertEquals("output stream", expectedOut,
                 getFileContents(prop.get(ExBib.PROP_OUTFILE).toString()));
         } finally {
             logger.removeHandler(handler);
@@ -213,7 +213,7 @@ public class XamplTest {
             Bst2Groovy bst2Groovy = new Bst2Groovy();
             // bst2Groovy.setParameter(ParameterType.OPTIMIZE, Parameter.FALSE);
             bst2Groovy.setResourceFinder(finder);
-            bst2Groovy.setParameter(ParameterType.STYLE_NAME, //
+            bst2Groovy.setParameter(ParameterType.STYLE_NAME,
                 new Parameter(name));
             FileWriter w = new FileWriter(fileName);
             try {
@@ -226,12 +226,12 @@ public class XamplTest {
         }
 
         File bib = new File("src/test/resources/xampl.bib");
-        run(bib, makeFile("test1", ".aux", //
-            "\\citation{*}\n" //
-                    + "\\bibstyle{" + fileName + "}\n" //
-                    + "\\bibdata{" + bib + "}\n"), //
+        run(bib, makeFile("test1", ".aux",
+            "\\citation{*}\n"
+                    + "\\bibstyle{" + fileName + "}\n"
+                    + "\\bibdata{" + bib + "}\n"),
             "empty author in whole-journal\n"
-                    + "empty title in whole-journal\n", //
+                    + "empty title in whole-journal\n",
             getResource("xampl-" + name.toLowerCase() + ".bbl"));
     }
 

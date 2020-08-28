@@ -60,7 +60,7 @@ public class VssTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "\\vss\\end ",
             // --- output channel ---
-            "\\vbox(0.0pt+0.0pt)x0.0pt\n" + //
+            "\\vbox(0.0pt+0.0pt)x0.0pt\n" +
                     ".\\glue0.0pt plus 1.0fil minus 1.0fil\n");
     }
 

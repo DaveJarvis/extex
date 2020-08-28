@@ -450,7 +450,7 @@ public class OcpReader extends Reader {
     private void pushBack(char value) {
 
         if (pushbackEnd >= pushbackBuffer.length) {
-            char[] b = new char[pushbackBuffer.length //
+            char[] b = new char[pushbackBuffer.length 
                     + LINE_SIZE_INCREMENT];
             System.arraycopy(pushbackBuffer, 0, b, 0, pushbackBuffer.length);
             pushbackBuffer = b;
@@ -585,9 +585,9 @@ public class OcpReader extends Reader {
                     return determineLchar(c);
 
                 case OcpCode.OP_RIGHT_SOME:
-                    somePtr = inputStart //
+                    somePtr = inputStart 
                             + (c & OcpCode.ARGUMENT_BIT_MASK);
-                    someEnd = inputStart //
+                    someEnd = inputStart 
                             + (code[pc++] & OcpCode.ARGUMENT_BIT_MASK);
                     if (somePtr <= someEnd) {
                         if (someEnd > lineEnd) {

@@ -109,9 +109,9 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\unskip\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" +
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
                     "..a\n");
     }
 
@@ -129,9 +129,9 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
         // --- input code ---
             "a\\hfill\\unskip\\end ",
             // --- output channel ---
-            "" + //
-                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" + //
-                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" + //
+            "" +
+                    "\\vbox(8.0pt+0.0pt)x3000.0pt\n" +
+                    ".\\hbox(8.0pt+0.0pt)x3000.0pt\n" +
                     "..a\n");
     }
 

@@ -264,7 +264,7 @@ public class FontPrimitive extends AbstractAssignment
             if (features == null) {
                 fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap);
             } else {
-                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap, //
+                fontKey = factory.getFontKey(fontname, fontSize, fontKeyMap,
                     features);
             }
             fnt = factory.getInstance(fontKey);
@@ -272,23 +272,23 @@ public class FontPrimitive extends AbstractAssignment
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);
             }
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
+            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
                 context.esc(fontId), fontname);
         } catch (ConfigurationIOException e) {
             if (logger != null) {
                 logger.log(Level.FINE, "FontPrimitive", e);
             }
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
+            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
                 context.esc(fontId), fontname);
         }
 
         if (fnt == null) {
-            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound", //
+            throw new HelpingException(getLocalizer(), "TTP.TFMnotFound",
                 context.esc(fontId), fontname);
         }
 
-        context.setCode(fontId, //
-            new FontCode(fontId, new FontImpl(fnt)), //
+        context.setCode(fontId,
+            new FontCode(fontId, new FontImpl(fnt)),
             prefix.clearGlobal());
     }
 

@@ -57,7 +57,7 @@ public class MoverightTest extends NoFlagsPrimitiveTester {
     public void testVoid1() throws Exception {
 
         assertSuccess(DEFINE_BRACES + "\\moveright1pt\\box0 \\end",
-        //
+
             "");
     }
 
