@@ -1,9 +1,9 @@
 
 
-The εχT[e]{.e}X Unit Ω
+The εχTeX Unit Ω
 ======================
 
-The εχT[e]{.e}X Unit Ω provides a loadable εχT[e]{.e}X module defining a
+The εχTeX Unit Ω provides a loadable εχTeX module defining a
 set of primitives and registers. The primitives defined are mainly those
 present in Ω:
 
@@ -22,10 +22,10 @@ present in Ω:
 `\removeafterocplist`, `\removebeforeocplist`, `\textdir`,
 `\unnaturaldir`, `\vfi`
 
-Compiling and Packaging the εχT[e]{.e}X Unit Ω
+Compiling and Packaging the εχTeX Unit Ω
 ----------------------------------------------
 
-The εχT[e]{.e}X Ω can be created in this directory with the help of
+The εχTeX Ω can be created in this directory with the help of
 Maven. To resolve all dependencies it is best to compile in the
 parent\'s parent directory:
 
@@ -58,7 +58,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Unit Ω is released under the [GNU Library General Public
+The εχTeX Unit Ω is released under the [GNU Library General Public
 License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

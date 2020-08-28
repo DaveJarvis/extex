@@ -1,20 +1,20 @@
 
 
-The εχT[e]{.e}X CLI -- the Command Line Interface
+The εχTeX CLI -- the Command Line Interface
 =================================================
 
 This component contains the command line interface support developed
-within the εχT[e]{.e}X project. Never­the­less it does not contain any
-de­pen­den­cies to other com­po­nents or spe­cifics of εχT[e]{.e}X. If
+within the εχTeX project. Never­the­less it does not contain any
+de­pen­den­cies to other com­po­nents or spe­cifics of εχTeX. If
 is a general purpose component for command line parsing.
 
 It has been necessary to develop an own component since some specifics
-of the command line parsing of T[e]{.e}X needed to be preserved.
+of the command line parsing of TeX needed to be preserved.
 
-Compiling εχT[e]{.e}X CLI
+Compiling εχTeX CLI
 -------------------------
 
-The εχT[e]{.e}X command line interface component can be created in this
+The εχTeX command line interface component can be created in this
 directory with the help of Maven:
 
       # mvn package
@@ -81,7 +81,7 @@ the right direction.
 License
 -------
 
-εχT[e]{.e}X CLI is released under the [GNU Library General Public
+εχTeX CLI is released under the [GNU Library General Public
 License](LICENSE.md).
 
 © 2009-2011 [The εχTeX Group](mailto:extex@dante.de)

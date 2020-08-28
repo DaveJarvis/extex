@@ -1,9 +1,9 @@
 
 
-The εχT[e]{.e}X Unit Native
+The εχTeX Unit Native
 ===========================
 
-The εχT[e]{.e}X Unit Native provides a loadable εχT[e]{.e}X module
+The εχTeX Unit Native provides a loadable εχTeX module
 defining a set of primitives and registers. The primitives defined are
 mainly those present in the unit java:
 
@@ -13,10 +13,10 @@ and those present in the unit native:
 
 `\nativedef`, `\nativeload`
 
-Compiling and Packaging the εχT[e]{.e}X Unit Native
+Compiling and Packaging the εχTeX Unit Native
 ---------------------------------------------------
 
-The εχT[e]{.e}X Native can be created in this directory with the help of
+The εχTeX Native can be created in this directory with the help of
 Maven. To resolve all dependencies it is best to compile in the
 parent\'s parent directory:
 
@@ -49,7 +49,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Unit Native is released under the [GNU Library General
+The εχTeX Unit Native is released under the [GNU Library General
 Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

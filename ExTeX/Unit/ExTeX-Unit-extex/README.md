@@ -1,9 +1,9 @@
 
 
-The εχT[e]{.e}X Unit εχT[e]{.e}X
+The εχTeX Unit εχTeX
 ================================
 
-The εχT[e]{.e}X Unit εχT[e]{.e}X provides a loadable εχT[e]{.e}X module
+The εχTeX Unit εχTeX provides a loadable εχTeX module
 defining a set of primitives and registers. The primitives defined are
 the following ones:
 
@@ -14,10 +14,10 @@ and in the embedded unit ensureloaded the primitive
 
 `\ensureloaded`,
 
-Compiling the εχT[e]{.e}X Unit εχT[e]{.e}X
+Compiling the εχTeX Unit εχTeX
 ------------------------------------------
 
-The εχT[e]{.e}X Unit εχT[e]{.e}X can be created in this directory with
+The εχTeX Unit εχTeX can be created in this directory with
 the help of Maven.
 
       # mvn package
@@ -48,7 +48,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Unit T[e]{.e}X is released under the [GNU Library
+The εχTeX Unit TeX is released under the [GNU Library
 General Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

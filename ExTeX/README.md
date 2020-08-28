@@ -5,15 +5,15 @@
 
 εχTeX aims at the development of a high quality typesetting
 system. This development is massively based on the experiences with the
-typesetting system T[e]{.e}X. Despite of its age T[e]{.e}X can still be
+typesetting system TeX. Despite of its age TeX can still be
 considered a very good choice. Nevertheless design decisions which where
-reasonable at the time of the writing of T[e]{.e}X can nowadays no
+reasonable at the time of the writing of TeX can nowadays no
 longer be considered as state of the art.
 
-The stability of T[e]{.e}X is one of its virtues. On the other side it
+The stability of TeX is one of its virtues. On the other side it
 makes it hard to improve the system -- even in the few areas which
 deserve improvements. The new millenium needs a system which is open for
-further development and at the same time compatible with T[e]{.e}X as
+further development and at the same time compatible with TeX as
 much as reasonable.
 
 εχTeX on the Web

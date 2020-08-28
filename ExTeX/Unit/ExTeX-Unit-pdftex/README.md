@@ -1,12 +1,12 @@
 
 
-The εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X
+The εχTeX Unit [pdf]{style="text-variant:small-caps;"}TeX
 =====================================================================
 
-The εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X
-provides a loadable εχT[e]{.e}X module defining a set of primitives and
+The εχTeX Unit [pdf]{style="text-variant:small-caps;"}TeX
+provides a loadable εχTeX module defining a set of primitives and
 registers. The primitives defined are mainly those present in
-[pdf]{style="text-variant:small-caps;"}T[e]{.e}X:
+[pdf]{style="text-variant:small-caps;"}TeX:
 
 `\efcode`, `\font`, `\pdfadjustspacing`, `\pdfannot`, `\pdfcatalog`,
 `\pdfcompresslevel`, `\pdfdecimaldigits`, `\pdfdest`, `\pdfendlink`,
@@ -20,10 +20,10 @@ registers. The primitives defined are mainly those present in
 `\pdfthread`, `\pdfthreadhoffset`, `\pdfthreadmargin`,
 `\pdfthreadvoffset`, `\pdfvorigin`, `\pdfxform`, `\pdfximage`
 
-Compiling and Packaging the εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X
+Compiling and Packaging the εχTeX Unit [pdf]{style="text-variant:small-caps;"}TeX
 ---------------------------------------------------------------------------------------------
 
-The εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X
+The εχTeX Unit [pdf]{style="text-variant:small-caps;"}TeX
 can be created in this directory with the help of Maven. To resolve all
 dependencies it is best to compile in the parent\'s parent directory:
 
@@ -56,7 +56,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X is
+The εχTeX Unit [pdf]{style="text-variant:small-caps;"}TeX is
 released under the [GNU Library General Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

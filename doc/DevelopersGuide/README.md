@@ -50,7 +50,7 @@ Creating the Developer\'s Guide
 -------------------------------
 
 Currently the building of the Developer\'s Guide relies on an externally
-installed T[e]{.e}X system. The commands `pdftex` and `makeindex` are
+installed TeX system. The commands `pdftex` and `makeindex` are
 used. εχBib is used as bibliography processor. Other components of
 εχTeX will be plugged in as soon as they are ready.
 

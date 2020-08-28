@@ -1,11 +1,11 @@
 
 
-The εχT[e]{.e}X Unit T[e]{.e}X
+The εχTeX Unit TeX
 ==============================
 
-The εχT[e]{.e}X Unit T[e]{.e}X provides a loadable εχT[e]{.e}X module
+The εχTeX Unit TeX provides a loadable εχTeX module
 defining a set of primitives and registers. The primitives defined are
-mainly those present in T[e]{.e}X:
+mainly those present in TeX:
 
 `\ `, `\/`, `\-`, `\above`, `\abovedisplayshortskip`,
 `\abovedisplayskip`, `\abovewithdelims`, `\accent`, `\adjdemerits`,
@@ -75,10 +75,10 @@ mainly those present in T[e]{.e}X:
 `\vrule`, `\vsize`, `\vskip`, `\vsplit`, `\vss`, `\vtop`, `\wd`,
 `\widowpenalty`, `\write`, `\xdef`, `\xleaders`, `\xspaceskip`, `\year`
 
-Compiling and Packaging the εχT[e]{.e}X Unit T[e]{.e}X
+Compiling and Packaging the εχTeX Unit TeX
 ------------------------------------------------------
 
-The εχT[e]{.e}X Unit T[e]{.e}X can be created in this directory with the
+The εχTeX Unit TeX can be created in this directory with the
 help of Maven. To resolve all dependencies it is best to compile in the
 parent\'s parent directory:
 
@@ -111,7 +111,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Unit T[e]{.e}X is released under the [GNU Library
+The εχTeX Unit TeX is released under the [GNU Library
 General Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -47,9 +47,9 @@ Creating the User\'s Guide
 --------------------------
 
 Currently the building of the User\'s Guide relies on an externally
-installed T[e]{.e}X system. The commands `pdftex` and `makeindex` are
+installed TeX system. The commands `pdftex` and `makeindex` are
 used. εχBib is used as bibliography processor. Other components of
-εχT[e]{.e}X will be plugged in as soon as they are ready.
+εχTeX will be plugged in as soon as they are ready.
 
 The εχTeX developer\'s guide can be created in this
 directory with the help of [Maven](http://maven.apache.org). As a

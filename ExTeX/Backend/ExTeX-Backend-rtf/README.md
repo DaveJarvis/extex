@@ -1,15 +1,15 @@
 
 
-The εχT[e]{.e}X Back-End RTF
+The εχTeX Back-End RTF
 ============================
 
-The εχT[e]{.e}X Back-End RTF provides a εχT[e]{.e}X document writer
+The εχTeX Back-End RTF provides a εχTeX document writer
 module producing Rich Text Format.
 
-Compiling and Packaging the εχT[e]{.e}X Back-End RTF
+Compiling and Packaging the εχTeX Back-End RTF
 ----------------------------------------------------
 
-The εχT[e]{.e}X Back-End RTF can be created in this directory with the
+The εχTeX Back-End RTF can be created in this directory with the
 help of Maven. To resolve all dependencies it is best to compile in the
 parent\'s parent directory:
 
@@ -42,7 +42,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Back-End RTF is released under the [GNU Library General
+The εχTeX Back-End RTF is released under the [GNU Library General
 Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -1,15 +1,15 @@
 
 
-The εχT[e]{.e}X Backend dump
+The εχTeX Backend dump
 ============================
 
 This component contains a document writer which simply writes the nodes
 to an output file. This is meant for debugging and testing.
 
-Compiling εχT[e]{.e}X Backend dump
+Compiling εχTeX Backend dump
 ----------------------------------
 
-The εχT[e]{.e}X Backend dump component can be created in this directory
+The εχTeX Backend dump component can be created in this directory
 with the help of Maven:
 
       # mvn package
@@ -37,7 +37,7 @@ the right direction.
 License
 -------
 
-εχT[e]{.e}X CLI is released under the [GNU Library General Public
+εχTeX CLI is released under the [GNU Library General Public
 License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -1,6 +1,4 @@
-
-
-The εχT[e]{.e}X Development Resources
+The εχTeX Development Resources
 =====================================
 
 This module contains some configuration files for development. Some of
@@ -10,7 +8,7 @@ directly be incorporated into the IDE.
 Using the Development Resources
 -------------------------------
 
-The εχT[e]{.e}X development resources can be deployed from this
+The εχTeX development resources can be deployed from this
 directory with the help of Maven:
 
       # mvn install
@@ -29,7 +27,7 @@ the right direction.
 License
 -------
 
-εχT[e]{.e}X Development Resources are released under the [GNU Library
+εχTeX Development Resources are released under the [GNU Library
 General Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

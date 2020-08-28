@@ -1,16 +1,16 @@
 
 
-The εχT[e]{.e}X Back-End DVIx
+The εχTeX Back-End DVIx
 =============================
 
-The εχT[e]{.e}X Back-End DVIx provides a εχT[e]{.e}X document writer
+The εχTeX Back-End DVIx provides a εχTeX document writer
 module producing the DeVice Independent file format as defined by Donald
 Knuth.
 
-Compiling and Packaging the εχT[e]{.e}X Back-End DVIx
+Compiling and Packaging the εχTeX Back-End DVIx
 -----------------------------------------------------
 
-The εχT[e]{.e}X Back-End DVIx can be created in this directory with the
+The εχTeX Back-End DVIx can be created in this directory with the
 help of Maven. To resolve all dependencies it is best to compile in the
 parent\'s parent directory:
 
@@ -43,7 +43,7 @@ the right direction.
 License
 -------
 
-The εχT[e]{.e}X Back-End DVIx is released under the [GNU Library General
+The εχTeX Back-End DVIx is released under the [GNU Library General
 Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

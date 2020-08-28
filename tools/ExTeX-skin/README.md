@@ -3,7 +3,7 @@
 εχTeX Maven Skin
 ================
 
-The εχT[e]{.e}X Maven Skin provides a Maven skin for generating a Maven
+The εχTeX Maven Skin provides a Maven skin for generating a Maven
 site with the
 [maven-site-plugin](http://maven.apache.org/plugins/maven-site-plugin/).
 All artifacts and scripts needed are contained.
