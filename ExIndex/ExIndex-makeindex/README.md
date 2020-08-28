@@ -28,4 +28,4 @@ License
 License](LICENSE.html). The installer utilizes software distributed
 under the Apache License 2.0.
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

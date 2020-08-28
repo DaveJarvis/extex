@@ -1,15 +1,15 @@
 ![](src/images/ExTeX-resource-side.png){.left}
 
-εχ[T]{.t}[e]{.e}X resource
+εχTeX resource
 ==========================
 
-εχ[T]{.t}[e]{.e}X resource is a base component which contains various
+εχTeX resource is a base component which contains various
 helpful classes for dealing with components.
 
-Compiling εχ[T]{.t}[e]{.e}X resource
+Compiling εχTeX resource
 ------------------------------------
 
-εχ[T]{.t}[e]{.e}X resource can be created in this directory with the
+εχTeX resource can be created in this directory with the
 help of Maven:
 
       # mvn package
@@ -77,7 +77,7 @@ the right direction.
 License
 -------
 
-εχ[T]{.t}[e]{.e}X resource is released under the [GNU Library General
+εχTeX resource is released under the [GNU Library General
 Public License](LICENSE.html).
 
-© 2003-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2003-2011 [The εχTeX Group](mailto:extex@dante.de)

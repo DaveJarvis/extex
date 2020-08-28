@@ -47,4 +47,4 @@ License
 εχT[eX Maven Skin is released under the [Apache License
 2.0](LICENSE.txt). ]{.e}
 
-© 2010-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2010-2011 [The εχTeX Group](mailto:extex@dante.de)

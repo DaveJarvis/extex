@@ -1,22 +1,22 @@
 ![](src/images/ExTeX-base-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X Base
+The εχTeX Base
 ==========================
 
-εχ[T]{.t}[e]{.e}X is a typesetter in the spirit of [T]{.t}[e]{.e}X. The
+εχTeX is a typesetter in the spirit of TeX. The
 base com­po­nent is contained in this module. The base com­po­nent is
 the central link for all other parts.
 
 Unfortunately this module contains a collection of different pieces. A
 further sub­division should be en­visaged in the future.
 
-Compiling and Packaging the εχ[T]{.t}[e]{.e}X Base
+Compiling and Packaging the εχTeX Base
 --------------------------------------------------
 
 As a prerequisite all required modules need to be installed in the local
 repository (with `mvn install`).
 
-The εχ[T]{.t}[e]{.e}X base can be created in this directory with the
+The εχTeX base can be created in this directory with the
 help of Maven:
 
       # mvn package
@@ -46,7 +46,7 @@ the right direction.
 License
 -------
 
-εχ[T]{.t}[e]{.e}X base is released under the [GNU Library General Public
+εχTeX base is released under the [GNU Library General Public
 License](LICENSE.html).
 
-&copy: 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+&copy: 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -4,7 +4,7 @@ The εχBib Core
 ==============
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. The core component is contained in this
+B[IB]{.small}TeX. The core component is contained in this
 module.
 
 Compiling the εχBib Core
@@ -57,4 +57,4 @@ License
 εχBib is released under the [GNU Library General Public
 License](LICENSE.html).
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -4,7 +4,7 @@
 ==========
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. This component provides a command line
+B[IB]{.small}TeX. This component provides a command line
 interface for the utilities provided.
 
 εχBibUtil a bibliography processor utility. This program read one or
@@ -57,4 +57,4 @@ License
 εχBib Main is released under the [GNU Library General Public
 License](LICENSE.html).
 
-© 2010-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2010-2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -4,7 +4,7 @@ The εχBib BSF
 =============
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. The component which provides access to the
+B[IB]{.small}TeX. The component which provides access to the
 core functionality via the BSF framework is contained in this module.
 This can be used to write bibliography styles in other languages beside
 the BST language.
@@ -58,4 +58,4 @@ licenses. Mainly the [Apache License, Version
 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) and the BSD
 license are involved.
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

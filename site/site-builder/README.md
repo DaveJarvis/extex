@@ -1,9 +1,9 @@
 ![](src/images/ExTeX-site-builder-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X Site Builder
+The εχTeX Site Builder
 ==================================
 
-The site for εχ[T]{.t}[e]{.e}X is created from a set of sources. This
+The site for εχTeX is created from a set of sources. This
 creation utilizes [Apache velocity](http://velocity.apache.org) as
 templating engine.
 
@@ -16,7 +16,7 @@ The following kind of files are created:
 Compiling the Site Builder
 --------------------------
 
-The εχ[T]{.t}[e]{.e}X site builder can be compiled in this directory
+The εχTeX site builder can be compiled in this directory
 with the help of [Maven](http://maven.apache.org):
 
       # mvn package
@@ -36,7 +36,7 @@ the right direction.
 License
 -------
 
-The εχ[T]{.t}[e]{.e}X Site Builder is released under the [GNU Library
+The εχTeX Site Builder is released under the [GNU Library
 General Public License](LICENSE.html).
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

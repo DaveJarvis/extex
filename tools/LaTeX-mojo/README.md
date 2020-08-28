@@ -1,15 +1,15 @@
 ![](src/images/LaTeXmojo-side.png){.left}
 
-The L[a]{.la}[T]{.t}[e]{.e}X Mojo
+The L[a]{.la}TeX Mojo
 =================================
 
-The L[a]{.la}[T]{.t}[e]{.e}X mojo tries to create a document from its
+The L[a]{.la}TeX mojo tries to create a document from its
 source files.
 
-Compiling the L[a]{.la}[T]{.t}[e]{.e}X Mojo
+Compiling the L[a]{.la}TeX Mojo
 -------------------------------------------
 
-The L[a]{.la}[T]{.t}[e]{.e}X mojo can be created in this directory with
+The L[a]{.la}TeX mojo can be created in this directory with
 the help of Maven2:
 
       # mvn package
@@ -60,7 +60,7 @@ the right direction.
 License
 -------
 
-The L[a]{.la}[T]{.t}[e]{.e}X mojo is released under the [GNU Library
+The L[a]{.la}TeX mojo is released under the [GNU Library
 General Public License](LICENSE.html).
 
-© 2009 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2009 [The εχTeX Group](mailto:extex@dante.de)

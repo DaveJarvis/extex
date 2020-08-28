@@ -40,4 +40,4 @@ License
 εχT[e]{.e}X CLI is released under the [GNU Library General Public
 License](LICENSE.html).
 
-© 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -1,9 +1,9 @@
 ![](src/images/ExTeX-side.png){.left}
 
-εχ[T]{.t}[e]{.e}X
+εχTeX
 =================
 
-εχ[T]{.t}[e]{.e}X aims at the development of a high quality typesetting
+εχTeX aims at the development of a high quality typesetting
 system. This development is massively based on the experiences with the
 typesetting system T[e]{.e}X. Despite of its age T[e]{.e}X can still be
 considered a very good choice. Nevertheless design decisions which where
@@ -16,25 +16,25 @@ deserve improvements. The new millenium needs a system which is open for
 further development and at the same time compatible with T[e]{.e}X as
 much as reasonable.
 
-εχ[T]{.t}[e]{.e}X on the Web
+εχTeX on the Web
 ----------------------------
 
-εχ[T]{.t}[e]{.e}X is present on the Web with the Web site at
+εχTeX is present on the Web with the Web site at
 [www.extex.org](http://www.extex.org/). This Web site is hosted by
 [DANTE e.V.](http://www.dante.de)
 
 Getting Started -- with Reading
 -------------------------------
 
-If you are interested in using εχ[T]{.t}[e]{.e}X you should have a look
-at the *εχ[T]{.t}[e]{.e}X User\'s Guide*. The source code for the
+If you are interested in using εχTeX you should have a look
+at the *εχTeX User\'s Guide*. The source code for the
 user\'s guide can be found in the directory
 [`../doc/UsersGuide`](../doc/UsersGuide).
 
-Compiling εχ[T]{.t}[e]{.e}X
+Compiling εχTeX
 ---------------------------
 
-εχ[T]{.t}[e]{.e}X can be created in this directory with the help of
+εχTeX can be created in this directory with the help of
 Maven:
 
       # mvn compile
@@ -610,11 +610,11 @@ the right direction.
 Licenses -- Legal Issues
 ------------------------
 
-εχ[T]{.t}[e]{.e}X is developed under an Open Source license. It is meant
+εχTeX is developed under an Open Source license. It is meant
 to be free. Thus the [GNU Library General Public License](LICENSE.txt)
 has been chosen.
 
-εχ[T]{.t}[e]{.e}X uses some libraries. They usually come with a license
+εχTeX uses some libraries. They usually come with a license
 of their own. Thus watch out to respect those licenses as well.
 
 File Organization
@@ -847,4 +847,4 @@ File Organization
 :::
 :::
 
-© 2009-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2009-2011 [The εχTeX Group](mailto:extex@dante.de)

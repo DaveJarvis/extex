@@ -1,6 +1,6 @@
 ![sidebar](src/images/users-guide-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X User\'s Guide
+The εχTeX User\'s Guide
 ===================================
 
 The Directory Structure
@@ -51,7 +51,7 @@ installed T[e]{.e}X system. The commands `pdftex` and `makeindex` are
 used. εχBib is used as bibliography processor. Other components of
 εχT[e]{.e}X will be plugged in as soon as they are ready.
 
-The εχ[T]{.t}[e]{.e}X developer\'s guide can be created in this
+The εχTeX developer\'s guide can be created in this
 directory with the help of [Maven2](http://maven.apache.org). As a
 prerequisite the Maven module `ExBib-Main` needs to be accessible at
 least from the local repository. This is accomplished by

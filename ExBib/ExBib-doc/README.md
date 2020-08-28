@@ -4,7 +4,7 @@ The εχBib Documentation
 =======================
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. It comes with some documentation. This
+B[IB]{.small}TeX. It comes with some documentation. This
 documentation is packaged in this module.
 
 Creating the εχBib Documentation
@@ -19,10 +19,10 @@ This command requires that [Maven](http://maven.apache.org) is properly
 installed on your system and the executable can be found on the search
 path.
 
-In addition a working [T]{.t}[e]{.e}X system is needed. The commands
+In addition a working TeX system is needed. The commands
 must be found on the search path. Step by step the components of
-εχ[T]{.t}[e]{.e}X might be plugged in to remove the dependency on a
-separate [T]{.t}[e]{.e}X system.
+εχTeX might be plugged in to remove the dependency on a
+separate TeX system.
 
 ``` {.output}
 [INFO] Scanning for projects...
@@ -56,4 +56,4 @@ License
 The εχBib documentation is released under the [GNU Free Documentation
 License](LICENSE.html).
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -1,6 +1,6 @@
 ![](src/images/dev-guide-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X Developer\'s Guide
+The εχTeX Developer\'s Guide
 ========================================
 
 The Directory Structure
@@ -52,9 +52,9 @@ Creating the Developer\'s Guide
 Currently the building of the Developer\'s Guide relies on an externally
 installed T[e]{.e}X system. The commands `pdftex` and `makeindex` are
 used. εχBib is used as bibliography processor. Other components of
-εχ[T]{.t}[e]{.e}X will be plugged in as soon as they are ready.
+εχTeX will be plugged in as soon as they are ready.
 
-The εχ[T]{.t}[e]{.e}X developer\'s guide can be created in this
+The εχTeX developer\'s guide can be created in this
 directory with the help of [Maven](http://maven.apache.org). As a
 prerequisite the Maven module `ExBib-Main` needs to be accessible at
 least from the local repository. This is accomplished by
@@ -62,7 +62,7 @@ least from the local repository. This is accomplished by
       # cd ../../ExBib
       # mvn install
 
-The next prerequisite are the εχ[T]{.t}[e]{.e}X doc tools. You can put
+The next prerequisite are the εχTeX doc tools. You can put
 it into the local repository with
 
       # cd ../../tools/doc-tools
@@ -89,7 +89,7 @@ the right direction.
 License
 -------
 
-The εχ[T]{.t}[e]{.e}X documentation is released under the [GNU Free
+The εχTeX documentation is released under the [GNU Free
 Documentation License](LICENSE.html).
 
-© 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2011 [The εχTeX Group](mailto:extex@dante.de)

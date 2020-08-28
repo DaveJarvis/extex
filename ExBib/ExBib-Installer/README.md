@@ -4,7 +4,7 @@ The εχBib Installer
 ===================
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. εχBib is delivered in form of an
+B[IB]{.small}TeX. εχBib is delivered in form of an
 installer. This installer is created with the help of
 [IzPack](http://izpack.org).
 
@@ -45,4 +45,4 @@ License](LICENSE.html). The installer utilizes software distributed
 under the [Apache License
 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

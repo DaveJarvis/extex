@@ -4,12 +4,12 @@
 =====
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X and B[IB]{.small}[T]{.t}[e]{.e}X 8. It is
+B[IB]{.small}TeX and B[IB]{.small}TeX 8. It is
 meant to be usable as a plug-in replacement for those. In addition it
 provides some extensions which make it more usable.
 
 One extension is the extension language usable for producing the output.
-B[IB]{.small}[T]{.t}[e]{.e}X comes with a stack based extension
+B[IB]{.small}TeX comes with a stack based extension
 language. εχBib has an interpreter for this language. Additionally some
 more languages can be used for the same purpose. Any language which has
 a binding for [BSF](http://jakarta.apache.org/bsf/) can be used for this
@@ -19,8 +19,8 @@ In addition several attempts have been made to make εχBib highly
 configurable.
 
 It is meant to be in line with
-[εχ[T]{.t}[e]{.e}X](http://www.extex.org). Eventually it can be
-integrated into εχ[T]{.t}[e]{.e}X or other tools. Thus the functionality
+[εχTeX](http://www.extex.org). Eventually it can be
+integrated into εχTeX or other tools. Thus the functionality
 of the command line program is separated from the core functionality.
 
 Objectives

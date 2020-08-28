@@ -1,6 +1,6 @@
 ![](src/images/www-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X Web Site
+The εχTeX Web Site
 ==============================
 
 This tree contains a simple generator for a Web site written in Perl.

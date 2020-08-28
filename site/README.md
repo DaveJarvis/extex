@@ -1,15 +1,15 @@
 ![](src/images/ExTeX-site-side.png){.left}
 
-εχ[T]{.t}[e]{.e}X Site
+εχTeX Site
 ======================
 
 Thus module contains the site builder and the source file for the
-εχ[T]{.t}[e]{.e}X site.
+εχTeX site.
 
-Creating the εχ[T]{.t}[e]{.e}X Site
+Creating the εχTeX Site
 -----------------------------------
 
-The εχ[T]{.t}[e]{.e}X site can be created in this directory with the
+The εχTeX site can be created in this directory with the
 help of Maven3:
 
     # mvn compile
@@ -55,7 +55,7 @@ the right direction.
 License
 -------
 
-The εχ[T]{.t}[e]{.e}X site is released under the [GNU Library Public
+The εχTeX site is released under the [GNU Library Public
 License](LICENSE.html).
 
-© 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2011 [The εχTeX Group](mailto:extex@dante.de)

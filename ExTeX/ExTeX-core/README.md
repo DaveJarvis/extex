@@ -1,16 +1,16 @@
 ![](src/images/ExTeX-core-side.png){.left}
 
-The εχ[T]{.t}[e]{.e}X Core
+The εχTeX Core
 ==========================
 
-εχ[T]{.t}[e]{.e}X is a typesetter in the spirit of [T]{.t}[e]{.e}X. The
+εχTeX is a typesetter in the spirit of TeX. The
 core component is contained in this module. The core component provides
 the definition of registers and some fundamental support classes.
 
-Compiling and Packaging the εχ[T]{.t}[e]{.e}X Core
+Compiling and Packaging the εχTeX Core
 --------------------------------------------------
 
-The εχ[T]{.t}[e]{.e}X core can be created in this directory with the
+The εχTeX core can be created in this directory with the
 help of Maven:
 
       # mvn package
@@ -87,7 +87,7 @@ the right direction.
 License
 -------
 
-εχ[T]{.t}[e]{.e}X is released under the [GNU Library General Public
+εχTeX is released under the [GNU Library General Public
 License](LICENSE.html).
 
-© 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2011 [The εχTeX Group](mailto:extex@dante.de)

@@ -59,4 +59,4 @@ License
 The εχT[e]{.e}X Unit [pdf]{style="text-variant:small-caps;"}T[e]{.e}X is
 released under the [GNU Library General Public License](LICENSE.html).
 
-© 2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2011 [The εχTeX Group](mailto:extex@dante.de)

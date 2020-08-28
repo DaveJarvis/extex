@@ -4,7 +4,7 @@ The εχBib Jython
 ================
 
 εχBib is a bibliography processor in the spirit of
-B[IB]{.small}[T]{.t}[e]{.e}X. The component which provides access to the
+B[IB]{.small}TeX. The component which provides access to the
 core functionality via the BSF framework is contained in this module.
 This is demonstrated by the use of Python via the Jython implementation
 as extension language instead of the BST language.
@@ -63,4 +63,4 @@ aware that some additional modules are needed which come with their own
 licenses. Mainly the Apache License, Version 2.0 and the BSD license are
 involved.
 
-© 2008-2011 [The εχ[T]{.t}[e]{.e}X Group](mailto:extex@dante.de)
+© 2008-2011 [The εχTeX Group](mailto:extex@dante.de)
