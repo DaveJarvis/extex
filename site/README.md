@@ -1,4 +1,4 @@
-![](src/images/ExTeX-site-side.png){.left}
+
 
 εχTeX Site
 ======================
