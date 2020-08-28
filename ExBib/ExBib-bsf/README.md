@@ -52,7 +52,7 @@ License
 -------
 
 εχBib BSF is released under the [GNU Library General Public
-License](LICENSE.html). If you are using εχBib BSF you have to be aware
+License](LICENSE.md). If you are using εχBib BSF you have to be aware
 that some additional modules are needed which come with their own
 licenses. Mainly the [Apache License, Version
 2.0](http://www.apache.org/licenses/LICENSE-2.0.html) and the BSD

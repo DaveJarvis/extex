@@ -43,6 +43,6 @@ License
 -------
 
 The εχT[e]{.e}X Back-End PS is released under the [GNU Library General
-Public License](LICENSE.html).
+Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

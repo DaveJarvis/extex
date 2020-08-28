@@ -61,6 +61,6 @@ License
 -------
 
 The L[a]{.la}TeX mojo is released under the [GNU Library
-General Public License](LICENSE.html).
+General Public License](LICENSE.md).
 
 © 2009 [The εχTeX Group](mailto:extex@dante.de)

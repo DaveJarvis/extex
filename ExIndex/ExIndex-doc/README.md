@@ -53,6 +53,6 @@ License
 -------
 
 The εχIndex documentation is released under the [GNU Free Documentation
-License](LICENSE.html).
+License](LICENSE.md).
 
 © 2008 [The εχTeX Group](mailto:extex@dante.de)

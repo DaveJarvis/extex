@@ -35,7 +35,7 @@ License
 -------
 
 The εχIndex installer is released under the [GNU Library Public
-License](LICENSE.html). The installer utilizes software distributed
+License](LICENSE.md). The installer utilizes software distributed
 under the Apache License 2.0.
 
 © 2008 [The εχTeX Group](mailto:extex@dante.de)

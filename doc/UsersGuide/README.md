@@ -19,9 +19,9 @@ results can be found in the directory `target`.
   |              +— extex-users/
   |                   +— ...
   +— target/
-  +— LICENSE.html
+  +— LICENSE.md
   +— pom.xml
-  +— README.html
+  +— README.MD
 ```
 
 Some common files are taken from a similar directory structure in the
@@ -79,6 +79,6 @@ License
 -------
 
 The εχBib documentation is released under the [GNU Free Documentation
-License](LICENSE.html).
+License](LICENSE.md).
 
 © 2008-2011 [The ExTeX Group](mailto:extex@dante.de)

@@ -107,7 +107,7 @@ The εχBib Documentation
 
 The εχBib documentation can be found in the sub-directory `ExBib-doc`.
 It is not created automatically. Read the introduction in
-[ExBib-doc/README.html](ExBib-doc/README.html) for how to create the
+[ExBib-doc/](ExBib-doc/) for how to create the
 user\'s manual.
 
 The εχBib Installer
@@ -115,7 +115,7 @@ The εχBib Installer
 
 εχBib is delivered in form of an installer. This installer is created
 with the help of [IzPack](http://izpack.org). Read the introduction in
-[ExBib-Installer/README.html](ExBib-Installer/README.html) for how to
+[ExBib-Installer/](ExBib-Installer/) for how to
 create the installer.
 
 © 2008-2011 [The ExTeX Group](mailto:extex@dante.de)

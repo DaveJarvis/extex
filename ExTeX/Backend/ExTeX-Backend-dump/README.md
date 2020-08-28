@@ -38,6 +38,6 @@ License
 -------
 
 εχT[e]{.e}X CLI is released under the [GNU Library General Public
-License](LICENSE.html).
+License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

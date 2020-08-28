@@ -58,7 +58,7 @@ License
 -------
 
 εχBib Jython is released under the [GNU Library General Public
-License](LICENSE.html). If you are using εχBib Jython you have to be
+License](LICENSE.md). If you are using εχBib Jython you have to be
 aware that some additional modules are needed which come with their own
 licenses. Mainly the Apache License, Version 2.0 and the BSD license are
 involved.

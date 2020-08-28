@@ -28,6 +28,6 @@ License
 -------
 
 The εχBib styles are released under the [GNU Library General Public
-License](LICENSE.html).
+License](LICENSE.md).
 
 © 2008-2011 [The ExTeX Group](mailto:extex@dante.de)

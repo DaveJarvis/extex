@@ -41,7 +41,7 @@ License
 -------
 
 The εχBib installer is released under the [GNU Library Public
-License](LICENSE.html). The installer utilizes software distributed
+License](LICENSE.md). The installer utilizes software distributed
 under the [Apache License
 2.0](http://www.apache.org/licenses/LICENSE-2.0.html).
 

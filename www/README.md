@@ -104,15 +104,15 @@ results can be found in the directory `target`.
   |         +— ...
   +— target/
   +— build.xml
-  +— LICENSE.html
+  +— LICENSE.md
   +— pom.xml
-  +— README.html
+  +— README.md
 ```
 
 License
 -------
 
 The εχBib documentation is released under the [GNU Library General
-Public License](LICENSE.html).
+Public License](LICENSE.md).
 
 © 2006-2011 [The ExTeX Group](mailto:extex@dante.de)

@@ -50,6 +50,6 @@ License
 -------
 
 The εχT[e]{.e}X Unit Native is released under the [GNU Library General
-Public License](LICENSE.html).
+Public License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)

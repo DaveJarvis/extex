@@ -37,6 +37,6 @@ License
 -------
 
 The εχTeX Site Builder is released under the [GNU Library
-General Public License](LICENSE.html).
+General Public License](LICENSE.md).
 
 © 2008-2011 [The εχTeX Group](mailto:extex@dante.de)

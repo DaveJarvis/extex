@@ -21,9 +21,9 @@ results can be found in the directory `target`.
   |              +— dev-guide/
   |                   +— ...
   +— target/
-  +— LICENSE.html
+  +— LICENSE.md
   +— pom.xml
-  +— README.html
+  +— README.md
 ```
 
 Some common files are taken from a similar directory structure in the
@@ -90,6 +90,6 @@ License
 -------
 
 The εχTeX documentation is released under the [GNU Free
-Documentation License](LICENSE.html).
+Documentation License](LICENSE.md).
 
 © 2011 [The εχTeX Group](mailto:extex@dante.de)
