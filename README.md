@@ -36,79 +36,66 @@ If you are interested in the sources you should have a look at the
 [`doc/DevelopersGuide`](doc/DevelopersGuide). A compiled version can be
 downloaded from the [εχTeX web site](http://www.extex.org/).
 
-Licenses
-------------------------
-
-εχTeX is developed under an Open Source license. It is meant
-to be free. Thus the [GNU Library General Public License](LICENSE.md)
-has been chosen.
-
-εχTeX uses some libraries. They usually come with a license
-of their own. Thus watch out to respect those licenses as well.
-
-εχTeX contains some documentation. It is distributed under
-the [GNU Free Documentation License](doc/LICENSE.html).
-
 File Organization
 -----------------
 
-* ![](src/images/folder-blue.png) [CLI](CLI/)
+![](src/images/folder-blue.png) [CLI](CLI/)
 contains a general purpose library for command line parsing and
 processing.
 
-* ![](src/images/folder-blue.png) [ExBib](ExBib/README.html)
+![](src/images/folder-blue.png) [ExBib](ExBib/)
 εχTeX has a sub-project εχBib which aims at providing a
 bibliography processor. εχBib can be found in the sub-directory
 [`ExBib`](ExBib).
 
-* ![](src/images/folder-blue.png) [ExIndex](ExIndex/README.html)
+![](src/images/folder-blue.png) [ExIndex](ExIndex/)
 εχTeX has a sub-project εχIndex which aims at providing an
 index processor. εχIndex can be found in the sub-directory
 [`ExIndex`](ExIndex).
 
-* ![](src/images/folder-blue.png) [ExTeX](ExTeX/)
+![](src/images/folder-blue.png) [ExTeX](ExTeX/)
 εχTeX has the primary goal to provide a typesetter in the
 spirit of TeX. This directory contains the specific modules for
 this program.
 
-* ![](src/images/folder-blue.png) [ExTeX-resource](ExTeX-resource/)
+![](src/images/folder-blue.png) [ExTeX-resource](ExTeX-resource/)
 contains a library for resource loading and several supporting
 functionality for components and configuration.
 
-* ![](src/images/folder-blue.png) [Sandbox](Sandbox/)
+![](src/images/folder-blue.png) [Sandbox](Sandbox/)
 contains sand boxes of developers. Here code can be put under version
 control without integrating it into the official project tree.
 
-* ![](src/images/folder-blue.png) [develop](develop/)
+![](src/images/folder-blue.png) [develop](develop/)
 contains configurations and tools for the development.
 
-* ![](src/images/folder-blue.png) [doc](doc/)
+![](src/images/folder-blue.png) [doc](doc/)
 contains documentation for the overall project and εχTeX
 itself. Additional documentation can be found in the sub-projects.
 
-* ![](src/images/folder-blue.png) [library](library/)
+![](src/images/folder-blue.png) [library](library/)
 contains the library of collected papers and documents.
 
-* ![](src/images/folder-blue.png) [site](site/)
+![](src/images/folder-blue.png) [site](site/)
 contains the relaunch of the web pages on
 [www.extex.org](http://www.extex.org/). It is not active yet.
 
-* ![](src/images/folder-gray.png) [target](target/)
+![](src/images/folder-gray.png) [target](target/)
 is not contained in the repository. It is created on the fly during
 compilation to receive the intermediate files and results.
 
-* ![](src/images/folder-blue.png) [texmf](texmf/)
+![](src/images/folder-blue.png) [texmf](texmf/)
 contains sources for a texmf tree.
 
-* ![](src/images/folder-blue.png) [tools](tools/)
+![](src/images/folder-blue.png) [tools](tools/)
 contains some tools.
 
-* ![](src/images/folder-blue.png) [util](util/)
+![](src/images/folder-blue.png) [util](util/)
 contains some utilities. Usually they are shell scripts or programs of
 some sort which do not need the global build system of
 εχTeX.
 
-* ![](src/images/folder-blue.png) [www](www/)
+![](src/images/folder-blue.png) [www](www/)
 contains the sources for the web pages for
 [www.extex.org](http://www.extex.org/).
 
