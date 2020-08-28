@@ -49,6 +49,8 @@ import org.extex.cli.exception.UnusedArgumentCliException;
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
+ *
+ * @deprecated Replace with a third-party annotation-based parser.
  */
 public class CLI {
 
