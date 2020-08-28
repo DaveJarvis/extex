@@ -19,26 +19,6 @@
 
 package org.extex.test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.nio.charset.CharacterCodingException;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.Map;
-import java.util.Properties;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.StreamHandler;
-
 import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.Locator;
@@ -60,6 +40,19 @@ import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.Token;
 import org.extex.test.font.LauncherFont;
+
+import java.io.*;
+import java.nio.charset.CharacterCodingException;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Properties;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
+import static org.junit.Assert.*;
 
 /**
  * This base class for test cases handles all the nifty gritty details of
@@ -100,12 +93,13 @@ public abstract class ExTeXLauncher {
      * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
      * @version $Revision$
      */
+    @SuppressWarnings("RedundantThrows")
     private static class EHandler implements ErrorHandler {
 
         /**
          * The field <tt>logger</tt> contains the target logger.
          */
-        private Logger logger;
+        private final Logger logger;
 
         /**
          * Creates a new object.
@@ -183,8 +177,7 @@ public abstract class ExTeXLauncher {
      * The field <tt>levelMap</tt> contains the mapping for debug levels from
      * String representation to Level values.
      */
-    private static final Map<String, Level> LEVEL_MAP =
-            new HashMap<String, Level>();
+    private static final Map<String, Level> LEVEL_MAP = new HashMap<>();
 
     /**
      * The field <tt>SEP</tt> contains the separator for properties.
@@ -263,7 +256,7 @@ public abstract class ExTeXLauncher {
     /**
      * The field <tt>err</tt> contains the error stream for reporting.
      */
-    private PrintStream err = System.err;
+    private final PrintStream err = System.err;
 
     /**
      * The field <tt>props</tt> contains the merged properties from the system
@@ -274,16 +267,14 @@ public abstract class ExTeXLauncher {
     /**
      * The field <tt>setHsize</tt> contains the indicator to use a wider hsize.
      */
-    private boolean setHsize = true;;
+    private boolean setHsize = true;
 
     /**
      * The field <tt>trace</tt> contains the indicator for tracing.
      */
     private boolean trace = false;
 
-    /**
-     * Creates a new object.
-     */
+
     public ExTeXLauncher() {
 
         Locale.setDefault(Locale.ENGLISH);
@@ -381,8 +372,9 @@ public abstract class ExTeXLauncher {
         properties.setProperty("extex.nobanner", "true");
         properties.setProperty("extex.config", getConfig());
 
-        if (Boolean.valueOf(properties.getProperty("extex.launcher.trace", //
-            "false")).booleanValue()) {
+        if( Boolean.parseBoolean(
+            properties.getProperty(
+                "extex.launcher.trace", "false" ) ) ) {
             trace = true;
         }
 
@@ -446,8 +438,9 @@ public abstract class ExTeXLauncher {
         extex.setErrorHandler(new EHandler(logger));
         extex.setLogger(logger);
 
-        if (Boolean.valueOf(properties.getProperty("extex.launcher.verbose", //
-            "false")).booleanValue()) {
+        if( Boolean.parseBoolean(
+            properties.getProperty( "extex.launcher.verbose",
+                                    "false" ) ) ) {
             Logger.getLogger(ExTeXLauncher.class.getName()).info(
                 "Running:\n" + code + "\n");
         }
@@ -461,6 +454,7 @@ public abstract class ExTeXLauncher {
         } catch (CharacterCodingException e) {
             fail("Character coding error: " + e.getLocalizedMessage());
         } catch (ConfigurationException e) {
+            e.printStackTrace();
             fail("Configuration error: " + e.getLocalizedMessage());
         } catch (IOException e) {
             fail("I/O error: " + e.getLocalizedMessage());
@@ -474,8 +468,9 @@ public abstract class ExTeXLauncher {
         } catch (Throwable e) {
             fail("Error: " + e.getLocalizedMessage());
         } finally {
-            if (Boolean.valueOf(properties.getProperty("extex.launcher.time", //
-                "false")).booleanValue()) {
+            if( Boolean.parseBoolean(
+                properties.getProperty( "extex.launcher.time",
+                                        "false" ) ) ) {
                 t = System.currentTimeMillis() - t;
                 StringBuilder sb = new StringBuilder();
                 sb.append(t % 1000);
@@ -600,10 +595,8 @@ public abstract class ExTeXLauncher {
      * @return the log level
      */
     private Level getLogLevel(Properties properties) {
-
-        Level level =
-                LEVEL_MAP.get(properties.getProperty("extex.launcher.loglevel",
-                    "info"));
+        final Level level = LEVEL_MAP.get( properties.getProperty(
+            "extex.launcher.loglevel", "info" ) );
 
         return level == null ? Level.INFO : level;
     }
@@ -620,12 +613,9 @@ public abstract class ExTeXLauncher {
 
             File file = new File(".extex-test");
             if (file.canRead()) {
-                try {
-                    FileInputStream inputStream = new FileInputStream(file);
+                try(final InputStream inputStream = new FileInputStream( file)) {
                     props.load(inputStream);
-                    inputStream.close();
-                } catch (IOException e) {
-                    // ignored on purpose
+                } catch (IOException ignored) {
                 }
             }
         }

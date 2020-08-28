@@ -18,15 +18,6 @@
 
 package org.extex.exbib.core.bst;
 
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.bst.token.Token;
 import org.extex.exbib.core.bst.token.impl.TInteger;
@@ -35,7 +26,6 @@ import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.exceptions.ExBibException;
-import org.extex.exbib.core.exceptions.ExBibFunctionExistsException;
 import org.extex.exbib.core.util.NotObservableException;
 import org.extex.exbib.core.util.Observable;
 import org.extex.exbib.core.util.Observer;
@@ -45,6 +35,10 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.framework.i18n.LocalizerFactory;
+
+import java.io.FileNotFoundException;
+import java.util.*;
+import java.util.logging.Logger;
 
 /**
  * This is the core implementation of a bibliography.
@@ -57,7 +51,7 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * The field <tt>db</tt> contains the database.
      */
-    private DB db = null;
+    private DB db;
 
     /**
      * The field <tt>citations</tt> contains the mapping from normalized forms
@@ -70,31 +64,31 @@ public class BibliographyCore implements Bibliography, Observable {
      * The field <tt>endParseObservers</tt> contains the list of observers
      * triggered when the parsing is started.
      */
-    private ObserverList endParseObservers = new ObserverList();
+    private final ObserverList endParseObservers = new ObserverList();
 
     /**
      * The field <tt>parseObservers</tt> contains the list of observers
      * triggered when the parsing is completed.
      */
-    private ObserverList parseObservers = new ObserverList();
+    private final ObserverList parseObservers = new ObserverList();
 
     /**
      * The field <tt>startParseObservers</tt> contains the list of observers
      * triggered when the parsing starts.
      */
-    private ObserverList startParseObservers = new ObserverList();
+    private final ObserverList startParseObservers = new ObserverList();
 
     /**
      * The field <tt>startReadObservers</tt> contains the list of observers
      * triggered when the parsing ends.
      */
-    private ObserverList startReadObservers = new ObserverList();
+    private final ObserverList startReadObservers = new ObserverList();
 
     /**
      * The field <tt>setOptionObservers</tt> contains the list of observers
      * triggered when an option is set.
      */
-    private ObserverList setOptionObservers = new ObserverList();
+    private final ObserverList setOptionObservers = new ObserverList();
 
     /**
      * The field <tt>bibliographyDatabases</tt> contains the list of
@@ -116,12 +110,12 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * The field <tt>logger</tt> contains the writer for logging purposes.
      */
-    private Logger logger = null;
+    private Logger logger;
 
     /**
      * The field <tt>options</tt> contains the options.
      */
-    private Map<String, Token> options = new HashMap<String, Token>();
+    private Map<String, Token> options = new HashMap<>();
 
     /**
      * Create a new {@link Bibliography} object.
@@ -146,15 +140,11 @@ public class BibliographyCore implements Bibliography, Observable {
      * </p>
      * 
      * @param sa the array of resources to add
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyDatabase(java.lang.String[])
      */
     @Override
     public void addBibliographyDatabase(String... sa) {
 
-        for (String s : sa) {
-            bibliographyDatabases.add(s);
-        }
+        bibliographyDatabases.addAll( Arrays.asList( sa ) );
     }
 
     /**
@@ -162,15 +152,11 @@ public class BibliographyCore implements Bibliography, Observable {
      * processing the database.
      * 
      * @param style the new bib style
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addBibliographyStyle(java.lang.String[])
      */
     @Override
     public void addBibliographyStyle(String... style) {
 
-        for (String s : style) {
-            bibliographyStyles.add(s);
-        }
+        bibliographyStyles.addAll( Arrays.asList( style ) );
     }
 
     /**
@@ -178,13 +164,11 @@ public class BibliographyCore implements Bibliography, Observable {
      * context are augmented by the ones given.
      * 
      * @param sa the String list of citations
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#addCitation(java.lang.String[])
      */
     @Override
     public void addCitation(String... sa) {
 
-        for (String s : sa) {
+        for (final String s : sa) {
             citations.put(s.toLowerCase(Locale.ENGLISH), s);
         }
     }
@@ -259,22 +243,12 @@ public class BibliographyCore implements Bibliography, Observable {
         return bibliographyStyles.size();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#countCitations()
-     */
     @Override
     public int countCitations() {
 
         return citations.size();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#countDatabases()
-     */
     @Override
     public int countDatabases() {
 
@@ -284,10 +258,6 @@ public class BibliographyCore implements Bibliography, Observable {
     /**
      * Getter for bib style. The bib style is the name of he BST file to use for
      * processing the database.
-     * 
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#getBibliographyStyles()
      */
     @Override
     public List<String> getBibliographyStyles() {
@@ -407,12 +377,6 @@ public class BibliographyCore implements Bibliography, Observable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.util.Observable#registerObserver(java.lang.String,
-     *      org.extex.exbib.core.util.Observer)
-     */
     @Override
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
@@ -432,19 +396,14 @@ public class BibliographyCore implements Bibliography, Observable {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#reset()
-     */
     @Override
     public void reset() {
 
-        citations = new HashMap<String, String>();
-        bibliographyStyles = new ArrayList<String>();
-        bibliographyDatabases = new ArrayList<String>();
-        theEntries = new ArrayList<String>();
-        options = new HashMap<String, Token>();
+        citations = new HashMap<>();
+        bibliographyStyles = new ArrayList<>();
+        bibliographyDatabases = new ArrayList<>();
+        theEntries = new ArrayList<>();
+        options = new HashMap<>();
     }
 
     /**
@@ -467,16 +426,9 @@ public class BibliographyCore implements Bibliography, Observable {
         this.logger = logger;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.Bibliography#setOption(java.lang.String,
-     *      java.lang.String)
-     */
     @Override
     public boolean setOption(String name, String value)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+            throws ExBibIllegalValueException {
 
         return setOption(name, (value.matches("-?[0-9]+") //
                 ? new TInteger(value, null)
@@ -490,14 +442,9 @@ public class BibliographyCore implements Bibliography, Observable {
      * @param value the value
      * 
      * @return <code>true</code> iff the option is known and has been set
-     * 
-     * @throws ExBibIllegalValueException in case of an illegal value
-     * @throws ExBibFunctionExistsException in case of a redefinition
      */
     @Override
-    public boolean setOption(String name, Token value)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException {
+    public boolean setOption(String name, Token value) {
 
         options.put(name, value);
 

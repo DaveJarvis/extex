@@ -34,9 +34,7 @@ import org.extex.color.model.RgbColor;
  */
 public class NoColorConverter implements ColorConverter {
 
-    /**
-     * Creates a new object.
-     */
+
     public NoColorConverter() {
 
     }

@@ -40,9 +40,7 @@ public class NulldelimiterspaceTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(NulldelimiterspaceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NulldelimiterspaceTest() {
 
         super("nulldelimiterspace", "", "0.0pt");

@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class FutureletTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public FutureletTest() {
 
-        super("futurelet", "\\relax\\relax\\relax");
+        setPrimitive("futurelet");setArguments("\\relax\\relax\\relax");
     }
 
     /**

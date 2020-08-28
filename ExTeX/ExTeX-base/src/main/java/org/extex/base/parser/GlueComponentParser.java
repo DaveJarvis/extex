@@ -369,9 +369,7 @@ public final class GlueComponentParser {
         return parse(context, source, typesetter, false);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private GlueComponentParser() {
 
         // never used

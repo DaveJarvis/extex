@@ -32,9 +32,7 @@ import org.extex.dviware.Dvi;
  */
 public class DviW0 extends AbstractDviCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public DviW0() {
 
         super("w0");

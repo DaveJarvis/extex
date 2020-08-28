@@ -29,21 +29,21 @@ import org.junit.Test;
  * @version $Revision$
  */
 public abstract class AbstractBoxDimenTester
-        extends
-            NoFlagsButGlobalPrimitiveTester {
+    extends NoFlagsButGlobalPrimitiveTester {
 
     /**
      * The field <tt>primitive</tt> contains the name of the primitive.
      */
     private String primitive;
 
-    /**
-     * Creates a new object.
-     * @param primitive the name of the integer register to test
-     */
-    public AbstractBoxDimenTester(String primitive) {
+    public AbstractBoxDimenTester() {
+        super.setArguments( "1=0pt" );
+        super.setPrepare( "0" );
+    }
 
-        super(primitive, "1=0pt", "0");
+    @Override
+    public void setPrimitive( final String primitive ) {
+        super.setPrimitive( primitive );
         this.primitive = primitive;
     }
 

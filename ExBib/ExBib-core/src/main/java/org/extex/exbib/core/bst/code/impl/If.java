@@ -75,9 +75,7 @@ import org.extex.exbib.core.io.Locator;
  */
 public class If extends AbstractCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public If() {
 
     }

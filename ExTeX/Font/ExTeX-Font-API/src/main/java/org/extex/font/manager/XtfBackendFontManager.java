@@ -97,9 +97,7 @@ public class XtfBackendFontManager extends AbstractBackendFontManager
         }
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public XtfBackendFontManager() {
 
     }

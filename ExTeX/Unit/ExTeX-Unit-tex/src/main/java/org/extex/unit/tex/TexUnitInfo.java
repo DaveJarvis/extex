@@ -184,9 +184,7 @@ public class TexUnitInfo extends UnitInfo
      */
     private boolean write18 = false;
 
-    /**
-     * Creates a new object.
-     */
+
     public TexUnitInfo() {
 
         logger = null;

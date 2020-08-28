@@ -258,9 +258,7 @@ public class TeXTest {
         return "Transcript written on " + file.toString() + ".\n";
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TeXTest() {
 
         Locale.setDefault(Locale.ENGLISH);

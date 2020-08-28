@@ -41,12 +41,10 @@ public class AdvanceTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(AdvanceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AdvanceTest() {
 
-        super("advance", "\\count0 1 ");
+        setPrimitive("advance");setArguments("\\count0 1 ");
     }
 
     /**

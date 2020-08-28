@@ -65,9 +65,7 @@ public class FilteringParserFactory extends XindyParserFactory {
      */
     private String parser = "xindy";
 
-    /**
-     * Creates a new object.
-     */
+
     public FilteringParserFactory() {
 
     }

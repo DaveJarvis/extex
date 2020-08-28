@@ -40,12 +40,10 @@ public class Sfcode2Test extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(Sfcode2Test.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Sfcode2Test() {
 
-        super("sfcode", "1 1000");
+        setPrimitive("sfcode");setArguments("1 1000");
     }
 
     // TODO implement the primitive specific test cases

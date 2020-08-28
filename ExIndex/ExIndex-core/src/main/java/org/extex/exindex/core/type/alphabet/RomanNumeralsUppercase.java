@@ -35,9 +35,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  */
 public class RomanNumeralsUppercase implements LValue, Alphabet, LocationClass {
 
-    /**
-     * Creates a new object.
-     */
+
     public RomanNumeralsUppercase() {
 
     }

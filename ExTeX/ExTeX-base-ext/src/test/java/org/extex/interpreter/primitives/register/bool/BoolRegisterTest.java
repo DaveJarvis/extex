@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class BoolRegisterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public BoolRegisterTest() {
 
         setConfig("base-ext-test.xml");

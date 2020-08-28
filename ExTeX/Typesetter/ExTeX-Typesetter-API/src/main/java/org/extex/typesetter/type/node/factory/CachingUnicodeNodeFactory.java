@@ -41,9 +41,7 @@ public class CachingUnicodeNodeFactory extends SimpleUnicodeNodeFactory {
      */
     private Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
-    /**
-     * Creates a new object.
-     */
+
     public CachingUnicodeNodeFactory() {
 
         cache = new HashMap<TypesettingContext, Map<UnicodeChar, Node>>();

@@ -40,9 +40,7 @@ public class IfcatTest extends ConditionalTester {
         (new JUnitCore()).run(IfcatTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfcatTest() {
 
         super("ifcat", " xx");

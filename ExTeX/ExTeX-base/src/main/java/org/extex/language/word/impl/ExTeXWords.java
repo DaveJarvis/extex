@@ -157,9 +157,7 @@ public class ExTeXWords implements WordTokenizer {
         return index + n;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ExTeXWords() {
 
     }

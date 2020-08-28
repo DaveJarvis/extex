@@ -334,9 +334,8 @@ public class VerticalListNode extends GenericNodeList
 
         // long badness = Badness.badness(height.getValue(), //
         // ht.getLength().getValue());
-        long p = penalty;
         // TODO gene: splitPenalty() unimplemented
-        return p;
+        return penalty;
     }
 
     /**

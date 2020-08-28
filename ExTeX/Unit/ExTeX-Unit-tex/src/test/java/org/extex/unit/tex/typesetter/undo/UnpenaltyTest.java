@@ -41,12 +41,10 @@ public class UnpenaltyTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnpenaltyTest.class);
     }
 
-    /**
-     * Constructor for UnpenaltyTest.
-     */
+
     public UnpenaltyTest() {
 
-        super("unpenalty", "", "a");
+        setPrimitive("unpenalty");setArguments("");setPrepare("a");
     }
 
     /**

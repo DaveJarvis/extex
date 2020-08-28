@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class LetTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public LetTest() {
 
-        super("let", "\\relax\\relax");
+        setPrimitive("let");setArguments("\\relax\\relax");
     }
 
     /**

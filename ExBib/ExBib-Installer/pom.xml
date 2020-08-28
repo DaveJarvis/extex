@@ -18,7 +18,7 @@
     <site>
       <id>org.extex.exbib.installer</id>
       <name>ExBib Installer Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-Installer</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 
@@ -76,7 +76,6 @@
 
   <properties>
     <staging.dir>${project.build.directory}/staging</staging.dir>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <exbib.directory>${basedir}/..</exbib.directory>
   </properties>
 
@@ -122,7 +121,7 @@
           <kind>standard</kind>
           <output>${project.build.directory}/${project.artifactId}-${project.version}.jar</output>
           <installerFile>${project.build.directory}/${pom.artifactId}-${project.version}.jar</installerFile>
-          <descriptorEncoding>ISO-8859-1</descriptorEncoding>
+          <descriptorEncoding>${project.build.sourceEncoding}</descriptorEncoding>
         </configuration>
         <executions>
           <execution>

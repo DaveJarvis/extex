@@ -49,9 +49,7 @@ public class GroupInfoImpl implements GroupInfo {
      */
     private Locator locator;
 
-    /**
-     * Creates a new object.
-     */
+
     public GroupInfoImpl() {
 
         this(null, null, null);

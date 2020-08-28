@@ -40,9 +40,7 @@ public class LocalbrokenpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LocalbrokenpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LocalbrokenpenaltyTest() {
 
         super("localbrokenpenalty", " ", "0");

@@ -41,9 +41,7 @@ public class InputlinenoTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(InputlinenoTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public InputlinenoTest() {
 
         super("inputlineno", "1");

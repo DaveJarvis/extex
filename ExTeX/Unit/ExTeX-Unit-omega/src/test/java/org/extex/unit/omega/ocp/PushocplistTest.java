@@ -41,9 +41,7 @@ public class PushocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(PushocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PushocplistTest() {
 
         setConfig("omega-test");

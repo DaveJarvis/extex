@@ -42,9 +42,7 @@ public class EverymathTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EverymathTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EverymathTest() {
 
         super("everymath", "", "");

@@ -34,12 +34,12 @@ public class NamedInputStream extends InputStream {
     /**
      * The field <tt>name</tt> contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field <tt>stream</tt> contains the stream.
      */
-    private InputStream stream;
+    private final InputStream stream;
 
     /**
      * Creates a new object.

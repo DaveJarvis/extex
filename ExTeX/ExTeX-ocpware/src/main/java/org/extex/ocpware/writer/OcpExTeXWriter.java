@@ -37,9 +37,7 @@ import org.extex.ocpware.type.OcpProgram;
  */
 public class OcpExTeXWriter extends AbstractWriter {
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpExTeXWriter() {
 
     }

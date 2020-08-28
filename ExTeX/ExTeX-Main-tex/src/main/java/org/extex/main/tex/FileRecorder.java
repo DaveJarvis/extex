@@ -52,9 +52,7 @@ public class FileRecorder implements OpenFileObserver, OutputStreamObserver {
      */
     private List<String> recorded = new ArrayList<String>();
 
-    /**
-     * Creates a new object.
-     */
+
     public FileRecorder() {
 
     }

@@ -40,9 +40,7 @@ public class IfhmodeTest extends ConditionalTester {
         (new JUnitCore()).run(IfhmodeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfhmodeTest() {
 
         super("ifhmode", "\\else");

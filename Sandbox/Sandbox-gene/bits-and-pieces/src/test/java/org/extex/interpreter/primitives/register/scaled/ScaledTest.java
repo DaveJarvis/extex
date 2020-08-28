@@ -41,9 +41,7 @@ public class ScaledTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(ScaledTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ScaledTest() {
 
         super("scaled", "\\x=0", "");

@@ -45,9 +45,7 @@ public class PlainTest extends ExTeXLauncher {
         (new JUnitCore()).run(PlainTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PlainTest() {
 
     }

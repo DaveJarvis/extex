@@ -47,12 +47,10 @@ public class ReadlineTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(ReadlineTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ReadlineTest() {
 
-        super("readline", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
+        setPrimitive("readline");setArguments("1 to \\x");setPrepare("\\openin1 " + DATA_FILE + " ");
         setConfig("etex-test");
     }
 

@@ -59,7 +59,7 @@
     <site>
       <id>org.extex</id>
       <name>ExTeX Site</name>
-      <url>file:///serv/www/extex/snapshot/ExTeX-skin</url>
+      <url>${project.repo.url}/ExTeX-skin</url>
     </site>
   </distributionManagement>
 
@@ -85,17 +85,4 @@
       <properties/>
     </developer>
   </developers>
-
-  <mailingLists>
-    <mailingList>
-      <name>extex</name>
-      <post>extex@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-devel</name>
-      <post>extex-devel@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
-    </mailingList>
-  </mailingLists>
 </project>

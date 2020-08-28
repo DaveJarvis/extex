@@ -41,12 +41,10 @@ public class ChardefTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(ChardefTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ChardefTest() {
 
-        super("chardef", "\\x=123", "");
+        setPrimitive("chardef");setArguments("\\x=123");setPrepare("");
     }
 
     /**

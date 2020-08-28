@@ -39,9 +39,7 @@ public class EveryvboxTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EveryvboxTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EveryvboxTest() {
 
         super("everyvbox", "", "");

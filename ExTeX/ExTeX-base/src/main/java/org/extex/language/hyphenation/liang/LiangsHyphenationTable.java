@@ -175,9 +175,7 @@ public class LiangsHyphenationTable extends BaseHyphenationTable {
      */
     private HyphenTree patterns = new HyphenTree(new char[0]);
 
-    /**
-     * Creates a new object.
-     */
+
     public LiangsHyphenationTable() {
 
     }

@@ -40,9 +40,7 @@ public class LinepenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LinepenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LinepenaltyTest() {
 
         super("linepenalty", " ", "0");

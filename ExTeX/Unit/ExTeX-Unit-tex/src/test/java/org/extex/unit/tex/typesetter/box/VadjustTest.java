@@ -41,12 +41,10 @@ public class VadjustTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VadjustTest.class);
     }
 
-    /**
-     * Constructor for VadjustTest.
-     */
+
     public VadjustTest() {
 
-        super("vadjust", "{}", "a");
+        setPrimitive("vadjust");setArguments("{}");setPrepare("a");
     }
 
     /**

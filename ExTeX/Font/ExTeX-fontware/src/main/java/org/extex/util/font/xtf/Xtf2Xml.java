@@ -81,9 +81,7 @@ public class Xtf2Xml extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Xtf2Xml() {
 
         super(Xtf2Xml.class);

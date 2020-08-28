@@ -39,9 +39,7 @@ public class DisplayindentTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(DisplayindentTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DisplayindentTest() {
 
         super("displayindent", "", "0.0pt");

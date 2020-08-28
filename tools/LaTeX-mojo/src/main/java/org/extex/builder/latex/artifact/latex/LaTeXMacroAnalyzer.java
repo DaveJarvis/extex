@@ -61,9 +61,7 @@ public class LaTeXMacroAnalyzer implements LaTeXAnalyzer {
      */
     private Map<String, Macro> macros = new HashMap<String, Macro>();
 
-    /**
-     * Creates a new object.
-     */
+
     public LaTeXMacroAnalyzer() {
 
         macros.put("\\begin", new Macro() {

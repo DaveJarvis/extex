@@ -40,9 +40,7 @@ public class BinoppenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(BinoppenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BinoppenaltyTest() {
 
         super("binoppenalty", "", "0");

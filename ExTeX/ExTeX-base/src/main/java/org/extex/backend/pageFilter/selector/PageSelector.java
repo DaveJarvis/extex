@@ -50,9 +50,7 @@ public class PageSelector implements PagePipe {
      */
     private List<Rule> ranges = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public PageSelector() {
 
         pageNo = 0;

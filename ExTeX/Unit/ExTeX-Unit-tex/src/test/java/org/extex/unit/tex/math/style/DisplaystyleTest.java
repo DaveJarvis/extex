@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class DisplaystyleTest extends AbstractMathTester {
 
-    /**
-     * Constructor for DisplaystyleTest.
-     */
+
     public DisplaystyleTest() {
 
-        super("displaystyle", "");
+        setPrimitive("displaystyle");setArguments("");setPrepare("");
     }
 
     //TODO: write more primitive specific test cases

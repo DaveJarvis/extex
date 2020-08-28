@@ -53,9 +53,7 @@ public class ActiveCharacterTokenTest extends TokenTester {
         (new JUnitCore()).run(ActiveCharacterTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ActiveCharacterTokenTest() {
 
         super(token, Catcode.ACTIVE, "x", "the active character x");

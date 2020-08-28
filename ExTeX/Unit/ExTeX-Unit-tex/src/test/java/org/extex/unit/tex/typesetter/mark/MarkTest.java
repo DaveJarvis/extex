@@ -40,12 +40,10 @@ public class MarkTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(MarkTest.class);
     }
 
-    /**
-     * Constructor for MarkTest.
-     */
+
     public MarkTest() {
 
-        super("mark", "{}");
+        setPrimitive("mark");setArguments("{}");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

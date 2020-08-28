@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class WriterTypeTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public WriterTypeTest() {
 
-        super("writerType", "{test-plain}");
+        setPrimitive("writerType");setArguments("{test-plain}");setPrepare("");
         setConfig("extex-test");
     }
 

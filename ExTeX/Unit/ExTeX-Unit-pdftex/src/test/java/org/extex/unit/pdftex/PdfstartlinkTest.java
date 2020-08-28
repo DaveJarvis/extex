@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PdfstartlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfstartlinkTest() {
 
         super("pdfstartlink", " user{u}", "a " + "\\pdfoutput=1 ");

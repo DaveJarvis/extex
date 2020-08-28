@@ -40,9 +40,7 @@ public class DisplaywidthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(DisplaywidthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DisplaywidthTest() {
 
         super("displaywidth", "", "0.0pt");

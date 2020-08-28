@@ -40,9 +40,7 @@ public class DimenTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(DimenTest.class);
     }
 
-    /**
-     * Constructor for DimenTest.
-     */
+
     public DimenTest() {
 
         super("dimen", "42 ", "0.0pt");

@@ -41,12 +41,10 @@ public class ParTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ParTest.class);
     }
 
-    /**
-     * Constructor for ParTest.
-     */
+
     public ParTest() {
 
-        super("par", "");
+        setPrimitive("par");setArguments("");setPrepare("");
     }
 
     /**

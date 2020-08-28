@@ -33,9 +33,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  */
 public class AlphaLowercase implements LValue, Alphabet, LocationClass {
 
-    /**
-     * Creates a new object.
-     */
+
     public AlphaLowercase() {
 
     }

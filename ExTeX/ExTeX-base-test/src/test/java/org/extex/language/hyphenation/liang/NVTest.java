@@ -88,9 +88,7 @@ public class NVTest {
         private final Map<UnicodeChar, MockGlyph> map =
                 new HashMap<UnicodeChar, MockGlyph>();
 
-        /**
-         * Creates a new object.
-         */
+
         public MockFont() {
 
             map.put(hyphen, new MockGlyph('-'));

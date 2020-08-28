@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class ExpandafterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public ExpandafterTest() {
 
     }

@@ -66,9 +66,7 @@ public abstract class AbstractBackendFontManager implements BackendFontManager {
      */
     protected BackendFont recognizedFont;
 
-    /**
-     * Creates a new object.
-     */
+
     public AbstractBackendFontManager() {
 
         fontList = new HashMap<FontKey, ManagerInfo>();

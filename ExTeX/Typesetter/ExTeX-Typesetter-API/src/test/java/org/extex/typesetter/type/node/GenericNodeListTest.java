@@ -19,10 +19,6 @@
 
 package org.extex.typesetter.type.node;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
@@ -35,12 +31,15 @@ import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
  * This is the test suite for a horizontal list node.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("RedundantThrows")
 public class GenericNodeListTest extends AbstractNodeListTester {
 
     /**
@@ -249,7 +248,7 @@ public class GenericNodeListTest extends AbstractNodeListTester {
 
         try {
             makeList().addSkip(FixedGlue.ZERO);
-            assertFalse(true);
+            fail();
         } catch (Exception e) {
             assertTrue(true);
         }

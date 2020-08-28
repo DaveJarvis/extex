@@ -97,9 +97,7 @@ public class PageManager {
      */
     private List<Range> pages = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public PageManager() {
 
     }

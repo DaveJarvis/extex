@@ -163,12 +163,12 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * The instance itself.
      */
-    private OtfTableCFF cff;
+    private final OtfTableCFF cff;
 
     /**
      * The fonts in the cff table.
      */
-    private CffFont[] fonts;
+    private final CffFont[] fonts;
 
     /**
      * The array of the char strings.
@@ -198,7 +198,7 @@ public class OtfTableCFF extends AbstractXtfTable
     /**
      * The map for the string name - sid
      */
-    private Map<String, Integer> stringIndexName = null;
+    private Map<String, Integer> stringIndexName;
 
     /**
      * Version major
@@ -246,8 +246,8 @@ public class OtfTableCFF extends AbstractXtfTable
         nextOffset = readGSubrIndex(nextOffset, rar);
 
         // initialize the T2Operators
-        for (int i = 0; i < fonts.length; i++) {
-            fonts[i].init(rar, cff, baseoffset);
+        for( final CffFont font : fonts ) {
+            font.init( rar, cff, baseoffset );
         }
 
         // incomplete
@@ -263,8 +263,8 @@ public class OtfTableCFF extends AbstractXtfTable
 
         StringBuilder buf = new StringBuilder(data.length);
 
-        for (int i = 0; i < data.length; i++) {
-            buf.append((char) data[i]);
+        for( final byte datum : data ) {
+            buf.append( (char) datum );
         }
 
         return buf.toString();
@@ -406,7 +406,7 @@ public class OtfTableCFF extends AbstractXtfTable
                 if (name == null) {
                     break;
                 }
-                stringIndexName.put(name, new Integer(i));
+                stringIndexName.put( name, i );
             }
         }
         Integer sid = stringIndexName.get(glyphname);
@@ -418,8 +418,7 @@ public class OtfTableCFF extends AbstractXtfTable
                 T2TDOCharset op = fo.getCharset();
                 if (op != null) {
 
-                    int glyphpossid = op.getSidForStringIndex(sid);
-                    return glyphpossid;
+                    return op.getSidForStringIndex( sid);
                 }
             }
         }
@@ -442,8 +441,7 @@ public class OtfTableCFF extends AbstractXtfTable
 
             int sid = op.getSid(glyphpos);
             // get the name
-            String name = getStringIndex(sid);
-            return name;
+            return getStringIndex( sid );
         }
 
         return null;
@@ -554,15 +552,12 @@ public class OtfTableCFF extends AbstractXtfTable
 
                 RandomAccessInputArray arar = new RandomAccessInputArray(data);
                 try {
-                    while (true) {
+                    do {
                         // read until eof
                         T2Operator op =
-                                T2Operator.newInstance(arar, gSubrChars[i]);
-                        gSubrChars[i].add(op);
-                        if (arar.isEOF()) {
-                            break;
-                        }
-                    }
+                            T2Operator.newInstance( arar, gSubrChars[ i ] );
+                        gSubrChars[ i ].add( op );
+                    } while( !arar.isEOF() );
                 } catch (IOException e) {
                     e.printStackTrace();
                     // TODO change to EOFException ignore
@@ -638,7 +633,7 @@ public class OtfTableCFF extends AbstractXtfTable
     private long readNameIndex(int offset, RandomAccessR rar)
             throws IOException {
 
-        namedIndex = new ArrayList<String>();
+        namedIndex = new ArrayList<>();
 
         rar.seek(offset);
         int[] offsetarray = readOffsets(rar);
@@ -729,7 +724,7 @@ public class OtfTableCFF extends AbstractXtfTable
     private long readStringIndex(long nextOffset, RandomAccessR rar)
             throws IOException {
 
-        stringIndex = new ArrayList<String>();
+        stringIndex = new ArrayList<>();
 
         rar.seek(nextOffset);
         int[] offsetarray = readOffsets(rar);
@@ -783,15 +778,15 @@ public class OtfTableCFF extends AbstractXtfTable
     public void writeXML(XMLStreamWriter writer) throws IOException {
 
         writeStartElement(writer);
-        writer.writeAttribute("version", String.valueOf(versionmajor) + "."
-                + String.valueOf(versionminor));
+        writer.writeAttribute( "version", versionmajor + "."
+                + versionminor );
         writer.writeAttribute("hdrsize", String.valueOf(hdrSize));
         writer.writeAttribute("offsize", String.valueOf(offSize));
         writer.writeAttribute("fonts", fonts.length);
 
         // fonts
-        for (int i = 0; i < fonts.length; i++) {
-            fonts[i].writeXML(writer);
+        for( final CffFont font : fonts ) {
+            font.writeXML( writer );
         }
 
         // stringindex
@@ -808,8 +803,8 @@ public class OtfTableCFF extends AbstractXtfTable
         // gsubr
         writer.writeStartElement("gsubr");
         if (gSubrChars != null) {
-            for (int i = 0; i < gSubrChars.length; i++) {
-                gSubrChars[i].writeXML(writer);
+            for( final CharString gSubrChar : gSubrChars ) {
+                gSubrChar.writeXML( writer );
             }
         }
         writer.writeEndElement();

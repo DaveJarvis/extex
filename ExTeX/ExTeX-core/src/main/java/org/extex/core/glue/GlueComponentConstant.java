@@ -74,9 +74,7 @@ public class GlueComponentConstant implements Serializable, FixedGlueComponent {
      */
     protected long value;
 
-    /**
-     * Creates a new object.
-     */
+
     public GlueComponentConstant() {
 
         this.value = 0;

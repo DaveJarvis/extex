@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class MiddleTest extends AbstractMathTester {
 
-    /**
-     * Constructor for LeftTest.
-     */
+
     public MiddleTest() {
 
-        super("middle", "123 ");
+        setPrimitive("middle");setArguments("123 ");setPrepare("");
         setConfig("etex-test");
     }
 

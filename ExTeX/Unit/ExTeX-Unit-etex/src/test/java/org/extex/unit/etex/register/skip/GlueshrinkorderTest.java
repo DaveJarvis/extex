@@ -40,9 +40,7 @@ public class GlueshrinkorderTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(GlueshrinkorderTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GlueshrinkorderTest() {
 
         super("glueshrinkorder", "\\skip0 ", "0");

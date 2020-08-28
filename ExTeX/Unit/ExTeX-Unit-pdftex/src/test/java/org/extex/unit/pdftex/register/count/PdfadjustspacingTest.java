@@ -40,9 +40,7 @@ public class PdfadjustspacingTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfadjustspacingTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfadjustspacingTest() {
 
         super("pdfadjustspacing", "", "0");

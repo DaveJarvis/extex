@@ -42,9 +42,7 @@ public class NoboundaryTest extends ExTeXLauncher {
         (new JUnitCore()).run(NoboundaryTest.class);
     }
 
-    /**
-     * Constructor for NoboundaryTest.
-     */
+
     public NoboundaryTest() {
 
     }

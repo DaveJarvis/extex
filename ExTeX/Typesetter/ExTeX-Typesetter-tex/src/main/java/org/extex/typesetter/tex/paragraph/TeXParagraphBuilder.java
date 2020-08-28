@@ -19,10 +19,6 @@
 
 package org.extex.typesetter.tex.paragraph;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
-
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -30,11 +26,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.core.glue.FixedGlue;
-import org.extex.core.glue.FixedGlueComponent;
-import org.extex.core.glue.Glue;
-import org.extex.core.glue.GlueComponent;
-import org.extex.core.glue.WideGlue;
+import org.extex.core.glue.*;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
@@ -52,29 +44,12 @@ import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.typesetter.type.node.AbstractExpandableNode;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.ExplicitKernNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.VirtualCharNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * This class implements the paragraph breaking algorithm as used in
@@ -130,6 +105,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4483 $
  */
+@SuppressWarnings("RedundantThrows")
 public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
     /**
@@ -141,7 +117,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * The field <tt>localizer</tt> contains the localizer or <code>null</code>
      * if none has been set yet.
      */
-    private Localizer localizer = LocalizerFactory.getLocalizer(getClass());
+    private final Localizer localizer = LocalizerFactory.getLocalizer( getClass());
 
     /**
      * The field <tt>nodeFactory</tt> contains the node factory.
@@ -363,12 +339,12 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     /**
      * The field <tt>active</tt> contains the list of active and delta nodes.
      */
-    private List<Object> active = new ArrayList<Object>();
+    private final List<Object> active = new ArrayList<Object>();
 
     /**
      * The field <tt>passive</tt> contains the list of potential break points.
      */
-    private List<PassiveNode> passive = new ArrayList<PassiveNode>();
+    private final List<PassiveNode> passive = new ArrayList<PassiveNode>();
 
     /**
      * The field <tt>parshape</tt> contains the paragraph shape specification.
@@ -384,7 +360,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape = new FixedParagraphShape(
+    private final FixedParagraphShape fixedParshape = new FixedParagraphShape(
         Dimen.ZERO_PT);
 
     /**
@@ -393,7 +369,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape = new HangingParagraphShape(
+    private final HangingParagraphShape hangingParshape = new HangingParagraphShape(
         0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
@@ -500,24 +476,24 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * active_width: array [1 .. 6] of scaled; {distance from first active node
      * to cur_p}
      */
-    private WideGlue activeWidth = new WideGlue();
+    private final WideGlue activeWidth = new WideGlue();
 
     /**
      * cur_active_width: array [1 .. 6] of scaled; {distance from current active
      * node}
      */
-    private WideGlue curActiveWidth = new WideGlue();
+    private final WideGlue curActiveWidth = new WideGlue();
 
     /**
      * background: array [1 .. 6] of scaled; {length of an "empty" line}
      */
-    private WideGlue background = new WideGlue();
+    private final WideGlue background = new WideGlue();
 
     /**
      * break_width: array [1 .. 6] of scaled; {length being computed after
      * current break}
      */
-    private WideGlue breakWidth = new WideGlue();
+    private final WideGlue breakWidth = new WideGlue();
 
     /**
      * no_shrink_error_yet: boolean; {have we complained about infinite
@@ -603,7 +579,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * The field <tt>shortfall</tt> is used in badness calculations. shortfall:
      * scaled; {used in badness calculations}
      */
-    private Dimen shortfall = new Dimen();
+    private final Dimen shortfall = new Dimen();
 
     /**
      * no_break_yet: boolean; {have we found a feasible break at cur_p?}
@@ -668,7 +644,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     /**
      * line_width: scaled; {the current line will be justified to this width}
      */
-    private Dimen lineWidth = new Dimen();
+    private final Dimen lineWidth = new Dimen();
 
     /**
      * l: halfword; {line number of current active node}
@@ -767,7 +743,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * best total demerits known for current line class and position, given the
      * fitness
      */
-    private long[] minimalDemerits = new long[4];
+    private final long[] minimalDemerits = new long[4];
 
     /**
      * best total demerits known for current line class and position
@@ -781,18 +757,18 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
     /**
      * how to achieve minimal_demerits
      */
-    private PassiveNode[] bestPlace = new PassiveNode[4];
+    private final PassiveNode[] bestPlace = new PassiveNode[4];
 
     /**
      * corresponding line number
      */
-    private int[] bestPlaceLine = new int[4];
+    private final int[] bestPlaceLine = new int[4];
 
     /**
      * disc_width: scaled; {the length of discretionary material preceding a
      * break}
      */
-    private Dimen discretionaryWidth = new Dimen();
+    private final Dimen discretionaryWidth = new Dimen();
 
     /**
      * 847.
@@ -882,7 +858,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      * The field <tt>visitor</tt> contains the node visitor for the inner switch
      * on the node types.
      */
-    private NodeVisitor<Object, NodeList> visitor =
+    private final NodeVisitor<Object, NodeList> visitor =
             new NodeVisitor<Object, NodeList>() {
 
                 /**
@@ -972,13 +948,13 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                     // disc_node: <<Try to break after a discretionary fragment,
                     // then
                     // goto done5 869>>;
-                    /**
+                    /*
                      * 869.
-                     * 
+                     *
                      * The following code knows that discretionary texts contain
                      * only character nodes, kern nodes, box nodes, rule nodes,
                      * and ligature nodes.
-                     * 
+                     *
                      * This code is used in section 866.
                      */
 
@@ -1050,7 +1026,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
                     // glue_node: begin <<If node cur_p is a legal breakpoint,
                     // call try_break; then update the active widths by
                     // including the glue in glue_ptr(cur_p) 868>>;
-                    /**
+                    /*
                      * 868.
                      * 
                      * When node cur_p is a glue node, we look at prev_p to see
@@ -1369,9 +1345,7 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
      */
     private NodeList postDiscBreak;
 
-    /**
-     * Creates a new object.
-     */
+
     public TeXParagraphBuilder() {
 
     }
@@ -3336,16 +3310,14 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
 
         // begin if final_pass && (minimum_demerits=awful_bad) &&
         // (link(r)=last_active) && (prev_r=active) then
+        // goto deactivate;
         if (finalPass && minimumDemerits == AWFUL_BAD && r + 1 >= active.size()
                 && prevR < 0) {
             // artificial_demerits <-- true {set demerits zero, this break is
             // forced}
             artificialDemerits = true;
             // else if b > threshold then
-        } else if (badness > threshold) {
-            // goto deactivate;
-            return true;
-        }
+        } else return badness > threshold;
         // node_r_stays_active <-- false;
         return false;
         // end
@@ -4129,11 +4101,9 @@ public class TeXParagraphBuilder implements ParagraphBuilder, LogEnabled {
             findTheBestActiveNodeForTheDesiredLooseness();
 
             // if (actual_looseness=looseness) || final_pass then
-            if (actualLooseness == looseness || finalPass) {
-                // goto done;
-                return true;
-                // end ;
-            }
+            // goto done;
+            // end ;
+            return actualLooseness == looseness || finalPass;
             // end
         }
         return false;

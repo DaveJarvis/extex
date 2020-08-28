@@ -105,9 +105,7 @@ public class TocIndex {
      */
     private boolean verbose = false;
 
-    /**
-     * Creates a new object.
-     */
+
     public TocIndex() {
 
     }

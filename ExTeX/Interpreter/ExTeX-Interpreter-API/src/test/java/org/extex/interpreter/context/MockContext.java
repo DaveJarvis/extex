@@ -92,9 +92,7 @@ public class MockContext implements Context, TypesetterOptions {
      */
     private transient TokenFactory tokenFactory = new TokenFactoryImpl();
 
-    /**
-     * Creates a new object.
-     */
+
     public MockContext() {
 
     }

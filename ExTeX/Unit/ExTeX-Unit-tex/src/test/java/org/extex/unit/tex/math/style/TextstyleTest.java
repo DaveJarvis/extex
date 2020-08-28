@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class TextstyleTest extends AbstractMathTester {
 
-    /**
-     * Constructor for TextstyleTest.
-     */
+
     public TextstyleTest() {
 
-        super("textstyle", "");
+        setPrimitive("textstyle");setArguments("");setPrepare("");
     }
 
     //TODO: write more primitive specific test cases

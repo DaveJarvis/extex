@@ -41,12 +41,10 @@ public class IntegerTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(IntegerTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IntegerTest() {
 
-        super("integer", "\\x=123", "123");
+        setPrimitive("integer");setArguments("\\x=123");setPrepare("123");
         setConfig("extex-test");
     }
 

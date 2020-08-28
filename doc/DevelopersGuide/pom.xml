@@ -95,7 +95,7 @@
     <site>
       <id>org.extex</id>
       <name>ExTeX dev guide</name>
-      <url>file:///serv/www/extex/snapshot/doc/dev-guide</url>
+      <url>${project.repo.url}/doc/dev-guide</url>
     </site>
   </distributionManagement>
 

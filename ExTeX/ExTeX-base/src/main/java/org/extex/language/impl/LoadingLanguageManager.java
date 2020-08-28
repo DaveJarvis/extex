@@ -112,9 +112,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      */
     private transient OutputStreamFactory outFactory = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public LoadingLanguageManager() {
 
     }

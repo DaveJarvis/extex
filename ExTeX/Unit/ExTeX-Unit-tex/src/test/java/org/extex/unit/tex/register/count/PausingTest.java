@@ -40,9 +40,7 @@ public class PausingTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PausingTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PausingTest() {
 
         super("pausing", "", "0");

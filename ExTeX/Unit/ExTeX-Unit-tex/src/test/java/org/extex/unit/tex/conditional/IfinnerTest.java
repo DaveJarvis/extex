@@ -41,9 +41,7 @@ public class IfinnerTest extends ConditionalTester {
         (new JUnitCore()).run(IfinnerTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfinnerTest() {
 
         super("ifinner", "\\else");

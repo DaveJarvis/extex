@@ -107,9 +107,7 @@ public final class NameFactory {
      */
     private int pp = 0;
 
-    /**
-     * Creates a new object.
-     */
+
     private NameFactory() {
 
         //

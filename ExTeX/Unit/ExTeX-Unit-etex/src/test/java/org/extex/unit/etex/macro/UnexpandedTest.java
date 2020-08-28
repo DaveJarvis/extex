@@ -41,9 +41,7 @@ public class UnexpandedTest extends ExTeXLauncher {
         (new JUnitCore()).run(UnexpandedTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public UnexpandedTest() {
 
         setConfig("etex-test");

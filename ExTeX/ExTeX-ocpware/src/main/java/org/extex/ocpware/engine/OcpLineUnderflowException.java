@@ -36,9 +36,7 @@ public class OcpLineUnderflowException extends OcpException {
      */
     private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpLineUnderflowException() {
 
         super("");

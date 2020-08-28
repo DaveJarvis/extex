@@ -63,9 +63,7 @@ public class VirtualCharNode extends CharNode implements NodeList {
          */
         private VirtualCharNode node;
 
-        /**
-         * Creates a new object.
-         */
+
         public NL() {
 
         }

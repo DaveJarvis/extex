@@ -40,9 +40,7 @@ public class ParindentTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(ParindentTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ParindentTest() {
 
         super("parindent", "", "0.0pt");

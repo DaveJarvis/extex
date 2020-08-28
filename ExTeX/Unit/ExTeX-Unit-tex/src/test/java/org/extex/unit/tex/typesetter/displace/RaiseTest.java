@@ -41,12 +41,10 @@ public class RaiseTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(RaiseTest.class);
     }
 
-    /**
-     * Constructor for RaiseTest.
-     */
+
     public RaiseTest() {
 
-        super("raise", "1pt\\hbox{} ");
+        setPrimitive("raise");setArguments("1pt\\hbox{} ");setPrepare("");
     }
 
     /**

@@ -39,9 +39,7 @@ public class TabskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(TabskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TabskipTest() {
 
         super("tabskip", "", "0.0pt");

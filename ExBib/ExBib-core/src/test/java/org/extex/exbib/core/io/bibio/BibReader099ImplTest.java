@@ -36,9 +36,7 @@ import org.junit.Test;
  */
 public class BibReader099ImplTest extends BibReaderTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public BibReader099ImplTest() {
 
         super(true);

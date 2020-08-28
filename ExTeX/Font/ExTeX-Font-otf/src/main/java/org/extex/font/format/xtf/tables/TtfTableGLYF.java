@@ -131,32 +131,32 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * argument1
          */
-        private short argument1;
+        private final short argument1;
 
         /**
          * argument2
          */
-        private short argument2;
+        private final short argument2;
 
         /**
          * firstContour
          */
-        private int firstContour;
+        private final int firstContour;
 
         /**
          * firstIndex
          */
-        private int firstIndex;
+        private final int firstIndex;
 
         /**
          * flags
          */
-        private short flags;
+        private final short flags;
 
         /**
          * glyphIndex
          */
-        private short glyphIndex;
+        private final short glyphIndex;
 
         /**
          * point1
@@ -548,12 +548,12 @@ public class TtfTableGLYF extends AbstractXtfTable
      * </tr>
      * </table>
      */
-    public class CompositeDescript extends Descript {
+    public static class CompositeDescript extends Descript {
 
         /**
          * the components
          */
-        private Vector<CompositeComp> components = new Vector<CompositeComp>();
+        private final Vector<CompositeComp> components = new Vector<CompositeComp>();
 
         /**
          * Create a new object.
@@ -919,7 +919,7 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * numberOfContours
          */
-        private int numberOfContours;
+        private final int numberOfContours;
 
         /**
          * parent table
@@ -929,22 +929,22 @@ public class TtfTableGLYF extends AbstractXtfTable
         /**
          * xMax
          */
-        private short xMax;
+        private final short xMax;
 
         /**
          * xMin
          */
-        private short xMin;
+        private final short xMin;
 
         /**
          * yMax
          */
-        private short yMax;
+        private final short yMax;
 
         /**
          * yMin
          */
-        private short yMin;
+        private final short yMin;
 
         /**
          * Create a new object.
@@ -1250,32 +1250,32 @@ public class TtfTableGLYF extends AbstractXtfTable
      * </tr>
      * </table>
      */
-    public class SimpleDescript extends Descript {
+    public static class SimpleDescript extends Descript {
 
         /**
          * count
          */
-        private int count;
+        private final int count;
 
         /**
          * endPtsOfContours
          */
-        private int[] endPtsOfContours;
+        private final int[] endPtsOfContours;
 
         /**
          * flags
          */
-        private byte[] flags;
+        private final byte[] flags;
 
         /**
          * xCoordinates
          */
-        private short[] xCoordinates;
+        private final short[] xCoordinates;
 
         /**
          * yCoordinates
          */
-        private short[] yCoordinates;
+        private final short[] yCoordinates;
 
         /**
          * Create a new object.
@@ -1563,26 +1563,14 @@ public class TtfTableGLYF extends AbstractXtfTable
                             .read());
                 if (numberOfContours >= 0) {
                     descript[i] =
-                            new SimpleDescript(this, numberOfContours, bais);
+                        new SimpleDescript( this, numberOfContours, bais );
                 }
-            } else {
-                descript[i] = null;
+                else {
+                    descript[i] = new CompositeDescript( this, bais );
+                }
             }
         }
 
-        for (int i = 0; i < numGlyphs; i++) {
-            int len = loca.getOffset((short) (i + 1)) - loca.getOffset(i);
-            if (len > 0) {
-                bais.reset();
-                bais.skip(loca.getOffset(i));
-                short numberOfContours =
-                        (short) (bais.read() << XtfConstants.SHIFT8 | bais
-                            .read());
-                if (numberOfContours < 0) {
-                    descript[i] = new CompositeDescript(this, bais);
-                }
-            }
-        }
         buf = null;
     }
 

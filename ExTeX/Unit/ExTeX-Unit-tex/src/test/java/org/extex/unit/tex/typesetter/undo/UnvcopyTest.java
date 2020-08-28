@@ -40,12 +40,10 @@ public class UnvcopyTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnvcopyTest.class);
     }
 
-    /**
-     * Constructor for UnvcopyTest.
-     */
+
     public UnvcopyTest() {
 
-        super("unvcopy", "42");
+        setPrimitive("unvcopy");setArguments("42");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

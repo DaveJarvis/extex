@@ -100,9 +100,7 @@ public class VarLocationClass implements LocationClass {
      */
     private List<LocationClass> list = new ArrayList<LocationClass>();
 
-    /**
-     * Creates a new object.
-     */
+
     public VarLocationClass() {
 
     }

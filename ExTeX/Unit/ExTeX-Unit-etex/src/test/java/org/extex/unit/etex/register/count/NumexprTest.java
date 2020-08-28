@@ -41,9 +41,7 @@ public class NumexprTest extends ExTeXLauncher {
         (new JUnitCore()).run(NumexprTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NumexprTest() {
 
         setConfig("etex-test");

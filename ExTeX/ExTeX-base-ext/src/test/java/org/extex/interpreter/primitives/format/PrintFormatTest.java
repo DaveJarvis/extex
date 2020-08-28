@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PrintFormatTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public PrintFormatTest() {
 
         setConfig("base-ext-test.xml");

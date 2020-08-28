@@ -27,13 +27,10 @@ package org.extex.unit.tex.math.limits;
  */
 public class DisplaylimitsTest extends AbstractLimitsTester {
 
-    /**
-     * Constructor for DisplaylimitsTest.
-     */
-    public DisplaylimitsTest() {
+  public DisplaylimitsTest() {
+    setPrimitive( "displaylimits" );
+    setArguments( "\\mathop123 " );
+  }
 
-        super("", "\\mathop123 ");
-    }
-
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

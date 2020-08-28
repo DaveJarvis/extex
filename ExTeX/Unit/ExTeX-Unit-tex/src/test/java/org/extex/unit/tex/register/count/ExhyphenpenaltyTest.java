@@ -40,9 +40,7 @@ public class ExhyphenpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(ExhyphenpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ExhyphenpenaltyTest() {
 
         super("exhyphenpenalty", "", "0");

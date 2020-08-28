@@ -48,9 +48,7 @@ public class MathShiftTokenTest extends TokenTester {
         (new JUnitCore()).run(MathShiftTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MathShiftTokenTest() {
 
         super(token, Catcode.MATHSHIFT, "x", "math shift character x");

@@ -50,9 +50,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class TCountParser implements ETypeParser {
 
-    /**
-     * Creates a new object.
-     */
+
     public TCountParser() {
 
         super();

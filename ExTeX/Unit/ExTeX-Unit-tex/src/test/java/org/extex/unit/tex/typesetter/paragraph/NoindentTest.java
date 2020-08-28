@@ -40,12 +40,10 @@ public class NoindentTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(NoindentTest.class);
     }
 
-    /**
-     * Constructor for NoindentTest.
-     */
+
     public NoindentTest() {
 
-        super("noindent", "");
+        setPrimitive("noindent");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

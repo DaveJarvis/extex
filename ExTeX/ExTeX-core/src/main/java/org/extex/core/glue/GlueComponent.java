@@ -90,9 +90,7 @@ public class GlueComponent extends GlueComponentConstant {
      */
     public static final FixedGlueComponent ZERO = new GlueComponentConstant(0);
 
-    /**
-     * Creates a new object.
-     */
+
     public GlueComponent() {
 
     }

@@ -92,9 +92,7 @@ public class PsBoxConverter extends AbstractConverter
      */
     private Dimen y = new Dimen();
 
-    /**
-     * Creates a new object.
-     */
+
     public PsBoxConverter() {
 
     }

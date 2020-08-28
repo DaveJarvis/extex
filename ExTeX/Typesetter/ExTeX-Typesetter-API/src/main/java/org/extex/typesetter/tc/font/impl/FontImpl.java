@@ -18,8 +18,6 @@
 
 package org.extex.typesetter.tc.font.impl;
 
-import java.io.ObjectStreamException;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
@@ -27,6 +25,8 @@ import org.extex.font.ExtexFont;
 import org.extex.font.FontKey;
 import org.extex.framework.Registrar;
 import org.extex.typesetter.tc.font.ModifiableFont;
+
+import java.io.ObjectStreamException;
 
 /**
  * This class constitutes a wrapper for a font. Here all information is stored
@@ -59,7 +59,7 @@ public class FontImpl extends NullFont implements ModifiableFont {
      * The field <tt>key</tt> contains the font key. It is kept here since the
      * font is transient and will not make it into the format file.
      */
-    private FontKey key;
+    private final FontKey key;
 
     /**
      * Create a new Object

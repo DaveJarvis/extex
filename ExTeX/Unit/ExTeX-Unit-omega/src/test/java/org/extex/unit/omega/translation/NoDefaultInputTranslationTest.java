@@ -43,12 +43,10 @@ public class NoDefaultInputTranslationTest
         (new JUnitCore()).run(NoDefaultInputTranslationTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NoDefaultInputTranslationTest() {
 
-        super("noDefaultInputTranslation", " onebyte ");
+        setPrimitive("noDefaultInputTranslation");setArguments(" onebyte ");
         setConfig("omega-test");
     }
 

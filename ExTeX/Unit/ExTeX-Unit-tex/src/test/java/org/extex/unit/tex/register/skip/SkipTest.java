@@ -39,9 +39,7 @@ public class SkipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(SkipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SkipTest() {
 
         super("skip", "42", "0.0pt");

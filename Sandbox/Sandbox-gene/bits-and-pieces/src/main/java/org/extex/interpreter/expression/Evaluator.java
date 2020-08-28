@@ -481,9 +481,7 @@ public class Evaluator {
      */
     private List<ETypeParser> parsers = new ArrayList<ETypeParser>();
 
-    /**
-     * Creates a new object.
-     */
+
     public Evaluator() {
 
         super();

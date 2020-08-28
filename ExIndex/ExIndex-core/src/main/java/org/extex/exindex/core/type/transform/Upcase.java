@@ -29,9 +29,7 @@ import java.io.PrintStream;
  */
 public class Upcase implements Transform {
 
-    /**
-     * Creates a new object.
-     */
+
     public Upcase() {
 
     }

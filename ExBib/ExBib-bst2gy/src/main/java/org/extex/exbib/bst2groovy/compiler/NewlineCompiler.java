@@ -40,9 +40,7 @@ public class NewlineCompiler implements Compiler {
      */
     public static class Newline extends GenericCode {
 
-        /**
-         * Creates a new object.
-         */
+
         public Newline() {
 
             super(ReturnType.VOID, "newline");

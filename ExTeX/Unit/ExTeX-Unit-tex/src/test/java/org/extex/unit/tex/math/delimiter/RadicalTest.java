@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class RadicalTest extends AbstractMathTester {
 
-    /**
-     * Constructor for RadicalTest.
-     */
+
     public RadicalTest() {
 
-        super("radical", "12 32");
+        setPrimitive("radical");setArguments("12 32");setPrepare("");
     }
 
     //TODO implement more primitive specific test cases

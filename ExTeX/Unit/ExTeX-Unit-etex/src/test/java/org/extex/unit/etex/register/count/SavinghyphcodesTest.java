@@ -40,9 +40,7 @@ public class SavinghyphcodesTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(SavinghyphcodesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SavinghyphcodesTest() {
 
         super("savinghyphcodes", "", "0");

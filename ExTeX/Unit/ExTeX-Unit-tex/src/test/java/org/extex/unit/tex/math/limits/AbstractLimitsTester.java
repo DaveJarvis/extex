@@ -24,11 +24,11 @@ import org.junit.Test;
 
 /**
  * This is an abstract base class for testing math primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class AbstractLimitsTester extends ExTeXLauncher {
+public abstract class AbstractLimitsTester extends ExTeXLauncher {
 
     /**
      * The field <tt>DEFINE_MATH_FONTS</tt> contains the loading instructions
@@ -48,42 +48,28 @@ public class AbstractLimitsTester extends ExTeXLauncher {
      * The field <tt>primitive</tt> contains the name of the primitive to
      * test.
      */
-    private String primitive;
+    private String primitive = "";
 
     /**
      * The field <tt>arguments</tt> contains the arguments.
      */
-    private String arguments;
+    private String arguments = "";
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive to test
-     * @param arguments the arguments for the invocation
-     */
-    public AbstractLimitsTester(String primitive, String arguments) {
-
-        this(primitive, arguments, "");
+    public AbstractLimitsTester() {
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive to test
-     * @param arguments the arguments for the invocation
-     * @param prepare the code to insert before the invocation
-     */
-    public AbstractLimitsTester(String primitive, String arguments,
-            String prepare) {
-
+    public void setPrimitive( final String primitive ) {
         this.primitive = primitive;
+    }
+
+    public void setArguments( final String arguments ) {
         this.arguments = arguments;
     }
 
     /**
      * <testcase> Test case checking that the primitive needs the math mode.
      * Vertical mode is not enough. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -98,7 +84,7 @@ public class AbstractLimitsTester extends ExTeXLauncher {
     /**
      * <testcase> Test case checking that the primitive needs the math mode.
      * Horizontal mode is not enough. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test

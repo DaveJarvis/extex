@@ -41,12 +41,10 @@ public class BoxTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(BoxTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BoxTest() {
 
-        super("box", "1", "0");
+        setPrimitive("box");setArguments("1");setPrepare("0");
     }
 
     /**

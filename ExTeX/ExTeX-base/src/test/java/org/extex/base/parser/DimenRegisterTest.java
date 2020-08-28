@@ -38,9 +38,7 @@ import org.junit.Test;
  */
 public class DimenRegisterTest {
 
-    /**
-     * Creates a new object.
-     */
+
     public DimenRegisterTest() {
 
     }

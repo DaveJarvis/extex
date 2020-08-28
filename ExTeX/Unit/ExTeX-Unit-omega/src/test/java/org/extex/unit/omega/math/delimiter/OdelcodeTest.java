@@ -40,12 +40,10 @@ public class OdelcodeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(OdelcodeTest.class);
     }
 
-    /**
-     * Constructor for DelcodeTest.
-     */
+
     public OdelcodeTest() {
 
-        super("odelcode", "23 32");
+        setPrimitive("odelcode");setArguments("23 32");
         setConfig("omega-test");
     }
 

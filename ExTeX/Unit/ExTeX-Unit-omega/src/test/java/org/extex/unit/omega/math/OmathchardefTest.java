@@ -31,12 +31,9 @@ import org.junit.Test;
  */
 public class OmathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Constructor for MathchardefTest.
-     */
     public OmathchardefTest() {
-
-        super("omathchardef", "\\a=\"32 ");
+        setPrimitive("omathchardef");
+        setArguments("\\a=\"32 ");
         setConfig("omega-test");
     }
 

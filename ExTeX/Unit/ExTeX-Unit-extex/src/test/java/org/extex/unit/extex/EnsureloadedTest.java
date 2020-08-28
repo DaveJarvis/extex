@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class EnsureloadedTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public EnsureloadedTest() {
 
-        super("ensureloaded", "{tex}");
+        setPrimitive("ensureloaded");setArguments("{tex}");setPrepare("");
         setConfig("extex-test");
     }
 

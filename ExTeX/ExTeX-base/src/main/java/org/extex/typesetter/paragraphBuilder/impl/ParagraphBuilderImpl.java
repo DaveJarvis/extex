@@ -19,13 +19,6 @@
 
 package org.extex.typesetter.paragraphBuilder.impl;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.extex.core.UnicodeChar;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
@@ -45,16 +38,15 @@ import org.extex.typesetter.paragraphBuilder.ParagraphShape;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.VerticalListNode;
+import org.extex.typesetter.type.node.*;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.ConsoleHandler;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class provides a paragraph builder.
@@ -183,7 +175,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape =
+    private final FixedParagraphShape fixedParshape =
             new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
@@ -192,7 +184,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be
      * used for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape =
+    private final HangingParagraphShape hangingParshape =
             new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
@@ -225,9 +217,7 @@ public class ParagraphBuilderImpl implements ParagraphBuilder, LogEnabled {
      */
     private Logger tracer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public ParagraphBuilderImpl() {
 
         if (DEVELOP) {

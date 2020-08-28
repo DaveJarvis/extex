@@ -40,12 +40,10 @@ public class WdTest extends AbstractBoxDimenTester {
         (new JUnitCore()).run(WdTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public WdTest() {
 
-        super("wd");
+        setPrimitive("wd");
     }
 
     /**

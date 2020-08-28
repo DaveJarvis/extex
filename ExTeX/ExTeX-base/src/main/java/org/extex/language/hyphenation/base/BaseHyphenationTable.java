@@ -131,9 +131,7 @@ public class BaseHyphenationTable implements ModifiableLanguage, Serializable {
      */
     private WordTokenizer wordTokenizer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public BaseHyphenationTable() {
 
     }

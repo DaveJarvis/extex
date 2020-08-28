@@ -20,6 +20,7 @@
 package org.extex.unit.tex.font;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -41,12 +42,10 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(FontnameTest.class);
     }
 
-    /**
-     * Constructor for FontnameTest.
-     */
+
     public FontnameTest() {
 
-        super("fontname", "\\nullfont");
+        setPrimitive("fontname");setArguments("\\nullfont");setPrepare("");
     }
 
     /**
@@ -116,6 +115,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFontname1() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -131,6 +131,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFontname2() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -147,6 +148,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFontname3() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -163,6 +165,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFontname4() throws Exception {
 
         assertSuccess(// --- input code ---
@@ -178,6 +181,7 @@ public class FontnameTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testFontname5() throws Exception {
 
         assertSuccess(// --- input code ---

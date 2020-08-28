@@ -173,9 +173,7 @@ public class OcpProgram implements Serializable {
      */
     private List<int[]> tables = new ArrayList<int[]>();
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpProgram() {
 
     }

@@ -119,10 +119,7 @@ public class TtfTableLOCA extends AbstractXtfTable
             XtfTable,
             XMLWriterConvertible {
 
-    /**
-     * buffer.
-     */
-    private byte[] buf = null;
+    private byte[] buf;
 
     /**
      * factor.
@@ -133,12 +130,12 @@ public class TtfTableLOCA extends AbstractXtfTable
      * long : 1
      * </p>
      */
-    private short factor = 0;
+    private short factor;
 
     /**
      * offsets.
      */
-    private int[] offsets = null;
+    private int[] offsets;
 
     /**
      * Create a new object.

@@ -36,9 +36,7 @@ public class LMap implements LValue {
      */
     private Map<LValue, LValue> map = new HashMap<LValue, LValue>();
 
-    /**
-     * Creates a new object.
-     */
+
     public LMap() {
 
     }

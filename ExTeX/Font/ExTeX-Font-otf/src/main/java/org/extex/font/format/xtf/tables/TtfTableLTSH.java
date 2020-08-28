@@ -101,18 +101,18 @@ public class TtfTableLTSH extends AbstractXtfTable
     /**
      * the number of glyphs
      */
-    private int numGlyphs;
+    private final int numGlyphs;
 
     /**
      * the version
      */
-    private int version;
+    private final int version;
 
     /**
      * The vertical pel height at which the glyph can be assumed to scale
      * linearly. On a per glyph basis.
      */
-    private byte[] yPels;
+    private final byte[] yPels;
 
     /**
      * Create a new object

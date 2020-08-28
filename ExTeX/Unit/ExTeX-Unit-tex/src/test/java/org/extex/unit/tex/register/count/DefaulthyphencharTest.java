@@ -40,9 +40,7 @@ public class DefaulthyphencharTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DefaulthyphencharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DefaulthyphencharTest() {
 
         super("defaulthyphenchar", "", "45");

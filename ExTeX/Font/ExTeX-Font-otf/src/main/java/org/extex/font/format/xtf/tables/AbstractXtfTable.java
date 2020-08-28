@@ -32,26 +32,18 @@ import org.extex.util.xml.XMLStreamWriter;
  */
 public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
-    /**
-     * table map
-     */
-    private XtfTableMap tablemap;
+    private final XtfTableMap tablemap;
 
-    /**
-     * Create a new object.
-     * 
-     * @param tm the table map
-     */
     public AbstractXtfTable(XtfTableMap tm) {
 
         tablemap = tm;
     }
 
     /**
-     * Returns the glyph name of a index.
+     * Returns the glyph name of an index.
      * 
      * @param idx The index.
-     * @return Returns the glyph name of a index.
+     * @return Returns the glyph name of an index.
      */
     public String getGlyphName(int idx) {
 
@@ -59,7 +51,7 @@ public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
         // first look in the post-table
         XtfTable post = getTableMap().get(XtfReader.POST);
-        if (post != null && post instanceof TtfTablePOST) {
+        if ( post instanceof TtfTablePOST ) {
             gylphName = ((TtfTablePOST) post).getGlyphName(idx);
         }
 
@@ -67,7 +59,7 @@ public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
         if (gylphName == null) {
 
             XtfTable cff = getTableMap().get(XtfReader.CFF);
-            if (cff != null && cff instanceof OtfTableCFF) {
+            if ( cff instanceof OtfTableCFF ) {
                 OtfTableCFF cfftab = (OtfTableCFF) cff;
                 // TODO mgn fontnumber 0
                 gylphName = cfftab.mapGlyphPosToGlyphName(idx, 0);
@@ -103,7 +95,7 @@ public abstract class AbstractXtfTable implements XtfTable, XtfGlyphName {
 
     /**
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.font.format.xtf.tables.XtfTable#init()
      */
     public void init() throws IOException {

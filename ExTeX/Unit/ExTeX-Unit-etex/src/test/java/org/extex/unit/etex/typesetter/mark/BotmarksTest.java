@@ -40,12 +40,10 @@ public class BotmarksTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(BotmarksTest.class);
     }
 
-    /**
-     * Constructor for BotmarkTest.
-     */
+
     public BotmarksTest() {
 
-        super("botmarks", "0");
+        setPrimitive("botmarks");setArguments("0");setPrepare("");
         setConfig("etex-test");
     }
 

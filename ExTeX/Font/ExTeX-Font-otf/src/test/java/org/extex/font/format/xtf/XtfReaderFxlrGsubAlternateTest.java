@@ -19,6 +19,7 @@
 
 package org.extex.font.format.xtf;
 
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
@@ -32,6 +33,8 @@ import org.extex.font.format.xtf.tables.gps.XtfLookupTable;
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -43,12 +46,10 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrGsubAlternateTest extends TestCase {
+@Ignore
+public class XtfReaderFxlrGsubAlternateTest {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
@@ -56,10 +57,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * @throws IOException if an error occurred.
      */
     public XtfReaderFxlrGsubAlternateTest() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
     }
 
     /**
@@ -71,7 +69,7 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      */
     private void check(String featureTag, String in, String[] out) {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         StringBuilder bufOut = new StringBuilder();
         for (int x = 0; out != null && x < out.length - 1; x++) {
@@ -82,29 +80,29 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
         }
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         XtfLookup[] lookups =
-                gsub.findLookup(ScriptTag.getInstance("DFLT"), null,
+                gsub.findLookup(ScriptTag.getDefault(), null,
                     FeatureTag.getInstance(featureTag));
-        assertNotNull(lookups);
-        assertEquals(1, lookups.length);
-        assertEquals(1, lookups[0].getSubtableCount());
-        assertEquals("Alternate", lookups[0].getTypeAsString());
+        Assert.assertNotNull( lookups );
+        Assert.assertEquals( 1, lookups.length );
+        Assert.assertEquals( 1, lookups[ 0 ].getSubtableCount() );
+        Assert.assertEquals( "Alternate", lookups[ 0 ].getTypeAsString() );
 
         int cnt = lookups[0].getSubtableCount();
         boolean found = false;
         for (int i = 0; i < cnt; i++) {
             XtfLookupTable subtable = lookups[0].getSubtable(i);
-            assertTrue(subtable instanceof XtfGSUBAlternateTable);
+            Assert.assertTrue( subtable instanceof XtfGSUBAlternateTable );
             XtfGSUBAlternateTable alter = (XtfGSUBAlternateTable) subtable;
 
             String[][] glyphInOut = alter.getSubGlyph();
-            assertNotNull(glyphInOut);
+            Assert.assertNotNull( glyphInOut );
 
             for (int k = 0; k < glyphInOut.length; k++) {
                 String inX = glyphInOut[k][0];
@@ -120,7 +118,8 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
                 break;
             }
         }
-        assertTrue("Single found " + in + " " + bufOut.toString(), found);
+        Assert.assertTrue( "Single found " + in + " " + bufOut.toString(),
+                           found );
 
     }
 
@@ -130,9 +129,9 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
      * @throws Exception if an error occurred.
      */
     @Test
-    public void testExists() throws Exception {
+    public void testExists() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
     }
 
     /**
@@ -1812,13 +1811,11 @@ public class XtfReaderFxlrGsubAlternateTest extends TestCase {
 
     /**
      * Test: write the xml output to 'target'
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testXmlOut() throws Exception {
+    public void testXmlOut() throws IOException {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
                     "ISO8859-1");

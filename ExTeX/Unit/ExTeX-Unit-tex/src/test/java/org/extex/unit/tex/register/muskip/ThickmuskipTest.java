@@ -39,9 +39,7 @@ public class ThickmuskipTest extends AbstractMuskipRegisterTester {
         (new JUnitCore()).run(ThickmuskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ThickmuskipTest() {
 
         super("thickmuskip", "", "0.0mu");

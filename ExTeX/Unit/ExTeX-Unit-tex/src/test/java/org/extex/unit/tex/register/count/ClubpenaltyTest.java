@@ -39,9 +39,7 @@ public class ClubpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(ClubpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ClubpenaltyTest() {
 
         super("clubpenalty", "", "0");

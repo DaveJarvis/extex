@@ -32,9 +32,7 @@ public class PdfannotTest
         extends
             NoFlagsButImmediateAndProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfannotTest() {
 
         super("pdfannot", "{}", "\\pdfoutput=1 ");

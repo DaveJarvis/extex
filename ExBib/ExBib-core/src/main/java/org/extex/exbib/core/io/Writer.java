@@ -18,6 +18,7 @@
 
 package org.extex.exbib.core.io;
 
+import java.io.Closeable;
 import java.io.IOException;
 
 /**
@@ -27,7 +28,7 @@ import java.io.IOException;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public interface Writer {
+public interface Writer extends Closeable {
 
     /**
      * Explicit method th close a certain writer and all writers which can be
@@ -35,6 +36,7 @@ public interface Writer {
      * 
      * @throws IOException in case of an error during writing
      */
+    @Override
     void close() throws IOException;
 
     /**

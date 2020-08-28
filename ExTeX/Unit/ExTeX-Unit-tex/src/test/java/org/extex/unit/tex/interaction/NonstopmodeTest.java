@@ -45,12 +45,10 @@ public class NonstopmodeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(NonstopmodeTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public NonstopmodeTest() {
 
-        super("nonstopmode", "");
+        setPrimitive("nonstopmode");setArguments("");setPrepare("");
     }
 
     /**

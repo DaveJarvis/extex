@@ -39,9 +39,7 @@ public class AbovedisplayskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(AbovedisplayskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AbovedisplayskipTest() {
 
         super("abovedisplayskip", "", "0.0pt");

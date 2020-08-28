@@ -41,9 +41,7 @@ public class FiTest extends ExTeXLauncher {
         (new JUnitCore()).run(FiTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public FiTest() {
 
     }

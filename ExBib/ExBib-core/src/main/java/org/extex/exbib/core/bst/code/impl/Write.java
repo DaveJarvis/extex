@@ -73,9 +73,7 @@ import org.extex.exbib.core.io.Locator;
  */
 public class Write extends AbstractCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public Write() {
 
     }

@@ -88,9 +88,7 @@ public class RtfDocument {
      */
     private String title = ".";
 
-    /**
-     * Creates a new object.
-     */
+
     public RtfDocument() {
 
     }

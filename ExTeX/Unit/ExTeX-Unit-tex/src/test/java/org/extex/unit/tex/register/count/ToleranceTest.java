@@ -40,9 +40,7 @@ public class ToleranceTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(ToleranceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ToleranceTest() {
 
         super("tolerance", "", "10000");

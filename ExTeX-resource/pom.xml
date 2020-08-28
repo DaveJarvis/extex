@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.extex</groupId>
   <artifactId>ExTeX-resource</artifactId>
   <name>ExTeX Resource and Framework</name>
   <version>0.2</version>
@@ -28,80 +27,9 @@
     <site>
       <id>org.extex.resource</id>
       <name>ExTeX resource Site</name>
-      <url>file:///serv/www/extex/snapshot/ExTeX-resource</url>
+      <url>${project.repo.url}/ExTeX-resource</url>
     </site>
   </distributionManagement>
-
-  <properties>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-  </properties>
-
-<!-- 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-  </dependencies>
-
-  <organization>
-    <name>The ExTeX Group</name>
-    <url>http://www.extex.org</url>
-  </organization>
-
-  <scm>
-    <connection>scm:svn:http://svn.berlios.de/svnroot/repos/extex/trunk</connection>
-    <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
-    <url>http://svn.berlios.de/wsvn/extex/trunk/ExTeX-resource/</url>
-  </scm>
-
-  <issueManagement>
-    <system>Berlios Bugs</system>
-    <url>http://developer.berlios.de/bugs/?group_id=1915</url>
-  </issueManagement>
-
-  <mailingLists>
-    <mailingList>
-      <name>extex</name>
-      <post>extex@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-devel</name>
-      <post>extex-devel@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
-    </mailingList>
-
-    <mailingList>
-      <name>extex-build@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-svn@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-bugs@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
-    </mailingList>
-  </mailingLists>
-
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-	<version>2.3.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
- -->
 
   <developers>
     <developer>
@@ -111,7 +39,7 @@
       <url>http://www.gerd-neugebauer.de</url>
       <roles>
         <role>developer</role>
-        <role>maintaner</role>
+        <role>maintainer</role>
         <role>build manager</role>
       </roles>
       <timezone>+1</timezone>

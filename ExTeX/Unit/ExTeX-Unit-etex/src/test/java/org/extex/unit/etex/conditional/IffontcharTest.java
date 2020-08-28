@@ -41,9 +41,7 @@ public class IffontcharTest extends ConditionalTester {
         (new JUnitCore()).run(IffontcharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IffontcharTest() {
 
         super("iffontchar", "\\nullfont `x\\else");

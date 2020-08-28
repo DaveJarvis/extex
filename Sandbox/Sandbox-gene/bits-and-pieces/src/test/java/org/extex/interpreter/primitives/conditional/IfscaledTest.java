@@ -40,9 +40,7 @@ public class IfscaledTest extends ExTeXLauncher {
         (new JUnitCore()).run(IfscaledTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfscaledTest() {
 
         super();

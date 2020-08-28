@@ -671,162 +671,162 @@ public class TtfTableOS2 extends AbstractXtfTable
     /**
      * achVendorID
      */
-    private int achVendorID;
+    private final int achVendorID;
 
     /**
      * fsSelection
      */
-    private short fsSelection;
+    private final short fsSelection;
 
     /**
      * fsType
      */
-    private short fsType;
+    private final short fsType;
 
     /**
      * panose
      */
-    private Panose panose;
+    private final Panose panose;
 
     /**
      * sFamilyClass
      */
-    private short sFamilyClass;
+    private final short sFamilyClass;
 
     /**
      * sTypoAscender
      */
-    private short sTypoAscender;
+    private final short sTypoAscender;
 
     /**
      * sTypoDescender
      */
-    private short sTypoDescender;
+    private final short sTypoDescender;
 
     /**
      * sTypoLineGap
      */
-    private short sTypoLineGap;
+    private final short sTypoLineGap;
 
     /**
      * ulCodePageRange1
      */
-    private int ulCodePageRange1;
+    private final int ulCodePageRange1;
 
     /**
      * ulCodePageRange2
      */
-    private int ulCodePageRange2;
+    private final int ulCodePageRange2;
 
     /**
      * ulUnicodeRange1
      */
-    private int ulUnicodeRange1;
+    private final int ulUnicodeRange1;
 
     /**
      * ulUnicodeRange2
      */
-    private int ulUnicodeRange2;
+    private final int ulUnicodeRange2;
 
     /**
      * ulUnicodeRange3
      */
-    private int ulUnicodeRange3;
+    private final int ulUnicodeRange3;
 
     /**
      * ulUnicodeRange4
      */
-    private int ulUnicodeRange4;
+    private final int ulUnicodeRange4;
 
     /**
      * usFirstCharIndex
      */
-    private int usFirstCharIndex;
+    private final int usFirstCharIndex;
 
     /**
      * usLastCharIndex
      */
-    private int usLastCharIndex;
+    private final int usLastCharIndex;
 
     /**
      * usWeightClass
      */
-    private int usWeightClass;
+    private final int usWeightClass;
 
     /**
      * usWidthClass
      */
-    private int usWidthClass;
+    private final int usWidthClass;
 
     /**
      * usWinAscent
      */
-    private int usWinAscent;
+    private final int usWinAscent;
 
     /**
      * usWinDescent
      */
-    private int usWinDescent;
+    private final int usWinDescent;
 
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * xAvgCharWidth
      */
-    private short xAvgCharWidth;
+    private final short xAvgCharWidth;
 
     /**
      * yStrikeoutPosition
      */
-    private short yStrikeoutPosition;
+    private final short yStrikeoutPosition;
 
     /**
      * yStrikeoutSize
      */
-    private short yStrikeoutSize;
+    private final short yStrikeoutSize;
 
     /**
      * ySubscriptXOffset
      */
-    private short ySubscriptXOffset;
+    private final short ySubscriptXOffset;
 
     /**
      * ySubscriptXSize
      */
-    private short ySubscriptXSize;
+    private final short ySubscriptXSize;
 
     /**
      * ySubscriptYOffset
      */
-    private short ySubscriptYOffset;
+    private final short ySubscriptYOffset;
 
     /**
      * ySubscriptYSize
      */
-    private short ySubscriptYSize;
+    private final short ySubscriptYSize;
 
     /**
      * ySuperscriptXOffset
      */
-    private short ySuperscriptXOffset;
+    private final short ySuperscriptXOffset;
 
     /**
      * ySuperscriptXSize
      */
-    private short ySuperscriptXSize;
+    private final short ySuperscriptXSize;
 
     /**
      * ySuperscriptYOffset
      */
-    private short ySuperscriptYOffset;
+    private final short ySuperscriptYOffset;
 
     /**
      * ySuperscriptYSize
      */
-    private short ySuperscriptYSize;
+    private final short ySuperscriptYSize;
 
     /**
      * Create a new object.

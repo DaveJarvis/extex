@@ -29,12 +29,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
  */
 public class EndLTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public EndLTest() {
 
-        super("endL", "", "\\TeXXeTstate=1\\beginL");
+        setPrimitive("endL");setArguments("");setPrepare("\\TeXXeTstate=1\\beginL");
         setConfig("etex-test");
     }
 

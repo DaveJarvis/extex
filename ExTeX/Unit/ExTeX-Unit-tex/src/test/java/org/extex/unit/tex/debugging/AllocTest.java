@@ -41,9 +41,7 @@ public class AllocTest extends ExTeXLauncher {
         (new JUnitCore()).run(AllocTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public AllocTest() {
 
     }

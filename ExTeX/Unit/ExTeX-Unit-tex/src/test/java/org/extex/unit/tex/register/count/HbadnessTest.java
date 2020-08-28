@@ -40,9 +40,7 @@ public class HbadnessTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(HbadnessTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HbadnessTest() {
 
         super("hbadness", "", "0");

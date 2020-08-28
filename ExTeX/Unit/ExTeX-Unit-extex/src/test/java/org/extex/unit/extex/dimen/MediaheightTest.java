@@ -40,9 +40,7 @@ public class MediaheightTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(MediaheightTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MediaheightTest() {
 
         super("mediaheight", "", "845.04684pt");

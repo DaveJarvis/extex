@@ -48,9 +48,7 @@ public class InputNode extends NodeList {
      */
     private RightBraceToken closeToken;
 
-    /**
-     * Creates a new object.
-     */
+
     public InputNode() {
 
         super();

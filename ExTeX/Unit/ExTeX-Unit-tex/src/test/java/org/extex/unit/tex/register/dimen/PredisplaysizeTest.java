@@ -40,9 +40,7 @@ public class PredisplaysizeTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PredisplaysizeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PredisplaysizeTest() {
 
         super("predisplaysize", "", "0.0pt");

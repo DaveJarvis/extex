@@ -41,9 +41,7 @@ public class InteractionmodeTest extends ExTeXLauncher {
         (new JUnitCore()).run(InteractionmodeTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public InteractionmodeTest() {
 
         setConfig("etex-test");

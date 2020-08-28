@@ -38,9 +38,7 @@ public class BelowdisplayshortskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(BelowdisplayshortskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BelowdisplayshortskipTest() {
 
         super("belowdisplayshortskip", "", "0.0pt");

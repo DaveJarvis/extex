@@ -40,9 +40,7 @@ public class PagetotalTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PagetotalTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PagetotalTest() {
 
         super("pagetotal", "", "0.0pt");

@@ -40,9 +40,7 @@ public class PdfthreadvoffsetTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfthreadvoffsetTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfthreadvoffsetTest() {
 
         super("pdfthreadvoffset", "", "0.0pt");

@@ -40,12 +40,10 @@ public class DpTest extends AbstractBoxDimenTester {
         (new JUnitCore()).run(DpTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DpTest() {
 
-        super("dp");
+        setPrimitive("dp");
     }
 
     /**

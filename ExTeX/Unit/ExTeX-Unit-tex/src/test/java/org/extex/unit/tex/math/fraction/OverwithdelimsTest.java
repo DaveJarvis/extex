@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class OverwithdelimsTest extends AbstractMathTester {
 
-    /**
-     * Constructor for OverwithdelimsTest.
-     */
+
     public OverwithdelimsTest() {
 
-        super("overwithdelims", " 123 456 a$", "b");
+        setPrimitive("overwithdelims");setArguments(" 123 456 a$");setPrepare("b");
     }
 
     //TODO: write more primitive specific test cases

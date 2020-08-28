@@ -18,19 +18,6 @@
 
 package org.extex.exbib.core;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.text.MessageFormat;
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.MissingResourceException;
-import java.util.Properties;
-import java.util.ResourceBundle;
-import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.extex.exbib.core.bst.exception.ExBibIllegalValueException;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.sorter.SorterFactory;
@@ -42,18 +29,21 @@ import org.extex.exbib.core.io.auxio.AuxReaderFactory;
 import org.extex.exbib.core.io.bblio.BblWriterFactory;
 import org.extex.exbib.core.io.bibio.BibReaderFactory;
 import org.extex.exbib.core.io.csf.CsfException;
-import org.extex.exbib.core.util.DBObserver;
-import org.extex.exbib.core.util.EntryObserver;
-import org.extex.exbib.core.util.FuncallObserver;
-import org.extex.exbib.core.util.NotObservableException;
-import org.extex.exbib.core.util.ResourceObserverImpl;
-import org.extex.exbib.core.util.TracingObserver;
+import org.extex.exbib.core.util.*;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.framework.configuration.exception.ConfigurationWrapperException;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.text.MessageFormat;
+import java.util.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  * This class contains the assembler for <logo>&epsilon;&chi;Bib</logo>.
@@ -262,7 +252,7 @@ public class ExBib {
     /**
      * The field <tt>debug</tt> contains the indicator for debugging output.
      */
-    private Set<ExBibDebug> debug = new HashSet<ExBibDebug>();
+    private final Set<ExBibDebug> debug = new HashSet<>();
 
     /**
      * The field <tt>errors</tt> contains the number of errors reported.
@@ -298,10 +288,8 @@ public class ExBib {
     /**
      * Creates a new object. The properties containing the controlling
      * attributes are initialized from the System.properties.
-     * 
-     * @throws IOException in case of an I/O error while reading the dot file
      */
-    public ExBib() throws IOException {
+    public ExBib() {
 
         this(System.getProperties());
     }
@@ -310,10 +298,8 @@ public class ExBib {
      * Creates a new object.
      * 
      * @param properties the properties with the parameters
-     * 
-     * @throws IOException in case of an I/O error while reading the dot file
      */
-    public ExBib(Properties properties) throws IOException {
+    public ExBib(Properties properties) {
 
         useLanguage(Locale.getDefault());
         setProperties(properties);
@@ -412,7 +398,7 @@ public class ExBib {
     protected boolean log(Level level, String tag, Object... args) {
 
         try {
-            logger.log(level, //
+            logger.log(level, 
                 MessageFormat.format(bundle.getString(tag), args));
         } catch (MissingResourceException e) {
             logger.severe(MessageFormat.format(bundle.getString("missing.tag"),
@@ -492,7 +478,7 @@ public class ExBib {
     protected void recognizeFile(String log, String extension)
             throws IOException {
 
-        //
+        
     }
 
     /**
@@ -519,8 +505,6 @@ public class ExBib {
      */
     public boolean run() throws IOException, ConfigurationException {
 
-        long time = System.currentTimeMillis();
-
         try {
             String file = properties.getProperty(PROP_FILE);
             if (file == null) {
@@ -528,16 +512,16 @@ public class ExBib {
             }
             file = stripExtension(file, AUX_FILE_EXTENSION);
 
-            Configuration config = ConfigurationFactory.newInstance(//
+            Configuration config = ConfigurationFactory.newInstance(
                 "exbib/" + properties.getProperty(PROP_CONFIG, ""));
 
             ResourceFinder finder =
                     (resourceFinder != null
                             ? resourceFinder
-                            : new ResourceFinderFactory().createResourceFinder(//
-                                config.getConfiguration("Resource"), //
-                                logger, //
-                                properties, //
+                            : new ResourceFinderFactory().createResourceFinder(
+                                config.getConfiguration("Resource"), 
+                                logger, 
+                                properties, 
                                 null));
 
             if (debug.contains(ExBibDebug.SEARCH)) {
@@ -556,12 +540,6 @@ public class ExBib {
             ProcessorContainer container =
                     new ProcessorContainer(config, logger, properties) {
 
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.extex.exbib.core.ProcessorContainer#prepareProcessor(org.extex.exbib.core.Processor,
-                         *      org.extex.exbib.core.db.DB)
-                         */
                         @Override
                         protected void prepareProcessor(Processor processor,
                                 DB db)
@@ -572,17 +550,19 @@ public class ExBib {
                                 logger, processor));
                         }
                     };
+
             container.setSorterFactory(makeSorterFactory(finder,
                 config.getConfiguration("Sorter")));
             container.setBibReaderFactory(bibReaderFactory);
             container.setResourceFinder(finder);
             container.registerObserver("startRead", new DBObserver(logger,
                 bundle.getString("observer.db.pattern")));
+
             if (debug.contains(ExBibDebug.TRACE)) {
                 funcall = runRegisterTracers(container);
             }
 
-            AuxReader auxReader = new AuxReaderFactory(//
+            AuxReader auxReader = new AuxReaderFactory(
                 config.getConfiguration("AuxReader")).newInstance(finder);
             auxReader.register(new ResourceObserverImpl(logger));
 
@@ -601,49 +581,29 @@ public class ExBib {
                 return false;
             }
 
+            final Configuration bblConfig = config.getConfiguration( "BblWriter");
             BblWriterFactory bblWriterFactory =
-                    new BblWriterFactory(config.getConfiguration("BblWriter"),
-                        encoding) {
+                new BblWriterFactory( bblConfig, encoding ) {
+                    @Override
+                    protected void infoDiscarted() {
+                        info( "output.discarted" );
+                    }
 
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
-                         */
-                        @Override
-                        protected void infoDiscarted() {
+                    @Override
+                    protected void infoOutput( String file ) {
+                        info( "output.file", file );
+                    }
 
-                            info("output.discarted");
-                        }
+                    @Override
+                    protected void infoStdout() {
+                        info( "output.to.stdout" );
+                    }
+                };
 
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
-                         */
-                        @Override
-                        protected void infoOutput(String file) {
+            for (final String key : container) {
+                final Processor processor = container.getProcessor(key);
 
-                            info("output.file", file);
-                        }
-
-                        /**
-                         * {@inheritDoc}
-                         * 
-                         * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
-                         */
-                        @Override
-                        protected void infoStdout() {
-
-                            info("output.to.stdout");
-                        }
-
-                    };
-
-            for (String key : container) {
-                Processor processor = container.getProcessor(key);
-
-                for (String style : processor.getBibliographyStyles()) {
+                for (final String style : processor.getBibliographyStyles()) {
                     info("bst.file", style);
                 }
 
@@ -651,26 +611,17 @@ public class ExBib {
                 if (outfile == null || !"bbl".equals(key)) {
                     outfile = file + "." + key;
                 }
-                Writer writer = null;
-                try {
-                    writer = bblWriterFactory.newInstance(outfile);
-                    warnings += processor.process(writer);
-                } catch (FileNotFoundException e) {
-                    return error("output.could.not.be.opened", outfile);
-                } finally {
-                    if (writer != null) {
-                        writer.close();
-                    }
+                try( Writer writer = bblWriterFactory.newInstance( outfile ) ) {
+                    warnings += processor.process( writer );
+                } catch( FileNotFoundException e ) {
+                    return error( "output.could.not.be.opened", outfile );
                 }
             }
-
-            info("runtime", Long.toString(System.currentTimeMillis() - time));
 
             if (funcall != null) {
                 funcall.print();
             }
-
-        } catch (ExBibImpossibleException e) {
+        } catch ( ExBibImpossibleException | NotObservableException e) {
             return error(e, "internal.error");
         } catch (ExBibException e) {
             return error("verbatim", e.getLocalizedMessage());
@@ -680,13 +631,11 @@ public class ExBib {
             return error("verbatim", e.getLocalizedMessage());
         } catch (NoClassDefFoundError e) {
             return error(e, "installation.error");
-        } catch (NotObservableException e) {
-            return error(e, "internal.error");
         } catch (RuntimeException e) {
             return error(e, "internal.error");
         } finally {
             if (warnings > 0) {
-                info(warnings == 1 ? "warning" : "warnings", //
+                info(warnings == 1 ? "warning" : "warnings", 
                     Long.toString(warnings));
             }
             if (errors > 0) {
@@ -705,11 +654,9 @@ public class ExBib {
      * @return the function call observer
      * 
      * @throws NotObservableException in case of an unknown observer name
-     * @throws ExBibIllegalValueException in case of an illegal value
      */
     private FuncallObserver runRegisterTracers(ProcessorContainer container)
-            throws NotObservableException,
-                ExBibIllegalValueException {
+            throws NotObservableException {
 
         FuncallObserver funcall =
                 (debug.contains(ExBibDebug.TRACE)
@@ -729,7 +676,7 @@ public class ExBib {
         container.registerObserver("endParse", new TracingObserver(logger,
             bundle.getString("end_parse_msg")));
         return funcall;
-    };
+    }
 
     /**
      * Setter for the debugging indicator.
@@ -750,12 +697,10 @@ public class ExBib {
      */
     public boolean setDebug(String... value) {
 
-        for (String s : value) {
+        for (final String s : value) {
             try {
                 if ("all".equals(s)) {
-                    for (ExBibDebug d : ExBibDebug.values()) {
-                        debug.add(d);
-                    }
+                    Collections.addAll( debug, ExBibDebug.values() );
                 } else if ("none".equals(s)) {
                     debug.clear();
                 } else {
@@ -831,7 +776,8 @@ public class ExBib {
      * 
      * @return the old value
      */
-    public Object setProperty(String key, String value) {
+    @SuppressWarnings("unused")
+    public Object setProperty( String key, String value) {
 
         return properties.setProperty(key, value);
     }
@@ -855,7 +801,8 @@ public class ExBib {
      * 
      * @return the normalized file name
      */
-    private String stripExtension(String file, String extension) {
+    @SuppressWarnings("SameParameterValue")
+    private String stripExtension( String file, String extension) {
 
         if (file.toLowerCase(Locale.ENGLISH).endsWith(extension)) {
             return file.substring(0, file.length() - extension.length());

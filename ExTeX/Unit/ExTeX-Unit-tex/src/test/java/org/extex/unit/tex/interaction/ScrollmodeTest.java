@@ -45,12 +45,10 @@ public class ScrollmodeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ScrollmodeTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public ScrollmodeTest() {
 
-        super("scrollmode", "");
+        setPrimitive("scrollmode");setArguments("");setPrepare("");
     }
 
     /**

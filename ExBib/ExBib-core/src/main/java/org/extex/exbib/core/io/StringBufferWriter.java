@@ -34,9 +34,7 @@ public class StringBufferWriter implements Writer {
      */
     private StringBuffer buffer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public StringBufferWriter() {
 
         this(new StringBuffer());

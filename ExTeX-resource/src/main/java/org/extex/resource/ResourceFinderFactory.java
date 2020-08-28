@@ -46,9 +46,7 @@ public class ResourceFinderFactory {
      */
     private static final String CLASS_ATTRIBUTE = "class";
 
-    /**
-     * Creates a new object.
-     */
+
     public ResourceFinderFactory() {
 
     }

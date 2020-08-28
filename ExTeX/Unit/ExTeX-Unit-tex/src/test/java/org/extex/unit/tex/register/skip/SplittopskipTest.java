@@ -39,9 +39,7 @@ public class SplittopskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(SplittopskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SplittopskipTest() {
 
         super("splittopskip", "", "0.0pt");

@@ -40,12 +40,10 @@ public class SplitfirstmarkTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(SplitfirstmarkTest.class);
     }
 
-    /**
-     * Constructor for SplitfirstmarkTest.
-     */
+
     public SplitfirstmarkTest() {
 
-        super("splitfirstmark", "");
+        setPrimitive("splitfirstmark");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

@@ -41,9 +41,7 @@ public class ParshapeindentTest extends NonExecuteTester {
         (new JUnitCore()).run(ParshapeindentTest.class);
     }
 
-    /**
-     * Constructor for ParshapelengthTest.
-     */
+
     public ParshapeindentTest() {
 
         super("parshapeindent", "");

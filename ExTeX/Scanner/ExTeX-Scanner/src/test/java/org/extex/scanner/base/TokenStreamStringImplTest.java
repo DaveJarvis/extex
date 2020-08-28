@@ -142,9 +142,7 @@ public class TokenStreamStringImplTest {
         (new JUnitCore()).run(TokenStreamStringImplTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TokenStreamStringImplTest() {
 
     }

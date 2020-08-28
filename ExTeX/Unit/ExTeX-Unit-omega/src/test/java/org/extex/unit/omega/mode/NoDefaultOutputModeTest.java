@@ -40,12 +40,10 @@ public class NoDefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(NoDefaultOutputModeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NoDefaultOutputModeTest() {
 
-        super("noDefaultOutputMode", "");
+        setPrimitive("noDefaultOutputMode");setArguments("");
         setConfig("omega-test");
     }
 

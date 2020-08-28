@@ -20,6 +20,7 @@
 package org.extex.unit.tex.typesetter.box;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
@@ -41,12 +42,10 @@ public class HruleTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(HruleTest.class);
     }
 
-    /**
-     * Constructor for HruleTest.
-     */
+
     public HruleTest() {
 
-        super("hrule", "");
+        setPrimitive("hrule");setArguments("");setPrepare("");
     }
 
     /**
@@ -110,6 +109,7 @@ public class HruleTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test5() throws Exception {
 
         assertSuccess(showNodesProperties(),

@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class OradicalTest extends AbstractMathTester {
 
-    /**
-     * Constructor for RadicalTest.
-     */
+
     public OradicalTest() {
 
-        super("oradical", "12 32");
+        setPrimitive("oradical");setArguments("12 32");setPrepare("");
         setConfig("omega-test");
     }
 

@@ -27,12 +27,10 @@ package org.extex.unit.tex.math;
  */
 public class VcenterTest extends AbstractMathTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public VcenterTest() {
 
-        super("vcenter", "{x}");
+        setPrimitive("vcenter");setArguments("{x}");setPrepare("");
     }
 
     //TODO implement more primitive specific test cases

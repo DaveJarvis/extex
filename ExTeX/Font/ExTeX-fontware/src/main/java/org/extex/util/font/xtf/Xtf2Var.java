@@ -76,9 +76,7 @@ public class Xtf2Var extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Xtf2Var() {
 
         super(Xtf2Var.class);

@@ -40,9 +40,7 @@ public class EndlinecharTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(EndlinecharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EndlinecharTest() {
 
         super("endlinechar", "", "13");

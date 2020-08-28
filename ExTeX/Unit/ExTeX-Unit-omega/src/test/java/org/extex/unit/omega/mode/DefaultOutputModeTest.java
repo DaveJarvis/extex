@@ -41,12 +41,10 @@ public class DefaultOutputModeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(DefaultOutputModeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DefaultOutputModeTest() {
 
-        super("DefaultOutputMode", " onebyte ");
+        setPrimitive("DefaultOutputMode");setArguments(" onebyte ");
         setConfig("omega-test");
     }
 

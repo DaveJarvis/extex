@@ -40,12 +40,10 @@ public class BotmarkTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(BotmarkTest.class);
     }
 
-    /**
-     * Constructor for BotmarkTest.
-     */
+
     public BotmarkTest() {
 
-        super("botmark", "");
+        setPrimitive("botmark");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

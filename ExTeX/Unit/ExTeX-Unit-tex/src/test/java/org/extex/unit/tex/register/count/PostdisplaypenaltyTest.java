@@ -40,9 +40,7 @@ public class PostdisplaypenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PostdisplaypenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PostdisplaypenaltyTest() {
 
         super("postdisplaypenalty", "", "0");

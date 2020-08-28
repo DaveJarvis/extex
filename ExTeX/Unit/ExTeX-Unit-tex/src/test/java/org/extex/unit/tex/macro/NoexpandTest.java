@@ -29,12 +29,10 @@ import org.extex.test.NoFlagsButGlobalPrimitiveTester;
  */
 public class NoexpandTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public NoexpandTest() {
 
-        super("noexpand", "\\relax");
+        setPrimitive("noexpand");setArguments("\\relax");
     }
 
 }

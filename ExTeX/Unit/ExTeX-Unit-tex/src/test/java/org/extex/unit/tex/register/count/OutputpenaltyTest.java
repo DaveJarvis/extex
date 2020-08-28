@@ -40,9 +40,7 @@ public class OutputpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(OutputpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OutputpenaltyTest() {
 
         super("outputpenalty", "", "0");

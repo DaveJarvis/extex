@@ -41,12 +41,10 @@ public class ScantokensTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ScantokensTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ScantokensTest() {
 
-        super("scantokens", "{}");
+        setPrimitive("scantokens");setArguments("{}");setPrepare("");
         setConfig("etex-test");
     }
 

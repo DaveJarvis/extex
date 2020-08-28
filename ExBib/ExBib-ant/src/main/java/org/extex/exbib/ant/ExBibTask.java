@@ -299,9 +299,7 @@ public class ExBibTask extends Task {
      */
     private StringBuilder text = new StringBuilder();
 
-    /**
-     * Creates a new object.
-     */
+
     public ExBibTask() {
 
     }

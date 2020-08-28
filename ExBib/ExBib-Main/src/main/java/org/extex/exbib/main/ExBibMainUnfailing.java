@@ -40,9 +40,7 @@ public final class ExBibMainUnfailing {
         ExBibMain.commandLine(args);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private ExBibMainUnfailing() {
 
         // unused

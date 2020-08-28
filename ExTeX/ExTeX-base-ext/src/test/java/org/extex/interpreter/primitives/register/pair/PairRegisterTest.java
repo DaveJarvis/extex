@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class PairRegisterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public PairRegisterTest() {
 
         setConfig("base-ext-test.xml");

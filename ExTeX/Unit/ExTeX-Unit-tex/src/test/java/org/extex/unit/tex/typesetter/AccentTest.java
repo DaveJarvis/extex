@@ -41,12 +41,10 @@ public class AccentTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(AccentTest.class);
     }
 
-    /**
-     * Constructor for MathaccentTest.
-     */
+
     public AccentTest() {
 
-        super("accent", "13 a");
+        setPrimitive("accent");setArguments("13 a");setPrepare("");
     }
 
     /**

@@ -27,12 +27,8 @@ package org.extex.unit.tex.math.numbering;
  */
 public class EqnoTest extends AbstractNumberingTester {
 
-    /**
-     * Constructor for EqnoTest.
-     */
     public EqnoTest() {
-
-        super("eqno");
+        setPrimitive( "eqno" );
     }
 
     //TODO: write more primitive specific test cases

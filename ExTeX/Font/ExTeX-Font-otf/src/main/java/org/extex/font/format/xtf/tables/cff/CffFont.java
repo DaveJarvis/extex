@@ -365,9 +365,9 @@ public class CffFont implements XMLWriterConvertible {
      * @return Returns the {@link CharString} with the name.
      */
     public CharString getCharstring(String name) {
-
         T2Operator op = topDictIndex.get("charstring");
-        if (op != null && op instanceof T2TDOCharStrings) {
+
+        if ( op instanceof T2TDOCharStrings ) {
             T2TDOCharStrings val = (T2TDOCharStrings) op;
             return val.getCharString(name);
         }

@@ -93,9 +93,7 @@ public class SiteBuilder implements LibReceiver {
      */
     private List<NewsBuilder> newsBuilderList = new ArrayList<NewsBuilder>();
 
-    /**
-     * Creates a new object.
-     */
+
     public SiteBuilder() {
 
         logger = Logger.getLogger(SiteBuilder.class.getName());

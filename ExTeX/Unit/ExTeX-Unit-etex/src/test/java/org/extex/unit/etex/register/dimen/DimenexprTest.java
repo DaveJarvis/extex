@@ -41,9 +41,7 @@ public class DimenexprTest extends ExTeXLauncher {
         (new JUnitCore()).run(DimenexprTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DimenexprTest() {
 
         setConfig("etex-test");

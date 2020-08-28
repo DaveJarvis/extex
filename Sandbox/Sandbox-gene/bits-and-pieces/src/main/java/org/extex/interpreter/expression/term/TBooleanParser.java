@@ -40,9 +40,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class TBooleanParser implements ETypeParser {
 
-    /**
-     * Creates a new object.
-     */
+
     public TBooleanParser() {
 
         super();

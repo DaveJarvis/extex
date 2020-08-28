@@ -40,9 +40,7 @@ import org.extex.ocpware.compiler.parser.ParserStream;
  */
 public final class ExprListParser {
 
-    /**
-     * Creates a new object.
-     */
+
     private ExprListParser() {
 
         // unused

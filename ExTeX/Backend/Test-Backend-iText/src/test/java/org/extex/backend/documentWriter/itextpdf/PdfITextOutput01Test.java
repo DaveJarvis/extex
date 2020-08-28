@@ -41,9 +41,7 @@ public class PdfITextOutput01Test extends ExTeXLauncher {
      */
     private static Properties prop = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfITextOutput01Test() {
 
         // delete temp files after the test

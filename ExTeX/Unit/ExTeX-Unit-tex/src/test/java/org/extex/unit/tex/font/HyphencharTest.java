@@ -39,12 +39,9 @@ public class HyphencharTest extends FontcharTester {
         (new JUnitCore()).run(HyphencharTest.class);
     }
 
-    /**
-     * Constructor for HyphencharTest.
-     */
     public HyphencharTest() {
-
-        super("hyphenchar", "\\nullfont=123 ", "45");
+        setPrimitive( "hyphenchar" );
+        setDef( "45" );
     }
 
 }

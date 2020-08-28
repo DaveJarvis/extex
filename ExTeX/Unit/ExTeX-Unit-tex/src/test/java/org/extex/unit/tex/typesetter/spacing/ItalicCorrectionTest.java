@@ -40,12 +40,10 @@ public class ItalicCorrectionTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ItalicCorrectionTest.class);
     }
 
-    /**
-     * Constructor for ItaliccorrectionTest.
-     */
+
     public ItalicCorrectionTest() {
 
-        super("/", "");
+        setPrimitive("/");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

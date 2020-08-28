@@ -57,9 +57,7 @@ public class JavaloadSensor implements Loadable {
         JavaloadSensor.sensed = sensed;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public JavaloadSensor() {
 
         sensed = false;

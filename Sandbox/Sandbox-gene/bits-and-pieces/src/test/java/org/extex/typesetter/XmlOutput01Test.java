@@ -31,9 +31,7 @@ import org.extex.test.ExTeXLauncher;
  */
 public class XmlOutput01Test extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public XmlOutput01Test() {
 
         super();

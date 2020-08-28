@@ -40,9 +40,7 @@ public class OverfullruleTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(OverfullruleTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OverfullruleTest() {
 
         super("overfullrule", "", "0.0pt");

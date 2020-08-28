@@ -40,9 +40,7 @@ public class MediawidthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(MediawidthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MediawidthTest() {
 
         super("mediawidth", "", "597.50787pt");

@@ -40,9 +40,7 @@ public class IfxTest extends ConditionalTester {
         (new JUnitCore()).run(IfxTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfxTest() {
 
         super("ifx", " aa");

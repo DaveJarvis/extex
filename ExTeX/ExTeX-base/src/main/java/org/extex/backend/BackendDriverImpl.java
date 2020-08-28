@@ -204,9 +204,7 @@ public class BackendDriverImpl
      */
     private OutputStreamFactory streamFactory;
 
-    /**
-     * Creates a new object.
-     */
+
     public BackendDriverImpl() {
 
     }

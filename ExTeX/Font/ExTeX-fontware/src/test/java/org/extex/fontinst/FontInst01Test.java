@@ -44,9 +44,7 @@ public class FontInst01Test extends ExTeXLauncher {
      */
     private static final String SEP = System.getProperty("path.separator", ":");
 
-    /**
-     * Creates a new object.
-     */
+
     public FontInst01Test() {
 
         setConfig("fontinst-test.xml");

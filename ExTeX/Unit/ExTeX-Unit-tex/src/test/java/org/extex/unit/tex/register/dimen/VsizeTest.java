@@ -40,9 +40,7 @@ public class VsizeTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(VsizeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public VsizeTest() {
 
         super("vsize", "", "0.0pt");

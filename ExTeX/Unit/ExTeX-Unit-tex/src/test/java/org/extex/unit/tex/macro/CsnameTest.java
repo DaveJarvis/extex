@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class CsnameTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public CsnameTest() {
 
     }

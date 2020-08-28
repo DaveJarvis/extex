@@ -40,9 +40,7 @@ public class PdfhoriginTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfhoriginTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfhoriginTest() {
 
         super("pdfhorigin", "", "0.0pt");

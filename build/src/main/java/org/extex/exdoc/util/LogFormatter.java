@@ -32,9 +32,7 @@ import java.util.logging.LogRecord;
  */
 public class LogFormatter extends Formatter {
 
-    /**
-     * Creates a new object.
-     */
+
     public LogFormatter() {
 
     }

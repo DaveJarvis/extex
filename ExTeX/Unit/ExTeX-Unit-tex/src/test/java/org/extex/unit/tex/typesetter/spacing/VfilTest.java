@@ -40,12 +40,10 @@ public class VfilTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VfilTest.class);
     }
 
-    /**
-     * Constructor for VfilTest.
-     */
+
     public VfilTest() {
 
-        super("vfil", "");
+        setPrimitive("vfil");setArguments("");setPrepare("");
     }
 
     /**

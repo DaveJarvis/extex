@@ -40,9 +40,7 @@ public class PageshrinkTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PageshrinkTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PageshrinkTest() {
 
         super("pageshrink", "", "0.0pt");

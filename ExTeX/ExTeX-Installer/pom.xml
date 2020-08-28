@@ -2,7 +2,6 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExTeX-Installer</artifactId>
   <name>ExTeX install system</name>
   <description>
@@ -47,7 +46,6 @@
 
   <properties>
     <staging.dir>${project.build.directory}/staging</staging.dir>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <exbib.directory>${basedir}/..</exbib.directory>
   </properties>
 
@@ -86,7 +84,7 @@
           <izpackBasedir>${staging.dir}</izpackBasedir>
           <kind>standard</kind>
           <installerFile>${project.build.directory}/${project.artifactId}-${project.version}.jar</installerFile>
-          <descriptorEncoding>ISO-8859-1</descriptorEncoding>
+          <descriptorEncoding>${project.build.sourceEncoding}</descriptorEncoding>
         </configuration>
         <executions>
           <execution>

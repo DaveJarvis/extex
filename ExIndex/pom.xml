@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExIndex</artifactId>
   <packaging>pom</packaging>
   <version>0.1-SNAPSHOT</version>
@@ -9,7 +8,7 @@
   <inceptionYear>2007</inceptionYear>
   <url>http://www.extex.org</url>
   <description>
-   ExIndex ...
+    ExIndex ...
   </description>
 
   <parent>
@@ -18,36 +17,6 @@
     <version>0.1-SNAPSHOT</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
-
-  <properties>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-  </properties>
-
-  <mailingLists>
-    <mailingList>
-      <name>extex</name>
-      <post>extex@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-devel</name>
-      <post>extex-devel@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
-    </mailingList>
-
-    <mailingList>
-      <name>extex-build@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-svn@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-bugs@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
-    </mailingList>
-  </mailingLists>
 
   <distributionManagement>
     <repository>
@@ -109,16 +78,16 @@
   </dependencyManagement>
 
   <modules>
-   <module>ExIndex-core</module>
-   <module>ExIndex-lisp</module>
-   <module>ExIndex-Main</module>
-   <module>ExIndex-makeindex</module>
-<!--
-   <module>ExIndex-Installer</module>
-   <module>ExIndex-doc</module>
--->
-   <module>../CLI</module>
-   <module>../ExTeX-resource</module>
+    <module>ExIndex-core</module>
+    <module>ExIndex-lisp</module>
+    <module>ExIndex-Main</module>
+    <module>ExIndex-makeindex</module>
+    <!--
+       <module>ExIndex-Installer</module>
+       <module>ExIndex-doc</module>
+    -->
+    <module>../CLI</module>
+    <module>../ExTeX-resource</module>
   </modules>
 
   <build>
@@ -139,13 +108,13 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.8.1</version>
       </plugin>
-      
+
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
@@ -224,7 +193,7 @@
               <version>2.7</version>
               <configuration>
                 <aggregate>true</aggregate>
-                <stylesheetfile>${exbib.directory}/src/javadoc/stylesheet.css</stylesheetfile>  
+                <stylesheetfile>${exbib.directory}/src/javadoc/stylesheet.css</stylesheetfile>
                 <overview>${basedir}/src/javadoc/overview.html</overview>
                 <groups>
                   <group>
@@ -272,8 +241,8 @@
               <version>2.6</version>
               <configuration>
                 <aggregate>true</aggregate>
-              <configLocation>org/extex/checkstyle-extex.xml</configLocation>
-            </configuration>
+                <configLocation>org/extex/checkstyle-extex.xml</configLocation>
+              </configuration>
             </plugin>
 
             <plugin>
@@ -322,7 +291,7 @@
                 <excludeRoots>
                   <excludeRoot>target/generated-sources/stubs</excludeRoot>
                 </excludeRoots>
-              </configuration> 
+              </configuration>
             </plugin>
           </reportPlugins>
         </configuration>

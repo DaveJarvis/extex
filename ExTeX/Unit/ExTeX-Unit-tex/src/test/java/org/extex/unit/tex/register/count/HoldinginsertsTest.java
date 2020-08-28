@@ -40,9 +40,7 @@ public class HoldinginsertsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(HoldinginsertsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HoldinginsertsTest() {
 
         super("holdinginserts", "", "0");

@@ -41,9 +41,7 @@ public class LastkernTest extends AbstractReadonlyDimenRegisterTester {
         (new JUnitCore()).run(LastkernTest.class);
     }
 
-    /**
-     * Constructor for LastboxTest.
-     */
+
     public LastkernTest() {
 
         super("lastkern", "", "0.0pt");

@@ -19,13 +19,15 @@
 
 package org.extex.font.format.xtf;
 
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.LanguageSystemTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.font.format.xtf.tables.tag.Tag;
+import org.junit.Assert;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test for the class {@link Tag} and all sub classes.
@@ -33,7 +35,7 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class TagTest extends TestCase {
+public class TagTest {
 
     /**
      * Test add.
@@ -43,7 +45,7 @@ public class TagTest extends TestCase {
 
         ScriptTag.getInstance("new");
 
-        assertTrue(ScriptTag.isInList("new "));
+        assertTrue( ScriptTag.containsTag( "new " ) );
     }
 
     /**
@@ -52,7 +54,7 @@ public class TagTest extends TestCase {
     @Test
     public void testDefault() {
 
-        assertEquals("DFLT", ScriptTag.getDefault().getTag());
+        assertEquals( "DFLT", ScriptTag.getDefault().getTag() );
     }
 
     /**
@@ -61,9 +63,9 @@ public class TagTest extends TestCase {
     @Test
     public void testExists() {
 
-        assertTrue(ScriptTag.isInList("latn"));
-        assertTrue(ScriptTag.isInList("lao"));
-        assertTrue(ScriptTag.isInList("arab"));
+        assertTrue( ScriptTag.containsTag( "latn" ) );
+        assertTrue( ScriptTag.containsTag( "lao" ) );
+        assertTrue( ScriptTag.containsTag( "arab" ) );
     }
 
     // /**
@@ -82,8 +84,8 @@ public class TagTest extends TestCase {
     public void testTagFound01() {
 
         Tag tag = Tag.getInstance("DFLT");
-        assertNotNull(tag);
-        assertTrue(tag instanceof ScriptTag);
+        Assert.assertNotNull( tag );
+        assertTrue( tag instanceof ScriptTag );
     }
 
     /**
@@ -93,8 +95,8 @@ public class TagTest extends TestCase {
     public void testTagFound02() {
 
         Tag tag = Tag.getInstance("hlig");
-        assertNotNull(tag);
-        assertTrue(tag instanceof FeatureTag);
+        Assert.assertNotNull( tag );
+        assertTrue( tag instanceof FeatureTag );
     }
 
     /**
@@ -104,8 +106,8 @@ public class TagTest extends TestCase {
     public void testTagFound03() {
 
         Tag tag = Tag.getInstance("DEU");
-        assertNotNull(tag);
-        assertTrue(tag instanceof LanguageSystemTag);
+        Assert.assertNotNull( tag );
+        assertTrue( tag instanceof LanguageSystemTag );
     }
 
     /**
@@ -115,6 +117,6 @@ public class TagTest extends TestCase {
     public void testTagNotFound() {
 
         Tag tag = Tag.getInstance("XXX2");
-        assertNull(tag);
+        Assert.assertNull( tag );
     }
 }

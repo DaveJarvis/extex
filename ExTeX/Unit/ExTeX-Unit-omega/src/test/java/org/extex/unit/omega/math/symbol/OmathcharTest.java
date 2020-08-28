@@ -31,12 +31,10 @@ import org.junit.Test;
  */
 public class OmathcharTest extends AbstractMathTester {
 
-    /**
-     * Constructor for MathcharTest.
-     */
+
     public OmathcharTest() {
 
-        super("omathchar", "123 ");
+        setPrimitive("omathchar");setArguments("123 ");setPrepare("");
         setConfig("omega-test");
     }
 
@@ -96,6 +94,7 @@ public class OmathcharTest extends AbstractMathTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test1() throws Exception {
 
         assertSuccess(
@@ -152,6 +151,7 @@ public class OmathcharTest extends AbstractMathTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testExt1() throws Exception {
 
         assertSuccess(

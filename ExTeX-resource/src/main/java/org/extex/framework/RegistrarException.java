@@ -34,9 +34,7 @@ public class RegistrarException extends ObjectStreamException {
      */
     private static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     */
+
     public RegistrarException() {
 
     }

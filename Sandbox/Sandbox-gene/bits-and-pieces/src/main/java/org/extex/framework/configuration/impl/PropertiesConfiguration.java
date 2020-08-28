@@ -64,9 +64,7 @@ public class PropertiesConfiguration implements Configuration {
      */
     private String resource;
 
-    /**
-     * Creates a new object.
-     */
+
     public PropertiesConfiguration() {
 
         super();

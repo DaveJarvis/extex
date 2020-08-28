@@ -38,9 +38,7 @@ public class MakeindexLatin1 extends Makeindex {
         System.exit(new MakeindexLatin1().run(args));
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MakeindexLatin1() {
 
         setInputEncoding("latin-1");

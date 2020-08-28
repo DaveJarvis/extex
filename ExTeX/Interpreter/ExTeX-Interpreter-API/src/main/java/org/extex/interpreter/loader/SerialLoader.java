@@ -82,9 +82,7 @@ public class SerialLoader {
      */
     private static final String FORMAT_ID = "ExTeX format";
 
-    /**
-     * Creates a new object.
-     */
+
     public SerialLoader() {
 
     }

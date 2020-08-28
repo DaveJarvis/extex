@@ -53,9 +53,7 @@ public class YearTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(YearTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public YearTest() {
 
         super("year", "", getDefaultValue());

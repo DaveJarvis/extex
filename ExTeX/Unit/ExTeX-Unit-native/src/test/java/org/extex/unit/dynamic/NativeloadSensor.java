@@ -58,9 +58,7 @@ public class NativeloadSensor implements Loadable {
         NativeloadSensor.sensed = sensed;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NativeloadSensor() {
 
         sensed = false;

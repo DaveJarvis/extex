@@ -128,9 +128,7 @@ public class FontFactoryImpl extends AbstractFactory<Object>
      */
     private Properties prop;
 
-    /**
-     * Creates a new object.
-     */
+
     public FontFactoryImpl() {
 
     }

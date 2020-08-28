@@ -41,12 +41,10 @@ public class DetokenizeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(DetokenizeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DetokenizeTest() {
 
-        super("detokenize", "{}");
+        setPrimitive("detokenize");setArguments("{}");setPrepare("");
         setConfig("etex-test");
     }
 

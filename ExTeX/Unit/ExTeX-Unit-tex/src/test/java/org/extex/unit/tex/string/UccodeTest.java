@@ -39,9 +39,7 @@ public class UccodeTest extends AbstractCharMapTester {
         (new JUnitCore()).run(UccodeTest.class);
     }
 
-    /**
-     * Constructor for UccodeTest.
-     */
+
     public UccodeTest() {
 
         super("uccode", "65", "65", "1114111");

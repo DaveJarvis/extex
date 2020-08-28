@@ -30,21 +30,6 @@
     </dependency>
   </dependencies>
 
-  <repositories>
-    <repository>
-      <id>extexSnapshots</id>
-      <name>ExTeX Snapshots</name>
-      <url>http://www.extex.org/maven2.snapshots</url>
-      <layout>default</layout>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <build>
     <plugins>
       <plugin>

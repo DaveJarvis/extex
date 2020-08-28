@@ -29,9 +29,7 @@ import org.extex.typesetter.ListMakerType;
  */
 public final class ListMakers {
 
-    /**
-     * Creates a new object.
-     */
+
     private ListMakers() {
 
         // unused

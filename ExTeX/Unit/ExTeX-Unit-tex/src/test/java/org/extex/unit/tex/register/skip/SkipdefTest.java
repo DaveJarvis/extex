@@ -40,9 +40,7 @@ public class SkipdefTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(SkipdefTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SkipdefTest() {
 
         super("x", "", "0.0pt", "\\skipdef\\x=42 ");

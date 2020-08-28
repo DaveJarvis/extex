@@ -42,12 +42,10 @@ public class PenaltyTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(PenaltyTest.class);
     }
 
-    /**
-     * Constructor for PenaltyTest.
-     */
+
     public PenaltyTest() {
 
-        super("penalty", "12");
+        setPrimitive("penalty");setArguments("12");setPrepare("");
     }
 
     /**

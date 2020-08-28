@@ -41,12 +41,10 @@ public class MultiplyTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(MultiplyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MultiplyTest() {
 
-        super("multiply", "\\count1 1 ");
+        setPrimitive("multiply");setArguments("\\count1 1 ");
     }
 
     /**

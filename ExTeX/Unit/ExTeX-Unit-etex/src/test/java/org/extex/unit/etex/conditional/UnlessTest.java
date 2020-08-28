@@ -42,9 +42,7 @@ public class UnlessTest extends ExTeXLauncher {
         (new JUnitCore()).run(UnlessTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public UnlessTest() {
 
         setConfig("etex-test");

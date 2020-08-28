@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PdfrefobjTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfrefobjTest() {
 
         super("pdfrefobj", "1", "\\pdfoutput=1 ");

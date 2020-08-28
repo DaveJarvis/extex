@@ -450,9 +450,7 @@ public abstract class DestType implements Serializable {
         throw new PdftexDestinationTypeException(name.toText());
     }
 
-    /**
-     * Creates a new object.
-     */
+
     protected DestType() {
 
     }

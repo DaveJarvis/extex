@@ -49,9 +49,7 @@ public class TabMarkTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TabMarkTokenTest() {
 
         super(token, Catcode.TABMARK, "x", "alignment tab character x");

@@ -41,9 +41,7 @@ public class GlobaldefsTest extends ExTeXLauncher {
         (new JUnitCore()).run(GlobaldefsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GlobaldefsTest() {
 
     }

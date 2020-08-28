@@ -40,12 +40,10 @@ public class XleadersTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(XleadersTest.class);
     }
 
-    /**
-     * Constructor for XleadersTest.
-     */
+
     public XleadersTest() {
 
-        super("xleaders", "\\vrule\\vfill");
+        setPrimitive("xleaders");setArguments("\\vrule\\vfill");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

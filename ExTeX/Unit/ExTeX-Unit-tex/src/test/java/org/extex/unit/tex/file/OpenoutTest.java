@@ -45,9 +45,7 @@ public class OpenoutTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
         (new JUnitCore()).run(OpenoutTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OpenoutTest() {
 
         super("openout", "1 texput.test");

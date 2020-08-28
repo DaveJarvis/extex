@@ -34,9 +34,7 @@ import org.extex.interpreter.EditHandler;
  */
 public class EditHandlerTeXImpl implements EditHandler {
 
-    /**
-     * Creates a new object.
-     */
+
     public EditHandlerTeXImpl() {
 
     }

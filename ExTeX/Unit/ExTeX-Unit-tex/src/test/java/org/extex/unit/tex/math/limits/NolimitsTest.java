@@ -27,13 +27,10 @@ package org.extex.unit.tex.math.limits;
  */
 public class NolimitsTest extends AbstractLimitsTester {
 
-    /**
-     * Constructor for NolimitsTest.
-     */
-    public NolimitsTest() {
+  public NolimitsTest() {
+    setPrimitive( "nolimits" );
+    setArguments( "\\mathop 123" );
+  }
 
-        super("", "\\mathop 123");
-    }
-
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

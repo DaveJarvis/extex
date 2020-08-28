@@ -48,12 +48,10 @@ public class ReadTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(ReadTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
     public ReadTest() {
-
-        super("read", "1 to \\x", "\\openin1 " + DATA_FILE + " ");
+        setPrimitive( "read" );
+        setArguments( "1 to \\x" );
+        setPrepare( "\\openin1 " + DATA_FILE + " " );
     }
 
     /**

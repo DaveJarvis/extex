@@ -41,12 +41,10 @@ public class UppercaseTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UppercaseTest.class);
     }
 
-    /**
-     * Constructor for UppercaseTest.
-     */
+
     public UppercaseTest() {
 
-        super("uppercase", "{abc}");
+        setPrimitive("uppercase");setArguments("{abc}");setPrepare("");
     }
 
     /**

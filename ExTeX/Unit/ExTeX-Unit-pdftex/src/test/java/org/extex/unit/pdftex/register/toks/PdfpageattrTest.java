@@ -40,9 +40,7 @@ public class PdfpageattrTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(PdfpageattrTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfpageattrTest() {
 
         super("pdfpageattr", "", "");

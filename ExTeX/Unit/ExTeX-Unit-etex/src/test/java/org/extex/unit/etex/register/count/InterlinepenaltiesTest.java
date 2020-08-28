@@ -40,9 +40,7 @@ public class InterlinepenaltiesTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(InterlinepenaltiesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public InterlinepenaltiesTest() {
 
         super("interlinepenalties", "255", "0");

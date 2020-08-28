@@ -2,7 +2,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib-bst2gy</artifactId>
   <name>ExBib BST to Groovy Compiler</name>
   <description>
@@ -23,7 +22,7 @@
     <site>
       <id>org.extex.exbib.bst2gy</id>
       <name>ExBib BST 2 Groovy Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-bst2gy</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 

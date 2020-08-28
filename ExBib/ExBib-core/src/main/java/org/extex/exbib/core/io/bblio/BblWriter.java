@@ -76,12 +76,12 @@ public class BblWriter implements Writer, Configurable {
      * The field <tt>buffer</tt> contains the temporary memory before shipping
      * the line to the writer.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     /**
      * The field <tt>writer</tt> contains the output writer.
      */
-    private Writer writer = null;
+    private Writer writer;
 
     /**
      * The field <tt>lineLength</tt> contains the desired line length.
@@ -97,7 +97,7 @@ public class BblWriter implements Writer, Configurable {
     /**
      * The field <tt>collapseSpaces</tt> contains the flag to collapse spaces.
      */
-    private boolean collapseSpaces = false;
+    private boolean collapseSpaces;
 
     /**
      * Creates a new object.
@@ -112,11 +112,6 @@ public class BblWriter implements Writer, Configurable {
         this.writer = writer;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#close()
-     */
     public void close() throws IOException {
 
         if (writer != null) {
@@ -163,11 +158,6 @@ public class BblWriter implements Writer, Configurable {
         setLineLength(cfg.getValueAsInteger("lineLength", DEFAULT_LINE_LENGTH));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.io.Writer#flush()
-     */
     public void flush() throws IOException {
 
         writer.print(buffer.toString());
@@ -367,7 +357,7 @@ public class BblWriter implements Writer, Configurable {
     @Override
     public String toString() {
 
-        return Integer.toString(lineLength) + " >" + buffer.toString() + "<";
+        return lineLength + " >" + buffer.toString() + "<";
     }
 
     /**

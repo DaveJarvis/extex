@@ -207,9 +207,7 @@ public class StringSource extends Moritz {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public StringSource() {
 
     }

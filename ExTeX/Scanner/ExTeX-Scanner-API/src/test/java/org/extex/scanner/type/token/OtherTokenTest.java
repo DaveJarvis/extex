@@ -49,9 +49,7 @@ public class OtherTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OtherTokenTest() {
 
         super(token, Catcode.OTHER, "x", "the character x");

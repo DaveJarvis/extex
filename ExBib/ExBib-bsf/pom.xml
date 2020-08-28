@@ -2,7 +2,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib-bsf</artifactId>
   <name>ExBib BSF Adaptor</name>
   <description>
@@ -16,20 +15,20 @@
   <inceptionYear>2002</inceptionYear>
   <url>http://www.extex.org</url>
 
-  <distributionManagement>
-    <site>
-      <id>org.extex.exbib.bsf</id>
-      <name>ExBib BSF Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-bsf</url>
-    </site>
-  </distributionManagement>
-
   <parent>
     <groupId>org.extex</groupId>
     <artifactId>ExBib</artifactId>
     <version>0.2</version>
     <relativePath>../pom.xml</relativePath>
   </parent>
+
+  <distributionManagement>
+    <site>
+      <id>org.extex.exbib.bsf</id>
+      <name>ExBib BSF Site</name>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
+    </site>
+  </distributionManagement>
 
   <dependencies>
     <dependency>
@@ -46,9 +45,10 @@
 
   <build>
     <plugins>
-     <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
         <executions>
           <execution>
             <id>copy</id>
@@ -61,7 +61,7 @@
                 <artifactItem>
                   <groupId>bsf</groupId>
                   <artifactId>bsf</artifactId>
-                  <version>2.3.0</version>
+                  <version>2.4.0</version>
                   <overWrite>true</overWrite>
                 </artifactItem>
               </artifactItems>

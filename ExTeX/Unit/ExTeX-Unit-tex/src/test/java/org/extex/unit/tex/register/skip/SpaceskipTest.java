@@ -39,9 +39,7 @@ public class SpaceskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(SpaceskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SpaceskipTest() {
 
         super("spaceskip", "", "0.0pt");

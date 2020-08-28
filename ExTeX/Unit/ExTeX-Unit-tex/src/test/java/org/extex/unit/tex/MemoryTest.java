@@ -48,9 +48,7 @@ public class MemoryTest extends ExTeXLauncher {
         (new JUnitCore()).run(MemoryTest.class);
     }
 
-    /**
-     * Constructor for KerningTest.
-     */
+
     public MemoryTest() {
 
     }

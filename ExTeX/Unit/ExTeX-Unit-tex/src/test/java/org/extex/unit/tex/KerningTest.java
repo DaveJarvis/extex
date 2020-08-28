@@ -41,9 +41,7 @@ public class KerningTest extends ExTeXLauncher {
         (new JUnitCore()).run(KerningTest.class);
     }
 
-    /**
-     * Constructor for KerningTest.
-     */
+
     public KerningTest() {
 
     }

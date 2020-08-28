@@ -53,12 +53,10 @@ public class OcpPrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(OcpPrimitiveTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpPrimitiveTest() {
 
-        super("ocp", "\\abc=../ExTeX-Unit-omega/src/test/resources/destroy");
+        setPrimitive("ocp");setArguments("\\abc=../ExTeX-Unit-omega/src/test/resources/destroy");
         setConfig("omega-test");
     }
 

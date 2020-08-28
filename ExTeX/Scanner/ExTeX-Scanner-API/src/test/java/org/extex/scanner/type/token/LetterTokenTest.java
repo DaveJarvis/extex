@@ -50,9 +50,7 @@ public class LetterTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LetterTokenTest() {
 
         super(t, Catcode.LETTER, "x", "the letter x");

@@ -556,9 +556,7 @@ public final class MakeindexParameters {
         return null;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private MakeindexParameters() {
 
         // not in use

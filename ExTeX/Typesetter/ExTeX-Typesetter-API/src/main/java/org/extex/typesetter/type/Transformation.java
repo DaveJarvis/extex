@@ -64,9 +64,7 @@ public class Transformation {
      */
     private float ty;
 
-    /**
-     * Creates a new object.
-     */
+
     public Transformation() {
 
     }

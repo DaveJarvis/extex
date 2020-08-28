@@ -44,9 +44,7 @@ public class ChoiceLeft extends ArrayList<Left> implements Left {
      */
     private static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public ChoiceLeft() {
 
     }

@@ -36,12 +36,10 @@ import org.junit.Test;
  */
 public class MathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Constructor for MathcodeTest.
-     */
+
     public MathcodeTest() {
 
-        super("mathcode", "12=32 ");
+        setPrimitive("mathcode");setArguments("12=32 ");
     }
 
     /**

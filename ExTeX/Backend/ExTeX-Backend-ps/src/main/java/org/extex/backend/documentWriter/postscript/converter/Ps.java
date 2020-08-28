@@ -76,9 +76,7 @@ public class Ps {
      */
     private Map<String, Boolean> used = new HashMap<String, Boolean>();
 
-    /**
-     * Creates a new object.
-     */
+
     public Ps() {
 
     }

@@ -302,9 +302,7 @@ public class EbcdicCharset extends Charset {
      */
     private TableEncoder encoder = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public EbcdicCharset() {
 
         super("EBCDIC", new String[]{"EBCDIC-500", "EBCDIC-US"});

@@ -39,9 +39,7 @@ public class LineskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(LineskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LineskipTest() {
 
         super("lineskip", "", "0.0pt");

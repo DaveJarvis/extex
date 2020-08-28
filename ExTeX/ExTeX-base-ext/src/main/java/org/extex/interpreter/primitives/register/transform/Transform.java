@@ -84,9 +84,7 @@ public class Transform implements Serializable {
      */
     private Real[] val = new Real[MAXVAL];
 
-    /**
-     * Creates a new object.
-     */
+
     public Transform() {
 
         for (int i = 0; i < MAXVAL; i++) {

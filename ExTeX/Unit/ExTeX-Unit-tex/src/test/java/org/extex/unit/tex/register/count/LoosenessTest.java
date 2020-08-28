@@ -40,9 +40,7 @@ public class LoosenessTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LoosenessTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LoosenessTest() {
 
         super("looseness", " ", "0");

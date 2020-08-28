@@ -41,12 +41,10 @@ public class DefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(DefaultInputModeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DefaultInputModeTest() {
 
-        super("DefaultInputMode", " onebyte ");
+        setPrimitive("DefaultInputMode");setArguments(" onebyte ");
         setConfig("omega-test");
     }
 

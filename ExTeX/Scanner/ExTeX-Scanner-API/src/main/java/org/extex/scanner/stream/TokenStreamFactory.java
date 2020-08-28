@@ -19,29 +19,9 @@
 
 package org.extex.scanner.stream;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedWriter;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.StringReader;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.framework.AbstractFactory;
 import org.extex.framework.configuration.Configuration;
-import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
+import org.extex.framework.configuration.exception.*;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.stream.exception.MissingResourceFinderException;
@@ -57,6 +37,11 @@ import org.extex.scanner.stream.observer.string.OpenStringObserverList;
 import org.extex.scanner.stream.observer.writer.OpenWriterObservable;
 import org.extex.scanner.stream.observer.writer.OpenWriterObserver;
 import org.extex.scanner.stream.observer.writer.OpenWriterObserverList;
+
+import java.io.*;
+import java.lang.reflect.Constructor;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is the factory to provide an instance of a
@@ -218,7 +203,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
      * The field <tt>tag</tt> contains the tag name of the sub-configuration to
      * use.
      */
-    private String tag;
+    private final String tag;
 
     /**
      * The field <tt>outWriterInterceptors</tt> contains the output writer
@@ -261,9 +246,9 @@ public class TokenStreamFactory extends AbstractFactory<Object>
         try {
             readerConstructor =
                     Class.forName(classname).getConstructor(
-                        new Class[]{Configuration.class,
-                                TokenStreamOptions.class, Reader.class,
-                                Boolean.class, String.class});
+                        Configuration.class,
+                        TokenStreamOptions.class, Reader.class,
+                        Boolean.class, String.class );
         } catch (SecurityException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
@@ -349,13 +334,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
             stream = (TokenStream) readerConstructor.newInstance(//
                 new Object[]{configuration, options, r, isFile, source});
 
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InvocationTargetException e) {
+        } catch ( final Exception e) {
             throw new ConfigurationInstantiationException(e);
         }
 
@@ -409,7 +388,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
                         Boolean.TRUE, name);
         } catch (UnsupportedEncodingException e) {
             throw new ConfigurationUnsupportedEncodingException(encoding,
-                (String) null);
+                                                                null );
         }
 
         if (openFileObservers != null) {
@@ -428,7 +407,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     public void register(InputStreamInterceptor interceptor) {
 
         if (inStreamInterceptors == null) {
-            inStreamInterceptors = new ArrayList<InputStreamInterceptor>();
+            inStreamInterceptors = new ArrayList<>();
         }
         inStreamInterceptors.add(interceptor);
     }
@@ -442,7 +421,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     public void register(OutputStreamInterceptor interceptor) {
 
         if (outStreamInterceptors == null) {
-            outStreamInterceptors = new ArrayList<OutputStreamInterceptor>();
+            outStreamInterceptors = new ArrayList<>();
         }
         outStreamInterceptors.add(interceptor);
     }
@@ -456,7 +435,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     public void register(ReaderInterceptor interceptor) {
 
         if (inReaderInterceptors == null) {
-            inReaderInterceptors = new ArrayList<ReaderInterceptor>();
+            inReaderInterceptors = new ArrayList<>();
         }
         inReaderInterceptors.add(interceptor);
     }
@@ -469,7 +448,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     public void register(WriterInterceptor interceptor) {
 
         if (outWriterInterceptors == null) {
-            outWriterInterceptors = new ArrayList<WriterInterceptor>();
+            outWriterInterceptors = new ArrayList<>();
         }
         outWriterInterceptors.add(interceptor);
     }

@@ -29,9 +29,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
  */
 public class PdflastxformTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdflastxformTest() {
 
         super("pdflastxform", "", "0", "\\pdfoutput=1 ");

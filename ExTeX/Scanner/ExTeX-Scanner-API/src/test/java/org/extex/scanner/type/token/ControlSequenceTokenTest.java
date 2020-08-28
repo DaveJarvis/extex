@@ -53,9 +53,7 @@ public class ControlSequenceTokenTest extends TokenTester {
         (new JUnitCore()).run(ControlSequenceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ControlSequenceTokenTest() {
 
         super(token, Catcode.ESCAPE, "\\x", "the control sequence \\x");

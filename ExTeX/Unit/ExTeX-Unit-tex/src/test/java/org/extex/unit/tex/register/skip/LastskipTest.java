@@ -39,9 +39,7 @@ public class LastskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(LastskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LastskipTest() {
 
         super("lastskip", "", "0.0pt");

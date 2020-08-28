@@ -184,9 +184,7 @@ public final class LeftParser {
         return result;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private LeftParser() {
 
         // unused

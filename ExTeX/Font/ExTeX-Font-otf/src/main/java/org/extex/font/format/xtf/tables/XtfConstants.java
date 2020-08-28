@@ -63,9 +63,7 @@ public final class XtfConstants {
      */
     public static final int CONSTXFF = 0xff;
 
-    /**
-     * Creates a new object.
-     */
+
     private XtfConstants() {
 
         // 

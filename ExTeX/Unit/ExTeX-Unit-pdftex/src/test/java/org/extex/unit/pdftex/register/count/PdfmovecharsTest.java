@@ -40,9 +40,7 @@ public class PdfmovecharsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfmovecharsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfmovecharsTest() {
 
         super("pdfmovechars", "", "0");

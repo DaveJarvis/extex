@@ -53,16 +53,6 @@
       <scope>test</scope>
     </dependency>
 
-<!-- 
-    <dependency>
-      <groupId>org.extex</groupId>
-      <artifactId>ExTeX-base-test</artifactId>
-      <version>${project.version}</version>
-      <classifier>tests</classifier>
-      <scope>test</scope>
-    </dependency>
- -->
-
     <dependency>
       <groupId>org.extex</groupId>
       <artifactId>ExTeX-Scanner</artifactId>

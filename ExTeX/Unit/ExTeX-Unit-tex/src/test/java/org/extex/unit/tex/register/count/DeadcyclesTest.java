@@ -39,9 +39,7 @@ public class DeadcyclesTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DeadcyclesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DeadcyclesTest() {
 
         super("deadcycles", "", "0");

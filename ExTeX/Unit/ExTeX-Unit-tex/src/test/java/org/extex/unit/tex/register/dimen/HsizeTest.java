@@ -40,9 +40,7 @@ public class HsizeTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(HsizeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HsizeTest() {
 
         super("hsize", "", "0.0pt");

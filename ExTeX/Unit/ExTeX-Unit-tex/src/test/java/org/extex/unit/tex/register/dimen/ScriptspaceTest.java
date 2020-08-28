@@ -40,9 +40,7 @@ public class ScriptspaceTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(ScriptspaceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ScriptspaceTest() {
 
         super("scriptspace", "", "0.0pt");

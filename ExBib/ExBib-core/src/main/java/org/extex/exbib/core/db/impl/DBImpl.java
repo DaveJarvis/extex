@@ -60,54 +60,54 @@ public class DBImpl implements DB, Configurable, Observable {
      * The field <tt>bibReaderFactory</tt> contains the factory used to get new
      * Readers.
      */
-    private BibReaderFactory bibReaderFactory = null;
+    private BibReaderFactory bibReaderFactory;
 
     /**
      * The field <tt>entries</tt> contains the list of entries to preserve the
      * original order.
      */
-    private List<Entry> entries = new ArrayList<Entry>();
+    private List<Entry> entries = new ArrayList<>();
 
     /**
      * The field <tt>entryHash</tt> contains the Hash of entries to get fast
      * access.
      */
-    private Map<String, Entry> entryHash = new HashMap<String, Entry>();
+    private final Map<String, Entry> entryHash = new HashMap<>();
 
     /**
      * The field <tt>strings</tt> contains the defined strings.
      */
-    private Map<String, Value> strings = new HashMap<String, Value>();
+    private final Map<String, Value> strings = new HashMap<>();
 
     /**
      * The field <tt>makeAliasHook</tt> contains the observers for the creation
      * of an alias.
      */
-    private ObserverList makeAliasHook = new ObserverList();
+    private final ObserverList makeAliasHook = new ObserverList();
 
     /**
      * The field <tt>makeEntryHook</tt> contains the observers for the creation
      * of an entry.
      */
-    private ObserverList makeEntryHook = new ObserverList();
+    private final ObserverList makeEntryHook = new ObserverList();
 
     /**
      * The field <tt>makeMacroHook</tt> contains the observers for the creation
      * of a macro.
      */
-    private ObserverList makeMacroHook = new ObserverList();
+    private final ObserverList makeMacroHook = new ObserverList();
 
     /**
      * The field <tt>makePreambleHook</tt> contains the observers for the
      * creation of a preamble.
      */
-    private ObserverList makePreambleHook = new ObserverList();
+    private final ObserverList makePreambleHook = new ObserverList();
 
     /**
      * The field <tt>makeStringHook</tt> contains the observers for the creation
      * of a string.
      */
-    private ObserverList makeStringHook = new ObserverList();
+    private final ObserverList makeStringHook = new ObserverList();
 
     /**
      * The field <tt>sorter</tt> contains the sorter to use.
@@ -117,7 +117,7 @@ public class DBImpl implements DB, Configurable, Observable {
     /**
      * The field <tt>preamble</tt> contains the collected preambles.
      */
-    private Value preamble = new Value();
+    private final Value preamble = new Value();
 
     /**
      * The field <tt>minCrossref</tt> contains the minimum number of crossrefs
@@ -198,7 +198,7 @@ public class DBImpl implements DB, Configurable, Observable {
      */
     public List<String> getMacroNames() {
 
-        return new ArrayList<String>(strings.keySet());
+        return new ArrayList<>( strings.keySet() );
     }
 
     /**
@@ -281,19 +281,19 @@ public class DBImpl implements DB, Configurable, Observable {
 
         reader.load(this);
 
-        List<String> missing = new ArrayList<String>();
+        List<String> missing = new ArrayList<>();
 
         if (citation == null || citation.containsKey("*")) {
             return missing;
         }
 
-        Map<String, List<Entry>> cite = new HashMap<String, List<Entry>>();
-        List<String> stack = new ArrayList<String>(citation.keySet());
+        Map<String, List<Entry>> cite = new HashMap<>();
+        List<String> stack = new ArrayList<>( citation.keySet() );
 
-        List<Entry> newEntries = new ArrayList<Entry>();
+        List<Entry> newEntries = new ArrayList<>();
 
         do {
-            List<String> open = new ArrayList<String>();
+            List<String> open = new ArrayList<>();
             for (String key : stack) {
                 key = key.toLowerCase(Locale.ENGLISH);
                 Entry entry = getEntry(key);
@@ -308,7 +308,7 @@ public class DBImpl implements DB, Configurable, Observable {
                                 xref.expand(this).toLowerCase(Locale.ENGLISH);
                         List<Entry> xr = cite.get(crossref);
                         if (xr == null) {
-                            xr = new ArrayList<Entry>();
+                            xr = new ArrayList<>();
                             cite.put(crossref, xr);
                             open.add(crossref);
                         }
@@ -361,12 +361,6 @@ public class DBImpl implements DB, Configurable, Observable {
         return entry;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#registerObserver(java.lang.String,
-     *      org.extex.exbib.core.util.Observer)
-     */
     public void registerObserver(String name, Observer observer)
             throws NotObservableException {
 
@@ -378,7 +372,7 @@ public class DBImpl implements DB, Configurable, Observable {
             makePreambleHook.add(observer);
         } else if ("makeEntry".equals(name)) {
             makeEntryHook.add(observer);
-        } else if ("makeEntry".equals(name)) {
+        } else if ("makeString".equals(name)) {
             makeStringHook.add(observer);
         } else {
             throw new NotObservableException(name);
@@ -395,11 +389,6 @@ public class DBImpl implements DB, Configurable, Observable {
         bibReaderFactory = factory;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.db.DB#setMinCrossrefs(int)
-     */
     public void setMinCrossrefs(int minCrossref) {
 
         this.minCrossrefs = minCrossref;
@@ -488,5 +477,4 @@ public class DBImpl implements DB, Configurable, Observable {
         strings.put(name.toLowerCase(Locale.ENGLISH), value);
         makeStringHook.update(this, name);
     }
-
 }

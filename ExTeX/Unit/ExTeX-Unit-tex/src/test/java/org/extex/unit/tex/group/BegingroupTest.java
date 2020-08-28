@@ -41,12 +41,10 @@ public class BegingroupTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(BegingroupTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BegingroupTest() {
 
-        super("begingroup", "");
+        setPrimitive("begingroup");setArguments("");setPrepare("");
     }
 
     /**

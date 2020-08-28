@@ -59,9 +59,7 @@ public class CreateEmptyEncoding extends AbstractFontUtil {
         enc.doIt();
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CreateEmptyEncoding() {
 
         super(CreateEmptyEncoding.class);

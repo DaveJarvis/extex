@@ -1,8 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib-jacl</artifactId>
   <name>ExBib Jacl</name>
   <description>
@@ -18,7 +16,7 @@
     <site>
       <id>org.extex.exbib.jacl</id>
       <name>ExBib JACL Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-jacl</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 
@@ -39,20 +37,21 @@
       <groupId>jacl</groupId>
       <artifactId>tcljava</artifactId>
       <version>1.2.6</version>
-    </dependency> 
+    </dependency>
 
     <dependency>
       <groupId>jacl</groupId>
       <artifactId>jacl</artifactId>
       <version>1.2.6</version>
-    </dependency> 
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-     <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
         <executions>
           <execution>
             <id>copy</id>
@@ -61,6 +60,7 @@
               <goal>copy-dependencies</goal>
             </goals>
             <configuration>
+              <excludeGroupIds>org.extex</excludeGroupIds>
               <artifactItems>
                 <artifactItem>
                   <groupId>jacl</groupId>
@@ -75,7 +75,6 @@
                   <overWrite>true</overWrite>
                 </artifactItem>
               </artifactItems>
-              <excludeGroupIds>org.extex</excludeGroupIds>
             </configuration>
           </execution>
         </executions>

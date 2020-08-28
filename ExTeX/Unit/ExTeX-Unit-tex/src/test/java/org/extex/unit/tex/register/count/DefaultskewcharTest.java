@@ -40,9 +40,7 @@ public class DefaultskewcharTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DefaultskewcharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DefaultskewcharTest() {
 
         super("defaultskewchar", "", "0");

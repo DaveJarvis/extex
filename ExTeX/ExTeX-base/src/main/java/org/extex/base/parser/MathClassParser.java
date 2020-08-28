@@ -48,9 +48,7 @@ public class MathClassParser implements Parser<MathClass>, Serializable {
      */
     protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public MathClassParser() {
 
     }

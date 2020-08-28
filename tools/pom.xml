@@ -48,7 +48,7 @@
     <site>
       <id>org.extex</id>
       <name>${project.artifactId}</name>
-      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
+      <url>${project.repo.url}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 

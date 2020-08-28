@@ -40,9 +40,7 @@ public class ErrhelpTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(ErrhelpTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ErrhelpTest() {
 
         super("errhelp", "", "");

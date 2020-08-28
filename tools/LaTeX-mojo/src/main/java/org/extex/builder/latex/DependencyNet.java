@@ -79,9 +79,7 @@ public class DependencyNet implements State {
     private static final LaTeXAnalyzer LATEX_ANALYZER =
             new LaTeXMacroAnalyzer();
 
-    /**
-     * Creates a new object.
-     */
+
     public DependencyNet() {
 
         map = new HashMap<String, Artifact>();

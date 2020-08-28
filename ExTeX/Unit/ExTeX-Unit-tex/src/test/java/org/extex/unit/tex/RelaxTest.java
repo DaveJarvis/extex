@@ -41,12 +41,10 @@ public class RelaxTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(RelaxTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public RelaxTest() {
 
-        super("relax", "");
+        setPrimitive("relax");setArguments("");setPrepare("");
     }
 
     /**

@@ -40,9 +40,7 @@ public class AdjdemeritsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(AdjdemeritsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AdjdemeritsTest() {
 
         super("adjdemerits", "", "0");

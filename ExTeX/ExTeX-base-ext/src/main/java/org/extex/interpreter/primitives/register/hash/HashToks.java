@@ -50,9 +50,7 @@ public class HashToks implements Serializable {
      */
     private HashMap<String, Tokens> map = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public HashToks() {
 
         map = new HashMap<String, Tokens>();

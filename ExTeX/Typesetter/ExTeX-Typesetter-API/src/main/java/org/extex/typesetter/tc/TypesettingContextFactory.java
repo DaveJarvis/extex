@@ -58,9 +58,7 @@ public class TypesettingContextFactory extends AbstractFactory<Object> {
      */
     private Class<?> theClass;
 
-    /**
-     * Creates a new object.
-     */
+
     public TypesettingContextFactory() {
 
     }

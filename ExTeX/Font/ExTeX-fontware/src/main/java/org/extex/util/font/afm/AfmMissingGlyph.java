@@ -94,9 +94,7 @@ public class AfmMissingGlyph extends AbstractFontUtil {
      */
     private List<String> enclist = new ArrayList<String>();
 
-    /**
-     * Creates a new object.
-     */
+
     public AfmMissingGlyph() {
 
         super(AfmMissingGlyph.class);

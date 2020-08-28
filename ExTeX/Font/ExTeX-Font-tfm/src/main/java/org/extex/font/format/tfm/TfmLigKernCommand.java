@@ -65,9 +65,7 @@ public class TfmLigKernCommand implements Serializable {
          */
         private static final long serialVersionUID = 1L;
 
-        /**
-         * Creates a new object.
-         */
+
         public Activity() {
 
         }

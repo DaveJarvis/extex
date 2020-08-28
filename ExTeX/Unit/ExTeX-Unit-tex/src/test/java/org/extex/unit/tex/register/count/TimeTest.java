@@ -60,9 +60,7 @@ public class TimeTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TimeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TimeTest() {
 
         super("time", "", getDefaultValue());

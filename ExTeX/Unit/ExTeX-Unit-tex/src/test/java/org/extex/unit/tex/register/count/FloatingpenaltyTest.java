@@ -40,9 +40,7 @@ public class FloatingpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(FloatingpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public FloatingpenaltyTest() {
 
         super("floatingpenalty", "", "0");

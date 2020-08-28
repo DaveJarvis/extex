@@ -24,11 +24,11 @@ import org.junit.Test;
 
 /**
  * This is an abstract base class for testing math primitives.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class AbstractMathTester extends NoFlagsPrimitiveTester {
+public abstract class AbstractMathTester extends NoFlagsPrimitiveTester {
 
     /**
      * The field <tt>DEFINE_MATH_FONTS</tt> contains the definition for the
@@ -57,40 +57,34 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
      */
     private String arguments;
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive to test
-     * @param arguments the arguments for the invocation
-     */
-    public AbstractMathTester(String primitive, String arguments) {
-
-        this(primitive, arguments, "");
+    public AbstractMathTester() {
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive to test
-     * @param arguments the arguments for the invocation
-     * @param prepare the code to insert before the invocation
-     */
-    public AbstractMathTester(String primitive, String arguments, String prepare) {
-
-        super(primitive, arguments + "$", "\\catcode`\\$=3 $" + prepare);
+    @Override
+    public void setPrimitive( final String primitive ) {
+        super.setPrimitive( primitive );
         this.primitive = primitive;
+    }
+
+    @Override
+    public void setArguments( final String arguments ) {
+        super.setArguments(arguments + "$");
         this.arguments = arguments;
+    }
+
+    @Override
+    public void setPrepare( final String prepare ) {
+        super.setPrepare( "\\catcode`\\$=3 $" + prepare );
     }
 
     /**
      * <testcase> Test case checking that the primitive needs the math mode.
      * Vertical mode is not enough. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     public void testNonMathMode1() throws Exception {
-
         assertFailure(// --- input code ---
             "\\" + primitive + arguments + " ",
             // --- log message ---
@@ -100,16 +94,14 @@ public class AbstractMathTester extends NoFlagsPrimitiveTester {
     /**
      * <testcase> Test case checking that the primitive needs the math mode.
      * Horizontal mode is not enough. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     public void testNonMathMode2() throws Exception {
-
         assertFailure(// --- input code ---
             "a\\" + primitive + arguments + " ",
             // --- log message ---
             "Missing $ inserted");
     }
-
 }

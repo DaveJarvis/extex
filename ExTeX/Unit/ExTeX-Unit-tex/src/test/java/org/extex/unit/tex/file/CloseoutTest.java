@@ -41,9 +41,7 @@ public class CloseoutTest extends NoFlagsButImmediatePrimitiveTester {
         (new JUnitCore()).run(CloseoutTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CloseoutTest() {
 
         super("closeout", "1");

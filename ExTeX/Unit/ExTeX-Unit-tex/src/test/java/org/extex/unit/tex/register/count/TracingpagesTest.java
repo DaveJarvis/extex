@@ -40,9 +40,7 @@ public class TracingpagesTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TracingpagesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TracingpagesTest() {
 
         super("tracingpages", "", "0");

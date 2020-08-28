@@ -40,9 +40,7 @@ public class PdfcompresslevelTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfcompresslevelTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfcompresslevelTest() {
 
         super("pdfcompresslevel", "", "9");

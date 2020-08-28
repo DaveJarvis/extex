@@ -34,9 +34,7 @@ import java.util.Properties;
  */
 public final class Finder {
 
-    /**
-     * Creates a new object.
-     */
+
     private Finder() {
 
         //not used

@@ -40,9 +40,7 @@ public class IfvoidTest extends ConditionalTester {
         (new JUnitCore()).run(IfvoidTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfvoidTest() {
 
         super("ifvoid", "0");

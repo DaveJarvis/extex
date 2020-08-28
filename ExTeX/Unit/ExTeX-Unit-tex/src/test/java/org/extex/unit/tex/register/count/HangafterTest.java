@@ -40,9 +40,7 @@ public class HangafterTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(HangafterTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HangafterTest() {
 
         super("hangafter", "", "0");

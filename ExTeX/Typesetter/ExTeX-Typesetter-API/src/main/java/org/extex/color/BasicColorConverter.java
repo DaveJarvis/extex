@@ -37,9 +37,7 @@ import org.extex.core.exception.ImpossibleException;
  */
 public class BasicColorConverter implements ColorConverter {
 
-    /**
-     * Creates a new object.
-     */
+
     public BasicColorConverter() {
 
     }

@@ -97,9 +97,7 @@ public class AfmBackendFontManager extends AbstractBackendFontManager
         }
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AfmBackendFontManager() {
 
     }

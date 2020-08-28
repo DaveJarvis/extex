@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class AbovewithdelimsTest extends ExTeXLauncher {
 
-    /**
-     * Constructor for AbovewithdelimsTest.
-     */
+
     public AbovewithdelimsTest() {
 
     }

@@ -41,12 +41,10 @@ public class ShipoutTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ShipoutTest.class);
     }
 
-    /**
-     * Constructor for ShipoutTest.
-     */
+
     public ShipoutTest() {
 
-        super("shipout", "\\box0");
+        setPrimitive("shipout");setArguments("\\box0");setPrepare("");
     }
 
     /**

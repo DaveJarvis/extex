@@ -41,12 +41,10 @@ public class EndTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(EndTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EndTest() {
 
-        super("end", "");
+        setPrimitive("end");setArguments("");setPrepare("");
     }
 
     /**

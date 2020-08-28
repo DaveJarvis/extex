@@ -40,12 +40,10 @@ public class PrevgrafTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(PrevgrafTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PrevgrafTest() {
 
-        super("prevgraf", "0", "0");
+        setPrimitive("prevgraf");setArguments("0");setPrepare("0");
     }
 
     // TODO implement the primitive specific test cases

@@ -63,9 +63,7 @@ public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
      */
     private BackendDriver backend = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public NullTypesetterImpl() {
 
     }

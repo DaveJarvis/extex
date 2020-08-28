@@ -41,9 +41,7 @@ public class GetOptionStringCompiler implements Compiler {
      */
     private class GetStringOption extends GenericCode {
 
-        /**
-         * Creates a new object.
-         */
+    
         public GetStringOption() {
 
             super(ReturnType.STRING, "bibProcessor.getOption", name);

@@ -40,9 +40,7 @@ public class SavingvdiscardsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(SavingvdiscardsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SavingvdiscardsTest() {
 
         super("savingvdiscards", "", "0");

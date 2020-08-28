@@ -49,9 +49,7 @@ public class GroupNode extends NodeList {
      */
     private RightBraceToken closeToken;
 
-    /**
-     * Creates a new object.
-     */
+
     public GroupNode() {
 
         super();

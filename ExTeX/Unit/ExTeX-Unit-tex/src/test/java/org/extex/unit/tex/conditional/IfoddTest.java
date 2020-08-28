@@ -40,9 +40,7 @@ public class IfoddTest extends ConditionalTester {
         (new JUnitCore()).run(IfoddTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfoddTest() {
 
         super("ifodd", "3");

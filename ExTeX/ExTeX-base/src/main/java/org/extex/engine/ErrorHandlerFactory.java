@@ -76,9 +76,7 @@ import org.extex.interpreter.ErrorHandler;
  */
 public class ErrorHandlerFactory extends AbstractFactory<ErrorHandler> {
 
-    /**
-     * Creates a new object.
-     */
+
     public ErrorHandlerFactory() {
 
     }

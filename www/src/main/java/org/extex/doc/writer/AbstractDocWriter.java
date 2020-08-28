@@ -42,9 +42,7 @@ public class AbstractDocWriter {
      */
     private String targetDir = ".";
 
-    /**
-     * Creates a new object.
-     */
+
     public AbstractDocWriter() {
 
     }

@@ -108,9 +108,7 @@ public class TfmBackendFontManager extends AbstractBackendFontManager
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TfmBackendFontManager() {
 
     }

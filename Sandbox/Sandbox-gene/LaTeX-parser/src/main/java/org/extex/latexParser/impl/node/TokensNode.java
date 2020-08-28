@@ -38,9 +38,7 @@ public class TokensNode extends AbstractNode implements Node {
      */
     private StringBuilder buffer = new StringBuilder();
 
-    /**
-     * Creates a new object.
-     */
+
     public TokensNode() {
 
         super(null, 0);

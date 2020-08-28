@@ -42,9 +42,7 @@ public class SortRules extends ArrayList<Rule> {
      */
     private boolean ascending = true;
 
-    /**
-     * Creates a new object.
-     */
+
     public SortRules() {
 
     }

@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PdfliteralTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfliteralTest() {
 
         super("pdfliteral", "{}", "\\pdfoutput=1 ");

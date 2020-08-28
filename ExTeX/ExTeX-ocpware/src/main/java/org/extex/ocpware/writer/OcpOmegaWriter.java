@@ -47,9 +47,7 @@ public class OcpOmegaWriter extends AbstractWriter {
      */
     private boolean fill = true;
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpOmegaWriter() {
 
         this(20, true);

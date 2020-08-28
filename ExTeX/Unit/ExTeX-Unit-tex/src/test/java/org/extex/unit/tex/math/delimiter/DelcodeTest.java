@@ -40,12 +40,10 @@ public class DelcodeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(DelcodeTest.class);
     }
 
-    /**
-     * Constructor for DelcodeTest.
-     */
+
     public DelcodeTest() {
 
-        super("delcode", "23 32");
+        setPrimitive("delcode");setArguments("23 32");
     }
 
     // TODO implement more primitive specific test cases

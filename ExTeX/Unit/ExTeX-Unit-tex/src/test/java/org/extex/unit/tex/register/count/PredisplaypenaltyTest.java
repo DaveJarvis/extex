@@ -40,9 +40,7 @@ public class PredisplaypenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PredisplaypenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PredisplaypenaltyTest() {
 
         super("predisplaypenalty", "", "0");

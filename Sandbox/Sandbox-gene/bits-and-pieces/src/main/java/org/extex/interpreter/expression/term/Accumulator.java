@@ -38,9 +38,7 @@ public class Accumulator implements EType {
      */
     private EType value;
 
-    /**
-     * Creates a new object.
-     */
+
     public Accumulator() {
 
         super();

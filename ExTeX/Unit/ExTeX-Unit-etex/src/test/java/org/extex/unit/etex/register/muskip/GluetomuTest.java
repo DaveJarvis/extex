@@ -41,9 +41,7 @@ public class GluetomuTest extends NonExecuteTester {
         (new JUnitCore()).run(GluetomuTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GluetomuTest() {
 
         super("gluetomu", "");

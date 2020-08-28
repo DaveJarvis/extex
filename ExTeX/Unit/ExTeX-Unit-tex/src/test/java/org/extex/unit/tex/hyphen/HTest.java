@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class HTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public HTest() {
 
     }

@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class ShowtokensTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for JobnameTest.
-     */
+
     public ShowtokensTest() {
 
-        super("showtokens", "{abc}", "", "> abc.\n");
+        setPrimitive("showtokens");setArguments("{abc}");setPrepare("");setOut("> abc.\n");
         setConfig("etex-test");
     }
 

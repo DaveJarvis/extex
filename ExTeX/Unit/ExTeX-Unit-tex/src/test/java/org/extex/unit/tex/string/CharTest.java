@@ -41,12 +41,10 @@ public class CharTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(CharTest.class);
     }
 
-    /**
-     * Constructor for CharTest.
-     */
+
     public CharTest() {
 
-        super("char", "65");
+        setPrimitive("char");setArguments("65");setPrepare("");
     }
 
     /**

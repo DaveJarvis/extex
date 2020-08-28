@@ -41,12 +41,10 @@ public class EndgroupTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(EndgroupTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EndgroupTest() {
 
-        super("endgroup", "", "\\begingroup");
+        setPrimitive("endgroup");setArguments("");setPrepare("\\begingroup");
     }
 
     /**

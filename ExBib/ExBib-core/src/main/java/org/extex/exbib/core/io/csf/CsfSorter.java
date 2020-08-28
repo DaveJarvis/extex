@@ -89,9 +89,7 @@ public class CsfSorter
      */
     private Properties properties;
 
-    /**
-     * Creates a new object.
-     */
+
     public CsfSorter() {
 
         for (int i = 0; i < 128; i++) {

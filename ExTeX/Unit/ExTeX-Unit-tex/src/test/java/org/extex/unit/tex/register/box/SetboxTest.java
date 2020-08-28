@@ -41,12 +41,10 @@ public class SetboxTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(SetboxTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SetboxTest() {
 
-        super("setbox", "1=\\hbox{}", "0");
+        setPrimitive("setbox");setArguments("1=\\hbox{}");setPrepare("0");
     }
 
     /**

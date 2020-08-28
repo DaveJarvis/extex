@@ -45,12 +45,10 @@ public class ErrorstopmodeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ErrorstopmodeTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public ErrorstopmodeTest() {
 
-        super("errorstopmode", "");
+        setPrimitive("errorstopmode");setArguments("");setPrepare("");
     }
 
     /**

@@ -40,9 +40,7 @@ public class HfuzzTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(HfuzzTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HfuzzTest() {
 
         super("hfuzz", "", "0.0pt");

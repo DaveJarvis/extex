@@ -33,9 +33,7 @@ import org.xml.sax.SAXException;
  */
 public class ExdocEntityResolver implements EntityResolver {
 
-    /**
-     * Creates a new object.
-     */
+
     public ExdocEntityResolver() {
 
     }

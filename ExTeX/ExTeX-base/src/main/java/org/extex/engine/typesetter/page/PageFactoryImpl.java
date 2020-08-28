@@ -225,9 +225,7 @@ public class PageFactoryImpl implements PageFactory, LogEnabled {
      */
     private PageFactoryNodeVisitor visitor = new PageFactoryNodeVisitor();
 
-    /**
-     * Creates a new object.
-     */
+
     public PageFactoryImpl() {
 
     }

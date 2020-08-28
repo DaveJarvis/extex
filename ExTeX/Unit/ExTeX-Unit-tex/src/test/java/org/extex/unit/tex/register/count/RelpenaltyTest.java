@@ -40,9 +40,7 @@ public class RelpenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(RelpenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public RelpenaltyTest() {
 
         super("relpenalty", "", "0");

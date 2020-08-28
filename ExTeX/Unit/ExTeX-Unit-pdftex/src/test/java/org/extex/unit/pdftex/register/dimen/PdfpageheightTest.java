@@ -40,9 +40,7 @@ public class PdfpageheightTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfpageheightTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfpageheightTest() {
 
         super("pdfpageheight", "", "845.04684pt");

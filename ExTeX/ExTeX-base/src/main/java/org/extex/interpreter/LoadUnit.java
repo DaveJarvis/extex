@@ -179,9 +179,7 @@ public final class LoadUnit extends AbstractFactory<Code> {
      */
     private StringSource stringSource = new StringSource();
 
-    /**
-     * Creates a new object.
-     */
+
     private LoadUnit() {
 
     };

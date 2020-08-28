@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class AtopTest extends AbstractMathTester {
 
-    /**
-     * Constructor for AtopTest.
-     */
+
     public AtopTest() {
 
-        super("atop", " a$", "b");
+        setPrimitive("atop");setArguments(" a$");setPrepare("b");
     }
 
     //TODO: write more primitive specific test cases

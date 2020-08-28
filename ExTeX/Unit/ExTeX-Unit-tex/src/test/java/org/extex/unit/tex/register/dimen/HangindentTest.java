@@ -40,9 +40,7 @@ public class HangindentTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(HangindentTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HangindentTest() {
 
         super("hangindent", "", "0.0pt");

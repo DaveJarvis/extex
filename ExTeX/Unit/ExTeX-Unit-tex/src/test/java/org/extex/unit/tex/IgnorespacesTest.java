@@ -41,12 +41,10 @@ public class IgnorespacesTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(IgnorespacesTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public IgnorespacesTest() {
 
-        super("ignorespaces", "");
+        setPrimitive("ignorespaces");setArguments("");setPrepare("");
     }
 
     /**

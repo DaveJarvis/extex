@@ -38,9 +38,7 @@ public class PdfEndThread extends WhatsItNode {
      */
     protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfEndThread() {
 
     }

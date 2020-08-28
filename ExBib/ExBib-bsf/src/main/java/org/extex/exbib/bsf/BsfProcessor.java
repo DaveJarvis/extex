@@ -1,30 +1,22 @@
 /*
  * Copyright (C) 2008-2010 The ExTeX Group and individual authors listed below
- * 
+ *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
  * Software Foundation; either version 2.1 of the License, or (at your option)
  * any later version.
- * 
+ *
  * This library is distributed in the hope that it will be useful, but WITHOUT
  * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
- * 
+ *
  * You should have received a copy of the GNU Lesser General Public License
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 
 package org.extex.exbib.bsf;
-
-import java.io.BufferedInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.Logger;
 
 import org.apache.bsf.BSFException;
 import org.apache.bsf.BSFManager;
@@ -43,12 +35,21 @@ import org.extex.resource.ResourceAware;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Logger;
+
+import static java.nio.charset.StandardCharsets.UTF_8;
+
 /**
  * This class provides a plug-in replacement for a bibliography processor. It is
  * based on the Bean Scripting Framework (BSF). Thus all programming languages
  * for which BSF bindings exist can be used as extension language for writing
  * <logo>&epsilon;&chi;Bib</logo> style files.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -65,7 +66,7 @@ public class BsfProcessor extends BibliographyCore
     /**
      * The field <tt>warnings</tt> contains the number of warnings.
      */
-    private long warnings = 0;
+    private long warnings;
 
     /**
      * The field <tt>script</tt> contains the name of the scripting language.
@@ -75,33 +76,26 @@ public class BsfProcessor extends BibliographyCore
     /**
      * The field <tt>finder</tt> contains the resource finder.
      */
-    private ResourceFinder finder = null;
+    private ResourceFinder finder;
 
     /**
      * Creates a new object without database and logger. Those have to be
      * provided via setters (from the super class).
      */
     public BsfProcessor() {
-
         this(null, null);
     }
 
     /**
      * Creates a new object with database and logger.
-     * 
+     *
      * @param db the database
      * @param log the logger
      */
     public BsfProcessor(DB db, Logger log) {
-
         super(db, log);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.bst.BibliographyCore#configure(org.extex.framework.configuration.Configuration)
-     */
     @Override
     public void configure(Configuration config) throws ConfigurationException {
 
@@ -123,45 +117,27 @@ public class BsfProcessor extends BibliographyCore
             extensions.split(":"));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#getMacroNames()
-     */
     @Override
     public List<String> getMacroNames() {
-
         DB db = getDB();
         return db != null ? db.getMacroNames() : new ArrayList<String>();
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#getNumberOfWarnings()
-     */
     @Override
     public long getNumberOfWarnings() {
-
         return warnings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#getOutWriter()
-     */
     @Override
     public Writer getOutWriter() {
-
         return outWriter;
     }
 
     /**
      * Any Entry type is treated as known.
-     * 
+     *
      * {@inheritDoc}
-     * 
+     *
      * @see org.extex.exbib.core.Processor#isKnown(java.lang.String)
      */
     @Override
@@ -172,44 +148,34 @@ public class BsfProcessor extends BibliographyCore
 
     /**
      * Load a script into memory.
-     * 
+     *
      * @param sty the script
-     * 
+     *
      * @return the string representation of the resource
-     * 
+     *
      * @throws IOException in case of an I/O error
      * @throws ExBibBstNotFoundException in case of a missing BST file
      */
     private String load(String sty)
-            throws IOException,
-                ExBibBstNotFoundException {
+            throws IOException, ExBibBstNotFoundException {
+        final ByteArrayOutputStream result = new ByteArrayOutputStream();
 
-        NamedInputStream is = finder.findResource(sty, script);
-        if (is == null) {
-            throw new ExBibBstNotFoundException(sty, null);
+        try( final NamedInputStream is = finder.findResource( sty, script ) ) {
+          if( is == null ) {
+            throw new ExBibBstNotFoundException( sty, null );
+          }
+
+          final byte[] buffer = new byte[ 1024 ];
+
+          int length;
+          while( (length = is.read( buffer )) != -1 ) {
+            result.write( buffer, 0, length );
+          }
         }
-        StringBuilder sb = new StringBuilder();
-        BufferedInputStream bis = new BufferedInputStream(is);
-        try {
-            InputStreamReader r = new InputStreamReader(bis, "UTF-8");
-            try {
-                for (int c = r.read(); c >= 0; c = r.read()) {
-                    sb.append((char) c);
-                }
-            } finally {
-                r.close();
-            }
-        } finally {
-            is.close();
-        }
-        return sb.toString();
+
+        return result.toString( UTF_8.name() );
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#process(org.extex.exbib.core.io.Writer)
-     */
     @Override
     public long process(Writer outputWriter) throws ExBibException {
 
@@ -240,30 +206,19 @@ public class BsfProcessor extends BibliographyCore
         return warnings;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.resource.ResourceAware#setResourceFinder(org.extex.resource.ResourceFinder)
-     */
     @Override
     public void setResourceFinder(ResourceFinder resourceFinder) {
 
         this.finder = resourceFinder;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exbib.core.Processor#warning(java.lang.String)
-     */
     @Override
     public void warning(String message) {
-
         Logger logger = getLogger();
+
         if (logger != null) {
             logger.warning(message + "\n");
         }
         warnings++;
     }
-
 }

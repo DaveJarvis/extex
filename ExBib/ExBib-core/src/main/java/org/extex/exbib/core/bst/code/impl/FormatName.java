@@ -478,9 +478,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatF extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatF() {
 
             super("f");
@@ -515,9 +513,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatFF extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatFF() {
 
             super("ff");
@@ -688,9 +684,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatJ extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatJ() {
 
             super("j");
@@ -725,9 +719,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatJJ extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatJJ() {
 
             super("jj");
@@ -759,9 +751,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatL extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatL() {
 
             super("l");
@@ -797,9 +787,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatLL extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatLL() {
 
             super("ll");
@@ -832,9 +820,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatV extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatV() {
 
             super("v");
@@ -871,9 +857,7 @@ public class FormatName extends AbstractCode implements Serializable {
      */
     private class FormatVV extends FormatItem {
 
-        /**
-         * Creates a new object.
-         */
+    
         public FormatVV() {
 
             super("vv");

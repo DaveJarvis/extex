@@ -29,13 +29,9 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class RightTest extends AbstractMathTester {
 
-    /**
-     * Constructor for RightTest.
-     */
-    public RightTest() {
 
-        super("right", ". ");
-        appendToPrepare("\\left. ");
+    public RightTest() {
+        setPrimitive("right");setArguments(". ");setPrepare("\\left. ");
     }
 
     //TODO implement the primitive specific test cases

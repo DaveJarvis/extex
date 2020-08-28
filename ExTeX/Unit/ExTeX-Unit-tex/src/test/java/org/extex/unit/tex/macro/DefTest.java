@@ -29,9 +29,7 @@ import org.junit.Test;
  */
 public class DefTest extends AbstractDefTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public DefTest() {
 
         super("def");

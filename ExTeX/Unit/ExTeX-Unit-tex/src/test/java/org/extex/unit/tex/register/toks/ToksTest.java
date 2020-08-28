@@ -41,9 +41,7 @@ public class ToksTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(ToksTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ToksTest() {
 
         super("toks", "42", "");

@@ -59,9 +59,7 @@ public class XmlHandler extends DefaultHandler {
      */
     protected XMLStreamWriter writer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public XmlHandler() {
 
         // add a empty string (for characters for the root-element)

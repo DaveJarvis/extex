@@ -40,9 +40,7 @@ public class MaxErrorTest extends AbstractNonGroupIntegerTester {
         (new JUnitCore()).run(MaxErrorTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MaxErrorTest() {
 
         super("maxError", "", "100", DEFINE_BRACES + "\\namespace{system}");

@@ -279,9 +279,7 @@ public class ErrorHandlerImpl implements ErrorHandler, LogEnabled {
      */
     private Logger logger = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public ErrorHandlerImpl() {
 
     }

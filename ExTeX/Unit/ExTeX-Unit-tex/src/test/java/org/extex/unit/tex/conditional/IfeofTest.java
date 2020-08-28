@@ -53,9 +53,7 @@ public class IfeofTest extends ConditionalTester {
         (new JUnitCore()).run(IfeofTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfeofTest() {
 
         super("ifeof", " 11");

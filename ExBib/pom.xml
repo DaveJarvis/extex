@@ -1,7 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib</artifactId>
   <packaging>pom</packaging>
   <version>0.2</version>
@@ -9,10 +8,10 @@
   <inceptionYear>2007</inceptionYear>
   <url>http://www.extex.org</url>
   <description>
-   ExBib is the BibTeX compatible database developed within the
-   context of ExTeX. ExBib is prepared to be used as a plug-in
-   replacement for BibTeX as well as from within other environments
-   like Ant.
+    ExBib is the BibTeX compatible database developed within the
+    context of ExTeX. ExBib is prepared to be used as a plug-in
+    replacement for BibTeX as well as from within other environments
+    like Ant.
   </description>
 
   <organization>
@@ -28,7 +27,6 @@
   </parent>
 
   <properties>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
     <extex.directory>${basedir}/..</extex.directory>
     <exbib.directory>${basedir}</exbib.directory>
   </properties>
@@ -43,32 +41,6 @@
     <system>Berlios Bugs</system>
     <url>http://developer.berlios.de/bugs/?group_id=1915</url>
   </issueManagement>
-
-  <mailingLists>
-    <mailingList>
-      <name>extex</name>
-      <post>extex@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-devel</name>
-      <post>extex-devel@dante.de</post>
-      <subscribe>https://lists.dante.de/mailman/listinfo/extex-devel</subscribe>
-    </mailingList>
-
-    <mailingList>
-      <name>extex-build@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-build</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-svn@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-svn</subscribe>
-    </mailingList>
-    <mailingList>
-      <name>extex-bugs@lists.berlios.de</name>
-      <subscribe>https://lists.berlios.de/mailman/listinfo/extex-bugs</subscribe>
-    </mailingList>
-  </mailingLists>
 
   <developers>
     <developer>
@@ -89,7 +61,7 @@
     <site>
       <id>org.extex.exbib</id>
       <name>ExBib Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib</url>
+      <url>${project.repo.exbib}</url>
     </site>
     <repository>
       <id>org.extex.exbib</id>
@@ -162,16 +134,16 @@
   </dependencyManagement>
 
   <modules>
-   <module>ExBib-core</module>
-   <module>ExBib-Main</module>
-   <module>ExBib-bsf</module>
-   <module>ExBib-groovy</module>
-   <module>ExBib-bst2gy</module>
-   <module>ExBib-jacl</module>
-   <module>ExBib-jython</module>
-   <module>ExBib-ant</module>
-   <module>ExBib-texmf</module>
-   <module>ExBib-Util</module>
+    <module>ExBib-core</module>
+    <module>ExBib-Main</module>
+    <module>ExBib-bsf</module>
+    <module>ExBib-groovy</module>
+    <module>ExBib-bst2gy</module>
+    <module>ExBib-jacl</module>
+    <module>ExBib-jython</module>
+    <module>ExBib-ant</module>
+    <module>ExBib-texmf</module>
+    <module>ExBib-Util</module>
   </modules>
 
   <licenses>

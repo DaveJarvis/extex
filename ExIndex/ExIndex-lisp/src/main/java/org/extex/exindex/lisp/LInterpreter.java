@@ -69,9 +69,7 @@ public class LInterpreter {
      */
     private ResourceFinder finder;
 
-    /**
-     * Creates a new object.
-     */
+
     public LInterpreter() {
 
         finder = null;

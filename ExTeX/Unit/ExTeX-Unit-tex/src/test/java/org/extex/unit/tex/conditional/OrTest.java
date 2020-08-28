@@ -41,9 +41,7 @@ public class OrTest extends ExTeXLauncher {
         (new JUnitCore()).run(OrTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OrTest() {
 
     }

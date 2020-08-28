@@ -41,12 +41,10 @@ public class VskipTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VskipTest.class);
     }
 
-    /**
-     * Constructor for VskipTest.
-     */
+
     public VskipTest() {
 
-        super("vskip", "12pt");
+        setPrimitive("vskip");setArguments("12pt");setPrepare("");
     }
 
     /**

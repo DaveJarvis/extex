@@ -40,12 +40,10 @@ public class UnhboxTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnhboxTest.class);
     }
 
-    /**
-     * Constructor for UnhboxTest.
-     */
+
     public UnhboxTest() {
 
-        super("unhbox", "42 ");
+        setPrimitive("unhbox");setArguments("42 ");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

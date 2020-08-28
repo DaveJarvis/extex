@@ -40,9 +40,7 @@ public class WidowpenaltiesTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(WidowpenaltiesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public WidowpenaltiesTest() {
 
         super("widowpenalties", "255", "0");

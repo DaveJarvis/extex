@@ -393,9 +393,7 @@ public class Tfm2Xml extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Tfm2Xml() {
 
         super(Tfm2Xml.class);

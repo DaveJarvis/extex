@@ -67,9 +67,7 @@ public abstract class AbstractConverter implements PsConverter, ResourceAware {
         return fontManager;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AbstractConverter() {
 
     }

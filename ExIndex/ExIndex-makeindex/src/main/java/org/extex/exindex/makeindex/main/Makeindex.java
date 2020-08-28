@@ -280,9 +280,7 @@ public class Makeindex {
      */
     private Properties properties;
 
-    /**
-     * Creates a new object.
-     */
+
     public Makeindex() {
 
         this(null);

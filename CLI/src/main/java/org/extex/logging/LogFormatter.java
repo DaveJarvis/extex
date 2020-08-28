@@ -44,9 +44,7 @@ public class LogFormatter extends Formatter {
      */
     private int col;
 
-    /**
-     * Creates a new object.
-     */
+
     public LogFormatter() {
 
         this.col = 0;

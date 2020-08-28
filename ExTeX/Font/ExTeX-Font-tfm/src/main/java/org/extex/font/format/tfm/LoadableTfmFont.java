@@ -19,17 +19,6 @@
 
 package org.extex.font.format.tfm;
 
-import java.io.BufferedWriter;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.core.Unicode;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
@@ -38,11 +27,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.glue.FixedGlue;
 import org.extex.core.glue.Glue;
-import org.extex.font.BackendCharacter;
-import org.extex.font.BackendFont;
-import org.extex.font.CoreFontFactory;
-import org.extex.font.FontKey;
-import org.extex.font.LoadableFont;
+import org.extex.font.*;
 import org.extex.font.exception.CorruptFontException;
 import org.extex.font.exception.FontException;
 import org.extex.font.format.TfmMetricFont;
@@ -63,6 +48,13 @@ import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.node.CharNode;
 import org.extex.typesetter.type.node.factory.NodeFactory;
 import org.extex.util.file.random.RandomAccessInputStream;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * Class to load tfm fonts.

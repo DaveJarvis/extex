@@ -40,9 +40,7 @@ public class InputfilenameTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(InputfilenameTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public InputfilenameTest() {
 
         super("inputfilename", "", "\\javadef\\inputfilename{"

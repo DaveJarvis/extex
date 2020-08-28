@@ -40,9 +40,7 @@ public class ClubpenaltiesTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(ClubpenaltiesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ClubpenaltiesTest() {
 
         super("clubpenalties", "255", "0");

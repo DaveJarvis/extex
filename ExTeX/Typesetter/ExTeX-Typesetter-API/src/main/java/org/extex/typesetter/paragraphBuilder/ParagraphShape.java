@@ -47,9 +47,7 @@ public class ParagraphShape implements Serializable {
      */
     private List<FixedDimen> points = new ArrayList<FixedDimen>();
 
-    /**
-     * Creates a new object.
-     */
+
     public ParagraphShape() {
 
     }

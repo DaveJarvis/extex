@@ -40,9 +40,7 @@ public class BadnessTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(BadnessTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BadnessTest() {
 
         super("badness", "", "0");

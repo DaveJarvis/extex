@@ -522,9 +522,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
         throw new MissingNumberException();
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ConstantCountParser() {
 
     }

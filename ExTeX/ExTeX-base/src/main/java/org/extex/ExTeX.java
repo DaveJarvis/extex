@@ -19,26 +19,6 @@
 
 package org.extex;
 
-import java.io.BufferedOutputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.CharacterCodingException;
-import java.text.DateFormat;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Properties;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.StreamHandler;
-
 import org.extex.backend.BackendDriver;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.exception.DocumentWriterException;
@@ -50,12 +30,7 @@ import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.NotObservableException;
 import org.extex.core.exception.helping.HelpingException;
-import org.extex.engine.ContextawareInteractionIndicator;
-import org.extex.engine.ErrorHandlerFactory;
-import org.extex.engine.FontInjector;
-import org.extex.engine.InteractionModeObserver;
-import org.extex.engine.ResourceFinderInjector;
-import org.extex.engine.TokenFactoryFactory;
+import org.extex.engine.*;
 import org.extex.engine.backend.BackendFactory;
 import org.extex.engine.backend.OutputFactory;
 import org.extex.engine.exception.RegistrarFontNotFoundException;
@@ -66,12 +41,7 @@ import org.extex.framework.Registrar;
 import org.extex.framework.configuration.Configurable;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
-import org.extex.framework.configuration.exception.ConfigurationClassNotFoundException;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.framework.configuration.exception.ConfigurationInstantiationException;
-import org.extex.framework.configuration.exception.ConfigurationMissingAttributeException;
-import org.extex.framework.configuration.exception.ConfigurationNoSuchMethodException;
-import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
+import org.extex.framework.configuration.exception.*;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
@@ -106,6 +76,14 @@ import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.tc.font.ModifiableFont;
 import org.extex.typesetter.tc.font.impl.FontImpl;
+
+import java.io.*;
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.Locale;
+import java.util.Properties;
+import java.util.logging.*;
 
 /**
  * This is the programmatic interface to the <logo>&epsilon;&chi;T<span style=
@@ -708,7 +686,7 @@ public class ExTeX {
     /**
      * The field <tt>ini</tt> contains the indicator for iniTeX.
      */
-    private boolean ini;
+    private final boolean ini;
 
     /**
      * The field <tt>interactionObserver</tt> contains the observer called
@@ -720,7 +698,7 @@ public class ExTeX {
      * The field <tt>iProvider</tt> contains the bridge from the resource finder
      * to the context.
      */
-    private ContextawareInteractionIndicator iProvider =
+    private final ContextawareInteractionIndicator iProvider =
             new ContextawareInteractionIndicator();
 
     /**
@@ -738,7 +716,7 @@ public class ExTeX {
      * The field <tt>noBanner</tt> contains the indicator that a banner has
      * already been printed and a repetition should be avoided.
      */
-    private boolean noBanner;
+    private final boolean noBanner;
 
     /**
      * The field <tt>outStream</tt> contains the output stream for the document
@@ -750,7 +728,7 @@ public class ExTeX {
      * The field <tt>properties</tt> contains the properties containing the
      * settings for the invocation.
      */
-    private Properties properties;
+    private final Properties properties;
 
     /**
      * The field <tt>showBanner</tt> is a boolean indicating that it is
@@ -870,9 +848,7 @@ public class ExTeX {
         try {
             interactionObserver.receiveInteractionChange(null,
                 Interaction.get(interaction));
-        } catch (InteractionUnknownException e) {
-            throw e;
-        } catch (RuntimeException e) {
+        } catch ( InteractionUnknownException | RuntimeException e) {
             throw e;
         } catch (Exception e) {
             throw new InteractionUnknownException(interaction);
@@ -977,7 +953,7 @@ public class ExTeX {
     public OutputStream getOutStream() {
 
         return this.outStream;
-    };
+    }
 
     /**
      * Getter for properties.
@@ -1458,20 +1434,12 @@ public class ExTeX {
                     (CoreFontFactory) (Class.forName(fontClass).getConstructor(
                         new Class[]{}).newInstance(new Object[]{}));
 
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InvocationTargetException e) {
-            throw new ConfigurationInstantiationException(e);
         } catch (NoSuchMethodException e) {
             throw new ConfigurationNoSuchMethodException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(fontClass);
+        } catch ( Exception e) {
+            throw new ConfigurationInstantiationException(e);
         }
         if (fontFactory instanceof Configurable) {
             ((Configurable) fontFactory).configure(config);
@@ -1536,7 +1504,7 @@ public class ExTeX {
         interpreter.setContext(makeContext(interpreterConfig, tokenFactory,
             fontFactory, interpreter, finder, jobname, outFactory));
 
-        interpreter.setInteraction(Interaction.get(//
+        interpreter.setInteraction(Interaction.get(
             properties.getProperty(PROP_INTERACTION)));
 
         interpreter.setFontFactory(fontFactory);
@@ -1923,24 +1891,21 @@ public class ExTeX {
      *         ErrorLimitException in case that the error limit has been reached
      */
     public Interpreter run() throws IOException, InterpreterException {
-
-        String jobname = determineJobname();
-        File logFile = makeLogFile(jobname);
+        final String jobname = determineJobname();
+        final File logFile = makeLogFile(jobname);
         Handler logHandler = null;
 
         try {
-
             logHandler = makeLogHandler(logFile);
 
-            Configuration config =
-                    ConfigurationFactory.newInstance(properties
-                        .getProperty(PROP_CONFIG));
+            final Configuration config = ConfigurationFactory.newInstance(
+                properties.getProperty( PROP_CONFIG ) );
             showBanner(config, (showBanner ? Level.INFO : Level.FINE));
 
-            Interpreter interpreter =
+            final Interpreter interpreter =
                     makeInterpreter(
                         config,
-                        makeOutputFactory(jobname, //
+                        makeOutputFactory(jobname,
                             config.getConfiguration("Output")),
                         makeResourceFinder(config.getConfiguration("Resource")),
                         jobname);
@@ -1951,13 +1916,7 @@ public class ExTeX {
 
             return interpreter;
 
-        } catch (ConfigurationException e) {
-            logger.throwing(this.getClass().getName(), "run", e);
-            throw e;
-        } catch (CharacterCodingException e) {
-            logger.throwing(this.getClass().getName(), "run", e);
-            throw e;
-        } catch (IOException e) {
+        } catch ( ConfigurationException | IOException e) {
             logger.throwing(this.getClass().getName(), "run", e);
             throw e;
         } catch (Exception e) {

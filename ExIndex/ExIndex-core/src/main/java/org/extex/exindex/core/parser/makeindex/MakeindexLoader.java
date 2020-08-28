@@ -267,9 +267,7 @@ public final class MakeindexLoader {
         return null;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private MakeindexLoader() {
 
         // not in use

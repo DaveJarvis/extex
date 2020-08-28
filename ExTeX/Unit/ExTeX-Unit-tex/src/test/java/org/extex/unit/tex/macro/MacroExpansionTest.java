@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class MacroExpansionTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public MacroExpansionTest() {
 
     }

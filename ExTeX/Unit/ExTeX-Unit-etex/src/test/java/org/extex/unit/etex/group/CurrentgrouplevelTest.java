@@ -41,9 +41,7 @@ public class CurrentgrouplevelTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(CurrentgrouplevelTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CurrentgrouplevelTest() {
 
         super("currentgrouplevel", "0");

@@ -40,9 +40,7 @@ public class SfcodeTest extends AbstractCharMapTester {
         (new JUnitCore()).run(SfcodeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SfcodeTest() {
 
         super("sfcode", "65", "999", "32767");

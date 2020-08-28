@@ -39,9 +39,7 @@ public class NewlinecharTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(NewlinecharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NewlinecharTest() {
 
         super("newlinechar", "", "0");

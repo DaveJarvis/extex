@@ -42,9 +42,7 @@ public class GlobalTest extends PrefixTester {
         (new JUnitCore()).run(GlobalTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public GlobalTest() {
 
         super("global");

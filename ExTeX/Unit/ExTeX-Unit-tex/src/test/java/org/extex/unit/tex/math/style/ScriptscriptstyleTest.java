@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class ScriptscriptstyleTest extends AbstractMathTester {
 
-    /**
-     * Constructor for ScriptscriptstyleTest.
-     */
+
     public ScriptscriptstyleTest() {
 
-        super("scriptscriptstyle", "");
+        setPrimitive("scriptscriptstyle");setArguments("");setPrepare("");
     }
 
     //TODO: write more primitive specific test cases

@@ -51,9 +51,7 @@ public class FontFactoryImplManagerXtfTest extends AbstractFontFactoryTester {
      */
     private static FontKey key;
 
-    /**
-     * Creates a new object.
-     */
+
     public FontFactoryImplManagerXtfTest() {
 
         if (factory == null) {

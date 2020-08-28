@@ -132,9 +132,7 @@ public class PdftexUnitInfo extends UnitInfo
      */
     private transient TokenSource source;
 
-    /**
-     * Creates a new object.
-     */
+
     public PdftexUnitInfo() {
 
     }

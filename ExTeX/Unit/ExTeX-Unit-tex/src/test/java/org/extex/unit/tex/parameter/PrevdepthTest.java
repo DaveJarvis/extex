@@ -41,12 +41,10 @@ public class PrevdepthTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(PrevdepthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PrevdepthTest() {
 
-        super("prevdepth", "2pt");
+        setPrimitive("prevdepth");setArguments("2pt");setPrepare("");
     }
 
     /**

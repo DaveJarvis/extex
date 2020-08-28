@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class MathTest extends ExTeXLauncher {
 
-    /**
-     * Constructor for MathaccentTest.
-     */
+
     public MathTest() {
 
     }

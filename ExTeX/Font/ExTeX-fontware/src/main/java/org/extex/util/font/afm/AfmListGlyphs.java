@@ -79,9 +79,7 @@ public class AfmListGlyphs extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AfmListGlyphs() {
 
         super(AfmListGlyphs.class);

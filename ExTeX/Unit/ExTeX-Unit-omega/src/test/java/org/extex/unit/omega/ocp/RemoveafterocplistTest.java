@@ -41,9 +41,7 @@ public class RemoveafterocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(RemoveafterocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public RemoveafterocplistTest() {
 
         setConfig("omega-test");

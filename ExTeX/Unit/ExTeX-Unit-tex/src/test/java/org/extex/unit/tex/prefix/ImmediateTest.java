@@ -42,9 +42,7 @@ public class ImmediateTest extends PrefixTester {
         (new JUnitCore()).run(ImmediateTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public ImmediateTest() {
 
         super("immediate");

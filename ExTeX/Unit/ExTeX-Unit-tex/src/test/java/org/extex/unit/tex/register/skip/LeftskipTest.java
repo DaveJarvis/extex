@@ -39,9 +39,7 @@ public class LeftskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(LeftskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LeftskipTest() {
 
         super("leftskip", "", "0.0pt");

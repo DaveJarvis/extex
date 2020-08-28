@@ -42,9 +42,7 @@ public class CurrentiftypeTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(CurrentiftypeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CurrentiftypeTest() {
 
         super("currentiftype", "0");

@@ -41,9 +41,7 @@ public class GlueshrinkTest extends ExTeXLauncher {
         (new JUnitCore()).run(GlueshrinkTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GlueshrinkTest() {
 
         setConfig("etex-test");

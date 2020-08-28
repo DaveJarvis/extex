@@ -41,12 +41,10 @@ public class ParshapeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ParshapeTest.class);
     }
 
-    /**
-     * Constructor for ParshapeTest.
-     */
+
     public ParshapeTest() {
 
-        super("parshape", "0");
+        setPrimitive("parshape");setArguments("0");setPrepare("");
     }
 
     /**

@@ -38,9 +38,7 @@ public abstract class AbstractWriter implements OcpWriter {
      */
     private ResourceBundle bundle;
 
-    /**
-     * Creates a new object.
-     */
+
     public AbstractWriter() {
 
         bundle = ResourceBundle.getBundle(getClass().getName());

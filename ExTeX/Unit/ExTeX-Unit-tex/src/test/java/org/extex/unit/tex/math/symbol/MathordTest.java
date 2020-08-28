@@ -19,6 +19,7 @@
 
 package org.extex.unit.tex.math.symbol;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -29,12 +30,8 @@ import org.junit.Test;
  */
 public class MathordTest extends AbstractOperatorTester {
 
-    /**
-     * Constructor for MathordTest.
-     */
     public MathordTest() {
-
-        super("mathord");
+        setPrimitive("mathord");
     }
 
     /**
@@ -45,6 +42,7 @@ public class MathordTest extends AbstractOperatorTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testLetter1() throws Exception {
 
         assertSuccess(showNodesProperties(),

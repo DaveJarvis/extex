@@ -45,9 +45,7 @@ public final class TokenFactory {
     /** The TString containing the quote character only. */
     public static final TString T_QUOTE = new TString("\"", null);
 
-    /**
-     * Creates a new object.
-     */
+
     private TokenFactory() {
 
         // not used

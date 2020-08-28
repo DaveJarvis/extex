@@ -43,9 +43,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class TDoubleParser implements ETypeParser {
 
-    /**
-     * Creates a new object.
-     */
+
     public TDoubleParser() {
 
         super();

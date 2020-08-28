@@ -61,9 +61,7 @@ public final class OTP {
         }
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private OTP() {
 
         // unused

@@ -40,9 +40,7 @@ public class EverycrTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EverycrTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EverycrTest() {
 
         super("everycr", "", "");

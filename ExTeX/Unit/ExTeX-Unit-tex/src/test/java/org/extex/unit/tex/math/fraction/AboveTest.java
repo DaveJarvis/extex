@@ -29,13 +29,11 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class AboveTest extends AbstractMathTester {
 
-    /**
-     * Constructor for AboveTest.
-     */
-    public AboveTest() {
+  public AboveTest() {
+    setPrimitive( "above" );
+    setArguments( "1pt b$" );
+    setPrepare( "a" );
+  }
 
-        super("above", "1pt b$", "a");
-    }
-
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

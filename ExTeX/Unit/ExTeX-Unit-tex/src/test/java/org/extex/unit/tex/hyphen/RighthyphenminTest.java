@@ -27,9 +27,7 @@ package org.extex.unit.tex.hyphen;
  */
 public class RighthyphenminTest extends AbstractHyphenminTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public RighthyphenminTest() {
 
         super("righthyphenmin", "", "0");

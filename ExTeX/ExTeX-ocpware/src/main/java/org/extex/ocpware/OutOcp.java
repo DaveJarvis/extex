@@ -69,9 +69,7 @@ import org.extex.ocpware.writer.OcpWriter;
  */
 public final class OutOcp {
 
-    /**
-     * Creates a new object.
-     */
+
     private OutOcp() {
 
         //

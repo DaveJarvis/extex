@@ -51,9 +51,7 @@ public class RandomAccessTest {
         (new JUnitCore()).run(RandomAccessTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public RandomAccessTest() {
 
     }

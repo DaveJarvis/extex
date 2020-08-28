@@ -51,9 +51,7 @@ public class TrivialOutputFactory implements OutputStreamFactory {
      */
     private List<OutputStreamObserver> observers = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public TrivialOutputFactory() {
 
     }

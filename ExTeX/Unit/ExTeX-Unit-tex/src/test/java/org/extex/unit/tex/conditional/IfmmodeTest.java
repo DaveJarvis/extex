@@ -41,9 +41,7 @@ public class IfmmodeTest extends ConditionalTester {
         (new JUnitCore()).run(IfmmodeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfmmodeTest() {
 
         super("ifmmode", "\\else");

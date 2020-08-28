@@ -41,12 +41,10 @@ public class ExportTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ExportTest.class);
     }
 
-    /**
-     * Constructor for NamespaceTest.
-     */
+
     public ExportTest() {
 
-        super("export", "{\\a}", DEFINE_BRACES);
+        setPrimitive("export");setArguments("{\\a}");setPrepare(DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

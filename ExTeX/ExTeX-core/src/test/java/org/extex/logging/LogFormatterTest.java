@@ -45,9 +45,7 @@ public class LogFormatterTest {
         (new JUnitCore()).run(LogFormatterTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LogFormatterTest() {
 
     }

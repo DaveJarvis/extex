@@ -37,9 +37,7 @@ public class BadOutputModeException extends HelpingException {
      */
     protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public BadOutputModeException() {
 
         super(LocalizerFactory.getLocalizer(BadOutputModeException.class),

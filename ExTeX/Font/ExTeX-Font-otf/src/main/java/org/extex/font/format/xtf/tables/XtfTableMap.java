@@ -37,13 +37,13 @@ public class XtfTableMap {
      */
     public XtfTableMap() {
 
-        data = new HashMap<Integer, XtfTable>();
+        data = new HashMap<>();
     }
 
     /**
      * The map for the table.
      */
-    private Map<Integer, XtfTable> data;
+    private final Map<Integer, XtfTable> data;
 
     /**
      * Clear the table.
@@ -72,7 +72,7 @@ public class XtfTableMap {
      */
     public boolean containsKey(int key) {
 
-        return data.containsKey(new Integer(key));
+        return data.containsKey( key );
     }
 
     /**
@@ -83,7 +83,7 @@ public class XtfTableMap {
      */
     public XtfTable get(int key) {
 
-        return data.get(new Integer(key));
+        return data.get( key );
     }
 
     /**
@@ -94,7 +94,7 @@ public class XtfTableMap {
      */
     public void put(int key, XtfTable table) {
 
-        data.put(new Integer(key), table);
+        data.put( key, table);
     }
 
     /**
@@ -109,7 +109,7 @@ public class XtfTableMap {
         i = set.toArray(i);
         int[] keys = new int[i.length];
         for (int k = 0; k < i.length; k++) {
-            keys[k] = i[k].intValue();
+            keys[k] = i[ k ];
         }
 
         return keys;

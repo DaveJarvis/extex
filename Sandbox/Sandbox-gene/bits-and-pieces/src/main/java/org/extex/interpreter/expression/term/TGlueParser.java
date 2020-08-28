@@ -39,9 +39,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class TGlueParser implements ETypeParser {
 
-    /**
-     * Creates a new object.
-     */
+
     public TGlueParser() {
 
         super();

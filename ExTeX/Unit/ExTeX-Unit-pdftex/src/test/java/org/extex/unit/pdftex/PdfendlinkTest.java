@@ -29,9 +29,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
  */
 public class PdfendlinkTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfendlinkTest() {
 
         super("pdfendlink", "", "\\pdfoutput=1 ");

@@ -34,7 +34,7 @@
     <site>
       <id>latex.mojo.website</id>
       <name>LaTeX Mojo Website</name>
-      <url>file:///serv/extex-project/www.extex.org/reports/tools/LaTeX-mojo</url>
+      <url>file:///serv/www/extex/www.extex.org/reports/tools/LaTeX-mojo</url>
     </site>
   </distributionManagement>
 

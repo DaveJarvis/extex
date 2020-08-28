@@ -38,9 +38,7 @@ public class BibTeXBaseTest {
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/base";
 
-    /**
-     * Creates a new object.
-     */
+
     public BibTeXBaseTest() {
 
     }

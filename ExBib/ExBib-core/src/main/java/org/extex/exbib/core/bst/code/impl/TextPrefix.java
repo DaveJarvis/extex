@@ -121,9 +121,7 @@ public class TextPrefix extends AbstractCode {
         return value;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TextPrefix() {
 
     }

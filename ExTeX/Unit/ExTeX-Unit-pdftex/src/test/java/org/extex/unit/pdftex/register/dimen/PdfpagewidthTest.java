@@ -40,9 +40,7 @@ public class PdfpagewidthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfpagewidthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfpagewidthTest() {
 
         super("pdfpagewidth", "", "597.50787pt");

@@ -43,9 +43,7 @@ public class UnitInfo implements Serializable {
      */
     private String name;
 
-    /**
-     * Creates a new object.
-     */
+
     public UnitInfo() {
 
     }

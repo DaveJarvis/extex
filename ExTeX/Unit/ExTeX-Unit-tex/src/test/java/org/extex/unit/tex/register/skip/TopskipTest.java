@@ -39,9 +39,7 @@ public class TopskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(TopskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TopskipTest() {
 
         super("topskip", "", "0.0pt");

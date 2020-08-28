@@ -40,9 +40,7 @@ public class VoffsetTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(VoffsetTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public VoffsetTest() {
 
         super("voffset", "", "0.0pt");

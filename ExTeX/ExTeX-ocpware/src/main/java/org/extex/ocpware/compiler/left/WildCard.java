@@ -33,9 +33,7 @@ import org.extex.ocpware.compiler.parser.State;
  */
 public class WildCard implements Left {
 
-    /**
-     * Creates a new object.
-     */
+
     public WildCard() {
 
     }

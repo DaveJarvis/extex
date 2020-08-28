@@ -40,12 +40,10 @@ public class Prevdepth2Test extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(Prevdepth2Test.class);
     }
 
-    /**
-     * Constructor for PenaltyTest.
-     */
+
     public Prevdepth2Test() {
 
-        super("prevdepth", "12pt");
+        setPrimitive("prevdepth");setArguments("12pt");setPrepare("");
     }
 
     //TODO: write more primitive specific test cases

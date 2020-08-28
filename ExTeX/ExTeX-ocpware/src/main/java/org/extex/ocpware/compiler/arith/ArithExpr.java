@@ -292,9 +292,7 @@ public abstract class ArithExpr {
         return sb.toString();
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ArithExpr() {
 
     }

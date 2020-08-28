@@ -40,9 +40,7 @@ public class LangTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(LangTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LangTest() {
 
         super("lang", "", "");

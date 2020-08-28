@@ -41,12 +41,10 @@ public class LowercaseTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(LowercaseTest.class);
     }
 
-    /**
-     * Constructor for LowercaseTest.
-     */
+
     public LowercaseTest() {
 
-        super("lowercase", "{abc}");
+        setPrimitive("lowercase");setArguments("{abc}");setPrepare("");
     }
 
     /**

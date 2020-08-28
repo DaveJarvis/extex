@@ -72,9 +72,7 @@ public abstract class IdSpec implements Serializable {
         }
     }
 
-    /**
-     * Creates a new object.
-     */
+
     protected IdSpec() {
 
     }

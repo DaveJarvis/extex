@@ -41,9 +41,7 @@ public class AddafterocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(AddafterocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AddafterocplistTest() {
 
         setConfig("omega-test");

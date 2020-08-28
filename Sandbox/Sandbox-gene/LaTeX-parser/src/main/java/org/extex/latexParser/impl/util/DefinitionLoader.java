@@ -156,9 +156,7 @@ public final class DefinitionLoader {
         }
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private DefinitionLoader() {
 
         super();

@@ -27,9 +27,7 @@ package org.extex.unit.tex.macro;
  */
 public class EdefTest extends AbstractXdefTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public EdefTest() {
 
         super("edef");

@@ -40,9 +40,7 @@ public class LanguageTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LanguageTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LanguageTest() {
 
         super("language", "", "0");

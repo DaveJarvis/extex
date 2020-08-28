@@ -40,9 +40,7 @@ public class EtexrevisionTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EtexrevisionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EtexrevisionTest() {
 
         super("eTeXrevision", "", ".141592");

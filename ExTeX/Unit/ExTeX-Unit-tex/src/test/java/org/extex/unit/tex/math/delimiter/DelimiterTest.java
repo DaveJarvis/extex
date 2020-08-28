@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -30,12 +31,10 @@ import org.junit.Test;
  */
 public class DelimiterTest extends AbstractMathTester {
 
-    /**
-     * Constructor for MathdelimiterTest.
-     */
     public DelimiterTest() {
-
-        super("delimiter", ". ");
+        setPrimitive( "delimiter" );
+        setArguments( ". " );
+        setPrepare( "" );
     }
 
     /**
@@ -45,6 +44,7 @@ public class DelimiterTest extends AbstractMathTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test1() throws Exception {
 
         assertSuccess(showNodesProperties(),

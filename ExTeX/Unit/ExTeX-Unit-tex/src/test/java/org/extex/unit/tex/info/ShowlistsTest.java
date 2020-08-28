@@ -32,12 +32,10 @@ import org.junit.Test;
  */
 public class ShowlistsTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public ShowlistsTest() {
 
-        super("showlists", "");
+        setPrimitive("showlists");setArguments("");setPrepare("");
     }
 
     /**

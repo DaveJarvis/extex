@@ -40,12 +40,10 @@ public class SplitfirstmarksTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(SplitfirstmarksTest.class);
     }
 
-    /**
-     * Constructor for SplitfirstmarkTest.
-     */
+
     public SplitfirstmarksTest() {
 
-        super("splitfirstmarks", "0");
+        setPrimitive("splitfirstmarks");setArguments("0");setPrepare("");
         setConfig("etex-test");
     }
 

@@ -107,9 +107,7 @@ public class Afm2Mtx extends AbstractFontUtil {
      */
     private AfmParser parser;
 
-    /**
-     * Creates a new object.
-     */
+
     public Afm2Mtx() {
 
         super(Afm2Mtx.class);

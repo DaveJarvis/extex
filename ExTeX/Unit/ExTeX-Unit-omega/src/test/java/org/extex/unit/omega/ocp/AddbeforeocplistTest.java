@@ -41,9 +41,7 @@ public class AddbeforeocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(AddbeforeocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AddbeforeocplistTest() {
 
         setConfig("omega-test");

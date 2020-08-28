@@ -69,9 +69,7 @@ public class DviDocumentWriterTest {
          */
         private long magnification = 1000;
 
-        /**
-         * Creates a new object.
-         */
+
         public MockDocumentWriterOptions() {
 
         }

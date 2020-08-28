@@ -62,9 +62,7 @@ public class SyntaxException extends OcpException {
      */
     private int lineno;
 
-    /**
-     * Creates a new object.
-     */
+
     protected SyntaxException() {
 
         super("");

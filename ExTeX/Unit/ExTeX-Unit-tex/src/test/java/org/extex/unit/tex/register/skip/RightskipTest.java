@@ -39,9 +39,7 @@ public class RightskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(RightskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public RightskipTest() {
 
         super("rightskip", "", "0.0pt");

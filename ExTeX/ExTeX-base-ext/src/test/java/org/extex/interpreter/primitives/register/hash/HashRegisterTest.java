@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class HashRegisterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public HashRegisterTest() {
 
         setConfig("base-ext-test.xml");

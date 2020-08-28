@@ -44,9 +44,7 @@ public class GetOptionIntegerCompiler implements Compiler {
      */
     private class GetIntegerOption extends GenericCode {
 
-        /**
-         * Creates a new object.
-         */
+
         public GetIntegerOption() {
 
             super(ReturnType.INT, "bibProcessor.getOption", name);

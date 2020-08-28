@@ -62,9 +62,7 @@ public class CountConstant implements FixedCount, Serializable {
         this.value = value;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CountConstant() {
 
         this.value = 0;

@@ -40,12 +40,10 @@ public class MarksTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(MarksTest.class);
     }
 
-    /**
-     * Constructor for MarksTest.
-     */
+
     public MarksTest() {
 
-        super("marks", "1{}");
+        setPrimitive("marks");setArguments("1{}");setPrepare("");
         setConfig("etex-test");
     }
 

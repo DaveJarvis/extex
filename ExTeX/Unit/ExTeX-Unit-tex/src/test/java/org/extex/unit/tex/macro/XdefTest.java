@@ -27,9 +27,7 @@ package org.extex.unit.tex.macro;
  */
 public class XdefTest extends AbstractXdefTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public XdefTest() {
 
         super("xdef");

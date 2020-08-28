@@ -104,9 +104,7 @@ public class CreateClasspathArchive {
      */
     private Properties tocIndexProps;
 
-    /**
-     * Creates a new object.
-     */
+
     public CreateClasspathArchive() {
 
         // logger

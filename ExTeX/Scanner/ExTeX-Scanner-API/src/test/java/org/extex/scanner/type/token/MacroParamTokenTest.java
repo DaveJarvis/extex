@@ -51,9 +51,7 @@ public class MacroParamTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MacroParamTokenTest() {
 
         super(t, Catcode.MACROPARAM, "x", "macro parameter character x");

@@ -311,9 +311,7 @@ public final class ColorParser {
         return (int) (cc * Color.MAX_VALUE / GlueComponent.ONE);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private ColorParser() {
 
         // never used

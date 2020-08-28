@@ -140,9 +140,7 @@ public class FontInst04Test extends ExTeXLauncher {
             + "\n" //
             + "\\endinput\n";
 
-    /**
-     * Creates a new object.
-     */
+
     public FontInst04Test() {
 
         setConfig("fontinst-test.xml");

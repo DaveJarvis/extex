@@ -41,12 +41,10 @@ public class NumberTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(NumberTest.class);
     }
 
-    /**
-     * Constructor for NumberTest.
-     */
+
     public NumberTest() {
 
-        super("number", "\\count42");
+        setPrimitive("number");setArguments("\\count42");setPrepare("");
     }
 
     /**

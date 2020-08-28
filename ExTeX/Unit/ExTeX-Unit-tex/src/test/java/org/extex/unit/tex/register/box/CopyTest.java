@@ -41,12 +41,10 @@ public class CopyTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(CopyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CopyTest() {
 
-        super("copy", "1", "0");
+        setPrimitive("copy");setArguments("1");setPrepare("0");
     }
 
     /**

@@ -41,12 +41,10 @@ public class VtopTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VtopTest.class);
     }
 
-    /**
-     * Constructor for VtopTest.
-     */
+
     public VtopTest() {
 
-        super("vtop", "{}");
+        setPrimitive("vtop");setArguments("{}");setPrepare("");
     }
 
     /**

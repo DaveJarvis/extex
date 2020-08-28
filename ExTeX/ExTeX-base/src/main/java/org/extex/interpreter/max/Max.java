@@ -613,9 +613,7 @@ public abstract class Max
      */
     private Typesetter typesetter = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public Max() {
 
         registerObserver(new StartObserver() {

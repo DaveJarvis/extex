@@ -40,9 +40,7 @@ public class PretoleranceTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PretoleranceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PretoleranceTest() {
 
         super("pretolerance", "", "0");

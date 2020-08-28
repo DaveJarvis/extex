@@ -40,9 +40,7 @@ public class ErrorcontextlinesTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(ErrorcontextlinesTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ErrorcontextlinesTest() {
 
         super("errorcontextlines", "", "0");

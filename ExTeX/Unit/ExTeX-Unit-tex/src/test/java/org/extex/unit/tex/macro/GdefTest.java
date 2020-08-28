@@ -27,9 +27,7 @@ package org.extex.unit.tex.macro;
  */
 public class GdefTest extends AbstractDefTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public GdefTest() {
 
         super("gdef");

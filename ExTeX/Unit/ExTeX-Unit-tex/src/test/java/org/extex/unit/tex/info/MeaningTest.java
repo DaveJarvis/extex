@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class MeaningTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for Test.
-     */
+
     public MeaningTest() {
 
-        super("meaning", "\\count1 ");
+        setPrimitive("meaning");setArguments("\\count1 ");setPrepare("");
     }
 
     /**

@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.math.symbol;
 
+import org.junit.Ignore;
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\mathclose</tt>.
  *
@@ -27,13 +30,13 @@ package org.extex.unit.tex.math.symbol;
  */
 public class MathcloseTest extends AbstractOperatorTester {
 
-    /**
-     * Constructor for MathcloseTest.
-     */
     public MathcloseTest() {
-
-        super("mathclose");
+        setPrimitive("mathclose");
     }
+
+    @Test
+    @Ignore
+    public void testChardef1() {}
 
     //TODO implement more primitive specific test cases
 }

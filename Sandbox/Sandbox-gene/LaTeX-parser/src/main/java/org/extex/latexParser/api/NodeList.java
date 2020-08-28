@@ -46,9 +46,7 @@ public class NodeList extends ArrayList<Node> implements Node {
      */
     private int line;
 
-    /**
-     * Creates a new object.
-     */
+
     public NodeList() {
 
         super();

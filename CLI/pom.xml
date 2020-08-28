@@ -3,7 +3,6 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>org.extex</groupId>
   <artifactId>CLI</artifactId>
   <name>Command Line Interface</name>
   <version>0.1</version>
@@ -28,23 +27,9 @@
     <site>
       <id>org.extex.cli</id>
       <name>CLI Site</name>
-      <url>file:///serv/www/extex/snapshot/CLI</url>
+      <url>${project.repo.url}/${project.artifactId}</url>
     </site>
   </distributionManagement>
-
-  <properties>
-    <project.build.sourceEncoding>ISO-8859-1</project.build.sourceEncoding>
-  </properties>
-  
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.8.2</version>
-      <scope>test</scope>
-    </dependency>
-
-  </dependencies>
 
   <organization>
     <name>The ExTeX Group</name>
@@ -56,21 +41,6 @@
     <developerConnection>scm:svn:https://svn.berlios.de/svnroot/repos/extex/trunk</developerConnection>
     <url>http://svn.berlios.de/wsvn/extex/trunk/CLI/</url>
   </scm>
-<!-- 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-	<version>2.3.2</version>
-        <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
- -->
 
   <developers>
     <developer>
@@ -95,5 +65,5 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
+
 </project>

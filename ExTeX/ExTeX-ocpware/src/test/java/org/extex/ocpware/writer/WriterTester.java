@@ -37,9 +37,7 @@ import org.extex.ocpware.type.OcpProgram;
  */
 public abstract class WriterTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public WriterTester() {
 
     }

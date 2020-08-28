@@ -126,9 +126,7 @@ public final class SomeTestUtilities {
         return container;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private SomeTestUtilities() {
 
         // unused

@@ -41,12 +41,10 @@ public class EndinputTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(EndinputTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EndinputTest() {
 
-        super("endinput", "");
+        setPrimitive("endinput");setArguments("");setPrepare("");
     }
 
     /**

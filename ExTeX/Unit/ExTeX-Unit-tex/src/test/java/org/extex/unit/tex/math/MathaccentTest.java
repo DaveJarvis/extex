@@ -27,12 +27,10 @@ package org.extex.unit.tex.math;
  */
 public class MathaccentTest extends AbstractMathTester {
 
-    /**
-     * Constructor for MathaccentTest.
-     */
+
     public MathaccentTest() {
 
-        super("mathaccent", "12 a");
+        setPrimitive("mathaccent");setArguments("12 a");setPrepare("");
     }
 
     //TODO implement the primitive specific test cases

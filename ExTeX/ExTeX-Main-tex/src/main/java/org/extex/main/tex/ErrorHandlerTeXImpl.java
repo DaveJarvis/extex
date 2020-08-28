@@ -34,9 +34,7 @@ import org.extex.core.Locator;
  */
 public class ErrorHandlerTeXImpl extends ErrorHandlerImpl {
 
-    /**
-     * Creates a new object.
-     */
+
     public ErrorHandlerTeXImpl() {
 
     }

@@ -47,9 +47,7 @@ public class OpeninTest extends NoFlagsButImmediatePrimitiveTester {
         (new JUnitCore()).run(OpeninTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OpeninTest() {
 
         super("openin", "1 " + EMPTY_TEX + " ");

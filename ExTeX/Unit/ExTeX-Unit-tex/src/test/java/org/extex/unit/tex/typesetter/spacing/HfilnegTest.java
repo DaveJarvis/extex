@@ -29,12 +29,9 @@ import org.extex.test.AbstractHfillTester;
  */
 public class HfilnegTest extends AbstractHfillTester {
 
-    /**
-     * Constructor for HfilnegTest.
-     */
     public HfilnegTest() {
-
-        super("hfilneg", "", "-1.0fil");
+        setPrimitive( "hfilneg" );
+        setFil( "-1.0fil" );
     }
 
     // TODO implement more primitive specific test cases

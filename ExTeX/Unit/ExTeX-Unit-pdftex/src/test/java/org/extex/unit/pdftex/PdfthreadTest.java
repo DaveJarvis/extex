@@ -32,9 +32,7 @@ public class PdfthreadTest
         extends
             NoFlagsButImmediateAndProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfthreadTest() {
 
         super("pdfthread", " name {a}{}", "\\pdfoutput=1 ");

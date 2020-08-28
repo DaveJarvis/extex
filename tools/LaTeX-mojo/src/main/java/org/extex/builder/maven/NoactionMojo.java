@@ -35,9 +35,7 @@ package org.extex.builder.maven;
  */
 public class NoactionMojo extends LaTeXMojo {
 
-    /**
-     * Creates a new object.
-     */
+
     public NoactionMojo() {
 
         super(true);

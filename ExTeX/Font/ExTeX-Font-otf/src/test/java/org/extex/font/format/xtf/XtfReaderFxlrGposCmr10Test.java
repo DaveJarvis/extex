@@ -19,22 +19,18 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.XtfTable;
-import org.extex.font.format.xtf.tables.gps.OtfTableGPOS;
-import org.extex.font.format.xtf.tables.gps.PairValue;
-import org.extex.font.format.xtf.tables.gps.XtfCoverage;
-import org.extex.font.format.xtf.tables.gps.XtfGPOSPairTable;
-import org.extex.font.format.xtf.tables.gps.XtfLookup;
-import org.extex.font.format.xtf.tables.gps.XtfLookupTable;
+import org.extex.font.format.xtf.tables.gps.*;
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -45,12 +41,9 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrGposCmr10Test extends TestCase {
+public class XtfReaderFxlrGposCmr10Test {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
@@ -58,55 +51,49 @@ public class XtfReaderFxlrGposCmr10Test extends TestCase {
      * @throws IOException if an error occurred.
      */
     public XtfReaderFxlrGposCmr10Test() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
     }
 
     /**
      * Test, if the reader exits.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testExists() throws Exception {
-
-        assertNotNull(reader);
+    public void testExists() {
+        assertNotNull( reader );
     }
 
     /**
      * Test the gpos table.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGpos01() throws Exception {
+    public void testGpos01() {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XtfTable table = reader.getTable(XtfReader.GPOS);
-        assertNotNull(table);
+        assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGPOS);
+        Assert.assertTrue( table instanceof OtfTableGPOS );
         OtfTableGPOS gpos = (OtfTableGPOS) table;
-        assertNotNull(gpos);
+        assertNotNull( gpos );
 
         XtfLookup[] lookups =
                 gpos.findLookup(ScriptTag.getInstance("latn"), null, FeatureTag
                     .getInstance("kern"));
 
-        assertNotNull(lookups);
-        assertEquals("count of pairtable", 1, lookups.length);
-        assertEquals("subtable count", 1, lookups[0].getSubtableCount());
+        assertNotNull( lookups );
+        Assert.assertEquals( "count of pairtable", 1, lookups.length );
+        Assert.assertEquals( "subtable count",
+                             1,
+                             lookups[ 0 ].getSubtableCount() );
         XtfLookupTable subtable = lookups[0].getSubtable(0);
-        assertNotNull(subtable);
-        assertTrue(subtable instanceof XtfGPOSPairTable);
+        assertNotNull( subtable );
+        Assert.assertTrue( subtable instanceof XtfGPOSPairTable );
         XtfGPOSPairTable pairtable = (XtfGPOSPairTable) subtable;
         XtfCoverage coverage = pairtable.getCoverage();
-        assertNotNull(coverage);
+        assertNotNull( coverage );
         int[] glyphs = coverage.getGlyphs();
-        assertNotNull(glyphs);
-        assertEquals("glyph count", 33, glyphs.length);
+        assertNotNull( glyphs );
+        Assert.assertEquals( "glyph count", 33, glyphs.length );
 
         String[] gNames =
                 {"ff", "suppress", "quoteright", "A", "D", "F", "I", "K", "L",
@@ -115,37 +102,38 @@ public class XtfReaderFxlrGposCmr10Test extends TestCase {
                         "w", "y"};
 
         for (int i = 0; i < gNames.length; i++) {
-            assertEquals(gNames[i], coverage.getXtfGlyph().getGlyphName(
-                glyphs[i]));
+            Assert.assertEquals( gNames[ i ],
+                                 coverage.getXtfGlyph().getGlyphName(
+                                     glyphs[ i ] ) );
         }
 
         // ff (14), excalm (36)
         // SecondGlyph value="exclam"
         // Value1 XAdvance="77"
         PairValue vr = pairtable.getPairValue(14, 36);
-        assertNotNull(vr);
-        assertNotNull(vr.getValue1());
-        assertNotNull(vr.getValue2());
-        assertTrue(vr.getValue1().isXAdvance());
-        assertEquals("xadvanced", 77, vr.getValue1().getXAdvance());
+        assertNotNull( vr );
+        assertNotNull( vr.getValue1() );
+        assertNotNull( vr.getValue2() );
+        Assert.assertTrue( vr.getValue1().isXAdvance() );
+        Assert.assertEquals( "xadvanced", 77, vr.getValue1().getXAdvance() );
 
         // A (68), Y (92)
         // Value1 XAdvance="-83"
         vr = pairtable.getPairValue(68, 92);
-        assertNotNull(vr);
-        assertNotNull(vr.getValue1());
-        assertNotNull(vr.getValue2());
-        assertTrue(vr.getValue1().isXAdvance());
-        assertEquals("xadvanced", -83, vr.getValue1().getXAdvance());
+        assertNotNull( vr );
+        assertNotNull( vr.getValue1() );
+        assertNotNull( vr.getValue2() );
+        Assert.assertTrue( vr.getValue1().isXAdvance() );
+        Assert.assertEquals( "xadvanced", -83, vr.getValue1().getXAdvance() );
 
         // y (124), o (114)
         // Value1 XAdvance="-27"
         vr = pairtable.getPairValue(124, 114);
-        assertNotNull(vr);
-        assertNotNull(vr.getValue1());
-        assertNotNull(vr.getValue2());
-        assertTrue(vr.getValue1().isXAdvance());
-        assertEquals("xadvanced", -27, vr.getValue1().getXAdvance());
+        assertNotNull( vr );
+        assertNotNull( vr.getValue1() );
+        assertNotNull( vr.getValue2() );
+        Assert.assertTrue( vr.getValue1().isXAdvance() );
+        Assert.assertEquals( "xadvanced", -27, vr.getValue1().getXAdvance() );
 
     }
 
@@ -157,7 +145,7 @@ public class XtfReaderFxlrGposCmr10Test extends TestCase {
     @Test
     public void testXmlOut() throws Exception {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/cmr10.xml"),
                     "ISO8859-1");

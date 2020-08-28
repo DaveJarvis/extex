@@ -32,9 +32,7 @@ import org.extex.dviware.Dvi;
  */
 public class DviEop extends AbstractDviCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public DviEop() {
 
         super("eop");

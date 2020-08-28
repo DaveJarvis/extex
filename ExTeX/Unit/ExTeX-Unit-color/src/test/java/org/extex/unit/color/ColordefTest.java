@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class ColordefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public ColordefTest() {
 
-        super("colordef", "\\x{.1 .2 .3}", "");
+        setPrimitive("colordef");setArguments("\\x{.1 .2 .3}");setPrepare("");
         setConfig("colorextex-test");
     }
 

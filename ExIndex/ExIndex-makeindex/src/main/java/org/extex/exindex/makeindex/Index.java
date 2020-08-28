@@ -45,9 +45,7 @@ public class Index {
      */
     private List<Entry> content = new ArrayList<Entry>();
 
-    /**
-     * Creates a new object.
-     */
+
     public Index() {
 
         params = MakeindexParameters.load();

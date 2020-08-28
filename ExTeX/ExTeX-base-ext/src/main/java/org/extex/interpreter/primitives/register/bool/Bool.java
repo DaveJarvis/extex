@@ -52,9 +52,7 @@ public class Bool implements Serializable {
      */
     private boolean value = false;
 
-    /**
-     * Creates a new object.
-     */
+
     public Bool() {
 
     }

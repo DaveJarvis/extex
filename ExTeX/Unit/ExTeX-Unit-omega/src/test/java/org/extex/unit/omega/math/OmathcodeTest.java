@@ -37,12 +37,10 @@ import org.junit.Test;
  */
 public class OmathcodeTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Constructor for MathcodeTest.
-     */
+
     public OmathcodeTest() {
 
-        super("omathcode", "12=32 ");
+        setPrimitive("omathcode");setArguments("12=32 ");
         setConfig("omega-test");
     }
 

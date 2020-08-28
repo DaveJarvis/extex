@@ -94,7 +94,7 @@ public abstract class Tag {
      */
     public static Tag getInstance(String name) {
 
-        if (ScriptTag.isInList(name)) {
+        if (ScriptTag.containsTag( name)) {
             return ScriptTag.getInstance(name);
         }
         if (FeatureTag.isInList(name)) {

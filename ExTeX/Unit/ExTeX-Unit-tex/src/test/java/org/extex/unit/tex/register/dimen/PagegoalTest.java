@@ -40,9 +40,7 @@ public class PagegoalTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PagegoalTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PagegoalTest() {
 
         super("pagegoal", "", "0.0pt");

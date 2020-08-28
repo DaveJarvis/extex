@@ -40,9 +40,7 @@ public class VfuzzTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(VfuzzTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public VfuzzTest() {
 
         super("vfuzz", "", "0.0pt");

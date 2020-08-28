@@ -27,13 +27,9 @@ package org.extex.unit.tex.math.limits;
  */
 public class LimitsTest extends AbstractLimitsTester {
 
-    /**
-     * Constructor for LimitsTest.
-     */
-    public LimitsTest() {
+  public LimitsTest() {
+    setPrimitive( "limits" );
+  }
 
-        super("limits", "");
-    }
-
-    //TODO: write more primitive specific test cases
+  //TODO: write more primitive specific test cases
 }

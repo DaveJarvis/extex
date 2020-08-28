@@ -780,9 +780,7 @@ public class FontInst03Test extends ExTeXLauncher {
                     + "   (CHARDP R 0.213)\n" + "   (CHARIC R 0.000)\n"
                     + "   )\n" + "\n" + "(COMMENT END OF FILE fxlr8r.pl)\n";
 
-    /**
-     * Creates a new object.
-     */
+
     public FontInst03Test() {
 
         setConfig("fontinst-test.xml");

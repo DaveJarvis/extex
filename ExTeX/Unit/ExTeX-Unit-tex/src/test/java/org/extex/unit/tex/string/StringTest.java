@@ -40,12 +40,10 @@ public class StringTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(StringTest.class);
     }
 
-    /**
-     * Constructor for StringprimitiveTest.
-     */
+
     public StringTest() {
 
-        super("string", "{}");
+        setPrimitive("string");setArguments("{}");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

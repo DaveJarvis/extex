@@ -19,89 +19,75 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.XtfTable;
-import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
-import org.extex.font.format.xtf.tables.gps.XtfGSUBSingleTable;
-import org.extex.font.format.xtf.tables.gps.XtfLookup;
-import org.extex.font.format.xtf.tables.gps.XtfLookupTable;
+import org.extex.font.format.xtf.tables.XtfTableDirectory.Entry;
+import org.extex.font.format.xtf.tables.gps.*;
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import static org.junit.Assert.*;
+
 /**
  * Tests for the <code>XtfReader</code> with opentype files (GSUB-Single).
  * <p>
  * data from ttx
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrGsubSingleTest extends TestCase {
+@Ignore
+public class XtfReaderFxlrGsubSingleTest {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
-    /**
-     * Creates a new object.
-     * 
-     * @throws IOException if an error occurred.
-     */
     public XtfReaderFxlrGsubSingleTest() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
+        assertNotNull( reader );
     }
 
     /**
      * Check.
-     * 
-     * @param featureTag The feature tag.
+     *
+     * @param featureName The feature tag name.
      * @param in The in glyph name.
      * @param out The out glyph name.
      */
-    private void check(String featureTag, String in, String out) {
-
-        assertNotNull(reader);
+    private void check(String featureName, String in, String out) {
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        assertNotNull( table );
+        assertEquals( XtfReader.GSUB, table.getType() );
 
-        assertTrue(table instanceof OtfTableGSUB);
-        OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        final OtfTableGSUB gsub = (OtfTableGSUB) table;
+        final FeatureTag featureTag = FeatureTag.getInstance( featureName );
+        final ScriptTag scriptTag = ScriptTag.getDefault();
 
-        XtfLookup[] lookups =
-                gsub.findLookup(ScriptTag.getInstance("DFLT"), null,
-                    FeatureTag.getInstance(featureTag));
-        assertNotNull(lookups);
-        assertEquals(1, lookups.length);
-        assertEquals(1, lookups[0].getSubtableCount());
-        assertEquals("Single", lookups[0].getTypeAsString());
+        XtfLookup[] lookups = gsub.findLookup(scriptTag, null, featureTag);
+        assertNotNull( lookups );
+        assertEquals( 1, lookups.length );
+        assertEquals( 1, lookups[ 0 ].getSubtableCount() );
+        assertEquals( "Single", lookups[ 0 ].getTypeAsString() );
 
         int cnt = lookups[0].getSubtableCount();
         boolean found = false;
         for (int i = 0; i < cnt; i++) {
             XtfLookupTable subtable = lookups[0].getSubtable(i);
-            assertTrue(subtable instanceof XtfGSUBSingleTable);
+            assertTrue( subtable instanceof XtfGSUBSingleTable );
             XtfGSUBSingleTable single = (XtfGSUBSingleTable) subtable;
             String[][] glyphInOut = single.getSubGlyph();
-            assertNotNull(glyphInOut);
+            assertNotNull( glyphInOut );
 
-            for (int k = 0; k < glyphInOut.length; k++) {
-                String inX = glyphInOut[k][0];
-                String outX = glyphInOut[k][1];
-                if (in.equals(inX)) {
-                    if (out.equals(outX)) {
+            for( final String[] strings : glyphInOut ) {
+                String inX = strings[ 0 ];
+                String outX = strings[ 1 ];
+                if( in.equals( inX ) ) {
+                    if( out.equals( outX ) ) {
                         found = true;
                         break;
                     }
@@ -111,19 +97,16 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
                 break;
             }
         }
-        assertTrue("Single found " + in + " " + out, found);
 
+        assertTrue( "Single found " + in + " " + out, found );
     }
 
     /**
      * Test, if the reader exits.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testExists() throws Exception {
-
-        assertNotNull(reader);
+    public void testExists() {
+        assertNotNull( reader );
     }
 
     /**
@@ -131,7 +114,6 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
      */
     @Test
     public void testGSUBSinglea() {
-
         check("sups", "a", "a.superior");
     }
 
@@ -2839,13 +2821,13 @@ public class XtfReaderFxlrGsubSingleTest extends TestCase {
 
     /**
      * Test: write the xml output to 'target'
-     * 
+     *
      * @throws Exception if an error occurred.
      */
     @Test
     public void testXmlOut() throws Exception {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
                     "ISO8859-1");

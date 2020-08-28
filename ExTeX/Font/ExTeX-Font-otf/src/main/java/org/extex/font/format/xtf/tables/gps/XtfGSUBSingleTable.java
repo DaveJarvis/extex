@@ -61,17 +61,12 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
         /**
          * coverage
          */
-        private XtfCoverage coverage;
-
-        /**
-         * coverageOffset
-         */
-        private int coverageOffset;
+        private final XtfCoverage coverage;
 
         /**
          * deltaGlyphID
          */
-        private short deltaGlyphID;
+        private final short deltaGlyphID;
 
         /**
          * Create a new object.
@@ -85,9 +80,9 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
                 throws IOException {
 
             super(FORMAT1, xtfGlyph);
-            coverageOffset = rar.readUnsignedShort();
+            final int coverageOffset = rar.readUnsignedShort();
             deltaGlyphID = rar.readShort();
-            rar.seek(offset + coverageOffset);
+            rar.seek(offset + coverageOffset );
             coverage = XtfCoverage.newInstance(rar, xtfGlyph);
         }
 
@@ -102,7 +97,7 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
             int[] glyphs = coverage.getGlyphs();
             String[][] tmp = new String[glyphs.length][2];
 
-            for (int i = 0; glyphs != null && i < glyphs.length; i++) {
+            for ( int i = 0; i < glyphs.length; i++) {
                 tmp[i][0] = getXtfGlyph().getGlyphName(glyphs[i]);
                 int out = substitute(glyphs[i]);
                 tmp[i][1] = getXtfGlyph().getGlyphName(out);
@@ -180,22 +175,17 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
         /**
          * coverage
          */
-        private XtfCoverage coverage;
-
-        /**
-         * coverageOffset
-         */
-        private int coverageOffset;
+        private final XtfCoverage coverage;
 
         /**
          * glyphCount
          */
-        private int glyphCount;
+        private final int glyphCount;
 
         /**
          * substitutes
          */
-        private int[] substitutes;
+        private final int[] substitutes;
 
         /**
          * Create a new object.
@@ -209,28 +199,23 @@ public abstract class XtfGSUBSingleTable extends XtfLookupTable {
                 throws IOException {
 
             super(FORMAT2, xtfGlyph);
-            coverageOffset = rar.readUnsignedShort();
+            final int coverageOffset = rar.readUnsignedShort();
             glyphCount = rar.readUnsignedShort();
             substitutes = new int[glyphCount];
             for (int i = 0; i < glyphCount; i++) {
                 substitutes[i] = rar.readUnsignedShort();
             }
-            rar.seek(offset + coverageOffset);
+            rar.seek(offset + coverageOffset );
             coverage = XtfCoverage.newInstance(rar, xtfGlyph);
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.font.format.xtf.tables.gps.XtfGSUBSingleTable#getSubGlyph()
-         */
         @Override
         public String[][] getSubGlyph() {
 
             int[] glyphs = coverage.getGlyphs();
             String[][] tmp = new String[glyphs.length][2];
 
-            for (int i = 0; glyphs != null && i < glyphs.length; i++) {
+            for ( int i = 0; i < glyphs.length; i++) {
                 tmp[i][0] = getXtfGlyph().getGlyphName(glyphs[i]);
                 int out = substitute(glyphs[i]);
                 tmp[i][1] = getXtfGlyph().getGlyphName(out);

@@ -61,9 +61,7 @@ public class BackendFontManagerList implements BackendFontManager {
      */
     private BackendFontManager recognizedManager = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public BackendFontManagerList() {
 
         reset();

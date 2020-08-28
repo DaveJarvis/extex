@@ -135,9 +135,7 @@ public class HelpingException extends GeneralException {
      */
     private String tag;
 
-    /**
-     * Creates a new object.
-     */
+
     protected HelpingException() {
 
         this(null, DEFAULT_TAG);

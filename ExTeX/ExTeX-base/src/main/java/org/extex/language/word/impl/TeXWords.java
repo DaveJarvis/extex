@@ -50,9 +50,7 @@ public class TeXWords extends ExTeXWords implements WordTokenizer {
      */
     protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     */
+
     public TeXWords() {
 
     }

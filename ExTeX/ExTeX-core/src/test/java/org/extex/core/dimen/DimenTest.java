@@ -38,9 +38,7 @@ public class DimenTest {
      */
     private static final int INITIAL = -111;
 
-    /**
-     * Constructor for DimenTest.
-     */
+
     public DimenTest() {
 
     }

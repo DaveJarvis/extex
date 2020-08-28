@@ -41,12 +41,10 @@ public class AfterassignmentTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(AfterassignmentTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AfterassignmentTest() {
 
-        super("afterassignment", " x", "");
+        setPrimitive("afterassignment");setArguments(" x");setPrepare("");
     }
 
     /**

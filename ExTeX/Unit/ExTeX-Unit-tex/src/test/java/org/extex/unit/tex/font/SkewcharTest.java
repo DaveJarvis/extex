@@ -39,12 +39,9 @@ public class SkewcharTest extends FontcharTester {
         (new JUnitCore()).run(SkewcharTest.class);
     }
 
-    /**
-     * Constructor for SkewcharTest.
-     */
     public SkewcharTest() {
-
-        super("skewchar", "\\nullfont=123 ", "-1");
+        setPrimitive( "skewchar" );
+        setDef( "-1" );
     }
 
 }

@@ -23,49 +23,48 @@ import org.extex.test.NoFlagsPrimitiveTester;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
 
+import java.io.File;
+import java.net.URL;
+
 /**
  * This is a test suite for the primitive <tt>\input</tt>.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class InputTest extends NoFlagsPrimitiveTester {
 
     /**
-     * The constant <tt>EMPTY_TEX</tt> contains the location of an empty file.
+     * Derive the location of an empty file.
      */
-    private static final String EMPTY_TEX =
-            "../ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
+    private final String mEmptyTex = getResourcePath( "tex/empty.tex");
 
     /**
      * Method for running the tests standalone.
-     * 
+     *
      * @param args command line parameter
      */
     public static void main(String[] args) {
-
         (new JUnitCore()).run(InputTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
     public InputTest() {
-
-        super("input", " " + EMPTY_TEX + " ", "\\nonstopmode");
+        setPrimitive( "input" );
+        setArguments( " " + mEmptyTex + " " );
+        setPrepare( "\\nonstopmode" );
     }
 
     /**
      * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
      * works. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
     public void test0() throws Exception {
 
         assertSuccess(// --- input code ---
-            "\\input " + EMPTY_TEX,
+            "\\input " + mEmptyTex,
             // --- output channel ---
             "");
     }
@@ -73,7 +72,7 @@ public class InputTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\input"> Test case checking that a <tt>\input</tt>
      * works. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -85,4 +84,18 @@ public class InputTest extends NoFlagsPrimitiveTester {
             "I can't find file `DoesNotExist'");
     }
 
+    /**
+     * Uses this class's classloader to find the resource with the given name.
+     *
+     * @param filename The file to find.
+     * @return The absolute path to the file.
+     */
+    @SuppressWarnings("SameParameterValue")
+    private String getResourcePath( final String filename ) {
+        final URL url = getClass().getClassLoader().getResource( filename );
+        assert url != null;
+
+        final File f = new File( url.getFile() );
+        return f.getAbsolutePath();
+    }
 }

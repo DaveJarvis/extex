@@ -41,9 +41,7 @@ public class TracinglostcharsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TracinglostcharsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TracinglostcharsTest() {
 
         super("tracinglostchars", "", "0");

@@ -40,9 +40,7 @@ public class FamTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(FamTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public FamTest() {
 
         super("fam", "", "0");

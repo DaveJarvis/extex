@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class ShowboxTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for Test.
-     */
+
     public ShowboxTest() {
 
-        super("showbox", "1 ", "", "\\box1=void\nOK\n");
+        setPrimitive("showbox");setArguments("1 ");setPrepare("");setOut("\\box1=void\nOK\n");
     }
 
     /**

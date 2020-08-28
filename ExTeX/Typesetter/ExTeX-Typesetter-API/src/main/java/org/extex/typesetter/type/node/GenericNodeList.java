@@ -19,9 +19,6 @@
 
 package org.extex.typesetter.type.node;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.extex.core.dimen.Dimen;
 import org.extex.core.dimen.FixedDimen;
 import org.extex.core.exception.GeneralException;
@@ -30,6 +27,9 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * Abstract base class for all <code>NodeList</code>s.
@@ -50,7 +50,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      * The field <tt>list</tt> is the container for the elements of this node
      * list.
      */
-    private ArrayList<Node> list = new ArrayList<Node>();
+    private ArrayList<Node> list = new ArrayList<>();
 
     /**
      * The field <tt>move</tt> contains the offset of the reference point in
@@ -82,9 +82,7 @@ public class GenericNodeList extends AbstractNode implements NodeList {
      */
     private Dimen targetWidth = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public GenericNodeList() {
 
     }
@@ -249,10 +247,10 @@ public class GenericNodeList extends AbstractNode implements NodeList {
             return chars;
         }
         int idx = 0;
-        for (int i = 0; i < list.size(); i++) {
-            CharNode[] uca = list.get(i).getChars();
-            for (int j = 0; j < uca.length; j++) {
-                chars[idx++] = uca[j];
+        for( Node node : list ) {
+            CharNode[] uca = node.getChars();
+            for( final CharNode charNode : uca ) {
+                chars[ idx++ ] = charNode;
             }
         }
 

@@ -36,9 +36,7 @@ import org.extex.ocpware.type.OcpCode;
  */
 public class BeginningLeft implements Left {
 
-    /**
-     * Creates a new object.
-     */
+
     public BeginningLeft() {
 
     }

@@ -41,9 +41,7 @@ public class ParshapedimenTest extends NonExecuteTester {
         (new JUnitCore()).run(ParshapedimenTest.class);
     }
 
-    /**
-     * Constructor for ParshapedimenTest.
-     */
+
     public ParshapedimenTest() {
 
         super("parshapedimen", "0");

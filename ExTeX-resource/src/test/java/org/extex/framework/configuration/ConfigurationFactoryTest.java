@@ -236,9 +236,7 @@ public class ConfigurationFactoryTest {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ConfigurationFactoryTest() {
 
         Locale.setDefault(Locale.ENGLISH);

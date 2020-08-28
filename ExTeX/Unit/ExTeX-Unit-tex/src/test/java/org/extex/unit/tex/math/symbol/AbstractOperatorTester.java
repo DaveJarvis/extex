@@ -28,15 +28,11 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class AbstractOperatorTester extends AbstractMathTester {
+public abstract class AbstractOperatorTester extends AbstractMathTester {
 
-    /**
-     * Constructor for MathbinTest.
-     * @param primitive the name of the primitive
-     */
-    public AbstractOperatorTester(String primitive) {
-
-        super(primitive, " x");
+    public AbstractOperatorTester() {
+        setArguments( " x" );
+        setPrepare( "" );
     }
 
     /**

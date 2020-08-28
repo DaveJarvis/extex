@@ -41,12 +41,10 @@ public class NamespaceTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(NamespaceTest.class);
     }
 
-    /**
-     * Constructor for NamespaceTest.
-     */
+
     public NamespaceTest() {
 
-        super("namespace", "{a}", DEFINE_BRACES);
+        setPrimitive("namespace");setArguments("{a}");setPrepare(DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

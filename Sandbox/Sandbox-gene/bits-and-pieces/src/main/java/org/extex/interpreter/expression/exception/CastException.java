@@ -35,9 +35,7 @@ public class CastException extends HelpingException {
      */
     protected static final long serialVersionUID = 20060628L;
 
-    /**
-     * Creates a new object.
-     */
+
     public CastException() {
 
         super();

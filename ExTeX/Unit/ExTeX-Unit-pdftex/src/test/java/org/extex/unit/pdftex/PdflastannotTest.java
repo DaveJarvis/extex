@@ -29,9 +29,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
  */
 public class PdflastannotTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdflastannotTest() {
 
         super("pdflastannot", "", "0", "\\pdfoutput=1 ");

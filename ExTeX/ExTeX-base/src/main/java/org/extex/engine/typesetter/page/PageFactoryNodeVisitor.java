@@ -110,9 +110,7 @@ public class PageFactoryNodeVisitor
      */
     private Typesetter typesetter;
 
-    /**
-     * Creates a new object.
-     */
+
     public PageFactoryNodeVisitor() {
 
         sizePattern =

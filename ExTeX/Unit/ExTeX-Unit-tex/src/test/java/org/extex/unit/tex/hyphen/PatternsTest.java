@@ -29,12 +29,10 @@ import org.extex.test.NoFlagsPrimitiveTester;
  */
 public class PatternsTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PatternsTest() {
 
-        super("patterns", "{}");
+        setPrimitive("patterns");setArguments("{}");setPrepare("");
     }
 
     //TODO: write more primitive specific test cases

@@ -40,9 +40,7 @@ public class PdfthreadmarginTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfthreadmarginTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfthreadmarginTest() {
 
         super("pdfthreadmargin", "", "0.0pt");

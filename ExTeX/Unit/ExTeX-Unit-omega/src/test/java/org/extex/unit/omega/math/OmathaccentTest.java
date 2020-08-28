@@ -29,12 +29,10 @@ import org.extex.unit.tex.math.AbstractMathTester;
  */
 public class OmathaccentTest extends AbstractMathTester {
 
-    /**
-     * Constructor for MathaccentTest.
-     */
+
     public OmathaccentTest() {
 
-        super("omathaccent", "12 a");
+        setPrimitive("omathaccent");setArguments("12 a");setPrepare("");
         setConfig("omega-test");
     }
 

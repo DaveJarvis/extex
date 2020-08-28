@@ -131,9 +131,7 @@ public final class Badness {
         // that was r^3/2^18, rounded to the nearest integer
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private Badness() {
 
         // not needed

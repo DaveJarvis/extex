@@ -51,7 +51,7 @@ public class BblWriterFactory extends AbstractFactory<BblWriter> {
     /**
      * The field <tt>writerFactory</tt> contains the writer factory.
      */
-    private WriterFactory writerFactory;
+    private final WriterFactory writerFactory;
 
     /**
      * Creates a new object.
@@ -79,7 +79,7 @@ public class BblWriterFactory extends AbstractFactory<BblWriter> {
      */
     protected void infoDiscarted() {
 
-        //
+        
     }
 
     /**
@@ -88,8 +88,6 @@ public class BblWriterFactory extends AbstractFactory<BblWriter> {
      * @param file the name of the file
      */
     protected void infoOutput(String file) {
-
-        //
     }
 
     /**
@@ -97,8 +95,6 @@ public class BblWriterFactory extends AbstractFactory<BblWriter> {
      * 
      */
     protected void infoStdout() {
-
-        //
     }
 
     /**

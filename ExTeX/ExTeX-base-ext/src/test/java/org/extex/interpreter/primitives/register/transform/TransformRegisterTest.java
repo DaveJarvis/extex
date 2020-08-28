@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class TransformRegisterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public TransformRegisterTest() {
 
         setConfig("base-ext-test.xml");

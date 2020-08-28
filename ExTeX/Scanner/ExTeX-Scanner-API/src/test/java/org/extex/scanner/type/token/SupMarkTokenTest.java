@@ -49,9 +49,7 @@ public class SupMarkTokenTest extends TokenTester {
         (new JUnitCore()).run(SupMarkTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SupMarkTokenTest() {
 
         super(token, Catcode.SUPMARK, "x", "superscript character x");

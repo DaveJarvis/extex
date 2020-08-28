@@ -40,12 +40,10 @@ public class IndentTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(IndentTest.class);
     }
 
-    /**
-     * Constructor for IndentTest.
-     */
+
     public IndentTest() {
 
-        super("indent", "");
+        setPrimitive("indent");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

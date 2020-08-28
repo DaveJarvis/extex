@@ -41,12 +41,10 @@ public class VssTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VssTest.class);
     }
 
-    /**
-     * Constructor for VssTest.
-     */
+
     public VssTest() {
 
-        super("vss", "");
+        setPrimitive("vss");setArguments("");setPrepare("");
     }
 
     /**

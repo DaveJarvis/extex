@@ -41,9 +41,7 @@ public class CloseinTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
         (new JUnitCore()).run(CloseinTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CloseinTest() {
 
         super("closein", "1");

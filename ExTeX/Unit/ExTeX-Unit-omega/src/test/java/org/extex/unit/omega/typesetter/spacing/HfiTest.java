@@ -29,13 +29,10 @@ import org.extex.test.AbstractHfillTester;
  */
 public class HfiTest extends AbstractHfillTester {
 
-    /**
-     * Constructor for HfiTest.
-     */
     public HfiTest() {
-
-        super("hfi", "", "1.0fi");
-        setConfig("omega-test");
+        setPrimitive( "hfi" );
+        setFil( "1.0fi" );
+        setConfig( "omega-test" );
     }
 
     // TODO implement more primitive specific test cases

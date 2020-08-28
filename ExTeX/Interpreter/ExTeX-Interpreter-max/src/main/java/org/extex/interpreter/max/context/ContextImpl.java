@@ -394,9 +394,7 @@ public class ContextImpl
      */
     private List<UnitInfo> units = new ArrayList<UnitInfo>();
 
-    /**
-     * Creates a new object.
-     */
+
     public ContextImpl() {
 
         init();

@@ -34,9 +34,7 @@ public class LoaderException extends InterpreterException {
      */
     protected static final long serialVersionUID = 1L;
 
-    /**
-     * Creates a new object.
-     */
+
     public LoaderException() {
 
     }

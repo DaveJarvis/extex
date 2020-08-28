@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PdfoutlineTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfoutlineTest() {
 
         super("pdfoutline", " thread name {a}{}", "\\pdfoutput=1 ");

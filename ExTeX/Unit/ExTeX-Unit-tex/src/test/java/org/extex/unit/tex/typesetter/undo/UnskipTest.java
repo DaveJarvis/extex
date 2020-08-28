@@ -41,12 +41,10 @@ public class UnskipTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnskipTest.class);
     }
 
-    /**
-     * Constructor for UnskipTest.
-     */
+
     public UnskipTest() {
 
-        super("unskip", "", "a");
+        setPrimitive("unskip");setArguments("");setPrepare("a");
     }
 
     /**

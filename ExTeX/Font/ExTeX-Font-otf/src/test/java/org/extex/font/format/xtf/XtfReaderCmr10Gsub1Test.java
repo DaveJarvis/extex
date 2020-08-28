@@ -19,11 +19,6 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.XtfTable;
 import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
 import org.extex.font.format.xtf.tables.gps.XtfScriptList;
@@ -33,18 +28,20 @@ import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
 import org.junit.Test;
 
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+import static org.junit.Assert.*;
+
 /**
  * Tests for the <code>XtfReader</code> with cmr10.ttf (gsub).
  * 
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderCmr10Gsub1Test extends TestCase {
+public class XtfReaderCmr10Gsub1Test {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
@@ -52,93 +49,84 @@ public class XtfReaderCmr10Gsub1Test extends TestCase {
      * @throws IOException if an error occurred.
      */
     public XtfReaderCmr10Gsub1Test() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
     }
 
     /**
      * Test, if the reader exits.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testExists() throws Exception {
+    public void testExists() {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
     }
 
     /**
      * Test the gsub table.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsub01() throws Exception {
+    public void testGsub01() {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        assertNotNull( gsub );
 
         XtfScriptList scriptlist = gsub.getScriptList();
-        assertNotNull(scriptlist);
+        assertNotNull( scriptlist );
 
         // ScriptCount=2
-        assertEquals("scriptcount", 2, scriptlist.getCount());
+        assertEquals( "scriptcount", 2, scriptlist.getCount() );
 
         Script script = gsub.findScript(ScriptTag.getInstance("grek"));
-        assertNotNull(script);
-        assertEquals("tag name", "grek", script.getTag());
+        assertNotNull( script );
+        assertEquals( "tag name", "grek", script.getTag() );
 
         LangSys defLangSys = script.getDefaultLangSys();
-        assertNotNull(defLangSys);
+        assertNotNull( defLangSys );
         // FeatureCount=1
-        assertEquals("featurecount", 1, defLangSys.getFeatureCount());
-        assertEquals("featureindex", 0, defLangSys.getFeatureIndex(0));
+        assertEquals( "featurecount", 1, defLangSys.getFeatureCount() );
+        assertEquals( "featureindex",
+                             0,
+                             defLangSys.getFeatureIndex( 0 ) );
 
         script = gsub.findScript(ScriptTag.getInstance("latn"));
-        assertNotNull(script);
-        assertEquals("tag name", "latn", script.getTag());
+        assertNotNull( script );
+        assertEquals( "tag name", "latn", script.getTag() );
 
     }
 
     /**
      * Test the gsub table.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsub02() throws Exception {
+    public void testGsub02() {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        assertNotNull( gsub );
 
         LangSys langSys = gsub.findLangSys(ScriptTag.getInstance("latn"), null);
-        assertNotNull(langSys);
+        assertNotNull( langSys );
 
     }
 
     /**
      * Test the name of the font.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testName() throws Exception {
+    public void testName() {
 
-        assertNotNull(reader);
-        assertEquals("Computer Modern", reader.getFontFamilyName());
-        assertEquals(132, reader.getNumberOfGlyphs());
+        assertNotNull( reader );
+        assertEquals( "Computer Modern", reader.getFontFamilyName() );
+        assertEquals( 132, reader.getNumberOfGlyphs() );
     }
 
     /**
@@ -149,7 +137,7 @@ public class XtfReaderCmr10Gsub1Test extends TestCase {
     @Test
     public void testXmlOut() throws Exception {
 
-        assertNotNull(reader);
+        assertNotNull( reader );
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/cmr10.xml"),
                     "ISO8859-1");

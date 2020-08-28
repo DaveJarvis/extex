@@ -42,9 +42,7 @@ public class EverydisplayTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EverydisplayTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EverydisplayTest() {
 
         super("everydisplay", "", "");

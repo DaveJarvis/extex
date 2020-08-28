@@ -41,9 +41,7 @@ public class MagTest extends NoFlagsButGlobalAndImmediatePrimitiveTester {
         (new JUnitCore()).run(MagTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MagTest() {
 
         super("mag", "=999");

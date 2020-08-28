@@ -41,9 +41,7 @@ public class NoalignTest extends ExTeXLauncher {
         (new JUnitCore()).run(NoalignTest.class);
     }
 
-    /**
-     * Constructor for NoalignTest.
-     */
+
     public NoalignTest() {
 
     }

@@ -40,12 +40,10 @@ public class Spacefactor2Test extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(Spacefactor2Test.class);
     }
 
-    /**
-     * Constructor for Spacefactor2Test.
-     */
+
     public Spacefactor2Test() {
 
-        super("spacefactor", "42", "a");
+        setPrimitive("spacefactor");setArguments("42");setPrepare("a");
     }
 
     // TODO implement more primitive specific test cases

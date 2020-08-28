@@ -40,9 +40,7 @@ public class EmptyLigatureBuilder implements LigatureBuilder {
      */
     protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     */
+
     public EmptyLigatureBuilder() {
 
     }

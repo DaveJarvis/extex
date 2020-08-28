@@ -29,14 +29,14 @@ import org.extex.typesetter.paragraphBuilder.ParagraphBuilder;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
-public class TeXParagraphBuiderTest extends AbstractParagraphBuiderTester {
+public class TeXParagraphBuilderTest extends AbstractParagraphBuilderTester {
 
     /**
      * This method creates a new paragraph builder to be tested.
      * 
      * @return the new paragraph builder
      * 
-     * @see org.extex.typesetter.paragraphBuilder.AbstractParagraphBuiderTester#getParagraphBuilder()
+     * @see AbstractParagraphBuilderTester#getParagraphBuilder()
      */
     @Override
     protected ParagraphBuilder getParagraphBuilder() {

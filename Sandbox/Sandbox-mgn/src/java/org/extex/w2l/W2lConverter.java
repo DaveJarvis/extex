@@ -71,9 +71,7 @@ public class W2lConverter {
      */
     private InputStream sourceStream;
 
-    /**
-     * Creates a new object.
-     */
+
     public W2lConverter() {
 
         ConverterFactory factory = new ConverterFactory();

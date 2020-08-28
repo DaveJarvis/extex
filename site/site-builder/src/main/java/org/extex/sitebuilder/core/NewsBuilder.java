@@ -97,9 +97,7 @@ public class NewsBuilder {
      */
     private String template = "org/extex/sitebuilder/news.vm";
 
-    /**
-     * Creates a new object.
-     */
+
     public NewsBuilder() {
 
         logger = Logger.getLogger(SiteBuilder.class.getName());

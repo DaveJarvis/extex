@@ -32,9 +32,7 @@ import org.extex.typesetter.output.OutputRoutine;
  */
 public class OutputRoutineFactory extends AbstractFactory<OutputRoutine> {
 
-    /**
-     * Creates a new object.
-     */
+
     public OutputRoutineFactory() {
 
     }

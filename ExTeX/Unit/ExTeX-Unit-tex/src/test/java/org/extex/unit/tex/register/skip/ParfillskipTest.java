@@ -39,9 +39,7 @@ public class ParfillskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(ParfillskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ParfillskipTest() {
 
         super("parfillskip", "", "0.0pt");

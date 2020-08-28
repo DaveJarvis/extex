@@ -40,9 +40,7 @@ public class PdfvoriginTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdfvoriginTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfvoriginTest() {
 
         super("pdfvorigin", "", "72.26999pt");

@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class RealRegisterTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public RealRegisterTest() {
 
         setConfig("base-ext-test.xml");

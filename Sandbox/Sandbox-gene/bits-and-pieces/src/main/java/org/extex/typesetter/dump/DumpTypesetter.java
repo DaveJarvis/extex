@@ -38,9 +38,7 @@ import org.extex.typesetter.type.NodeList;
  */
 public class DumpTypesetter extends TypesetterImpl {
 
-    /**
-     * Creates a new object.
-     */
+
     public DumpTypesetter() {
 
         super();

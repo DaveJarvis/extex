@@ -39,9 +39,7 @@ public class MedmuskipTest extends AbstractMuskipRegisterTester {
         (new JUnitCore()).run(MedmuskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MedmuskipTest() {
 
         super("medmuskip", "", "0.0mu");

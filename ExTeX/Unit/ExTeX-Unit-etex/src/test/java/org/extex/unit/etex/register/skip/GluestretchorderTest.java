@@ -41,9 +41,7 @@ public class GluestretchorderTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(GluestretchorderTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GluestretchorderTest() {
 
         super("gluestretchorder", "\\skip0 ", "0");

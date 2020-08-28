@@ -40,9 +40,7 @@ public class PagediscardsTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(PagediscardsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PagediscardsTest() {
 
         super("pagediscards", "255", "0");

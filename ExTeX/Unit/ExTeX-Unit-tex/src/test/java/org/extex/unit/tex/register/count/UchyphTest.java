@@ -40,9 +40,7 @@ public class UchyphTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(UchyphTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public UchyphTest() {
 
         super("uchyph", "", "0");

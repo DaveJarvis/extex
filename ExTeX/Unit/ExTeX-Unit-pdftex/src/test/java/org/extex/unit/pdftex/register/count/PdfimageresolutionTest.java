@@ -40,9 +40,7 @@ public class PdfimageresolutionTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfimageresolutionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfimageresolutionTest() {
 
         super("pdfimageresolution", "", "600");

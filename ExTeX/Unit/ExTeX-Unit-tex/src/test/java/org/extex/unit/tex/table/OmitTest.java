@@ -41,9 +41,7 @@ public class OmitTest extends ExTeXLauncher {
         (new JUnitCore()).run(OmitTest.class);
     }
 
-    /**
-     * Constructor for OmitTest.
-     */
+
     public OmitTest() {
 
     }

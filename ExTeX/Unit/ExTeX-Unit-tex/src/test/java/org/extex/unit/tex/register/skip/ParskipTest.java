@@ -39,9 +39,7 @@ public class ParskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(ParskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ParskipTest() {
 
         super("parskip", "", "0.0pt");

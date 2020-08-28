@@ -108,9 +108,6 @@ public class XtfReader implements XMLWriterConvertible {
      */
     private static class Type {
 
-        /**
-         * Create a new object.
-         */
         public Type() {
 
         }
@@ -447,7 +444,7 @@ public class XtfReader implements XMLWriterConvertible {
         StringBuilder buf =
                 new StringBuilder("00000000000000000000000000000000");
         buf.append(Integer.toBinaryString(value));
-        return buf.substring(buf.length() - XtfConstants.SHIFT32).toString();
+        return buf.substring( buf.length() - XtfConstants.SHIFT32);
     }
 
     /**
@@ -461,7 +458,7 @@ public class XtfReader implements XMLWriterConvertible {
         StringBuilder buf = new StringBuilder("00000000");
         buf.append(Integer.toHexString(value));
         return "0x"
-                + buf.substring(buf.length() - XtfConstants.SHIFT8).toString();
+                + buf.substring( buf.length() - XtfConstants.SHIFT8);
 
     }
 
@@ -473,8 +470,7 @@ public class XtfReader implements XMLWriterConvertible {
      */
     public static float convertVersion(int value) {
 
-        int v1 = value >> XtfConstants.SHIFTX10;
-        return v1;
+        return value >> XtfConstants.SHIFTX10;
     }
 
     /**
@@ -515,7 +511,7 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * The logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Table maxp (required).
@@ -540,22 +536,22 @@ public class XtfReader implements XMLWriterConvertible {
     /**
      * TableDirectory.
      */
-    private XtfTableDirectory tableDirectory = null;
+    private XtfTableDirectory tableDirectory;
 
     /**
      * Map for all tables.
      */
-    private XtfTableMap tablemap;
+    private final XtfTableMap tablemap;
 
     /**
      * Trace the work (only if logger is enabled).
      */
-    private boolean trace = false;
+    private boolean trace;
 
     /**
      * the type.
      */
-    private Type type = TTF;
+    private Type type;
 
     /**
      * Create a new object.
@@ -669,7 +665,7 @@ public class XtfReader implements XMLWriterConvertible {
     private XtfTable create(XtfTableDirectory.Entry de, RandomAccessR rar)
             throws IOException {
 
-        XtfTable t = null;
+        final XtfTable t;
         trace("read " + de.getTag());
         switch (de.getTag()) {
             case GPOS:
@@ -1121,13 +1117,11 @@ public class XtfReader implements XMLWriterConvertible {
         if (pos < 0) {
             // search in cff
             XtfTable cff = getTable(CFF);
-            if (cff != null && cff instanceof OtfTableCFF) {
+            if ( cff instanceof OtfTableCFF ) {
                 OtfTableCFF cfftab = (OtfTableCFF) cff;
                 pos = cfftab.mapGlyphNameToGlyphPos(glyphname, fontnumber);
             }
-            if (pos < 0) {
-                return false;
-            }
+            return pos >= 0;
         }
         return true;
 
@@ -1219,7 +1213,7 @@ public class XtfReader implements XMLWriterConvertible {
                 }
                 // search in cff
                 XtfTable cff = getTable(CFF);
-                if (cff != null && cff instanceof OtfTableCFF) {
+                if ( cff instanceof OtfTableCFF ) {
                     OtfTableCFF cfftab = (OtfTableCFF) cff;
                     return cfftab.mapGlyphPosToGlyphName(glyphpos, fontnumber);
                 }
@@ -1338,7 +1332,7 @@ public class XtfReader implements XMLWriterConvertible {
         if (pos < 0) {
             // search in cff
             XtfTable cff = getTable(CFF);
-            if (cff != null && cff instanceof OtfTableCFF) {
+            if ( cff instanceof OtfTableCFF ) {
                 OtfTableCFF cfftab = (OtfTableCFF) cff;
                 pos = cfftab.mapGlyphNameToGlyphPos(glyphname, fontnumber);
             }
@@ -1361,7 +1355,6 @@ public class XtfReader implements XMLWriterConvertible {
      * @throws IOException if an IO-error occurs.
      */
     private void read(RandomAccessR rar) throws IOException {
-
         trace("read xtf");
 
         trace("read directory");
@@ -1392,28 +1385,19 @@ public class XtfReader implements XMLWriterConvertible {
 
         Arrays.sort(tabs, new Comparator<XtfTable>() {
 
-            /**
-             * @see java.util.Comparator#compare(java.lang.Object,
-             *      java.lang.Object)
-             */
             @Override
             public int compare(XtfTable arg0, XtfTable arg1) {
-
-                if (arg0.getInitOrder() > arg1.getInitOrder()) {
-                    return 1;
-                }
-                return 0;
+                return arg0.getInitOrder() - arg1.getInitOrder();
             }
         });
 
         // Initialize tables
-        for (int i = 0; i < tabs.length; i++) {
-            tabs[i].init();
+        for( final XtfTable tab : tabs ) {
+            tab.init();
         }
 
         fontdata = rar.getData();
 
-        // close
         rar.close();
     }
 
@@ -1448,14 +1432,15 @@ public class XtfReader implements XMLWriterConvertible {
 
         // tables
         int[] keys = tablemap.getKeys();
-        for (int i = 0; i < keys.length; i++) {
-            XtfTable t = tablemap.get(keys[i]);
+        for( final int key : keys ) {
+            XtfTable t = tablemap.get( key );
 
-            if (t != null && t instanceof XMLWriterConvertible) {
+            if( t instanceof XMLWriterConvertible ) {
                 XMLWriterConvertible xml = (XMLWriterConvertible) t;
-                xml.writeXML(writer);
-            } else {
-                System.out.println(t.getShortcut());
+                xml.writeXML( writer );
+            }
+            else {
+                System.out.println( t.getShortcut() );
             }
         }
         writer.writeEndElement();

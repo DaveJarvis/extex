@@ -44,12 +44,10 @@ public class TextdirTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(TextdirTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TextdirTest() {
 
-        super("textdir", " LRL");
+        setPrimitive("textdir");setArguments(" LRL");
         setConfig("omega-test");
     }
 

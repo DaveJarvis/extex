@@ -44,12 +44,10 @@ public class MathdirTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(MathdirTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MathdirTest() {
 
-        super("mathdir", " LRL");
+        setPrimitive("mathdir");setArguments(" LRL");
         setConfig("omega-test");
     }
 

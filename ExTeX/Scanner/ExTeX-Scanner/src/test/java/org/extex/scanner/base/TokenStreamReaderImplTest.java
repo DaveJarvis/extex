@@ -43,9 +43,7 @@ public class TokenStreamReaderImplTest extends TokenStreamStringImplTest {
         (new JUnitCore()).run(TokenStreamReaderImplTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TokenStreamReaderImplTest() {
 
     }

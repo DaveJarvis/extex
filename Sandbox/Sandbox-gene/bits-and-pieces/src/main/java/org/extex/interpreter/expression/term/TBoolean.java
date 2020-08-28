@@ -60,9 +60,7 @@ public class TBoolean implements EType {
      */
     private boolean value;
 
-    /**
-     * Creates a new object.
-     */
+
     public TBoolean() {
 
         super();

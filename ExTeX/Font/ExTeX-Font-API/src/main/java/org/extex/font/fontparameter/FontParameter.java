@@ -100,9 +100,7 @@ public class FontParameter {
      */
     private boolean useGlyphName = true;
 
-    /**
-     * Creates a new object.
-     */
+
     public FontParameter() {
 
     }

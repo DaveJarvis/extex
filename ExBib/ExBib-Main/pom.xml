@@ -17,7 +17,7 @@
     <site>
       <id>org.extex.exbib.main</id>
       <name>ExBib Main Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-main</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 

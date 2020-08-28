@@ -2,11 +2,10 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib-jython</artifactId>
   <name>ExBib Jython</name>
   <description>
-    This is the ExBib jython adaptor. It allows to use Python as extension
+    This is the ExBib Jython adaptor. It allows using Python as an extension
     language for ExBib styles.
   </description>
 
@@ -18,7 +17,7 @@
     <site>
       <id>org.extex.exbib.jython</id>
       <name>ExBib Jython Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-jython</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 
@@ -39,14 +38,15 @@
       <groupId>org.python</groupId>
       <artifactId>jython</artifactId>
       <version>2.5.0</version>
-    </dependency> 
+    </dependency>
   </dependencies>
 
   <build>
     <plugins>
-     <plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.1.1</version>
         <executions>
           <execution>
             <id>copy</id>

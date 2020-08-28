@@ -39,9 +39,7 @@ import org.junit.Test;
  */
 public class TokenStreamBaseImplTest {
 
-    /**
-     * Creates a new object.
-     */
+
     public TokenStreamBaseImplTest() {
 
     }

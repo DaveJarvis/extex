@@ -40,9 +40,7 @@ public class ShowboxbreadthTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(ShowboxbreadthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ShowboxbreadthTest() {
 
         super("showboxbreadth", "", "0");

@@ -40,9 +40,7 @@ public class LastnodetypeTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(LastnodetypeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LastnodetypeTest() {
 
         super("lastnodetype", "", "-1");

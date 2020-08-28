@@ -40,9 +40,7 @@ public class PagedepthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PagedepthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PagedepthTest() {
 
         super("pagedepth", "", "0.0pt");

@@ -51,9 +51,7 @@ public class FontFactoryImplManagerAfmTest extends AbstractFontFactoryTester {
      */
     private static FontKey key;
 
-    /**
-     * Creates a new object.
-     */
+
     public FontFactoryImplManagerAfmTest() {
 
         if (factory == null) {

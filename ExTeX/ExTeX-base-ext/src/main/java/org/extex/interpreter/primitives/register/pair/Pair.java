@@ -59,9 +59,7 @@ public class Pair implements Serializable {
      */
     private Real yval;
 
-    /**
-     * Creates a new object.
-     */
+
     public Pair() {
 
         xval = new Real(0);

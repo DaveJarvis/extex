@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class MathchardefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Constructor for MathchardefTest.
-     */
+
     public MathchardefTest() {
 
-        super("mathchardef", "\\a=\"32 ");
+        setPrimitive("mathchardef");setArguments("\\a=\"32 ");
     }
 
     /**

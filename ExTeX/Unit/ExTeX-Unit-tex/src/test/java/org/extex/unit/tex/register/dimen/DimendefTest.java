@@ -41,9 +41,7 @@ public class DimendefTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(DimendefTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DimendefTest() {
 
         super("x", "", "0.0pt", "\\dimendef\\x=42 ");

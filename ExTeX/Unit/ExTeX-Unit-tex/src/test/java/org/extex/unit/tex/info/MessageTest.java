@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class MessageTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for Test.
-     */
+
     public MessageTest() {
 
-        super("message", "{}");
+        setPrimitive("message");setArguments("{}");setPrepare("");
     }
 
     /**

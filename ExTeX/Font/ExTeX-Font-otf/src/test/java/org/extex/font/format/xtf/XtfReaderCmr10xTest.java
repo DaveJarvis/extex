@@ -19,23 +19,22 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.List;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.XtfTable;
 import org.extex.font.format.xtf.tables.gps.OtfTableGSUB;
 import org.extex.font.format.xtf.tables.gps.XtfGSUBLigatureTable;
+import org.extex.font.format.xtf.tables.gps.XtfGSUBLigatureTable.LigatureSet;
 import org.extex.font.format.xtf.tables.gps.XtfLookup;
 import org.extex.font.format.xtf.tables.gps.XtfLookupTable;
-import org.extex.font.format.xtf.tables.gps.XtfGSUBLigatureTable.LigatureSet;
 import org.extex.font.format.xtf.tables.gps.XtfScriptList.LangSys;
 import org.extex.font.format.xtf.tables.tag.FeatureTag;
 import org.extex.font.format.xtf.tables.tag.ScriptTag;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.List;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -43,12 +42,9 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderCmr10xTest extends TestCase {
+public class XtfReaderCmr10xTest {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
@@ -56,294 +52,276 @@ public class XtfReaderCmr10xTest extends TestCase {
      * @throws IOException if an error occurred.
      */
     public XtfReaderCmr10xTest() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/cmr10.ttf");
     }
 
     /**
      * test 01.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test01() throws Exception {
+    public void test01() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
     }
 
     /**
      * Test the gsub table.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsub01() throws Exception {
+    public void testGsub01() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
     }
 
     /**
      * Test the langsys.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsubLangSys01() throws Exception {
+    public void testGsubLangSys01() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         LangSys langsys = gsub.findLangSys(ScriptTag.getInstance("XXX"), null);
-        assertNull("not exists", langsys);
+        Assert.assertNull( "not exists", langsys );
 
     }
 
     /**
      * Test the langsys.
-     * 
-     * @throws Exception if an error occurred.
+
      */
     @Test
-    public void testGsubLangSys02() throws Exception {
+    public void testGsubLangSys02() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         // grek --------------------------------------
         LangSys langsys = gsub.findLangSys(ScriptTag.getInstance("grek"), null);
-        assertEquals("count", 1, langsys.getFeatureCount());
+        Assert.assertEquals( "count", 1, langsys.getFeatureCount() );
         List<Integer> featurelist = langsys.getFeatureIndexList();
-        assertNotNull(featurelist);
+        Assert.assertNotNull( featurelist );
 
         // liga 0
-        int feature = featurelist.get(0).intValue();
-        assertEquals(0, feature);
-        assertEquals("liga", gsub.getFeatureTag(feature));
+        int feature = featurelist.get( 0 );
+        Assert.assertEquals( 0, feature );
+        Assert.assertEquals( "liga", gsub.getFeatureTag( feature ) );
 
         // latn ------------------------------------
         langsys = gsub.findLangSys(ScriptTag.getInstance("latn"), null);
-        assertEquals("count", 1, langsys.getFeatureCount());
+        Assert.assertEquals( "count", 1, langsys.getFeatureCount() );
         featurelist = langsys.getFeatureIndexList();
-        assertNotNull(featurelist);
+        Assert.assertNotNull( featurelist );
 
         // liga 0
-        feature = featurelist.get(0).intValue();
-        assertEquals(0, feature);
-        assertEquals("liga", gsub.getFeatureTag(feature));
+        feature = featurelist.get( 0 );
+        Assert.assertEquals( 0, feature );
+        Assert.assertEquals( "liga", gsub.getFeatureTag( feature ) );
 
     }
 
     /**
      * Test the langsys.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsubLangSys03() throws Exception {
+    public void testGsubLangSys03() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         // latn - liga - Ligature (4)
         XtfLookup[] lookups =
                 gsub.findLookup(ScriptTag.getInstance("latn"), null, FeatureTag
                     .getInstance("liga"));
-        assertNotNull(lookups);
-        assertEquals(1, lookups.length);
-        assertEquals("Ligature", lookups[0].getTypeAsString());
+        Assert.assertNotNull( lookups );
+        Assert.assertEquals( 1, lookups.length );
+        Assert.assertEquals( "Ligature", lookups[ 0 ].getTypeAsString() );
     }
 
     /**
      * Test the ligature 01.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsubLigature01() throws Exception {
+    public void testGsubLigature01() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         // latn - liga - Ligature (4)
         XtfLookup[] lookup =
                 gsub.findLookup(ScriptTag.getInstance("latn"), null, FeatureTag
                     .getInstance("liga"));
-        assertNotNull(lookup);
-        assertEquals("Ligature", lookup[0].getTypeAsString());
+        Assert.assertNotNull( lookup );
+        Assert.assertEquals( "Ligature", lookup[ 0 ].getTypeAsString() );
 
         int count = lookup[0].getSubtableCount();
-        assertEquals(1, count);
+        Assert.assertEquals( 1, count );
 
         XtfLookupTable subtable = lookup[0].getSubtable(0);
-        assertNotNull(subtable);
+        Assert.assertNotNull( subtable );
 
         // ligature table - format 1
-        assertEquals(1, subtable.getFormat());
-        assertTrue(subtable instanceof XtfGSUBLigatureTable);
+        Assert.assertEquals( 1, subtable.getFormat() );
+        Assert.assertTrue( subtable instanceof XtfGSUBLigatureTable );
         XtfGSUBLigatureTable ligtable = (XtfGSUBLigatureTable) subtable;
         // 3 tables
-        assertEquals(3, ligtable.getCount());
+        Assert.assertEquals( 3, ligtable.getCount() );
 
         // 14 -> ff
         LigatureSet ligset = ligtable.getLigatureSet(14);
-        assertNotNull(ligset);
+        Assert.assertNotNull( ligset );
         // <ligatureset id="0" count="2">
-        assertEquals(2, ligset.getLigatureCount());
+        Assert.assertEquals( 2, ligset.getLigatureCount() );
         // ff (14) + l (111) => ffl (18)
-        assertEquals(18, ligset.getLigature(new int[]{111}));
+        Assert.assertEquals( 18, ligset.getLigature( new int[]{111} ) );
         // ff (14) + i (108) => ffi (17)
-        assertEquals(17, ligset.getLigature(new int[]{108}));
+        Assert.assertEquals( 17, ligset.getLigature( new int[]{108} ) );
 
         // ff(14) + A (65) => null (-1)
-        assertEquals(-1, ligset.getLigature(new int[]{65}));
+        Assert.assertEquals( -1, ligset.getLigature( new int[]{65} ) );
 
         // Errors
-        assertEquals(-1, ligset.getLigature(null));
-        assertEquals(-1, ligset.getLigature(new int[]{}));
+        Assert.assertEquals( -1, ligset.getLigature( null ) );
+        Assert.assertEquals( -1, ligset.getLigature( new int[]{} ) );
 
     }
 
     /**
      * Test the ligature 02.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsubLigature02() throws Exception {
+    public void testGsubLigature02() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         // latn - liga - Ligature (4)
         XtfLookup[] lookup =
                 gsub.findLookup(ScriptTag.getInstance("latn"), null, FeatureTag
                     .getInstance("liga"));
-        assertNotNull(lookup);
-        assertEquals("Ligature", lookup[0].getTypeAsString());
+        Assert.assertNotNull( lookup );
+        Assert.assertEquals( "Ligature", lookup[ 0 ].getTypeAsString() );
 
         int count = lookup[0].getSubtableCount();
-        assertEquals(1, count);
+        Assert.assertEquals( 1, count );
 
         XtfLookupTable subtable = lookup[0].getSubtable(0);
-        assertNotNull(subtable);
+        Assert.assertNotNull( subtable );
 
         // ligature table - format 1
-        assertEquals(1, subtable.getFormat());
-        assertTrue(subtable instanceof XtfGSUBLigatureTable);
+        Assert.assertEquals( 1, subtable.getFormat() );
+        Assert.assertTrue( subtable instanceof XtfGSUBLigatureTable );
         XtfGSUBLigatureTable ligtable = (XtfGSUBLigatureTable) subtable;
         // 3 tables
-        assertEquals(3, ligtable.getCount());
+        Assert.assertEquals( 3, ligtable.getCount() );
 
         // 126 -> endash
         LigatureSet ligset = ligtable.getLigatureSet(126);
-        assertNotNull(ligset);
+        Assert.assertNotNull( ligset );
         // <ligatureset id="2" count="1">
-        assertEquals(1, ligset.getLigatureCount());
+        Assert.assertEquals( 1, ligset.getLigatureCount() );
 
         // endash (126) + hyphen (48) => emdash (127)
-        assertEquals(127, ligset.getLigature(new int[]{48}));
+        Assert.assertEquals( 127, ligset.getLigature( new int[]{48} ) );
 
         // endash (126) + A (65) => null (-1)
-        assertEquals(-1, ligset.getLigature(new int[]{65}));
+        Assert.assertEquals( -1, ligset.getLigature( new int[]{65} ) );
 
     }
 
     /**
      * Test the ligature 03.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testGsubLigature03() throws Exception {
+    public void testGsubLigature03() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XtfTable table = reader.getTable(XtfReader.GSUB);
-        assertNotNull(table);
+        Assert.assertNotNull( table );
 
-        assertTrue(table instanceof OtfTableGSUB);
+        Assert.assertTrue( table instanceof OtfTableGSUB );
         OtfTableGSUB gsub = (OtfTableGSUB) table;
-        assertNotNull(gsub);
+        Assert.assertNotNull( gsub );
 
         // latn - liga - Ligature (4)
         XtfLookup[] lookup =
                 gsub.findLookup(ScriptTag.getInstance("latn"), null, FeatureTag
                     .getInstance("liga"));
-        assertNotNull(lookup);
-        assertEquals("Ligature", lookup[0].getTypeAsString());
+        Assert.assertNotNull( lookup );
+        Assert.assertEquals( "Ligature", lookup[ 0 ].getTypeAsString() );
 
         int count = lookup[0].getSubtableCount();
-        assertEquals(1, count);
+        Assert.assertEquals( 1, count );
 
         XtfLookupTable subtable = lookup[0].getSubtable(0);
-        assertNotNull(subtable);
+        Assert.assertNotNull( subtable );
 
         // ligature table - format 1
-        assertEquals(1, subtable.getFormat());
-        assertTrue(subtable instanceof XtfGSUBLigatureTable);
+        Assert.assertEquals( 1, subtable.getFormat() );
+        Assert.assertTrue( subtable instanceof XtfGSUBLigatureTable );
         XtfGSUBLigatureTable ligtable = (XtfGSUBLigatureTable) subtable;
         // 3 tables
-        assertEquals(3, ligtable.getCount());
+        Assert.assertEquals( 3, ligtable.getCount() );
 
         // 105 -> f
         LigatureSet ligset = ligtable.getLigatureSet(105);
-        assertNotNull(ligset);
+        Assert.assertNotNull( ligset );
         // <ligatureset id="1" count="5">
-        assertEquals(5, ligset.getLigatureCount());
+        Assert.assertEquals( 5, ligset.getLigatureCount() );
 
         // f (105) + f (105), l (111) => ffl (18)
-        assertEquals(18, ligset.getLigature(new int[]{105, 111}));
+        Assert.assertEquals( 18, ligset.getLigature( new int[]{105, 111} ) );
 
         // f (105) + f (105), i (108) => ffi (17)
-        assertEquals(17, ligset.getLigature(new int[]{105, 108}));
+        Assert.assertEquals( 17, ligset.getLigature( new int[]{105, 108} ) );
 
         // f (105) + l (111) => fl (16)
-        assertEquals(16, ligset.getLigature(new int[]{111}));
+        Assert.assertEquals( 16, ligset.getLigature( new int[]{111} ) );
 
         // f (105) + i (108) => fi (15)
-        assertEquals(15, ligset.getLigature(new int[]{108}));
+        Assert.assertEquals( 15, ligset.getLigature( new int[]{108} ) );
 
         // f (105) + f (105) => ff (14)
-        assertEquals(14, ligset.getLigature(new int[]{105}));
+        Assert.assertEquals( 14, ligset.getLigature( new int[]{105} ) );
 
     }
 
@@ -355,7 +333,7 @@ public class XtfReaderCmr10xTest extends TestCase {
     @Test
     public void testXMLOutput() throws Exception {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
 
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/cmr10.xml"),

@@ -79,9 +79,7 @@ public class OmegaUnitInfo extends UnitInfo implements LoadedObserver {
      */
     protected static final long serialVersionUID = 2007L;
 
-    /**
-     * Creates a new object.
-     */
+
     public OmegaUnitInfo() {
 
     }

@@ -43,12 +43,10 @@ public class NoDefaultOutputTranslationTest
         (new JUnitCore()).run(NoDefaultOutputTranslationTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NoDefaultOutputTranslationTest() {
 
-        super("noDefaultOutputTranslation", " onebyte ");
+        setPrimitive("noDefaultOutputTranslation");setArguments(" onebyte ");
         setConfig("omega-test");
     }
 

@@ -40,9 +40,7 @@ public class PredisplaydirectionTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PredisplaydirectionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PredisplaydirectionTest() {
 
         super("predisplaydirection", "", "0");

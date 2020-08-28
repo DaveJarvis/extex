@@ -41,9 +41,7 @@ public class IfdefinedTest extends ConditionalTester {
         (new JUnitCore()).run(IfdefinedTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfdefinedTest() {
 
         super("ifdefined", "\\relax");

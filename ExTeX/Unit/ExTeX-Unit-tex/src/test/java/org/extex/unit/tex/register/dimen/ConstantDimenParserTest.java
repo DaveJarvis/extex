@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class ConstantDimenParserTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public ConstantDimenParserTest() {
 
     }

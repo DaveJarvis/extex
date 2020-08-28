@@ -40,12 +40,10 @@ public class UnvboxTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnvboxTest.class);
     }
 
-    /**
-     * Constructor for UnvboxTest.
-     */
+
     public UnvboxTest() {
 
-        super("unvbox", "42 ");
+        setPrimitive("unvbox");setArguments("42 ");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

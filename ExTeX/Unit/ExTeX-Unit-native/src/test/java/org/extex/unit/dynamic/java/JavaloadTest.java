@@ -37,12 +37,10 @@ public class JavaloadTest extends NoFlagsPrimitiveTester {
      */
     private static final String SENSOR = JavaloadSensor.class.getName();
 
-    /**
-     * Creates a new object.
-     */
+
     public JavaloadTest() {
 
-        super("javaload", "{" + SENSOR + "}");
+        setPrimitive("javaload");setArguments("{" + SENSOR + "}");setPrepare("");
         setConfig("native-test");
     }
 

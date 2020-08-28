@@ -28,9 +28,7 @@ package org.extex.color;
  */
 public final class ColorUtil {
 
-    /**
-     * Creates a new object.
-     */
+
     private ColorUtil() {
 
         // never used

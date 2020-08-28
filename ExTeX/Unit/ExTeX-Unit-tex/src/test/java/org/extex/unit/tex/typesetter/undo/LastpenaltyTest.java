@@ -41,9 +41,7 @@ public class LastpenaltyTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(LastpenaltyTest.class);
     }
 
-    /**
-     * Constructor for LastboxTest.
-     */
+
     public LastpenaltyTest() {
 
         super("lastpenalty", "", "0");

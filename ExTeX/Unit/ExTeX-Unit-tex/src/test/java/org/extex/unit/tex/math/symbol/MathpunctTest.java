@@ -27,12 +27,8 @@ package org.extex.unit.tex.math.symbol;
  */
 public class MathpunctTest extends AbstractOperatorTester {
 
-    /**
-     * Constructor for MathpunctTest.
-     */
     public MathpunctTest() {
-
-        super("mathpunct");
+        setPrimitive("mathpunct");
     }
 
     //TODO implement more primitive specific test cases

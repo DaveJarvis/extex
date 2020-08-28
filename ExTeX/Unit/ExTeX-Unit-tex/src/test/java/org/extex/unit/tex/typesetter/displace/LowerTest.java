@@ -41,12 +41,10 @@ public class LowerTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(LowerTest.class);
     }
 
-    /**
-     * Constructor for LowerTest.
-     */
+
     public LowerTest() {
 
-        super("lower", "1pt\\hbox{} ");
+        setPrimitive("lower");setArguments("1pt\\hbox{} ");setPrepare("");
     }
 
     /**

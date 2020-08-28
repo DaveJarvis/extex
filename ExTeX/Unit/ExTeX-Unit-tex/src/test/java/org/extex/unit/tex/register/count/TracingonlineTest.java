@@ -40,9 +40,7 @@ public class TracingonlineTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TracingonlineTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TracingonlineTest() {
 
         super("tracingonline", "", "0");

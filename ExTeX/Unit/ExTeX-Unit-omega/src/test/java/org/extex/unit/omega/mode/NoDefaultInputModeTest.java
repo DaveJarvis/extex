@@ -40,12 +40,10 @@ public class NoDefaultInputModeTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(NoDefaultInputModeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NoDefaultInputModeTest() {
 
-        super("noDefaultInputMode", "");
+        setPrimitive("noDefaultInputMode");setArguments("");
         setConfig("omega-test");
     }
 

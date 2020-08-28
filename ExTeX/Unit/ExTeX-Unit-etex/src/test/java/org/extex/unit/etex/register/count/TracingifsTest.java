@@ -40,9 +40,7 @@ public class TracingifsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TracingifsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TracingifsTest() {
 
         super("tracingifs", "", "0");

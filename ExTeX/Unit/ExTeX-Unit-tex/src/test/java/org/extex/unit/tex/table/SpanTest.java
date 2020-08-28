@@ -41,9 +41,6 @@ public class SpanTest extends ExTeXLauncher {
         (new JUnitCore()).run(SpanTest.class);
     }
 
-    /**
-     * Constructor for SpanTest.
-     */
     public SpanTest() {
 
     }

@@ -38,9 +38,7 @@ public class MissingNumberException extends HelpingException {
      */
     protected static final long serialVersionUID = 2006L;
 
-    /**
-     * Creates a new object.
-     */
+
     public MissingNumberException() {
 
         super(LocalizerFactory.getLocalizer(//

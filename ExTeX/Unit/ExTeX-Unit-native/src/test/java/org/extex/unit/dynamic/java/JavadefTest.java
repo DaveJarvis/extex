@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class JavadefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public JavadefTest() {
 
-        super("javadef", "\\t{org.extex.unit.base.Relax}");
+        setPrimitive("javadef");setArguments("\\t{org.extex.unit.base.Relax}");
         setConfig("native-test");
     }
 

@@ -41,12 +41,10 @@ public class UnkernTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(UnkernTest.class);
     }
 
-    /**
-     * Constructor for UnkernTest.
-     */
+
     public UnkernTest() {
 
-        super("unkern", "", "\\kern1pt");
+        setPrimitive("unkern");setArguments("");setPrepare("\\kern1pt");
     }
 
     /**

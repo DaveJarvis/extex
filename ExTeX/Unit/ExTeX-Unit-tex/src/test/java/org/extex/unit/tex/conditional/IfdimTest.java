@@ -40,9 +40,7 @@ public class IfdimTest extends ConditionalTester {
         (new JUnitCore()).run(IfdimTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfdimTest() {
 
         super("ifdim", " 0pt=0in ");

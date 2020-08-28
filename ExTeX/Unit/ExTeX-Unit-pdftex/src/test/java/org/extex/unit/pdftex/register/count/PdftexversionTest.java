@@ -40,9 +40,7 @@ public class PdftexversionTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdftexversionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdftexversionTest() {
 
         super("pdftexversion", "", "112");

@@ -57,9 +57,7 @@ public class LigatureBuilderImplTest {
          */
         private static final long serialVersionUID = 1L;
 
-        /**
-         * Creates a new object.
-         */
+
         public MockFont() {
 
         }

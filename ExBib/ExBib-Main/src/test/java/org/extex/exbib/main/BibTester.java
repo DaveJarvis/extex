@@ -18,25 +18,15 @@
 
 package org.extex.exbib.main;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.extex.cli.CLI;
+import org.extex.exbib.core.ExBib;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintStream;
-import java.io.Writer;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.Calendar;
 import java.util.Locale;
 
-import org.extex.cli.CLI;
-import org.extex.exbib.core.ExBib;
+import static org.junit.Assert.*;
 
 /**
  * This is a tester for {@link ExBib}.
@@ -49,7 +39,7 @@ public class BibTester {
     /**
      * Enumeration for the type of comparison.
      */
-    public static enum Check {
+    public enum Check {
         /**
          * The field <tt>NONE</tt> contains the do not compare.
          */
@@ -75,7 +65,7 @@ public class BibTester {
      * the end of the year.
      */
     public static final String YEAR =
-            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));;
+            Integer.toString(Calendar.getInstance().get(Calendar.YEAR));
 
     /**
      * The field <tt>BANNER</tt> contains the default banner.
@@ -104,13 +94,9 @@ public class BibTester {
     public static File makeFile(File name, String encoding, String data)
             throws IOException {
 
-        OutputStream stream = new FileOutputStream(name);
-        Writer w = new OutputStreamWriter(stream, encoding);
-        try {
-            w.write(data);
-        } finally {
-            w.close();
-            stream.close();
+        try( final Writer w = new OutputStreamWriter(
+            new FileOutputStream( name ), encoding ) ) {
+            w.write( data );
         }
         return name;
     }
@@ -132,9 +118,7 @@ public class BibTester {
         return makeFile(new File(name), encoding, data);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BibTester() {
 
     }
@@ -178,18 +162,15 @@ public class BibTester {
 
         File aux = new File(basename + ".aux");
         if (auxContents != null) {
-            Writer w = new FileWriter(aux);
-            try {
-                w.write(auxContents);
-            } finally {
-                w.close();
+            try( Writer w = new FileWriter( aux ) ) {
+                w.write( auxContents );
             }
         }
 
         Locale.setDefault(Locale.ENGLISH);
         PrintStream errS = System.err;
         PrintStream outS = System.out;
-        ExBibMain exBib = null;
+        ExBibMain exBib;
         try {
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             ByteArrayOutputStream baes = new ByteArrayOutputStream();
@@ -197,9 +178,7 @@ public class BibTester {
             System.setOut(new PrintStream(baos));
             exBib = new ExBibMain();
             int code = exBib.processCommandLine(args);
-            if (exBib != null) {
-                exBib.close();
-            }
+            exBib.close();
             if (err != null) {
                 String s = baes.toString().replaceAll("\r", "");
                 switch (checkErr) {
@@ -222,8 +201,8 @@ public class BibTester {
             if (out != null) {
 
                 InputStreamReader sr =
-                        new InputStreamReader(new ByteArrayInputStream(baos
-                            .toByteArray()), "UTF-8");
+                        new InputStreamReader( new ByteArrayInputStream(baos
+                            .toByteArray()), StandardCharsets.UTF_8 );
                 StringBuilder buffer = new StringBuilder();
                 for (int c = sr.read(); c >= 0; c = sr.read()) {
                     buffer.append((char) c);
@@ -251,15 +230,15 @@ public class BibTester {
             System.setErr(errS);
             System.setOut(outS);
             if (aux.exists() && !aux.delete()) {
-                assertTrue(aux.toString() + ": deletion failed", false);
+                fail( aux.toString() + ": deletion failed" );
             }
             File bbl = new File(basename + ".bbl");
             if (bbl.exists() && !bbl.delete()) {
-                assertTrue(basename + ".bbl: deletion failed", false);
+                fail( basename + ".bbl: deletion failed" );
             }
             File blg = new File(basename + ".blg");
             if (blg.exists() && !blg.delete()) {
-                assertTrue(basename + ".blg: deletion failed", false);
+                fail( basename + ".blg: deletion failed" );
             }
         }
         return exBib;
@@ -287,5 +266,4 @@ public class BibTester {
         return runTest(basename, auxContents, exitCode, null, null, checkErr,
             err, args);
     }
-
 }

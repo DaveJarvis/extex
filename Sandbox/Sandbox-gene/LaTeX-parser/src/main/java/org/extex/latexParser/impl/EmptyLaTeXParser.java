@@ -555,9 +555,7 @@ public class EmptyLaTeXParser implements LaTeXParser, ResourceAware, Parser {
      */
     private Logger logger;
 
-    /**
-     * Creates a new object.
-     */
+
     public EmptyLaTeXParser() {
 
         parser = this;

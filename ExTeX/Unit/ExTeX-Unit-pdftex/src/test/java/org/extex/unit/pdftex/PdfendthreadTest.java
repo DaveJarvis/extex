@@ -29,9 +29,7 @@ import org.extex.test.NoFlagsButProtectedPrimitiveTester;
  */
 public class PdfendthreadTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfendthreadTest() {
 
         super("pdfendthread", "", "\\pdfoutput=1 ");

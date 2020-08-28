@@ -23,31 +23,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Script Tags.
- * 
- * <p>
- * Script tags identify the scripts represented in a OpenType Layout font.
- * </p>
- * 
+ * Script tags identify the scripts represented in an OpenType Layout font.
+ *
  * <p>
  * When the ScriptList table is searched for a script, and no entry is found,
  * and there is an entry for the 'DFLT' script, then this entry must be used.
  * </p>
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
 public final class ScriptTag extends Tag {
 
-    /**
-     * The map for the names.
-     */
-    private static Map<String, ScriptTag> map =
-            new HashMap<String, ScriptTag>(40);
+    private static final Map<String, ScriptTag> scriptTags =
+        new HashMap<>( 30 );
 
-    /**
-     * The script tag list.
-     */
+    private final static String TAG_DEFAULT = "DFLT";
+
     static {
         getInstance("arab"); // Arabic
         getInstance("armn"); // Armenian
@@ -59,7 +51,7 @@ public final class ScriptTag extends Tag {
         getInstance("cher"); // Cherokee
         getInstance("hani"); // CJK Ideographic
         getInstance("cyrl"); // Cyrillic
-        getInstance("DFLT"); // Default
+        getInstance(TAG_DEFAULT);
         getInstance("deva"); // Devanagari
         getInstance("ethi"); // Ethiopic
         getInstance("geor"); // Georgian
@@ -84,50 +76,46 @@ public final class ScriptTag extends Tag {
 
     /**
      * Return the name of the default script tag.
-     * 
+     *
      * @return Return the name of the default script tag.
      */
     public static ScriptTag getDefault() {
-
-        return map.get("DFLT");
+      return scriptTags.get( TAG_DEFAULT );
     }
 
     /**
      * Get a new script tag.
-     * 
+     *
      * @param name The name of the script tag.
      * @return Returns the new script tag.
      */
     public static ScriptTag getInstance(String name) {
-
-        String xname = format(name);
-        ScriptTag st = map.get(xname);
-        if (st == null) {
-            st = new ScriptTag(xname);
-            map.put(xname, st);
-        }
-        return st;
+      final String xname = format( name );
+      ScriptTag st = scriptTags.get( xname );
+      if( st == null ) {
+        st = new ScriptTag( xname );
+        scriptTags.put( xname, st );
+      }
+      return st;
     }
 
     /**
      * Check, if the name is in the script tag list.
-     * 
+     *
      * @param name The name of the script tag.
      * @return Returns <code>true</code>, if found, otherwise
      *         <code>false</code>.
      */
-    public static boolean isInList(String name) {
-
-        return map.containsKey(format(name));
+    public static boolean containsTag( String name ) {
+      return scriptTags.containsKey( format( name ) );
     }
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name The name of the tag.
      */
     private ScriptTag(String name) {
-
         super(name);
     }
 }

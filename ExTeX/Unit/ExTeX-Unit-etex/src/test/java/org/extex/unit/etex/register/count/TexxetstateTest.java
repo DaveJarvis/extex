@@ -40,9 +40,7 @@ public class TexxetstateTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TexxetstateTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TexxetstateTest() {
 
         super("TeXXeTstate", "", "0");

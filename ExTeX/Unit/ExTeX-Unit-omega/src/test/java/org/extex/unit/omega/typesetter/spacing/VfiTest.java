@@ -41,12 +41,10 @@ public class VfiTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VfiTest.class);
     }
 
-    /**
-     * Constructor for VfiTest.
-     */
+
     public VfiTest() {
 
-        super("vfi", "");
+        setPrimitive("vfi");setArguments("");setPrepare("");
         setConfig("omega-test");
     }
 

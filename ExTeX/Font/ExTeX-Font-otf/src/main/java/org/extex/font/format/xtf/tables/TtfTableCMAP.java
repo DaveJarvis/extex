@@ -92,17 +92,17 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * format.
          */
-        private int format;
+        private final int format;
 
         /**
          * version.
          */
-        private int fversion;
+        private final int fversion;
 
         /**
          * length.
          */
-        private int length;
+        private final int length;
 
         /**
          * Create a new object.
@@ -178,9 +178,9 @@ public class TtfTableCMAP extends AbstractXtfTable
         public String toString() {
 
             StringBuilder buf = new StringBuilder("Cmap format\n");
-            buf.append("   Version      : " + String.valueOf(fversion) + '\n');
-            buf.append("   format       : " + String.valueOf(format) + '\n');
-            buf.append("   length       : " + String.valueOf(length) + '\n');
+            buf.append("   Version      : " + fversion + '\n');
+            buf.append("   format       : " + format + '\n');
+            buf.append("   length       : " + length + '\n');
             return buf.toString();
         }
     }
@@ -232,7 +232,7 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * glyph id array.
          */
-        private byte[] glyphIdArray = new byte[ARRAYSIZE];
+        private final byte[] glyphIdArray = new byte[ARRAYSIZE];
 
         /**
          * Create a new object.
@@ -711,27 +711,27 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * endCode.
          */
-        private int[] endCode;
+        private final int[] endCode;
 
         /**
          * entrySelector.
          */
-        private int entrySelector;
+        private final int entrySelector;
 
         /**
          * glyphIdArray.
          */
-        private int[] glyphIdArray;
+        private final int[] glyphIdArray;
 
         /**
          * idDelta.
          */
-        private int[] idDelta;
+        private final int[] idDelta;
 
         /**
          * idRangeOffset.
          */
-        private int[] idRangeOffset;
+        private final int[] idRangeOffset;
 
         /**
          * language.
@@ -741,27 +741,27 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * rangeShift.
          */
-        private int rangeShift;
+        private final int rangeShift;
 
         /**
          * searchRange.
          */
-        private int searchRange;
+        private final int searchRange;
 
         /**
          * segCount.
          */
-        private int segCount;
+        private final int segCount;
 
         /**
          * segCountX2.
          */
-        private int segCountX2;
+        private final int segCountX2;
 
         /**
          * startCode.
          */
-        private int[] startCode;
+        private final int[] startCode;
 
         /**
          * Create a new object.
@@ -1242,17 +1242,17 @@ public class TtfTableCMAP extends AbstractXtfTable
         /**
          * encoding id.
          */
-        private int encodingId;
+        private final int encodingId;
 
         /**
          * offset.
          */
-        private int offset;
+        private final int offset;
 
         /**
          * platform id.
          */
-        private int platformId;
+        private final int platformId;
 
         /**
          * Create a new object.
@@ -1395,11 +1395,11 @@ public class TtfTableCMAP extends AbstractXtfTable
             }
 
             StringBuilder buf = new StringBuilder("Cmap index entry\n");
-            buf.append("   platform id  : " + String.valueOf(platformId) + "  "
+            buf.append("   platform id  : " + platformId + "  "
                     + platform + '\n');
-            buf.append("   encoding id  : " + String.valueOf(encodingId) + "  "
+            buf.append("   encoding id  : " + encodingId + "  "
                     + encoding + '\n');
-            buf.append("   offset       : " + String.valueOf(offset) + '\n');
+            buf.append("   offset       : " + offset + '\n');
             return buf.toString();
         }
 
@@ -2099,22 +2099,22 @@ public class TtfTableCMAP extends AbstractXtfTable
     /**
      * index entries.
      */
-    private IndexEntry[] entries;
+    private final IndexEntry[] entries;
 
     /**
      * formats.
      */
-    private Format[] formats;
+    private final Format[] formats;
 
     /**
      * number of tables.
      */
-    private int numTables;
+    private final int numTables;
 
     /**
      * Version.
      */
-    private int version;
+    private final int version;
 
     // --------------------------------------------------
     // --------------------------------------------------

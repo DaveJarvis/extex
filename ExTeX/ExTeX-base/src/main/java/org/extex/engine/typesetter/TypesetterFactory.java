@@ -92,9 +92,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  */
 public class TypesetterFactory extends AbstractFactory<Object> {
 
-    /**
-     * Creates a new object.
-     */
+
     public TypesetterFactory() {
 
     }

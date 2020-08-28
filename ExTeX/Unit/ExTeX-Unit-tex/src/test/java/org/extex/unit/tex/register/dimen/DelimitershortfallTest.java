@@ -40,9 +40,7 @@ public class DelimitershortfallTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(DelimitershortfallTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DelimitershortfallTest() {
 
         super("delimitershortfall", "", "0.0pt");

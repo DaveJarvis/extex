@@ -40,12 +40,10 @@ public class SetlanguageTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(SetlanguageTest.class);
     }
 
-    /**
-     * Constructor for SetlanguageTest.
-     */
+
     public SetlanguageTest() {
 
-        super("setlanguage", "1");
+        setPrimitive("setlanguage");setArguments("1");setPrepare("");
     }
 
     // TODO implement the primitive specific test cases

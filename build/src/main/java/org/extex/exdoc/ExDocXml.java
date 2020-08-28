@@ -174,10 +174,7 @@ public class ExDocXml extends Traverser {
      * @param content ...
      * 
      * @throws Exception in case of an error
-     * 
-     * @see org.extex.exdoc.util.Traverser#out(java.lang.String, StringBuilder)
      */
-    @Override
     protected void out(String key, StringBuilder content) throws Exception {
 
         Map<String, String> a = new HashMap<String, String>();

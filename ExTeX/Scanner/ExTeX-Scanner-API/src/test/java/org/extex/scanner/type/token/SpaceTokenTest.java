@@ -51,9 +51,7 @@ public class SpaceTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SpaceTokenTest() {
 
         super(token, Catcode.SPACE, " ", "blank space  ");

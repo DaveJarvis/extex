@@ -40,9 +40,7 @@ public class IfvboxTest extends ConditionalTester {
         (new JUnitCore()).run(IfvboxTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfvboxTest() {
 
         super("ifvbox", "0", DEFINE_BRACES + "\\setbox0=\\vbox{}");

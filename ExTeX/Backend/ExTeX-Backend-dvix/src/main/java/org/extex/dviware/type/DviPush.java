@@ -32,9 +32,7 @@ import org.extex.dviware.Dvi;
  */
 public class DviPush extends AbstractDviCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public DviPush() {
 
         super("push");

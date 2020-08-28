@@ -107,9 +107,7 @@ public abstract class ListMakerFactory {
         });
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ListMakerFactory() {
 
     }

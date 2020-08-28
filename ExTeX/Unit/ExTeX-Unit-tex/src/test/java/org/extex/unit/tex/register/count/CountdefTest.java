@@ -41,9 +41,7 @@ public class CountdefTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(CountdefTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CountdefTest() {
 
         super("cc", "", "0", "\\countdef\\cc=42 ");

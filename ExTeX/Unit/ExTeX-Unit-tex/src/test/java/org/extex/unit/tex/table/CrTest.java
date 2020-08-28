@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class CrTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
     public CrTest() {
-
-        super("cr", "}", DEFINE_HASH + "\\halign{#\\cr");
+        setPrimitive( "cr" );
+        setArguments( "}" );
+        setPrepare( DEFINE_HASH + "\\halign{#\\cr" );
     }
 
     /**

@@ -30,9 +30,7 @@ import java.io.PrintStream;
  */
 public class Capitalize implements Transform {
 
-    /**
-     * Creates a new object.
-     */
+
     public Capitalize() {
 
     }

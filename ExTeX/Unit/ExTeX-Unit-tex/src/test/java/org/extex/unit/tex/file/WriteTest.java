@@ -41,9 +41,7 @@ public class WriteTest extends NoFlagsButImmediatePrimitiveTester {
         (new JUnitCore()).run(WriteTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public WriteTest() {
 
         super("write", "1 {abc}");

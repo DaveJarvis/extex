@@ -19,6 +19,9 @@
 
 package org.extex.unit.tex.math.symbol;
 
+import org.junit.Ignore;
+import org.junit.Test;
+
 /**
  * This is a test suite for the primitive <tt>\mathop</tt>.
  *
@@ -27,13 +30,13 @@ package org.extex.unit.tex.math.symbol;
  */
 public class MathopTest extends AbstractOperatorTester {
 
-    /**
-     * Constructor for MathopTest.
-     */
     public MathopTest() {
-
-        super("mathop");
+        setPrimitive("mathop");
     }
+
+    @Test
+    @Ignore
+    public void testChardef1() {}
 
     //TODO implement more primitive specific test cases
 

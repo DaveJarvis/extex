@@ -32,12 +32,10 @@ import org.junit.Test;
  */
 public class ShowgroupsTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public ShowgroupsTest() {
 
-        super("showgroups", "", "", "### bottom level group\n");
+        setPrimitive("showgroups");setArguments("");setPrepare("");setOut("### bottom level group\n");
         setConfig("etex-test");
     }
 

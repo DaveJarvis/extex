@@ -43,9 +43,7 @@ public abstract class T2TDONumber extends T2TopDICTOperator {
      */
     private T2Number value;
 
-    /**
-     * Creates a new object.
-     */
+
     protected T2TDONumber() {
 
         value = new T2DummyNumber();

@@ -238,27 +238,27 @@ public class XtfTableDirectory implements XMLWriterConvertible {
     /**
      * Version (Fixed)
      */
-    private int version = 0;
+    private int version;
 
     /**
      * Number of tables (USHORT)
      */
-    private short numTables = 0;
+    private short numTables;
 
     /**
      * searchRange (USHORT)
      */
-    private short searchRange = 0;
+    private short searchRange;
 
     /**
      * entrySelector (USHORT)
      */
-    private short entrySelector = 0;
+    private short entrySelector;
 
     /**
      * rangeShift (USHORT)
      */
-    private short rangeShift = 0;
+    private short rangeShift;
 
     /**
      * entries
@@ -281,7 +281,7 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         rangeShift = rar.readShort();
         entries = new Entry[numTables];
 
-        // read TabelDirectory entries
+        // read TableDirectory entries
         for (int i = 0; i < numTables; i++) {
             entries[i] = new Entry(rar);
         }
@@ -289,10 +289,6 @@ public class XtfTableDirectory implements XMLWriterConvertible {
         // sort the entries by offset
         Arrays.sort(entries, new Comparator<Object>() {
 
-            /**
-             * @see java.util.Comparator#compare(java.lang.Object,
-             *      java.lang.Object)
-             */
             @Override
             public int compare(Object arg0, Object arg1) {
 

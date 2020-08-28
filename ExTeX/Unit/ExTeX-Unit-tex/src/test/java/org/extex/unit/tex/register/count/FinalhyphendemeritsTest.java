@@ -40,9 +40,7 @@ public class FinalhyphendemeritsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(FinalhyphendemeritsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public FinalhyphendemeritsTest() {
 
         super("finalhyphendemerits", "", "0");

@@ -40,9 +40,7 @@ public class PagestretchTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PagestretchTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PagestretchTest() {
 
         super("pagestretch", "", "0.0pt");

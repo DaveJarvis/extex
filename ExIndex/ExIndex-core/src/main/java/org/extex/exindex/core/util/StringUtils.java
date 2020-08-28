@@ -64,9 +64,7 @@ public final class StringUtils {
         sb.append("\"");
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private StringUtils() {
 
         // forbidden

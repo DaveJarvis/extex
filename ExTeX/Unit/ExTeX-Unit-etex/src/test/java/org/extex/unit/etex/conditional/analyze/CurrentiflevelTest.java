@@ -41,9 +41,7 @@ public class CurrentiflevelTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(CurrentiflevelTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CurrentiflevelTest() {
 
         super("currentiflevel", "0");

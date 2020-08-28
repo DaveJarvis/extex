@@ -41,9 +41,7 @@ public class PopocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(PopocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PopocplistTest() {
 
         setConfig("omega-test");

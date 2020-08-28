@@ -41,9 +41,7 @@ public class NullocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(NullocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public NullocplistTest() {
 
         setConfig("omega-test");

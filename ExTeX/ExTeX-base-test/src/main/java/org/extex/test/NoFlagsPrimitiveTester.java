@@ -19,12 +19,13 @@
 
 package org.extex.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * This class provides an abstract base class containing some test cases for
  * primitives. They verify that prefix macros always lead to an error.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -33,13 +34,13 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     /**
      * The field <tt>primitive</tt> contains the name of the primitive.
      */
-    private String primitive;
+    private String primitive = "";
 
     /**
      * The field <tt>arguments</tt> contains the additional arguments for the
      * flag test.
      */
-    private String arguments;
+    private String arguments = "";
 
     /**
      * The field <tt>prepare</tt> contains the preparation code.
@@ -52,62 +53,29 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
      */
     private String out = "";
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the primitive
-     * @param arguments additional arguments for the flag test
-     */
-    public NoFlagsPrimitiveTester(String primitive, String arguments) {
-
-        this.primitive = primitive;
-        this.arguments = arguments;
+    public NoFlagsPrimitiveTester() {
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the integer register to test
-     * @param arguments the parameters for the invocation
-     * @param prepare the preparation code
-     */
-    public NoFlagsPrimitiveTester(String primitive, String arguments,
-            String prepare) {
-
-        this(primitive, arguments);
-        this.prepare = DEFINE_BRACES + prepare;
+    public void setPrimitive( final String primitive ) {
+      this.primitive = primitive;
     }
 
-    /**
-     * Creates a new object.
-     * 
-     * @param primitive the name of the integer register to test
-     * @param arguments the parameters for the invocation
-     * @param prepare the preparation code
-     * @param out prefix of the output message
-     */
-    public NoFlagsPrimitiveTester(String primitive, String arguments,
-            String prepare, String out) {
-
-        this(primitive, arguments);
-        this.prepare = DEFINE_BRACES + prepare;
-        this.out = out;
+    public void setArguments( final String arguments ) {
+      this.arguments = arguments;
     }
 
-    /**
-     * Add some code to the end of the preparation code.
-     * 
-     * @param add addition
-     */
-    public void appendToPrepare(String add) {
+    public void setPrepare( final String prepare ) {
+      this.prepare = DEFINE_BRACES + prepare;
+    }
 
-        this.prepare = this.prepare + add;
+    public void setOut( final String out ) {
+      this.out = out;
     }
 
     /**
      * <testcase> Test case checking that the prefix <tt>\global</tt> leads to
      * the expected error message </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -116,14 +84,14 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
         assertFailure(// --- input code ---
             prepare + "\\global\\" + primitive + arguments + "\\end",
             // --- log message ---
-            out + "You can\'t use the prefix `\\global\' with"
+            out + "You can't use the prefix `\\global' with"
                     + " the control sequence \\" + primitive);
     }
 
     /**
      * <testcase> Test case checking that the prefix <tt>\immediate</tt> leads
      * to the expected error message </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -132,7 +100,7 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
         assertFailure(// --- input code ---
             prepare + "\\immediate\\" + primitive + arguments + "\\end",
             // --- log message ---
-            out + "You can\'t use the prefix `\\immediate\' with"
+            out + "You can't use the prefix `\\immediate' with"
                     + " the control sequence"
                     + (primitive.length() >= 15 ? "\n" : " ") + "\\"
                     + primitive);
@@ -141,7 +109,7 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
     /**
      * <testcase> Test case checking that the prefix <tt>\long</tt> leads to
      * the expected error message </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -150,14 +118,14 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
         assertFailure(// --- input code ---
             prepare + "\\long\\" + primitive + arguments + "\\end",
             // --- log message ---
-            out + "You can\'t use the prefix `\\long\' with"
+            out + "You can't use the prefix `\\long' with"
                     + " the control sequence \\" + primitive);
     }
 
     /**
      * <testcase> Test case checking that the prefix <tt>\outer</tt> leads to
      * the expected error message </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -166,38 +134,38 @@ public abstract class NoFlagsPrimitiveTester extends ExTeXLauncher {
         assertFailure(// --- input code ---
             prepare + "\\outer\\" + primitive + arguments + "\\end",
             // --- log message ---
-            out + "You can\'t use the prefix `\\outer\' with"
+            out + "You can't use the prefix `\\outer' with"
                     + " the control sequence \\" + primitive);
     }
 
-    // /**
-    // * <testcase>
-    // * Test case checking that the prefix <tt>\protected</tt> leads to the
-    // * expected error message
-    // * </testcase>
-    // *
-    // * @throws Exception in case of an error
-    // */
-    // @Test
-    // public void testNoProtectedFlag() throws Exception {
-    //
-    // assertFailure(//--- input code ---
-    // prepare + "\\protected\\" + primitive + arguments + "\\end",
-    // //--- log message ---
-    // out + "You can\'t use the prefix `\\protected\' with"
-    // + " the control sequence"
-    // + (primitive.length() >= 15 ? "\n" : " ") + "\\"
-    // + primitive);
-    // }
+     /**
+     * <testcase>
+     * Test case checking that the prefix <tt>\protected</tt> leads to the
+     * expected error message
+     * </testcase>
+     *
+     * @throws Exception in case of an error
+     */
+     @Test
+     @Ignore
+     public void testNoProtectedFlag() throws Exception {
+
+       assertFailure(//--- input code ---
+                     prepare + "\\protected\\" + primitive + arguments +
+                         "\\end",
+                     //--- log message ---
+                     out + "You can't use the prefix `\\protected' with"
+                         + " the control sequence"
+                         + (primitive.length() >= 15 ? "\n" : " ") + "\\"
+                         + primitive );
+     }
 
     /**
-     * Getter for primitive.
-     * 
-     * @return the primitive
+     * Returns the primitive macro under test, defined by a subclass.
+     *
+     * @return the primitive macro name, without leading backslash.
      */
     protected String getPrimitive() {
-
         return this.primitive;
     }
-
 }

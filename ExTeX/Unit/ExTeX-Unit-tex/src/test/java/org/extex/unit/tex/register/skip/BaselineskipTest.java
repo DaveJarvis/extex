@@ -39,9 +39,7 @@ public class BaselineskipTest extends AbstractSkipRegisterTester {
         (new JUnitCore()).run(BaselineskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public BaselineskipTest() {
 
         super("baselineskip", "", "0.0pt");

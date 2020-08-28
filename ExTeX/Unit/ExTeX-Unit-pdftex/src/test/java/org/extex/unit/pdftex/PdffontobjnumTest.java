@@ -29,9 +29,7 @@ import org.extex.test.count.AbstractReadonlyCountRegisterTester;
  */
 public class PdffontobjnumTest extends AbstractReadonlyCountRegisterTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdffontobjnumTest() {
 
         super("pdffontobjnum", "\\f", "0", "\\font\\f cmr10 "

@@ -34,9 +34,7 @@ public class ScannerException extends GeneralException {
      */
     protected static final long serialVersionUID = 2005L;
 
-    /**
-     * Creates a new object.
-     */
+
     public ScannerException() {
 
     }

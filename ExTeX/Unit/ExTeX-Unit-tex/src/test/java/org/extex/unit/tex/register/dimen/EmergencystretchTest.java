@@ -40,9 +40,7 @@ public class EmergencystretchTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(EmergencystretchTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EmergencystretchTest() {
 
         super("emergencystretch", "", "0.0pt");

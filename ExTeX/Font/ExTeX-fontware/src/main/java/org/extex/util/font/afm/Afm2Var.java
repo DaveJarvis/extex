@@ -76,9 +76,7 @@ public class Afm2Var extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Afm2Var() {
 
         super(Afm2Var.class);

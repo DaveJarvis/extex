@@ -35,7 +35,7 @@ public class InsertTest extends NoFlagsPrimitiveTester {
      */
     public InsertTest() {
 
-        super("insert", "42{abc}", "x");
+        setPrimitive("insert");setArguments("42{abc}");setPrepare("x");
     }
 
     // TODO implement primitive specific test cases

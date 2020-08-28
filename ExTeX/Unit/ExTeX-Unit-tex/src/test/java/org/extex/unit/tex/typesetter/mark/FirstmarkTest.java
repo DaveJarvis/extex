@@ -40,12 +40,10 @@ public class FirstmarkTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(FirstmarkTest.class);
     }
 
-    /**
-     * Constructor for FirstmarkTest.
-     */
+
     public FirstmarkTest() {
 
-        super("firstmark", "");
+        setPrimitive("firstmark");setArguments("");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

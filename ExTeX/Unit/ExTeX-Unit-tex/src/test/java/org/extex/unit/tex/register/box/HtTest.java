@@ -40,12 +40,10 @@ public class HtTest extends AbstractBoxDimenTester {
         (new JUnitCore()).run(HtTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HtTest() {
 
-        super("ht");
+        setPrimitive("ht");
     }
 
     /**

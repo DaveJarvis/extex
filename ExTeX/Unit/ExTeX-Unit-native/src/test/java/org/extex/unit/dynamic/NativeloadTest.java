@@ -33,12 +33,10 @@ import org.junit.Test;
  */
 public class NativeloadTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public NativeloadTest() {
 
-        super("nativeload", "{java}{org.extex.unit.dynamic.NativeloadSensor}");
+        setPrimitive("nativeload");setArguments("{java}{org.extex.unit.dynamic.NativeloadSensor}");
         setConfig("native-test");
     }
 

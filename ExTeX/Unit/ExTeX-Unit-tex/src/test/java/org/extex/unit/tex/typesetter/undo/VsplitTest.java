@@ -40,12 +40,10 @@ public class VsplitTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VsplitTest.class);
     }
 
-    /**
-     * Constructor for VsplitTest.
-     */
+
     public VsplitTest() {
 
-        super("vsplit", "42 to 1pt", "\\setbox42=\\vbox{A}");
+        setPrimitive("vsplit");setArguments("42 to 1pt");setPrepare("\\setbox42=\\vbox{A}");
     }
 
     // TODO implement primitive specific test cases

@@ -20,6 +20,7 @@
 package org.extex.unit.tex.math.delimiter;
 
 import org.extex.unit.tex.math.AbstractMathTester;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -30,12 +31,10 @@ import org.junit.Test;
  */
 public class LeftTest extends AbstractMathTester {
 
-    /**
-     * Constructor for LeftTest.
-     */
+
     public LeftTest() {
 
-        super("left", "123 ");
+        setPrimitive("left");setArguments("123 ");setPrepare("");
     }
 
     /**
@@ -97,6 +96,7 @@ public class LeftTest extends AbstractMathTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void test1() throws Exception {
 
         assertSuccess(

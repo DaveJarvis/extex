@@ -108,9 +108,7 @@ public final class Summary {
         stream.println("</summary>");
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private Summary() {
 
         // not used

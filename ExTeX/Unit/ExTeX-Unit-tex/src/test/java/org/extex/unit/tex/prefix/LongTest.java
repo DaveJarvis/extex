@@ -42,9 +42,7 @@ public class LongTest extends PrefixTester {
         (new JUnitCore()).run(LongTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public LongTest() {
 
         super("long");

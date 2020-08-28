@@ -41,9 +41,7 @@ public class RemovebeforeocplistTest extends ExTeXLauncher {
         (new JUnitCore()).run(RemovebeforeocplistTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public RemovebeforeocplistTest() {
 
         setConfig("omega-test");

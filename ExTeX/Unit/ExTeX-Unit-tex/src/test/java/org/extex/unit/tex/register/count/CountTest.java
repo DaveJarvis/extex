@@ -40,9 +40,7 @@ public class CountTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(CountTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CountTest() {
 
         super("count", "255", "0");

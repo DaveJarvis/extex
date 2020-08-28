@@ -40,9 +40,7 @@ public class EtexversionTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(EtexversionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EtexversionTest() {
 
         super("eTeXversion", "", "3");

@@ -40,9 +40,7 @@ public class DelimiterfactorTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DelimiterfactorTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DelimiterfactorTest() {
 
         super("delimiterfactor", "", "0");

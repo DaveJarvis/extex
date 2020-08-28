@@ -38,9 +38,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class ConstantDimenParser implements Parser<Dimen>, DimenParser {
 
-    /**
-     * Creates a new object.
-     */
+
     public ConstantDimenParser() {
 
     }

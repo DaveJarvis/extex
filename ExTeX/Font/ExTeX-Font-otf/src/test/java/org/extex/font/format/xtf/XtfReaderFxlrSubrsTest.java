@@ -19,17 +19,16 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.OtfTableCFF;
 import org.extex.font.format.xtf.tables.cff.CffFont;
 import org.extex.font.format.xtf.tables.cff.CharString;
 import org.extex.font.format.xtf.tables.cff.T2Operator;
 import org.extex.util.xml.XMLStreamWriter;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 /**
  * Tests for the <code>XtfReader</code> with opentype files.
@@ -39,12 +38,9 @@ import org.junit.Test;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderFxlrSubrsTest extends TestCase {
+public class XtfReaderFxlrSubrsTest {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
@@ -52,10 +48,7 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
      * @throws IOException if an error occurred.
      */
     public XtfReaderFxlrSubrsTest() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/fxlr.otf");
     }
 
     /**
@@ -71,11 +64,11 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
             if (cmd == null || cmd.trim().length() == 0) {
                 break;
             }
-            assertFalse("IndexOutOfBoundsException", i >= cs.size());
+            Assert.assertFalse( "IndexOutOfBoundsException", i >= cs.size() );
             T2Operator c = cs.get(i);
-            assertNotNull(c);
+            Assert.assertNotNull( c );
             String text2 = c.toText();
-            assertEquals("CharStringCommand", cmd.trim(), text2);
+            Assert.assertEquals( "CharStringCommand", cmd.trim(), text2 );
         }
 
     }
@@ -84,19 +77,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 0.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs0() throws Exception {
+    public void testSubrs0() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(0);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-29 23 -24 30 29 24 24 29 29 -24 24 -29 -30 -23 -24 -29 vhcurveto",
@@ -106,19 +97,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 1.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs1() throws Exception {
+    public void testSubrs1() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(1);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-22 -32 -19 -54 hvcurveto",
@@ -129,19 +118,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 10.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs10() throws Exception {
+    public void testSubrs10() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(10);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-29 24 -24 29 29 24 24 29 29 -24 24 -29 -29 -24 -24 -29 vhcurveto",
@@ -151,19 +138,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 11.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs11() throws Exception {
+    public void testSubrs11() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(11);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "16 0 15 -5 11 -10 29 -25 32 -71 0 -127 0 -87 -7 -60 -13 -48 -21 -78 -48 -11 -17 0 rrcurveto",
@@ -173,19 +158,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 2.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs2() throws Exception {
+    public void testSubrs2() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(2);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "27 4 rlineto",
@@ -196,19 +179,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 3.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs3() throws Exception {
+    public void testSubrs3() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(3);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "58 42 83 49 18 27 -11 -49 -58 -36 -89 -55 -18 -27 14 52 vhcurveto",
@@ -218,19 +199,18 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 4.
-     * 
-     * @throws Exception if an error occurred.
+
      */
     @Test
-    public void testSubrs4() throws Exception {
+    public void testSubrs4() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(4);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-18 0 -35 0 -54 25 -10 12 -29 13 -28 0 rrcurveto",
@@ -243,19 +223,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 5.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs5() throws Exception {
+    public void testSubrs5() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(5);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-52 30 -58 61 83 44 110 68 72 -46 19 -40 -74 -58 -83 -76 vhcurveto",
@@ -265,19 +243,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 6.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs6() throws Exception {
+    public void testSubrs6() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(6);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "57 42 84 49 14 31 -9 -52 -55 -36 -92 -55 -19 -26 15 52 vhcurveto",
@@ -287,19 +263,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 7.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs7() throws Exception {
+    public void testSubrs7() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(7);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {"174 -50 -174 -173 -49 173 -173 50 173 172 49 vlineto",
                         "return"};
@@ -308,19 +282,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 703.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs703() throws Exception {
+    public void testSubrs703() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(703);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {"0 -20 1 -2 98 2 rlineto", "28 0 46 -2 80 0 rrcurveto",
                         "111 134 46 175 133 -109 109 -150 hvcurveto",
@@ -335,19 +307,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 704.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs704() throws Exception {
+    public void testSubrs704() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(704);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-63 159 hlineto",
@@ -358,19 +328,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 705.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs705() throws Exception {
+    public void testSubrs705() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(705);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-25 20 -20 26 24 21 20 25 25 -21 21 -24 -26 -20 -21 -25 vhcurveto",
@@ -380,57 +348,51 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 706.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs706() throws Exception {
+    public void testSubrs706() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(706);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text = {"-27 139 27 vlineto", "return"};
         check(cs, text);
     }
 
     /**
      * test for index 707.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs707() throws Exception {
+    public void testSubrs707() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(707);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text = {"159 180 497 0 0 -464 -656 0 rlineto", "return"};
         check(cs, text);
     }
 
     /**
      * test for index 8.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs8() throws Exception {
+    public void testSubrs8() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(8);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {
                         "-31 -22 -23 -28 hvcurveto",
@@ -442,19 +404,17 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * test for index 9.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testSubrs9() throws Exception {
+    public void testSubrs9() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         OtfTableCFF cff = (OtfTableCFF) reader.getTable(XtfReader.CFF);
-        assertNotNull(cff);
+        Assert.assertNotNull( cff );
         CffFont font = cff.getFont(0);
-        assertNotNull(font);
+        Assert.assertNotNull( font );
         CharString cs = font.getSubrs(9);
-        assertNotNull(cs);
+        Assert.assertNotNull( cs );
         String[] text =
                 {"13 14 25 11 9 -4 9 -10 hvcurveto", "-229 hlineto",
                         "-12 -13 -21 -16 -9 6 -8 9 hvcurveto", "return"};
@@ -463,13 +423,11 @@ public class XtfReaderFxlrSubrsTest extends TestCase {
 
     /**
      * Test: write the xml output to 'target'
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void testXmlOut() throws Exception {
+    public void testXmlOut() throws IOException {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
         XMLStreamWriter writer =
                 new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
                     "ISO8859-1");

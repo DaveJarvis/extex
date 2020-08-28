@@ -37,9 +37,7 @@ public class AttributeGroup extends ArrayList<LocationReference> {
      */
     private static final long serialVersionUID = 2008L;
 
-    /**
-     * Creates a new object.
-     */
+
     public AttributeGroup() {
 
     }

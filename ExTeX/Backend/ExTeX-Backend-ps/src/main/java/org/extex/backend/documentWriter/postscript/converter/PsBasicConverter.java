@@ -111,9 +111,7 @@ public class PsBasicConverter extends AbstractConverter
          */
         private boolean shift = false;
 
-        /**
-         * Creates a new object.
-         */
+
         public Buffer() {
 
         }
@@ -210,9 +208,7 @@ public class PsBasicConverter extends AbstractConverter
      */
     private Dimen y = new Dimen();
 
-    /**
-     * Creates a new object.
-     */
+
     public PsBasicConverter() {
 
     }

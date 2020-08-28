@@ -34,9 +34,7 @@ import org.extex.exindex.lisp.type.value.LValue;
  */
 public class ArabicNumbers implements LValue, Alphabet, LocationClass {
 
-    /**
-     * Creates a new object.
-     */
+
     public ArabicNumbers() {
 
     }

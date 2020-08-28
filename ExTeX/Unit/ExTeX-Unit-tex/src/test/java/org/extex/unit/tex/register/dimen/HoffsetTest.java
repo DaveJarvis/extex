@@ -40,9 +40,7 @@ public class HoffsetTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(HoffsetTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public HoffsetTest() {
 
         super("hoffset", "", "0.0pt");

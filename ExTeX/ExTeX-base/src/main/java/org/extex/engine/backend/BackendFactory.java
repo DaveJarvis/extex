@@ -81,9 +81,7 @@ public class BackendFactory extends AbstractFactory<BackendDriver> {
      */
     private DocumentWriterOptions options;
 
-    /**
-     * Creates a new object.
-     */
+
     public BackendFactory() {
 
     }

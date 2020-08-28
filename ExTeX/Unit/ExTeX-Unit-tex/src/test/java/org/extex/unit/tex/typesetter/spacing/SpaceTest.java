@@ -40,12 +40,10 @@ public class SpaceTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(SpaceTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SpaceTest() {
 
-        super(" ", "");
+        setPrimitive(" ");setArguments("");setPrepare("");
     }
 
     // TODO implement the primitive specific test cases

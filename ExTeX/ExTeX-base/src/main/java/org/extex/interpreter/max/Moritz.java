@@ -266,9 +266,7 @@ public class Moritz extends Max
      */
     private TokenStreamFactory tokenStreamFactory = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public Moritz() {
 
         try {
@@ -1434,8 +1432,8 @@ public class Moritz extends Max
      */
     @Override
     public String toString() {
-
-        return getLocator().toString();
+        final Locator locator = getLocator();
+        return locator == null ? "" : locator.toString();
     }
 
     /**

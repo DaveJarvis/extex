@@ -40,9 +40,7 @@ public class PdfoutputTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfoutputTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfoutputTest() {
 
         super("pdfoutput", "", "1");

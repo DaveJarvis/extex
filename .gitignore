@@ -4,5 +4,5 @@ target
 .classpath
 .checkstyle
 *.iml
-
+*.log
 .idea

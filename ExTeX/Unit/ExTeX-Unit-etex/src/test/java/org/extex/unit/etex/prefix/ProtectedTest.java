@@ -31,9 +31,7 @@ import org.junit.Test;
  */
 public class ProtectedTest extends PrefixTester {
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public ProtectedTest() {
 
         super("protected");

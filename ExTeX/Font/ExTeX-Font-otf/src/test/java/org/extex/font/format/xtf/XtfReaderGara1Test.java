@@ -19,7964 +19,8158 @@
 
 package org.extex.font.format.xtf;
 
-import java.io.IOException;
-
-import junit.framework.TestCase;
-
 import org.extex.font.format.xtf.tables.TtfTableCMAP;
 import org.extex.font.format.xtf.tables.TtfTableCMAP.Format;
+import org.junit.Assert;
 import org.junit.Test;
+
+import java.io.IOException;
 
 /**
  * Tests for the <code>XtfReader</code>.
- * 
+ *
  * The test use the data from the <code>ttx</code> output.
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision$
  */
-public class XtfReaderGara1Test extends TestCase {
+public class XtfReaderGara1Test {
 
-    /**
-     * The xtf reader.
-     */
-    private static XtfReader reader;
+    private final XtfReader reader;
 
     /**
      * Creates a new object.
-     * 
+     *
      * @throws IOException if an error occurred.
      */
     public XtfReaderGara1Test() throws IOException {
-
-        if (reader == null) {
-            reader = new XtfReader("../ExTeX-Font-otf/src/font/Gara.ttf");
-        }
+        reader = new XtfReader("../ExTeX-Font-otf/src/font/Gara.ttf");
     }
 
     /**
      * test 01.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test01() throws Exception {
+    public void test01() {
 
-        assertNotNull(reader);
+        Assert.assertNotNull( reader );
     }
 
     /**
      * test 02.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test02() throws Exception {
+    public void test02() {
 
-        assertEquals("Garamond", reader.getFontFamilyName());
-        assertEquals(662, reader.getNumberOfGlyphs());
+        Assert.assertEquals( "Garamond", reader.getFontFamilyName() );
+        Assert.assertEquals( 662, reader.getNumberOfGlyphs() );
     }
 
     /**
      * test 03.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test03() throws Exception {
+    public void test03() {
 
         TtfTableCMAP cmap = reader.getCmapTable();
-        assertEquals(2, cmap.getNumTables());
+        Assert.assertEquals( 2, cmap.getNumTables() );
         // windows - unicode
         Format format = cmap.getFormat((short) 3, (short) 1);
-        assertNotNull(format);
-        assertEquals(4, format.getFormat());
+        Assert.assertNotNull( format );
+        Assert.assertEquals( 4, format.getFormat() );
     }
 
     /**
      * test 04.
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test04() throws Exception {
+    public void test04() {
 
-        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "space",
+                             reader.mapCharCodeToGlyphname( 0x20, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     // --------------------------------------------------------------
 
     /**
      * test 0x100
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x100() throws Exception {
+    public void test0x100() {
 
-        assertEquals("Amacron", reader.mapCharCodeToGlyphname(0x100, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Amacron", reader.mapCharCodeToGlyphname( 0x100,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x101
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x101() throws Exception {
+    public void test0x101() {
 
-        assertEquals("amacron", reader.mapCharCodeToGlyphname(0x101, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "amacron", reader.mapCharCodeToGlyphname( 0x101,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x102
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x102() throws Exception {
+    public void test0x102() {
 
-        assertEquals("Abreve", reader.mapCharCodeToGlyphname(0x102, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Abreve", reader.mapCharCodeToGlyphname( 0x102,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x103
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x103() throws Exception {
+    public void test0x103() {
 
-        assertEquals("abreve", reader.mapCharCodeToGlyphname(0x103, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "abreve", reader.mapCharCodeToGlyphname( 0x103,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x104
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x104() throws Exception {
+    public void test0x104() {
 
-        assertEquals("Aogonek", reader.mapCharCodeToGlyphname(0x104, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Aogonek", reader.mapCharCodeToGlyphname( 0x104,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x105
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x105() throws Exception {
+    public void test0x105() {
 
-        assertEquals("aogonek", reader.mapCharCodeToGlyphname(0x105, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "aogonek", reader.mapCharCodeToGlyphname( 0x105,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x106
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x106() throws Exception {
+    public void test0x106() {
 
-        assertEquals("Cacute", reader.mapCharCodeToGlyphname(0x106, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Cacute", reader.mapCharCodeToGlyphname( 0x106,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x107
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x107() throws Exception {
+    public void test0x107() {
 
-        assertEquals("cacute", reader.mapCharCodeToGlyphname(0x107, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "cacute", reader.mapCharCodeToGlyphname( 0x107,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x108
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x108() throws Exception {
+    public void test0x108() {
 
-        assertEquals("Ccircumflex", reader.mapCharCodeToGlyphname(0x108, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ccircumflex",
+                             reader.mapCharCodeToGlyphname( 0x108,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x109
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x109() throws Exception {
+    public void test0x109() {
 
-        assertEquals("ccircumflex", reader.mapCharCodeToGlyphname(0x109, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ccircumflex",
+                             reader.mapCharCodeToGlyphname( 0x109,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x10a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10a() throws Exception {
+    public void test0x10a() {
 
-        assertEquals("Cdot", reader.mapCharCodeToGlyphname(0x10a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Cdot",
+                             reader.mapCharCodeToGlyphname( 0x10a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x10b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10b() throws Exception {
+    public void test0x10b() {
 
-        assertEquals("cdot", reader.mapCharCodeToGlyphname(0x10b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "cdot",
+                             reader.mapCharCodeToGlyphname( 0x10b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x10c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10c() throws Exception {
+    public void test0x10c() {
 
-        assertEquals("Ccaron", reader.mapCharCodeToGlyphname(0x10c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ccaron", reader.mapCharCodeToGlyphname( 0x10c,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x10d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10d() throws Exception {
+    public void test0x10d() {
 
-        assertEquals("ccaron", reader.mapCharCodeToGlyphname(0x10d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ccaron", reader.mapCharCodeToGlyphname( 0x10d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x10e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10e() throws Exception {
+    public void test0x10e() {
 
-        assertEquals("Dcaron", reader.mapCharCodeToGlyphname(0x10e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Dcaron", reader.mapCharCodeToGlyphname( 0x10e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x10f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x10f() throws Exception {
+    public void test0x10f() {
 
-        assertEquals("dcaron", reader.mapCharCodeToGlyphname(0x10f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dcaron", reader.mapCharCodeToGlyphname( 0x10f,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x110
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x110() throws Exception {
+    public void test0x110() {
 
-        assertEquals("Dslash", reader.mapCharCodeToGlyphname(0x110, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Dslash", reader.mapCharCodeToGlyphname( 0x110,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x111
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x111() throws Exception {
+    public void test0x111() {
 
-        assertEquals("dmacron", reader.mapCharCodeToGlyphname(0x111, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dmacron", reader.mapCharCodeToGlyphname( 0x111,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x112
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x112() throws Exception {
+    public void test0x112() {
 
-        assertEquals("Emacron", reader.mapCharCodeToGlyphname(0x112, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Emacron", reader.mapCharCodeToGlyphname( 0x112,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x113
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x113() throws Exception {
+    public void test0x113() {
 
-        assertEquals("emacron", reader.mapCharCodeToGlyphname(0x113, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "emacron", reader.mapCharCodeToGlyphname( 0x113,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x114
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x114() throws Exception {
+    public void test0x114() {
 
-        assertEquals("Ebreve", reader.mapCharCodeToGlyphname(0x114, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ebreve", reader.mapCharCodeToGlyphname( 0x114,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x115
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x115() throws Exception {
+    public void test0x115() {
 
-        assertEquals("ebreve", reader.mapCharCodeToGlyphname(0x115, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ebreve", reader.mapCharCodeToGlyphname( 0x115,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x116
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x116() throws Exception {
+    public void test0x116() {
 
-        assertEquals("Edot", reader.mapCharCodeToGlyphname(0x116, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Edot",
+                             reader.mapCharCodeToGlyphname( 0x116, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x117
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x117() throws Exception {
+    public void test0x117() {
 
-        assertEquals("edot", reader.mapCharCodeToGlyphname(0x117, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "edot",
+                             reader.mapCharCodeToGlyphname( 0x117, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x118
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x118() throws Exception {
+    public void test0x118() {
 
-        assertEquals("Eogonek", reader.mapCharCodeToGlyphname(0x118, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Eogonek", reader.mapCharCodeToGlyphname( 0x118,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x119
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x119() throws Exception {
+    public void test0x119() {
 
-        assertEquals("eogonek", reader.mapCharCodeToGlyphname(0x119, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "eogonek", reader.mapCharCodeToGlyphname( 0x119,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x11a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11a() throws Exception {
+    public void test0x11a() {
 
-        assertEquals("Ecaron", reader.mapCharCodeToGlyphname(0x11a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ecaron", reader.mapCharCodeToGlyphname( 0x11a,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x11b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11b() throws Exception {
+    public void test0x11b() {
 
-        assertEquals("ecaron", reader.mapCharCodeToGlyphname(0x11b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ecaron", reader.mapCharCodeToGlyphname( 0x11b,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x11c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11c() throws Exception {
+    public void test0x11c() {
 
-        assertEquals("Gcircumflex", reader.mapCharCodeToGlyphname(0x11c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Gcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x11c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x11d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11d() throws Exception {
+    public void test0x11d() {
 
-        assertEquals("gcircumflex", reader.mapCharCodeToGlyphname(0x11d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "gcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x11d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x11e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11e() throws Exception {
+    public void test0x11e() {
 
-        assertEquals("Gbreve", reader.mapCharCodeToGlyphname(0x11e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Gbreve", reader.mapCharCodeToGlyphname( 0x11e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x11f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x11f() throws Exception {
+    public void test0x11f() {
 
-        assertEquals("gbreve", reader.mapCharCodeToGlyphname(0x11f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "gbreve", reader.mapCharCodeToGlyphname( 0x11f,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x120
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x120() throws Exception {
+    public void test0x120() {
 
-        assertEquals("Gdot", reader.mapCharCodeToGlyphname(0x120, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Gdot",
+                             reader.mapCharCodeToGlyphname( 0x120, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x121
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x121() throws Exception {
+    public void test0x121() {
 
-        assertEquals("gdot", reader.mapCharCodeToGlyphname(0x121, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "gdot",
+                             reader.mapCharCodeToGlyphname( 0x121, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x122
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x122() throws Exception {
+    public void test0x122() {
 
-        assertEquals("Gcedilla", reader.mapCharCodeToGlyphname(0x122, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Gcedilla",
+                             reader.mapCharCodeToGlyphname( 0x122,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x123
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x123() throws Exception {
+    public void test0x123() {
 
-        assertEquals("gcedilla", reader.mapCharCodeToGlyphname(0x123, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "gcedilla",
+                             reader.mapCharCodeToGlyphname( 0x123,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x124
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x124() throws Exception {
+    public void test0x124() {
 
-        assertEquals("Hcircumflex", reader.mapCharCodeToGlyphname(0x124, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Hcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x124,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x125
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x125() throws Exception {
+    public void test0x125() {
 
-        assertEquals("hcircumflex", reader.mapCharCodeToGlyphname(0x125, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "hcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x125,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x126
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x126() throws Exception {
+    public void test0x126() {
 
-        assertEquals("Hbar", reader.mapCharCodeToGlyphname(0x126, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Hbar",
+                             reader.mapCharCodeToGlyphname( 0x126, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x127
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x127() throws Exception {
+    public void test0x127() {
 
-        assertEquals("hbar", reader.mapCharCodeToGlyphname(0x127, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "hbar",
+                             reader.mapCharCodeToGlyphname( 0x127, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x128
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x128() throws Exception {
+    public void test0x128() {
 
-        assertEquals("Itilde", reader.mapCharCodeToGlyphname(0x128, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Itilde", reader.mapCharCodeToGlyphname( 0x128,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x129
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x129() throws Exception {
+    public void test0x129() {
 
-        assertEquals("itilde", reader.mapCharCodeToGlyphname(0x129, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "itilde", reader.mapCharCodeToGlyphname( 0x129,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x12a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12a() throws Exception {
+    public void test0x12a() {
 
-        assertEquals("Imacron", reader.mapCharCodeToGlyphname(0x12a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Imacron", reader.mapCharCodeToGlyphname( 0x12a,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x12b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12b() throws Exception {
+    public void test0x12b() {
 
-        assertEquals("imacron", reader.mapCharCodeToGlyphname(0x12b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "imacron", reader.mapCharCodeToGlyphname( 0x12b,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x12c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12c() throws Exception {
+    public void test0x12c() {
 
-        assertEquals("Ibreve", reader.mapCharCodeToGlyphname(0x12c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ibreve", reader.mapCharCodeToGlyphname( 0x12c,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x12d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12d() throws Exception {
+    public void test0x12d() {
 
-        assertEquals("ibreve", reader.mapCharCodeToGlyphname(0x12d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ibreve", reader.mapCharCodeToGlyphname( 0x12d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x12e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12e() throws Exception {
+    public void test0x12e() {
 
-        assertEquals("Iogonek", reader.mapCharCodeToGlyphname(0x12e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Iogonek", reader.mapCharCodeToGlyphname( 0x12e,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x12f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x12f() throws Exception {
+    public void test0x12f() {
 
-        assertEquals("iogonek", reader.mapCharCodeToGlyphname(0x12f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "iogonek", reader.mapCharCodeToGlyphname( 0x12f,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x130
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x130() throws Exception {
+    public void test0x130() {
 
-        assertEquals("Idot", reader.mapCharCodeToGlyphname(0x130, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Idot",
+                             reader.mapCharCodeToGlyphname( 0x130, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x131
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x131() throws Exception {
+    public void test0x131() {
 
-        assertEquals("dotlessi", reader.mapCharCodeToGlyphname(0x131, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dotlessi",
+                             reader.mapCharCodeToGlyphname( 0x131,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x132
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x132() throws Exception {
+    public void test0x132() {
 
-        assertEquals("IJ", reader.mapCharCodeToGlyphname(0x132, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "IJ",
+                             reader.mapCharCodeToGlyphname( 0x132, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x133
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x133() throws Exception {
+    public void test0x133() {
 
-        assertEquals("ij", reader.mapCharCodeToGlyphname(0x133, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "ij",
+                             reader.mapCharCodeToGlyphname( 0x133, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x134
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x134() throws Exception {
+    public void test0x134() {
 
-        assertEquals("Jcircumflex", reader.mapCharCodeToGlyphname(0x134, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Jcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x134,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x135
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x135() throws Exception {
+    public void test0x135() {
 
-        assertEquals("jcircumflex", reader.mapCharCodeToGlyphname(0x135, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "jcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x135,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x136
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x136() throws Exception {
+    public void test0x136() {
 
-        assertEquals("Kcedilla", reader.mapCharCodeToGlyphname(0x136, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Kcedilla",
+                             reader.mapCharCodeToGlyphname( 0x136,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x137
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x137() throws Exception {
+    public void test0x137() {
 
-        assertEquals("kcedilla", reader.mapCharCodeToGlyphname(0x137, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "kcedilla",
+                             reader.mapCharCodeToGlyphname( 0x137,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x138
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x138() throws Exception {
+    public void test0x138() {
 
-        assertEquals("kgreenlandic", reader.mapCharCodeToGlyphname(0x138, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "kgreenlandic",
+                             reader.mapCharCodeToGlyphname( 0x138,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x139
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x139() throws Exception {
+    public void test0x139() {
 
-        assertEquals("Lacute", reader.mapCharCodeToGlyphname(0x139, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Lacute", reader.mapCharCodeToGlyphname( 0x139,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x13a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13a() throws Exception {
+    public void test0x13a() {
 
-        assertEquals("lacute", reader.mapCharCodeToGlyphname(0x13a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lacute", reader.mapCharCodeToGlyphname( 0x13a,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x13b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13b() throws Exception {
+    public void test0x13b() {
 
-        assertEquals("Lcedilla", reader.mapCharCodeToGlyphname(0x13b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Lcedilla",
+                             reader.mapCharCodeToGlyphname( 0x13b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x13c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13c() throws Exception {
+    public void test0x13c() {
 
-        assertEquals("lcedilla", reader.mapCharCodeToGlyphname(0x13c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lcedilla",
+                             reader.mapCharCodeToGlyphname( 0x13c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x13d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13d() throws Exception {
+    public void test0x13d() {
 
-        assertEquals("Lcaron", reader.mapCharCodeToGlyphname(0x13d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Lcaron", reader.mapCharCodeToGlyphname( 0x13d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x13e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13e() throws Exception {
+    public void test0x13e() {
 
-        assertEquals("lcaron", reader.mapCharCodeToGlyphname(0x13e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lcaron", reader.mapCharCodeToGlyphname( 0x13e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x13f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x13f() throws Exception {
+    public void test0x13f() {
 
-        assertEquals("Ldot", reader.mapCharCodeToGlyphname(0x13f, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Ldot",
+                             reader.mapCharCodeToGlyphname( 0x13f, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x140
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x140() throws Exception {
+    public void test0x140() {
 
-        assertEquals("ldot", reader.mapCharCodeToGlyphname(0x140, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "ldot",
+                             reader.mapCharCodeToGlyphname( 0x140, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x141
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x141() throws Exception {
+    public void test0x141() {
 
-        assertEquals("Lslash", reader.mapCharCodeToGlyphname(0x141, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Lslash", reader.mapCharCodeToGlyphname( 0x141,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x142
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x142() throws Exception {
+    public void test0x142() {
 
-        assertEquals("lslash", reader.mapCharCodeToGlyphname(0x142, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lslash", reader.mapCharCodeToGlyphname( 0x142,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x143
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x143() throws Exception {
+    public void test0x143() {
 
-        assertEquals("Nacute", reader.mapCharCodeToGlyphname(0x143, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Nacute", reader.mapCharCodeToGlyphname( 0x143,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x144
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x144() throws Exception {
+    public void test0x144() {
 
-        assertEquals("nacute", reader.mapCharCodeToGlyphname(0x144, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "nacute", reader.mapCharCodeToGlyphname( 0x144,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x145
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x145() throws Exception {
+    public void test0x145() {
 
-        assertEquals("Ncedilla", reader.mapCharCodeToGlyphname(0x145, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ncedilla",
+                             reader.mapCharCodeToGlyphname( 0x145,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x146
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x146() throws Exception {
+    public void test0x146() {
 
-        assertEquals("ncedilla", reader.mapCharCodeToGlyphname(0x146, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ncedilla",
+                             reader.mapCharCodeToGlyphname( 0x146,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x147
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x147() throws Exception {
+    public void test0x147() {
 
-        assertEquals("Ncaron", reader.mapCharCodeToGlyphname(0x147, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ncaron", reader.mapCharCodeToGlyphname( 0x147,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x148
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x148() throws Exception {
+    public void test0x148() {
 
-        assertEquals("ncaron", reader.mapCharCodeToGlyphname(0x148, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ncaron", reader.mapCharCodeToGlyphname( 0x148,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x149
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x149() throws Exception {
+    public void test0x149() {
 
-        assertEquals("napostrophe", reader.mapCharCodeToGlyphname(0x149, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "napostrophe",
+                             reader.mapCharCodeToGlyphname( 0x149,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x14a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14a() throws Exception {
+    public void test0x14a() {
 
-        assertEquals("Eng", reader.mapCharCodeToGlyphname(0x14a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Eng",
+                             reader.mapCharCodeToGlyphname( 0x14a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x14b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14b() throws Exception {
+    public void test0x14b() {
 
-        assertEquals("eng", reader.mapCharCodeToGlyphname(0x14b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "eng",
+                             reader.mapCharCodeToGlyphname( 0x14b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x14c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14c() throws Exception {
+    public void test0x14c() {
 
-        assertEquals("Omacron", reader.mapCharCodeToGlyphname(0x14c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Omacron", reader.mapCharCodeToGlyphname( 0x14c,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x14d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14d() throws Exception {
+    public void test0x14d() {
 
-        assertEquals("omacron", reader.mapCharCodeToGlyphname(0x14d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "omacron", reader.mapCharCodeToGlyphname( 0x14d,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x14e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14e() throws Exception {
+    public void test0x14e() {
 
-        assertEquals("Obreve", reader.mapCharCodeToGlyphname(0x14e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Obreve", reader.mapCharCodeToGlyphname( 0x14e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x14f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x14f() throws Exception {
+    public void test0x14f() {
 
-        assertEquals("obreve", reader.mapCharCodeToGlyphname(0x14f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "obreve", reader.mapCharCodeToGlyphname( 0x14f,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x150
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x150() throws Exception {
+    public void test0x150() {
 
-        assertEquals("Odblacute", reader.mapCharCodeToGlyphname(0x150, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Odblacute",
+                             reader.mapCharCodeToGlyphname( 0x150,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x151
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x151() throws Exception {
+    public void test0x151() {
 
-        assertEquals("odblacute", reader.mapCharCodeToGlyphname(0x151, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "odblacute",
+                             reader.mapCharCodeToGlyphname( 0x151,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x152
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x152() throws Exception {
+    public void test0x152() {
 
-        assertEquals("OE", reader.mapCharCodeToGlyphname(0x152, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "OE",
+                             reader.mapCharCodeToGlyphname( 0x152, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x153
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x153() throws Exception {
+    public void test0x153() {
 
-        assertEquals("oe", reader.mapCharCodeToGlyphname(0x153, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "oe",
+                             reader.mapCharCodeToGlyphname( 0x153, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x154
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x154() throws Exception {
+    public void test0x154() {
 
-        assertEquals("Racute", reader.mapCharCodeToGlyphname(0x154, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Racute", reader.mapCharCodeToGlyphname( 0x154,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x155
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x155() throws Exception {
+    public void test0x155() {
 
-        assertEquals("racute", reader.mapCharCodeToGlyphname(0x155, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "racute", reader.mapCharCodeToGlyphname( 0x155,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x156
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x156() throws Exception {
+    public void test0x156() {
 
-        assertEquals("Rcedilla", reader.mapCharCodeToGlyphname(0x156, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Rcedilla",
+                             reader.mapCharCodeToGlyphname( 0x156,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x157
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x157() throws Exception {
+    public void test0x157() {
 
-        assertEquals("rcedilla", reader.mapCharCodeToGlyphname(0x157, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "rcedilla",
+                             reader.mapCharCodeToGlyphname( 0x157,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x158
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x158() throws Exception {
+    public void test0x158() {
 
-        assertEquals("Rcaron", reader.mapCharCodeToGlyphname(0x158, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Rcaron", reader.mapCharCodeToGlyphname( 0x158,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x159
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x159() throws Exception {
+    public void test0x159() {
 
-        assertEquals("rcaron", reader.mapCharCodeToGlyphname(0x159, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "rcaron", reader.mapCharCodeToGlyphname( 0x159,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x15a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15a() throws Exception {
+    public void test0x15a() {
 
-        assertEquals("Sacute", reader.mapCharCodeToGlyphname(0x15a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Sacute", reader.mapCharCodeToGlyphname( 0x15a,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x15b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15b() throws Exception {
+    public void test0x15b() {
 
-        assertEquals("sacute", reader.mapCharCodeToGlyphname(0x15b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sacute", reader.mapCharCodeToGlyphname( 0x15b,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x15c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15c() throws Exception {
+    public void test0x15c() {
 
-        assertEquals("Scircumflex", reader.mapCharCodeToGlyphname(0x15c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Scircumflex",
+                             reader.mapCharCodeToGlyphname( 0x15c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x15d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15d() throws Exception {
+    public void test0x15d() {
 
-        assertEquals("scircumflex", reader.mapCharCodeToGlyphname(0x15d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "scircumflex",
+                             reader.mapCharCodeToGlyphname( 0x15d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x15e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15e() throws Exception {
+    public void test0x15e() {
 
-        assertEquals("Scedilla", reader.mapCharCodeToGlyphname(0x15e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Scedilla",
+                             reader.mapCharCodeToGlyphname( 0x15e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x15f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x15f() throws Exception {
+    public void test0x15f() {
 
-        assertEquals("scedilla", reader.mapCharCodeToGlyphname(0x15f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "scedilla",
+                             reader.mapCharCodeToGlyphname( 0x15f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x160
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x160() throws Exception {
+    public void test0x160() {
 
-        assertEquals("Scaron", reader.mapCharCodeToGlyphname(0x160, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Scaron", reader.mapCharCodeToGlyphname( 0x160,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x161
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x161() throws Exception {
+    public void test0x161() {
 
-        assertEquals("scaron", reader.mapCharCodeToGlyphname(0x161, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "scaron", reader.mapCharCodeToGlyphname( 0x161,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x162
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x162() throws Exception {
+    public void test0x162() {
 
-        assertEquals("Tcedilla", reader.mapCharCodeToGlyphname(0x162, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Tcedilla",
+                             reader.mapCharCodeToGlyphname( 0x162,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x163
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x163() throws Exception {
+    public void test0x163() {
 
-        assertEquals("tcedilla", reader.mapCharCodeToGlyphname(0x163, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "tcedilla",
+                             reader.mapCharCodeToGlyphname( 0x163,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x164
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x164() throws Exception {
+    public void test0x164() {
 
-        assertEquals("Tcaron", reader.mapCharCodeToGlyphname(0x164, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Tcaron", reader.mapCharCodeToGlyphname( 0x164,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x165
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x165() throws Exception {
+    public void test0x165() {
 
-        assertEquals("tcaron", reader.mapCharCodeToGlyphname(0x165, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "tcaron", reader.mapCharCodeToGlyphname( 0x165,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x166
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x166() throws Exception {
+    public void test0x166() {
 
-        assertEquals("Tbar", reader.mapCharCodeToGlyphname(0x166, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Tbar",
+                             reader.mapCharCodeToGlyphname( 0x166, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x167
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x167() throws Exception {
+    public void test0x167() {
 
-        assertEquals("tbar", reader.mapCharCodeToGlyphname(0x167, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "tbar",
+                             reader.mapCharCodeToGlyphname( 0x167, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x168
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x168() throws Exception {
+    public void test0x168() {
 
-        assertEquals("Utilde", reader.mapCharCodeToGlyphname(0x168, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Utilde", reader.mapCharCodeToGlyphname( 0x168,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x169
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x169() throws Exception {
+    public void test0x169() {
 
-        assertEquals("utilde", reader.mapCharCodeToGlyphname(0x169, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "utilde", reader.mapCharCodeToGlyphname( 0x169,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x16a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16a() throws Exception {
+    public void test0x16a() {
 
-        assertEquals("Umacron", reader.mapCharCodeToGlyphname(0x16a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Umacron", reader.mapCharCodeToGlyphname( 0x16a,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x16b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16b() throws Exception {
+    public void test0x16b() {
 
-        assertEquals("umacron", reader.mapCharCodeToGlyphname(0x16b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "umacron", reader.mapCharCodeToGlyphname( 0x16b,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x16c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16c() throws Exception {
+    public void test0x16c() {
 
-        assertEquals("Ubreve", reader.mapCharCodeToGlyphname(0x16c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ubreve", reader.mapCharCodeToGlyphname( 0x16c,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x16d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16d() throws Exception {
+    public void test0x16d() {
 
-        assertEquals("ubreve", reader.mapCharCodeToGlyphname(0x16d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ubreve", reader.mapCharCodeToGlyphname( 0x16d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x16e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16e() throws Exception {
+    public void test0x16e() {
 
-        assertEquals("Uring", reader.mapCharCodeToGlyphname(0x16e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Uring", reader.mapCharCodeToGlyphname( 0x16e,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x16f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x16f() throws Exception {
+    public void test0x16f() {
 
-        assertEquals("uring", reader.mapCharCodeToGlyphname(0x16f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "uring", reader.mapCharCodeToGlyphname( 0x16f,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x170
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x170() throws Exception {
+    public void test0x170() {
 
-        assertEquals("Udblacute", reader.mapCharCodeToGlyphname(0x170, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Udblacute",
+                             reader.mapCharCodeToGlyphname( 0x170,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x171
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x171() throws Exception {
+    public void test0x171() {
 
-        assertEquals("udblacute", reader.mapCharCodeToGlyphname(0x171, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "udblacute",
+                             reader.mapCharCodeToGlyphname( 0x171,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x172
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x172() throws Exception {
+    public void test0x172() {
 
-        assertEquals("Uogonek", reader.mapCharCodeToGlyphname(0x172, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Uogonek", reader.mapCharCodeToGlyphname( 0x172,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x173
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x173() throws Exception {
+    public void test0x173() {
 
-        assertEquals("uogonek", reader.mapCharCodeToGlyphname(0x173, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "uogonek", reader.mapCharCodeToGlyphname( 0x173,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x174
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x174() throws Exception {
+    public void test0x174() {
 
-        assertEquals("Wcircumflex", reader.mapCharCodeToGlyphname(0x174, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Wcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x174,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x175
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x175() throws Exception {
+    public void test0x175() {
 
-        assertEquals("wcircumflex", reader.mapCharCodeToGlyphname(0x175, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "wcircumflex",
+                             reader.mapCharCodeToGlyphname( 0x175,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x176
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x176() throws Exception {
+    public void test0x176() {
 
-        assertEquals("Ycircumflex", reader.mapCharCodeToGlyphname(0x176, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ycircumflex",
+                             reader.mapCharCodeToGlyphname( 0x176,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x177
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x177() throws Exception {
+    public void test0x177() {
 
-        assertEquals("ycircumflex", reader.mapCharCodeToGlyphname(0x177, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ycircumflex",
+                             reader.mapCharCodeToGlyphname( 0x177,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x178
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x178() throws Exception {
+    public void test0x178() {
 
-        assertEquals("Ydieresis", reader.mapCharCodeToGlyphname(0x178, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ydieresis",
+                             reader.mapCharCodeToGlyphname( 0x178,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x179
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x179() throws Exception {
+    public void test0x179() {
 
-        assertEquals("Zacute", reader.mapCharCodeToGlyphname(0x179, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Zacute", reader.mapCharCodeToGlyphname( 0x179,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x17a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17a() throws Exception {
+    public void test0x17a() {
 
-        assertEquals("zacute", reader.mapCharCodeToGlyphname(0x17a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "zacute", reader.mapCharCodeToGlyphname( 0x17a,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x17b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17b() throws Exception {
+    public void test0x17b() {
 
-        assertEquals("Zdot", reader.mapCharCodeToGlyphname(0x17b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Zdot",
+                             reader.mapCharCodeToGlyphname( 0x17b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x17c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17c() throws Exception {
+    public void test0x17c() {
 
-        assertEquals("zdot", reader.mapCharCodeToGlyphname(0x17c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "zdot",
+                             reader.mapCharCodeToGlyphname( 0x17c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x17d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17d() throws Exception {
+    public void test0x17d() {
 
-        assertEquals("Zcaron", reader.mapCharCodeToGlyphname(0x17d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Zcaron", reader.mapCharCodeToGlyphname( 0x17d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x17e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17e() throws Exception {
+    public void test0x17e() {
 
-        assertEquals("zcaron", reader.mapCharCodeToGlyphname(0x17e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "zcaron", reader.mapCharCodeToGlyphname( 0x17e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x17f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x17f() throws Exception {
+    public void test0x17f() {
 
-        assertEquals("longs", reader.mapCharCodeToGlyphname(0x17f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "longs", reader.mapCharCodeToGlyphname( 0x17f,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x192
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x192() throws Exception {
+    public void test0x192() {
 
-        assertEquals("florin", reader.mapCharCodeToGlyphname(0x192, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "florin", reader.mapCharCodeToGlyphname( 0x192,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1e80
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e80() throws Exception {
+    public void test0x1e80() {
 
-        assertEquals("Wgrave", reader.mapCharCodeToGlyphname(0x1e80, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Wgrave", reader.mapCharCodeToGlyphname( 0x1e80,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1e81
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e81() throws Exception {
+    public void test0x1e81() {
 
-        assertEquals("wgrave", reader.mapCharCodeToGlyphname(0x1e81, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "wgrave", reader.mapCharCodeToGlyphname( 0x1e81,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1e82
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e82() throws Exception {
+    public void test0x1e82() {
 
-        assertEquals("Wacute", reader.mapCharCodeToGlyphname(0x1e82, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Wacute", reader.mapCharCodeToGlyphname( 0x1e82,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1e83
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e83() throws Exception {
+    public void test0x1e83() {
 
-        assertEquals("wacute", reader.mapCharCodeToGlyphname(0x1e83, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "wacute", reader.mapCharCodeToGlyphname( 0x1e83,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1e84
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e84() throws Exception {
+    public void test0x1e84() {
 
-        assertEquals("Wdieresis", reader.mapCharCodeToGlyphname(0x1e84, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Wdieresis",
+                             reader.mapCharCodeToGlyphname( 0x1e84,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x1e85
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1e85() throws Exception {
+    public void test0x1e85() {
 
-        assertEquals("wdieresis", reader.mapCharCodeToGlyphname(0x1e85, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "wdieresis",
+                             reader.mapCharCodeToGlyphname( 0x1e85,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x1ef2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1ef2() throws Exception {
+    public void test0x1ef2() {
 
-        assertEquals("Ygrave", reader.mapCharCodeToGlyphname(0x1ef2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ygrave", reader.mapCharCodeToGlyphname( 0x1ef2,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1ef3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1ef3() throws Exception {
+    public void test0x1ef3() {
 
-        assertEquals("ygrave", reader.mapCharCodeToGlyphname(0x1ef3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ygrave", reader.mapCharCodeToGlyphname( 0x1ef3,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x1fa
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1fa() throws Exception {
+    public void test0x1fa() {
 
-        assertEquals("Aringacute", reader.mapCharCodeToGlyphname(0x1fa, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Aringacute",
+                             reader.mapCharCodeToGlyphname( 0x1fa,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x1fb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1fb() throws Exception {
+    public void test0x1fb() {
 
-        assertEquals("aringacute", reader.mapCharCodeToGlyphname(0x1fb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "aringacute",
+                             reader.mapCharCodeToGlyphname( 0x1fb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x1fc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1fc() throws Exception {
+    public void test0x1fc() {
 
-        assertEquals("AEacute", reader.mapCharCodeToGlyphname(0x1fc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "AEacute", reader.mapCharCodeToGlyphname( 0x1fc,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x1fd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1fd() throws Exception {
+    public void test0x1fd() {
 
-        assertEquals("aeacute", reader.mapCharCodeToGlyphname(0x1fd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "aeacute", reader.mapCharCodeToGlyphname( 0x1fd,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x1fe
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1fe() throws Exception {
+    public void test0x1fe() {
 
-        assertEquals("Oslashacute", reader.mapCharCodeToGlyphname(0x1fe, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Oslashacute",
+                             reader.mapCharCodeToGlyphname( 0x1fe,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x1ff
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x1ff() throws Exception {
+    public void test0x1ff() {
 
-        assertEquals("oslashacute", reader.mapCharCodeToGlyphname(0x1ff, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "oslashacute",
+                             reader.mapCharCodeToGlyphname( 0x1ff,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x20
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x20() throws Exception {
+    public void test0x20() {
 
-        assertEquals("space", reader.mapCharCodeToGlyphname(0x20, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "space",
+                             reader.mapCharCodeToGlyphname( 0x20, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2013
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2013() throws Exception {
+    public void test0x2013() {
 
-        assertEquals("endash", reader.mapCharCodeToGlyphname(0x2013, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "endash", reader.mapCharCodeToGlyphname( 0x2013,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2014
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2014() throws Exception {
+    public void test0x2014() {
 
-        assertEquals("emdash", reader.mapCharCodeToGlyphname(0x2014, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "emdash", reader.mapCharCodeToGlyphname( 0x2014,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2015
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2015() throws Exception {
+    public void test0x2015() {
 
-        assertEquals("afii00208", reader.mapCharCodeToGlyphname(0x2015, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii00208",
+                             reader.mapCharCodeToGlyphname( 0x2015,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2017
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2017() throws Exception {
+    public void test0x2017() {
 
-        assertEquals("underscoredbl", reader.mapCharCodeToGlyphname(0x2017, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "underscoredbl",
+                             reader.mapCharCodeToGlyphname( 0x2017,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2018
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2018() throws Exception {
+    public void test0x2018() {
 
-        assertEquals("quoteleft", reader.mapCharCodeToGlyphname(0x2018, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quoteleft",
+                             reader.mapCharCodeToGlyphname( 0x2018,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2019
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2019() throws Exception {
+    public void test0x2019() {
 
-        assertEquals("quoteright", reader.mapCharCodeToGlyphname(0x2019, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quoteright",
+                             reader.mapCharCodeToGlyphname( 0x2019,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x201a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x201a() throws Exception {
+    public void test0x201a() {
 
-        assertEquals("quotesinglbase", reader.mapCharCodeToGlyphname(0x201a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotesinglbase",
+                             reader.mapCharCodeToGlyphname( 0x201a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x201b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x201b() throws Exception {
+    public void test0x201b() {
 
-        assertEquals("quotereversed", reader.mapCharCodeToGlyphname(0x201b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotereversed",
+                             reader.mapCharCodeToGlyphname( 0x201b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x201c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x201c() throws Exception {
+    public void test0x201c() {
 
-        assertEquals("quotedblleft", reader.mapCharCodeToGlyphname(0x201c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotedblleft",
+                             reader.mapCharCodeToGlyphname( 0x201c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x201d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x201d() throws Exception {
+    public void test0x201d() {
 
-        assertEquals("quotedblright", reader.mapCharCodeToGlyphname(0x201d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotedblright",
+                             reader.mapCharCodeToGlyphname( 0x201d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x201e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x201e() throws Exception {
+    public void test0x201e() {
 
-        assertEquals("quotedblbase", reader.mapCharCodeToGlyphname(0x201e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotedblbase",
+                             reader.mapCharCodeToGlyphname( 0x201e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2020
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2020() throws Exception {
+    public void test0x2020() {
 
-        assertEquals("dagger", reader.mapCharCodeToGlyphname(0x2020, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dagger", reader.mapCharCodeToGlyphname( 0x2020,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2021
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2021() throws Exception {
+    public void test0x2021() {
 
-        assertEquals("daggerdbl", reader.mapCharCodeToGlyphname(0x2021, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "daggerdbl",
+                             reader.mapCharCodeToGlyphname( 0x2021,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2022
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2022() throws Exception {
+    public void test0x2022() {
 
-        assertEquals("bullet", reader.mapCharCodeToGlyphname(0x2022, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "bullet", reader.mapCharCodeToGlyphname( 0x2022,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2026
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2026() throws Exception {
+    public void test0x2026() {
 
-        assertEquals("ellipsis", reader.mapCharCodeToGlyphname(0x2026, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ellipsis",
+                             reader.mapCharCodeToGlyphname( 0x2026,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2030
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2030() throws Exception {
+    public void test0x2030() {
 
-        assertEquals("perthousand", reader.mapCharCodeToGlyphname(0x2030, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "perthousand",
+                             reader.mapCharCodeToGlyphname( 0x2030,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2032
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2032() throws Exception {
+    public void test0x2032() {
 
-        assertEquals("minute", reader.mapCharCodeToGlyphname(0x2032, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "minute", reader.mapCharCodeToGlyphname( 0x2032,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2033
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2033() throws Exception {
+    public void test0x2033() {
 
-        assertEquals("second", reader.mapCharCodeToGlyphname(0x2033, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "second", reader.mapCharCodeToGlyphname( 0x2033,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2039
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2039() throws Exception {
+    public void test0x2039() {
 
-        assertEquals("guilsinglleft", reader.mapCharCodeToGlyphname(0x2039, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "guilsinglleft",
+                             reader.mapCharCodeToGlyphname( 0x2039,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x203a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x203a() throws Exception {
+    public void test0x203a() {
 
-        assertEquals("guilsinglright", reader.mapCharCodeToGlyphname(0x203a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "guilsinglright",
+                             reader.mapCharCodeToGlyphname( 0x203a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x203c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x203c() throws Exception {
+    public void test0x203c() {
 
-        assertEquals("exclamdbl", reader.mapCharCodeToGlyphname(0x203c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "exclamdbl",
+                             reader.mapCharCodeToGlyphname( 0x203c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x203e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x203e() throws Exception {
+    public void test0x203e() {
 
-        assertEquals("radicalex", reader.mapCharCodeToGlyphname(0x203e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "radicalex",
+                             reader.mapCharCodeToGlyphname( 0x203e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2044
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2044() throws Exception {
+    public void test0x2044() {
 
-        assertEquals("fraction1", reader.mapCharCodeToGlyphname(0x2044, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "fraction1",
+                             reader.mapCharCodeToGlyphname( 0x2044,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x207f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x207f() throws Exception {
+    public void test0x207f() {
 
-        assertEquals("nsuperior", reader.mapCharCodeToGlyphname(0x207f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "nsuperior",
+                             reader.mapCharCodeToGlyphname( 0x207f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x20a3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x20a3() throws Exception {
+    public void test0x20a3() {
 
-        assertEquals("franc", reader.mapCharCodeToGlyphname(0x20a3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "franc", reader.mapCharCodeToGlyphname( 0x20a3,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x20a4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x20a4() throws Exception {
+    public void test0x20a4() {
 
-        assertEquals("afii08941", reader.mapCharCodeToGlyphname(0x20a4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii08941",
+                             reader.mapCharCodeToGlyphname( 0x20a4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x20a7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x20a7() throws Exception {
+    public void test0x20a7() {
 
-        assertEquals("peseta", reader.mapCharCodeToGlyphname(0x20a7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "peseta", reader.mapCharCodeToGlyphname( 0x20a7,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x21
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x21() throws Exception {
+    public void test0x21() {
 
-        assertEquals("exclam", reader.mapCharCodeToGlyphname(0x21, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "exclam", reader.mapCharCodeToGlyphname( 0x21,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2105
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2105() throws Exception {
+    public void test0x2105() {
 
-        assertEquals("afii61248", reader.mapCharCodeToGlyphname(0x2105, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii61248",
+                             reader.mapCharCodeToGlyphname( 0x2105,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2113
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2113() throws Exception {
+    public void test0x2113() {
 
-        assertEquals("afii61289", reader.mapCharCodeToGlyphname(0x2113, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii61289",
+                             reader.mapCharCodeToGlyphname( 0x2113,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2116
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2116() throws Exception {
+    public void test0x2116() {
 
-        assertEquals("afii61352", reader.mapCharCodeToGlyphname(0x2116, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii61352",
+                             reader.mapCharCodeToGlyphname( 0x2116,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2122
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2122() throws Exception {
+    public void test0x2122() {
 
-        assertEquals("trademark", reader.mapCharCodeToGlyphname(0x2122, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "trademark",
+                             reader.mapCharCodeToGlyphname( 0x2122,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2126
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2126() throws Exception {
+    public void test0x2126() {
 
-        assertEquals("Ohm", reader.mapCharCodeToGlyphname(0x2126, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Ohm",
+                             reader.mapCharCodeToGlyphname( 0x2126,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x212e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x212e() throws Exception {
+    public void test0x212e() {
 
-        assertEquals("estimated", reader.mapCharCodeToGlyphname(0x212e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "estimated",
+                             reader.mapCharCodeToGlyphname( 0x212e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x215b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x215b() throws Exception {
+    public void test0x215b() {
 
-        assertEquals("oneeighth", reader.mapCharCodeToGlyphname(0x215b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "oneeighth",
+                             reader.mapCharCodeToGlyphname( 0x215b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x215c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x215c() throws Exception {
+    public void test0x215c() {
 
-        assertEquals("threeeighths", reader.mapCharCodeToGlyphname(0x215c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "threeeighths",
+                             reader.mapCharCodeToGlyphname( 0x215c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x215d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x215d() throws Exception {
+    public void test0x215d() {
 
-        assertEquals("fiveeighths", reader.mapCharCodeToGlyphname(0x215d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "fiveeighths",
+                             reader.mapCharCodeToGlyphname( 0x215d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x215e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x215e() throws Exception {
+    public void test0x215e() {
 
-        assertEquals("seveneighths", reader.mapCharCodeToGlyphname(0x215e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "seveneighths",
+                             reader.mapCharCodeToGlyphname( 0x215e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2190
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2190() throws Exception {
+    public void test0x2190() {
 
-        assertEquals("arrowleft", reader.mapCharCodeToGlyphname(0x2190, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowleft",
+                             reader.mapCharCodeToGlyphname( 0x2190,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2191
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2191() throws Exception {
+    public void test0x2191() {
 
-        assertEquals("arrowup", reader.mapCharCodeToGlyphname(0x2191, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowup",
+                             reader.mapCharCodeToGlyphname( 0x2191,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2192
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2192() throws Exception {
+    public void test0x2192() {
 
-        assertEquals("arrowright", reader.mapCharCodeToGlyphname(0x2192, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowright",
+                             reader.mapCharCodeToGlyphname( 0x2192,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2193
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2193() throws Exception {
+    public void test0x2193() {
 
-        assertEquals("arrowdown", reader.mapCharCodeToGlyphname(0x2193, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowdown",
+                             reader.mapCharCodeToGlyphname( 0x2193,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2194
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2194() throws Exception {
+    public void test0x2194() {
 
-        assertEquals("arrowboth", reader.mapCharCodeToGlyphname(0x2194, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowboth",
+                             reader.mapCharCodeToGlyphname( 0x2194,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2195
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2195() throws Exception {
+    public void test0x2195() {
 
-        assertEquals("arrowupdn", reader.mapCharCodeToGlyphname(0x2195, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowupdn",
+                             reader.mapCharCodeToGlyphname( 0x2195,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x21a8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x21a8() throws Exception {
+    public void test0x21a8() {
 
-        assertEquals("arrowupdnbse", reader.mapCharCodeToGlyphname(0x21a8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "arrowupdnbse",
+                             reader.mapCharCodeToGlyphname( 0x21a8,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x22
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x22() throws Exception {
+    public void test0x22() {
 
-        assertEquals("quotedbl", reader.mapCharCodeToGlyphname(0x22, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotedbl", reader.mapCharCodeToGlyphname( 0x22,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0x2202
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2202() throws Exception {
+    public void test0x2202() {
 
-        assertEquals("partialdiff", reader.mapCharCodeToGlyphname(0x2202, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "partialdiff",
+                             reader.mapCharCodeToGlyphname( 0x2202,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x220f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x220f() throws Exception {
+    public void test0x220f() {
 
-        assertEquals("product", reader.mapCharCodeToGlyphname(0x220f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "product",
+                             reader.mapCharCodeToGlyphname( 0x220f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2211
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2211() throws Exception {
+    public void test0x2211() {
 
-        assertEquals("summation", reader.mapCharCodeToGlyphname(0x2211, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "summation",
+                             reader.mapCharCodeToGlyphname( 0x2211,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2212
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2212() throws Exception {
+    public void test0x2212() {
 
-        assertEquals("minus", reader.mapCharCodeToGlyphname(0x2212, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "minus", reader.mapCharCodeToGlyphname( 0x2212,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2215
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2215() throws Exception {
+    public void test0x2215() {
 
-        assertEquals("fraction", reader.mapCharCodeToGlyphname(0x2215, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "fraction",
+                             reader.mapCharCodeToGlyphname( 0x2215,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x221a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x221a() throws Exception {
+    public void test0x221a() {
 
-        assertEquals("radical", reader.mapCharCodeToGlyphname(0x221a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "radical",
+                             reader.mapCharCodeToGlyphname( 0x221a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x221e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x221e() throws Exception {
+    public void test0x221e() {
 
-        assertEquals("infinity", reader.mapCharCodeToGlyphname(0x221e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "infinity",
+                             reader.mapCharCodeToGlyphname( 0x221e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x221f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x221f() throws Exception {
+    public void test0x221f() {
 
-        assertEquals("orthogonal", reader.mapCharCodeToGlyphname(0x221f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "orthogonal",
+                             reader.mapCharCodeToGlyphname( 0x221f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2229
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2229() throws Exception {
+    public void test0x2229() {
 
-        assertEquals("intersection", reader.mapCharCodeToGlyphname(0x2229, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "intersection",
+                             reader.mapCharCodeToGlyphname( 0x2229,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2248
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2248() throws Exception {
+    public void test0x2248() {
 
-        assertEquals("approxequal", reader.mapCharCodeToGlyphname(0x2248, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "approxequal",
+                             reader.mapCharCodeToGlyphname( 0x2248,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2260
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2260() throws Exception {
+    public void test0x2260() {
 
-        assertEquals("notequal", reader.mapCharCodeToGlyphname(0x2260, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "notequal",
+                             reader.mapCharCodeToGlyphname( 0x2260,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2261
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2261() throws Exception {
+    public void test0x2261() {
 
-        assertEquals("equivalence", reader.mapCharCodeToGlyphname(0x2261, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "equivalence",
+                             reader.mapCharCodeToGlyphname( 0x2261,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2264
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2264() throws Exception {
+    public void test0x2264() {
 
-        assertEquals("lessequal", reader.mapCharCodeToGlyphname(0x2264, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lessequal",
+                             reader.mapCharCodeToGlyphname( 0x2264,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2265
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2265() throws Exception {
+    public void test0x2265() {
 
-        assertEquals("greaterequal", reader.mapCharCodeToGlyphname(0x2265, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "greaterequal",
+                             reader.mapCharCodeToGlyphname( 0x2265,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x23
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x23() throws Exception {
+    public void test0x23() {
 
-        assertEquals("numbersign", reader.mapCharCodeToGlyphname(0x23, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "numbersign",
+                             reader.mapCharCodeToGlyphname( 0x23,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2302
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2302() throws Exception {
+    public void test0x2302() {
 
-        assertEquals("house", reader.mapCharCodeToGlyphname(0x2302, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "house", reader.mapCharCodeToGlyphname( 0x2302,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2310
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2310() throws Exception {
+    public void test0x2310() {
 
-        assertEquals("revlogicalnot", reader.mapCharCodeToGlyphname(0x2310, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "revlogicalnot",
+                             reader.mapCharCodeToGlyphname( 0x2310,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2320
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2320() throws Exception {
+    public void test0x2320() {
 
-        assertEquals("integraltp", reader.mapCharCodeToGlyphname(0x2320, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "integraltp",
+                             reader.mapCharCodeToGlyphname( 0x2320,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2321
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2321() throws Exception {
+    public void test0x2321() {
 
-        assertEquals("integralbt", reader.mapCharCodeToGlyphname(0x2321, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "integralbt",
+                             reader.mapCharCodeToGlyphname( 0x2321,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x24
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x24() throws Exception {
+    public void test0x24() {
 
-        assertEquals("dollar", reader.mapCharCodeToGlyphname(0x24, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dollar", reader.mapCharCodeToGlyphname( 0x24,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25() throws Exception {
+    public void test0x25() {
 
-        assertEquals("percent", reader.mapCharCodeToGlyphname(0x25, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "percent", reader.mapCharCodeToGlyphname( 0x25,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x2500
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2500() throws Exception {
+    public void test0x2500() {
 
-        assertEquals("SF100000", reader.mapCharCodeToGlyphname(0x2500, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF100000",
+                             reader.mapCharCodeToGlyphname( 0x2500,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2502
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2502() throws Exception {
+    public void test0x2502() {
 
-        assertEquals("SF110000", reader.mapCharCodeToGlyphname(0x2502, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF110000",
+                             reader.mapCharCodeToGlyphname( 0x2502,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x250c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x250c() throws Exception {
+    public void test0x250c() {
 
-        assertEquals("SF010000", reader.mapCharCodeToGlyphname(0x250c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF010000",
+                             reader.mapCharCodeToGlyphname( 0x250c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2510
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2510() throws Exception {
+    public void test0x2510() {
 
-        assertEquals("SF030000", reader.mapCharCodeToGlyphname(0x2510, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF030000",
+                             reader.mapCharCodeToGlyphname( 0x2510,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2514
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2514() throws Exception {
+    public void test0x2514() {
 
-        assertEquals("SF020000", reader.mapCharCodeToGlyphname(0x2514, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF020000",
+                             reader.mapCharCodeToGlyphname( 0x2514,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2518
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2518() throws Exception {
+    public void test0x2518() {
 
-        assertEquals("SF040000", reader.mapCharCodeToGlyphname(0x2518, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF040000",
+                             reader.mapCharCodeToGlyphname( 0x2518,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x251c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x251c() throws Exception {
+    public void test0x251c() {
 
-        assertEquals("SF080000", reader.mapCharCodeToGlyphname(0x251c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF080000",
+                             reader.mapCharCodeToGlyphname( 0x251c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2524
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2524() throws Exception {
+    public void test0x2524() {
 
-        assertEquals("SF090000", reader.mapCharCodeToGlyphname(0x2524, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF090000",
+                             reader.mapCharCodeToGlyphname( 0x2524,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x252c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x252c() throws Exception {
+    public void test0x252c() {
 
-        assertEquals("SF060000", reader.mapCharCodeToGlyphname(0x252c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF060000",
+                             reader.mapCharCodeToGlyphname( 0x252c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2534
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2534() throws Exception {
+    public void test0x2534() {
 
-        assertEquals("SF070000", reader.mapCharCodeToGlyphname(0x2534, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF070000",
+                             reader.mapCharCodeToGlyphname( 0x2534,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x253c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x253c() throws Exception {
+    public void test0x253c() {
 
-        assertEquals("SF050000", reader.mapCharCodeToGlyphname(0x253c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF050000",
+                             reader.mapCharCodeToGlyphname( 0x253c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2550
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2550() throws Exception {
+    public void test0x2550() {
 
-        assertEquals("SF430000", reader.mapCharCodeToGlyphname(0x2550, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF430000",
+                             reader.mapCharCodeToGlyphname( 0x2550,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2551
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2551() throws Exception {
+    public void test0x2551() {
 
-        assertEquals("SF240000", reader.mapCharCodeToGlyphname(0x2551, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF240000",
+                             reader.mapCharCodeToGlyphname( 0x2551,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2552
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2552() throws Exception {
+    public void test0x2552() {
 
-        assertEquals("SF510000", reader.mapCharCodeToGlyphname(0x2552, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF510000",
+                             reader.mapCharCodeToGlyphname( 0x2552,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2553
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2553() throws Exception {
+    public void test0x2553() {
 
-        assertEquals("SF520000", reader.mapCharCodeToGlyphname(0x2553, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF520000",
+                             reader.mapCharCodeToGlyphname( 0x2553,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2554
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2554() throws Exception {
+    public void test0x2554() {
 
-        assertEquals("SF390000", reader.mapCharCodeToGlyphname(0x2554, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF390000",
+                             reader.mapCharCodeToGlyphname( 0x2554,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2555
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2555() throws Exception {
+    public void test0x2555() {
 
-        assertEquals("SF220000", reader.mapCharCodeToGlyphname(0x2555, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF220000",
+                             reader.mapCharCodeToGlyphname( 0x2555,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2556
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2556() throws Exception {
+    public void test0x2556() {
 
-        assertEquals("SF210000", reader.mapCharCodeToGlyphname(0x2556, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF210000",
+                             reader.mapCharCodeToGlyphname( 0x2556,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2557
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2557() throws Exception {
+    public void test0x2557() {
 
-        assertEquals("SF250000", reader.mapCharCodeToGlyphname(0x2557, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF250000",
+                             reader.mapCharCodeToGlyphname( 0x2557,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2558
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2558() throws Exception {
+    public void test0x2558() {
 
-        assertEquals("SF500000", reader.mapCharCodeToGlyphname(0x2558, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF500000",
+                             reader.mapCharCodeToGlyphname( 0x2558,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2559
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2559() throws Exception {
+    public void test0x2559() {
 
-        assertEquals("SF490000", reader.mapCharCodeToGlyphname(0x2559, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF490000",
+                             reader.mapCharCodeToGlyphname( 0x2559,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255a() throws Exception {
+    public void test0x255a() {
 
-        assertEquals("SF380000", reader.mapCharCodeToGlyphname(0x255a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF380000",
+                             reader.mapCharCodeToGlyphname( 0x255a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255b() throws Exception {
+    public void test0x255b() {
 
-        assertEquals("SF280000", reader.mapCharCodeToGlyphname(0x255b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF280000",
+                             reader.mapCharCodeToGlyphname( 0x255b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255c() throws Exception {
+    public void test0x255c() {
 
-        assertEquals("SF270000", reader.mapCharCodeToGlyphname(0x255c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF270000",
+                             reader.mapCharCodeToGlyphname( 0x255c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255d() throws Exception {
+    public void test0x255d() {
 
-        assertEquals("SF260000", reader.mapCharCodeToGlyphname(0x255d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF260000",
+                             reader.mapCharCodeToGlyphname( 0x255d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255e() throws Exception {
+    public void test0x255e() {
 
-        assertEquals("SF360000", reader.mapCharCodeToGlyphname(0x255e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF360000",
+                             reader.mapCharCodeToGlyphname( 0x255e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x255f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x255f() throws Exception {
+    public void test0x255f() {
 
-        assertEquals("SF370000", reader.mapCharCodeToGlyphname(0x255f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF370000",
+                             reader.mapCharCodeToGlyphname( 0x255f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2560
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2560() throws Exception {
+    public void test0x2560() {
 
-        assertEquals("SF420000", reader.mapCharCodeToGlyphname(0x2560, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF420000",
+                             reader.mapCharCodeToGlyphname( 0x2560,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2561
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2561() throws Exception {
+    public void test0x2561() {
 
-        assertEquals("SF190000", reader.mapCharCodeToGlyphname(0x2561, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF190000",
+                             reader.mapCharCodeToGlyphname( 0x2561,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2562
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2562() throws Exception {
+    public void test0x2562() {
 
-        assertEquals("SF200000", reader.mapCharCodeToGlyphname(0x2562, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF200000",
+                             reader.mapCharCodeToGlyphname( 0x2562,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2563
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2563() throws Exception {
+    public void test0x2563() {
 
-        assertEquals("SF230000", reader.mapCharCodeToGlyphname(0x2563, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF230000",
+                             reader.mapCharCodeToGlyphname( 0x2563,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2564
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2564() throws Exception {
+    public void test0x2564() {
 
-        assertEquals("SF470000", reader.mapCharCodeToGlyphname(0x2564, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF470000",
+                             reader.mapCharCodeToGlyphname( 0x2564,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2565
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2565() throws Exception {
+    public void test0x2565() {
 
-        assertEquals("SF480000", reader.mapCharCodeToGlyphname(0x2565, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF480000",
+                             reader.mapCharCodeToGlyphname( 0x2565,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2566
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2566() throws Exception {
+    public void test0x2566() {
 
-        assertEquals("SF410000", reader.mapCharCodeToGlyphname(0x2566, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF410000",
+                             reader.mapCharCodeToGlyphname( 0x2566,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2567
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2567() throws Exception {
+    public void test0x2567() {
 
-        assertEquals("SF450000", reader.mapCharCodeToGlyphname(0x2567, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF450000",
+                             reader.mapCharCodeToGlyphname( 0x2567,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2568
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2568() throws Exception {
+    public void test0x2568() {
 
-        assertEquals("SF460000", reader.mapCharCodeToGlyphname(0x2568, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF460000",
+                             reader.mapCharCodeToGlyphname( 0x2568,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2569
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2569() throws Exception {
+    public void test0x2569() {
 
-        assertEquals("SF400000", reader.mapCharCodeToGlyphname(0x2569, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF400000",
+                             reader.mapCharCodeToGlyphname( 0x2569,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x256a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x256a() throws Exception {
+    public void test0x256a() {
 
-        assertEquals("SF540000", reader.mapCharCodeToGlyphname(0x256a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF540000",
+                             reader.mapCharCodeToGlyphname( 0x256a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x256b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x256b() throws Exception {
+    public void test0x256b() {
 
-        assertEquals("SF530000", reader.mapCharCodeToGlyphname(0x256b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF530000",
+                             reader.mapCharCodeToGlyphname( 0x256b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x256c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x256c() throws Exception {
+    public void test0x256c() {
 
-        assertEquals("SF440000", reader.mapCharCodeToGlyphname(0x256c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "SF440000",
+                             reader.mapCharCodeToGlyphname( 0x256c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2580
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2580() throws Exception {
+    public void test0x2580() {
 
-        assertEquals("upblock", reader.mapCharCodeToGlyphname(0x2580, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "upblock",
+                             reader.mapCharCodeToGlyphname( 0x2580,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2584
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2584() throws Exception {
+    public void test0x2584() {
 
-        assertEquals("dnblock", reader.mapCharCodeToGlyphname(0x2584, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dnblock",
+                             reader.mapCharCodeToGlyphname( 0x2584,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2588
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2588() throws Exception {
+    public void test0x2588() {
 
-        assertEquals("block", reader.mapCharCodeToGlyphname(0x2588, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "block", reader.mapCharCodeToGlyphname( 0x2588,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x258c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x258c() throws Exception {
+    public void test0x258c() {
 
-        assertEquals("lfblock", reader.mapCharCodeToGlyphname(0x258c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lfblock",
+                             reader.mapCharCodeToGlyphname( 0x258c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2590
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2590() throws Exception {
+    public void test0x2590() {
 
-        assertEquals("rtblock", reader.mapCharCodeToGlyphname(0x2590, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "rtblock",
+                             reader.mapCharCodeToGlyphname( 0x2590,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2591
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2591() throws Exception {
+    public void test0x2591() {
 
-        assertEquals("ltshade", reader.mapCharCodeToGlyphname(0x2591, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ltshade",
+                             reader.mapCharCodeToGlyphname( 0x2591,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2592
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2592() throws Exception {
+    public void test0x2592() {
 
-        assertEquals("shade", reader.mapCharCodeToGlyphname(0x2592, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "shade", reader.mapCharCodeToGlyphname( 0x2592,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2593
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2593() throws Exception {
+    public void test0x2593() {
 
-        assertEquals("dkshade", reader.mapCharCodeToGlyphname(0x2593, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dkshade",
+                             reader.mapCharCodeToGlyphname( 0x2593,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25a0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25a0() throws Exception {
+    public void test0x25a0() {
 
-        assertEquals("filledbox", reader.mapCharCodeToGlyphname(0x25a0, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "filledbox",
+                             reader.mapCharCodeToGlyphname( 0x25a0,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25a1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25a1() throws Exception {
+    public void test0x25a1() {
 
-        assertEquals("H22073", reader.mapCharCodeToGlyphname(0x25a1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "H22073", reader.mapCharCodeToGlyphname( 0x25a1,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25aa
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25aa() throws Exception {
+    public void test0x25aa() {
 
-        assertEquals("H18543", reader.mapCharCodeToGlyphname(0x25aa, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "H18543", reader.mapCharCodeToGlyphname( 0x25aa,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25ab
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25ab() throws Exception {
+    public void test0x25ab() {
 
-        assertEquals("H18551", reader.mapCharCodeToGlyphname(0x25ab, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "H18551", reader.mapCharCodeToGlyphname( 0x25ab,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25ac
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25ac() throws Exception {
+    public void test0x25ac() {
 
-        assertEquals("filledrect", reader.mapCharCodeToGlyphname(0x25ac, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "filledrect",
+                             reader.mapCharCodeToGlyphname( 0x25ac,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25b2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25b2() throws Exception {
+    public void test0x25b2() {
 
-        assertEquals("triagup", reader.mapCharCodeToGlyphname(0x25b2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "triagup",
+                             reader.mapCharCodeToGlyphname( 0x25b2,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25ba
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25ba() throws Exception {
+    public void test0x25ba() {
 
-        assertEquals("triagrt", reader.mapCharCodeToGlyphname(0x25ba, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "triagrt",
+                             reader.mapCharCodeToGlyphname( 0x25ba,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25bc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25bc() throws Exception {
+    public void test0x25bc() {
 
-        assertEquals("triagdn", reader.mapCharCodeToGlyphname(0x25bc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "triagdn",
+                             reader.mapCharCodeToGlyphname( 0x25bc,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25c4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25c4() throws Exception {
+    public void test0x25c4() {
 
-        assertEquals("triaglf", reader.mapCharCodeToGlyphname(0x25c4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "triaglf",
+                             reader.mapCharCodeToGlyphname( 0x25c4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25ca
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25ca() throws Exception {
+    public void test0x25ca() {
 
-        assertEquals("lozenge", reader.mapCharCodeToGlyphname(0x25ca, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lozenge",
+                             reader.mapCharCodeToGlyphname( 0x25ca,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25cb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25cb() throws Exception {
+    public void test0x25cb() {
 
-        assertEquals("circle", reader.mapCharCodeToGlyphname(0x25cb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "circle", reader.mapCharCodeToGlyphname( 0x25cb,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25cf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25cf() throws Exception {
+    public void test0x25cf() {
 
-        assertEquals("H18533", reader.mapCharCodeToGlyphname(0x25cf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "H18533", reader.mapCharCodeToGlyphname( 0x25cf,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x25d8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25d8() throws Exception {
+    public void test0x25d8() {
 
-        assertEquals("invbullet", reader.mapCharCodeToGlyphname(0x25d8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "invbullet",
+                             reader.mapCharCodeToGlyphname( 0x25d8,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25d9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25d9() throws Exception {
+    public void test0x25d9() {
 
-        assertEquals("invcircle", reader.mapCharCodeToGlyphname(0x25d9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "invcircle",
+                             reader.mapCharCodeToGlyphname( 0x25d9,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x25e6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x25e6() throws Exception {
+    public void test0x25e6() {
 
-        assertEquals("openbullet", reader.mapCharCodeToGlyphname(0x25e6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "openbullet",
+                             reader.mapCharCodeToGlyphname( 0x25e6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x26
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x26() throws Exception {
+    public void test0x26() {
 
-        assertEquals("ampersand", reader.mapCharCodeToGlyphname(0x26, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ampersand",
+                             reader.mapCharCodeToGlyphname( 0x26,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x263a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x263a() throws Exception {
+    public void test0x263a() {
 
-        assertEquals("smileface", reader.mapCharCodeToGlyphname(0x263a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "smileface",
+                             reader.mapCharCodeToGlyphname( 0x263a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x263b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x263b() throws Exception {
+    public void test0x263b() {
 
-        assertEquals("invsmileface", reader.mapCharCodeToGlyphname(0x263b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "invsmileface",
+                             reader.mapCharCodeToGlyphname( 0x263b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x263c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x263c() throws Exception {
+    public void test0x263c() {
 
-        assertEquals("sun", reader.mapCharCodeToGlyphname(0x263c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "sun",
+                             reader.mapCharCodeToGlyphname( 0x263c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2640
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2640() throws Exception {
+    public void test0x2640() {
 
-        assertEquals("female", reader.mapCharCodeToGlyphname(0x2640, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "female", reader.mapCharCodeToGlyphname( 0x2640,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2642
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2642() throws Exception {
+    public void test0x2642() {
 
-        assertEquals("male", reader.mapCharCodeToGlyphname(0x2642, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "male", reader.mapCharCodeToGlyphname( 0x2642,
+                                                                    0,
+                                                                    (short) 3,
+                                                                    (short) 1 ) );
     }
 
     /**
      * test 0x2660
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2660() throws Exception {
+    public void test0x2660() {
 
-        assertEquals("spade", reader.mapCharCodeToGlyphname(0x2660, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "spade", reader.mapCharCodeToGlyphname( 0x2660,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2663
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2663() throws Exception {
+    public void test0x2663() {
 
-        assertEquals("club", reader.mapCharCodeToGlyphname(0x2663, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "club", reader.mapCharCodeToGlyphname( 0x2663,
+                                                                    0,
+                                                                    (short) 3,
+                                                                    (short) 1 ) );
     }
 
     /**
      * test 0x2665
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2665() throws Exception {
+    public void test0x2665() {
 
-        assertEquals("heart", reader.mapCharCodeToGlyphname(0x2665, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "heart", reader.mapCharCodeToGlyphname( 0x2665,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2666
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2666() throws Exception {
+    public void test0x2666() {
 
-        assertEquals("diamond", reader.mapCharCodeToGlyphname(0x2666, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "diamond",
+                             reader.mapCharCodeToGlyphname( 0x2666,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x266a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x266a() throws Exception {
+    public void test0x266a() {
 
-        assertEquals("musicalnote", reader.mapCharCodeToGlyphname(0x266a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "musicalnote",
+                             reader.mapCharCodeToGlyphname( 0x266a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x266b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x266b() throws Exception {
+    public void test0x266b() {
 
-        assertEquals("musicalnotedbl", reader.mapCharCodeToGlyphname(0x266b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "musicalnotedbl",
+                             reader.mapCharCodeToGlyphname( 0x266b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x27
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x27() throws Exception {
+    public void test0x27() {
 
-        assertEquals("quotesingle", reader.mapCharCodeToGlyphname(0x27, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "quotesingle",
+                             reader.mapCharCodeToGlyphname( 0x27,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x28
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x28() throws Exception {
+    public void test0x28() {
 
-        assertEquals("parenleft", reader.mapCharCodeToGlyphname(0x28, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "parenleft",
+                             reader.mapCharCodeToGlyphname( 0x28,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x29
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x29() throws Exception {
+    public void test0x29() {
 
-        assertEquals("parenright", reader.mapCharCodeToGlyphname(0x29, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "parenright",
+                             reader.mapCharCodeToGlyphname( 0x29,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2a() throws Exception {
+    public void test0x2a() {
 
-        assertEquals("asterisk", reader.mapCharCodeToGlyphname(0x2a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "asterisk", reader.mapCharCodeToGlyphname( 0x2a,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0x2b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2b() throws Exception {
+    public void test0x2b() {
 
-        assertEquals("plus", reader.mapCharCodeToGlyphname(0x2b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "plus",
+                             reader.mapCharCodeToGlyphname( 0x2b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2c() throws Exception {
+    public void test0x2c() {
 
-        assertEquals("comma", reader.mapCharCodeToGlyphname(0x2c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "comma",
+                             reader.mapCharCodeToGlyphname( 0x2c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2c6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2c6() throws Exception {
+    public void test0x2c6() {
 
-        assertEquals("circumflex", reader.mapCharCodeToGlyphname(0x2c6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "circumflex",
+                             reader.mapCharCodeToGlyphname( 0x2c6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2c7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2c7() throws Exception {
+    public void test0x2c7() {
 
-        assertEquals("caron", reader.mapCharCodeToGlyphname(0x2c7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "caron", reader.mapCharCodeToGlyphname( 0x2c7,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2d() throws Exception {
+    public void test0x2d() {
 
-        assertEquals("hyphen", reader.mapCharCodeToGlyphname(0x2d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "hyphen", reader.mapCharCodeToGlyphname( 0x2d,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2d8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2d8() throws Exception {
+    public void test0x2d8() {
 
-        assertEquals("breve", reader.mapCharCodeToGlyphname(0x2d8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "breve", reader.mapCharCodeToGlyphname( 0x2d8,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2d9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2d9() throws Exception {
+    public void test0x2d9() {
 
-        assertEquals("dotaccent", reader.mapCharCodeToGlyphname(0x2d9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dotaccent",
+                             reader.mapCharCodeToGlyphname( 0x2d9,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2da
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2da() throws Exception {
+    public void test0x2da() {
 
-        assertEquals("ring", reader.mapCharCodeToGlyphname(0x2da, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "ring",
+                             reader.mapCharCodeToGlyphname( 0x2da, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2db
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2db() throws Exception {
+    public void test0x2db() {
 
-        assertEquals("ogonek", reader.mapCharCodeToGlyphname(0x2db, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ogonek", reader.mapCharCodeToGlyphname( 0x2db,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2dc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2dc() throws Exception {
+    public void test0x2dc() {
 
-        assertEquals("tilde", reader.mapCharCodeToGlyphname(0x2dc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "tilde", reader.mapCharCodeToGlyphname( 0x2dc,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x2dd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2dd() throws Exception {
+    public void test0x2dd() {
 
-        assertEquals("hungarumlaut", reader.mapCharCodeToGlyphname(0x2dd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "hungarumlaut",
+                             reader.mapCharCodeToGlyphname( 0x2dd,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x2e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2e() throws Exception {
+    public void test0x2e() {
 
-        assertEquals("period", reader.mapCharCodeToGlyphname(0x2e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "period", reader.mapCharCodeToGlyphname( 0x2e,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x2f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x2f() throws Exception {
+    public void test0x2f() {
 
-        assertEquals("slash", reader.mapCharCodeToGlyphname(0x2f, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "slash",
+                             reader.mapCharCodeToGlyphname( 0x2f, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x30
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x30() throws Exception {
+    public void test0x30() {
 
-        assertEquals("zero", reader.mapCharCodeToGlyphname(0x30, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "zero",
+                             reader.mapCharCodeToGlyphname( 0x30, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x31
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x31() throws Exception {
+    public void test0x31() {
 
-        assertEquals("one", reader.mapCharCodeToGlyphname(0x31, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "one",
+                             reader.mapCharCodeToGlyphname( 0x31, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x32
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x32() throws Exception {
+    public void test0x32() {
 
-        assertEquals("two", reader.mapCharCodeToGlyphname(0x32, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "two",
+                             reader.mapCharCodeToGlyphname( 0x32, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x33
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x33() throws Exception {
+    public void test0x33() {
 
-        assertEquals("three", reader.mapCharCodeToGlyphname(0x33, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "three",
+                             reader.mapCharCodeToGlyphname( 0x33, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x34
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x34() throws Exception {
+    public void test0x34() {
 
-        assertEquals("four", reader.mapCharCodeToGlyphname(0x34, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "four",
+                             reader.mapCharCodeToGlyphname( 0x34, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x35
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x35() throws Exception {
+    public void test0x35() {
 
-        assertEquals("five", reader.mapCharCodeToGlyphname(0x35, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "five",
+                             reader.mapCharCodeToGlyphname( 0x35, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x36
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x36() throws Exception {
+    public void test0x36() {
 
-        assertEquals("six", reader.mapCharCodeToGlyphname(0x36, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "six",
+                             reader.mapCharCodeToGlyphname( 0x36, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x37
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x37() throws Exception {
+    public void test0x37() {
 
-        assertEquals("seven", reader.mapCharCodeToGlyphname(0x37, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "seven",
+                             reader.mapCharCodeToGlyphname( 0x37, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x37e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x37e() throws Exception {
+    public void test0x37e() {
 
-        assertEquals("semicolon", reader.mapCharCodeToGlyphname(0x37e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "semicolon",
+                             reader.mapCharCodeToGlyphname( 0x37e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x38
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x38() throws Exception {
+    public void test0x38() {
 
-        assertEquals("eight", reader.mapCharCodeToGlyphname(0x38, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "eight",
+                             reader.mapCharCodeToGlyphname( 0x38, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x384
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x384() throws Exception {
+    public void test0x384() {
 
-        assertEquals("tonos", reader.mapCharCodeToGlyphname(0x384, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "tonos", reader.mapCharCodeToGlyphname( 0x384,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x385
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x385() throws Exception {
+    public void test0x385() {
 
-        assertEquals("dieresistonos", reader.mapCharCodeToGlyphname(0x385, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dieresistonos",
+                             reader.mapCharCodeToGlyphname( 0x385,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x386
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x386() throws Exception {
+    public void test0x386() {
 
-        assertEquals("Alphatonos", reader.mapCharCodeToGlyphname(0x386, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Alphatonos",
+                             reader.mapCharCodeToGlyphname( 0x386,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x387
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x387() throws Exception {
+    public void test0x387() {
 
-        assertEquals("anoteleia", reader.mapCharCodeToGlyphname(0x387, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "anoteleia",
+                             reader.mapCharCodeToGlyphname( 0x387,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x388
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x388() throws Exception {
+    public void test0x388() {
 
-        assertEquals("Epsilontonos", reader.mapCharCodeToGlyphname(0x388, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Epsilontonos",
+                             reader.mapCharCodeToGlyphname( 0x388,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x389
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x389() throws Exception {
+    public void test0x389() {
 
-        assertEquals("Etatonos", reader.mapCharCodeToGlyphname(0x389, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Etatonos",
+                             reader.mapCharCodeToGlyphname( 0x389,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x38a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x38a() throws Exception {
+    public void test0x38a() {
 
-        assertEquals("Iotatonos", reader.mapCharCodeToGlyphname(0x38a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Iotatonos",
+                             reader.mapCharCodeToGlyphname( 0x38a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x38c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x38c() throws Exception {
+    public void test0x38c() {
 
-        assertEquals("Omicrontonos", reader.mapCharCodeToGlyphname(0x38c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Omicrontonos",
+                             reader.mapCharCodeToGlyphname( 0x38c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x38e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x38e() throws Exception {
+    public void test0x38e() {
 
-        assertEquals("Upsilontonos", reader.mapCharCodeToGlyphname(0x38e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Upsilontonos",
+                             reader.mapCharCodeToGlyphname( 0x38e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x38f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x38f() throws Exception {
+    public void test0x38f() {
 
-        assertEquals("Omegatonos", reader.mapCharCodeToGlyphname(0x38f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Omegatonos",
+                             reader.mapCharCodeToGlyphname( 0x38f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x39
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39() throws Exception {
+    public void test0x39() {
 
-        assertEquals("nine", reader.mapCharCodeToGlyphname(0x39, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "nine",
+                             reader.mapCharCodeToGlyphname( 0x39, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x390
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x390() throws Exception {
+    public void test0x390() {
 
-        assertEquals("iotadieresistonos", reader.mapCharCodeToGlyphname(0x390,
-            0, (short) 3, (short) 1));
+        Assert.assertEquals( "iotadieresistonos",
+                             reader.mapCharCodeToGlyphname( 0x390,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x391
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x391() throws Exception {
+    public void test0x391() {
 
-        assertEquals("Alpha", reader.mapCharCodeToGlyphname(0x391, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Alpha", reader.mapCharCodeToGlyphname( 0x391,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x392
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x392() throws Exception {
+    public void test0x392() {
 
-        assertEquals("Beta", reader.mapCharCodeToGlyphname(0x392, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Beta",
+                             reader.mapCharCodeToGlyphname( 0x392, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x393
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x393() throws Exception {
+    public void test0x393() {
 
-        assertEquals("Gamma", reader.mapCharCodeToGlyphname(0x393, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Gamma", reader.mapCharCodeToGlyphname( 0x393,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x394
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x394() throws Exception {
+    public void test0x394() {
 
-        assertEquals("Delta", reader.mapCharCodeToGlyphname(0x394, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Delta", reader.mapCharCodeToGlyphname( 0x394,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x395
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x395() throws Exception {
+    public void test0x395() {
 
-        assertEquals("Epsilon", reader.mapCharCodeToGlyphname(0x395, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Epsilon", reader.mapCharCodeToGlyphname( 0x395,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x396
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x396() throws Exception {
+    public void test0x396() {
 
-        assertEquals("Zeta", reader.mapCharCodeToGlyphname(0x396, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Zeta",
+                             reader.mapCharCodeToGlyphname( 0x396, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x397
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x397() throws Exception {
+    public void test0x397() {
 
-        assertEquals("Eta", reader.mapCharCodeToGlyphname(0x397, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Eta",
+                             reader.mapCharCodeToGlyphname( 0x397, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x398
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x398() throws Exception {
+    public void test0x398() {
 
-        assertEquals("Theta", reader.mapCharCodeToGlyphname(0x398, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Theta", reader.mapCharCodeToGlyphname( 0x398,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x399
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x399() throws Exception {
+    public void test0x399() {
 
-        assertEquals("Iota", reader.mapCharCodeToGlyphname(0x399, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Iota",
+                             reader.mapCharCodeToGlyphname( 0x399, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x39a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39a() throws Exception {
+    public void test0x39a() {
 
-        assertEquals("Kappa", reader.mapCharCodeToGlyphname(0x39a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Kappa", reader.mapCharCodeToGlyphname( 0x39a,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x39b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39b() throws Exception {
+    public void test0x39b() {
 
-        assertEquals("Lambda", reader.mapCharCodeToGlyphname(0x39b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Lambda", reader.mapCharCodeToGlyphname( 0x39b,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x39c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39c() throws Exception {
+    public void test0x39c() {
 
-        assertEquals("Mu", reader.mapCharCodeToGlyphname(0x39c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Mu",
+                             reader.mapCharCodeToGlyphname( 0x39c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x39d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39d() throws Exception {
+    public void test0x39d() {
 
-        assertEquals("Nu", reader.mapCharCodeToGlyphname(0x39d, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Nu",
+                             reader.mapCharCodeToGlyphname( 0x39d, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x39e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39e() throws Exception {
+    public void test0x39e() {
 
-        assertEquals("Xi", reader.mapCharCodeToGlyphname(0x39e, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Xi",
+                             reader.mapCharCodeToGlyphname( 0x39e, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x39f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x39f() throws Exception {
+    public void test0x39f() {
 
-        assertEquals("Omicron", reader.mapCharCodeToGlyphname(0x39f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Omicron", reader.mapCharCodeToGlyphname( 0x39f,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a() throws Exception {
+    public void test0x3a() {
 
-        assertEquals("colon", reader.mapCharCodeToGlyphname(0x3a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "colon",
+                             reader.mapCharCodeToGlyphname( 0x3a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a0() throws Exception {
+    public void test0x3a0() {
 
-        assertEquals("Pi", reader.mapCharCodeToGlyphname(0x3a0, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Pi",
+                             reader.mapCharCodeToGlyphname( 0x3a0, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a1() throws Exception {
+    public void test0x3a1() {
 
-        assertEquals("Rho", reader.mapCharCodeToGlyphname(0x3a1, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Rho",
+                             reader.mapCharCodeToGlyphname( 0x3a1, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a3() throws Exception {
+    public void test0x3a3() {
 
-        assertEquals("Sigma", reader.mapCharCodeToGlyphname(0x3a3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Sigma", reader.mapCharCodeToGlyphname( 0x3a3,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3a4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a4() throws Exception {
+    public void test0x3a4() {
 
-        assertEquals("Tau", reader.mapCharCodeToGlyphname(0x3a4, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Tau",
+                             reader.mapCharCodeToGlyphname( 0x3a4, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a5() throws Exception {
+    public void test0x3a5() {
 
-        assertEquals("Upsilon", reader.mapCharCodeToGlyphname(0x3a5, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Upsilon", reader.mapCharCodeToGlyphname( 0x3a5,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3a6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a6() throws Exception {
+    public void test0x3a6() {
 
-        assertEquals("Phi", reader.mapCharCodeToGlyphname(0x3a6, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Phi",
+                             reader.mapCharCodeToGlyphname( 0x3a6, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a7() throws Exception {
+    public void test0x3a7() {
 
-        assertEquals("Chi", reader.mapCharCodeToGlyphname(0x3a7, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Chi",
+                             reader.mapCharCodeToGlyphname( 0x3a7, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a8() throws Exception {
+    public void test0x3a8() {
 
-        assertEquals("Psi", reader.mapCharCodeToGlyphname(0x3a8, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Psi",
+                             reader.mapCharCodeToGlyphname( 0x3a8, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3a9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3a9() throws Exception {
+    public void test0x3a9() {
 
-        assertEquals("Omega", reader.mapCharCodeToGlyphname(0x3a9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Omega", reader.mapCharCodeToGlyphname( 0x3a9,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3aa
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3aa() throws Exception {
+    public void test0x3aa() {
 
-        assertEquals("Iotadieresis", reader.mapCharCodeToGlyphname(0x3aa, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Iotadieresis",
+                             reader.mapCharCodeToGlyphname( 0x3aa,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ab
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ab() throws Exception {
+    public void test0x3ab() {
 
-        assertEquals("Upsilondieresis", reader.mapCharCodeToGlyphname(0x3ab, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Upsilondieresis",
+                             reader.mapCharCodeToGlyphname( 0x3ab,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ac
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ac() throws Exception {
+    public void test0x3ac() {
 
-        assertEquals("alphatonos", reader.mapCharCodeToGlyphname(0x3ac, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "alphatonos",
+                             reader.mapCharCodeToGlyphname( 0x3ac,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ad
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ad() throws Exception {
+    public void test0x3ad() {
 
-        assertEquals("epsilontonos", reader.mapCharCodeToGlyphname(0x3ad, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "epsilontonos",
+                             reader.mapCharCodeToGlyphname( 0x3ad,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ae
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ae() throws Exception {
+    public void test0x3ae() {
 
-        assertEquals("etatonos", reader.mapCharCodeToGlyphname(0x3ae, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "etatonos",
+                             reader.mapCharCodeToGlyphname( 0x3ae,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3af
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3af() throws Exception {
+    public void test0x3af() {
 
-        assertEquals("iotatonos", reader.mapCharCodeToGlyphname(0x3af, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "iotatonos",
+                             reader.mapCharCodeToGlyphname( 0x3af,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b() throws Exception {
+    public void test0x3b() {
 
-        assertEquals("semicolon", reader.mapCharCodeToGlyphname(0x3b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "semicolon",
+                             reader.mapCharCodeToGlyphname( 0x3b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3b0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b0() throws Exception {
+    public void test0x3b0() {
 
-        assertEquals("upsilondieresistonos", reader.mapCharCodeToGlyphname(
-            0x3b0, 0, (short) 3, (short) 1));
+        Assert.assertEquals( "upsilondieresistonos",
+                             reader.mapCharCodeToGlyphname(
+                                 0x3b0, 0, (short) 3, (short) 1 ) );
     }
 
     /**
      * test 0x3b1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b1() throws Exception {
+    public void test0x3b1() {
 
-        assertEquals("alpha", reader.mapCharCodeToGlyphname(0x3b1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "alpha", reader.mapCharCodeToGlyphname( 0x3b1,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3b2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b2() throws Exception {
+    public void test0x3b2() {
 
-        assertEquals("beta", reader.mapCharCodeToGlyphname(0x3b2, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "beta",
+                             reader.mapCharCodeToGlyphname( 0x3b2, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3b3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b3() throws Exception {
+    public void test0x3b3() {
 
-        assertEquals("gamma", reader.mapCharCodeToGlyphname(0x3b3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "gamma", reader.mapCharCodeToGlyphname( 0x3b3,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3b4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b4() throws Exception {
+    public void test0x3b4() {
 
-        assertEquals("delta", reader.mapCharCodeToGlyphname(0x3b4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "delta", reader.mapCharCodeToGlyphname( 0x3b4,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3b5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b5() throws Exception {
+    public void test0x3b5() {
 
-        assertEquals("epsilon", reader.mapCharCodeToGlyphname(0x3b5, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "epsilon", reader.mapCharCodeToGlyphname( 0x3b5,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3b6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b6() throws Exception {
+    public void test0x3b6() {
 
-        assertEquals("zeta", reader.mapCharCodeToGlyphname(0x3b6, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "zeta",
+                             reader.mapCharCodeToGlyphname( 0x3b6, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3b7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b7() throws Exception {
+    public void test0x3b7() {
 
-        assertEquals("eta", reader.mapCharCodeToGlyphname(0x3b7, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "eta",
+                             reader.mapCharCodeToGlyphname( 0x3b7, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3b8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b8() throws Exception {
+    public void test0x3b8() {
 
-        assertEquals("theta", reader.mapCharCodeToGlyphname(0x3b8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "theta", reader.mapCharCodeToGlyphname( 0x3b8,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3b9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3b9() throws Exception {
+    public void test0x3b9() {
 
-        assertEquals("iota", reader.mapCharCodeToGlyphname(0x3b9, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "iota",
+                             reader.mapCharCodeToGlyphname( 0x3b9, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ba
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ba() throws Exception {
+    public void test0x3ba() {
 
-        assertEquals("kappa", reader.mapCharCodeToGlyphname(0x3ba, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "kappa", reader.mapCharCodeToGlyphname( 0x3ba,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3bb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3bb() throws Exception {
+    public void test0x3bb() {
 
-        assertEquals("lambda", reader.mapCharCodeToGlyphname(0x3bb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "lambda", reader.mapCharCodeToGlyphname( 0x3bb,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x3bc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3bc() throws Exception {
+    public void test0x3bc() {
 
-        assertEquals("mu", reader.mapCharCodeToGlyphname(0x3bc, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "mu",
+                             reader.mapCharCodeToGlyphname( 0x3bc, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3bd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3bd() throws Exception {
+    public void test0x3bd() {
 
-        assertEquals("nu", reader.mapCharCodeToGlyphname(0x3bd, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "nu",
+                             reader.mapCharCodeToGlyphname( 0x3bd, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3be
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3be() throws Exception {
+    public void test0x3be() {
 
-        assertEquals("xi", reader.mapCharCodeToGlyphname(0x3be, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "xi",
+                             reader.mapCharCodeToGlyphname( 0x3be, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3bf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3bf() throws Exception {
+    public void test0x3bf() {
 
-        assertEquals("omicron", reader.mapCharCodeToGlyphname(0x3bf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "omicron", reader.mapCharCodeToGlyphname( 0x3bf,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c() throws Exception {
+    public void test0x3c() {
 
-        assertEquals("less", reader.mapCharCodeToGlyphname(0x3c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "less",
+                             reader.mapCharCodeToGlyphname( 0x3c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c0() throws Exception {
+    public void test0x3c0() {
 
-        assertEquals("pi1", reader.mapCharCodeToGlyphname(0x3c0, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "pi1",
+                             reader.mapCharCodeToGlyphname( 0x3c0, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c1() throws Exception {
+    public void test0x3c1() {
 
-        assertEquals("rho", reader.mapCharCodeToGlyphname(0x3c1, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "rho",
+                             reader.mapCharCodeToGlyphname( 0x3c1, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c2() throws Exception {
+    public void test0x3c2() {
 
-        assertEquals("sigma1", reader.mapCharCodeToGlyphname(0x3c2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sigma1", reader.mapCharCodeToGlyphname( 0x3c2,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0x3c3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c3() throws Exception {
+    public void test0x3c3() {
 
-        assertEquals("sigma", reader.mapCharCodeToGlyphname(0x3c3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sigma", reader.mapCharCodeToGlyphname( 0x3c3,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3c4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c4() throws Exception {
+    public void test0x3c4() {
 
-        assertEquals("tau", reader.mapCharCodeToGlyphname(0x3c4, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "tau",
+                             reader.mapCharCodeToGlyphname( 0x3c4, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c5() throws Exception {
+    public void test0x3c5() {
 
-        assertEquals("upsilon", reader.mapCharCodeToGlyphname(0x3c5, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "upsilon", reader.mapCharCodeToGlyphname( 0x3c5,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3c6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c6() throws Exception {
+    public void test0x3c6() {
 
-        assertEquals("phi", reader.mapCharCodeToGlyphname(0x3c6, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "phi",
+                             reader.mapCharCodeToGlyphname( 0x3c6, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c7() throws Exception {
+    public void test0x3c7() {
 
-        assertEquals("chi", reader.mapCharCodeToGlyphname(0x3c7, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "chi",
+                             reader.mapCharCodeToGlyphname( 0x3c7, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c8() throws Exception {
+    public void test0x3c8() {
 
-        assertEquals("psi", reader.mapCharCodeToGlyphname(0x3c8, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "psi",
+                             reader.mapCharCodeToGlyphname( 0x3c8, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3c9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3c9() throws Exception {
+    public void test0x3c9() {
 
-        assertEquals("omega", reader.mapCharCodeToGlyphname(0x3c9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "omega", reader.mapCharCodeToGlyphname( 0x3c9,
+                                                                     0,
+                                                                     (short) 3,
+                                                                     (short) 1 ) );
     }
 
     /**
      * test 0x3ca
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ca() throws Exception {
+    public void test0x3ca() {
 
-        assertEquals("iotadieresis", reader.mapCharCodeToGlyphname(0x3ca, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "iotadieresis",
+                             reader.mapCharCodeToGlyphname( 0x3ca,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3cb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3cb() throws Exception {
+    public void test0x3cb() {
 
-        assertEquals("upsilondieresis", reader.mapCharCodeToGlyphname(0x3cb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "upsilondieresis",
+                             reader.mapCharCodeToGlyphname( 0x3cb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3cc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3cc() throws Exception {
+    public void test0x3cc() {
 
-        assertEquals("omicrontonos", reader.mapCharCodeToGlyphname(0x3cc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "omicrontonos",
+                             reader.mapCharCodeToGlyphname( 0x3cc,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3cd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3cd() throws Exception {
+    public void test0x3cd() {
 
-        assertEquals("upsilontonos", reader.mapCharCodeToGlyphname(0x3cd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "upsilontonos",
+                             reader.mapCharCodeToGlyphname( 0x3cd,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3ce
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3ce() throws Exception {
+    public void test0x3ce() {
 
-        assertEquals("omegatonos", reader.mapCharCodeToGlyphname(0x3ce, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "omegatonos",
+                             reader.mapCharCodeToGlyphname( 0x3ce,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3d() throws Exception {
+    public void test0x3d() {
 
-        assertEquals("equal", reader.mapCharCodeToGlyphname(0x3d, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "equal",
+                             reader.mapCharCodeToGlyphname( 0x3d, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x3e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3e() throws Exception {
+    public void test0x3e() {
 
-        assertEquals("greater", reader.mapCharCodeToGlyphname(0x3e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "greater", reader.mapCharCodeToGlyphname( 0x3e,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0x3f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x3f() throws Exception {
+    public void test0x3f() {
 
-        assertEquals("question", reader.mapCharCodeToGlyphname(0x3f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "question", reader.mapCharCodeToGlyphname( 0x3f,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0x40
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40() throws Exception {
+    public void test0x40() {
 
-        assertEquals("at", reader.mapCharCodeToGlyphname(0x40, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "at",
+                             reader.mapCharCodeToGlyphname( 0x40, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x401
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x401() throws Exception {
+    public void test0x401() {
 
-        assertEquals("afii10023", reader.mapCharCodeToGlyphname(0x401, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10023",
+                             reader.mapCharCodeToGlyphname( 0x401,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x402
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x402() throws Exception {
+    public void test0x402() {
 
-        assertEquals("afii10051", reader.mapCharCodeToGlyphname(0x402, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10051",
+                             reader.mapCharCodeToGlyphname( 0x402,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x403
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x403() throws Exception {
+    public void test0x403() {
 
-        assertEquals("afii10052", reader.mapCharCodeToGlyphname(0x403, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10052",
+                             reader.mapCharCodeToGlyphname( 0x403,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x404
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x404() throws Exception {
+    public void test0x404() {
 
-        assertEquals("afii10053", reader.mapCharCodeToGlyphname(0x404, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10053",
+                             reader.mapCharCodeToGlyphname( 0x404,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x405
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x405() throws Exception {
+    public void test0x405() {
 
-        assertEquals("afii10054", reader.mapCharCodeToGlyphname(0x405, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10054",
+                             reader.mapCharCodeToGlyphname( 0x405,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x406
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x406() throws Exception {
+    public void test0x406() {
 
-        assertEquals("afii10055", reader.mapCharCodeToGlyphname(0x406, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10055",
+                             reader.mapCharCodeToGlyphname( 0x406,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x407
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x407() throws Exception {
+    public void test0x407() {
 
-        assertEquals("afii10056", reader.mapCharCodeToGlyphname(0x407, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10056",
+                             reader.mapCharCodeToGlyphname( 0x407,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x408
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x408() throws Exception {
+    public void test0x408() {
 
-        assertEquals("afii10057", reader.mapCharCodeToGlyphname(0x408, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10057",
+                             reader.mapCharCodeToGlyphname( 0x408,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x409
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x409() throws Exception {
+    public void test0x409() {
 
-        assertEquals("afii10058", reader.mapCharCodeToGlyphname(0x409, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10058",
+                             reader.mapCharCodeToGlyphname( 0x409,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x40a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40a() throws Exception {
+    public void test0x40a() {
 
-        assertEquals("afii10059", reader.mapCharCodeToGlyphname(0x40a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10059",
+                             reader.mapCharCodeToGlyphname( 0x40a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x40b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40b() throws Exception {
+    public void test0x40b() {
 
-        assertEquals("afii10060", reader.mapCharCodeToGlyphname(0x40b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10060",
+                             reader.mapCharCodeToGlyphname( 0x40b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x40c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40c() throws Exception {
+    public void test0x40c() {
 
-        assertEquals("afii10061", reader.mapCharCodeToGlyphname(0x40c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10061",
+                             reader.mapCharCodeToGlyphname( 0x40c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x40e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40e() throws Exception {
+    public void test0x40e() {
 
-        assertEquals("afii10062", reader.mapCharCodeToGlyphname(0x40e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10062",
+                             reader.mapCharCodeToGlyphname( 0x40e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x40f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x40f() throws Exception {
+    public void test0x40f() {
 
-        assertEquals("afii10145", reader.mapCharCodeToGlyphname(0x40f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10145",
+                             reader.mapCharCodeToGlyphname( 0x40f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41() throws Exception {
+    public void test0x41() {
 
-        assertEquals("A", reader.mapCharCodeToGlyphname(0x41, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "A",
+                             reader.mapCharCodeToGlyphname( 0x41, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x410
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x410() throws Exception {
+    public void test0x410() {
 
-        assertEquals("afii10017", reader.mapCharCodeToGlyphname(0x410, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10017",
+                             reader.mapCharCodeToGlyphname( 0x410,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x411
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x411() throws Exception {
+    public void test0x411() {
 
-        assertEquals("afii10018", reader.mapCharCodeToGlyphname(0x411, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10018",
+                             reader.mapCharCodeToGlyphname( 0x411,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x412
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x412() throws Exception {
+    public void test0x412() {
 
-        assertEquals("afii10019", reader.mapCharCodeToGlyphname(0x412, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10019",
+                             reader.mapCharCodeToGlyphname( 0x412,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x413
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x413() throws Exception {
+    public void test0x413() {
 
-        assertEquals("afii10020", reader.mapCharCodeToGlyphname(0x413, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10020",
+                             reader.mapCharCodeToGlyphname( 0x413,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x414
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x414() throws Exception {
+    public void test0x414() {
 
-        assertEquals("afii10021", reader.mapCharCodeToGlyphname(0x414, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10021",
+                             reader.mapCharCodeToGlyphname( 0x414,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x415
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x415() throws Exception {
+    public void test0x415() {
 
-        assertEquals("afii10022", reader.mapCharCodeToGlyphname(0x415, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10022",
+                             reader.mapCharCodeToGlyphname( 0x415,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x416
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x416() throws Exception {
+    public void test0x416() {
 
-        assertEquals("afii10024", reader.mapCharCodeToGlyphname(0x416, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10024",
+                             reader.mapCharCodeToGlyphname( 0x416,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x417
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x417() throws Exception {
+    public void test0x417() {
 
-        assertEquals("afii10025", reader.mapCharCodeToGlyphname(0x417, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10025",
+                             reader.mapCharCodeToGlyphname( 0x417,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x418
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x418() throws Exception {
+    public void test0x418() {
 
-        assertEquals("afii10026", reader.mapCharCodeToGlyphname(0x418, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10026",
+                             reader.mapCharCodeToGlyphname( 0x418,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x419
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x419() throws Exception {
+    public void test0x419() {
 
-        assertEquals("afii10027", reader.mapCharCodeToGlyphname(0x419, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10027",
+                             reader.mapCharCodeToGlyphname( 0x419,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41a() throws Exception {
+    public void test0x41a() {
 
-        assertEquals("afii10028", reader.mapCharCodeToGlyphname(0x41a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10028",
+                             reader.mapCharCodeToGlyphname( 0x41a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41b() throws Exception {
+    public void test0x41b() {
 
-        assertEquals("afii10029", reader.mapCharCodeToGlyphname(0x41b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10029",
+                             reader.mapCharCodeToGlyphname( 0x41b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41c() throws Exception {
+    public void test0x41c() {
 
-        assertEquals("afii10030", reader.mapCharCodeToGlyphname(0x41c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10030",
+                             reader.mapCharCodeToGlyphname( 0x41c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41d() throws Exception {
+    public void test0x41d() {
 
-        assertEquals("afii10031", reader.mapCharCodeToGlyphname(0x41d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10031",
+                             reader.mapCharCodeToGlyphname( 0x41d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41e() throws Exception {
+    public void test0x41e() {
 
-        assertEquals("afii10032", reader.mapCharCodeToGlyphname(0x41e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10032",
+                             reader.mapCharCodeToGlyphname( 0x41e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x41f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x41f() throws Exception {
+    public void test0x41f() {
 
-        assertEquals("afii10033", reader.mapCharCodeToGlyphname(0x41f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10033",
+                             reader.mapCharCodeToGlyphname( 0x41f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42() throws Exception {
+    public void test0x42() {
 
-        assertEquals("B", reader.mapCharCodeToGlyphname(0x42, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "B",
+                             reader.mapCharCodeToGlyphname( 0x42, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x420
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x420() throws Exception {
+    public void test0x420() {
 
-        assertEquals("afii10034", reader.mapCharCodeToGlyphname(0x420, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10034",
+                             reader.mapCharCodeToGlyphname( 0x420,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x421
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x421() throws Exception {
+    public void test0x421() {
 
-        assertEquals("afii10035", reader.mapCharCodeToGlyphname(0x421, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10035",
+                             reader.mapCharCodeToGlyphname( 0x421,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x422
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x422() throws Exception {
+    public void test0x422() {
 
-        assertEquals("afii10036", reader.mapCharCodeToGlyphname(0x422, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10036",
+                             reader.mapCharCodeToGlyphname( 0x422,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x423
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x423() throws Exception {
+    public void test0x423() {
 
-        assertEquals("afii10037", reader.mapCharCodeToGlyphname(0x423, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10037",
+                             reader.mapCharCodeToGlyphname( 0x423,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x424
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x424() throws Exception {
+    public void test0x424() {
 
-        assertEquals("afii10038", reader.mapCharCodeToGlyphname(0x424, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10038",
+                             reader.mapCharCodeToGlyphname( 0x424,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x425
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x425() throws Exception {
+    public void test0x425() {
 
-        assertEquals("afii10039", reader.mapCharCodeToGlyphname(0x425, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10039",
+                             reader.mapCharCodeToGlyphname( 0x425,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x426
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x426() throws Exception {
+    public void test0x426() {
 
-        assertEquals("afii10040", reader.mapCharCodeToGlyphname(0x426, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10040",
+                             reader.mapCharCodeToGlyphname( 0x426,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x427
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x427() throws Exception {
+    public void test0x427() {
 
-        assertEquals("afii10041", reader.mapCharCodeToGlyphname(0x427, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10041",
+                             reader.mapCharCodeToGlyphname( 0x427,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x428
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x428() throws Exception {
+    public void test0x428() {
 
-        assertEquals("afii10042", reader.mapCharCodeToGlyphname(0x428, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10042",
+                             reader.mapCharCodeToGlyphname( 0x428,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x429
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x429() throws Exception {
+    public void test0x429() {
 
-        assertEquals("afii10043", reader.mapCharCodeToGlyphname(0x429, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10043",
+                             reader.mapCharCodeToGlyphname( 0x429,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42a() throws Exception {
+    public void test0x42a() {
 
-        assertEquals("afii10044", reader.mapCharCodeToGlyphname(0x42a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10044",
+                             reader.mapCharCodeToGlyphname( 0x42a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42b() throws Exception {
+    public void test0x42b() {
 
-        assertEquals("afii10045", reader.mapCharCodeToGlyphname(0x42b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10045",
+                             reader.mapCharCodeToGlyphname( 0x42b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42c() throws Exception {
+    public void test0x42c() {
 
-        assertEquals("afii10046", reader.mapCharCodeToGlyphname(0x42c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10046",
+                             reader.mapCharCodeToGlyphname( 0x42c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42d() throws Exception {
+    public void test0x42d() {
 
-        assertEquals("afii10047", reader.mapCharCodeToGlyphname(0x42d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10047",
+                             reader.mapCharCodeToGlyphname( 0x42d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42e() throws Exception {
+    public void test0x42e() {
 
-        assertEquals("afii10048", reader.mapCharCodeToGlyphname(0x42e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10048",
+                             reader.mapCharCodeToGlyphname( 0x42e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x42f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x42f() throws Exception {
+    public void test0x42f() {
 
-        assertEquals("afii10049", reader.mapCharCodeToGlyphname(0x42f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10049",
+                             reader.mapCharCodeToGlyphname( 0x42f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43() throws Exception {
+    public void test0x43() {
 
-        assertEquals("C", reader.mapCharCodeToGlyphname(0x43, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "C",
+                             reader.mapCharCodeToGlyphname( 0x43, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x430
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x430() throws Exception {
+    public void test0x430() {
 
-        assertEquals("afii10065", reader.mapCharCodeToGlyphname(0x430, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10065",
+                             reader.mapCharCodeToGlyphname( 0x430,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x431
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x431() throws Exception {
+    public void test0x431() {
 
-        assertEquals("afii10066", reader.mapCharCodeToGlyphname(0x431, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10066",
+                             reader.mapCharCodeToGlyphname( 0x431,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x432
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x432() throws Exception {
+    public void test0x432() {
 
-        assertEquals("afii10067", reader.mapCharCodeToGlyphname(0x432, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10067",
+                             reader.mapCharCodeToGlyphname( 0x432,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x433
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x433() throws Exception {
+    public void test0x433() {
 
-        assertEquals("afii10068", reader.mapCharCodeToGlyphname(0x433, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10068",
+                             reader.mapCharCodeToGlyphname( 0x433,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x434
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x434() throws Exception {
+    public void test0x434() {
 
-        assertEquals("afii10069", reader.mapCharCodeToGlyphname(0x434, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10069",
+                             reader.mapCharCodeToGlyphname( 0x434,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x435
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x435() throws Exception {
+    public void test0x435() {
 
-        assertEquals("afii10070", reader.mapCharCodeToGlyphname(0x435, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10070",
+                             reader.mapCharCodeToGlyphname( 0x435,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x436
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x436() throws Exception {
+    public void test0x436() {
 
-        assertEquals("afii10072", reader.mapCharCodeToGlyphname(0x436, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10072",
+                             reader.mapCharCodeToGlyphname( 0x436,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x437
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x437() throws Exception {
+    public void test0x437() {
 
-        assertEquals("afii10073", reader.mapCharCodeToGlyphname(0x437, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10073",
+                             reader.mapCharCodeToGlyphname( 0x437,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x438
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x438() throws Exception {
+    public void test0x438() {
 
-        assertEquals("afii10074", reader.mapCharCodeToGlyphname(0x438, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10074",
+                             reader.mapCharCodeToGlyphname( 0x438,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x439
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x439() throws Exception {
+    public void test0x439() {
 
-        assertEquals("afii10075", reader.mapCharCodeToGlyphname(0x439, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10075",
+                             reader.mapCharCodeToGlyphname( 0x439,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43a() throws Exception {
+    public void test0x43a() {
 
-        assertEquals("afii10076", reader.mapCharCodeToGlyphname(0x43a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10076",
+                             reader.mapCharCodeToGlyphname( 0x43a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43b() throws Exception {
+    public void test0x43b() {
 
-        assertEquals("afii10077", reader.mapCharCodeToGlyphname(0x43b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10077",
+                             reader.mapCharCodeToGlyphname( 0x43b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43c() throws Exception {
+    public void test0x43c() {
 
-        assertEquals("afii10078", reader.mapCharCodeToGlyphname(0x43c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10078",
+                             reader.mapCharCodeToGlyphname( 0x43c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43d() throws Exception {
+    public void test0x43d() {
 
-        assertEquals("afii10079", reader.mapCharCodeToGlyphname(0x43d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10079",
+                             reader.mapCharCodeToGlyphname( 0x43d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43e() throws Exception {
+    public void test0x43e() {
 
-        assertEquals("afii10080", reader.mapCharCodeToGlyphname(0x43e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10080",
+                             reader.mapCharCodeToGlyphname( 0x43e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x43f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x43f() throws Exception {
+    public void test0x43f() {
 
-        assertEquals("afii10081", reader.mapCharCodeToGlyphname(0x43f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10081",
+                             reader.mapCharCodeToGlyphname( 0x43f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44() throws Exception {
+    public void test0x44() {
 
-        assertEquals("D", reader.mapCharCodeToGlyphname(0x44, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "D",
+                             reader.mapCharCodeToGlyphname( 0x44, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x440
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x440() throws Exception {
+    public void test0x440() {
 
-        assertEquals("afii10082", reader.mapCharCodeToGlyphname(0x440, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10082",
+                             reader.mapCharCodeToGlyphname( 0x440,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x441
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x441() throws Exception {
+    public void test0x441() {
 
-        assertEquals("afii10083", reader.mapCharCodeToGlyphname(0x441, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10083",
+                             reader.mapCharCodeToGlyphname( 0x441,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x442
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x442() throws Exception {
+    public void test0x442() {
 
-        assertEquals("afii10084", reader.mapCharCodeToGlyphname(0x442, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10084",
+                             reader.mapCharCodeToGlyphname( 0x442,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x443
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x443() throws Exception {
+    public void test0x443() {
 
-        assertEquals("afii10085", reader.mapCharCodeToGlyphname(0x443, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10085",
+                             reader.mapCharCodeToGlyphname( 0x443,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x444
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x444() throws Exception {
+    public void test0x444() {
 
-        assertEquals("afii10086", reader.mapCharCodeToGlyphname(0x444, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10086",
+                             reader.mapCharCodeToGlyphname( 0x444,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x445
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x445() throws Exception {
+    public void test0x445() {
 
-        assertEquals("afii10087", reader.mapCharCodeToGlyphname(0x445, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10087",
+                             reader.mapCharCodeToGlyphname( 0x445,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x446
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x446() throws Exception {
+    public void test0x446() {
 
-        assertEquals("afii10088", reader.mapCharCodeToGlyphname(0x446, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10088",
+                             reader.mapCharCodeToGlyphname( 0x446,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x447
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x447() throws Exception {
+    public void test0x447() {
 
-        assertEquals("afii10089", reader.mapCharCodeToGlyphname(0x447, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10089",
+                             reader.mapCharCodeToGlyphname( 0x447,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x448
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x448() throws Exception {
+    public void test0x448() {
 
-        assertEquals("afii10090", reader.mapCharCodeToGlyphname(0x448, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10090",
+                             reader.mapCharCodeToGlyphname( 0x448,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x449
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x449() throws Exception {
+    public void test0x449() {
 
-        assertEquals("afii10091", reader.mapCharCodeToGlyphname(0x449, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10091",
+                             reader.mapCharCodeToGlyphname( 0x449,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44a() throws Exception {
+    public void test0x44a() {
 
-        assertEquals("afii10092", reader.mapCharCodeToGlyphname(0x44a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10092",
+                             reader.mapCharCodeToGlyphname( 0x44a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44b() throws Exception {
+    public void test0x44b() {
 
-        assertEquals("afii10093", reader.mapCharCodeToGlyphname(0x44b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10093",
+                             reader.mapCharCodeToGlyphname( 0x44b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44c() throws Exception {
+    public void test0x44c() {
 
-        assertEquals("afii10094", reader.mapCharCodeToGlyphname(0x44c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10094",
+                             reader.mapCharCodeToGlyphname( 0x44c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44d() throws Exception {
+    public void test0x44d() {
 
-        assertEquals("afii10095", reader.mapCharCodeToGlyphname(0x44d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10095",
+                             reader.mapCharCodeToGlyphname( 0x44d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44e() throws Exception {
+    public void test0x44e() {
 
-        assertEquals("afii10096", reader.mapCharCodeToGlyphname(0x44e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10096",
+                             reader.mapCharCodeToGlyphname( 0x44e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x44f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x44f() throws Exception {
+    public void test0x44f() {
 
-        assertEquals("afii10097", reader.mapCharCodeToGlyphname(0x44f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10097",
+                             reader.mapCharCodeToGlyphname( 0x44f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45() throws Exception {
+    public void test0x45() {
 
-        assertEquals("E", reader.mapCharCodeToGlyphname(0x45, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "E",
+                             reader.mapCharCodeToGlyphname( 0x45, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x451
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x451() throws Exception {
+    public void test0x451() {
 
-        assertEquals("afii10071", reader.mapCharCodeToGlyphname(0x451, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10071",
+                             reader.mapCharCodeToGlyphname( 0x451,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x452
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x452() throws Exception {
+    public void test0x452() {
 
-        assertEquals("afii10099", reader.mapCharCodeToGlyphname(0x452, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10099",
+                             reader.mapCharCodeToGlyphname( 0x452,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x453
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x453() throws Exception {
+    public void test0x453() {
 
-        assertEquals("afii10100", reader.mapCharCodeToGlyphname(0x453, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10100",
+                             reader.mapCharCodeToGlyphname( 0x453,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x454
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x454() throws Exception {
+    public void test0x454() {
 
-        assertEquals("afii10101", reader.mapCharCodeToGlyphname(0x454, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10101",
+                             reader.mapCharCodeToGlyphname( 0x454,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x455
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x455() throws Exception {
+    public void test0x455() {
 
-        assertEquals("afii10102", reader.mapCharCodeToGlyphname(0x455, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10102",
+                             reader.mapCharCodeToGlyphname( 0x455,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x456
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x456() throws Exception {
+    public void test0x456() {
 
-        assertEquals("afii10103", reader.mapCharCodeToGlyphname(0x456, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10103",
+                             reader.mapCharCodeToGlyphname( 0x456,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x457
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x457() throws Exception {
+    public void test0x457() {
 
-        assertEquals("afii10104", reader.mapCharCodeToGlyphname(0x457, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10104",
+                             reader.mapCharCodeToGlyphname( 0x457,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x458
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x458() throws Exception {
+    public void test0x458() {
 
-        assertEquals("afii10105", reader.mapCharCodeToGlyphname(0x458, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10105",
+                             reader.mapCharCodeToGlyphname( 0x458,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x459
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x459() throws Exception {
+    public void test0x459() {
 
-        assertEquals("afii10106", reader.mapCharCodeToGlyphname(0x459, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10106",
+                             reader.mapCharCodeToGlyphname( 0x459,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45a() throws Exception {
+    public void test0x45a() {
 
-        assertEquals("afii10107", reader.mapCharCodeToGlyphname(0x45a, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10107",
+                             reader.mapCharCodeToGlyphname( 0x45a,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45b() throws Exception {
+    public void test0x45b() {
 
-        assertEquals("afii10108", reader.mapCharCodeToGlyphname(0x45b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10108",
+                             reader.mapCharCodeToGlyphname( 0x45b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45c() throws Exception {
+    public void test0x45c() {
 
-        assertEquals("afii10109", reader.mapCharCodeToGlyphname(0x45c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10109",
+                             reader.mapCharCodeToGlyphname( 0x45c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45e() throws Exception {
+    public void test0x45e() {
 
-        assertEquals("afii10110", reader.mapCharCodeToGlyphname(0x45e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10110",
+                             reader.mapCharCodeToGlyphname( 0x45e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x45f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x45f() throws Exception {
+    public void test0x45f() {
 
-        assertEquals("afii10193", reader.mapCharCodeToGlyphname(0x45f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10193",
+                             reader.mapCharCodeToGlyphname( 0x45f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x46
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x46() throws Exception {
+    public void test0x46() {
 
-        assertEquals("F", reader.mapCharCodeToGlyphname(0x46, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "F",
+                             reader.mapCharCodeToGlyphname( 0x46, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x47
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x47() throws Exception {
+    public void test0x47() {
 
-        assertEquals("G", reader.mapCharCodeToGlyphname(0x47, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "G",
+                             reader.mapCharCodeToGlyphname( 0x47, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x48
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x48() throws Exception {
+    public void test0x48() {
 
-        assertEquals("H", reader.mapCharCodeToGlyphname(0x48, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "H",
+                             reader.mapCharCodeToGlyphname( 0x48, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x49
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x49() throws Exception {
+    public void test0x49() {
 
-        assertEquals("I", reader.mapCharCodeToGlyphname(0x49, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "I",
+                             reader.mapCharCodeToGlyphname( 0x49, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x490
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x490() throws Exception {
+    public void test0x490() {
 
-        assertEquals("afii10050", reader.mapCharCodeToGlyphname(0x490, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10050",
+                             reader.mapCharCodeToGlyphname( 0x490,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x491
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x491() throws Exception {
+    public void test0x491() {
 
-        assertEquals("afii10098", reader.mapCharCodeToGlyphname(0x491, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "afii10098",
+                             reader.mapCharCodeToGlyphname( 0x491,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4a() throws Exception {
+    public void test0x4a() {
 
-        assertEquals("J", reader.mapCharCodeToGlyphname(0x4a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "J",
+                             reader.mapCharCodeToGlyphname( 0x4a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4b() throws Exception {
+    public void test0x4b() {
 
-        assertEquals("K", reader.mapCharCodeToGlyphname(0x4b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "K",
+                             reader.mapCharCodeToGlyphname( 0x4b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4c() throws Exception {
+    public void test0x4c() {
 
-        assertEquals("L", reader.mapCharCodeToGlyphname(0x4c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "L",
+                             reader.mapCharCodeToGlyphname( 0x4c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4d() throws Exception {
+    public void test0x4d() {
 
-        assertEquals("M", reader.mapCharCodeToGlyphname(0x4d, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "M",
+                             reader.mapCharCodeToGlyphname( 0x4d, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4e() throws Exception {
+    public void test0x4e() {
 
-        assertEquals("N", reader.mapCharCodeToGlyphname(0x4e, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "N",
+                             reader.mapCharCodeToGlyphname( 0x4e, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x4f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x4f() throws Exception {
+    public void test0x4f() {
 
-        assertEquals("O", reader.mapCharCodeToGlyphname(0x4f, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "O",
+                             reader.mapCharCodeToGlyphname( 0x4f, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x50
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x50() throws Exception {
+    public void test0x50() {
 
-        assertEquals("P", reader.mapCharCodeToGlyphname(0x50, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "P",
+                             reader.mapCharCodeToGlyphname( 0x50, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x51
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x51() throws Exception {
+    public void test0x51() {
 
-        assertEquals("Q", reader.mapCharCodeToGlyphname(0x51, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Q",
+                             reader.mapCharCodeToGlyphname( 0x51, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x52
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x52() throws Exception {
+    public void test0x52() {
 
-        assertEquals("R", reader.mapCharCodeToGlyphname(0x52, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "R",
+                             reader.mapCharCodeToGlyphname( 0x52, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x53
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x53() throws Exception {
+    public void test0x53() {
 
-        assertEquals("S", reader.mapCharCodeToGlyphname(0x53, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "S",
+                             reader.mapCharCodeToGlyphname( 0x53, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x54
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x54() throws Exception {
+    public void test0x54() {
 
-        assertEquals("T", reader.mapCharCodeToGlyphname(0x54, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "T",
+                             reader.mapCharCodeToGlyphname( 0x54, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x55
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x55() throws Exception {
+    public void test0x55() {
 
-        assertEquals("U", reader.mapCharCodeToGlyphname(0x55, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "U",
+                             reader.mapCharCodeToGlyphname( 0x55, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x56
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x56() throws Exception {
+    public void test0x56() {
 
-        assertEquals("V", reader.mapCharCodeToGlyphname(0x56, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "V",
+                             reader.mapCharCodeToGlyphname( 0x56, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x57
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x57() throws Exception {
+    public void test0x57() {
 
-        assertEquals("W", reader.mapCharCodeToGlyphname(0x57, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "W",
+                             reader.mapCharCodeToGlyphname( 0x57, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x58
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x58() throws Exception {
+    public void test0x58() {
 
-        assertEquals("X", reader.mapCharCodeToGlyphname(0x58, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "X",
+                             reader.mapCharCodeToGlyphname( 0x58, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x59
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x59() throws Exception {
+    public void test0x59() {
 
-        assertEquals("Y", reader.mapCharCodeToGlyphname(0x59, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Y",
+                             reader.mapCharCodeToGlyphname( 0x59, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5a() throws Exception {
+    public void test0x5a() {
 
-        assertEquals("Z", reader.mapCharCodeToGlyphname(0x5a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Z",
+                             reader.mapCharCodeToGlyphname( 0x5a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5b() throws Exception {
+    public void test0x5b() {
 
-        assertEquals("bracketleft", reader.mapCharCodeToGlyphname(0x5b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "bracketleft",
+                             reader.mapCharCodeToGlyphname( 0x5b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5c() throws Exception {
+    public void test0x5c() {
 
-        assertEquals("backslash", reader.mapCharCodeToGlyphname(0x5c, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "backslash",
+                             reader.mapCharCodeToGlyphname( 0x5c,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5d() throws Exception {
+    public void test0x5d() {
 
-        assertEquals("bracketright", reader.mapCharCodeToGlyphname(0x5d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "bracketright",
+                             reader.mapCharCodeToGlyphname( 0x5d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5e() throws Exception {
+    public void test0x5e() {
 
-        assertEquals("asciicircum", reader.mapCharCodeToGlyphname(0x5e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "asciicircum",
+                             reader.mapCharCodeToGlyphname( 0x5e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x5f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x5f() throws Exception {
+    public void test0x5f() {
 
-        assertEquals("underscore", reader.mapCharCodeToGlyphname(0x5f, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "underscore",
+                             reader.mapCharCodeToGlyphname( 0x5f,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x60
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x60() throws Exception {
+    public void test0x60() {
 
-        assertEquals("grave", reader.mapCharCodeToGlyphname(0x60, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "grave",
+                             reader.mapCharCodeToGlyphname( 0x60, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x61
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x61() throws Exception {
+    public void test0x61() {
 
-        assertEquals("a", reader.mapCharCodeToGlyphname(0x61, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "a",
+                             reader.mapCharCodeToGlyphname( 0x61, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x62
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x62() throws Exception {
+    public void test0x62() {
 
-        assertEquals("b", reader.mapCharCodeToGlyphname(0x62, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "b",
+                             reader.mapCharCodeToGlyphname( 0x62, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x63
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x63() throws Exception {
+    public void test0x63() {
 
-        assertEquals("c", reader.mapCharCodeToGlyphname(0x63, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "c",
+                             reader.mapCharCodeToGlyphname( 0x63, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x64
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x64() throws Exception {
+    public void test0x64() {
 
-        assertEquals("d", reader.mapCharCodeToGlyphname(0x64, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "d",
+                             reader.mapCharCodeToGlyphname( 0x64, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x65
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x65() throws Exception {
+    public void test0x65() {
 
-        assertEquals("e", reader.mapCharCodeToGlyphname(0x65, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "e",
+                             reader.mapCharCodeToGlyphname( 0x65, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x66
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x66() throws Exception {
+    public void test0x66() {
 
-        assertEquals("f", reader.mapCharCodeToGlyphname(0x66, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "f",
+                             reader.mapCharCodeToGlyphname( 0x66, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x67
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x67() throws Exception {
+    public void test0x67() {
 
-        assertEquals("g", reader.mapCharCodeToGlyphname(0x67, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "g",
+                             reader.mapCharCodeToGlyphname( 0x67, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x68
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x68() throws Exception {
+    public void test0x68() {
 
-        assertEquals("h", reader.mapCharCodeToGlyphname(0x68, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "h",
+                             reader.mapCharCodeToGlyphname( 0x68, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x69
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x69() throws Exception {
+    public void test0x69() {
 
-        assertEquals("i", reader.mapCharCodeToGlyphname(0x69, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "i",
+                             reader.mapCharCodeToGlyphname( 0x69, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6a() throws Exception {
+    public void test0x6a() {
 
-        assertEquals("j", reader.mapCharCodeToGlyphname(0x6a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "j",
+                             reader.mapCharCodeToGlyphname( 0x6a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6b() throws Exception {
+    public void test0x6b() {
 
-        assertEquals("k", reader.mapCharCodeToGlyphname(0x6b, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "k",
+                             reader.mapCharCodeToGlyphname( 0x6b, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6c() throws Exception {
+    public void test0x6c() {
 
-        assertEquals("l", reader.mapCharCodeToGlyphname(0x6c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "l",
+                             reader.mapCharCodeToGlyphname( 0x6c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6d() throws Exception {
+    public void test0x6d() {
 
-        assertEquals("m", reader.mapCharCodeToGlyphname(0x6d, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "m",
+                             reader.mapCharCodeToGlyphname( 0x6d, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6e() throws Exception {
+    public void test0x6e() {
 
-        assertEquals("n", reader.mapCharCodeToGlyphname(0x6e, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "n",
+                             reader.mapCharCodeToGlyphname( 0x6e, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x6f
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x6f() throws Exception {
+    public void test0x6f() {
 
-        assertEquals("o", reader.mapCharCodeToGlyphname(0x6f, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "o",
+                             reader.mapCharCodeToGlyphname( 0x6f, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x70
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x70() throws Exception {
+    public void test0x70() {
 
-        assertEquals("p", reader.mapCharCodeToGlyphname(0x70, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "p",
+                             reader.mapCharCodeToGlyphname( 0x70, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x71
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x71() throws Exception {
+    public void test0x71() {
 
-        assertEquals("q", reader.mapCharCodeToGlyphname(0x71, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "q",
+                             reader.mapCharCodeToGlyphname( 0x71, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x72
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x72() throws Exception {
+    public void test0x72() {
 
-        assertEquals("r", reader.mapCharCodeToGlyphname(0x72, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "r",
+                             reader.mapCharCodeToGlyphname( 0x72, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x73
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x73() throws Exception {
+    public void test0x73() {
 
-        assertEquals("s", reader.mapCharCodeToGlyphname(0x73, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "s",
+                             reader.mapCharCodeToGlyphname( 0x73, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x74
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x74() throws Exception {
+    public void test0x74() {
 
-        assertEquals("t", reader.mapCharCodeToGlyphname(0x74, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "t",
+                             reader.mapCharCodeToGlyphname( 0x74, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x75
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x75() throws Exception {
+    public void test0x75() {
 
-        assertEquals("u", reader.mapCharCodeToGlyphname(0x75, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "u",
+                             reader.mapCharCodeToGlyphname( 0x75, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x76
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x76() throws Exception {
+    public void test0x76() {
 
-        assertEquals("v", reader.mapCharCodeToGlyphname(0x76, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "v",
+                             reader.mapCharCodeToGlyphname( 0x76, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x77
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x77() throws Exception {
+    public void test0x77() {
 
-        assertEquals("w", reader.mapCharCodeToGlyphname(0x77, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "w",
+                             reader.mapCharCodeToGlyphname( 0x77, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x78
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x78() throws Exception {
+    public void test0x78() {
 
-        assertEquals("x", reader.mapCharCodeToGlyphname(0x78, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "x",
+                             reader.mapCharCodeToGlyphname( 0x78, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x79
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x79() throws Exception {
+    public void test0x79() {
 
-        assertEquals("y", reader.mapCharCodeToGlyphname(0x79, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "y",
+                             reader.mapCharCodeToGlyphname( 0x79, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x7a
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x7a() throws Exception {
+    public void test0x7a() {
 
-        assertEquals("z", reader.mapCharCodeToGlyphname(0x7a, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "z",
+                             reader.mapCharCodeToGlyphname( 0x7a, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x7b
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x7b() throws Exception {
+    public void test0x7b() {
 
-        assertEquals("braceleft", reader.mapCharCodeToGlyphname(0x7b, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "braceleft",
+                             reader.mapCharCodeToGlyphname( 0x7b,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x7c
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x7c() throws Exception {
+    public void test0x7c() {
 
-        assertEquals("bar", reader.mapCharCodeToGlyphname(0x7c, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "bar",
+                             reader.mapCharCodeToGlyphname( 0x7c, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x7d
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x7d() throws Exception {
+    public void test0x7d() {
 
-        assertEquals("braceright", reader.mapCharCodeToGlyphname(0x7d, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "braceright",
+                             reader.mapCharCodeToGlyphname( 0x7d,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0x7e
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0x7e() throws Exception {
+    public void test0x7e() {
 
-        assertEquals("asciitilde", reader.mapCharCodeToGlyphname(0x7e, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "asciitilde",
+                             reader.mapCharCodeToGlyphname( 0x7e,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xa0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa0() throws Exception {
+    public void test0xa0() {
 
-        assertEquals("nbspace", reader.mapCharCodeToGlyphname(0xa0, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "nbspace", reader.mapCharCodeToGlyphname( 0xa0,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0xa1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa1() throws Exception {
+    public void test0xa1() {
 
-        assertEquals("exclamdown", reader.mapCharCodeToGlyphname(0xa1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "exclamdown",
+                             reader.mapCharCodeToGlyphname( 0xa1,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xa2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa2() throws Exception {
+    public void test0xa2() {
 
-        assertEquals("cent", reader.mapCharCodeToGlyphname(0xa2, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "cent",
+                             reader.mapCharCodeToGlyphname( 0xa2, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xa3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa3() throws Exception {
+    public void test0xa3() {
 
-        assertEquals("sterling", reader.mapCharCodeToGlyphname(0xa3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sterling", reader.mapCharCodeToGlyphname( 0xa3,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xa4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa4() throws Exception {
+    public void test0xa4() {
 
-        assertEquals("currency", reader.mapCharCodeToGlyphname(0xa4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "currency", reader.mapCharCodeToGlyphname( 0xa4,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xa5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa5() throws Exception {
+    public void test0xa5() {
 
-        assertEquals("yen", reader.mapCharCodeToGlyphname(0xa5, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "yen",
+                             reader.mapCharCodeToGlyphname( 0xa5, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xa6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa6() throws Exception {
+    public void test0xa6() {
 
-        assertEquals("brokenbar", reader.mapCharCodeToGlyphname(0xa6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "brokenbar",
+                             reader.mapCharCodeToGlyphname( 0xa6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xa7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa7() throws Exception {
+    public void test0xa7() {
 
-        assertEquals("section", reader.mapCharCodeToGlyphname(0xa7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "section", reader.mapCharCodeToGlyphname( 0xa7,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0xa8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa8() throws Exception {
+    public void test0xa8() {
 
-        assertEquals("dieresis", reader.mapCharCodeToGlyphname(0xa8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "dieresis", reader.mapCharCodeToGlyphname( 0xa8,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xa9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xa9() throws Exception {
+    public void test0xa9() {
 
-        assertEquals("copyright", reader.mapCharCodeToGlyphname(0xa9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "copyright",
+                             reader.mapCharCodeToGlyphname( 0xa9,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xaa
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xaa() throws Exception {
+    public void test0xaa() {
 
-        assertEquals("ordfeminine", reader.mapCharCodeToGlyphname(0xaa, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ordfeminine",
+                             reader.mapCharCodeToGlyphname( 0xaa,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xab
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xab() throws Exception {
+    public void test0xab() {
 
-        assertEquals("guillemotleft", reader.mapCharCodeToGlyphname(0xab, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "guillemotleft",
+                             reader.mapCharCodeToGlyphname( 0xab,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xac
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xac() throws Exception {
+    public void test0xac() {
 
-        assertEquals("logicalnot", reader.mapCharCodeToGlyphname(0xac, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "logicalnot",
+                             reader.mapCharCodeToGlyphname( 0xac,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xad
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xad() throws Exception {
+    public void test0xad() {
 
-        assertEquals("sfthyphen", reader.mapCharCodeToGlyphname(0xad, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sfthyphen",
+                             reader.mapCharCodeToGlyphname( 0xad,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xae
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xae() throws Exception {
+    public void test0xae() {
 
-        assertEquals("registered", reader.mapCharCodeToGlyphname(0xae, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "registered",
+                             reader.mapCharCodeToGlyphname( 0xae,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xaf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xaf() throws Exception {
+    public void test0xaf() {
 
-        assertEquals("overscore", reader.mapCharCodeToGlyphname(0xaf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "overscore",
+                             reader.mapCharCodeToGlyphname( 0xaf,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb0() throws Exception {
+    public void test0xb0() {
 
-        assertEquals("degree", reader.mapCharCodeToGlyphname(0xb0, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "degree", reader.mapCharCodeToGlyphname( 0xb0,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xb1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb1() throws Exception {
+    public void test0xb1() {
 
-        assertEquals("plusminus", reader.mapCharCodeToGlyphname(0xb1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "plusminus",
+                             reader.mapCharCodeToGlyphname( 0xb1,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb2() throws Exception {
+    public void test0xb2() {
 
-        assertEquals("twosuperior", reader.mapCharCodeToGlyphname(0xb2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "twosuperior",
+                             reader.mapCharCodeToGlyphname( 0xb2,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb3() throws Exception {
+    public void test0xb3() {
 
-        assertEquals("threesuperior", reader.mapCharCodeToGlyphname(0xb3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "threesuperior",
+                             reader.mapCharCodeToGlyphname( 0xb3,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb4() throws Exception {
+    public void test0xb4() {
 
-        assertEquals("acute", reader.mapCharCodeToGlyphname(0xb4, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "acute",
+                             reader.mapCharCodeToGlyphname( 0xb4, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb5() throws Exception {
+    public void test0xb5() {
 
-        assertEquals("mu1", reader.mapCharCodeToGlyphname(0xb5, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "mu1",
+                             reader.mapCharCodeToGlyphname( 0xb5, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb6() throws Exception {
+    public void test0xb6() {
 
-        assertEquals("paragraph", reader.mapCharCodeToGlyphname(0xb6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "paragraph",
+                             reader.mapCharCodeToGlyphname( 0xb6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xb7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb7() throws Exception {
+    public void test0xb7() {
 
-        assertEquals("middot", reader.mapCharCodeToGlyphname(0xb7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "middot", reader.mapCharCodeToGlyphname( 0xb7,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xb8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb8() throws Exception {
+    public void test0xb8() {
 
-        assertEquals("cedilla", reader.mapCharCodeToGlyphname(0xb8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "cedilla", reader.mapCharCodeToGlyphname( 0xb8,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0xb9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xb9() throws Exception {
+    public void test0xb9() {
 
-        assertEquals("onesuperior", reader.mapCharCodeToGlyphname(0xb9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "onesuperior",
+                             reader.mapCharCodeToGlyphname( 0xb9,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xba
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xba() throws Exception {
+    public void test0xba() {
 
-        assertEquals("ordmasculine", reader.mapCharCodeToGlyphname(0xba, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ordmasculine",
+                             reader.mapCharCodeToGlyphname( 0xba,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xbb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xbb() throws Exception {
+    public void test0xbb() {
 
-        assertEquals("guillemotright", reader.mapCharCodeToGlyphname(0xbb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "guillemotright",
+                             reader.mapCharCodeToGlyphname( 0xbb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xbc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xbc() throws Exception {
+    public void test0xbc() {
 
-        assertEquals("onequarter", reader.mapCharCodeToGlyphname(0xbc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "onequarter",
+                             reader.mapCharCodeToGlyphname( 0xbc,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xbd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xbd() throws Exception {
+    public void test0xbd() {
 
-        assertEquals("onehalf", reader.mapCharCodeToGlyphname(0xbd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "onehalf", reader.mapCharCodeToGlyphname( 0xbd,
+                                                                       0,
+                                                                       (short) 3,
+                                                                       (short) 1 ) );
     }
 
     /**
      * test 0xbe
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xbe() throws Exception {
+    public void test0xbe() {
 
-        assertEquals("threequarters", reader.mapCharCodeToGlyphname(0xbe, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "threequarters",
+                             reader.mapCharCodeToGlyphname( 0xbe,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xbf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xbf() throws Exception {
+    public void test0xbf() {
 
-        assertEquals("questiondown", reader.mapCharCodeToGlyphname(0xbf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "questiondown",
+                             reader.mapCharCodeToGlyphname( 0xbf,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xc0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc0() throws Exception {
+    public void test0xc0() {
 
-        assertEquals("Agrave", reader.mapCharCodeToGlyphname(0xc0, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Agrave", reader.mapCharCodeToGlyphname( 0xc0,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xc1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc1() throws Exception {
+    public void test0xc1() {
 
-        assertEquals("Aacute", reader.mapCharCodeToGlyphname(0xc1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Aacute", reader.mapCharCodeToGlyphname( 0xc1,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xc2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc2() throws Exception {
+    public void test0xc2() {
 
-        assertEquals("Acircumflex", reader.mapCharCodeToGlyphname(0xc2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Acircumflex",
+                             reader.mapCharCodeToGlyphname( 0xc2,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xc3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc3() throws Exception {
+    public void test0xc3() {
 
-        assertEquals("Atilde", reader.mapCharCodeToGlyphname(0xc3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Atilde", reader.mapCharCodeToGlyphname( 0xc3,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xc4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc4() throws Exception {
+    public void test0xc4() {
 
-        assertEquals("Adieresis", reader.mapCharCodeToGlyphname(0xc4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Adieresis",
+                             reader.mapCharCodeToGlyphname( 0xc4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xc5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc5() throws Exception {
+    public void test0xc5() {
 
-        assertEquals("Aring", reader.mapCharCodeToGlyphname(0xc5, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Aring",
+                             reader.mapCharCodeToGlyphname( 0xc5, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xc6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc6() throws Exception {
+    public void test0xc6() {
 
-        assertEquals("AE", reader.mapCharCodeToGlyphname(0xc6, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "AE",
+                             reader.mapCharCodeToGlyphname( 0xc6, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xc7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc7() throws Exception {
+    public void test0xc7() {
 
-        assertEquals("Ccedilla", reader.mapCharCodeToGlyphname(0xc7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ccedilla", reader.mapCharCodeToGlyphname( 0xc7,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xc8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc8() throws Exception {
+    public void test0xc8() {
 
-        assertEquals("Egrave", reader.mapCharCodeToGlyphname(0xc8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Egrave", reader.mapCharCodeToGlyphname( 0xc8,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xc9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xc9() throws Exception {
+    public void test0xc9() {
 
-        assertEquals("Eacute", reader.mapCharCodeToGlyphname(0xc9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Eacute", reader.mapCharCodeToGlyphname( 0xc9,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xca
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xca() throws Exception {
+    public void test0xca() {
 
-        assertEquals("Ecircumflex", reader.mapCharCodeToGlyphname(0xca, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ecircumflex",
+                             reader.mapCharCodeToGlyphname( 0xca,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xcb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xcb() throws Exception {
+    public void test0xcb() {
 
-        assertEquals("Edieresis", reader.mapCharCodeToGlyphname(0xcb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Edieresis",
+                             reader.mapCharCodeToGlyphname( 0xcb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xcc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xcc() throws Exception {
+    public void test0xcc() {
 
-        assertEquals("Igrave", reader.mapCharCodeToGlyphname(0xcc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Igrave", reader.mapCharCodeToGlyphname( 0xcc,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xcd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xcd() throws Exception {
+    public void test0xcd() {
 
-        assertEquals("Iacute", reader.mapCharCodeToGlyphname(0xcd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Iacute", reader.mapCharCodeToGlyphname( 0xcd,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xce
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xce() throws Exception {
+    public void test0xce() {
 
-        assertEquals("Icircumflex", reader.mapCharCodeToGlyphname(0xce, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Icircumflex",
+                             reader.mapCharCodeToGlyphname( 0xce,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xcf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xcf() throws Exception {
+    public void test0xcf() {
 
-        assertEquals("Idieresis", reader.mapCharCodeToGlyphname(0xcf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Idieresis",
+                             reader.mapCharCodeToGlyphname( 0xcf,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xd0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd0() throws Exception {
+    public void test0xd0() {
 
-        assertEquals("Eth", reader.mapCharCodeToGlyphname(0xd0, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Eth",
+                             reader.mapCharCodeToGlyphname( 0xd0, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xd1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd1() throws Exception {
+    public void test0xd1() {
 
-        assertEquals("Ntilde", reader.mapCharCodeToGlyphname(0xd1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ntilde", reader.mapCharCodeToGlyphname( 0xd1,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xd2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd2() throws Exception {
+    public void test0xd2() {
 
-        assertEquals("Ograve", reader.mapCharCodeToGlyphname(0xd2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ograve", reader.mapCharCodeToGlyphname( 0xd2,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xd3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd3() throws Exception {
+    public void test0xd3() {
 
-        assertEquals("Oacute", reader.mapCharCodeToGlyphname(0xd3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Oacute", reader.mapCharCodeToGlyphname( 0xd3,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xd4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd4() throws Exception {
+    public void test0xd4() {
 
-        assertEquals("Ocircumflex", reader.mapCharCodeToGlyphname(0xd4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ocircumflex",
+                             reader.mapCharCodeToGlyphname( 0xd4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xd5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd5() throws Exception {
+    public void test0xd5() {
 
-        assertEquals("Otilde", reader.mapCharCodeToGlyphname(0xd5, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Otilde", reader.mapCharCodeToGlyphname( 0xd5,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xd6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd6() throws Exception {
+    public void test0xd6() {
 
-        assertEquals("Odieresis", reader.mapCharCodeToGlyphname(0xd6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Odieresis",
+                             reader.mapCharCodeToGlyphname( 0xd6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xd7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd7() throws Exception {
+    public void test0xd7() {
 
-        assertEquals("multiply", reader.mapCharCodeToGlyphname(0xd7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "multiply", reader.mapCharCodeToGlyphname( 0xd7,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xd8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd8() throws Exception {
+    public void test0xd8() {
 
-        assertEquals("Oslash", reader.mapCharCodeToGlyphname(0xd8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Oslash", reader.mapCharCodeToGlyphname( 0xd8,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xd9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xd9() throws Exception {
+    public void test0xd9() {
 
-        assertEquals("Ugrave", reader.mapCharCodeToGlyphname(0xd9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ugrave", reader.mapCharCodeToGlyphname( 0xd9,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xda
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xda() throws Exception {
+    public void test0xda() {
 
-        assertEquals("Uacute", reader.mapCharCodeToGlyphname(0xda, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Uacute", reader.mapCharCodeToGlyphname( 0xda,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xdb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xdb() throws Exception {
+    public void test0xdb() {
 
-        assertEquals("Ucircumflex", reader.mapCharCodeToGlyphname(0xdb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Ucircumflex",
+                             reader.mapCharCodeToGlyphname( 0xdb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xdc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xdc() throws Exception {
+    public void test0xdc() {
 
-        assertEquals("Udieresis", reader.mapCharCodeToGlyphname(0xdc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Udieresis",
+                             reader.mapCharCodeToGlyphname( 0xdc,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xdd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xdd() throws Exception {
+    public void test0xdd() {
 
-        assertEquals("Yacute", reader.mapCharCodeToGlyphname(0xdd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "Yacute", reader.mapCharCodeToGlyphname( 0xdd,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xde
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xde() throws Exception {
+    public void test0xde() {
 
-        assertEquals("Thorn", reader.mapCharCodeToGlyphname(0xde, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "Thorn",
+                             reader.mapCharCodeToGlyphname( 0xde, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xdf
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xdf() throws Exception {
+    public void test0xdf() {
 
-        assertEquals("germandbls", reader.mapCharCodeToGlyphname(0xdf, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "germandbls",
+                             reader.mapCharCodeToGlyphname( 0xdf,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xe0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe0() throws Exception {
+    public void test0xe0() {
 
-        assertEquals("agrave", reader.mapCharCodeToGlyphname(0xe0, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "agrave", reader.mapCharCodeToGlyphname( 0xe0,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xe1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe1() throws Exception {
+    public void test0xe1() {
 
-        assertEquals("aacute", reader.mapCharCodeToGlyphname(0xe1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "aacute", reader.mapCharCodeToGlyphname( 0xe1,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xe2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe2() throws Exception {
+    public void test0xe2() {
 
-        assertEquals("acircumflex", reader.mapCharCodeToGlyphname(0xe2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "acircumflex",
+                             reader.mapCharCodeToGlyphname( 0xe2,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xe3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe3() throws Exception {
+    public void test0xe3() {
 
-        assertEquals("atilde", reader.mapCharCodeToGlyphname(0xe3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "atilde", reader.mapCharCodeToGlyphname( 0xe3,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xe4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe4() throws Exception {
+    public void test0xe4() {
 
-        assertEquals("adieresis", reader.mapCharCodeToGlyphname(0xe4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "adieresis",
+                             reader.mapCharCodeToGlyphname( 0xe4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xe5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe5() throws Exception {
+    public void test0xe5() {
 
-        assertEquals("aring", reader.mapCharCodeToGlyphname(0xe5, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "aring",
+                             reader.mapCharCodeToGlyphname( 0xe5, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xe6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe6() throws Exception {
+    public void test0xe6() {
 
-        assertEquals("ae", reader.mapCharCodeToGlyphname(0xe6, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "ae",
+                             reader.mapCharCodeToGlyphname( 0xe6, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xe7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe7() throws Exception {
+    public void test0xe7() {
 
-        assertEquals("ccedilla", reader.mapCharCodeToGlyphname(0xe7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ccedilla", reader.mapCharCodeToGlyphname( 0xe7,
+                                                                        0,
+                                                                        (short) 3,
+                                                                        (short) 1 ) );
     }
 
     /**
      * test 0xe8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe8() throws Exception {
+    public void test0xe8() {
 
-        assertEquals("egrave", reader.mapCharCodeToGlyphname(0xe8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "egrave", reader.mapCharCodeToGlyphname( 0xe8,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xe9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xe9() throws Exception {
+    public void test0xe9() {
 
-        assertEquals("eacute", reader.mapCharCodeToGlyphname(0xe9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "eacute", reader.mapCharCodeToGlyphname( 0xe9,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xea
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xea() throws Exception {
+    public void test0xea() {
 
-        assertEquals("ecircumflex", reader.mapCharCodeToGlyphname(0xea, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ecircumflex",
+                             reader.mapCharCodeToGlyphname( 0xea,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xeb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xeb() throws Exception {
+    public void test0xeb() {
 
-        assertEquals("edieresis", reader.mapCharCodeToGlyphname(0xeb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "edieresis",
+                             reader.mapCharCodeToGlyphname( 0xeb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xec
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xec() throws Exception {
+    public void test0xec() {
 
-        assertEquals("igrave", reader.mapCharCodeToGlyphname(0xec, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "igrave", reader.mapCharCodeToGlyphname( 0xec,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xed
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xed() throws Exception {
+    public void test0xed() {
 
-        assertEquals("iacute", reader.mapCharCodeToGlyphname(0xed, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "iacute", reader.mapCharCodeToGlyphname( 0xed,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xee
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xee() throws Exception {
+    public void test0xee() {
 
-        assertEquals("icircumflex", reader.mapCharCodeToGlyphname(0xee, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "icircumflex",
+                             reader.mapCharCodeToGlyphname( 0xee,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xef
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xef() throws Exception {
+    public void test0xef() {
 
-        assertEquals("idieresis", reader.mapCharCodeToGlyphname(0xef, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "idieresis",
+                             reader.mapCharCodeToGlyphname( 0xef,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf0
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf0() throws Exception {
+    public void test0xf0() {
 
-        assertEquals("eth", reader.mapCharCodeToGlyphname(0xf0, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "eth",
+                             reader.mapCharCodeToGlyphname( 0xf0, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf001
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf001() throws Exception {
+    public void test0xf001() {
 
-        assertEquals("fi1", reader.mapCharCodeToGlyphname(0xf001, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "fi1",
+                             reader.mapCharCodeToGlyphname( 0xf001,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf002
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf002() throws Exception {
+    public void test0xf002() {
 
-        assertEquals("fl1", reader.mapCharCodeToGlyphname(0xf002, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "fl1",
+                             reader.mapCharCodeToGlyphname( 0xf002,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf003
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf003() throws Exception {
+    public void test0xf003() {
 
-        assertEquals("foursuperior", reader.mapCharCodeToGlyphname(0xf003, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "foursuperior",
+                             reader.mapCharCodeToGlyphname( 0xf003,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf004
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf004() throws Exception {
+    public void test0xf004() {
 
-        assertEquals("commaaccent", reader.mapCharCodeToGlyphname(0xf004, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "commaaccent",
+                             reader.mapCharCodeToGlyphname( 0xf004,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf005
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf005() throws Exception {
+    public void test0xf005() {
 
-        assertEquals("undercommaaccent", reader.mapCharCodeToGlyphname(0xf005,
-            0, (short) 3, (short) 1));
+        Assert.assertEquals( "undercommaaccent",
+                             reader.mapCharCodeToGlyphname( 0xf005,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf006
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf006() throws Exception {
+    public void test0xf006() {
 
-        assertEquals("pi", reader.mapCharCodeToGlyphname(0xf006, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "pi",
+                             reader.mapCharCodeToGlyphname( 0xf006,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf007
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf007() throws Exception {
+    public void test0xf007() {
 
-        assertEquals("fivesuperior", reader.mapCharCodeToGlyphname(0xf007, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "fivesuperior",
+                             reader.mapCharCodeToGlyphname( 0xf007,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf008
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf008() throws Exception {
+    public void test0xf008() {
 
-        assertEquals("sevensuperior", reader.mapCharCodeToGlyphname(0xf008, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "sevensuperior",
+                             reader.mapCharCodeToGlyphname( 0xf008,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf009
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf009() throws Exception {
+    public void test0xf009() {
 
-        assertEquals("eightsuperior", reader.mapCharCodeToGlyphname(0xf009, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "eightsuperior",
+                             reader.mapCharCodeToGlyphname( 0xf009,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf1
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf1() throws Exception {
+    public void test0xf1() {
 
-        assertEquals("ntilde", reader.mapCharCodeToGlyphname(0xf1, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ntilde", reader.mapCharCodeToGlyphname( 0xf1,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf2
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf2() throws Exception {
+    public void test0xf2() {
 
-        assertEquals("ograve", reader.mapCharCodeToGlyphname(0xf2, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ograve", reader.mapCharCodeToGlyphname( 0xf2,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf3
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf3() throws Exception {
+    public void test0xf3() {
 
-        assertEquals("oacute", reader.mapCharCodeToGlyphname(0xf3, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "oacute", reader.mapCharCodeToGlyphname( 0xf3,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf4
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf4() throws Exception {
+    public void test0xf4() {
 
-        assertEquals("ocircumflex", reader.mapCharCodeToGlyphname(0xf4, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ocircumflex",
+                             reader.mapCharCodeToGlyphname( 0xf4,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf5
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf5() throws Exception {
+    public void test0xf5() {
 
-        assertEquals("otilde", reader.mapCharCodeToGlyphname(0xf5, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "otilde", reader.mapCharCodeToGlyphname( 0xf5,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf6
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf6() throws Exception {
+    public void test0xf6() {
 
-        assertEquals("odieresis", reader.mapCharCodeToGlyphname(0xf6, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "odieresis",
+                             reader.mapCharCodeToGlyphname( 0xf6,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xf7
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf7() throws Exception {
+    public void test0xf7() {
 
-        assertEquals("divide", reader.mapCharCodeToGlyphname(0xf7, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "divide", reader.mapCharCodeToGlyphname( 0xf7,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf8
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf8() throws Exception {
+    public void test0xf8() {
 
-        assertEquals("oslash", reader.mapCharCodeToGlyphname(0xf8, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "oslash", reader.mapCharCodeToGlyphname( 0xf8,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xf9
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xf9() throws Exception {
+    public void test0xf9() {
 
-        assertEquals("ugrave", reader.mapCharCodeToGlyphname(0xf9, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ugrave", reader.mapCharCodeToGlyphname( 0xf9,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xfa
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfa() throws Exception {
+    public void test0xfa() {
 
-        assertEquals("uacute", reader.mapCharCodeToGlyphname(0xfa, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "uacute", reader.mapCharCodeToGlyphname( 0xfa,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xfb
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfb() throws Exception {
+    public void test0xfb() {
 
-        assertEquals("ucircumflex", reader.mapCharCodeToGlyphname(0xfb, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ucircumflex",
+                             reader.mapCharCodeToGlyphname( 0xfb,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xfb01
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfb01() throws Exception {
+    public void test0xfb01() {
 
-        assertEquals("fi", reader.mapCharCodeToGlyphname(0xfb01, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "fi",
+                             reader.mapCharCodeToGlyphname( 0xfb01,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xfb02
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfb02() throws Exception {
+    public void test0xfb02() {
 
-        assertEquals("fl", reader.mapCharCodeToGlyphname(0xfb02, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "fl",
+                             reader.mapCharCodeToGlyphname( 0xfb02,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xfc
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfc() throws Exception {
+    public void test0xfc() {
 
-        assertEquals("udieresis", reader.mapCharCodeToGlyphname(0xfc, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "udieresis",
+                             reader.mapCharCodeToGlyphname( 0xfc,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xfd
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfd() throws Exception {
+    public void test0xfd() {
 
-        assertEquals("yacute", reader.mapCharCodeToGlyphname(0xfd, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "yacute", reader.mapCharCodeToGlyphname( 0xfd,
+                                                                      0,
+                                                                      (short) 3,
+                                                                      (short) 1 ) );
     }
 
     /**
      * test 0xfe
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xfe() throws Exception {
+    public void test0xfe() {
 
-        assertEquals("thorn", reader.mapCharCodeToGlyphname(0xfe, 0, (short) 3,
-            (short) 1));
+        Assert.assertEquals( "thorn",
+                             reader.mapCharCodeToGlyphname( 0xfe, 0, (short) 3,
+                                                            (short) 1 ) );
     }
 
     /**
      * test 0xff
-     * 
-     * @throws Exception if an error occurred.
      */
     @Test
-    public void test0xff() throws Exception {
+    public void test0xff() {
 
-        assertEquals("ydieresis", reader.mapCharCodeToGlyphname(0xff, 0,
-            (short) 3, (short) 1));
+        Assert.assertEquals( "ydieresis",
+                             reader.mapCharCodeToGlyphname( 0xff,
+                                                            0,
+                                                            (short) 3,
+                                                            (short) 1 ) );
     }
 
 }

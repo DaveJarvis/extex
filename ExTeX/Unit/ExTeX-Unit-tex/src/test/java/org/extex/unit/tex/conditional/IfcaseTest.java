@@ -40,9 +40,7 @@ public class IfcaseTest extends ConditionalTester {
         (new JUnitCore()).run(IfcaseTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfcaseTest() {
 
         super("ifcase", "0 ");

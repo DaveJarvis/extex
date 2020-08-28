@@ -35,9 +35,7 @@ public class UnsupportedException extends HelpingException {
      */
     protected static final long serialVersionUID = 20060628L;
 
-    /**
-     * Creates a new object.
-     */
+
     public UnsupportedException() {
 
         super();

@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class FontcharicTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public FontcharicTest() {
 
         setConfig("etex-test");

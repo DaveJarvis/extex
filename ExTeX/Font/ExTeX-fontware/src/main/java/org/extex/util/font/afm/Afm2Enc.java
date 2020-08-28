@@ -344,9 +344,7 @@ public class Afm2Enc extends AbstractFontUtil {
      */
     private AfmParser parser;
 
-    /**
-     * Creates a new object.
-     */
+
     public Afm2Enc() {
 
         super(Afm2Enc.class);

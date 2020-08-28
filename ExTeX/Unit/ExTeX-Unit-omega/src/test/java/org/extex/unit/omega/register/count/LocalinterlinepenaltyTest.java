@@ -40,9 +40,7 @@ public class LocalinterlinepenaltyTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LocalinterlinepenaltyTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LocalinterlinepenaltyTest() {
 
         super("localinterlinepenalty", " ", "0");

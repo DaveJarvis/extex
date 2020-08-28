@@ -70,9 +70,7 @@ public final class BiblioTester {
         return db;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private BiblioTester() {
 
     }

@@ -33,9 +33,7 @@ import org.extex.ocpware.type.OcpProgram;
  */
 public class OcpOmegaWriter2 extends OcpOmegaWriter {
 
-    /**
-     * Creates a new object.
-     */
+
     public OcpOmegaWriter2() {
 
         super(16, false);

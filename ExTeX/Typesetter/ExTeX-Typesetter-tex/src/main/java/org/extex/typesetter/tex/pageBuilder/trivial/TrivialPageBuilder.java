@@ -62,9 +62,7 @@ public class TrivialPageBuilder implements PageBuilder {
      */
     private PageFactory pageFactory = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public TrivialPageBuilder() {
 
     }

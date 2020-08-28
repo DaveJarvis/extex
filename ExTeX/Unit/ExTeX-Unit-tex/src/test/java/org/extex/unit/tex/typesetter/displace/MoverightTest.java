@@ -41,12 +41,10 @@ public class MoverightTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(MoverightTest.class);
     }
 
-    /**
-     * Constructor for MoverightTest.
-     */
+
     public MoverightTest() {
 
-        super("moveright", "1pt\\hbox{}");
+        setPrimitive("moveright");setArguments("1pt\\hbox{}");setPrepare("");
     }
 
     /**

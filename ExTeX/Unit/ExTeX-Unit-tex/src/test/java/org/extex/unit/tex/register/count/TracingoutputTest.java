@@ -40,9 +40,7 @@ public class TracingoutputTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(TracingoutputTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TracingoutputTest() {
 
         super("tracingoutput", "", "0");

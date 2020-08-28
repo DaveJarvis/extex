@@ -268,9 +268,7 @@ public class BaseHyphenationTableTest {
          */
         private static final long serialVersionUID = 1L;
 
-        /**
-         * Creates a new object.
-         */
+
         protected MyMockContext() {
 
             set(new MockFont(), true);

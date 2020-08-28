@@ -40,9 +40,7 @@ public class IfnumTest extends ConditionalTester {
         (new JUnitCore()).run(IfnumTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfnumTest() {
 
         super("ifnum", " 1=1");

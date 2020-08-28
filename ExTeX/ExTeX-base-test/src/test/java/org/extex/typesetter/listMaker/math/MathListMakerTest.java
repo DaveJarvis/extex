@@ -20,11 +20,12 @@
 package org.extex.typesetter.listMaker.math;
 
 import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
  * This is a test suite for the math typesetting.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -42,9 +43,7 @@ public class MathListMakerTest extends ExTeXLauncher {
                     + "\\scriptscriptfont3=\\f"
                     + "\\font\\f cmmi10 \\textfont1=\\f ";
 
-    /**
-     * Creates a new object.
-     */
+
     public MathListMakerTest() {
 
     }
@@ -52,10 +51,11 @@ public class MathListMakerTest extends ExTeXLauncher {
     /**
      * <testcase> Test case checking that an empty math environment works.
      * </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testEmpty1() throws Exception {
 
         assertSuccess(// showNodesProperties(),
@@ -69,10 +69,11 @@ public class MathListMakerTest extends ExTeXLauncher {
     /**
      * <testcase> Test case checking that a single math character works.
      * </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testLetter1() throws Exception {
 
         assertSuccess(// showNodesProperties(),

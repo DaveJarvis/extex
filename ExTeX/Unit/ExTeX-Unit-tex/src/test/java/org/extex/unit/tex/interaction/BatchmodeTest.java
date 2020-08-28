@@ -45,12 +45,10 @@ public class BatchmodeTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(BatchmodeTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public BatchmodeTest() {
 
-        super("batchmode", "");
+        setPrimitive("batchmode");setArguments("");setPrepare("");
     }
 
     /**

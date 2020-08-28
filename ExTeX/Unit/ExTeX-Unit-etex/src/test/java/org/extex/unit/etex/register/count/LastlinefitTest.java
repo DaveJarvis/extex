@@ -40,9 +40,7 @@ public class LastlinefitTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(LastlinefitTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LastlinefitTest() {
 
         super("lastlinefit", "", "0");

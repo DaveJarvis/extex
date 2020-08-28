@@ -41,12 +41,10 @@ public class KernTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(KernTest.class);
     }
 
-    /**
-     * Constructor for KernTest.
-     */
+
     public KernTest() {
 
-        super("kern", "1pt");
+        setPrimitive("kern");setArguments("1pt");setPrepare("");
     }
 
     /**

@@ -88,7 +88,7 @@
     <site>
       <id>org.extex</id>
       <name>doc-tools</name>
-      <url>file:///serv/www/extex/snapshot/doc-tools</url>
+      <url>${project.repo.url}/doc-tools</url>
     </site>
   </distributionManagement>
 

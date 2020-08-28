@@ -40,9 +40,7 @@ public class PdflinkmarginTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(PdflinkmarginTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdflinkmarginTest() {
 
         super("pdflinkmargin", "", "0.0pt");

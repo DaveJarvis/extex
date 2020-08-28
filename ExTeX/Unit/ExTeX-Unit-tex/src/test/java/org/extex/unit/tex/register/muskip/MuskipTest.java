@@ -40,9 +40,7 @@ public class MuskipTest extends AbstractMuskipRegisterTester {
         (new JUnitCore()).run(MuskipTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MuskipTest() {
 
         super("muskip", "42", "0.0mu");

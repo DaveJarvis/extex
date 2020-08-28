@@ -34,9 +34,7 @@ import org.junit.Test;
  */
 public class MathTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public MathTest() {
 
         setConfig("base-ext-test.xml");

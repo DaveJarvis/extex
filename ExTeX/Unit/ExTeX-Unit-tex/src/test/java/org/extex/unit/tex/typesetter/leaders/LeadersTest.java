@@ -40,12 +40,10 @@ public class LeadersTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(LeadersTest.class);
     }
 
-    /**
-     * Constructor for LeadersTest.
-     */
+
     public LeadersTest() {
 
-        super("leaders", "\\vrule\\vfil");
+        setPrimitive("leaders");setArguments("\\vrule\\vfil");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

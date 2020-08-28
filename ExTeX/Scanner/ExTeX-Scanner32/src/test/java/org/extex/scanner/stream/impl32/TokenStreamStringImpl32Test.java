@@ -76,9 +76,7 @@ public class TokenStreamStringImpl32Test {
         (new JUnitCore()).run(TokenStreamStringImpl32Test.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TokenStreamStringImpl32Test() {
 
     }

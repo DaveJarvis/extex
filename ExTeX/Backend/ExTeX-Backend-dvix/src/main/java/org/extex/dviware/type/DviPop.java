@@ -32,9 +32,7 @@ import org.extex.dviware.Dvi;
  */
 public class DviPop extends AbstractDviCode {
 
-    /**
-     * Creates a new object.
-     */
+
     public DviPop() {
 
         super("pop");

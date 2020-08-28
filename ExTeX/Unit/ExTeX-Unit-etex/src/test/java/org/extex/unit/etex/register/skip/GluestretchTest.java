@@ -41,9 +41,7 @@ public class GluestretchTest extends ExTeXLauncher {
         (new JUnitCore()).run(GluestretchTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public GluestretchTest() {
 
         setConfig("etex-test");

@@ -41,12 +41,10 @@ public class DivideTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(DivideTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DivideTest() {
 
-        super("divide", "\\count1 1 ");
+        setPrimitive("divide");setArguments("\\count1 1 ");
     }
 
     /**

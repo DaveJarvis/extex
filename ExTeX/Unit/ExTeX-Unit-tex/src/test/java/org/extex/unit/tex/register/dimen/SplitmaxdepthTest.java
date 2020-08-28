@@ -40,9 +40,7 @@ public class SplitmaxdepthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(SplitmaxdepthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SplitmaxdepthTest() {
 
         super("splitmaxdepth", "", "0.0pt");

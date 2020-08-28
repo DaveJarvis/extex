@@ -40,12 +40,10 @@ public class OutputTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(OutputTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OutputTest() {
 
-        super("output", "{}", "");
+        setPrimitive("output");setArguments("{}");setPrepare("");
     }
 
     // TODO implement the primitive specific test cases

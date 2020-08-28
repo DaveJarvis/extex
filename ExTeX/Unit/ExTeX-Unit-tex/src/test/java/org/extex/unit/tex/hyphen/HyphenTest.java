@@ -20,6 +20,7 @@
 package org.extex.unit.tex.hyphen;
 
 import org.extex.test.NoFlagsPrimitiveTester;
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -30,12 +31,10 @@ import org.junit.Test;
  */
 public class HyphenTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public HyphenTest() {
 
-        super("-", "");
+        setPrimitive("-");setArguments("");setPrepare("");
     }
 
     /**
@@ -46,6 +45,7 @@ public class HyphenTest extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testDisc1() throws Exception {
 
         assertSuccess(//--- input code ---

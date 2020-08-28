@@ -220,9 +220,7 @@ public class DocMaker extends DocParser {
      */
     private String targetDir = ".";
 
-    /**
-     * Creates a new object.
-     */
+
     public DocMaker() {
 
     }

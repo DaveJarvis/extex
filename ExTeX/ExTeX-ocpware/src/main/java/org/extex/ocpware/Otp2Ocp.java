@@ -52,9 +52,7 @@ import org.extex.ocpware.type.OcpProgram;
  */
 public final class Otp2Ocp {
 
-    /**
-     * Creates a new object.
-     */
+
     private Otp2Ocp() {
 
         //

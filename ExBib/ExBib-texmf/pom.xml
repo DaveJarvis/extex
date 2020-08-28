@@ -2,7 +2,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.extex</groupId>
   <artifactId>ExBib-texmf</artifactId>
   <name>ExBib texmf</name>
   <description>
@@ -18,7 +17,7 @@
     <site>
       <id>org.extex.exbib.texmf</id>
       <name>ExBib TeX MF Site</name>
-      <url>file:///serv/www/extex/snapshot/ExBib/Exbib-texmf</url>
+      <url>${project.repo.exbib}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 
@@ -79,6 +78,7 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-antrun-plugin</artifactId>
+        <version>3.0.0</version>
         <executions>
           <execution>
             <phase>compile</phase>

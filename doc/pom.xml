@@ -13,21 +13,6 @@
     This is the ExTeX documentation.
   </description>
 
-  <repositories>
-    <repository>
-      <id>extexSnapshots</id>
-      <name>ExTeX Snapshots</name>
-      <url>http://www.extex.org/maven2.snapshots</url>
-      <layout>default</layout>
-      <releases>
-        <enabled>false</enabled>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-      </snapshots>
-    </repository>
-  </repositories>
-
   <modules>
    <module>DevelopersGuide</module>
    <module>UsersGuide</module>
@@ -37,7 +22,7 @@
     <site>
       <id>org.extex</id>
       <name>${project.artifactId}</name>
-      <url>file:///serv/www/extex/snapshot/${project.artifactId}</url>
+      <url>${project.repo.url}/${project.artifactId}</url>
     </site>
   </distributionManagement>
 

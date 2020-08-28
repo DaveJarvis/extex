@@ -30,9 +30,7 @@ import org.extex.interpreter.expression.term.TGlueParser;
  */
 public class TeXEvaluator extends Evaluator {
 
-    /**
-     * Creates a new object.
-     */
+
     public TeXEvaluator() {
 
         super();

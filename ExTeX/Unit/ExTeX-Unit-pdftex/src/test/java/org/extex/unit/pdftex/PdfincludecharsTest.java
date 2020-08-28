@@ -30,9 +30,7 @@ import org.junit.Test;
  */
 public class PdfincludecharsTest extends NoFlagsButProtectedPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfincludecharsTest() {
 
         super("pdfincludechars", "\\f{}", "\\font\\f=cmr10 "

@@ -46,9 +46,7 @@ public class State {
      */
     private int numberExpressions = 0;
 
-    /**
-     * Creates a new object.
-     */
+
     public State() {
 
     }

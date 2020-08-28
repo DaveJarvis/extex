@@ -52,9 +52,7 @@ public class DayTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DayTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DayTest() {
 
         super("day", "", getDefaultValue());

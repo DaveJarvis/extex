@@ -43,9 +43,7 @@ public class WhatsItNode extends AbstractNode {
      */
     protected static final long serialVersionUID = 2011L;
 
-    /**
-     * Creates a new object.
-     */
+
     public WhatsItNode() {
 
     }

@@ -41,9 +41,7 @@ public class EscapecharTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(EscapecharTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EscapecharTest() {
 
         super("escapechar", "", "92");

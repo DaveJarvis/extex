@@ -84,7 +84,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * stored in it will be overwritten whenever this object will be used for
      * the current paragraph.
      */
-    private FixedParagraphShape fixedParshape =
+    private final FixedParagraphShape fixedParshape =
             new FixedParagraphShape(Dimen.ZERO_PT);
 
     /**
@@ -93,7 +93,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      * values stored in it will be overwritten whenever this object will be used
      * for the current paragraph.
      */
-    private HangingParagraphShape hangingParshape =
+    private final HangingParagraphShape hangingParshape =
             new HangingParagraphShape(0, Dimen.ZERO_PT, Dimen.ZERO_PT);
 
     /**
@@ -121,9 +121,7 @@ public class TrivialBuilder implements ParagraphBuilder, LogEnabled {
      */
     private Logger tracer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public TrivialBuilder() {
 
         if (DEVELOP) {

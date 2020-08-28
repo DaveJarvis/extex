@@ -40,9 +40,7 @@ public class MaxdepthTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(MaxdepthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MaxdepthTest() {
 
         super("maxdepth", "", "0.0pt");

@@ -49,12 +49,12 @@ public class CharNode extends AbstractNode {
      * The field <tt>character</tt> contains the single character represented by
      * this node.
      */
-    private UnicodeChar character;
+    private final UnicodeChar character;
 
     /**
      * The field <tt>typesettingContext</tt> contains the typesetting context
      */
-    private TypesettingContext typesettingContext;
+    private final TypesettingContext typesettingContext;
 
     /**
      * Creates a new object.

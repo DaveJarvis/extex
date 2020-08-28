@@ -35,9 +35,7 @@ public final class StoringHandler extends Handler {
      */
     private StringBuilder buffer = new StringBuilder();
 
-    /**
-     * Creates a new object.
-     */
+
     public StoringHandler() {
 
     }

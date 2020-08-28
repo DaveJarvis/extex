@@ -41,12 +41,10 @@ public class SpecialTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(SpecialTest.class);
     }
 
-    /**
-     * Constructor for SpecialTest.
-     */
+
     public SpecialTest() {
 
-        super("special", "{}");
+        setPrimitive("special");setArguments("{}");setPrepare("");
     }
 
     /**

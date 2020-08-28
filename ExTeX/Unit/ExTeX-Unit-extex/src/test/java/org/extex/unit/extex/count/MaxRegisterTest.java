@@ -41,9 +41,7 @@ public class MaxRegisterTest extends AbstractNonGroupIntegerTester {
         (new JUnitCore()).run(MaxRegisterTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MaxRegisterTest() {
 
         super("maxRegister", "", "-1", DEFINE_BRACES + "\\namespace{system}");

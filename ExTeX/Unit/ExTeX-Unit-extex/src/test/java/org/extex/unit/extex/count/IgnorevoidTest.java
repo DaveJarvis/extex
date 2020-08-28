@@ -41,9 +41,7 @@ public class IgnorevoidTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(IgnorevoidTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IgnorevoidTest() {
 
         super("ignorevoid", "", "0");

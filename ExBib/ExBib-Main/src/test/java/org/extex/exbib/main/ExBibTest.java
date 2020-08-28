@@ -18,25 +18,17 @@
 
 package org.extex.exbib.main;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.PrintStream;
-import java.io.Writer;
-import java.util.Locale;
-import java.util.Set;
-
 import org.extex.cli.CLI;
 import org.extex.exbib.core.ExBib;
 import org.extex.exbib.core.ExBib.ExBibDebug;
 import org.junit.Ignore;
 import org.junit.Test;
+
+import java.io.*;
+import java.util.Locale;
+import java.util.Set;
+
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for {@link ExBib}.
@@ -132,8 +124,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void test002() throws Exception {
 
-        runFailure(BANNER + "The option `--\' needs a parameter.\n", //
-            "--");
+        runFailure( BANNER + "The option `--' needs a parameter.\n", //
+                    "--");
     }
 
     /**
@@ -145,8 +137,8 @@ public class ExBibTest extends BibTester {
     @Test
     public void test003() throws Exception {
 
-        runFailure(BANNER + "The option `-\' needs a parameter.\n", //
-            "-");
+        runFailure( BANNER + "The option `-' needs a parameter.\n", //
+                    "-");
     }
 
     /**
@@ -212,7 +204,7 @@ public class ExBibTest extends BibTester {
         assertFalse(aux.exists());
 
         runTest("undefined", null, CLI.EXIT_FAIL, Check.EQ, BANNER
-                + "I couldn\'t open file undefined.aux\n"
+                + "I couldn't open file undefined.aux\n"
                 + "(There was 1 error)\n", //
             "undefined.aux");
     }
@@ -254,7 +246,7 @@ public class ExBibTest extends BibTester {
                 + "\\bibstyle{xyzzy}\n", CLI.EXIT_FAIL, //
             Check.EQ, //
             BANNER //
-                    + "I couldn\'t open style file xyzzy\n"
+                    + "I couldn't open style file xyzzy\n"
                     + "(There was 1 error)\n", //
             "test.aux");
     }
@@ -270,7 +262,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n"
                 + "\\bibstyle{xyzzy.bst}\n", CLI.EXIT_FAIL, Check.EQ, BANNER
-                + "I couldn\'t open style file xyzzy.bst\n"
+                + "I couldn't open style file xyzzy.bst\n"
                 + "(There was 1 error)\n", //
             "test.aux");
     }
@@ -285,7 +277,7 @@ public class ExBibTest extends BibTester {
     public void testAux12() throws Exception {
 
         runTest("test", "\\bibdata{abc}\n" + "\\citation{*}\n", CLI.EXIT_FAIL,
-            Check.EQ, BANNER + "I couldn\'t open style file xyzzy\n"
+            Check.EQ, BANNER + "I couldn't open style file xyzzy\n"
                     + "(There was 1 error)\n", //
             "test.aux", "--bst", "xyzzy");
     }
@@ -360,7 +352,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\citation{*}\n\\bibdata{qqq}\n\\bibstyle{xyzzy}\n",
             CLI.EXIT_FAIL, Check.EQ, BANNER
-                    + "I couldn\'t open style file xyzzy\n"
+                    + "I couldn't open style file xyzzy\n"
                     + "(There was 1 error)\n", //
             "test.aux");
     }
@@ -375,7 +367,7 @@ public class ExBibTest extends BibTester {
 
         runTest("test", "\\citation{*}\n\\bibdata{test}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
-            CLI.EXIT_FAIL, Check.EQ, BANNER + "File `test\' not found\n"
+            CLI.EXIT_FAIL, Check.EQ, BANNER + "File `test' not found\n"
                     + "(There was 1 error)\n", //
             "test.aux");
     }
@@ -391,11 +383,8 @@ public class ExBibTest extends BibTester {
 
         File aux = new File(".", "test.aux");
         File aux2 = new File(".", "test2.aux");
-        Writer w = new FileWriter(aux2);
-        try {
-            w.write("\\relax\n");
-        } finally {
-            w.close();
+        try( final Writer w = new FileWriter( aux2 ) ) {
+            w.write( "\\relax\n" );
         }
 
         try {
@@ -422,7 +411,7 @@ public class ExBibTest extends BibTester {
                 "-v", "test.aux");
         } finally {
             if (aux2.exists() && !aux2.delete()) {
-                assertTrue(aux2.toString() + ": deletion failed", false);
+                fail( aux2.toString() + ": deletion failed" );
             }
         }
     }
@@ -438,11 +427,8 @@ public class ExBibTest extends BibTester {
 
         File aux = new File(".", "test.aux");
         File aux2 = new File(".", "test2.aux");
-        Writer w = new FileWriter(aux2);
-        try {
-            w.write("\\relax\n");
-        } finally {
-            w.close();
+        try( final Writer w = new FileWriter( aux2 ) ) {
+            w.write( "\\relax\n" );
         }
 
         try {
@@ -473,7 +459,7 @@ public class ExBibTest extends BibTester {
                 "-v", "test.aux");
         } finally {
             if (aux2.exists() && !aux2.delete()) {
-                assertTrue(aux2.toString() + ": deletion failed", false);
+                fail( aux2.toString() + ": deletion failed" );
             }
         }
     }
@@ -489,11 +475,8 @@ public class ExBibTest extends BibTester {
 
         File aux = new File(".", "test.aux");
         File aux2 = new File(".", "test2.aux");
-        Writer w = new FileWriter(aux2);
-        try {
-            w.write("\\relax\n");
-        } finally {
-            w.close();
+        try( Writer w = new FileWriter( aux2 ) ) {
+            w.write( "\\relax\n" );
         }
 
         try {
@@ -528,7 +511,7 @@ public class ExBibTest extends BibTester {
                 "-v", "test.aux");
         } finally {
             if (aux2.exists() && !aux2.delete()) {
-                assertTrue(aux2.toString() + ": deletion failed", false);
+                fail( aux2.toString() + ": deletion failed" );
             }
         }
     }
@@ -544,12 +527,9 @@ public class ExBibTest extends BibTester {
 
         File aux = new File(".", "test.aux");
         File aux2 = new File(".", "test2.aux");
-        Writer w = new FileWriter(aux2);
-        try {
-            w.write("\\relax\n");
-            w.write("\\@include{xyzzy}\n");
-        } finally {
-            w.close();
+        try( final Writer w = new FileWriter( aux2 ) ) {
+            w.write( "\\relax\n" );
+            w.write( "\\@include{xyzzy}\n" );
         }
 
         try {
@@ -563,12 +543,12 @@ public class ExBibTest extends BibTester {
                         + "\n" + "A level-1 auxiliary file: "
                         + aux2.toString()
                         + "\n"
-                        + "I couldn\'t open file xyzzy.aux\n"
+                        + "I couldn't open file xyzzy.aux\n"
                         + "(There was 1 error)\n", //
                 "-v", "test.aux");
         } finally {
             if (aux2.exists() && !aux2.delete()) {
-                assertTrue(aux2.toString() + ": deletion failed", false);
+                fail( aux2.toString() + ": deletion failed" );
             }
         }
     }
@@ -582,7 +562,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testConfig1() throws Exception {
 
-        runFailure(BANNER + "The option `--config\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--config' needs a parameter.\n",
             "--config");
     }
 
@@ -595,7 +575,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testConfig2() throws Exception {
 
-        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n"
+        runFailure(BANNER + "Configuration `exbib/undef' not found.\n"
                 + "(There was 1 error)\n", "--config", "undef", "test");
     }
 
@@ -651,7 +631,8 @@ public class ExBibTest extends BibTester {
             CLI.EXIT_FAIL,
             Check.EQ,
             BANNER
-                    + "Configuration `exbib/processor/undefined.xml\' not found.\n"
+                    + "Configuration `exbib/processor/undefined.xml' not " +
+                "found.\n"
                     + "(There was 1 error)\n", //
             "--config", "misconfigured", "test");
     }
@@ -679,7 +660,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCsfile1() throws Exception {
 
-        runFailure(BANNER + "The option `--csfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--csfile' needs a parameter.\n",
             "--csfile");
     }
 
@@ -692,7 +673,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testCsfile2() throws Exception {
 
-        runFailure(BANNER + "The csf `xyzzy\' could not be found.\n"
+        runFailure(BANNER + "The csf `xyzzy' could not be found.\n"
                 + "(There was 1 error)\n", //
             "--csfile", "xyzzy", "test");
     }
@@ -721,7 +702,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testDebug1() throws Exception {
 
-        runFailure(BANNER + "The option `--debug\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--debug' needs a parameter.\n",
             "--debug");
     }
 
@@ -734,7 +715,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testDebug2() throws Exception {
 
-        runFailure(BANNER + "The debug mode `xxx\' is unknown.\n",
+        runFailure(BANNER + "The debug mode `xxx' is unknown.\n",
             "--debug=xxx");
     }
 
@@ -900,9 +881,9 @@ public class ExBibTest extends BibTester {
     @Test
     public void testIgnored1() throws Exception {
 
-        runFailure("Ignoring bibtex8 option `-B\'.\n" + BANNER
+        runFailure( "Ignoring bibtex8 option `-B'.\n" + BANNER
                 + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
-            "-v", "-B");
+                    "-v", "-B");
     }
 
     /**
@@ -914,9 +895,9 @@ public class ExBibTest extends BibTester {
     @Test
     public void testIgnored2() throws Exception {
 
-        runFailure("Ignoring bibtex8 option `--big\'.\n" + BANNER
+        runFailure( "Ignoring bibtex8 option `--big'.\n" + BANNER
                 + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
-            "-v", "--big");
+                    "-v", "--big");
     }
 
     /**
@@ -928,9 +909,9 @@ public class ExBibTest extends BibTester {
     @Test
     public void testIgnored3() throws Exception {
 
-        runFailure("Ignoring bibtex8 option `--mcites\'.\n" + BANNER
+        runFailure( "Ignoring bibtex8 option `--mcites'.\n" + BANNER
                 + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
-            "-v", "--mcites=123");
+                    "-v", "--mcites=123");
     }
 
     /**
@@ -942,7 +923,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLanguage1() throws Exception {
 
-        runFailure(BANNER + "The option `--language\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--language' needs a parameter.\n",
             "--language");
     }
 
@@ -997,7 +978,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLoad1() throws Exception {
 
-        runFailure(BANNER + "The option `--load\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--load' needs a parameter.\n",
             "--load");
     }
 
@@ -1010,7 +991,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLoad2() throws Exception {
 
-        runFailure(BANNER + "The file `\' could not be loaded.\n", "--load=");
+        runFailure( BANNER + "The file `' could not be loaded.\n", "--load=");
     }
 
     /**
@@ -1023,7 +1004,8 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The file `file/which/does/not/exist\' could not be loaded.\n", //
+                    + "The file `file/which/does/not/exist' could not be " +
+                "loaded.\n",//
             "--load", "file/which/does/not/exist");
     }
 
@@ -1037,7 +1019,8 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The file `file/which/does/not/exist\' could not be loaded.\n", //
+                    + "The file `file/which/does/not/exist' could not be " +
+                "loaded.\n",//
             "--load=file/which/does/not/exist");
     }
 
@@ -1063,7 +1046,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testLogfile01() throws Exception {
 
-        runFailure(BANNER + "The option `--logfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--logfile' needs a parameter.\n",
             "--logfile");
     }
 
@@ -1080,7 +1063,7 @@ public class ExBibTest extends BibTester {
 
         File log = new File("test.lg");
         if (log.exists() && !log.delete()) {
-            assertTrue(log.toString() + ": deletion failed", false);
+            fail( log.toString() + ": deletion failed" );
         }
         assertFalse(log.exists());
 
@@ -1103,7 +1086,7 @@ public class ExBibTest extends BibTester {
 
         } finally {
             if (log.exists() && !log.delete()) {
-                assertTrue(log.toString() + ": deletion failed", false);
+                fail( log.toString() + ": deletion failed" );
             }
         }
     }
@@ -1134,7 +1117,7 @@ public class ExBibTest extends BibTester {
     public void testMinCrossrefs1() throws Exception {
 
         runFailure(BANNER
-                + "The option `--min_crossrefs\' needs a parameter.\n",
+                + "The option `--min_crossrefs' needs a parameter.\n",
             "--min_crossrefs");
     }
 
@@ -1149,7 +1132,8 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The option `--min_crossrefs\' needs an integer parameter.\n",
+                    + "The option `--min_crossrefs' needs an integer " +
+                "parameter.\n",
             "--min_crossrefs", "abc");
     }
 
@@ -1163,7 +1147,7 @@ public class ExBibTest extends BibTester {
     public void testMinCrossrefs3() throws Exception {
 
         runFailure(BANNER
-                + "The option `--min.crossrefs\' needs a parameter.\n",
+                + "The option `--min.crossrefs' needs a parameter.\n",
             "--min.crossrefs");
     }
 
@@ -1178,7 +1162,8 @@ public class ExBibTest extends BibTester {
 
         runFailure(
             BANNER
-                    + "The option `--min.crossrefs\' needs an integer parameter.\n",
+                    + "The option `--min.crossrefs' needs an integer " +
+                "parameter.\n",
             "--min.crossrefs", "abc");
     }
 
@@ -1289,13 +1274,11 @@ public class ExBibTest extends BibTester {
 
         String[] args = {"test.aux"};
         File aux = new File("test.aux");
-        Writer w = new FileWriter(aux);
-        try {
-            w.write("\\citation{*}\n"
-                    + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/base/plain}\n");
-        } finally {
-            w.close();
+        try( final Writer w = new FileWriter( aux ) ) {
+            w.write( "\\citation{*}\n"
+                         + "\\bibdata{src/test/resources/bibtex/base/xampl" +
+                         ".bib}\n"
+                         + "\\bibstyle{src/test/resources/bibtex/base/plain}\n" );
         }
 
         Locale.setDefault(Locale.ENGLISH);
@@ -1310,13 +1293,13 @@ public class ExBibTest extends BibTester {
         } finally {
             System.setErr(err);
             if (!aux.delete()) {
-                assertTrue(aux.toString() + ": deletion failed", false);
+                fail( aux.toString() + ": deletion failed" );
             }
             if (!new File("test.bbl").delete()) {
-                assertTrue("test.bbl: deletion failed", false);
+                fail( "test.bbl: deletion failed" );
             }
             if (!new File("test.blg").delete()) {
-                assertTrue("test.blg: deletion failed", false);
+                fail( "test.blg: deletion failed" );
             }
         }
     }
@@ -1332,7 +1315,7 @@ public class ExBibTest extends BibTester {
 
         File xxx = new File("test.xxx");
         if (xxx.exists() && !xxx.delete()) {
-            assertTrue("test.xxx: deletion failed", false);
+            fail( "test.xxx: deletion failed" );
         }
         ExBibMain exbib =
                 runTest(
@@ -1351,11 +1334,11 @@ public class ExBibTest extends BibTester {
         // assertFalse("trace", exbib.isDebug());
         assertNull("logger", exbib.getLogger()); // since closed already
         if (!xxx.exists()) {
-            assertTrue("test.xxx missing", false);
+            fail( "test.xxx missing" );
         }
 
         if (xxx.exists() && !xxx.delete()) {
-            assertTrue("test.xxx: deletion failed", false);
+            fail( "test.xxx: deletion failed" );
         }
     }
 
@@ -1368,7 +1351,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testOutfile1() throws Exception {
 
-        runFailure(BANNER + "The option `--outfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--outfile' needs a parameter.\n",
             "--outfile");
     }
 
@@ -1385,7 +1368,7 @@ public class ExBibTest extends BibTester {
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n",
             CLI.EXIT_FAIL, Check.EQ,
-            "The output file `some/file/for/writing\' could not be opened.\n"
+                "The output file `some/file/for/writing' could not be opened.\n"
                     + "(There was 1 error)\n", "-q", "--outfile",
             "some/file/for/writing", "test.aux");
     }
@@ -1412,12 +1395,13 @@ public class ExBibTest extends BibTester {
                     + "\\bibitem{article-minimal}\n"
                     + "L[eslie]~A. Aamport.\n"
                     + "\\newblock The gnats and gnus document preparation system.\n"
-                    + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 1986.\n"
+                    + "\\newblock {\\em \\mbox{G-Animal's} Journal}, 1986.\n"
                     + "\n"
                     + "\\bibitem{article-full}\n"
                     + "L[eslie]~A. Aamport.\n"
                     + "\\newblock The gnats and gnus document preparation system.\n"
-                    + "\\newblock {\\em \\mbox{G-Animal\'s} Journal}, 41(7):73+, July 1986.\n"
+                    + "\\newblock {\\em \\mbox{G-Animal's} Journal}, 41(7)" +
+                ":73+, July 1986.\n"
                     + "\\newblock This is a full ARTICLE entry.\n", Check.EQ,
             null, //
             "test.aux", "--out", "-");
@@ -1448,7 +1432,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testProgName1() throws Exception {
 
-        runFailure(BANNER + "The option `--progname\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--progname' needs a parameter.\n",
             "--progname");
     }
 
@@ -1521,7 +1505,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorter01() throws Exception {
 
-        runFailure(BANNER + "The option `--sorter\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--sorter' needs a parameter.\n",
             "--sorter");
     }
 
@@ -1534,7 +1518,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorter10() throws Exception {
 
-        runFailure(BANNER + "The sorter `unknown\' could not be found.\n"
+        runFailure(BANNER + "The sorter `unknown' could not be found.\n"
                 + "(There was 1 error)\n", //
             "--sorter=unknown:xxx", "test.aux");
     }
@@ -1548,7 +1532,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorter11() throws Exception {
 
-        runFailure(BANNER + "The sorter `unknown\' could not be found.\n"
+        runFailure(BANNER + "The sorter `unknown' could not be found.\n"
                 + "(There was 1 error)\n", //
             "--sorter", "unknown:xxx", "test.aux");
     }
@@ -1561,28 +1545,24 @@ public class ExBibTest extends BibTester {
      */
     @Test
     public void testSorterLocale01() throws Exception {
-
         File data =
-                makeFile("target/data.bib", "UTF-8",
-                    "@Item{ a,  value = {a} }\n"
-                            + "@Item{ ae,  value = {ae} }\n"
-                            + "@Item{ ab,  value = {ab} }\n"
-                            + "@Item{ af,  value = {af} }\n"
-                            + "@Item{ a1,  value = {A} }\n"
-                            + "@Item{ ae1, value = {\u00e4} }\n"
-                            + "@Item{ ac,  value = {ac} }\n");
+            makeFile( "target/data.bib", "UTF-8",
+                      "@Item{ a,  value = {a} }\n"
+                          + "@Item{ ae,  value = {ae} }\n"
+                          + "@Item{ ab,  value = {ab} }\n"
+                          + "@Item{ af,  value = {af} }\n"
+                          + "@Item{ a1,  value = {A} }\n"
+                          + "@Item{ ae1, value = {\u00e4} }\n"
+                          + "@Item{ ac,  value = {ac} }\n" );
+        data.deleteOnExit();
 
-        try {
-            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-                CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
-                Check.EQ,
-                BANNER, //
-                "--sorter", "locale:en_US", "test.aux", "--out=-",
-                "--enc=UTF-8");
-        } finally {
-            data.delete();
-        }
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                 CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
+                 Check.EQ,
+                 BANNER, //
+                 "--sorter", "locale:en_US", "test.aux", "--out=-",
+                 "--enc=UTF-8" );
     }
 
     /**
@@ -1593,7 +1573,6 @@ public class ExBibTest extends BibTester {
      */
     @Test
     public void testSorterLocale02() throws Exception {
-
         File data =
                 makeFile("target/data.bib", "UTF-8",
                     "@Item{ a,  value = {a} }\n"
@@ -1604,15 +1583,13 @@ public class ExBibTest extends BibTester {
                             + "@Item{ ae1, value = {\u00e4} }\n"
                             + "@Item{ ac,  value = {ac} }\n");
 
-        try {
-            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-                CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
-                Check.EQ, BANNER, //
-                "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
-        } finally {
-            data.delete();
-        }
+        data.deleteOnExit();
+
+        runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+            CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
+            Check.EQ, BANNER, //
+            "--sorter", "locale:de", "test.aux", "--out=-", "--enc=UTF-8");
     }
 
     /**
@@ -1623,28 +1600,25 @@ public class ExBibTest extends BibTester {
      */
     @Test
     public void testSorterLocale03() throws Exception {
-
         File data =
-                makeFile("target/data.bib", "UTF-8",
-                    "@Item{ a,  value = {a} }\n"
-                            + "@Item{ ae,  value = {ae} }\n"
-                            + "@Item{ ab,  value = {ab} }\n"
-                            + "@Item{ af,  value = {af} }\n"
-                            + "@Item{ a1,  value = {A} }\n"
-                            + "@Item{ ae1, value = {\u00e4} }\n"
-                            + "@Item{ ac,  value = {ac} }\n");
+            makeFile( "target/data.bib", "UTF-8",
+                      "@Item{ a,  value = {a} }\n"
+                          + "@Item{ ae,  value = {ae} }\n"
+                          + "@Item{ ab,  value = {ab} }\n"
+                          + "@Item{ af,  value = {af} }\n"
+                          + "@Item{ a1,  value = {A} }\n"
+                          + "@Item{ ae1, value = {\u00e4} }\n"
+                          + "@Item{ ac,  value = {ac} }\n" );
 
-        try {
-            runTest("test",
-                "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
-                        + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
-                        + "\\biboption{sort=locale:de}\n", //
-                CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
-                Check.EQ, BANNER, //
-                "test.aux", "--out=-", "--enc=UTF-8");
-        } finally {
-            data.delete();
-        }
+        data.deleteOnExit();
+
+        runTest( "test",
+                 "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
+                     + "\\biboption{sort=locale:de}\n", //
+                 CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
+                 Check.EQ, BANNER, //
+                 "test.aux", "--out=-", "--enc=UTF-8" );
     }
 
     /**
@@ -1655,28 +1629,24 @@ public class ExBibTest extends BibTester {
      */
     @Test
     @Ignore
-    // TODO
     public void testSorterRbc01() throws Exception {
-
         File data =
-                makeFile("target/data.bib", "UTF-8",
-                    "@Item{ a,  value = {a} }\n"
-                            + "@Item{ ae,  value = {ae} }\n"
-                            + "@Item{ ab,  value = {ab} }\n"
-                            + "@Item{ af,  value = {af} }\n"
-                            + "@Item{ a1,  value = {A} }\n"
-                            + "@Item{ ae1, value = {\u00e4} }\n"
-                            + "@Item{ ac,  value = {ac} }\n");
+            makeFile( "target/data.bib", "UTF-8",
+                      "@Item{ a,  value = {a} }\n"
+                          + "@Item{ ae,  value = {ae} }\n"
+                          + "@Item{ ab,  value = {ab} }\n"
+                          + "@Item{ af,  value = {af} }\n"
+                          + "@Item{ a1,  value = {A} }\n"
+                          + "@Item{ ae1, value = {\u00e4} }\n"
+                          + "@Item{ ac,  value = {ac} }\n" );
 
-        try {
-            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-                CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\n\u00e4\naf\n",
-                Check.EQ, BANNER, //
-                "--sorter", "de-ae", "test.aux", "--out=-", "--enc=UTF-8");
-        } finally {
-            data.delete();
-        }
+        data.deleteOnExit();
+
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                 CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\n\u00e4\naf\n",
+                 Check.EQ, BANNER, //
+                 "--sorter", "de-ae", "test.aux", "--out=-", "--enc=UTF-8" );
     }
 
     /**
@@ -1687,26 +1657,23 @@ public class ExBibTest extends BibTester {
      */
     @Test
     public void testSorterUnicode01() throws Exception {
-
         File data =
-                makeFile("target/data.bib", "UTF-8",
-                    "@Item{ a,  value = {a} }\n"
-                            + "@Item{ ae,  value = {ae} }\n"
-                            + "@Item{ ab,  value = {ab} }\n"
-                            + "@Item{ af,  value = {af} }\n"
-                            + "@Item{ a1,  value = {A} }\n"
-                            + "@Item{ ae1, value = {\u00e4} }\n"
-                            + "@Item{ ac,  value = {ac} }\n");
+            makeFile( "target/data.bib", "UTF-8",
+                      "@Item{ a,  value = {a} }\n"
+                          + "@Item{ ae,  value = {ae} }\n"
+                          + "@Item{ ab,  value = {ab} }\n"
+                          + "@Item{ af,  value = {af} }\n"
+                          + "@Item{ a1,  value = {A} }\n"
+                          + "@Item{ ae1, value = {\u00e4} }\n"
+                          + "@Item{ ac,  value = {ac} }\n" );
 
-        try {
-            runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
-                    + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
-                CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\n\u00e4\n",
-                Check.EQ, BANNER, //
-                "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8");
-        } finally {
-            data.delete();
-        }
+        data.deleteOnExit();
+
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                     + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
+                 CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\n\u00e4\n",
+                 Check.EQ, BANNER, //
+                 "--sorter", "unicode", "test.aux", "--out=-", "--enc=UTF-8" );
     }
 
     /**
@@ -1800,7 +1767,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testUndefined1() throws Exception {
 
-        runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
+        runFailure(BANNER + "Unknown option `--undefined' ignored.\n"
                 + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--undefined");
     }
@@ -1814,7 +1781,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testUndefined2() throws Exception {
 
-        runFailure(BANNER + "Unknown option `--undefined\' ignored.\n"
+        runFailure(BANNER + "Unknown option `--undefined' ignored.\n"
                 + "Missing aux file parameter.\n" + "(There was 1 error)\n", //
             "--undefined=123");
     }
@@ -1826,6 +1793,7 @@ public class ExBibTest extends BibTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testVerbose1() throws Exception {
 
         String aux =
@@ -1860,9 +1828,9 @@ public class ExBibTest extends BibTester {
     @Test
     public void testVerbose2() throws Exception {
 
-        runFailure(BANNER
-                + "The option `--verbose\' does not cope with arguments.\n", //
-            "--verbose=123", "test.aux");
+        runFailure( BANNER
+                + "The option `--verbose' does not cope with arguments.\n", //
+                    "--verbose=123", "test.aux");
     }
 
     /**

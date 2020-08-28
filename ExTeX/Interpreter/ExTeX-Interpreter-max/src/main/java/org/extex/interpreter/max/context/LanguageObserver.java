@@ -39,9 +39,7 @@ import org.extex.scanner.type.tokens.Tokens;
  */
 public class LanguageObserver implements CountObserver, TokensObserver {
 
-    /**
-     * Creates a new object.
-     */
+
     public LanguageObserver() {
 
     }

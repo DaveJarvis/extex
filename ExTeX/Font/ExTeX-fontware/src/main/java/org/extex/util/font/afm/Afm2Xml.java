@@ -81,9 +81,7 @@ public class Afm2Xml extends AbstractFontUtil {
 
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Afm2Xml() {
 
         super(Afm2Xml.class);

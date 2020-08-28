@@ -39,9 +39,7 @@ public class CrossrefTest {
      */
     private static final String DATA_DIR = "src/test/resources/bibtex/base";
 
-    /**
-     * Creates a new object.
-     */
+
     public CrossrefTest() {
 
     }

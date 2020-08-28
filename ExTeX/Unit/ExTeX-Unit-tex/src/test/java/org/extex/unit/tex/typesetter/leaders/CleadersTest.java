@@ -40,12 +40,10 @@ public class CleadersTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(CleadersTest.class);
     }
 
-    /**
-     * Constructor for CleadersTest.
-     */
+
     public CleadersTest() {
 
-        super("cleaders", "\\vrule\\vfill");
+        setPrimitive("cleaders");setArguments("\\vrule\\vfill");setPrepare("");
     }
 
     // TODO implement primitive specific test cases

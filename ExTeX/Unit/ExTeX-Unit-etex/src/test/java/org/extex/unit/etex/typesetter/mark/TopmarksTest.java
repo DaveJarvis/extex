@@ -40,12 +40,10 @@ public class TopmarksTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(TopmarksTest.class);
     }
 
-    /**
-     * Constructor for TopmarkTest.
-     */
+
     public TopmarksTest() {
 
-        super("topmarks", "0");
+        setPrimitive("topmarks");setArguments("0");
         setConfig("etex-test");
     }
 

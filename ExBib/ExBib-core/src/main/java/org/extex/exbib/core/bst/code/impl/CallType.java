@@ -107,9 +107,7 @@ public class CallType extends AbstractCode implements Configurable {
      */
     private String defaultType = "default.type";
 
-    /**
-     * Creates a new object.
-     */
+
     public CallType() {
 
     }

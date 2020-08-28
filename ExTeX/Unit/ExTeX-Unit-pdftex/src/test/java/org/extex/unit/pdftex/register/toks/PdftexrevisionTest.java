@@ -40,9 +40,7 @@ public class PdftexrevisionTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(PdftexrevisionTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdftexrevisionTest() {
 
         super("pdftexrevision", "", "r");

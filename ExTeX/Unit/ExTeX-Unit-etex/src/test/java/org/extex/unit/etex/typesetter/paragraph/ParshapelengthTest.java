@@ -41,9 +41,7 @@ public class ParshapelengthTest extends NonExecuteTester {
         (new JUnitCore()).run(ParshapelengthTest.class);
     }
 
-    /**
-     * Constructor for ParshapelengthTest.
-     */
+
     public ParshapelengthTest() {
 
         super("parshapelength", "");

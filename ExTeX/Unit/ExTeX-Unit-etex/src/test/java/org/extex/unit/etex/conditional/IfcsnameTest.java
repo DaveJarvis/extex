@@ -41,9 +41,7 @@ public class IfcsnameTest extends ConditionalTester {
         (new JUnitCore()).run(IfcsnameTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfcsnameTest() {
 
         super("ifcsname", " relax\\endcsname");

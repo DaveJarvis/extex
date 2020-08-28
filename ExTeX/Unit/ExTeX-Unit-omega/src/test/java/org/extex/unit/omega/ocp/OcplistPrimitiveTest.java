@@ -41,9 +41,7 @@ public class OcplistPrimitiveTest extends ExTeXLauncher {
         (new JUnitCore()).run(OcplistPrimitiveTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public OcplistPrimitiveTest() {
 
         setConfig("omega-test");

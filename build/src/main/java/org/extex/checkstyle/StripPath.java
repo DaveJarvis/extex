@@ -34,9 +34,7 @@ import java.util.regex.Pattern;
  */
 public final class StripPath {
 
-    /**
-     * Creates a new object.
-     */
+
     private StripPath() {
 
         // not used

@@ -40,9 +40,7 @@ public class EveryeofTest extends AbstractToksRegisterTester {
         (new JUnitCore()).run(EveryeofTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public EveryeofTest() {
 
         super("everyeof", "", "");

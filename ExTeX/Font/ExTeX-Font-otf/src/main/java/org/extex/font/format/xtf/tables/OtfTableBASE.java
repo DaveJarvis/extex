@@ -91,27 +91,27 @@ public class OtfTableBASE extends AbstractXtfTable
      * </tr>
      * </table>
      */
-    public class Axis implements XMLWriterConvertible {
+    public static class Axis implements XMLWriterConvertible {
 
         /**
          * basescript offset
          */
-        private int baseScriptListOffset;
+        private final int baseScriptListOffset;
 
         /**
          * the basetaglist
          */
-        private BaseTagList basetaglist;
+        private final BaseTagList basetaglist;
 
         /**
          * basetaglist offset
          */
-        private int baseTagListOffset;
+        private final int baseTagListOffset;
 
         /**
          * the name
          */
-        private String name;
+        private final String name;
 
         /**
          * Create a new object.
@@ -130,7 +130,7 @@ public class OtfTableBASE extends AbstractXtfTable
             baseScriptListOffset = rar.readUnsignedShort();
 
             basetaglist =
-                    new BaseTagList(rar, offset + baseTagListOffset, name);
+                new BaseTagList( rar, offset + baseTagListOffset, name );
         }
 
         /**
@@ -194,12 +194,12 @@ public class OtfTableBASE extends AbstractXtfTable
      * identified with a 4-byte baseline tag.
      * 
      */
-    public class BaseTagList implements XMLWriterConvertible {
+    public static class BaseTagList implements XMLWriterConvertible {
 
         /**
          * the name
          */
-        private String name;
+        private final String name;
 
         /**
          * Create a new object.
@@ -236,7 +236,7 @@ public class OtfTableBASE extends AbstractXtfTable
     /**
      * horiz. Axis offset
      */
-    private int horizAxisOffset;
+    private final int horizAxisOffset;
 
     /**
      * horizontal Axis
@@ -246,12 +246,12 @@ public class OtfTableBASE extends AbstractXtfTable
     /**
      * version
      */
-    private int version;
+    private final int version;
 
     /**
      * vert. Axis offset
      */
-    private int vertAxisOffset;
+    private final int vertAxisOffset;
 
     /**
      * vertical Axis

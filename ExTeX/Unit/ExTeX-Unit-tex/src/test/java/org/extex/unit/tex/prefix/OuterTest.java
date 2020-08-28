@@ -42,9 +42,7 @@ public class OuterTest extends PrefixTester {
         (new JUnitCore()).run(OuterTest.class);
     }
 
-    /**
-     * Constructor for RelaxTest.
-     */
+
     public OuterTest() {
 
         super("outer");

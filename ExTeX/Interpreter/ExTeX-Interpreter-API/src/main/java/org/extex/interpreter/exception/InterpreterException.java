@@ -40,9 +40,7 @@ public class InterpreterException extends GeneralException {
      */
     private Localizer localizer = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public InterpreterException() {
 
     }

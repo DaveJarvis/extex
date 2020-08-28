@@ -41,12 +41,10 @@ public class HskipTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(HskipTest.class);
     }
 
-    /**
-     * Constructor for HskipTest.
-     */
+
     public HskipTest() {
 
-        super("hskip", "12pt", "A");
+        setPrimitive("hskip");setArguments("12pt");setPrepare("A");
     }
 
     /**

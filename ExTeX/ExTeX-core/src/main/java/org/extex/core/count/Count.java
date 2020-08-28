@@ -72,9 +72,7 @@ public class Count extends CountConstant {
         this.value = value;
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public Count() {
 
     }

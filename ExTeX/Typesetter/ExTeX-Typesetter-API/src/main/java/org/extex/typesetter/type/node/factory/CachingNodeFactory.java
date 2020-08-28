@@ -42,9 +42,7 @@ public class CachingNodeFactory extends SimpleNodeFactory {
      */
     private Map<TypesettingContext, Map<UnicodeChar, Node>> cache;
 
-    /**
-     * Creates a new object.
-     */
+
     public CachingNodeFactory() {
 
         cache = new HashMap<TypesettingContext, Map<UnicodeChar, Node>>();

@@ -41,12 +41,10 @@ public class RomannumeralTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(RomannumeralTest.class);
     }
 
-    /**
-     * Constructor for RomannumeralTest.
-     */
+
     public RomannumeralTest() {
 
-        super("romannumeral", "1");
+        setPrimitive("romannumeral");setArguments("1");setPrepare("");
     }
 
     /**

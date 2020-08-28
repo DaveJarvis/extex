@@ -33,9 +33,7 @@ import org.junit.Test;
  */
 public class TypesetterTest extends ExTeXLauncher {
 
-    /**
-     * Constructor for MathaccentTest.
-     */
+
     public TypesetterTest() {
 
     }

@@ -20,25 +20,7 @@
 package org.extex.typesetter.type;
 
 import org.extex.core.exception.GeneralException;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 
 /**
  * This abstract class can be used as base for node visitors for which only a
@@ -47,6 +29,7 @@ import org.extex.typesetter.type.node.WhatsItNode;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4739 $
  */
+@SuppressWarnings("RedundantThrows")
 public abstract class AbstractNodeVisitor
         implements
             NodeVisitor<Object, Object> {

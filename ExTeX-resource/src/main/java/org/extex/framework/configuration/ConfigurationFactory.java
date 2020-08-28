@@ -19,6 +19,7 @@
 
 package org.extex.framework.configuration;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.InvocationTargetException;
 
@@ -47,8 +48,8 @@ public final class ConfigurationFactory {
     /**
      * The field <tt>classloader</tt> contains the class loader.
      */
-    private static ClassLoader classloader = new ConfigurationFactory()
-        .getClass().getClassLoader();
+    private static final ClassLoader CLASSLOADER =
+        ConfigurationFactory.class.getClassLoader();
 
     /**
      * The field <tt>ext</tt> contains extensions to use when searching for
@@ -106,14 +107,18 @@ public final class ConfigurationFactory {
         String classname = System.getProperty("Util.Configuration.class");
 
         if (classname == null) {
+            for (final String p : PATHS) {
+                for (final String ext : XML_EXTENSIONS) {
+                    final String fullName = p + source + ext;
 
-            for (String p : PATHS) {
-                for (String ext : XML_EXTENSIONS) {
-                    String fullName = p + source + ext;
-                    InputStream stream =
-                            classloader.getResourceAsStream(fullName);
-                    if (stream != null) {
-                        return new XmlConfiguration(stream, fullName);
+                    try( InputStream stream =
+                             CLASSLOADER.getResourceAsStream( fullName ) ) {
+                        if( stream != null ) {
+                            final XmlConfiguration config =
+                                new XmlConfiguration( stream, fullName );
+                            return config;
+                        }
+                    } catch( final IOException ignored ) {
                     }
                 }
             }
@@ -124,25 +129,15 @@ public final class ConfigurationFactory {
         try {
             return (Configuration) (Class.forName(classname).getConstructor(
                 new Class[]{String.class}).newInstance(new Object[]{source}));
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
-            throw new ConfigurationInstantiationException(e);
         } catch (InvocationTargetException e) {
-            Throwable c = e.getCause();
-            if (c != null && c instanceof ConfigurationException) {
+            final Throwable c = e.getCause();
+            if ( c instanceof ConfigurationException ) {
                 throw (ConfigurationException) c;
             }
             throw new ConfigurationInstantiationException(e);
-        } catch (NoSuchMethodException e) {
-            throw new ConfigurationInstantiationException(e);
         } catch (ClassNotFoundException e) {
             throw new ConfigurationClassNotFoundException(classname);
-        } catch (ClassCastException e) {
+        } catch ( final Exception e) {
             throw new ConfigurationInstantiationException(e);
         }
     }

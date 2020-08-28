@@ -33,12 +33,9 @@ import org.junit.Test;
  */
 public class HalignTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
     public HalignTest() {
 
-        super("halign", "{#\\cr}", DEFINE_HASH);
+        setPrimitive("halign");setArguments("{#\\cr}");setPrepare(DEFINE_HASH);
     }
 
     /**

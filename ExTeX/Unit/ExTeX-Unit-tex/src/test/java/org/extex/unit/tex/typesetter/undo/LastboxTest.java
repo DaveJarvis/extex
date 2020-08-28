@@ -42,9 +42,7 @@ public class LastboxTest extends ExTeXLauncher {
         (new JUnitCore()).run(LastboxTest.class);
     }
 
-    /**
-     * Constructor for LastboxTest.
-     */
+
     public LastboxTest() {
 
     }

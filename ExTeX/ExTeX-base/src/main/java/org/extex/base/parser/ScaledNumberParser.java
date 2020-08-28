@@ -357,9 +357,7 @@ public final class ScaledNumberParser {
         return new ScaledNumber(parse(context, source, typesetter));
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private ScaledNumberParser() {
 
         // impossible

@@ -53,9 +53,7 @@ public class TokenStreamStreamImplBufferedTest
         (new JUnitCore()).run(TokenStreamStreamImplBufferedTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public TokenStreamStreamImplBufferedTest() {
 
     }

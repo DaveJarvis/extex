@@ -41,12 +41,10 @@ public class AftergroupTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(AftergroupTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public AftergroupTest() {
 
-        super("aftergroup", " x");
+        setPrimitive("aftergroup");setArguments(" x");setPrepare("");
     }
 
     /**

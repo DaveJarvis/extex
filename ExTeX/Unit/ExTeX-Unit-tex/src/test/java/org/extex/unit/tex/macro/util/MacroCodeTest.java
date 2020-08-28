@@ -31,9 +31,7 @@ import org.junit.Test;
  */
 public class MacroCodeTest extends ExTeXLauncher {
 
-    /**
-     * Creates a new object.
-     */
+
     public MacroCodeTest() {
 
     }

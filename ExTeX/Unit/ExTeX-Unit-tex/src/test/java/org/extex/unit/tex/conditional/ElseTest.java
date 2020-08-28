@@ -41,9 +41,7 @@ public class ElseTest extends ExTeXLauncher {
         (new JUnitCore()).run(ElseTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ElseTest() {
 
     }

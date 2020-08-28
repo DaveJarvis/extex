@@ -41,12 +41,10 @@ public class CatcodePrimitiveTest extends NoFlagsButGlobalPrimitiveTester {
         (new JUnitCore()).run(CatcodePrimitiveTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CatcodePrimitiveTest() {
 
-        super("catcode", "1=1 ", "");
+        setPrimitive("catcode");setArguments("1=1 ");setPrepare("");
     }
 
     /**

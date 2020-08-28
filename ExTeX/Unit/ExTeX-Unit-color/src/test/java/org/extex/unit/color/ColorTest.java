@@ -58,12 +58,10 @@ public class ColorTest extends NoFlagsButGlobalPrimitiveTester {
      */
     private static final int TEN_PERCENT = 6553;
 
-    /**
-     * Creates a new object.
-     */
+
     public ColorTest() {
 
-        super("color", "{.1 .2 .3}", "");
+        setPrimitive("color");setArguments("{.1 .2 .3}");setPrepare("");
         setConfig("colorextex-test");
     }
 

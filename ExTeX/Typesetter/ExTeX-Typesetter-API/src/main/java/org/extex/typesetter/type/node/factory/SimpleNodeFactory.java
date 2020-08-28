@@ -36,9 +36,7 @@ import org.extex.typesetter.type.node.VirtualCharNode;
  */
 public class SimpleNodeFactory implements NodeFactory {
 
-    /**
-     * Creates a new object.
-     */
+
     public SimpleNodeFactory() {
 
     }

@@ -431,17 +431,11 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
                     return instance;
                 }
             }
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
+        } catch ( SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (InvocationTargetException e) {
             Throwable cause = e.getCause();
-            if (cause != null && cause instanceof ConfigurationException) {
+            if ( cause instanceof ConfigurationException ) {
                 throw (ConfigurationException) cause;
             }
             throw new ConfigurationInstantiationException(e);
@@ -558,17 +552,11 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
                 }
             }
 
-        } catch (SecurityException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalArgumentException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (InstantiationException e) {
-            throw new ConfigurationInstantiationException(e);
-        } catch (IllegalAccessException e) {
+        } catch ( SecurityException | IllegalArgumentException | InstantiationException | IllegalAccessException e) {
             throw new ConfigurationInstantiationException(e);
         } catch (InvocationTargetException e) {
             Throwable c = e.getCause();
-            if (c != null && c instanceof ConfigurationException) {
+            if ( c instanceof ConfigurationException ) {
                 throw (ConfigurationException) c;
             }
             throw new ConfigurationInstantiationException(e);
@@ -645,14 +633,13 @@ public abstract class AbstractFactory<TYPE> extends AbstractConfigurable
      * @throws IllegalAccessException in case of an access error
      * @throws ConfigurationException in case of a configuration error
      */
+    @SuppressWarnings("unchecked")
     private TYPE createInstanceForConfiguration0(Configuration config,
             Class<?> theClass)
-            throws InstantiationException,
-                IllegalAccessException,
-                ConfigurationException {
+        throws InstantiationException, IllegalAccessException,
+        ConfigurationException, InvocationTargetException {
 
-        @SuppressWarnings("unchecked")
-        TYPE instance = (TYPE) theClass.newInstance();
+        TYPE instance = (TYPE) theClass.getConstructors()[0].newInstance();
         enableLogging(instance, logger);
         configure(instance, config);
         return instance;

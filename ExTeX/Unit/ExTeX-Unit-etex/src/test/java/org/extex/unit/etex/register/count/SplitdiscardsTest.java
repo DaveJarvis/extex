@@ -40,9 +40,7 @@ public class SplitdiscardsTest extends AbstractCountArrayTester {
         (new JUnitCore()).run(SplitdiscardsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public SplitdiscardsTest() {
 
         super("splitdiscards", "255", "0");

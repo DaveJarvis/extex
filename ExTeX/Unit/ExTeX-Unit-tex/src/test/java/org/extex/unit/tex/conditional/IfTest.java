@@ -654,9 +654,7 @@ public class IfTest extends ConditionalTester {
         (new JUnitCore()).run(IfTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfTest() {
 
         super("if", " xx");

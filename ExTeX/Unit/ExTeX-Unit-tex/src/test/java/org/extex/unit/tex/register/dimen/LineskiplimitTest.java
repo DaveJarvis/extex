@@ -40,9 +40,7 @@ public class LineskiplimitTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(LineskiplimitTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LineskiplimitTest() {
 
         super("lineskiplimit", "", "0.0pt");

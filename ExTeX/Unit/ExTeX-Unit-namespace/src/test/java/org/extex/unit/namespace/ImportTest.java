@@ -40,12 +40,10 @@ public class ImportTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(ImportTest.class);
     }
 
-    /**
-     * Constructor for NamespaceTest.
-     */
+
     public ImportTest() {
 
-        super("import", "{a.b.c}", DEFINE_BRACES);
+        setPrimitive("import");setArguments("{a.b.c}");setPrepare(DEFINE_BRACES);
         setConfig("namespace-test");
     }
 

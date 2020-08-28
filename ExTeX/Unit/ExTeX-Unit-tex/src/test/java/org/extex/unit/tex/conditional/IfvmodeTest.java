@@ -40,9 +40,7 @@ public class IfvmodeTest extends ConditionalTester {
         (new JUnitCore()).run(IfvmodeTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IfvmodeTest() {
 
         super("ifvmode", "");

@@ -19,6 +19,7 @@
 
 package org.extex.test;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
 /**
@@ -33,7 +34,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * The field <tt>invocation</tt> contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private String invocation = "";
 
     /**
      * The field <tt>prepare</tt> contains the preparation code.
@@ -45,17 +46,21 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      */
     private String fil;
 
-    /**
-     * Constructor for HfillTest.
-     * 
-     * @param primitive the name of the primitive
-     * @param args the arguments for the invocation
-     * @param fil the unit inserted
-     */
-    public AbstractHfillTester(String primitive, String args, String fil) {
+    public AbstractHfillTester() {
+    }
 
-        super(primitive, args);
-        this.invocation = primitive + args;
+    public void setPrimitive(final String primitive) {
+        super.setPrimitive( primitive );
+        this.invocation = primitive;
+    }
+
+    @Override
+    public void setPrepare( final String prepare ) {
+        super.setPrepare( prepare );
+        this.prepare = prepare;
+    }
+
+    public void setFil( final String fil ) {
         this.fil = fil;
     }
 
@@ -97,6 +102,7 @@ public abstract class AbstractHfillTester extends NoFlagsPrimitiveTester {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testIgnore2() throws Exception {
 
         assertSuccess(showNodesProperties(),

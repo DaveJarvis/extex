@@ -69,9 +69,7 @@ public class PageBuilderImpl implements PageBuilder {
      */
     private PageFactory pageFactory = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public PageBuilderImpl() {
 
     }

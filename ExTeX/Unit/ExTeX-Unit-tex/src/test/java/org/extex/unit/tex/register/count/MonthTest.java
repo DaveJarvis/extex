@@ -53,9 +53,7 @@ public class MonthTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(MonthTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MonthTest() {
 
         super("month", "", getDefaultValue());

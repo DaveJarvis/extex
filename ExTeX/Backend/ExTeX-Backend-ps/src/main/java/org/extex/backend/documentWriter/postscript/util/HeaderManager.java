@@ -36,9 +36,7 @@ public class HeaderManager {
      */
     private StringBuilder header = new StringBuilder();
 
-    /**
-     * Creates a new object.
-     */
+
     public HeaderManager() {
 
     }

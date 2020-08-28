@@ -83,9 +83,7 @@ public class BibUtilTester {
     public static final String BANNER_DE = "Dies ist exbibutil, Version "
             + ExBibUtilMain.VERSION + "\n";
 
-    /**
-     * Creates a new object.
-     */
+
     public BibUtilTester() {
 
     }

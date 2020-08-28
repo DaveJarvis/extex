@@ -124,9 +124,7 @@ public class TypesetterHelpingException extends TypesetterException {
      */
     private String tag;
 
-    /**
-     * Creates a new object.
-     */
+
     protected TypesetterHelpingException() {
 
         this.tag = DEFAULT_TAG;

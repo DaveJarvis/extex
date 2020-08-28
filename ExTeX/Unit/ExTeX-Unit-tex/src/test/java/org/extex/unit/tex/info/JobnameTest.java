@@ -33,12 +33,10 @@ import org.junit.Test;
  */
 public class JobnameTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Constructor for JobnameTest.
-     */
+
     public JobnameTest() {
 
-        super("jobname", "");
+        setPrimitive("jobname");setArguments("");setPrepare("");
     }
 
     /**

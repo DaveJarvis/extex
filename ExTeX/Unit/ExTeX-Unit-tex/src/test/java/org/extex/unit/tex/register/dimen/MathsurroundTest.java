@@ -42,9 +42,7 @@ public class MathsurroundTest extends AbstractDimenRegisterTester {
         (new JUnitCore()).run(MathsurroundTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public MathsurroundTest() {
 
         super("mathsurround", "", "0.0pt");

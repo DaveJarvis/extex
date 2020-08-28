@@ -75,9 +75,7 @@ public class NullFont implements Font, Serializable {
      */
     private UnicodeChar skew = null;
 
-    /**
-     * Creates a new object.
-     */
+
     public NullFont() {
 
     }

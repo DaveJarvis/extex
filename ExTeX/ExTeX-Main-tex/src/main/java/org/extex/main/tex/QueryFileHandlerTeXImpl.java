@@ -42,9 +42,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  */
 public class QueryFileHandlerTeXImpl implements QueryFileHandler {
 
-    /**
-     * Creates a new object.
-     */
+
     public QueryFileHandlerTeXImpl() {
 
     }

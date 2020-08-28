@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class NativedefTest extends NoFlagsButGlobalPrimitiveTester {
 
-    /**
-     * Constructor for SkewcharTest.
-     */
+
     public NativedefTest() {
 
-        super("nativedef", "{java}\\t{org.extex.unit.base.Relax}");
+        setPrimitive("nativedef");setArguments("{java}\\t{org.extex.unit.base.Relax}");
         setConfig("native-test");
     }
 

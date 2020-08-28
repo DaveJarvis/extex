@@ -35,9 +35,7 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  */
 public class SimpleUnicodeNodeFactory extends SimpleNodeFactory {
 
-    /**
-     * Creates a new object.
-     */
+
     public SimpleUnicodeNodeFactory() {
 
     }

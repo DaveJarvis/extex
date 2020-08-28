@@ -67,9 +67,7 @@ public class DocParser {
      */
     private static Pattern PACKAGE = Pattern.compile("package ([^;]*);");
 
-    /**
-     * Creates a new object.
-     */
+
     public DocParser() {
 
     }

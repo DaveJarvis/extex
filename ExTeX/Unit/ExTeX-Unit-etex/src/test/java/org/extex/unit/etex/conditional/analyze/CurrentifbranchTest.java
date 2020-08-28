@@ -41,9 +41,7 @@ public class CurrentifbranchTest extends AbstractReadonlyCountRegisterTester {
         (new JUnitCore()).run(CurrentifbranchTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CurrentifbranchTest() {
 
         super("currentifbranch", "0");

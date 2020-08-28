@@ -27,12 +27,8 @@ package org.extex.unit.tex.math.symbol;
  */
 public class MathbinTest extends AbstractOperatorTester {
 
-    /**
-     * Constructor for MathbinTest.
-     */
     public MathbinTest() {
-
-        super("mathbin");
+        setPrimitive("mathbin");
     }
 
     //TODO implement more primitive specific test cases

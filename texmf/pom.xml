@@ -22,7 +22,7 @@
     <site>
       <id>org.extex</id>
       <name>ExTeX dev</name>
-      <url>file:///serv/www/extex/snapshot/ExTeX-texmf</url>
+      <url>${project.repo.url}/ExTeX-texmf</url>
     </site>
   </distributionManagement>
 

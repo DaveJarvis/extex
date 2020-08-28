@@ -644,9 +644,7 @@ public class FontInst02Test extends ExTeXLauncher {
         (new JUnitCore()).run(FontInst02Test.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public FontInst02Test() {
 
         setConfig("fontinst-test.xml");

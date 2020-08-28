@@ -23,32 +23,29 @@ import org.extex.test.count.AbstractCountRegisterTester;
 import org.junit.runner.JUnitCore;
 
 /**
- * This is a test suite for the primitive <tt>\tracingparagraphs</tt>.
- * 
+ * This is a test suite for the primitive {@code \tracingparagraphs}.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
 public class TracingparagraphsTest extends AbstractCountRegisterTester {
 
-    /**
-     * Command line interface.
-     * 
-     * @param args the arguments
-     */
-    public static void main(String[] args) {
+  /**
+   * Command line interface.
+   *
+   * @param args the arguments
+   */
+  public static void main( String[] args ) {
 
-        (new JUnitCore()).run(TracingparagraphsTest.class);
-    }
+    (new JUnitCore()).run( TracingparagraphsTest.class );
+  }
 
-    /**
-     * Creates a new object.
-     */
-    public TracingparagraphsTest() {
+  public TracingparagraphsTest() {
+    super( "tracingparagraphs", "", "0" );
 
-        super("tracingparagraphs", "", "0");
-        setDefaultLog(null); // ignore log output in some inherited test
-                                // cases
-    }
+    // ignore log output in some inherited test cases
+    setDefaultLog( null );
+  }
 
-    // TODO implement the primitive specific test cases
+  // TODO implement the primitive specific test cases
 }

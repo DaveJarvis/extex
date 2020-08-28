@@ -52,9 +52,7 @@ public class CrTokenTest extends TokenTester {
         (new JUnitCore()).run(CrTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public CrTokenTest() {
 
         super(token, Catcode.CR, "[]", "end of alignment template");

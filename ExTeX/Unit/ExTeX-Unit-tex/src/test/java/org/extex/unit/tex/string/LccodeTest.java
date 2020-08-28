@@ -39,9 +39,7 @@ public class LccodeTest extends AbstractCharMapTester {
         (new JUnitCore()).run(LccodeTest.class);
     }
 
-    /**
-     * Constructor for LccodeTest.
-     */
+
     public LccodeTest() {
 
         super("lccode", "65", "97", "1114111");

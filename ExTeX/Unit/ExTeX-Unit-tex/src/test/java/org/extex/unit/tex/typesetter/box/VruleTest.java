@@ -41,12 +41,10 @@ public class VruleTest extends NoFlagsPrimitiveTester {
         (new JUnitCore()).run(VruleTest.class);
     }
 
-    /**
-     * Constructor for VruleTest.
-     */
+
     public VruleTest() {
 
-        super("vrule", "");
+        setPrimitive("vrule");setArguments("");setPrepare("");
     }
 
     /**

@@ -49,9 +49,7 @@ public class LeftBraceTokenTest extends TokenTester {
         (new JUnitCore()).run(LeftBraceTokenTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public LeftBraceTokenTest() {
 
         super(token, Catcode.LEFTBRACE, "x", "begin-group character x");

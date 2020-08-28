@@ -43,9 +43,7 @@ import org.extex.typesetter.exception.TypesetterException;
  */
 public final class OcpUtil {
 
-    /**
-     * Creates a new object.
-     */
+
     private OcpUtil() {
 
         //

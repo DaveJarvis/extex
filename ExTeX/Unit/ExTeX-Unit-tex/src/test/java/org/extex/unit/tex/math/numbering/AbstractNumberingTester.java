@@ -28,15 +28,11 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4808 $
  */
-public class AbstractNumberingTester extends NoFlagsPrimitiveTester {
+public abstract class AbstractNumberingTester extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     * @param primitive the name of the primitive
-     */
-    public AbstractNumberingTester(String primitive) {
-
-        super(primitive, "$$", DEFINE_MATH + "$$");
+    public AbstractNumberingTester() {
+        setArguments( "$$" );
+        setPrepare( DEFINE_MATH + "$$" );
     }
 
     /**

@@ -40,9 +40,7 @@ public class DoublehyphendemeritsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(DoublehyphendemeritsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public DoublehyphendemeritsTest() {
 
         super("doublehyphendemerits", "", "0");

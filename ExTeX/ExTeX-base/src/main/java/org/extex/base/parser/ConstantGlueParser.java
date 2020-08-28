@@ -128,9 +128,7 @@ public class ConstantGlueParser implements Parser<Glue>, GlueParser {
         return new Glue(length, stretch, shrink);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public ConstantGlueParser() {
 
     }

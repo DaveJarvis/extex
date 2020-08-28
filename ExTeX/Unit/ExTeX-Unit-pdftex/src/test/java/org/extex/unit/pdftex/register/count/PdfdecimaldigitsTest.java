@@ -40,9 +40,7 @@ public class PdfdecimaldigitsTest extends AbstractCountRegisterTester {
         (new JUnitCore()).run(PdfdecimaldigitsTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public PdfdecimaldigitsTest() {
 
         super("pdfdecimaldigits", "", "3");

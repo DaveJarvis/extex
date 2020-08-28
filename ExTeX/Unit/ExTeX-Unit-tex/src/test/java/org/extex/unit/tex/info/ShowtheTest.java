@@ -30,12 +30,10 @@ import org.junit.Test;
  */
 public class ShowtheTest extends NoFlagsPrimitiveTester {
 
-    /**
-     * Creates a new object.
-     */
+
     public ShowtheTest() {
 
-        super("showthe", "\\count1 ", "", "> 0.\n");
+        setPrimitive("showthe");setArguments("\\count1 ");setPrepare("");setOut("> 0.\n");
     }
 
     /**

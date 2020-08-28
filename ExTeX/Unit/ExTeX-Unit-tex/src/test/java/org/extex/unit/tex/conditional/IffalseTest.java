@@ -40,9 +40,7 @@ public class IffalseTest extends ConditionalTester {
         (new JUnitCore()).run(IffalseTest.class);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     public IffalseTest() {
 
         super("iffalse", "\\else");

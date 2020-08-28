@@ -663,9 +663,7 @@ public final class LengthParser {
         return functions.remove(name);
     }
 
-    /**
-     * Creates a new object.
-     */
+
     private LengthParser() {
 
     }
