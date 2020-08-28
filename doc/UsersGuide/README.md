@@ -52,7 +52,7 @@ used. εχBib is used as bibliography processor. Other components of
 εχT[e]{.e}X will be plugged in as soon as they are ready.
 
 The εχTeX developer\'s guide can be created in this
-directory with the help of [Maven2](http://maven.apache.org). As a
+directory with the help of [Maven](http://maven.apache.org). As a
 prerequisite the Maven module `ExBib-Main` needs to be accessible at
 least from the local repository. This is accomplished by
 

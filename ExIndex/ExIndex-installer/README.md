@@ -8,17 +8,17 @@ installer. This installer is created with the help of
 [IzPack](http://izpack.org).
 
 IzPack is included in the folder `src/izPack-install-*` since currently
-no reliable Maven2 package for IzPack could be found.
+no reliable Maven package for IzPack could be found.
 
 Creating the εχIndex Installer
 ------------------------------
 
 The εχIndex installer can be created in this directory with the help of
-Maven2:
+Maven:
 
       # mvn package
 
-This command requires that [Maven2](http://maven.apache.org) is properly
+This command requires that [Maven](http://maven.apache.org) is properly
 installed on your system and the executable can be found on the search
 path.
 

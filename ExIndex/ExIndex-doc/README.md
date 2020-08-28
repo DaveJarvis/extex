@@ -10,11 +10,11 @@ Creating the εχIndex Documentation
 ----------------------------------
 
 The εχIndex documentation can be created in this directory with the help
-of Maven2:
+of Maven:
 
       # mvn compile
 
-This command requires that [Maven2](http://maven.apache.org) is properly
+This command requires that [Maven](http://maven.apache.org) is properly
 installed on your system and the executable can be found on the search
 path.
 
