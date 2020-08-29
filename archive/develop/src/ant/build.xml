@@ -20,7 +20,7 @@
   #
   ######################################################################### -->
 
-<project name="ExTeX" default="help" basedir=".">
+<project name="ExTeX" default="help" basedir="">
 
   <description>ExTeX build file</description>
 
@@ -171,7 +171,7 @@
           <exclude name="**/*Tests.class" />
         </patternset>
       </fileset>
-      <fileset dir=".">
+      <fileset dir="">
         <patternset>
           <include name="LICENSE.txt" />
         </patternset>
@@ -430,7 +430,7 @@
     </copy>
     <tstamp />
     <tar tarfile="${tmp}/ExTeX-${DSTAMP}.tar" basedir="${deploy}">
-      <tarfileset dir=".">
+      <tarfileset dir="">
       </tarfileset>
     </tar>
     <gzip zipfile="${tmp}/ExTeX-${DSTAMP}.tgz"
@@ -445,7 +445,7 @@
     <fail message="Installation directory not set." unless="installdir" />
     <mkdir dir="${installdir}" />
     <copy todir="${installdir}">
-      <fileset dir=".">
+      <fileset dir="">
         <patternset id="ScriptFiles">
           <include name="extex" />
           <include name="extex32" />
@@ -578,7 +578,7 @@
 
   <!-- ==================================================================== -->
   <target name="tar" description="create a tar file with all source files, ...">
-    <tar destfile="${tmp}/extex.tar.bz2" compression="bzip2" basedir="./">
+    <tar destfile="${tmp}/extex.tar.bz2" compression="bzip2" basedir="/">
       <include name="doc/**/*" />
       <exclude name="doc/javadocdb/**/*" />
       <exclude name="doc/javadocxml/**/*" />

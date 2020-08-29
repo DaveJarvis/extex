@@ -1,12 +1,13 @@
 εχTeX Build
 =================
 
-This document describes how to build εχTeX.
+This document describes how to build εχTeX. εχTeX consists
+of separate modules, which can be assembled in various ways.
 
 Prerequisites
 -------------
 
-Unless otherwise specified by individual components, each component
+Unless otherwise specified, each component
 requires the following software packages:
 
 * [OpenJDK](https://openjdk.java.net/) version 8 (or newer)
@@ -18,17 +19,15 @@ requires the following software packages:
 Compiling εχTeX
 -------------------------------------------
 
-εχTeX is consists of separate modules, which can be
-assembled in various ways.
 
 Compiling sub-projects
 -------------------------------------------
 
 εχTeX is organized into the following sub-projects:
 
+* `ExTeX-resource` -- Common classes
 * `ExBib` -- Bibliography processor
 * `ExTeX` -- Typesetting system
-* `ExTeX-resource` -- Common classes
 * `ExIndex` -- Index processor
 
 These sub-projects are organized in a way that they can
