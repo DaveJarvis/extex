@@ -40,7 +40,7 @@ contains various archived projects not directly related to generating
 TeX output.
 
 ![](src/images/folder-blue.png) [CLI](CLI)
-contains a general purpose library for command line parsing and
+contains a general-purpose library for command line parsing and
 processing.
 
 ![](src/images/folder-blue.png) [ExBib](ExBib)
@@ -62,12 +62,9 @@ this program.
 contains a library for resource loading and several supporting
 functionality for components and configuration.
 
-![](src/images/folder-blue.png) [develop](develop)
-contains configurations and tools for the development.
-
 ![](src/images/folder-blue.png) [doc](doc)
 contains documentation for the overall project and εχTeX
-itself. Additional documentation can be found in the sub-projects.
+itself. See sub-projects for details.
 
 ![](src/images/folder-blue.png) [library](library)
 contains the library of collected papers and documents.
