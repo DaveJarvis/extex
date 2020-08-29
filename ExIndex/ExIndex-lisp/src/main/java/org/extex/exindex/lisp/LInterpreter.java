@@ -19,19 +19,6 @@
 
 package org.extex.exindex.lisp;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.io.Reader;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.exception.LNonMatchingTypeException;
 import org.extex.exindex.lisp.exception.LSettingConstantException;
@@ -44,25 +31,32 @@ import org.extex.exindex.lisp.type.value.LSymbol;
 import org.extex.exindex.lisp.type.value.LValue;
 import org.extex.resource.ResourceFinder;
 
+import java.io.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
  * This class represents an LInterpreter without predefined functions.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("unused")
 public class LInterpreter {
 
     /**
      * The field <tt>functionTable</tt> contains the table of all functions.
      */
-    private Map<LSymbol, LFunction> functions =
-            new HashMap<LSymbol, LFunction>();
+    private final Map<LSymbol, LFunction> functions =
+        new HashMap<>();
 
     /**
      * The field <tt>valueTable</tt> contains the table of all values of
      * symbols.
      */
-    private Map<LSymbol, LValue> bindings = new HashMap<LSymbol, LValue>();
+    private final Map<LSymbol, LValue> bindings = new HashMap<>();
 
     /**
      * The field <tt>finder</tt> contains the resource finder.
@@ -132,7 +126,7 @@ public class LInterpreter {
         if (f == null) {
             throw new LUndefinedFunctionException(fct.toString());
         }
-        List<LValue> l = new ArrayList<LValue>();
+        List<LValue> l = new ArrayList<>();
         for (LValue val : list) {
             l.add(val);
         }

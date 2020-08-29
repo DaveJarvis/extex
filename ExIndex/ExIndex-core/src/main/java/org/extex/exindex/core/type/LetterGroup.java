@@ -48,24 +48,24 @@ public class LetterGroup {
     /**
      * The field <tt>map</tt> contains the mapping from name to index entry.
      */
-    private Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
+    private final Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
 
     /**
      * The field <tt>after</tt> contains the the letter groups preceding this
      * one.
      */
-    private List<LetterGroup> after = new ArrayList<LetterGroup>();
+    private final List<LetterGroup> after = new ArrayList<LetterGroup>();
 
     /**
      * The field <tt>before</tt> contains the letter groups following this
      * one. This value is cleared after the collecting phase.
      */
-    private List<LetterGroup> before = new ArrayList<LetterGroup>();
+    private final List<LetterGroup> before = new ArrayList<LetterGroup>();
 
     /**
      * The field <tt>name</tt> contains the name of the letter group.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

@@ -74,7 +74,7 @@ public final class LSymbol implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private String value;
+    private final String value;
 
     /**
      * The field <tt>mutable</tt> contains the indicator for non-constants.

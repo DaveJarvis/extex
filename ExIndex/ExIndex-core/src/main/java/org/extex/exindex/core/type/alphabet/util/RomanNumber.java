@@ -222,13 +222,13 @@ public final class RomanNumber {
     /**
      * The field <tt>number</tt> contains the associated number.
      */
-    private int number;
+    private final int number;
 
     /**
      * The field <tt>combining</tt> contains the combining characters for the
      * subtraction rule.
      */
-    private String combining;
+    private final String combining;
 
     /**
      * Creates a new object.

@@ -70,7 +70,7 @@ public class LUseRuleSet extends LFunction {
     /**
      * The field <tt>container</tt> contains the container of rule sets.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new object.

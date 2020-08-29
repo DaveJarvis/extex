@@ -331,7 +331,7 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * The field <tt>index</tt> contains the name of the index.
      */
-    private String index = "";
+    private final String index = "";
 
     /**
      * The field <tt>encapPrefix</tt> contains the encapsulation prefix.
@@ -351,7 +351,7 @@ public class MakeindexParser implements RawIndexParser {
     /**
      * The field <tt>indexer</tt> contains the indexer.
      */
-    private Indexer indexer;
+    private final Indexer indexer;
 
     /**
      * Creates a new object and gather the parameters from an interpreter.

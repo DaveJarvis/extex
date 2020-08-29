@@ -69,12 +69,12 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * The field <tt>name</tt> contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field <tt>fallback</tt> contains the container for fallback values.
      */
-    private FallbackContainer fallback;
+    private final FallbackContainer fallback;
 
     /**
      * The field <tt>depth</tt> contains the hierarchy depth; i.e. 0 for flat
@@ -86,18 +86,18 @@ public class StructuredIndex extends LetterGroupContainer
      * The field <tt>sortRulesMap</tt> contains the mapping from names to sort
      * rules.
      */
-    private Map<Integer, SortRules> sortRulesMap =
+    private final Map<Integer, SortRules> sortRulesMap =
             new HashMap<Integer, SortRules>();
 
     /**
      * The field <tt>mergeRules</tt> contains the list of merge rules.
      */
-    private List<Rule> mergeRules = new ArrayList<Rule>();
+    private final List<Rule> mergeRules = new ArrayList<Rule>();
 
     /**
      * The field <tt>attributeMap</tt> contains the attributes.
      */
-    private Map<String, Attribute> attributeMap =
+    private final Map<String, Attribute> attributeMap =
             new HashMap<String, Attribute>();
 
     /**
@@ -108,7 +108,7 @@ public class StructuredIndex extends LetterGroupContainer
     /**
      * The field <tt>markup</tt> contains the mapping from name to markup.
      */
-    private Map<String, Markup> markup = new HashMap<String, Markup>();
+    private final Map<String, Markup> markup = new HashMap<String, Markup>();
 
     /**
      * The field <tt>alias</tt> contains the alias for this index. If it is
@@ -120,7 +120,7 @@ public class StructuredIndex extends LetterGroupContainer
      * The field <tt>locationClassMap</tt> contains the mapping from names to
      * location classes.
      */
-    private Map<String, LocationClass> locationClassMap =
+    private final Map<String, LocationClass> locationClassMap =
             new HashMap<String, LocationClass>();
 
     /**
@@ -139,7 +139,7 @@ public class StructuredIndex extends LetterGroupContainer
      * The field <tt>entryIndex</tt> contains the mapping from key to Boolean
      * to check that a key is in use.
      */
-    private Map<String[], Boolean> entryIndex =
+    private final Map<String[], Boolean> entryIndex =
             new HashMap<String[], Boolean>();
 
     /**

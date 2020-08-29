@@ -34,7 +34,7 @@ public class XindyTest {
      * 
      * @throws Exception in case of an error
      */
-    @Test()
+    @Test
     public void testLoadStyle2() throws Exception {
 
         Indexer indexer = new Indexer();

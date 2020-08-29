@@ -58,7 +58,7 @@ public class LString implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private String value;
+    private final String value;
 
     /**
      * Creates a new object.

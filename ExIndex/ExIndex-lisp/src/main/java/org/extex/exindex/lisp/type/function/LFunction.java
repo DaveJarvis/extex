@@ -50,29 +50,29 @@ public abstract class LFunction {
     /**
      * The field <tt>flags</tt> contains the mapping of flag to specs.
      */
-    private Map<String, Arg> flags = new HashMap<String, Arg>();
+    private final Map<String, Arg> flags = new HashMap<String, Arg>();
 
     /**
      * The field <tt>index</tt> contains the mapping of flag to argument
      * position.
      */
-    private Map<String, Integer> index = new HashMap<String, Integer>();
+    private final Map<String, Integer> index = new HashMap<String, Integer>();
 
     /**
      * The field <tt>method</tt> contains the evaluate method to invoke.
      */
-    private Method method;
+    private final Method method;
 
     /**
      * The field <tt>specs</tt> contains the specification of the arguments.
      */
-    private Arg[] specs;
+    private final Arg[] specs;
 
     /**
      * The field <tt>name</tt> contains the name of the function for error
      * messages.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

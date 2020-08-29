@@ -19,15 +19,15 @@
 
 package org.extex.exindex.core;
 
-import static org.junit.Assert.assertEquals;
+import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
+import org.extex.framework.configuration.exception.ConfigurationException;
+import org.extex.logging.LogFormatter;
+import org.extex.resource.ResourceFinder;
+import org.extex.resource.io.NamedInputStream;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
-import java.io.StringWriter;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Handler;
@@ -35,12 +35,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.logging.StreamHandler;
 
-import org.extex.exindex.core.parser.exindex.ExIndexParserFactory;
-import org.extex.framework.configuration.exception.ConfigurationException;
-import org.extex.logging.LogFormatter;
-import org.extex.resource.ResourceFinder;
-import org.extex.resource.io.NamedInputStream;
-import org.junit.Test;
+import static java.nio.charset.StandardCharsets.UTF_8;
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for makeindex compatibility.
@@ -55,22 +51,11 @@ public class Makeindex1Test {
      */
     private static final ResourceFinder FINDER = new ResourceFinder() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
         public void enableTracing(boolean flag) {
 
             // nay
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
-         */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
@@ -98,13 +83,10 @@ public class Makeindex1Test {
             throw new FileNotFoundException("Missing " + referenceFile);
         }
         StringBuilder sb = new StringBuilder();
-        Reader r = new InputStreamReader(is, "utf-8");
-        try {
-            for (int c = r.read(); c >= 0; c = r.read()) {
-                sb.append((char) c);
+        try( Reader r = new InputStreamReader( is, UTF_8 ) ) {
+            for( int c = r.read(); c >= 0; c = r.read() ) {
+                sb.append( (char) c );
             }
-        } finally {
-            r.close();
         }
 
         return sb.toString();
@@ -116,7 +98,8 @@ public class Makeindex1Test {
      * 
      * @throws Exception in case of an error
      */
-    @Test()
+    @Test
+    @Ignore
     public void test1() throws Exception {
 
         Logger logger = Logger.getLogger("test");
@@ -135,7 +118,7 @@ public class Makeindex1Test {
         indexer.load("xindy/makeidx.xdy");
         indexer.load("extex/doc.ist");
 
-        List<String> list = new ArrayList<String>();
+        List<String> list = new ArrayList<>();
         list.add("extex/extex-users.idx");
         indexer.process(list, logger);
 

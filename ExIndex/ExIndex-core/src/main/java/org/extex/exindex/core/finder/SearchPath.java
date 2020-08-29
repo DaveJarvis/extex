@@ -48,7 +48,7 @@ public class SearchPath implements ResourceFinder {
     /**
      * The field <tt>fallback</tt> contains the fallback resource finder.
      */
-    private ResourceFinder fallback;
+    private final ResourceFinder fallback;
 
     /**
      * The field <tt>dirs</tt> contains the list of directories.

@@ -41,13 +41,13 @@ public class CrossrefGroup implements LocationClassGroup {
      * The field <tt>map</tt> contains the mapping of layers to a
      * cross-reference.
      */
-    private Map<String[], CrossReference> map =
+    private final Map<String[], CrossReference> map =
             new HashMap<String[], CrossReference>();
 
     /**
      * The field <tt>clazz</tt> contains the class.
      */
-    private String clazz;
+    private final String clazz;
 
     /**
      * Creates a new object.

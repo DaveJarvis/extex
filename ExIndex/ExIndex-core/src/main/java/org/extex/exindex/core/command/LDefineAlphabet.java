@@ -68,7 +68,7 @@ public class LDefineAlphabet extends LFunction {
     /**
      * The field <tt>container</tt> contains the container for alphabets.
      */
-    private AlphabetContainer container;
+    private final AlphabetContainer container;
 
     /**
      * Creates a new object.

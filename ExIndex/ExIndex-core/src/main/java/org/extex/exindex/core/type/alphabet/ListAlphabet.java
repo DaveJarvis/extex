@@ -36,7 +36,7 @@ public class ListAlphabet implements LValue, Alphabet, LocationClass {
     /**
      * The field <tt>list</tt> contains the list of words.
      */
-    private String[] list;
+    private final String[] list;
 
     /**
      * Creates a new object.

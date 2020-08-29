@@ -33,12 +33,12 @@ public class ColumnCountingWriter extends Writer {
     /**
      * The field <tt>tabSize</tt> contains the width of a tab.
      */
-    private int tabSize = 8;
+    private final int tabSize = 8;
 
     /**
      * The field <tt>writer</tt> contains the next writer.
      */
-    private Writer writer;
+    private final Writer writer;
 
     /**
      * The field <tt>column</tt> contains the current column.

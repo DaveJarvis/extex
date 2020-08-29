@@ -100,7 +100,7 @@ public class LDefineAttributes extends LFunction {
     /**
      * The field <tt>container</tt> contains the container for attributes.
      */
-    private AttributesContainer container;
+    private final AttributesContainer container;
 
     /**
      * Creates a new object.

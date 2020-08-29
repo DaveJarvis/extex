@@ -35,7 +35,7 @@ public class ReaderLocator extends LineNumberReader implements ResourceLocator {
     /**
      * The field <tt>resource</tt> contains the name of the resource.
      */
-    private String resource;
+    private final String resource;
 
     /**
      * Creates a new object.

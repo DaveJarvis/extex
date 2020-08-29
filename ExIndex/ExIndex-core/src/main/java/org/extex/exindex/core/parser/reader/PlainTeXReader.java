@@ -70,7 +70,7 @@ public class PlainTeXReader extends TeXReader {
     /**
      * The field <tt>buffer</tt> contains the line buffer.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     /**
      * The field <tt>pointer</tt> contains the pointer to the next undelivered

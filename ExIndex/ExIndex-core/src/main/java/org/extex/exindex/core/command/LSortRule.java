@@ -64,7 +64,7 @@ public class LSortRule extends LFunction {
     /**
      * The field <tt>container</tt> contains the container.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new object.

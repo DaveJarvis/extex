@@ -121,7 +121,7 @@ public class LDefineLetterGroup extends LFunction {
      * The field <tt>container</tt> contains the the container to store the
      * information in.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new object.

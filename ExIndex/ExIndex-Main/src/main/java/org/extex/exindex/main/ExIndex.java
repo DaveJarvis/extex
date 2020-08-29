@@ -18,28 +18,8 @@
 
 package org.extex.exindex.main;
 
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.Reader;
-import java.io.Writer;
-import java.lang.reflect.InvocationTargetException;
-import java.nio.charset.Charset;
-import java.nio.charset.UnsupportedCharsetException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.extex.cli.CLI;
 import org.extex.exindex.core.Indexer;
-import org.extex.exindex.core.exception.UnknownAttributeException;
 import org.extex.exindex.core.parser.makeindex.MakeindexLoader;
 import org.extex.exindex.lisp.exception.LException;
 import org.extex.exindex.lisp.type.value.LList;
@@ -55,6 +35,14 @@ import org.extex.logging.LogFormatter;
 import org.extex.resource.InteractionIndicator;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
+
+import java.io.*;
+import java.lang.reflect.InvocationTargetException;
+import java.nio.charset.Charset;
+import java.nio.charset.UnsupportedCharsetException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.*;
 
 /**
  * This is the main program for the indexer.
@@ -311,18 +299,18 @@ public class ExIndex extends Indexer {
      * The field <tt>collateGerman</tt> contains the indicator to recognize
      * german.sty.
      */
-    private boolean collateGerman = false;
+    private boolean collateGerman;
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
      * console.
      */
-    private Handler consoleHandler;
+    private final Handler consoleHandler;
 
     /**
      * The field <tt>fileHandler</tt> contains the file handler for logging.
      */
-    private FileHandler fileHandler = null;
+    private FileHandler fileHandler;
 
     /**
      * The field <tt>logger</tt> contains the logger for messages.
@@ -333,7 +321,7 @@ public class ExIndex extends Indexer {
      * The field <tt>output</tt> contains the name of the output file or
      * <code>null</code> for stdout.
      */
-    private String output = null;
+    private String output;
 
     /**
      * The field <tt>pageCompression</tt> contains the indicator for page range
@@ -361,18 +349,18 @@ public class ExIndex extends Indexer {
     /**
      * The field <tt>config</tt> contains the configuration.
      */
-    private Configuration config;
+    private final Configuration config;
 
     /**
      * The field <tt>letterOrdering</tt> contains the indicator for letter
      * ordering.
      */
-    private boolean letterOrdering = false;
+    private boolean letterOrdering;
 
     /**
      * The field <tt>myParserFactory</tt> contains the parser factory.
      */
-    private FilteringParserFactory myParserFactory;
+    private final FilteringParserFactory myParserFactory;
 
     /**
      * Creates a new object.
@@ -471,12 +459,6 @@ public class ExIndex extends Indexer {
                 : new FileOutputStream(output)), charset);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.core.Indexer#markup(java.io.Writer,
-     *      java.util.logging.Logger)
-     */
     @Override
     protected void markup(Writer writer, Logger logger)
             throws IOException,
@@ -505,8 +487,8 @@ public class ExIndex extends Indexer {
         if (args == null) {
             throw new NullPointerException();
         }
-        List<String> files = new ArrayList<String>();
-        List<String> styles = new ArrayList<String>();
+        List<String> files = new ArrayList<>();
+        List<String> styles = new ArrayList<>();
 
         try {
             for (int i = 0; i < args.length; i++) {
@@ -625,11 +607,8 @@ public class ExIndex extends Indexer {
                 files.add(null);
             }
 
-            Writer writer = makeWriter(logger);
-            try {
-                run(styles, files, writer, logger);
-            } finally {
-                writer.close();
+            try( Writer writer = makeWriter( logger ) ) {
+                run( styles, files, writer, logger );
             }
 
             if (transcript != null) {
@@ -646,11 +625,7 @@ public class ExIndex extends Indexer {
             logger.log(Level.SEVERE,
                 LOCALIZER.format("FileNotFound", e.getMessage()));
             logger.log(Level.FINE, "", e);
-        } catch (MainException e) {
-            showBanner();
-            logger.log(Level.SEVERE, e.getLocalizedMessage());
-            logger.log(Level.FINE, "", e);
-        } catch (LException e) {
+        } catch ( MainException | LException e) {
             showBanner();
             logger.log(Level.SEVERE, e.getLocalizedMessage());
             logger.log(Level.FINE, "", e);
@@ -659,7 +634,6 @@ public class ExIndex extends Indexer {
             logger.log(Level.SEVERE,
                 LOCALIZER.format("SevereError", e.toString()));
             logger.log(Level.FINE, "", e);
-            // e.printStackTrace();
         }
         if (fileHandler != null) {
             fileHandler.flush();
@@ -726,8 +700,7 @@ public class ExIndex extends Indexer {
     @Override
     protected void startup(List<String> styles, Logger logger)
             throws IOException,
-                LException,
-                UnknownAttributeException {
+                LException {
 
         showBanner();
 
@@ -752,15 +725,11 @@ public class ExIndex extends Indexer {
                 if (stream == null) {
                     throw new FileNotFoundException(style);
                 }
-                Reader reader =
-                        inCharset == null
-                                ? new InputStreamReader(stream)
-                                : new InputStreamReader(stream, inCharset);
-                try {
-                    load(reader, style);
+                try( Reader reader = inCharset == null
+                    ? new InputStreamReader( stream )
+                    : new InputStreamReader( stream, inCharset ) ) {
+                    load( reader, style );
                     ret = new int[]{99999, 0}; // TODO provide reasonable values
-                } finally {
-                    reader.close();
                 }
             }
             logger.log(Level.INFO, LOCALIZER.format("ScanningStyleDone",

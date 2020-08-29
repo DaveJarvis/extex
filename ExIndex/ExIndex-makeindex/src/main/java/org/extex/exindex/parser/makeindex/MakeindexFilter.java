@@ -18,20 +18,18 @@
 
 package org.extex.exindex.parser.makeindex;
 
+import org.extex.exindex.core.exception.RawIndexEofException;
+import org.extex.exindex.core.exception.RawIndexMissingCharException;
+import org.extex.exindex.lisp.parser.ResourceLocator;
+import org.extex.exindex.makeindex.normalizer.Collator;
+
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.extex.exindex.core.exception.RawIndexEofException;
-import org.extex.exindex.core.exception.RawIndexMissingCharException;
-import org.extex.exindex.lisp.parser.ResourceLocator;
-import org.extex.exindex.makeindex.normalizer.Collator;
-
 /**
- * TODO gene: missing JavaDoc.
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:6617 $
  */
@@ -45,47 +43,47 @@ public class MakeindexFilter extends Reader {
     /**
      * The field <tt>buffer</tt> contains the intermediate buffer.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     /**
      * The field <tt>keyword</tt> contains the keyword.
      */
-    private String keyword = "\\indexentry";
+    private final String keyword = "\\indexentry";
 
     /**
      * The field <tt>argOpen</tt> contains the argument open character.
      */
-    private char argOpen = '{';
+    private final char argOpen = '{';
 
     /**
      * The field <tt>argClose</tt> contains the argument close character.
      */
-    private char argClose = '}';
+    private final char argClose = '}';
 
     /**
      * The field <tt>escape</tt> contains the escape character.
      */
-    private char escape = '"';
+    private final char escape = '"';
 
     /**
      * The field <tt>quote</tt> contains the quote character.
      */
-    private char quote = '\\';
+    private final char quote = '\\';
 
     /**
      * The field <tt>encap</tt> contains the encapsulation character.
      */
-    private char encap = '|';
+    private final char encap = '|';
 
     /**
      * The field <tt>level</tt> contains the level separation characters.
      */
-    private char level = '!';
+    private final char level = '!';
 
     /**
      * The field <tt>actual</tt> contains the actual character.
      */
-    private char actual = '@';
+    private final char actual = '@';
 
     /**
      * Creates a new object.
@@ -110,8 +108,6 @@ public class MakeindexFilter extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
      * @param r the reader
      * @param locator the locator
      * @param ec the expected character
@@ -132,7 +128,7 @@ public class MakeindexFilter extends Reader {
     /**
      * Fill the buffer.
      * 
-     * @param locator the lcoator
+     * @param locator the locator
      * @param collator the collator
      * 
      * @return <code>true</code> at eof
@@ -178,11 +174,6 @@ public class MakeindexFilter extends Reader {
         return true;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see java.io.Reader#read(char[], int, int)
-     */
     @Override
     public int read(char[] cbuf, int off, int len) throws IOException {
 
@@ -191,9 +182,7 @@ public class MakeindexFilter extends Reader {
                 if (in == null || fillBuffer(null, null)) {
                     return -1;
                 }
-            } catch (RawIndexMissingCharException e) {
-                throw new IOException(e.getLocalizedMessage());
-            } catch (RawIndexEofException e) {
+            } catch ( RawIndexMissingCharException | RawIndexEofException e) {
                 throw new IOException(e.getLocalizedMessage());
             }
         }
@@ -210,8 +199,6 @@ public class MakeindexFilter extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
      * @param locator the locator
      * 
      * @return the argument found
@@ -254,8 +241,6 @@ public class MakeindexFilter extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
      * @param r the reader
      * @param keyword the keyword to read
      * 
@@ -277,8 +262,6 @@ public class MakeindexFilter extends Reader {
     }
 
     /**
-     * TODO gene: missing JavaDoc
-     * 
      * @param a1 TODO
      * @param p the page
      * @param encap the page encapsulator or <code>null</code> for none
@@ -298,7 +281,7 @@ public class MakeindexFilter extends Reader {
         buffer.append("(indexentry :key (");
         for (String k : list) {
             buffer.append('"');
-            buffer.append(k.replaceAll("[\"\\]", "\\\\\\1").replaceAll("\n",
+            buffer.append(k.replaceAll("\\[\"]", "\\\\\\1").replaceAll("\n",
                 "\\n"));
             buffer.append('"');
             buffer.append(' ');
@@ -308,7 +291,7 @@ public class MakeindexFilter extends Reader {
         buffer.append(") ");
         if (encap != null) {
             buffer.append(":attr \"");
-            buffer.append(encap.replaceAll("[\"\\]", "\\\\\\1").replaceAll(
+            buffer.append(encap.replaceAll("\\[\"]", "\\\\\\1").replaceAll(
                 "\n", "\\n"));
             buffer.append("\" ");
         }
@@ -320,5 +303,4 @@ public class MakeindexFilter extends Reader {
         buffer.append(")");
         // TODO
     }
-
 }

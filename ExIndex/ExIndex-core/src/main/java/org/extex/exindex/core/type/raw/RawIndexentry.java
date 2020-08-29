@@ -32,12 +32,12 @@ public class RawIndexentry {
     /**
      * The field <tt>mainKey</tt> contains the main key as given by the user.
      */
-    private String[] mainKey;
+    private final String[] mainKey;
 
     /**
      * The field <tt>printKey</tt> contains the print key.
      */
-    private String[] printKey;
+    private final String[] printKey;
 
     /**
      * The field <tt>sortKey</tt> contains the sort key.
@@ -47,12 +47,12 @@ public class RawIndexentry {
     /**
      * The field <tt>ref</tt> contains the page reference.
      */
-    private Reference ref;
+    private final Reference ref;
 
     /**
      * The field <tt>index</tt> contains the name of the index.
      */
-    private String index;
+    private final String index;
 
     /**
      * Creates a new object.

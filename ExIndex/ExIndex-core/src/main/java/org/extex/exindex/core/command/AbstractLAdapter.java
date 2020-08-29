@@ -38,7 +38,7 @@ public class AbstractLAdapter extends LFunction {
     /**
      * The field <tt>container</tt> contains the container for indices.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new function object.

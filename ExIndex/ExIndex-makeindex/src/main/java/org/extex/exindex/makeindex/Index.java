@@ -37,7 +37,7 @@ public class Index {
     /**
      * The field <tt>params</tt> contains the parameters.
      */
-    private Parameters params;
+    private final Parameters params;
 
     /**
      * The field <tt>content</tt> contains the mapping from key to lists of

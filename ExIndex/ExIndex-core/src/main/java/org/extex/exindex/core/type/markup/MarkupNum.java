@@ -33,7 +33,7 @@ public class MarkupNum extends Markup {
     /**
      * The field <tt>numMap</tt> contains the content.
      */
-    private Map<String, int[]> numMap = new HashMap<String, int[]>();
+    private final Map<String, int[]> numMap = new HashMap<String, int[]>();
 
     /**
      * Creates a new object.

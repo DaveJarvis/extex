@@ -61,7 +61,7 @@ public class LParser implements ResourceLocator {
      * The field <tt>resource</tt> contains the resource for error messages or
      * <code>null</code>.
      */
-    private String resource;
+    private final String resource;
 
     /**
      * The field <tt>escape</tt> contains the escape character.

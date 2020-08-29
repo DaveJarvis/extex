@@ -35,13 +35,13 @@ public class MarkupTransform extends Markup {
     /**
      * The field <tt>transformMap</tt> contains the transforms.
      */
-    private Map<String, Transform> transformMap =
+    private final Map<String, Transform> transformMap =
             new HashMap<String, Transform>();
 
     /**
      * The field <tt>map</tt> contains the mapping from name to Booleans.
      */
-    private Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
+    private final Map<String, Boolean> forceMap = new HashMap<String, Boolean>();
 
     /**
      * Creates a new object.

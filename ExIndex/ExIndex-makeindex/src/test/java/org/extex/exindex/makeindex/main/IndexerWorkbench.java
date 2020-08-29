@@ -19,27 +19,24 @@
 
 package org.extex.exindex.makeindex.main;
 
-import static org.junit.Assert.assertEquals;
-
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.StreamHandler;
-
 import org.extex.exindex.core.Indexer;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.io.NamedInputStream;
+import org.junit.Ignore;
 import org.junit.Test;
+
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.StringWriter;
+import java.util.*;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.StreamHandler;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * This is a test suite for the {@link Indexer}.
@@ -54,22 +51,11 @@ public class IndexerWorkbench {
      */
     private static final class MyFinder implements ResourceFinder {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#enableTracing(boolean)
-         */
         public void enableTracing(boolean flag) {
 
             // no effect
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.resource.ResourceFinder#findResource(java.lang.String,
-         *      java.lang.String)
-         */
         public NamedInputStream findResource(String name, String type)
                 throws ConfigurationException {
 
@@ -83,7 +69,7 @@ public class IndexerWorkbench {
      * The field <tt>FILES</tt> contains the prerecorded resources.
      */
     private static final Map<String, String> FILES =
-            new HashMap<String, String>();
+        new HashMap<>();
 
     static {
         FILES.put("T10.raw", "");
@@ -109,10 +95,8 @@ public class IndexerWorkbench {
      */
     public static List<String> makeList(String... args) {
 
-        ArrayList<String> list = new ArrayList<String>();
-        for (String s : args) {
-            list.add(s);
-        }
+        ArrayList<String> list = new ArrayList<>();
+        Collections.addAll( list, args );
         return list;
     }
 
@@ -159,6 +143,7 @@ public class IndexerWorkbench {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public final void testX111() throws Exception {
 
         runTest(makeList("style11"), makeList("T111.raw"),

@@ -1,5 +1,3 @@
-![ExBib](ExBib-core/src/image/ExBib-side.png){.left}
-
 εχBib
 =====
 

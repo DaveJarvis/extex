@@ -33,7 +33,7 @@ public class LChar implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private char value;
+    private final char value;
 
     /**
      * Creates a new object.

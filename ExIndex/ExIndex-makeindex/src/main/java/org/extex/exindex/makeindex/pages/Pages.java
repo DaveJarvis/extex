@@ -36,9 +36,9 @@ public abstract class Pages {
      * The field <tt>PAGE_PARAMS</tt> contains the default parameters for
      * displaying a page.
      */
-    private static final String[] PAGE_PARAMS = {"\\", "{", "}", "--", ", "};;
+    private static final String[] PAGE_PARAMS = {"\\", "{", "}", "--", ", "};
 
-    /**
+  /**
      * The field <tt>from</tt> contains the star page.
      */
     private PageReference from;
@@ -47,7 +47,7 @@ public abstract class Pages {
      * The field <tt>encap</tt> contains the encapsulator or <code>null</code>
      * for none.
      */
-    private String encap;
+    private final String encap;
 
     /**
      * Creates a new object.

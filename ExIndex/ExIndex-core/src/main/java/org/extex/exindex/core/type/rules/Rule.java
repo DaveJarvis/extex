@@ -58,12 +58,12 @@ public abstract class Rule {
     /**
      * The field <tt>pattern</tt> contains the pattern.
      */
-    private String pattern;
+    private final String pattern;
 
     /**
      * The field <tt>replacement</tt> contains the replacement text.
      */
-    private String replacement;
+    private final String replacement;
 
     /**
      * Creates a new object.

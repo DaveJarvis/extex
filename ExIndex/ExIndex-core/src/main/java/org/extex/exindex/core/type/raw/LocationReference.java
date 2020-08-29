@@ -45,12 +45,12 @@ public class LocationReference implements Reference, Location {
     /**
      * The field <tt>location</tt> contains the location.
      */
-    private String layer;
+    private final String layer;
 
     /**
      * The field <tt>location</tt> contains the location.
      */
-    private String[] location;
+    private final String[] location;
 
     /**
      * Creates a new object.

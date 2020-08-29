@@ -19,11 +19,11 @@
 
 package org.extex.exindex.makeindex.main;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.exindex.makeindex.Entry;
 import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * This is a test suite for MakeindexComparator.
@@ -37,7 +37,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compare() returns 0 for two arrays with empty strings.
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompare01() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -50,7 +50,7 @@ public class MakeindexComparatorTest {
     /**
      * <testcase> The compare() returns 0 for two arrays with "x". </testcase>
      */
-    @Test()
+    @Test
     public void testCompare02() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -64,7 +64,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compare() returns -1 for two arrays ["1"] and ["2"].
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompare03() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -78,7 +78,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compare() returns 1 for two arrays ["2"] and ["1"].
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompare04() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -92,7 +92,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compare() returns >0 for two arrays ["1"] and ["*"].
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompare05() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -106,7 +106,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compare() returns -1 for two arrays with "x" and the
      * second one with one additional element. </testcase>
      */
-    @Test()
+    @Test
     public void testCompare10() {
 
         MakeindexComparator mc = new MakeindexComparator();
@@ -140,7 +140,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compareOne() returns 0 for two empty arrays and the index
      * 0. </testcase>
      */
-    @Test()
+    @Test
     public void testCompareOne03() {
 
         assertEquals(0, new MakeindexComparator().compareOne(new String[]{},
@@ -151,7 +151,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compareOne() orders an empty array before a longer array.
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompareOne11() {
 
         assertEquals(1, new MakeindexComparator().compareOne(new String[]{""},
@@ -162,7 +162,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compareOne() orders an empty array before a longer array.
      * </testcase>
      */
-    @Test()
+    @Test
     public void testCompareOne12() {
 
         assertEquals(-1, new MakeindexComparator().compareOne(new String[]{},
@@ -173,7 +173,7 @@ public class MakeindexComparatorTest {
      * <testcase> The compareOne() returns 0 for two arrays with an empty
      * string. </testcase>
      */
-    @Test()
+    @Test
     public void testCompareOne13() {
 
         assertEquals(0, new MakeindexComparator().compareOne(new String[]{""},

@@ -294,7 +294,7 @@ public final class MakeindexParameters {
     /**
      * The field <tt>defaultParameters</tt> contains the default parameters.
      */
-    private static Parameters defaultParameters = new Parameters();
+    private static final Parameters defaultParameters = new Parameters();
 
     static {
         def("keyword", "index:keyword", new LString("\\indexentry"));

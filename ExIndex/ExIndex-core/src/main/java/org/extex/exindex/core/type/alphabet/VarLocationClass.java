@@ -98,7 +98,7 @@ public class VarLocationClass implements LocationClass {
     /**
      * The field <tt>list</tt> contains the constituents.
      */
-    private List<LocationClass> list = new ArrayList<LocationClass>();
+    private final List<LocationClass> list = new ArrayList<LocationClass>();
 
 
     public VarLocationClass() {

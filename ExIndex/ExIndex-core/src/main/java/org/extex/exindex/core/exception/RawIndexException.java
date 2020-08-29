@@ -41,7 +41,7 @@ public class RawIndexException extends LException {
      * The field <tt>locator</tt> contains the name and line number of the
      * resource.
      */
-    private ResourceLocator locator;
+    private final ResourceLocator locator;
 
     /**
      * Creates a new object.

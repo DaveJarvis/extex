@@ -73,7 +73,7 @@ public class IndexContainer
     /**
      * The field <tt>map</tt> contains the mapping from name to index.
      */
-    private Map<String, StructuredIndex> indexMap =
+    private final Map<String, StructuredIndex> indexMap =
             new HashMap<String, StructuredIndex>();
 
     /**
@@ -84,12 +84,12 @@ public class IndexContainer
     /**
      * The field <tt>rules</tt> contains the mapping from names to rule sets.
      */
-    private Map<String, List<Rule>> rules = new HashMap<String, List<Rule>>();
+    private final Map<String, List<Rule>> rules = new HashMap<String, List<Rule>>();
 
     /**
      * The field <tt>alphabetMap</tt> contains the alphabets.
      */
-    private Map<String, Alphabet> alphabetMap = new HashMap<String, Alphabet>();
+    private final Map<String, Alphabet> alphabetMap = new HashMap<String, Alphabet>();
 
     /**
      * Creates a new object.

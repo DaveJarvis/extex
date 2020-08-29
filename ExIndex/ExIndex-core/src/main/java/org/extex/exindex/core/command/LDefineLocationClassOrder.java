@@ -75,7 +75,7 @@ public class LDefineLocationClassOrder extends LFunction {
      * The field <tt>container</tt> contains the container to store the order
      * in.
      */
-    private LocationClassContainer container;
+    private final LocationClassContainer container;
 
     /**
      * Creates a new object.

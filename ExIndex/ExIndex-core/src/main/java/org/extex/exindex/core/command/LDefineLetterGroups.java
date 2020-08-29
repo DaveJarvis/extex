@@ -77,7 +77,7 @@ public class LDefineLetterGroups extends LFunction {
     /**
      * The field <tt>container</tt> contains the letter group container.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new object.

@@ -18,7 +18,8 @@
 
 package org.extex.exindex.makeindex.main;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -26,8 +27,7 @@ import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Locale;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.assertTrue;
 
 /**
  * This is a test suite for {@link Makeindex}.
@@ -35,6 +35,7 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@Ignore
 public class MakeindexTest extends AbstractTester {
 
     /**
@@ -51,11 +52,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The argument to run can not be <code>null</code>. In this case
      * an {@link IllegalArgumentException} is thrown. </testcase>
-     * 
-     * @throws IOException in case of an error
      */
     @Test(expected = IllegalArgumentException.class)
-    public void test00() throws IOException {
+    public void test00() {
 
         PrintStream out = System.out;
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();
@@ -308,7 +307,7 @@ public class MakeindexTest extends AbstractTester {
      * 
      * @throws IOException in case of an error
      */
-    @Test()
+    @Test
     @Ignore
     public void testCollateSpaces1() throws IOException {
 
@@ -333,11 +332,9 @@ public class MakeindexTest extends AbstractTester {
 
     /**
      * <testcase> An illegal argument for -D is reported. </testcase>
-     * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testD01() throws IOException {
+    public void testD01() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-D"},
@@ -348,10 +345,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An illegal argument for -D is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testD02() throws IOException {
+    public void testD02() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-Dabc"},
@@ -362,10 +358,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The argument to run can be the empty string array. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEmptyArguments1() throws IOException {
+    public void testEmptyArguments1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -381,10 +376,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The empty string argument is ignored. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEmptyArguments2() throws IOException {
+    public void testEmptyArguments2() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -400,10 +394,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An illegal argument for -encoding is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEnc00() throws IOException {
+    public void testEnc00() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-enc", "xxx"},
@@ -414,10 +407,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An illegal argument for -encoding is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEnc01() throws IOException {
+    public void testEnc01() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-enc"},
@@ -428,10 +420,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An illegal argument for -encoding is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEnc10() throws IOException {
+    public void testEnc10() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-encoding="},
@@ -442,10 +433,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An illegal argument for -encoding is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testEncoding00() throws IOException {
+    public void testEncoding00() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-encoding=xxx"},
@@ -456,10 +446,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> Help is provided upon request. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testHelp1() throws IOException {
+    public void testHelp1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -472,10 +461,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A missing argument for -style is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle00() throws IOException {
+    public void testStyle00() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s"},
@@ -486,10 +474,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An empty argument for -style is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle01() throws IOException {
+    public void testStyle01() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s", ""},
@@ -500,10 +487,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A null argument for -style is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle02() throws IOException {
+    public void testStyle02() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s", null},
@@ -514,10 +500,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A null argument for -style is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle03() throws IOException {
+    public void testStyle03() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-style="},
@@ -528,10 +513,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A missing argument for -style is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle1() throws IOException {
+    public void testStyle1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-s", "xyzzy"},
@@ -542,10 +526,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A empty style is consumed. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle2() throws IOException {
+    public void testStyle2() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -563,10 +546,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> A empty style is consumed. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testStyle3() throws IOException {
+    public void testStyle3() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -584,10 +566,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An unknown file argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testTranscript1() throws IOException {
+    public void testTranscript1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -601,16 +582,15 @@ public class MakeindexTest extends AbstractTester {
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
         File t = new File("target/xyz.ilog");
         assertTrue(t.exists());
-        t.delete();
+        t.deleteOnExit();
     }
 
     /**
      * <testcase> An unknown file argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testTranscript2() throws IOException {
+    public void testTranscript2() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
@@ -624,16 +604,15 @@ public class MakeindexTest extends AbstractTester {
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
         File t = new File("target/xyz.ilog");
         assertTrue(t.exists());
-        t.delete();
+        t.deleteOnExit();
     }
 
     /**
      * <testcase> An unknown argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testUnknownArgument1() throws IOException {
+    public void testUnknownArgument1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-xyzzy"},
@@ -644,10 +623,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An unknown file argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testUnknownFile1() throws IOException {
+    public void testUnknownFile1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"target/xyzzy"},
@@ -658,10 +636,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An unknown file argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testUnknownFile2() throws IOException {
+    public void testUnknownFile2() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-", "target/xyzzy"},
@@ -672,10 +649,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> An unknown file argument is reported. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testUnknownFile3() throws IOException {
+    public void testUnknownFile3() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--", "target/xyzzy"},
@@ -686,10 +662,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The version is reported upon request. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testVersion1() throws IOException {
+    public void testVersion1() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-V"}, BANNER, "", 1);
@@ -698,10 +673,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The version is reported upon request. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testVersion2() throws IOException {
+    public void testVersion2() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--V"}, BANNER, "", 1);
@@ -710,10 +684,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The version is reported upon request. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testVersion3() throws IOException {
+    public void testVersion3() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"-Version"}, BANNER, "", 1);
@@ -722,10 +695,9 @@ public class MakeindexTest extends AbstractTester {
     /**
      * <testcase> The version is reported upon request. </testcase>
      * 
-     * @throws IOException in case of an error
      */
     @Test
-    public void testVersion4() throws IOException {
+    public void testVersion4() {
 
         Locale.setDefault(Locale.ENGLISH);
         run(new String[]{"--Version"}, BANNER, "", 1);

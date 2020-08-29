@@ -40,12 +40,12 @@ public class LocationReferenceList implements LocationClassGroup {
     /**
      * The field <tt>clazz</tt> contains the class.
      */
-    private String clazz;
+    private final String clazz;
 
     /**
      * The field <tt>list</tt> contains the list of location references.
      */
-    private List<LocationReference> list = new ArrayList<LocationReference>();
+    private final List<LocationReference> list = new ArrayList<LocationReference>();
 
     /**
      * Creates a new object.

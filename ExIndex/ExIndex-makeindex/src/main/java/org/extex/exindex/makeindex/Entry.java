@@ -44,22 +44,22 @@ public class Entry {
     /**
      * The field <tt>value</tt> contains the display value.
      */
-    private String[] display;
+    private final String[] display;
 
     /**
      * The field <tt>key</tt> contains the key.
      */
-    private String[] key;
+    private final String[] key;
 
     /**
      * The field <tt>pages</tt> contains the pages contained.
      */
-    private List<Pages> pages = new ArrayList<Pages>();
+    private final List<Pages> pages = new ArrayList<Pages>();
 
     /**
      * The field <tt>heading</tt> contains the heading character.
      */
-    private char heading;
+    private final char heading;
 
     /**
      * Creates a new object.

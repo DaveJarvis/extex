@@ -57,26 +57,26 @@ public class LetterGroupContainer {
      * The field <tt>groups</tt> contains the mapping from names to letter
      * groups.
      */
-    private Map<String, LetterGroup> groups =
+    private final Map<String, LetterGroup> groups =
             new HashMap<String, LetterGroup>();
 
     /**
      * The field <tt>index</tt> contains the index for accessing the prefixes.
      */
-    private Map<Character, SortedSet<String>> index =
+    private final Map<Character, SortedSet<String>> index =
             new HashMap<Character, SortedSet<String>>();
 
     /**
      * The field <tt>sorted</tt> contains the collected letter groups. This
      * list is cleared during sorting.
      */
-    private List<LetterGroup> letterGroups = new ArrayList<LetterGroup>();
+    private final List<LetterGroup> letterGroups = new ArrayList<LetterGroup>();
 
     /**
      * The field <tt>prefixMap</tt> contains the mapping from prefixes to
      * letter groups.
      */
-    private Map<String, LetterGroup> prefixMap =
+    private final Map<String, LetterGroup> prefixMap =
             new HashMap<String, LetterGroup>();
 
     /**

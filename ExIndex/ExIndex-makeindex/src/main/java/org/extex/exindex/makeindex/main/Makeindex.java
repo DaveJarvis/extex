@@ -18,25 +18,6 @@
 
 package org.extex.exindex.makeindex.main;
 
-import java.io.ByteArrayOutputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.io.PrintStream;
-import java.io.Reader;
-import java.io.UnsupportedEncodingException;
-import java.io.Writer;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.FileHandler;
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
 import org.extex.exindex.core.exception.RawIndexEofException;
 import org.extex.exindex.core.exception.RawIndexException;
 import org.extex.exindex.core.exception.RawIndexMissingCharException;
@@ -47,12 +28,7 @@ import org.extex.exindex.makeindex.Parameters;
 import org.extex.exindex.makeindex.exceptions.MissingSymbolException;
 import org.extex.exindex.makeindex.exceptions.StyleNotFoundException;
 import org.extex.exindex.makeindex.exceptions.UnknownOptionException;
-import org.extex.exindex.makeindex.normalizer.Collator;
-import org.extex.exindex.makeindex.normalizer.CollatorPipe;
-import org.extex.exindex.makeindex.normalizer.EmptyCollator;
-import org.extex.exindex.makeindex.normalizer.LettersOnlyCollator;
-import org.extex.exindex.makeindex.normalizer.MakeindexGermanCollator;
-import org.extex.exindex.makeindex.normalizer.SpaceCollator;
+import org.extex.exindex.makeindex.normalizer.*;
 import org.extex.exindex.makeindex.pages.MakeindexPageProcessor;
 import org.extex.exindex.makeindex.pages.PageProcessor;
 import org.extex.exindex.makeindex.parser.MakeindexParser;
@@ -68,6 +44,12 @@ import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.resource.ResourceFinderFactory;
 import org.extex.resource.io.NamedInputStream;
+
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import java.util.logging.*;
 
 /**
  * This is the main program for an indexer a la <i>MakeIndex</i>.
@@ -131,6 +113,7 @@ import org.extex.resource.io.NamedInputStream;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:7779 $
  */
+@SuppressWarnings("unused")
 public class Makeindex {
 
     /**
@@ -241,7 +224,7 @@ public class Makeindex {
     /**
      * The field <tt>comparator</tt> contains the comparator.
      */
-    private MakeindexComparator comparator = new MakeindexComparator();
+    private final MakeindexComparator comparator = new MakeindexComparator();
 
     /**
      * The field <tt>consoleHandler</tt> contains the handler writing to the
@@ -257,7 +240,7 @@ public class Makeindex {
     /**
      * The field <tt>files</tt> contains the input files.
      */
-    private List<String> files = new ArrayList<String>();
+    private final List<String> files = new ArrayList<>();
 
     /**
      * The field <tt>logger</tt> contains the logger for messages.
@@ -267,7 +250,7 @@ public class Makeindex {
     /**
      * The field <tt>styles</tt> contains the style files.
      */
-    private ArrayList<String> styles = new ArrayList<String>();
+    private final ArrayList<String> styles = new ArrayList<>();
 
     /**
      * The field <tt>resourceFinder</tt> contains the resource finder.
@@ -278,7 +261,7 @@ public class Makeindex {
      * The field <tt>properties</tt> contains the properties controlling the
      * behavior.
      */
-    private Properties properties;
+    private final Properties properties;
 
 
     public Makeindex() {
@@ -802,10 +785,7 @@ public class Makeindex {
         } catch (UnsupportedEncodingException e) {
             log(LOCALIZER.format("UnsupportedEncoding", e.getMessage()));
             return -1;
-        } catch (ConfigurationException e) {
-            log(e.getMessage());
-            return -1;
-        } catch (UnknownOptionException e) {
+        } catch ( ConfigurationException | UnknownOptionException e) {
             log(e.getMessage());
             return -1;
         } catch (Exception e) {
@@ -901,16 +881,14 @@ public class Makeindex {
         if (nis == null) {
             throw new StyleNotFoundException(file);
         }
-        Reader reader = new InputStreamReader(nis,
-            properties.getProperty(PROP_STYLE_ENCODING));
-        info("ScanningStyle", file);
-        try {
+        try( Reader reader = new InputStreamReader(
+            nis, properties.getProperty( PROP_STYLE_ENCODING ) ) ) {
+            info( "ScanningStyle", file );
             int[] count =
-                    MakeindexParameters.load(reader, file, params, logger);
-            info("ScanningStyleDone",
-                Integer.toString(count[0]), Integer.toString(count[1]));
-        } finally {
-            reader.close();
+                MakeindexParameters.load( reader, file, params, logger );
+            info( "ScanningStyleDone",
+                  Integer.toString( count[ 0 ] ),
+                  Integer.toString( count[ 1 ] ) );
         }
     }
 
@@ -1037,40 +1015,38 @@ public class Makeindex {
      */
     protected void writeOutput(Index index) throws IOException {
 
-        Writer w;
         String fmt;
         String output = properties.getProperty(PROP_OUTPUT);
+        OutputStream out;
 
         if (output == null) {
             fmt = "GeneratingOutput";
-            w = new OutputStreamWriter(System.out, // 
-                properties.getProperty(PROP_OUTPUT_ENCODING));
+            out = System.out;
         } else {
             fmt = "GeneratingOutputFile";
-            w = new OutputStreamWriter(new FileOutputStream(output),
-                properties.getProperty(PROP_OUTPUT_ENCODING));
+            out = new FileOutputStream( output );
         }
-        try {
+
+        try( Writer w = new OutputStreamWriter(
+            out, properties.getProperty( PROP_OUTPUT_ENCODING ) ) ) {
             Parameters params = index.getParams();
-            IndexWriter indexWriter = new MakeindexWriter(w, params);
+            IndexWriter indexWriter = new MakeindexWriter( w, params );
             long[] warn = {0, 0};
             PageProcessor pageProcessor =
-                    new MakeindexPageProcessor(params, logger);
+                new MakeindexPageProcessor( params, logger );
 
-            info("Sorting");
+            info( "Sorting" );
             List<Entry> entries =
-                    index.sort(comparator, pageProcessor, logger, warn);
-            info("SortingDone", Long.toString(warn[1]));
-            info(fmt, output);
+                index.sort( comparator, pageProcessor, logger, warn );
+            info( "SortingDone", Long.toString( warn[ 1 ] ) );
+            info( fmt, output );
 
-            int[] count = indexWriter.write(entries, logger, getStartPage(),
-                pageProcessor);
+            int[] count = indexWriter.write( entries, logger, getStartPage(),
+                                             pageProcessor );
 
-            info("GeneratingOutputDone",
-                Integer.toString(count[0]),
-                Long.toString(count[1] + warn[0]));
-        } finally {
-            w.close();
+            info( "GeneratingOutputDone",
+                  Integer.toString( count[ 0 ] ),
+                  Long.toString( count[ 1 ] + warn[ 0 ] ) );
         }
         if (output == null) {
             info("StandardOutput", output);
@@ -1078,5 +1054,4 @@ public class Makeindex {
             info("Output", output);
         }
     }
-
 }

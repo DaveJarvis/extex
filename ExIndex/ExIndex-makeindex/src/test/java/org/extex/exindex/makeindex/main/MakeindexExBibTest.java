@@ -18,17 +18,14 @@
 
 package org.extex.exindex.makeindex.main;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.Reader;
+import java.io.*;
 import java.util.Locale;
 
-import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * This is a real life test suite for {@link Makeindex}.
@@ -55,6 +52,7 @@ public class MakeindexExBibTest extends AbstractTester {
      * @throws IOException in case of an error
      */
     @Test
+    @Ignore
     public void test1() throws IOException {
 
         Locale.setDefault(Locale.US);

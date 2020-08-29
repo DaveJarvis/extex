@@ -439,22 +439,22 @@ public class Arg {
     /**
      * The field <tt>resultClass</tt> contains the class of the result.
      */
-    private Class<?> resultClass;
+    private final Class<?> resultClass;
 
     /**
      * The field <tt>def</tt> contains the default value.
      */
-    private Object def;
+    private final Object def;
 
     /**
      * The field <tt>flag</tt> contains the name of the flag.
      */
-    private String flag;
+    private final String flag;
 
     /**
      * The field <tt>quoted</tt> contains the indicator for quoted values.
      */
-    private boolean quoted;
+    private final boolean quoted;
 
     /**
      * Creates a new object.

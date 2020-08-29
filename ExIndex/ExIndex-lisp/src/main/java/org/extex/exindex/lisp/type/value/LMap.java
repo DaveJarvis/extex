@@ -34,7 +34,7 @@ public class LMap implements LValue {
     /**
      * The field <tt>array</tt> contains the content.
      */
-    private Map<LValue, LValue> map = new HashMap<LValue, LValue>();
+    private final Map<LValue, LValue> map = new HashMap<LValue, LValue>();
 
 
     public LMap() {

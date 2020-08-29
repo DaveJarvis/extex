@@ -55,12 +55,12 @@ public class CrossReference implements Reference {
     /**
      * The field <tt>layers</tt> contains the reference list.
      */
-    private String[] layers;
+    private final String[] layers;
 
     /**
      * The field <tt>clazz</tt> contains the class name.
      */
-    private String clazz;
+    private final String clazz;
 
     /**
      * Creates a new object.

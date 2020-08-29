@@ -43,17 +43,17 @@ public class Range implements Location {
     /**
      * The field <tt>from</tt> contains the starting location.
      */
-    private LocationReference from;
+    private final LocationReference from;
 
     /**
      * The field <tt>to</tt> contains the terminating location.
      */
-    private LocationReference to;
+    private final LocationReference to;
 
     /**
      * The field <tt>clazz</tt> contains the the current class.
      */
-    private String clazz;
+    private final String clazz;
 
     /**
      * Creates a new object.

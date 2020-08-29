@@ -24,11 +24,7 @@ import static org.junit.Assert.assertEquals;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.StringWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-import java.util.Map;
+import java.util.*;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -51,7 +47,7 @@ public abstract class AbstractIndexerTester {
     /**
      * Dummy implementation for testing purposes.
      */
-    private final class MyFinder implements ResourceFinder {
+    private static final class MyFinder implements ResourceFinder {
 
         /**
          * {@inheritDoc}
@@ -82,7 +78,7 @@ public abstract class AbstractIndexerTester {
      * The field <tt>FILES</tt> contains the prerecorded resources.
      */
     private static final Map<String, String> FILES =
-            new HashMap<String, String>();
+        new HashMap<>();
 
     /**
      * The field <tt>FINDER</tt> contains the resource finder.
@@ -135,10 +131,8 @@ public abstract class AbstractIndexerTester {
      */
     public List<String> makeList(String... args) {
 
-        ArrayList<String> list = new ArrayList<String>();
-        for (String s : args) {
-            list.add(s);
-        }
+        ArrayList<String> list = new ArrayList<>();
+        Collections.addAll( list, args );
         return list;
     }
 

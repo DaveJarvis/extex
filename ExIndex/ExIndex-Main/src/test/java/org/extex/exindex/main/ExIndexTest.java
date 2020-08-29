@@ -628,6 +628,7 @@ public class ExIndexTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public final void testTranscript1() throws Exception {
 
         File log = new File("target/xxx.ilg");

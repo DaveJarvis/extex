@@ -167,7 +167,7 @@ public class LDefineRuleSet extends LFunction {
      * The field <tt>container</tt> contains the reference to the rule set
      * container to store information in.
      */
-    private RuleSetContainer container;
+    private final RuleSetContainer container;
 
     /**
      * Creates a new object.

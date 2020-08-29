@@ -1,8 +1,8 @@
 Building ExIndex
 ================
 
-ExIndex uses Maven for its build system. Thus some pieces of software
-needs to be installed before ExIndex can be build.
+ExIndex uses Maven for its build system. Some pieces of software
+must be installed before ExIndex can be built.
 
 Prerequisites
 -------------

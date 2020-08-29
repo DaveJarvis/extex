@@ -39,12 +39,12 @@ public class MakeindexWriter implements IndexWriter {
     /**
      * The field <tt>params</tt> contains the parameters.
      */
-    private Parameters params;
+    private final Parameters params;
 
     /**
      * The field <tt>writer</tt> contains the writer.
      */
-    private LineBreakingWriter writer;
+    private final LineBreakingWriter writer;
 
     /**
      * Creates a new object.

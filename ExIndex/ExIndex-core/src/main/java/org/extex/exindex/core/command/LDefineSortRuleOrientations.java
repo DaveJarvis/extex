@@ -82,7 +82,7 @@ public class LDefineSortRuleOrientations extends LFunction {
      * The field <tt>container</tt> contains the container to store the
      * information in.
      */
-    private SortRuleContainer container;
+    private final SortRuleContainer container;
 
     /**
      * Creates a new object.

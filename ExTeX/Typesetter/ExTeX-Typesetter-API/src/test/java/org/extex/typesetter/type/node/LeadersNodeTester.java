@@ -223,7 +223,7 @@ public abstract class LeadersNodeTester {
      * 
      * @throws GeneralException in case of an error
      */
-    @Test()
+    @Test
     public final void testAtShippingRule1h() throws GeneralException {
 
         AbstractLeadersNode node =
@@ -245,7 +245,7 @@ public abstract class LeadersNodeTester {
      * 
      * @throws GeneralException in case of an error
      */
-    @Test()
+    @Test
     public final void testAtShippingRule1v() throws GeneralException {
 
         AbstractLeadersNode node =
@@ -267,7 +267,7 @@ public abstract class LeadersNodeTester {
      * 
      * @throws GeneralException in case of an error
      */
-    @Test()
+    @Test
     public final void testAtShippingRule2h() throws GeneralException {
 
         AbstractLeadersNode node =
@@ -289,7 +289,7 @@ public abstract class LeadersNodeTester {
      * 
      * @throws GeneralException in case of an error
      */
-    @Test()
+    @Test
     public final void testAtShippingRule2v() throws GeneralException {
 
         AbstractLeadersNode node =

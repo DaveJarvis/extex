@@ -161,7 +161,7 @@ public class LMarkupIndex extends AbstractLAdapter {
     /**
      * The field <tt>container</tt> contains the index.
      */
-    private IndexContainer container;
+    private final IndexContainer container;
 
     /**
      * Creates a new object.

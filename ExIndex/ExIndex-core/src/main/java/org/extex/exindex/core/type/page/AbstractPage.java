@@ -65,17 +65,17 @@ public abstract class AbstractPage implements PageReference {
     /**
      * The field <tt>enc</tt> contains the encapsulator.
      */
-    private String enc;
+    private final String enc;
 
     /**
      * The field <tt>page</tt> contains the page number.
      */
-    private String page;
+    private final String page;
 
     /**
      * The field <tt>ord</tt> contains the ordinal number or -1 for none.
      */
-    private int ord;
+    private final int ord;
 
     /**
      * Creates a new object.

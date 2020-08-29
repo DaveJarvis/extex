@@ -44,12 +44,12 @@ public class Markup {
         /**
          * The field <tt>no</tt> contains the number.
          */
-        private int no;
+        private final int no;
 
         /**
          * The field <tt>name</tt> contains the name.
          */
-        private String name;
+        private final String name;
 
         /**
          * Creates a new object.
@@ -124,12 +124,12 @@ public class Markup {
     /**
      * The field <tt>map</tt> contains the content.
      */
-    private Map<String, String[]> map = new HashMap<String, String[]>();
+    private final Map<String, String[]> map = new HashMap<String, String[]>();
 
     /**
      * The field <tt>displayName</tt> contains the name of debugging.
      */
-    private String displayName;
+    private final String displayName;
 
     /**
      * Creates a new object.

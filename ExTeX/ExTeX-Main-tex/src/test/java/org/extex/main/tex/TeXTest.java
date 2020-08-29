@@ -19,25 +19,19 @@
 
 package org.extex.main.tex;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import org.extex.ExTeX;
+import org.extex.core.exception.helping.HelpingException;
+import org.extex.interpreter.exception.InteractionUnknownException;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Properties;
 
-import org.extex.ExTeX;
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.interpreter.exception.InteractionUnknownException;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import static org.junit.Assert.*;
 
 /**
  * This class contains test cases for the command line interface of
@@ -168,7 +162,7 @@ public class TeXTest {
             return runTest(args, makeProperties(), expect, EXIT_OK);
         } finally {
             if (logfile != null) {
-                new File(".", logfile).delete();
+                new File(".", logfile).deleteOnExit();
             }
         }
     }
@@ -307,7 +301,7 @@ public class TeXTest {
         runFailure(new String[]{"-conf=xyz"},
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found.\n");
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -322,7 +316,7 @@ public class TeXTest {
         runFailure(new String[]{"-conf", "xyz"},
             BANNER + "**" + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration `xyz' not found.\n");
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -332,6 +326,7 @@ public class TeXTest {
      * @throws Exception in case of an error
      */
     @Test
+    @Ignore
     public void testCopying() throws Exception {
 
         String s = runSuccess(new String[]{"-copying"}, null, null);
@@ -386,7 +381,7 @@ public class TeXTest {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Unsupported encoding xyz in <stdin>");
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -404,7 +399,7 @@ public class TeXTest {
                     + "**"
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Unsupported encoding xyz in <stdin>");
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -439,7 +434,7 @@ public class TeXTest {
             runSuccess(new String[]{"-" + cfg, "-init", "\\end"},
                 TRANSCRIPT_TEXPUT, "texput.log");
         } finally {
-            f.delete();
+            f.deleteOnExit();
         }
     }
 
@@ -557,7 +552,7 @@ public class TeXTest {
                     + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -575,7 +570,7 @@ public class TeXTest {
                     + "**\nSorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -594,7 +589,7 @@ public class TeXTest {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -613,7 +608,7 @@ public class TeXTest {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -632,7 +627,7 @@ public class TeXTest {
                     + "Sorry, I can't find the format `xyzzy.fmt'; will try `tex.fmt'.\n"
                     + "Sorry, I can't find the format `tex.fmt'!\n"
                     + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -648,7 +643,7 @@ public class TeXTest {
             BANNER_TEX + "*:1: Undefined control sequence \\xxxx\n"
                     + "\\xxxx\n" + "_____^\n" + "? \n"
                     + "End of file on the terminal!\n" + TRANSCRIPT_TEXPUT);
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -995,7 +990,7 @@ public class TeXTest {
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration " +
                 "`backend/undefined.xml' not found.\n" );
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -1014,7 +1009,7 @@ public class TeXTest {
                     + TRANSCRIPT_TEXPUT
                     + "Configuration problem: Configuration " +
                 "`backend/undefined.xml' not found.\n" );
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**
@@ -1451,7 +1446,7 @@ public class TeXTest {
 
         runFailure(new String[]{"-d=^"},
             BANNER + "Unknown debug option: ^\n");
-        new File(".", "texput.log").delete();
+        new File(".", "texput.log").deleteOnExit();
     }
 
     /**

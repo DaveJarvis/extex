@@ -33,7 +33,7 @@ public class LNumber implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private long value;
+    private final long value;
 
     /**
      * Creates a new object.

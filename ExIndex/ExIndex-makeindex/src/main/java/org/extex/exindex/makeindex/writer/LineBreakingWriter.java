@@ -34,12 +34,12 @@ public class LineBreakingWriter extends Writer {
     /**
      * The field <tt>buffer</tt> contains the intermediary buffer.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
     /**
      * The field <tt>w</tt> contains the target writer.
      */
-    private Writer w;
+    private final Writer w;
 
     /**
      * The field <tt>column</tt> contains the current column.
@@ -49,17 +49,17 @@ public class LineBreakingWriter extends Writer {
     /**
      * The field <tt>sep</tt> contains the separator.
      */
-    private String sep;
+    private final String sep;
 
     /**
      * The field <tt>in</tt> contains the width of sep.
      */
-    private int in;
+    private final int in;
 
     /**
      * The field <tt>lineLength</tt> contains the desired line length.
      */
-    private int lineLength;
+    private final int lineLength;
 
     /**
      * Creates a new object.

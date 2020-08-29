@@ -40,17 +40,17 @@ public class InconsistentFlagsException extends LException {
     /**
      * The field <tt>locator</tt> contains the resource locator.
      */
-    private ResourceLocator locator;
+    private final ResourceLocator locator;
 
     /**
      * The field <tt>flag1</tt> contains the first flag.
      */
-    private String flag1;
+    private final String flag1;
 
     /**
      * The field <tt>flag2</tt> contains the second flag.
      */
-    private String flag2;
+    private final String flag2;
 
     /**
      * Creates a new object.

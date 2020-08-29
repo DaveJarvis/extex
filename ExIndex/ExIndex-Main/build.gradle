@@ -1,0 +1,16 @@
+dependencies {
+    implementation project(':CLI')
+    implementation project(':ExTeX-resource')
+    implementation project(':extex:ExTeX-core')
+    implementation project(':ExIndex:ExIndex-core')
+    implementation project(':ExIndex:ExIndex-lisp')
+}
+
+description = 'ExIndex Main'
+
+tasks.register('testsJar', Jar) {
+    archiveClassifier = 'tests'
+    from(sourceSets.test.output)
+}
+
+publishing.publications.maven.artifact(testsJar)

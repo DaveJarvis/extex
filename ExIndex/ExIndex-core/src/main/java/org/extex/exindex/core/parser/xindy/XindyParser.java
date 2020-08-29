@@ -241,7 +241,7 @@ public class XindyParser extends LParser implements RawIndexParser {
     /**
      * The field <tt>locator</tt> contains the locator.
      */
-    private ReaderLocator locator;
+    private final ReaderLocator locator;
 
     /**
      * Creates a new object.

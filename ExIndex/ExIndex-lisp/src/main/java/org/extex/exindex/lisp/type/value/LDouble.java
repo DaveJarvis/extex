@@ -33,7 +33,7 @@ public class LDouble implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private double value;
+    private final double value;
 
     /**
      * Creates a new object.

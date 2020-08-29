@@ -48,13 +48,13 @@ public class MakeindexPageProcessor implements PageProcessor {
      * The field <tt>map</tt> contains the mapping from classes to integers for
      * sorting.
      */
-    private Map<Class<? extends PageReference>, Integer> map =
+    private final Map<Class<? extends PageReference>, Integer> map =
             new HashMap<Class<? extends PageReference>, Integer>();
 
     /**
      * The field <tt>comparator</tt> contains the comparator.
      */
-    private Comparator<? super Pages> comparator = new Comparator<Pages>() {
+    private final Comparator<? super Pages> comparator = new Comparator<Pages>() {
 
         /**
          * Compare pages.

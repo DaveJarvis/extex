@@ -109,7 +109,7 @@ public class Indexer extends LEngine {
     /**
      * The field <tt>container</tt> contains the container for all indices.
      */
-    private IndexContainer container = new IndexContainer();
+    private final IndexContainer container = new IndexContainer();
 
     /**
      * The field <tt>parserFactory</tt> contains the parser factory.
@@ -396,10 +396,9 @@ public class Indexer extends LEngine {
             return;
         }
         logger.info(LOCALIZER.format("StartProcess"));
-        AttributesContainer attributes = container;
         List<OpenLocationReference> openPages =
-                new ArrayList<OpenLocationReference>();
-        List<RawIndexentry> entries = new ArrayList<RawIndexentry>();
+            new ArrayList<>();
+        List<RawIndexentry> entries = new ArrayList<>();
 
         for (String resource : resources) {
             logger.info(LOCALIZER.format((resource != null
@@ -422,16 +421,12 @@ public class Indexer extends LEngine {
             } finally {
                 parser.close();
             }
-            if (!openPages.isEmpty()) {
-                // TODO gene: error handling unimplemented
-                throw new RuntimeException("unimplemented");
-            }
         }
         logger.info(LOCALIZER.format("StartPreprocess"));
         // pre-processing afterwards to resolve forward cross-references
 
         for (RawIndexentry entry : entries) {
-            if (preProcess(entry, attributes, openPages, logger)) {
+            if (preProcess( entry, container, openPages, logger)) {
                 container.store(entry, logger);
             }
         }

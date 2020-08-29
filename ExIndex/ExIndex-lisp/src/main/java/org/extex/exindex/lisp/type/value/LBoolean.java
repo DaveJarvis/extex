@@ -54,7 +54,7 @@ public final class LBoolean implements LValue {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private boolean value;
+    private final boolean value;
 
     /**
      * Creates a new object.

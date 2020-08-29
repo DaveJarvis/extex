@@ -48,24 +48,24 @@ public class IndexEntry {
      * The field <tt>map</tt> contains the mapping from name to the associated
      * entry.
      */
-    private Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
+    private final Map<String, IndexEntry> map = new HashMap<String, IndexEntry>();
 
     /**
      * The field <tt>group</tt> contains the mapping from name to location
      * class groups.
      */
-    private Map<String, LocationClassGroup> groupMap =
+    private final Map<String, LocationClassGroup> groupMap =
             new HashMap<String, LocationClassGroup>();
 
     /**
      * The field <tt>keywords</tt> contains the keywords.
      */
-    private String[] keywords;
+    private final String[] keywords;
 
     /**
      * The field <tt>raw</tt> contains the raw index entry.
      */
-    private RawIndexentry raw;
+    private final RawIndexentry raw;
 
     /**
      * Creates a new object.

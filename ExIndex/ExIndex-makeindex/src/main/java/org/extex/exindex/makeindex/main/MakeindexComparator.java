@@ -35,7 +35,7 @@ public class MakeindexComparator implements Comparator<Entry> {
     /**
      * The field <tt>NUMBER_PATTERN</tt> contains the pattern for numbers.
      */
-    private static Pattern NUMBER_PATTERN = Pattern.compile("[0-9]+");
+    private static final Pattern NUMBER_PATTERN = Pattern.compile( "[0-9]+");
 
     /**
      * The field <tt>comparisons</tt> contains the number of comparisons

@@ -40,17 +40,17 @@ public class Attribute {
     /**
      * The field <tt>name</tt> contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * The field <tt>ord</tt> contains the ordering.
      */
-    private int ord;
+    private final int ord;
 
     /**
      * The field <tt>group</tt> contains the group number.
      */
-    private int group;
+    private final int group;
 
     /**
      * Creates a new object.

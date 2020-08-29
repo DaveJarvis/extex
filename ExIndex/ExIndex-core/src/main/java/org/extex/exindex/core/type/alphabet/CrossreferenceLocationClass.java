@@ -33,7 +33,7 @@ public class CrossreferenceLocationClass implements LocationClass {
      * The field <tt>verified</tt> contains the indicator for unverified cross
      * references.
      */
-    private boolean unverified;
+    private final boolean unverified;
 
     /**
      * Creates a new object.
