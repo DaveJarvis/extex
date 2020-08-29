@@ -39,6 +39,10 @@ downloaded from the [εχTeX web site](http://www.extex.org/).
 File Organization
 -----------------
 
+![](src/images/folder-blue.png) [archive](archive/)
+contains various archived projects not directly related to generating
+TeX output.
+
 ![](src/images/folder-blue.png) [CLI](CLI/)
 contains a general purpose library for command line parsing and
 processing.
@@ -62,10 +66,6 @@ this program.
 contains a library for resource loading and several supporting
 functionality for components and configuration.
 
-![](src/images/folder-blue.png) [Sandbox](Sandbox/)
-contains sand boxes of developers. Here code can be put under version
-control without integrating it into the official project tree.
-
 ![](src/images/folder-blue.png) [develop](develop/)
 contains configurations and tools for the development.
 
@@ -76,26 +76,9 @@ itself. Additional documentation can be found in the sub-projects.
 ![](src/images/folder-blue.png) [library](library/)
 contains the library of collected papers and documents.
 
-![](src/images/folder-blue.png) [site](site/)
-contains the relaunch of the web pages on
-[www.extex.org](http://www.extex.org/). It is not active yet.
-
-![](src/images/folder-gray.png) [target](target/)
-is not contained in the repository. It is created on the fly during
-compilation to receive the intermediate files and results.
-
 ![](src/images/folder-blue.png) [texmf](texmf/)
 contains sources for a texmf tree.
 
 ![](src/images/folder-blue.png) [tools](tools/)
 contains some tools.
-
-![](src/images/folder-blue.png) [util](util/)
-contains some utilities. Usually they are shell scripts or programs of
-some sort which do not need the global build system of
-εχTeX.
-
-![](src/images/folder-blue.png) [www](www/)
-contains the sources for the web pages for
-[www.extex.org](http://www.extex.org/).
 
