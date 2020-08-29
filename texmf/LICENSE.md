@@ -1,4 +1,3 @@
-
 GNU LIBRARY GENERAL PUBLIC LICENSE
 ==================================
 
