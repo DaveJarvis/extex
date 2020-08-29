@@ -19,13 +19,6 @@
 
 package org.extex.backend.documentWriter.svg;
 
-import java.io.IOException;
-import java.text.NumberFormat;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Locale;
-import java.util.Map;
-
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
@@ -41,35 +34,22 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.VirtualCharNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 import org.extex.typesetter.type.page.Page;
 import org.extex.util.Unit;
 import org.extex.util.xml.XMLStreamWriter;
 
+import java.io.IOException;
+import java.text.NumberFormat;
+import java.util.HashMap;
+import java.util.Locale;
+import java.util.Map;
+
 /**
  * This is a SVG implementation of a document writer.
- * 
+ *
  * TODO incomplete !!!
- * 
+ *
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision:4704 $
  */
@@ -92,12 +72,12 @@ public class SVGDocumentWriter
     /**
      * current x position.
      */
-    private Dimen currentX = new Dimen();
+    private final Dimen currentX = new Dimen();
 
     /**
      * current y position.
      */
-    private Dimen currentY = new Dimen();
+    private final Dimen currentY = new Dimen();
 
     /**
      * debug.
@@ -107,22 +87,12 @@ public class SVGDocumentWriter
     /**
      * The option for the document writer.
      */
-    private DocumentWriterOptions docoptions;
+    private final DocumentWriterOptions docoptions;
 
     /**
      * The Encoding.
      */
     private String encoding = "ISO-8859-1";
-
-    /**
-     * The paper height.
-     */
-    private FixedDimen paperheight;
-
-    /**
-     * The paper width.
-     */
-    private FixedDimen paperwidth;
 
     /**
      * The field <tt>shippedPages</tt>.
@@ -136,7 +106,7 @@ public class SVGDocumentWriter
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param cfg the configuration
      * @param options the options
      */
@@ -153,26 +123,14 @@ public class SVGDocumentWriter
             }
             tmp = cfg.getAttribute("debug");
             if (tmp != null) {
-                debug = Boolean.valueOf(tmp).booleanValue();
+                debug = Boolean.parseBoolean( tmp );
             }
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#close()
-     */
-    public void close() throws DocumentWriterException {
-
-        // do nothing
+    public void close()  {
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#getExtension()
-     */
     public String getExtension() {
 
         return "svg";
@@ -180,7 +138,7 @@ public class SVGDocumentWriter
 
     /**
      * Set the Attribute for an element with sp, bp, mm.
-     * 
+     *
      * @param name the attribute-name
      * @param dimen the dimen
      * @throws IOException if an IO-error occurred.
@@ -209,12 +167,6 @@ public class SVGDocumentWriter
      */
     private OutputStreamFactory writerFactory;
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.MultipleDocumentStream#setOutputStreamFactory(
-     *      org.extex.backend.outputStream.OutputStreamFactory)
-     */
     public void setOutputStreamFactory(OutputStreamFactory writerfactory) {
 
         writerFactory = writerfactory;
@@ -223,28 +175,16 @@ public class SVGDocumentWriter
     /**
      * The map for the parameters.
      */
-    private Map<String, String> param = new HashMap<String, String>();
+    private final Map<String, String> param = new HashMap<>();
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#setParameter(
-     *      java.lang.String, java.lang.String)
-     */
     public void setParameter(String name, String value) {
 
         param.put(name, value);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.backend.documentWriter.DocumentWriter#shipout(
-     *      org.extex.typesetter.type.page.Page)
-     */
     public int shipout(Page page)
-            throws DocumentWriterException,
-                GeneralException {
+            throws
+        GeneralException {
 
         try {
             NodeList nodes = page.getNodes();
@@ -285,20 +225,18 @@ public class SVGDocumentWriter
 
     /**
      * Print the parameter as comment.
-     * 
+     *
      * @throws IOException if an error occurs.
      */
     private void printParameterComment() throws IOException {
 
-        StringBuilder buf = new StringBuilder();
+        final StringBuilder buf = new StringBuilder();
         buf.append("\n");
-        Iterator<String> it = param.keySet().iterator();
-        while (it.hasNext()) {
-            String name = it.next();
-            buf.append(name);
-            buf.append("=");
-            buf.append(param.get(name));
-            buf.append("\n");
+        for( final String name : param.keySet() ) {
+            buf.append( name );
+            buf.append( "=" );
+            buf.append( param.get( name ) );
+            buf.append( "\n" );
         }
         writer.writeComment(buf.toString());
     }
@@ -311,7 +249,7 @@ public class SVGDocumentWriter
 
     /**
      * Set the paper height and width.
-     * 
+     *
      * @throws IOException if an IO-error occurred.
      */
     private void setPaperHW() throws IOException {
@@ -321,47 +259,31 @@ public class SVGDocumentWriter
         // o \pdfpagewidth / \pdfpageheight <-- pdfTeX
         // o \mediawidth / \mediaheight <-- VTeX
 
-        String page = param.get("Paper");
-        if (page != null) {
-            if (page.equalsIgnoreCase("A4")) {
-                // use DIN A4
-                paperwidth = Unit.createDimenFromCM(DINA4WIDTH);
-                paperheight = Unit.createDimenFromCM(DINA4HEIGHT);
+        final String page = param.get("Paper");
+        FixedDimen paperwidth;
+        FixedDimen paperheight;
 
-                // TODO incomplete
-            } else {
-                // use DIN A4
-                paperwidth = Unit.createDimenFromCM(DINA4WIDTH);
-                paperheight = Unit.createDimenFromCM(DINA4HEIGHT);
-            }
+        if (page != null) {
+          // TODO: need dimensions for page.equalsIgnoreCase("A4") == false
+          paperwidth = Unit.createDimenFromCM( DINA4WIDTH);
+          paperheight = Unit.createDimenFromCM( DINA4HEIGHT);
         } else if (docoptions != null) {
-            paperwidth = docoptions.getDimenOption("paperwidth");
-            paperheight = docoptions.getDimenOption("paperheight");
-            if (paperheight.getValue() == 0 || paperwidth.getValue() == 0) {
+            paperwidth = docoptions.getDimenOption( "paperwidth");
+            paperheight = docoptions.getDimenOption( "paperheight");
+            if ( paperheight.getValue() == 0 || paperwidth.getValue() == 0) {
                 // use DIN A4
-                paperwidth = Unit.createDimenFromCM(DINA4WIDTH);
-                paperheight = Unit.createDimenFromCM(DINA4HEIGHT);
+                paperwidth = Unit.createDimenFromCM( DINA4WIDTH);
+                paperheight = Unit.createDimenFromCM( DINA4HEIGHT);
             }
         } else {
             // use DIN A4
-            paperwidth = Unit.createDimenFromCM(DINA4WIDTH);
-            paperheight = Unit.createDimenFromCM(DINA4HEIGHT);
+            paperwidth = Unit.createDimenFromCM( DINA4WIDTH);
+            paperheight = Unit.createDimenFromCM( DINA4HEIGHT);
         }
-        setDimenLength("width", paperwidth);
-        setDimenLength("height", paperheight);
+        setDimenLength( "width", paperwidth );
+        setDimenLength( "height", paperheight );
     }
 
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
-    // ----------------------------------------------
-
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAdjust(AdjustNode,
-     *      java.lang.Object)
-     */
     public Object visitAdjust(AdjustNode value, Object value2) {
 
         // Element element = new Element("adjust");
@@ -369,12 +291,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAfterMath(AfterMathNode,
-     *      java.lang.Object)
-     */
     public Object visitAfterMath(AfterMathNode value, Object value2) {
 
         // Element element = new Element("aftermath");
@@ -382,12 +298,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitAlignedLeaders(AlignedLeadersNode,
-     *      java.lang.Object)
-     */
     public Object visitAlignedLeaders(AlignedLeadersNode value, Object value2) {
 
         // Element element = new Element("alignedleaders");
@@ -395,12 +305,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitBeforeMath(BeforeMathNode,
-     *      java.lang.Object)
-     */
     public Object visitBeforeMath(BeforeMathNode node, Object value2) {
 
         // Element element = new Element("beforemath");
@@ -408,12 +312,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitCenteredLeaders(CenteredLeadersNode,
-     *      java.lang.Object)
-     */
     public Object visitCenteredLeaders(CenteredLeadersNode node, Object value) {
 
         // Element element = new Element("centeredleaders");
@@ -421,12 +319,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitChar(CharNode,
-     *      java.lang.Object)
-     */
     public Object visitChar(CharNode node, Object value)
             throws DocumentWriterException {
 
@@ -468,12 +360,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitDiscretionary(DiscretionaryNode,
-     *      java.lang.Object)
-     */
     public Object visitDiscretionary(DiscretionaryNode node, Object value) {
 
         // Element element = new Element("discretionary");
@@ -481,12 +367,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitExpandedLeaders(ExpandedLeadersNode,
-     *      java.lang.Object)
-     */
     public Object visitExpandedLeaders(ExpandedLeadersNode node, Object value) {
 
         // Element element = new Element("expandedleaders");
@@ -494,12 +374,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitGlue(GlueNode,
-     *      java.lang.Object)
-     */
     public Object visitGlue(GlueNode node, Object value) {
 
         // Element element = new Element("glue");
@@ -510,15 +384,9 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitHorizontalList(HorizontalListNode,
-     *      java.lang.Object)
-     */
     public Object visitHorizontalList(HorizontalListNode node, Object value)
-            throws DocumentWriterException,
-                GeneralException {
+            throws
+        GeneralException {
 
         try {
             writer.writeStartElement("rect");
@@ -572,12 +440,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitInsertion(InsertionNode,
-     *      java.lang.Object)
-     */
     public Object visitInsertion(InsertionNode node, Object value) {
 
         // Element element = new Element("insertion");
@@ -585,12 +447,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitKern(KernNode,
-     *      java.lang.Object)
-     */
     public Object visitKern(KernNode node, Object value) {
 
         // Element element = new Element("kern");
@@ -598,12 +454,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitLigature(LigatureNode,
-     *      java.lang.Object)
-     */
     public Object visitLigature(LigatureNode node, Object value) {
 
         // Element element = new Element("ligature");
@@ -625,12 +475,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitMark(MarkNode,
-     *      java.lang.Object)
-     */
     public Object visitMark(MarkNode node, Object value) {
 
         // Element element = new Element("mark");
@@ -638,12 +482,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitPenalty(PenaltyNode,
-     *      java.lang.Object)
-     */
     public Object visitPenalty(PenaltyNode node, Object value) {
 
         // Element element = new Element("penalty");
@@ -652,12 +490,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitRule(RuleNode,
-     *      java.lang.Object)
-     */
     public Object visitRule(RuleNode node, Object value) {
 
         // Element element = new Element("rule");
@@ -665,12 +497,6 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitSpace(SpaceNode,
-     *      java.lang.Object)
-     */
     public Object visitSpace(SpaceNode node, Object value)
             throws DocumentWriterException {
 
@@ -694,15 +520,9 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVerticalList(VerticalListNode,
-     *      java.lang.Object)
-     */
     public Object visitVerticalList(VerticalListNode node, Object value)
-            throws DocumentWriterException,
-                GeneralException {
+            throws
+        GeneralException {
 
         try {
             writer.writeStartElement("rect");
@@ -735,25 +555,12 @@ public class SVGDocumentWriter
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitVirtualChar(org.extex.typesetter.type.node.VirtualCharNode,
-     *      java.lang.Object)
-     */
-    public Object visitVirtualChar(VirtualCharNode node, Object value)
-            throws GeneralException {
+    public Object visitVirtualChar(VirtualCharNode node, Object value) {
 
         // TODO visitVirtualChar unimplemented
         return null;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(WhatsItNode,
-     *      java.lang.Object)
-     */
     public Object visitWhatsIt(WhatsItNode nde, Object value) {
 
         // Element element = new Element("whatsit");
