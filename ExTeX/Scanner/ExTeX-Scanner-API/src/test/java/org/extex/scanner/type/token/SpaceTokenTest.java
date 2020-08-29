@@ -39,7 +39,7 @@ public class SpaceTokenTest extends TokenTester {
     /**
      * The field <tt>token</tt> contains the reference token.
      */
-    private static Token token = new SpaceToken("x");
+    private static final Token token = new SpaceToken( "x");
 
     /**
      * Command line interface.
@@ -54,7 +54,10 @@ public class SpaceTokenTest extends TokenTester {
 
     public SpaceTokenTest() {
 
-        super(token, Catcode.SPACE, " ", "blank space  ");
+        setToken(token);
+        setCatcode( Catcode.SPACE);
+        setText( " ");
+        setStr( "blank space  ");
     }
 
     /**

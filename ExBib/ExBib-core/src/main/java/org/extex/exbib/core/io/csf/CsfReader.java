@@ -314,9 +314,9 @@ public class CsfReader {
             }
         }
 
-    };
+    }
 
-    /**
+  /**
      * Expect a certain character and complain if it is not found. Newline
      * characters are skipped.
      * 

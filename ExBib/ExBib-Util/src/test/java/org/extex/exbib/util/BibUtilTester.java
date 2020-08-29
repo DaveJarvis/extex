@@ -43,7 +43,7 @@ public class BibUtilTester {
     /**
      * Enumeration for the type of comparison.
      */
-    public static enum Check {
+    public enum Check {
         /**
          * The field <tt>NONE</tt> contains the do not compare.
          */
@@ -61,9 +61,9 @@ public class BibUtilTester {
          * expression.
          */
         REGEX
-    };
+    }
 
-    /**
+  /**
      * The field <tt>YEAR</tt> contains the current year as four-digit string.
      * This might not be accurate for a long running test started just before
      * the end of the year.

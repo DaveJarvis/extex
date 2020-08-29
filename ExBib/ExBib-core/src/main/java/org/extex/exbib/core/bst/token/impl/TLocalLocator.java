@@ -85,9 +85,9 @@ public class TLocalLocator extends TLiteral {
      * The field <tt>field</tt> contains the specification of the field of the
      * locator.
      */
-    private LocatorField field;;
+    private final LocatorField field;
 
-    /**
+  /**
      * Create a new object.
      * 
      * @param value the value

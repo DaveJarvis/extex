@@ -19,12 +19,12 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertFalse;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
+
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test cases for tab mark tokens.
@@ -37,7 +37,7 @@ public class TabMarkTokenTest extends TokenTester {
     /**
      * The field <tt>token</tt> contains the reference token.
      */
-    private static Token token = new TabMarkToken(UnicodeChar.get('x'));
+    private static final Token token = new TabMarkToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -52,7 +52,10 @@ public class TabMarkTokenTest extends TokenTester {
 
     public TabMarkTokenTest() {
 
-        super(token, Catcode.TABMARK, "x", "alignment tab character x");
+        setToken(token);
+setCatcode( Catcode.TABMARK);
+setText( "x");
+setStr( "alignment tab character x");
     }
 
     /**
@@ -62,7 +65,7 @@ public class TabMarkTokenTest extends TokenTester {
 
         Token t1 = new TabMarkToken(UnicodeChar.get(' '));
         Token t2 = new SpaceToken(" ");
-        assertFalse(t1.equals(t2));
+        assertNotEquals( t1, t2 );
     }
 
 }

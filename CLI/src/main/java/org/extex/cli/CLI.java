@@ -73,7 +73,7 @@ public class CLI {
      * The field <tt>options</tt> contains the mapping from actual arguments to
      * closures for options.
      */
-    private Map<String, Option> options = new HashMap<String, Option>();
+    private final Map<String, Option> options = new HashMap<String, Option>();
 
     /**
      * Register handler for options. The option is bound to any string starting

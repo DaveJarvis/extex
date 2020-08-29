@@ -32,13 +32,13 @@ public class KeyValue {
      * The field <tt>theKey</tt> contains the instance variable containing the
      * key.
      */
-    private String theKey;
+    private final String theKey;
 
     /**
      * The field <tt>theValue</tt> contains the instance variable containing the
      * value.
      */
-    private Value theValue;
+    private final Value theValue;
 
     /**
      * Creates a new object.

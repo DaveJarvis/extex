@@ -37,12 +37,12 @@ public class ResourceObserverImpl implements ResourceObserver {
      * The constant <tt>localizer</tt> contains the localizer. It is not
      * static to allow the modification of the default locale at run time.
      */
-    private Localizer localizer;
+    private final Localizer localizer;
 
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The field <tt>level</tt> contains the level of inclusion.

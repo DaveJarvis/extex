@@ -221,7 +221,7 @@ public class BibReaderFactoryTest {
     /**
      * The field <tt>resourceFinder</tt> contains the test finder.
      */
-    private ResourceFinder resourceFinder = new ResourceFinder() {
+    private final ResourceFinder resourceFinder = new ResourceFinder() {
 
         /**
          * {@inheritDoc}

@@ -19,8 +19,6 @@
 
 package org.extex.interpreter;
 
-import static org.junit.Assert.assertEquals;
-
 import org.extex.backend.BackendDriver;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
@@ -33,13 +31,7 @@ import org.extex.framework.configuration.ConfigurationFactory;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.stream.TokenStreamFactory;
 import org.extex.scanner.type.token.Token;
-import org.extex.typesetter.ListMaker;
-import org.extex.typesetter.ListMakerType;
-import org.extex.typesetter.ListManager;
-import org.extex.typesetter.Mode;
-import org.extex.typesetter.ParagraphObserver;
-import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.*;
 import org.extex.typesetter.exception.InvalidSpacefactorException;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.TokenDelegateListMaker;
@@ -50,12 +42,18 @@ import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.factory.NodeFactory;
+import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+
 /**
+ * TODO: Ignored because config/tex.xml is missing.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
+@Ignore
 public class Max1 {
 
     /**
@@ -66,38 +64,20 @@ public class Max1 {
                 Typesetter,
                 TokenDelegateListMaker {
 
-        /**
-         */
-        private StringBuilder sb = new StringBuilder();
+        private final StringBuilder sb = new StringBuilder();
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-         */
         @Override
         public void add(FixedGlue g) {
 
             sb.append(g.toString());
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
-         */
         @Override
         public void add(Node c) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
-         *      org.extex.typesetter.TypesetterOptions)
-         */
         @Override
         public void addAndAdjust(NodeList list, TypesetterOptions options)
                 throws TypesetterException {
@@ -105,12 +85,6 @@ public class Max1 {
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
-         *      FixedCount)
-         */
         @Override
         public void addSpace(TypesettingContext typesettingContext,
                 FixedCount spacefactor) {
@@ -118,203 +92,113 @@ public class Max1 {
             sb.append(" ");
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
-         */
         @Override
         public void afterParagraph(ParagraphObserver observer) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#clearShipoutMark()
-         */
         @Override
         public void clearShipoutMark() {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#complete(TypesetterOptions)
-         */
         @Override
         public NodeList complete(TypesetterOptions context) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
-         *      org.extex.typesetter.tc.TypesettingContext,
-         *      org.extex.core.UnicodeChar)
-         */
         @Override
         public void cr(Context context, TypesettingContext tc, UnicodeChar uc) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#ensureHorizontalMode(org.extex.core.Locator)
-         */
         @Override
         public ListMaker ensureHorizontalMode(Locator locator) {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#finish()
-         */
         @Override
         public void finish() {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#getBackendDriver()
-         */
         @Override
         public BackendDriver getBackendDriver() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#getLastNode()
-         */
         @Override
         public Node getLastNode() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#getListMaker()
-         */
         @Override
         public ListMaker getListMaker() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#getLocator()
-         */
         @Override
         public Locator getLocator() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#getManager()
-         */
         @Override
         public ListManager getManager() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#getMode()
-         */
         @Override
         public Mode getMode() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#getNodeFactory()
-         */
+        
         @Override
         public NodeFactory getNodeFactory() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#getPrevDepth()
-         */
+        
         @Override
         public FixedDimen getPrevDepth() {
 
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#getSpacefactor()
-         */
+        
         @Override
         public long getSpacefactor() {
 
             return 0;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#isShipoutMark()
-         */
+        
         @Override
         public boolean isShipoutMark() {
 
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#leftBrace()
-         */
+        
         @Override
         public void leftBrace() {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
-         *      org.extex.typesetter.tc.TypesettingContext,
-         *      org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
-         */
         @Override
         public boolean letter(UnicodeChar uc, TypesettingContext tc,
                 Context context, TokenSource source, Locator locator) {
@@ -322,13 +206,6 @@ public class Max1 {
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#mathShift(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.scanner.type.token.Token)
-         */
         @Override
         public void mathShift(Context context, TokenSource source, Token t)
                 throws HelpingException {
@@ -336,34 +213,18 @@ public class Max1 {
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#par()
-         */
         @Override
         public void par() {
 
             sb.append("\n\\par\n");
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#push(org.extex.typesetter.ListMaker)
-         */
         @Override
         public void push(ListMaker listMaker) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#pushListMaker(org.extex.typesetter.ListMakerType,
-         *      org.extex.core.Locator)
-         */
         @Override
         public ListMaker pushListMaker(ListMakerType type, Locator locator)
                 throws UnsupportedOperationException,
@@ -373,110 +234,69 @@ public class Max1 {
             return null;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#removeLastNode()
-         */
+        
         @Override
         public void removeLastNode() {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#rightBrace()
-         */
+        
         @Override
         public void rightBrace() throws TypesetterException {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setBackend(org.extex.backend.BackendDriver)
-         */
+        
         @Override
         public void setBackend(BackendDriver doc) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setNodeFactory(org.extex.typesetter.type.node.factory.NodeFactory)
-         */
+        
         @Override
         public void setNodeFactory(NodeFactory nodeFactory) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setOptions(org.extex.typesetter.TypesetterOptions)
-         */
+        
         @Override
         public void setOptions(TypesetterOptions options) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setOutputRoutine(org.extex.typesetter.output.OutputRoutine)
-         */
+        
         @Override
         public void setOutputRoutine(OutputRoutine output) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setPageBuilder(org.extex.typesetter.pageBuilder.PageBuilder)
-         */
+        
         @Override
         public void setPageBuilder(PageBuilder pageBuilder) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#setParagraphBuilder(org.extex.typesetter.paragraphBuilder.ParagraphBuilder)
-         */
         @Override
         public void setParagraphBuilder(ParagraphBuilder paragraphBuilder) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#setPrevDepth(org.extex.core.dimen.FixedDimen)
-         */
+        
         @Override
         public void setPrevDepth(FixedDimen pd) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#setSpacefactor(org.extex.core.count.FixedCount)
-         */
+        
         @Override
         public void setSpacefactor(FixedCount f)
                 throws InvalidSpacefactorException {
@@ -484,49 +304,25 @@ public class Max1 {
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#shipout(org.extex.typesetter.type.NodeList)
-         */
+        
         @Override
         public void shipout(NodeList nodes) {
 
             // nothing to do
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.ListMaker#showlist(StringBuilder, long,
-         *      long)
-         */
         @Override
         public void showlist(StringBuilder s, long l, long m) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.Typesetter#showlists(StringBuilder, long,
-         *      long)
-         */
         @Override
         public void showlists(StringBuilder s, long l, long m) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#subscriptMark(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      org.extex.scanner.type.token.Token)
-         */
         @Override
         public void subscriptMark(Context context, TokenSource source,
                 Typesetter typesetter, Token t) throws HelpingException {
@@ -534,14 +330,6 @@ public class Max1 {
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#superscriptMark(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.typesetter.Typesetter,
-         *      org.extex.scanner.type.token.Token)
-         */
         @Override
         public void superscriptMark(Context context, TokenSource source,
                 Typesetter typesetter, Token t) throws HelpingException {
@@ -549,24 +337,13 @@ public class Max1 {
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#tab(org.extex.interpreter.context.Context,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.scanner.type.token.Token)
-         */
         @Override
         public void tab(Context context, TokenSource source, Token t) {
 
             // not needed
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see java.lang.Object#toString()
-         */
+        
         @Override
         public String toString() {
 

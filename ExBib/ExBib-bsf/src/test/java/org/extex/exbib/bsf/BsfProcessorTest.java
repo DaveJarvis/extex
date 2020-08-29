@@ -69,17 +69,17 @@ public class BsfProcessorTest {
         /**
          * The field <tt>engine</tt> contains the name of the engine.
          */
-        private String engine;
+        private final String engine;
 
         /**
          * The field <tt>extensions</tt> contains the list of extensions.
          */
-        private String extensions;
+        private final String extensions;
 
         /**
          * The field <tt>script</tt> contains the name of the script.
          */
-        private String script;
+        private final String script;
 
         /**
          * Creates a new object.
@@ -207,9 +207,9 @@ public class BsfProcessorTest {
         public void setConfigurationLoader(ConfigurationLoader loader) {
 
         }
-    };
+    }
 
-    /**
+  /**
      * <testcase> The default constructor treats the database an logger to be
      * null.</testcase>
      * 

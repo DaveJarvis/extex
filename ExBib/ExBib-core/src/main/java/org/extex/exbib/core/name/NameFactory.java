@@ -84,7 +84,7 @@ public final class NameFactory {
     /**
      * The field <tt>highlander</tt> contains the only one.
      */
-    private static NameFactory highlander = new NameFactory();
+    private static final NameFactory highlander = new NameFactory();
 
     /**
      * Getter for the only instance.

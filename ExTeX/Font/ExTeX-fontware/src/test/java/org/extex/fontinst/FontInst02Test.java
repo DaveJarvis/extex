@@ -19,17 +19,17 @@
 
 package org.extex.fontinst;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import org.extex.test.ExTeXLauncher;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Properties;
 
-import org.extex.test.ExTeXLauncher;
-import org.junit.Ignore;
-import org.junit.Test;
-import org.junit.runner.JUnitCore;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * Test for fontinst.
@@ -753,7 +753,7 @@ public class FontInst02Test extends ExTeXLauncher {
         stream.close();
         assertEquals("generated file", TEXT_FXLR_PL, sb.toString());
 
-        pl.delete();
+        pl.deleteOnExit();
     }
 
     /**

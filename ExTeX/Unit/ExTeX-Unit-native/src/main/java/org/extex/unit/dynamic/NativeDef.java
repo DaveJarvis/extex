@@ -19,10 +19,6 @@
 
 package org.extex.unit.dynamic;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.logging.Logger;
-
 import org.extex.core.exception.helping.EofException;
 import org.extex.core.exception.helping.EofInToksException;
 import org.extex.core.exception.helping.HelpingException;
@@ -38,6 +34,10 @@ import org.extex.interpreter.type.AbstractAssignment;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * This primitive provides a binding of a macro or active character to code in
@@ -183,14 +183,13 @@ public class NativeDef extends AbstractAssignment
     /**
      * The field <tt>logger</tt> contains the logger to use.
      */
-    private transient Logger logger = null;
+    private transient Logger logger;
 
     /**
      * The field <tt>map</tt> contains the mapping from a symbolic name to a
      * configuration.
      */
-    private Map<String, Configuration> map =
-            new HashMap<String, Configuration>();
+    private final Map<String, Configuration> map = new HashMap<>();
 
     /**
      * Creates a new object.

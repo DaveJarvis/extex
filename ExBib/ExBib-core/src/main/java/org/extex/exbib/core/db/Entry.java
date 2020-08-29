@@ -45,17 +45,17 @@ public class Entry implements Iterable<String> {
     /**
      * The field <tt>locator</tt> contains the locator for error messages.
      */
-    private Locator locator;
+    private final Locator locator;
 
     /**
      * The field <tt>values</tt> contains the hash of "normal" values.
      */
-    private Map<String, Value> values = new HashMap<String, Value>();
+    private final Map<String, Value> values = new HashMap<String, Value>();
 
     /**
      * The field <tt>local</tt> contains the hash of local values.
      */
-    private Map<String, ValueItem> local = new HashMap<String, ValueItem>();
+    private final Map<String, ValueItem> local = new HashMap<String, ValueItem>();
 
     /**
      * The field <tt>key</tt> contains the "name" of the Entry.
@@ -71,7 +71,7 @@ public class Entry implements Iterable<String> {
      * The field <tt>keys</tt> contains the list of keys is maintained for
      * performance reasons.
      */
-    private List<String> keys = new ArrayList<String>();
+    private final List<String> keys = new ArrayList<String>();
 
     /**
      * Creates a new object.

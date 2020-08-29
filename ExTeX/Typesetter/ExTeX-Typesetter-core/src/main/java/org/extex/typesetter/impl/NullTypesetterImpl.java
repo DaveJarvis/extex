@@ -30,13 +30,7 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.Token;
-import org.extex.typesetter.ListMaker;
-import org.extex.typesetter.ListMakerType;
-import org.extex.typesetter.ListManager;
-import org.extex.typesetter.Mode;
-import org.extex.typesetter.ParagraphObserver;
-import org.extex.typesetter.Typesetter;
-import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.*;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.listMaker.TokenDelegateListMaker;
@@ -55,6 +49,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4526 $
  */
+@SuppressWarnings("unused")
 public class NullTypesetterImpl implements Typesetter, TokenDelegateListMaker {
 
     /**

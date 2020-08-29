@@ -38,7 +38,7 @@ public abstract class Option {
      * The field <tt>tag</tt> contains the the tag for the description of the
      * option.
      */
-    private String tag;
+    private final String tag;
 
     /**
      * Creates a new object.

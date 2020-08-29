@@ -19,12 +19,12 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertFalse;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
+
+import static org.junit.Assert.assertNotEquals;
 
 /**
  * Test cases for math shift tokens.
@@ -36,7 +36,7 @@ public class MathShiftTokenTest extends TokenTester {
 
     /**
      */
-    private static Token token = new MathShiftToken(UnicodeChar.get('x'));
+    private static final Token token = new MathShiftToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -51,7 +51,10 @@ public class MathShiftTokenTest extends TokenTester {
 
     public MathShiftTokenTest() {
 
-        super(token, Catcode.MATHSHIFT, "x", "math shift character x");
+        setToken(token);
+        setCatcode( Catcode.MATHSHIFT);
+        setText( "x");
+        setStr( "math shift character x");
     }
 
     /**
@@ -61,7 +64,7 @@ public class MathShiftTokenTest extends TokenTester {
 
         Token t1 = new MathShiftToken(UnicodeChar.get(' '));
         Token t2 = new SpaceToken(" ");
-        assertFalse(t1.equals(t2));
+        assertNotEquals( t1, t2 );
     }
 
 }

@@ -107,7 +107,7 @@ public class BibReaderImpl extends BibReader099Impl {
     /**
      * The field <tt>filenamePattern</tt> contains the pattern for file names.
      */
-    private static Pattern filenamePattern = Pattern.compile("[^{}]*");
+    private static final Pattern filenamePattern = Pattern.compile( "[^{}]*");
 
     /**
      * Creates a new object.

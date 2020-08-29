@@ -32,12 +32,12 @@ public class TracingObserver implements Observer {
     /**
      * The field <tt>prefix</tt> contains the prefix for the tracing line.
      */
-    private String prefix;
+    private final String prefix;
 
     /**
      * The field <tt>writer</tt> contains the writer for the output produced.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Creates a new object.

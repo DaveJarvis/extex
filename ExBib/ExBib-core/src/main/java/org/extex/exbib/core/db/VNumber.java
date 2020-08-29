@@ -36,7 +36,7 @@ public class VNumber extends AbstractValueItem {
     /**
      * The field <tt>value</tt> contains the value.
      */
-    private int value;
+    private final int value;
 
     /**
      * Creates a new object.

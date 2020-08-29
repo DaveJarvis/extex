@@ -313,9 +313,9 @@ public class Name {
          */
         abstract void store(String s, List<String> firstPart,
                 List<String> vonPart, List<String> lastPart, List<String> jrPart);
-    };
+    }
 
-    /**
+  /**
      * Parses a string of names separated by the string "and" enclosed in
      * whitespace at brace level 0. The last name can be the string "others"
      * which is otherwise rejected as name.
@@ -379,22 +379,22 @@ public class Name {
     /**
      * The field <tt>first</tt> contains the list of first name parts.
      */
-    private List<String> first = new ArrayList<String>();
+    private final List<String> first = new ArrayList<String>();
 
     /**
      * The field <tt>jr</tt> contains the list of jr name parts.
      */
-    private List<String> jr = new ArrayList<String>();
+    private final List<String> jr = new ArrayList<String>();
 
     /**
      * The field <tt>last</tt> contains the list of last name parts.
      */
-    private List<String> last = new ArrayList<String>();
+    private final List<String> last = new ArrayList<String>();
 
     /**
      * The field <tt>von</tt> contains the list of von name parts.
      */
-    private List<String> von = new ArrayList<String>();
+    private final List<String> von = new ArrayList<String>();
 
     /**
      * Creates a new object and fill the last name with the given string.

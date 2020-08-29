@@ -408,7 +408,7 @@ public class BstReaderImpl extends AbstractFileReader
      * The field <tt>instructionMap</tt> contains the mapping from normalized
      * names to instructions.
      */
-    private Map<String, Instruction> instructionMap =
+    private final Map<String, Instruction> instructionMap =
             new HashMap<String, Instruction>();
 
     /**

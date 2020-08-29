@@ -39,7 +39,7 @@ public class MacroParamTokenTest extends TokenTester {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new MacroParamToken(UnicodeChar.get('x'));
+    private static final Token t = new MacroParamToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -54,7 +54,10 @@ public class MacroParamTokenTest extends TokenTester {
 
     public MacroParamTokenTest() {
 
-        super(t, Catcode.MACROPARAM, "x", "macro parameter character x");
+        setToken(t);
+setCatcode( Catcode.MACROPARAM);
+setText( "x");
+setStr( "macro parameter character x");
     }
 
     /**

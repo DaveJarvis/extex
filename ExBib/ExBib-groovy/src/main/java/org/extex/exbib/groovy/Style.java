@@ -19,13 +19,13 @@
 
 package org.extex.exbib.groovy;
 
-import java.io.IOException;
-
 import org.extex.exbib.core.Processor;
 import org.extex.exbib.core.db.DB;
 import org.extex.exbib.core.db.VString;
 import org.extex.exbib.core.db.Value;
 import org.extex.exbib.core.io.Writer;
+
+import java.io.IOException;
 
 /**
  * This class provides a base for derived implementations of a bibliography
@@ -34,22 +34,23 @@ import org.extex.exbib.core.io.Writer;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("unused")
 public class Style {
 
     /**
      * The field <tt>bibDB</tt> contains the database.
      */
-    private DB bibDB;
+    private final DB bibDB;
 
     /**
      * The field <tt>bibWriter</tt> contains the writer.
      */
-    private Writer bibWriter;
+    private final Writer bibWriter;
 
     /**
      * The field <tt>bibProcessor</tt> contains the processor.
      */
-    private Processor bibProcessor;
+    private final Processor bibProcessor;
 
     /**
      * Creates a new object.

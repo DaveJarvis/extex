@@ -34,18 +34,18 @@ public class NoArgPropertyOption extends NoArgOption {
     /**
      * The field <tt>pname</tt> contains the name of the property.
      */
-    private String pname;
+    private final String pname;
 
     /**
      * The field <tt>properties</tt> contains the properties to store the
      * value in.
      */
-    private Properties properties;
+    private final Properties properties;
 
     /**
      * The field <tt>arg</tt> contains the value to store.
      */
-    private String arg;
+    private final String arg;
 
     /**
      * Creates a new object.

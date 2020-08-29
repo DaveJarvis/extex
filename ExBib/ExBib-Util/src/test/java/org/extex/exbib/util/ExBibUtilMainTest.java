@@ -113,7 +113,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void test002() throws Exception {
 
-        runFailure(BANNER + "The option `--\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--' needs a parameter.\n",
             "--");
     }
 
@@ -126,7 +126,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void test003() throws Exception {
 
-        runFailure(BANNER + "The option `-\' needs a parameter.\n",
+        runFailure(BANNER + "The option `-' needs a parameter.\n",
             "-");
     }
 
@@ -139,7 +139,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void test004() throws Exception {
 
         runFailure(BANNER
-                + "I couldn\'t open file some/non/existent/file.bib\n",
+                + "I couldn't open file some/non/existent/file.bib\n",
             "-", "some/non/existent/file");
     }
 
@@ -169,7 +169,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
 
         try {
             runTest(basename, null, CLI.EXIT_FAIL, Check.EQ, BANNER
-                    + "I couldn\'t open file some/non/existent/file.bib\n",
+                    + "I couldn't open file some/non/existent/file.bib\n",
                 "-x", aux.toString());
         } finally {
             if (aux.exists() && !aux.delete()) {
@@ -221,7 +221,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     public void testAux1() throws Exception {
 
         runFailure(BANNER
-                + "I couldn\'t open file file/which/does/not/exist.aux\n",
+                + "I couldn't open file file/which/does/not/exist.aux\n",
             "-x", "file/which/does/not/exist");
     }
 
@@ -258,7 +258,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testConfig1() throws Exception {
 
-        runFailure(BANNER + "The option `--config\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--config' needs a parameter.\n",
             "--config");
     }
 
@@ -271,7 +271,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testConfig2() throws Exception {
 
-        runFailure(BANNER + "Configuration `exbib/undef\' not found.\n",
+        runFailure(BANNER + "Configuration `exbib/undef' not found.\n",
             "--config", "undef");
     }
 
@@ -382,7 +382,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEncoding1() throws Exception {
 
-        runFailure(BANNER + "The option `--encoding\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--encoding' needs a parameter.\n",
             "--encoding");
     }
 
@@ -395,7 +395,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testEncoding2() throws Exception {
 
-        runFailure(BANNER + "The encoding `xyzzy\' is not known.\n",
+        runFailure(BANNER + "The encoding `xyzzy' is not known.\n",
             "--out", "test.out", "--encoding", "xyzzy");
     }
 
@@ -447,7 +447,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testLanguage1() throws Exception {
 
-        runFailure(BANNER + "The option `--language\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--language' needs a parameter.\n",
             "--language");
     }
 
@@ -484,7 +484,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testLogfile01() throws Exception {
 
-        runFailure(BANNER + "The option `--logfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--logfile' needs a parameter.\n",
             "--logfile");
     }
 
@@ -603,7 +603,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testOutfile1() throws Exception {
 
-        runFailure(BANNER + "The option `--outfile\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--outfile' needs a parameter.\n",
             "--outfile");
     }
 
@@ -674,7 +674,8 @@ public class ExBibUtilMainTest extends BibUtilTester {
         runFailure(
             BANNER
                     + "The output file: some/file/for/writing\n"
-                    + "The output file `some/file/for/writing\' could not be opened.\n",
+                    + "The output file `some/file/for/writing' could not be " +
+                "opened.\n",
             "-v", "--outfile", "some/file/for/writing", "test.bib");
     }
 
@@ -687,7 +688,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testProgName1() throws Exception {
 
-        runFailure(BANNER + "The option `--progname\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--progname' needs a parameter.\n",
             "--progname");
     }
 
@@ -772,7 +773,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType1() throws Exception {
 
-        runFailure(BANNER + "The option `--type\' needs a parameter.\n",
+        runFailure(BANNER + "The option `--type' needs a parameter.\n",
             "--type");
     }
 
@@ -785,7 +786,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testType2() throws Exception {
 
-        runFailure(BANNER + "The output type `xyzzy\' is not known.\n",
+        runFailure(BANNER + "The output type `xyzzy' is not known.\n",
             "--type", "xyzzy");
     }
 
@@ -822,7 +823,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testUndefined1() throws Exception {
 
-        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n",
+        runSuccess(BANNER + "Unknown option `--undefined' ignored.\n",
             "--undefined");
     }
 
@@ -835,7 +836,7 @@ public class ExBibUtilMainTest extends BibUtilTester {
     @Test
     public void testUndefined2() throws Exception {
 
-        runSuccess(BANNER + "Unknown option `--undefined\' ignored.\n",
+        runSuccess(BANNER + "Unknown option `--undefined' ignored.\n",
             "--undefined=123");
     }
 

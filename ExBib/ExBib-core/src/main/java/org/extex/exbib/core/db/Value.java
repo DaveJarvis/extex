@@ -79,7 +79,7 @@ public class Value implements Iterable<ValueItem> {
     /**
      * The field <tt>value</tt> contains the list of items stored in the Value.
      */
-    private List<ValueItem> value = new ArrayList<ValueItem>();
+    private final List<ValueItem> value = new ArrayList<ValueItem>();
 
     /**
      * Creates a new empty object.

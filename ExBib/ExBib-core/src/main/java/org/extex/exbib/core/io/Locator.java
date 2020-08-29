@@ -35,18 +35,18 @@ public class Locator {
      * The field <tt>resource</tt> contains the name of the resource where the
      * Locator points to.
      */
-    private String resource;
+    private final String resource;
 
     /**
      * The field <tt>line</tt> contains the number of the line in the resource.
      */
-    private int line;
+    private final int line;
 
     /**
      * The field <tt>position</tt> contains the position, i.e. Column, in the
      * line.
      */
-    private int position;
+    private final int position;
 
     /**
      * Creates a new Locator object. The position is set to 0.

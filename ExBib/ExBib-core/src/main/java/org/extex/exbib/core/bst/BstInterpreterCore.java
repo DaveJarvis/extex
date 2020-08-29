@@ -151,37 +151,37 @@ public class BstInterpreterCore extends BibliographyCore
      * The field <tt>addFunctionObservers</tt> contains the list of observers
      * triggered when functions are added.
      */
-    private ObserverList addFunctionObservers = new ObserverList();
+    private final ObserverList addFunctionObservers = new ObserverList();
 
     /**
      * The field <tt>changeFunctionObservers</tt> contains the list of observers
      * triggered when functions are changed.
      */
-    private ObserverList changeFunctionObservers = new ObserverList();
+    private final ObserverList changeFunctionObservers = new ObserverList();
 
     /**
      * The field <tt>popObservers</tt> contains the list of observers triggered
      * when a Token is popped.
      */
-    private ObserverList popObservers = new ObserverList();
+    private final ObserverList popObservers = new ObserverList();
 
     /**
      * The field <tt>pushObservers</tt> contains the list of observers triggered
      * when a token is pushed.
      */
-    private ObserverList pushObservers = new ObserverList();
+    private final ObserverList pushObservers = new ObserverList();
 
     /**
      * The field <tt>runObservers</tt> contains the list of observers triggered
      * when processing a command.
      */
-    private ObserverList runObservers = new ObserverList();
+    private final ObserverList runObservers = new ObserverList();
 
     /**
      * The field <tt>stepObservers</tt> contains the list of observers triggered
      * by the execution of one step.
      */
-    private ObserverList stepObservers = new ObserverList();
+    private final ObserverList stepObservers = new ObserverList();
 
     /**
      * The field <tt>theEntryIntegers</tt> contains the list of local integers.
@@ -207,7 +207,7 @@ public class BstInterpreterCore extends BibliographyCore
      * The field <tt>literalStack</tt> contains the stack which is the central
      * data structure for the execution of a program.
      */
-    private Stack<Token> literalStack = new Stack<Token>();
+    private final Stack<Token> literalStack = new Stack<Token>();
 
     /**
      * The field <tt>outWriter</tt> contains the output writer.
@@ -285,9 +285,8 @@ public class BstInterpreterCore extends BibliographyCore
      *      org.extex.exbib.core.bst.code.Code, org.extex.exbib.core.io.Locator)
      */
     public void addFunction(String name, Code body, Locator locator)
-            throws ExBibIllegalValueException,
-                ExBibFunctionExistsException,
-                ExBibException {
+            throws
+        ExBibException {
 
         if (name == null || "".equals(name)) {
             throw new ExBibIllegalValueException("Illegal function name",

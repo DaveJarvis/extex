@@ -420,7 +420,7 @@ public class BibReaderImplTest extends BibReaderTester {
             /**
              * The field <tt>entry</tt> contains the entry.
              */
-            private Entry entry = new Entry(null);
+            private final Entry entry = new Entry( null);
 
             /**
              * {@inheritDoc}
@@ -451,7 +451,7 @@ public class BibReaderImplTest extends BibReaderTester {
             /**
              * The field <tt>entry</tt> contains the entry.
              */
-            private Entry entry = new Entry(null);
+            private final Entry entry = new Entry( null);
 
             /**
              * {@inheritDoc}

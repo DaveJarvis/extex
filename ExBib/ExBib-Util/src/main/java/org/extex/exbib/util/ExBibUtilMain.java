@@ -210,7 +210,7 @@ public final class ExBibUtilMain extends AbstractMain {
     /**
      * The field <tt>files</tt> contains the name of the files to start with.
      */
-    private List<String> files = new ArrayList<String>();
+    private final List<String> files = new ArrayList<String>();
 
     /**
      * Creates a new object.

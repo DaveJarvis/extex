@@ -93,7 +93,7 @@ public class BstReaderExtImpl extends BstReaderImpl {
      * The field <tt>clazz</tt> contains the class name. This works for derived
      * classes as well.
      */
-    private Class<? extends BstReaderImpl> clazz;
+    private final Class<? extends BstReaderImpl> clazz;
 
     /**
      * Creates a new object.

@@ -158,7 +158,7 @@ public class ExBibMain extends AbstractMain {
     /**
      * The field <tt>exBib</tt> contains the enclosed object.
      */
-    private ExBib exBib;
+    private final ExBib exBib;
 
     /**
      * Creates a new object.

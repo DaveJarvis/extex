@@ -19,8 +19,6 @@
 
 package org.extex.unit.extex;
 
-import java.util.logging.Logger;
-
 import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.exception.GeneralException;
@@ -40,6 +38,8 @@ import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
+
+import java.util.logging.Logger;
 
 /**
  * This primitive initiates the loading of native code and implements the

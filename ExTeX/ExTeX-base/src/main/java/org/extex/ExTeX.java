@@ -85,6 +85,8 @@ import java.util.Locale;
 import java.util.Properties;
 import java.util.logging.*;
 
+import static java.lang.Boolean.parseBoolean;
+
 /**
  * This is the programmatic interface to the <logo>&epsilon;&chi;T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
@@ -681,7 +683,7 @@ public class ExTeX {
     /**
      * The field <tt>errorHandler</tt> contains the error handler to use.
      */
-    private ErrorHandler errorHandler = null;
+    private ErrorHandler errorHandler;
 
     /**
      * The field <tt>ini</tt> contains the indicator for iniTeX.
@@ -692,7 +694,7 @@ public class ExTeX {
      * The field <tt>interactionObserver</tt> contains the observer called
      * whenever the interaction mode is changed.
      */
-    private InteractionObserver interactionObserver = null;
+    private final InteractionObserver interactionObserver;
 
     /**
      * The field <tt>iProvider</tt> contains the bridge from the resource finder
@@ -710,7 +712,7 @@ public class ExTeX {
     /**
      * The field <tt>logger</tt> contains the logger currently in use.
      */
-    private Logger logger = Logger.getLogger(ExTeX.class.getName());
+    private Logger logger;
 
     /**
      * The field <tt>noBanner</tt> contains the indicator that a banner has
@@ -722,7 +724,7 @@ public class ExTeX {
      * The field <tt>outStream</tt> contains the output stream for the document
      * writer.
      */
-    private OutputStream outStream = null;
+    private OutputStream outStream;
 
     /**
      * The field <tt>properties</tt> contains the properties containing the
@@ -735,7 +737,7 @@ public class ExTeX {
      * necessary to display the banner. This information is needed for the cases
      * where errors show up before the normal banner has been printed.
      */
-    private boolean showBanner = true;
+    private boolean showBanner;
 
     /**
      * The field <tt>consoleHandler</tt> contains the ...
@@ -922,7 +924,7 @@ public class ExTeX {
      */
     public boolean getBooleanProperty(String key) {
 
-        return Boolean.valueOf(this.properties.getProperty(key)).booleanValue();
+        return parseBoolean( this.properties.getProperty( key ) );
     }
 
     /**
@@ -1369,13 +1371,12 @@ public class ExTeX {
      * 
      * @return the default font
      * 
-     * @throws GeneralException in case of an error of some other kind
      * @throws ConfigurationException in case that some kind of problems have
      *         been detected in the configuration
      * @throws FontException in case of problems with the font itself
      */
     protected Font makeDefaultFont(Configuration config,
-            CoreFontFactory fontFactory) throws GeneralException, FontException {
+            CoreFontFactory fontFactory) throws FontException {
 
         if (config == null) {
             return new FontImpl(fontFactory.getInstance(null));
@@ -1394,7 +1395,7 @@ public class ExTeX {
                 .getFontKey(defaultFont)));
         }
 
-        Font font = null;
+        Font font;
         try {
             float f = Float.parseFloat(size);
             font =
@@ -1576,20 +1577,19 @@ public class ExTeX {
      * @return the new file
      */
     protected File makeLogFile(String jobname) {
-
         String[] dirs = properties.getProperty(PROP_OUTPUT_DIRS).split(":");
 
-        for (int i = 0; i < dirs.length; i++) {
+        for( final String s : dirs ) {
+            File logFile = new File( s, jobname + ".log" );
 
-            File logFile = new File(dirs[i], jobname + ".log");
-
-            if (logFile.exists()) {
-                if (logFile.canWrite()) {
+            if( logFile.exists() ) {
+                if( logFile.canWrite() ) {
                     return logFile;
                 }
-            } else {
+            }
+            else {
                 File dir = logFile.getParentFile();
-                if (dir != null && dir.canWrite()) {
+                if( dir != null && dir.canWrite() ) {
                     return logFile;
                 }
             }
@@ -1624,11 +1624,7 @@ public class ExTeX {
             handler.setLevel(Level.ALL);
             logger.addHandler(handler);
 
-        } catch (SecurityException e) {
-            logger.severe(localizer.format("ExTeX.LogFileError",
-                e.getLocalizedMessage()));
-            handler = null;
-        } catch (IOException e) {
+        } catch ( SecurityException | IOException e) {
             logger.severe(localizer.format("ExTeX.LogFileError",
                 e.getLocalizedMessage()));
             handler = null;
@@ -1828,12 +1824,10 @@ public class ExTeX {
         TypesetterFactory factory = new TypesetterFactory();
         factory.configure(config.getConfiguration("Typesetter"));
         factory.enableLogging(logger);
-        Typesetter typesetter =
-                factory.newInstance(
-                    properties.getProperty(PROP_TYPESETTER_TYPE), context,
-                    backend, interpreter);
 
-        return typesetter;
+        return factory.newInstance(
+            properties.getProperty(PROP_TYPESETTER_TYPE), context,
+            backend, interpreter);
     }
 
     /**

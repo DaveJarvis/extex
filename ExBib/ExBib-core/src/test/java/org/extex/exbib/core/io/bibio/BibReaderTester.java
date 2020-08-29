@@ -300,7 +300,7 @@ public abstract class BibReaderTester {
      * The field <tt>commentSpace</tt> contains the indicator for extra space
      * after {@literal @comment}.
      */
-    private boolean commentSpace;
+    private final boolean commentSpace;
 
     /**
      * Creates a new object.

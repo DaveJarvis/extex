@@ -19,11 +19,6 @@
 
 package org.extex.scanner.type.tokens;
 
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
@@ -31,6 +26,11 @@ import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.ControlSequenceToken;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * This class is a container for a list of
@@ -55,7 +55,7 @@ public class Tokens implements Serializable, FixedTokens, Iterable<Token> {
     /**
      * The internal list of tokens
      */
-    private List<Token> tokens = new ArrayList<Token>();
+    private final List<Token> tokens = new ArrayList<Token>();
 
     /**
      * Creates a new object which does not contain any elements.

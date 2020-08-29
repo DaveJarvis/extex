@@ -37,7 +37,7 @@ public class LeftBraceTokenTest extends TokenTester {
     /**
      * The field <tt>token</tt> contains the reference token.
      */
-    private static Token token = new LeftBraceToken(UnicodeChar.get('x'));
+    private static final Token token = new LeftBraceToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface
@@ -52,7 +52,10 @@ public class LeftBraceTokenTest extends TokenTester {
 
     public LeftBraceTokenTest() {
 
-        super(token, Catcode.LEFTBRACE, "x", "begin-group character x");
+        setToken(token);
+setCatcode( Catcode.LEFTBRACE);
+setText( "x");
+setStr( "begin-group character x");
     }
 
     /**

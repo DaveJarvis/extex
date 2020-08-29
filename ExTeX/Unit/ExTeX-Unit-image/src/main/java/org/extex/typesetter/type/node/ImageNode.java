@@ -29,6 +29,7 @@ import org.extex.typesetter.type.Node;
  * @author <a href="mailto:m.g.n@gmx.de">Michael Niedermair</a>
  * @version $Revision: 4399 $
  */
+@SuppressWarnings("unused")
 public class ImageNode extends WhatsItNode implements Node {
 
     /**
@@ -40,7 +41,7 @@ public class ImageNode extends WhatsItNode implements Node {
      * The field <tt>image</tt> contains the image to pass to the back-end
      * driver.
      */
-    private Image image;
+    private final Image image;
 
     /**
      * Creates a new object.

@@ -33,7 +33,7 @@ public class DBObserver implements Observer {
     /**
      * The field <tt>logger</tt> contains the logger for the output produced.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The field <tt>dbCount</tt> contains the counter for invocations of
@@ -44,7 +44,7 @@ public class DBObserver implements Observer {
     /**
      * The field <tt>pattern</tt> contains the pattern for the messages.
      */
-    private String pattern;
+    private final String pattern;
 
     /**
      * Creates a new object.

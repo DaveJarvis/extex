@@ -29,6 +29,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 /**
  * This class contains some utility methods for testing.
@@ -51,7 +52,7 @@ public final class TRunner {
 
         StringBuilder sb = new StringBuilder();
         FileInputStream stream = new FileInputStream(file);
-        Reader r = new InputStreamReader(stream, "UTF-8");
+        Reader r = new InputStreamReader( stream, StandardCharsets.UTF_8 );
         try {
             for (int c = r.read(); c >= 0; c = r.read()) {
                 if (c != '\r') {

@@ -50,7 +50,7 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
     /**
      * The field <tt>writer</tt> contains the target writer.
      */
-    private Writer writer;
+    private final Writer writer;
 
     /**
      * The field <tt>preamblePrefix</tt> contains the preamble prefix.
@@ -607,6 +607,6 @@ public class BibPrinterImpl implements BibPrinter, ValueVisitor, SectionVisitor 
             }
             item.visit(this, db);
         }
-    };
+    }
 
 }

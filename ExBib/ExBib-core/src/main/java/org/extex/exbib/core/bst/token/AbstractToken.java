@@ -38,7 +38,7 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      * The field <tt>locator</tt> contains the locator for the {@link Token
      * Token}.
      */
-    private Locator locator;
+    private final Locator locator;
 
     /**
      * The field <tt>stringCache</tt> contains the cached string representation
@@ -50,13 +50,13 @@ public abstract class AbstractToken extends AbstractCode implements Token {
      * The field <tt>value</tt> contains the String value of the {@link Token
      * Token}.
      */
-    private String value;
+    private final String value;
 
     /**
      * The field <tt>isNull</tt> contains the indicator that the value has been
      * set to <code>null</code> initially.
      */
-    private boolean isNull;
+    private final boolean isNull;
 
     /**
      * Creates a new object.

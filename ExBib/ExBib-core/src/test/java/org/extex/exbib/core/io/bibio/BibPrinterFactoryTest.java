@@ -45,7 +45,7 @@ public class BibPrinterFactoryTest {
     /**
      * The field <tt>cfg</tt> contains the test configuration.
      */
-    private Configuration cfg = new Configuration() {
+    private final Configuration cfg = new Configuration() {
 
         /**
          * {@inheritDoc}

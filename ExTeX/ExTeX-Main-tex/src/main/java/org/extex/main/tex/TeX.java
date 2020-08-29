@@ -1135,12 +1135,6 @@ public class TeX extends ExTeX {
         return interpreter;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.ExTeX#makeOutputFactory(java.lang.String,
-     *      org.extex.framework.configuration.Configuration)
-     */
     @Override
     protected OutputFactory makeOutputFactory(String jobname,
             Configuration config) {

@@ -181,7 +181,7 @@ public class Purify extends AbstractCode implements Configurable {
     /**
      * The field <tt>macro</tt> contains the mapping of macro characters.
      */
-    private Map<String, String> macro = new HashMap<String, String>();
+    private final Map<String, String> macro = new HashMap<String, String>();
 
     /**
      * Create a new object.

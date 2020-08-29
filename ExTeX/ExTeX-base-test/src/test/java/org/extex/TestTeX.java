@@ -70,9 +70,8 @@ public final class TestTeX {
      * Make an <code>Interpreter</code>.
      * 
      * @return an <code>Interpreter</code>
-     * @exception Exception if an error occurs
      */
-    public static Interpreter makeInterpreter() throws Exception {
+    public static Interpreter makeInterpreter() {
 
         return makeInterpreter("tex.xml");
     }
@@ -185,7 +184,7 @@ public final class TestTeX {
         } finally { // gene: to assure that the resources are freed
             intxt.close();
             intesttxt.close();
-            new File(texfile + ".log").delete();
+            new File(texfile + ".log").deleteOnExit();
         }
     }
 

@@ -94,7 +94,7 @@ public class FuncallObserver implements Observer {
     /**
      * The field <tt>stat</tt> contains the map to store collected statistics.
      */
-    private Map<String, Int> stat = new HashMap<String, Int>();
+    private final Map<String, Int> stat = new HashMap<String, Int>();
 
     /**
      * The field <tt>logger</tt> contains the logger for any output.

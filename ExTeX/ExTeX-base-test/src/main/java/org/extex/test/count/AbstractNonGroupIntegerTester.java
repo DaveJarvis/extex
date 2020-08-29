@@ -35,24 +35,24 @@ public abstract class AbstractNonGroupIntegerTester extends ExTeXLauncher {
      * The field <tt>primitive</tt> contains the name of the primitive to
      * test.
      */
-    private String primitive;
+    private final String primitive;
 
     /**
      * The field <tt>invocation</tt> contains the concatenation of primitive
      * name and arguments.
      */
-    private String invocation;
+    private final String invocation;
 
     /**
      * The field <tt>init</tt> contains the default value.
      */
-    private String init;
+    private final String init;
 
     /**
      * The field <tt>prepare</tt> contains the prefix to be prepended before
      * the code for the primitive.
      */
-    private String prepare;
+    private final String prepare;
 
     /**
      * Creates a new object.

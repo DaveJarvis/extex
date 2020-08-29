@@ -37,7 +37,7 @@ public class ExBibUndefinedFieldException extends ExBibIllegalValueException {
     /**
      * The field <tt>entry</tt> contains the name of the entry.
      */
-    private String entry;
+    private final String entry;
 
     /**
      * Create a new object.

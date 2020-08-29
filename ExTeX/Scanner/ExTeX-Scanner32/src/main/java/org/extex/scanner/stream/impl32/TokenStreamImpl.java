@@ -19,10 +19,6 @@
 
 package org.extex.scanner.stream.impl32;
 
-import java.io.IOException;
-import java.io.LineNumberReader;
-import java.io.Reader;
-
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.framework.configuration.Configuration;
@@ -38,6 +34,10 @@ import org.extex.scanner.type.CatcodeVisitor;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
+
+import java.io.IOException;
+import java.io.LineNumberReader;
+import java.io.Reader;
 
 /**
  * This class contains an implementation of a token stream which is fed from a
@@ -61,7 +61,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
          * The field <tt>name</tt> contains the print name of this state for
          * debugging.
          */
-        private String name;
+        private final String name;
 
         /**
          * Creates a new object.
@@ -142,7 +142,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The field <tt>source</tt> contains the description of the source for
      * tokens.
      */
-    private String source;
+    private final String source;
 
     /**
      * The field <tt>state</tt> contains the current state of operation.
@@ -153,7 +153,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * The field <tt>visitor</tt> contains the visitor to separate the cases
      * according to the catcode.
      */
-    private CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
+    private final CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar> visitor =
             new CatcodeVisitor<Token, TokenFactory, Tokenizer, UnicodeChar>() {
 
                 /**
@@ -205,11 +205,10 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
                     } else if (state == NEW_LINE) {
                         t = factory.createToken(Catcode.ESCAPE, uchar,
                             "par", tokenizer.getNamespace());
-                    } else {
-                        // drop the character
                     }
+                    // else, drop the character
 
-                    endLine();
+                  endLine();
                     return t;
                 }
 
@@ -480,13 +479,11 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
      * @param reader the reader
      * @param isFile indicator for file streams
      * @param theSource the description of the input source
-     * 
-     * @throws IOException in case of an IO error
      */
     public TokenStreamImpl(Configuration config, TokenStreamOptions options,
-            Reader reader, Boolean isFile, String theSource) throws IOException {
+            Reader reader, Boolean isFile, String theSource) {
 
-        super(isFile.booleanValue());
+        super( isFile );
         this.in = new LineNumberReader(reader);
         this.source = theSource;
     }
@@ -614,7 +611,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
     protected Token getNext(TokenFactory factory, Tokenizer tokenizer)
             throws ScannerException {
 
-        Token t = null;
+        Token t;
 
         do {
             UnicodeChar uc = getChar(tokenizer);

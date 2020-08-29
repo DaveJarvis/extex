@@ -39,7 +39,7 @@ public class Sorter099Test {
     /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
-    private CodepointIgnoreCaseSorter s = new CodepointIgnoreCaseSorter();
+    private final CodepointIgnoreCaseSorter s = new CodepointIgnoreCaseSorter();
 
     /**
      * The field <tt>a</tt> contains an entry.

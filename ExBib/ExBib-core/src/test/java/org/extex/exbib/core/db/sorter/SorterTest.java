@@ -215,7 +215,7 @@ public class SorterTest {
     /**
      * The field <tt>s</tt> contains the instance to be tested.
      */
-    private RbcSorter s = new RbcSorter();
+    private final RbcSorter s = new RbcSorter();
 
     /**
      * The field <tt>a</tt> contains an entry.

@@ -42,7 +42,7 @@ public class TInteger extends AbstractToken {
      * The integer value is stored separately to avoid repeated conversion to
      * and from String.
      */
-    private int value;
+    private final int value;
 
     /**
      * Creates a new TInteger object.

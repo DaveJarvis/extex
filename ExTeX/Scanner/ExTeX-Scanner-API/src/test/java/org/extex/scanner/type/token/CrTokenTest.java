@@ -40,7 +40,7 @@ public class CrTokenTest extends TokenTester {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static CrToken token = new CrToken(null);
+    private static final CrToken token = new CrToken( null);
 
     /**
      * Command line interface.
@@ -55,7 +55,10 @@ public class CrTokenTest extends TokenTester {
 
     public CrTokenTest() {
 
-        super(token, Catcode.CR, "[]", "end of alignment template");
+        setToken(token);
+setCatcode( Catcode.CR);
+setText( "[]");
+setStr( "end of alignment template");
     }
 
     /**

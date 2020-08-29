@@ -66,12 +66,12 @@ public class ProcessorContainer
         /**
          * The field <tt>name</tt> contains the name.
          */
-        private String name;
+        private final String name;
 
         /**
          * The field <tt>observer</tt> contains the observer.
          */
-        private Observer observer;
+        private final Observer observer;
 
         /**
          * Creates a new object.
@@ -110,17 +110,17 @@ public class ProcessorContainer
     /**
      * < The field <tt>obsList</tt> contains the observers.
      */
-    private List<NamedObserver> obsList = new ArrayList<NamedObserver>();
+    private final List<NamedObserver> obsList = new ArrayList<NamedObserver>();
 
     /**
      * The field <tt>dbObsList</tt> contains the observers.
      */
-    private List<NamedObserver> dbObsList = new ArrayList<NamedObserver>();
+    private final List<NamedObserver> dbObsList = new ArrayList<NamedObserver>();
 
     /**
      * The field <tt>bibliographies</tt> contains the bibliographies.
      */
-    private Map<String, Processor> bibliographies =
+    private final Map<String, Processor> bibliographies =
             new HashMap<String, Processor>();
 
     /**
@@ -157,12 +157,12 @@ public class ProcessorContainer
     /**
      * The field <tt>logger</tt> contains the logger.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * The field <tt>properties</tt> contains the properties.
      */
-    private Properties properties;
+    private final Properties properties;
 
     /**
      * The field <tt>finder</tt> contains the resource finder.

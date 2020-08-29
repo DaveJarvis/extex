@@ -36,12 +36,12 @@ public class EntryObserver implements Observer {
     /**
      * The field <tt>processor</tt> contains the saved processor context.
      */
-    private Processor processor;
+    private final Processor processor;
 
     /**
      * The field <tt>logger</tt> contains the logger for output.
      */
-    private Logger logger;
+    private final Logger logger;
 
     /**
      * Creates a new object.

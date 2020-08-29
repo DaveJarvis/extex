@@ -33,7 +33,7 @@ public class ObserverList implements Observer {
     /**
      * The field <tt>list</tt> contains the internal list of observers.
      */
-    private List<Observer> list = new ArrayList<Observer>();
+    private final List<Observer> list = new ArrayList<Observer>();
 
     /**
      * Creates a new object containing no elements.

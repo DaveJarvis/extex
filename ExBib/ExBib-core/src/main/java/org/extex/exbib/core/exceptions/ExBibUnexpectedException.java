@@ -40,7 +40,7 @@ public class ExBibUnexpectedException extends ExBibSyntaxException {
      * The field <tt>expected</tt> contains the expected characters or
      * <code>null</code> for none.
      */
-    private String expected;
+    private final String expected;
 
     /**
      * Create a new object.

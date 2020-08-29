@@ -19,9 +19,6 @@
 
 package org.extex.backend.documentWriter.dump;
 
-import java.io.IOException;
-import java.io.OutputStream;
-
 import org.extex.backend.documentWriter.DocumentWriter;
 import org.extex.backend.documentWriter.DocumentWriterOptions;
 import org.extex.backend.documentWriter.MultipleDocumentStream;
@@ -35,27 +32,11 @@ import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.NodeVisitor;
-import org.extex.typesetter.type.node.AdjustNode;
-import org.extex.typesetter.type.node.AfterMathNode;
-import org.extex.typesetter.type.node.AlignedLeadersNode;
-import org.extex.typesetter.type.node.BeforeMathNode;
-import org.extex.typesetter.type.node.CenteredLeadersNode;
-import org.extex.typesetter.type.node.CharNode;
-import org.extex.typesetter.type.node.DiscretionaryNode;
-import org.extex.typesetter.type.node.ExpandedLeadersNode;
-import org.extex.typesetter.type.node.GlueNode;
-import org.extex.typesetter.type.node.HorizontalListNode;
-import org.extex.typesetter.type.node.InsertionNode;
-import org.extex.typesetter.type.node.KernNode;
-import org.extex.typesetter.type.node.LigatureNode;
-import org.extex.typesetter.type.node.MarkNode;
-import org.extex.typesetter.type.node.PenaltyNode;
-import org.extex.typesetter.type.node.RuleNode;
-import org.extex.typesetter.type.node.SpaceNode;
-import org.extex.typesetter.type.node.VerticalListNode;
-import org.extex.typesetter.type.node.VirtualCharNode;
-import org.extex.typesetter.type.node.WhatsItNode;
+import org.extex.typesetter.type.node.*;
 import org.extex.typesetter.type.page.Page;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * This is an implementation of a document writer which puts of each page into a
@@ -82,7 +63,7 @@ public class MultiDumpDocumentWriter
      * The field <tt>nodeVisitor</tt> contains the node visitor instance to use
      * in the form of an anonymous inner class.
      */
-    private NodeVisitor<Object, Object> nodeVisitor =
+    private final NodeVisitor<Object, Object> nodeVisitor =
             new NodeVisitor<Object, Object>() {
 
                 /**
@@ -393,15 +374,12 @@ public class MultiDumpDocumentWriter
                  * @param oOut the second parameter for the visitor
                  * 
                  * @return <code>null</code>
-                 * 
-                 * @throws GeneralException in case of an error
-                 * 
+                 *
                  * @see org.extex.typesetter.type.NodeVisitor#visitKern(org.extex.typesetter.type.node.KernNode,
                  *      java.lang.Object)
                  */
                 @Override
-                public Object visitKern(KernNode node, Object oOut)
-                        throws GeneralException {
+                public Object visitKern(KernNode node, Object oOut) {
 
                     return null;
                 }
@@ -583,14 +561,11 @@ public class MultiDumpDocumentWriter
                  * 
                  * @return <code>null</code>
                  * 
-                 * @throws GeneralException in case of an error
-                 * 
                  * @see org.extex.typesetter.type.NodeVisitor#visitWhatsIt(org.extex.typesetter.type.node.WhatsItNode,
                  *      java.lang.Object)
                  */
                 @Override
-                public Object visitWhatsIt(WhatsItNode node, Object oOut)
-                        throws GeneralException {
+                public Object visitWhatsIt(WhatsItNode node, Object oOut) {
 
                     return null;
                 }
@@ -679,7 +654,7 @@ public class MultiDumpDocumentWriter
     @Override
     public void configure(Configuration config) throws ConfigurationException {
 
-        tree = Boolean.valueOf(config.getAttribute("tree")).booleanValue();
+        tree = Boolean.parseBoolean( config.getAttribute( "tree" ) );
         String s = config.getAttribute("extension");
         if (s != null) {
             extension = s;

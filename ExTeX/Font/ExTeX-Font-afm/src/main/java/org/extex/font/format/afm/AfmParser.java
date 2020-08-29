@@ -19,25 +19,15 @@
 
 package org.extex.font.format.afm;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.StringTokenizer;
-
 import org.extex.font.exception.FontException;
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.util.xml.XMLStreamWriter;
 import org.extex.util.xml.XMLWriterConvertible;
+
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 /**
  * Parse a afm file.
@@ -46,6 +36,7 @@ import org.extex.util.xml.XMLWriterConvertible;
  * @version $Revision$
  */
 
+@SuppressWarnings("unused")
 public class AfmParser implements Serializable, XMLWriterConvertible {
 
     /**
@@ -71,14 +62,14 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     /**
      * Represents the section CharMetrics in the AFM file.
      */
-    private ArrayList<AfmCharMetric> afmCharMetrics =
-            new ArrayList<AfmCharMetric>(ARRAYLISTINITSIZE);
+    private final ArrayList<AfmCharMetric> afmCharMetrics =
+        new ArrayList<>( ARRAYLISTINITSIZE );
 
     /**
      * Map for Char-Name - Char-Number.
      */
-    private Map<String, Integer> afmCharNameNumber =
-            new HashMap<String, Integer>(ARRAYLISTINITSIZE);
+    private final Map<String, Integer> afmCharNameNumber =
+        new HashMap<>( ARRAYLISTINITSIZE );
 
     /**
      * The afm data.
@@ -88,25 +79,25 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
     /**
      * Represents the section KerningPairs in the AFM file.
      */
-    private List<AfmKernPairs> afmKerningPairs = new ArrayList<AfmKernPairs>(
-        ARRAYLISTINITSIZE);
+    private final List<AfmKernPairs> afmKerningPairs = new ArrayList<>(
+        ARRAYLISTINITSIZE );
 
     /**
      * The header container.
      */
-    private AfmHeader header;
+    private final AfmHeader header;
 
     /**
      * The field <tt>localizer</tt> contains the localizer. It is initiated with
      * a localizer for the name of this class.
      */
-    private Localizer localizer = LocalizerFactory
+    private final Localizer localizer = LocalizerFactory
         .getLocalizer(AfmParser.class);
 
     /**
      * The default encoding.
      */
-    private String[] defaultEncodingVector = new String[256];
+    private final String[] defaultEncodingVector = new String[256];
 
     /**
      * Create a new object.
@@ -177,21 +168,30 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
                 command = tokc.nextToken();
 
                 // command ?
-                if (command.equals("C")) {
-                    cm.setC(Integer.parseInt(tokc.nextToken()));
-                } else if (command.equals("CH")) {
-                    cm.setC(Integer.parseInt(tokc.nextToken(), BASEHEX));
-                } else if (command.equals("WX")) {
-                    cm.setWx(Float.valueOf(tokc.nextToken()).floatValue());
-                } else if (command.equals("N")) {
-                    cm.setN(tokc.nextToken());
-                } else if (command.equals("B")) {
-                    cm.setBllx(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBlly(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBurx(Float.valueOf(tokc.nextToken()).floatValue());
-                    cm.setBury(Float.valueOf(tokc.nextToken()).floatValue());
-                } else if (command.equals("L")) {
-                    cm.addL(tokc.nextToken().trim(), tokc.nextToken().trim());
+                switch( command ) {
+                    case "C":
+                        cm.setC( Integer.parseInt( tokc.nextToken() ) );
+                        break;
+                    case "CH":
+                        cm.setC( Integer.parseInt( tokc.nextToken(),
+                                                   BASEHEX ) );
+                        break;
+                    case "WX":
+                        cm.setWx( Float.parseFloat( tokc.nextToken() ) );
+                        break;
+                    case "N":
+                        cm.setN( tokc.nextToken() );
+                        break;
+                    case "B":
+                        cm.setBllx( Float.parseFloat( tokc.nextToken() ) );
+                        cm.setBlly( Float.parseFloat( tokc.nextToken() ) );
+                        cm.setBurx( Float.parseFloat( tokc.nextToken() ) );
+                        cm.setBury( Float.parseFloat( tokc.nextToken() ) );
+                        break;
+                    case "L":
+                        cm.addL( tokc.nextToken().trim(),
+                                 tokc.nextToken().trim() );
+                        break;
                 }
             }
             afmCharMetrics.add(cm);
@@ -204,10 +204,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             // store name and number
             if (afmCharNameNumber.containsKey(cm.getN())) {
                 if (cm.getC() != -1) {
-                    afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
+                    afmCharNameNumber.put( cm.getN(), cm.getC() );
                 }
             } else {
-                afmCharNameNumber.put(cm.getN(), new Integer(cm.getC()));
+                afmCharNameNumber.put( cm.getN(), cm.getC() );
             }
         }
 
@@ -240,7 +240,8 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
 
         // create a Reader (AFM use US_ASCII)
         ByteArrayInputStream bin = new ByteArrayInputStream(afmdata);
-        return new BufferedReader(new InputStreamReader(bin, "US-ASCII"),
+        return new BufferedReader(new InputStreamReader( bin,
+                                                         StandardCharsets.US_ASCII ),
             BUFFERSIZE);
     }
 
@@ -252,10 +253,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      */
     public AfmCharMetric getAfmCharMetric(int c) {
 
-        AfmCharMetric cm = null;
-        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = afmCharMetrics.get(i);
-            if (cm.getC() == c) {
+        AfmCharMetric cm;
+        for( AfmCharMetric afmCharMetric : afmCharMetrics ) {
+            cm = afmCharMetric;
+            if( cm.getC() == c ) {
                 return cm;
             }
         }
@@ -270,10 +271,10 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      */
     public AfmCharMetric getAfmCharMetric(String name) {
 
-        AfmCharMetric cm = null;
-        for (int i = 0, n = afmCharMetrics.size(); i < n; i++) {
-            cm = afmCharMetrics.get(i);
-            if (cm.getN().equals(name)) {
+        AfmCharMetric cm;
+        for( AfmCharMetric afmCharMetric : afmCharMetrics ) {
+            cm = afmCharMetric;
+            if( cm.getN().equals( name ) ) {
                 return cm;
             }
         }
@@ -430,8 +431,6 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
      * Getter for the full font name.
      * 
      * @return the full font name
-     * 
-     * @see org.extex.font.format.afm.AfmHeader#getFullname()
      */
     public String getFullname() {
 
@@ -463,7 +462,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         if (name != null) {
             Integer i = afmCharNameNumber.get(name);
             if (i != null) {
-                id = i.intValue();
+                id = i;
             }
         } else {
             n = "null";
@@ -658,10 +657,11 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
         // read the AFM-header first and then the metrics
         boolean isMetrics = false;
 
+        label:
         while ((line = reader.readLine()) != null) {
 
             // get the token from the line
-            StringTokenizer tok = new StringTokenizer(line);
+            StringTokenizer tok = new StringTokenizer( line);
 
             // no more tokens
             if (!tok.hasMoreTokens()) {
@@ -672,59 +672,79 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             String command = tok.nextToken();
 
             // check the command
-            if (command.equals("Comment")) {
-                header.addComment(tok.nextToken("\u00ff").trim());
-            } else if (command.equals("Notice")) {
-                header.addNotice(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("FontName")) {
-                header.setFontname(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("FullName")) {
-                header.setFullname(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("FamilyName")) {
-                header.setFamilyname(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("Weight")) {
-                header.setWeight(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("ItalicAngle")) {
-                header.setItalicangle(Float.valueOf(tok.nextToken())
-                    .floatValue());
-            } else if (command.equals("IsFixedPitch")) {
-                header.setFixedpitch(tok.nextToken().equals("true"));
-            } else if (command.equals("CharacterSet")) {
-                header.setCharacterset(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("FontBBox")) {
-                header.setLlx(Float.valueOf(removeComma(tok.nextToken()))
-                    .floatValue());
-                header.setLly(Float.valueOf(removeComma(tok.nextToken()))
-                    .floatValue());
-                header.setUrx(Float.valueOf(removeComma(tok.nextToken()))
-                    .floatValue());
-                header.setUry(Float.valueOf(removeComma(tok.nextToken()))
-                    .floatValue());
-            } else if (command.equals("UnderlinePosition")) {
-                header.setUnderlineposition(Float.valueOf(tok.nextToken())
-                    .floatValue());
-            } else if (command.equals("UnderlineThickness")) {
-                header.setUnderlinethickness(Float.valueOf(tok.nextToken())
-                    .floatValue());
-            } else if (command.equals("EncodingScheme")) {
-                header.setEncodingscheme(tok.nextToken("\u00ff").substring(1));
-            } else if (command.equals("CapHeight")) {
-                header
-                    .setCapheight(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("XHeight")) {
-                header.setXheight(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("Ascender")) {
-                header.setAscender(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("Descender")) {
-                header
-                    .setDescender(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("StdHW")) {
-                header.setStdhw(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("StdVW")) {
-                header.setStdvw(Float.valueOf(tok.nextToken()).floatValue());
-            } else if (command.equals("StartCharMetrics")) {
-                isMetrics = true;
-                break;
+            switch( command ) {
+                case "Comment":
+                    header.addComment( tok.nextToken( "\u00ff" ).trim() );
+                    break;
+                case "Notice":
+                    header.addNotice( tok.nextToken( "\u00ff" )
+                                         .substring( 1 ) );
+                    break;
+                case "FontName":
+                    header.setFontname( tok.nextToken( "\u00ff" )
+                                           .substring( 1 ) );
+                    break;
+                case "FullName":
+                    header.setFullname( tok.nextToken( "\u00ff" )
+                                           .substring( 1 ) );
+                    break;
+                case "FamilyName":
+                    header.setFamilyname( tok.nextToken( "\u00ff" )
+                                             .substring( 1 ) );
+                    break;
+                case "Weight":
+                    header.setWeight( tok.nextToken( "\u00ff" )
+                                         .substring( 1 ) );
+                    break;
+                case "ItalicAngle":
+                    header.setItalicangle( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "IsFixedPitch":
+                    header.setFixedpitch( tok.nextToken().equals( "true" ) );
+                    break;
+                case "CharacterSet":
+                    header.setCharacterset( tok.nextToken( "\u00ff" )
+                                               .substring( 1 ) );
+                    break;
+                case "FontBBox":
+                    header.setLlx( Float.parseFloat( removeComma( tok.nextToken() ) ) );
+                    header.setLly( Float.parseFloat( removeComma( tok.nextToken() ) ) );
+                    header.setUrx( Float.parseFloat( removeComma( tok.nextToken() ) ) );
+                    header.setUry( Float.parseFloat( removeComma( tok.nextToken() ) ) );
+                    break;
+                case "UnderlinePosition":
+                    header.setUnderlineposition( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "UnderlineThickness":
+                    header.setUnderlinethickness( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "EncodingScheme":
+                    header.setEncodingscheme( tok.nextToken( "\u00ff" )
+                                                 .substring( 1 ) );
+                    break;
+                case "CapHeight":
+                    header
+                        .setCapheight( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "XHeight":
+                    header.setXheight( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "Ascender":
+                    header.setAscender( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "Descender":
+                    header
+                        .setDescender( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "StdHW":
+                    header.setStdhw( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "StdVW":
+                    header.setStdvw( Float.parseFloat( tok.nextToken() ) );
+                    break;
+                case "StartCharMetrics":
+                    isMetrics = true;
+                    break label;
             }
         }
         // metric not found
@@ -768,7 +788,7 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
                 AfmKernPairs kp = new AfmKernPairs();
                 kp.setCharpre(tok.nextToken());
                 kp.setCharpost(tok.nextToken());
-                kp.setKerningsize(Float.valueOf(tok.nextToken()).floatValue());
+                kp.setKerningsize( Float.parseFloat( tok.nextToken() ) );
                 afmKerningPairs.add(kp);
 
                 // add the kerning to the char metric
@@ -854,12 +874,12 @@ public class AfmParser implements Serializable, XMLWriterConvertible {
             String glyphname = cm.getN();
             AfmKernPairs kp;
 
-            for (int k = 0; k < afmKerningPairs.size(); k++) {
-                kp = afmKerningPairs.get(k);
-                if (kp.getCharpre().equals(glyphname)) {
-                    writer.writeStartElement("kerning");
-                    writer.writeAttribute("name", kp.getCharpost());
-                    writer.writeFormatAttribute("size", kp.getKerningsize());
+            for( AfmKernPairs afmKerningPair : afmKerningPairs ) {
+                kp = afmKerningPair;
+                if( kp.getCharpre().equals( glyphname ) ) {
+                    writer.writeStartElement( "kerning" );
+                    writer.writeAttribute( "name", kp.getCharpost() );
+                    writer.writeFormatAttribute( "size", kp.getKerningsize() );
                     writer.writeEndElement();
                 }
             }

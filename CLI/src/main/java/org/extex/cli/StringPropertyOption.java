@@ -34,13 +34,13 @@ public class StringPropertyOption extends StringOption {
     /**
      * The field <tt>pname</tt> contains the name of the property.
      */
-    private String pname;
+    private final String pname;
 
     /**
      * The field <tt>properties</tt> contains the properties to store the
      * value in.
      */
-    private Properties properties;
+    private final Properties properties;
 
     /**
      * Creates a new object.

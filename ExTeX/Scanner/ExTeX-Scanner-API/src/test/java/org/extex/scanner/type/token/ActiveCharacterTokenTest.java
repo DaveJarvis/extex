@@ -19,15 +19,12 @@
 
 package org.extex.scanner.type.token;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
 import org.junit.Test;
 import org.junit.runner.JUnitCore;
+
+import static org.junit.Assert.*;
 
 /**
  * Test class for ActiveCharacterToken.
@@ -40,7 +37,7 @@ public class ActiveCharacterTokenTest extends TokenTester {
     /**
      * The field <tt>token</tt> contains the reference token
      */
-    private static ActiveCharacterToken token =
+    private static final ActiveCharacterToken token =
             new ActiveCharacterToken(UnicodeChar.get('x'), "abc");
 
     /**
@@ -56,7 +53,10 @@ public class ActiveCharacterTokenTest extends TokenTester {
 
     public ActiveCharacterTokenTest() {
 
-        super(token, Catcode.ACTIVE, "x", "the active character x");
+        setToken(token);
+setCatcode( Catcode.ACTIVE);
+setText( "x");
+setStr( "the active character x");
     }
 
     /**
@@ -79,7 +79,7 @@ public class ActiveCharacterTokenTest extends TokenTester {
         CodeToken y = token.cloneInNamespace("");
         CodeToken x = y.cloneInDefaultNamespace();
         assertNotNull(x);
-        assertTrue("the same", x == y);
+        assertSame( "the same", x, y );
     }
 
     /**
@@ -120,7 +120,7 @@ public class ActiveCharacterTokenTest extends TokenTester {
     public void testEqualsToken1() {
 
         Token t2 = new OtherToken(UnicodeChar.get('x'));
-        assertFalse(token.equals(t2));
+        assertNotEquals( token, t2 );
     }
 
     /**

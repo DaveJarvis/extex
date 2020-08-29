@@ -19,9 +19,6 @@
 
 package org.extex.typesetter.listMaker;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.FixedCount;
@@ -31,17 +28,16 @@ import org.extex.core.glue.FixedGlue;
 import org.extex.framework.configuration.exception.ConfigurationException;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
-import org.extex.typesetter.ListMaker;
-import org.extex.typesetter.ListManager;
-import org.extex.typesetter.Mode;
-import org.extex.typesetter.ParagraphObserver;
-import org.extex.typesetter.TypesetterOptions;
+import org.extex.typesetter.*;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.exception.TypesetterUnsupportedException;
 import org.extex.typesetter.tc.TypesettingContext;
 import org.extex.typesetter.type.Node;
 import org.extex.typesetter.type.NodeList;
 import org.extex.typesetter.type.node.VerticalListNode;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This is the derived class for a list maker in inner vertical list mode.
@@ -55,13 +51,13 @@ public class InnerVerticalListMaker extends AbstractListMaker {
      * The field <tt>afterParagraphObservers</tt> contains the observers to be
      * invoked after the paragraph has been completed.
      */
-    private List<ParagraphObserver> afterParagraphObservers =
-            new ArrayList<ParagraphObserver>();
+    private final List<ParagraphObserver> afterParagraphObservers =
+        new ArrayList<>();
 
     /**
      * The field <tt>nodes</tt> contains the list of nodes encapsulated.
      */
-    private VerticalListNode nodes = new VerticalListNode();
+    private final VerticalListNode nodes = new VerticalListNode();
 
     /**
      * This value contains the previous depth for baseline calculations. In
@@ -87,34 +83,18 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         super(manager, locator);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.core.glue.FixedGlue)
-     */
     @Override
     public void add(FixedGlue g) throws TypesetterException {
 
         nodes.addSkip(g);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#add(org.extex.typesetter.type.Node)
-     */
     @Override
     public void add(Node n) {
 
         nodes.add(n);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#addAndAdjust(org.extex.typesetter.type.NodeList,
-     *      org.extex.typesetter.TypesetterOptions)
-     */
     @Override
     public void addAndAdjust(NodeList list, TypesetterOptions options)
             throws TypesetterException,
@@ -126,12 +106,6 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         }
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#addSpace(org.extex.typesetter.tc.TypesettingContext,
-     *      FixedCount)
-     */
     @Override
     public void addSpace(TypesettingContext typesettingContext,
             FixedCount spacefactor) {
@@ -139,35 +113,18 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         // spaces are ignored in vertical mode
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#afterParagraph(ParagraphObserver)
-     */
     @Override
     public void afterParagraph(ParagraphObserver observer) {
 
         afterParagraphObservers.add(observer);
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#complete(TypesetterOptions)
-     */
     @Override
     public NodeList complete(TypesetterOptions context) {
 
         return nodes;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#cr(org.extex.interpreter.context.Context,
-     *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.core.UnicodeChar)
-     */
     @Override
     public void cr(Context context, TypesettingContext tc, UnicodeChar uc)
             throws TypesetterException {
@@ -175,47 +132,24 @@ public class InnerVerticalListMaker extends AbstractListMaker {
         // TODO gene: CR in vertical mode
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getLastNode()
-     */
     @Override
     public Node getLastNode() {
 
         return (nodes.isEmpty() ? null : nodes.get(nodes.size() - 1));
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getMode()
-     */
     @Override
     public Mode getMode() {
 
         return Mode.INNER_VERTICAL;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.ListMaker#getPrevDepth()
-     */
     @Override
     public FixedDimen getPrevDepth() throws TypesetterUnsupportedException {
 
         return prevDepth;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.typesetter.listMaker.TokenDelegateListMaker#letter(org.extex.core.UnicodeChar,
-     *      org.extex.typesetter.tc.TypesettingContext,
-     *      org.extex.interpreter.context.Context,
-     *      org.extex.interpreter.TokenSource, org.extex.core.Locator)
-     */
     @Override
     public boolean letter(UnicodeChar symbol, TypesettingContext tc,
             Context context, TokenSource source, Locator locator)

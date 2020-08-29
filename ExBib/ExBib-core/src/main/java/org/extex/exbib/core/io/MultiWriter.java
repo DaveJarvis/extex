@@ -35,12 +35,12 @@ public class MultiWriter implements Writer, Configurable {
     /**
      * The field <tt>w1</tt> contains the first writer.
      */
-    private Writer w1;
+    private final Writer w1;
 
     /**
      * The field <tt>w2</tt> contains the second writer.
      */
-    private Writer w2;
+    private final Writer w2;
 
     /**
      * Creates a new object.

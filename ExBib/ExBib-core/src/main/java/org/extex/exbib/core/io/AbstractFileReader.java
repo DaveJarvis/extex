@@ -200,7 +200,7 @@ public abstract class AbstractFileReader implements Observable {
                             : new InputStreamReader(is, encoding));
         } catch (UnsupportedEncodingException e) {
             throw new ConfigurationUnsupportedEncodingException(encoding,
-                (String) null);
+                                                                null );
         }
         return reader;
     }

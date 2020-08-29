@@ -35,12 +35,12 @@ public class TEmptyField extends TString {
     /**
      * The field <tt>entryName</tt> contains the name of the entry.
      */
-    private String entryName;
+    private final String entryName;
 
     /**
      * The field <tt>name</tt> contains the name.
      */
-    private String name;
+    private final String name;
 
     /**
      * Creates a new object.

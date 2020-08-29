@@ -37,7 +37,7 @@ public class ExBibImmutableException extends ExBibIllegalValueException {
     /**
      * The field <tt>entry</tt> contains the name of the entry.
      */
-    private String entity;
+    private final String entity;
 
     /**
      * Create a new object.

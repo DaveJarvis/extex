@@ -133,12 +133,12 @@ public abstract class AbstractMain extends CLI {
     /**
      * The field <tt>version</tt> contains the version number.
      */
-    private String version;
+    private final String version;
 
     /**
      * The field <tt>inceptionYear</tt> contains the first year of development.
      */
-    private int inceptionYear;
+    private final int inceptionYear;
 
     /**
      * The field <tt>consoleHandler</tt> contains the console handler for log
@@ -594,8 +594,8 @@ public abstract class AbstractMain extends CLI {
             log(Level.SEVERE, "copyright", getProgramName(),
                 year <= inceptionYear
                         ? Integer.toString(inceptionYear)
-                        : Integer.toString(inceptionYear) + "-"
-                                + Integer.toString(year));
+                        : inceptionYear + "-"
+                                + year );
         }
         return EXIT_FAIL;
     }

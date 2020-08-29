@@ -119,8 +119,8 @@ public class WriterFactory extends AbstractFactory<Writer> {
 
         Writer writer =
                 (stream == null
-                        ? (Writer) new NullWriter()
-                        : (Writer) new StreamWriter(stream, encoding));
+                        ? new NullWriter()
+                        : new StreamWriter( stream, encoding));
         // if (writer instanceof Configurable) {
         // ((Configurable) writer).configure(getConfiguration());
         // }

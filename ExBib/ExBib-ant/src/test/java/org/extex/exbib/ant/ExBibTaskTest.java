@@ -19,18 +19,18 @@
 
 package org.extex.exbib.ant;
 
+import org.apache.tools.ant.BuildException;
+import org.apache.tools.ant.BuildFileTest;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Locale;
 
-import org.apache.tools.ant.BuildException;
-import org.apache.tools.ant.BuildFileTest;
-
 /**
  * This is a test suite for the <logo>&epsilon;&chi;Bib</logo> Ant task.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
@@ -38,7 +38,7 @@ public class ExBibTaskTest extends BuildFileTest {
 
     /**
      * Creates a new object.
-     * 
+     *
      * @param name the name
      */
     public ExBibTaskTest(String name) {
@@ -48,11 +48,11 @@ public class ExBibTaskTest extends BuildFileTest {
 
     /**
      * Run a test.
-     * 
+     *
      * @param invocation the invocation XML
      * @param aux the contents of the aux file
      * @param log the contents of the log stream
-     * 
+     *
      * @throws IOException in case of an I/O error during writing a temp file
      */
     private void runTest(String invocation, String aux, String log)
@@ -88,7 +88,7 @@ public class ExBibTaskTest extends BuildFileTest {
         assertEquals("Message was logged but should not.",
             log.replaceAll("\\n", ""),
             getLog().replaceAll("\\r", "").replaceAll("\\n", ""));
-        build.delete();
+        build.deleteOnExit();
     }
 
     /**
@@ -114,14 +114,14 @@ public class ExBibTaskTest extends BuildFileTest {
         Locale.setDefault(Locale.ENGLISH);
         executeTarget("test.case.2");
         assertEquals("Message was logged but should not.",
-            "I couldn\'t open file file/which/does/not/exist.aux"
+                     "I couldn't open file file/which/does/not/exist.aux"
                     + "(There was 1 error)",
             getLog().replaceAll("[\\r\\n]", ""));
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test11() throws Exception {
@@ -129,13 +129,13 @@ public class ExBibTaskTest extends BuildFileTest {
         runTest("<ExBib\n"
                 + "  file=\"file/which/does/not/exist.aux\" />\n",
             null,
-            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                "I couldn't open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test12() throws Exception {
@@ -144,13 +144,13 @@ public class ExBibTaskTest extends BuildFileTest {
                 + "  minCrossrefs=\"abc\" \n"
                 + "  file=\"file/which/does/not/exist\"/>\n",
             null,
-            "I found `abc\' instead of the expected number\n"
+                "I found `abc' instead of the expected number\n"
                     + "(There was 1 error)\n");
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test13() throws Exception {
@@ -159,16 +159,16 @@ public class ExBibTaskTest extends BuildFileTest {
                 + "  logfile=\"target/log.log\" \n"
                 + "  file=\"file/which/does/not/exist\"/>\n",
             null,
-            "I couldn\'t open file file/which/does/not/exist.aux\n"
+                "I couldn't open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
         File log = new File("target/log.log");
         assertTrue(log.exists());
-        log.delete();
+        log.deleteOnExit();
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test21() throws Exception {
@@ -178,13 +178,13 @@ public class ExBibTaskTest extends BuildFileTest {
                     + "  exbib.file=file/which/does/not/exist.aux\n"
                     + "</ExBib>\n",
             null,
-            "I couldn\'t open file file/which/does/not/exist.aux\n"
+            "I couldn't open file file/which/does/not/exist.aux\n"
                     + "(There was 1 error)\n");
     }
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test22() throws Exception {
@@ -194,7 +194,7 @@ public class ExBibTaskTest extends BuildFileTest {
                     + "  load=\"file/which/does/not/exist\"/>\n",
                 null,
                 "");
-            assertTrue(false);
+          fail();
         } catch (BuildException e) {
             Throwable cause = e.getCause();
             assertTrue(cause instanceof FileNotFoundException);
@@ -203,7 +203,7 @@ public class ExBibTaskTest extends BuildFileTest {
 
     /**
      * Test method for {@link org.extex.exbib.ant.ExBibTask#execute()}.
-     * 
+     *
      * @throws Exception in case of an error
      */
     public final void test23() throws Exception {
@@ -213,7 +213,7 @@ public class ExBibTaskTest extends BuildFileTest {
                     + "  load=\"~/file/which/does/not/exist\"/>\n",
                 null,
                 "");
-            assertTrue(false);
+          fail();
         } catch (BuildException e) {
             Throwable cause = e.getCause();
             assertTrue(cause instanceof FileNotFoundException);

@@ -40,7 +40,7 @@ public class ControlSequenceTokenTest extends TokenTester {
     /**
      * The field <tt>token</tt> contains the reference token.
      */
-    private static ControlSequenceToken token =
+    private static final ControlSequenceToken token =
             new ControlSequenceToken(UnicodeChar.get('\\'), "x", "abc");
 
     /**
@@ -56,7 +56,10 @@ public class ControlSequenceTokenTest extends TokenTester {
 
     public ControlSequenceTokenTest() {
 
-        super(token, Catcode.ESCAPE, "\\x", "the control sequence \\x");
+        setToken(token);
+setCatcode( Catcode.ESCAPE);
+setText( "\\x");
+setStr( "the control sequence \\x");
     }
 
     /**

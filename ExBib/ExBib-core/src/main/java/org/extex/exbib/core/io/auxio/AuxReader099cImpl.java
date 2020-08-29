@@ -187,7 +187,7 @@ public class AuxReader099cImpl extends AbstractFileReader implements AuxReader {
      * The field <tt>handlerMap</tt> contains the macro handlers for the aux
      * file.
      */
-    private Map<String, AuxHandler> handlerMap;
+    private final Map<String, AuxHandler> handlerMap;
 
     /**
      * The field <tt>observer</tt> contains the observer.

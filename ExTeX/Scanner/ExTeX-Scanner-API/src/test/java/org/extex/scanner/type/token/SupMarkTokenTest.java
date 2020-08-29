@@ -20,6 +20,7 @@
 package org.extex.scanner.type.token;
 
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 
 import org.extex.core.UnicodeChar;
 import org.extex.scanner.type.Catcode;
@@ -37,7 +38,7 @@ public class SupMarkTokenTest extends TokenTester {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token token = new SupMarkToken(UnicodeChar.get('x'));
+    private static final Token token = new SupMarkToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -52,7 +53,10 @@ public class SupMarkTokenTest extends TokenTester {
 
     public SupMarkTokenTest() {
 
-        super(token, Catcode.SUPMARK, "x", "superscript character x");
+        setToken(token);
+setCatcode( Catcode.SUPMARK);
+setText( "x");
+setStr( "superscript character x");
     }
 
     /**
@@ -62,7 +66,7 @@ public class SupMarkTokenTest extends TokenTester {
 
         Token t1 = new SupMarkToken(UnicodeChar.get(' '));
         Token t2 = new SpaceToken(" ");
-        assertFalse(t1.equals(t2));
+        assertNotEquals( t1, t2 );
     }
 
 }

@@ -256,9 +256,9 @@ public class FormatName extends AbstractCode implements Serializable {
                         ? parseItem(i, format, locator)
                         : parseToBrace(i, format));
             }
-        };
+        }
 
-        /**
+      /**
          * Parses from a start position in a string which follows an opening
          * brace till the matching closing brace is found.
          * 

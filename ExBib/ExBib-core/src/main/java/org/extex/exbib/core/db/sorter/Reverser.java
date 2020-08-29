@@ -34,7 +34,7 @@ public class Reverser implements Sorter {
     /**
      * The field <tt>sorter</tt> contains the embedded sorter.
      */
-    private Sorter sorter;
+    private final Sorter sorter;
 
     /**
      * Creates a new object.

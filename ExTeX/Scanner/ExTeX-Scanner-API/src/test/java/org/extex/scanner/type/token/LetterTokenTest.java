@@ -38,7 +38,7 @@ public class LetterTokenTest extends TokenTester {
     /**
      * The field <tt>t</tt> contains the reference token.
      */
-    private static Token t = new LetterToken(UnicodeChar.get('x'));
+    private static final Token t = new LetterToken( UnicodeChar.get( 'x'));
 
     /**
      * Command line interface.
@@ -53,7 +53,10 @@ public class LetterTokenTest extends TokenTester {
 
     public LetterTokenTest() {
 
-        super(t, Catcode.LETTER, "x", "the letter x");
+        setToken(t);
+setCatcode( Catcode.LETTER);
+setText( "x");
+setStr( "the letter x");
     }
 
     /**

@@ -19,24 +19,13 @@
 
 package org.extex.interpreter.max;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InvalidClassException;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.logging.Logger;
-
 import org.extex.backend.outputStream.OutputStreamConsumer;
 import org.extex.backend.outputStream.OutputStreamFactory;
 import org.extex.core.Switch;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.exception.GeneralException;
-import org.extex.core.exception.helping.CantUseInException;
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.core.exception.helping.NoHelpException;
-import org.extex.core.exception.helping.UndefinedControlSequenceException;
-import org.extex.core.exception.helping.UnusedPrefixException;
+import org.extex.core.exception.helping.*;
 import org.extex.font.CoreFontFactory;
 import org.extex.framework.Registrar;
 import org.extex.framework.RegistrarObserver;
@@ -49,13 +38,7 @@ import org.extex.framework.configuration.exception.ConfigurationWrapperException
 import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 import org.extex.framework.logger.LogEnabled;
-import org.extex.interpreter.Conditional;
-import org.extex.interpreter.ErrorHandler;
-import org.extex.interpreter.Flags;
-import org.extex.interpreter.FlagsImpl;
-import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.LoadUnit;
-import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.*;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.context.group.GroupType;
 import org.extex.interpreter.context.observer.group.SwitchObserver;
@@ -89,11 +72,7 @@ import org.extex.interpreter.observer.start.StartObserverList;
 import org.extex.interpreter.observer.stop.StopObservable;
 import org.extex.interpreter.observer.stop.StopObserver;
 import org.extex.interpreter.observer.stop.StopObserverList;
-import org.extex.interpreter.type.Code;
-import org.extex.interpreter.type.CodeExpander;
-import org.extex.interpreter.type.ExpandableCode;
-import org.extex.interpreter.type.PrefixCode;
-import org.extex.interpreter.type.ProtectedCode;
+import org.extex.interpreter.type.*;
 import org.extex.interpreter.unit.UnitInfo;
 import org.extex.language.LanguageManager;
 import org.extex.resource.ResourceFinder;
@@ -101,27 +80,19 @@ import org.extex.scanner.api.TokenStream;
 import org.extex.scanner.api.exception.CatcodeException;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
-import org.extex.scanner.type.token.ActiveCharacterToken;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.CrToken;
-import org.extex.scanner.type.token.LeftBraceToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.MacroParamToken;
-import org.extex.scanner.type.token.MathShiftToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.RightBraceToken;
-import org.extex.scanner.type.token.SpaceToken;
-import org.extex.scanner.type.token.SubMarkToken;
-import org.extex.scanner.type.token.SupMarkToken;
-import org.extex.scanner.type.token.TabMarkToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenVisitor;
+import org.extex.scanner.type.token.*;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
 import org.extex.typesetter.listMaker.TokenDelegateListMaker;
 import org.extex.unit.base.register.count.IntegerCode;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InvalidClassException;
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.logging.Logger;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
@@ -232,30 +203,30 @@ public abstract class Max
      * The field <tt>configuration</tt> contains the configuration for this
      * interpreter.
      */
-    private Configuration configuration = null;
+    private Configuration configuration;
 
     /**
      * The field <tt>context</tt> contains the processing context. Here nearly
      * all relevant information can be found.
      */
-    private Context context = null;
+    private Context context;
 
     /**
      * The error handler is invoked whenever an error is detected. If none is
      * registered then the default behavior is shown.
      */
-    private ErrorHandler errorHandler = null;
+    private ErrorHandler errorHandler;
 
     /**
      * The field <tt>localizer</tt> contains the localizer to use.
      */
-    private Localizer localizer = null;
+    private Localizer localizer;
 
     /**
      * The field <tt>logger</tt> contains the logger or <code>null</code> if
      * none has been set yet.
      */
-    private Logger logger = null;
+    private Logger logger;
 
     /**
      * The field <tt>maxErrors</tt> contains the number of errors after which
@@ -269,64 +240,64 @@ public abstract class Max
      * receive a notification when a new token is about to be expanded. The
      * argument is the token to be executed.
      */
-    private CommandObserver observersCommand = null;
+    private CommandObserver observersCommand;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when an error occurs. The argument is the
      * exception encountered.
      */
-    private ErrorObserver observersError = null;
+    private ErrorObserver observersError;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when a new token is about to be expanded. The
      * argument is the token to be expanded.
      */
-    private ExpandObserver observersExpand = null;
+    private ExpandObserver observersExpand;
 
     /**
      * The field <tt>observersLoad</tt> contains the observer list for the
      * observers which are registered to receive a notification when a format is
      * loaded.
      */
-    private LoadObserver observersLoad = null;
+    private LoadObserver observersLoad;
 
     /**
      * This observer list is used for the observers which are registered to
      * receive a notification when a macro is expanded.
      */
-    private ExpandMacroObserver observersMacro = null;
+    private ExpandMacroObserver observersMacro;
 
     /**
      * The field <tt>observersStart</tt> contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is started.
      */
-    private StartObserver observersStart = null;
+    private StartObserver observersStart;
 
     /**
      * The field <tt>observersStop</tt> contains the observer list for the
      * observers which are registered to receive a notification when the
      * execution is finished.
      */
-    private StopObserver observersStop = null;
+    private StopObserver observersStop;
 
     /**
      * The field <tt>outFactory</tt> contains the output factory.
      */
-    private OutputStreamFactory outFactory = null;
+    private OutputStreamFactory outFactory;
 
     /**
      * This is the prefix for the next invocation.
      */
-    private Flags prefix;
+    private final Flags prefix;
 
     /**
      * The field <tt>tokenExpander</tt> contains the token visitor for
      * expansion.
      */
-    private TokenVisitor<Token, TokenSource> tokenExpander =
+    private final TokenVisitor<Token, TokenSource> tokenExpander =
             new TokenVisitor<Token, TokenSource>() {
 
                 /**
@@ -369,15 +340,12 @@ public abstract class Max
                  * @param arg the first argument to pass
                  * 
                  * @return some value
-                 * 
-                 * @throws Exception in case of an error
-                 * 
+                 *
                  * @see org.extex.scanner.type.token.TokenVisitor#visitCr(org.extex.scanner.type.token.CrToken,
                  *      java.lang.Object)
                  */
                 @Override
-                public Token visitCr(CrToken token, TokenSource arg)
-                        throws Exception {
+                public Token visitCr(CrToken token, TokenSource arg) {
 
                     return token; // gene: correct?
                 }
@@ -835,9 +803,7 @@ public abstract class Max
                 source.getToken(context)) {
             try {
                 t = (Token) t.visit(tokenExpander, source);
-            } catch (HelpingException e) {
-                throw e;
-            } catch (InterpreterException e) {
+            } catch ( HelpingException | InterpreterException e) {
                 throw e;
             } catch (Exception e) {
                 throw new InterpreterException(e);
@@ -951,11 +917,6 @@ public abstract class Max
         return this.logger;
     }
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.interpreter.Interpreter#getTypesetter()
-     */
     @Override
     public Typesetter getTypesetter() {
 
@@ -1015,7 +976,7 @@ public abstract class Max
         }
 
         if (t instanceof InterpreterException) {
-            ((InterpreterException) t).setProcessed(true);
+            t.setProcessed( true);
         }
 
         throw (e instanceof HelpingException
@@ -1273,9 +1234,7 @@ public abstract class Max
             if (observersLoad != null) {
                 observersLoad.update(context);
             }
-        } catch (InterpreterException e) {
-            throw new LoaderException(e);
-        } catch (HelpingException e) {
+        } catch ( InterpreterException | HelpingException e) {
             throw new LoaderException(e);
         }
     }
