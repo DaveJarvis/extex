@@ -3,11 +3,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>build</artifactId>
-  <name>ExTeX Build System</name>
+  <artifactId>nightly</artifactId>
+  <name>ExTeX Nightly Build System</name>
   <description>
-    This is the ExTeX build system -- at least those parts not migrated to Maven
-    yet.
+    This is the ExTeX nightly build system -- at least those parts not migrated to Maven yet.
   </description>
 
   <version>1.0</version>
@@ -37,8 +36,8 @@
         <artifactId>maven-compiler-plugin</artifactId>
         <version>2.3.2</version>
         <configuration>
-          <source>1.6</source>
-          <target>1.6</target>
+          <source>1.8</source>
+          <target>1.8</target>
         </configuration>
       </plugin>
     </plugins>

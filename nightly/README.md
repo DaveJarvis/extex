@@ -1,5 +1,3 @@
-![](src/images/ExTeX-build-side.gif){.left}
-
 εχTeX Build System
 ==============================
 

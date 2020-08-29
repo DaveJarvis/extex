@@ -22,10 +22,9 @@ import java.io.IOException;
 import java.io.InputStream;
 
 import junit.framework.TestCase;
+import org.junit.Test;
 
 /**
- * ...
- * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:5413 $
  */
@@ -36,38 +35,20 @@ public class LatexTaskTest extends TestCase {
      */
     private static final boolean VERBOSE = false;
 
-    /**
-     * ...
-     * 
-     * @throws Exception in case of an error
-     */
+    @Test
     public void test1() throws Exception {
 
         Process p = run("t1");
         assertEquals(1, p.exitValue());
     }
 
-    /**
-     * ...
-     * 
-     * @throws Exception in case of an error
-     */
+    @Test
     public void test2() throws Exception {
 
         Process p = run("t2");
         assertEquals(0, p.exitValue());
     }
 
-    /**
-     * ...
-     * 
-     * @param target ...
-     *
-     * @return ...
-     *
-     * @throws IOException ...
-     * @throws InterruptedException ...
-     */
     private Process run(String target) throws IOException, InterruptedException {
 
         Process p = Runtime.getRuntime()

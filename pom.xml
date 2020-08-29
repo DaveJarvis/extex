@@ -27,7 +27,7 @@
 
   <modules>
     <module>develop</module>
-    <module>build</module>
+    <module>nightly</module>
     <module>texmf</module>
     <module>tools</module>
     <module>CLI</module>

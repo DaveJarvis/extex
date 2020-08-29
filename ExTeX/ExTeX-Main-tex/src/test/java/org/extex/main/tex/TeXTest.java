@@ -336,7 +336,7 @@ public class TeXTest {
 
         String s = runSuccess(new String[]{"-copying"}, null, null);
         assertTrue("No match:\n" + s,
-            s.indexOf("GNU LIBRARY GENERAL PUBLIC LICENSE") >= 0);
+                   s.contains( "GNU LIBRARY GENERAL PUBLIC LICENSE" ) );
     }
 
     /**
@@ -469,7 +469,7 @@ public class TeXTest {
         System.setIn(new ByteArrayInputStream("".getBytes()));
         runSuccess(
             new String[]{"-ini", "UndefinedFile"},
-            BANNER_TEX + "I can\'t find file `UndefinedFile\'\n" + "*\n"
+            BANNER_TEX + "I can't find file `UndefinedFile'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"),
             "UndefinedFile.log");
     }
@@ -520,7 +520,7 @@ public class TeXTest {
 
         runSuccess(
             new String[]{"-ini", "UndefinedFile.tex"},
-            BANNER_TEX + "I can\'t find file `UndefinedFile.tex\'\n" + "*\n"
+            BANNER_TEX + "I can't find file `UndefinedFile.tex'\n" + "*\n"
                     + "No pages of output.\n" + transcript("UndefinedFile"),
             "UndefinedFile.log");
     }
@@ -536,7 +536,7 @@ public class TeXTest {
 
         runSuccess(
             new String[]{"-ini", "-", "-UndefinedFile"},
-            BANNER_TEX + "I can\'t find file `-UndefinedFile\'\n" + "*\n"
+            BANNER_TEX + "I can't find file `-UndefinedFile'\n" + "*\n"
                     + "No pages of output.\n" + transcript("-UndefinedFile"),
             "-UndefinedFile.log");
     }
@@ -993,7 +993,8 @@ public class TeXTest {
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `backend/undefined.xml\' not found.\n");
+                    + "Configuration problem: Configuration " +
+                "`backend/undefined.xml' not found.\n" );
         new File(".", "texput.log").delete();
     }
 
@@ -1011,7 +1012,8 @@ public class TeXTest {
             BANNER_TEX
                     + "*"
                     + TRANSCRIPT_TEXPUT
-                    + "Configuration problem: Configuration `backend/undefined.xml\' not found.\n");
+                    + "Configuration problem: Configuration " +
+                "`backend/undefined.xml' not found.\n" );
         new File(".", "texput.log").delete();
     }
 
@@ -1121,7 +1123,8 @@ public class TeXTest {
                     + "("
                     + PARSE_PATH
                     + "parse1.tex \n"
-                    + "Sorry, I can\'t find the format `undef.fmt\'; will try `tex.fmt\'.\n"
+                    + "Sorry, I can't find the format `undef.fmt'; will try " +
+                "`tex.fmt'.\n"
                     + ")\n" + "*\n" + "No pages of output.\n"
                     + transcript("parse1"), "parse1.log");
     }

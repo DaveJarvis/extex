@@ -19,26 +19,16 @@
 
 package org.extex;
 
-import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileReader;
-import java.io.Reader;
-import java.io.StringReader;
-import java.util.Properties;
-
 import org.extex.core.exception.GeneralException;
-import org.extex.core.exception.helping.HelpingException;
 import org.extex.framework.configuration.Configuration;
 import org.extex.framework.configuration.ConfigurationFactory;
-import org.extex.interpreter.EditHandler;
-import org.extex.interpreter.ErrorHandler;
-import org.extex.interpreter.Interpreter;
-import org.extex.interpreter.InterpreterFactory;
-import org.extex.interpreter.TokenSource;
+import org.extex.interpreter.*;
 import org.extex.interpreter.context.Context;
 import org.extex.scanner.type.token.Token;
 import org.junit.Assert;
+
+import java.io.*;
+import java.util.Properties;
 
 /**
  * Test for ExTeX.
@@ -60,28 +50,15 @@ public final class TestTeX {
      */
     private static final ErrorHandler ERROR_HANDLER = new ErrorHandler() {
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.ErrorHandler#handleError(org.extex.core.exception.GeneralException,
-         *      org.extex.scanner.type.token.Token,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.interpreter.context.Context)
-         */
         @Override
         public boolean handleError(GeneralException e, Token token,
-                TokenSource source, Context context) throws HelpingException {
+                TokenSource source, Context context) {
 
             e.printStackTrace();
             Assert.fail("error in tex document");
             return false; // not reached
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
-         */
         @Override
         public void setEditHandler(EditHandler editHandler) {
 
@@ -105,10 +82,8 @@ public final class TestTeX {
      * 
      * @param configurationFile configuration file for ExTeX
      * @return an <code>Interpreter</code>
-     * @exception Exception if an error occurs
      */
-    public static Interpreter makeInterpreter(String configurationFile)
-            throws Exception {
+    public static Interpreter makeInterpreter(String configurationFile) {
 
         Configuration config =
                 ConfigurationFactory.newInstance("config/" + configurationFile);
