@@ -6,5 +6,6 @@ target
 *.iml
 *.log
 .idea
+*.lock
 *.fmt
 build
