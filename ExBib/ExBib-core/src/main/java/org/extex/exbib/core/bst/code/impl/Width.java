@@ -61,9 +61,7 @@ import org.extex.exbib.core.io.Locator;
  * character with nonzero width is the space). This function takes the literal
  * literally; that is, it assumes each character in the string is to be printed
  * as is, regardless of whether the character has a special meaning to
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>, except that ``special characters'' (even without their
+ * TeX, except that ``special characters'' (even without their
  * right braces) are handled specially. This is meant to be used for comparing
  * widths of label strings.</dd>
  * </dl>
@@ -214,9 +212,7 @@ public class Width extends AbstractCode {
 
     /**
      * The constant <tt>SPECIAL</tt> contains the mapping of the special
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> sequences with positive width.
+     * TeX sequences with positive width.
      */
     private static final Map<String, Integer> SPECIAL = newSpecials();
 

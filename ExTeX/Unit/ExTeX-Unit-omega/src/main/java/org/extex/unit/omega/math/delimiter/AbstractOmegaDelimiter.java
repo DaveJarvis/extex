@@ -228,9 +228,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     /**
      * Creates a new MathDelimiter object from the <logo>Omega</logo> encoding.
      * <p>
-     * The <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
+     * The TeX encoding interprets the number as 27 bit hex number:
      * <tt>"cssyyyyllxxxx</tt>. Here the digits have the following meaning:
      * <dl>
      * <dt>c</dt>
@@ -275,9 +273,7 @@ public abstract class AbstractOmegaDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Parse an extended <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> delimiter from a token source.
+     * Parse an extended ??TeX delimiter from a token source.
      * 
      * @param context the interpreter context
      * @param source the token source to read from

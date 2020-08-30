@@ -47,11 +47,7 @@ import org.extex.typesetter.tc.font.Font;
  * <p>
  * The primitive <tt>\fontdimen</tt> can be used to set a font dimension value.
  * Each font has an arbitrary number of dimen values which are addressed by an
- * numerical index in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. In <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> this has been extended to arbitrary strings.
+ * numerical index in TeX. In ??TeX this has been extended to arbitrary strings.
  * </p>
  * <p>
  * The primitive expands to the value of the font dimension in a right hand
@@ -146,12 +142,8 @@ public class Fontdimen extends AbstractAssignment
     }
 
     /**
-     * Get the key for the font dimen. According to <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> the key is an arbitrary number. In
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this has been extended to take an expandable sequence
+     * Get the key for the font dimen. According to TeX the key is an arbitrary number. In
+     * ??TeX this has been extended to take an expandable sequence
      * of tokens enclosed in braces. The left brace acts as indicator that this
      * extension is used.
      * 

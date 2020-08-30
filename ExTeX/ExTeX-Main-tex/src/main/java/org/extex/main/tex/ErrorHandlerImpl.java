@@ -40,9 +40,7 @@ import org.extex.scanner.type.token.Token;
 
 /**
  * This is a simple implementation of the error handler interacting with the
- * user on the command line like <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> does.
+ * user on the command line like TeX does.
  * <p>
  * The {@link HelpingException HelpingException} is capable of carrying a name
  * and two arguments for the error message. This class can be queried to provide

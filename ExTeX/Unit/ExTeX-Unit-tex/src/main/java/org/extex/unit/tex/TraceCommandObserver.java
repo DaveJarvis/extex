@@ -51,9 +51,7 @@ public class TraceCommandObserver implements CommandObserver {
     /**
      * The field <tt>prefix</tt> contains the indicator that the last token
      * encountered has been a prefix primitive. This is used to suppress the
-     * following trace output in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> compatibility mode.
+     * following trace output in TeX compatibility mode.
      */
     private boolean prefix = false;
 

@@ -58,9 +58,7 @@ import org.extex.unit.base.register.CharCode;
  * 
  * <h4>Extension</h4>
  * <p>
- * In addition to the behavior of the original <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> definition this implementation can be used to insert words
+ * In addition to the behavior of the original TeX definition this implementation can be used to insert words
  * with hyphens as well. To specify the places where a hyphen occurs literally
  * you just have to include two hyphens in the hyphenation list.
  * </p>

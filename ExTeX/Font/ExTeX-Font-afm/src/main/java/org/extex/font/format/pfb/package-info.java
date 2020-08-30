@@ -17,9 +17,7 @@
  */
 /**
  * This package contains the definitions and implementations for the PFB
- * (Type1) font handling in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * (Type1) font handling in ??TeX.
  */
 
 package org.extex.font.format.pfb;

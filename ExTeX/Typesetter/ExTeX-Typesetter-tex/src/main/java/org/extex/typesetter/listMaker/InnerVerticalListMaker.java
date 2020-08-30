@@ -61,9 +61,7 @@ public class InnerVerticalListMaker extends AbstractListMaker {
 
     /**
      * This value contains the previous depth for baseline calculations. In
-     * contrast to <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> the value null is used to indicate that the next box on
+     * contrast to TeX the value null is used to indicate that the next box on
      * the vertical list should be exempt from the baseline calculations.
      * 
      * @see "<logo>T<span style=

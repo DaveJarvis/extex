@@ -113,9 +113,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * This is a reference implementation for an interpreter context.
  * 
  * The groups are implemented as a linked list of single groups. In contrast to
- * the Knuthian implementation in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> no undo stack is used.
+ * the Knuthian implementation in TeX no undo stack is used.
  * <p>
  * Several operations have to be dealt with:
  * </p>
@@ -1971,12 +1969,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.interpreter.type.box.Box box} register in
      * the current group. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
@@ -2046,12 +2040,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.core.count.Count count} register in all
      * requested groups. Count registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
@@ -2119,12 +2109,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
@@ -2156,12 +2142,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
@@ -2257,12 +2239,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.scanner.type.file.InFile InFile} register
      * in all requested groups. InFile registers are named, either with a number
      * or an arbitrary string. The numbered registers where limited to 16 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the file register
      * @param file the input file descriptor
@@ -2540,12 +2518,8 @@ public class ContextImpl
      * Setter for the {@link org.extex.scanner.type.tokens.Tokens Tokens}
      * register in the specified groups. Tokens registers are named, either with
      * a number or an arbitrary string. The numbered registers where limited to
-     * 256 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * 256 in TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param toks the new value of the register

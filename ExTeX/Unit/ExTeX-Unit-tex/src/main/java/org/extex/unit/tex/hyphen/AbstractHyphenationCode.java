@@ -33,9 +33,7 @@ import org.extex.scanner.type.tokens.Tokens;
  * <h2>Determining the Current Language</h2>
  * 
  * <p>
- * In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the language is determined by the count register named
+ * In TeX the language is determined by the count register named
  * <tt>language</tt>. This has the disadvantage that the language is named
  * anonymously by an integer.
  * </p>

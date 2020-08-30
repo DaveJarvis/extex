@@ -337,12 +337,8 @@ public class GroupImpl implements Group {
     /**
      * Getter for the {@link org.extex.interpreter.type.box.Box box}register.
      * Count registers are named, either with a number or an arbitrary string.
-     * The numbered registers where limited to 256 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * The numbered registers where limited to 256 in TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or number of the count register
      * 
@@ -455,9 +451,7 @@ public class GroupImpl implements Group {
      * other case can be used to store special count values.
      * <p>
      * Note: The number of count registers is not limited to 256 as in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX.
      * </p>
      * <p>
      * As a default value 0 is returned.
@@ -530,9 +524,7 @@ public class GroupImpl implements Group {
      * other case can be used to store special dimen values.
      * <p>
      * Note: The number of dimen registers is not limited to 256 as in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX.
      * </p>
      * <p>
      * As a default value 0 is returned.

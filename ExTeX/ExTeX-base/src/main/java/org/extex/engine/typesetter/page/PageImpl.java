@@ -47,17 +47,13 @@ public class PageImpl implements Page {
 
     /**
      * The field <tt>mediaHOffset</tt> contains the horizontal offset of the
-     * upper left corner of the contents on the page. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this value is defined to be 1 in.
+     * upper left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
     private Dimen mediaHOffset = new Dimen(Dimen.ONE_INCH);
 
     /**
      * The field <tt>mediaVOffset</tt> contains the vertical offset of the upper
-     * left corner of the contents on the page. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this value is defined to be 1 in.
+     * left corner of the contents on the page. In TeX this value is defined to be 1 in.
      */
     private Dimen mediaVOffset = new Dimen(Dimen.ONE_INCH);
 

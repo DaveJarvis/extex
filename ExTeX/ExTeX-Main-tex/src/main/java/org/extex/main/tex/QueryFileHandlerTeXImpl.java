@@ -28,9 +28,7 @@ import org.extex.framework.i18n.Localizer;
 import org.extex.framework.i18n.LocalizerFactory;
 
 /**
- * This class implements the <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> version of a query file handler. It presents a prompt to
+ * This class implements the TeX version of a query file handler. It presents a prompt to
  * the user (**) and reads a file name from the console.
  * <p>
  * If the file name starts with a backslash then it is prepended to the code to

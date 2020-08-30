@@ -31,9 +31,7 @@ import org.extex.scanner.type.token.CodeToken;
 import org.extex.typesetter.Typesetter;
 
 /**
- * This class provides a base class for pdf<logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> primitives.
+ * This class provides a base class for pdfTeX primitives.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4791 $
@@ -56,9 +54,7 @@ public abstract class AbstractPdftexCode extends AbstractCode {
     }
 
     /**
-     * Check that pdf<logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> is active.
+     * Check that pdfTeX is active.
      * 
      * @param context the interpreter context
      * @param typesetter the typesetter

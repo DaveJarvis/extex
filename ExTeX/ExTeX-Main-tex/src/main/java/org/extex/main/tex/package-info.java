@@ -17,9 +17,7 @@
  */
 /**
  * 
- * This package contains some support classes for the <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> main program. This
+ * This package contains some support classes for the ??TeX main program. This
  * includes Exception classes as well as ErrorHandler and Observers. 
  * <p>
  *  The whole interaction with the user is located in this package, if not
@@ -28,9 +26,7 @@
  *  be used to integrate the core engine into a graphical user interface.
  * </p>
  * 
- * <h1>Running <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo></h1>
+ * <h1>Running ??TeX</h1>
  * <p>
  *  <logo>&epsilon;&chi;T<span style=
  *  "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"

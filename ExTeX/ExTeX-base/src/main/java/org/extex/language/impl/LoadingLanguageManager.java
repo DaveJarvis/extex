@@ -260,11 +260,7 @@ public class LoadingLanguageManager extends BaseLanguageManager
      * write the result to another place than the default output stream.
      * <p>
      * The table is not saved if the name is purely numeric. This guarantees the
-     * backward compatibility with <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>, since <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> uses numerical names for hyphenation tables only.
+     * backward compatibility with TeX, since TeX uses numerical names for hyphenation tables only.
      * </p>
      * 
      * @param name the name of the table

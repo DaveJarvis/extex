@@ -156,31 +156,31 @@ public class TokenStreamFactory extends AbstractFactory<Object>
      * The field <tt>decorators</tt> contains the list of decorators for input
      * streams acquired from a resource.
      */
-    private List<InputStreamInterceptor> inStreamInterceptors = null;
+    private List<InputStreamInterceptor> inStreamInterceptors;
 
     /**
      * The field <tt>interceptors</tt> contains the list of decorators for
      * readers.
      */
-    private List<ReaderInterceptor> inReaderInterceptors = null;
+    private List<ReaderInterceptor> inReaderInterceptors;
 
     /**
      * The field <tt>openFileObservers</tt> contains the observers registered
      * for the "file" event.
      */
-    private OpenFileObserver openFileObservers = null;
+    private OpenFileObserver openFileObservers;
 
     /**
      * The field <tt>openReaderObservers</tt> contains the observers registered
      * for the "reader" event.
      */
-    private OpenReaderObserver openReaderObservers = null;
+    private OpenReaderObserver openReaderObservers;
 
     /**
      * The field <tt>openStringObservers</tt> contains the observers registered
      * for the "string" event.
      */
-    private OpenStringObserver openStringObservers = null;
+    private OpenStringObserver openStringObservers;
 
     /**
      * The field <tt>openWriterObservers</tt> contains the observers registered
@@ -191,7 +191,7 @@ public class TokenStreamFactory extends AbstractFactory<Object>
     /**
      * The field <tt>options</tt> contains the options for the token stream.
      */
-    private TokenStreamOptions options = null;
+    private TokenStreamOptions options;
 
     /**
      * The field <tt>readerConstructor</tt> contains the constructor for the

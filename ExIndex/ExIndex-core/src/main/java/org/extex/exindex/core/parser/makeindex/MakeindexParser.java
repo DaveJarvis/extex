@@ -88,11 +88,7 @@ import org.extex.framework.i18n.LocalizerFactory;
  * </p>
  * <p>
  * The original need to introduce the parameters is the flexibility of
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the category codes of characters can be redefined. Thus
+ * TeX. In TeX the category codes of characters can be redefined. Thus
  * <logo>makeindex</logo> needs to be able to adjust its behavior to cope with
  * such a situation.
  * </p>

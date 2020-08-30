@@ -17,9 +17,7 @@
  */
 /**
  *  This package contains support classes for the logging.
- *  <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> uses the definition of logging introduced in Java 1.4.
+ *  ??TeX uses the definition of logging introduced in Java 1.4.
  *  Thus most of the required functionality is already provided by the Java
  *  programming language.
  *  

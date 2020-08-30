@@ -48,9 +48,7 @@ import java.util.logging.Logger;
  * <doc name="ensureloaded"> <h3>The Primitive <tt>\ensureloaded</tt></h3>
  * <p>
  * The primitive <tt>\ensureloaded</tt> dynamically requests that a unit of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is loaded.
+ * ??TeX is loaded.
  * </p>
  * <p>
  * A unit consists of primitives and some initializing actions.

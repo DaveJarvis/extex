@@ -157,9 +157,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on an active token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this is e.g. ~.
+                 * TeX this is e.g. ~.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -185,9 +183,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a comment token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a %.
+                 * TeX this normally is a %.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -243,9 +239,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on an escape token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally means a control sequence.
+                 * TeX this normally means a control sequence.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -406,9 +400,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a macro parameter token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a #.
+                 * TeX this normally is a #.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -434,9 +426,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a math shift token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a $.
+                 * TeX this normally is a $.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -542,9 +532,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a sub mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a _.
+                 * TeX this normally is a _.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -570,9 +558,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a sup mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a ^.
+                 * TeX this normally is a ^.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass
@@ -598,9 +584,7 @@ public class TokenStreamImpl extends TokenStreamBaseImpl implements TokenStream 
 
                 /**
                  * This visit method is invoked on a tab mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a &.
+                 * TeX this normally is a &.
                  * 
                  * @param factory the first argument to pass
                  * @param tokenizer the second argument to pass

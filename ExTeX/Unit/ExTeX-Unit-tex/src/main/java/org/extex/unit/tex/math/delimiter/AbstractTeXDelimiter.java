@@ -45,9 +45,7 @@ import org.extex.unit.tex.math.AbstractMathCode;
 /**
  * This abstract class adds the ability to translate
  * {@link org.extex.typesetter.type.math.MathDelimiter MathDelimiter}s to and
- * from their <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> encoding as numbers to abstract math code.
+ * from their TeX encoding as numbers to abstract math code.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4431 $
@@ -83,9 +81,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
 
     /**
      * The field <tt>CLASS_SHIFT</tt> contains the number of bits to shift the
-     * class rightwards in the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding of delimiters.
+     * class rightwards in the TeX encoding of delimiters.
      */
     private static final int CLASS_SHIFT = 24;
 
@@ -300,9 +296,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     private static final int SMALL_CLASS_OFFSET = 20;
 
     /**
-     * Translate the delimiter into a <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoded number or throw an exception if this is not
+     * Translate the delimiter into a TeX encoded number or throw an exception if this is not
      * possible.
      * 
      * @param del the delimiter to encode
@@ -358,13 +352,9 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Creates a new MathDelimiter object from the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding.
+     * Creates a new MathDelimiter object from the TeX encoding.
      * <p>
-     * The <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
+     * The TeX encoding interprets the number as 27 bit hex number:
      * <tt>"csyylxx</tt>. Here the digits have the following meaning:
      * <dl>
      * <dt>c</dt>
@@ -411,9 +401,7 @@ public abstract class AbstractTeXDelimiter extends AbstractMathCode {
     }
 
     /**
-     * Parse an extended <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> delimiter from a token source.
+     * Parse an extended ??TeX delimiter from a token source.
      * 
      * @param context the interpreter context
      * @param source the token source to read from

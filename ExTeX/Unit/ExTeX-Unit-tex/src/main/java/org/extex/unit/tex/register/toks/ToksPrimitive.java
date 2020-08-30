@@ -67,15 +67,11 @@ import org.extex.unit.base.register.toks.AbstractToks;
  *        &lang;tokens&rang;}  </pre>
  * 
  * <p>
- * In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the register name is a number in the range 0 to 255.
+ * In TeX the register name is a number in the range 0 to 255.
  * Extensions to this are defined in <logo>&epsilon;-T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X</logo> and <logo>Omega</logo> where the limitation of the range is
- * raised. In <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> this limit can be configured. In addition tokens can be
+ * raised. In ??TeX this limit can be configured. In addition tokens can be
  * used to address named token registers.
  * </p>
  * 

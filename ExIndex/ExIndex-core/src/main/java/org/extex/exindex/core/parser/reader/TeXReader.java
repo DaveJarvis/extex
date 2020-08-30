@@ -25,18 +25,14 @@ import java.io.Reader;
 /**
  * Reader which translates ^^ notation on the fly into characters.
  * <p>
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> translates ^^ notation into characters at a very early
+ * TeX translates ^^ notation into characters at a very early
  * stage of parsing. This behavior is imitated in this reader. In contrast to
  * <logo>T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
  * >e</span>X<logo> no category codes are involved.
  * </p>
  * <p>
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> defines the mapping of characters following ^^ according to
+ * TeX defines the mapping of characters following ^^ according to
  * the following rules:
  * </p>
  * <ul>

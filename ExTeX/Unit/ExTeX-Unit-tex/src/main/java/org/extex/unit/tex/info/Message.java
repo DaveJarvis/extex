@@ -43,9 +43,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * If the keywords <tt>to log</tt> are given then the message is written to the
- * log file only. This is an extension not present in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> and friends.
+ * log file only. This is an extension not present in TeX and friends.
  * </p>
  * 
  * <h4>Syntax</h4> The formal description of this primitive is the following:

@@ -273,9 +273,7 @@ public class Patterns extends AbstractHyphenationCode {
 
         /**
          * This visit method is invoked on a macro parameter token. In
-         * <logo>T<span style=
-         * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-         * >e</span>X</logo> this normally is a #.
+         * TeX this normally is a #.
          * 
          * @param token the macro parameter token to visit
          * @param arg the first argument to pass

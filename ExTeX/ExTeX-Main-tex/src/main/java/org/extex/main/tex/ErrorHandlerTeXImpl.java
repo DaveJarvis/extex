@@ -22,12 +22,8 @@ package org.extex.main.tex;
 import org.extex.core.Locator;
 
 /**
- * This is the error handler in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> compatibility mode: the message is presented in a
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>-compatible way. The output is written out via the Logger.
+ * This is the error handler in TeX compatibility mode: the message is presented in a
+ * TeX-compatible way. The output is written out via the Logger.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$

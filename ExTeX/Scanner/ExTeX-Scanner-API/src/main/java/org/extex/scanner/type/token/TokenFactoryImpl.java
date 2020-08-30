@@ -399,9 +399,7 @@ public class TokenFactoryImpl
     }
 
     /**
-     * This visit method is invoked on an escape token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally means a control sequence.
+     * This visit method is invoked on an escape token. In TeX this normally means a control sequence.
      * 
      * @param value the string value of the token
      * @param uchar the character value of the token

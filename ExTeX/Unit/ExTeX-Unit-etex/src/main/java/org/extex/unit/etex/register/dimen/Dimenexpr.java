@@ -57,9 +57,7 @@ import org.extex.unit.base.Relax;
  * <p>
  * The primitive <tt>\dimenexpr</tt> provides a means to use a inline way of
  * writing mathematical expressions to be evaluated. Mathematical expressions
- * can be evaluated in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> using <tt>\advance</tt>,
+ * can be evaluated in ??TeX using <tt>\advance</tt>,
  * <tt>\multiply</tt>, and <tt>\divide</tt>. Nevertheless those primitives
  * result in an assignment. This is not the case for <tt>\dimenexpr</tt>.
  * Here the intermediate results are not stored in dimen registers but kept

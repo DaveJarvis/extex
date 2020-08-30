@@ -42,12 +42,8 @@ import org.extex.unit.base.register.CharCode;
  * </p>
  * <p>
  * A character is represented by a code point; i.e. a positive number denoting
- * the character position. In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> only 8-bit number where allowed. In
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> arbitrary positive numbers are valid as values.
+ * the character position. In TeX only 8-bit number where allowed. In
+ * ??TeX arbitrary positive numbers are valid as values.
  * </p>
  * <p>
  * The definition is performed with respect to to group to keep it locally. The

@@ -468,9 +468,7 @@ public class DimenTest {
 
     /**
      * The field <tt>STRING</tt> contains the mapping from scaled points to the
-     * printed representation in pt as computed by <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * printed representation in pt as computed by TeX.
      */
     private static final String[] STRING = {
             /* 0 */"0.0pt",

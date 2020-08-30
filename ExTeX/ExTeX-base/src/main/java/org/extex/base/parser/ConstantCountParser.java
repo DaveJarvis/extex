@@ -305,9 +305,7 @@ public final class ConstantCountParser implements Parser<Count>, CountParser {
      * by optional white space.
      * <p>
      * This method implements the generalization of several syntactic
-     * definitions from <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>:
+     * definitions from TeX:
      * </p>
      * 
      * <doc type="syntax" name="number"> <h3>A Number</h3>

@@ -34,11 +34,8 @@ import java.util.Properties;
 import static org.junit.Assert.*;
 
 /**
- * This class contains test cases for the command line interface of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
- * 
+ * This class contains test cases for the command line interface of εχTeX.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4708 $
  */
@@ -69,9 +66,7 @@ public class TeXTest {
 
     /**
      * The constant <tt>EMPTY_TEX</tt> contains the name of an empty
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> file.
+     * TeX file.
      */
     private static final String EMPTY_TEX =
             "../Unit/ExTeX-Unit-tex/src/test/resources/tex/empty.tex";
@@ -192,7 +187,7 @@ public class TeXTest {
         ByteArrayOutputStream errBuffer = new ByteArrayOutputStream();
         PrintStream stdout = System.out;
         PrintStream stderr = System.err;
-        String result = null;
+        String result;
         try {
             System.setOut(new PrintStream(outBuffer));
             System.setErr(new PrintStream(errBuffer));
@@ -771,7 +766,7 @@ public class TeXTest {
         p.put("extex.interaction", "illegal");
         try {
             runTest(new String[]{"-ini"}, p, "", EXIT_ERROR);
-            assertFalse(true);
+            fail();
         } catch (InteractionUnknownException e) {
             assertTrue(true);
         }
@@ -894,11 +889,9 @@ public class TeXTest {
     /**
      * <testcase> This test case validates that an unknown option terminates the
      * program with code -1. </testcase>
-     * 
-     * @throws Exception in case of an error
      */
     @Test
-    public void testMain1() throws Exception {
+    public void testMain1() {
 
         System.setErr(new PrintStream(new ByteArrayOutputStream()));
         assertEquals(-1, TeX.mainProgram(new String[]{"-xxx"}));
@@ -907,11 +900,9 @@ public class TeXTest {
     /**
      * <testcase> This test case validates that an undefined parameter list
      * terminates the program with code -1. </testcase>
-     * 
-     * @throws Exception in case of an error
      */
     @Test
-    public void testMainError1() throws Exception {
+    public void testMainError1() {
 
         System.setErr(new PrintStream(new ByteArrayOutputStream()));
         assertEquals(-1, TeX.mainProgram(null));

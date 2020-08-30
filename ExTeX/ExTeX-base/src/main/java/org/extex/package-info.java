@@ -16,22 +16,14 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> &ndash; an implementation of a
- * typesetting engine based on the concepts of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. The following
- * figure gives a impression of the top-level components of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * This package contains ??TeX &ndash; an implementation of a
+ * typesetting engine based on the concepts of TeX. The following
+ * figure gives a impression of the top-level components of ??TeX.
  *
  * <div class="Figure">
  *  <img src="doc-files/components.png" width="90%"/>
  *  <br />
- *  <caption>The top-level components of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo></caption>
+ *  <caption>The top-level components of ??TeX</caption>
  * </div>
  *
  * <dl>

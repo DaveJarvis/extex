@@ -64,14 +64,8 @@ import org.extex.typesetter.tc.font.Font;
  * <h4>Incompatibility</h4>
  * <p>
  * The TeXbook gives no indication ow the primitive should react for negative
- * values &ndash; except -1. The implementation of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> allows to store and retrieve arbitrary negative values.
- * This behavior of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is not preserved in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * values &ndash; except -1. The implementation of TeX allows to store and retrieve arbitrary negative values.
+ * This behavior of TeX is not preserved in ??TeX.
  * </p>
  * </doc>
  * 

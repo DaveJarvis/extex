@@ -50,9 +50,7 @@ public abstract class PsUnit {
      * consider when producing a string representation of this type.
      * 
      * Attention: Do not change this value unless you have read and understood
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> the program!
+     * TeX the program!
      */
     private static final int FLOAT_DIGITS = 17;
 

@@ -21,7 +21,6 @@ package org.extex.test;
 
 import org.extex.ExTeX;
 import org.extex.backend.outputStream.OutputStreamFactory;
-import org.extex.core.Locator;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.helping.HelpingException;
@@ -34,8 +33,6 @@ import org.extex.interpreter.Interpreter;
 import org.extex.interpreter.TokenSource;
 import org.extex.interpreter.context.Context;
 import org.extex.interpreter.observer.expandMacro.ExpandMacroObservable;
-import org.extex.interpreter.observer.expandMacro.ExpandMacroObserver;
-import org.extex.interpreter.type.Code;
 import org.extex.logging.LogFormatter;
 import org.extex.resource.ResourceFinder;
 import org.extex.scanner.type.token.Token;
@@ -85,6 +82,7 @@ import static org.junit.Assert.*;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("unused")
 public abstract class ExTeXLauncher {
 
     /**
@@ -111,14 +109,6 @@ public abstract class ExTeXLauncher {
             this.logger = theLogger;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.ErrorHandler#handleError(org.extex.core.exception.GeneralException,
-         *      org.extex.scanner.type.token.Token,
-         *      org.extex.interpreter.TokenSource,
-         *      org.extex.interpreter.context.Context)
-         */
         @Override
         public boolean handleError(GeneralException e, Token token,
                 TokenSource source, Context context) throws HelpingException {
@@ -127,11 +117,6 @@ public abstract class ExTeXLauncher {
             return false;
         }
 
-        /**
-         * {@inheritDoc}
-         * 
-         * @see org.extex.interpreter.ErrorHandler#setEditHandler(org.extex.interpreter.EditHandler)
-         */
         @Override
         public void setEditHandler(EditHandler editHandler) {
 
@@ -317,9 +302,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * Run some code through ??TeX.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
@@ -344,9 +327,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * Run some code through ??TeX.
      * 
      * @param properties the properties to start with
      * @param code the code to expand
@@ -408,16 +389,8 @@ public abstract class ExTeXLauncher {
                 }
                 if (trace && interpreter instanceof ExpandMacroObservable) {
                     ((ExpandMacroObservable) interpreter)
-                        .registerObserver(new ExpandMacroObserver() {
-
-                            @Override
-                            public void update(Token token, Code code,
-                                    Locator locator) {
-
-                                err.println(locator.toString(1) + "\t"
-                                        + token.toText());
-                            }
-                        });
+                        .registerObserver( ( token, code1, locator ) -> err.println( locator.toString( 1) + "\t"
+                                + token.toText()) );
                 }
                 return interpreter;
             }
@@ -506,9 +479,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * Run some code through ??TeX.
      * 
      * @param code the code to expand
      * @param log the expected output on the log stream
@@ -527,9 +498,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * Run some code through ??TeX.
      * 
      * @param properties the properties to modify
      * @param code the code to expand
@@ -548,9 +517,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run some code through <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * Run some code through ??TeX.
      * 
      * @param code the code to expand
      * @param expect the expected output on the output stream
@@ -643,9 +610,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Format a log messages properly. This emulates the way <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> does it; i.e. prefix and postfix are appended and line
+     * Format a log messages properly. This emulates the way TeX does it; i.e. prefix and postfix are appended and line
      * breaking is applied.
      * 
      * @param message the message to format
@@ -658,9 +623,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> on a file.
+     * Run ??TeX on a file.
      * 
      * @param file the name of the file to read from
      * 
@@ -674,9 +637,7 @@ public abstract class ExTeXLauncher {
     }
 
     /**
-     * Run <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> on a file.
+     * Run ??TeX on a file.
      * 
      * @param file the name of the file to read from
      * @param properties properties to start with
@@ -730,7 +691,8 @@ public abstract class ExTeXLauncher {
      * 
      * @param defaultLog the defaultLog to set
      */
-    protected void setDefaultLog(String defaultLog) {
+    @SuppressWarnings("SameParameterValue")
+    protected void setDefaultLog( String defaultLog) {
 
         this.defaultLog = defaultLog;
     }

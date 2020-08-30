@@ -51,9 +51,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * character is typeset in math mode.
  * </p>
  * <p>
- * The <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> encoding interprets the number as 27 bit hex number:
+ * The TeX encoding interprets the number as 27 bit hex number:
  * <tt>"csyylxx</tt>. Here the digits have the following meaning:
  * <dl>
  * <dt>c</dt>
@@ -104,9 +102,7 @@ import org.extex.typesetter.type.math.MathDelimiter;
  * The primitive <tt>\odelcode</tt> can be used like a count register. This
  * means you can use it wherever a number is expected. In addition the value can
  * be advanced, multiplied, and divided. In any case the delimiter code is
- * translated according to the <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> encoding and processed as number.
+ * translated according to the TeX encoding and processed as number.
  * </p>
  * 
  * <h4>Examples</h4>

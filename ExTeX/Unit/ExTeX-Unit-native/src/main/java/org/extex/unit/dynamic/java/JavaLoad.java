@@ -40,9 +40,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <p>
  * The primitive <tt>\javaload</tt> loads a java class and invokes its
  * <tt>init()</tt> method. With this method it is possible to load larger
- * extensions of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> in one junk. There is no need to declare each single macro
+ * extensions of ??TeX in one junk. There is no need to declare each single macro
  * with <tt>\javadef</tt>.
  * </p>
  * 

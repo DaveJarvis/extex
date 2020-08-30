@@ -16,20 +16,14 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- *  This package contains primitives for <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>'s <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> mode.
+ *  This package contains primitives for ??TeX's TeX mode.
  *
  * <doc name="tracingrestores" type="register">
  * <h3>The Count Parameter <tt>\tracingrestores</tt></h3>
  * <p>
  *  The count register <tt>\tracingrestores</tt> controls the
  *  logging of restore operations when the blocks are closed. The
- *  default implementation of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> uses another
+ *  default implementation of ??TeX uses another
  *  mechanism. Thus this register has no effect at all.
  * </p>
  * <p>

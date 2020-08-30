@@ -44,13 +44,7 @@ import org.extex.typesetter.type.page.Page;
 
 /**
  * This class provides a link between the typesetter and the interpreter for the
- * output routine. In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the output routine is implemented in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>'s macro language. In <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the output routine is a Java class implementing a defined
+ * output routine. In TeX the output routine is implemented in TeX's macro language. In ??TeX the output routine is a Java class implementing a defined
  * interface. This class implements the interface required and forwards the
  * request for processing to the appropriate interpreter.
  * <p>

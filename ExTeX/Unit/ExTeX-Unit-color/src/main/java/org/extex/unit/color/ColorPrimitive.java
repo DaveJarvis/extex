@@ -39,16 +39,12 @@ import org.extex.typesetter.exception.TypesetterException;
  * color models.
  * </p>
  * <p>
- * The color models of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> use components of two bytes. This means that values from 0
+ * The color models of ??TeX use components of two bytes. This means that values from 0
  * to 65535 can be stored in each component. The external representation is a
  * floating point number in the range from 0.0 to 1.0.
  * </p>
  * <p>
- * The color models of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> support an alpha channel.
+ * The color models of ??TeX support an alpha channel.
  * </p>
  * 
  * <h4>The RGB Color Model</h4>

@@ -19,9 +19,6 @@
 
 package org.extex.interpreter.max;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.exception.helping.HelpingException;
@@ -33,6 +30,9 @@ import org.extex.scanner.api.exception.ScannerException;
 import org.extex.scanner.type.Namespace;
 import org.extex.scanner.type.token.Token;
 import org.extex.scanner.type.token.TokenFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class provides a token source which is fed from a string.
@@ -54,7 +54,7 @@ public class StringSource extends Moritz {
          * The field <tt>cs</tt> contains the char sequence containing the
          * chars to read.
          */
-        private CharSequence cs;
+        private final CharSequence cs;
 
         /**
          * The field <tt>next</tt> contains the pointer to the next char to
@@ -65,7 +65,7 @@ public class StringSource extends Moritz {
         /**
          * The field <tt>stack</tt> contains the stack for pushed tokens.
          */
-        private List<Token> stack = new ArrayList<Token>();
+        private final List<Token> stack = new ArrayList<>();
 
         /**
          * Creates a new object.
@@ -132,8 +132,6 @@ public class StringSource extends Moritz {
          * for the end user to track down problems.
          * 
          * @return the locator
-         * 
-         * @see org.extex.scanner.api.TokenStream#getLocator()
          */
         public Locator getLocator() {
 
@@ -145,15 +143,8 @@ public class StringSource extends Moritz {
          * stream.
          * 
          * @return <code>true</code> if the stream is at its end
-         * 
-         * @throws ScannerException in case that an error has been encountered.
-         *         Especially if an IO exceptions occurs it is delivered as
-         *         chained exception in a ScannerException.
-         * 
-         * @see org.extex.scanner.api.TokenStream#isEof()
          */
-        public boolean isEof() throws ScannerException {
-
+        public boolean isEof() {
             return next >= cs.length();
         }
 
@@ -161,15 +152,8 @@ public class StringSource extends Moritz {
          * Check to see if the token stream is currently at the end of line.
          * 
          * @return <code>true</code> if the stream is at end of line
-         * 
-         * @throws ScannerException in case that an error has been encountered.
-         *         Especially if an IO exceptions occurs it is delivered as
-         *         chained exception in a ScannerException.
-         * 
-         * @see org.extex.scanner.api.TokenStream#isEol()
          */
-        public boolean isEol() throws ScannerException {
-
+        public boolean isEol() {
             return isEof();
         }
 

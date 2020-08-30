@@ -46,12 +46,8 @@ import org.extex.typesetter.Typesetter;
  * 
  * <h3>Tracing</h3>
  * <p>
- * Tracing is <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is controlled by some count registers. The implementation
- * in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is based on observers. In the first stage a
+ * Tracing is TeX is controlled by some count registers. The implementation
+ * in ??TeX is based on observers. In the first stage a
  * {@link org.extex.interpreter.context.observer.count.CountObserver
  * CountObserver} for the controlling count is registered. In this observer the
  * observer for the real event is registered if this as not been done before and
@@ -178,9 +174,7 @@ public class TexUnitInfo extends UnitInfo
 
     /**
      * The field <tt>write18</tt> contains the indicator that the ancient
-     * \write18 feature of <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> should be enabled.
+     * \write18 feature of TeX should be enabled.
      */
     private boolean write18 = false;
 

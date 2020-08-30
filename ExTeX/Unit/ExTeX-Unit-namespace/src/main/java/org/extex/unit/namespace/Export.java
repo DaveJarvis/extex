@@ -55,9 +55,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * </p>
  * <p>
  * This primitive is one building block for the use of name spaces in
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. The central primitive for this purpose is
+ * ??TeX. The central primitive for this purpose is
  * <tt>\namespace</tt>.
  * </p>
  * 

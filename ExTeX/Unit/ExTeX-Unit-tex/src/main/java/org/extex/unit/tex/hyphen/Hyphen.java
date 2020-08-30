@@ -44,9 +44,7 @@ import org.extex.typesetter.type.node.HorizontalListNode;
  * hyphenation mark and break the line here.
  * </p>
  * <p>
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> has another mechanism for describing conditional text
+ * TeX has another mechanism for describing conditional text
  * insertions when line breaking appears at a certain place. Those are
  * associated with the primitive {@link org.extex.unit.tex.hyphen.Discretionary
  * <tt>\discretionary</tt>}. In this context the primitive <tt>\-</tt> is an

@@ -47,12 +47,8 @@ public interface ContextDimen {
      * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register
@@ -70,12 +66,8 @@ public interface ContextDimen {
      * Setter for the {@link org.extex.core.dimen.Dimen Dimen} register in all
      * requested groups. Dimen registers are named, either with a number or an
      * arbitrary string. The numbered registers where limited to 256 in
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. This restriction does no longer hold for
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * TeX. This restriction does no longer hold for
+     * ??TeX.
      * 
      * @param name the name or the number of the register
      * @param value the new value of the register

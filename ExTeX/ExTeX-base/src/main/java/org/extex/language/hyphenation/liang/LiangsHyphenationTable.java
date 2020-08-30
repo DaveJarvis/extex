@@ -41,16 +41,12 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
 
 /**
  * This class stores the values for hyphenations and hyphenates words. It uses
- * Liang's algorithm as described in the <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>book.
+ * Liang's algorithm as described in the TeXbook.
  * 
  * <h2>Liang's Algorithm</h2>
  * 
  * <p>
- * The hyphenation in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is based on Liang's thesis. This algorithm is based on
+ * The hyphenation in TeX is based on Liang's thesis. This algorithm is based on
  * patterns which consist of characters or a special marker for the beginning
  * and the end of the word. For each pattern it is characterized how desirable
  * or undesirable it would be to hyphenate before, between, or after it.
@@ -66,18 +62,12 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * the letter h, the second number to the position before the letter p, and so
  * on. Thus this pattern indicates that a hyphenation point can be inserted
  * between y and p. This leads to <tt>hy\-ph</tt> if written explicitly in
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * TeX.
  * </p>
  * <p>
  * The following table shows some more examples taken from the original
- * hyphenation patterns of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> for English. The character . denotes the beginning or the
- * end of a word. In the <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> patterns the word pattern and the hyphenation codes are
+ * hyphenation patterns of TeX for English. The character . denotes the beginning or the
+ * end of a word. In the TeX patterns the word pattern and the hyphenation codes are
  * intermixed and the hyphenation codes 0 are left out.
  * <table>
  * <tr>
@@ -141,9 +131,7 @@ import org.extex.typesetter.type.node.factory.NodeFactory;
  * denotes the minimal number of characters before a hyphenation at the
  * beginning of a word and <tt>\righthyphenmin</tt> the corresponding length at
  * the end of a word. <tt>\lefthyphenmin</tt> is set to 2 and
- * <tt>\righthyphenmin</tt> to 3 for English in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. Thus the final hyphen is not considered.
+ * <tt>\righthyphenmin</tt> to 3 for English in TeX. Thus the final hyphen is not considered.
  * </p>
  * 
  * 

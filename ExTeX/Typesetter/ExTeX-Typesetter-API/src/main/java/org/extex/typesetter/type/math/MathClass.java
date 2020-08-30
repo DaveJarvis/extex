@@ -515,72 +515,54 @@ public abstract class MathClass implements Serializable {
 
     /**
      * The field <tt>BINARY</tt> contains the instance representing the binary
-     * class. This class has the code 2 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * class. This class has the code 2 in TeX.
      */
     public static final MathClass BINARY = new BinaryMathClass();
 
     /**
      * The field <tt>CLOSING</tt> contains the instance representing the closing
-     * class. This class has the code 5 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * class. This class has the code 5 in TeX.
      */
     public static final MathClass CLOSING = new ClosingMathClass();
 
     /**
      * The field <tt>LARGE</tt> contains the instance representing the large
-     * class. This class has the code 1 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * class. This class has the code 1 in TeX.
      */
     public static final MathClass LARGE = new LargeMathClass();
 
     /**
      * The field <tt>OPENING</tt> contains the instance representing the opening
-     * class. This class has the code 4 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * class. This class has the code 4 in TeX.
      */
     public static final MathClass OPENING = new OpeningMathClass();
 
     /**
      * The field <tt>ORDINARY</tt> contains the instance representing the
-     * ordinary class. This class has the code 0 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * ordinary class. This class has the code 0 in TeX.
      */
     public static final MathClass ORDINARY = new OrdinaryMathClass();
 
     /**
      * The field <tt>PUNCTUATION</tt> contains the instance representing the
-     * punctation class. This class has the code 6 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * punctation class. This class has the code 6 in TeX.
      */
     public static final MathClass PUNCTATION = new PunctationMathClass();
 
     /**
      * The field <tt>RELATION</tt> contains the instance representing the
-     * relation class. This class has the code 3 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * relation class. This class has the code 3 in TeX.
      */
     public static final MathClass RELATION = new RelationMathClass();
 
     /**
      * The field <tt>VARIABLE</tt> contains the instance representing the
-     * variable width class. This class has the code 7 in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * variable width class. This class has the code 7 in TeX.
      */
     public static final MathClass VARIABLE = new VariableMathClass();
 
     /**
-     * The field <tt>MC</tt> contains the mapping from <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> numbers to instances.
+     * The field <tt>MC</tt> contains the mapping from TeX numbers to instances.
      * 
      * @see MathClass#getMathClass(int)
      */
@@ -588,12 +570,8 @@ public abstract class MathClass implements Serializable {
             OPENING, CLOSING, PUNCTATION, VARIABLE, null};
 
     /**
-     * Factory method for the math class which maps the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding into the appropriate instance. The following
-     * table gives a mapping from <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> numbers to instances:
+     * Factory method for the math class which maps the TeX encoding into the appropriate instance. The following
+     * table gives a mapping from TeX numbers to instances:
      * <table>
      * <tr>
      * <td>0</td>

@@ -23,9 +23,7 @@ import java.io.IOException;
 import java.io.Reader;
 
 /**
- * Read a file and map plain<logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> as well as double-quote sequences
+ * Read a file and map plainTeX as well as double-quote sequences
  * defined in <tt>german.sty</tt> to characters.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>

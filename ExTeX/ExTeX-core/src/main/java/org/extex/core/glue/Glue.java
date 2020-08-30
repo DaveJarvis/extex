@@ -448,9 +448,7 @@ public class Glue implements Serializable, FixedGlue {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> to print the skip register.
+     * is exactly the string which would be produced by TeX to print the skip register.
      * 
      * @return the string representation of this glue
      * @see "<logo>T<span style=

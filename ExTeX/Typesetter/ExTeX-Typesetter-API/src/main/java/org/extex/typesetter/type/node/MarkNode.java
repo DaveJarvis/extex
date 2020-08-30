@@ -50,9 +50,7 @@ public class MarkNode extends AbstractNode implements Node {
 
     /**
      * The field <tt>index</tt> contains the index of the mark node for eTeX.
-     * The index 0 corresponds to the original mark of <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. I.e. \marks0 == \mark
+     * The index 0 corresponds to the original mark of TeX. I.e. \marks0 == \mark
      */
     private String index;
 

@@ -50,9 +50,7 @@ import org.extex.typesetter.type.page.PageFactory;
  * the height <tt>\mediaheight</tt>.
  * </p>
  * <p>
- * The logical page is the area used by <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> to place material on. It has a reference point which is in
+ * The logical page is the area used by TeX to place material on. It has a reference point which is in
  * its upper left corner. This reference point is 1&nbsp;in right and 1&nbsp;in
  * down from the corner of the physical page. The reference point can be shifted
  * further by using the dimen registers <tt>\hoffset</tt> and <tt>\voffset</tt>.

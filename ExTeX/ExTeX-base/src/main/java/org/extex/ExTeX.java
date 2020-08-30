@@ -88,20 +88,14 @@ import java.util.logging.*;
 import static java.lang.Boolean.parseBoolean;
 
 /**
- * This is the programmatic interface to the <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> functionality. A program may use this functionality to
- * perform all necessary actions without the burden of the traditional
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> command line interface.
+ * This is the programmatic interface to the εχTeX functionality. A program
+ * may use this functionality to perform all necessary actions without the
+ * burden of the traditional TeX command line interface.
  * <p>
  * The programmatic interface provides the following features:
  * </p>
  * <ul>
- * <li>Specifying format, input file and <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> code in properties.</li>
+ * <li>Specifying format, input file and TeX code in properties.</li>
  * </ul>
  * 
  * <a name="settings"/> <h3>Settings</h3>
@@ -122,9 +116,7 @@ import static java.lang.Boolean.parseBoolean;
  * </p>
  * <dl>
  * <dt><a name="extex.code"/><tt>extex.code</tt></a></dt>
- * <dd>This parameter contains <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> code to be executed directly. The execution is performed
+ * <dd>This parameter contains εχTeX code to be executed directly. The execution is performed
  * after any code specified in an input file. on the command line the code has
  * to start with a backslash. This restriction does not hold for the property
  * settings.</dd>
@@ -168,11 +160,7 @@ import static java.lang.Boolean.parseBoolean;
  * 
  * <dt><a name="extex.ini"/><tt>extex.ini</tt></dt>
  * <dd>If set to <code>true</code> then act as initex. This command line option
- * is defined for compatibility to <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> only. In <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> it has no effect at all.</dd>
+ * is defined for compatibility to TeX only. In εχTeX it has no effect at all.</dd>
  * 
  * <dt><a name="extex.interaction"/><tt>extex.interaction</tt></dt>
  * <dd>This parameter contains the interaction mode. possible values are the
@@ -231,9 +219,7 @@ import static java.lang.Boolean.parseBoolean;
  * 
  * <dt><a name="extex.texinputs"/><tt>extex.texinputs</tt></dt>
  * <dd>This parameter contains the additional directories for searching
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> input files.</dd>
+ * TeX input files.</dd>
  * 
  * <dt><a name="extex.token.stream"/><tt>extex.token.stream</tt></dt>
  * <dd>This string parameter contains the logical name of the configuration to
@@ -261,9 +247,7 @@ import static java.lang.Boolean.parseBoolean;
  * 
  * <dt><a name="extex.units"/><tt>extex.units</tt></dt>
  * <dd>This parameter contains a colon separated list of units to be loaded into
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.</dd>
+ * εχTeX.</dd>
  * 
  * </dl>
  * 
@@ -278,13 +262,9 @@ import static java.lang.Boolean.parseBoolean;
  * <a name="configuration"/> <h3>Configuration Resources</h3>
  * 
  * <p>
- * The configuration of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is controlled by several configuration resources. The
+ * The configuration of εχTeX is controlled by several configuration resources. The
  * fallback for those configuration resources are contained in the
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> jar file. In this section we will describe how to overwrite
+ * εχTeX jar file. In this section we will describe how to overwrite
  * the settings in the default configuration resource.
  * </p>
  * 
@@ -298,13 +278,9 @@ import static java.lang.Boolean.parseBoolean;
  * 
  * <p>
  * This class is the central point for using an instance of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> from within a program. For this purpose the class has been
+ * εχTeX from within a program. For this purpose the class has been
  * specially designed. The class can be used as is. This is not the normal way
- * to apply <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. The configuration via configuration files and properties
+ * to apply εχTeX. The configuration via configuration files and properties
  * can be used to influence the behavior of the instance. Nevertheless the fine
  * points in the live cycle can not be accessed this way. This can be achieved
  * via deriving another class from it and overwriting one of the protected
@@ -316,9 +292,7 @@ import static java.lang.Boolean.parseBoolean;
  * insight into the live cycle of the class.
  * </p>
  * <div class="figure"> <img src="doc-files/ExTeX-start.png" title="Starting
- * ExTeX"/> <div class="caption"> Starting <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> </div> </div>
+ * ExTeX"/> <div class="caption"> Starting εχTeX </div> </div>
  * <p>
  * Mainly there are two steps in using this class. The first step is the
  * creation of a new instance. This phase is depicted in the figure above. Note
@@ -339,9 +313,7 @@ import static java.lang.Boolean.parseBoolean;
  * invoked. The methods used in this phase are shown in the figure below.
  * </p>
  * <div class="figure"> <img src="doc-files/ExTeX-run.png" title="Running
- * ExTeX"/> <div class="caption"> Running <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> </div> </div>
+ * ExTeX"/> <div class="caption"> Running εχTeX </div> </div>
  * <dl>
  * <dt>{@link #makeLogFile(String) makeLogFile()}</dt>
  * <dd>Creates the log file.</dd>
@@ -453,9 +425,7 @@ public class ExTeX {
 
     /**
      * The constant <tt>PROP_CODE</tt> contains the name of the property for the
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> code to be inserted at the beginning of the job.
+     * TeX code to be inserted at the beginning of the job.
      */
     protected static final String PROP_CODE = "extex.code";
 

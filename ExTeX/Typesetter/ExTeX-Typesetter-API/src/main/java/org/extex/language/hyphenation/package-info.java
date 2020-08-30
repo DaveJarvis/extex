@@ -17,9 +17,7 @@
  */
 /**
  * This package contains the definitions and implementations for the treatment of
- * hyphenations in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * hyphenations in ??TeX.
  */
 
 package org.extex.language.hyphenation;

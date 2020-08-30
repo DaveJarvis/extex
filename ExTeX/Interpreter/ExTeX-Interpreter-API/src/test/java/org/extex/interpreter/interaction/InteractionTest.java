@@ -19,15 +19,14 @@
 
 package org.extex.interpreter.interaction;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
 import java.util.Locale;
 
 import org.extex.core.exception.GeneralException;
 import org.extex.interpreter.exception.InteractionUnknownException;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 /**
  * Test suite for the interaction constants.
@@ -200,7 +199,7 @@ public class InteractionTest {
 
         try {
             Interaction.get(-1);
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertTrue(true);
         }
@@ -215,7 +214,7 @@ public class InteractionTest {
 
         try {
             Interaction.get(4);
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertTrue(true);
         }
@@ -279,7 +278,7 @@ public class InteractionTest {
 
         try {
             Interaction.get((Interaction) null);
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertEquals("message", "", e.getMessage());
             assertEquals("localized message", "Bad interaction mode ()",
@@ -349,7 +348,7 @@ public class InteractionTest {
 
         try {
             Interaction.get((String) null);
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
         }
@@ -365,7 +364,7 @@ public class InteractionTest {
 
         try {
             Interaction.get("");
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
         }
@@ -381,7 +380,7 @@ public class InteractionTest {
 
         try {
             Interaction.get("abc");
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
             assertEquals("Bad interaction mode (abc)", e.getLocalizedMessage());
@@ -398,7 +397,7 @@ public class InteractionTest {
 
         try {
             Interaction.get("Batchmode");
-            assertTrue(false);
+            fail();
         } catch (InteractionUnknownException e) {
             assertEquals("", e.getMessage());
             assertEquals("Bad interaction mode (Batchmode)",

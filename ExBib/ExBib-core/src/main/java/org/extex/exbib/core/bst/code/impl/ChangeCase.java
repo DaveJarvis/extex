@@ -45,14 +45,10 @@ import org.extex.framework.i18n.LocalizerFactory;
  * <ul>
  * <li>If the format is <tt>"l"</tt> or <tt>"L"</tt> then the string is
  * converted to lower case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> macros.</li>
+ * lowercase counterpart &ndash; even the letters in TeX macros.</li>
  * <li>If the format is <tt>"u"</tt> or <tt>"U"</tt> then the string is
  * converted to upper case. This means that each letter is translated to its
- * lowercase counterpart &ndash; even the letters in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> macros.</li>
+ * lowercase counterpart &ndash; even the letters in TeX macros.</li>
  * <li>If the format is <tt>"t"</tt> or <tt>"T"</tt> then the string is
  * converted to title case. This means that the first `letter' is translated to
  * upper case and the other letters are left unchanged.

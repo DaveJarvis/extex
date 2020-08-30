@@ -21,7 +21,7 @@ Compile the entirety of εχTeX from the `extex` directory as follows:
     gradle clean build
 
 Any `README.md` files that suggest using Maven to build are
-outdated.
+outdated as of 29-Aug-2020.
 
 Compiling sub-projects
 -------------------------------------------

@@ -17,9 +17,7 @@
  */
 /**
  * This package contains the basic data types for nodes as stored in boxed and 
- * processed by the typesetter in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * processed by the typesetter in ??TeX.
  */
 
 package org.extex.typesetter.type.node;

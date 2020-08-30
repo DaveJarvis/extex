@@ -19,32 +19,14 @@
 
 package org.extex.interpreter.max;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.extex.base.parser.ConstantCountParser;
-import org.extex.base.parser.ConstantDimenParser;
-import org.extex.base.parser.ConstantGlueParser;
-import org.extex.base.parser.ConstantMudimenParser;
-import org.extex.base.parser.ConstantMuskipParser;
-import org.extex.base.parser.MathClassParser;
+import org.extex.base.parser.*;
 import org.extex.core.Locator;
 import org.extex.core.UnicodeChar;
 import org.extex.core.count.Count;
 import org.extex.core.dimen.Dimen;
 import org.extex.core.exception.GeneralException;
 import org.extex.core.exception.NotObservableException;
-import org.extex.core.exception.helping.BadCharacterException;
-import org.extex.core.exception.helping.EofException;
-import org.extex.core.exception.helping.EofInToksException;
-import org.extex.core.exception.helping.HelpingException;
-import org.extex.core.exception.helping.IllegalRegisterException;
-import org.extex.core.exception.helping.InvalidCharacterNameException;
-import org.extex.core.exception.helping.MissingLeftBraceException;
-import org.extex.core.exception.helping.MissingNumberException;
-import org.extex.core.exception.helping.NoHelpException;
-import org.extex.core.exception.helping.UndefinedControlSequenceException;
+import org.extex.core.exception.helping.*;
 import org.extex.core.glue.Glue;
 import org.extex.core.muskip.Mudimen;
 import org.extex.core.muskip.Muskip;
@@ -90,15 +72,7 @@ import org.extex.scanner.stream.observer.string.OpenStringObservable;
 import org.extex.scanner.stream.observer.string.OpenStringObserver;
 import org.extex.scanner.type.Catcode;
 import org.extex.scanner.type.Namespace;
-import org.extex.scanner.type.token.CodeToken;
-import org.extex.scanner.type.token.ControlSequenceToken;
-import org.extex.scanner.type.token.LeftBraceToken;
-import org.extex.scanner.type.token.LetterToken;
-import org.extex.scanner.type.token.OtherToken;
-import org.extex.scanner.type.token.RightBraceToken;
-import org.extex.scanner.type.token.SpaceToken;
-import org.extex.scanner.type.token.Token;
-import org.extex.scanner.type.token.TokenFactory;
+import org.extex.scanner.type.token.*;
 import org.extex.scanner.type.tokens.Tokens;
 import org.extex.typesetter.Typesetter;
 import org.extex.typesetter.exception.TypesetterException;
@@ -106,6 +80,10 @@ import org.extex.typesetter.tc.font.Font;
 import org.extex.typesetter.type.math.MathClass;
 import org.extex.unit.base.register.count.IntegerCode;
 import org.extex.unit.base.register.toks.ToksParameter;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * This class provides the layer above the input streams and the tokenizer. It
@@ -170,9 +148,7 @@ public class Moritz extends Max
 
     /**
      * The constant <tt>MAX_CHAR_CODE</tt> contains the maximum value for a
-     * character code. In original <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this value would be 255.
+     * character code. In original TeX this value would be 255.
      */
     private static final long MAX_CHAR_CODE = Long.MAX_VALUE;
 
@@ -194,7 +170,7 @@ public class Moritz extends Max
     /**
      * The field <tt>lastToken</tt> contains the last token read.
      */
-    private Token lastToken = null;
+    private Token lastToken ;
 
     /**
      * The field <tt>maxRegister</tt> contains the indicator for the max
@@ -209,14 +185,14 @@ public class Moritz extends Max
      * used for the observers which are registered to receive notifications when
      * a stream is closed.
      */
-    private StreamCloseObserverList observersCloseStream = null;
+    private StreamCloseObserverList observersCloseStream ;
 
     /**
      * The field <tt>observersEOF</tt> contains the observer list is used for
      * the observers which are registered to receive a notification when all
      * streams are at their end. The argument is always <code>null</code>.
      */
-    private EofObserver observersEOF = null;
+    private EofObserver observersEOF ;
 
     /**
      * The field <tt>observersPop</tt> contains the observer list is used for
@@ -224,7 +200,7 @@ public class Moritz extends Max
      * token is about to be delivered. The argument is the token to be
      * delivered.
      */
-    private PopObserver observersPop = null;
+    private PopObserver observersPop ;
 
     /**
      * The field <tt>observersPush</tt> contains the observer list is used for
@@ -232,13 +208,13 @@ public class Moritz extends Max
      * token is pushed back to the input stream. The argument is the token to be
      * pushed.
      */
-    private PushObserver observersPush = null;
+    private PushObserver observersPush ;
 
     /**
      * The field <tt>parsers</tt> contains the list of registered parsers.
      */
     @SuppressWarnings("rawtypes")
-    private Map<Class, Parser> parsers = new HashMap<Class, Parser>();
+    private final Map<Class, Parser> parsers = new HashMap<>();
 
     /**
      * The field <tt>skipSpaces</tt> contains the indicator that space tokens
@@ -251,14 +227,14 @@ public class Moritz extends Max
      * from. For efficiency this stream is kept in a variable instead of
      * accessing the streamStack each time it is needed.
      */
-    private TokenStream stream = null;
+    private TokenStream stream ;
 
     /**
      * The field <tt>streamStack</tt> contains the stack of streams to read from
      * &ndash; except of the current one which is stored in the variable
      * <code>stream</code>.
      */
-    private ArrayList<TokenStream> streamStack = new ArrayList<TokenStream>();
+    private final ArrayList<TokenStream> streamStack = new ArrayList<>();
 
     /**
      * The field <tt>tokenStreamFactory</tt> contains the factory for new token
@@ -393,7 +369,7 @@ public class Moritz extends Max
         }
         boolean isFile = stream.isFileStream();
         int last = streamStack.size() - 1;
-        stream = last >= 0 ? (TokenStream) streamStack.remove(last) : null;
+        stream = last >= 0 ? streamStack.remove( last) : null;
         if (isFile) {
             push(context.getToks(ToksParameter.getKey("everyeof", context)));
             return true;

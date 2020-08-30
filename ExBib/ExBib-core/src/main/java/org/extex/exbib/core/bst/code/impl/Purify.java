@@ -42,12 +42,8 @@ import org.extex.framework.configuration.exception.ConfigurationException;
  * transformations:
  * 
  * <ul>
- * <li>Any known <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> macro at brace level 1 is expanded.</li>
- * <li>Any unknown <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> macro at brace level 1 is removed.</li>
+ * <li>Any known TeX macro at brace level 1 is expanded.</li>
+ * <li>Any unknown TeX macro at brace level 1 is removed.</li>
  * <li>Any white-space character, the tilde <tt>~</tt>, and the hyphen
  * <tt>-</tt> are replaced by a single space character.</li>
  * <li>Any other non-alphanumeric characters are removed.</li>

@@ -253,9 +253,7 @@ public class Count extends CountConstant {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> to print the Count.
+     * is exactly the string which would be produced by TeX to print the Count.
      * 
      * @return the printable representation
      * 
@@ -270,9 +268,7 @@ public class Count extends CountConstant {
 
     /**
      * Determine the printable representation of the object. The value returned
-     * is exactly the string which would be produced by <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> to print the Count.
+     * is exactly the string which would be produced by TeX to print the Count.
      * 
      * @param sb the target string buffer
      * 

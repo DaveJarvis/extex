@@ -42,14 +42,10 @@ import org.extex.scanner.type.tokens.Tokens;
  * </p>
  * <p>
  * The class of the top mark is determined when the <tt>\marks</tt> primitive is
- * used to insert a mark into the current list. In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the class used to be a number in the range 0&ndash;255; the
+ * used to insert a mark into the current list. In TeX the class used to be a number in the range 0&ndash;255; the
  * limit has been raised in <logo>&epsilon;-T<span style=
  * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> to 32767 and in <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> to allow any number or tokens value.
+ * >e</span>X</logo> to 32767 and in ??TeX to allow any number or tokens value.
  * </p>
  * 
  * <h4>Syntax</h4> The formal description of this primitive is the following:

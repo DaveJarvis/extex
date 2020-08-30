@@ -28,9 +28,7 @@
  *  <doc name="primitives" type="howto">
  *  <h3>Writing New Primitives</h3>
  *  <p>
- *   The core primitives of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> are written in Java and bound to
+ *   The core primitives of ??TeX are written in Java and bound to
  *   control sequences or active characters. In this section we will
  *   explain how to write new primitives in Java.
  *  </p>

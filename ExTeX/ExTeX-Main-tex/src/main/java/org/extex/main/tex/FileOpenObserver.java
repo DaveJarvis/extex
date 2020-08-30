@@ -26,9 +26,7 @@ import org.extex.scanner.stream.observer.file.OpenFileObserver;
 
 /**
  * This observer reports that a certain file has been opened. According to the
- * behavior of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> it logs an open brace and the name of the file.
+ * behavior of TeX it logs an open brace and the name of the file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4708 $

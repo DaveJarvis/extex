@@ -170,9 +170,7 @@ public class HboxTest extends NoFlagsPrimitiveTester {
     /**
      * <testcase primitive="\hbox"> Test case checking that a hbox containing
      * "abc" in font cmtt12 has the width 18.52501pt. This value has been
-     * computed with <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>. </testcase>
+     * computed with TeX. </testcase>
      * 
      * @throws Exception in case of an error
      */

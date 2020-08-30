@@ -34,24 +34,16 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="par"> <h3>The Primitive <tt>\par</tt></h3>
  * <p>
  * The primitive <tt>\par</tt> signals the end of a paragraph. If
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is in a horizontal mode then the preceding material is
+ * ??TeX is in a horizontal mode then the preceding material is
  * typeset and the paragraph is added to the vertical list.
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> goes into a vertical mode afterwards.
+ * ??TeX goes into a vertical mode afterwards.
  * </p>
  * <p>
- * If <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> is in a vertical mode then this primitive is simply
+ * If ??TeX is in a vertical mode then this primitive is simply
  * ignored.
  * </p>
  * <p>
- * The scanner rules of <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> determine that the macro <tt>\par</tt> is inserted for any
+ * The scanner rules of TeX determine that the macro <tt>\par</tt> is inserted for any
  * number of subsequent empty lines. This means that in a normal text there
  * might be a lot of invocations of <tt>\par</tt> even if none of them is
  * written explicitly.

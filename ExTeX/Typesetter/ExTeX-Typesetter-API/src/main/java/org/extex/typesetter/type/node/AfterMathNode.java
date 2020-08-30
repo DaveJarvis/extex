@@ -26,9 +26,7 @@ import org.extex.typesetter.Discardable;
 import org.extex.typesetter.type.NodeVisitor;
 
 /**
- * This node represents a <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> "math" node with the subtype "after".
+ * This node represents a TeX "math" node with the subtype "after".
  * <p>
  * For the document writer it acts like a glue or kerning node. The width
  * contains the distance to add.

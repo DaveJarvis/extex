@@ -562,9 +562,7 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * <doc type="syntax" name="register name"> <h3>A Register Name</h3>
      * <p>
      * A register name determines under which key a register can be addressed.
-     * In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this used to be a positive number only. This has been
+     * In TeX this used to be a positive number only. This has been
      * extended to allow also a token list in braces.
      * </p>
      * <p>
@@ -587,16 +585,12 @@ public interface TokenSource extends CountParser, DimenParser, GlueParser {
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      * >e</span>X</logo>:
      * <ul>
-     * <li><logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> uses the value 255.</li>
+     * <li>TeX uses the value 255.</li>
      * <li><logo>&epsilon;-T<span style=
      * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
      * >e</span>X</logo> uses the value 32767.</li>
      * <li><logo>Omega</logo> uses the value 65536.</li>
-     * <li><logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> uses the value -1.</li>
+     * <li>??TeX uses the value -1.</li>
      * </ul>
      * </p>
      * <p>

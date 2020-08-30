@@ -34,9 +34,7 @@ package org.extex.scanner.type;
 public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
 
     /**
-     * This visit method is invoked on an active token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this is e.g. ~.
+     * This visit method is invoked on an active token. In TeX this is e.g. ~.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -49,9 +47,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitActive(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a comment token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a %.
+     * This visit method is invoked on a comment token. In TeX this normally is a %.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -77,9 +73,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitCr(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on an escape token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally means a control sequence.
+     * This visit method is invoked on an escape token. In TeX this normally means a control sequence.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -215,9 +209,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitSpace(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a sub mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a _.
+     * This visit method is invoked on a sub mark token. In TeX this normally is a _.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -230,9 +222,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitSubMark(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a sup mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a ^.
+     * This visit method is invoked on a sup mark token. In TeX this normally is a ^.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass
@@ -245,9 +235,7 @@ public interface CatcodeVisitor<RET, ARG1, ARG2, ARG3> {
     RET visitSupMark(ARG1 arg1, ARG2 arg2, ARG3 arg3) throws Exception;
 
     /**
-     * This visit method is invoked on a tab mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is an &amp;.
+     * This visit method is invoked on a tab mark token. In TeX this normally is an &amp;.
      * 
      * @param arg1 the first argument to pass
      * @param arg2 the second argument to pass

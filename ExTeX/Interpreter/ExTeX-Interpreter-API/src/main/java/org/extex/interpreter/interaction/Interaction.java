@@ -27,9 +27,7 @@ import org.extex.interpreter.exception.InteractionUnknownException;
 
 /**
  * This class provides a type-save enumeration of the interactions styles of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. It defined constants for the supported interaction modes.
+ * ??TeX. It defined constants for the supported interaction modes.
  * In addition it supports the visitor pattern to react on them.
  * 
  * @see "<logo>T<span style=
@@ -386,9 +384,7 @@ public abstract class Interaction implements Serializable {
 
     /**
      * Get the numeric index of the interaction mode. According to the
-     * definition of <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> the following mapping holds:
+     * definition of TeX the following mapping holds:
      * <table>
      * <tr>
      * <td>BatchMode</td>

@@ -28,9 +28,7 @@ import org.extex.core.glue.WideGlue;
 import org.extex.typesetter.type.OrientedNode;
 
 /**
- * This node represents a <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> "glue" node.
+ * This node represents a TeX "glue" node.
  * <p>
  * For the document writer it acts like a kerning node. The width contains the
  * distance to add.

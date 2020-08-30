@@ -77,25 +77,17 @@ import org.extex.typesetter.exception.TypesetterException;
  * <pre class="TeXSample">
  *    \dimendef\abc={xyz\the\count0}  </pre>
  * 
- * <h4>Differences to <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> and Friends</h4>
+ * <h4>Differences to TeX and Friends</h4>
  * <p>
- * In <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the register name could consist of an integer in the range
+ * In TeX the register name could consist of an integer in the range
  * from 0 to 255. In <logo>Omega</logo> this restriction has been relaxed to
- * allow integers from 0 to 32767. In <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the restriction to integers has been relaxed. The register
+ * allow integers from 0 to 32767. In ??TeX the restriction to integers has been relaxed. The register
  * name can either be a number &ndash; positive or not and of any value &ndash;
  * or alternatively any token sequence enclosed in braces.
  * </p>
  * <p>
  * Note that the extended register names and the maximal number acceptable as
- * register names are a feature of <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> which is configurable via the count register
+ * register names are a feature of ??TeX which is configurable via the count register
  * <tt>\max.register</tt>. This means that the feature can be disabled in the
  * compatibility modes.
  * </p>

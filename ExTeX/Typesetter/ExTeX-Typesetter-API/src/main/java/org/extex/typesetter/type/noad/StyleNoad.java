@@ -33,9 +33,7 @@ import org.extex.typesetter.type.noad.util.MathSpacing;
  * processing.
  * 
  * <p>
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> defined a set of variations to a style. They are defined in
+ * TeX defined a set of variations to a style. They are defined in
  * the following table:
  * </p>
  * <table>
@@ -301,9 +299,7 @@ public final class StyleNoad implements Noad {
     private String fontName;
 
     /**
-     * The field <tt>no</tt> contains the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding of the style.
+     * The field <tt>no</tt> contains the TeX encoding of the style.
      */
     private int no;
 
@@ -313,9 +309,7 @@ public final class StyleNoad implements Noad {
     private MathSpacing spacingClass = MathSpacing.UNDEF;
 
     /**
-     * The field <tt>style</tt> contains the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> name for the style. It has the values
+     * The field <tt>style</tt> contains the TeX name for the style. It has the values
      * <tt>textstyle</tt>, <tt>scriptstyle</tt>, or <tt>scriptscriptstyle</tt>.
      */
     private String style;

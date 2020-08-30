@@ -50,9 +50,7 @@ public interface LanguageManager extends Serializable {
      * created or loaded.
      * </p>
      * <p>
-     * The index in <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> is the language number as <code>String</code>. This
+     * The index in TeX is the language number as <code>String</code>. This
      * implementation does not have this restriction. The name can be any
      * string.
      * </p>

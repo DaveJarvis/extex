@@ -63,9 +63,7 @@ public class HorizontalListMaker extends AbstractListMaker {
 
     /**
      * The constant <tt>DEFAULT_SPACEFACTOR</tt> contains the default value for
-     * the space factor. It is 1000 according to <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo>.
+     * the space factor. It is 1000 according to TeX.
      */
     private static final int DEFAULT_SPACEFACTOR = 1000;
 

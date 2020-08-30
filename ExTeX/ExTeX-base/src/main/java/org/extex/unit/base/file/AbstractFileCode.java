@@ -160,9 +160,7 @@ public abstract class AbstractFileCode extends AbstractCode
 
     /**
      * The field <tt>strictTeX</tt> contains the boolean indicating whether or
-     * not to adhere strictly to the rules of <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> for file name parsing.
+     * not to adhere strictly to the rules of TeX for file name parsing.
      */
     private boolean strictTeX = false;
 

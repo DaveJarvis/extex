@@ -42,9 +42,7 @@ import org.extex.typesetter.exception.TypesetterException;
  * <doc name="catcode"> <h3>The Primitive <tt>\catcode</tt></h3>
  * <p>
  * The primitive <tt>\catcode</tt> can be used to influence the tokenizer of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>. This is done by assigning category codes to single
+ * ??TeX. This is done by assigning category codes to single
  * characters. Whenever characters are read tokens are generated and passed on.
  * Those tokens carry the category code into the interpreter. The interpreter
  * considers always tokens, i.e. characters and category codes. Thus the same

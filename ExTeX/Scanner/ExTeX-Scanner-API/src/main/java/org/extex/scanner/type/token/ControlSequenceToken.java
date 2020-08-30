@@ -32,9 +32,7 @@ import org.extex.scanner.type.Namespace;
  * </p>
  * 
  * <p>
- * Note that in contrast to <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> the escape character leading to this control sequence token
+ * Note that in contrast to TeX the escape character leading to this control sequence token
  * is stored in the character code of the abstract base class.
  * </p>
  * 

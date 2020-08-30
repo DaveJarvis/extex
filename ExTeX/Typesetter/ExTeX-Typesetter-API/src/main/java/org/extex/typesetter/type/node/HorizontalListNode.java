@@ -43,9 +43,7 @@ import org.extex.typesetter.type.OrientedNodeList;
  * 
  * </p>
  * <p>
- * The <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> definition of a hlist states that a box is not variable
+ * The TeX definition of a hlist states that a box is not variable
  * neither in width nor in height. Thus this method is simply a noop.
  * </p>
  * 

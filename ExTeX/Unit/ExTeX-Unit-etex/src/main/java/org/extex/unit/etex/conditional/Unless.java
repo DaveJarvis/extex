@@ -44,9 +44,7 @@ import org.extex.unit.tex.conditional.Ifcase;
  * >e</span>X</logo> reference</strong>.
  * </p>
  * <p>
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> has, by design, a rather sparse set of conditional
+ * TeX has, by design, a rather sparse set of conditional
  * primitives: <tt>\ifeof</tt>, <tt>\ifodd</tt>, <tt>\ifvoid</tt>, etc., have no
  * complementary counterparts. Whilst this normally poses no problems since each
  * accepts both a <tt>\then</tt> (implicit) and an <tt>\else</tt> (explicit)

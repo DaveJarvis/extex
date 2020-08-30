@@ -65,25 +65,19 @@ public abstract class AbstractTeXMathCode extends AbstractMathCode {
 
     /**
      * The constant <tt>CHARACTER_MASK</tt> contains the mask for the character
-     * value in the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding.
+     * value in the TeX encoding.
      */
     private static final int CHARACTER_MASK = 0xff;
 
     /**
      * The constant <tt>FAMILY_MASK</tt> contains the mask for the family in the
-     * <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding.
+     * TeX encoding.
      */
     private static final int FAMILY_MASK = 0xf;
 
     /**
      * The constant <tt>FAMILY_OFFSET</tt> contains the offset for the family in
-     * the <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> encoding.
+     * the TeX encoding.
      */
     private static final int FAMILY_OFFSET = 8;
 

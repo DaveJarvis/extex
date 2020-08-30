@@ -25,9 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * This reader knows of certain plain<logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> control sequences and translates them to the appropriate
+ * This reader knows of certain plainTeX control sequences and translates them to the appropriate
  * characters. It is assumed that the category codes have their normal meaning.
  * 
  * 

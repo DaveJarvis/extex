@@ -26,9 +26,7 @@ import org.extex.scanner.api.TokenStream;
 
 /**
  * This observer waits for update events when files are closed. According to the
- * reference in <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> a closing parenthesis is written to the log file.
+ * reference in TeX a closing parenthesis is written to the log file.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision:4445 $

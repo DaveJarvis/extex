@@ -96,9 +96,7 @@ import java.util.logging.Logger;
 
 /**
  * This is a reference implementation for a <b>MA</b>cro e<b>X</b>pander. The
- * macro expander is the core engine driving <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * macro expander is the core engine driving ??TeX.
  * 
  * 
  * <doc name="ignorevoid" type="register"> <h3>The Count Parameter
@@ -109,9 +107,7 @@ import java.util.logging.Logger;
  * then undefined code is ignored. Otherwise it leads to an error message.
  * </p>
  * <p>
- * This count parameter has been introduced by <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
+ * This count parameter has been introduced by ??TeX.
  * </p>
  * 
  * <h4>Syntax</h4> The formal description of this primitive is the following:
@@ -187,9 +183,7 @@ public abstract class Max
     /**
      * The constant <tt>MAX_ERRORS_DEFAULT</tt> contains the default value for
      * maximal allowed number of errors after which the
-     * <logo>&epsilon;&chi;T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> run is terminated automatically.
+     * ??TeX run is terminated automatically.
      */
     private static final int MAX_ERRORS_DEFAULT = 100;
 
@@ -302,9 +296,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on an active token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this is e.g. ~.
+                 * TeX this is e.g. ~.
                  * 
                  * @param token the active token to visit
                  * @param arg the first argument to pass
@@ -352,9 +344,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on an escape token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally means a control sequence.
+                 * TeX this normally means a control sequence.
                  * 
                  * @param token the control sequence token to visit
                  * @param arg the first argument to pass
@@ -421,9 +411,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a macro parameter token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a #.
+                 * TeX this normally is a #.
                  * 
                  * @param token the macro param token to visit
                  * @param arg the first argument to pass
@@ -442,9 +430,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a math shift token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a $.
+                 * TeX this normally is a $.
                  * 
                  * @param token the math shift token to visit
                  * @param arg the first argument to pass
@@ -515,9 +501,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a sub mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a _.
+                 * TeX this normally is a _.
                  * 
                  * @param token the sub mark token to visit
                  * @param arg the first argument to pass
@@ -535,9 +519,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a sup mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a ^.
+                 * TeX this normally is a ^.
                  * 
                  * @param token the sup mark token to visit
                  * @param arg the first argument to pass
@@ -555,9 +537,7 @@ public abstract class Max
 
                 /**
                  * This visit method is invoked on a tab mark token. In
-                 * <logo>T<span style=
-                 * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-                 * >e</span>X</logo> this normally is a &.
+                 * TeX this normally is a &.
                  * 
                  * @param token the tab mark token to visit
                  * @param arg the first argument to pass
@@ -1534,9 +1514,7 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on an active token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this is e.g. ~.
+     * This visit method is invoked on an active token. In TeX this is e.g. ~.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1596,9 +1574,7 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on an escape token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally means a control sequence.
+     * This visit method is invoked on an escape token. In TeX this normally means a control sequence.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1842,9 +1818,7 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sub mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a <tt>_</tt>.
+     * This visit method is invoked on a sub mark token. In TeX this normally is a <tt>_</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1879,9 +1853,7 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a sup mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a <tt>^</tt>.
+     * This visit method is invoked on a sup mark token. In TeX this normally is a <tt>^</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored
@@ -1916,9 +1888,7 @@ public abstract class Max
     }
 
     /**
-     * This visit method is invoked on a tab mark token. In <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> this normally is a <tt>&amp;</tt>.
+     * This visit method is invoked on a tab mark token. In TeX this normally is a <tt>&amp;</tt>.
      * 
      * @param token the first argument to pass is the token to expand.
      * @param ignore the second argument is ignored

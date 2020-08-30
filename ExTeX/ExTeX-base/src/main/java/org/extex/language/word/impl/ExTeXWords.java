@@ -41,11 +41,8 @@ import org.extex.typesetter.type.node.LigatureNode;
 import org.extex.typesetter.type.node.WhatsItNode;
 
 /**
- * This class tokenizes a list of nodes according to the rules of
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>.
- * 
+ * This class tokenizes a list of nodes according to the rules of εχTeX.
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision: 4784 $
  */
@@ -60,9 +57,7 @@ public class ExTeXWords implements WordTokenizer {
      * Hyphenate subsequent char nodes from a ligature.
      * 
      * <p>
-     * Note that <logo>T<span style=
-     * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
-     * >e</span>X</logo> only considers the first hyphenation point in a
+     * Note that TeX only considers the first hyphenation point in a
      * ligature. The others are ignored. Nevertheless the ligature builder is
      * applied to the remaining characters. This might lead to other ligatures
      * than the ones encoded in the ligature node.
@@ -80,9 +75,9 @@ public class ExTeXWords implements WordTokenizer {
             LigatureBuilder ligatureBuilder) throws HyphenationException {
 
         if (ligatureBuilder != null) {
-            for (int i = 0; i < list.size(); i =
-                    ligatureBuilder.insertLigatures(list, i)) {
-                // ok
+            int i = 0;
+            while( i < list.size() ) {
+                i = ligatureBuilder.insertLigatures( list, i );
             }
         }
         return list;
@@ -173,8 +168,8 @@ public class ExTeXWords implements WordTokenizer {
         if (node instanceof LigatureNode) {
             LigatureNode ln = (LigatureNode) node;
             CharNode[] chars = ln.getChars();
-            for (int j = 0; j < chars.length; j++) {
-                word.add(chars[j].getCharacter());
+            for( final CharNode aChar : chars ) {
+                word.add( aChar.getCharacter() );
             }
 
         } else {
@@ -295,7 +290,7 @@ public class ExTeXWords implements WordTokenizer {
 
             if (spec[si]) {
 
-                if (prev instanceof CharNode) {
+                if ( prev != null ) {
                     CharNode charNode = (CharNode) prev;
                     Font font = charNode.getTypesettingContext().getFont();
                     UnicodeChar c = charNode.getCharacter();
@@ -355,10 +350,9 @@ public class ExTeXWords implements WordTokenizer {
             TypesetterOptions options) throws HyphenationException {
 
         UnicodeCharList list = new UnicodeCharList();
-        int size = word.size();
 
-        for (int i = 0; i < size; i++) {
-            list.add(word.get(i).lower());
+        for( UnicodeChar unicodeChar : word ) {
+            list.add( unicodeChar.lower() );
         }
 
         return list;

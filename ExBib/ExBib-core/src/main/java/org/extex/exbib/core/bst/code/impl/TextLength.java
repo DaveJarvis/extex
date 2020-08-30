@@ -32,9 +32,7 @@ import org.extex.exbib.core.io.Locator;
  * <p>
  * This function computes the length of a text. The length is the number of text
  * characters. Whitespace braces and brackets do not count as text characters. A
- * <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> control sequence counts as one character &ndash; no matter
+ * TeX control sequence counts as one character &ndash; no matter
  * how long the name may be.
  * </p>
  * <img src="doc-files/text.length.png"/>

@@ -16,12 +16,8 @@
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
 /**
- * This package contains primitives for <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo>'s
- * <span style="font-size:80%;">PDF</span><logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> mode.
+ * This package contains primitives for ??TeX's
+ * <span style="font-size:80%;">PDF</span>TeX mode.
  *
  * <doc name="pdftexversion" type="register">
  * <h3>The Count Parameter <tt>\pdftexversion</tt></h3>

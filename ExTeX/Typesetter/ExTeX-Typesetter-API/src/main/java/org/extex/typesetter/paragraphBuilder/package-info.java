@@ -17,9 +17,7 @@
  */
 /**
  * This package contains the definitions of a paragraph builder for
- * <logo>&epsilon;&chi;T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> and some implementations.
+ * ??TeX and some implementations.
  */
 
 package org.extex.typesetter.paragraphBuilder;

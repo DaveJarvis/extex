@@ -58,9 +58,7 @@ import org.extex.typesetter.type.node.SpecialNode;
  *    \special{ps: \abc}  </pre>
  * 
  * <p>
- * For several back-end drivers for <logo>T<span style=
- * "text-transform:uppercase;font-size:90%;vertical-align:-0.4ex;margin-left:-0.2em;margin-right:-0.1em;line-height: 0;"
- * >e</span>X</logo> a quasi-standard has emerged which uses a prefix ended by a
+ * For several back-end drivers for TeX a quasi-standard has emerged which uses a prefix ended by a
  * colon to indicate the back-end driver the special is targeted at.
  * </p>
  * </doc>
