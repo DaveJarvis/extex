@@ -41,6 +41,8 @@ import org.apache.tools.ant.Task;
  */
 public class LatexAutoTask extends Task {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Compute the MD5 checksum for a file.
      * 
@@ -165,7 +167,7 @@ public class LatexAutoTask extends Task {
     public void execute() throws BuildException {
 
         File base = new File("base.tex");
-        File target = new File("target");
+        File target = new File(DIR_TARGET);
         File aux = new File(target,
             base.getName().replaceFirst("\\.[a-zA-Z]+$", ".aux"));
 

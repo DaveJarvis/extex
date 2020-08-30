@@ -52,10 +52,12 @@ import org.junit.Test;
  */
 public class TField2Test {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * The field <tt>config</tt> contains the dummy configuration.
      */
-    private Configuration config = new Configuration() {
+    private final Configuration config = new Configuration() {
 
         public Configuration findConfiguration(String key)
                 throws ConfigurationInvalidResourceException,
@@ -201,7 +203,7 @@ public class TField2Test {
             }
         });
         p.addBibliographyDatabase(". . .");
-        p.addBibliographyStyle("target/test.bst");
+        p.addBibliographyStyle(DIR_TARGET + "/test.bst");
         p.addCitation("*");
         p.process(new NullWriter());
     }

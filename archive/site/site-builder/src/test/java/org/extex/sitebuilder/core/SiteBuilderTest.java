@@ -87,7 +87,7 @@ public class SiteBuilderTest {
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
         siteBuilder.createTreeBuilder("src/test/resources/empty-site");
-        File targetdir = new File("target/undefined");
+        File targetdir = new File(DIR_TARGET + "/undefined");
         new FileWriter(targetdir).close(); // touch
         siteBuilder.setTarget(targetdir);
         try {
@@ -109,7 +109,7 @@ public class SiteBuilderTest {
 
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
-        // siteBuilder.addResourceDir(new File("target/u_n_d_e_f"));
+        // siteBuilder.addResourceDir(new File(DIR_TARGET + "/u_n_d_e_f"));
         siteBuilder.run();
     }
 
@@ -123,9 +123,9 @@ public class SiteBuilderTest {
 
         SiteBuilder siteBuilder = new SiteBuilder();
         silenceLogger(siteBuilder.getLogger());
-        siteBuilder.setTarget(new File("target/test-site"));
+        siteBuilder.setTarget(new File(DIR_TARGET + "/test-site"));
         siteBuilder.createTreeBuilder("src/test/resources/empty-site");
-        File siteMap = new File("target/sitemap.html");
+        File siteMap = new File(DIR_TARGET + "/sitemap.html");
         siteBuilder.createSiteMap().setOutput(siteMap);
         if (siteMap.exists()) {
             assertTrue("deletion failed: " + siteMap.toString(),

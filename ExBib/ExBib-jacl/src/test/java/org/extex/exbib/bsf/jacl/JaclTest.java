@@ -48,6 +48,8 @@ import static org.junit.Assert.assertTrue;
 @Ignore
 public class JaclTest {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Create a file and fill it with some content.
      * 
@@ -74,11 +76,11 @@ public class JaclTest {
     private void runTest(String tclCode, String expected, String bibEntries)
             throws IOException {
 
-        String tcl = "target/test.tcl";
+        String tcl = DIR_TARGET + "/test.tcl";
         makeFile(tcl, "package require java\n" + tclCode);
-        String bib = "target/test.bib";
+        String bib = DIR_TARGET + "/test.bib";
         makeFile(bib, bibEntries);
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n\\bibstyle{" + tcl
                 + "}\n\\bibdata{target/test.bib}\n");
         ByteArrayOutputStream outStream = new ByteArrayOutputStream();

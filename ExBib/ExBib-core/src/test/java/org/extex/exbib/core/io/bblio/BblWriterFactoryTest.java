@@ -39,11 +39,13 @@ import org.junit.Test;
 
 /**
  * This class is a test suite for {@link BblWriterFactory}.
- * 
+ *
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
 public class BblWriterFactoryTest {
+
+    private static final String DIR_TARGET = "build";
 
     /**
      * The object under test.
@@ -52,10 +54,10 @@ public class BblWriterFactoryTest {
 
         /**
          * Creates a new object.
-         * 
+         *
          * @param configuration the configuration
          * @param encoding the encoding
-         * 
+         *
          * @throws ConfigurationException in case of a configuration error
          * @throws UnsupportedEncodingException in case of an encoding error
          */
@@ -68,7 +70,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoDiscarted()
          */
         @Override
@@ -80,7 +82,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoOutput(java.lang.String)
          */
         @Override
@@ -92,7 +94,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.exbib.core.io.bblio.BblWriterFactory#infoStdout()
          */
         @Override
@@ -110,7 +112,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String)
          */
         @Override
@@ -125,7 +127,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#findConfiguration(java.lang.String,
          *      java.lang.String)
          */
@@ -138,7 +140,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getAttribute(java.lang.String)
          */
         @Override
@@ -153,7 +155,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String)
          */
         @Override
@@ -165,7 +167,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getConfiguration(java.lang.String,
          *      java.lang.String)
          */
@@ -178,7 +180,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getValue()
          */
         @Override
@@ -189,7 +191,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getValue(java.lang.String)
          */
         @Override
@@ -200,7 +202,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getValueAsInteger(java.lang.String,
          *      int)
          */
@@ -213,7 +215,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getValues(java.util.List,
          *      java.lang.String)
          */
@@ -224,7 +226,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#getValues(java.lang.String)
          */
         @Override
@@ -235,7 +237,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#iterator()
          */
         @Override
@@ -246,7 +248,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#iterator(java.lang.String)
          */
         @Override
@@ -258,7 +260,7 @@ public class BblWriterFactoryTest {
 
         /**
          * {@inheritDoc}
-         * 
+         *
          * @see org.extex.framework.configuration.Configuration#setConfigurationLoader(org.extex.framework.configuration.ConfigurationLoader)
          */
         @Override
@@ -287,7 +289,7 @@ public class BblWriterFactoryTest {
 
     /**
      * <testcase> Test that a new instance can be obtained. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -301,7 +303,7 @@ public class BblWriterFactoryTest {
     /**
      * <testcase> Test that the discarded notifier is triggered and none of the
      * others when invoked with null as argument. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -321,7 +323,7 @@ public class BblWriterFactoryTest {
     /**
      * <testcase> Test that the discarded notifier is triggered and none of the
      * others when invoked with the empty string as argument. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -341,7 +343,7 @@ public class BblWriterFactoryTest {
     /**
      * <testcase> Test that the stdout notifier is triggered and none of the
      * others when invoked with the string "-" as argument. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -361,7 +363,7 @@ public class BblWriterFactoryTest {
     /**
      * <testcase> Test that the stdout notifier is triggered and none of the
      * others when invoked with the string "-" as argument. </testcase>
-     * 
+     *
      * @throws Exception in case of an error
      */
     @Test
@@ -370,7 +372,7 @@ public class BblWriterFactoryTest {
         dis = false;
         out = false;
         std = false;
-        Writer w = new Testee(CFG, null).newInstance("target/test");
+        Writer w = new Testee(CFG, null).newInstance(DIR_TARGET + "/test");
         assertNotNull(w);
         assertFalse(dis);
         assertTrue(out);

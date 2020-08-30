@@ -39,6 +39,8 @@ import org.junit.Test;
  */
 public class Bst2GroovyAlphaTest {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Run the test case.
      * 
@@ -66,12 +68,8 @@ public class Bst2GroovyAlphaTest {
             bst2Groovy.setResourceFinder(finder);
             bst2Groovy.setParameter(ParameterType.STYLE_NAME,
                 new Parameter(name));
-            FileWriter w =
-                    new FileWriter("target/" + name.toLowerCase() + ".groovy");
-            try {
-                bst2Groovy.run(w, name.toLowerCase() + ".bst");
-            } finally {
-                w.close();
+            try( FileWriter w = new FileWriter( DIR_TARGET + "/" + name.toLowerCase() + ".groovy" ) ) {
+                bst2Groovy.run( w, name.toLowerCase() + ".bst" );
             }
         } finally {
             logger.removeHandler(handler);

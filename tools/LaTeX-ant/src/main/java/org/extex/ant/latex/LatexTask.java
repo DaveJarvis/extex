@@ -99,6 +99,8 @@ import org.extex.ant.latex.command.CommandFactory;
  */
 public class LatexTask extends Task implements Settings {
 
+    private static final String DIR_TARGET = "build";
+    
     /**
      * TODO gene: missing JavaDoc.
      * 
@@ -216,7 +218,7 @@ public class LatexTask extends Task implements Settings {
     /**
      * The field <tt>target</tt> contains the target directory.
      */
-    private File target = new File("target");
+    private File target = new File(DIR_TARGET);
 
     /**
      * The field <tt>workingDirectory</tt> contains the working directory.

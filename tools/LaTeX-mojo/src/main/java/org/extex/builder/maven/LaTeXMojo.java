@@ -158,7 +158,7 @@ public class LaTeXMojo extends AbstractMojo {
      * @parameter expression="${project.outputDirectory}"
      * @since 1.0
      */
-    private File output = new File("target/doc");
+    private File output = new File(DIR_TARGET + "/doc");
 
     /**
      * The parameter <tt>texinputs</tt> contains the list of directories for the

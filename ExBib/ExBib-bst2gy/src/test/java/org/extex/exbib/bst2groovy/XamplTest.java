@@ -57,6 +57,8 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class XamplTest {
+    
+    private final static String DIR_TARGET = "build";
 
     /**
      * Read the contents of a file and translate LF to nothing.
@@ -70,16 +72,13 @@ public class XamplTest {
     public static String getFileContents(String name) throws IOException {
 
         StringBuilder buffer = new StringBuilder();
-        Reader reader = new FileReader(name);
 
-        try {
-            for (int c = reader.read(); c >= 0; c = reader.read()) {
-                if (c != '\r') {
-                    buffer.append((char) c);
+        try( Reader reader = new FileReader( name ) ) {
+            for( int c = reader.read(); c >= 0; c = reader.read() ) {
+                if( c != '\r' ) {
+                    buffer.append( (char) c );
                 }
             }
-        } finally {
-            reader.close();
         }
 
         return buffer.toString();
@@ -99,12 +98,9 @@ public class XamplTest {
     public static File makeFile(String name, String postfix, String content)
             throws IOException {
 
-        File file = File.createTempFile(name, postfix, new File("target"));
-        Writer w = new FileWriter(file);
-        try {
-            w.write(content);
-        } finally {
-            w.close();
+        File file = File.createTempFile(name, postfix, new File(DIR_TARGET));
+        try( Writer w = new FileWriter( file ) ) {
+            w.write( content );
         }
         return file;
     }
@@ -125,7 +121,7 @@ public class XamplTest {
         Properties prop = new Properties();
         prop.put(ExBib.PROP_PROCESSOR, "groovy");
         prop.put(ExBib.PROP_FILE, aux.toString());
-        prop.put(ExBib.PROP_OUTFILE, "target/xampl.out");
+        prop.put(ExBib.PROP_OUTFILE, DIR_TARGET + "/xampl.out");
 
         ByteArrayOutputStream errStream = new ByteArrayOutputStream();
 
@@ -197,7 +193,7 @@ public class XamplTest {
      */
     private void run(String name) throws Exception {
 
-        String fileName = "target/" + name.toLowerCase() + ".groovy";
+        String fileName = DIR_TARGET + "/" + name.toLowerCase() + ".groovy";
 
         Logger logger = Logger.getLogger(getClass().getName());
         logger.setLevel(Level.SEVERE);
@@ -215,11 +211,8 @@ public class XamplTest {
             bst2Groovy.setResourceFinder(finder);
             bst2Groovy.setParameter(ParameterType.STYLE_NAME,
                 new Parameter(name));
-            FileWriter w = new FileWriter(fileName);
-            try {
-                bst2Groovy.run(w, name.toLowerCase() + ".bst");
-            } finally {
-                w.close();
+            try( FileWriter w = new FileWriter( fileName ) ) {
+                bst2Groovy.run( w, name.toLowerCase() + ".bst" );
             }
         } finally {
             logger.removeHandler(handler);

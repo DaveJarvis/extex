@@ -226,7 +226,7 @@ public class Traverser {
     protected String getOutput() {
 
         if (output == null) {
-            output = "target/exdoc";
+            output = DIR_TARGET + "/exdoc";
         }
         return output;
     }

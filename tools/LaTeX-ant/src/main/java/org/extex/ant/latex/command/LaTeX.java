@@ -39,6 +39,8 @@ import org.extex.ant.latex.Settings;
  */
 public class LaTeX implements Command {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * The field <tt>settings</tt> contains the task.
      */
@@ -104,7 +106,7 @@ public class LaTeX implements Command {
         commandLine.add(latexCommand);
         commandLine.add("-output-format=" + outputFormat);
         commandLine.add("-output-directory="
-                + settings.get(Settings.OUTPUT_DIRECTORY, "target"));
+                + settings.get(Settings.OUTPUT_DIRECTORY, DIR_TARGET));
         String rec = settings.get("latex.use.recorder", "true");
         if (rec != null && Boolean.parseBoolean(rec)) {
             commandLine.add("-recorder");

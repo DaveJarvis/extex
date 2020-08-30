@@ -54,7 +54,7 @@ public class SiteMapBuilderTest {
     public void testTemplate01() throws Exception {
 
         SiteMapBuilder siteMapBuilder = new SiteMapBuilder();
-        siteMapBuilder.setTarget(new File("target/sitemap.html"));
+        siteMapBuilder.setTarget(new File(DIR_TARGET + "/sitemap.html"));
         siteMapBuilder.setTemplate(null);
         siteMapBuilder.generate();
     }

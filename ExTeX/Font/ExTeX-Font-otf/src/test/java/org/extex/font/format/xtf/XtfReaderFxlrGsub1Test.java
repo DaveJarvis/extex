@@ -45,6 +45,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class XtfReaderFxlrGsub1Test {
 
+    private final static String DIR_TARGET = "build";
+
     private final XtfReader reader;
 
     /**
@@ -163,7 +165,7 @@ public class XtfReaderFxlrGsub1Test {
 
         assertNotNull( reader );
         XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
+                new XMLStreamWriter(new FileOutputStream(DIR_TARGET + "/fxlr.xml"),
                     "ISO8859-1");
         writer.setBeauty(true);
         writer.writeStartDocument();

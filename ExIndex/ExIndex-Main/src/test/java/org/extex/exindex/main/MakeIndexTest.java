@@ -34,6 +34,8 @@ import static org.junit.Assert.assertEquals;
  */
 public class MakeIndexTest {
 
+  private final static String DIR_TARGET = "build";
+
   /**
    * The field <tt>DEFAULT_LOG</tt> contains the default logging output.
    */
@@ -111,7 +113,7 @@ public class MakeIndexTest {
   @Test
   @Ignore
   public final void test1() throws Exception {
-    final File ist = new File( "target/test1.ist" );
+    final File ist = new File( DIR_TARGET + "/test1.ist" );
 
     try( final Writer w = new FileWriter( ist ) ) {
       w.write( "%\n"
@@ -122,7 +124,7 @@ public class MakeIndexTest {
                    + "delim_0 \"\\\\dotfill\"\n" + "delim_1 \"\\\\dotfill\"\n"
                    + "delim_2 \"\\\\dotfill\"\n" );
     }
-    final File idx = new File( "target/test1.idx" );
+    final File idx = new File( DIR_TARGET + "/test1.idx" );
     try( final Writer w = new FileWriter( idx ) ) {
       w.write( "\\indexentry{Java|)hyperpage}{11}\n"
                    + "\\indexentry{TEXMF|(hyperpage}{11}\n"
@@ -181,8 +183,8 @@ public class MakeIndexTest {
     }
     try {
       runTest(
-          new String[]{"-style", "target/test1.ist", "-makeindex",
-              "target/test1.idx"},
+          new String[]{"-style", DIR_TARGET + "/test1.ist", "-makeindex",
+              DIR_TARGET + "/test1.idx"},
           0,
           "\\begin{theindex}\n"
               + "\n"
@@ -230,18 +232,18 @@ public class MakeIndexTest {
               + " \\indexGroup{W}\n"
               + "  \\item Windows\\dotfill\\hyperpage{12}, \\hyperpage{14}\n"
               + "\n" + "\\end{theindex}\n",
-          "Scanning style file target/test1.ist...done (7 attributes " +
+          "Scanning style file "+DIR_TARGET+"/test1.ist...done (7 attributes " +
               "redefined, 0\n"
               + "ignored).\n" + "Starting the processing phase.\n"
-              + "Reading target/test1.idx.\n"
+              + "Reading "+DIR_TARGET+"/test1.idx.\n"
               + "Starting the pre-processing phase.\n"
               + "Generating output...Starting the markup phase.\n"
               + "Output written.\n"
-              + "Transcript written in target/test1.ilg.\n" );
+              + "Transcript written in "+DIR_TARGET+"/test1.ilg.\n" );
     } finally {
       ist.deleteOnExit();
       idx.deleteOnExit();
-      new File( "target/test1.ilg" ).deleteOnExit();
+      new File( DIR_TARGET + "/test1.ilg" ).deleteOnExit();
     }
   }
 }

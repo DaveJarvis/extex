@@ -52,7 +52,7 @@ public class StackTest {
     /**
      * The field <tt>out</tt> contains the output buffer.
      */
-    private StringBuffer out = new StringBuffer();
+    private final StringBuffer out = new StringBuffer();
 
     /**
      * The field <tt>p</tt> contains the processor.

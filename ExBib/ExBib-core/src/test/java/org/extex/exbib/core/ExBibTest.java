@@ -46,6 +46,8 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ExBibTest {
+    
+    private final static String DIR_TARGET = "build";
 
     /**
      * Create a file and fill it with some content.
@@ -57,18 +59,15 @@ public class ExBibTest {
      */
     public static void makeFile(String name, String content) throws IOException {
 
-        Writer w = new PrintWriter(new FileWriter(name));
-        try {
-            w.write(content);
-        } finally {
-            w.close();
+        try( Writer w = new PrintWriter( new FileWriter( name ) ) ) {
+            w.write( content );
         }
     }
 
     /**
      * The field <tt>trace</tt> contains the tracing flag.
      */
-    private boolean trace = false;
+    private final boolean trace = false;
 
     /**
      * Make a test instance.
@@ -108,19 +107,19 @@ public class ExBibTest {
     @Test
     public final void test1() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain.bst}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertTrue("ExBib.run() failed", exBib.run());
             assertNotNull(exBib.getDebug());
             assertEquals("[]", exBib.getDebug().toString());
-            assertEquals("target/test.aux", exBib.getProperty(ExBib.PROP_FILE));
+            assertEquals(DIR_TARGET + "/test.aux", exBib.getProperty(ExBib.PROP_FILE));
         } finally {
             File faux = new File(aux);
             if (faux.exists()) {
@@ -142,14 +141,14 @@ public class ExBibTest {
     @Test
     public final void test2() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.SEARCH);
             assertTrue("ExBib.run() failed", exBib.run());
@@ -196,7 +195,7 @@ public class ExBibTest {
     @Test
     public final void testAux1() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         new File(aux).delete();
         Properties p = new Properties();
         p.setProperty(ExBib.PROP_FILE, aux);
@@ -287,13 +286,13 @@ public class ExBibTest {
     @Test
     public final void testError2() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n" + "\\bibstyle{undefined/file.bst}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
@@ -369,7 +368,7 @@ public class ExBibTest {
     @Test
     public final void testOptions1() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{min.crossref=4}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
@@ -377,7 +376,7 @@ public class ExBibTest {
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.TRACE);
             assertTrue("ExBib.run() failed", exBib.run());
@@ -398,7 +397,7 @@ public class ExBibTest {
     @Test
     public final void testOptions2() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{sort=42}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
@@ -406,7 +405,7 @@ public class ExBibTest {
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.TRACE);
             assertFalse(exBib.run());
@@ -424,7 +423,7 @@ public class ExBibTest {
     @Test
     public final void testOptions3() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\biboption{sort=locale:en}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
@@ -432,7 +431,7 @@ public class ExBibTest {
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.TRACE);
             assertTrue(exBib.run());
@@ -505,14 +504,14 @@ public class ExBibTest {
     @Test
     public final void testTrace1() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             exBib.setDebug(ExBibDebug.TRACE);
             assertTrue(exBib.run());
@@ -535,12 +534,12 @@ public class ExBibTest {
     @Test
     public final void testValidate0() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\relax\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
@@ -557,13 +556,13 @@ public class ExBibTest {
     @Test
     public final void testValidate1() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\bibstyle{src/test/resources/bibtex/base/plain.bst}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
@@ -580,13 +579,13 @@ public class ExBibTest {
     @Test
     public final void testValidate2() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\bibdata{src/test/resources/bibtex/base/xampl.bib}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {
@@ -603,13 +602,13 @@ public class ExBibTest {
     @Test
     public final void testValidate3() throws Exception {
 
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n"
                 + "\\bibstyle{src/test/resources/bibtex/base/plain.bst}\n");
 
         try {
             Properties p = new Properties();
-            p.setProperty(ExBib.PROP_FILE, "target/test.aux");
+            p.setProperty(ExBib.PROP_FILE, DIR_TARGET + "/test.aux");
             ExBib exBib = makeTestInstance(p);
             assertFalse(exBib.run());
         } finally {

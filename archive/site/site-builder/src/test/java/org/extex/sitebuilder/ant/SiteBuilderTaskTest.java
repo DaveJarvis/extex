@@ -61,7 +61,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     private void runTest(String invocation, String log) throws IOException {
 
-        File build = new File("target/build.xml");
+        File build = new File(DIR_TARGET + "/build.xml");
         FileWriter w = new FileWriter(build);
         try {
             w.write("<project name=\"ant-test\">\n"
@@ -98,25 +98,25 @@ public class SiteBuilderTaskTest extends BuildFileTest {
         // new File(".").getAbsoluteFile().getCanonicalPath().toString()
         // .replace('\\', '/');
 
-        File siteDir = new File("target/test-site");
+        File siteDir = new File(DIR_TARGET + "/test-site");
         CleanupUtil.rmdir(siteDir);
         assertFalse(siteDir.exists());
 
         runTest(
             "<SiteBuilder"
-                    + "    output=\"target/test-site\""
+                    + "    output=\DIR_TARGET + "/test-site\""
                     + "    logLevel=\"WARNING\" >\n"
                     + "  <omit>RCS</omit>\n"
                     + "  <lib>org/extex/sitebuilder/macros.vm</lib>\n"
                     + "  <News    dir=\".\" "
-                    + "           output=\"target/test-site/rss/2.0/news.rss\" "
+                    + "           output=\DIR_TARGET + "/test-site/rss/2.0/news.rss\" "
                     + "           template=\"org/extex/sitebuilder/news.vm\"\n"
                     + "           max=\"3\"/>\n"
                     + "  <Tree    dir=\"src/test/resources/empty-site\""
                     + "           template=\"org/extex/sitebuilder/site.vm\"/>\n"
                     + "  <Tree    dir=\"src/test/resources/test-site-1\""
                     + "           processHtml=\"true\"/>\n"
-                    + "  <Sitemap output=\"target/test-site/sitemap.html\""
+                    + "  <Sitemap output=\DIR_TARGET + "/test-site/sitemap.html\""
                     + "           template=\"org/extex/sitebuilder/sitemap.vm\"/>\n"
                     + "</SiteBuilder>",
             null);
@@ -135,7 +135,7 @@ public class SiteBuilderTaskTest extends BuildFileTest {
      */
     public final void test02() throws Exception {
 
-        File siteDir = new File("target/test-site");
+        File siteDir = new File(DIR_TARGET + "/test-site");
         CleanupUtil.rmdir(siteDir);
         assertFalse(siteDir.exists());
         runTest("<SiteBuilder/>\n", "");

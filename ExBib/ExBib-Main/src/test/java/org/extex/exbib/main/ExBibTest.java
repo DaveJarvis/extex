@@ -36,7 +36,10 @@ import static org.junit.Assert.*;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("deprecation")
 public class ExBibTest extends BibTester {
+
+    private static final String DIR_TARGET = "build";
 
     /**
      * The field <tt>USAGE</tt> contains the expected usage description.
@@ -1546,7 +1549,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale01() throws Exception {
         File data =
-            makeFile( "target/data.bib", "UTF-8",
+            makeFile( DIR_TARGET + "/data.bib", "UTF-8",
                       "@Item{ a,  value = {a} }\n"
                           + "@Item{ ae,  value = {ae} }\n"
                           + "@Item{ ab,  value = {ab} }\n"
@@ -1556,7 +1559,7 @@ public class ExBibTest extends BibTester {
                           + "@Item{ ac,  value = {ac} }\n" );
         data.deleteOnExit();
 
-        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{"+DIR_TARGET+"/data.bib}\n"
                      + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
                  CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
                  Check.EQ,
@@ -1574,7 +1577,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale02() throws Exception {
         File data =
-                makeFile("target/data.bib", "UTF-8",
+                makeFile(DIR_TARGET + "/data.bib", "UTF-8",
                     "@Item{ a,  value = {a} }\n"
                             + "@Item{ ae,  value = {ae} }\n"
                             + "@Item{ ab,  value = {ab} }\n"
@@ -1585,7 +1588,7 @@ public class ExBibTest extends BibTester {
 
         data.deleteOnExit();
 
-        runTest("test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+        runTest("test", "\\citation{*}\n" + "\\bibdata{"+DIR_TARGET+"/data.bib}\n"
                 + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
             CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
             Check.EQ, BANNER,
@@ -1601,7 +1604,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterLocale03() throws Exception {
         File data =
-            makeFile( "target/data.bib", "UTF-8",
+            makeFile( DIR_TARGET + "/data.bib", "UTF-8",
                       "@Item{ a,  value = {a} }\n"
                           + "@Item{ ae,  value = {ae} }\n"
                           + "@Item{ ab,  value = {ab} }\n"
@@ -1613,7 +1616,7 @@ public class ExBibTest extends BibTester {
         data.deleteOnExit();
 
         runTest( "test",
-                 "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+                 "\\citation{*}\n" + "\\bibdata{"+DIR_TARGET+"/data.bib}\n"
                      + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n"
                      + "\\biboption{sort=locale:de}\n",
                  CLI.EXIT_OK, Check.EQ, "a\nA\n\u00e4\nab\nac\nae\naf\n",
@@ -1631,7 +1634,7 @@ public class ExBibTest extends BibTester {
     @Ignore
     public void testSorterRbc01() throws Exception {
         File data =
-            makeFile( "target/data.bib", "UTF-8",
+            makeFile( DIR_TARGET + "/data.bib", "UTF-8",
                       "@Item{ a,  value = {a} }\n"
                           + "@Item{ ae,  value = {ae} }\n"
                           + "@Item{ ab,  value = {ab} }\n"
@@ -1642,7 +1645,7 @@ public class ExBibTest extends BibTester {
 
         data.deleteOnExit();
 
-        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{"+DIR_TARGET+"/data.bib}\n"
                      + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
                  CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\n\u00e4\naf\n",
                  Check.EQ, BANNER,
@@ -1658,7 +1661,7 @@ public class ExBibTest extends BibTester {
     @Test
     public void testSorterUnicode01() throws Exception {
         File data =
-            makeFile( "target/data.bib", "UTF-8",
+            makeFile( DIR_TARGET + "/data.bib", "UTF-8",
                       "@Item{ a,  value = {a} }\n"
                           + "@Item{ ae,  value = {ae} }\n"
                           + "@Item{ ab,  value = {ab} }\n"
@@ -1669,7 +1672,7 @@ public class ExBibTest extends BibTester {
 
         data.deleteOnExit();
 
-        runTest( "test", "\\citation{*}\n" + "\\bibdata{target/data.bib}\n"
+        runTest( "test", "\\citation{*}\n" + "\\bibdata{"+DIR_TARGET+"/data.bib}\n"
                      + "\\bibstyle{src/test/resources/bibtex/sort/sort}\n",
                  CLI.EXIT_OK, Check.EQ, "A\na\nab\nac\nae\naf\n\u00e4\n",
                  Check.EQ, BANNER,

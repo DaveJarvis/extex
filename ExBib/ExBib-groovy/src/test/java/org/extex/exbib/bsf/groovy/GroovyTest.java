@@ -46,6 +46,8 @@ import org.junit.Test;
  */
 public class GroovyTest {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Create a file and fill it with some content.
      * 
@@ -56,11 +58,8 @@ public class GroovyTest {
      */
     public static void makeFile(String name, String content) throws IOException {
 
-        Writer w = new PrintWriter(new FileWriter(name));
-        try {
-            w.write(content);
-        } finally {
-            w.close();
+        try( Writer w = new PrintWriter( new FileWriter( name ) ) ) {
+            w.write( content );
         }
     }
 
@@ -72,14 +71,14 @@ public class GroovyTest {
     @Test
     public void test1() throws Exception {
 
-        String gy = "target/test.gy";
+        String gy = DIR_TARGET + "/test.gy";
         makeFile(gy, "println(bibDB.getEntries())\n");
-        String bib = "target/test.bib";
+        String bib = DIR_TARGET + "/test.bib";
         makeFile(bib,
             "@book{abc,author={Donald E. Knuth, title={The {\\TeX}book}}}\n");
-        String aux = "target/test.aux";
+        String aux = DIR_TARGET + "/test.aux";
         makeFile(aux, "\\citation{*}\n\\bibstyle{" + gy
-                + "}\n\\bibdata{target/test.bib}\n");
+                + "}\n\\bibdata{" + DIR_TARGET + "/test.bib}\n");
         PrintStream out = System.out;
         try {
             ByteArrayOutputStream outStream = new ByteArrayOutputStream();
@@ -100,10 +99,10 @@ public class GroovyTest {
                 outStream.toString().replaceAll("\r", ""));
         } finally {
             System.setOut(out);
-            new File(aux).delete();
-            new File(aux.replaceAll(".aux$", ".bbl")).delete();
-            new File(gy).delete();
-            new File(bib).delete();
+            new File(aux).deleteOnExit();
+            new File(aux.replaceAll(".aux$", ".bbl")).deleteOnExit();
+            new File(gy).deleteOnExit();
+            new File(bib).deleteOnExit();
         }
     }
 }

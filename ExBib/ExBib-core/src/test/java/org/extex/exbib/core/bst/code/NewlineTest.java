@@ -46,7 +46,7 @@ public class NewlineTest {
     /**
      * The field <tt>out</tt> contains the output buffer.
      */
-    private StringBuffer out = new StringBuffer();
+    private final StringBuffer out = new StringBuffer();
 
     /**
      * Set-up method.

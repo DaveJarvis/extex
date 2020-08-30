@@ -18,18 +18,14 @@
 
 package org.extex.exbib.bst2groovy;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.Locale;
-
 import org.extex.cli.CLI;
 import org.junit.Test;
+
+import java.io.*;
+import java.util.Locale;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * This is a test suite for the bst2groovy main program.
@@ -37,7 +33,10 @@ import org.junit.Test;
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("deprecation")
 public class MainTest {
+    
+    private static final String DIR_TARGET = "build";
 
     /**
      * The field <tt>LGPL</tt> contains the text of the LGPG as shown by
@@ -716,7 +715,7 @@ public class MainTest {
     @Test
     public void testOptimizing1() throws IOException {
 
-        File out = new File("target", "testout.gy");
+        File out = new File(DIR_TARGET, "testout.gy");
         try {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString(),
                 "-O");
@@ -736,7 +735,7 @@ public class MainTest {
     @Test
     public void testOptimizing2() throws IOException {
 
-        File out = new File("target", "testout.gy");
+        File out = new File(DIR_TARGET, "testout.gy");
         try {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString(),
                 "-O=false");
@@ -768,7 +767,7 @@ public class MainTest {
     @Test
     public void testOutput2() throws IOException {
 
-        File out = new File("target", "testout.gy");
+        File out = new File(DIR_TARGET, "testout.gy");
         try {
             run("", "", "", CLI.EXIT_OK, "{file}", "-o", out.toString());
         } finally {
@@ -787,7 +786,7 @@ public class MainTest {
     @Test
     public void testOutput3() throws IOException {
 
-        File out = new File("target", "testout.gy");
+        File out = new File(DIR_TARGET, "testout.gy");
         try {
             run("", "", "", CLI.EXIT_OK, "{file}", "--out", out.toString());
         } finally {
@@ -806,7 +805,7 @@ public class MainTest {
     @Test
     public void testOutput4() throws IOException {
 
-        File out = new File("target", "testout.gy");
+        File out = new File(DIR_TARGET, "testout.gy");
         try {
             run("", "", "This is " + Main.PROGNAME + ", Version "
                     + Main.VERSION + "\n", CLI.EXIT_OK, "{file}", "--verbose",

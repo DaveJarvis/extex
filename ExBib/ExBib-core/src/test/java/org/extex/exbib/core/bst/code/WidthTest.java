@@ -47,12 +47,12 @@ public class WidthTest {
     /**
      * The field <tt>err</tt> contains the error output.
      */
-    private StringBuffer err = new StringBuffer();
+    private final StringBuffer err = new StringBuffer();
 
     /**
      * The field <tt>out</tt> contains the standard output.
      */
-    private StringBuffer out = new StringBuffer();
+    private final StringBuffer out = new StringBuffer();
 
     /**
      * Set-up method.

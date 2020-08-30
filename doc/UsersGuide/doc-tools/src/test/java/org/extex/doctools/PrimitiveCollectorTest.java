@@ -34,6 +34,8 @@ import org.junit.Test;
  */
 public class PrimitiveCollectorTest {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Test method for
      * {@link org.extex.doctools.PrimitiveCollector#mainFacade(java.lang.String[])}
@@ -44,8 +46,8 @@ public class PrimitiveCollectorTest {
     public final void testMainFacade() {
 
         assertEquals(0, PrimitiveCollector.mainFacade(new String[]{"-output",
-                "target", "../.."}));
-        assertTrue(new File("target/primitives.tex").exists());
+                DIR_TARGET, "../.."}));
+        assertTrue(new File(DIR_TARGET + "/primitives.tex").exists());
     }
 
 }

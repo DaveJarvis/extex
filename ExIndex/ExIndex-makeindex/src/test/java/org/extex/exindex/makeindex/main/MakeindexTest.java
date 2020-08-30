@@ -38,11 +38,8 @@ import static org.junit.Assert.assertTrue;
 @Ignore
 public class MakeindexTest extends AbstractTester {
 
-    /**
-     * {@inheritDoc}
-     * 
-     * @see org.extex.exindex.makeindex.main.AbstractTester#makeInstance()
-     */
+    private final static String DIR_TARGET = "build";
+
     @Override
     protected Makeindex makeInstance() {
 
@@ -74,7 +71,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{f},
@@ -102,7 +99,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1g() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-g", f},
@@ -130,7 +127,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1gc() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-gc", f},
@@ -158,7 +155,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1l() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-l", f},
@@ -186,7 +183,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1m() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-", f},
@@ -214,7 +211,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1q() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"-q", f}, f, "\\indexentry{bbb}{2}\n"
                 + "\\indexentry{aaa}{3}\n",
@@ -235,7 +232,7 @@ public class MakeindexTest extends AbstractTester {
     @Test
     public void test1quiet() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(new String[]{"-quiet", f}, f, "\\indexentry{bbb}{2}\n"
                 + "\\indexentry{aaa}{3}\n",
@@ -257,8 +254,8 @@ public class MakeindexTest extends AbstractTester {
     public void test2() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        runOnFile(new String[]{"target/t1"},
-            "target/t1.idx",
+        runOnFile(new String[]{DIR_TARGET + "/t1"},
+            DIR_TARGET + "/t1.idx",
             "\\indexentry{bbb}{2}\n" + "\\indexentry{aaa}{3}\n",
             BANNER
                     + "Scanning input file ./target/t1.idx...done (2 entries accepted, 0 rejected)\n"
@@ -283,8 +280,8 @@ public class MakeindexTest extends AbstractTester {
     public void test3() throws IOException {
 
         Locale.setDefault(Locale.ENGLISH);
-        runOnFile(new String[]{"target/t1.idx"},
-            "target/t1.idx",
+        runOnFile(new String[]{DIR_TARGET + "/t1.idx"},
+            DIR_TARGET + "/t1.idx",
             "\\indexentry{bbb}{2}\n"
                     + "\\indexentry{bbb}{4}\n"
                     + "\\indexentry{aaa}{3}\n",
@@ -311,7 +308,7 @@ public class MakeindexTest extends AbstractTester {
     @Ignore
     public void testCollateSpaces1() throws IOException {
 
-        String f = "target/t1.idx";
+        String f = DIR_TARGET + "/t1.idx";
         Locale.setDefault(Locale.ENGLISH);
         runOnFile(
             new String[]{"-c", f},
@@ -572,7 +569,7 @@ public class MakeindexTest extends AbstractTester {
 
         Locale.setDefault(Locale.ENGLISH);
         run(
-            new String[]{"-t", "target/xyz.ilog"},
+            new String[]{"-t", DIR_TARGET + "/xyz.ilog"},
             BANNER
                     + "Scanning input file stdin...done (0 entries accepted, 0 rejected)\n"
                     + "Sorting...done (0 comparisons).\n"
@@ -580,7 +577,7 @@ public class MakeindexTest extends AbstractTester {
                     + "Output written in stdout.\n"
                     + "Transcript written in target/xyz.ilog.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
-        File t = new File("target/xyz.ilog");
+        File t = new File(DIR_TARGET + "/xyz.ilog");
         assertTrue(t.exists());
         t.deleteOnExit();
     }
@@ -602,7 +599,7 @@ public class MakeindexTest extends AbstractTester {
                     + "Output written in stdout.\n"
                     + "Transcript written in target/xyz.ilog.\n",
             "\\begin{theindex}\n\n\n\\end{theindex}\n", 0);
-        File t = new File("target/xyz.ilog");
+        File t = new File(DIR_TARGET + "/xyz.ilog");
         assertTrue(t.exists());
         t.deleteOnExit();
     }
@@ -628,7 +625,7 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile1() {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"target/xyzzy"},
+        run(new String[]{DIR_TARGET + "/xyzzy"},
             BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }
@@ -641,7 +638,7 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile2() {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"-", "target/xyzzy"},
+        run(new String[]{"-", DIR_TARGET + "/xyzzy"},
             BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }
@@ -654,7 +651,7 @@ public class MakeindexTest extends AbstractTester {
     public void testUnknownFile3() {
 
         Locale.setDefault(Locale.ENGLISH);
-        run(new String[]{"--", "target/xyzzy"},
+        run(new String[]{"--", DIR_TARGET + "/xyzzy"},
             BANNER + "Input index file target/xyzzy not found.\n",
             "", -1);
     }

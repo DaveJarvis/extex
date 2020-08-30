@@ -65,7 +65,7 @@ public class SiteBuilder implements LibReceiver {
     /**
      * The field <tt>target</tt> contains the target directory.
      */
-    private File target = new File("target/test-site");
+    private File target = new File(DIR_TARGET + "/test-site");
 
     /**
      * The field <tt>logger</tt> contains the logger.

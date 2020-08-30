@@ -19,11 +19,6 @@
 
 package org.extex.exbib.core.io;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -42,6 +37,8 @@ import org.extex.framework.configuration.exception.ConfigurationSyntaxException;
 import org.extex.framework.configuration.exception.ConfigurationUnsupportedEncodingException;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
  * This is a test suite for a {@link WriterFactory}.
  * 
@@ -49,6 +46,8 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class WriterFactoryTest {
+
+    private static final String DIR_TARGET = "build";
 
     /**
      * Test configuration.
@@ -59,7 +58,7 @@ public class WriterFactoryTest {
         /**
          * The field <tt>encoding</tt> contains the encoding.
          */
-        private String encoding;
+        private final String encoding;
 
         /**
          * Creates a new object.
@@ -298,7 +297,7 @@ public class WriterFactoryTest {
     public final void testNewInstanceString1() throws Exception {
 
         new WriterFactory(new MyConfig(null))
-            .newInstance("target/does/not/exist");
+            .newInstance(DIR_TARGET + "/does/not/exist");
     }
 
     /**
@@ -310,7 +309,7 @@ public class WriterFactoryTest {
     @Test
     public final void testNewInstanceString2() throws Exception {
 
-        File file = new File("target", "writer.test");
+        File file = new File(DIR_TARGET, "writer.test");
         if (file.exists()) {
             assertTrue(file.delete());
         }
@@ -322,7 +321,7 @@ public class WriterFactoryTest {
         if (file.exists()) {
             assertTrue(file.delete());
         } else {
-            assertTrue(file.toString() + " has not been created", false);
+            fail( file.toString() + " has not been created" );
         }
     }
 
@@ -391,7 +390,7 @@ public class WriterFactoryTest {
 
         Writer w = new NullWriter();
         Writer writer = new WriterFactory(new MyConfig(null)).newInstance(w, w);
-        assertFalse(w == writer);
+        assertNotSame( w, writer );
         assertTrue(writer instanceof MultiWriter);
     }
 

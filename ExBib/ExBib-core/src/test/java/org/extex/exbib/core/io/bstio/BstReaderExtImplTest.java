@@ -57,7 +57,7 @@ public class BstReaderExtImplTest {
         /**
          * The field <tt>content</tt> contains the content.
          */
-        private String content;
+        private final String content;
 
         /**
          * Creates a new object.
@@ -188,7 +188,7 @@ public class BstReaderExtImplTest {
         assertEquals("abc", ((TIntegerOption) f).getValue());
         Token op = processor.getOption("abc");
         assertTrue(op.getClass().getName(), op instanceof TInteger);
-        assertEquals("123", ((TInteger) op).getValue());
+        assertEquals("123", op.getValue());
         // runTest(processor, "");
     }
 
@@ -214,7 +214,7 @@ public class BstReaderExtImplTest {
         assertEquals("abc", ((TStringOption) f).getValue());
         Token op = processor.getOption("abc");
         assertTrue(op.getClass().getName(), op instanceof TString);
-        assertEquals("def", ((TString) op).getValue());
+        assertEquals("def", op.getValue());
     }
 
 }

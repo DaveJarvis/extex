@@ -56,7 +56,7 @@ public class UrlFinderTest {
         /**
          * The field <tt>buffer</tt> contains the collected messages.
          */
-        private StringBuilder buffer = new StringBuilder();
+        private final StringBuilder buffer = new StringBuilder();
 
         /**
          * {@inheritDoc}

@@ -38,6 +38,8 @@ import org.junit.Test;
  */
 public class TocIndexTest {
 
+    private final static String DIR_TARGET = "build/empty";
+
     /**
      * Run a test and compare the result.
      * 
@@ -97,16 +99,20 @@ public class TocIndexTest {
         runTest(expectedOut, expectedErr, args);
     }
 
+    private void setupTargetDirectory() {
+        File dir = new File(DIR_TARGET);
+        dir.delete();
+        dir.mkdirs();
+        dir.deleteOnExit();
+    }
+
     /**
      * <testcase>Test that a empty directory is correctly indexed. </testcase>
      */
     @Test
     public final void test1() {
-
-        File dir = new File("target/empty");
-        dir.delete();
-        dir.mkdir();
-        runTestEn("#\n", "", "target/empty");
+        setupTargetDirectory();
+        runTestEn("#\n", "", DIR_TARGET);
     }
 
     /**
@@ -165,7 +171,7 @@ public class TocIndexTest {
 
         String sep = System.getProperty("file.separator");
         runTestEn("", "The base directory `non-existent" + sep + "base" + sep
-                + "directory\' can not be read\n",
+                + "directory' can not be read\n",
             "non-existent/base/directory");
     }
 
@@ -184,14 +190,11 @@ public class TocIndexTest {
      */
     @Test
     public final void testError08() {
-
-        File dir = new File("target/empty");
-        dir.delete();
-        dir.mkdir();
+        setupTargetDirectory();
         runTestEn(
             "",
-            "The output file `file/which/is/not/writable\' can not be written\n",
-            "target/empty", "-out", "file/which/is/not/writable");
+            "The output file `file/which/is/not/writable' can not be written\n",
+            DIR_TARGET, "-out", "file/which/is/not/writable");
     }
 
     /**
@@ -199,14 +202,11 @@ public class TocIndexTest {
      */
     @Test
     public final void testError09() {
-
-        File dir = new File("target/empty");
-        dir.delete();
-        dir.mkdir();
+        setupTargetDirectory();
         runTestEn(
             "",
-            "The output file `file/which/is/not/writable\' can not be written\n",
-            "target/empty", "-output=file/which/is/not/writable");
+            "The output file `file/which/is/not/writable' can not be written\n",
+            DIR_TARGET, "-output=file/which/is/not/writable");
     }
 
     /**
@@ -214,14 +214,11 @@ public class TocIndexTest {
      */
     @Test
     public final void testError10() {
-
-        File dir = new File("target/empty");
-        dir.delete();
-        dir.mkdir();
+        setupTargetDirectory();
         runTestEn(
             "",
-            "The output file `file/which/is/not/writable\' can not be written\n",
-            "target/empty", "--output=file/which/is/not/writable");
+            "The output file `file/which/is/not/writable' can not be written\n",
+            DIR_TARGET, "--output=file/which/is/not/writable");
     }
 
     /**
@@ -249,7 +246,7 @@ public class TocIndexTest {
     @Test
     public final void testOmit1() {
 
-        File dir = new File("target/toc-index-test");
+        File dir = new File(DIR_TARGET + "/toc-index-test");
         File file = new File(dir, "xxx");
         assertFalse(dir.toString() + " exists. Make sure it is gone",
             dir.exists());

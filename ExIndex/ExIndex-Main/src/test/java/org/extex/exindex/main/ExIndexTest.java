@@ -18,21 +18,15 @@
 
 package org.extex.exindex.main;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import org.junit.Ignore;
+import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.InputStream;
-import java.io.PrintStream;
+import java.io.*;
 import java.util.Locale;
 import java.util.logging.Handler;
 import java.util.logging.Logger;
 
-import org.junit.Ignore;
-import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  * This is a test suite for ExIndex.
@@ -41,6 +35,8 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ExIndexTest {
+
+    private static final String DIR_TARGET = "build";
 
     /**
      * The field <tt>DEFAULT_LOG</tt> contains the default logging output.
@@ -172,7 +168,7 @@ public class ExIndexTest {
                 + "Reading xyzzy.\n"
                 + "Resources xyzzy not found.\nFile not found: xyzzy\n");
         assertTrue(log.exists());
-        log.delete();
+        log.deleteOnExit();
     }
 
     /**
@@ -205,7 +201,7 @@ public class ExIndexTest {
                     + "Reading UnDeFiNeD.\n"
                     + "Resources UnDeFiNeD not found.\nFile not found: UnDeFiNeD\n");
         assertTrue(log.exists());
-        log.delete();
+        log.deleteOnExit();
     }
 
     /**
@@ -226,7 +222,7 @@ public class ExIndexTest {
                     + "Reading UnDeFiNeD.\n"
                     + "Resources UnDeFiNeD not found.\nFile not found: UnDeFiNeD\n");
         assertTrue(log.exists());
-        log.delete();
+        log.deleteOnExit();
     }
 
     /**
@@ -631,12 +627,12 @@ public class ExIndexTest {
     @Ignore
     public final void testTranscript1() throws Exception {
 
-        File log = new File("target/xxx.ilg");
+        File log = new File(DIR_TARGET + "/xxx.ilg");
         log.delete();
-        runTest(new String[]{"-trans", "target/xxx.ilg"}, 0, DEFAULT_LOG
-                + "Transcript written in target/xxx.ilg.\n");
+        runTest(new String[]{"-trans", DIR_TARGET + "/xxx.ilg"}, 0, DEFAULT_LOG
+                + "Transcript written in "+DIR_TARGET+"/xxx.ilg.\n");
         assertTrue(log.exists());
-        log.delete();
+        log.deleteOnExit();
     }
 
     /**

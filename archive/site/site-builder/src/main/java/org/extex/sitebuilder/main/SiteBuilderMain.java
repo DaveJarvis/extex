@@ -111,7 +111,7 @@ public final class SiteBuilderMain {
             SiteBuilder siteBuilder, Logger logger) {
 
         SiteMapBuilder siteMap = siteBuilder.createSiteMap();
-        siteMap.setOutput(new File("target/test-site/sitemap.html"));
+        siteMap.setOutput(new File(DIR_TARGET + "/test-site/sitemap.html"));
         siteBuilder.omit("CVS");
         siteBuilder.omit(".svn");
         // siteBuilder.lib("src/site/velocity/macros.vm");

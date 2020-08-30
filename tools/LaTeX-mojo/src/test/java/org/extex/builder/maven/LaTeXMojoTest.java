@@ -80,7 +80,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
         } finally {
             w.close();
         }
-        rmdir("target/doc");
+        rmdir(DIR_TARGET + "/doc");
         Mojo mojo;
         try {
             PlexusConfiguration configuration =
@@ -158,7 +158,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     @Ignore
     public final void t_est3() throws Exception {
 
-        runMojo("target/latex-3.xml",
+        runMojo(DIR_TARGET + "/latex-3.xml",
             "<file>src/test/resources/document3.tex</file>\n", null);
     }
 
@@ -171,7 +171,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void test1() throws Exception {
 
         runMojo(
-            "target/latex-1.xml",
+            DIR_TARGET + "/latex-1.xml",
             "<file>src/test/resources/document1.tex</file>\n"
                     + "<latexCommand>pdflatex</latexCommand>\n",
             ("[info] Building [1] {0}/target/doc/document1.pdf\n"
@@ -196,7 +196,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void test2() throws Exception {
 
         runMojo(
-            "target/latex-2.xml",
+            DIR_TARGET + "/latex-2.xml",
             "<file>src/test/resources/document2.tex</file>\n",
             ("[info] Building [1] {0}/target/doc/document2.pdf\n"
                     + "[info] Looking after {0}/target/doc/document2.aux\n"
@@ -225,7 +225,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void testInvalidFormat() throws Exception {
 
         try {
-            runMojo("target/latex-1.xml",
+            runMojo(DIR_TARGET + "/latex-1.xml",
                 "<file>src/test/resources/document1.tex</file>\n"
                         + "<format>xyzzy</format>\n", null);
             assertTrue(false);
@@ -245,7 +245,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void testNoFile() throws Exception {
 
         try {
-            runMojo("target/latex-1.xml", "", null);
+            runMojo(DIR_TARGET + "/latex-1.xml", "", null);
             assertTrue(false);
         } catch (MojoExecutionException e) {
             assertTrue(true);
@@ -262,7 +262,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void testNoLaTeX() throws Exception {
 
         try {
-            runMojo("target/latex-1.xml",
+            runMojo(DIR_TARGET + "/latex-1.xml",
                 "<file>src/test/resources/document1.tex</file>\n"
                         + "<latexCommand>xyzzy</latexCommand>\n", null);
             assertTrue(false);
@@ -280,7 +280,7 @@ public class LaTeXMojoTest extends AbstractMojoTestCase {
     public final void testUndefinedFile() throws Exception {
 
         try {
-            runMojo("target/latex-1.xml",
+            runMojo(DIR_TARGET + "/latex-1.xml",
                 "<file>src/test/resources/xyzzy</file>\n", null);
             assertTrue(false);
         } catch (MojoExecutionException e) {

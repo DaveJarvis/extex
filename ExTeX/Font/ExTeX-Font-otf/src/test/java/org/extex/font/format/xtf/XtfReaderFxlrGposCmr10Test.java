@@ -43,6 +43,8 @@ import static org.junit.Assert.assertNotNull;
  */
 public class XtfReaderFxlrGposCmr10Test {
 
+    private final static String DIR_TARGET = "build";
+
     private final XtfReader reader;
 
     /**
@@ -147,7 +149,7 @@ public class XtfReaderFxlrGposCmr10Test {
 
         assertNotNull( reader );
         XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream("target/cmr10.xml"),
+                new XMLStreamWriter(new FileOutputStream(DIR_TARGET + "/cmr10.xml"),
                     "ISO8859-1");
         writer.setBeauty(true);
         writer.writeStartDocument();

@@ -18,11 +18,11 @@
 
 package org.extex.exbib.main;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 import java.io.File;
 
-import org.junit.Test;
+import static org.junit.Assert.fail;
 
 /**
  * This is a test suite for different encodings.
@@ -31,6 +31,8 @@ import org.junit.Test;
  * @version $Revision$
  */
 public class ExBibI18NTest {
+
+    private final static String DIR_TARGET = "build";
 
     /**
      * The field <tt>DATA_DIR</tt> contains the directory containing database,
@@ -54,7 +56,7 @@ public class ExBibI18NTest {
 
         File data =
                 BibTester
-                    .makeFile("target/data.bib",
+                    .makeFile(DIR_TARGET + "/data.bib",
                         "UTF-8",
                         "@Book{ aristotle,\n"
                                 + "  author =       {A\u03c1\u03b9\u03c3\u03c4o\u03c4\u03ad\u03bb\u03b7\u03c2},\n"
@@ -65,16 +67,16 @@ public class ExBibI18NTest {
             "\\relax\n"
                     + "\\citation{*}\n"
                     + "\\bibstyle{" + STYLE_DIR + "/alpha.bst" + "}\n"
-                    + "\\bibdata{target/data.bib}\n");
+                    + "\\bibdata{"+DIR_TARGET+"/data.bib}\n");
         try {
             TRunner.runTest(aux, new File(DATA_DIR, "greek.result"),
                 "--enc=UTF-8");
         } finally {
             if (aux.exists() && !aux.delete()) {
-                assertTrue(aux.toString() + ": deletion failed", false);
+                fail( aux.toString() + ": deletion failed" );
             }
             if (data.exists() && !data.delete()) {
-                assertTrue(data.toString() + ": deletion failed", false);
+                fail( data.toString() + ": deletion failed" );
             }
         }
     }

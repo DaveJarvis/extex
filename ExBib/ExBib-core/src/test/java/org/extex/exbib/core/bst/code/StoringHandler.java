@@ -33,7 +33,7 @@ public final class StoringHandler extends Handler {
     /**
      * The field <tt>buffer</tt> contains the buffer.
      */
-    private StringBuilder buffer = new StringBuilder();
+    private final StringBuilder buffer = new StringBuilder();
 
 
     public StoringHandler() {

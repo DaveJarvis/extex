@@ -18,11 +18,6 @@
 
 package org.extex.cli;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertTrue;
-
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.List;
@@ -36,12 +31,15 @@ import org.extex.cli.exception.UnknownOptionCliException;
 import org.extex.cli.exception.UnusedArgumentCliException;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+
 /**
  * This is a test suite for {@link CLI}.
  * 
  * @author <a href="mailto:gene@gerd-neugebauer.de">Gerd Neugebauer</a>
  * @version $Revision$
  */
+@SuppressWarnings("deprecation")
 public class CLITest {
 
     /**
@@ -77,7 +75,7 @@ public class CLITest {
 
         try {
             new CLI().run(new String[]{"xxx"});
-            assertTrue(false);
+            fail();
         } catch (UnknownOptionCliException e) {
             assertEquals("xxx", e.getMessage());
             Locale.setDefault(Locale.ENGLISH);
@@ -96,7 +94,7 @@ public class CLITest {
 
         try {
             new CLI().run(new String[]{"xxx=123"});
-            assertTrue(false);
+            fail();
         } catch (UnknownOptionCliException e) {
             assertEquals("xxx", e.getMessage());
         }
@@ -117,7 +115,7 @@ public class CLITest {
             @Override
             protected int run(String a, boolean value) {
 
-                assertEquals(true, value);
+                assertTrue( value );
                 return -1;
             }
 
@@ -140,7 +138,7 @@ public class CLITest {
             @Override
             protected int run(String a, boolean value) {
 
-                assertEquals(true, value);
+                assertTrue( value );
                 return -1;
             }
 
@@ -163,7 +161,7 @@ public class CLITest {
             @Override
             protected int run(String a, boolean value) {
 
-                assertEquals(false, value);
+                assertFalse( value );
                 return -1;
             }
 
@@ -909,7 +907,7 @@ public class CLITest {
             @Override
             protected int run(String a, int value) {
 
-                assertTrue(false);
+                fail();
                 return 1;
             }
 
@@ -932,7 +930,7 @@ public class CLITest {
             @Override
             protected int run(String a, int value) {
 
-                assertTrue(false);
+                fail();
                 return 1;
             }
 
@@ -1265,7 +1263,7 @@ public class CLITest {
             @Override
             protected int run(String a, String value) {
 
-                assertTrue(false);
+                fail();
                 return 1;
             }
 
@@ -1288,7 +1286,7 @@ public class CLITest {
             @Override
             protected int run(String a, String value) {
 
-                assertTrue(false);
+                fail();
                 return 1;
             }
 

@@ -35,6 +35,8 @@ import static org.junit.Assert.assertTrue;
  */
 public class MakeindexExBibTest extends AbstractTester {
 
+    private final static String DIR_TARGET = "build";
+
     /**
      * {@inheritDoc}
      *
@@ -61,7 +63,7 @@ public class MakeindexExBibTest extends AbstractTester {
             run(
                 new String[]{"src/test/resources/makeindex/exbib-manual.idx",
                         "-s", "src/test/resources/makeindex/doc.ist", "-out",
-                        "target/exbib-manual.ind"},
+                        DIR_TARGET + "/exbib-manual.ind"},
                 BANNER
                         + "Scanning style file src/test/resources/makeindex/doc.ist...done (7 attributes\n"
                         + "redefined, 0 ignored).\n"
@@ -74,7 +76,7 @@ public class MakeindexExBibTest extends AbstractTester {
                         + "Output written in target/exbib-manual.ind.\n"
                         + "Transcript written in src/test/resources/makeindex/exbib-manual.ilg.\n",
                 "", 0);
-            File ind = new File("target/exbib-manual.ind");
+            File ind = new File(DIR_TARGET + "/exbib-manual.ind");
             assertTrue("Missing " + ind.toString(), ind.exists());
             r = new BufferedReader(new FileReader(ind));
             StringBuilder buffer = new StringBuilder();
@@ -98,7 +100,7 @@ public class MakeindexExBibTest extends AbstractTester {
             if (r != null) {
                 r.close();
             }
-            new File("target/exbib-manual.ind").delete();
+            new File(DIR_TARGET + "/exbib-manual.ind").delete();
         }
     }
 

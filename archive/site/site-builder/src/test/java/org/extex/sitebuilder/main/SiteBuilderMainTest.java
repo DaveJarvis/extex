@@ -68,13 +68,13 @@ public class SiteBuilderMainTest {
     @Test
     public void test01() {
 
-        File dir = new File("target/test-site");
+        File dir = new File(DIR_TARGET + "/test-site");
         dir.mkdirs();
         File indexHtml = new File(dir, "index.html");
         if (indexHtml.exists()) {
             indexHtml.delete();
         }
-        File sitemapHtml = new File("target/test-site/sitemap.html");
+        File sitemapHtml = new File(DIR_TARGET + "/test-site/sitemap.html");
         if (sitemapHtml.exists()) {
             sitemapHtml.delete();
         }
@@ -116,7 +116,7 @@ public class SiteBuilderMainTest {
     @Test
     public void testBase03() {
 
-        assertEquals(-1, run(new String[]{"-base", "target/xyzzy"}, null));
+        assertEquals(-1, run(new String[]{"-base", DIR_TARGET + "/xyzzy"}, null));
     }
 
     /**

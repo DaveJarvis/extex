@@ -49,6 +49,8 @@ import org.junit.Test;
 @Ignore
 public class XtfReaderFxlrGsubAlternateTest {
 
+    private final static String DIR_TARGET = "build";
+
     private final XtfReader reader;
 
     /**
@@ -1817,7 +1819,7 @@ public class XtfReaderFxlrGsubAlternateTest {
 
         Assert.assertNotNull( reader );
         XMLStreamWriter writer =
-                new XMLStreamWriter(new FileOutputStream("target/fxlr.xml"),
+                new XMLStreamWriter(new FileOutputStream(DIR_TARGET + "/fxlr.xml"),
                     "ISO8859-1");
         writer.setBeauty(true);
         writer.writeStartDocument();

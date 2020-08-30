@@ -90,7 +90,7 @@ public class NewsBuilder {
     /**
      * The field <tt>outputFile</tt> contains the target file.
      */
-    private File outputFile = new File("target/test-site/rss/2.0/news.rss");
+    private File outputFile = new File(DIR_TARGET + "/test-site/rss/2.0/news.rss");
 
     /**
      * The field <tt>template</tt> contains the name of the template.

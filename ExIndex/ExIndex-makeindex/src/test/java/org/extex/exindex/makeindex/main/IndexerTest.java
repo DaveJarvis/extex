@@ -34,6 +34,8 @@ import static org.junit.Assert.assertEquals;
 @Ignore
 public class IndexerTest {
 
+    private static final String DIR_TARGET = "build";
+    
     /**
      * The field <tt>MARKER_STYLE</tt> contains the definition of all output
      * options for the test.
@@ -147,7 +149,7 @@ public class IndexerTest {
             System.setErr(new PrintStream(es));
             Makeindex indexer = makeIndexer();
             if (style != null) {
-                temp = File.createTempFile("style", ".ist", new File("target"));
+                temp = File.createTempFile("style", ".ist", new File(DIR_TARGET));
                 indexer.addStyle(temp.getAbsolutePath());
                 FileWriter w = new FileWriter(temp);
                 try {

@@ -121,12 +121,12 @@ public class NewsBuilderMainTest {
     @Test
     public void testBase03() {
 
-        File file = new File("target/test-site/rss/2.0/news.rss");
+        File file = new File(DIR_TARGET + "/test-site/rss/2.0/news.rss");
         if (file.exists()) {
             assertTrue("deletion failed: " + file, file.delete());
         }
         try {
-            assertEquals(-1, run(new String[]{"-base", "target/xyzzy"}, null));
+            assertEquals(-1, run(new String[]{"-base", DIR_TARGET + "/xyzzy"}, null));
             assertFalse("Unexpected file: " + file.toString(), file.exists());
         } finally {
             file.deleteOnExit();
@@ -140,12 +140,12 @@ public class NewsBuilderMainTest {
     @Test
     public void testBase04() {
 
-        File file = new File("target/test-site/rss/2.0/news.rss");
+        File file = new File(DIR_TARGET + "/test-site/rss/2.0/news.rss");
         if (file.exists()) {
             assertTrue("deletion failed: " + file, file.delete());
         }
         try {
-            assertEquals(-1, run(new String[]{"target/xyzzy"}, null));
+            assertEquals(-1, run(new String[]{DIR_TARGET + "/xyzzy"}, null));
             assertFalse("Unexpected file: " + file.toString(), file.exists());
         } finally {
             file.deleteOnExit();
@@ -161,7 +161,7 @@ public class NewsBuilderMainTest {
     @Test
     public void testBase10() throws IOException {
 
-        File file = new File("target/test-site/rss/2.0/news.rss");
+        File file = new File(DIR_TARGET + "/test-site/rss/2.0/news.rss");
         if (file.exists()) {
             assertTrue("deletion failed: " + file, file.delete());
         }
@@ -248,7 +248,7 @@ public class NewsBuilderMainTest {
     @Test
     public void testMax03() throws IOException {
 
-        File file = new File("target/test-site/rss/2.0");
+        File file = new File(DIR_TARGET + "/test-site/rss/2.0");
         file.mkdirs();
         file = new File(file, "news.rss");
         CleanupUtil.rmdir(file);
@@ -295,7 +295,7 @@ public class NewsBuilderMainTest {
     @Test
     public void testOutput02() throws IOException {
 
-        File file = new File("target/news.rss");
+        File file = new File(DIR_TARGET + "/news.rss");
         if (file.exists()) {
             assertTrue("deletion failed: " + file, file.delete());
         }

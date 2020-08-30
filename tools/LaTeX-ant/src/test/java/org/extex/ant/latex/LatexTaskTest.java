@@ -37,6 +37,8 @@ import org.apache.tools.ant.BuildFileTest;
  */
 public class LatexTaskTest extends BuildFileTest {
 
+    private static final String DIR_TARGET = "build";
+
     /**
      * Creates a new object.
      * 
@@ -76,7 +78,7 @@ public class LatexTaskTest extends BuildFileTest {
      */
     private File mkfile(String fileName, String text) throws IOException {
 
-        File f = new File("target", fileName);
+        File f = new File(DIR_TARGET, fileName);
         Writer w = new BufferedWriter(new FileWriter(f));
         w.append(text);
         w.close();
@@ -93,14 +95,14 @@ public class LatexTaskTest extends BuildFileTest {
      */
     private void runTest(String invocation, String log) throws IOException {
 
-        File build = new File("target/build.xml");
+        File build = new File(DIR_TARGET + "/build.xml");
         FileWriter w = new FileWriter(build);
         try {
             w
                 .write("<project name=\"ant-test\">\n"
                         + "  <taskdef name=\"LaTeX\"\n"
                         + "           classname=\"org.extex.ant.latex.LatexTask\"\n"
-                        + "           classpath=\"target/classes\" />\n"
+                        + "           classpath=\DIR_TARGET + "/classes\" />\n"
                         + "  <target name=\"test.case\"\n"
                         + "          description=\"...\" >\n" + "");
             w.write(invocation);
@@ -111,7 +113,7 @@ public class LatexTaskTest extends BuildFileTest {
         }
 
         Locale.setDefault(Locale.ENGLISH);
-        configureProject("target/build.xml");
+        configureProject(DIR_TARGET + "/build.xml");
         expectOutput("test.case", "");
         if (log != null) {
             assertEquals("Message was logged but should not.",
@@ -136,7 +138,7 @@ public class LatexTaskTest extends BuildFileTest {
         FileWriter w;
 
         if (aux != null) {
-            w = new FileWriter("target/test.aux");
+            w = new FileWriter(DIR_TARGET + "/test.aux");
             try {
                 w.write(aux);
             } finally {
@@ -160,10 +162,10 @@ public class LatexTaskTest extends BuildFileTest {
             assertEquals("message",
                 "master file argument missing", e.getMessage());
         } finally {
-            new File("target", "abc.aux").delete();
-            new File("target", "abc.log").delete();
-            new File("target", "abc.bbl").delete();
-            new File("target", "abc.blg").delete();
+            new File(DIR_TARGET, "abc.aux").delete();
+            new File(DIR_TARGET, "abc.log").delete();
+            new File(DIR_TARGET, "abc.bbl").delete();
+            new File(DIR_TARGET, "abc.blg").delete();
         }
     }
 
@@ -180,13 +182,13 @@ public class LatexTaskTest extends BuildFileTest {
             assertTrue("unexpected success", false);
         } catch (BuildException e) {
             assertEquals("message",
-                "master file " + new File("target", fileName).getAbsoluteFile()
+                "master file " + new File(DIR_TARGET, fileName).getAbsoluteFile()
                         + " not found", e.getMessage());
         } finally {
-            new File("target", "abc.aux").delete();
-            new File("target", "abc.log").delete();
-            new File("target", "abc.bbl").delete();
-            new File("target", "abc.blg").delete();
+            new File(DIR_TARGET, "abc.aux").delete();
+            new File(DIR_TARGET, "abc.log").delete();
+            new File(DIR_TARGET, "abc.bbl").delete();
+            new File(DIR_TARGET, "abc.blg").delete();
         }
     }
 
@@ -207,10 +209,10 @@ public class LatexTaskTest extends BuildFileTest {
             assertTrue(true);
         } finally {
             f.delete();
-            new File("target", "abc.aux").delete();
-            new File("target", "abc.log").delete();
-            new File("target", "abc.bbl").delete();
-            new File("target", "abc.blg").delete();
+            new File(DIR_TARGET, "abc.aux").delete();
+            new File(DIR_TARGET, "abc.log").delete();
+            new File(DIR_TARGET, "abc.bbl").delete();
+            new File(DIR_TARGET, "abc.blg").delete();
         }
     }
 
@@ -235,10 +237,10 @@ public class LatexTaskTest extends BuildFileTest {
                 e.toString().contains("I found no \\citation commands"));
         } finally {
             f.delete();
-            new File("target", "abc.aux").delete();
-            new File("target", "abc.log").delete();
-            new File("target", "abc.bbl").delete();
-            new File("target", "abc.blg").delete();
+            new File(DIR_TARGET, "abc.aux").delete();
+            new File(DIR_TARGET, "abc.log").delete();
+            new File(DIR_TARGET, "abc.bbl").delete();
+            new File(DIR_TARGET, "abc.blg").delete();
         }
     }
 
@@ -266,10 +268,10 @@ public class LatexTaskTest extends BuildFileTest {
                 e.toString().contains("I couldn't open database file "));
         } finally {
             f.delete();
-            new File("target", "abc.aux").delete();
-            new File("target", "abc.log").delete();
-            new File("target", "abc.bbl").delete();
-            new File("target", "abc.blg").delete();
+            new File(DIR_TARGET, "abc.aux").delete();
+            new File(DIR_TARGET, "abc.log").delete();
+            new File(DIR_TARGET, "abc.bbl").delete();
+            new File(DIR_TARGET, "abc.blg").delete();
         }
     }
 
