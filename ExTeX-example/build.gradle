@@ -1,0 +1,9 @@
+description = 'ExTeX Example'
+
+dependencies {
+    implementation project(':ExTeX-resource')
+    implementation project(':extex:ExTeX-base')
+    implementation project(':extex:ExTeX-core')
+    implementation project(':extex:ExTeX-Font-API')
+    implementation project(':extex:ExTeX-Typesetter-API')
+}

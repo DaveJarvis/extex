@@ -15,13 +15,16 @@
  * along with this library; if not, write to the Free Software Foundation, Inc.,
  * 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
  */
+
 /**
+ * Logging and Log Levels
+ *
+ * <p>
  * This package contains support classes for logging.
- * ??TeX uses the definition of logging introduced
+ * εχTeX uses the definition of logging introduced
  * in Java 1.4. Thus most of the required functionality is already provided
  * by the Java programming language.
- *  
- * <h3>Logging and Log Levels</h3>
+ * </p>
  *
  * <p>
  *  Log handlers can be used to redirect the log output to the
@@ -37,6 +40,4 @@
  *  </dd>
  * </dl>
  */
-
 package org.extex.logging;
-
